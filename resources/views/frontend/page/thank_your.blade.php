@@ -1,4 +1,4 @@
-@extends('frontend.layout.main')
+@extends('frontend.layout.portal')
 
 @section('page')
     <main>

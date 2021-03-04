@@ -126,7 +126,7 @@ class ProductController extends BaseController
 
         }
 
-        // dd($this->controller);
+        // dd($this->bodyData['controller']);
         //Swich main page product / portal
         if($this->controller != 'product')
         {
@@ -265,6 +265,7 @@ class ProductController extends BaseController
     {
         $data = $request->all();
 
+        
         if (isset($data['send_data'])) {
             $data = (array)json_decode($data['send_data']);
 
@@ -312,7 +313,6 @@ class ProductController extends BaseController
         $arr_post['user_defined_1'] = ($log_id ? implode(',', $log_id) : $obj->log_id);
         $arr_post['user_defined_2'] = session('return_link');
         $arr_post['result_url_1'] = url("{$this->locale}/{$this->controller}/result");
-
 
         //case check product / portal
         // $strKeys = $obj->data["fdKeys"];

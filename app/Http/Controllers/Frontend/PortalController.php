@@ -49,7 +49,7 @@ class PortalController extends ProductController
         $this->bodyData['doc_no'] = $request->session()->get('doc_no');
         $this->bodyData['return_link'] = $request->session()->get('return_link');
         
-        //dd($this->bodyData['return_link']);
+        // dd($this->bodyData['return_link']);
 
         return $this->genStatusPage(ProjectEnum::STATIC_PAGE_PAYMENT_THANK_YOU);
     }
