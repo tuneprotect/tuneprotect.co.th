@@ -1,0 +1,14 @@
+
+.handle {
+    display: block;
+    width: 18px;
+    height: 18px;
+    margin-right: 20px;
+    overflow: hidden;
+
+    > svg {
+        opacity: 0.3;
+    }
+
+    cursor: grab;
+}

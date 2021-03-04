@@ -1,0 +1,86 @@
+@mixin tm_clear_fix() {
+    &:after {
+        content: "";
+        clear: both;
+        display: block;
+    }
+}
+
+@function is_null($check,$return_if_null) {
+    @if ($check == null) {
+        @return $return_if_null;
+    }
+    @return $check;
+}
+
+@mixin project_transition() {
+    transition: 500ms all cubic-bezier(0.4, 0, 0.2, 1);
+}
+@mixin rotate_deg($v) {
+    transform: rotate($v);
+}
+
+@mixin dimension($width,$height : null) {
+    width: $width;
+    height: is_null($height, $width);
+}
+
+@mixin square($width) {
+    @include dimension($width);
+}
+
+@mixin circle($width) {
+    @include dimension($width);
+    @include border-radius($width);
+}
+
+@mixin tm_box_center_page($width,$height : null) {
+    @include dimension($width, $height);
+    position: absolute;
+    left: calc(50% - (#{$width} / 2));
+    top: calc(50% - (#{is_null($height,$width)} / 2));
+}
+
+@mixin tm_full_container($full_screen : false) {
+    @if ($full_screen) {
+        position: fixed;
+    } @else {
+        position: absolute;
+    }
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/**
+$direction : up,down,left,right
+*/
+@mixin tm_triangle($direction : 'up',$size : 20px,$color : #ffffff) {
+    width: 0;
+    height: 0;
+    @if ($direction == 'up') {
+        border-left: $size solid transparent;
+        border-right: $size solid transparent;
+        border-bottom: $size solid $color;
+    } @else if ($direction == 'down') {
+        border-left: $size solid transparent;
+        border-right: $size solid transparent;
+        border-top: $size solid $color;
+    } @else if ($direction == 'left') {
+        border-top: $size solid transparent;
+        border-bottom: $size solid transparent;
+        border-right: $size solid $color;
+    } @else if ($direction == 'right') {
+        border-top: $size solid transparent;
+        border-bottom: $size solid transparent;
+        border-left: $size solid $color;
+    }
+}
+
+@mixin truncate() {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+

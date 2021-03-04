@@ -1,0 +1,55 @@
+VPN
+
+Connection Name = “TPTVPN”
+Remote Gateway =  “147.50.7.146”
+Customize port = 10443
+Authentication = Save Login
+Username =  sikaru
+Click “Save login”
+Password:  Tuneskrlogin@987
+Click check box  “Do not warm invalid server certificate” on
+
+QA
+------------------------------------------
+VNC
+
+Server Name: TUNE-TEST-V
+IP Address: 10.2.2.16
+VNC: user
+Password:  Tuneskrlogin@987
+
+QA DB
+------------------------------------------
+User: sikarudb
+Password: 4BMUpBv2KVWV
+
+
+Live
+-------------------------------------------
+Server Name: TPT-WEBHV-SV4
+Private IP Address: 10.2.2.22
+Global IP Address: 27.254.138.110
+
+Windows logon
+User:  sikaru
+Password:  Tuneskrlogin@987
+
+VNC logon
+VNC: user
+Password:  Tuneskrlogin@987
+
+Live DB
+-------------------------------------------
+
+Dataase MS SQL 2012 R2  (10.2.2.12)
+
+User: sikarudb
+Password: skrdbadmin@987
+
+
+--------------------------------------------
+
+E-mail: insurance.madeeasy@tuneprotect.com
+Password: R23ra%8z
+SMTP Server : smtp.tuneprotect.com
+SMTP Port: 587
