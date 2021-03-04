@@ -4,6 +4,7 @@
 namespace App\Http\Controllers\Frontend;
 use Illuminate\Http\Request;
 use App\Enum\ProjectEnum;
+// use App\Http\Requests\MemberidRequest;
 
 class PortalController extends ProductController
 {
@@ -40,6 +41,7 @@ class PortalController extends ProductController
         //dd($this->bodyData['status_api']);
 
         return parent::index($link,$selected);
+        
     }
 
     public function thankyou(Request $request)
@@ -51,7 +53,6 @@ class PortalController extends ProductController
 
         return $this->genStatusPage(ProjectEnum::STATIC_PAGE_PAYMENT_THANK_YOU);
     }
-
 
 }
 

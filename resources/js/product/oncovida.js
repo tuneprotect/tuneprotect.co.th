@@ -237,9 +237,26 @@ const constraints = {
 
 document.addEventListener("DOMContentLoaded", async () => {
 
+    let Keys = "";
+    var myEle = document.getElementById("portal_key");
+    if(myEle){
+        Keys= myEle.value;
+        var status_api = document.getElementById("status_api");
+        if(!status_api.value)
+        {
+            Swal.fire({
+                title: 'Error!',
+                text: 'Error : Portal keys. User not found.',
+                icon: 'error',
+                confirmButtonText: 'OK'
+            })
+            status = false;
+        }
+    }
     const package_data = await getPackageData(current_package);
     let step = 1;
     let data = {
+        fdKeys : Keys,
         fdTitle: "",
         fdName: "",
         fdSurname: "",
@@ -348,7 +365,21 @@ document.addEventListener("DOMContentLoaded", async () => {
                         if (validateResult.status) {
                             data = {...data, ...validateResult.data};
                         }
-
+                        //Case web portal
+                        var myEle = document.getElementById("portal_key");
+                        if(myEle){
+                            var status_api = document.getElementById("status_api");
+                            if(!status_api.value)
+                                {
+                                    Swal.fire({
+                                        title: 'Error!',
+                                        text: 'Error : Portal keys. User not found.',
+                                        icon: 'error',
+                                        confirmButtonText: 'OK'
+                                    })
+                                    status = false;
+                                }
+                        }
                         break;
                     case 2:
                         const fdPackage = $btn.getAttribute('data-package');
