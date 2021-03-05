@@ -182,6 +182,21 @@ abstract class BaseController extends Controller
         return $this->genView('frontend.page.thankyou');
     }
 
+    protected function genStatusPage_Portal($typeId)
+    {
+        $content = WebContent::where('type_id', $typeId)
+            ->whereRaw(ProjectEnum::isPublish())
+            ->with(['locales' => function ($q) {
+                $q->where('locale', $this->locale);
+            }])->first();
+
+        $this->template->setFootJS(mix("/js/frontend/main.js"));
+        $this->template->setBody('id', 'thankyou_page');
+        $this->bodyData['content'] = $content;
+        $this->setStaticPageHeader($content);
+        return $this->genView('frontend.page.thank_you');
+    }
+
     protected function addBreadcrumb($name, $link = '#')
     {
         $this->breadcrumb[] = ['name' => $name, 'link' => $link];

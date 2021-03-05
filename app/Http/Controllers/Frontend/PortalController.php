@@ -51,7 +51,7 @@ class PortalController extends ProductController
         
         // dd($this->bodyData['return_link']);
 
-        return $this->genStatusPage(ProjectEnum::STATIC_PAGE_PAYMENT_THANK_YOU);
+        return $this->genStatusPage_Portal(ProjectEnum::STATIC_PAGE_PAYMENT_THANK_YOU);
     }
 
 }
