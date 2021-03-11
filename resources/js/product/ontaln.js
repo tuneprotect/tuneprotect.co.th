@@ -1,6 +1,6 @@
 import {
     changeStep,
-    checkTaBirthDate,
+    checkTaBirthDateIPass,
     formatTelNumber,
     getCountryData,
     getNationalityData,
@@ -419,7 +419,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
                         for (let i = 1; i <= $('#ctrl_no_of_insured').value; i++) {
                             let address = ($(`#data_${i}_ctrl_province`).value).split('*');
-                            let dateResult = checkTaBirthDate(i);
+                            let dateResult = checkTaBirthDateIPass(i);
 
                             const currentProfile = {
                                 fdSex: getRadioSelectedValue(`data_${i}_fdSex`),
