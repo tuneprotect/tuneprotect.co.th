@@ -299,7 +299,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if ($form) {
 
-        const contactConstraints = {
+        let contactConstraints = {
             name: {
                 presence: {
                     allowEmpty: false,
@@ -320,6 +320,25 @@ document.addEventListener("DOMContentLoaded", function () {
                 presence: {allowEmpty: false, message: '^' + $('#ctrl_message').getAttribute('data-error-required')},
             },
         };
+
+        if ($form.getAttribute('data-form-type') === 'leadform') {
+
+            contactConstraints = {
+                ...contactConstraints,
+                available_time: {
+                    presence: {
+                        allowEmpty: false,
+                        message: '^' + $('#ctrl_available_time').getAttribute('data-error-required')
+                    },
+                },
+                consent: {
+                    presence: {
+                        allowEmpty: false,
+                        message: '^' + $('#ctrl_consent').getAttribute('data-error-required')
+                    },
+                },
+            }
+        }
 
         const saveContact = async (data) => {
             $form.classList.add('ajax_loader');
@@ -372,13 +391,26 @@ document.addEventListener("DOMContentLoaded", function () {
 
             $$('input,select,textarea', $form).forEach($el => $el.classList.remove('error'));
 
-            const data = {
+            let data = {
                 name: $('#ctrl_name').value,
                 email: $('#ctrl_email').value,
                 tel: $('#ctrl_tel').value,
                 message: $('#ctrl_message').value
             }
+
+            if ($form.getAttribute('data-form-type') === 'leadform') {
+
+                data = {
+                    ...data,
+                    available_time: $('#ctrl_available_time').value,
+                    consent: $('#ctrl_consent').checked ? 1:'',
+                    product_id: $('#ctrl_product_id').value
+                }
+            }
+
+
             const result = validate(data, contactConstraints);
+
             if (result) {
                 Object.keys(result).map(k => showFieldError($(`#ctrl_${k}`), result[k]));
                 return false;

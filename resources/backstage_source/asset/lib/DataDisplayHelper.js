@@ -64,11 +64,11 @@ export function handleFilter(rowData, filter, props) {
                     }
                 } else if (props.columns[i].type === 'date') {
 
-                    if (keyword.start_date !== "" && compareDesc(keyword.start_date, new Date(rowData[props.columns[i].field])) === -1) {
+                    if (keyword.start_date !== "" && compareDesc(new Date(keyword.start_date), new Date(rowData[props.columns[i].field])) === -1) {
                         return false;
                     }
 
-                    if (keyword.end_date !== "" && compareAsc(keyword.end_date, new Date(rowData[props.columns[i].field])) === -1) {
+                    if (keyword.end_date !== "" && compareAsc(new Date(keyword.end_date), new Date(rowData[props.columns[i].field])) === -1) {
                         return false;
                     }
 

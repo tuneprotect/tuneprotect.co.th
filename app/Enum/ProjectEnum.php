@@ -58,7 +58,7 @@ class ProjectEnum
     const WEB_CONTENT_STICKY_MENU = "static.sticky_menu";
     const WEB_CONTENT_CLAIM = "claim.content";
     const WEB_CONTENT_CLAIM_CATEGORY = "claim.category";
-
+    const WEB_CONTENT_LEADFORM_CATEGORY = "leadform.category";
     const CACHE_MENU_ENABLE = 'menu_enable';
 
     const INVOICE_PREFIX = 'W';

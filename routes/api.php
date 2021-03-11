@@ -3,6 +3,7 @@
 use App\Http\Controllers\Api\AdminLogController;
 use App\Http\Controllers\Api\SystemController;
 use App\Http\Controllers\Api\UserController;
+
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
 
@@ -20,6 +21,7 @@ use Illuminate\Support\Facades\Route;
 Route::post('/User/login', [UserController::class, 'login']);
 Route::post('/System/overallCheck', [SystemController::class, 'overallCheck']);
 Route::post('/AdminLog/add', [AdminLogController::class, 'add']);
+
 
 Route::middleware('auth:api')
     ->any('/{controller}/{func}', function ($controller, $func) {
