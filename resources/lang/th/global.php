@@ -19,6 +19,8 @@ return [
     'default_select_option' => 'Please Select',
     'department' => "หน่วยงาน",
     'email' => 'Email Address',
+    'available_time' => 'Available Time',
+    'consent' => 'Consent',
     'faq_header' => 'คำถามที่พบบ่อย',
     'garage_list' => 'Garage List',
     'garage' => 'Garage',
@@ -48,6 +50,9 @@ return [
     'service_center_list' => 'Service Center List',
     'submit' => 'Submit',
     'tel' => 'Tel',
+    'available_time' => 'Available Time',
+    'lead_form_consent' => 'ยอมรับข้อตกลง <a href="/th/privacy-policy">อ่าน</a>',
+    'lead_form_header' => 'Lead form',
     'website' => 'Website',
     'our_partner' => 'Our Partner',
     'error' => [

@@ -75,6 +75,11 @@ export default function CMSDataTable({...props}) {
                 setDataList(response.result);
             }
         })();
+        if (props.onFilterChange !== undefined) {
+            props.onFilterChange(filter);
+            // console.log({filter,onFilterChange:props.onFilterChange})
+        }
+
     }, [filter]);
 
     useEffect(() => {

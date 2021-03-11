@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\Backstage\ExportController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,7 +16,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::namespace('Backstage')
     ->group(function () {
+        Route::get('/backstage/export/leadform', [ExportController::class, 'leadform']);
         Route::get('/backstage/{path?}', 'IndexController@index')
             ->name('BackstageIndex')
             ->where('path', '.*');
+
     });

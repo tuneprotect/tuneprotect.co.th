@@ -27,4 +27,10 @@ class WebContentLocale extends BaseModel
         'start_date' => 'datetime',
         'end_date' => 'datetime',
     ];
+
+
+    public function leadform()
+    {
+        return $this->hasOne('App\Models\LeadForms','product_id','web_content_id');
+    }
 }

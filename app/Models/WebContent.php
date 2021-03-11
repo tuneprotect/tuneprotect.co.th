@@ -35,6 +35,7 @@ class WebContent extends BaseModel
         's_order' => 'integer'
     ];
 
+
     public function locales()
     {
         return $this->hasMany('App\Models\WebContentLocale')->keyBy('locale');

@@ -23,6 +23,7 @@ import ContactPage from "../view/page/contact/ContactPage";
 import PartnerPage from "../view/page/partner/PartnerPage";
 import PartnerMainStep from "../view/page/partner/PartnerMainStep";
 import TestingEmailPage from "../view/page/testing/TestingEmailPage";
+import LeadFormPage from "../view/page/lead_form/LeadFormPage";
 
 let APP_ROUTE = {
     login: {
@@ -1649,6 +1650,79 @@ let APP_ROUTE = {
         group: "main_nav",
         component: ContactPage,
         permission: ['delete']
+    },
+    // lead_form: {
+    //     id: 'lead_form',
+    //     name: <Translate id={`side_nav.lead_form`}/>,
+    //     url: "/lead_form",
+    //     icon: 'contact_phone',
+    //     show_on_main_menu: true,
+    //     layout: "MainLayout",
+    //     parent: "",
+    //     group: "main_nav",
+    //     component: LeadFormPage,
+    //     permission: ['delete']
+    // },
+    lead_form: {
+        id: "lead_form",
+        name: <Translate id={`side_nav.lead_form.main`}/>,
+        url: "/lead_form",
+        icon: 'contact_phone',
+        show_on_main_menu: true,
+        layout: "MainLayout",
+        parent: "",
+        group: "main_nav"
+    },
+    [WEB_CONTENT.LEADFORM_CATEGORY]: {
+        id: WEB_CONTENT.LEADFORM_CATEGORY,
+        name: <Translate id={`side_nav.lead_form.category`}/>,
+        url: "/lead_form/category",
+        icon: 'view_carousel',
+        show_on_main_menu: true,
+        component: () => WebContentPage({
+            type_id: WEB_CONTENT.LEADFORM_CATEGORY,
+            config: {
+                isSortable: true,
+            }
+        }),
+        layout: "MainLayout",
+        parent: "lead_form",
+        group: "main_nav"
+    },
+    [`${WEB_CONTENT.LEADFORM_CATEGORY}.detail`]: {
+        id: `${WEB_CONTENT.LEADFORM_CATEGORY}.detail`,
+        name: <Translate id={`side_nav.lead_form.category`}/>,
+        url: "/lead_form/category/detail/:id?",
+        icon: 'pets',
+        show_on_main_menu: false,
+        layout: "MainLayout",
+        parent: "",
+        group: "",
+        component: () => WebContentMainStep({
+            isWebContent: true,
+            type_id: WEB_CONTENT.LEADFORM_CATEGORY,
+            config: {
+                title: {
+                    fieldProp: {
+                        label: <Translate id="global.title"/>,
+                        required: true,
+                    },
+                    validate: Yup.string()
+                        .required(<Translate id="error_message.required"/>)
+                },
+            }
+        }),
+    },
+    [WEB_CONTENT.LEADFORM]: {
+        id: WEB_CONTENT.LEADFORM,
+        name: <Translate id={`side_nav.lead_form.main`}/>,
+        url: "/lead_form/list",
+        icon: 'view_carousel',
+        show_on_main_menu: true,
+        component: LeadFormPage,
+        layout: "MainLayout",
+        parent: "lead_form",
+        group: "main_nav"
     },
     faq_contact : {
         id: "faq_contact",

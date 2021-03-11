@@ -99,6 +99,11 @@ export const API_URL_LIST = {
     contactGetAll: `${API_URL}/Contactus/getAll`,
     contactDelete: `${API_URL}/Contactus/delete`,
     contactGetLatest: `${API_URL}/Contactus/getLatestContact`,
+    //Leadforms
+    leadFormsGetAll: `${API_URL}/LeadForms/getAll`,
+    leadFormsDelete: `${API_URL}/LeadForms/delete`,
+    leadFormsGetLatest: `${API_URL}/LeadForms/getLatestLeadForm`,
+    leadFormsGetProduct: `${API_URL}/LeadForms/getProduct`,
     // Partner
     partnerSave: `${API_URL}/Partner/save`,
     partnerGet: `${API_URL}/Partner/getDetail`,
@@ -168,6 +173,9 @@ export const WEB_CONTENT = {
 
     NEWS: "news.content",
     NEWS_CATEGORY: "news.category",
+
+    LEADFORM: "leadform.content",
+    LEADFORM_CATEGORY: "leadform.category",
 
     PROVINCE: "configuration.province",
 }
