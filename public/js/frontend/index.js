@@ -49182,6 +49182,55 @@ function _asyncToGenerator(fn) {
   };
 }
 
+function ownKeys(object, enumerableOnly) {
+  var keys = Object.keys(object);
+
+  if (Object.getOwnPropertySymbols) {
+    var symbols = Object.getOwnPropertySymbols(object);
+    if (enumerableOnly) symbols = symbols.filter(function (sym) {
+      return Object.getOwnPropertyDescriptor(object, sym).enumerable;
+    });
+    keys.push.apply(keys, symbols);
+  }
+
+  return keys;
+}
+
+function _objectSpread(target) {
+  for (var i = 1; i < arguments.length; i++) {
+    var source = arguments[i] != null ? arguments[i] : {};
+
+    if (i % 2) {
+      ownKeys(Object(source), true).forEach(function (key) {
+        _defineProperty(target, key, source[key]);
+      });
+    } else if (Object.getOwnPropertyDescriptors) {
+      Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));
+    } else {
+      ownKeys(Object(source)).forEach(function (key) {
+        Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));
+      });
+    }
+  }
+
+  return target;
+}
+
+function _defineProperty(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
+
+  return obj;
+}
+
 
 
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
@@ -49497,6 +49546,23 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     };
 
+    if ($form.getAttribute('data-form-type') === 'leadform') {
+      contactConstraints = _objectSpread(_objectSpread({}, contactConstraints), {}, {
+        available_time: {
+          presence: {
+            allowEmpty: false,
+            message: '^' + Object(_helper__WEBPACK_IMPORTED_MODULE_4__["$"])('#ctrl_available_time').getAttribute('data-error-required')
+          }
+        },
+        consent: {
+          presence: {
+            allowEmpty: false,
+            message: '^' + Object(_helper__WEBPACK_IMPORTED_MODULE_4__["$"])('#ctrl_consent').getAttribute('data-error-required')
+          }
+        }
+      });
+    }
+
     var saveContact = /*#__PURE__*/function () {
       var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee(data) {
         var res, response;
@@ -49585,10 +49651,19 @@ document.addEventListener("DOMContentLoaded", function () {
                   tel: Object(_helper__WEBPACK_IMPORTED_MODULE_4__["$"])('#ctrl_tel').value,
                   message: Object(_helper__WEBPACK_IMPORTED_MODULE_4__["$"])('#ctrl_message').value
                 };
+
+                if ($form.getAttribute('data-form-type') === 'leadform') {
+                  data = _objectSpread(_objectSpread({}, data), {}, {
+                    available_time: Object(_helper__WEBPACK_IMPORTED_MODULE_4__["$"])('#ctrl_available_time').value,
+                    consent: Object(_helper__WEBPACK_IMPORTED_MODULE_4__["$"])('#ctrl_consent').checked ? 1 : '',
+                    product_id: Object(_helper__WEBPACK_IMPORTED_MODULE_4__["$"])('#ctrl_product_id').value
+                  });
+                }
+
                 result = validate_js__WEBPACK_IMPORTED_MODULE_5___default()(data, contactConstraints);
 
                 if (!result) {
-                  _context2.next = 9;
+                  _context2.next = 10;
                   break;
                 }
 
@@ -49597,11 +49672,11 @@ document.addEventListener("DOMContentLoaded", function () {
                 });
                 return _context2.abrupt("return", false);
 
-              case 9:
-                _context2.next = 11;
+              case 10:
+                _context2.next = 12;
                 return saveContact(data);
 
-              case 11:
+              case 12:
               case "end":
                 return _context2.stop();
             }
