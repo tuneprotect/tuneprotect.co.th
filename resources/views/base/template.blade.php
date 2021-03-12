@@ -3,6 +3,7 @@
 
 <html <?php echo TemplateHelper::genAttribute($template[TemplateHelper::HTML]) ?>>
 <head>
+    <meta name="facebook-domain-verification" content="pa4vdurvww8ktkzh7xbm2tyrc7iwzv" />
     @if(isset($template[TemplateHelper::META] ))
         @foreach ($template[TemplateHelper::META] as $v)
             <meta <?php echo TemplateHelper::genAttribute($v) ?>/>
