@@ -51,7 +51,7 @@ return [
     'submit' => 'Submit',
     'tel' => 'Tel',
     'available_time' => 'Available Time',
-    'lead_form_consent' => 'ยอมรับข้อตกลง <a href="/th/privacy-policy">อ่าน</a>',
+    'lead_form_consent' => 'ยอมรับข้อตกลง <a target="_blank" href="/privacy-policy">อ่าน</a>',
     'lead_form_header' => 'Lead form',
     'website' => 'Website',
     'our_partner' => 'Our Partner',

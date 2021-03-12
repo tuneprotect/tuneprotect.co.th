@@ -34,7 +34,7 @@ class ExportController extends Controller
                 }
             }
         }
-        $transaction = $result->get();
+        $transaction = $result->orderBy('created_at','desc')->get();
 
         $columns = array('created_at', 'name', 'email',
             'tel', 'message', 'available_time','product','consent');
