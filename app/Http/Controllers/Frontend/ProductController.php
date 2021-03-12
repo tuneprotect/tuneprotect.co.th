@@ -112,6 +112,10 @@ class ProductController extends BaseController
 
         $this->template->setBody('id', 'product_page');
 
+        $this->bodyData['category_leadform'] = WebContent::where('type_id', ProjectEnum::WEB_CONTENT_LEADFORM_CATEGORY)
+            ->with('locales')
+            ->get();
+
         $this->bodyData['privacy'] = WebContent::where('type_id', ProjectEnum::STATIC_PAGE_PRIVACY_POLICY)
             ->with('locales')
             ->first();
@@ -119,26 +123,22 @@ class ProductController extends BaseController
         $this->bodyData['controller'] = $this->controller;
         $this->bodyData['faq'] = $this->setFaq(ProjectEnum::WEB_CONTENT_FAQ,$this->bodyData['current_package']->id);
 
-        
+
         try {
             $this->template->setFootJS(mix("/js/frontend/product/" . strtolower($this->bodyData['selected']) . ".js"));
         } catch (\Exception $exception) {
 
         }
 
-        // dd($this->bodyData['controller']);
         //Swich main page product / portal
-        if($this->controller != 'product')
-        {
+        if($this->controller != 'product') {
             return $this->genView('frontend.page.portal');
-        }
-        else
-        {
+        }else{
             return $this->genView('frontend.page.product');
         }
-        
-        // return $this->genView('frontend.page.product');
-        
+
+
+
     }
 
     protected function combindObj($data)
@@ -265,7 +265,7 @@ class ProductController extends BaseController
     {
         $data = $request->all();
 
-        
+
         if (isset($data['send_data'])) {
             $data = (array)json_decode($data['send_data']);
 

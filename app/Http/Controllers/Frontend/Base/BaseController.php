@@ -83,7 +83,6 @@ abstract class BaseController extends Controller
             }
         }
 
-//        dd($this->bodyData);
 
         $this->bodyData['product'] = WebContent::where('type_id', ProjectEnum::WEB_CONTENT_PRODUCT)
             ->with(['locales', 'productPackage' => function ($q) {
