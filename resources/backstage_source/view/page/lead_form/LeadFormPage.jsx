@@ -114,6 +114,7 @@ export default function LeadFormPage() {
             position: "row",
             buttonClass: classes.btnEdit,
             onClick: (event, rowData) => {
+                console.log({rowData})
                 setShowDataPopup({
                     open: true,
                     data: rowData
@@ -255,9 +256,11 @@ export default function LeadFormPage() {
                 })}>
                 <Table>
                     <TableBody>
+                        {console.log(showDataPopup.data)}
                         {Object.keys(showDataPopup.data).map(k => <TableRow key={k}>
+                            {console.log(k)}
                             <TableCell>{k}</TableCell>
-                            <TableCell>{showDataPopup.data[k]}</TableCell>
+                            <TableCell>{k === 'product' ? showDataPopup.data[k].en.title : showDataPopup.data[k]}</TableCell>
                         </TableRow>)}
 
 
