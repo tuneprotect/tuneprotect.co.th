@@ -4,8 +4,8 @@
     <main data-package="{{$selected}}">
         @if(isset($current_package))
             <h1 class="product-header">{{$current_package->locales[$locale]->title}}</h1>
-            <div class="two-tone-icon">
-                <span><img src="{{url($current_package->pic)}}" alt=""></span>
+            <div class="two-tone-icon" id="two-tone-icon">
+                <span><img src="{{url($current_package->pic)}}"></span>
                 <div class="description-product">
                     {!! $current_package->locales[$locale]->content !!}
                 </div>

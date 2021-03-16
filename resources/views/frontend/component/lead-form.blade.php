@@ -1,9 +1,11 @@
-<section class="wrapper contact-section" id="contact-section">
+<section class="wrapper contact-section" id="leadform-section">
 
     <form class="insurance-form" action="/{{$locale}}/Contactus/savelead" method="post" id="frm_contact" data-form-type="leadform"
           novalidate
           data-error="@lang('contact.error')" data-error-description="@lang('contact.error_description')"
+          data-error-button="@lang('contact.error_button')"
           data-success="@lang('contact.success')" data-success-description="@lang('contact.success_description')"
+          data-success-button="@lang('contact.success_button')"
     >
         <div class="form-inner">
             <h3>@lang('global.lead_form_header')</h3>

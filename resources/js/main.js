@@ -316,9 +316,9 @@ document.addEventListener("DOMContentLoaded", function () {
             tel: {
                 presence: {allowEmpty: false, message: '^' + $('#ctrl_tel').getAttribute('data-error-required')},
             },
-            message: {
-                presence: {allowEmpty: false, message: '^' + $('#ctrl_message').getAttribute('data-error-required')},
-            },
+            // message: {
+            //     presence: {allowEmpty: false, message: '^' + $('#ctrl_message').getAttribute('data-error-required')},
+            // },
         };
 
         if ($form.getAttribute('data-form-type') === 'leadform') {
@@ -356,17 +356,45 @@ document.addEventListener("DOMContentLoaded", function () {
                 const response = await res.json();
 
                 if (response.status == 'success') {
-                    Swal.fire(
-                        $form.getAttribute('data-success'),
-                        $form.getAttribute('data-success-description'),
-                        'success'
-                    )
+
+                    if ($form.getAttribute('data-form-type') === 'leadform') {
+                        Swal.fire(
+                            {
+                                icon:'success',
+                                title: `${$form.getAttribute('data-success')}`,
+                                html: `${$form.getAttribute('data-success-description')}<br>
+                                <a class="swal2-confirm swal2-styled" href="javascript:void(0)" onClick="window.location.reload();" style="display: inline-block;">
+                                ${$form.getAttribute('data-success-button')}</a>`,
+                                showConfirmButton: false,
+                                // confirmButtonText: `${$form.getAttribute('data-success-button')}`,
+                            }
+                        )
+                    }else{
+                        Swal.fire(
+                            $form.getAttribute('data-success'),
+                            $form.getAttribute('data-success-description'),
+                            'success'
+                        )
+                    }
+
+
                 } else {
-                    Swal.fire(
-                        $form.getAttribute('data-error'),
-                        $form.getAttribute('data-errors-description'),
-                        'error'
-                    )
+                    if ($form.getAttribute('data-form-type') === 'leadform') {
+                        Swal.fire(
+                            {
+                                title: `<i class="icofont-alarm" style="color:red"></i>`,
+                                html: `<strong>${$form.getAttribute('data-error')}</strong><br>${$form.getAttribute('data-error-description')}`,
+                                confirmButtonText: $form.getAttribute('data-error-button'),
+                            }
+                        )
+                    }else{
+                        Swal.fire(
+                            $form.getAttribute('data-error'),
+                            $form.getAttribute('data-errors-description'),
+                            'error'
+                        )
+                    }
+
                 }
 
                 // $$('input,select,textarea',$form).forEach($el => {
