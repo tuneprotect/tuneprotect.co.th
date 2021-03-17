@@ -363,12 +363,12 @@ document.addEventListener("DOMContentLoaded", function () {
                                 icon:'success',
                                 title: `${$form.getAttribute('data-success')}`,
                                 html: `${$form.getAttribute('data-success-description')}<br>
-                                <a class="swal2-confirm swal2-styled" href="javascript:void(0)" onClick="window.location.reload();" style="display: inline-block;">
-                                ${$form.getAttribute('data-success-button')}</a>`,
+<a href="/product/${$form.getAttribute('data-friendly_url')}#two-tone-icon" style="display: inline-block;color: #FFFFFF" class="swal2-confirm swal2-styled">${$form.getAttribute('data-success-button')}</a>`,
                                 showConfirmButton: false,
-                                // confirmButtonText: `${$form.getAttribute('data-success-button')}`,
+                                // confirmButtonText: `<a href="/product/${$form.getAttribute('data-friendly_url')}#two-tone-icon" style="color: #FFFFFF">${$form.getAttribute('data-success-button')}</a>`,
                             }
                         )
+
                     }else{
                         Swal.fire(
                             $form.getAttribute('data-success'),

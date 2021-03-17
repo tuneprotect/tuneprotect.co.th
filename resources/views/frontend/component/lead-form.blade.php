@@ -2,6 +2,7 @@
 
     <form class="insurance-form" action="/{{$locale}}/Contactus/savelead" method="post" id="frm_contact" data-form-type="leadform"
           novalidate
+          data-friendly_url="{{$current_product['friendly_url']}}/{{$current_package['code']}}"
           data-error="@lang('contact.error')" data-error-description="@lang('contact.error_description')"
           data-error-button="@lang('contact.error_button')"
           data-success="@lang('contact.success')" data-success-description="@lang('contact.success_description')"
