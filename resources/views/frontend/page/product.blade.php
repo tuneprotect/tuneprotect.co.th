@@ -13,7 +13,7 @@
 
             @includeIf('frontend.form.'.strtolower($selected) ,[ 'product' => $current_product,'package' => $current_package,'selected' => $selected])
             @include('frontend.component.faq')
-            @include('frontend.component.lead-form')
+{{--            @include('frontend.component.lead-form')--}}
         @endif
 
     </main>
