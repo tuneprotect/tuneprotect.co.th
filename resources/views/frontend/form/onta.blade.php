@@ -1,7 +1,7 @@
 @include('frontend.component.form-stepper')
 <section id="step1" class="wrapper">
     <form method="post" action="" class="insurance-form">
-        <div class="form-head">@lang('product.please_specify_travel_info')</div>
+        <div class="form-head">@lang('product.please_specify_birthdate_title')</div>
         <div class="form-inner">
             <h3>@lang('product.please_specify_travel_info')</h3>
             <div class="two-col">
