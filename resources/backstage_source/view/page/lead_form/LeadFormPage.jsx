@@ -44,7 +44,7 @@ export default function LeadFormPage() {
         id: null
     });
     const permission = {
-        delete: checkAction(type_id + '.delete'),
+        delete: checkAction(type_id + '.content.delete'),
     };
     const speedMenuList = (() => {
 
@@ -62,7 +62,7 @@ export default function LeadFormPage() {
             }
         ];
 
-
+        // console.log('permission',type_id)
         if (permission.delete) {
             arr.push({
                 icon: <Icon>delete</Icon>,
@@ -114,10 +114,11 @@ export default function LeadFormPage() {
             position: "row",
             buttonClass: classes.btnEdit,
             onClick: (event, rowData) => {
-                // console.log('onClick',rowData)
+
+                console.log('onClick',rowData)
                 delete rowData.product_id;
-                rowData.created_at = format(new Date(rowData.created_at), DATE_FORMAT.SHORT_DATE_TIME)
-                rowData.updated_at = format(new Date(rowData.updated_at), DATE_FORMAT.SHORT_DATE_TIME)
+                // rowData.created_at = format(new Date(rowData.created_at), DATE_FORMAT.SHORT_DATE_TIME)
+                // rowData.updated_at = format(new Date(rowData.updated_at), DATE_FORMAT.SHORT_DATE_TIME)
                 setShowDataPopup({
                     open: true,
                     data: rowData
