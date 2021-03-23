@@ -114,7 +114,10 @@ export default function LeadFormPage() {
             position: "row",
             buttonClass: classes.btnEdit,
             onClick: (event, rowData) => {
-                console.log({rowData})
+                // console.log('onClick',rowData)
+                delete rowData.product_id;
+                rowData.created_at = format(new Date(rowData.created_at), DATE_FORMAT.SHORT_DATE_TIME)
+                rowData.updated_at = format(new Date(rowData.updated_at), DATE_FORMAT.SHORT_DATE_TIME)
                 setShowDataPopup({
                     open: true,
                     data: rowData
@@ -256,11 +259,13 @@ export default function LeadFormPage() {
                 })}>
                 <Table>
                     <TableBody>
-                        {console.log(showDataPopup.data)}
+                        {/*{console.log(showDataPopup.data)}*/}
                         {Object.keys(showDataPopup.data).map(k => <TableRow key={k}>
-                            {console.log(k)}
+                            {/*{console.log(k)}*/}
+
                             <TableCell>{k}</TableCell>
                             <TableCell>{k === 'product' ? showDataPopup.data[k].en.title : showDataPopup.data[k]}</TableCell>
+
                         </TableRow>)}
 
 
