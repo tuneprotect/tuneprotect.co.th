@@ -133,6 +133,8 @@ $loader_size: 50px;
     overflow: hidden;
     text-overflow: ellipsis;
 }
-#product_id{
-    max-width: 190px;
+.MuiInputBase-root{
+    #product_id{
+        max-width: 190px;
+    }
 }
