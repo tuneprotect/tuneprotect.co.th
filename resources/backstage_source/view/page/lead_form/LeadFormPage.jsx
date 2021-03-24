@@ -101,7 +101,7 @@ export default function LeadFormPage() {
         },
         {
             field: "product_id",
-            render: rowData => rowData.product?.[locale]?.title || '',
+            render: rowData => `${rowData.product?.[locale]?.title}` || '',
             lookup:  productLeadForm,
             title: t("global.product_name"),
         },

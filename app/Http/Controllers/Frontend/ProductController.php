@@ -47,12 +47,12 @@ class ProductController extends BaseController
             ->first();
 
 
-
         if ($selected) {
             return $this->genDetailPage($selected);
 
         } else {
-            $this->bodyData['faq'] = $this->setFaq(ProjectEnum::WEB_CONTENT_FAQ,$this->bodyData['current_product']->id);
+
+            $this->bodyData['faq'] = $this->setFaq(ProjectEnum::WEB_CONTENT_FAQ, $this->bodyData['current_product']->id);
             return $this->genListPage();
         }
 
@@ -66,12 +66,15 @@ class ProductController extends BaseController
 
             return $this->genView('frontend.page.product_main');
         } else {
-
             $this->bodyData['contact'] = WebContent::where('type_id', ProjectEnum::STATIC_PAGE_CONTACT_US)
                 ->whereRaw(ProjectEnum::isPublish())
                 ->with(['locales' => function ($q) {
                     $q->where('locale', $this->locale);
                 }])->first();
+
+            $this->bodyData['category_leadform'] = WebContent::where('type_id', ProjectEnum::WEB_CONTENT_LEADFORM_CATEGORY)
+                ->with('locales')
+                ->get();
 
             return $this->genStaticPage($this->bodyData['current_product'], 'frontend.page.product_no_package');
         }
@@ -121,7 +124,7 @@ class ProductController extends BaseController
             ->first();
 
         $this->bodyData['controller'] = $this->controller;
-        $this->bodyData['faq'] = $this->setFaq(ProjectEnum::WEB_CONTENT_FAQ,$this->bodyData['current_package']->id);
+        $this->bodyData['faq'] = $this->setFaq(ProjectEnum::WEB_CONTENT_FAQ, $this->bodyData['current_package']->id);
 
 
         try {
@@ -131,12 +134,11 @@ class ProductController extends BaseController
         }
 
         //Swich main page product / portal
-        if($this->controller != 'product') {
+        if ($this->controller != 'product') {
             return $this->genView('frontend.page.portal');
-        }else{
+        } else {
             return $this->genView('frontend.page.product');
         }
-
 
 
     }
@@ -274,7 +276,7 @@ class ProductController extends BaseController
             $log_id[] = $result->log_id;
 
 
-            $arr['fdInvoice'] = ProjectEnum::INVOICE_PREFIX.$result->fdInvoice;
+            $arr['fdInvoice'] = ProjectEnum::INVOICE_PREFIX . $result->fdInvoice;
             $price = $obj->fdPayAMT;
 
             foreach ($data["profile"] as $k => $profile) {
@@ -456,7 +458,7 @@ class ProductController extends BaseController
     public function thankyou(Request $request)
     {
         $this->bodyData['doc_no'] = $request->session()->get('doc_no');
-        $this->bodyData['return_link'] = '/'.$this->locale;
+        $this->bodyData['return_link'] = '/' . $this->locale;
         return $this->genStatusPage(ProjectEnum::STATIC_PAGE_PAYMENT_THANK_YOU);
     }
 
