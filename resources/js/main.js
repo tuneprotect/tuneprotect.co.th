@@ -357,12 +357,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 if (response.status == 'success') {
 
-                    Swal.fire(
-                        $form.getAttribute('data-success'),
-                        $form.getAttribute('data-success-description'),
-                        'success'
-                    )
-
                     if ($form.getAttribute('data-form-type') === 'leadform') {
                         Swal.fire(
                             {
@@ -383,24 +377,46 @@ document.addEventListener("DOMContentLoaded", function () {
                         )
                     }
 
+
                 } else {
-                    Swal.fire(
-                        $form.getAttribute('data-error'),
-                        $form.getAttribute('data-errors-description'),
-                        'error'
-                    )
+                    if ($form.getAttribute('data-form-type') === 'leadform') {
+                        Swal.fire(
+                            {
+                                title: `<i class="icofont-alarm" style="color:red"></i>`,
+                                html: `<strong>${$form.getAttribute('data-error')}</strong><br>${$form.getAttribute('data-error-description')}`,
+                                confirmButtonText: $form.getAttribute('data-error-button'),
+                            }
+                        )
+                    }else{
+                        Swal.fire(
+                            $form.getAttribute('data-error'),
+                            $form.getAttribute('data-errors-description'),
+                            'error'
+                        )
+                    }
+
                 }
 
                 // $$('input,select,textarea',$form).forEach($el => {
                 //    $el.value = '';
                 // });
             } catch (err) {
+                if ($form.getAttribute('data-form-type') === 'leadform') {
+                    Swal.fire(
+                        {
+                            title: `<i class="icofont-alarm" style="color:red"></i>`,
+                            html: `<strong>${$form.getAttribute('data-error')}</strong><br>${$form.getAttribute('data-error-description')}`,
+                            confirmButtonText: $form.getAttribute('data-error-button'),
+                        }
+                    )
+                }else{
+                    Swal.fire({
+                        title: $form.getAttribute('data-error'),
+                        text: $form.getAttribute('data-error-description'),
+                        icon: 'error',
+                    })
+                }
 
-                Swal.fire({
-                    title: $form.getAttribute('data-error'),
-                    text: $form.getAttribute('data-error-description'),
-                    icon: 'error',
-                })
             }
             $form.classList.remove('ajax_loader');
         }
