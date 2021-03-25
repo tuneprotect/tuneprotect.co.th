@@ -229,7 +229,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             status = false;
         }
     }
-    
+
     let data = {
         fdKeys : Keys,
         fdPayAMT: "",
@@ -251,7 +251,10 @@ document.addEventListener("DOMContentLoaded", async () => {
             if (v.code === 'THA') {
                 desination = v[locale];
             }
-            provinceOption += `<option value="${v.code}">${v[locale]}</option>`;
+            else
+            {
+                provinceOption += `<option value="${v.code}">${v[locale]}</option>`;
+            }
         })
 
     $('#fdDestFrom').innerHTML = provinceOption;
