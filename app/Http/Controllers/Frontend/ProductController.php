@@ -74,7 +74,7 @@ class ProductController extends BaseController
             $this->bodyData['category_leadform'] = WebContent::where('type_id', ProjectEnum::WEB_CONTENT_LEADFORM_CATEGORY)
                 ->with('locales')
                 ->get();
-
+            $this->bodyData['content_contactus'] = $this->setStaticPageHeader(ProjectEnum::STATIC_PAGE_CONTACT_US);
             return $this->genStaticPage($this->bodyData['current_product'], 'frontend.page.product_no_package');
         }
     }

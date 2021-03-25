@@ -23,8 +23,8 @@
         {{--        @include('frontend.component.contact-form',['content' => $contact])--}}
         <section class="wrapper contact-section" id="contact-section">
             <address>
-                <h2>{{$content->locales[$locale]->title}}</h2>
-                <div>{!! $content->locales[$locale]->content !!}</div>
+                <h2>{{$content_contactus->locales[$locale]->title}}</h2>
+                <div>{!! $content_contactus->locales[$locale]->content !!}</div>
             </address>
             <section class="wrapper contact-section" id="leadform-section">
                 <form class="insurance-form" action="/{{$locale}}/Contactus/savelead" method="post" id="frm_contact"
