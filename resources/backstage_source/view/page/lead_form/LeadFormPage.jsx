@@ -44,7 +44,7 @@ export default function LeadFormPage() {
         id: null
     });
     const permission = {
-        delete: checkAction(type_id + '.delete'),
+        delete: checkAction(type_id + '.content.delete'),
     };
     const speedMenuList = (() => {
 

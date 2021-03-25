@@ -316,9 +316,9 @@ document.addEventListener("DOMContentLoaded", function () {
             tel: {
                 presence: {allowEmpty: false, message: '^' + $('#ctrl_tel').getAttribute('data-error-required')},
             },
-            message: {
-                presence: {allowEmpty: false, message: '^' + $('#ctrl_message').getAttribute('data-error-required')},
-            },
+            // message: {
+            //     presence: {allowEmpty: false, message: '^' + $('#ctrl_message').getAttribute('data-error-required')},
+            // },
         };
 
         if ($form.getAttribute('data-form-type') === 'leadform') {
@@ -356,13 +356,12 @@ document.addEventListener("DOMContentLoaded", function () {
                 const response = await res.json();
 
                 if (response.status == 'success') {
-<<<<<<< HEAD
+
                     Swal.fire(
                         $form.getAttribute('data-success'),
                         $form.getAttribute('data-success-description'),
                         'success'
                     )
-=======
 
                     if ($form.getAttribute('data-form-type') === 'leadform') {
                         Swal.fire(
@@ -384,8 +383,6 @@ document.addEventListener("DOMContentLoaded", function () {
                         )
                     }
 
-
->>>>>>> refs/remotes/origin/master
                 } else {
                     Swal.fire(
                         $form.getAttribute('data-error'),

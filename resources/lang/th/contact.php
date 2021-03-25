@@ -7,7 +7,8 @@ return [
                     tabindex="0"></iframe>',
     'error' => 'Error',
     'error_description' => 'Error description',
+    'error_button' =>'Try again',
     'success' => 'Success',
     'success_description' => 'Success description',
-
+    'success_button' =>'Back to main page',
 ];

@@ -5,8 +5,9 @@ namespace App\Http\Controllers\Backstage;
 use App\Models\LeadForms;
 use Illuminate\Routing\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Response;
-
+use PhpOffice\PhpSpreadsheet\IOFactory;
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
 class ExportController extends Controller
 {
@@ -36,38 +37,45 @@ class ExportController extends Controller
         }
         $transaction = $result->orderBy('created_at','desc')->get();
 
-        $columns = array('created_at', 'name', 'email',
-            'tel', 'message', 'available_time','product','consent');
-        $callback = function () use ($transaction, $columns) {
-            $file = fopen('php://output', 'w');
-            fputcsv($file, $columns);
-            foreach ($transaction as $row) {
-                fputcsv($file, array(
-                    $row->created_at,
-                    $row->name,
-                    $row->email,
-                    $row->tel,
-                    $row->message,
-                    $row->available_time,
-                    $row->product['th']->title,
-                    $row->consent
-                ));
-            }
 
-            fclose($file);
-        };
+        $spreadsheet = new Spreadsheet();
+        $spreadsheet->getActiveSheet()->setCellValue('A1', 'created_at');
+        $spreadsheet->getActiveSheet()->setCellValue('B1', 'name');
+        $spreadsheet->getActiveSheet()->setCellValue('C1', 'email');
+        $spreadsheet->getActiveSheet()->setCellValue('D1', 'tel');
+        $spreadsheet->getActiveSheet()->setCellValue('E1', 'message');
+        $spreadsheet->getActiveSheet()->setCellValue('F1', 'available_time');
+        $spreadsheet->getActiveSheet()->setCellValue('G1', 'product');
+        $spreadsheet->getActiveSheet()->setCellValue('H1', 'consent');
 
-        return Response::stream($callback, 200, $this->genHeader('transaction'));
+        $i = 2;
+        foreach ($transaction as $row) {
+
+            $spreadsheet->getActiveSheet()->setCellValue('A' . $i, $row->created_at);
+            $spreadsheet->getActiveSheet()->setCellValue('B'. $i, $row->name);
+            $spreadsheet->getActiveSheet()->setCellValue('C'. $i, $row->email);
+            $spreadsheet->getActiveSheet()->setCellValue('D'. $i, $row->tel);
+            $spreadsheet->getActiveSheet()->setCellValue('E'. $i, $row->message);
+            $spreadsheet->getActiveSheet()->setCellValue('F'. $i, $row->available_time);
+            $spreadsheet->getActiveSheet()->setCellValue('G'. $i,   $row->product['th']->title);
+            $spreadsheet->getActiveSheet()->setCellValue('H'. $i,  $row->consent);
+            $i++;
+        }
+
+
+
+
+        $filename = "Leadform-" . date('YmdHis') . ".xls";
+
+        header('Content-Type: application/vnd.ms-excel');
+        header('Content-Disposition: attachment;filename="' . $filename . '"');
+        header('Cache-Control: max-age=0');
+
+        $workbook = IOFactory::createWriter($spreadsheet, "Xls");
+        $workbook->save('php://output');
+
+
     }
 
-    protected function genHeader($filename)
-    {
-        return array(
-            "Content-type" => "text/csv",
-            "Content-Disposition" => "attachment; filename=$filename.csv",
-            "Pragma" => "no-cache",
-            "Cache-Control" => "must-revalidate, post-check=0, pre-check=0",
-            "Expires" => "0"
-        );
-    }
+
 }
