@@ -62,5 +62,5 @@ mix.react('resources/backstage_source/index.js', 'public/js/backstage')
     .js('resources/js/product/onta.js', 'public/js/frontend/product/')
 
     .sass('resources/sass/style.scss', 'public/css/frontend')
-    .browserSync('https://staging.tuneprotect.local')
+    .browserSync('http://staging.tuneprotect.local')
     .version();

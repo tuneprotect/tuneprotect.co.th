@@ -6,10 +6,8 @@ namespace App\Http\Controllers\Frontend;
 use App\Enum\ProjectEnum;
 use App\Http\Controllers\Frontend\Base\BaseController;
 use App\Http\Requests\ContactusRequest;
-use App\Http\Requests\LeadFormsRequest;
 use App\Mail\ContactUsEmail;
 use App\Models\Contactus;
-use App\Models\LeadForms;
 use App\Models\Setting;
 use App\Models\WebContent;
 use Illuminate\Support\Facades\Mail;
@@ -33,28 +31,6 @@ class ContactusController extends BaseController
             $validated = $request->validated();
             $webContent = new WebContent();
             $this->apiResult = Contactus::create(array_merge($validated, ['connection' => $webContent->getConnection()->getName()]));
-            $this->apiStatus = self::SUCCESS;
-            $this->apiStatusText['global.save_success'] = self::SUCCESS;
-            $receiver = Setting::get(Setting::CONTACT_US_RECEIVE_EMAIL);
-            if (!empty($receiver)) {
-                $arr_receiver = explode(',', $receiver);
-                Mail::to($arr_receiver)->send(new ContactUsEmail($this->apiResult));
-            }
-
-        } catch (\Exception $ex) {
-            $this->apiStatusText['error_message.default'] = self::ERROR;
-            $this->apiResult['description'] = $ex->getMessage();
-        }
-
-        return $this->send();
-    }
-
-    public function savelead(LeadFormsRequest $request)
-    {
-        try {
-            $validated = $request->validated();
-            $webContent = new WebContent();
-            $this->apiResult = LeadForms::create(array_merge($validated, ['connection' => $webContent->getConnection()->getName()]));
             $this->apiStatus = self::SUCCESS;
             $this->apiStatusText['global.save_success'] = self::SUCCESS;
             $receiver = Setting::get(Setting::CONTACT_US_RECEIVE_EMAIL);

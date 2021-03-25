@@ -127,14 +127,3 @@ $loader_size: 50px;
         display: block;
     }
 }
-
-.truncate {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-.MuiInputBase-root{
-    #product_id{
-        max-width: 190px;
-    }
-}

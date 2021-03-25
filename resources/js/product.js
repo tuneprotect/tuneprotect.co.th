@@ -110,6 +110,9 @@ document.addEventListener("DOMContentLoaded", async () => {
             if ($el.getAttribute('data-mindate')) {
                 flatpickrOption = {...flatpickrOption, minDate: parseISO($el.getAttribute('data-mindate'))}
             }
+            if ($el.getAttribute('data-maxdate')) {
+                flatpickrOption = {...flatpickrOption, maxDate: parseISO($el.getAttribute('data-maxdate'))}
+            }
 
             if ($el.getAttribute('data-setmindateto')) {
                 flatpickrOption = {

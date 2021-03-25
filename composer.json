@@ -19,7 +19,6 @@
         "laravel/framework": "^8.12",
         "laravel/passport": "^10.1",
         "laravel/tinker": "^2.5",
-        "phpoffice/phpspreadsheet": "^1.17",
         "spatie/laravel-translation-loader": "^2.7",
         "tinify/tinify": "^1.5"
     },

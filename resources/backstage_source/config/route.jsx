@@ -1664,7 +1664,7 @@ let APP_ROUTE = {
     //     permission: ['delete']
     // },
     lead_form: {
-        id: "leadform",
+        id: "lead_form",
         name: <Translate id={`side_nav.lead_form.main`}/>,
         url: "/lead_form",
         icon: 'contact_phone',
@@ -1686,7 +1686,7 @@ let APP_ROUTE = {
             }
         }),
         layout: "MainLayout",
-        parent: "leadform",
+        parent: "lead_form",
         group: "main_nav"
     },
     [`${WEB_CONTENT.LEADFORM_CATEGORY}.detail`]: {
@@ -1721,7 +1721,7 @@ let APP_ROUTE = {
         show_on_main_menu: true,
         component: LeadFormPage,
         layout: "MainLayout",
-        parent: "leadform",
+        parent: "lead_form",
         group: "main_nav"
     },
     faq_contact : {

@@ -1,7 +1,7 @@
 @include('frontend.component.form-stepper')
 <section id="step1" class="wrapper">
     <form method="post" action="" class="insurance-form">
-        <div class="form-head">@lang('product.please_specify_birthdate_title')</div>
+        <div class="form-head">@lang('product.please_specify_travel_info')</div>
         <div class="form-inner">
             <h3>@lang('product.please_specify_travel_info')</h3>
             <div class="two-col">
@@ -17,6 +17,7 @@
                 <div class="controls-wrapper">
                     <input id="fdFromDate" name="fdFromDate" type="date" min="{{date('Y-m-d')}}" class="flatpickr"
                            data-mindate="{{date('Y-m-d')}}"
+                           data-maxdate="{{date('Y-m-d',strtotime( "+60 days"))}}"
                            data-error="@lang('product.error.travel_start_date')"
                     />
                     <label for="fdFromDate">@lang("product.effective_date")</label>

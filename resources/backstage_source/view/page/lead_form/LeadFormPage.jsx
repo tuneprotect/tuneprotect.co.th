@@ -44,7 +44,7 @@ export default function LeadFormPage() {
         id: null
     });
     const permission = {
-        delete: checkAction(type_id + '.content.delete'),
+        delete: checkAction(type_id + '.delete'),
     };
     const speedMenuList = (() => {
 
@@ -62,7 +62,7 @@ export default function LeadFormPage() {
             }
         ];
 
-        // console.log('permission',type_id)
+
         if (permission.delete) {
             arr.push({
                 icon: <Icon>delete</Icon>,
@@ -101,7 +101,7 @@ export default function LeadFormPage() {
         },
         {
             field: "product_id",
-            render: rowData => `${rowData.product?.[locale]?.title}` || '',
+            render: rowData => rowData.product?.[locale]?.title || '',
             lookup:  productLeadForm,
             title: t("global.product_name"),
         },
@@ -114,11 +114,6 @@ export default function LeadFormPage() {
             position: "row",
             buttonClass: classes.btnEdit,
             onClick: (event, rowData) => {
-
-                console.log('onClick',rowData)
-                delete rowData.product_id;
-                // rowData.created_at = format(new Date(rowData.created_at), DATE_FORMAT.SHORT_DATE_TIME)
-                // rowData.updated_at = format(new Date(rowData.updated_at), DATE_FORMAT.SHORT_DATE_TIME)
                 setShowDataPopup({
                     open: true,
                     data: rowData
@@ -260,13 +255,9 @@ export default function LeadFormPage() {
                 })}>
                 <Table>
                     <TableBody>
-                        {/*{console.log(showDataPopup.data)}*/}
                         {Object.keys(showDataPopup.data).map(k => <TableRow key={k}>
-                            {/*{console.log(k)}*/}
-
                             <TableCell>{k}</TableCell>
-                            <TableCell>{k === 'product' ? showDataPopup.data[k].en.title : showDataPopup.data[k]}</TableCell>
-
+                            <TableCell>{showDataPopup.data[k]}</TableCell>
                         </TableRow>)}
 
 
