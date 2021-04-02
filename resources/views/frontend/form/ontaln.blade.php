@@ -8,8 +8,10 @@
                 <div class="controls-wrapper">
                     <select id="ctrl_sub_package" name="ctrl_sub_package">
                         <option value="01">30 @lang('global.day')</option>
+                        <option value="05">60 @lang('global.day')</option>
                         <option value="02">90 @lang('global.day')</option>
                         <option value="03">180 @lang('global.day')</option>
+                        <option value="06">270 @lang('global.day')</option>
                         <option value="04">@lang('product.annual_trip')</option>
                     </select>
                     <label for="ctrl_sub_package">@lang("product.coverage_period")</label>
