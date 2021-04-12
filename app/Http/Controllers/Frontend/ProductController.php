@@ -433,9 +433,15 @@ class ProductController extends BaseController
 
             $PolicyArr[] = $apiResult['message'];//Policy add for group policy
 
-            if (is_numeric($apiResult['data']['BigPoint'])) {
-                $Point = $Point + $apiResult['data']['BigPoint'];
+            $PolicyData = $apiResult['data'];
+
+            if($PolicyData['BigPoint'])
+            {
+                if (is_numeric($PolicyData['BigPoint'])) {
+                    $Point = $Point + $PolicyData['BigPoint'];
+                }
             }
+
 
             if (!$apiResult["status"]) {
                 return false;
