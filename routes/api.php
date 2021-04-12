@@ -22,7 +22,6 @@ Route::post('/User/login', [UserController::class, 'login']);
 Route::post('/System/overallCheck', [SystemController::class, 'overallCheck']);
 Route::post('/AdminLog/add', [AdminLogController::class, 'add']);
 
-
 Route::middleware('auth:api')
     ->any('/{controller}/{func}', function ($controller, $func) {
 

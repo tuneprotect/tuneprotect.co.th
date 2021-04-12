@@ -253,9 +253,28 @@ document.addEventListener("DOMContentLoaded", async () => {
             status = false;
         }
     }
+
+    let member_id = "";
+    var myEle = document.getElementById("member_id");
+    if(myEle){
+        member_id= myEle.value;
+        var status_api = document.getElementById("status_api");
+        if(!status_api.value)
+        {
+            Swal.fire({
+                title: 'Error!',
+                text: 'Error : Member ID. User not found.',
+                icon: 'error',
+                confirmButtonText: 'OK'
+            })
+            status = false;
+        }
+    }
+
     const package_data = await getPackageData(current_package);
     let step = 1;
     let data = {
+        fdMember_ID : member_id,
         fdKeys : Keys,
         fdTitle: "",
         fdName: "",
@@ -380,7 +399,25 @@ document.addEventListener("DOMContentLoaded", async () => {
                                     status = false;
                                 }
                         }
+
+                        var myEleBig = document.getElementById("member_id");
+                        if(myEleBig){
+                            member_id= myEleBig.value;
+                            var status_api = document.getElementById("status_api");
+                            if(!status_api.value)
+                            {
+                                Swal.fire({
+                                    title: 'Error!',
+                                    text: 'Error : Member ID. User not found.',
+                                    icon: 'error',
+                                    confirmButtonText: 'OK'
+                                })
+                                status = false;
+                            }
+                        }
+
                         break;
+
                     case 2:
                         const fdPackage = $btn.getAttribute('data-package');
 

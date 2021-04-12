@@ -27,6 +27,8 @@ class ProductController extends BaseController
 
     public function index($link = null, $selected = null)
     {
+//        dd('link : ' . $link . '$selected : ' . $selected);
+
         if (empty($link)) {
             return redirect("/" . $this->locale);
         }
@@ -394,7 +396,9 @@ class ProductController extends BaseController
 
         $result = BuyLog::where('fdInvoice', str_replace(ProjectEnum::INVOICE_PREFIX, "", $fdInvoice))->get();
 
-        $arrResult = [];
+//        $arrResult = [];
+        $PolicyArr = [];
+        $Point = 0;
 
         foreach ($result as $v) {
             $data = $v->data;
@@ -425,14 +429,24 @@ class ProductController extends BaseController
             $v->result = $apiResult;
             $v->save();
 
-            $arrResult[] = $apiResult['message'];
+//            $arrResult[] = $apiResult['message'];
+
+            $PolicyArr[] = $apiResult['message'];//Policy add for group policy
+
+            if (is_numeric($apiResult['data']['BigPoint'])) {
+                $Point = $Point + $apiResult['data']['BigPoint'];
+            }
 
             if (!$apiResult["status"]) {
                 return false;
             }
         }
 
+        //Array 2 dimension
+        $arrResult[] =  $PolicyArr;
+        $arrResult[] =  $Point;
         return $arrResult;
+
     }
 
     public function error()
@@ -471,7 +485,8 @@ class ProductController extends BaseController
 
                 $result = $this->sendToApiIssue($request->input('order_id'), $request->input('payment_channel'), $request->input('masked_pan'));
                 if ($result) {
-                    $request->session()->put('doc_no', implode(', ', $result));
+                    $request->session()->put('doc_no', implode(', ', $result[0]));
+                    $request->session()->put('point', $result[1]);
                     $request->session()->put('return_link', $request->input('user_defined_2'));
                     $func = 'thankyou';
                 } else {

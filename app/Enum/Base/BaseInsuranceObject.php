@@ -46,6 +46,6 @@ class BaseInsuranceObject
     public $fdPaymentType = 3;
     public $fdPaymentCh;
     public $fdInstallment = 1;
-
+    public $fdMember_ID;
 
 }

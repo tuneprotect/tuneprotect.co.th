@@ -1,4 +1,4 @@
-@extends('frontend.layout.portal')
+@extends('frontend.layout.nofooter')
 
 @section('page')
 
@@ -15,15 +15,16 @@
     <main>
         <h1 class="product-header">Biglife</h1>
         <section id="step1" class="wrapper">
-            <form class="insurance-form">
+            <form class="insurance-form" action="/{{$locale}}/Biglife/Validation" method="post" id="frm_validate">
                 <div class="form-head">ระบุรายละเอียด</div>
                 <div class="form-inner">
                     <h3>กรุณากรอกหมายเลขสมาชิก BIG ของท่านเพื่อดำเนินการต่อและสะสม BIG Points</h3>
                     <div class="date-input">
                         <div class="date-wrapper">
                             <div class="controls-wrapper">
-                                <input id="ctrl_memberid" type="tel" placeholder="หมายเลขสมาชิก BIG / Member ID">
-                                <label for="ctrl_memberid">หมายเลขสมาชิก BIG / Member ID</label>
+                                <input id="memberid" name="memberid" type="text" placeholder="หมายเลขสมาชิก BIG / Member ID"
+                                       required="required" data-error-required="The Member ID. field is required.">
+                                <label for="memberid">หมายเลขสมาชิก BIG / Member ID</label>
                             </div>
                         </div>
                         <cite></cite>
@@ -35,10 +36,16 @@
                 </div>
 
 
-{{--                <input type="hidden" id="controller" value="{{$controller}}"/>--}}
+                <input type="hidden" name="_token" id ="_token" value="{{ csrf_token() }}">
 
-                <input type="hidden" id="urllinkvalidate" value="{{$urllinkvalidate}}">
-                <input type="hidden" id="auth" value="{{$auth}}">
+                @if(isset($status_api))
+                    <input type="hidden" id="status_api" value="{{$status_api}}"/>
+                @endif
+{{--                <input type="hidden" id="controller" value="{{$controller}}"/>--}}
+{{--                <input type="hidden" id="urllinkvalidate" value="{{$urllinkvalidate}}">--}}
+{{--                <input type="hidden" id="auth" value="{{$auth}}">--}}
+
+
 
             </form>
             <br>

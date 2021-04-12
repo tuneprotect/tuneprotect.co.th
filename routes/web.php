@@ -36,6 +36,8 @@ DB::reconnect();
 Route::get('/th/test', [TestController::class, 'index']);
 Route::get('/th/test-mon', [TestController::class, 'mon']);
 
+Route::post('/th/Biglife', [BiglifeController::class, 'Validation']);
+
 Route::namespace('Frontend')
     ->any('/{locale?}/{controller?}/{func?}/{params?}',
         function ($locale = 'th', $controller = 'Index', $func = 'index', $params = null) {
