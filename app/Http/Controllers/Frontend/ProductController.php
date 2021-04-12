@@ -435,12 +435,21 @@ class ProductController extends BaseController
 
             $PolicyData = $apiResult['data'];
 
-            if($PolicyData['BigPoint'])
-            {
-                if (is_numeric($PolicyData['BigPoint'])) {
-                    $Point = $Point + $PolicyData['BigPoint'];
+            foreach ($PolicyData as $k => $v) {
+                if ($k === 'BigPoint')
+                {
+                    if (is_numeric($v)) {
+                        $Point = $Point + $v;
+                    }
                 }
             }
+
+//            if($PolicyData['BigPoint'])
+//            {
+//                if (is_numeric($PolicyData['BigPoint'])) {
+//                    $Point = $Point + $PolicyData['BigPoint'];
+//                }
+//            }
 
 
             if (!$apiResult["status"]) {

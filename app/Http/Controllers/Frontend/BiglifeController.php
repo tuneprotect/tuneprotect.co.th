@@ -39,6 +39,15 @@ class BiglifeController  extends ProductController
 
          $apiResult =json_decode($response->getBody()->getContents(), true);
 
+
+//         foreach ($apiResult['data'] as $k => $v) {
+//             if ($k === 'code')
+//             {
+//                 dd($v);
+//             }
+//         }
+//         dd($apiResult->{'message'});
+
 //         $arrResult[] = $apiResult['message'];
 //         array_push($arrResult,$apiResult['data']["code"]);
 //         $msg = implode(', ', $arrResult);
