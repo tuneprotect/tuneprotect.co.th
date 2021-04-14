@@ -17,6 +17,34 @@ class BiglifeController  extends ProductController
         $return_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
         session(['return_link' => $return_link]);
 
+
+//        Defualt Cocid for load image and slideshow
+        $selected = 'ONCOVIDA';
+        $link = 'coronavirus-covid-19-insurance';
+        $this->bodyData['selected'] = $selected;
+
+        $this->bodyData['current_product'] = WebContent::where('type_id', ProjectEnum::WEB_CONTENT_PRODUCT)
+            ->where('friendly_url', $link)
+            ->with(['locales', 'productPackage' => function ($q) {
+                $q->with('locales');
+            }])
+            ->whereRaw(ProjectEnum::isPublish())
+            ->first();
+
+        foreach ($this->bodyData['current_product']->productPackage as $v) {
+            if ($v->code === $selected) {
+                $this->setStaticPageHeader($v);
+                $this->bodyData['slideshow'] = [$this->bodyData['current_product']];
+            }
+        }
+
+//        foreach ($this->bodyData['current_product']->productPackage as $v) {
+//            if ($v->code === $this->bodyData['selected']) {
+//                $this->bodyData['current_package'] = $v;
+//            }
+//        }
+
+
         $this->template->setFootJS(mix("/js/frontend/biglife.js"));
         return $this->genView('frontend.page.biglife_validation');
 
