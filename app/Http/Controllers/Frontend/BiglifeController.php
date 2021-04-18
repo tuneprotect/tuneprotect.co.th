@@ -81,7 +81,7 @@ class BiglifeController  extends ProductController
              ])
          ]);
 
-         dd(config('tune-api.url'));
+//         dd(config('tune-api.url'));
 
 
          $apiResult =json_decode($response->getBody()->getContents(), true);
