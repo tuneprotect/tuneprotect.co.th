@@ -81,6 +81,9 @@ class BiglifeController  extends ProductController
              ])
          ]);
 
+         dd(config('tune-api.url'));
+
+
          $apiResult =json_decode($response->getBody()->getContents(), true);
 
          if (!$apiResult["status"]) {
@@ -128,8 +131,6 @@ class BiglifeController  extends ProductController
 
 
          }
-
-         dd(config('tune-api.url'));
 
          return $this->index();
 
