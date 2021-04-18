@@ -23,14 +23,14 @@ class BiglifeController  extends ProductController
         {
             $this->bodyData['headertext'] = 'ระบุรายละเอียด';
             $this->bodyData['labeltext'] = 'กรุณากรอกหมายเลขสมาชิก BIG ของท่านเพื่อดำเนินการต่อและสะสม BIG Points';
-            $this->bodyData['placeholdertext'] = 'Membership Number';
+            $this->bodyData['placeholdertext'] = 'BIG Membership Number';
             $this->bodyData['buttontext'] = 'ล็อกอิน';
 
         }
         else{
             $this->bodyData['headertext'] = 'Fill in information';
             $this->bodyData['labeltext'] = 'Please Enter your BIG Membership Number';
-            $this->bodyData['placeholdertext'] = 'Membership Number';
+            $this->bodyData['placeholdertext'] = 'ฺBIG Membership Number';
             $this->bodyData['buttontext'] = 'Login';
         }
 
