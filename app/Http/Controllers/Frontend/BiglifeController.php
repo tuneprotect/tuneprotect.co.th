@@ -83,44 +83,6 @@ class BiglifeController  extends ProductController
 
          $apiResult =json_decode($response->getBody()->getContents(), true);
 
-
-//         foreach ($apiResult['data'] as $k => $v) {
-//             if ($k === 'code')
-//             {
-//                 dd($v);
-//             }
-//         }
-//         dd($apiResult->{'message'});
-
-//         $arrResult[] = $apiResult['message'];
-//         array_push($arrResult,$apiResult['data']["code"]);
-//         $msg = implode(', ', $arrResult);
-//         $msgs  = explode(', ', $msg);
-//         dd($msgs[0]);
-
-//         $PolicyArr[] = array('00D/TAL/6310/000007','00D/TAL/6310/000008','00D/TAL/6310/000009');
-
-//
-//         $PolicyArr[] = '00D/TAL/6310/000007';
-//         $PolicyArr[] = '00D/TAL/6310/000008';
-//         $PolicyArr[] = '00D/TAL/6310/000009';
-//
-//         $Point = 0;
-//
-//         for ($x = 0; $x <= 10; $x++) {
-//             $Point = $Point + 10;
-//         }
-//
-//
-////         $arrResult[] = array($PolicyArr,$Point);
-//
-//         $arrResult[] = $PolicyArr;
-//         $arrResult[] = $Point;
-//
-//         dd($arrResult[0]);
-
-//         $Point = array(100,200,300);
-
          if (!$apiResult["status"]) {
              $this->bodyData['member_id'] = '';
              $this->bodyData['status_api'] = false;
