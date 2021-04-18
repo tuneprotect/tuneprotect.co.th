@@ -129,6 +129,8 @@ class BiglifeController  extends ProductController
 
          }
 
+         dd(config('tune-api.url'));
+
          return $this->index();
 
      }
