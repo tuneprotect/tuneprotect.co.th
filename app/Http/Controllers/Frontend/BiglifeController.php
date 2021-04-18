@@ -17,6 +17,22 @@ class BiglifeController  extends ProductController
         $return_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
         session(['return_link' => $return_link]);
 
+        //Fix code wording
+
+        if($this->locale =='th')
+        {
+            $this->bodyData['headertext'] = 'ระบุรายละเอียด';
+            $this->bodyData['labeltext'] = 'กรุณากรอกหมายเลขสมาชิก BIG ของท่านเพื่อดำเนินการต่อและสะสม BIG Points';
+            $this->bodyData['placeholdertext'] = 'หมายเลขสมาชิก BIG / Member ID';
+            $this->bodyData['buttontext'] = 'ล็อกอิน';
+
+        }
+        else{
+            $this->bodyData['headertext'] = 'Fill in information';
+            $this->bodyData['labeltext'] = 'Please Enter your BIG Membership Number';
+            $this->bodyData['placeholdertext'] = 'Please Enter your BIG Membership Number';
+            $this->bodyData['buttontext'] = 'Login';
+        }
 
 //        Defualt Cocid for load image and slideshow
         $selected = 'ONCOVIDA';
