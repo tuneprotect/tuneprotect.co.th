@@ -30,7 +30,7 @@ class BiglifeController  extends ProductController
         else{
             $this->bodyData['headertext'] = 'Fill in information';
             $this->bodyData['labeltext'] = 'Please Enter your BIG Membership Number';
-            $this->bodyData['placeholdertext'] = 'ฺBIG Membership Number';
+            $this->bodyData['placeholdertext'] = 'BIG Membership Number';
             $this->bodyData['buttontext'] = 'Login';
         }
 
