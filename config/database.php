@@ -35,7 +35,7 @@ return [
 
     'connections' => [
         'staging' => [
-            'driver' => 'mysql',
+            'driver' => 'sqlsrv',
             'url' => env('DATABASE_URL'),
             'host' => env('DB_HOST', '10.2.2.12'),
             'port' => env('DB_PORT', '1433'),
@@ -48,7 +48,7 @@ return [
         ],
         'live' => [
 
-            'driver' => 'mysql',
+            'driver' => 'sqlsrv',
             'url' => env('DATABASE_URL'),
             'host' => env('DB_HOST', '10.2.2.12'),
             'port' => env('DB_PORT', '1433'),
