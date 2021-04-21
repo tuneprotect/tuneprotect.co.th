@@ -16,6 +16,7 @@ class ProjectEnum
     const STATIC_PAGE_CLAIM = 'static.page.claim';
     const STATIC_PAGE_HOSPITAL = 'static.page.hospital';
     const STATIC_PAGE_GARAGE = 'static.page.garage';
+    const STATIC_META_NEWS = 'static.page.news';
     const STATIC_PAGE_SERVICE_CENTER = 'static.page.service_center';
     const STATIC_PAGE_PAYMENT_THANK_YOU = 'static.page.payment_thank_you';
     const STATIC_PAGE_PAYMENT_ERROR = 'static.page.payment_error';
@@ -24,9 +25,10 @@ class ProjectEnum
     const STATIC_PAGE_PAYMENT_REJECT = 'static.page.payment_reject';
     const STATIC_PAGE_PRIVACY_POLICY = 'static.page.privacy';
     const STATIC_PAGE_TERMS = 'static.page.terms';
+    const STATIC_PAGE_MY_HEALTH = 'static.page.my_health';
 
     const STATIC_META_ARTICLE = 'static.page.article';
-    const STATIC_META_NEWS = 'static.page.news';
+    const STATIC_META_MY_HEALTH = 'static.page.my_health';
 
     const WEB_CONTENT_FAQ = "faq.content";
     const WEB_CONTACTUS_FAQ = "faq_contact.content";
@@ -60,6 +62,7 @@ class ProjectEnum
     const WEB_CONTENT_CLAIM_CATEGORY = "claim.category";
     const WEB_CONTENT_LEADFORM_CATEGORY = "leadform.category";
     const CACHE_MENU_ENABLE = 'menu_enable';
+
 
     const INVOICE_PREFIX = 'W';
 

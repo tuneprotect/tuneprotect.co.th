@@ -56,6 +56,12 @@
                            href="{{route('current',['locale' => $locale,'controller' => 'news'],false)}}">{{__('global.nav_news')}}</a>
                     </li>
                 @endif
+
+                <li>
+                    <a data-gtm="main-nav-news"
+                       href="{{route('current',['locale' => $locale,'controller' => 'my_health'],false)}}">{!! __('global.nav_my_health') !!} </a>
+                </li>
+
                 @if(@$menu_enable[\App\Enum\ProjectEnum::WEB_CONTENT_ARTICLE] > 0)
                     <li>
                         <a data-gtm="main-nav-article"
@@ -194,7 +200,7 @@
             <nav>
                 <section>
                     <h6 class="collapse">{{__('global.nav_product')}}</h6>
-                    <div class="two-col">
+{{--                    <div class="two-col">--}}
                         @foreach ($product_category as $v)
                             <ul class="collapse">
                                 <li><a href="#"><strong>{{$v->locales[$locale]->title}}</strong></a></li>
@@ -202,14 +208,21 @@
                                 @foreach ($product as $v1)
                                     @if($v->id == $v1->cat_id )
                                         <li>
-                                            <a data-gtm="footer-nav-product-{{$v1->friendly_url}}" href="{{route('current',['locale' => $locale,'controller' => 'product','func' => $v1->friendly_url ])}}">{{$v1->locales[$locale]->title}}</a>
+                                            <a data-gtm="footer-nav-product-{{$v1->friendly_url}}"
+                                               href="{{route('current',['locale' => $locale,'controller' => 'product','func' => $v1->friendly_url ])}}">{{$v1->locales[$locale]->title}}</a>
                                         </li>
                                     @endif
                                 @endforeach
 
                             </ul>
                         @endforeach
-                    </div>
+{{--                    </div>--}}
+                </section>
+                <section>
+                    <h6 class="collapse">@lang('global.nav_service')</h6>
+                    <ul class="collapse">
+                        <li><a href="#"><strong>@lang('global.nav_service_my_health')</strong></a></li>
+                    </ul>
                 </section>
                 <section>
                     <h6 class="collapse">@lang('global.nav_claim')</h6>
@@ -221,7 +234,8 @@
                                 @foreach ($claim as $v1)
                                     @if($v->id == $v1->cat_id )
                                         <li>
-                                            <a data-gtm="footer-nav-claim-{{$v1->friendly_url}}" href="{{route('current',['locale' => $locale,'controller' => 'claim','func' => $v1->friendly_url ])}}">{{$v1->locales[$locale]->title}}</a>
+                                            <a data-gtm="footer-nav-claim-{{$v1->friendly_url}}"
+                                               href="{{route('current',['locale' => $locale,'controller' => 'claim','func' => $v1->friendly_url ])}}">{{$v1->locales[$locale]->title}}</a>
                                         </li>
                                     @endif
                                 @endforeach
@@ -239,7 +253,8 @@
                                 <li><a href="#"><strong>{{$v->locales[$locale]->title}}</strong></a></li>
                                 @foreach ($about[$v->id] as $v1)
                                     <li>
-                                        <a data-gtm="footer-nav-about-{{$v1->friendly_url}}" href="{{route('current',['locale' => $locale,'controller' => 'aboutus','func' => $v1->friendly_url ])}}">{{$v1->locales[$locale]->title}}</a>
+                                        <a data-gtm="footer-nav-about-{{$v1->friendly_url}}"
+                                           href="{{route('current',['locale' => $locale,'controller' => 'aboutus','func' => $v1->friendly_url ])}}">{{$v1->locales[$locale]->title}}</a>
                                     </li>
                                 @endforeach
                             </ul>
@@ -248,12 +263,14 @@
 
                     <ul class="collapse">
                         <li>
-                            <a data-gtm="footer-nav-contact-{{$v1->friendly_url}}" href="{{route('current',['locale' => $locale,'controller' => 'contactus'],false)}}"><strong> {{__('global.nav_contact')}}</strong></a>
+                            <a data-gtm="footer-nav-contact-{{$v1->friendly_url}}"
+                               href="{{route('current',['locale' => $locale,'controller' => 'contactus'],false)}}"><strong> {{__('global.nav_contact')}}</strong></a>
                         </li>
                     </ul>
 
                     <ul class="collapse">
-                        <li><a data-gtm="footer-nav-tune-group" target="_blank" href="https://www.tuneprotect.com/corporate/group/about-us/"><strong>Tune
+                        <li><a data-gtm="footer-nav-tune-group" target="_blank"
+                               href="https://www.tuneprotect.com/corporate/group/about-us/"><strong>Tune
                                     Protect
                                     Group</strong></a></li>
                     </ul>
@@ -261,20 +278,24 @@
                     <ul class="collapse">
                         <li><a><strong>@lang('global.our_partner')</strong></a></li>
                         <li>
-                            <a data-gtm="footer-nav-partner-hospital" href="{{route('current',['locale' => $locale,'controller' => 'partner','func' => 'hospital' ])}}">@lang('global.hospital')</a>
+                            <a data-gtm="footer-nav-partner-hospital"
+                               href="{{route('current',['locale' => $locale,'controller' => 'partner','func' => 'hospital' ])}}">@lang('global.hospital')</a>
                         </li>
                         <li>
-                            <a data-gtm="footer-nav-partner-garage" href="{{route('current',['locale' => $locale,'controller' => 'partner','func' => 'garage' ])}}">@lang('global.garage')</a>
+                            <a data-gtm="footer-nav-partner-garage"
+                               href="{{route('current',['locale' => $locale,'controller' => 'partner','func' => 'garage' ])}}">@lang('global.garage')</a>
                         </li>
                         <li>
-                            <a data-gtm="footer-nav-partner-service-center" href="{{route('current',['locale' => $locale,'controller' => 'partner','func' => 'service_center' ])}}">@lang('global.service_center')</a>
+                            <a data-gtm="footer-nav-partner-service-center"
+                               href="{{route('current',['locale' => $locale,'controller' => 'partner','func' => 'service_center' ])}}">@lang('global.service_center')</a>
                         </li>
                     </ul>
 
 
                     <ul class="social">
                         @foreach($social AS $v)
-                            <li><a data-gtm="footer-nav-social" target="_blank" href="{{$v->action_link}}"><i class="{{$v->pic}}"></i></a></li>
+                            <li><a data-gtm="footer-nav-social" target="_blank" href="{{$v->action_link}}"><i
+                                        class="{{$v->pic}}"></i></a></li>
                         @endforeach
                     </ul>
                 </section>
