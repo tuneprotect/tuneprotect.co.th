@@ -43,6 +43,15 @@
         <div class="btn-wrapper">
             <button data-gtm="product-{{strtolower($selected)}}-proceed-step-1" data-step="2" class="btn btn-primary btn-goto">@lang('product.next')</button>
         </div>
+
+        <input type="hidden" id="controller" value="{{$controller}}"/>
+        @if($controller == 'portal')
+            <div class="btn-wrapper">
+                <input type="hidden" id="portal_key" value="{{$portal_key}}"/>
+                <input type="hidden" id="status_api" value="{{$status_api}}"/>
+            </div>
+        @endif
+
     </form>
 
     <br/>

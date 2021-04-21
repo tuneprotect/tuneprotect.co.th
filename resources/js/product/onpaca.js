@@ -182,8 +182,26 @@ const constraints = {
 document.addEventListener("DOMContentLoaded", async () => {
 
     const package_data = await getPackageData(current_package);
+
+    let Keys = "";
+    let myEle = document.getElementById("portal_key");
+    if(myEle){
+        Keys= myEle.value;
+        let status_api = document.getElementById("status_api");
+        if(!status_api.value)
+        {
+            Swal.fire({
+                title: 'Error!',
+                text: 'Error : Portal keys. User not found.',
+                icon: 'error',
+                confirmButtonText: 'OK'
+            })
+        }
+    }
+
     let step = 1;
     let data = {
+        fdKeys : Keys,
         fdTitle: "",
         fdName: "",
         fdSurname: "",
@@ -278,6 +296,22 @@ document.addEventListener("DOMContentLoaded", async () => {
                                     confirmButtonText: 'OK'
                                 })
                                 status = false;
+                            }
+
+                            //Case web portal
+                            let myEle = document.getElementById("portal_key");
+                            if(myEle){
+                                let status_api = document.getElementById("status_api");
+                                if(!status_api.value)
+                                {
+                                    Swal.fire({
+                                        title: 'Error!',
+                                        text: 'Error : Portal keys. User not found.',
+                                        icon: 'error',
+                                        confirmButtonText: 'OK'
+                                    })
+                                    status = false;
+                                }
                             }
 
                             break;

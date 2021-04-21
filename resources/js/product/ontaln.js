@@ -210,14 +210,12 @@ document.addEventListener("DOMContentLoaded", async () => {
     const country_data = await getCountryData();
     const nationality_data = await getNationalityData();
     const zipcode_data = await getZipcodeData();
-    let step = 1;
-
 
     let Keys = "";
-    var myEle = document.getElementById("portal_key");
+    let myEle = document.getElementById("portal_key");
     if(myEle){
         Keys= myEle.value;
-        var status_api = document.getElementById("status_api");
+        let status_api = document.getElementById("status_api");
         if(!status_api.value)
         {
             Swal.fire({
@@ -226,10 +224,10 @@ document.addEventListener("DOMContentLoaded", async () => {
                 icon: 'error',
                 confirmButtonText: 'OK'
             })
-            status = false;
         }
     }
 
+    let step = 1;
     let data = {
         fdKeys : Keys,
         fdPayAMT: "",
@@ -376,22 +374,22 @@ document.addEventListener("DOMContentLoaded", async () => {
                             genPrice(package_data, $('#ctrl_sub_package').value);
                         }
 
-                        //Case web portal
-                        var myEle = document.getElementById("portal_key");
-                        if(myEle){
-                            var status_api = document.getElementById("status_api");
-                            if(!status_api.value)
-                                {
-                                    Swal.fire({
-                                        title: 'Error!',
-                                        text: 'Error : Portal keys. User not found.',
-                                        icon: 'error',
-                                        confirmButtonText: 'OK'
-                                    })
-                                    status = false;
-                                }
-                        }
 
+                        //Case web portal
+                        let myEle = document.getElementById("portal_key");
+                        if(myEle){
+                            let status_api = document.getElementById("status_api");
+                            if(!status_api.value)
+                            {
+                                Swal.fire({
+                                    title: 'Error!',
+                                    text: 'Error : Portal keys. User not found.',
+                                    icon: 'error',
+                                    confirmButtonText: 'OK'
+                                })
+                                status = false;
+                            }
+                        }
 
                         break;
                     case 2:
