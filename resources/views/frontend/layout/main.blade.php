@@ -221,7 +221,11 @@
                 <section>
                     <h6 class="collapse">@lang('global.nav_service')</h6>
                     <ul class="collapse">
-                        <li><a href="#"><strong>@lang('global.nav_service_my_health')</strong></a></li>
+                        <li>
+                            <a data-gtm="footer-nav-my-health"
+                               target="_blank" href="{{route('current',['locale' => $locale,'controller' => 'my_health'],false)}}"><strong>@lang('global.nav_service_my_health')</strong>
+                            </a>
+                        </li>
                     </ul>
                 </section>
                 <section>
