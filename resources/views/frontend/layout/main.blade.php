@@ -58,8 +58,24 @@
                 @endif
 
                 <li>
-                    <a data-gtm="main-nav-news"
-                       href="{{route('current',['locale' => $locale,'controller' => 'my_health'],false)}}">{!! __('global.nav_my_health') !!} </a>
+                    <a class="has_sub" href="#">{!! __('global.nav_my_health') !!}
+                        <i class="icofont-caret-right"></i></a>
+                    <div class="sub">
+                        <div class="section">
+                            <div>
+
+                                <ul>
+                                    <li>
+                                        <a data-gtm="main-nav-news"
+                                           href="{{route('current',['locale' => $locale,'controller' => 'my_health'],false)}}">
+                                            <span>Health2GO</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
                 </li>
 
                 @if(@$menu_enable[\App\Enum\ProjectEnum::WEB_CONTENT_ARTICLE] > 0)
@@ -221,9 +237,10 @@
                 <section>
                     <h6 class="collapse">@lang('global.nav_service')</h6>
                     <ul class="collapse">
+                        <li><a href="#"><strong>@lang('global.nav_service_my_health')</strong></a></li>
                         <li>
                             <a data-gtm="footer-nav-my-health"
-                               target="_blank" href="{{route('current',['locale' => $locale,'controller' => 'my_health'],false)}}"><strong>@lang('global.nav_service_my_health')</strong>
+                               target="_blank" href="{{route('current',['locale' => $locale,'controller' => 'my_health'],false)}}">@lang('global.nav_service_health_to_go')
                             </a>
                         </li>
                     </ul>
