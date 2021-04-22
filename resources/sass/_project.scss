@@ -1226,11 +1226,12 @@ footer {
             }
 
             &.collapse {
-                //max-height: 0;
-                display: none;
+                max-height: 0;
+                margin: 0;
+                //display: none;
                 @media all and (min-width: $sm) {
-                    //max-height: 999px;
-                    display: block;
+                    max-height: 999px;
+                    //display: block;
                 }
             }
         }
