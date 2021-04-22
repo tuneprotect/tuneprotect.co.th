@@ -1153,6 +1153,10 @@ footer {
         }
 
         section {
+
+            @media all and (max-width: $sm) {
+                padding: 10px;
+            }
             //flex: 1;
 
             //&:first-child {
@@ -1161,9 +1165,6 @@ footer {
             //        grid-column: auto;
             //    }
             //}
-            @media all and (min-width: $sd) {
-
-            }
         }
 
         h6 {
@@ -1225,9 +1226,11 @@ footer {
             }
 
             &.collapse {
-                max-height: 0;
+                //max-height: 0;
+                display: none;
                 @media all and (min-width: $sm) {
-                    max-height: 999px;
+                    //max-height: 999px;
+                    display: block;
                 }
             }
         }

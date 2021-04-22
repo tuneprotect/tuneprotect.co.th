@@ -57,26 +57,27 @@
                     </li>
                 @endif
 
-                <li>
-                    <a class="has_sub" href="#">{!! __('global.nav_my_health') !!}
-                        <i class="icofont-caret-right"></i></a>
-                    <div class="sub">
-                        <div class="section">
-                            <div>
+                @if(@$menu_enable[\App\Enum\ProjectEnum::STATIC_PAGE_MY_HEALTH] > 0)
+                    <li>
+                        <a class="has_sub" href="#">{!! __('global.nav_my_health') !!}
+                            <i class="icofont-caret-right"></i></a>
+                        <div class="sub">
+                            <div class="section">
+                                <div>
 
-                                <ul>
-                                    <li>
-                                        <a data-gtm="main-nav-news"
-                                           href="{{route('current',['locale' => $locale,'controller' => 'my_health'],false)}}">
-                                            <span>Health2GO</span>
-                                        </a>
-                                    </li>
-                                </ul>
+                                    <ul>
+                                        <li>
+                                            <a data-gtm="main-nav-news"
+                                               href="{{route('current',['locale' => $locale,'controller' => 'my_health'],false)}}">
+                                                <span>Health2GO</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
-                    </div>
-
-                </li>
+                    </li>
+                @endif
 
                 @if(@$menu_enable[\App\Enum\ProjectEnum::WEB_CONTENT_ARTICLE] > 0)
                     <li>
@@ -216,35 +217,38 @@
             <nav>
                 <section>
                     <h6 class="collapse">{{__('global.nav_product')}}</h6>
-{{--                    <div class="two-col">--}}
-                        @foreach ($product_category as $v)
-                            <ul class="collapse">
-                                <li><a href="#"><strong>{{$v->locales[$locale]->title}}</strong></a></li>
+                    {{--                    <div class="two-col">--}}
+                    @foreach ($product_category as $v)
+                        <ul class="collapse">
+                            <li><a href="#"><strong>{{$v->locales[$locale]->title}}</strong></a></li>
 
-                                @foreach ($product as $v1)
-                                    @if($v->id == $v1->cat_id )
-                                        <li>
-                                            <a data-gtm="footer-nav-product-{{$v1->friendly_url}}"
-                                               href="{{route('current',['locale' => $locale,'controller' => 'product','func' => $v1->friendly_url ])}}">{{$v1->locales[$locale]->title}}</a>
-                                        </li>
-                                    @endif
-                                @endforeach
+                            @foreach ($product as $v1)
+                                @if($v->id == $v1->cat_id )
+                                    <li>
+                                        <a data-gtm="footer-nav-product-{{$v1->friendly_url}}"
+                                           href="{{route('current',['locale' => $locale,'controller' => 'product','func' => $v1->friendly_url ])}}">{{$v1->locales[$locale]->title}}</a>
+                                    </li>
+                                @endif
+                            @endforeach
 
-                            </ul>
-                        @endforeach
-{{--                    </div>--}}
+                        </ul>
+                    @endforeach
+                    {{--                    </div>--}}
                 </section>
+                @if(@$menu_enable[\App\Enum\ProjectEnum::STATIC_PAGE_MY_HEALTH] > 0)
                 <section>
                     <h6 class="collapse">@lang('global.nav_service')</h6>
                     <ul class="collapse">
                         <li><a href="#"><strong>@lang('global.nav_service_my_health')</strong></a></li>
                         <li>
                             <a data-gtm="footer-nav-my-health"
-                               target="_blank" href="{{route('current',['locale' => $locale,'controller' => 'my_health'],false)}}">@lang('global.nav_service_health_to_go')
+                               target="_blank"
+                               href="{{route('current',['locale' => $locale,'controller' => 'my_health'],false)}}">@lang('global.nav_service_health_to_go')
                             </a>
                         </li>
                     </ul>
                 </section>
+                @endif
                 <section>
                     <h6 class="collapse">@lang('global.nav_claim')</h6>
                     @if($claim_category)
