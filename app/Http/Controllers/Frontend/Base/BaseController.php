@@ -93,9 +93,6 @@ abstract class BaseController extends Controller
             ->orderBy('s_order')
             ->get();
 
-
-        $this->menuEnable();
-
         if (empty($current)) {
             $this->layoutData['current_path'] = '';
         } else {

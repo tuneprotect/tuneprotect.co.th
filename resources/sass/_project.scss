@@ -1154,6 +1154,9 @@ footer {
 
         section {
 
+            @media all and (min-width: $md) {
+                flex: 1
+            }
             @media all and (max-width: $sm) {
                 padding: 10px;
             }
@@ -1228,10 +1231,8 @@ footer {
             &.collapse {
                 max-height: 0;
                 margin: 0;
-                //display: none;
                 @media all and (min-width: $sm) {
                     max-height: 999px;
-                    //display: block;
                 }
             }
         }
