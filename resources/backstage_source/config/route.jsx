@@ -1861,7 +1861,8 @@ const static_content = {
         'payment_thank_you',
         'privacy',
         'service_center',
-        'terms'
+        'terms',
+        'my_health'
     ],
     meta: [],
     email: []

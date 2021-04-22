@@ -34,7 +34,6 @@ return [
     */
 
     'connections' => [
-
         'staging' => [
             'driver' => 'sqlsrv',
             'url' => env('DATABASE_URL'),

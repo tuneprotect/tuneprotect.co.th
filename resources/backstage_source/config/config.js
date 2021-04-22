@@ -170,6 +170,7 @@ export const WEB_CONTENT = {
     STICKY_MENU: "static.sticky_menu",
     SERVICE: "static.service",
     REVIEW: "static.review",
+    MY_HEALTH: "static.my_health",
 
     NEWS: "news.content",
     NEWS_CATEGORY: "news.category",

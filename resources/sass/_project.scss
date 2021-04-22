@@ -1138,29 +1138,29 @@ footer {
     nav {
         padding-top: 20px;
         font-size: 0.7rem;
-
+        display: grid;
         @media all and (min-width: $sm) {
-            display: grid;
+            //display: flex;
             column-gap: 20px;
             grid-template-columns: 1fr 1fr;
         }
 
         @media all and (min-width: $md) {
-            display: grid;
+            display: flex;
             column-gap: 20px;
             grid-template-columns: 2fr 1fr 1fr;
             padding: 20px 0 50px 0;
         }
 
         section {
-            flex: 1 0 48%;
+            //flex: 1;
 
-            &:first-child {
-                grid-column: 1 / span 2;
-                @media all and (min-width: $md) {
-                    grid-column: auto;
-                }
-            }
+            //&:first-child {
+            //    grid-column: 1 / span 2;
+            //    @media all and (min-width: $md) {
+            //        grid-column: auto;
+            //    }
+            //}
         }
 
         h6 {
@@ -1241,7 +1241,7 @@ footer {
     .social {
         display: flex;
         justify-content: center;
-        margin: 20px 0;
+        margin: 30px 0 20px 0;
         overflow: visible;
         @media all and (min-width: $md) {
             justify-content: flex-start;
@@ -1748,6 +1748,7 @@ main {
             opacity: 0;
             max-height: 0;
             @include project_transition();
+
             &.on {
                 //display: block;
 
@@ -1803,6 +1804,7 @@ main {
                             padding-left: 30px;
                             background: #fff;
                             @include project_transition();
+
                             &:after {
                                 @include rotate_deg(180deg);
                                 right: 0;
@@ -2706,7 +2708,8 @@ main {
 
 
     }
-    .hide_link{
+
+    .hide_link {
         display: none;
     }
 }
@@ -3285,9 +3288,95 @@ main {
         }
     }
 }
-.swal2-modal{
-    max-width:500px !important;
+
+.swal2-modal {
+    max-width: 500px !important;
 }
-#leadform-section{
+
+#leadform-section {
     z-index: 0;
+}
+
+.my-health-title {
+    text-align: center;
+
+    span {
+        display: block;
+        font-size: .8rem;
+    }
+}
+
+.my-health-service {
+    padding: 20px 0;
+    border-bottom: 1px solid #999;
+
+    .my-health-service-inner {
+        display: flex;
+        @media all and (max-width: $md) {
+            flex-direction: column;
+        }
+
+        .my-health-service-box {
+            margin-bottom: 20px;
+            flex: 1;
+
+            ul {
+                margin-top: 10px;
+
+                li {
+                    strong {
+                        display: block;
+
+                        img {
+                            width: 20px;
+                            height: 20px;
+                        }
+                    }
+
+                }
+            }
+        }
+    }
+
+}
+
+.my-health-condition {
+    padding: 20px 0;
+    border-bottom: 1px solid #999;
+}
+
+.my-health-step {
+    padding: 20px 0;
+
+    strong {
+        display: block;
+    }
+}
+
+.btn {
+    width: 30%;
+    display: block;
+    margin: 0 auto;
+    height: 100%;
+    padding: 0;
+
+    &.gradient {
+        background: rgb(227, 48, 108);
+        background: linear-gradient(152deg, rgba(227, 48, 108, 1) 0%, rgba(247, 224, 31, 1) 100%);
+        color: #fff;
+    }
+}
+
+.step-wrapper {
+    #step {
+        display: flex;
+        @media all and (max-width: $md) {
+            flex-direction: column;
+        }
+
+        .item {
+            text-align: center;
+            flex: 1;
+        }
+    }
 }
