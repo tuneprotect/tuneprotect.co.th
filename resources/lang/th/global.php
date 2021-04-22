@@ -38,7 +38,7 @@ return [
     'nav_article' => 'บทความแนะนำ',
     'nav_contact' => 'ติดต่อเรา',
     'nav_news' => 'ข่าวและกิจกรรม',
-    'nav_my_health' => '<span style="font-size:.9rem;color:rgba(227, 46, 109, 1)">my</span>Health',
+    'nav_my_health' => '<span style="font-size:.9rem;color:#e71618">my</span>Health',
     'nav_organize' => 'องค์กร',
     'nav_product' => 'ผลิตภัณฑ์',
     'nav_service' => 'บริการ',
