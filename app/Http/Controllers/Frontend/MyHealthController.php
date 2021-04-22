@@ -17,7 +17,7 @@ class MyHealthController extends BaseController
         $this->template->setFootJS(mix("/js/frontend/main.js"));
         $this->bodyData['content'] = $this->setStaticPageHeader(ProjectEnum::STATIC_PAGE_MY_HEALTH);
 
-        return $this->genView('frontend.page.static');
+        return $this->genView('frontend.page.static_no_title');
     }
 
 }
