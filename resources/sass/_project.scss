@@ -1230,8 +1230,11 @@ footer {
 
             &.collapse {
                 max-height: 0;
-                margin: 0;
+                @media all and (max-width: $sm) {
+                    margin: 0;
+                }
                 @media all and (min-width: $sm) {
+
                     max-height: 999px;
                 }
             }
