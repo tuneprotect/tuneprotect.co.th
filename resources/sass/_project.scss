@@ -3356,14 +3356,14 @@ main {
 }
 
 .btn {
-    width: 30%;
+    //width: 30%;
     display: block;
     margin: 0 auto;
     height: 100%;
     padding: 0;
-    @media all and (max-width: $sm) {
-        width: 60%;
-    }
+    //@media all and (max-width: $sm) {
+    //    width: 60%;
+    //}
     &.gradient {
         background: rgb(227, 48, 108);
         background: linear-gradient(152deg, rgba(227, 48, 108, 1) 0%, rgba(247, 224, 31, 1) 100%);
