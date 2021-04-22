@@ -3299,11 +3299,6 @@ main {
 
 .my-health-title {
     text-align: center;
-
-    span {
-        display: block;
-        font-size: .8rem;
-    }
 }
 
 .my-health-service {
@@ -3370,13 +3365,23 @@ main {
 .step-wrapper {
     #step {
         display: flex;
-        @media all and (max-width: $md) {
+        @media all and (max-width: $sm) {
+            flex-flow: row wrap;
+        }
+        @media all and (max-width: 420px) {
             flex-direction: column;
         }
-
         .item {
             text-align: center;
             flex: 1;
+            @media all and (max-width: $sm) {
+                flex:none;
+                width: 50%;
+            }
+            @media all and (max-width: 420px) {
+                flex: 1;
+                width: 100%;
+            }
         }
     }
 }
