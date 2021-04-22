@@ -54,11 +54,8 @@
 
 
         <input type="hidden" id="controller" value="{{$controller}}"/>
-
-
         @if($controller == 'portal')
         <div class="btn-wrapper">
-        <!-- <h3>{{$massage_key}}</h3> -->
         <input type="hidden" id="portal_key" value="{{$portal_key}}"/>
         <input type="hidden" id="status_api" value="{{$status_api}}"/>
         </div>

@@ -236,6 +236,7 @@ const constraints = {
 };
 
 document.addEventListener("DOMContentLoaded", async () => {
+    const package_data = await getPackageData(current_package);
 
     let Keys = "";
     var myEle = document.getElementById("portal_key");
@@ -271,7 +272,6 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
     }
 
-    const package_data = await getPackageData(current_package);
     let step = 1;
     let data = {
         fdMember_ID : member_id,
