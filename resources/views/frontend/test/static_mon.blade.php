@@ -16,7 +16,7 @@
             <h1>My Health</h1>
             <div>
                 <div class="my-health-title" style="margin-bottom: 20px">
-                    <img alt="" src="/images/favicon/favicon.png"/>
+                    <img alt="" src="/images/my_health/Logo-My-Health.png" style="width: 100px"/>
                     <span>
     ไร้กังวลทุกที่ทุกเวลา เพราะเจ็บป่วยเมื่อไหร่ ก็สามารถขอรับคำปรึกษากับแพทย์ผู้เชี่ยวชาญออนไลน์ได้ เพียงเป็นลูกค้า Tune Protect  (เงื่อนไขเป็นไปตามที่บริษัทฯ)
 </span>
@@ -112,7 +112,7 @@
                     <div class="step-wrapper">
                         <div id="step">
                             <div class="item">
-                                <img alt="" src="/images/favicon/favicon.png" style="width: 50px;height: 50px">
+                                <img alt="" src="/images/my_health/step-1.png" style="width: 50px;height: 50px"/>
                                 <strong>click</strong>
                                 <p style="font-size: .8rem">
                                     “บริการปรึกษาแพทย์
@@ -120,14 +120,14 @@
                                 </p>
                             </div>
                             <div class="item">
-                                <img alt="" src="/images/favicon/favicon.png" style="width: 50px;height: 50px">
+                                <img alt="" src="/images/my_health/step-2.png" style="width: 50px;height: 50px"/>
                                 <strong>กรอก</strong>
                                 <p style="font-size: .8rem">
                                     ข้อมูลเพื่อเริ่มการปรึกษา
                                 </p>
                             </div>
                             <div class="item">
-                                <img alt="" src="/images/favicon/favicon.png" style="width: 50px;height: 50px">
+                                <img alt="" src="/images/my_health/step-3.png" style="width: 50px;height: 50px"/>
                                 <strong>ตอบคำถาม</strong>
                                 <p style="font-size: .8rem">
                                     ประเมิณอา
@@ -137,7 +137,7 @@
                                 </p>
                             </div>
                             <div class="item">
-                                <img alt="" src="/images/favicon/favicon.png" style="width: 50px;height: 50px">
+                                <img alt="" src="/images/my_health/step-3.png" style="width: 50px;height: 50px"/>
                                 <strong>เริ่มปรีกษา</strong>
                                 <p style="font-size: .8rem">
                                     แพทย์ออนไลน์ทาง แชท วีดีโอคอล หรือ โทรศัพท์
