@@ -55,10 +55,11 @@
 
         <input type="hidden" id="controller" value="{{$controller}}"/>
         @if($controller == 'portal')
-        <div class="btn-wrapper">
-        <input type="hidden" id="portal_key" value="{{$portal_key}}"/>
-        <input type="hidden" id="status_api" value="{{$status_api}}"/>
-        </div>
+            <div class="btn-wrapper">
+                <input type="hidden" id="portal_key" value="{{$portal_key}}"/>
+                <input type="hidden" id="status_api" value="{{$status_api}}"/>
+                <input type="hidden" id="nopayment_status" value="{{$nopayment_status}}"/>
+            </div>
         @endif
 
 

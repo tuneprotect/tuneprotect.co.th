@@ -269,7 +269,6 @@ class ProductController extends BaseController
     {
         $data = $request->all();
 
-
         if (isset($data['send_data'])) {
             $data = (array)json_decode($data['send_data']);
 
@@ -291,15 +290,42 @@ class ProductController extends BaseController
                 }
             }
 
+
+            if(session('nopayment_status')) {
+                return $this->noPayment($result, $price, $log_id);
+            }
+
             return $this->sendTo2C2P($result, $price, $log_id);
+
         } else {
             $obj = $this->combindObj($data);
             $result = $this->logData($obj);
+
+            if(session('nopayment_status')) {
+                return $this->noPayment($result);
+            }
+
             return $this->sendTo2C2P($result);
         }
 
 
     }
+    protected function noPayment($obj, $price = null, $log_id = null)
+    {
+        $result = $this->sendToApiIssue(ProjectEnum::INVOICE_PREFIX . $obj->fdInvoice, '', '');
+        if ($result) {
+            session()->put('doc_no', implode(', ', $result[0]));
+            session()->put('point', $result[1]);
+            session()->put('return_link', session('return_link'));
+            $func = 'thankyou';
+        } else {
+            $func = 'error';
+        }
+        return redirect()->route('current', ['locale' => $this->locale, 'controller' => $this->controller, 'func' => $func, 'params' => $this->thankYouParam]);
+
+    }
+
+
 
 
     protected function sendTo2C2P($obj, $price = null, $log_id = null)
@@ -371,21 +397,6 @@ class ProductController extends BaseController
             ],
             'body' => json_encode([
                 'jsonString' => json_encode($obj)
-            ])
-        ]);
-        return json_decode($response->getBody()->getContents(), true);
-    }
-
-    protected function sendToApiPortalLogin($portal_key)
-    {
-        $client = new Client();
-        $response = $client->request('POST', config('tune-api.url') . 'loginPortal', [
-            'auth' => [config('tune-api.user'), config('tune-api.password')],
-            'headers' => [
-                'Content-Type' => 'application/json'
-            ],
-            'body' => json_encode([
-                'KeyValue' => $portal_key
             ])
         ]);
         return json_decode($response->getBody()->getContents(), true);
@@ -488,6 +499,7 @@ class ProductController extends BaseController
     {
         $this->bodyData['doc_no'] = $request->session()->get('doc_no');
         $this->bodyData['return_link'] = '/' . $this->locale;
+        $this->bodyData['point'] = '';
         return $this->genStatusPage(ProjectEnum::STATIC_PAGE_PAYMENT_THANK_YOU);
     }
 

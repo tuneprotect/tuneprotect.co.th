@@ -2,6 +2,7 @@
 
 
 namespace App\Http\Controllers\Frontend;
+use GuzzleHttp\Client;
 use Illuminate\Http\Request;
 use App\Enum\ProjectEnum;
 // use App\Http\Requests\MemberidRequest;
@@ -25,7 +26,6 @@ class PortalController extends ProductController
 
         //Check username and password , web portal.
         $apiResult = $this->sendToApiPortalLogin($portal_key);
-
         if (!$apiResult["status"]) {
             $status_api = false;
             $massage_key = "Error : " . $apiResult["message"];
@@ -39,17 +39,54 @@ class PortalController extends ProductController
         $this->bodyData['status_api'] = $status_api;
         $this->bodyData['massage_key'] = $massage_key;
 
-        //dd($this->bodyData['status_api']);
+        $nopayment_status = false;
+        $apiResult2 = $this->sendToApiCheckNoPayment($portal_key);
+        if ($apiResult2["status"]) {
+            $nopayment_status = true;
+        }
+        $this->bodyData['nopayment_status'] = $nopayment_status;
+        session(['nopayment_status' => $nopayment_status]);
 
         return parent::index($link,$selected);
 
     }
 
+    protected function sendToApiPortalLogin($portal_key)
+    {
+        $client = new Client();
+        $response = $client->request('POST', config('tune-api.url') . 'loginPortal', [
+            'auth' => [config('tune-api.user'), config('tune-api.password')],
+            'headers' => [
+                'Content-Type' => 'application/json'
+            ],
+            'body' => json_encode([
+                'KeyValue' => $portal_key
+            ])
+        ]);
+        return json_decode($response->getBody()->getContents(), true);
+    }
+
+    protected function sendToApiCheckNoPayment($portal_key)
+    {
+        $client = new Client();
+        $response = $client->request('POST', config('tune-api.url') . 'CheckNoPayment', [
+            'auth' => [config('tune-api.user'), config('tune-api.password')],
+            'headers' => [
+                'Content-Type' => 'application/json'
+            ],
+            'body' => json_encode([
+                'KeyValue' => $portal_key
+            ])
+        ]);
+        return json_decode($response->getBody()->getContents(), true);
+    }
+
+
     public function thankyou(Request $request)
     {
         $this->bodyData['doc_no'] = $request->session()->get('doc_no');
         $this->bodyData['return_link'] = $request->session()->get('return_link');
-
+        $this->bodyData['point'] = '';
         // dd($this->bodyData['return_link']);
 
         return $this->genStatusPage_Portal(ProjectEnum::STATIC_PAGE_PAYMENT_THANK_YOU);
