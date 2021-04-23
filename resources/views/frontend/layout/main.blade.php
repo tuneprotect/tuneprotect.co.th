@@ -68,7 +68,7 @@
                                     <ul>
                                         <li>
                                             <a data-gtm="main-nav-news"
-                                               href="{{route('current',['locale' => $locale,'controller' => 'my_health'],false)}}">
+                                               href="/{{$locale}}/myHealth/health2go">
                                                 <span>Health2GO</span>
                                             </a>
                                         </li>
@@ -243,7 +243,7 @@
                         <li>
                             <a data-gtm="footer-nav-my-health"
                                target="_blank"
-                               href="{{route('current',['locale' => $locale,'controller' => 'my_health'],false)}}">@lang('global.nav_service_health_to_go')
+                               href="/{{$locale}}/myHealth/health2go">@lang('global.nav_service_health_to_go')
                             </a>
                         </li>
                     </ul>

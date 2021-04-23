@@ -7,12 +7,12 @@
             @if(isset($articleImage))
                 <div class="reveal">
                     <div class="main-img rotate-bg no-rotate">
-                        <img src="{{url($content->pic)}}" alt="{{$content->locales[$locale]->title}}">
+                        <img src="{{url($content->pic)}}" alt="{{@$content->locales[$locale]->title}}">
                     </div>
                 </div>
             @endif
 {{--            <h1>{{$content->locales[$locale]->title}}</h1>--}}
-            <div>{!! $content->locales[$locale]->content !!}</div>
+            <div>{!! @$content->locales[$locale]->content !!}</div>
             <br/>
             @if(!isset($no_share))
                 <script type='text/javascript'
