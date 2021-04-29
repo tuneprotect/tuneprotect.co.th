@@ -3314,7 +3314,7 @@ main {
 
 .my-health-service {
     padding: 20px 0;
-    border-bottom: 1px solid #999;
+    //border-bottom: 1px solid #999;
 
     .my-health-service-inner {
         display: flex;
@@ -3348,7 +3348,7 @@ main {
 
 .my-health-condition {
     padding: 20px 0;
-    border-bottom: 1px solid #999;
+    //border-bottom: 1px solid #999;
 }
 
 .my-health-step {
@@ -3392,5 +3392,12 @@ main {
                 width: 100%;
             }
         }
+    }
+}
+
+.show_on_mobile{
+    display: none;
+    @media all and (max-width: $sm) {
+        display: block;
     }
 }
