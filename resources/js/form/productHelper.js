@@ -82,15 +82,61 @@ export const checkAge = (birthday, ageRange) => {
     const range = ageRange.split('-');
     const age = calculateAge(birthday)
 
+    console.log(age);
+
     if (range[0].indexOf(',') !== -1) {
         const monthRange = range[0].split(',');
-        if (
-            (age.year > monthRange[0] || (age.year == monthRange[0] && age.month > monthRange[1]))
-            && age.year < range[1]
-        ) {
 
-            return true;
+        // console.log(monthRange.length);
+
+        if(monthRange.length == 2)
+        {
+            //month and year range
+            if (
+                (age.year > monthRange[0] || (age.year == monthRange[0] && age.month > monthRange[1]))
+                && age.year < range[1]
+            ) {
+
+                return true;
+            }
         }
+        else
+        {
+            //day and year range
+            const rangeAll = ageRange.split(',');
+            const yearRange = rangeAll[2].split('-');
+
+            console.log('DOB : day month year ' + age.day +' '+ age.month +' '+ age.year)
+            console.log('CON : day month year ' + rangeAll[0] +' '+ rangeAll[1] +' '+ yearRange[1])
+
+            if (age.year >= yearRange[0] && age.year < yearRange[1])
+            {
+                // console.log('year between');
+                if(age.year == yearRange[0])
+                {
+                    // console.log('year =');
+                    if(age.month >= rangeAll[1])
+                    {
+                        // console.log('month >=');
+                        if(age.day >= rangeAll[0])
+                        {
+                            // console.log('day >=');
+                            return true;
+                        }
+                    }
+                }
+                else
+                    // console.log('year more than');
+                    return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+
+
     } else if (age.year >= range[0] && age.year < range[1]) {
         return true;
     }

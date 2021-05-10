@@ -61,6 +61,7 @@ mix.react('resources/backstage_source/index.js', 'public/js/backstage')
     .js('resources/js/product/oncovida.js', 'public/js/frontend/product/')
     .js('resources/js/product/oncovidl.js', 'public/js/frontend/product/')
     .js('resources/js/product/onta.js', 'public/js/frontend/product/')
+    .js('resources/js/product/onvacina.js', 'public/js/frontend/product/')
 
     .sass('resources/sass/style.scss', 'public/css/frontend')
     .browserSync('https://staging.tuneprotect.local')

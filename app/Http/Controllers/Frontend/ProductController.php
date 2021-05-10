@@ -8,6 +8,7 @@ use App\Enum\Base\BaseTAObject;
 use App\Enum\COVIDAObject;
 use App\Enum\COVIDLObject;
 use App\Enum\ONTALNObject;
+use App\Enum\VACINAObject;
 use App\Enum\PAObject;
 use App\Enum\ProjectEnum;
 use App\Http\Controllers\Frontend\Base\BaseController;
@@ -47,12 +48,14 @@ class ProductController extends BaseController
             ->whereRaw(ProjectEnum::isPublish())
             ->first();
 
+//        dd($this->bodyData['current_product']);
 
         if ($selected) {
+//            dd('1');
             return $this->genDetailPage($selected);
 
         } else {
-
+//            dd('2');
             $this->bodyData['faq'] = $this->setFaq(ProjectEnum::WEB_CONTENT_FAQ, $this->bodyData['current_product']->id);
             return $this->genListPage();
         }
@@ -106,13 +109,14 @@ class ProductController extends BaseController
 
         if (Storage::disk('public')->exists('json/' . strtolower($this->bodyData['selected']) . '.json')) {
             $package_detail = json_decode(Storage::disk('public')->get('json/' . strtolower($this->bodyData['selected']) . '.json'));
-
             foreach ($package_detail as $k => $v) {
                 if (str_starts_with($k, $selected)) {
                     $this->bodyData['package_detail'][$k] = $v;
                 }
             }
         }
+
+//        dd($this->bodyData['package_detail']);
 
         $this->template->setBody('id', 'product_page');
 
@@ -131,7 +135,6 @@ class ProductController extends BaseController
         try {
             $this->template->setFootJS(mix("/js/frontend/product/" . strtolower($this->bodyData['selected']) . ".js"));
         } catch (\Exception $exception) {
-
         }
 
         // dd($this->bodyData['controller']);
@@ -163,7 +166,8 @@ class ProductController extends BaseController
         } elseif (substr($data['fdPackage'], 0, 4) === 'ONTA') {
             $obj = new BaseTAObject();
             $obj->fdDestFrom = "THA";
-
+        } elseif (substr($data['fdPackage'], 0, 8) === 'ONVACINA') {
+            $obj = new VACINAObject();
         } else {
             $obj = new BaseInsuranceObject();
         }
@@ -219,7 +223,7 @@ class ProductController extends BaseController
             }
         }
 
-        if (substr($data['fdPackage'], 0, 8) === 'ONCOVIDA') {
+        if (substr($data['fdPackage'], 0, 8) === 'ONCOVIDA' || substr($data['fdPackage'], 0, 8) === 'ONVACINA') {
 
 
             if (isset($data['fdQuestion2_1']) && ($key = array_search('other', $data['fdQuestion2_1'])) !== false) {
@@ -233,15 +237,20 @@ class ProductController extends BaseController
             if (isset($data['fdQuestion2_1'])) {
                 $obj->fdQuestion2_1 = implode(',', $data['fdQuestion2_1']);
             }
-
-            $package = (array)json_decode(Storage::disk('public')->get('json/oncovida.json'));
-
+            if (substr($data['fdPackage'], 0, 8) === 'ONCOVIDA')
+            {
+                $package = (array)json_decode(Storage::disk('public')->get('json/oncovida.json'));
+            }
+            else{
+                $package = (array)json_decode(Storage::disk('public')->get('json/onvacina.json'));
+            }
             $obj->fdPackage = $package[$data['fdPackage']]->apiPackage;
         } elseif (substr($data['fdPackage'], 0, 8) === 'ONCOVIDL' ||
             substr($data['fdPackage'], 0, 6) === 'ONTALN'
         ) {
             $obj->fdlanguage = 1;
         }
+
 
         return $obj;
     }
@@ -268,6 +277,8 @@ class ProductController extends BaseController
     public function makePayment(Request $request)
     {
         $data = $request->all();
+
+//        dd($data);
 
         if (isset($data['send_data'])) {
             $data = (array)json_decode($data['send_data']);
@@ -382,8 +393,10 @@ class ProductController extends BaseController
         } elseif (substr($package, 0, 6) === 'ONTADM' || substr($package, 0, 4) === 'ONTA') {
             $this->thankYouParam = substr($package, 0, 6);
             $link = "IssuePolicy";
+        } elseif (substr($package, 0, 8) === 'ONVACINA') {
+            $this->thankYouParam = substr($package, 0, 8);
+            $link = 'IssuePolicyVacin';
         }
-
         return config('tune-api.url') . $link;
     }
 

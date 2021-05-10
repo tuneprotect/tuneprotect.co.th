@@ -19,23 +19,31 @@ export const calculateAge = (date) => {
         day: 0
     };
     let age = parseISO(date);
+    // console.log('age :' + age);
 
     const year = differenceInYears(now, age);
+    // console.log('year :' + year);
+
     if (year > 0) {
         result = {...result, year};
         age = addYears(age, year);
     }
 
     const month = differenceInMonths(now, age);
+    // console.log('month :' + month);
     if (month > 0) {
         result = {...result, month};
         age = addMonths(age, month);
     }
 
     const day = differenceInDays(now, age);
+    // console.log('day :' + day);
+
     if (day > 0) {
         result = {...result, day};
     }
+
+    // console.log(result);
 
     return result;
 }
