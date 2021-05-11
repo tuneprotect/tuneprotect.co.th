@@ -1,6 +1,6 @@
 import {
-    changeStep,
-    formatTelNumber, getNationalityData,
+    changeStep, checkAge,
+    formatTelNumber, genPrice, getNationalityData,
     getPackageData,
     getSelectedPrice,
     showTitle,
@@ -8,7 +8,7 @@ import {
 } from "../form/productHelper";
 import {
     $,
-    $$,
+    $$, calculateAge,
     current_package,
     fadeIn,
     fadeOut,
@@ -17,10 +17,10 @@ import {
     locale, scrollToTargetAdjusted
 } from "../helper";
 
-import {showFieldError, validateField} from "../validate_form";
+import {showDateError, showFieldError, validateField} from "../validate_form";
 import Swal from "sweetalert2";
 import validate from "validate.js";
-import {format, parseISO} from "date-fns";
+import {format, isValid, parseISO} from "date-fns";
 import intlTelInput from "intl-tel-input";
 
 require('../main');
@@ -257,15 +257,102 @@ const constraints = {
     }
 };
 
+const validateAgeInPackageVC = (package_data) => {
+    $$('.date-input .controls-wrapper').forEach(el => {
+        el.classList.remove('error');
+    });
+    $('.date-input cite').innerHTML = "";
+
+    const dd = $('#ctrl_day').value,
+        mm = $('#ctrl_month').value;
+    let yy = $('#ctrl_year').value;
+
+    if (dd === '' || mm === '' || yy === '') {
+        showDateError($('#ctrl_day').getAttribute('data-error-format'));
+        return {status: false};
+    }
+
+    if (parseInt(yy.substring(0, 2)) > 21) {
+        yy = (parseInt(yy) - 543).toString();
+    }
+
+    const birthday = `${yy}-${mm}-${dd}`;
+
+    if (!isValid(parseISO(birthday))) {
+        showDateError($('#ctrl_day').getAttribute('data-error-format'));
+        return {status: false};
+    }
+
+    const age_in_range = Object.keys(package_data)
+        .filter(k => _.startsWith(k, current_package))
+        .some(k => Object.keys(package_data[k]).some(ageRange => checkAge(birthday, package_data[k].ageRange)))
+
+    if (!age_in_range) {
+        showDateError($('#ctrl_day').getAttribute('data-error-not-qualify'));
+        return {status: false};
+    }
+
+    genPriceVC(package_data)
+
+    const age = calculateAge(birthday)
+    return {
+        status: true, data: {
+            fdHBD: birthday,
+            fdAge: age.year
+        }
+    };
+}
+
+
+
+const genPriceVC = (package_data) => {
+
+    let packageSelect = $('#ctrl_package').value;
+    const allPack = Object.keys(package_data)
+        .filter(k => _.startsWith(k, current_package + packageSelect))
+
+    // console.log(package_data);
+    // console.log(current_package);
+    // console.log(packageSelect);
+    // console.log(allPack);
+
+    $$('#table-detail td[data-package],#table-detail th[data-package]').forEach($el => {
+        if (allPack.includes($el.getAttribute("data-package"))) {
+            $el.style.display = "table-cell";
+        } else {
+            $el.style.display = "none";
+        }
+    });
+
+    allPack.map(k => {
+        const pack = Object.keys(package_data[k].price).filter(packaging => checkPackVC(packageSelect,packaging))
+        $(`strong[data-price-${k}]`).innerHTML = parseInt(package_data[k].price[pack]).toLocaleString();
+    });
+}
+
+const checkPackVC = (packageSelect,pack) => {
+    if(packageSelect === pack)
+    {
+        return true;
+    }
+    return false;
+}
+
+const getSelectedPriceVC = (packageCode, package_data) => {
+    const pack = Object.keys(package_data[packageCode].price);
+    return package_data[packageCode].price[pack];
+}
+
+
 document.addEventListener("DOMContentLoaded", async () => {
     const package_data = await getPackageData(current_package);
     const nationality_data = await getNationalityData();
 
     let nationality_option = `<option value="">${$('#fdNationality').getAttribute('data-please-select')}</option>`;
     Object.keys(nationality_data).map(v => {
-        if (v !== "Thailand") {
+        // if (v !== "Thailand") {
             nationality_option += `<option value="${v}">${v}</option>`;
-        }
+        // }
     });
 
     $(`#fdNationality`).innerHTML = nationality_option;
@@ -388,6 +475,12 @@ document.addEventListener("DOMContentLoaded", async () => {
         });
     });
 
+    $$("#ctrl_package").forEach($el => {
+        $el.addEventListener("change", function (e) {
+            genPriceVC(package_data);
+        });
+    });
+
     const $form = $('#step3');
     const allField = $form.querySelectorAll('input,select,textarea');
     allField.forEach(field => {
@@ -412,11 +505,12 @@ document.addEventListener("DOMContentLoaded", async () => {
             } else {
                 switch (parseInt(step)) {
                     case 1:
-                        const validateResult = validateAgeInPackage(package_data);
+                        const validateResult = validateAgeInPackageVC(package_data);
                         status = validateResult.status;
                         if (validateResult.status) {
                             data = {...data, ...validateResult.data};
                         }
+
                         //Case web portal
                         var myEle = document.getElementById("portal_key");
                         if(myEle){
@@ -450,12 +544,9 @@ document.addEventListener("DOMContentLoaded", async () => {
                         }
 
                         break;
-
                     case 2:
                         const fdPackage = $btn.getAttribute('data-package');
-
                         $('#form-head').innerHTML = $btn.getAttribute('data-plan');
-
 
                         if (fdPackage) {
                             data = {
@@ -476,6 +567,8 @@ document.addEventListener("DOMContentLoaded", async () => {
 
                         break;
                     case 3:
+
+                        // console.log('step3');
 
                         let address = ($('#ctrl_province').value).split('*');
 
@@ -510,7 +603,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                             ctrl_accept_insurance_term: $('#ctrl_accept_insurance_term').checked ? true : undefined,
                             ctrl_terms: $('#ctrl_terms').checked ? true : undefined,
                             ctrl_province: $('#ctrl_province').value,
-                            fdPayAMT: getSelectedPrice(data.fdHBD, data.fdPackage, package_data)
+                            fdPayAMT: getSelectedPriceVC(data.fdPackage, package_data)
                         }
 
 
@@ -596,6 +689,16 @@ document.addEventListener("DOMContentLoaded", async () => {
                 changeStep(step, goToStep);
                 step = goToStep;
             }
+
+            // //Show Step 2 Only
+            // if(status === true && parseInt(step) === 2)
+            // {
+            //     $(`#sectionPackage`).style.display = "block";
+            // }
+            // else
+            // {
+            //     $(`#sectionPackage`).style.display = "none";
+            // }
         });
 
     })

@@ -21,7 +21,6 @@ export const getCountryData = async () => {
     let res = await fetch(`/storage/json/country.json`);
     return await res.json();
 }
-
 export const validateAgeInPackage = (package_data) => {
     $$('.date-input .controls-wrapper').forEach(el => {
         el.classList.remove('error');
@@ -79,10 +78,10 @@ export const genPrice = (birthday, package_data) => {
 
 export const checkAge = (birthday, ageRange) => {
 
+    // console.log(ageRange);
+
     const range = ageRange.split('-');
     const age = calculateAge(birthday)
-
-    console.log(age);
 
     if (range[0].indexOf(',') !== -1) {
         const monthRange = range[0].split(',');
@@ -106,27 +105,26 @@ export const checkAge = (birthday, ageRange) => {
             const rangeAll = ageRange.split(',');
             const yearRange = rangeAll[2].split('-');
 
-            console.log('DOB : day month year ' + age.day +' '+ age.month +' '+ age.year)
-            console.log('CON : day month year ' + rangeAll[0] +' '+ rangeAll[1] +' '+ yearRange[1])
+            // console.log('DOB : day month year ' + age.day +' '+ age.month +' '+ age.year)
+            // console.log('CON : day month year ' + rangeAll[0] +' '+ rangeAll[1] +' '+ yearRange[1])
 
             if (age.year >= yearRange[0] && age.year < yearRange[1])
             {
-                // console.log('year between');
                 if(age.year == yearRange[0])
                 {
-                    // console.log('year =');
-                    if(age.month >= rangeAll[1])
+                    if(age.month <= rangeAll[1])
                     {
-                        // console.log('month >=');
                         if(age.day >= rangeAll[0])
                         {
-                            // console.log('day >=');
                             return true;
                         }
                     }
+                    else
+                    {
+                        return true;
+                    }
                 }
                 else
-                    // console.log('year more than');
                     return true;
             }
             else

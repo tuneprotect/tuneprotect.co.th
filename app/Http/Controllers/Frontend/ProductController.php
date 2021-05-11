@@ -106,7 +106,6 @@ class ProductController extends BaseController
             }
         }
 
-
         if (Storage::disk('public')->exists('json/' . strtolower($this->bodyData['selected']) . '.json')) {
             $package_detail = json_decode(Storage::disk('public')->get('json/' . strtolower($this->bodyData['selected']) . '.json'));
             foreach ($package_detail as $k => $v) {
@@ -116,7 +115,6 @@ class ProductController extends BaseController
             }
         }
 
-//        dd($this->bodyData['package_detail']);
 
         $this->template->setBody('id', 'product_page');
 
@@ -150,7 +148,6 @@ class ProductController extends BaseController
 
     protected function combindObj($data)
     {
-
         if (substr($data['fdPackage'], 0, 4) === 'ONPA') {
             $obj = new PAObject();
         } elseif (substr($data['fdPackage'], 0, 8) === 'ONCOVIDA') {
@@ -244,7 +241,11 @@ class ProductController extends BaseController
             else{
                 $package = (array)json_decode(Storage::disk('public')->get('json/onvacina.json'));
             }
+
             $obj->fdPackage = $package[$data['fdPackage']]->apiPackage;
+
+//            dd($obj->fdPackage);
+
         } elseif (substr($data['fdPackage'], 0, 8) === 'ONCOVIDL' ||
             substr($data['fdPackage'], 0, 6) === 'ONTALN'
         ) {

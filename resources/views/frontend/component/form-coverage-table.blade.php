@@ -1,4 +1,23 @@
 <section style="display: none" id="step2" class="product-detail">
+    @if(strtolower($selected) == 'onvacina')
+        <section id="sectionPackage"  class="wrapper">
+            <form method="post" action="" class="insurance-form">
+                <div class="form-head">Fill to see complete plan</div>
+                <div class="form-inner">
+                    <div class="controls-wrapper">
+                        <select id="ctrl_package" name="ctrl_package">
+                            {{--                <option selected="selected" value="">Select Package</option>--}}
+                            <option value="1">Silver</option>
+                            <option value="2">Gold</option>
+                            <option value="3" selected="selected">Platinum</option>
+                        </select>
+                        <label for="ctrl_package">Package</label>
+                    </div>
+                </div>
+            </form>
+        </section>
+    @endif
+
     <div class="wrapper">
         <table id="table-detail">
             <thead>
@@ -8,6 +27,7 @@
                     <?php $i = 1 ?>
                     @foreach ($package_detail as $k => $v)
                         <a href="#" data-index="{{$i}}"
+                           data-package="{{$k}}"
                            data-gtm="product-{{strtolower($selected)}}-mobile-choose-plan-{{$i}}"
                            class="btn btn-block btn-outline btn-choose-plan {{$i == 1 ? 'on' : '' }}">
                             <strong>@lang('product.plan') {{$i}}</strong>
@@ -17,8 +37,13 @@
                 </th>
                 <?php $i = 1 ?>
                 @foreach ($package_detail as $k => $v)
-                    <th>
-                        <strong>@lang('product.plan') {{$i}}</strong>
+                    <th data-package="{{$k}}">
+                        @if(isset($v->no))
+                            <strong>@lang('product.plan') {{$v->no}}</strong>
+                        @else
+                            <strong>@lang('product.plan') {{$i}}</strong>
+                        @endif
+
                         <a href="#" data-step="3" data-package="{{$k}}" data-sub-package=""
                            data-gtm="product-{{strtolower($selected)}}-top-choose-plan-{{$i}}"
                            data-plan="@lang('product.plan') {{$i}}"
@@ -33,7 +58,7 @@
                 <th>@lang('product.price')</th>
                 <?php $i = 1 ?>
                 @foreach ($package_detail as $k => $v)
-                    <td {{$i > 1 ? 'class=hide' : ""}} data-index="{{$i}}"><strong data-price-{{$k}}></strong></td>
+                    <td {{$i > 1 ? 'class=hide' : ""}} data-index="{{$i}}" data-package="{{$k}}"><strong data-price-{{$k}}></strong></td>
                     <?php $i++ ?>
                 @endforeach
             </tr>
@@ -42,7 +67,7 @@
                     <th>{{$v}}</th>
                     <?php $i = 1 ?>
                     @foreach ($package_detail as $k1 => $v1)
-                        <td {{$i > 1 ? 'class=hide' : ""}} data-index="{{$i}}">
+                        <td {{$i > 1 ? 'class=hide' : ""}} data-index="{{$i}}" data-package="{{$k1}}">
                             @if(isset($v1->plan->$k))
                                 @if((is_numeric($v1->plan->$k)))
                                     <strong>{{number_format( $v1->plan->$k,0)}}</strong>
@@ -65,8 +90,14 @@
                 <th>&nbsp;</th>
                 <?php $i = 1 ?>
                 @foreach ($package_detail as $k => $v)
-                    <td {{$i > 1 ? 'class=hide' : ""}} data-index="{{$i}}">
-                        <strong style="display: block" class="text-center">@lang('product.plan') {{$i}}</strong>
+                    <td {{$i > 1 ? 'class=hide' : ""}} data-index="{{$i}}"  data-package="{{$k}}">
+                        @if(isset($v->no))
+                            <strong style="display: block" class="text-center">@lang('product.plan') {{$v->no}}</strong>
+                        @else
+                            <strong style="display: block" class="text-center">@lang('product.plan') {{$i}}</strong>
+                        @endif
+
+
                         <a href="#"
                            data-gtm="product-{{strtolower($selected)}}-bottom-choose-plan-{{$i}}"
                            data-step="3" data-package="{{$k}}" data-sub-package=""

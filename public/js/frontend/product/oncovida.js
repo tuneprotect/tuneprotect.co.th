@@ -53091,9 +53091,9 @@ var genPrice = function genPrice(birthday, package_data) {
   });
 };
 var checkAge = function checkAge(birthday, ageRange) {
+  // console.log(ageRange);
   var range = ageRange.split('-');
   var age = Object(_helper__WEBPACK_IMPORTED_MODULE_1__["calculateAge"])(birthday);
-  console.log(age);
 
   if (range[0].indexOf(',') !== -1) {
     var monthRange = range[0].split(','); // console.log(monthRange.length);
@@ -53106,23 +53106,19 @@ var checkAge = function checkAge(birthday, ageRange) {
     } else {
       //day and year range
       var rangeAll = ageRange.split(',');
-      var yearRange = rangeAll[2].split('-');
-      console.log('DOB : day month year ' + age.day + ' ' + age.month + ' ' + age.year);
-      console.log('CON : day month year ' + rangeAll[0] + ' ' + rangeAll[1] + ' ' + yearRange[1]);
+      var yearRange = rangeAll[2].split('-'); // console.log('DOB : day month year ' + age.day +' '+ age.month +' '+ age.year)
+      // console.log('CON : day month year ' + rangeAll[0] +' '+ rangeAll[1] +' '+ yearRange[1])
 
       if (age.year >= yearRange[0] && age.year < yearRange[1]) {
-        // console.log('year between');
         if (age.year == yearRange[0]) {
-          // console.log('year =');
-          if (age.month >= rangeAll[1]) {
-            // console.log('month >=');
+          if (age.month <= rangeAll[1]) {
             if (age.day >= rangeAll[0]) {
-              // console.log('day >=');
               return true;
             }
+          } else {
+            return true;
           }
-        } else // console.log('year more than');
-          return true;
+        } else return true;
       } else {
         return false;
       }
