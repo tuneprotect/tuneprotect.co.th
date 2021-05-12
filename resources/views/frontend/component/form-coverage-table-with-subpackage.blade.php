@@ -5,6 +5,7 @@
             <tr>
                 <th>
                     <h3>@lang('global.coverage')</h3>
+                    <?php $i = 1 ?>
                     @foreach ($package_detail as $k => $v)
                         <a href="#" data-index="{{$i}}"
                            data-gtm="product-{{strtolower($selected)}}-mobile-choose-plan-{{$i}}"
@@ -12,9 +13,10 @@
                            class="btn btn-block btn-outline btn-choose-plan {{$i == 1 ? 'on' : '' }}">
                             <strong>@lang('product.plan') {{$v->no}}</strong>
                         </a>
+                        <?php $i++ ?>
                     @endforeach
                 </th>
-
+                <?php $i = 1 ?>
                 @foreach ($package_detail as $k => $v)
                     <th data-package="{{$k}}">
                         <strong>@lang('product.plan') {{$v->no}}</strong>
@@ -23,7 +25,7 @@
                            data-step="3" data-package="{{$k}}" data-sub-package="" data-plan="@lang('product.plan') {{$v->no}}"
                            class="btn btn-block btn-outline btn-goto">@lang('product.choose_plan')</a>
                     </th>
-
+                    <?php $i++ ?>
                 @endforeach
             </tr>
             </thead>

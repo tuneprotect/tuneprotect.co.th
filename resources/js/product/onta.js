@@ -211,13 +211,23 @@ const genPrice = (package_data, subpackage, fdFromDate, fdToDate) => {
     const allPack = Object.keys(package_data)
         .filter(k => _.startsWith(k, current_package + subpackage))
 
-    $$('#table-detail td[data-package],#table-detail th[data-package]').forEach($el => {
-        if (allPack.includes($el.getAttribute("data-package"))) {
-            $el.style.display = "table-cell";
-        } else {
-            $el.style.display = "none";
-        }
-    });
+    if(document.body.clientWidth > 767) {
+        $$('#table-detail td[data-package],#table-detail th[data-package]').forEach($el => {
+            if (allPack.includes($el.getAttribute("data-package"))) {
+                $el.style.display = "table-cell";
+            } else {
+                $el.style.display = "none";
+            }
+        });
+    }else{
+        $$('#table-detail thead a[data-package]').forEach($el => {
+            if ($el.getAttribute("data-package").startsWith('ONTA' + subpackage )) {
+                $el.style.display = "inline-flex";
+            } else {
+                $el.style.display = "none";
+            }
+        });
+    }
 
     let startDate = parseISO(fdFromDate);
     let endDate = parseISO(fdToDate);
