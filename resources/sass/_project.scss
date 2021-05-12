@@ -3306,6 +3306,14 @@ main {
 
 #leadform-section {
     z-index: 0;
+    .insurance-form{
+        .form-inner{
+
+            @media all and (max-width: $sm) {
+                padding: 0;
+            }
+        }
+    }
 }
 
 .my-health-title {
