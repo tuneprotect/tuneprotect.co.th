@@ -2,7 +2,7 @@
     @if(strtolower($selected) == 'onvacina')
         <section id="sectionPackage"  class="wrapper">
             <form method="post" action="" class="insurance-form">
-                <div class="form-head">Fill to see complete plan</div>
+                <div class="form-head">@lang('product.please_specify_birthdate_title')</div>
                 <div class="form-inner">
                     <div class="controls-wrapper">
                         <select id="ctrl_package" name="ctrl_package">
