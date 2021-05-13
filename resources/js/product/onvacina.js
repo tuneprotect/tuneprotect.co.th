@@ -316,13 +316,33 @@ const genPriceVC = (package_data) => {
     // console.log(packageSelect);
     // console.log(allPack);
 
-    $$('#table-detail td[data-package],#table-detail th[data-package]').forEach($el => {
-        if (allPack.includes($el.getAttribute("data-package"))) {
-            $el.style.display = "table-cell";
-        } else {
-            $el.style.display = "none";
-        }
-    });
+    // $$('#table-detail td[data-package],#table-detail th[data-package]').forEach($el => {
+    //     if (allPack.includes($el.getAttribute("data-package"))) {
+    //         $el.style.display = "table-cell";
+    //     } else {
+    //         $el.style.display = "none";
+    //     }
+    // });
+
+    console.log(document.body.clientWidth);
+
+    if(document.body.clientWidth > 767) {
+        $$('#table-detail td[data-package],#table-detail th[data-package]').forEach($el => {
+            if (allPack.includes($el.getAttribute("data-package"))) {
+                $el.style.display = "table-cell";
+            } else {
+                $el.style.display = "none";
+            }
+        });
+    }else{
+        $$('#table-detail thead a[data-package]').forEach($el => {
+            if ($el.getAttribute("data-package").startsWith(current_package + packageSelect )) {
+                $el.style.display = "inline-flex";
+            } else {
+                $el.style.display = "none";
+            }
+        });
+    }
 
     allPack.map(k => {
         const pack = Object.keys(package_data[k].price).filter(packaging => checkPackVC(packageSelect,packaging))

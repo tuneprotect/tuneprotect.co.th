@@ -31,7 +31,12 @@
                            data-index="{{$i}}"
                            data-gtm="product-{{strtolower($selected)}}-mobile-choose-plan-{{$i}}"
                            class="btn btn-block btn-outline btn-choose-plan {{$i == 1 ? 'on' : '' }}">
-                            <strong>@lang('product.plan') {{$i}}</strong>
+                            @if(isset($v->no))
+                                <strong>@lang('product.plan') {{$v->no}}</strong>
+                            @else
+                                <strong>@lang('product.plan') {{$i}}</strong>
+                            @endif
+
                         </a>
                         <?php $i++ ?>
                     @endforeach
