@@ -1,6 +1,6 @@
 import {
     changeStep, checkAge,
-    formatTelNumber, genPrice, getNationalityData,
+    formatTelNumber, genPrice, getNationalityData, getNationalityDataTH,
     getPackageData,
     getSelectedPrice,
     showTitle,
@@ -360,21 +360,33 @@ const getSelectedPriceVC = (packageCode, package_data) => {
 document.addEventListener("DOMContentLoaded", async () => {
     const package_data = await getPackageData(current_package);
     const nationality_data = await getNationalityData();
+    const nationalityth_data = await getNationalityDataTH();
 
     let x = document.getElementById("language");
     // console.log(x);
     x.style.display = "none";
 
     let nationality_option = `<option value="">${$('#fdNationality').getAttribute('data-please-select')}</option>`;
-    Object.keys(nationality_data).map(v => {
-        if (v === "Thailand" && locale === 'th') {
-            nationality_option += `<option value="${v}" selected="selected">${v}</option>`;
-        }
-        else
-        {
-            nationality_option += `<option value="${v}">${v}</option>`;
-        }
-    });
+
+    if(locale === 'th')
+    {
+        Object.keys(nationalityth_data).map(v => {
+            if (v === "ไทย") {
+                nationality_option += `<option value="${v}" selected="selected">${v}</option>`;
+            }
+            else
+            {
+                nationality_option += `<option value="${v}">${v}</option>`;
+            }
+        });
+    }
+    else
+    {
+        Object.keys(nationality_data).map(v => {
+                nationality_option += `<option value="${v}">${v}</option>`;
+        });
+    }
+
 
     $(`#fdNationality`).innerHTML = nationality_option;
 

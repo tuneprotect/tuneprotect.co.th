@@ -11,6 +11,10 @@ export const getNationalityData = async () => {
     let res = await fetch(`/storage/json/nationality.json`);
     return await res.json();
 }
+export const getNationalityDataTH = async () => {
+    let res = await fetch(`/storage/json/nationality_th.json`);
+    return await res.json();
+}
 
 export const getProvinceData = async () => {
     let res = await fetch(`/storage/json/province.json`);
