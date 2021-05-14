@@ -316,15 +316,6 @@ const genPriceVC = (package_data) => {
     // console.log(packageSelect);
     // console.log(allPack);
 
-    // $$('#table-detail td[data-package],#table-detail th[data-package]').forEach($el => {
-    //     if (allPack.includes($el.getAttribute("data-package"))) {
-    //         $el.style.display = "table-cell";
-    //     } else {
-    //         $el.style.display = "none";
-    //     }
-    // });
-
-    // console.log(document.body.clientWidth);
 
     if(document.body.clientWidth > 767) {
         $$('#table-detail td[data-package],#table-detail th[data-package]').forEach($el => {
