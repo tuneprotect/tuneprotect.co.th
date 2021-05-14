@@ -361,6 +361,10 @@ document.addEventListener("DOMContentLoaded", async () => {
     const package_data = await getPackageData(current_package);
     const nationality_data = await getNationalityData();
 
+    let x = document.getElementById("language");
+    // console.log(x);
+    x.style.display = "none";
+
     let nationality_option = `<option value="">${$('#fdNationality').getAttribute('data-please-select')}</option>`;
     Object.keys(nationality_data).map(v => {
         if (v === "Thailand") {

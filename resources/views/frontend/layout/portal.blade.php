@@ -17,7 +17,7 @@
             </ul>
         </nav>
         <div class="right">
-            <div class="language-section">
+            <div class="language-section" id="language" name="language">
                 @if(count($activeLanguage) > 1 )
 
                     <ul class="language-switcher">
