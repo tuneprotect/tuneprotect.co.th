@@ -38,6 +38,15 @@ class ProductController extends BaseController
             return redirect()->route('current', ['locale' => 'en', 'controller' => 'product', 'func' => $link, 'params' => $selected]);
         }
 
+        if($selected ==='ONVACINA')
+        {
+            $this->bodyData['swithleng'] = "0";
+        }
+        else
+        {
+            $this->bodyData['swithleng'] = "1";
+        }
+
         $this->bodyData['current_product'] = WebContent::where('type_id', ProjectEnum::WEB_CONTENT_PRODUCT)
             ->where('friendly_url', $link)
             ->with(['locales', 'productPackage' => function ($q) {
