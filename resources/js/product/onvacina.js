@@ -367,14 +367,15 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     let nationality_option = `<option value="">${$('#fdNationality').getAttribute('data-please-select')}</option>`;
     Object.keys(nationality_data).map(v => {
-        if(locale === 'th')
-        {
-            nationality_option += `<option value="${v}" selected="selected">${v}</option>`;
+        if (v === "Thailand") {
+            if(locale === 'th')
+            {
+                nationality_option += `<option value="${v}" selected="selected">${v}</option>`;
+            }
         }
-        else
-        {
-            nationality_option += `<option value="${v}">${v}</option>`;
-        }
+
+        nationality_option += `<option value="${v}">${v}</option>`;
+
     });
 
     $(`#fdNationality`).innerHTML = nationality_option;
