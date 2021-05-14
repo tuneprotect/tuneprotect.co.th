@@ -324,7 +324,7 @@ const genPriceVC = (package_data) => {
     //     }
     // });
 
-    console.log(document.body.clientWidth);
+    // console.log(document.body.clientWidth);
 
     if(document.body.clientWidth > 767) {
         $$('#table-detail td[data-package],#table-detail th[data-package]').forEach($el => {
@@ -370,9 +370,16 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     let nationality_option = `<option value="">${$('#fdNationality').getAttribute('data-please-select')}</option>`;
     Object.keys(nationality_data).map(v => {
-        // if (v !== "Thailand") {
-            nationality_option += `<option value="${v}">${v}</option>`;
-        // }
+        if (v === "Thailand") {
+            if(locale === 'th')
+            {
+                nationality_option += `<option value="${v}" selected="selected">${v}</option>`;
+            }
+            else
+            {
+                nationality_option += `<option value="${v}">${v}</option>`;
+            }
+        }
     });
 
     $(`#fdNationality`).innerHTML = nationality_option;
