@@ -316,6 +316,7 @@ const genPriceVC = (package_data) => {
     // console.log(packageSelect);
     // console.log(allPack);
 
+    //Add new
 
     if(document.body.clientWidth > 767) {
         $$('#table-detail td[data-package],#table-detail th[data-package]').forEach($el => {
