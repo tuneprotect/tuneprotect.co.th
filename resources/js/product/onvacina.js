@@ -311,12 +311,13 @@ const genPriceVC = (package_data) => {
     const allPack = Object.keys(package_data)
         .filter(k => _.startsWith(k, current_package + packageSelect))
 
+
     // console.log(package_data);
     // console.log(current_package);
     // console.log(packageSelect);
     // console.log(allPack);
 
-    //Add new
+    //Add new document.body.clientWidth
 
     if(document.body.clientWidth > 767) {
         $$('#table-detail td[data-package],#table-detail th[data-package]').forEach($el => {

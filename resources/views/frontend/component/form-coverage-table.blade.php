@@ -6,7 +6,6 @@
                 <div class="form-inner">
                     <div class="controls-wrapper">
                         <select id="ctrl_package" name="ctrl_package">
-                            {{--                <option selected="selected" value="">Select Package</option>--}}
                             <option value="1">Silver</option>
                             <option value="2">Gold</option>
                             <option value="3" selected="selected">Platinum</option>
