@@ -21,7 +21,6 @@ export const getCountryData = async () => {
     let res = await fetch(`/storage/json/country.json`);
     return await res.json();
 }
-
 export const validateAgeInPackage = (package_data) => {
     $$('.date-input .controls-wrapper').forEach(el => {
         el.classList.remove('error');
@@ -79,18 +78,63 @@ export const genPrice = (birthday, package_data) => {
 
 export const checkAge = (birthday, ageRange) => {
 
+    // console.log(ageRange);
+
     const range = ageRange.split('-');
     const age = calculateAge(birthday)
 
     if (range[0].indexOf(',') !== -1) {
         const monthRange = range[0].split(',');
-        if (
-            (age.year > monthRange[0] || (age.year == monthRange[0] && age.month > monthRange[1]))
-            && age.year < range[1]
-        ) {
 
-            return true;
+        // console.log(monthRange.length);
+
+        if(monthRange.length == 2)
+        {
+            //month and year range
+            if (
+                (age.year > monthRange[0] || (age.year == monthRange[0] && age.month > monthRange[1]))
+                && age.year < range[1]
+            ) {
+
+                return true;
+            }
         }
+        else
+        {
+            //day and year range
+            const rangeAll = ageRange.split(',');
+            const yearRange = rangeAll[2].split('-');
+
+            // console.log('DOB : day month year ' + age.day +' '+ age.month +' '+ age.year)
+            // console.log('CON : day month year ' + rangeAll[0] +' '+ rangeAll[1] +' '+ yearRange[1])
+
+            if (age.year >= yearRange[0] && age.year < yearRange[1])
+            {
+                if(age.year == yearRange[0])
+                {
+                    if(age.month <= rangeAll[1])
+                    {
+                        if(age.day >= rangeAll[0])
+                        {
+                            return true;
+                        }
+                    }
+                    else
+                    {
+                        return true;
+                    }
+                }
+                else
+                    return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+
+
     } else if (age.year >= range[0] && age.year < range[1]) {
         return true;
     }
