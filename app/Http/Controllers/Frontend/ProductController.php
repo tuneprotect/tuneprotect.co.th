@@ -29,22 +29,12 @@ class ProductController extends BaseController
     public function index($link = null, $selected = null)
     {
 //        dd('link : ' . $link . '$selected : ' . $selected);
-
         if (empty($link)) {
             return redirect("/" . $this->locale);
         }
 
         if (in_array($selected, ['ONTALN', 'ONCOVIDL', 'ONTA']) && $this->locale === 'th') {
             return redirect()->route('current', ['locale' => 'en', 'controller' => 'product', 'func' => $link, 'params' => $selected]);
-        }
-
-        if($selected ==='ONVACINA')
-        {
-            $this->bodyData['swithleng'] = "0";
-        }
-        else
-        {
-            $this->bodyData['swithleng'] = "1";
         }
 
         $this->bodyData['current_product'] = WebContent::where('type_id', ProjectEnum::WEB_CONTENT_PRODUCT)

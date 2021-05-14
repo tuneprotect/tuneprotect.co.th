@@ -17,29 +17,26 @@
             </ul>
         </nav>
         <div class="right">
-            @if($swithleng === "1")
-                <div class="language-section">
-                    @if(count($activeLanguage) > 1 )
+            <div class="language-section">
+                @if(count($activeLanguage) > 1 )
 
-                        <ul class="language-switcher">
-                            <li class="current">
-                                <strong>{{$locale}} <i class="icofont-caret-right"></i></strong>
-                                <ul>
-                                    @foreach($activeLanguage as $v)
-                                        @if($v->code !== $locale )
-                                            <li>
-                                                <a data-gtm="language-switcher-{{$v->code}}"
-                                                   href="{{ url("/{$v->code}/{$current_path}") }}">{{  strtoupper($v->code)}}</a>
-                                            </li>
-                                        @endif
-                                    @endforeach
-                                </ul>
-                            </li>
-                        </ul>
-                    @endif
-                </div>
-            @endif
-
+                    <ul class="language-switcher">
+                        <li class="current">
+                            <strong>{{$locale}} <i class="icofont-caret-right"></i></strong>
+                            <ul>
+                                @foreach($activeLanguage as $v)
+                                    @if($v->code !== $locale )
+                                        <li>
+                                            <a data-gtm="language-switcher-{{$v->code}}"
+                                               href="{{ url("/{$v->code}/{$current_path}") }}">{{  strtoupper($v->code)}}</a>
+                                        </li>
+                                    @endif
+                                @endforeach
+                            </ul>
+                        </li>
+                    </ul>
+                @endif
+            </div>
             @include('frontend.component.call_center', ['color' => 'red','gtm' => 'header-call-center'])
         </div>
     </header>
@@ -195,7 +192,6 @@
         // }(document, 'script', 'facebook-jssdk'));
 
     </script>
-
 
     <!-- Your Chat Plugin code -->
 {{--    <div class="fb-customerchat"--}}
