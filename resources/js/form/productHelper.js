@@ -112,23 +112,23 @@ export const checkAge = (birthday, ageRange) => {
             // console.log('DOB : day month year ' + age.day +' '+ age.month +' '+ age.year)
             // console.log('CON : day month year ' + rangeAll[0] +' '+ rangeAll[1] +' '+ yearRange[1])
 
-            if (age.year >= yearRange[0] && age.year < yearRange[1])
+            if (age.year >= yearRange[1])
             {
-                if(age.year == yearRange[0])
-                {
-                    if(age.month <= rangeAll[1])
-                    {
-                        if(age.day >= rangeAll[0])
-                        {
-                            return true;
-                        }
-                    }
-                    else
-                    {
-                        return true;
-                    }
-                }
-                else
+                // if(age.year == yearRange[0])
+                // {
+                //     if(age.month <= rangeAll[1])
+                //     {
+                //         if(age.day >= rangeAll[0])
+                //         {
+                //             return true;
+                //         }
+                //     }
+                //     else
+                //     {
+                //         return true;
+                //     }
+                // }
+                // else
                     return true;
             }
             else

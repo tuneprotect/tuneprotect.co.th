@@ -23,14 +23,22 @@
                 <div class="controls-wrapper">
                     <ul class="check-wrapper">
                         <li>
-                            <input id="ctrl_question_1_N" name="fdQuestion1" type="radio"
-                                   value="N" data-error-q1="@lang('product.error.health')"/><label
-                                for="ctrl_question_1_N">@lang("product.no")</label>
+                            <input id="ctrl_question_1_N" name="fdQuestion1" type="radio" value="N" data-error-q1="@lang('product.error.health')"/>
+                            @if($locale == 'en')
+                                <label for="ctrl_question_1_N">@lang("product.no")</label>
+                            @else
+                                <label for="ctrl_question_1_N">ไม่เคย</label>
+                            @endif
+
                         </li>
                         <li>
-                            <input id="ctrl_question_1_Y" name="fdQuestion1" type="radio"
-                                   value="Y"/><label
-                                for="ctrl_question_1_Y">@lang("product.yes")</label>
+                            <input id="ctrl_question_1_Y" name="fdQuestion1" type="radio" value="Y"/>
+                            @if($locale == 'en')
+                                <label for="ctrl_question_1_Y">@lang("product.yes")</label>
+                            @else
+                                <label for="ctrl_question_1_Y">เคย</label>
+                            @endif
+
                         </li>
                     </ul>
                 </div>
@@ -62,13 +70,21 @@
                     <ul class="check-wrapper">
                         <li>
                             <input id="ctrl_question_2_N" name="fdQuestion2" type="radio"
-                                   value="N" data-error-q2="@lang('product.error.congenital_disease')" /><label
-                                for="ctrl_question_2_N">@lang("product.no")</label>
+                                   value="N" data-error-q2="@lang('product.error.congenital_disease')" />
+                            @if($locale == 'en')
+                                <label for="ctrl_question_2_N">@lang("product.no")</label>
+                            @else
+                                <label for="ctrl_question_2_N">ไม่เคย</label>
+                            @endif
                         </li>
                         <li>
                             <input id="ctrl_question_2_Y" name="fdQuestion2" type="radio"
-                                   value="Y"/><label
-                                for="ctrl_question_2_Y">@lang("product.yes")</label>
+                                   value="Y"/>
+                            @if($locale == 'en')
+                                <label for="ctrl_question_2_Y">@lang("product.yes")</label>
+                            @else
+                                <label for="ctrl_question_2_Y">เคย</label>
+                            @endif
                         </li>
                     </ul>
                 </div>

@@ -340,6 +340,7 @@ const genPriceVC = (package_data) => {
     allPack.map(k => {
         const pack = Object.keys(package_data[k].price).filter(packaging => checkPackVC(packageSelect,packaging))
         $(`strong[data-price-${k}]`).innerHTML = parseInt(package_data[k].price[pack]).toLocaleString();
+        // console.log(package_data[k]);
     });
 }
 
@@ -389,6 +390,8 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 
     $(`#fdNationality`).innerHTML = nationality_option;
+    document.getElementById("fdNationality").disabled = true;
+    document.getElementById("ctrl_document_type").disabled = true;
 
     let Keys = "";
     var myEle = document.getElementById("portal_key");
