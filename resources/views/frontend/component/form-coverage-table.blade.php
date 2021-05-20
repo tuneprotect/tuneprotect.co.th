@@ -5,7 +5,7 @@
                 @if($locale == 'en')
                     <div class="form-head">@lang('product.please_specify_birthdate_title')</div>
                 @else
-                    <div class="form-head">เลือกแผนประกัน</div>
+                    <div class="form-head">เลือกแผนประกันภัย</div>
                 @endif
 
                 <div class="form-inner">
