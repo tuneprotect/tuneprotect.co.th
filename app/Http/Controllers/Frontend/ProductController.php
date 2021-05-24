@@ -530,6 +530,7 @@ class ProductController extends BaseController
                     $request->session()->put('return_link', $request->input('user_defined_2'));
                     $func = 'thankyou';
                 } else {
+//                    dd($result);
                     $func = 'error';
                 }
                 break;
