@@ -363,9 +363,9 @@ document.addEventListener("DOMContentLoaded", async () => {
     const nationality_data = await getNationalityData();
     const nationalityth_data = await getNationalityDataTH();
 
-    let x = document.getElementById("language");
-    // console.log(x);
-    x.style.display = "none";
+    // let x = document.getElementById("language");
+    // // console.log(x);
+    // x.style.display = "none";
 
     let nationality_option = `<option value="">${$('#fdNationality').getAttribute('data-please-select')}</option>`;
 
@@ -390,8 +390,8 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 
     $(`#fdNationality`).innerHTML = nationality_option;
-    document.getElementById("fdNationality").disabled = true;
-    document.getElementById("ctrl_document_type").disabled = true;
+    // document.getElementById("fdNationality").disabled = true;
+    // document.getElementById("ctrl_document_type").disabled = true;
 
     let Keys = "";
     var myEle = document.getElementById("portal_key");

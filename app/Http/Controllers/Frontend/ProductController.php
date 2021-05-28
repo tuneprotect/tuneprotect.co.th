@@ -47,14 +47,9 @@ class ProductController extends BaseController
             ->whereRaw(ProjectEnum::isPublish())
             ->first();
 
-//        dd($this->bodyData['current_product']);
-
         if ($selected) {
-//            dd('1');
             return $this->genDetailPage($selected);
-
         } else {
-//            dd('2');
             $this->bodyData['faq'] = $this->setFaq(ProjectEnum::WEB_CONTENT_FAQ, $this->bodyData['current_product']->id);
             return $this->genListPage();
         }
@@ -132,6 +127,7 @@ class ProductController extends BaseController
         try {
             $this->template->setFootJS(mix("/js/frontend/product/" . strtolower($this->bodyData['selected']) . ".js"));
         } catch (\Exception $exception) {
+            // dd('js error.');
         }
 
         // dd($this->bodyData['controller']);
@@ -163,6 +159,8 @@ class ProductController extends BaseController
             $obj = new BaseTAObject();
             $obj->fdDestFrom = "THA";
         } elseif (substr($data['fdPackage'], 0, 8) === 'ONVACINA') {
+            $obj = new VACINAObject();
+        } elseif (substr($data['fdPackage'], 0, 8) === 'ONVSAFEA') {
             $obj = new VACINAObject();
         } else {
             $obj = new BaseInsuranceObject();
@@ -219,7 +217,9 @@ class ProductController extends BaseController
             }
         }
 
-        if (substr($data['fdPackage'], 0, 8) === 'ONCOVIDA' || substr($data['fdPackage'], 0, 8) === 'ONVACINA') {
+        if (substr($data['fdPackage'], 0, 8) === 'ONCOVIDA' 
+        || substr($data['fdPackage'], 0, 8) === 'ONVACINA'
+        || substr($data['fdPackage'], 0, 8) === 'ONVSAFEA') {
 
 
             if (isset($data['fdQuestion2_1']) && ($key = array_search('other', $data['fdQuestion2_1'])) !== false) {
@@ -237,13 +237,18 @@ class ProductController extends BaseController
             {
                 $package = (array)json_decode(Storage::disk('public')->get('json/oncovida.json'));
             }
-            else{
+            if (substr($data['fdPackage'], 0, 8) === 'ONVACINA')
+            {
                 $package = (array)json_decode(Storage::disk('public')->get('json/onvacina.json'));
+            }
+            if (substr($data['fdPackage'], 0, 8) === 'ONVSAFEA')
+            {
+                $package = (array)json_decode(Storage::disk('public')->get('json/onvsafea.json'));
             }
 
             $obj->fdPackage = $package[$data['fdPackage']]->apiPackage;
 
-//            dd($obj->fdPackage);
+            // dd($obj->fdPackage);
 
         } elseif (substr($data['fdPackage'], 0, 8) === 'ONCOVIDL' ||
             substr($data['fdPackage'], 0, 6) === 'ONTALN'
@@ -396,6 +401,9 @@ class ProductController extends BaseController
         } elseif (substr($package, 0, 8) === 'ONVACINA') {
             $this->thankYouParam = substr($package, 0, 8);
             $link = 'IssuePolicyVacin';
+        } elseif (substr($package, 0, 8) === 'ONVSAFEA') {
+            $this->thankYouParam = substr($package, 0, 8);
+            $link = 'IssuePolicyVsafe';
         }
         return config('tune-api.url') . $link;
     }

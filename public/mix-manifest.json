@@ -1,5 +1,5 @@
 {
-    "/js/backstage/index.js": "/js/backstage/index.js?id=5c1760bff7404e77a9d6",
+    "/js/backstage/index.js": "/js/backstage/index.js?id=ac8363cea74eb941a937",
     "/js/frontend/article.js": "/js/frontend/article.js?id=36f5b29aa58412db7ee6",
     "/js/frontend/biglife.js": "/js/frontend/biglife.js?id=2302ad01ac8283a5a410",
     "/js/frontend/contactus.js": "/js/frontend/contactus.js?id=c74f93652a13d9095e17",
@@ -17,5 +17,6 @@
     "/js/frontend/product/onta.js": "/js/frontend/product/onta.js?id=3b7faf9cdcb7e6d35738",
     "/js/frontend/product/ontadm.js": "/js/frontend/product/ontadm.js?id=8f76b7f5108d6eafb090",
     "/js/frontend/product/ontaln.js": "/js/frontend/product/ontaln.js?id=9100e3fd7f51341f5c60",
-    "/js/frontend/product/onvacina.js": "/js/frontend/product/onvacina.js?id=96606f30cf7ebfacbd83"
+    "/js/frontend/product/onvacina.js": "/js/frontend/product/onvacina.js?id=932f404fbdf6ba920cf0",
+    "/js/frontend/product/onvsafea.js": "/js/frontend/product/onvsafea.js?id=30daa1c8a3b4c790e678"
 }
