@@ -63,13 +63,14 @@
 
                             </div>
                         @elseif($locale == 'en')
-                            @if(!empty($v->pic_en))
+                        @if(!empty($v->pic_en))
                                 @if($selected==='ONVACINA')
                                     <picture>
                                     <source media="(min-width:768px)" srcset="{{url(str_replace('Banner_Covid_D', 'Banner_VSURE_D_EN', $v->pic))}}">
                                             <img src="{{url(!empty($v->pic_mobile) ? url(str_replace('Banner_Covid_D', 'Banner_VSURE_D_EN', $v->pic_mobile)) : url(str_replace('Banner_Covid_D', 'Banner_VSURE_M_EN', $v->pic)) )}}"
                                                 alt="{{$v->locales[$locale]->title}}">
                                                 </picture>
+
                                 @else
                                     <picture>
                                         <source media="(min-width:768px)" srcset="{{url($v->pic_en)}}">
@@ -83,7 +84,7 @@
                                 @if($selected==='ONVACINA')
                                     <picture>
                                         <source media="(min-width:768px)" srcset="{{url(str_replace('Banner_Covid_D', 'Banner_VSure_Protect_D', $v->pic))}}">
-                                        <img src="{{url(!empty($v->pic_mobile) ? url(str_replace('Banner_Covid_D', 'Banner_VSure_Protect_D', $v->pic_mobile)) : url(str_replace('Banner_Covid_D', 'Banner_VSure_Protect_D', $v->pic)) )}}"
+                                        <img src="{{url(!empty($v->pic_mobile) ? url(str_replace('Banner_Covid_D', 'Banner_VSure_Protect_D', $v->pic_mobile)) : url(str_replace('Banner_Covid_D', 'Banner_VSure_Protect_M', $v->pic)) )}}"
                                              alt="{{$v->locales[$locale]->title}}">
                                     </picture>
                                 @else
