@@ -374,31 +374,50 @@ document.addEventListener("DOMContentLoaded", async () => {
     // // console.log(x);
     // x.style.display = "none";
 
-    let nationality_option = `<option value="">${$('#fdNationality').getAttribute('data-please-select')}</option>`;
+    // let nationality_option = `<option value="">${$('#fdNationality').getAttribute('data-please-select')}</option>`;
 
+    // if(locale === 'th')
+    // {
+    //     Object.keys(nationalityth_data).map(v => {
+    //         if (v === "ไทย") {
+    //             nationality_option += `<option value="${v}" selected="selected">${v}</option>`;
+    //         }
+    //         else
+    //         {
+    //             nationality_option += `<option value="${v}">${v}</option>`;
+    //         }
+    //     });
+    // }
+    // else
+    // {
+    //     Object.keys(nationality_data).map(v => {
+    //             nationality_option += `<option value="${v}">${v}</option>`;
+    //     });
+    // }
+
+
+    // $(`#fdNationality`).innerHTML = nationality_option;
+    // // document.getElementById("fdNationality").disabled = true;
+    // // document.getElementById("ctrl_document_type").disabled = true;
+
+        
+    let nationality_option = `<option value="">${$('#fdNationality').getAttribute('data-please-select')}</option>`;
     if(locale === 'th')
     {
         Object.keys(nationalityth_data).map(v => {
-            if (v === "ไทย") {
-                nationality_option += `<option value="${v}" selected="selected">${v}</option>`;
-            }
-            else
-            {
-                nationality_option += `<option value="${v}">${v}</option>`;
-            }
+            nationality_option += `<option value="${v}">${v}</option>`;
         });
+        $(`#fdNationality`).innerHTML = nationality_option;
+        document.getElementById("fdNationality").value = "ไทย";
     }
     else
     {
         Object.keys(nationality_data).map(v => {
-                nationality_option += `<option value="${v}">${v}</option>`;
+            nationality_option += `<option value="${v}">${v}</option>`;
         });
+        $(`#fdNationality`).innerHTML = nationality_option;
+        document.getElementById("fdNationality").value = "Thailand";
     }
-
-
-    $(`#fdNationality`).innerHTML = nationality_option;
-    // document.getElementById("fdNationality").disabled = true;
-    // document.getElementById("ctrl_document_type").disabled = true;
 
     let Keys = "";
     var myEle = document.getElementById("portal_key");

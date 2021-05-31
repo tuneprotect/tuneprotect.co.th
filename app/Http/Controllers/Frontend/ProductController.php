@@ -104,7 +104,24 @@ class ProductController extends BaseController
             $package_detail = json_decode(Storage::disk('public')->get('json/' . strtolower($this->bodyData['selected']) . '.json'));
             foreach ($package_detail as $k => $v) {
                 if (str_starts_with($k, $selected)) {
+
+                    //Fix code lang for urgent(vacin)
+                    if($this->locale === 'en')
+                    {
+                        if($selected === 'ONVSAFEA')
+                        {
+                            if($v->plan->VSAFEA3 !== '-'){$v->plan->VSAFEA3 = '1,000 (Per day maximun 14 days)';}
+                        }
+                        if($selected === 'ONVACINA')
+                        {
+                            if($v->plan->VACINA3 !== '-'){$v->plan->VACINA3 = '1,000 (Per day maximun 14 days)';}
+                        }
+                    }
+
+                    //Nomakl
                     $this->bodyData['package_detail'][$k] = $v;
+
+
                 }
             }
         }
