@@ -90,21 +90,24 @@
                                     </div>
                                     <ul>
                                         @foreach($v->productPackage AS $v1)
-                                            <li>
-                                                <a
-                                                    data-gtm="index-product-image-{{$v->friendly_url}}-{{$v1->code}}"
-                                                    href="{{route('current',['locale' => $locale,'controller' => 'product','func' => $v->friendly_url,'params' => $v1->code ])}}">
-                                                    <div class="two-tone-icon">
-                                                        <span><img src="{{url($v1->pic)}}" alt=""></span>
-                                                        <strong>{{$v1->locales[$locale]->title}}</strong>
+                                            @if($v1->code !== "ONVACINA")
+                                                <li>
+                                                    <a
+                                                        data-gtm="index-product-image-{{$v->friendly_url}}-{{$v1->code}}"
+                                                        href="{{route('current',['locale' => $locale,'controller' => 'product','func' => $v->friendly_url,'params' => $v1->code ])}}">
+                                                        <div class="two-tone-icon">
+                                                            <span><img src="{{url($v1->pic)}}" alt=""></span>
+                                                            <strong>{{$v1->locales[$locale]->title}}</strong>
+                                                        </div>
+                                                    </a>
+                                                    <div class="btn-wrapper">
+                                                        <a class="btn btn-gradient"
+                                                           data-gtm="index-product-button-{{$v->friendly_url}}-{{$v1->code}}"
+                                                           href="{{route('current',['locale' => $locale,'controller' => 'product','func' => $v->friendly_url,'params' => $v1->code ])}}">@lang('global.choose_product')</a>
                                                     </div>
-                                                </a>
-                                                <div class="btn-wrapper">
-                                                    <a class="btn btn-gradient"
-                                                       data-gtm="index-product-button-{{$v->friendly_url}}-{{$v1->code}}"
-                                                       href="{{route('current',['locale' => $locale,'controller' => 'product','func' => $v->friendly_url,'params' => $v1->code ])}}">@lang('global.choose_product')</a>
-                                                </div>
-                                            </li>
+                                                </li>
+                                            @endif
+
                                         @endforeach
                                     </ul>
                                 </div>

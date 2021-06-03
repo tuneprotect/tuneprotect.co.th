@@ -10,7 +10,6 @@ use App\Enum\ProjectEnum;
 class PortalController extends ProductController
 {
     protected $controller = 'portal';
-
     public function index($link = null, $selected = null,$portal_key = null)
     {
         //test push
@@ -46,6 +45,8 @@ class PortalController extends ProductController
         }
         $this->bodyData['nopayment_status'] = $nopayment_status;
         session(['nopayment_status' => $nopayment_status]);
+
+
 
         return parent::index($link,$selected);
 

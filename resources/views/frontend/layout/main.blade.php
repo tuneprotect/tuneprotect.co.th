@@ -172,19 +172,39 @@
                             </div>
                         @elseif($locale == 'en')
                             @if(!empty($v->pic_en))
-                                <picture>
-                                    <source media="(min-width:768px)" srcset="{{url($v->pic_en)}}">
-                                    <img src="{{url(!empty($v->pic_mobile_en) ? $v->pic_mobile_en : $v->pic_en )}}"
-                                         alt="{{$v->locales[$locale]->title}}">
-                                </picture>
+                                @if(isset($selected))
+                                    @if($selected==='ONVSAFEA')
+                                    <picture>
+                                            <source media="(min-width:768px)" srcset="{{url(str_replace('Banner_Covid_D_EN', 'Banner_VSafe_D_EN', $v->pic_en))}}">
+                                            <img src="{{url(!empty($v->pic_mobile_en) ? url(str_replace('Banner_Covid_D_EN', 'Banner_VSafe_D_EN', $v->pic_mobile_en)) : url(str_replace('Banner_Covid_D_EN', 'Banner_VSafe_M_EN', $v->pic_en)) )}}"
+                                                alt="{{$v->locales[$locale]->title}}">
+                                        </picture>
+                                    @endif
+                                @else
+                                    <picture>
+                                        <source media="(min-width:768px)" srcset="{{url($v->pic_en)}}">
+                                        <img src="{{url(!empty($v->pic_mobile_en) ? $v->pic_mobile_en : $v->pic_en )}}"
+                                             alt="{{$v->locales[$locale]->title}}">
+                                    </picture>
+                                @endif
                             @endif
                         @else
                             @if(!empty($v->pic))
-                                <picture>
-                                    <source media="(min-width:768px)" srcset="{{url($v->pic)}}">
-                                    <img src="{{url(!empty($v->pic_mobile) ? $v->pic_mobile : $v->pic )}}"
-                                         alt="{{$v->locales[$locale]->title}}">
-                                </picture>
+                                @if(isset($selected))
+                                    @if($selected==='ONVSAFEA')
+                                        <picture>
+                                            <source media="(min-width:768px)" srcset="{{url(str_replace('Banner_Covid_D', 'Banner_VSafe_D', $v->pic))}}">
+                                            <img src="{{url(!empty($v->pic_mobile) ? url(str_replace('Banner_Covid_D', 'Banner_VSafe_D', $v->pic_mobile)) : url(str_replace('Banner_Covid_D', 'Banner_VSafe_M', $v->pic)) )}}"
+                                                alt="{{$v->locales[$locale]->title}}">
+                                        </picture>
+                                    @endif
+                                @else
+                                    <picture>
+                                        <source media="(min-width:768px)" srcset="{{url($v->pic)}}">
+                                        <img src="{{url(!empty($v->pic_mobile) ? $v->pic_mobile : $v->pic )}}"
+                                            alt="{{$v->locales[$locale]->title}}">
+                                    </picture>
+                                @endif
                             @endif
                         @endif
                     </a>
