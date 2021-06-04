@@ -111,6 +111,7 @@ class ProductController extends BaseController
                         if($selected === 'ONVSAFEA')
                         {
                             if($v->plan->VSAFEA3 !== '-'){$v->plan->VSAFEA3 = '1,000 (Per day maximun 14 days)';}
+                            if($v->plan->VSAFEB2 !== '-'){$v->plan->VSAFEB2 = 'Service of online Health2GO medical consultation';}
                         }
                         if($selected === 'ONVACINA')
                         {
