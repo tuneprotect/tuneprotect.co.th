@@ -280,10 +280,12 @@
 
                                 @foreach ($claim as $v1)
                                     @if($v->id == $v1->cat_id )
+                                        @if(strtolower($v1->locales[$locale]->title) !== 'vsure')
                                         <li>
                                             <a data-gtm="footer-nav-claim-{{$v1->friendly_url}}"
                                                href="{{route('current',['locale' => $locale,'controller' => 'claim','func' => $v1->friendly_url ])}}">{{$v1->locales[$locale]->title}}</a>
                                         </li>
+                                        @endif
                                     @endif
                                 @endforeach
 
