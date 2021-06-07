@@ -37,6 +37,12 @@ const config = {
         validate: Yup.string()
             .required(<Translate id="error_message.required"/>)
     },
+    sub_title: {
+        fieldProp: {
+            editor: true,
+            label: <Translate id="global.overview"/>
+        }
+    },
     content: {
         fieldProp: {
             editor: true,

@@ -25,7 +25,7 @@ export const getCountryData = async () => {
     let res = await fetch(`/storage/json/country.json`);
     return await res.json();
 }
-export const validateAgeInPackage = (package_data) => {
+export const validateAgeInPackage = (package_data,cal_price) => {
     $$('.date-input .controls-wrapper').forEach(el => {
         el.classList.remove('error');
     });
@@ -61,7 +61,11 @@ export const validateAgeInPackage = (package_data) => {
     }
 
     const age = calculateAge(birthday)
-    genPrice(birthday, package_data)
+
+    if(cal_price!==false){
+        genPrice(birthday, package_data)
+    }
+
 
     return {
         status: true, data: {

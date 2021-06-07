@@ -28,7 +28,33 @@ class ProductController extends BaseController
 
     public function index($link = null, $selected = null)
     {
-//        dd('link : ' . $link . '$selected : ' . $selected);
+
+        $this->getProductDetail($link, $selected);
+
+        if ($selected) {
+            return $this->genDetailPage($selected);
+        } else {
+            $this->bodyData['faq'] = $this->setFaq(ProjectEnum::WEB_CONTENT_FAQ, $this->bodyData['current_product']->id);
+            return $this->genListPage();
+        }
+
+    }
+
+    public function form($link = null, $selected = null)
+    {
+
+        $this->getProductDetail($link, $selected);
+        if ($selected) {
+            return $this->genDetailPage($selected, false);
+        } else {
+//            TODO:redirectหน้าcat
+//            redirect();
+        }
+    }
+
+    protected function getProductDetail($link = null, $selected = null)
+    {
+//        dd($link,$selected);
         if (empty($link)) {
             return redirect("/" . $this->locale);
         }
@@ -46,14 +72,7 @@ class ProductController extends BaseController
             }])
             ->whereRaw(ProjectEnum::isPublish())
             ->first();
-
-        if ($selected) {
-            return $this->genDetailPage($selected);
-        } else {
-            $this->bodyData['faq'] = $this->setFaq(ProjectEnum::WEB_CONTENT_FAQ, $this->bodyData['current_product']->id);
-            return $this->genListPage();
-        }
-
+//dd($this->bodyData['current_product']);
     }
 
     protected function genListPage()
@@ -78,11 +97,12 @@ class ProductController extends BaseController
         }
     }
 
-    protected function genDetailPage($selected)
+    protected function genDetailPage($selected, $isPage = true)
     {
 
         if ($selected) {
             $this->bodyData['selected'] = $selected;
+
             foreach ($this->bodyData['current_product']->productPackage as $v) {
                 if ($v->code === $selected) {
                     $this->setStaticPageHeader($v);
@@ -93,7 +113,7 @@ class ProductController extends BaseController
             $this->bodyData['selected'] = @$this->bodyData['current_product']->productPackage[0]->code;
             $this->setStaticPageHeader($this->bodyData['current_product']);
         }
-
+//        dd( $this->bodyData['current_product']);
         foreach ($this->bodyData['current_product']->productPackage as $v) {
             if ($v->code === $this->bodyData['selected']) {
                 $this->bodyData['current_package'] = $v;
@@ -106,16 +126,19 @@ class ProductController extends BaseController
                 if (str_starts_with($k, $selected)) {
 
                     //Fix code lang for urgent(vacin)
-                    if($this->locale === 'en')
-                    {
-                        if($selected === 'ONVSAFEA')
-                        {
-                            if($v->plan->VSAFEA3 !== '-'){$v->plan->VSAFEA3 = '1,000 (Per day maximun 14 days)';}
-                            if($v->plan->VSAFEB2 !== '-'){$v->plan->VSAFEB2 = 'Service of online Health2GO medical consultation';}
+                    if ($this->locale === 'en') {
+                        if ($selected === 'ONVSAFEA') {
+                            if ($v->plan->VSAFEA3 !== '-') {
+                                $v->plan->VSAFEA3 = '1,000 (Per day maximun 14 days)';
+                            }
+                            if ($v->plan->VSAFEB2 !== '-') {
+                                $v->plan->VSAFEB2 = 'Service of online Health2GO medical consultation';
+                            }
                         }
-                        if($selected === 'ONVACINA')
-                        {
-                            if($v->plan->VACINA3 !== '-'){$v->plan->VACINA3 = '1,000 (Per day maximun 14 days)';}
+                        if ($selected === 'ONVACINA') {
+                            if ($v->plan->VACINA3 !== '-') {
+                                $v->plan->VACINA3 = '1,000 (Per day maximun 14 days)';
+                            }
                         }
                     }
 
@@ -130,17 +153,21 @@ class ProductController extends BaseController
 
         $this->template->setBody('id', 'product_page');
 
-        $this->bodyData['category_leadform'] = WebContent::where('type_id', ProjectEnum::WEB_CONTENT_LEADFORM_CATEGORY)
-            ->with('locales')
-            ->get();
+        if($isPage){
+            $this->bodyData['category_leadform'] = WebContent::where('type_id', ProjectEnum::WEB_CONTENT_LEADFORM_CATEGORY)
+                ->with('locales')
+                ->get();
+
+        }
 
         $this->bodyData['privacy'] = WebContent::where('type_id', ProjectEnum::STATIC_PAGE_PRIVACY_POLICY)
             ->with('locales')
             ->first();
 
         $this->bodyData['controller'] = $this->controller;
-        $this->bodyData['faq'] = $this->setFaq(ProjectEnum::WEB_CONTENT_FAQ, $this->bodyData['current_package']->id);
-
+        if($isPage){
+            $this->bodyData['faq'] = $this->setFaq(ProjectEnum::WEB_CONTENT_FAQ, $this->bodyData['current_package']->id);
+        }
 
         try {
             $this->template->setFootJS(mix("/js/frontend/product/" . strtolower($this->bodyData['selected']) . ".js"));
@@ -153,6 +180,9 @@ class ProductController extends BaseController
         if ($this->controller != 'product') {
             return $this->genView('frontend.page.portal');
         } else {
+            if(!$isPage){
+                return $this->genView('frontend.page.product_form');
+            }
             return $this->genView('frontend.page.product');
         }
 
@@ -235,9 +265,9 @@ class ProductController extends BaseController
             }
         }
 
-        if (substr($data['fdPackage'], 0, 8) === 'ONCOVIDA' 
-        || substr($data['fdPackage'], 0, 8) === 'ONVACINA'
-        || substr($data['fdPackage'], 0, 8) === 'ONVSAFEA') {
+        if (substr($data['fdPackage'], 0, 8) === 'ONCOVIDA'
+            || substr($data['fdPackage'], 0, 8) === 'ONVACINA'
+            || substr($data['fdPackage'], 0, 8) === 'ONVSAFEA') {
 
 
             if (isset($data['fdQuestion2_1']) && ($key = array_search('other', $data['fdQuestion2_1'])) !== false) {
@@ -251,16 +281,13 @@ class ProductController extends BaseController
             if (isset($data['fdQuestion2_1'])) {
                 $obj->fdQuestion2_1 = implode(',', $data['fdQuestion2_1']);
             }
-            if (substr($data['fdPackage'], 0, 8) === 'ONCOVIDA')
-            {
+            if (substr($data['fdPackage'], 0, 8) === 'ONCOVIDA') {
                 $package = (array)json_decode(Storage::disk('public')->get('json/oncovida.json'));
             }
-            if (substr($data['fdPackage'], 0, 8) === 'ONVACINA')
-            {
+            if (substr($data['fdPackage'], 0, 8) === 'ONVACINA') {
                 $package = (array)json_decode(Storage::disk('public')->get('json/onvacina.json'));
             }
-            if (substr($data['fdPackage'], 0, 8) === 'ONVSAFEA')
-            {
+            if (substr($data['fdPackage'], 0, 8) === 'ONVSAFEA') {
                 $package = (array)json_decode(Storage::disk('public')->get('json/onvsafea.json'));
             }
 
@@ -325,7 +352,7 @@ class ProductController extends BaseController
             }
 
 
-            if(session('nopayment_status')) {
+            if (session('nopayment_status')) {
                 return $this->noPayment($result, $price, $log_id);
             }
 
@@ -335,7 +362,7 @@ class ProductController extends BaseController
             $obj = $this->combindObj($data);
             $result = $this->logData($obj);
 
-            if(session('nopayment_status')) {
+            if (session('nopayment_status')) {
                 return $this->noPayment($result);
             }
 
@@ -344,6 +371,7 @@ class ProductController extends BaseController
 
 
     }
+
     protected function noPayment($obj, $price = null, $log_id = null)
     {
         $result = $this->sendToApiIssue(ProjectEnum::INVOICE_PREFIX . $obj->fdInvoice, '', '');
@@ -358,8 +386,6 @@ class ProductController extends BaseController
         return redirect()->route('current', ['locale' => $this->locale, 'controller' => $this->controller, 'func' => $func, 'params' => $this->thankYouParam]);
 
     }
-
-
 
 
     protected function sendTo2C2P($obj, $price = null, $log_id = null)
@@ -486,8 +512,7 @@ class ProductController extends BaseController
             $PolicyData = $apiResult['data'];
 
             foreach ($PolicyData as $k => $v) {
-                if ($k === 'BigPoint')
-                {
+                if ($k === 'BigPoint') {
                     if (is_numeric($v)) {
                         $Point = $Point + $v;
                     }
@@ -508,8 +533,8 @@ class ProductController extends BaseController
         }
 
         //Array 2 dimension
-        $arrResult[] =  $PolicyArr;
-        $arrResult[] =  $Point;
+        $arrResult[] = $PolicyArr;
+        $arrResult[] = $Point;
         return $arrResult;
 
     }

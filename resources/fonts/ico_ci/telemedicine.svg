@@ -1,0 +1,37 @@
+<svg id="Component_4_1" data-name="Component 4 – 1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="27" height="38" viewBox="0 0 27 38">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #fff;
+      }
+
+      .cls-2 {
+        fill: url(#linear-gradient);
+      }
+
+      .cls-3 {
+        fill: url(#linear-gradient-3);
+      }
+
+      .cls-4 {
+        fill: url(#linear-gradient-4);
+      }
+    </style>
+    <linearGradient id="linear-gradient" x1="0.5" y1="28.867" x2="0.5" y2="-3.336" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#e93e3a"/>
+      <stop offset="0.35" stop-color="#ed683c"/>
+      <stop offset="0.7" stop-color="#f3903f"/>
+      <stop offset="1" stop-color="#fdc70c"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-3" y1="1.029" y2="-0.045" xlink:href="#linear-gradient"/>
+    <linearGradient id="linear-gradient-4" y1="10.933" y2="-5.168" xlink:href="#linear-gradient"/>
+  </defs>
+  <g id="Health_Checkup-Smartphone-Stethoscope-Medical-Doctor" data-name="Health Checkup-Smartphone-Stethoscope-Medical-Doctor" transform="translate(-8)">
+    <rect id="Rectangle_29" data-name="Rectangle 29" class="cls-1" width="13" height="27" transform="translate(21 11)"/>
+    <rect id="Rectangle_28" data-name="Rectangle 28" class="cls-1" width="19" height="27" transform="translate(8)"/>
+    <path id="Path_78" data-name="Path 78" class="cls-2" d="M16,6h2V8H16Z" transform="translate(-3.09)"/>
+    <path id="Path_79" data-name="Path 79" class="cls-2" d="M20,6h6V8H20Z" transform="translate(-5.354)"/>
+    <path id="Path_80" data-name="Path 80" class="cls-3" d="M31.551,10.1a3.469,3.469,0,0,0-.578,6.887V28.887a6.65,6.65,0,1,1-13.3,0V27.442H22.3a2.891,2.891,0,0,0,2.891-2.891V4.891A2.891,2.891,0,0,0,22.3,2H11.891A2.891,2.891,0,0,0,9,4.891v19.66a2.891,2.891,0,0,0,2.891,2.891h4.626v1.446a7.806,7.806,0,1,0,15.612,0V16.982a3.469,3.469,0,0,0-.578-6.887ZM16.517,26.285H11.891a1.74,1.74,0,0,1-1.735-1.735V4.891a1.74,1.74,0,0,1,1.735-1.735H22.3a1.74,1.74,0,0,1,1.735,1.735v19.66A1.74,1.74,0,0,1,22.3,26.285H17.673V21.66A1.16,1.16,0,0,0,18.83,20.5V19.347a2.891,2.891,0,0,0,2.891-2.891V10.673a.571.571,0,0,0-.318-.515L20.489,9.7a1.154,1.154,0,1,0-.231,1.174l.306.156v5.424A1.74,1.74,0,0,1,18.83,18.19H15.36a1.74,1.74,0,0,1-1.735-1.735V11.032l.306-.156A1.156,1.156,0,1,0,13.7,9.7l-.914.457a.571.571,0,0,0-.318.515v5.782a2.891,2.891,0,0,0,2.891,2.891V20.5a1.16,1.16,0,0,0,1.156,1.156Zm0-6.939h1.156V20.5H16.517Zm15.034-3.469a2.313,2.313,0,1,1,2.313-2.313A2.313,2.313,0,0,1,31.551,15.877Z"/>
+    <circle id="Ellipse_8" data-name="Ellipse 8" class="cls-4" cx="2" cy="2" r="2" transform="translate(27 12)"/>
+  </g>
+</svg>
