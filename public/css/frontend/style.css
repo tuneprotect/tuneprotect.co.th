@@ -12977,6 +12977,10 @@ html {
   font-weight: 300;
 }
 
+body {
+  counter-reset: section;
+}
+
 h1,
 h2,
 h3,
@@ -16427,7 +16431,7 @@ main form input[type=checkbox]:checked + label:after {
   border: 1px solid #E71618;
 }
 
-main form .check_box_disease {
+main[data-package=CI] form .check_box_disease {
   display: flex;
   border-radius: 5px;
   position: relative;
@@ -16435,28 +16439,28 @@ main form .check_box_disease {
   padding-top: 30px;
 }
 
-main form .check_box_disease li {
+main[data-package=CI] form .check_box_disease li {
   margin: 10px;
   flex: 1;
 }
 
-main form .check_box_disease input[type=checkbox]:checked + label {
+main[data-package=CI] form .check_box_disease input[type=checkbox]:checked + label {
   border: 1px solid #E71618;
 }
 
-main form .check_box_disease input[type=checkbox]:checked + label:after {
+main[data-package=CI] form .check_box_disease input[type=checkbox]:checked + label:after {
   opacity: 1;
 }
 
-main form .check_box_disease input[type=checkbox]:checked + label strong {
+main[data-package=CI] form .check_box_disease input[type=checkbox]:checked + label strong {
   color: #E71618;
 }
 
-main form .check_box_disease input[type=checkbox]:checked + label img {
+main[data-package=CI] form .check_box_disease input[type=checkbox]:checked + label img {
   filter: brightness(0.5) sepia(1) saturate(10000%);
 }
 
-main form .check_box_disease input[type=checkbox] + label {
+main[data-package=CI] form .check_box_disease input[type=checkbox] + label {
   margin-right: 10px;
   border: 1px solid #acacac;
   padding: 30px 10px 10px;
@@ -16464,11 +16468,11 @@ main form .check_box_disease input[type=checkbox] + label {
   left: 0;
 }
 
-main form .check_box_disease input[type=checkbox] + label:before {
+main[data-package=CI] form .check_box_disease input[type=checkbox] + label:before {
   display: none;
 }
 
-main form .check_box_disease input[type=checkbox] + label:after {
+main[data-package=CI] form .check_box_disease input[type=checkbox] + label:after {
   content: "\EED8";
   top: -21px;
   left: 50%;
@@ -16479,12 +16483,25 @@ main form .check_box_disease input[type=checkbox] + label:after {
   opacity: 0;
 }
 
-main form .check_box_disease input[type=checkbox] + label strong {
+main[data-package=CI] form .check_box_disease input[type=checkbox] + label strong {
   display: block;
 }
 
-main form .check_box_disease input[type=checkbox] + label img {
+main[data-package=CI] form .check_box_disease input[type=checkbox] + label img {
   height: 100px;
   width: 100px;
+}
+
+main[data-package=CI] #table-detail th span {
+  display: block;
+}
+
+main[data-package=CI] #table-detail th:first-child {
+  width: 45%;
+}
+
+main[data-package=CI] #table-detail h6::before {
+  counter-increment: section;
+  content: counter(section) ". ";
 }
 

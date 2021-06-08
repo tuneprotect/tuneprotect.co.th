@@ -1,4 +1,4 @@
-<section style="display: none" id="step2" class="product-detail">
+<section style="display: block" id="step2" class="product-detail">
     @if(strtolower($selected) == 'onvacina')
         <section id="sectionPackage"  class="wrapper">
             <form method="post" action="" class="insurance-form">
@@ -33,7 +33,9 @@
             <thead>
             <tr>
                 <th>
-                    <h3>@lang('global.coverage')</h3>
+                    @if($selected != "CI")
+                        <h3>@lang('global.coverage')</h3>
+                    @endif
                     <?php $i = 1 ?>
                     @foreach ($package_detail as $k => $v)
                         <a href="#"
@@ -98,7 +100,7 @@
             </tr>
             @foreach (__('product.'.$selected) as $k => $v)
                 <tr>
-                    <th>{{$v}}</th>
+                    <th>{!! $v !!}</th>
                     <?php $i = 1 ?>
                     @foreach ($package_detail as $k1 => $v1)
                         <td {{$i > 1 ? 'class=hide' : ""}} data-index="{{$i}}" data-package="{{$k1}}">
@@ -106,9 +108,9 @@
                                 @if((is_numeric($v1->plan->$k)))
                                     <strong>{{number_format( $v1->plan->$k,0)}}</strong>
                                 @elseif( strpos($v1->plan->$k,'__') === 0 )
-                                    <strong>{{__( str_replace('__','',$v1->plan->$k) )}}</strong>
+                                    <strong>{!!__( str_replace('__','',$v1->plan->$k) )!!}</strong>
                                 @else
-                                    <strong>{{$v1->plan->$k}}</strong>
+                                    <strong>{!! $v1->plan->$k !!}</strong>
                                 @endif
                             @else
                         @endif

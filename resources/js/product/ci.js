@@ -1,5 +1,5 @@
 import {
-    changeStep,
+    changeStep, checkAge,
     checkTaBirthDateIPass,
     formatTelNumber,
     getCountryData,
@@ -27,8 +27,6 @@ import intlTelInput from "intl-tel-input";
 require('../main');
 require('../product');
 require('../lib/rSlider.min');
-
-
 
 
 // validate.validators.idcard = function (value, options, key, attributes) {
@@ -202,22 +200,6 @@ const getSelectedPrice = (packageCode, package_data) => {
     return package_data[code].price[sub_code].price;
 }
 
-const genPrice = (package_data, sub_package) => {
-
-    // Object.keys(package_data)
-    //     .filter(k => _.startsWith(k, current_package))
-    //     .map(k => {
-    //         const pack = Object.keys(package_data[k].price).filter(k => k === sub_package)
-    //
-    //         $$('[data-sub-package]').forEach($el => {
-    //             $el.setAttribute('data-sub-package', pack)
-    //         });
-    //
-    //         $(`strong[data-price-${k}]`).innerHTML = parseInt(package_data[k].price[pack].price).toLocaleString();
-    //
-    //     })
-}
-
 
 document.addEventListener("DOMContentLoaded", async () => {
 
@@ -228,20 +210,22 @@ document.addEventListener("DOMContentLoaded", async () => {
     const zipcode_data = await getZipcodeData();
     console.log(package_data);
 
-    const defaultValue = Object.keys(package_data).reduce((returnValue,k) => {
+    const defaultValue = Object.keys(package_data).reduce((returnValue, k) => {
         Object.keys(package_data[k].price).map((k1) => {
 
             Object.values(package_data[k].price[k1]).map((v) => {
-                const digit = Math.pow(10,v.toString().length) /10;
+                const digit = Math.pow(10, v.toString().length) / 10;
 
-                if(v < returnValue.min){
-                    returnValue.min = Math.floor(v/(digit))*(digit);
+                if (v < returnValue.min) {
+                    returnValue.min = Math.floor(v / (digit)) * (digit);
                 }
-                if(v > returnValue.max){returnValue.max = Math.ceil(v/(digit/10))*(digit/10);}
+                if (v > returnValue.max) {
+                    returnValue.max = Math.ceil(v / (digit / 10)) * (digit / 10);
+                }
             });
         });
         return returnValue;
-    }, {min : 400,max : 110000})
+    }, {min: 400, max: 110000})
 
     const budget_slider = new rSlider({
         target: '#ctrl_budget',
@@ -250,7 +234,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         tooltip: true,
         scale: true,
         labels: false,
-        step:5000,
+        step: 5000,
         set: [defaultValue.min, defaultValue.max]
     });
 
@@ -284,11 +268,62 @@ document.addEventListener("DOMContentLoaded", async () => {
         ctrl_accept_insurance_term: "",
         ctrl_document_type: "",
 
-        ctrl_buy_for:"",
-        ctrl_carrier:"",
-        ctrl_budget:"",
-        ctrl_disease:""
+        ctrl_buy_for: "",
+        ctrl_carrier: "",
+        ctrl_budget: "",
+        ctrl_disease: []
     };
+
+    const hideRow = () => {
+        $$("span[data-disease]").forEach($el => {
+            switch ($el.getAttribute('data-disease')){
+                case 'd':
+                    $el.closest("tr").style.display = "none";
+                    break;
+                default:
+                    $el.style.display = "none";
+                    break;
+            }
+
+        });
+    }
+
+    const showRow = () => {
+        data.ctrl_disease.map(k => {
+            switch (k){
+                case 'd':
+                    $$("span[data-disease='d']").forEach($el => {
+                        $el.closest("tr").style.display = "table-row";
+                    });
+                    break;
+                default:
+                    $$("span[data-disease='"+k+"']").forEach($el => {
+                        $el.style.display = "block";
+                    });
+                    break;
+            }
+        })
+    }
+
+    const genPrice = () => {
+        console.log('genPrice', data)
+
+        if(data.fdHBD){
+            Object.keys(package_data)
+                .filter(k => _.startsWith(k, current_package))
+                .map(k => {
+                    const pack = Object.keys(package_data[k].price).filter(ageRange => checkAge(data.fdHBD, ageRange))
+
+                    $(`strong[data-price-${k}]`).innerHTML = parseInt(package_data[k].price[pack][data.ctrl_disease.join("")]).toLocaleString();
+                })
+        }
+
+        hideRow();
+        showRow();
+
+
+    }
+
 
     // $$("input[name=fdSex]").forEach($el => {
     //     $el.addEventListener("change", function (e) {
@@ -317,6 +352,15 @@ document.addEventListener("DOMContentLoaded", async () => {
     //     });
     // });
 
+    $$(".checkbox_disease").forEach($el => {
+        $el.addEventListener("change", function (e) {
+            data = {
+                ...data,
+                ctrl_disease: getCheckedCheckboxesFor("ctrl_disease")
+            }
+            genPrice();
+        });
+    });
 
     const $btnGoto = $$('.btn-goto');
     $btnGoto.forEach($btn => {
@@ -330,17 +374,20 @@ document.addEventListener("DOMContentLoaded", async () => {
                 } else {
                     switch (parseInt(step)) {
                         case 1:
-                            const validateResult = validateAgeInPackage(package_data,false);
+                            const validateResult = validateAgeInPackage(package_data, false);
                             status = validateResult.status;
                             if (validateResult.status) {
-                                data = {...data,
+                                data = {
+                                    ...data,
                                     ...validateResult.data,
                                     ctrl_buy_for: $("#ctrl_buy_for").value,
                                     ctrl_carrier: $("#ctrl_career").value,
                                     ctrl_budget: budget_slider.getValue(),
                                     ctrl_disease: getCheckedCheckboxesFor("ctrl_disease")
                                 }
-                                console.log(data)
+
+                                genPrice();
+                                $('.btn-goto-step1').style.display = "none";
                             }
                             break;
                         case 2:
@@ -367,10 +414,9 @@ document.addEventListener("DOMContentLoaded", async () => {
 
                             //Case web portal
                             let myEle = document.getElementById("portal_key");
-                            if(myEle){
+                            if (myEle) {
                                 let status_api = document.getElementById("status_api");
-                                if(!status_api.value)
-                                {
+                                if (!status_api.value) {
                                     Swal.fire({
                                         title: 'Error!',
                                         text: 'Error : Portal keys. User not found.',
