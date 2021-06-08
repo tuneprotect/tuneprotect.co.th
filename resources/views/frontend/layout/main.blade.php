@@ -209,6 +209,7 @@
                                             <img src="{{url(!empty($v->pic_mobile) ? $v->pic_mobile : $v->pic )}}"
                                                 alt="{{$v->locales[$locale]->title}}">
                                         </picture>
+
                                     @endif
                                 @else
                                     <picture>
