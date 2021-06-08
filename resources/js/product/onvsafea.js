@@ -169,6 +169,12 @@ const constraints = {
             }
         };
     },
+    // fdQuestion2: {
+    //     presence: {
+    //         allowEmpty: false,
+    //         message: "^" + $('#ctrl_question_2_N').getAttribute('data-error-q2')
+    //     }
+    // },
     fdQuestion2: {
         presence: {
             allowEmpty: false,
@@ -193,7 +199,12 @@ const constraints = {
             }
         };
     },
-
+    fdQuestion3: {
+        presence: {
+            allowEmpty: false,
+            message: "^" + $('#ctrl_question_3_N').getAttribute('data-error-q3')
+        }
+    },
     fdBenefit_name: function (value, attributes, attributeName, options, constraints) {
         if (attributes.fdBenefit !== 'other') return null;
         return {
@@ -511,6 +522,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             }
         });
     });
+
 
     $$("input[name=fdQuestion2]").forEach($el => {
         $el.addEventListener("change", function (e) {
