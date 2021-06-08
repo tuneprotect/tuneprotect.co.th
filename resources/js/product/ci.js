@@ -194,13 +194,6 @@ const constraints = {
 };
 
 
-const getSelectedPrice = (packageCode, package_data) => {
-    const code = packageCode.substring(0, 7);
-    const sub_code = packageCode.substring(7);
-    return package_data[code].price[sub_code].price;
-}
-
-
 document.addEventListener("DOMContentLoaded", async () => {
 
 
@@ -247,7 +240,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         fdSex: "",
         fdNationalID: "",
         fdAge: "",
-        fdHBD: "",
+        fdHBD: "1989-01-01",
         fdAddr_Num: "",
         fdAddr_District: "",
         fdAddr_Amphur: "",
@@ -270,13 +263,14 @@ document.addEventListener("DOMContentLoaded", async () => {
 
         ctrl_buy_for: "",
         ctrl_carrier: "",
-        ctrl_budget: "",
-        ctrl_disease: []
+        ctrl_budget: "400,3500",
+        ctrl_disease: [],
+        ctrl_protection_start_date: ""
     };
 
     const hideRow = () => {
         $$("span[data-disease]").forEach($el => {
-            switch ($el.getAttribute('data-disease')){
+            switch ($el.getAttribute('data-disease')) {
                 case 'd':
                     $el.closest("tr").style.display = "none";
                     break;
@@ -290,14 +284,14 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     const showRow = () => {
         data.ctrl_disease.map(k => {
-            switch (k){
+            switch (k) {
                 case 'd':
                     $$("span[data-disease='d']").forEach($el => {
                         $el.closest("tr").style.display = "table-row";
                     });
                     break;
                 default:
-                    $$("span[data-disease='"+k+"']").forEach($el => {
+                    $$("span[data-disease='" + k + "']").forEach($el => {
                         $el.style.display = "block";
                     });
                     break;
@@ -306,51 +300,110 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
 
     const genPrice = () => {
-        console.log('genPrice', data)
 
-        if(data.fdHBD){
-            Object.keys(package_data)
+        if (data.fdHBD) {
+            recommendProduct(Object.keys(package_data)
                 .filter(k => _.startsWith(k, current_package))
                 .map(k => {
                     const pack = Object.keys(package_data[k].price).filter(ageRange => checkAge(data.fdHBD, ageRange))
+                    const price = package_data[k].price[pack][data.ctrl_disease.join("")];
+                    $(`strong[data-price-${k}]`).innerHTML = parseInt(price).toLocaleString();
+                    return {package: k, price}
+                }))
 
-                    $(`strong[data-price-${k}]`).innerHTML = parseInt(package_data[k].price[pack][data.ctrl_disease.join("")]).toLocaleString();
-                })
         }
 
         hideRow();
         showRow();
+    }
 
+    const recommendProduct = (dataRecommend) => {
+        const [min,max] = data.ctrl_budget.split(",")
+        const dataRecommendMax = dataRecommend.reduce((recPackage, v) => {
+            if ((v.price <= max && v.price >= min)
+                || v.price < min) {
+                return v;
+            }
+            return recPackage;
+        }, dataRecommend[0])
+
+        console.log({dataRecommendMax})
+
+        $$("th.recommendPackage,td.recommendPackage").forEach($el => {
+            $el.classList.remove("recommendPackage");
+        });
+
+        $$("th[data-package='"+dataRecommendMax.package+"'],td[data-package='"+dataRecommendMax.package+"']").forEach($el => {
+            $el.classList.add("recommendPackage");
+        });
+
+
+        // // console.log({data,dataRecommend})
+        // let dataPriceMax;
+        // const arrBudget = data.ctrl_budget.split(",")
+        // const recommendMax = dataRecommend.filter(function (e) {
+        //     if(e.price <= arrBudget[1] && e.price >= arrBudget[0]){
+        //         return e;
+        //     }
+        // });
+        //
+        // console.log({recommendMax})
+        // if(recommendMax.length > 0){
+        //     let max = recommendMax[0].price;
+        //
+        //     for (let i = 1; i < recommendMax.length; ++i) {
+        //
+        //         if (recommendMax[i].price > max) {
+        //             max = recommendMax[i].price;
+        //             dataPriceMax = recommendMax[i]
+        //         }
+        //     }
+        //
+        // }else{
+        //
+        //     dataPriceMax = dataRecommend[0]
+        //
+        // }
+        //
+        //
+        // console.log({dataPriceMax})
 
     }
 
 
-    // $$("input[name=fdSex]").forEach($el => {
-    //     $el.addEventListener("change", function (e) {
-    //         showTitle($el.value, data.fdAge)
-    //     });
-    // });
-    //
-    // const iti = intlTelInput($('#fdTelephone'), {
-    //     initialCountry: "auto",
-    //     geoIpLookup: function (success, failure) {
-    //         fetch("https://ipinfo.io", {
-    //             mode: 'no-cors' // 'cors' by default
-    //         }).then(function (resp) {
-    //             let countryCode = (resp && resp.country) ? resp.country : "th";
-    //             success(countryCode);
-    //         });
-    //     }
-    // });
+    const getSelectedPrice = () => {
+
+        const pack = Object.keys(package_data[data.fdPackage].price).filter(ageRange => checkAge(data.fdHBD, ageRange))
+        return package_data[data.fdPackage].price[pack][data.ctrl_disease.join("")];
+    }
 
 
-    // const $form = $('#step3');
-    // const allField = $form.querySelectorAll('input,select,textarea');
-    // allField.forEach(field => {
-    //     field.addEventListener("change", function (e) {
-    //         validateField(this, constraints);
-    //     });
-    // });
+    $$("input[name=fdSex]").forEach($el => {
+        $el.addEventListener("change", function (e) {
+            showTitle($el.value, data.fdAge)
+        });
+    });
+
+    const iti = intlTelInput($('#fdTelephone'), {
+        initialCountry: "auto",
+        geoIpLookup: function (success, failure) {
+            fetch("https://ipinfo.io", {
+                mode: 'no-cors' // 'cors' by default
+            }).then(function (resp) {
+                let countryCode = (resp && resp.country) ? resp.country : "th";
+                success(countryCode);
+            });
+        }
+    });
+
+
+    const $form = $('#step3');
+    const allField = $form.querySelectorAll('input,select,textarea');
+    allField.forEach(field => {
+        field.addEventListener("change", function (e) {
+            validateField(this, constraints);
+        });
+    });
 
     $$(".checkbox_disease").forEach($el => {
         $el.addEventListener("change", function (e) {
@@ -427,6 +480,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                                 }
                             }
 
+                            $('#disease_box').style.display = "none";
                             break;
                         case 3:
 
@@ -451,13 +505,15 @@ document.addEventListener("DOMContentLoaded", async () => {
                                 fdRelation: $('#fdRelation').value,
                                 fdRevenue: $('#fdRevenue').checked ? 'Y' : 'N',
                                 fdTaxno: $('#fdTaxno').value,
+                                fdPayAMT: getSelectedPrice(),
                                 ctrl_terms: $('#ctrl_terms').checked ? true : undefined,
                                 ctrl_accept_insurance_term: $('#ctrl_accept_insurance_term').checked ? true : undefined,
                                 ctrl_document_type: $('#ctrl_document_type').value,
                                 ctrl_province: $('#ctrl_province').value,
-                                fdPayAMT: getSelectedPrice(data.fdHBD, data.fdPackage, package_data)
+                                ctrl_protection_start_date: $('#ctrl_protection_start_date').value,
                             }
 
+                            console.log(data)
                             const result = validate(data, constraints);
                             const $cite = $form.getElementsByTagName('cite');
                             for (let i = 0, len = $cite.length; i !== len; ++i) {

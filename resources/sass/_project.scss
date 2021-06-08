@@ -2591,7 +2591,7 @@ main {
                         padding: 20px;
                     }
 
-                    &.hovered {
+                    &.hovered,&.recommendPackage {
                         background: $primary-color;
                         color: #fff;
                     }
@@ -3512,5 +3512,6 @@ main[data-package="CI"]{
         }
     }
 }
+
 
 

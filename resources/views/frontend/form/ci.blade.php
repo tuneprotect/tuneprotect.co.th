@@ -31,7 +31,6 @@
             </div>
 
 
-
         </form>
 
         <br/>
@@ -45,7 +44,7 @@
                 <ul class="check_box_disease">
                     @foreach(array('f', 'c', 'o', 't', 'd') as $v)
                         <li class="checkbox_disease">
-                            <input  type="checkbox" name="ctrl_disease" id="checkbox_disease_{{$v}}"
+                            <input type="checkbox" name="ctrl_disease" id="checkbox_disease_{{$v}}"
                                    {{($v=='f'?'checked disabled':'')}} value="{{$v}}"/>
                             <label for="checkbox_disease_{{$v}}">
                                 <img src="{{asset('images/ico_ci/'.$v.'.svg')}}"/>
@@ -72,40 +71,41 @@
             @endif
         </form>
 
-{{--        {!! $package->locales[$locale]->remark !!}--}}
+        {{--        {!! $package->locales[$locale]->remark !!}--}}
 
     </div>
 
 
     @include('frontend.component.form-coverage-table',['package_detail' => $package_detail,'selected' =>$selected ])
 </div>
-{{--<section style="display: none" id="step3" class="wrapper">--}}
-{{--    <form class="insurance-form">--}}
-{{--        <div class="form-head"> {{$package->locales[$locale]->title}} <span id="form-head"></span></div>--}}
-{{--        <div id="multipleform">--}}
-{{--            @for($i = 1;$i < 10;$i++)--}}
-{{--                <div class="form-inner" id="form_profile_{{$i}}" {{$i > 1 ? 'style=display:none;' : ''}}>--}}
+<section style="display: block" id="step3" class="wrapper">
+    <form class="insurance-form">
+        <div class="form-head"> {{$package->locales[$locale]->title}} <span id="form-head"></span></div>
+        <div class="form-inner">
+            <h3>{{ isset($index) ? __('product.protection_start_date').' '.$index : __('product.protection_start_date')   }}</h3>
+            <div class="two-col">
+                <div class="controls-wrapper">
+                    <input id="ctrl_protection_start_date" name="ctrl_protection_start_date" type="text" class="flatpickr"
+                           data-mindate="{{date('Y-m-d')}}"
+                           data-maxdate="{{date('Y-m-d',strtotime( "+60 days"))}}"
+                           data-error="@lang('product.error.protection_start_date')"
+                    />
+                    <label for="ctrl_protection_start_date">@lang("product.protection_start_date")</label>
+                </div>
+            </div>
+            @include('frontend.component.form-profile',['id_card_field' => 'both' ,'id_card_field_title' => __("product.id_card_no") ,'prefix' => '' ])
+            @include('frontend.component.form-address',['prefix' => ''])
+            @include('frontend.component.form-beneficiary',['prefix' => ''])
+            @include('frontend.component.form-tax-deduct')
+            @include('frontend.component.form-privacy')
+        </div>
+        <div class="btn-wrapper">
+            <button data-gtm="product-{{strtolower($selected)}}-proceed-step-3" data-step="4"
+                    class="btn btn-primary btn-goto">@lang('product.proceed')</button>
+        </div>
 
-{{--                    @include('frontend.component.form-profile',[--}}
-{{--                             'id_card_field' => 'passport' ,--}}
-{{--                             'id_card_field_title' => __("product.passport_no") ,--}}
-{{--                             'has_birthdate' => true  ,--}}
-{{--                             'index' => $i,--}}
-{{--                             'prefix' => 'data_'. $i .'_'])--}}
-{{--                    @include('frontend.component.form-address',['prefix' => 'data_'. $i .'_'])--}}
-{{--                    @include('frontend.component.form-beneficiary',['prefix' => 'data_'. $i .'_'])--}}
-{{--                </div>--}}
-{{--            @endfor--}}
-{{--        </div>--}}
-{{--        <div class="form-inner">--}}
-{{--            @include('frontend.component.form-privacy')--}}
-{{--        </div>--}}
-{{--        <div class="btn-wrapper">--}}
-{{--            <button data-gtm="product-{{strtolower($selected)}}-proceed-step-3" data-step="4"--}}
-{{--                    class="btn btn-primary btn-goto">@lang('product.proceed')</button>--}}
-{{--        </div>--}}
-{{--    </form>--}}
-{{--</section>--}}
+    </form>
+</section>
 
 
-{{--@include('frontend.component.form-summary')--}}
+@include('frontend.component.form-summary')
