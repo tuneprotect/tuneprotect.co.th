@@ -15627,11 +15627,17 @@ main form input[type=checkbox]:checked + label:after {
 }
 
 #product_page .product-detail table thead th.hovered,
+#product_page .product-detail table thead th.recommendPackage,
 #product_page .product-detail table thead td.hovered,
+#product_page .product-detail table thead td.recommendPackage,
 #product_page .product-detail table tfoot th.hovered,
+#product_page .product-detail table tfoot th.recommendPackage,
 #product_page .product-detail table tfoot td.hovered,
+#product_page .product-detail table tfoot td.recommendPackage,
 #product_page .product-detail table tbody th.hovered,
-#product_page .product-detail table tbody td.hovered {
+#product_page .product-detail table tbody th.recommendPackage,
+#product_page .product-detail table tbody td.hovered,
+#product_page .product-detail table tbody td.recommendPackage {
   background: #E71618;
   color: #fff;
 }
