@@ -47,8 +47,7 @@ class ProductController extends BaseController
         if ($selected) {
             return $this->genDetailPage($selected, false);
         } else {
-//            TODO:redirectหน้าcat
-//            redirect();
+            return redirect("/" . $this->locale.'/product/'.$link);
         }
     }
 
@@ -72,7 +71,7 @@ class ProductController extends BaseController
             }])
             ->whereRaw(ProjectEnum::isPublish())
             ->first();
-//dd($this->bodyData['current_product']);
+
     }
 
     protected function genListPage()
@@ -113,7 +112,7 @@ class ProductController extends BaseController
             $this->bodyData['selected'] = @$this->bodyData['current_product']->productPackage[0]->code;
             $this->setStaticPageHeader($this->bodyData['current_product']);
         }
-//        dd( $this->bodyData['current_product']);
+
         foreach ($this->bodyData['current_product']->productPackage as $v) {
             if ($v->code === $this->bodyData['selected']) {
                 $this->bodyData['current_package'] = $v;
