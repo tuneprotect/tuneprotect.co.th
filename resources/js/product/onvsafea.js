@@ -646,9 +646,9 @@ document.addEventListener("DOMContentLoaded", async () => {
                             let fdQuestion5Alert = $('#ctrl_question_5_N').getAttribute('data-q5_alert');
                             if (fdQuestion5 =='Y') {
                                 Swal.fire({
-                                    title: 'warning!',
+                                    // title: 'warning!',
                                     text: fdQuestion5Alert,
-                                    icon: 'warning',
+                                    // icon: 'warning',
                                     confirmButtonText: 'OK'
                                 })
                                 scrollToTargetAdjusted($('#frm_contact'));
