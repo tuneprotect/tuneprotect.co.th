@@ -9,6 +9,7 @@ use App\Enum\COVIDAObject;
 use App\Enum\COVIDLObject;
 use App\Enum\ONTALNObject;
 use App\Enum\VACINAObject;
+use App\Enum\VSAFEAObject;
 use App\Enum\PAObject;
 use App\Enum\ProjectEnum;
 use App\Http\Controllers\Frontend\Base\BaseController;
@@ -179,6 +180,7 @@ class ProductController extends BaseController
         } elseif (substr($data['fdPackage'], 0, 8) === 'ONVACINA') {
             $obj = new VACINAObject();
         } elseif (substr($data['fdPackage'], 0, 8) === 'ONVSAFEA') {
+//            $obj = new VSAFEAObject();
             $obj = new VACINAObject();
         } else {
             $obj = new BaseInsuranceObject();
@@ -235,7 +237,7 @@ class ProductController extends BaseController
             }
         }
 
-        if (substr($data['fdPackage'], 0, 8) === 'ONCOVIDA' 
+        if (substr($data['fdPackage'], 0, 8) === 'ONCOVIDA'
         || substr($data['fdPackage'], 0, 8) === 'ONVACINA'
         || substr($data['fdPackage'], 0, 8) === 'ONVSAFEA') {
 
@@ -274,6 +276,7 @@ class ProductController extends BaseController
             $obj->fdlanguage = 1;
         }
 
+        // dd($obj);
 
         return $obj;
     }

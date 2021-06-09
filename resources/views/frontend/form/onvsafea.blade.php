@@ -109,31 +109,6 @@
                 </div>
             </div>
 
-            <!-- <h4 id="q3" data-summary="@lang('product.VSAFE_question.q1_summary')" data-none="@lang('product.VSAFE_question.q1_none')">
-                @lang('product.VSAFE_question.q1')</h4>
-                <div class="two-col">
-                <div class="controls-wrapper">
-                    <ul class="check-wrapper">
-                        <li>
-                            <input id="ctrl_question_3_N" name="fdQuestion3" type="radio" value="N" data-error-q3="@lang('product.error.vsafe_health')" />
-                            @if($locale == 'en')
-                                <label for="ctrl_question_3_N">@lang("product.no")</label>
-                            @else
-                                <label for="ctrl_question_3_N">ไม่เคย</label>
-                            @endif
-                        </li>
-                        <li>
-                            <input id="ctrl_question_3_Y" name="fdQuestion3" type="radio" value="Y"/>
-                            @if($locale == 'en')
-                                <label for="ctrl_question_3_Y">@lang("product.yes")</label>
-                            @else
-                                <label for="ctrl_question_3_Y">เคย</label>
-                            @endif
-                        </li>
-                    </ul>
-                </div>
-            </div> -->
-
             @include('frontend.component.form-tax-deduct')
             @include('frontend.component.form-privacy')
         </div>

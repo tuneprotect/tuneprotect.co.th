@@ -169,12 +169,6 @@ const constraints = {
             }
         };
     },
-    // fdQuestion2: {
-    //     presence: {
-    //         allowEmpty: false,
-    //         message: "^" + $('#ctrl_question_2_N').getAttribute('data-error-q2')
-    //     }
-    // },
     fdQuestion2: {
         presence: {
             allowEmpty: false,
@@ -198,12 +192,6 @@ const constraints = {
                 message: "^" + $('#ctrl_question_2_specify').getAttribute('data-error-q2-2')
             }
         };
-    },
-    fdQuestion3: {
-        presence: {
-            allowEmpty: false,
-            message: "^" + $('#ctrl_question_3_N').getAttribute('data-error-q3')
-        }
     },
     fdBenefit_name: function (value, attributes, attributeName, options, constraints) {
         if (attributes.fdBenefit !== 'other') return null;
@@ -310,7 +298,7 @@ const checkAgeVSafe = (birthday, ageRange) => {
     // const rangeDay = rangeAll[0].split('-');
     const rangeMonth = rangeAll[1].split('-');
     const rangeYear = rangeAll[2].split('-');
-    
+
 
     // console.log('Range : day month year ' + rangeAll[0] +' '+ rangeAll[1] +' '+ rangeAll[2])
 
@@ -330,7 +318,7 @@ const checkAgeVSafe = (birthday, ageRange) => {
     {
         return false;
     }
-    
+
     return false;
 }
 
@@ -357,7 +345,7 @@ const genPriceVC = (package_data) => {
         // console.log(pack);
         // $(`strong[data-price-${k}]`).innerHTML = parseInt(package_data[k].price[pack]).toLocaleString();//case multipackaging
     });
-    
+
 }
 
 const checkPackVC = (packageSelect,pack) => {
@@ -411,7 +399,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     // // document.getElementById("fdNationality").disabled = true;
     // // document.getElementById("ctrl_document_type").disabled = true;
 
-        
+
     let nationality_option = `<option value="">${$('#fdNationality').getAttribute('data-please-select')}</option>`;
     if(locale === 'th')
     {
@@ -580,7 +568,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             } else {
                 switch (parseInt(step)) {
                     case 1:
-                        console.log('STEP 1 ');
+                        // console.log('STEP 1 ');
                         const validateResult = validateAgeInPackageVC(package_data);
                         status = validateResult.status;
                         if (validateResult.status) {
@@ -621,7 +609,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
                         break;
                     case 2:
-                        console.log('STEP 2 ');
+                        // console.log('STEP 2 ');
                         const fdPackage = $btn.getAttribute('data-package');
                         $('#form-head').innerHTML = $btn.getAttribute('data-plan');
 
@@ -644,9 +632,6 @@ document.addEventListener("DOMContentLoaded", async () => {
 
                         break;
                     case 3:
-
-                        // console.log('step3');
-
                         let address = ($('#ctrl_province').value).split('*');
 
                         data = {
