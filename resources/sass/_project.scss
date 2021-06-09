@@ -3,7 +3,8 @@ html {
     font: 30px/1 'DB SaiKrok X', serif;
     font-weight: 300;
 }
-body{
+
+body {
     counter-reset: section;
 }
 
@@ -2591,7 +2592,7 @@ main {
                         padding: 20px;
                     }
 
-                    &.hovered,&.recommendPackage {
+                    &.hovered, &.recommendPackage {
                         background: $primary-color;
                         color: #fff;
                     }
@@ -3035,13 +3036,6 @@ main {
                     }
                 }
 
-                //strong {
-                //    color: #ffffff;
-                //
-                //    &:before {
-                //        background: rgb(255, 255, 255);
-                //    }
-                //}
             }
 
             .clip {
@@ -3415,7 +3409,7 @@ main {
     }
 }
 
-.btn-overview{
+.btn-overview {
     max-width: 200px;
 }
 
@@ -3429,18 +3423,22 @@ main {
 }
 
 
-main[data-package="CI"]{
+main[data-package="CI"] {
 
     form .check_box_disease {
         display: flex;
         border-radius: 5px;
         position: relative;
-        justify-content:center;
-        padding-top:30px;
+        justify-content: center;
+        padding-top: 30px;
+        flex-wrap: wrap;
 
         li {
             margin: 10px;
             flex: 1;
+            @media all and (max-width: $md) {
+                flex: 30%;
+            }
         }
 
         input[type=checkbox] {
@@ -3486,6 +3484,9 @@ main[data-package="CI"]{
 
                 strong {
                     display: block;
+                    @media all and (max-width: $sm) {
+                        font-size: .6rem;
+                    }
                 }
 
                 img {
@@ -3496,14 +3497,19 @@ main[data-package="CI"]{
         }
 
     }
-    #table-detail{
-        th{
-            span{
+
+    #table-detail {
+        th {
+            span {
                 display: block;
             }
         }
-        th:first-child{
+
+        th:first-child {
             width: 45%;
+            @media all and (max-width: $md) {
+                width: auto;
+            }
         }
 
         h6::before {

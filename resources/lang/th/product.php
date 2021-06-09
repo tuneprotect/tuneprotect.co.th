@@ -85,6 +85,7 @@ return [
     'please_specify_birthdate' => 'กรุณาระบุวันเกิด',
     'please_specify_birthdate_title' => 'กรุณาระบุข้อมูล',
     'please_specify_travel_info' => 'รายละเอียดการเดินทาง',
+    'please_ci_step_1_info' => 'รายละเอียด',
     'please_ci_info' => 'รายละเอียด',
     'post' => 'ไปรษณีย์',
     'privacy_description' => '<strong>การให้ความยินยอมของท่าน</strong>

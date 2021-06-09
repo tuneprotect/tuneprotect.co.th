@@ -40,157 +40,157 @@ require('../lib/rSlider.min');
 // };
 
 const constraints = {
-    // fdTitle: {
-    //     presence: {
-    //         allowEmpty: false,
-    //         message: "^" + $('#title_wrapper').getAttribute('data-error-title')
-    //     }
-    // },
-    // fdName: {
-    //     presence: {
-    //         allowEmpty: false,
-    //         message: "^" + $('#fdName').getAttribute('data-error-name')
-    //     }
-    // },
-    // fdSurname: {
-    //     presence: {
-    //         allowEmpty: false,
-    //         message: "^" + $('#fdSurname').getAttribute('data-error-last_name')
-    //     }
-    // },
-    // fdSex: {
-    //     presence: {
-    //         allowEmpty: false,
-    //         message: "^" + $('#male').getAttribute('data-error-sex')
-    //     }
-    // },
-    // ctrl_document_type: "",
-    // fdNationalID: function (value, attributes, attributeName, options, constraints) {
-    //     if (attributes.ctrl_document_type === 'บัตรประจำตัวประชาชน') {
-    //
-    //         return {
-    //             presence: {
-    //                 allowEmpty: false,
-    //                 message: "^" + $('#fdNationalID').getAttribute('data-error-idcard')
-    //             },
-    //             length: {
-    //                 is: 13,
-    //                 message: "^" + $('#fdNationalID').getAttribute('data-error-idcard')
-    //             },
-    //             format: {
-    //                 pattern: /^[0-9]{13}$/,
-    //                 message: "^" + $('#fdNationalID').getAttribute('data-error-idcard')
-    //             },
-    //             idcard: {
-    //                 message: "^" + $('#fdNationalID').getAttribute('data-error-idcard')
-    //             }
-    //         }
-    //
-    //
-    //     } else {
-    //         return {
-    //             presence: {
-    //                 allowEmpty: false,
-    //                 message: "^" + $('#fdNationalID').getAttribute('data-error-passport')
-    //             }
-    //         }
-    //     }
-    // },
-    // fdEmail: {
-    //     presence: {
-    //         allowEmpty: false,
-    //         message: "^" + $('#fdEmail').getAttribute('data-error-email-require')
-    //     },
-    //     email: {
-    //         allowEmpty: false,
-    //         message: "^" + $('#fdEmail').getAttribute('data-error-email-format')
-    //     },
-    // },
-    // fdTelephone: {
-    //     presence: {
-    //         allowEmpty: false,
-    //         message: "^" + $('#fdTelephone').getAttribute('data-error-tel-require')
-    //     },
-    //     format: {
-    //         pattern: /^[0-9]{9,15}$/,
-    //         message: "^" + $('#fdTelephone').getAttribute('data-error-tel-format')
-    //     }
-    // },
-    // fdAddr_Num: {
-    //     presence: {
-    //         allowEmpty: false,
-    //         message: "^" + $('#fdAddr_Num').getAttribute('data-error-address')
-    //     }
-    // },
-    // fdAddr_District: {
-    //     presence: {
-    //         allowEmpty: false,
-    //         message: "^" + $('#fdAddr_District').getAttribute('data-error-district')
-    //     }
-    // },
-    // ctrl_province: {
-    //     presence: {
-    //         allowEmpty: false,
-    //         message: "^" + $('#ctrl_province').getAttribute('data-error-province')
-    //     }
-    // },
-    // fdAddr_PostCode: {
-    //     presence: {
-    //         allowEmpty: false,
-    //         message: "^" + $('#fdAddr_PostCode').getAttribute('data-error-postal_code')
-    //     }
-    // },
-    //
-    //
-    // fdBenefit: "",
-    // fdBenefit_name: function (value, attributes, attributeName, options, constraints) {
-    //     if (attributes.fdBenefit !== 'other') return null;
-    //     return {
-    //         presence: {
-    //             allowEmpty: false,
-    //             message: "^" + $('#fdBenefit_name').getAttribute('data-error-beneficiary')
-    //         }
-    //     };
-    // },
-    // fdRelation: function (value, attributes, attributeName, options, constraints) {
-    //     if (attributes.fdBenefit !== 'other') return null;
-    //     return {
-    //         presence: {
-    //             allowEmpty: false,
-    //             message: "^" + $('#fdRelation').getAttribute('data-error-relation')
-    //         }
-    //     };
-    // },
-    // fdRevenue: "",
-    // fdTaxno: function (value, attributes, attributeName, options, constraints) {
-    //     if (attributes.fdRevenue === 'N') return null;
-    //     return {
-    //         presence: {
-    //             allowEmpty: false,
-    //             message: "^" + $('#fdTaxno').getAttribute('data-error-tax_no-require')
-    //         },
-    //         length: {
-    //             is: 13,
-    //             message: "^" + $('#fdTaxno').getAttribute('data-error-tax_no-format')
-    //         },
-    //         format: {
-    //             pattern: /^[0-9]{13}$/,
-    //             message: "^" + $('#fdTaxno').getAttribute('data-error-tax_no-format')
-    //         },
-    //     };
-    // },
-    // ctrl_accept_insurance_term: {
-    //     presence: {
-    //         allowEmpty: false,
-    //         message: "^" + $('#ctrl_accept_insurance_term').getAttribute('data-error-insurance_term')
-    //     }
-    // },
-    // ctrl_terms: {
-    //     presence: {
-    //         allowEmpty: false,
-    //         message: "^" + $('#ctrl_terms').getAttribute('data-error-terms')
-    //     }
-    // },
+    fdTitle: {
+        presence: {
+            allowEmpty: false,
+            message: "^" + $('#title_wrapper').getAttribute('data-error-title')
+        }
+    },
+    fdName: {
+        presence: {
+            allowEmpty: false,
+            message: "^" + $('#fdName').getAttribute('data-error-name')
+        }
+    },
+    fdSurname: {
+        presence: {
+            allowEmpty: false,
+            message: "^" + $('#fdSurname').getAttribute('data-error-last_name')
+        }
+    },
+    fdSex: {
+        presence: {
+            allowEmpty: false,
+            message: "^" + $('#male').getAttribute('data-error-sex')
+        }
+    },
+    ctrl_document_type: "",
+    fdNationalID: function (value, attributes, attributeName, options, constraints) {
+        if (attributes.ctrl_document_type === 'บัตรประจำตัวประชาชน') {
+
+            return {
+                presence: {
+                    allowEmpty: false,
+                    message: "^" + $('#fdNationalID').getAttribute('data-error-idcard')
+                },
+                length: {
+                    is: 13,
+                    message: "^" + $('#fdNationalID').getAttribute('data-error-idcard')
+                },
+                format: {
+                    pattern: /^[0-9]{13}$/,
+                    message: "^" + $('#fdNationalID').getAttribute('data-error-idcard')
+                },
+                idcard: {
+                    message: "^" + $('#fdNationalID').getAttribute('data-error-idcard')
+                }
+            }
+
+
+        } else {
+            return {
+                presence: {
+                    allowEmpty: false,
+                    message: "^" + $('#fdNationalID').getAttribute('data-error-passport')
+                }
+            }
+        }
+    },
+    fdEmail: {
+        presence: {
+            allowEmpty: false,
+            message: "^" + $('#fdEmail').getAttribute('data-error-email-require')
+        },
+        email: {
+            allowEmpty: false,
+            message: "^" + $('#fdEmail').getAttribute('data-error-email-format')
+        },
+    },
+    fdTelephone: {
+        presence: {
+            allowEmpty: false,
+            message: "^" + $('#fdTelephone').getAttribute('data-error-tel-require')
+        },
+        format: {
+            pattern: /^[0-9]{9,15}$/,
+            message: "^" + $('#fdTelephone').getAttribute('data-error-tel-format')
+        }
+    },
+    fdAddr_Num: {
+        presence: {
+            allowEmpty: false,
+            message: "^" + $('#fdAddr_Num').getAttribute('data-error-address')
+        }
+    },
+    fdAddr_District: {
+        presence: {
+            allowEmpty: false,
+            message: "^" + $('#fdAddr_District').getAttribute('data-error-district')
+        }
+    },
+    ctrl_province: {
+        presence: {
+            allowEmpty: false,
+            message: "^" + $('#ctrl_province').getAttribute('data-error-province')
+        }
+    },
+    fdAddr_PostCode: {
+        presence: {
+            allowEmpty: false,
+            message: "^" + $('#fdAddr_PostCode').getAttribute('data-error-postal_code')
+        }
+    },
+
+
+    fdBenefit: "",
+    fdBenefit_name: function (value, attributes, attributeName, options, constraints) {
+        if (attributes.fdBenefit !== 'other') return null;
+        return {
+            presence: {
+                allowEmpty: false,
+                message: "^" + $('#fdBenefit_name').getAttribute('data-error-beneficiary')
+            }
+        };
+    },
+    fdRelation: function (value, attributes, attributeName, options, constraints) {
+        if (attributes.fdBenefit !== 'other') return null;
+        return {
+            presence: {
+                allowEmpty: false,
+                message: "^" + $('#fdRelation').getAttribute('data-error-relation')
+            }
+        };
+    },
+    fdRevenue: "",
+    fdTaxno: function (value, attributes, attributeName, options, constraints) {
+        if (attributes.fdRevenue === 'N') return null;
+        return {
+            presence: {
+                allowEmpty: false,
+                message: "^" + $('#fdTaxno').getAttribute('data-error-tax_no-require')
+            },
+            length: {
+                is: 13,
+                message: "^" + $('#fdTaxno').getAttribute('data-error-tax_no-format')
+            },
+            format: {
+                pattern: /^[0-9]{13}$/,
+                message: "^" + $('#fdTaxno').getAttribute('data-error-tax_no-format')
+            },
+        };
+    },
+    ctrl_accept_insurance_term: {
+        presence: {
+            allowEmpty: false,
+            message: "^" + $('#ctrl_accept_insurance_term').getAttribute('data-error-insurance_term')
+        }
+    },
+    ctrl_terms: {
+        presence: {
+            allowEmpty: false,
+            message: "^" + $('#ctrl_terms').getAttribute('data-error-terms')
+        }
+    },
 };
 
 
@@ -224,7 +224,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         target: '#ctrl_budget',
         values: {min: defaultValue.min, max: defaultValue.max},
         range: true,
-        tooltip: true,
+        tooltip: false,
         scale: true,
         labels: false,
         step: 5000,
@@ -240,7 +240,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         fdSex: "",
         fdNationalID: "",
         fdAge: "",
-        fdHBD: "1989-01-01",
+        fdHBD: "",
         fdAddr_Num: "",
         fdAddr_District: "",
         fdAddr_Amphur: "",
@@ -263,7 +263,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
         ctrl_buy_for: "",
         ctrl_carrier: "",
-        ctrl_budget: "400,3500",
+        ctrl_budget: "",
         ctrl_disease: [],
         ctrl_protection_start_date: ""
     };
@@ -320,6 +320,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     const recommendProduct = (dataRecommend) => {
         const [min,max] = data.ctrl_budget.split(",")
         const dataRecommendMax = dataRecommend.reduce((recPackage, v) => {
+            console.log({recPackage})
             if ((v.price <= max && v.price >= min)
                 || v.price < min) {
                 return v;
@@ -424,6 +425,11 @@ document.addEventListener("DOMContentLoaded", async () => {
 
                 if (step > goToStep) {
                     status = true;
+                    switch (parseInt(step)) {
+                        case 2:
+                            $('.btn-goto-step1').style.display = "inline-flex";
+                            break;
+                    }
                 } else {
                     switch (parseInt(step)) {
                         case 1:
@@ -463,21 +469,6 @@ document.addEventListener("DOMContentLoaded", async () => {
                                     confirmButtonText: 'OK'
                                 })
                                 status = false;
-                            }
-
-                            //Case web portal
-                            let myEle = document.getElementById("portal_key");
-                            if (myEle) {
-                                let status_api = document.getElementById("status_api");
-                                if (!status_api.value) {
-                                    Swal.fire({
-                                        title: 'Error!',
-                                        text: 'Error : Portal keys. User not found.',
-                                        icon: 'error',
-                                        confirmButtonText: 'OK'
-                                    })
-                                    status = false;
-                                }
                             }
 
                             $('#disease_box').style.display = "none";

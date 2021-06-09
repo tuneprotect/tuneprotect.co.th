@@ -16443,11 +16443,18 @@ main[data-package=CI] form .check_box_disease {
   position: relative;
   justify-content: center;
   padding-top: 30px;
+  flex-wrap: wrap;
 }
 
 main[data-package=CI] form .check_box_disease li {
   margin: 10px;
   flex: 1;
+}
+
+@media all and (max-width: 768px) {
+  main[data-package=CI] form .check_box_disease li {
+    flex: 30%;
+  }
 }
 
 main[data-package=CI] form .check_box_disease input[type=checkbox]:checked + label {
@@ -16493,6 +16500,12 @@ main[data-package=CI] form .check_box_disease input[type=checkbox] + label stron
   display: block;
 }
 
+@media all and (max-width: 600px) {
+  main[data-package=CI] form .check_box_disease input[type=checkbox] + label strong {
+    font-size: 0.6rem;
+  }
+}
+
 main[data-package=CI] form .check_box_disease input[type=checkbox] + label img {
   height: 100px;
   width: 100px;
@@ -16504,6 +16517,12 @@ main[data-package=CI] #table-detail th span {
 
 main[data-package=CI] #table-detail th:first-child {
   width: 45%;
+}
+
+@media all and (max-width: 768px) {
+  main[data-package=CI] #table-detail th:first-child {
+    width: auto;
+  }
 }
 
 main[data-package=CI] #table-detail h6::before {
