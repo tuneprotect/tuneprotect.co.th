@@ -224,7 +224,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         target: '#ctrl_budget',
         values: {min: defaultValue.min, max: defaultValue.max},
         range: true,
-        tooltip: false,
+        tooltip: true,
         scale: true,
         labels: false,
         step: 5000,
@@ -240,7 +240,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         fdSex: "",
         fdNationalID: "",
         fdAge: "",
-        fdHBD: "",
+        fdHBD: "1989-01-01",
         fdAddr_Num: "",
         fdAddr_District: "",
         fdAddr_Amphur: "",
@@ -263,7 +263,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
         ctrl_buy_for: "",
         ctrl_carrier: "",
-        ctrl_budget: "",
+        ctrl_budget: "20000,30000",
         ctrl_disease: [],
         ctrl_protection_start_date: ""
     };
@@ -317,16 +317,16 @@ document.addEventListener("DOMContentLoaded", async () => {
         showRow();
     }
 
-    const recommendProduct = (dataRecommend) => {
+    const recommendProduct = (dataPackage) => {
         const [min,max] = data.ctrl_budget.split(",")
-        const dataRecommendMax = dataRecommend.reduce((recPackage, v) => {
+        const dataRecommendMax = dataPackage.reduce((recPackage, v) => {
             console.log({recPackage})
             if ((v.price <= max && v.price >= min)
                 || v.price < min) {
                 return v;
             }
             return recPackage;
-        }, dataRecommend[0])
+        }, dataPackage[0])
 
         console.log({dataRecommendMax})
 
@@ -339,17 +339,22 @@ document.addEventListener("DOMContentLoaded", async () => {
         });
 
 
-        // // console.log({data,dataRecommend})
+        // console.log({dataPackage})
         // let dataPriceMax;
         // const arrBudget = data.ctrl_budget.split(",")
-        // const recommendMax = dataRecommend.filter(function (e) {
-        //     if(e.price <= arrBudget[1] && e.price >= arrBudget[0]){
+        // console.log({arrBudget})
+        // const recommendMax = dataPackage.filter(function (e) {
+        //     if (e.price <= arrBudget[1] && e.price >= arrBudget[0]) {
         //         return e;
         //     }
         // });
         //
         // console.log({recommendMax})
-        // if(recommendMax.length > 0){
+        // if (recommendMax.length == 1) {
+        //     console.log('a');
+        //     dataPriceMax = recommendMax
+        // } else if (recommendMax.length > 1) {
+        //     console.log('b');
         //     let max = recommendMax[0].price;
         //
         //     for (let i = 1; i < recommendMax.length; ++i) {
@@ -359,15 +364,32 @@ document.addEventListener("DOMContentLoaded", async () => {
         //             dataPriceMax = recommendMax[i]
         //         }
         //     }
+        // } else {
+        //     console.log(arrBudget[0],dataPackage[3].price);
+        //     if (parseInt(arrBudget[1]) < parseInt(dataPackage[0].price)) {
+        //         console.log('c');
+        //         dataPriceMax = dataPackage[0]
+        //     }
         //
-        // }else{
+        //     if (parseInt(arrBudget[0]) > parseInt(dataPackage[3].price)) {
+        //         console.log('d');
+        //         dataPriceMax = dataPackage[3]
+        //     }
         //
-        //     dataPriceMax = dataRecommend[0]
         //
         // }
-        //
-        //
         // console.log({dataPriceMax})
+        //
+        // if(dataPriceMax !== undefined){
+        //     $$("th.recommendPackage,td.recommendPackage").forEach($el => {
+        //         $el.classList.remove("recommendPackage");
+        //     });
+        //
+        //     $$("th[data-package='"+dataPriceMax.package+"'],td[data-package='"+dataPriceMax.package+"']").forEach($el => {
+        //         $el.classList.add("recommendPackage");
+        //     });
+        // }
+
 
     }
 
