@@ -24,6 +24,7 @@ import PartnerPage from "../view/page/partner/PartnerPage";
 import PartnerMainStep from "../view/page/partner/PartnerMainStep";
 import TestingEmailPage from "../view/page/testing/TestingEmailPage";
 import LeadFormPage from "../view/page/lead_form/LeadFormPage";
+import CiImportPage from "../view/page/import/CiImportPage";
 
 let APP_ROUTE = {
     login: {
@@ -1821,6 +1822,28 @@ let APP_ROUTE = {
                 },
             }
         }),
+    },
+
+    import: {
+        id: "import",
+        name: <Translate id={`side_nav.import.main`}/>,
+        url: "/import",
+        icon: 'view_carousel',
+        show_on_main_menu: true,
+        layout: "MainLayout",
+        parent: "",
+        group: "main_nav"
+    },
+    ['import.ci']: {
+        id: "import.ci",
+        name: <Translate id={`side_nav.import.ci`}/>,
+        url: "/import/ci",
+        icon: 'view_carousel',
+        show_on_main_menu: true,
+        component: CiImportPage,
+        layout: "MainLayout",
+        parent: "import",
+        group: "main_nav"
     },
     testing: {
         id: 'testing',

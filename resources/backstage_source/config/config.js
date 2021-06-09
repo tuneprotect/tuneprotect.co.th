@@ -112,6 +112,8 @@ export const API_URL_LIST = {
     partnerSetEnable: `${API_URL}/Partner/setEnable`,
     partnerSetDelete: `${API_URL}/Partner/setDelete`,
     partnerSaveReorder: `${API_URL}/Partner/saveReorder`,
+    //Import
+    importCi: `${API_URL}/ImportCi/index`,
     // Testing
     testEmail: `${API_URL}/Testing/email`,
 };
@@ -158,6 +160,9 @@ export const WEB_CONTENT = {
     GARAGE_CATEGORY: "partner.garage_category",
     SERVICE_CENTER: "partner.service_center",
     SERVICE_CENTER_CATEGORY: "partner.service_center_category",
+
+    IMPORT : "import.main",
+    IMPORT_CI:"import.main.ci",
 
     PRODUCT : "product.content",
     PRODUCT_CATEGORY : "product.category",

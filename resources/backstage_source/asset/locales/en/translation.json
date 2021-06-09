@@ -234,6 +234,10 @@
             "category": "FAQ Category",
             "main": "FAQ"
         },
+        "import": {
+            "main": "IMPORT",
+            "ci": "IMPORT CI"
+        },
         "frontend": "Frontend",
         "lead_form": {
             "category": "Lead Form Category",
@@ -311,6 +315,10 @@
             "log": "User Log",
             "main": "User",
             "management": "User Management"
+        },
+        "import": {
+            "main": "Import",
+            "ci": "Import CI"
         }
     },
     "system_checking": {
