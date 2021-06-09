@@ -180,8 +180,8 @@ class ProductController extends BaseController
         } elseif (substr($data['fdPackage'], 0, 8) === 'ONVACINA') {
             $obj = new VACINAObject();
         } elseif (substr($data['fdPackage'], 0, 8) === 'ONVSAFEA') {
-//            $obj = new VSAFEAObject();
-            $obj = new VACINAObject();
+           $obj = new VSAFEAObject();
+            // $obj = new VACINAObject();
         } else {
             $obj = new BaseInsuranceObject();
         }

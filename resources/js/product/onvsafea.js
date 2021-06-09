@@ -193,6 +193,13 @@ const constraints = {
             }
         };
     },
+    fdQuestion5: {
+        presence: {
+            allowEmpty: false,
+            message: "^" + $('#ctrl_question_5_N').getAttribute('data-error-q5')
+        }
+    },
+
     fdBenefit_name: function (value, attributes, attributeName, options, constraints) {
         if (attributes.fdBenefit !== 'other') return null;
         return {
@@ -292,16 +299,9 @@ const validateAgeInPackageVC = (package_data) => {
 const checkAgeVSafe = (birthday, ageRange) => {
 
     const age = calculateAge(birthday)
-    // console.log('DOB : day month year ' + age.day +' '+ age.month +' '+ age.year)
-
     const rangeAll = ageRange.split(',');
-    // const rangeDay = rangeAll[0].split('-');
     const rangeMonth = rangeAll[1].split('-');
     const rangeYear = rangeAll[2].split('-');
-
-
-    // console.log('Range : day month year ' + rangeAll[0] +' '+ rangeAll[1] +' '+ rangeAll[2])
-
     if (age.year <= rangeYear[1])
     {
         if(age.year == rangeYear[0])
@@ -325,25 +325,10 @@ const checkAgeVSafe = (birthday, ageRange) => {
 
 
 const genPriceVC = (package_data) => {
-
-    // console.log(package_data);
-
-    // let packageSelect = $('#ctrl_package').value;
     const allPack = Object.keys(package_data)
         .filter(k => _.startsWith(k, current_package))
-
-
-    // console.log(package_data);
-    // console.log(current_package);
-    // console.log(allPack);
-
     allPack.map(k => {
-        // console.log(package_data[k]);
         $(`strong[data-price-${k}]`).innerHTML = parseInt(package_data[k].price).toLocaleString();
-
-        // const pack = Object.keys(package_data[k].price)
-        // console.log(pack);
-        // $(`strong[data-price-${k}]`).innerHTML = parseInt(package_data[k].price[pack]).toLocaleString();//case multipackaging
     });
 
 }
@@ -357,10 +342,7 @@ const checkPackVC = (packageSelect,pack) => {
 }
 
 const getSelectedPriceVC = (packageCode, package_data) => {
-    // const pack = Object.keys(package_data[packageCode].price);
     return package_data[packageCode].price;
-    // const pack = Object.keys(package_data[packageCode].price);
-    // return package_data[packageCode].price[pack];
 }
 
 
@@ -368,37 +350,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     const package_data = await getPackageData(current_package);
     const nationality_data = await getNationalityData();
     const nationalityth_data = await getNationalityDataTH();
-
-    // let x = document.getElementById("language");
-    // // console.log(x);
-    // x.style.display = "none";
-
-    // let nationality_option = `<option value="">${$('#fdNationality').getAttribute('data-please-select')}</option>`;
-
-    // if(locale === 'th')
-    // {
-    //     Object.keys(nationalityth_data).map(v => {
-    //         if (v === "ไทย") {
-    //             nationality_option += `<option value="${v}" selected="selected">${v}</option>`;
-    //         }
-    //         else
-    //         {
-    //             nationality_option += `<option value="${v}">${v}</option>`;
-    //         }
-    //     });
-    // }
-    // else
-    // {
-    //     Object.keys(nationality_data).map(v => {
-    //             nationality_option += `<option value="${v}">${v}</option>`;
-    //     });
-    // }
-
-
-    // $(`#fdNationality`).innerHTML = nationality_option;
-    // // document.getElementById("fdNationality").disabled = true;
-    // // document.getElementById("ctrl_document_type").disabled = true;
-
 
     let nationality_option = `<option value="">${$('#fdNationality').getAttribute('data-please-select')}</option>`;
     if(locale === 'th')
@@ -485,7 +436,8 @@ document.addEventListener("DOMContentLoaded", async () => {
         fdQuestion2_1: [],
         ctrl_question_2_specify: "",
         ctrl_province: "",
-        ctrl_terms: ""
+        ctrl_terms: "",
+        fdQuestion5: ""
     };
 
     const iti = intlTelInput($('#fdTelephone'), {
@@ -665,7 +617,8 @@ document.addEventListener("DOMContentLoaded", async () => {
                             ctrl_accept_insurance_term: $('#ctrl_accept_insurance_term').checked ? true : undefined,
                             ctrl_terms: $('#ctrl_terms').checked ? true : undefined,
                             ctrl_province: $('#ctrl_province').value,
-                            fdPayAMT: getSelectedPriceVC(data.fdPackage, package_data)
+                            fdPayAMT: getSelectedPriceVC(data.fdPackage, package_data),
+                            fdQuestion5:getRadioSelectedValue('fdQuestion5')
                         }
 
 
@@ -688,6 +641,22 @@ document.addEventListener("DOMContentLoaded", async () => {
                             scrollToTargetAdjusted($('.controls-wrapper.error'));
                             status = false;
                         } else {
+
+                            let fdQuestion5 = getRadioSelectedValue('fdQuestion5');
+                            let fdQuestion5Alert = $('#ctrl_question_5_N').getAttribute('data-q5_alert');
+                            if (fdQuestion5 =='Y') {
+                                Swal.fire({
+                                    title: 'warning!',
+                                    text: fdQuestion5Alert,
+                                    icon: 'warning',
+                                    confirmButtonText: 'OK'
+                                })
+                                scrollToTargetAdjusted($('#frm_contact'));
+                                status = false;
+                                break;
+                            }
+
+
                             let sb = ''
 
                             Object.keys(data).map(k => {
