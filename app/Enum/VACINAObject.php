@@ -16,4 +16,5 @@ class VACINAObject extends BaseInsuranceObject
     public $fdQuestion1_2;
     public $fdQuestion2;
     public $fdQuestion2_1;
+    public $fdQuestion5;
 }
