@@ -84,11 +84,13 @@
                     <input id="ctrl_protection_start_date" name="ctrl_protection_start_date" type="text" class="flatpickr"
                            data-mindate="{{date('Y-m-d')}}"
                            data-maxdate="{{date('Y-m-d',strtotime( "+60 days"))}}"
+                           value="{{date('d/m/Y')}}"
                            data-error="@lang('product.error.protection_start_date')"
                     />
                     <label for="ctrl_protection_start_date">@lang("product.protection_start_date")</label>
                 </div>
             </div>
+            <br>
             @include('frontend.component.form-profile',['id_card_field' => 'both' ,'id_card_field_title' => __("product.id_card_no") ,'prefix' => '' ])
             @include('frontend.component.form-address',['prefix' => ''])
             @include('frontend.component.form-beneficiary',['prefix' => ''])

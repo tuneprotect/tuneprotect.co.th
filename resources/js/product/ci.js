@@ -29,15 +29,15 @@ require('../product');
 require('../lib/rSlider.min');
 
 
-// validate.validators.idcard = function (value, options, key, attributes) {
-//     for (var i = 0, sum = 0; i < 12; i++) {
-//         sum += parseFloat(value.charAt(i)) * (13 - i);
-//     }
-//     const result = ((11 - sum % 11) % 10 === parseFloat(value.charAt(12)));
-//     if (!result) {
-//         return "^" + $('#data_1_fdNationalID').getAttribute('data-error-idcard')
-//     }
-// };
+validate.validators.idcard = function (value, options, key, attributes) {
+    for (var i = 0, sum = 0; i < 12; i++) {
+        sum += parseFloat(value.charAt(i)) * (13 - i);
+    }
+    const result = ((11 - sum % 11) % 10 === parseFloat(value.charAt(12)));
+    if (!result) {
+        return "^" + $('#fdNationalID').getAttribute('data-error-idcard')
+    }
+};
 
 const constraints = {
     fdTitle: {
@@ -201,7 +201,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     // const country_data = await getCountryData();
     // const nationality_data = await getNationalityData();
     // const zipcode_data = await getZipcodeData();
-    console.log(package_data);
 
     const defaultValue = Object.keys(package_data).reduce((returnValue, k) => {
         Object.keys(package_data[k].price).map((k1) => {
@@ -307,9 +306,6 @@ document.addEventListener("DOMContentLoaded", async () => {
                 .map(k => {
                     const pack = Object.keys(package_data[k].price).filter(ageRange => checkAge(data.fdHBD, ageRange))
                     const price = package_data[k].price[pack][data.ctrl_disease.join("")];
-
-                    console.log({package_data,data,pack, price})
-
                     $(`strong[data-price-${k}]`).innerHTML = parseInt(price).toLocaleString();
                     return {package: k, price}
                 }))
@@ -505,7 +501,6 @@ document.addEventListener("DOMContentLoaded", async () => {
                                 ctrl_protection_start_date: $('#ctrl_protection_start_date').value,
                             }
 
-                            console.log(data)
                             const result = validate(data, constraints);
                             const $cite = $form.getElementsByTagName('cite');
                             for (let i = 0, len = $cite.length; i !== len; ++i) {
