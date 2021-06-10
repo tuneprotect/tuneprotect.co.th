@@ -13,6 +13,7 @@ return [
     "annual_trip" => 'Annual Trip',
     "baht" => 'บาท',
     "beneficiary" => "ผู้รับผลประโยชน์",
+    "budget" => "เบี้ยประกันภัยที่คาดหวัง",
     "choose_plan" => 'เลือกแผนนี้',
     "city" => "เมือง ",
     "collapse" => "ย่อ",

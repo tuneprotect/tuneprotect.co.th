@@ -198,9 +198,9 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 
     const package_data = await getPackageData(current_package);
-    const country_data = await getCountryData();
-    const nationality_data = await getNationalityData();
-    const zipcode_data = await getZipcodeData();
+    // const country_data = await getCountryData();
+    // const nationality_data = await getNationalityData();
+    // const zipcode_data = await getZipcodeData();
     console.log(package_data);
 
     const defaultValue = Object.keys(package_data).reduce((returnValue, k) => {
@@ -224,7 +224,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         target: '#ctrl_budget',
         values: {min: defaultValue.min, max: defaultValue.max},
         range: true,
-        tooltip: false,
+        tooltip: true,
         scale: true,
         labels: false,
         step: 5000,
@@ -307,10 +307,12 @@ document.addEventListener("DOMContentLoaded", async () => {
                 .map(k => {
                     const pack = Object.keys(package_data[k].price).filter(ageRange => checkAge(data.fdHBD, ageRange))
                     const price = package_data[k].price[pack][data.ctrl_disease.join("")];
+
+                    console.log({package_data,data,pack, price})
+
                     $(`strong[data-price-${k}]`).innerHTML = parseInt(price).toLocaleString();
                     return {package: k, price}
                 }))
-
         }
 
         hideRow();
@@ -318,9 +320,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
 
     const recommendProduct = (dataRecommend) => {
-        const [min,max] = data.ctrl_budget.split(",")
+        const [min, max] = data.ctrl_budget.split(",")
         const dataRecommendMax = dataRecommend.reduce((recPackage, v) => {
-            console.log({recPackage})
             if ((v.price <= max && v.price >= min)
                 || v.price < min) {
                 return v;
@@ -328,13 +329,11 @@ document.addEventListener("DOMContentLoaded", async () => {
             return recPackage;
         }, dataRecommend[0])
 
-        console.log({dataRecommendMax})
-
         $$("th.recommendPackage,td.recommendPackage").forEach($el => {
             $el.classList.remove("recommendPackage");
         });
 
-        $$("th[data-package='"+dataRecommendMax.package+"'],td[data-package='"+dataRecommendMax.package+"']").forEach($el => {
+        $$("th[data-package='" + dataRecommendMax.package + "'],td[data-package='" + dataRecommendMax.package + "']").forEach($el => {
             $el.classList.add("recommendPackage");
         });
 
@@ -447,6 +446,8 @@ document.addEventListener("DOMContentLoaded", async () => {
 
                                 genPrice();
                                 $('.btn-goto-step1').style.display = "none";
+                            } else {
+                                scrollToTargetAdjusted($('.controls-wrapper.error'));
                             }
                             break;
                         case 2:

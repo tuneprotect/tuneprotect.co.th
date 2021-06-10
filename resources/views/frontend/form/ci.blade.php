@@ -24,19 +24,15 @@
                     </div>
                 </div>
                 @include('frontend.component.form-date-input')
+                <br>
+                <h3>@lang("product.budget")</h3>
                 <div class="controls-wrapper">
+                    <br>
                     <input type="text" id="ctrl_budget"/>
                 </div>
-
             </div>
-
-
         </form>
-
-        <br/>
-
     </section>
-
     <div class="wrapper">
         <form>
             <div class="controls-wrapper" id="disease_box">
@@ -59,7 +55,7 @@
                 <button data-gtm="product-{{strtolower($selected)}}-proceed-step-1" data-step="2" type="button"
                         class="btn btn-primary btn-goto btn-goto-step1">@lang('product.next')</button>
             </div>
-
+            <br/>
 
             <input type="hidden" id="controller" value="{{$controller}}"/>
             @if($controller == 'portal')
@@ -78,7 +74,7 @@
 
     @include('frontend.component.form-coverage-table',['package_detail' => $package_detail,'selected' =>$selected ])
 </div>
-<section style="display: block" id="step3" class="wrapper">
+<section style="display: none" id="step3" class="wrapper">
     <form class="insurance-form">
         <div class="form-head"> {{$package->locales[$locale]->title}} <span id="form-head"></span></div>
         <div class="form-inner">
