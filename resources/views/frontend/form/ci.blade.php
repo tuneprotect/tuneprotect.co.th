@@ -26,7 +26,7 @@
                 @include('frontend.component.form-date-input')
                 <br>
                 <h3>@lang("product.budget")</h3>
-                <div class="controls-wrapper">
+                <div class="controls-wrapper slider_budget">
                     <br>
                     <input type="text" id="ctrl_budget"/>
                 </div>
@@ -51,7 +51,7 @@
 
                 </ul>
             </div>
-            <div class="btn-wrapper text-center">
+            <div class="btn-wrapper text-center goto-step1">
                 <button data-gtm="product-{{strtolower($selected)}}-proceed-step-1" data-step="2" type="button"
                         class="btn btn-primary btn-goto btn-goto-step1">@lang('product.next')</button>
             </div>
@@ -67,7 +67,10 @@
             @endif
         </form>
 
-        {{--        {!! $package->locales[$locale]->remark !!}--}}
+{{--        <div>--}}
+{{--            {!! $package->locales[$locale]->remark !!}--}}
+{{--        </div>--}}
+
 
     </div>
 
@@ -91,7 +94,7 @@
                 </div>
             </div>
             <br>
-            @include('frontend.component.form-profile',['id_card_field' => 'both' ,'id_card_field_title' => __("product.id_card_no") ,'prefix' => '' ])
+            @include('frontend.component.form-profile',['id_card_field' => 'both' ,'id_card_field_title' => __("product.id_card_no") ,'prefix' => '' ,'selected' =>$selected])
             @include('frontend.component.form-address',['prefix' => ''])
             @include('frontend.component.form-beneficiary',['prefix' => ''])
             @include('frontend.component.form-tax-deduct')

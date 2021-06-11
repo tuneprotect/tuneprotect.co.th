@@ -1,6 +1,6 @@
-<section style="display: none" id="step2" class="product-detail">
+<section style="display: block" id="step2" class="product-detail">
     @if(strtolower($selected) == 'onvacina')
-        <section id="sectionPackage"  class="wrapper">
+        <section id="sectionPackage" class="wrapper">
             <form method="post" action="" class="insurance-form">
                 @if($locale == 'en')
                     <div class="form-head">@lang('product.please_specify_birthdate_title')</div>
@@ -37,25 +37,44 @@
                         <h3>@lang('global.coverage')</h3>
                     @endif
                     <?php $i = 1 ?>
-                    @foreach ($package_detail as $k => $v)
-                        <a href="#"
-                           data-package="{{$k}}"
-                           data-index="{{$i}}"
-                           data-gtm="product-{{strtolower($selected)}}-mobile-choose-plan-{{$i}}"
-                           class="btn btn-block btn-outline btn-choose-plan {{$i == 1 ? 'on' : '' }}">
-                            @if(isset($v->no))
-                                @if(isset($v->name))
-                                    <strong>{{$v->name}} @lang('product.plan') {{$v->no}}</strong>
-                                @else
-                                    <strong>@lang('product.plan') {{$v->no}}</strong>
-                                @endif
-                            @else
-                                <strong>@lang('product.plan') {{$i}}</strong>
-                            @endif
+                    <div class="choose-plan-mobile">
 
-                        </a>
-                        <?php $i++ ?>
-                    @endforeach
+                        @foreach ($package_detail as $k => $v)
+                            <div class="wrapper-choose-plan">
+                                <a href="#"
+                                   data-package="{{$k}}"
+                                   data-index="{{$i}}"
+                                   data-gtm="product-{{strtolower($selected)}}-mobile-choose-plan-{{$i}}"
+                                   class="btn btn-block btn-outline btn-choose-plan {{$i == 1 ? 'on' : '' }}">
+                                    @if(isset($v->no))
+                                        @if(isset($v->name))
+                                            <strong>{{$v->name}} @lang('product.plan') </strong>
+                                            <span>{{$v->no}}</span>
+                                        @else
+                                            <strong>@lang('product.plan')</strong>
+                                            <span>{{$v->no}}</span>
+                                        @endif
+                                    @else
+                                        <strong>@lang('product.plan') </strong>
+                                        <span>{{$i}}</span>
+                                    @endif
+
+                                    @if($selected == "CI")
+                                        <span class="show_on_mobile" data-price-{{$k}}></span>
+                                    @endif
+
+                                </a>
+                                @if($selected == "CI")
+                                    @if($i ==3 || $i==4)
+                                        <img class="show_on_mobile h_2_g" src="/images/my_health/Logo-My-Health.png">
+                                    @endif
+                                @endif
+                                <?php $i++ ?>
+                            </div>
+
+                        @endforeach
+
+                    </div>
                 </th>
                 <?php $i = 1 ?>
                 @foreach ($package_detail as $k => $v)
@@ -73,14 +92,17 @@
                         <a href="#"
                            data-gtm="product-{{strtolower($selected)}}-top-choose-plan-{{$i}}"
                            @if(isset($v->no))
-                                @if(isset($v->name))
-                                    data-step="3" data-package="{{$k}}" data-sub-package="" data-plan="{{$v->name}} @lang('product.plan') {{$v->no}}"
-                                @else
-                                    data-step="3" data-package="{{$k}}" data-sub-package="" data-plan="@lang('product.plan') {{$v->no}}"
-                                @endif
+                           @if(isset($v->name))
+                           data-step="3" data-package="{{$k}}" data-sub-package=""
+                           data-plan="{{$v->name}} @lang('product.plan') {{$v->no}}"
+                           @else
+                           data-step="3" data-package="{{$k}}" data-sub-package=""
+                           data-plan="@lang('product.plan') {{$v->no}}"
+                           @endif
 
                            @else
-                                data-step="3" data-package="{{$k}}" data-sub-package="" data-plan="@lang('product.plan') {{$i}}"
+                           data-step="3" data-package="{{$k}}" data-sub-package=""
+                           data-plan="@lang('product.plan') {{$i}}"
                            @endif
 
                            class="btn btn-block btn-outline btn-goto">@lang('product.choose_plan')</a>
@@ -94,7 +116,8 @@
                 <th>@lang('product.price')</th>
                 <?php $i = 1 ?>
                 @foreach ($package_detail as $k => $v)
-                    <td {{$i > 1 ? 'class=hide' : ""}} data-index="{{$i}}" data-package="{{$k}}"><strong data-price-{{$k}}></strong></td>
+                    <td {{$i > 1 ? 'class=hide' : ""}} data-index="{{$i}}" data-package="{{$k}}"><strong
+                            data-price-{{$k}}></strong></td>
                     <?php $i++ ?>
                 @endforeach
             </tr>
@@ -111,8 +134,8 @@
                                     <strong>{!!__( str_replace('__','',$v1->plan->$k) )!!}</strong>
                                 @else
                                     <strong>{!! $v1->plan->$k !!}</strong>
-                                @endif
-                            @else
+                        @endif
+                        @else
                         @endif
                         <?php $i++ ?>
                     @endforeach
@@ -126,17 +149,20 @@
                 <th>&nbsp;</th>
                 <?php $i = 1 ?>
                 @foreach ($package_detail as $k => $v)
-                    <td {{$i > 1 ? 'class=hide' : ""}} data-index="{{$i}}"  data-package="{{$k}}">
+                    <td {{$i > 1 ? 'class=hide' : ""}} data-index="{{$i}}" data-package="{{$k}}">
                         @if(isset($v->no))
                             @if(isset($v->name))
                                 @if(isset($v->name))
-                                    <strong style="display: block" class="text-center">{{$v->name}} @lang('product.plan') {{$v->no}}</strong>
+                                    <strong style="display: block"
+                                            class="text-center">{{$v->name}} @lang('product.plan') {{$v->no}}</strong>
                                 @else
-                                    <strong style="display: block" class="text-center">@lang('product.plan') {{$v->no}}</strong>
+                                    <strong style="display: block"
+                                            class="text-center">@lang('product.plan') {{$v->no}}</strong>
                                 @endif
 
                             @else
-                                <strong style="display: block" class="text-center">@lang('product.plan') {{$v->no}}</strong>
+                                <strong style="display: block"
+                                        class="text-center">@lang('product.plan') {{$v->no}}</strong>
                             @endif
                         @else
                             <strong style="display: block" class="text-center">@lang('product.plan') {{$i}}</strong>
@@ -144,16 +170,19 @@
 
                         <a href="#"
                            data-gtm="product-{{strtolower($selected)}}-bottom-choose-plan-{{$i}}"
-                            @if(isset($v->no))
-                                @if(isset($v->name))
-                                    data-step="3" data-package="{{$k}}" data-sub-package="" data-plan="{{$v->name}}  @lang('product.plan') {{$v->no}}"
-                                @else
-                                    data-step="3" data-package="{{$k}}" data-sub-package="" data-plan="@lang('product.plan') {{$v->no}}"
-                                @endif
+                           @if(isset($v->no))
+                           @if(isset($v->name))
+                           data-step="3" data-package="{{$k}}" data-sub-package=""
+                           data-plan="{{$v->name}}  @lang('product.plan') {{$v->no}}"
+                           @else
+                           data-step="3" data-package="{{$k}}" data-sub-package=""
+                           data-plan="@lang('product.plan') {{$v->no}}"
+                           @endif
 
-                            @else
-                                data-step="3" data-package="{{$k}}" data-sub-package="" data-plan="@lang('product.plan') {{$i}}"
-                            @endif
+                           @else
+                           data-step="3" data-package="{{$k}}" data-sub-package=""
+                           data-plan="@lang('product.plan') {{$i}}"
+                           @endif
                            class="btn btn-block btn-outline btn-goto">@lang('product.choose_plan')</a>
                     </td>
                     <?php $i++ ?>
@@ -163,7 +192,8 @@
         </table>
 
         <br><br>
-        <a href="#" data-gtm="product-{{strtolower($selected)}}-more" id="btn-more" data-expand="@lang('product.more')" data-collapse="@lang('product.collapse')">
+        <a href="#" data-gtm="product-{{strtolower($selected)}}-more" id="btn-more" data-expand="@lang('product.more')"
+           data-collapse="@lang('product.collapse')">
             @lang('product.more')
         </a>
 

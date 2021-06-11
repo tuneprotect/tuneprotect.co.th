@@ -168,6 +168,8 @@ return [
         "AS" => 'ASIA',
         "AE" => 'AEC'
     ],
+    "own_insurance"=>'ผู้ทำประกันภัย',
+    "other_insurance"=>'ผู้อื่นที่ทำประกันภัย',
     "ONPACA" => [
         "_01" => 'ข้อ 1. การเสียชีวิต สูญเสียอวัยวะ สายตา หรือทุพพลภาพถาวรสิ้นเชิง (อ.บ.1)',
         "PADRCA01" => "1.1 อุบัติเหตุทั่วไป",
@@ -319,27 +321,27 @@ return [
     "CI" => [
         "COV01" => "<h6> ข้อตกลงคุ้มครองการป่วยเฉพาะโรคร้ายแรงระดับเริ่มต้นถึงระดับปลานกลาง
 กรณีที่เจ็บป่วยด้วยโรคใดโรคหนึ่งที่ระบุไว้ดังนี้</h6><br>
-1) โรคมะเร็งระยะไม่ลุกลาม (Non-invasive Cancer)<br>
-<span data-disease='c'>2) โรคหลอดเลือดหัวใจตีบที่รักษาด้วยการสวน หลอดเลือดหัวใจ (Coronary Artery Disease requiring Angioplasty)<br>
-3) โรคหลอดเลือดสมองโป่งพองที่รักษาโดยใช้ขดลวดผ่านสายสวนทางหลอดเลือด
+&bull; โรคมะเร็งระยะไม่ลุกลาม (Non-invasive Cancer)<br>
+<span data-disease='c'>&bull; โรคหลอดเลือดหัวใจตีบที่รักษาด้วยการสวน หลอดเลือดหัวใจ (Coronary Artery Disease requiring Angioplasty)<br>
+&bull; โรคหลอดเลือดสมองโป่งพองที่รักษาโดยใช้ขดลวดผ่านสายสวนทางหลอดเลือด
 (Cerebral Aneurysm Treatment by Endovascular Coiling)</span>
-<span data-disease='t'>4) แผลไหม้ชนิดรุนแรงน้อย (Less severe burns / Second degree burn)</span>",
+<span data-disease='t'>&bull; แผลไหม้ชนิดรุนแรงน้อย (Less severe burns / Second degree burn)</span>",
         "COV02" => "<h6> ข้อตกลงคุ้มครองการป่วยเฉพาะโรคร้ายแรงระดับรุนแรง
 กรณีเจ็บป่วยด้วยโรคใดโรคหนึ่งที่ระบุไว้ดังนี้</h6><br>
-1) โรคมะเร็งระยะลุกลาม (Invasive Cancer)<br>
-<span data-disease='c'>2) กล้ามเนื้อหัวใจตายเฉียบพลันจากการขาดเลือด (Acute Heart Attack)
-3) โรคหลอดเลือดสมองแตกหรืออุดตัน (Major Stroke)</span>
-<span data-disease='o'>4) การผ่าตัดเปลี่ยนอวัยวะหรือปลูกถ่ายไขกระดูก (Major Organs Transplantation or Bone Marrow Transplantation)
-5) ไตวายเรื้อรัง (Chronic Kidney Failure)
-6) ตับวาย (Chronic Liver Disease / End-stage Liver disease / Liver Failure)</span>
-<span data-disease='t'>7) แผลไหม้ฉกรรจ์ (Major burn)</span>
-<span data-disease='o'>8) อัมพาตของกล้ามเนื้อแขนหรือขา (Paralysis)</span>
-<span data-disease='t'>9) การบาดเจ็บที่ศีรษะอย่างรุนแรง (Major Head Trauma)</span>",
+&bull; โรคมะเร็งระยะลุกลาม (Invasive Cancer)<br>
+<span data-disease='c'>&bull; กล้ามเนื้อหัวใจตายเฉียบพลันจากการขาดเลือด (Acute Heart Attack)
+&bull; โรคหลอดเลือดสมองแตกหรืออุดตัน (Major Stroke)</span>
+<span data-disease='o'>&bull; การผ่าตัดเปลี่ยนอวัยวะหรือปลูกถ่ายไขกระดูก (Major Organs Transplantation or Bone Marrow Transplantation)
+&bull; ไตวายเรื้อรัง (Chronic Kidney Failure)
+&bull; ตับวาย (Chronic Liver Disease / End-stage Liver disease / Liver Failure)</span>
+<span data-disease='t'>&bull; แผลไหม้ฉกรรจ์ (Major burn)</span>
+<span data-disease='o'>&bull; อัมพาตของกล้ามเนื้อแขนหรือขา (Paralysis)</span>
+<span data-disease='t'>&bull; การบาดเจ็บที่ศีรษะอย่างรุนแรง (Major Head Trauma)</span>",
         "COV03" => "<span data-disease='d'><h6> ข้อตกลงคุ้มครองการป่วยเฉพาะโรคเบาหวานกรณีเจ็บป่วยด้วยโรคใดโรคหนึ่งที่ระบุไว้ดังนี้</h6><br>
-1) เบาหวานเข้าจอประสาทตา (Diabetic Retinopathy)<br>
-2) โคม่าจากเบาหวาน (Diabetic coma)<br>
-3) การสูญเสียอวัยวะจากโรคเบาหวาน (Limb amputation)<br>
-4) เบาหวานลงไต (Diabetic Nephropathy)<br>
+&bull; เบาหวานเข้าจอประสาทตา (Diabetic Retinopathy)<br>
+&bull; โคม่าจากเบาหวาน (Diabetic coma)<br>
+&bull; การสูญเสียอวัยวะจากโรคเบาหวาน (Limb amputation)<br>
+&bull; เบาหวานลงไต (Diabetic Nephropathy)<br>
 *เฉพาะโรคเบาหวานเข้าจอประสาทตา ผลประโยชน์ 50% ของจำนวนเงินเอาประกันภัย</span>",
         "COV04" => "<h6>  ผลประโยชน์การชดเชยรายได้รายวันจากการเข้ารักษาตัวเป็นผู้ป่วยในอันเนื่องมาจากโรคร้ายแรง</h6><br>
 ค่าทดแทนสำหรับเงินชดเชยรายได้รายวัน สูงสุดไม่เกิน 15 วันต่อปีกรมธรรม์",

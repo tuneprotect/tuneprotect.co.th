@@ -911,6 +911,7 @@ header {
     left: 20px;
     bottom: 20px;
     background: #F79340;
+    z-index: 1;
     @include project_transition();
     border-radius: 100%;
     width: 60px;
@@ -2579,6 +2580,8 @@ main {
             table-layout: fixed;
 
             .btn-choose-plan {
+                height: 100%;
+                border-radius: inherit;
                 @media all and (min-width: $md) {
                     display: none;
                 }
@@ -3403,9 +3406,9 @@ main {
 }
 
 .show_on_mobile {
-    display: none;
+    display: none !important;
     @media all and (max-width: $sm) {
-        display: block;
+        display: block !important;
     }
 }
 
@@ -3419,9 +3422,25 @@ main {
 }
 
 .rs-tooltip {
-    border: 1px solid $primary-color;
+    //border: 1px solid $primary-color;
+    border: none;
 }
 
+.rs-container .rs-pointer {
+    background-color: $primary-color;
+    border-radius: 50%;
+    width: 20px;
+}
+
+.rs-container .rs-pointer::after, .rs-container .rs-pointer::before {
+    background-color: $primary-color;
+}
+
+.rs-pointer[data-dir="right"] {
+    .rs-tooltip {
+        left: 7px;
+    }
+}
 
 main[data-package="CI"] {
 
@@ -3465,6 +3484,7 @@ main[data-package="CI"] {
                 padding: 30px 10px 10px;
                 text-align: center;
                 left: 0;
+                border-radius: 14px;
 
                 &:before {
                     display: none;
@@ -3519,5 +3539,40 @@ main[data-package="CI"] {
     }
 }
 
+.slider_budget {
+    margin: 0 14px;
+}
+
+.goto-step1 {
+    margin: 25px 0 40px 0;
+}
 
 
+.choose-plan-mobile {
+    display: flex;
+    margin: 20px 0;
+
+    .wrapper-choose-plan{
+        position: relative;
+        flex:1;
+        a {
+            display: block;
+            strong {
+                font-size: .7rem !important;
+            }
+
+            span {
+                display: block;
+                line-height: .7rem;
+            }
+
+        }
+        .h_2_g{
+            width: 30px;
+            height: 37px;
+            position: absolute;
+            bottom: -16px;
+            right: 20px;
+        }
+    }
+}

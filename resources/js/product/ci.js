@@ -307,6 +307,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                     const pack = Object.keys(package_data[k].price).filter(ageRange => checkAge(data.fdHBD, ageRange))
                     const price = package_data[k].price[pack][data.ctrl_disease.join("")];
                     $(`strong[data-price-${k}]`).innerHTML = parseInt(price).toLocaleString();
+                    $(`span[data-price-${k}]`).innerHTML = parseInt(price).toLocaleString();
                     return {package: k, price}
                 }))
         }
@@ -316,6 +317,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
 
     const recommendProduct = (dataRecommend) => {
+
         const [min, max] = data.ctrl_budget.split(",")
         const dataRecommendMax = dataRecommend.reduce((recPackage, v) => {
             if ((v.price <= max && v.price >= min)
@@ -324,16 +326,28 @@ document.addEventListener("DOMContentLoaded", async () => {
             }
             return recPackage;
         }, dataRecommend[0])
+        console.log({dataRecommendMax})
 
-        $$("th.recommendPackage,td.recommendPackage").forEach($el => {
+        $$("th.recommendPackage,td.recommendPackage,a.btn-choose-plan,td[data-package").forEach($el => {
             $el.classList.remove("recommendPackage");
+            $el.classList.remove("on");
+            $el.classList.add("hide");
         });
 
-        $$("th[data-package='" + dataRecommendMax.package + "'],td[data-package='" + dataRecommendMax.package + "']").forEach($el => {
+        $$("th[data-package='" + dataRecommendMax.package + "'],td[data-package='" + dataRecommendMax.package + "'],a[data-package='" + dataRecommendMax.package + "']").forEach($el => {
             $el.classList.add("recommendPackage");
+            $el.classList.add("on");
+            $el.classList.remove("hide");
         });
 
-
+        // $$("a.btn-choose-plan,td[data-package]").forEach($el => {
+        //     $el.classList.remove("on");
+        //     $el.classList.add("hide");
+        // });
+        // $$("a[data-package='" + dataRecommendMax.package + "'],td[data-package='" + dataRecommendMax.package + "']").forEach($el => {
+        //     $el.classList.add("on");
+        //     $el.classList.remove("hide");
+        // });
         // // console.log({data,dataRecommend})
         // let dataPriceMax;
         // const arrBudget = data.ctrl_budget.split(",")
@@ -445,6 +459,19 @@ document.addEventListener("DOMContentLoaded", async () => {
                             } else {
                                 scrollToTargetAdjusted($('.controls-wrapper.error'));
                             }
+
+                            // $('h3[data-type]').data('data-type', $("#ctrl_buy_for").value);
+                            let el = $('h3[data-type]');
+
+                            el.innerHTML = "";
+
+                            if ($("#ctrl_buy_for").value == 'own_insurance') {
+                                el.innerHTML =el.dataset.own_insurance;
+
+                            } else {
+                                el.innerHTML =el.dataset.other_insurance;
+                            }
+
                             break;
                         case 2:
                             const fdPackage = $btn.getAttribute('data-package');
@@ -500,7 +527,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                                 ctrl_province: $('#ctrl_province').value,
                                 ctrl_protection_start_date: $('#ctrl_protection_start_date').value,
                             }
-
+                            console.log(data)
                             const result = validate(data, constraints);
                             const $cite = $form.getElementsByTagName('cite');
                             for (let i = 0, len = $cite.length; i !== len; ++i) {
