@@ -29,15 +29,15 @@ require('../product');
 require('../lib/rSlider.min');
 
 
-// validate.validators.idcard = function (value, options, key, attributes) {
-//     for (var i = 0, sum = 0; i < 12; i++) {
-//         sum += parseFloat(value.charAt(i)) * (13 - i);
-//     }
-//     const result = ((11 - sum % 11) % 10 === parseFloat(value.charAt(12)));
-//     if (!result) {
-//         return "^" + $('#data_1_fdNationalID').getAttribute('data-error-idcard')
-//     }
-// };
+validate.validators.idcard = function (value, options, key, attributes) {
+    for (var i = 0, sum = 0; i < 12; i++) {
+        sum += parseFloat(value.charAt(i)) * (13 - i);
+    }
+    const result = ((11 - sum % 11) % 10 === parseFloat(value.charAt(12)));
+    if (!result) {
+        return "^" + $('#fdNationalID').getAttribute('data-error-idcard')
+    }
+};
 
 const constraints = {
     fdTitle: {
@@ -198,10 +198,9 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 
     const package_data = await getPackageData(current_package);
-    const country_data = await getCountryData();
-    const nationality_data = await getNationalityData();
-    const zipcode_data = await getZipcodeData();
-    console.log(package_data);
+    // const country_data = await getCountryData();
+    // const nationality_data = await getNationalityData();
+    // const zipcode_data = await getZipcodeData();
 
     const defaultValue = Object.keys(package_data).reduce((returnValue, k) => {
         Object.keys(package_data[k].price).map((k1) => {
@@ -240,7 +239,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         fdSex: "",
         fdNationalID: "",
         fdAge: "",
-        fdHBD: "1989-01-01",
+        fdHBD: "",
         fdAddr_Num: "",
         fdAddr_District: "",
         fdAddr_Amphur: "",
@@ -263,7 +262,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
         ctrl_buy_for: "",
         ctrl_carrier: "",
-        ctrl_budget: "20000,30000",
+        ctrl_budget: "",
         ctrl_disease: [],
         ctrl_protection_start_date: ""
     };
@@ -310,51 +309,42 @@ document.addEventListener("DOMContentLoaded", async () => {
                     $(`strong[data-price-${k}]`).innerHTML = parseInt(price).toLocaleString();
                     return {package: k, price}
                 }))
-
         }
 
         hideRow();
         showRow();
     }
 
-    const recommendProduct = (dataPackage) => {
-        const [min,max] = data.ctrl_budget.split(",")
-        const dataRecommendMax = dataPackage.reduce((recPackage, v) => {
-            console.log({recPackage})
+    const recommendProduct = (dataRecommend) => {
+        const [min, max] = data.ctrl_budget.split(",")
+        const dataRecommendMax = dataRecommend.reduce((recPackage, v) => {
             if ((v.price <= max && v.price >= min)
                 || v.price < min) {
                 return v;
             }
             return recPackage;
-        }, dataPackage[0])
-
-        console.log({dataRecommendMax})
+        }, dataRecommend[0])
 
         $$("th.recommendPackage,td.recommendPackage").forEach($el => {
             $el.classList.remove("recommendPackage");
         });
 
-        $$("th[data-package='"+dataRecommendMax.package+"'],td[data-package='"+dataRecommendMax.package+"']").forEach($el => {
+        $$("th[data-package='" + dataRecommendMax.package + "'],td[data-package='" + dataRecommendMax.package + "']").forEach($el => {
             $el.classList.add("recommendPackage");
         });
 
 
-        // console.log({dataPackage})
+        // // console.log({data,dataRecommend})
         // let dataPriceMax;
         // const arrBudget = data.ctrl_budget.split(",")
-        // console.log({arrBudget})
-        // const recommendMax = dataPackage.filter(function (e) {
-        //     if (e.price <= arrBudget[1] && e.price >= arrBudget[0]) {
+        // const recommendMax = dataRecommend.filter(function (e) {
+        //     if(e.price <= arrBudget[1] && e.price >= arrBudget[0]){
         //         return e;
         //     }
         // });
         //
         // console.log({recommendMax})
-        // if (recommendMax.length == 1) {
-        //     console.log('a');
-        //     dataPriceMax = recommendMax
-        // } else if (recommendMax.length > 1) {
-        //     console.log('b');
+        // if(recommendMax.length > 0){
         //     let max = recommendMax[0].price;
         //
         //     for (let i = 1; i < recommendMax.length; ++i) {
@@ -364,32 +354,15 @@ document.addEventListener("DOMContentLoaded", async () => {
         //             dataPriceMax = recommendMax[i]
         //         }
         //     }
-        // } else {
-        //     console.log(arrBudget[0],dataPackage[3].price);
-        //     if (parseInt(arrBudget[1]) < parseInt(dataPackage[0].price)) {
-        //         console.log('c');
-        //         dataPriceMax = dataPackage[0]
-        //     }
         //
-        //     if (parseInt(arrBudget[0]) > parseInt(dataPackage[3].price)) {
-        //         console.log('d');
-        //         dataPriceMax = dataPackage[3]
-        //     }
+        // }else{
         //
+        //     dataPriceMax = dataRecommend[0]
         //
         // }
+        //
+        //
         // console.log({dataPriceMax})
-        //
-        // if(dataPriceMax !== undefined){
-        //     $$("th.recommendPackage,td.recommendPackage").forEach($el => {
-        //         $el.classList.remove("recommendPackage");
-        //     });
-        //
-        //     $$("th[data-package='"+dataPriceMax.package+"'],td[data-package='"+dataPriceMax.package+"']").forEach($el => {
-        //         $el.classList.add("recommendPackage");
-        //     });
-        // }
-
 
     }
 
@@ -469,6 +442,8 @@ document.addEventListener("DOMContentLoaded", async () => {
 
                                 genPrice();
                                 $('.btn-goto-step1').style.display = "none";
+                            } else {
+                                scrollToTargetAdjusted($('.controls-wrapper.error'));
                             }
                             break;
                         case 2:
@@ -526,7 +501,6 @@ document.addEventListener("DOMContentLoaded", async () => {
                                 ctrl_protection_start_date: $('#ctrl_protection_start_date').value,
                             }
 
-                            console.log(data)
                             const result = validate(data, constraints);
                             const $cite = $form.getElementsByTagName('cite');
                             for (let i = 0, len = $cite.length; i !== len; ++i) {
