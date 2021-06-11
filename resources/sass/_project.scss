@@ -2622,7 +2622,7 @@ main {
 
                     &:nth-child(odd) {
                         th, td {
-                            &.hovered {
+                            &.hovered, &.recommendPackage {
                                 background: #BE0001;
                             }
                         }
@@ -3552,11 +3552,13 @@ main[data-package="CI"] {
     display: flex;
     margin: 20px 0;
 
-    .wrapper-choose-plan{
+    .wrapper-choose-plan {
         position: relative;
-        flex:1;
+        flex: 1;
+
         a {
             display: block;
+
             strong {
                 font-size: .7rem !important;
             }
@@ -3567,7 +3569,8 @@ main[data-package="CI"] {
             }
 
         }
-        .h_2_g{
+
+        .h_2_g {
             width: 30px;
             height: 37px;
             position: absolute;

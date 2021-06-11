@@ -13,36 +13,28 @@ document.addEventListener("DOMContentLoaded", async () => {
     let expandDetail = false;
 
     if (table) {
+        const checkHoverElm = ['td', 'th']
         table.addEventListener('mouseover', function (e) {
-            if (e.target.tagName.toLowerCase() === 'td') {
-                const index = e.target.cellIndex;
+            if (checkHoverElm.includes(e.target.tagName.toLowerCase()) ||
+                checkHoverElm.includes(e.target.parentNode.tagName.toLowerCase())) {
+                const index = e.target.cellIndex || e.target.parentNode.cellIndex;
 
-                hovered && hovered.forEach(function (cell) {
-                    cell.classList.remove(HOVER_CLASS);
-                });
-
-                hovered = Array.prototype.map.call(
-                    table.rows,
-                    function (row) {
+                hovered && hovered.map((cell) => cell && cell.classList.remove(HOVER_CLASS));
+                hovered = Array.prototype.map.call(table.rows, (row) => {
                         var i = index;
                         while (!cell && i >= 0) {
                             var cell = row.cells[i];
-                            i -= 1;
+                            i--;
                         }
                         return cell;
                     }
                 );
-
-                hovered.forEach(function (cell) {
-                    cell.classList.add(HOVER_CLASS);
-                });
+                hovered.map((cell) => cell && cell.classList.add(HOVER_CLASS));
             }
         }, true);
 
         table.addEventListener('mouseout', function (e) {
-            hovered && hovered.forEach(function (cell) {
-                cell.classList.remove(HOVER_CLASS);
-            });
+            hovered && hovered.map((cell) => cell && cell.classList.remove(HOVER_CLASS));
             hovered = null;
         }, true);
     }
