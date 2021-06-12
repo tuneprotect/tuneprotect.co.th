@@ -174,9 +174,11 @@
                             @if(!empty($v->pic_en))
                                 @if(isset($selected))
                                     @if($selected==='ONVSAFEA')
-                                    <picture>
-                                            <source media="(min-width:768px)" srcset="{{url(str_replace('Banner_Covid_D_EN', 'Banner_VSafe_D_EN', $v->pic_en))}}">
-                                            <img src="{{url(!empty($v->pic_mobile_en) ? url(str_replace('Banner_Covid_D_EN', 'Banner_VSafe_D_EN', $v->pic_mobile_en)) : url(str_replace('Banner_Covid_D_EN', 'Banner_VSafe_M_EN', $v->pic_en)) )}}"
+                                        <picture>
+                                            <source media="(min-width:768px)"
+                                                    srcset="{{url(str_replace('Banner_Covid_D_EN', 'Banner_VSafe_D_EN', $v->pic_en))}}">
+                                            <img
+                                                src="{{url(!empty($v->pic_mobile_en) ? url(str_replace('Banner_Covid_D_EN', 'Banner_VSafe_D_EN', $v->pic_mobile_en)) : url(str_replace('Banner_Covid_D_EN', 'Banner_VSafe_M_EN', $v->pic_en)) )}}"
                                                 alt="{{$v->locales[$locale]->title}}">
                                         </picture>
                                     @endif
@@ -190,19 +192,21 @@
                             @endif
                         @else
                             @if(!empty($v->pic))
-                                @if(isset($selected))
-                                    @if($selected==='ONVSAFEA')
-                                        <picture>
-                                            <source media="(min-width:768px)" srcset="{{url(str_replace('Banner_Covid_D', 'Banner_VSafe_D', $v->pic))}}">
-                                            <img src="{{url(!empty($v->pic_mobile) ? url(str_replace('Banner_Covid_D', 'Banner_VSafe_D', $v->pic_mobile)) : url(str_replace('Banner_Covid_D', 'Banner_VSafe_M', $v->pic)) )}}"
-                                                alt="{{$v->locales[$locale]->title}}">
-                                        </picture>
-                                    @endif
+
+                                @if(@$selected==='ONVSAFEA')
+                                    <picture>
+                                        <source media="(min-width:768px)"
+                                                srcset="{{url(str_replace('Banner_Covid_D', 'Banner_VSafe_D', $v->pic))}}">
+                                        <img
+                                            src="{{url(!empty($v->pic_mobile) ? url(str_replace('Banner_Covid_D', 'Banner_VSafe_D', $v->pic_mobile)) : url(str_replace('Banner_Covid_D', 'Banner_VSafe_M', $v->pic)) )}}"
+                                            alt="{{$v->locales[$locale]->title}}">
+                                    </picture>
+
                                 @else
                                     <picture>
                                         <source media="(min-width:768px)" srcset="{{url($v->pic)}}">
                                         <img src="{{url(!empty($v->pic_mobile) ? $v->pic_mobile : $v->pic )}}"
-                                            alt="{{$v->locales[$locale]->title}}">
+                                             alt="{{$v->locales[$locale]->title}}">
                                     </picture>
                                 @endif
                             @endif
@@ -258,18 +262,18 @@
                     {{--                    </div>--}}
                 </section>
                 @if(@$menu_enable[\App\Enum\ProjectEnum::STATIC_PAGE_MY_HEALTH] > 0)
-                <section>
-                    <h6 class="collapse">@lang('global.nav_service')</h6>
-                    <ul class="collapse">
-                        <li><a href="#"><strong>@lang('global.nav_service_my_health')</strong></a></li>
-                        <li>
-                            <a data-gtm="footer-nav-my-health"
-                               target="_blank"
-                               href="/{{$locale}}/myHealth/health2go">@lang('global.nav_service_health_to_go')
-                            </a>
-                        </li>
-                    </ul>
-                </section>
+                    <section>
+                        <h6 class="collapse">@lang('global.nav_service')</h6>
+                        <ul class="collapse">
+                            <li><a href="#"><strong>@lang('global.nav_service_my_health')</strong></a></li>
+                            <li>
+                                <a data-gtm="footer-nav-my-health"
+                                   target="_blank"
+                                   href="/{{$locale}}/myHealth/health2go">@lang('global.nav_service_health_to_go')
+                                </a>
+                            </li>
+                        </ul>
+                    </section>
                 @endif
                 <section>
                     <h6 class="collapse">@lang('global.nav_claim')</h6>
@@ -281,10 +285,10 @@
                                 @foreach ($claim as $v1)
                                     @if($v->id == $v1->cat_id )
                                         @if(strtolower($v1->locales[$locale]->title) !== 'vsure')
-                                        <li>
-                                            <a data-gtm="footer-nav-claim-{{$v1->friendly_url}}"
-                                               href="{{route('current',['locale' => $locale,'controller' => 'claim','func' => $v1->friendly_url ])}}">{{$v1->locales[$locale]->title}}</a>
-                                        </li>
+                                            <li>
+                                                <a data-gtm="footer-nav-claim-{{$v1->friendly_url}}"
+                                                   href="{{route('current',['locale' => $locale,'controller' => 'claim','func' => $v1->friendly_url ])}}">{{$v1->locales[$locale]->title}}</a>
+                                            </li>
                                         @endif
                                     @endif
                                 @endforeach

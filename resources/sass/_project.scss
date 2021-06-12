@@ -3585,9 +3585,21 @@ main[data-package="CI"] {
     .service_flexi_box {
         display: flex;
         flex: 1;
-        .inner{
-            width: 50%;
+        @media all and (max-width: $md) {
+            flex-direction: column;
+        }
 
+        .inner {
+            width: 50%;
+            @media all and (max-width: $md) {
+                margin: 10px 0;
+                width: 100%;
+            }
+            @media all and (max-width: $md) {
+                p{
+                    margin-bottom: 50px !important;
+                }
+            }
             img {
                 width: 100%;
             }
@@ -3595,4 +3607,20 @@ main[data-package="CI"] {
     }
 }
 
+.step-ci-wrapper {
+    #step {
+        display: flex;
+        flex-wrap: wrap;
+        @media all and (max-width: $sm) {
+            flex-flow: row wrap;
+        }
 
+        .item {
+            text-align: center;
+            flex: 1;
+            @media all and (max-width: $md) {
+                flex: 50%;
+            }
+        }
+    }
+}

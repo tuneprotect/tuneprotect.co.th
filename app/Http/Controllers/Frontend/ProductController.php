@@ -105,6 +105,7 @@ class ProductController extends BaseController
                 if ($v->code === $selected) {
                     $this->setStaticPageHeader($v);
                     $this->bodyData['slideshow'] = [$this->bodyData['current_product']];
+//                    dd($this->bodyData['slideshow']);
                 }
             }
         } else {

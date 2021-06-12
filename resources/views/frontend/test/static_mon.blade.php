@@ -18,8 +18,6 @@
 {{--                    <img src="/images/ico_ci/ci_benner_main.jpg" alt="">--}}
 {{--                </div>--}}
 
-                <h1>myFlexi CI</h1>
-
                 <div>
                     <h3>ได้ครบที่คลิกเลือก! มีงบหลักพัน ก็มีประกันโรคร้ายแรงคุ้มครองทุกระยะหลักล้านได้</h3>
 
@@ -30,7 +28,7 @@
                     <section class="my-health-step">
                         <h2 style="margin: 20px 0">จุดเด่นแบบประกัน</h2>
 
-                        <div class="step-wrapper" style="margin-bottom: 20px">
+                        <div class="step-ci-wrapper" style="margin-bottom: 20px">
                             <div id="step">
                                 <div class="item" style="padding: 10px 5px"><img alt=""
                                                                                  src="/images/ico_ci/flexi_1.png"/>
@@ -59,7 +57,7 @@
                             </div>
                         </div>
 
-                        <div class="step-wrapper" style="margin-bottom: 20px">
+                        <div class="step-ci-wrapper" style="margin-bottom: 20px">
                             <div id="step">
                                 <div class="item" style="padding: 10px 5px"><img alt=""
                                                                                  src="/images/ico_ci/flexi_1.png"/>
