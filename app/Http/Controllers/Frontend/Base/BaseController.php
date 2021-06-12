@@ -108,6 +108,7 @@ abstract class BaseController extends Controller
 
     protected function setFaq($typeId, $parentId = '')
     {
+
         if (is_string($typeId)) {
             $data = WebContent::where('type_id', $typeId);
 

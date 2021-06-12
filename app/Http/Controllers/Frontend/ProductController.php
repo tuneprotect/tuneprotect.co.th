@@ -164,8 +164,11 @@ class ProductController extends BaseController
             ->first();
 
         $this->bodyData['controller'] = $this->controller;
+
         if($isPage){
             $this->bodyData['faq'] = $this->setFaq(ProjectEnum::WEB_CONTENT_FAQ, $this->bodyData['current_package']->id);
+        }else{
+            $this->bodyData['faq'] = $this->setFaq('faq.content', $this->bodyData['current_package']->id);
         }
 
         try {
