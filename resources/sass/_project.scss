@@ -3461,15 +3461,18 @@ main[data-package="CI"] {
             li {
                 margin: 2px;
                 flex: 1;
-                border-radius: 14px;
-                border: 1px solid $primary-color;
+
                 //@media all and (max-width: $md) {
                 //    flex: 30%;
                 //}
             }
 
             input[type=checkbox] {
+
                 &:checked + label {
+                    border: 1px solid $primary-color;
+                    border-radius: 14px;
+
                     &:after {
                         opacity: 1;
                     }
@@ -3486,11 +3489,13 @@ main[data-package="CI"] {
 
                 + label {
                     margin-right: 10px;
-                    border: none;
                     padding: 30px 10px 10px;
                     text-align: center;
                     left: 0;
-
+                    border-radius: 14px;
+                    border: 1px solid #acacac;
+                    display: inline-block;
+                    height: 100%;
 
                     &:before {
                         display: none;
@@ -3513,7 +3518,7 @@ main[data-package="CI"] {
                         @media all and (max-width: $sm) {
                             font-size: .6rem;
                             writing-mode: vertical-rl;
-                            margin:0 auto;
+                            margin: 0 auto;
                         }
                     }
 
@@ -3521,7 +3526,7 @@ main[data-package="CI"] {
                         height: 100px;
                         width: 100px;
                         @media all and (max-width: $sm) {
-                            height:auto;
+                            height: auto;
                             width: auto;
                         }
                     }
@@ -3590,16 +3595,16 @@ main[data-package="CI"] {
                 padding-right: 0;
 
                 &.on {
-                    &:before{
+                    &:before {
                         content: " ";
                         background-image: url(/images/ico_ci/star.svg);
                         width: 14px;
                         height: 13px;
-                        background-color:inherit;
+                        background-color: inherit;
                         opacity: 1;
-                        margin-left:-10px;
+                        margin-left: -10px;
                         top: 5px;
-                        left:50%;
+                        left: 50%;
                         //position: absolute;
                         //top: 0;
                         //left: 0;

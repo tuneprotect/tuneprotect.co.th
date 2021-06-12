@@ -196,9 +196,6 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 
     const package_data = await getPackageData(current_package);
-    // const country_data = await getCountryData();
-    // const nationality_data = await getNationalityData();
-    // const zipcode_data = await getZipcodeData();
 
     const defaultValue = Object.keys(package_data).reduce((returnValue, k) => {
         Object.keys(package_data[k].price).map((k1) => {
@@ -416,10 +413,13 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     $$(".checkbox_disease").forEach($el => {
         $el.addEventListener("change", function (e) {
+
             data = {
                 ...data,
                 ctrl_disease: getCheckedCheckboxesFor("ctrl_disease")
             }
+
+
             genPrice();
         });
     });
