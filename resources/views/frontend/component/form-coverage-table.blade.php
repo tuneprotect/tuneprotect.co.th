@@ -1,4 +1,4 @@
-<section style="display: block" id="step2" class="product-detail">
+<section style="display: none" id="step2" class="product-detail">
     @if(strtolower($selected) == 'onvacina')
         <section id="sectionPackage" class="wrapper">
             <form method="post" action="" class="insurance-form">
@@ -92,17 +92,16 @@
                         <a href="#"
                            data-gtm="product-{{strtolower($selected)}}-top-choose-plan-{{$i}}"
                            @if(isset($v->no))
-                           @if(isset($v->name))
-                           data-step="3" data-package="{{$k}}" data-sub-package=""
-                           data-plan="{{$v->name}} @lang('product.plan') {{$v->no}}"
+                               @if(isset($v->name))
+                                   data-step="3" data-package="{{$k}}" data-sub-package=""
+                                   data-plan="{{$v->name}} @lang('product.plan') {{$v->no}}"
+                               @else
+                                   data-step="3" data-package="{{$k}}" data-sub-package=""
+                                   data-plan="@lang('product.plan') {{$v->no}}"
+                               @endif
                            @else
-                           data-step="3" data-package="{{$k}}" data-sub-package=""
-                           data-plan="@lang('product.plan') {{$v->no}}"
-                           @endif
-
-                           @else
-                           data-step="3" data-package="{{$k}}" data-sub-package=""
-                           data-plan="@lang('product.plan') {{$i}}"
+                               data-step="3" data-package="{{$k}}" data-sub-package=""
+                               data-plan="@lang('product.plan') {{$i}}"
                            @endif
 
                            class="btn btn-block btn-outline btn-goto">@lang('product.choose_plan')</a>
