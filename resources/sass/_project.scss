@@ -3444,79 +3444,93 @@ main {
 
 main[data-package="CI"] {
 
-    form .check_box_disease {
-        display: flex;
-        border-radius: 5px;
-        position: relative;
-        justify-content: center;
-        padding-top: 30px;
-        flex-wrap: wrap;
 
-        li {
-            margin: 10px;
-            flex: 1;
-            @media all and (max-width: $md) {
-                flex: 30%;
-            }
+    form {
+        .date-input .date-wrapper > div {
+            margin-right: 0;
         }
 
-        input[type=checkbox] {
-            &:checked + label {
+        .check_box_disease {
+            display: flex;
+            border-radius: 5px;
+            position: relative;
+            justify-content: center;
+            padding-top: 30px;
+            flex-wrap: wrap;
+
+            li {
+                margin: 2px;
+                flex: 1;
+                border-radius: 14px;
                 border: 1px solid $primary-color;
-
-                &:after {
-                    opacity: 1;
-                }
-
-                strong {
-                    color: $primary-color;
-                }
-
-                img {
-                    filter: brightness(0.5) sepia(1) saturate(10000%);
-                }
+                //@media all and (max-width: $md) {
+                //    flex: 30%;
+                //}
             }
 
+            input[type=checkbox] {
+                &:checked + label {
+                    &:after {
+                        opacity: 1;
+                    }
 
-            + label {
-                margin-right: 10px;
-                border: 1px solid #acacac;
-                padding: 30px 10px 10px;
-                text-align: center;
-                left: 0;
-                border-radius: 14px;
+                    strong {
+                        color: $primary-color;
+                    }
 
-                &:before {
-                    display: none;
-                }
-
-                &:after {
-                    content: "\EED8";
-                    top: -21px;
-                    left: 50%;
-                    background: #fff;
-                    line-height: 38px;
-                    margin-left: -19px;
-                    text-indent: -6px;
-                    opacity: 0;
-                }
-
-
-                strong {
-                    display: block;
-                    @media all and (max-width: $sm) {
-                        font-size: .6rem;
+                    img {
+                        filter: brightness(0.5) sepia(1) saturate(10000%);
                     }
                 }
 
-                img {
-                    height: 100px;
-                    width: 100px;
+
+                + label {
+                    margin-right: 10px;
+                    border: none;
+                    padding: 30px 10px 10px;
+                    text-align: center;
+                    left: 0;
+
+
+                    &:before {
+                        display: none;
+                    }
+
+                    &:after {
+                        content: "\EED8";
+                        top: -21px;
+                        left: 50%;
+                        background: #fff;
+                        line-height: 38px;
+                        margin-left: -19px;
+                        text-indent: -6px;
+                        opacity: 0;
+                    }
+
+
+                    strong {
+                        display: block;
+                        @media all and (max-width: $sm) {
+                            font-size: .6rem;
+                            writing-mode: vertical-rl;
+                            margin:0 auto;
+                        }
+                    }
+
+                    img {
+                        height: 100px;
+                        width: 100px;
+                        @media all and (max-width: $sm) {
+                            height:auto;
+                            width: auto;
+                        }
+                    }
                 }
             }
-        }
 
+        }
     }
+
 
     #table-detail {
         th {
@@ -3560,11 +3574,36 @@ main[data-package="CI"] {
             position: relative;
             flex: 1;
 
+            a[data-package="CI01"] {
+                border-top-left-radius: 10px !important;
+                border-bottom-left-radius: 10px !important;
+            }
+
+            a[data-package="CI04"] {
+                border-top-right-radius: 10px !important;
+                border-bottom-right-radius: 10px !important;
+            }
+
             a {
                 display: block;
+                padding-left: 0;
+                padding-right: 0;
 
-                strong {
-                    font-size: .7rem !important;
+                &.on {
+                    &:before{
+                        content: " ";
+                        background-image: url(/images/ico_ci/star.svg);
+                        width: 14px;
+                        height: 13px;
+                        background-color:inherit;
+                        opacity: 1;
+                        margin-left:-10px;
+                        top: 5px;
+                        left:50%;
+                        //position: absolute;
+                        //top: 0;
+                        //left: 0;
+                    }
                 }
 
                 span {
@@ -3577,9 +3616,7 @@ main[data-package="CI"] {
             .h_2_g {
                 width: 30px;
                 height: 37px;
-                position: absolute;
-                bottom: -16px;
-                right: 20px;
+                margin: 0 auto;
             }
         }
     }

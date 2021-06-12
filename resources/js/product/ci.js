@@ -435,7 +435,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                     status = true;
                     switch (parseInt(step)) {
                         case 2:
-                            $('.btn-goto-step1').style.display = "inline-flex";
+                            $('.goto-step1').style.display = "inline-flex";
                             break;
                     }
                 } else {
@@ -454,7 +454,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                                 }
 
                                 genPrice();
-                                $('.btn-goto-step1').style.display = "none";
+                                $('.goto-step1').style.display = "none";
                             } else {
                                 scrollToTargetAdjusted($('.controls-wrapper.error'));
                             }

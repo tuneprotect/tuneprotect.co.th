@@ -1,4 +1,4 @@
-<section style="display: none" id="step2" class="product-detail">
+<section style="display: block" id="step2" class="product-detail">
     @if(strtolower($selected) == 'onvacina')
         <section id="sectionPackage" class="wrapper">
             <form method="post" action="" class="insurance-form">
@@ -48,27 +48,24 @@
                                    class="btn btn-block btn-outline btn-choose-plan {{$i == 1 ? 'on' : '' }}">
                                     @if(isset($v->no))
                                         @if(isset($v->name))
-                                            <strong>{{$v->name}} @lang('product.plan') </strong>
-                                            <span>{{$v->no}}</span>
+                                            <strong>{{$v->name}} @lang('product.plan') {{$v->no}}</strong>
                                         @else
-                                            <strong>@lang('product.plan')</strong>
-                                            <span>{{$v->no}}</span>
+                                            <strong>@lang('product.plan') {{$v->no}}</strong>
                                         @endif
                                     @else
-                                        <strong>@lang('product.plan') </strong>
-                                        <span>{{$i}}</span>
+                                        <strong>@lang('product.plan') {{$i}}</strong>
                                     @endif
 
                                     @if($selected == "CI")
                                         <span class="show_on_mobile" data-price-{{$k}}></span>
                                     @endif
-
+                                        @if($selected == "CI")
+                                            @if($i ==3 || $i==4)
+                                                <img class="show_on_mobile h_2_g" src="/images/my_health/Logo-My-Health.png">
+                                            @endif
+                                        @endif
                                 </a>
-                                @if($selected == "CI")
-                                    @if($i ==3 || $i==4)
-                                        <img class="show_on_mobile h_2_g" src="/images/my_health/Logo-My-Health.png">
-                                    @endif
-                                @endif
+
                                 <?php $i++ ?>
                             </div>
 
