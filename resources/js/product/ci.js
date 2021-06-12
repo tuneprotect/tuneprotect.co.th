@@ -1,11 +1,10 @@
 import {
-    changeStep, checkAge,
-    checkTaBirthDateIPass,
+    changeStep,
+    checkAge,
     formatTelNumber,
-    getCountryData,
-    getNationalityData,
     getPackageData,
-    showMultipleTitle, showTitle, validateAgeInPackage
+    showTitle,
+    validateAgeInPackage
 } from "../form/productHelper";
 import {
     $,
@@ -13,15 +12,14 @@ import {
     current_package,
     getCheckedCheckboxesFor,
     getRadioSelectedValue,
-    getZipcodeData,
     locale,
     scrollToTargetAdjusted
 } from "../helper";
 
-import {removeError, showError, showFieldError, validateField} from "../validate_form";
+import {showFieldError, validateField} from "../validate_form";
 import Swal from "sweetalert2";
 import validate from "validate.js";
-import {addDays, addYears, format, parseISO, subDays} from "date-fns";
+import {format, parseISO} from "date-fns";
 import intlTelInput from "intl-tel-input";
 
 require('../main');
@@ -227,7 +225,8 @@ document.addEventListener("DOMContentLoaded", async () => {
         scale: true,
         labels: false,
         step: 5000,
-        set: [defaultValue.min, defaultValue.max]
+        set: [defaultValue.min, defaultValue.max],
+        tooltipFormat: (value) => value.toLocaleString()
     });
 
 
@@ -466,10 +465,10 @@ document.addEventListener("DOMContentLoaded", async () => {
                             el.innerHTML = "";
 
                             if ($("#ctrl_buy_for").value == 'own_insurance') {
-                                el.innerHTML =el.dataset.own_insurance;
+                                el.innerHTML = el.dataset.own_insurance;
 
                             } else {
-                                el.innerHTML =el.dataset.other_insurance;
+                                el.innerHTML = el.dataset.other_insurance;
                             }
 
                             break;
