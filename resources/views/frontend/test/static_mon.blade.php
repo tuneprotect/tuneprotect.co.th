@@ -13,94 +13,135 @@
             @endif
 
 
-            <h1>My Health</h1>
-       <div>
-           <style type="text/css">#static_page article{margin-top:15px;}
-           </style>
-           <div class="my-health-title" style="margin-bottom: 20px"><img alt="" src="/storage/my_health/final-health2go-logo-color.png" style="width: 300px" />
-               <h2>Health2GO บริการปรึกษาแพทย์ออนไลน์ส่วนตัวของคุณ</h2>
+            <div class="wrapper">
+{{--                <div>--}}
+{{--                    <img src="/images/ico_ci/ci_benner_main.jpg" alt="">--}}
+{{--                </div>--}}
 
-               <p>ไร้กังวลทุกที่ทุกเวลา เพราะเจ็บป่วยเมื่อไหร่ ก็สามารถขอรับคำปรึกษากับแพทย์ผู้เชี่ยวชาญออนไลน์ได้ เพียงเป็นลูกค้า Tune Protect<br />
-                   (เงื่อนไขเป็นไปตามที่บริษัทฯ)</p>
-           </div>
+                <h1>myFlexi CI</h1>
 
-           <section class="my-health-service">
-               <div class="my-health-service-inner">
-                   <div class="my-health-service-box">
-                       <h2>จุดเด่นของบริการ</h2>
+                <div>
+                    <h3>ได้ครบที่คลิกเลือก! มีงบหลักพัน ก็มีประกันโรคร้ายแรงคุ้มครองทุกระยะหลักล้านได้</h3>
 
-                       <ul>
-                           <li style="display: flex;align-items: flex-start;"><img src="/images/my_health/icon-07.png" style="width: 20px;margin:5px 5px 0 0" /> ปรึกษาแพทย์ผู้เชี่ยวชาญ ทางโทรศัพท์ แชท หรือ ทางวีดีโอคอล</li>
-                           <li style="display: flex;align-items: flex-start;"><img src="/images/my_health/icon-07.png" style="width: 20px;margin:5px 5px 0 0" /> ใช้บริการได้ตลอด 24 ชั่วโมง ทุกที่ทุกเวลา</li>
-                           <li style="display: flex;align-items: flex-start;"><img src="/images/my_health/icon-07.png" style="width: 20px;margin:5px 5px 0 0" /> ทำนัดตามความต้องการของคุณ หรือ นัดหมายล่วงหน้า</li>
-                           <li style="display: flex;align-items: flex-start;"><img src="/images/my_health/icon-07.png" style="width: 20px;margin:5px 5px 0 0" /> ข้อมูลทางการแพทย์จะถูกเก็บเป็นความลับ</li>
-                           <li style="display: flex;align-items: flex-start;"><img src="/images/my_health/icon-07.png" style="width: 20px;margin:5px 5px 0 0" /> ข้อมูลส่วนตัวของคุณจะได้รับการเก็บรักษาอย่างปลอดภัย</li>
-                       </ul>
-                   </div>
+                    <p>เพราะโรคร้ายแรงมีมากกว่าที่คิด! ประกันโรคร้ายแรงจาก Tune Protect พร้อมดูแลคุ้มครองโรคร้ายทุกระยะ
+                        และเลือกความคุ้มครองโรคร้ายเพิ่มเติมได้ตามต้องการ สมัครได้ตั้งแต่อายุ 18-60 ปี ต่ออายุได้ถึง 65
+                        ปี ลดหย่อนภาษีได้ พร้อมบริการความเห็นที่สองทางการแพทย์และบริการปรึกษาแพทย์ออนไลน์</p>
 
-                   <div class="my-health-service-box">
-                       <h2>ทำไมคุณควรใช้บริการ Health2GO</h2>
+                    <section class="my-health-step">
+                        <h2 style="margin: 20px 0">จุดเด่นแบบประกัน</h2>
 
-                       <ul>
-                           <li style="display: flex;align-items: center"><img src="/storage/my_health/icon-10.png" style="margin-right:8px " />
-                               <div style="display:inline-block;width: 80%;"><strong>ประหยัดเวลา </strong> <span> ด้วยเทคโนโลยีที่ช่วยเข้าถึงแพทย์ผู้เชี่ยวชาญเฉพาะทางได้ทุกที่ทุกเวลา </span></div>
-                           </li>
-                           <li style="display: flex;align-items: center"><img src="/storage/my_health/icon-11.png" style="margin-right:8px " />
-                               <div style="display:inline-block;width: 80%;"><strong>ลดความเสี่ยงการติดเชื้อ </strong> <span> หลีกเลี่ยงการเดินทางไปโรงพยาบาล ลดโอกาสพบผู้ป่วย/ผู้ติดเชื้อ </span></div>
-                           </li>
-                       </ul>
-                   </div>
-               </div>
-               <a class="btn btn_my_health btn-primary" href="https://telehealth.europ-assistance.com/tuneprotect/?lang=th" style="max-width:220px" target="_blank">ปรึกษาแพทย์ออนไลน์ คลิก</a></section>
+                        <div class="step-wrapper" style="margin-bottom: 20px">
+                            <div id="step">
+                                <div class="item" style="padding: 10px 5px"><img alt=""
+                                                                                 src="/images/ico_ci/flexi_1.png"/>
+                                    <p style="font-size: .8rem">คุ้มครองโรคร้ายทุกระยะ สูงสุดมากกว่า 3 ล้านบาท*</p>
+                                </div>
 
-           <div class="my-health-condition">
-               <h2>เงื่อนไขการให้บริการ</h2>
+                                <div class="item" style="padding: 10px 5px"><img alt=""
+                                                                                 src="/images/ico_ci/flexi_2.png"/>
+                                    <p style="font-size: .8rem">เลือกปรับเพิ่ม-ลด ความคุ้มครองได้</p>
+                                </div>
 
-               <ul>
-                   <li>&bull; ผู้ใช้บริการต้องมีอายุ 20 ปีขึ้นไป</li>
-                   <li>&bull; ค่าใช้จ่ายในการให้บริการปรึกษาแพทย์ผู้เชี่ยวชาญ Health2GO (Tele-Consultation) ขึ้นอยู่กับข้อกำหนดและเงื่อนไข บริษัท ยุโรป แอสซิสแทนซ์ จำกัด</li>
-                   <li>&bull; บริการปรึกษาแพทย์ผู้เชี่ยวชาญ (Tele-Consultation) มีระยะเวลา 15 นาทีต่อการเข้าใช้ 1 ครั้ง</li>
-               </ul>
+                                <div class="item" style="padding: 10px 5px"><img alt=""
+                                                                                 src="/images/ico_ci/flexi_3.png"/>
+                                    <p style="font-size: .8rem">คุ้มครอง 5 กลุ่มโรคร้ายแรง</p>
+                                </div>
 
-               <h2>การเตรียมตัวก่อนรับบริการ</h2>
+                                <div class="item" style="padding: 10px 5px"><img alt=""
+                                                                                 src="/images/ico_ci/flexi_4.png"/>
+                                    <p style="font-size: .8rem">คุ้มครองถึงอายุ 65 ปี</p>
+                                </div>
 
-               <ul>
-                   <li>&bull; เพื่อความเป็นส่วนตัวของข้อมูลทางการแพทย์ ผู้รับบริการควรเลือกใช้บริการในสถานที่ที่มีความเป็นส่วนตัว มีสัญญาณอินเตอร์เน็ตที่เสถียรเพื่อความรวดเร็วในการเชื่อมต่อ และควรมีบัตรประชาชน หรือ พาสปอร์ต เพื่อใช้ในการยืนยันตัวบุคคลก่อนเข้ารับบริการ</li>
-               </ul>
-           </div>
+                                <div class="item" style="padding: 10px 5px"><img alt=""
+                                                                                 src="/images/ico_ci/flexi_5.png"/>
+                                    <p style="font-size: .8rem">มีค่าชดเชยและพยาบาลพิเศษ</p>
+                                </div>
+                            </div>
+                        </div>
 
-           <section class="my-health-step">
-               <h2>ขั้นตอนการใช้งาน</h2>
-               &nbsp;
+                        <div class="step-wrapper" style="margin-bottom: 20px">
+                            <div id="step">
+                                <div class="item" style="padding: 10px 5px"><img alt=""
+                                                                                 src="/images/ico_ci/flexi_1.png"/>
+                                    <p style="font-size: .8rem">เบี้ยเริ่มต้นเพียงไม่ถึง 2 บาทต่อวัน</p>
+                                </div>
 
-               <div class="step-wrapper">
-                   <div id="step">
-                       <div class="item"><img alt="" src="/images/my_health/step-1.png" style="width: 150px" /> <strong>คลิก</strong>
+                                <div class="item" style="padding: 10px 5px"><img alt=""
+                                                                                 src="/images/ico_ci/flexi_6.png"/>
+                                    <p style="font-size: .8rem">ตอบคำถามสุขภาพแค่ 3 ข้อ
+                                        ไม่ต้องไปตรวจสุขภาพที่โรงพยาบาล</p>
+                                </div>
 
-                           <p style="font-size: .8rem">บริการปรึกษาแพทย์ออนไลน์</p>
-                       </div>
+                                <div class="item" style="padding: 10px 5px"><img alt=""
+                                                                                 src="/images/ico_ci/flexi_7.png"/>
+                                    <p style="font-size: .8rem">สมัครได้เลย โดยไม่ต้องซื้อประกันชีวิต</p>
+                                </div>
 
-                       <div class="item"><img alt="" src="/images/my_health/step-2.png" style="width: 150px" /> <strong>กรอก</strong>
+                                <div class="item" style="padding: 10px 5px"><img alt=""
+                                                                                 src="/images/ico_ci/flexi_8.png"/>
+                                    <p style="font-size: .8rem">เบี้ยประกันนำไปลดหย่อนภาษีได้*</p>
+                                </div>
 
-                           <p style="font-size: .8rem">กรอกข้อมูลเพื่อเริ่มการปรึกษา</p>
-                       </div>
+                                <div class="item" style="padding: 10px 5px"><img alt=""
+                                                                                 src="/images/ico_ci/flexi_9.png"/>
+                                    <p style="font-size: .8rem">มีบริการความเห็นที่สองทางการแพทย์
+                                        และปรึกษาแพทย์ออนไลน์</p>
+                                </div>
+                            </div>
+                        </div>
 
-                       <div class="item"><img alt="" src="/images/my_health/step-3.png" style="width: 150px" /> <strong>ตอบคำถาม</strong>
+                        <div class="wrapper text-center">
+                            <a class="btn btn-primary" href=""
+                               style="width: 200px;margin: 10px">download</a>
+                            {btn_buy}
+                        </div>
+                    </section>
 
-                           <p style="font-size: .8rem">ประเมินอาการ พร้อมดูตารางแพทย์</p>
-                       </div>
+                    <div class="service_flexi">
+                        <h2 style="margin: 20px 0">พร้อมรับบริการเสริมที่หลากหลาย เมื่อสมัครประกันภัยโรคร้ายแรง myFlexi
+                            CI</h2>
 
-                       <div class="item"><img alt="" src="/images/my_health/step-4.png" style="width: 150px" /> <strong>เริ่มปรึกษา</strong>
+                        <div class="service_flexi_box">
+                            <div class="inner"><img alt="" src="/images/ico_ci/ci_benner_1.jpg"/>
+                                <div class="text-center"><a class="btn btn-outline" href="">ดูข้อมูลเพิ่มเติม </a></div>
+                            </div>
 
-                           <p style="font-size: .8rem">แพทย์ออนไลน์ทางแชท, วีดีโอคอล<br />
-                               หรือ โทรศัพท์</p>
-                       </div>
-                   </div>
-               </div>
-               <a class="btn btn_my_health btn-primary show_on_mobile" href="https://telehealth.europ-assistance.com/tuneprotect/?lang=th" style="max-width:220px;margin-top:10px" target="_blank">ปรึกษาแพทย์ออนไลน์ คลิก</a></section>
+                            <div class="inner"><img alt="" src="/images/ico_ci/ci_benner_2.jpg"/>
+                                <h3 style="margin: 10px">MSO บริการความเห็นที่ 2 ทางการแพทย์</h3>
 
-       </div>
+                                <p style="margin: 10px 10px 107px">บริการให้คำปรึกษาความเห็นที่ 2
+                                    ทางการแพทย์คือการให้ข้อมูลการรักษาเพื่อให้แพทย์ที่สองวินิจฉัยและ/หรือนำเสนอแผนการรักษา
+                                    เพื่อเพิ่มทางเลือกในการรักษาให้เกิดประสิทธิภาพสูงสุด</p>
 
+                                <div class="text-center"><a class="btn btn-outline" href="">ดูข้อมูลเพิ่มเติม </a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="my-health-condition">
+                    <h2>เงื่อนไขการขอเอาประกันภัย</h2>
+
+                    <ul>
+                        <li>1. การพิจารณารับประกันภัยเป็นไปตามหลักเกณฑ์ของบริษัทฯ</li>
+                        <li>2. ผู้ขอเอาประกันภัยต้องมีอายุ 18 &ndash; 60 ปีบริบูรณ์ (ต่ออายุได้ถึง 65 ปี)</li>
+                        <li>3. ผู้ขอเอาประกันภัยต้องมีสุขภาพร่างกายแข็งแรง ก่อนวันที่ขอเอาประกันภัย</li>
+                        <li>4. แถลงสุขภาพ ไม่ต้องตรวจสุขภาพ
+                            (กรณีที่ข้อมูลการแถลงสุขภาพไม่เพียงพอต่อการพิจารณารับประกันภัย
+                            ทางบริษัทขอสงวนสิทธิ์ในการแจ้งขอตรวจสุขภาพก่อนรับประกันภัย)
+                        </li>
+                        <li>5. ข้อมูลในเอกสารนี้เป็นเพียงข้อมูลเบื้องต้นของผลิตภัณฑ์ประกันภัย
+                            ผู้ขอเอาประกันภัย/ผู้เอาประกันภัยควรศึกษาข้อมูลเพิ่มเติม
+                            และทำความเข้าใจในรายละเอียดเงื่อนไขความคุ้มครอง ผลประโยชน์ และข้อยกเว้น
+                            ก่อนตัดสินใจทำประกันภัยทุกครั้ง เมื่อได้รับกรมธรรม์ประกันภัยแล้วโปรดศึกษาเพิ่มเติม
+                        </li>
+                        <li>6. เงื่อนไขความคุ้มครองเป็นไปตามที่ระบุในกรมธรรม์</li>
+                        <li>7. กรณีต้องการใบกำกับภาษีฯ หรือกรมธรรม์ฯ ให้จัดส่งทางไปรษณีย์ กรุณาติดต่อฝ่ายบริการลูกค้า
+                            โทร. 1183
+                        </li>
+                    </ul>
+                </div>
+            </div>
 
         </article>
     </main>

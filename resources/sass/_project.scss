@@ -3579,3 +3579,20 @@ main[data-package="CI"] {
         }
     }
 }
+
+
+.service_flexi {
+    .service_flexi_box {
+        display: flex;
+        flex: 1;
+        .inner{
+            width: 50%;
+
+            img {
+                width: 100%;
+            }
+        }
+    }
+}
+
+

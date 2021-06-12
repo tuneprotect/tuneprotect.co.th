@@ -53,7 +53,6 @@ class ProductController extends BaseController
 
     protected function getProductDetail($link = null, $selected = null)
     {
-//        dd($link,$selected);
         if (empty($link)) {
             return redirect("/" . $this->locale);
         }
