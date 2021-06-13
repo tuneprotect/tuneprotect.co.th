@@ -1,3 +1,5 @@
+@import "https://fonts.googleapis.com/icon?family=Material+Icons";
+
 html {
     scroll-behavior: smooth;
     font: 30px/1 'DB SaiKrok X', serif;
@@ -3365,6 +3367,44 @@ main {
     strong {
         display: block;
     }
+
+
+    .step-wrapper {
+        #step {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr;
+            column-gap: 5px;
+            row-gap: 5px;
+            background: #bfbfbf;
+
+            @media all and (min-width: $md) {
+                grid-template-columns: 1fr 1fr 1fr;
+            }
+
+            @media all and (min-width: $lg) {
+                grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+            }
+
+            .item {
+                text-align: center;
+                border-radius: 5px;
+                background: #ffffff;
+                line-height: 19px;
+                padding: 20px 10px;
+
+                .material-icons {
+                    font-size: 48px;
+                    display: block;
+                    margin: 10px 10px 20px 10px;
+                    color: $primary-color;
+                }
+
+            }
+        }
+    }
+
+
 }
 
 .btn_my_health {
@@ -3377,31 +3417,6 @@ main {
         background: rgb(227, 48, 108);
         background: linear-gradient(152deg, rgba(227, 48, 108, 1) 0%, rgba(247, 224, 31, 1) 100%);
         color: #fff;
-    }
-}
-
-.step-wrapper {
-    #step {
-        display: flex;
-        @media all and (max-width: $sm) {
-            flex-flow: row wrap;
-        }
-        @media all and (max-width: 420px) {
-            flex-direction: column;
-        }
-
-        .item {
-            text-align: center;
-            flex: 1;
-            @media all and (max-width: $sm) {
-                flex: none;
-                width: 50%;
-            }
-            @media all and (max-width: 420px) {
-                flex: 1;
-                width: 100%;
-            }
-        }
     }
 }
 

@@ -5,9 +5,9 @@
         @foreach ($arr_post as $k => $v)
             <div style="display: none"><label>{{$k}}</label><input type="hidden" name="{{$k}}" value="{{$v}}"/></div>
         @endforeach
-        <input style="display: none" type="submit" name="btn_submit" value="Confirm"/>
+        <input style="display: block" type="submit" name="btn_submit" value="Confirm"/>
     </form>
     <script type="text/javascript">
-        document.getElementById("frm_test").submit();
+        // document.getElementById("frm_test").submit();
     </script>
 @endsection
