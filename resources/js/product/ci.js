@@ -435,7 +435,12 @@ document.addEventListener("DOMContentLoaded", async () => {
                     status = true;
                     switch (parseInt(step)) {
                         case 2:
-                            $('.goto-step1').style.display = "inline-flex";
+                            $('.goto-step1').style.display = "block";
+                            // $('.goto-step1').style.display = "inline-flex";
+                            break;
+                        case 3:
+
+                            $('#disease_box').style.display = "block";
                             break;
                     }
                 } else {
