@@ -64,7 +64,8 @@ class ProjectEnum
     const CACHE_MENU_ENABLE = 'menu_enable';
 
 
-    const INVOICE_PREFIX = 'W';
+    //TODO : invoice prefix for test only
+    const INVOICE_PREFIX = 'WT';
 
     public static function isPublish()
     {
