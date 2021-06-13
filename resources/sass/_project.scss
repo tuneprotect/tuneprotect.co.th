@@ -1327,8 +1327,9 @@ main {
 
                 > div {
                     flex: 1;
-                    margin-right: 20px;
+
                     @media all and (min-width: $md) {
+                        margin-right: 20px;
                         &:last-child {
                             margin-right: 0;
                         }
@@ -3449,10 +3450,6 @@ main[data-package="CI"] {
 
 
     form {
-        .date-input .date-wrapper > div {
-            margin-right: 0;
-        }
-
         .check_box_disease {
             display: flex;
             border-radius: 5px;
