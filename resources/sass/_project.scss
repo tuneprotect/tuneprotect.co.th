@@ -25,6 +25,9 @@ h1 {
 h2 {
     font-size: 1.5rem;
     color: $primary-color;
+    &.no-color{
+        color: #000000;
+    }
 }
 
 .underline {
@@ -1401,7 +1404,7 @@ main {
 
             &:placeholder-shown + label {
                 color: #C4C4C4;
-                font-size: 1rem;
+                font-size: .6rem;
                 top: 23px;
                 left: 20px;
             }
@@ -3462,9 +3465,13 @@ main[data-package="CI"] {
                 margin: 2px;
                 flex: 1;
 
-                //@media all and (max-width: $md) {
-                //    flex: 30%;
-                //}
+
+                @media all and (max-width: $md) {
+                    &:first-child {
+                        flex: 100%;
+                    }
+                    flex: 33%;
+                }
             }
 
             input[type=checkbox] {
@@ -3517,8 +3524,6 @@ main[data-package="CI"] {
                         display: block;
                         @media all and (max-width: $sm) {
                             font-size: .6rem;
-                            writing-mode: vertical-rl;
-                            margin: 0 auto;
                         }
                     }
 
@@ -3539,9 +3544,57 @@ main[data-package="CI"] {
 
     #table-detail {
         th {
+            position: relative;
             span {
                 display: block;
             }
+            span[data-recommend]{
+                margin-left: -42px;
+                position: absolute;
+                top: 20px;
+                left: 50%;
+            }
+            .package-number{
+                display: block;margin-top: 20px;
+            }
+
+        }
+
+        th[data-package="CI04"] {
+
+
+            &:before {
+                content: "\f000";
+                font-family: "IcoFont" !important;
+                font-size: .6rem;
+                color: yellow;
+                width: 14px;
+                height: 14px;
+                background-color: inherit;
+                opacity: 1;
+                margin-left: -10px;
+                position: absolute;
+                top: 0;
+                left: 33px;
+            }
+
+            &:after {
+                content: "BEST PRICE";
+                font-size: .5rem;
+                width: 50px;
+                height: 14px;
+                background-color: inherit;
+                opacity: 1;
+                margin-left: -24px;
+                position: absolute;
+                top: 4px;
+                left: 50%;
+                border-radius: 0;
+                padding: 0;
+                font-weight: 800;
+            }
+
+
         }
 
         th:first-child {
@@ -3587,19 +3640,35 @@ main[data-package="CI"] {
             a[data-package="CI04"] {
                 border-top-right-radius: 10px !important;
                 border-bottom-right-radius: 10px !important;
-                &.on {
-                    &:before {
-                        content: " ";
-                        background-image: url(/images/ico_ci/star.svg);
-                        width: 14px;
-                        height: 13px;
-                        background-color: inherit;
-                        opacity: 1;
-                        margin-left: -10px;
-                        top: 5px;
-                        left: 50%;
-                    }
+
+                &:before {
+                    content: "\f000";
+                    font-family: "IcoFont" !important;
+                    font-size: .6rem;
+                    color: yellow;
+                    width: 14px;
+                    height: 14px;
+                    background-color: inherit;
+                    opacity: 1;
+                    margin-left: -10px;
+                    top: 0;
+                    left: 12px;
                 }
+
+                &:after {
+                    content: "best price";
+                    font-size: .5rem;
+                    width: 14px;
+                    height: 14px;
+                    background-color: inherit;
+                    opacity: 1;
+                    margin-left: -8px;
+                    top: 10px;
+                    left: 50%;
+                    border-radius: 0;
+                    padding: 0;
+                }
+
             }
 
             a {
@@ -3607,10 +3676,27 @@ main[data-package="CI"] {
                 padding-left: 0;
                 padding-right: 0;
 
+                &.recommendPackage {
+                    background: $primary-color;
+                    color: #FFFFFF;
+                }
+
+                .package-number {
+                    display: block;
+                    margin-top: 25px;
+                }
 
                 span {
                     display: block;
                     line-height: .7rem;
+                }
+
+                span[data-recommend] {
+                    font-size: .5rem;
+                    position: absolute;
+                    top: 26px;
+                    left: 50%;
+                    margin-left: -28px !important;
                 }
 
             }

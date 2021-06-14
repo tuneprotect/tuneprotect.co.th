@@ -1,4 +1,4 @@
-<section style="display: none" id="step2" class="product-detail">
+<section style="display: block" id="step2" class="product-detail">
     @if(strtolower($selected) == 'onvacina')
         <section id="sectionPackage" class="wrapper">
             <form method="post" action="" class="insurance-form">
@@ -53,17 +53,19 @@
                                             <strong>@lang('product.plan') {{$v->no}}</strong>
                                         @endif
                                     @else
-                                        <strong>@lang('product.plan') {{$i}}</strong>
+                                        <span data-recommend="{{$k}}" style="display: none">@lang('product.recommend')</span>
+                                        <strong class="package-number">@lang('product.plan') {{$i}}</strong>
                                     @endif
 
                                     @if($selected == "CI")
                                         <span class="show_on_mobile" data-price-{{$k}}></span>
                                     @endif
-                                        @if($selected == "CI")
-                                            @if($i ==3 || $i==4)
-                                                <img class="show_on_mobile h_2_g" src="/images/my_health/Logo-My-Health.png">
-                                            @endif
+                                    @if($selected == "CI")
+                                        @if($i ==3 || $i==4)
+                                            <img class="show_on_mobile h_2_g"
+                                                 src="/images/my_health/Logo-My-Health.png">
                                         @endif
+                                    @endif
                                 </a>
 
                                 <?php $i++ ?>
@@ -83,22 +85,23 @@
                                 <strong>@lang('product.plan') {{$v->no}}</strong>
                             @endif
                         @else
-                            <strong>@lang('product.plan') {{$i}}</strong>
+                            <span data-recommend="{{$k}}" style="display: none">@lang('product.recommend')</span>
+                            <strong class="package-number">@lang('product.plan') {{$i}}</strong>
                         @endif
 
                         <a href="#"
                            data-gtm="product-{{strtolower($selected)}}-top-choose-plan-{{$i}}"
                            @if(isset($v->no))
-                               @if(isset($v->name))
-                                   data-step="3" data-package="{{$k}}" data-sub-package=""
-                                   data-plan="{{$v->name}} @lang('product.plan') {{$v->no}}"
-                               @else
-                                   data-step="3" data-package="{{$k}}" data-sub-package=""
-                                   data-plan="@lang('product.plan') {{$v->no}}"
-                               @endif
+                           @if(isset($v->name))
+                           data-step="3" data-package="{{$k}}" data-sub-package=""
+                           data-plan="{{$v->name}} @lang('product.plan') {{$v->no}}"
                            @else
-                               data-step="3" data-package="{{$k}}" data-sub-package=""
-                               data-plan="@lang('product.plan') {{$i}}"
+                           data-step="3" data-package="{{$k}}" data-sub-package=""
+                           data-plan="@lang('product.plan') {{$v->no}}"
+                           @endif
+                           @else
+                           data-step="3" data-package="{{$k}}" data-sub-package=""
+                           data-plan="@lang('product.plan') {{$i}}"
                            @endif
 
                            class="btn btn-block btn-outline btn-goto">@lang('product.choose_plan')</a>

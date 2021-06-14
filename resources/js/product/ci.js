@@ -226,7 +226,6 @@ document.addEventListener("DOMContentLoaded", async () => {
         tooltipFormat: (value) => value.toLocaleString()
     });
 
-
     let step = 1;
     let data = {
         fdTitle: "",
@@ -312,6 +311,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         showRow();
     }
 
+
     const recommendProduct = (dataRecommend) => {
 
         const [min, max] = data.ctrl_budget.split(",")
@@ -330,10 +330,15 @@ document.addEventListener("DOMContentLoaded", async () => {
             $el.classList.add("hide");
         });
 
-        $$("th[data-package='" + dataRecommendMax.package + "'],td[data-package='" + dataRecommendMax.package + "'],a[data-package='" + dataRecommendMax.package + "']").forEach($el => {
+        $$("th[data-package='" + dataRecommendMax.package + "']," +
+            "td[data-package='" + dataRecommendMax.package + "']," +
+            "a[data-package='" + dataRecommendMax.package + "']").forEach($el => {
             $el.classList.add("recommendPackage");
             $el.classList.add("on");
             $el.classList.remove("hide");
+        });
+        $$("span[data-recommend='" + dataRecommendMax.package + "']").forEach($el => {
+            $el.style.display = 'block';
         });
 
         // $$("a.btn-choose-plan,td[data-package]").forEach($el => {
@@ -436,7 +441,6 @@ document.addEventListener("DOMContentLoaded", async () => {
                     switch (parseInt(step)) {
                         case 2:
                             $('.goto-step1').style.display = "block";
-                            // $('.goto-step1').style.display = "inline-flex";
                             break;
                         case 3:
 
@@ -457,7 +461,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                                     ctrl_budget: budget_slider.getValue(),
                                     ctrl_disease: getCheckedCheckboxesFor("ctrl_disease")
                                 }
-
+                                console.log({budget_slider})
                                 genPrice();
                                 $('.goto-step1').style.display = "none";
                             } else {
