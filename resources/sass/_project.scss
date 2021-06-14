@@ -3587,13 +3587,6 @@ main[data-package="CI"] {
             a[data-package="CI04"] {
                 border-top-right-radius: 10px !important;
                 border-bottom-right-radius: 10px !important;
-            }
-
-            a {
-                display: block;
-                padding-left: 0;
-                padding-right: 0;
-
                 &.on {
                     &:before {
                         content: " ";
@@ -3605,11 +3598,15 @@ main[data-package="CI"] {
                         margin-left: -10px;
                         top: 5px;
                         left: 50%;
-                        //position: absolute;
-                        //top: 0;
-                        //left: 0;
                     }
                 }
+            }
+
+            a {
+                display: block;
+                padding-left: 0;
+                padding-right: 0;
+
 
                 span {
                     display: block;
