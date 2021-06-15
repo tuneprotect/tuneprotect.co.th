@@ -301,8 +301,10 @@ document.addEventListener("DOMContentLoaded", async () => {
                 .map(k => {
                     const pack = Object.keys(package_data[k].price).filter(ageRange => checkAge(data.fdHBD, ageRange))
                     const price = package_data[k].price[pack][data.ctrl_disease.join("")];
+                    const installment = Math.ceil(parseInt(price) / 12);
                     $(`strong[data-price-${k}]`).innerHTML = parseInt(price).toLocaleString();
                     $(`span[data-price-${k}]`).innerHTML = parseInt(price).toLocaleString();
+                    $(`strong[data-installment-${k}]`).innerHTML = installment;
                     return {package: k, price}
                 }))
         }

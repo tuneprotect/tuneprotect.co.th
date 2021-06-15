@@ -120,6 +120,15 @@
                     <?php $i++ ?>
                 @endforeach
             </tr>
+            <tr class="pink">
+                <th>@lang('product.installment')</th>
+                <?php $i = 1 ?>
+                @foreach ($package_detail as $k => $v)
+                    <td {{$i > 1 ? 'class=hide' : ""}} data-index="{{$i}}" data-package="{{$k}}"><strong
+                            data-installment-{{$k}}></strong></td>
+                    <?php $i++ ?>
+                @endforeach
+            </tr>
             @foreach (__('product.'.$selected) as $k => $v)
                 <tr>
                     <th>{!! $v !!}</th>

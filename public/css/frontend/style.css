@@ -15682,6 +15682,22 @@ main form input[type=checkbox]:checked + label:after {
   }
 }
 
+#product_page .product-detail table thead tr.pink,
+#product_page .product-detail table tfoot tr.pink,
+#product_page .product-detail table tbody tr.pink {
+  background: #F56BB6;
+}
+
+@media all and (max-width: 767px) {
+  #product_page .product-detail table thead tr.pink th,
+  #product_page .product-detail table tfoot tr.pink th,
+  #product_page .product-detail table tbody tr.pink th {
+    text-align: center;
+    font-size: 1.1rem;
+    font-weight: bold;
+  }
+}
+
 #product_page .product-detail table thead tr:nth-child(odd) th.hovered,
 #product_page .product-detail table thead tr:nth-child(odd) th.recommendPackage,
 #product_page .product-detail table thead tr:nth-child(odd) td.hovered,

@@ -55388,8 +55388,10 @@ document.addEventListener("DOMContentLoaded", /*#__PURE__*/_asyncToGenerator( /*
                   return Object(_form_productHelper__WEBPACK_IMPORTED_MODULE_1__["checkAge"])(data.fdHBD, ageRange);
                 });
                 var price = package_data[k].price[pack][data.ctrl_disease.join("")];
+                var installment = Math.ceil(parseInt(price) / 12);
                 Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$"])("strong[data-price-".concat(k, "]")).innerHTML = parseInt(price).toLocaleString();
                 Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$"])("span[data-price-".concat(k, "]")).innerHTML = parseInt(price).toLocaleString();
+                Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$"])("strong[data-installment-".concat(k, "]")).innerHTML = installment;
                 return {
                   "package": k,
                   price: price
