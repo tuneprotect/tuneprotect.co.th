@@ -78,7 +78,8 @@
     "test": "tests"
   },
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "imagehover.css": "^2.0.0"
   },
   "repository": {
     "type": "git",

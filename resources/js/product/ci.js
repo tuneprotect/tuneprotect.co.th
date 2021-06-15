@@ -8,7 +8,7 @@ import {
 } from "../form/productHelper";
 import {
     $,
-    $$,
+    $$, calculateAge,
     current_package,
     getCheckedCheckboxesFor,
     getRadioSelectedValue,
@@ -196,25 +196,29 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 
     const package_data = await getPackageData(current_package);
+    const genMinMax = () => {
+        return Object.keys(package_data).reduce((returnValue, k) => {
+            Object.keys(package_data[k].price).map((k1) => {
 
-    const defaultValue = Object.keys(package_data).reduce((returnValue, k) => {
-        Object.keys(package_data[k].price).map((k1) => {
+                Object.values(package_data[k].price[k1]).map((v) => {
+                    const digit = Math.pow(10, v.toString().length) / 10;
 
-            Object.values(package_data[k].price[k1]).map((v) => {
-                const digit = Math.pow(10, v.toString().length) / 10;
-
-                if (v < returnValue.min) {
-                    returnValue.min = Math.floor(v / (digit)) * (digit);
-                }
-                if (v > returnValue.max) {
-                    returnValue.max = Math.ceil(v / (digit / 10)) * (digit / 10);
-                }
+                    if (v < returnValue.min) {
+                        returnValue.min = Math.floor(v / (digit)) * (digit);
+                    }
+                    if (v > returnValue.max) {
+                        returnValue.max = Math.ceil(v / (digit / 10)) * (digit / 10);
+                    }
+                });
             });
-        });
-        return returnValue;
-    }, {min: 400, max: 110000})
+            return returnValue;
+        }, {min: 400, max: 110000})
 
-    const budget_slider = new rSlider({
+
+    }
+
+    let defaultValue = genMinMax();
+    var budget_slider = new rSlider({
         target: '#ctrl_budget',
         values: {min: defaultValue.min, max: defaultValue.max},
         range: true,
@@ -261,6 +265,66 @@ document.addEventListener("DOMContentLoaded", async () => {
         ctrl_disease: [],
         ctrl_protection_start_date: ""
     };
+
+    const genRangeSlidByHbd = () => {
+        if ($('#ctrl_day').value && $('#ctrl_month').value && $('#ctrl_year').value) {
+            let yy = $('#ctrl_year').value;
+            if (parseInt(yy.substring(0, 2)) > 21) {
+                yy = (parseInt(yy) - 543).toString();
+            }
+            let hbd = `${yy}-${$('#ctrl_month').value}-${$('#ctrl_day').value}`
+            let age = calculateAge(hbd);
+            let arr = [];
+
+
+            let defaultValue = Object.keys(package_data).reduce((returnValue, k) => {
+                Object.keys(package_data[k].price).map((k1) => {
+
+                    let [min, max] = k1.split('-');
+
+                    if (min <= age.year && max >= age.year) {
+                        Object.values(package_data[k].price[k1]).map((v) => {
+                            arr.push(v);
+                        });
+                    }
+                });
+
+            }, {})
+            console.log(arr)
+            if(arr.length === 0){
+
+                return false;
+            }
+            budget_slider.destroy();
+            let min = Math.min(...arr);
+            let max = Math.max(...arr);
+
+            let digit_min = Math.pow(10, min.toString().length) / 10;
+            let digit_max = Math.pow(10, max.toString().length) / 10;
+
+            budget_slider = new rSlider({
+                target: '#ctrl_budget',
+                values: {min: Math.floor(min / (digit_min)) * (digit_min), max: Math.ceil(max / (digit_max / 10)) * (digit_max / 10)},
+                range: true,
+                tooltip: true,
+                scale: true,
+                labels: false,
+                step: 2000,
+                set: [Math.floor(min / (digit_min)) * (digit_min), Math.ceil(max / (digit_max / 10)) * (digit_max / 10)],
+                tooltipFormat: (value) => value.toLocaleString()
+            });
+        }
+    }
+
+    $('#ctrl_day').addEventListener("keyup", event => {
+        genRangeSlidByHbd();
+    });
+    $('#ctrl_year').addEventListener("keyup", event => {
+        genRangeSlidByHbd();
+    });
+    $('#ctrl_month').addEventListener("change", event => {
+        genRangeSlidByHbd();
+    });
 
     const hideRow = () => {
         $$("span[data-disease]").forEach($el => {
@@ -324,7 +388,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             }
             return recPackage;
         }, dataRecommend[0])
-        console.log({dataRecommendMax})
+        // console.log({dataRecommendMax})
 
         $$("th.recommendPackage,td.recommendPackage,a.btn-choose-plan,td[data-package").forEach($el => {
             $el.classList.remove("recommendPackage");
@@ -463,14 +527,13 @@ document.addEventListener("DOMContentLoaded", async () => {
                                     ctrl_budget: budget_slider.getValue(),
                                     ctrl_disease: getCheckedCheckboxesFor("ctrl_disease")
                                 }
-                                console.log({budget_slider})
+
                                 genPrice();
                                 $('.goto-step1').style.display = "none";
                             } else {
                                 scrollToTargetAdjusted($('.controls-wrapper.error'));
                             }
 
-                            // $('h3[data-type]').data('data-type', $("#ctrl_buy_for").value);
                             let el = $('h3[data-type]');
 
                             el.innerHTML = "";
@@ -481,7 +544,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                             } else {
                                 el.innerHTML = el.dataset.other_insurance;
                             }
-
+                            console.log({data})
                             break;
                         case 2:
                             const fdPackage = $btn.getAttribute('data-package');
@@ -510,6 +573,12 @@ document.addEventListener("DOMContentLoaded", async () => {
                         case 3:
 
                             let address = ($('#ctrl_province').value).split('*');
+                            let today = new Date();
+                            let dd = String(today.getDate()).padStart(2, '0');
+                            let mm = String(today.getMonth() + 1).padStart(2, '0');
+                            let yyyy = today.getFullYear();
+
+                            today = dd + '/' + mm + '/' + yyyy;
                             data = {
                                 ...data,
                                 fdTitle: getRadioSelectedValue('fdTitle'),
@@ -535,7 +604,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                                 ctrl_accept_insurance_term: $('#ctrl_accept_insurance_term').checked ? true : undefined,
                                 ctrl_document_type: $('#ctrl_document_type').value,
                                 ctrl_province: $('#ctrl_province').value,
-                                ctrl_protection_start_date: $('#ctrl_protection_start_date').value,
+                                ctrl_protection_start_date: today
                             }
                             console.log(data)
                             const result = validate(data, constraints);
@@ -578,6 +647,9 @@ document.addEventListener("DOMContentLoaded", async () => {
                     <div class="two-col">
                         <div><span>${$summary_section.getAttribute('data-plan')} : </span><strong>${selectedPackage}</strong></div>
                         <div><span>${$summary_section.getAttribute('data-price')} : </span><strong>${parseFloat(data.fdPayAMT).toLocaleString()} ${$summary_section.getAttribute('data-baht')}</strong></div>
+                        <div><span>${$('label[for=ctrl_disease]').innerText} : </span><strong>${data.ctrl_disease.map((text) => {
+                                    return $(`input[data-disease-${text}]`).getAttribute(`data-disease-${text}`);
+                                })}</strong></div>
                     </div>
                     <br/>
                     <h3 class="text-primary">${$summary_section.getAttribute('data-profile_data')}</h3><br/>

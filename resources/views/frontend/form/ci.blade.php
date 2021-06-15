@@ -44,12 +44,21 @@
                 <ul class="check_box_disease">
                     @foreach(array('F', 'C', 'O', 'T', 'D') as $v)
                         <li class="checkbox_disease">
+                            <label for="ctrl_disease" style="display: none">@lang("product.disease_summary")</label>
+                            <figure class="imghvr-fade">
                             <input type="checkbox" name="ctrl_disease" id="checkbox_disease_{{$v}}"
+                                   data-disease-{{$v}}="@lang('product.ci_disease.'.$v)"
                                    {{($v=='F'?'checked disabled':'checked')}} value="{{$v}}"/>
-                            <label for="checkbox_disease_{{$v}}">
-                                <img src="{{asset('images/ico_ci/'.$v.'.svg')}}"/>
-                                <strong>@lang('product.ci_disease.'.$v)</strong>
-                            </label>
+
+                                <label for="checkbox_disease_{{$v}}">
+                                    <img src="{{asset('images/ico_ci/'.$v.'.svg')}}"/>
+                                    <figcaption>
+                                        @lang('product.ci_disease_description.'.$v)
+                                    </figcaption>
+                                    <strong>@lang('product.ci_disease.'.$v)</strong>
+                                </label>
+                            </figure>
+
                         </li>
                     @endforeach
 
@@ -75,24 +84,24 @@
 
     @include('frontend.component.form-coverage-table',['package_detail' => $package_detail,'selected' =>$selected ])
 </div>
-<section style="display: block" id="step3" class="wrapper">
+<section style="display: none" id="step3" class="wrapper">
     <form class="insurance-form">
         <div class="form-head"> {{$package->locales[$locale]->title}} <span id="form-head"></span></div>
         <div class="form-inner">
-            <h3>{{ isset($index) ? __('product.protection_start_date').' '.$index : __('product.protection_start_date')   }}</h3>
-            <div class="two-col">
-                <div class="controls-wrapper">
-                    <input id="ctrl_protection_start_date" name="ctrl_protection_start_date" type="text"
-                           class="flatpickr"
-                           data-mindate="{{date('Y-m-d')}}"
-                           data-maxdate="{{date('Y-m-d',strtotime( "+60 days"))}}"
-                           value="{{date('d/m/Y')}}"
-                           data-error="@lang('product.error.protection_start_date')"
-                    />
-                    <label for="ctrl_protection_start_date">@lang("product.protection_start_date")</label>
-                </div>
-            </div>
-            <br>
+{{--            <h3>{{ isset($index) ? __('product.protection_start_date').' '.$index : __('product.protection_start_date')   }}</h3>--}}
+{{--            <div class="two-col">--}}
+{{--                <div class="controls-wrapper">--}}
+{{--                    <input id="ctrl_protection_start_date" name="ctrl_protection_start_date" type="text"--}}
+{{--                           class="flatpickr"--}}
+{{--                           data-mindate="{{date('Y-m-d')}}"--}}
+{{--                           data-maxdate="{{date('Y-m-d',strtotime( "+60 days"))}}"--}}
+{{--                           value="{{date('d/m/Y')}}"--}}
+{{--                           data-error="@lang('product.error.protection_start_date')"--}}
+{{--                    />--}}
+{{--                    <label for="ctrl_protection_start_date">@lang("product.protection_start_date")</label>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--            <br>--}}
             @include('frontend.component.form-profile',['id_card_field' => 'both' ,'id_card_field_title' => __("product.id_card_no") ,'prefix' => '' ,'selected' =>$selected])
             @include('frontend.component.form-address',['prefix' => ''])
             @include('frontend.component.form-beneficiary',['prefix' => ''])
