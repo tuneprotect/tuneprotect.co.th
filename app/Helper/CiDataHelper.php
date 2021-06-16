@@ -4,6 +4,7 @@
 namespace App\Helper;
 
 
+use App\Models\Import;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
@@ -12,9 +13,9 @@ class CiDataHelper
 {
     protected static $formattedData = [];
     protected static $mapColumn = [];
-    protected static $participant_col = [
-        'no', 'code', 'value'
-    ];
+    protected static $col = ['plan_code', 'age_range', 'addb', 'cancer', 'hc', 'nc', 'cvd', 'organ', 'trauma', 'diabetes', 'net_premium',
+        'duty', 'gross_premium', 'sum_insured_1', 'sum_insured_2', 'sum_insured_3', 'sum_insured_4', 'sum_insured_5', 'sum_insured_6',
+        'sum_insured_7', 'sum_insured_8', 'channel', 'tax_deduct'];
 
 
     protected static function genMapColumn($shownData)
@@ -76,38 +77,34 @@ class CiDataHelper
         self::genMapColumn($shownData);
 
         foreach ($data as $v) {
-//            if (!isset(self::$formattedData[$v[self::$mapColumn['no']]])) {
-            self::$formattedData[$v[self::$mapColumn['no']]] = self::mapData($v, self::$participant_col);
-//            }
-//
-//            self::$formattedData[$v[self::$mapColumn['no']]]['pigeons'][] = self::mapData($v, self::$pigeon_col);
+            self::$formattedData[$v[self::$mapColumn['plan_code']]] = self::mapData($v, self::$col);
         }
 
         return self::$formattedData;
     }
 
-    public static function formatSummaryByCountry($result)
-    {
-        $arr = [];
-        foreach ($result as $v) {
-            $arr[$v->country] = $v->total;
-        }
-
-        return $arr;
-    }
 
     public static function genJsonFile()
     {
-        $data = json_encode(Participant::select("id", "team", "country")
-            ->with(['pigeons' => function ($query) {
-                $query->select('id', 'participant_id', 'ring_no')->orderBy('ring_no')
-                    ->with(['teams' => function ($query) {
-                        $query->select('RingNumber', 'LTeam', 'STeam', 'Status');
-                    }]);
-            }])
-            ->orderBy('team')->get());
+        $new_data =[];
+        $data = Import::get();
 
-        Storage::put('cache/all_participant_1.json', stripslashes($data));
+        foreach ($data as $k=>$v){
+            $new_code_start = Str::substr($v['plan_code'], 0, 5);
+            $new_code_end = Str::substr($v['plan_code'], 6);
+;
+            for($i=1;$i<=9;$i++){
+                if($i == 7 || $i == 8){
+                    $new_data[$new_code_start]['plan']["COV0{$i}"]=$v["sum_insured_{$i}"] == true?'Y':'N';
+                }else{
+                    $new_data[$new_code_start]['plan']["COV0{$i}"]=$v["sum_insured_{$i}"];
+                }
+            }
+            $new_data[$new_code_start]['price'][$v['age_range']]['F'.$new_code_end] = $v['net_premium'];
+
+        }
+
+        Storage::put('cache/data_ci.json', stripslashes(json_encode($new_data)));
 
 
     }
@@ -137,8 +134,6 @@ class CiDataHelper
         switch ($country) {
             case "TH":
                 return 'th';
-            case "CN":
-                return 'cn';
             default:
                 return 'en';
         }

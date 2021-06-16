@@ -1834,6 +1834,55 @@ let APP_ROUTE = {
         parent: "",
         group: "main_nav"
     },
+    [WEB_CONTENT.IMPORT_CI_CATEGORY]: {
+        id: WEB_CONTENT.IMPORT_CI_CATEGORY,
+        name: <Translate id={`side_nav.import.category_ci`}/>,
+        url: "/import/ci_category",
+        icon: 'view_carousel',
+        show_on_main_menu: true,
+        component: () => WebContentPage({
+            type_id: WEB_CONTENT.IMPORT_CI_CATEGORY,
+            config: {
+                isSortable: true,
+            }
+        }),
+        layout: "MainLayout",
+        parent: "import",
+        group: "main_nav"
+    },
+    [`${WEB_CONTENT.IMPORT_CI_CATEGORY}.detail`]: {
+        id: `${WEB_CONTENT.IMPORT_CI_CATEGORY}.detail`,
+        name: <Translate id={`side_nav.import.category_ci`}/>,
+        url: "/import/ci_category/detail/:id?",
+        icon: 'pets',
+        show_on_main_menu: false,
+        layout: "MainLayout",
+        parent: "",
+        group: "",
+        component: () => WebContentMainStep({
+            isWebContent: true,
+            type_id: WEB_CONTENT.IMPORT_CI_CATEGORY,
+            config: {
+                code: {
+                    fieldProp: {
+                        label: <Translate id="global.code"/>,
+                        required: true,
+                    },
+                    validate: Yup.string()
+                        .required(<Translate id="error_message.required"/>)
+                },
+                title: {
+                    fieldProp: {
+                        label: <Translate id="global.title"/>,
+                        required: true,
+                    },
+
+                    validate: Yup.string()
+                        .required(<Translate id="error_message.required"/>)
+                },
+            }
+        }),
+    },
     ['import.ci']: {
         id: "import.ci",
         name: <Translate id={`side_nav.import.ci`}/>,

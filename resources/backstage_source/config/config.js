@@ -161,8 +161,10 @@ export const WEB_CONTENT = {
     SERVICE_CENTER: "partner.service_center",
     SERVICE_CENTER_CATEGORY: "partner.service_center_category",
 
-    IMPORT : "import.main",
-    IMPORT_CI:"import.main.ci",
+    IMPORT : "import",
+    IMPORT_CI:"import.ci",
+    IMPORT_CI_CATEGORY : "import.ci_category",
+
 
     PRODUCT : "product.content",
     PRODUCT_CATEGORY : "product.category",
