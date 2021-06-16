@@ -3409,3 +3409,17 @@ main {
         display: block;
     }
 }
+
+main[data-package="ONPACA"]{
+    #table-detail{
+        thead{
+            tr{
+                th:first-child{
+                    @media all and (min-width: $lg) {
+                        width: 35%;
+                    }
+                }
+            }
+        }
+    }
+}

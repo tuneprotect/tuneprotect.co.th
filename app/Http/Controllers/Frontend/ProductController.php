@@ -101,6 +101,8 @@ class ProductController extends BaseController
             }
         }
 
+        // dd($this->bodyData['current_product']->locales[$this->locale]);
+
         if (Storage::disk('public')->exists('json/' . strtolower($this->bodyData['selected']) . '.json')) {
             $package_detail = json_decode(Storage::disk('public')->get('json/' . strtolower($this->bodyData['selected']) . '.json'));
             foreach ($package_detail as $k => $v) {
@@ -111,12 +113,12 @@ class ProductController extends BaseController
                     {
                         if($selected === 'ONVSAFEA')
                         {
-                            if($v->plan->VSAFEA3 !== '-'){$v->plan->VSAFEA3 = '1,000 (Per day maximun 14 days)';}
-                            if($v->plan->VSAFEB2 !== '-'){$v->plan->VSAFEB2 = 'Service of online Health2GO medical consultation';}
+                            if($v->plan->VSAFEA3 !== '-'){$v->plan->VSAFEA3 = __('product.healt2go_plan');}
+                            if($v->plan->VSAFEB2 !== '-'){$v->plan->VSAFEB2 = __('product.healt2go_word');}
                         }
                         if($selected === 'ONVACINA')
                         {
-                            if($v->plan->VACINA3 !== '-'){$v->plan->VACINA3 = '1,000 (Per day maximun 14 days)';}
+                            if($v->plan->VACINA3 !== '-'){$v->plan->VACINA3 = __('product.healt2go_plan');}
                         }
                     }
 
