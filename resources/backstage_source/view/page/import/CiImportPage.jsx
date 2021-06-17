@@ -56,8 +56,8 @@ export default function CiImportPage({type_id, config, fromDB, onSubmit, isSave,
             case 'cvd':
             case 'organ':
             case 'trauma':
-            case 'sum_insured_7':
-            case 'sum_insured_8':
+            // case 'sum_insured_7':
+            // case 'sum_insured_8':
                 field = {
                     ...field, validate: (value) => {
                         return ['Y', 'N'].includes(value)
@@ -69,8 +69,8 @@ export default function CiImportPage({type_id, config, fromDB, onSubmit, isSave,
             case 'sum_insured_1':
             case 'sum_insured_2':
             case 'sum_insured_3':
-            case 'sum_insured_4':
-            case 'sum_insured_5':
+            // case 'sum_insured_4':
+            // case 'sum_insured_5':
             case 'sum_insured_6':
                 field = {
                     ...field, validate: (value) => {
@@ -100,7 +100,7 @@ export default function CiImportPage({type_id, config, fromDB, onSubmit, isSave,
     }, []);
 
     const handleImportDone = (response) => {
-        console.log('a');
+        console.log('Done');
     }
 
     return <>

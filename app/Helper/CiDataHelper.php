@@ -25,48 +25,12 @@ class CiDataHelper
         }
     }
 
-    protected static function getCombineColumn($rowData, $prefix)
-    {
-        $filtered = Arr::where($rowData, function ($value, $key) use ($prefix) {
-            return Str::startsWith($key, $prefix) && !empty($value);
-        });
-
-        if (empty($filtered)) {
-            return null;
-        }
-
-        $output = "";
-        foreach ($filtered as $key => $value) {
-            $output .= sprintf("%s: %s\n", $key, $value);
-        }
-        return $output;
-    }
-
-    public static function getCombineArrayColumn($colData)
-    {
-
-        if (empty($colData)) {
-            return null;
-        }
-
-        $output = "";
-        foreach ($colData as $key => $value) {
-            $output .= sprintf("%s: %s\n", $key, $value);
-        }
-        return $output;
-    }
 
     protected static function mapData($rowData, $table)
     {
-//        $arr ['year_no'] = date('Y', strtotime($rowData[self::$mapColumn['receive_date']]));
+
         foreach ($table as $v) {
-//            if (Str::endsWith($v, '_')) {
-//                $arr[rtrim($v, "_")] = self::getCombineColumn($rowData, $v);
-//            } elseif (Str::endsWith($v, '_date')) {
-//                $arr[$v] = date(config('project.log_date'), strtotime($rowData[self::$mapColumn[$v]]));
-//            } elseif (isset($rowData[self::$mapColumn[$v]])) {
             $arr[$v] = $rowData[self::$mapColumn[$v]];
-//            }
         }
         return $arr;
     }
@@ -86,56 +50,37 @@ class CiDataHelper
 
     public static function genJsonFile()
     {
-        $new_data =[];
+        $new_data = [];
         $data = Import::get();
 
-        foreach ($data as $k=>$v){
+        foreach ($data as $k => $v) {
+
             $new_code_start = Str::substr($v['plan_code'], 0, 5);
-            $new_code_end = Str::substr($v['plan_code'], 6);
-;
-            for($i=1;$i<=9;$i++){
-                if($i == 7 || $i == 8){
-                    $new_data[$new_code_start]['plan']["COV0{$i}"]=$v["sum_insured_{$i}"] == true?'Y':'N';
-                }else{
-                    $new_data[$new_code_start]['plan']["COV0{$i}"]=$v["sum_insured_{$i}"];
+            $new_code_end = Str::substr($v['plan_code'], 5);;
+
+            for ($i = 1; $i <= 9; $i++) {
+                echo $v["sum_insured_{$i}"]."\r\n";
+                switch ($i) {
+                    case 7:
+                        $new_data[$new_code_start]['plan']["COV0{$i}"] = $v["sum_insured_{$i}"] == true ? "<img src='/images/my_health/Logo-My-Health.png'>" : '';
+                        break;
+                    case 8:
+                        $new_data[$new_code_start]['plan']["COV0{$i}"] = $v["sum_insured_{$i}"] == true ? "<i class='icofont-check-circled'  style='color:green'></i>" : "<i class='icofont-close-circled' style='color:red'></i>";
+                        break;
+                    default:
+                        $new_data[$new_code_start]['plan']["COV0{$i}"] = $v["sum_insured_{$i}"];
+                        break;
                 }
+
             }
-            $new_data[$new_code_start]['price'][$v['age_range']]['F'.$new_code_end] = $v['net_premium'];
+
+            $new_data[$new_code_start]['price'][$v['age_range']]['F' . $new_code_end] = $v['net_premium'];
 
         }
 
-        Storage::put('cache/data_ci.json', stripslashes(json_encode($new_data)));
+        Storage::put('public/json/ci.json', stripslashes(json_encode($new_data)));
 
 
     }
 
-    public static function explodeCombineColumn($rowData, $prefix)
-    {
-        $data = explode("\n", $rowData);
-        $output = new \stdClass();
-
-        try {
-            if (!empty($data)) {
-                foreach ($data as $v) {
-                    $row = explode(':', $v);
-                    if (!empty(@$row[0])) {
-                        $output->{str_replace($prefix, '', @trim($row[0]))} = @trim($row[1]);
-                    }
-                }
-            }
-        } catch (\Exception $ex) {
-            dd($ex->getMessage(), $ex->getTrace());
-        }
-        return $output;
-    }
-
-    public static function chooseLocale($country)
-    {
-        switch ($country) {
-            case "TH":
-                return 'th';
-            default:
-                return 'en';
-        }
-    }
 }

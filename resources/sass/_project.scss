@@ -25,7 +25,8 @@ h1 {
 h2 {
     font-size: 1.5rem;
     color: $primary-color;
-    &.no-color{
+
+    &.no-color {
         color: #000000;
     }
 }
@@ -2616,6 +2617,7 @@ main {
                 tr {
                     &.orange {
                         background: #F7933F;
+
                         th {
                             @media all and (max-width: $md - 1) {
                                 text-align: center;
@@ -2624,8 +2626,10 @@ main {
                             }
                         }
                     }
+
                     &.pink {
                         background: #F56BB6;
+
                         th {
                             @media all and (max-width: $md - 1) {
                                 text-align: center;
@@ -3554,55 +3558,58 @@ main[data-package="CI"] {
     #table-detail {
         th {
             position: relative;
+
             span {
                 display: block;
             }
-            span[data-recommend]{
+
+            span[data-recommend] {
                 margin-left: -42px;
                 position: absolute;
                 top: 20px;
                 left: 50%;
             }
-            .package-number{
-                display: block;margin-top: 20px;
+
+            .package-number {
+                display: block;
+                margin-top: 20px;
             }
 
         }
 
-        th[data-package="CI04"] {
+        th[data-package] {
+            &.basePrice {
+                &:before {
+                    content: "\f000";
+                    font-family: "IcoFont" !important;
+                    font-size: .6rem;
+                    color: yellow;
+                    width: 14px;
+                    height: 14px;
+                    background-color: inherit;
+                    opacity: 1;
+                    margin-left: -10px;
+                    position: absolute;
+                    top: 0;
+                    left: 20%;
+                }
 
-
-            &:before {
-                content: "\f000";
-                font-family: "IcoFont" !important;
-                font-size: .6rem;
-                color: yellow;
-                width: 14px;
-                height: 14px;
-                background-color: inherit;
-                opacity: 1;
-                margin-left: -10px;
-                position: absolute;
-                top: 0;
-                left: 33px;
+                &:after {
+                    content: "BEST PRICE";
+                    font-size: .5rem;
+                    width: 50px;
+                    height: 14px;
+                    background-color: inherit;
+                    opacity: 1;
+                    margin-left: -24px;
+                    position: absolute;
+                    top: 4px;
+                    left: 50%;
+                    border-radius: 0;
+                    padding: 0;
+                    font-weight: 800;
+                }
             }
-
-            &:after {
-                content: "BEST PRICE";
-                font-size: .5rem;
-                width: 50px;
-                height: 14px;
-                background-color: inherit;
-                opacity: 1;
-                margin-left: -24px;
-                position: absolute;
-                top: 4px;
-                left: 50%;
-                border-radius: 0;
-                padding: 0;
-                font-weight: 800;
-            }
-
 
         }
 

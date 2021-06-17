@@ -126,7 +126,7 @@ export default function ImportAction({columns, type_id, importUrl, onStartImport
                     .map((v, i) => <Alert key={i} severity="error"> {v}</Alert>)}
                 {csvData?.error.every(v => !v) &&
                 <Alert severity="success">
-                    {t("participant.validate.success")} <Button onClick={handleImport}
+                    {t("import.ci.validate.success")} <Button onClick={handleImport}
                                                                 variant="contained" size="small" color="primary">
                     {t("global.start_import")}
                 </Button>

@@ -332,6 +332,7 @@
     "import": {
         "ci": {
             "validate": {
+                "success": "สำเร็จ",
                 "plan_code": "There is {{count}} row with not valid plan_code. {{errorValue}}",
                 "age_range": "There is {{count}} row with not valid age_range. {{errorValue}}",
                 "diabetes": "There is {{count}} row with not valid diabetes. {{errorValue}}",

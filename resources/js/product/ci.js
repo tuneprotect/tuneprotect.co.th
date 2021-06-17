@@ -291,7 +291,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
             }, {})
             console.log(arr)
-            if(arr.length === 0){
+            if (arr.length === 0) {
 
                 return false;
             }
@@ -304,7 +304,10 @@ document.addEventListener("DOMContentLoaded", async () => {
 
             budget_slider = new rSlider({
                 target: '#ctrl_budget',
-                values: {min: Math.floor(min / (digit_min)) * (digit_min), max: Math.ceil(max / (digit_max / 10)) * (digit_max / 10)},
+                values: {
+                    min: Math.floor(min / (digit_min)) * (digit_min),
+                    max: Math.ceil(max / (digit_max / 10)) * (digit_max / 10)
+                },
                 range: true,
                 tooltip: true,
                 scale: true,
@@ -371,13 +374,21 @@ document.addEventListener("DOMContentLoaded", async () => {
                     $(`strong[data-installment-${k}]`).innerHTML = installment;
                     return {package: k, price}
                 }))
+
+            basePrice(package_data);
         }
 
         hideRow();
         showRow();
     }
 
-
+    const basePrice = (package_data) => {
+        let last = Object.keys(package_data).pop();
+        console.log({last})
+        $$("th[data-package='" + last + "']").forEach($el => {
+            $el.classList.add("basePrice");
+        });
+    }
     const recommendProduct = (dataRecommend) => {
 
         const [min, max] = data.ctrl_budget.split(",")
@@ -388,7 +399,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             }
             return recPackage;
         }, dataRecommend[0])
-        // console.log({dataRecommendMax})
+        console.log({dataRecommend})
 
         $$("th.recommendPackage,td.recommendPackage,a.btn-choose-plan,td[data-package").forEach($el => {
             $el.classList.remove("recommendPackage");
