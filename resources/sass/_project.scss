@@ -3423,3 +3423,17 @@ main[data-package="ONPACA"]{
         }
     }
 }
+
+main[data-package="ONPAKD"],[data-package="ONPASN"]{
+    #table-detail{
+        thead{
+            tr{
+                th:first-child{
+                    @media all and (min-width: $lg) {
+                        width: 40%;
+                    }
+                }
+            }
+        }
+    }
+}
