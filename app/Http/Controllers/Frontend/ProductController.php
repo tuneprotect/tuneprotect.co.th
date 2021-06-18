@@ -120,6 +120,19 @@ class ProductController extends BaseController
                         {
                             if($v->plan->VACINA3 !== '-'){$v->plan->VACINA3 = __('product.healt2go_plan');}
                         }
+
+                        if($selected === 'ONPACA')
+                        {
+                            if($v->plan->PADRCA10 !== '-'){$v->plan->PADRCA10 = __('product.healt2go_word');}
+                        }
+                        if($selected === 'ONPAKD')
+                        {
+                            if($v->plan->PADRKD07 !== '-'){$v->plan->PADRKD07 = __('product.healt2go_word');}
+                        }
+                        if($selected === 'ONPASN')
+                        {
+                            if($v->plan->PADRSN07 !== '-'){$v->plan->PADRSN07 = __('product.healt2go_word');}
+                        }
                     }
 
                     //Nomakl
@@ -130,6 +143,7 @@ class ProductController extends BaseController
             }
         }
 
+        // dd( $this->bodyData['package_detail']);
 
         $this->template->setBody('id', 'product_page');
 
