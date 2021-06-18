@@ -39,26 +39,23 @@
     </section>
     <div class="wrapper">
         <form>
-            <div class="controls-wrapper" id="disease_box">
+            <div class="controls-wrapper" id="disease_box" data-disease_title="@lang("product.disease_summary")">
                 <h2 class="text-center no-color">@lang('product.disease_title')</h2>
                 <ul class="check_box_disease">
                     @foreach(array('F', 'C', 'O', 'T', 'D') as $v)
                         <li class="checkbox_disease">
-                            <label for="ctrl_disease" style="display: none">@lang("product.disease_summary")</label>
-                            <figure class="imghvr-fade">
+
                             <input type="checkbox" name="ctrl_disease" id="checkbox_disease_{{$v}}"
                                    data-disease-{{$v}}="@lang('product.ci_disease.'.$v)"
                                    {{($v=='F'?'checked disabled':'checked')}} value="{{$v}}"/>
 
                                 <label for="checkbox_disease_{{$v}}">
-                                    <img src="{{asset('images/ico_ci/'.$v.'.svg')}}"/>
-                                    <figcaption>
+                                    <img src="{{asset('images/ico_ci/'.$v.'.svg')}}" alt="@lang('product.ci_disease.'.$v)"/>
+                                    <span>
                                         @lang('product.ci_disease_description.'.$v)
-                                    </figcaption>
+                                    </span>
                                     <strong>@lang('product.ci_disease.'.$v)</strong>
                                 </label>
-                            </figure>
-
                         </li>
                     @endforeach
 
@@ -84,7 +81,7 @@
 
     @include('frontend.component.form-coverage-table',['package_detail' => $package_detail,'selected' =>$selected ])
 </div>
-<section style="display: none" id="step3" class="wrapper">
+<section style="display: block" id="step3" class="wrapper">
     <form class="insurance-form">
         <div class="form-head"> {{$package->locales[$locale]->title}} <span id="form-head"></span></div>
         <div class="form-inner">

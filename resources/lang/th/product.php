@@ -25,7 +25,7 @@ return [
     "destination_country" => "ประเทศปลายทาง",
     "destination_province" => "จังหวัดปลายทาง",
     "disease" => "โปรดระบุว่าเป็นโรค",
-    "disease_summary" => "โรค",
+    "disease_summary" => "กลุ่มโรคที่ได้รับการคุ้มครอง",
     "disease_status" => "สถานะของโรค",
     "district" => "แขวง / ตำบล",
     "document_type" => "ประเภทเอกสาร",
@@ -60,8 +60,8 @@ return [
     "postal_code" => "รหัสไปรษณีย์",
     "prefix" => "คำนำหน้าชื่อ",
     "price" => 'ราคา',
-    "price_per_year" => 'ราคาเบี้ยประกันต่อปี',
-    "installment" => 'ราคาเบี้ยประกันต่อเดือน (ราคาเบี้ย/12เดือน)
+    "price_per_year" => '<strong>ราคาเบี้ยประกันต่อปี</strong>',
+    "installment" => '<strong>ราคาเบี้ยประกันต่อเดือน (ราคาเบี้ย/12เดือน)</strong>
 <br>
 <span style="font-size: .6rem">*จำนวนงวดการผ่อนชำระและค่าธรรมเนียมขึ้นอยู่กับเงื่อนไขของธนาคาร</span>
 ',
@@ -358,10 +358,10 @@ return [
 &bull; การสูญเสียอวัยวะจากโรคเบาหวาน (Limb amputation)<br>
 &bull; เบาหวานลงไต (Diabetic Nephropathy)<br>
 *เฉพาะโรคเบาหวานเข้าจอประสาทตา ผลประโยชน์ 50% ของจำนวนเงินเอาประกันภัย</span>",
-        "COV04" => "<h6>บริการฟรี</h6><br>
-<div style='display: none'>การวินิจฉัยครั้งที่สอง</div>",
-        "COV05" => "<h6>บริการฟรี</i></h6><br>
-<div style='display: none'>พิเศษ ค่าบริการแพทย์ทางไกล 1 ครั้งต่อปี</div>",
+        "COV04" => "<div class='expand'><h6>บริการฟรี <i class='icofont-caret-up action-expand-col'></i></h6><br>
+<div style='display: none' class='package-number'>การวินิจฉัยครั้งที่สอง</div></div>",
+        "COV05" => "<div><h6>บริการฟรี <i class='icofont-caret-up action-expand-col'></i></h6><br>
+<div style='display: none' class='package-number'>พิเศษ ค่าบริการแพทย์ทางไกล 1 ครั้งต่อปี</div></div>",
         "COV06" => "<h6>  ผลประโยชน์การชดเชยรายได้รายวันจากการเข้ารักษาตัวเป็นผู้ป่วยในอันเนื่องมาจากโรคร้ายแรง</h6><br>
 ค่าทดแทนสำหรับเงินชดเชยรายได้รายวัน สูงสุดไม่เกิน 15 วันต่อปีกรมธรรม์",
         "COV07" => "<h6> ผลประโยชน์ค่าจ้างพยาบาลพิเศษอันเนื่องมาจากโรคร้ายแรง</h6><br>

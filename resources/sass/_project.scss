@@ -1405,9 +1405,11 @@ main {
 
             &:placeholder-shown + label {
                 color: #C4C4C4;
-                font-size: .6rem;
+                font-size: 1rem;
                 top: 23px;
                 left: 20px;
+                right: 0;
+                @include truncate();
             }
 
             &::placeholder {
@@ -1434,6 +1436,7 @@ main {
             width: 100%;
             font-weight: bold;
             @include project_transition();
+
         }
 
 
@@ -2628,8 +2631,8 @@ main {
                     }
 
                     &.pink {
-                        background: #F56BB6;
-
+                        background: linear-gradient(152deg, rgba(227, 48, 108, 1) 0%, rgba(247, 224, 31, 1) 100%);
+                        color: #FFFFFF;
                         th {
                             @media all and (max-width: $md - 1) {
                                 text-align: center;
@@ -3477,6 +3480,7 @@ main {
         @media all and (max-width: $sm) {
             margin: 10px auto;
         }
+
         strong, span {
             display: block;
             color: #FFFFFF;
@@ -3512,6 +3516,7 @@ main[data-package="CI"] {
 
 
                 @media all and (max-width: $md) {
+                    margin: 10px;
                     &:first-child {
                         flex: 100%;
                     }
@@ -3523,11 +3528,13 @@ main[data-package="CI"] {
 
                 &:checked + label {
                     border: 1px solid $primary-color;
-                    border-radius: 14px;
+                    //border-radius: 14px;
 
                     &:after {
                         opacity: 1;
                     }
+
+
 
                     strong {
                         color: $primary-color;
@@ -3540,6 +3547,7 @@ main[data-package="CI"] {
 
 
                 + label {
+                    position: relative;
                     margin-right: 10px;
                     padding: 30px 10px 10px;
                     text-align: center;
@@ -3557,13 +3565,56 @@ main[data-package="CI"] {
                         content: "\EED8";
                         top: -21px;
                         left: 50%;
-                        background: #fff;
                         line-height: 38px;
                         margin-left: -19px;
                         text-indent: -6px;
                         opacity: 0;
+                        z-index: 1;
                     }
 
+                    &:hover {
+                        span {
+                            height: 100px;
+                            padding: 5px;
+                            overflow: visible;
+                            &:after{
+                                bottom: -10px;
+                            }
+                        }
+                    }
+
+                    span {
+                        overflow: hidden;
+                        background: $primary-color;
+                        color: #fff;
+                        position: absolute;
+                        left: -20px;
+                        right: -20px;
+                        bottom: calc(100% + 30px);
+                        height: 0;
+                        font-size: 0.8rem;
+                        border-radius: 10px;
+                        padding: 0;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        @include project_transition();
+
+                        &:after {
+                            content: '';
+                            display: block;
+                            position: absolute;
+                            bottom: 0;
+                            left: 50%;
+                            margin-left: -10px;
+                            width: 0;
+                            height: 0;
+                            border-left: 10px solid transparent;
+                            border-right: 10px solid transparent;
+                            border-top: 10px solid $primary-color;
+                            @include project_transition();
+                        }
+                    }
 
                     strong {
                         display: block;
@@ -3814,6 +3865,16 @@ main[data-package="CI"] {
             }
         }
 
+    }
+
+    .icofont-caret-up {
+        @include project_transition();
+
+        &.on {
+            @include project_transition();
+            display: inline-block;
+            transform: rotate(180deg);
+        }
     }
 
     .highlight-ci-wrapper {

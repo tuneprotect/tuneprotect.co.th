@@ -217,6 +217,21 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     }
 
+    $('.action-expand-col').addEventListener("click", e => {
+
+
+        let result = e.target.closest('.expand').getElementsByClassName("package-number");
+        console.log(result.style.display )
+        // if (result.style.display === "none") {
+        //     result.style.display = 'block';
+        //     e.target.classList.add("on");
+        // } else {
+        //     result.style.display = 'none';
+        //     e.target.classList.remove("on");
+        // }
+    });
+
+
     let defaultValue = genMinMax();
     var budget_slider = new rSlider({
         target: '#ctrl_budget',
@@ -226,7 +241,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         scale: true,
         labels: false,
         step: 5000,
-        disabled:true,
+        disabled: true,
         set: [defaultValue.min, defaultValue.max],
         tooltipFormat: (value) => value.toLocaleString()
     });
@@ -659,7 +674,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                     <div class="two-col">
                         <div><span>${$summary_section.getAttribute('data-plan')} : </span><strong>${selectedPackage}</strong></div>
                         <div><span>${$summary_section.getAttribute('data-price')} : </span><strong>${parseFloat(data.fdPayAMT).toLocaleString()} ${$summary_section.getAttribute('data-baht')}</strong></div>
-                        <div><span>${$('label[for=ctrl_disease]').innerText} : </span><strong>${data.ctrl_disease.map((text) => {
+                        <div class="controls-wrapper full no-lable"><span>${$('[data-disease_title]').getAttribute('data-disease_title')} : </span><strong>${data.ctrl_disease.map((text) => {
                                     return $(`input[data-disease-${text}]`).getAttribute(`data-disease-${text}`);
                                 })}</strong></div>
                     </div>

@@ -16,7 +16,7 @@ class CiDataHelper
     protected static $col = ['plan_code', 'age_range', 'addb', 'cancer', 'hc', 'nc', 'cvd', 'organ', 'trauma', 'diabetes', 'net_premium',
         'duty', 'gross_premium', 'sum_insured_1', 'sum_insured_2', 'sum_insured_3', 'sum_insured_4', 'sum_insured_5', 'sum_insured_6',
         'sum_insured_7', 'sum_insured_8', 'channel', 'tax_deduct'];
-    protected static $jsonOrder = [ 'sum_insured_1', 'sum_insured_2', 'sum_insured_3', 'sum_insured_4', 'sum_insured_5', 'sum_insured_6',
+    protected static $jsonOrder = ['sum_insured_1', 'sum_insured_2', 'sum_insured_3', 'sum_insured_4', 'sum_insured_5', 'sum_insured_6',
         'sum_insured_7', 'sum_insured_8'];
 
     protected static function genMapColumn($shownData)
@@ -59,23 +59,28 @@ class CiDataHelper
             $new_code_start = Str::substr($v['plan_code'], 0, 5);
             $new_code_end = Str::substr($v['plan_code'], 5);;
 
-            for ($i = 1; $i <= 9; $i++) {
+            $age_range = explode("-", $v['age_range']);
 
-                switch ($i) {
-                    case 7:
-                        $new_data[$new_code_start]['plan']["COV0{$i}"] = $v["sum_insured_{$i}"] == true ? "<img src='/images/my_health/Logo-My-Health.png'>" : '';
-                        break;
-                    case 8:
-                        $new_data[$new_code_start]['plan']["COV0{$i}"] = $v["sum_insured_{$i}"] == true ? "<i class='icofont-check-circled'  style='color:green'></i>" : "<i class='icofont-close-circled' style='color:red'></i>";
-                        break;
-                    default:
-                        $new_data[$new_code_start]['plan']["COV0{$i}"] = $v["sum_insured_{$i}"];
-                        break;
+            if ($age_range[0] != 60 && $age_range[1] != 65) {
+                for ($i = 1; $i <= 9; $i++) {
+
+                    switch ($i) {
+                        case 7:
+                            $new_data[$new_code_start]['plan']["COV0{$i}"] = $v["sum_insured_{$i}"] == true ? "<img src='/images/my_health/Logo-My-Health.png'>" : '';
+                            break;
+                        case 8:
+                            $new_data[$new_code_start]['plan']["COV0{$i}"] = $v["sum_insured_{$i}"] == true ? "<i class='icofont-check-circled'  style='color:green'></i>" : "<i class='icofont-close-circled' style='color:red'></i>";
+                            break;
+                        default:
+                            $new_data[$new_code_start]['plan']["COV0{$i}"] = $v["sum_insured_{$i}"];
+                            break;
+                    }
+
                 }
 
+                $new_data[$new_code_start]['price'][$v['age_range']]['F' . $new_code_end] = $v['net_premium'];
             }
 
-            $new_data[$new_code_start]['price'][$v['age_range']]['F' . $new_code_end] = $v['net_premium'];
 
         }
 
