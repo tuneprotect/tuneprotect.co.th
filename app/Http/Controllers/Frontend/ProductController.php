@@ -532,8 +532,9 @@ class ProductController extends BaseController
 
     }
 
-    public function error()
+    public function error(Request $request)
     {
+//        dd($request->input());
         return $this->genStatusPage(ProjectEnum::STATIC_PAGE_PAYMENT_ERROR);
     }
 
@@ -611,6 +612,8 @@ class ProductController extends BaseController
         $arr_post['customer_email'] = 'test@test.com';
         $arr_post['result_url_1'] = url("{$this->locale}/product/result");
         $arr_post['payment_option'] = "CC,FULL,IPP";
+        $arr_post['ipp_interest_type'] = 'A';
+        $arr_post['ipp_period_filter'] = '3,6';
         $arr_post['default_lang'] = $this->locale;
         $params = join($arr_post);
         $arr_post['hash_value'] = hash_hmac('sha256', $params, config('payment.secret'), false);    //Compute hash value
