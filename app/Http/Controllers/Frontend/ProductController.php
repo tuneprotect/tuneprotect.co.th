@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Enum\Base\BaseInsuranceObject;
 use App\Enum\Base\BaseTAObject;
+use App\Enum\CIObject;
 use App\Enum\COVIDAObject;
 use App\Enum\COVIDLObject;
 use App\Enum\ONTALNObject;
@@ -25,6 +26,7 @@ class ProductController extends BaseController
 
     protected $thankYouParam = '';
     protected $controller = 'product';
+    protected $payment = 'CC,FULL';
 
     public function index($link = null, $selected = null)
     {
@@ -177,7 +179,6 @@ class ProductController extends BaseController
             // dd('js error.');
         }
 
-        // dd($this->bodyData['controller']);
         //Swich main page product / portal
         if ($this->controller != 'product') {
             return $this->genView('frontend.page.portal');
@@ -212,7 +213,10 @@ class ProductController extends BaseController
             $obj = new VACINAObject();
         } elseif (substr($data['fdPackage'], 0, 8) === 'ONVSAFEA') {
             $obj = new VACINAObject();
-        } else {
+        }elseif (substr($data['fdPackage'], 0, 2) === 'CI') {
+            $obj = new CIObject();
+            $this->payment =  'CC,FULL,IPP';
+        }else {
             $obj = new BaseInsuranceObject();
         }
 
@@ -330,7 +334,6 @@ class ProductController extends BaseController
     {
         $data = $request->all();
 
-//        dd($data);
 
         if (isset($data['send_data'])) {
             $data = (array)json_decode($data['send_data']);
@@ -406,7 +409,7 @@ class ProductController extends BaseController
         $arr_post['user_defined_2'] = session('return_link');
         $arr_post['result_url_1'] = url("{$this->locale}/{$this->controller}/result");
 
-        $arr_post['payment_option'] = "CC,FULL";
+        $arr_post['payment_option'] = $this->payment;
         $arr_post['default_lang'] = $this->locale;
         $params = join($arr_post);
         $arr_post['hash_value'] = hash_hmac('sha256', $params, config('payment.secret'), false);    //Compute hash value
@@ -607,7 +610,7 @@ class ProductController extends BaseController
         $arr_post['amount'] = str_pad((1000) * 100, 12, '0', STR_PAD_LEFT);
         $arr_post['customer_email'] = 'test@test.com';
         $arr_post['result_url_1'] = url("{$this->locale}/product/result");
-        $arr_post['payment_option'] = "CC,ALIPAY,BANK";
+        $arr_post['payment_option'] = "CC,FULL,IPP";
         $arr_post['default_lang'] = $this->locale;
         $params = join($arr_post);
         $arr_post['hash_value'] = hash_hmac('sha256', $params, config('payment.secret'), false);    //Compute hash value
