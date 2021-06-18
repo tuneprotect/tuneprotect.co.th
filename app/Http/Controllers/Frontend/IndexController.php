@@ -34,8 +34,15 @@ class IndexController extends BaseController
             ->orderBy('s_order')
             ->get();
 
+        if(count($highlight_product)%2 == 0){
+
+            $this->bodyData['last_highlight_product'] = $highlight_product->last();
+            $this->bodyData['highlight_product'] = $highlight_product->slice(1,2);
+        }else{
+            $this->bodyData['highlight_product'] = $highlight_product->slice(1);
+        }
         $this->bodyData['main_highlight_product'] = $highlight_product->first();
-        $this->bodyData['highlight_product'] = $highlight_product->slice(1);
+
 
         $this->bodyData['service'] = WebContent::where('type_id', ProjectEnum::WEB_CONTENT_SERVICE)
             ->with('locales')

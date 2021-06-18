@@ -226,6 +226,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         scale: true,
         labels: false,
         step: 5000,
+        disabled:true,
         set: [defaultValue.min, defaultValue.max],
         tooltipFormat: (value) => value.toLocaleString()
     });

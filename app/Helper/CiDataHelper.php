@@ -16,7 +16,8 @@ class CiDataHelper
     protected static $col = ['plan_code', 'age_range', 'addb', 'cancer', 'hc', 'nc', 'cvd', 'organ', 'trauma', 'diabetes', 'net_premium',
         'duty', 'gross_premium', 'sum_insured_1', 'sum_insured_2', 'sum_insured_3', 'sum_insured_4', 'sum_insured_5', 'sum_insured_6',
         'sum_insured_7', 'sum_insured_8', 'channel', 'tax_deduct'];
-
+    protected static $jsonOrder = [ 'sum_insured_1', 'sum_insured_2', 'sum_insured_3', 'sum_insured_4', 'sum_insured_5', 'sum_insured_6',
+        'sum_insured_7', 'sum_insured_8'];
 
     protected static function genMapColumn($shownData)
     {
@@ -59,7 +60,7 @@ class CiDataHelper
             $new_code_end = Str::substr($v['plan_code'], 5);;
 
             for ($i = 1; $i <= 9; $i++) {
-                echo $v["sum_insured_{$i}"]."\r\n";
+
                 switch ($i) {
                     case 7:
                         $new_data[$new_code_start]['plan']["COV0{$i}"] = $v["sum_insured_{$i}"] == true ? "<img src='/images/my_health/Logo-My-Health.png'>" : '';

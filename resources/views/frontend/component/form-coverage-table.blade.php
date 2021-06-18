@@ -1,4 +1,4 @@
-<section style="display: none" id="step2" class="product-detail">
+<section style="display: block" id="step2" class="product-detail">
     @if(strtolower($selected) == 'onvacina')
         <section id="sectionPackage" class="wrapper">
             <form method="post" action="" class="insurance-form">
@@ -53,7 +53,8 @@
                                             <strong>@lang('product.plan') {{$v->no}}</strong>
                                         @endif
                                     @else
-                                        <span data-recommend="{{$k}}" style="display: none">@lang('product.recommend')</span>
+                                        <span data-recommend="{{$k}}"
+                                              style="display: none">@lang('product.recommend')</span>
                                         <strong class="package-number">@lang('product.plan') {{$i}}</strong>
                                     @endif
 
@@ -111,15 +112,6 @@
             </tr>
             </thead>
             <tbody>
-            <tr class="orange">
-                <th>@lang('product.price')</th>
-                <?php $i = 1 ?>
-                @foreach ($package_detail as $k => $v)
-                    <td {{$i > 1 ? 'class=hide' : ""}} data-index="{{$i}}" data-package="{{$k}}"><strong
-                            data-price-{{$k}}></strong></td>
-                    <?php $i++ ?>
-                @endforeach
-            </tr>
             <tr class="pink">
                 <th>@lang('product.installment')</th>
                 <?php $i = 1 ?>
@@ -129,10 +121,21 @@
                     <?php $i++ ?>
                 @endforeach
             </tr>
+            <tr class="orange">
+                <th>@lang('product.price_per_year')</th>
+                <?php $i = 1 ?>
+                @foreach ($package_detail as $k => $v)
+                    <td {{$i > 1 ? 'class=hide' : ""}} data-index="{{$i}}" data-package="{{$k}}"><strong
+                            data-price-{{$k}}></strong></td>
+                    <?php $i++ ?>
+                @endforeach
+            </tr>
+
             @foreach (__('product.'.$selected) as $k => $v)
                 <tr>
                     <th>{!! $v !!}</th>
                     <?php $i = 1 ?>
+
                     @foreach ($package_detail as $k1 => $v1)
                         <td {{$i > 1 ? 'class=hide' : ""}} data-index="{{$i}}" data-package="{{$k1}}">
                             @if(isset($v1->plan->$k))
@@ -142,9 +145,9 @@
                                     <strong>{!!__( str_replace('__','',$v1->plan->$k) )!!}</strong>
                                 @else
                                     <strong>{!! $v1->plan->$k !!}</strong>
+                                @endif
                         @endif
-                        @else
-                        @endif
+                        </td>
                         <?php $i++ ?>
                     @endforeach
                 </tr>

@@ -406,18 +406,6 @@ class ProductController extends BaseController
         $arr_post['user_defined_2'] = session('return_link');
         $arr_post['result_url_1'] = url("{$this->locale}/{$this->controller}/result");
 
-        //case check product / portal
-        // $strKeys = $obj->data["fdKeys"];
-        // if((!isset($strKeys) || trim($strKeys) === ''))
-        // {
-        //     $arr_post['result_url_1'] = url("{$this->locale}/product/result");
-        // }
-        // else{
-
-        //     $arr_post['result_url_1'] = url("{$this->locale}/portal/results");//เติม s เพราะจำซ้ำกับตัว product
-        // }
-
-
         $arr_post['payment_option'] = "CC,FULL";
         $arr_post['default_lang'] = $this->locale;
         $params = join($arr_post);
