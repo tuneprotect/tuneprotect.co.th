@@ -3877,6 +3877,10 @@ main[data-package="CI"] {
         }
     }
 
+    .package-number-ci{
+        display: block;
+    }
+
     .highlight-ci-wrapper {
         #step {
             display: grid;

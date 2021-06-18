@@ -1,4 +1,4 @@
-<section style="display: none" id="step2" class="product-detail">
+<section style="display: block" id="step2" class="product-detail">
     @if(strtolower($selected) == 'onvacina')
         <section id="sectionPackage" class="wrapper">
             <form method="post" action="" class="insurance-form">

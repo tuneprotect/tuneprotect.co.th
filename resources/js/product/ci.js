@@ -217,19 +217,23 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     }
 
-    $('.action-expand-col').addEventListener("click", e => {
 
 
-        let result = e.target.closest('.expand').getElementsByClassName("package-number");
-        console.log(result.style.display )
-        // if (result.style.display === "none") {
-        //     result.style.display = 'block';
-        //     e.target.classList.add("on");
-        // } else {
-        //     result.style.display = 'none';
-        //     e.target.classList.remove("on");
-        // }
+    $$(".action-expand-col").forEach($el => {
+        $el.addEventListener("click", function (e) {
+            let result = e.target.closest('.expand').getElementsByClassName("package-number-ci");
+            console.log(result)
+            // result[0].classList.toggle("package-number-ci");
+            if (result[0].style.display === "none") {
+                result[0].style.display = 'block';
+                e.target.classList.add("on");
+            } else {
+                result[0].style.display = 'none';
+                e.target.classList.remove("on");
+            }
+        });
     });
+
 
 
     let defaultValue = genMinMax();
@@ -306,7 +310,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                 });
 
             }, {})
-            console.log(arr)
+
             if (arr.length === 0) {
 
                 return false;
