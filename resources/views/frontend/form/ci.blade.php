@@ -26,7 +26,7 @@
                 @include('frontend.component.form-date-input')
                 <br>
 
-                <div class="slider-wrapper">
+                <div class="slider-wrapper" data-not-qualify="@lang('product.error.birthdate.not-qualify')">
                     <h3>@lang("product.budget")</h3>
                     <div class="controls-wrapper slider_budget">
                         <br>

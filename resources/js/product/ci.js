@@ -312,7 +312,11 @@ document.addEventListener("DOMContentLoaded", async () => {
             }, {})
 
             if (arr.length === 0) {
-
+                Swal.fire({
+                    icon: 'error',
+                    confirmButtonColor: '#E71618',
+                    text: $('[data-not-qualify]').getAttribute('data-not-qualify')
+                })
                 return false;
             }
             budget_slider.destroy();
@@ -343,7 +347,10 @@ document.addEventListener("DOMContentLoaded", async () => {
         genRangeSlidByHbd();
     });
     $('#ctrl_year').addEventListener("keyup", event => {
-        genRangeSlidByHbd();
+       console.log($('#ctrl_year').value.length)
+        if($('#ctrl_year').value.length === 4){
+            genRangeSlidByHbd();
+        }
     });
     $('#ctrl_month').addEventListener("change", event => {
         genRangeSlidByHbd();
