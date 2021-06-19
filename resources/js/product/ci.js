@@ -26,7 +26,6 @@ require('../main');
 require('../product');
 require('../lib/rSlider.min');
 
-
 validate.validators.idcard = function (value, options, key, attributes) {
     for (var i = 0, sum = 0; i < 12; i++) {
         sum += parseFloat(value.charAt(i)) * (13 - i);
@@ -194,35 +193,35 @@ const constraints = {
 
 document.addEventListener("DOMContentLoaded", async () => {
 
-
     const package_data = await getPackageData(current_package);
-    const genMinMax = () => {
+    const genMinMax = (age) => {
         return Object.keys(package_data).reduce((returnValue, k) => {
             Object.keys(package_data[k].price).map((k1) => {
 
                 Object.values(package_data[k].price[k1]).map((v) => {
                     const digit = Math.pow(10, v.toString().length) / 10;
+                    const [startAge, endAge] = k1.split('-');
 
-                    if (v < returnValue.min) {
-                        returnValue.min = Math.floor(v / (digit)) * (digit);
+                    if (age === undefined || (age >= startAge && age <= endAge)) {
+                        console.log({age, startAge, endAge});
+                        if (returnValue.min === undefined || v < returnValue.min) {
+                            returnValue.min = Math.floor(v / (digit)) * (digit);
+                        }
+                        if (returnValue.max === undefined || v > returnValue.max) {
+                            returnValue.max = Math.ceil(v / (digit / 10)) * (digit / 10);
+                        }
                     }
-                    if (v > returnValue.max) {
-                        returnValue.max = Math.ceil(v / (digit / 10)) * (digit / 10);
-                    }
+
                 });
+
             });
             return returnValue;
-        }, {min: 400, max: 110000})
-
-
+        }, {min: undefined, max: undefined})
     }
-
-
 
     $$(".action-expand-col").forEach($el => {
         $el.addEventListener("click", function (e) {
             let result = e.target.closest('.expand').getElementsByClassName("package-number-ci");
-            console.log(result)
             // result[0].classList.toggle("package-number-ci");
             if (result[0].style.display === "none") {
                 result[0].style.display = 'block';
@@ -235,20 +234,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
 
 
-
     let defaultValue = genMinMax();
-    var budget_slider = new rSlider({
-        target: '#ctrl_budget',
-        values: {min: defaultValue.min, max: defaultValue.max},
-        range: true,
-        tooltip: true,
-        scale: true,
-        labels: false,
-        step: 5000,
-        disabled: true,
-        set: [defaultValue.min, defaultValue.max],
-        tooltipFormat: (value) => value.toLocaleString()
-    });
 
     let step = 1;
     let data = {
@@ -285,76 +271,94 @@ document.addEventListener("DOMContentLoaded", async () => {
         ctrl_disease: [],
         ctrl_protection_start_date: ""
     };
+    let slideOption = {
+        target: '#ctrl_budget',
+        range: true,
+        tooltip: true,
+        scale: true,
+        labels: false,
+        step: 2000,
+        tooltipFormat: (value) => value.toLocaleString(),
+        values: {min: defaultValue.min, max: defaultValue.max},
+        disabled: true,
+        set: [defaultValue.min, defaultValue.max],
+    };
+
+    let budget_slider = new rSlider(slideOption);
 
     const genRangeSlidByHbd = () => {
-        if ($('#ctrl_day').value && $('#ctrl_month').value && $('#ctrl_year').value) {
-            let yy = $('#ctrl_year').value;
-            if (parseInt(yy.substring(0, 2)) > 21) {
-                yy = (parseInt(yy) - 543).toString();
-            }
-            let hbd = `${yy}-${$('#ctrl_month').value}-${$('#ctrl_day').value}`
-            let age = calculateAge(hbd);
-            let arr = [];
+        const validateResult = validateAgeInPackage(package_data, false);
 
+        if (validateResult.status) {
 
-            let defaultValue = Object.keys(package_data).reduce((returnValue, k) => {
-                Object.keys(package_data[k].price).map((k1) => {
-
-                    let [min, max] = k1.split('-');
-
-                    if (min <= age.year && max >= age.year) {
-                        Object.values(package_data[k].price[k1]).map((v) => {
-                            arr.push(v);
-                        });
-                    }
-                });
-
-            }, {})
-
-            if (arr.length === 0) {
-                Swal.fire({
-                    icon: 'error',
-                    confirmButtonColor: '#E71618',
-                    text: $('[data-not-qualify]').getAttribute('data-not-qualify')
-                })
-                return false;
-            }
+            let callMinMax = genMinMax(validateResult.data.fdAge);
             budget_slider.destroy();
-            let min = Math.min(...arr);
-            let max = Math.max(...arr);
-
-            let digit_min = Math.pow(10, min.toString().length) / 10;
-            let digit_max = Math.pow(10, max.toString().length) / 10;
 
             budget_slider = new rSlider({
-                target: '#ctrl_budget',
-                values: {
-                    min: Math.floor(min / (digit_min)) * (digit_min),
-                    max: Math.ceil(max / (digit_max / 10)) * (digit_max / 10)
-                },
-                range: true,
-                tooltip: true,
-                scale: true,
-                labels: false,
-                step: 2000,
-                set: [Math.floor(min / (digit_min)) * (digit_min), Math.ceil(max / (digit_max / 10)) * (digit_max / 10)],
-                tooltipFormat: (value) => value.toLocaleString()
+                ...slideOption,
+                values : callMinMax,
+                set : [callMinMax.min , callMinMax.max],
+                disabled:false
             });
         }
+
+
+        // if ($('#ctrl_day').value && $('#ctrl_month').value && $('#ctrl_year').value) {
+        //     let yy = $('#ctrl_year').value;
+        //     if (parseInt(yy.substring(0, 2)) > 21) {
+        //         yy = (parseInt(yy) - 543).toString();
+        //     }
+        //     let hbd = `${yy}-${$('#ctrl_month').value}-${$('#ctrl_day').value}`
+        //     let age = calculateAge(hbd);
+        //     let arr = [];
+        //
+        //
+        //     let defaultValue = Object.keys(package_data).reduce((returnValue, k) => {
+        //         Object.keys(package_data[k].price).map((k1) => {
+        //
+        //             let [min, max] = k1.split('-');
+        //
+        //             if (min <= age.year && max >= age.year) {
+        //                 Object.values(package_data[k].price[k1]).map((v) => {
+        //                     arr.push(v);
+        //                 });
+        //             }
+        //         });
+        //
+        //     }, {})
+        //
+        //
+        //     let min = Math.min(...arr);
+        //     let max = Math.max(...arr);
+        //
+        //     let digit_min = Math.pow(10, min.toString().length) / 10;
+        //     let digit_max = Math.pow(10, max.toString().length) / 10;
+        //
+        //     budget_slider = new rSlider({
+        //         target: '#ctrl_budget',
+        //         values: {
+        //             min: Math.floor(min / (digit_min)) * (digit_min),
+        //             max: Math.ceil(max / (digit_max / 10)) * (digit_max / 10)
+        //         },
+        //         range: true,
+        //         tooltip: true,
+        //         scale: true,
+        //         labels: false,
+        //         step: 2000,
+        //         set: [Math.floor(min / (digit_min)) * (digit_min), Math.ceil(max / (digit_max / 10)) * (digit_max / 10)],
+        //         tooltipFormat: (value) => value.toLocaleString()
+        //     });
+        // }
+
+
     }
 
-    $('#ctrl_day').addEventListener("keyup", event => {
-        genRangeSlidByHbd();
-    });
-    $('#ctrl_year').addEventListener("keyup", event => {
-       console.log($('#ctrl_year').value.length)
-        if($('#ctrl_year').value.length === 4){
+    $$('#ctrl_day,#ctrl_year,#ctrl_month').forEach($el => {
+        $el.addEventListener($el.tagName.toLowerCase() === 'input' ? "keyup" : "change", event => {
             genRangeSlidByHbd();
-        }
-    });
-    $('#ctrl_month').addEventListener("change", event => {
-        genRangeSlidByHbd();
-    });
+        });
+    })
+
 
     const hideRow = () => {
         $$("span[data-disease]").forEach($el => {
@@ -388,9 +392,10 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
 
     const genPrice = () => {
-
+        let pricelist;
         if (data.fdHBD) {
-            recommendProduct(Object.keys(package_data)
+
+            pricelist = Object.keys(package_data)
                 .filter(k => _.startsWith(k, current_package))
                 .map(k => {
                     const pack = Object.keys(package_data[k].price).filter(ageRange => checkAge(data.fdHBD, ageRange))
@@ -400,18 +405,22 @@ document.addEventListener("DOMContentLoaded", async () => {
                     $(`span[data-price-${k}]`).innerHTML = parseInt(price).toLocaleString();
                     $(`strong[data-installment-${k}]`).innerHTML = installment;
                     return {package: k, price}
-                }))
+                });
+
+            recommendProduct(pricelist)
 
             basePrice(package_data);
         }
 
         hideRow();
         showRow();
+        console.log(pricelist);
+        return pricelist;
     }
 
     const basePrice = (package_data) => {
         let last = Object.keys(package_data).pop();
-        console.log({last})
+
         $$("th[data-package='" + last + "']").forEach($el => {
             $el.classList.add("basePrice");
         });
@@ -426,69 +435,30 @@ document.addEventListener("DOMContentLoaded", async () => {
             }
             return recPackage;
         }, dataRecommend[0])
-        console.log({dataRecommend})
+
 
         $$("th.recommendPackage,td.recommendPackage,a.btn-choose-plan,td[data-package").forEach($el => {
-            $el.classList.remove("recommendPackage");
-            $el.classList.remove("on");
+            $el.classList.remove("recommendPackage","on");
             $el.classList.add("hide");
         });
 
         $$("th[data-package='" + dataRecommendMax.package + "']," +
             "td[data-package='" + dataRecommendMax.package + "']," +
             "a[data-package='" + dataRecommendMax.package + "']").forEach($el => {
-            $el.classList.add("recommendPackage");
-            $el.classList.add("on");
+            $el.classList.add("recommendPackage","on");
             $el.classList.remove("hide");
         });
         $$("span[data-recommend='" + dataRecommendMax.package + "']").forEach($el => {
             $el.style.display = 'block';
         });
 
-        // $$("a.btn-choose-plan,td[data-package]").forEach($el => {
-        //     $el.classList.remove("on");
-        //     $el.classList.add("hide");
-        // });
-        // $$("a[data-package='" + dataRecommendMax.package + "'],td[data-package='" + dataRecommendMax.package + "']").forEach($el => {
-        //     $el.classList.add("on");
-        //     $el.classList.remove("hide");
-        // });
-        // // console.log({data,dataRecommend})
-        // let dataPriceMax;
-        // const arrBudget = data.ctrl_budget.split(",")
-        // const recommendMax = dataRecommend.filter(function (e) {
-        //     if(e.price <= arrBudget[1] && e.price >= arrBudget[0]){
-        //         return e;
-        //     }
-        // });
-        //
-        // console.log({recommendMax})
-        // if(recommendMax.length > 0){
-        //     let max = recommendMax[0].price;
-        //
-        //     for (let i = 1; i < recommendMax.length; ++i) {
-        //
-        //         if (recommendMax[i].price > max) {
-        //             max = recommendMax[i].price;
-        //             dataPriceMax = recommendMax[i]
-        //         }
-        //     }
-        //
-        // }else{
-        //
-        //     dataPriceMax = dataRecommend[0]
-        //
-        // }
-        //
-        //
-        // console.log({dataPriceMax})
 
     }
 
 
     const getSelectedPrice = () => {
-
-        const pack = Object.keys(package_data[data.fdPackage].price).filter(ageRange => checkAge(data.fdHBD, ageRange))
+        const pack = Object.keys(package_data[data.fdPackage].price)
+            .filter(ageRange => checkAge(data.fdHBD, ageRange))
         return package_data[data.fdPackage].price[pack][data.ctrl_disease.join("")];
     }
 

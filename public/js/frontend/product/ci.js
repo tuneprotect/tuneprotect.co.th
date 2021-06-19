@@ -55266,7 +55266,7 @@ var constraints = {
   }
 };
 document.addEventListener("DOMContentLoaded", /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
-  var package_data, genMinMax, defaultValue, budget_slider, step, data, genRangeSlidByHbd, hideRow, showRow, genPrice, basePrice, recommendProduct, getSelectedPrice, iti, $form, allField, $btnGoto;
+  var package_data, genMinMax, defaultValue, step, data, slideOption, budget_slider, genRangeSlidByHbd, hideRow, showRow, genPrice, basePrice, recommendProduct, getSelectedPrice, iti, $form, allField, $btnGoto;
   return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
     while (1) {
       switch (_context.prev = _context.next) {
@@ -55277,32 +55277,44 @@ document.addEventListener("DOMContentLoaded", /*#__PURE__*/_asyncToGenerator( /*
         case 2:
           package_data = _context.sent;
 
-          genMinMax = function genMinMax() {
+          genMinMax = function genMinMax(age) {
             return Object.keys(package_data).reduce(function (returnValue, k) {
               Object.keys(package_data[k].price).map(function (k1) {
                 Object.values(package_data[k].price[k1]).map(function (v) {
                   var digit = Math.pow(10, v.toString().length) / 10;
 
-                  if (v < returnValue.min) {
-                    returnValue.min = Math.floor(v / digit) * digit;
-                  }
+                  var _k1$split = k1.split('-'),
+                      _k1$split2 = _slicedToArray(_k1$split, 2),
+                      startAge = _k1$split2[0],
+                      endAge = _k1$split2[1];
 
-                  if (v > returnValue.max) {
-                    returnValue.max = Math.ceil(v / (digit / 10)) * (digit / 10);
+                  if (age === undefined || age >= startAge && age <= endAge) {
+                    console.log({
+                      age: age,
+                      startAge: startAge,
+                      endAge: endAge
+                    });
+
+                    if (returnValue.min === undefined || v < returnValue.min) {
+                      returnValue.min = Math.floor(v / digit) * digit;
+                    }
+
+                    if (returnValue.max === undefined || v > returnValue.max) {
+                      returnValue.max = Math.ceil(v / (digit / 10)) * (digit / 10);
+                    }
                   }
                 });
               });
               return returnValue;
             }, {
-              min: 400,
-              max: 110000
+              min: undefined,
+              max: undefined
             });
           };
 
           Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$$"])(".action-expand-col").forEach(function ($el) {
             $el.addEventListener("click", function (e) {
-              var result = e.target.closest('.expand').getElementsByClassName("package-number-ci");
-              console.log(result); // result[0].classList.toggle("package-number-ci");
+              var result = e.target.closest('.expand').getElementsByClassName("package-number-ci"); // result[0].classList.toggle("package-number-ci");
 
               if (result[0].style.display === "none") {
                 result[0].style.display = 'block';
@@ -55314,23 +55326,6 @@ document.addEventListener("DOMContentLoaded", /*#__PURE__*/_asyncToGenerator( /*
             });
           });
           defaultValue = genMinMax();
-          budget_slider = new rSlider({
-            target: '#ctrl_budget',
-            values: {
-              min: defaultValue.min,
-              max: defaultValue.max
-            },
-            range: true,
-            tooltip: true,
-            scale: true,
-            labels: false,
-            step: 5000,
-            disabled: true,
-            set: [defaultValue.min, defaultValue.max],
-            tooltipFormat: function tooltipFormat(value) {
-              return value.toLocaleString();
-            }
-          });
           step = 1;
           data = {
             fdTitle: "",
@@ -55365,79 +55360,89 @@ document.addEventListener("DOMContentLoaded", /*#__PURE__*/_asyncToGenerator( /*
             ctrl_disease: [],
             ctrl_protection_start_date: ""
           };
+          slideOption = {
+            target: '#ctrl_budget',
+            range: true,
+            tooltip: true,
+            scale: true,
+            labels: false,
+            step: 2000,
+            tooltipFormat: function tooltipFormat(value) {
+              return value.toLocaleString();
+            },
+            values: {
+              min: defaultValue.min,
+              max: defaultValue.max
+            },
+            disabled: true,
+            set: [defaultValue.min, defaultValue.max]
+          };
+          budget_slider = new rSlider(slideOption);
 
           genRangeSlidByHbd = function genRangeSlidByHbd() {
-            if (Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$"])('#ctrl_day').value && Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$"])('#ctrl_month').value && Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$"])('#ctrl_year').value) {
-              var yy = Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$"])('#ctrl_year').value;
+            var validateResult = Object(_form_productHelper__WEBPACK_IMPORTED_MODULE_1__["validateAgeInPackage"])(package_data, false);
 
-              if (parseInt(yy.substring(0, 2)) > 21) {
-                yy = (parseInt(yy) - 543).toString();
-              }
-
-              var hbd = "".concat(yy, "-").concat(Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$"])('#ctrl_month').value, "-").concat(Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$"])('#ctrl_day').value);
-              var age = Object(_helper__WEBPACK_IMPORTED_MODULE_2__["calculateAge"])(hbd);
-              var arr = [];
-
-              var _defaultValue = Object.keys(package_data).reduce(function (returnValue, k) {
-                Object.keys(package_data[k].price).map(function (k1) {
-                  var _k1$split = k1.split('-'),
-                      _k1$split2 = _slicedToArray(_k1$split, 2),
-                      min = _k1$split2[0],
-                      max = _k1$split2[1];
-
-                  if (min <= age.year && max >= age.year) {
-                    Object.values(package_data[k].price[k1]).map(function (v) {
-                      arr.push(v);
-                    });
-                  }
-                });
-              }, {});
-
-              if (arr.length === 0) {
-                sweetalert2__WEBPACK_IMPORTED_MODULE_4___default.a.fire({
-                  icon: 'error',
-                  confirmButtonColor: '#E71618',
-                  text: Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$"])('[data-not-qualify]').getAttribute('data-not-qualify')
-                });
-                return false;
-              }
-
+            if (validateResult.status) {
+              var callMinMax = genMinMax(validateResult.data.fdAge);
               budget_slider.destroy();
-              var min = Math.min.apply(Math, arr);
-              var max = Math.max.apply(Math, arr);
-              var digit_min = Math.pow(10, min.toString().length) / 10;
-              var digit_max = Math.pow(10, max.toString().length) / 10;
-              budget_slider = new rSlider({
-                target: '#ctrl_budget',
-                values: {
-                  min: Math.floor(min / digit_min) * digit_min,
-                  max: Math.ceil(max / (digit_max / 10)) * (digit_max / 10)
-                },
-                range: true,
-                tooltip: true,
-                scale: true,
-                labels: false,
-                step: 2000,
-                set: [Math.floor(min / digit_min) * digit_min, Math.ceil(max / (digit_max / 10)) * (digit_max / 10)],
-                tooltipFormat: function tooltipFormat(value) {
-                  return value.toLocaleString();
-                }
-              });
-            }
+              budget_slider = new rSlider(_objectSpread(_objectSpread({}, slideOption), {}, {
+                values: callMinMax,
+                set: [callMinMax.min, callMinMax.max],
+                disabled: false
+              }));
+            } // if ($('#ctrl_day').value && $('#ctrl_month').value && $('#ctrl_year').value) {
+            //     let yy = $('#ctrl_year').value;
+            //     if (parseInt(yy.substring(0, 2)) > 21) {
+            //         yy = (parseInt(yy) - 543).toString();
+            //     }
+            //     let hbd = `${yy}-${$('#ctrl_month').value}-${$('#ctrl_day').value}`
+            //     let age = calculateAge(hbd);
+            //     let arr = [];
+            //
+            //
+            //     let defaultValue = Object.keys(package_data).reduce((returnValue, k) => {
+            //         Object.keys(package_data[k].price).map((k1) => {
+            //
+            //             let [min, max] = k1.split('-');
+            //
+            //             if (min <= age.year && max >= age.year) {
+            //                 Object.values(package_data[k].price[k1]).map((v) => {
+            //                     arr.push(v);
+            //                 });
+            //             }
+            //         });
+            //
+            //     }, {})
+            //
+            //
+            //     let min = Math.min(...arr);
+            //     let max = Math.max(...arr);
+            //
+            //     let digit_min = Math.pow(10, min.toString().length) / 10;
+            //     let digit_max = Math.pow(10, max.toString().length) / 10;
+            //
+            //     budget_slider = new rSlider({
+            //         target: '#ctrl_budget',
+            //         values: {
+            //             min: Math.floor(min / (digit_min)) * (digit_min),
+            //             max: Math.ceil(max / (digit_max / 10)) * (digit_max / 10)
+            //         },
+            //         range: true,
+            //         tooltip: true,
+            //         scale: true,
+            //         labels: false,
+            //         step: 2000,
+            //         set: [Math.floor(min / (digit_min)) * (digit_min), Math.ceil(max / (digit_max / 10)) * (digit_max / 10)],
+            //         tooltipFormat: (value) => value.toLocaleString()
+            //     });
+            // }
+
           };
 
-          Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$"])('#ctrl_day').addEventListener("keyup", function (event) {
-            genRangeSlidByHbd();
-          });
-          Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$"])('#ctrl_year').addEventListener("keyup", function (event) {
-            console.log(Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$"])('#ctrl_year').value.length);
-
-            if (Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$"])('#ctrl_year').value.length === 4) {
+          Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$$"])('#ctrl_day,#ctrl_year,#ctrl_month').forEach(function ($el) {
+            $el.addEventListener($el.tagName.toLowerCase() === 'input' ? "keyup" : "change", function (event) {
               genRangeSlidByHbd();
-            }
-          });
-          Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$"])('#ctrl_month').addEventListener("change", function (event) {
-            genRangeSlidByHbd();
+            });
           });
 
           hideRow = function hideRow() {
@@ -55473,8 +55478,10 @@ document.addEventListener("DOMContentLoaded", /*#__PURE__*/_asyncToGenerator( /*
           };
 
           genPrice = function genPrice() {
+            var pricelist;
+
             if (data.fdHBD) {
-              recommendProduct(Object.keys(package_data).filter(function (k) {
+              pricelist = Object.keys(package_data).filter(function (k) {
                 return _.startsWith(k, _helper__WEBPACK_IMPORTED_MODULE_2__["current_package"]);
               }).map(function (k) {
                 var pack = Object.keys(package_data[k].price).filter(function (ageRange) {
@@ -55489,19 +55496,19 @@ document.addEventListener("DOMContentLoaded", /*#__PURE__*/_asyncToGenerator( /*
                   "package": k,
                   price: price
                 };
-              }));
+              });
+              recommendProduct(pricelist);
               basePrice(package_data);
             }
 
             hideRow();
             showRow();
+            console.log(pricelist);
+            return pricelist;
           };
 
           basePrice = function basePrice(package_data) {
             var last = Object.keys(package_data).pop();
-            console.log({
-              last: last
-            });
             Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$$"])("th[data-package='" + last + "']").forEach(function ($el) {
               $el.classList.add("basePrice");
             });
@@ -55520,58 +55527,17 @@ document.addEventListener("DOMContentLoaded", /*#__PURE__*/_asyncToGenerator( /*
 
               return recPackage;
             }, dataRecommend[0]);
-            console.log({
-              dataRecommend: dataRecommend
-            });
             Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$$"])("th.recommendPackage,td.recommendPackage,a.btn-choose-plan,td[data-package").forEach(function ($el) {
-              $el.classList.remove("recommendPackage");
-              $el.classList.remove("on");
+              $el.classList.remove("recommendPackage", "on");
               $el.classList.add("hide");
             });
             Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$$"])("th[data-package='" + dataRecommendMax["package"] + "']," + "td[data-package='" + dataRecommendMax["package"] + "']," + "a[data-package='" + dataRecommendMax["package"] + "']").forEach(function ($el) {
-              $el.classList.add("recommendPackage");
-              $el.classList.add("on");
+              $el.classList.add("recommendPackage", "on");
               $el.classList.remove("hide");
             });
             Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$$"])("span[data-recommend='" + dataRecommendMax["package"] + "']").forEach(function ($el) {
               $el.style.display = 'block';
-            }); // $$("a.btn-choose-plan,td[data-package]").forEach($el => {
-            //     $el.classList.remove("on");
-            //     $el.classList.add("hide");
-            // });
-            // $$("a[data-package='" + dataRecommendMax.package + "'],td[data-package='" + dataRecommendMax.package + "']").forEach($el => {
-            //     $el.classList.add("on");
-            //     $el.classList.remove("hide");
-            // });
-            // // console.log({data,dataRecommend})
-            // let dataPriceMax;
-            // const arrBudget = data.ctrl_budget.split(",")
-            // const recommendMax = dataRecommend.filter(function (e) {
-            //     if(e.price <= arrBudget[1] && e.price >= arrBudget[0]){
-            //         return e;
-            //     }
-            // });
-            //
-            // console.log({recommendMax})
-            // if(recommendMax.length > 0){
-            //     let max = recommendMax[0].price;
-            //
-            //     for (let i = 1; i < recommendMax.length; ++i) {
-            //
-            //         if (recommendMax[i].price > max) {
-            //             max = recommendMax[i].price;
-            //             dataPriceMax = recommendMax[i]
-            //         }
-            //     }
-            //
-            // }else{
-            //
-            //     dataPriceMax = dataRecommend[0]
-            //
-            // }
-            //
-            //
-            // console.log({dataPriceMax})
+            });
           };
 
           getSelectedPrice = function getSelectedPrice() {
@@ -55768,7 +55734,7 @@ document.addEventListener("DOMContentLoaded", /*#__PURE__*/_asyncToGenerator( /*
             });
           });
 
-        case 27:
+        case 26:
         case "end":
           return _context.stop();
       }
