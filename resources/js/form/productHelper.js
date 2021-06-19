@@ -87,21 +87,40 @@ export const checkAge = (birthday, ageRange) => {
     const range = ageRange.split('-');
     const age = calculateAge(birthday)
 
+    console.log('DOB : day month year ' + age.day +' '+ age.month +' '+ age.year)
+
     if (range[0].indexOf(',') !== -1) {
         const monthRange = range[0].split(',');
-
-        // console.log(monthRange.length);
-
         if(monthRange.length == 2)
-        {
-            //month and year range
-            if (
-                (age.year > monthRange[0] || (age.year == monthRange[0] && age.month > monthRange[1]))
-                && age.year < range[1]
-            ) {
+        {            
+            console.log('DOB : month ' + monthRange[1]);
+            console.log('DOB : year ' + monthRange[0] +' - '+  range[1]);
 
+            if(age.year >= monthRange[0] && age.year <= range[1])
+            {
+                console.log('year pass');
+                if(age.year == monthRange[0])
+                {
+                    if(age.month >= monthRange[1])
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
                 return true;
             }
+            return false;
+
+            // if (
+            //     (age.year > monthRange[0] || (age.year == monthRange[0] && age.month > monthRange[1]))
+            //     && age.year < range[1]
+            // ) {
+
+            //     return true;
+            // }
         }
         else
         {
@@ -109,8 +128,7 @@ export const checkAge = (birthday, ageRange) => {
             const rangeAll = ageRange.split(',');
             const yearRange = rangeAll[2].split('-');
 
-            console.log('DOB : day month year ' + age.day +' '+ age.month +' '+ age.year)
-            console.log('CON : day month year ' + rangeAll[0] +' '+ rangeAll[1] +' '+ yearRange[1])
+            console.log('2. CON : day month year ' + rangeAll[0] +' '+ rangeAll[1] +' '+ yearRange[1])
 
             if (age.year <= yearRange[1])
             {
@@ -139,7 +157,8 @@ export const checkAge = (birthday, ageRange) => {
 
 
 
-    } else if (age.year >= range[0] && age.year < range[1]) {
+    } else if (age.year >= range[0] && age.year <= range[1]) {
+        console.log('Normal case');
         return true;
     }
     return false;
