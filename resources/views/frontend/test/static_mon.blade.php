@@ -15,33 +15,25 @@
             <main data-package="CI">
                 <div class="wrapper">
                     <div>
-                        <h3>ประกันโรคร้ายแรง จาก Tune Protect
-                        </h3>
+                        <h3>ประกันโรคร้ายแรง จาก Tune Protect</h3>
 
-                        <p>ดูแลโรคร้าย ทุกระยะ เลือกความคุ้มครองได้ตามใจคุณ ครอบคลุม 5 กลุ่มโรคร้าย คุ้มครองสูงสุดกว่า
-                            3,000,000 บาท* แค่มีงบหลักพัน ก็มีประกันโรคร้ายแรงคุ้มครองทุกระยะหลักล้านได้
-                        </p>
+                        <p>ดูแลโรคร้าย ทุกระยะ เลือกความคุ้มครองได้ตามใจคุณ ครอบคลุม 5 กลุ่มโรคร้าย คุ้มครองสูงสุดกว่า 3,000,000 บาท* แค่มีงบหลักพัน ก็มีประกันโรคร้ายแรงคุ้มครองทุกระยะหลักล้านได้</p>
+
+                        <div class="wrapper text-center"><a class="btn btn-primary" href="" style="width: 200px">download</a> {btn_buy}</div>
 
                         <div class="select-ci-wrapper">
                             <h2 style="margin: 20px 0">myFlexi CI ให้คุณเลือกความคุ้มครองโรคร้ายได้ตามต้องการ</h2>
-                            <div class="box">
-                                <img src="/images/ico_ci/Wait_M.jpg" alt="">
+
+                            <div class="box"><img alt="" src="/images/ico_ci/Wait_M.jpg" />
                                 <ul>
-                                    <li>
-                                        <strong style="font-size: 1.5rem">ได้! เลือกความคุ้มครองที่ใช่ </strong>
-                                        <span>สามารถเลือกกลุ่มโรคร้ายที่คุณกังวล</span>
-                                    </li>
-                                    <li>
-                                        <strong style="font-size: 1.5rem">ได้! เลือกแผนตามงบ</strong>
-                                        <span>ปรับ ลด-เพิ่ม เบี้ยประกันได้ตามใจ</span>
-                                    </li>
-                                    <li>
-                                        <strong style="font-size: 1.5rem">ได้! เลือกให้คุณหรือคนรัก</strong>
-                                        <span>มอบความคุ้มครอง แทนความห่วงใย ง่ายแค่คลิก</span>
-                                    </li>
+                                    <li><strong style="font-size: 1.5rem">ได้! เลือกความคุ้มครองที่ใช่ </strong> <span>สามารถเลือกกลุ่มโรคร้ายที่คุณกังวล</span></li>
+                                    <li><strong style="font-size: 1.5rem">ได้! เลือกแผนตามงบ</strong> <span>ปรับ ลด-เพิ่ม เบี้ยประกันได้ตามใจ</span></li>
+                                    <li><strong style="font-size: 1.5rem">ได้! เลือกให้คุณหรือคนรัก</strong> <span>มอบความคุ้มครอง แทนความห่วงใย ง่ายแค่คลิก</span></li>
                                 </ul>
                             </div>
+                            <div class="wrapper text-center" style="margin: 20px auto 0 auto"><a class="btn btn-primary" href="" style="width: 200px">download</a> {btn_buy}</div>
                         </div>
+
                         <section class="my-health-step">
                             <h2 style="margin: 20px 0">จุดเด่นแบบประกัน</h2>
 
@@ -49,20 +41,20 @@
                                 <div id="step">
                                     <div class="item"><span class="material-icons md-dark">price_check</span>
 
-                                        <p style="font-size: .8rem">เลือกปรับเพิ่ม-ลด <br>ความคุ้มครองได้
-                                        </p>
+                                        <p style="font-size: .8rem">เลือกปรับเพิ่ม-ลด<br />
+                                            ความคุ้มครองได้</p>
                                     </div>
 
                                     <div class="item"><span class="material-icons md-dark">rule</span>
 
-                                        <p style="font-size: .8rem">คุ้มครองโรคร้ายทุกระยะ <br>สูงสุดมากกว่า 3 ล้านบาท*
-                                        </p>
+                                        <p style="font-size: .8rem">คุ้มครองโรคร้ายทุกระยะ<br />
+                                            สูงสุดมากกว่า 3 ล้านบาท*</p>
                                     </div>
 
                                     <div class="item"><span class="material-icons md-dark">health_and_safety</span>
 
-                                        <p style="font-size: .8rem">สมัครได้เลย <br>โดยไม่ต้องซื้อประกันชีวิต
-                                        </p>
+                                        <p style="font-size: .8rem">สมัครได้เลย<br />
+                                            โดยไม่ต้องซื้อประกันชีวิต</p>
                                     </div>
 
                                     <div class="item"><span class="material-icons md-dark">elderly</span>
@@ -72,115 +64,86 @@
 
                                     <div class="item"><span class="material-icons md-dark">local_atm</span>
 
-                                        <p style="font-size: .8rem">มีค่าชดเชยรายวัน<br> และพยาบาลพิเศษ
-                                        </p>
+                                        <p style="font-size: .8rem">มีค่าชดเชยรายวัน<br />
+                                            และพยาบาลพิเศษ</p>
                                     </div>
 
                                     <div class="item"><span class="material-icons md-dark">savings</span>
 
-                                        <p style="font-size: .8rem">เบี้ยประกันรายปีผ่อน<br>ได้สูงสุด 10 เดือน
-                                        </p>
+                                        <p style="font-size: .8rem">เบี้ยประกันรายปีผ่อน<br />
+                                            ได้สูงสุด 10 เดือน</p>
                                     </div>
 
                                     <div class="item"><span class="material-icons md-dark">fact_check</span>
 
-                                        <p style="font-size: .8rem">คุ้มครอง 5 กลุ่มโรคร้ายแรง
-                                        </p>
+                                        <p style="font-size: .8rem">คุ้มครอง 5 กลุ่มโรคร้ายแรง</p>
                                     </div>
 
                                     <div class="item"><span class="material-icons md-dark">do_not_disturb_alt</span>
 
-                                        <p style="font-size: .8rem">มีบริการความเห็นที่สองทางการแพทย์ <br>และปรึกษาแพทย์ออนไลน์
-                                        </p>
+                                        <p style="font-size: .8rem">มีบริการความเห็นที่สองทางการแพทย์<br />
+                                            และปรึกษาแพทย์ออนไลน์</p>
                                     </div>
 
                                     <div class="item"><span class="material-icons md-dark">trending_down</span>
 
-                                        <p style="font-size: .8rem">เบี้ยประกันนำไปลดหย่อนภาษีได้*
-                                        </p>
+                                        <p style="font-size: .8rem">เบี้ยประกันนำไปลดหย่อนภาษีได้*</p>
                                     </div>
 
                                     <div class="item"><span class="material-icons md-dark">medical_services</span>
 
-                                        <p style="font-size: .8rem">ตอบคำถามสุขภาพแค่ 3 ข้อ <br>ไม่ต้องไปตรวจสุขภาพที่โรงพยาบาล
-                                        </p>
+                                        <p style="font-size: .8rem">ตอบคำถามสุขภาพแค่ 3 ข้อ<br />
+                                            ไม่ต้องไปตรวจสุขภาพที่โรงพยาบาล</p>
                                     </div>
                                 </div>
                             </div>
 
-                            <div class="wrapper text-center"><a class="btn btn-primary" href="" style="width: 200px">download</a>
-                                {btn_buy}
-                            </div>
+                            <div class="wrapper text-center">{btn_buy}</div>
                         </section>
 
                         <div class="service_flexi">
-                            <h2 style="margin: 20px 0">พร้อมรับบริการเสริมที่หลากหลาย เมื่อสมัครประกันภัยโรคร้ายแรง
-                                myFlexi CI</h2>
+                            <h2 style="margin: 20px 0">พร้อมรับบริการเสริมที่หลากหลาย เมื่อสมัครประกันภัยโรคร้ายแรง myFlexi CI</h2>
 
                             <div class="service_flexi_box">
-                                <div class="inner"><img alt="" src="/images/ico_ci/ci_benner_1.jpg"/>
-                                    <div class="text-center"><a class="btn btn-outline" href="">ดูข้อมูลเพิ่มเติม </a>
-                                    </div>
+                                <div class="inner"><img alt="" src="/images/ico_ci/ci_benner_1.jpg" />
+                                    <div class="text-center"><a class="btn btn-outline" href="">ดูข้อมูลเพิ่มเติม </a></div>
                                 </div>
 
-                                <div class="inner"><img alt="" src="/images/ico_ci/ci_benner_2.jpg"/>
+                                <div class="inner"><img alt="" src="/images/ico_ci/ci_benner_2.jpg" />
                                     <h3 style="margin: 10px">MSO บริการความเห็นที่ 2 ทางการแพทย์</h3>
 
-                                    <p style="margin: 10px 10px 107px">บริการให้คำปรึกษาความเห็นที่ 2
-                                        ทางการแพทย์คือการให้ข้อมูลการรักษาเพื่อให้แพทย์ที่สองวินิจฉัยและ/หรือนำเสนอแผนการรักษา
-                                        เพื่อเพิ่มทางเลือกในการรักษาให้เกิดประสิทธิภาพสูงสุด</p>
+                                    <p style="margin: 10px 10px 107px">บริการให้คำปรึกษาความเห็นที่ 2 ทางการแพทย์คือการให้ข้อมูลการรักษาเพื่อให้แพทย์ที่สองวินิจฉัยและ/หรือนำเสนอแผนการรักษา เพื่อเพิ่มทางเลือกในการรักษาให้เกิดประสิทธิภาพสูงสุด</p>
 
-                                    <div class="text-center"><a class="btn btn-outline" href="">ดูข้อมูลเพิ่มเติม </a>
-                                    </div>
+                                    <div class="text-center"><a class="btn btn-outline" href="">ดูข้อมูลเพิ่มเติม </a></div>
                                 </div>
                             </div>
+                            <div class="wrapper text-center">{btn_buy}</div>
                         </div>
+
                         <div>
-                            <h2 style="margin: 20px 0">ทำไมต้องซื้อ myFlexi CI
-                            </h2>
-                            <p>
-                                เพราะเป็นแบบประกันโรคร้ายแรง ที่พร้อมดูแลคุ้มครองโรคร้ายทุกระยะ
-                                และเลือกความคุ้มครองโรคร้ายเพิ่มเติมได้ตามต้องการ อุ่นใกว่าจเพราะ ‘ได้’ มากกว่า
-                                หากวันนั้นมาถึง…คุณจึงพร้อมจะรับมือกับ ค่าใช้จ่ายก้อนโต จากการรักษา
-                            </p>
+                            <h2 style="margin: 20px 0">ทำไมต้องซื้อ myFlexi CI</h2>
+
+                            <p>เพราะเป็นแบบประกันโรคร้ายแรง ที่พร้อมดูแลคุ้มครองโรคร้ายทุกระยะ และเลือกความคุ้มครองโรคร้ายเพิ่มเติมได้ตามต้องการ อุ่นใกว่าจเพราะ &lsquo;ได้&rsquo; มากกว่า หากวันนั้นมาถึง&hellip;คุณจึงพร้อมจะรับมือกับ ค่าใช้จ่ายก้อนโต จากการรักษา</p>
                             <div>
                                 <h4 class="text-center" style="color:#FC14CA">5 โรคร้ายอันดับต้นๆ ที่คร่าชีวิตคนไทย</h4>
+
                                 <h5 class="text-center">จำนวนผู้เสียชีวิตต่อชั่วโมง</h5>
+
                                 <div class="flex-wrapper" style="margin: 10px auto">
-                                    <div class="item">
-                                        <strong>7.7</strong>
-                                        <span>
-                                            โรคมะเร็ง
-                                        </span>
-                                        <img alt="" src="/images/ico_ci/heart.png" style="width: 150px">
-                                    </div>
-                                    <div class="item">
-                                        <strong>3.2</strong>
-                                        <span>โรคหลอดเลือดสมองแตก</span>
-                                        <img alt="" src="/images/ico_ci/heart.png" style="width: 150px">
-                                    </div>
-                                    <div class="item">
-                                        <strong>2.8</strong>
-                                        <span>โรคภาวะหัวใจเต้นผิดจังหวะรุนแรง</span>
-                                        <img alt="" src="/images/ico_ci/heart.png" style="width: 150px">
-                                    </div>
-                                    <div class="item">
-                                        <strong>2.4</strong>
-                                        <span>โรคปลอดระยะสุดท้าย</span>
-                                        <img alt="" src="/images/ico_ci/heart.png" style="width: 150px">
-                                    </div>
-                                    <div class="item">
-                                        <strong>1.7</strong>
-                                        <span>โรคไตวายเรื้อรัง</span>
-                                        <img alt="" src="/images/ico_ci/heart.png" style="width: 150px">
-                                    </div>
+                                    <div class="item"><strong>7.7</strong> <span> โรคมะเร็ง </span> <img alt="" src="/images/ico_ci/heart.png" style="width: 150px" /></div>
+
+                                    <div class="item"><strong>3.2</strong> <span>โรคหลอดเลือดสมองแตก</span> <img alt="" src="/images/ico_ci/heart.png" style="width: 150px" /></div>
+
+                                    <div class="item"><strong>2.8</strong> <span>โรคภาวะหัวใจเต้นผิดจังหวะรุนแรง</span> <img alt="" src="/images/ico_ci/heart.png" style="width: 150px" /></div>
+
+                                    <div class="item"><strong>2.4</strong> <span>โรคปลอดระยะสุดท้าย</span> <img alt="" src="/images/ico_ci/heart.png" style="width: 150px" /></div>
+
+                                    <div class="item"><strong>1.7</strong> <span>โรคไตวายเรื้อรัง</span> <img alt="" src="/images/ico_ci/heart.png" style="width: 150px" /></div>
                                 </div>
-                                <div class="wrapper text-center"><a class="btn btn-primary" href=""
-                                                                    style="width: 200px">download</a>
-                                    {btn_buy}
-                                </div>
+
                             </div>
                         </div>
+                        <div class="wrapper text-center">{btn_buy}</div>
                     </div>
 
                     <div class="my-health-condition">
@@ -188,31 +151,19 @@
 
                         <ul>
                             <li>1. การพิจารณารับประกันภัยเป็นไปตามหลักเกณฑ์ของบริษัทฯ</li>
-                            <li>2. ผู้ขอเอาประกันภัยต้องมีอายุ 18 – 60 ปีบริบูรณ์ (ต่ออายุได้ถึง 65 ปี)</li>
+                            <li>2. ผู้ขอเอาประกันภัยต้องมีอายุ 18 &ndash; 60 ปีบริบูรณ์ (ต่ออายุได้ถึง 65 ปี)</li>
                             <li>3. ผู้ขอเอาประกันภัยต้องมีสุขภาพร่างกายแข็งแรง ก่อนวันที่ขอเอาประกันภัย</li>
-                            <li>4. แถลงสุขภาพ ไม่ต้องตรวจสุขภาพ
-                                (กรณีที่ข้อมูลการแถลงสุขภาพไม่เพียงพอต่อการพิจารณารับประกันภัย
-                                ทางบริษัทขอสงวนสิทธิ์ในการแจ้งขอตรวจสุขภาพก่อนรับประกันภัย)
-                            </li>
-                            <li>5. ข้อมูลในเอกสารนี้เป็นเพียงข้อมูลเบื้องต้นของผลิตภัณฑ์ประกันภัย
-                                ผู้ขอเอาประกันภัย/ผู้เอาประกันภัยควรศึกษาข้อมูลเพิ่มเติม
-                                และทำความเข้าใจในรายละเอียดเงื่อนไขความคุ้มครอง ผลประโยชน์ และข้อยกเว้น
-                                ก่อนตัดสินใจทำประกันภัยทุกครั้ง เมื่อได้รับกรมธรรม์ประกันภัยแล้วโปรดศึกษาเพิ่มเติม
-                            </li>
+                            <li>4. แถลงสุขภาพ ไม่ต้องตรวจสุขภาพ (กรณีที่ข้อมูลการแถลงสุขภาพไม่เพียงพอต่อการพิจารณารับประกันภัย ทางบริษัทขอสงวนสิทธิ์ในการแจ้งขอตรวจสุขภาพก่อนรับประกันภัย)</li>
+                            <li>5. ข้อมูลในเอกสารนี้เป็นเพียงข้อมูลเบื้องต้นของผลิตภัณฑ์ประกันภัย ผู้ขอเอาประกันภัย/ผู้เอาประกันภัยควรศึกษาข้อมูลเพิ่มเติม และทำความเข้าใจในรายละเอียดเงื่อนไขความคุ้มครอง ผลประโยชน์ และข้อยกเว้น ก่อนตัดสินใจทำประกันภัยทุกครั้ง เมื่อได้รับกรมธรรม์ประกันภัยแล้วโปรดศึกษาเพิ่มเติม</li>
                             <li>6. เงื่อนไขความคุ้มครองเป็นไปตามที่ระบุในกรมธรรม์</li>
-                            <li>7. กรณีต้องการใบกำกับภาษีฯ หรือกรมธรรม์ฯ ให้จัดส่งทางไปรษณีย์ กรุณาติดต่อฝ่ายบริการลูกค้า
-                                โทร. 1183
-                            </li>
-                            <li>
-                                8. ท่านสามารถใช้สิทธิยกเลิกกรมธรรม์ (Free Look Period) ภายใน 15 วัน
-                                นับแต่วันที่ได้รับกรมธรรม์ โดยไม่มีค่าใช้จ่าย
-                            </li>
+                            <li>7. กรณีต้องการใบกำกับภาษีฯ หรือกรมธรรม์ฯ ให้จัดส่งทางไปรษณีย์ กรุณาติดต่อฝ่ายบริการลูกค้า โทร. 1183</li>
+                            <li>8. ท่านสามารถใช้สิทธิยกเลิกกรมธรรม์ (Free Look Period) ภายใน 15 วัน นับแต่วันที่ได้รับกรมธรรม์ โดยไม่มีค่าใช้จ่าย</li>
                         </ul>
-                        <div class="wrapper text-center"><a class="btn btn-primary" href="" style="width: 200px">download</a>
-                            {btn_buy}
-                        </div>
+
+                        <div class="wrapper text-center"> {btn_buy}</div>
                     </div>
                 </div>
+
             </main>
 
         </article>
