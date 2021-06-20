@@ -174,7 +174,14 @@ ul.has-bullet {
         list-style: disc;
     }
 }
+ol.has-bullet {
+    margin-left: 20px;
+    list-style: decimal;
 
+    li {
+        list-style: decimal;
+    }
+}
 .nowrap {
     white-space: nowrap;
 }

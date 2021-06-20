@@ -53,8 +53,7 @@
                                             <strong>@lang('product.plan') {{$v->no}}</strong>
                                         @endif
                                     @else
-                                        <span data-recommend="{{$k}}"
-                                              style="display: none">@lang('product.recommend')</span>
+                                        <span data-recommend>@lang('product.recommend')</span>
                                         <strong class="package-number">@lang('product.plan') {{$i}}</strong>
                                     @endif
 
@@ -86,7 +85,9 @@
                                 <strong>@lang('product.plan') {{$v->no}}</strong>
                             @endif
                         @else
-                            <span data-recommend="{{$k}}" style="display: none">@lang('product.recommend')</span>
+                            @if($selected == "CI")
+                                <span data-recommend>@lang('product.recommend')</span>
+                            @endif
                             <strong class="package-number">@lang('product.plan') {{$i}}</strong>
                         @endif
 
@@ -112,15 +113,17 @@
             </tr>
             </thead>
             <tbody>
-            <tr class="pink">
-                <th>@lang('product.installment')</th>
-                <?php $i = 1 ?>
-                @foreach ($package_detail as $k => $v)
-                    <td {{$i > 1 ? 'class=hide' : ""}} data-index="{{$i}}" data-package="{{$k}}"><strong
-                            data-installment-{{$k}}></strong></td>
-                    <?php $i++ ?>
-                @endforeach
-            </tr>
+            @if($selected == "CI")
+                <tr class="pink">
+                    <th>@lang('product.installment')</th>
+                    <?php $i = 1 ?>
+                    @foreach ($package_detail as $k => $v)
+                        <td {{$i > 1 ? 'class=hide' : ""}} data-index="{{$i}}" data-package="{{$k}}"><strong
+                                data-installment-{{$k}}></strong></td>
+                        <?php $i++ ?>
+                    @endforeach
+                </tr>
+            @endif
             <tr class="orange">
                 <th>@lang('product.price_per_year')</th>
                 <?php $i = 1 ?>
@@ -146,7 +149,7 @@
                                 @else
                                     <strong>{!! $v1->plan->$k !!}</strong>
                                 @endif
-                        @endif
+                            @endif
                         </td>
                         <?php $i++ ?>
                     @endforeach

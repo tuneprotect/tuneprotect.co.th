@@ -296,9 +296,9 @@ document.addEventListener("DOMContentLoaded", async () => {
 
             budget_slider = new rSlider({
                 ...slideOption,
-                values : callMinMax,
-                set : [callMinMax.min , callMinMax.max],
-                disabled:false
+                values: callMinMax,
+                set: [callMinMax.min, callMinMax.max],
+                disabled: false
             });
         }
 
@@ -403,7 +403,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                     const installment = Math.ceil(parseInt(price) / 12);
                     $(`strong[data-price-${k}]`).innerHTML = parseInt(price).toLocaleString();
                     $(`span[data-price-${k}]`).innerHTML = parseInt(price).toLocaleString();
-                    $(`strong[data-installment-${k}]`).innerHTML = installment;
+                    $(`strong[data-installment-${k}]`).innerHTML = installment.toLocaleString();
                     return {package: k, price}
                 });
 
@@ -438,21 +438,16 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 
         $$("th.recommendPackage,td.recommendPackage,a.btn-choose-plan,td[data-package").forEach($el => {
-            $el.classList.remove("recommendPackage","on");
+            $el.classList.remove("recommendPackage", "on");
             $el.classList.add("hide");
         });
 
         $$("th[data-package='" + dataRecommendMax.package + "']," +
             "td[data-package='" + dataRecommendMax.package + "']," +
             "a[data-package='" + dataRecommendMax.package + "']").forEach($el => {
-            $el.classList.add("recommendPackage","on");
+            $el.classList.add("recommendPackage", "on");
             $el.classList.remove("hide");
         });
-        $$("span[data-recommend='" + dataRecommendMax.package + "']").forEach($el => {
-            $el.style.display = 'block';
-        });
-
-
     }
 
 

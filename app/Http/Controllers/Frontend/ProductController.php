@@ -174,6 +174,7 @@ class ProductController extends BaseController
         }
 
         try {
+
             $this->template->setFootJS(mix("/js/frontend/product/" . strtolower($this->bodyData['selected']) . ".js"));
         } catch (\Exception $exception) {
             // dd('js error.');
