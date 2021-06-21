@@ -31,9 +31,30 @@
                                     <h3>myFlexi CI allows you to select your critical illness coverage.</h3>
 
                                     <ul>
-                                        <li><strong><em>Choose</em> the right coverage </strong> <span> You can choose the disease group that most concerns you.</span></li>
-                                        <li><strong><em>Choose</em> a plan according to your budget</strong> <span>Adjust, increase, or reduce insurance premiums as you wish.</span></li>
-                                        <li><strong><em>Choose</em> for yourself or those you care about</strong> <span>Provide protection for you and your loved ones with a simple click.</span></li>
+                                        <li>
+                                            <i class="icofont-shield-alt"
+                                               style="display: inline-block;position: relative;top: -20px;color: red"></i>
+                                            <div style="display:inline-block;width: 80%;">
+                                                <strong><em>Choose</em> the right coverage </strong> <span> You can choose the disease group that most concerns you.</span>
+                                            </div>
+
+                                        </li>
+                                        <li>
+                                            <i class="icofont-coins"
+                                               style="display: inline-block;position: relative;top: -20px;color: red"></i>
+                                            <div style="display:inline-block;width: 80%;">
+                                                <strong><em>Choose</em> a plan according to your budget</strong> <span>Adjust, increase, or reduce insurance premiums as you wish.</span>
+                                            </div>
+
+                                        </li>
+                                        <li>
+                                            <i class="icofont-holding-hands"
+                                               style="display: inline-block;position: relative;top: -40px;color: red"></i>
+                                            <div style="display:inline-block;width: 80%;">
+                                                <strong><em>Choose</em> for yourself or those you care about</strong> <span>Provide protection for you and your loved ones with a simple click.</span>
+                                            </div>
+
+                                        </li>
                                     </ul>
 
                                     <div class="wrapper text-center" style="margin: 20px auto 0 auto"><a class="btn btn-primary" href="" style="width: 200px">download</a> {btn_buy}</div>
@@ -106,10 +127,24 @@
                         <div class="service_flexi">
                             <h2 style="margin: 20px 0">Once you purchase myFlexi CI you will also be eligible to receive additional services provided by the company.</h2>
 
-                            <div class="service_flexi_box"><a class="inner" href="/en/myHealth/health2go"><img alt="" src="/storage/product/CI/health2go-520x480-en.jpg" /></a> <a class="inner" href="/en/myHealth/health2go"> <img alt="" src="/storage/product/CI/myelitedoctor520x480-en.jpg" /> </a></div>
+                            <div class="service_flexi_box">
+                                <div class="inner">
+                                    <img alt=""
+                                         src="/storage/product/CI/health2go-520x480-en.jpg"/>
+                                    <a class="btn btn-outline" href="/en/myHealth/health2go">more</a>
+
+                                </div>
+                                <div class="inner">
+                                    <img alt=""
+                                         src="/storage/product/CI/myelitedoctor520x480-en.jpg"/>
+                                    <a class="btn btn-outline" href="/en/myHealth/health2go">more</a>
+                                </div>
+                            </div>
 
                             <div class="wrapper text-center">{btn_buy}</div>
                         </div>
+
+
 
                         <section class="why-ci">
                             <div>
@@ -135,59 +170,45 @@
                         <div class="wrapper text-center">{btn_buy}</div>
 
                         <section>
-                            <h2>Examples of the cost of treating severe illnesses
-                            </h2>
+                            <h2>Examples of the cost of treating severe illnesses</h2>
+
                             <div class="ci-cost">
                                 <div class="ci-cost-table">
-                                    <h6>Cancer
-                                    </h6>
+                                    <h6>Cancer</h6>
+
                                     <ul>
-                                        <li>
-                                            <strong>Breast cancer <span>3D radiation technique</span></strong>
-                                            <span class="col-price">215,600</span>
-                                        </li>
-                                        <li>
-                                            <strong>Lung cancer<span>3D radiation technique</span></strong>
-                                            <span class="col-price">184,800</span>
-                                        </li>
-                                        <li>
-                                            <strong>Cervical cancer<span>3D radiation technique</span></strong>
-                                            <span class="col-price">184,800</span>
-                                        </li>
+                                        <li><strong>Breast cancer <span>3D radiation technique</span></strong> <span class="col-price">215,600</span></li>
+                                        <li><strong>Lung cancer<span>3D radiation technique</span></strong> <span class="col-price">184,800</span></li>
+                                        <li><strong>Cervical cancer<span>3D radiation technique</span></strong> <span class="col-price">184,800</span></li>
                                     </ul>
                                 </div>
+
                                 <div class="ci-cost-table">
-                                    <h6>Heart Attack
-                                    </h6>
+                                    <h6>Heart Attack</h6>
+
                                     <ul>
-                                        <li>
-                                            <strong>Balloon angioplasty therapy
-                                            </strong>
-                                            <span class="col-price">250,000</span>
-                                        </li>
-                                        <li>
-                                            <strong>Coronary artery surgery</strong>
-                                            <span class="col-price">340,000</span>
-                                        </li>
-                                        <li>
-                                            <strong>Coronary angiography examination
-                                            </strong>
-                                            <span class="col-price">150,000</span>
-                                        </li>
+                                        <li><strong>Balloon angioplasty therapy </strong> <span class="col-price">250,000</span></li>
+                                        <li><strong>Coronary artery surgery</strong> <span class="col-price">340,000</span></li>
+                                        <li><strong>Coronary angiography examination </strong> <span class="col-price">150,000</span></li>
                                     </ul>
                                 </div>
                             </div>
                         </section>
+
                         <div class="wrapper text-center">{btn_buy}</div>
 
-                        <section>
-                            <h2>Purchasing critical illness insurance myFlexi CI is a better choice! Because you can choose to pay your annual premium in 10 easy credit card installments.</h2>
 
-                            <p>Pay for your insurance comfortably with the option of paying your annual premium in 10 credit card installments. Or you can pay the full annual premium via credit or debit cards accepted for all banks in Thailand.*<br />
-                                <em>*Payment terms and conditions are specified by each bank.</em></p>
+                        <section class="installment-ci">
+                            <img src="/storage/product/CI/waist-portrait-happy-smiling-young-600w-1959752341.webp" alt="ci">
+                            <div>
+                                <h2>Purchasing critical illness insurance myFlexi CI is a better choice! Because you can
+                                    choose to pay your annual premium in 10 easy credit card installments.</h2>
 
-                            <div class="wrapper text-center">{btn_buy}</div>
+                                <p>Pay for your insurance comfortably with the option of paying your annual premium in 10 credit card installments. Or you can pay the full annual premium via credit or debit cards accepted for all banks in Thailand.*<br />
+                                    <em>*Payment terms and conditions are specified by each bank.</em></p>
+                            </div>
                         </section>
+                        <div class="wrapper text-center">{btn_buy}</div>
 
                         <div class="my-health-condition">
                             <h2>Insurance underwriting conditions</h2>
@@ -207,7 +228,6 @@
                         </div>
                     </div>
                 </div>
-
 
             </main>
 

@@ -518,6 +518,9 @@ if($('#title_wrapper')) {
 
                                 $('#disease_box').style.display = "block";
                                 break;
+                            case 4:
+                                $('#disease_box').style.display = "block";
+                                break;
                         }
                     } else {
                         switch (parseInt(step)) {
@@ -543,7 +546,7 @@ if($('#title_wrapper')) {
                                 let el = $('h3[data-type]');
 
                                 el.innerHTML = "";
-
+console.log($("#ctrl_buy_for").value)
                                 if ($("#ctrl_buy_for").value == 'own_insurance') {
                                     el.innerHTML = el.dataset.own_insurance;
 
@@ -653,9 +656,9 @@ if($('#title_wrapper')) {
                     <div class="two-col">
                         <div><span>${$summary_section.getAttribute('data-plan')} : </span><strong>${selectedPackage}</strong></div>
                         <div><span>${$summary_section.getAttribute('data-price')} : </span><strong>${parseFloat(data.fdPayAMT).toLocaleString()} ${$summary_section.getAttribute('data-baht')}</strong></div>
-                        <div class="controls-wrapper full no-lable"><span>${$('[data-disease_title]').getAttribute('data-disease_title')} : </span><strong>${data.ctrl_disease.map((text) => {
+                        <div class="controls-wrapper full no-lable"><span>${$('[data-disease_title]').getAttribute('data-disease_title')} : </span><strong>${data.ctrl_disease.map(text => {
                                         return $(`input[data-disease-${text}]`).getAttribute(`data-disease-${text}`);
-                                    })}</strong></div>
+                                    }).join(", ")}</strong></div>
                     </div>
                     <br/>
                     <h3 class="text-primary">${$summary_section.getAttribute('data-profile_data')}</h3><br/>

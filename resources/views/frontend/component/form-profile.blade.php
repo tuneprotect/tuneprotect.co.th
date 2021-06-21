@@ -1,5 +1,6 @@
 @if($selected == 'CI')
-    <h3 data-type data-own_insurance="@lang('product.own_insurance')" data-other_insurance="@lang('product.other_insurance')"></h3>
+    <h3 data-type data-own_insurance="@lang('product.insurer_list_type.own_insurance')"
+        data-other_insurance="@lang('product.insurer_list_type.other_insurance')"></h3>
 @else
     <h3>{{ isset($index) ? __('product.profiles').' '.$index : __('product.profile')   }}</h3>
 @endif

@@ -2633,6 +2633,7 @@ main {
                     &.pink {
                         background: linear-gradient(152deg, rgba(227, 48, 108, 1) 0%, rgba(247, 224, 31, 1) 100%);
                         color: #FFFFFF;
+                        font-size: 1.2rem;
                         th {
                             @media all and (max-width: $md - 1) {
                                 text-align: center;
