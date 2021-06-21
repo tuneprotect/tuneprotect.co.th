@@ -5,12 +5,12 @@
         @if(isset($current_package))
             <h1 class="product-header">{{$current_package->locales[$locale]->title}}</h1>
             @if(empty($current_package->locales[$locale]->sub_title))
-            <div class="two-tone-icon" id="two-tone-icon">
-                <span><img src="{{url($current_package->pic)}}"></span>
-                <div class="description-product">
-                    {!! $current_package->locales[$locale]->content !!}
+                <div class="two-tone-icon" id="two-tone-icon">
+                    <span><img src="{{url($current_package->pic)}}"></span>
+                    <div class="description-product">
+                        {!! $current_package->locales[$locale]->content !!}
+                    </div>
                 </div>
-            </div>
                 @includeIf('frontend.form.'.strtolower($selected) ,[ 'product' => $current_product,'package' => $current_package,'selected' => $selected])
             @else
                 <div>

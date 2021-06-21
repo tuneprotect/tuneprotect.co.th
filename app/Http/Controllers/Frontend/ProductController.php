@@ -73,6 +73,7 @@ class ProductController extends BaseController
             ->whereRaw(ProjectEnum::isPublish())
             ->first();
 
+
     }
 
     protected function genListPage()
@@ -173,6 +174,8 @@ class ProductController extends BaseController
             $this->bodyData['faq'] = $this->setFaq('faq.content', $this->bodyData['current_package']->id);
         }
 
+//        dd($this->bodyData['current_product']);
+
         try {
 
             $this->template->setFootJS(mix("/js/frontend/product/" . strtolower($this->bodyData['selected']) . ".js"));
@@ -192,6 +195,8 @@ class ProductController extends BaseController
 
 
     }
+
+
 
     protected function combindObj($data)
     {

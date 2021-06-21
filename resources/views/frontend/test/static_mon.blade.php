@@ -13,87 +13,89 @@
             @endif
 
             <main data-package="CI">
-                <div class="wrapper">
-                    <div>
-                        <h3>ประกันโรคร้ายแรง จาก Tune Protect</h3>
+                <div>
+                    <section class="wrapper">
+                        <h2>Critical illness insurance from Tune Protect</h2>
 
-                        <p>ดูแลโรคร้าย ทุกระยะ เลือกความคุ้มครองได้ตามใจคุณ ครอบคลุม 5 กลุ่มโรคร้าย คุ้มครองสูงสุดกว่า 3,000,000 บาท* แค่มีงบหลักพัน ก็มีประกันโรคร้ายแรงคุ้มครองทุกระยะหลักล้านได้</p>
+                        <p>Taking care of every major disease. Determine the Coverage that best fits you with a simple click. Covering five critical disease groups, Coverage up to 3,000,000 baht. For just thousands of baht, you will have critical illness insurance cover up to several million baht.</p>
 
                         <div class="wrapper text-center"><a class="btn btn-primary" href="" style="width: 200px">download</a> {btn_buy}</div>
+                    </section>
 
-                        <div class="select-ci-wrapper">
-                            <h2 style="margin: 20px 0">myFlexi CI ให้คุณเลือกความคุ้มครองโรคร้ายได้ตามต้องการ</h2>
+                    <section class="select-ci-wrapper">
+                        <div class="wrapper">
+                            <div class="box">
+                                <div><img alt="" src="/storage/product/CI/phone.png" /></div>
 
-                            <div class="box"><img alt="" src="/images/ico_ci/Wait_M.jpg" />
-                                <ul>
-                                    <li><strong style="font-size: 1.5rem">ได้! เลือกความคุ้มครองที่ใช่ </strong> <span>สามารถเลือกกลุ่มโรคร้ายที่คุณกังวล</span></li>
-                                    <li><strong style="font-size: 1.5rem">ได้! เลือกแผนตามงบ</strong> <span>ปรับ ลด-เพิ่ม เบี้ยประกันได้ตามใจ</span></li>
-                                    <li><strong style="font-size: 1.5rem">ได้! เลือกให้คุณหรือคนรัก</strong> <span>มอบความคุ้มครอง แทนความห่วงใย ง่ายแค่คลิก</span></li>
-                                </ul>
+                                <div>
+                                    <h3>myFlexi CI allows you to select your critical illness coverage.</h3>
+
+                                    <ul>
+                                        <li><strong><em>Choose</em> the right coverage </strong> <span> You can choose the disease group that most concerns you.</span></li>
+                                        <li><strong><em>Choose</em> a plan according to your budget</strong> <span>Adjust, increase, or reduce insurance premiums as you wish.</span></li>
+                                        <li><strong><em>Choose</em> for yourself or those you care about</strong> <span>Provide protection for you and your loved ones with a simple click.</span></li>
+                                    </ul>
+
+                                    <div class="wrapper text-center" style="margin: 20px auto 0 auto"><a class="btn btn-primary" href="" style="width: 200px">download</a> {btn_buy}</div>
+                                </div>
                             </div>
-                            <div class="wrapper text-center" style="margin: 20px auto 0 auto"><a class="btn btn-primary" href="" style="width: 200px">download</a> {btn_buy}</div>
                         </div>
+                    </section>
 
+                    <div class="wrapper">
                         <section class="my-health-step">
-                            <h2 style="margin: 20px 0">จุดเด่นแบบประกัน</h2>
+                            <h2 style="margin: 20px 0">Insurance Highlights</h2>
 
                             <div class="highlight-ci-wrapper" style="margin-bottom: 20px">
                                 <div id="step">
                                     <div class="item"><span class="material-icons md-dark">price_check</span>
 
-                                        <p style="font-size: .8rem">เลือกปรับเพิ่ม-ลด<br />
-                                            ความคุ้มครองได้</p>
+                                        <p style="font-size: .8rem">Option to adjust, increase or reduce your protection coverage</p>
                                     </div>
 
                                     <div class="item"><span class="material-icons md-dark">rule</span>
 
-                                        <p style="font-size: .8rem">คุ้มครองโรคร้ายทุกระยะ<br />
-                                            สูงสุดมากกว่า 3 ล้านบาท*</p>
+                                        <p style="font-size: .8rem">Protection against critical illnesses with coverage up to 3 million baht</p>
                                     </div>
 
                                     <div class="item"><span class="material-icons md-dark">health_and_safety</span>
 
-                                        <p style="font-size: .8rem">สมัครได้เลย<br />
-                                            โดยไม่ต้องซื้อประกันชีวิต</p>
+                                        <p style="font-size: .8rem">Apply now without having to purchase life insurance.</p>
                                     </div>
 
                                     <div class="item"><span class="material-icons md-dark">elderly</span>
 
-                                        <p style="font-size: .8rem">คุ้มครองถึงอายุ 60 ปี</p>
+                                        <p style="font-size: .8rem">Coverage until the age of 65</p>
                                     </div>
 
                                     <div class="item"><span class="material-icons md-dark">local_atm</span>
 
-                                        <p style="font-size: .8rem">มีค่าชดเชยรายวัน<br />
-                                            และพยาบาลพิเศษ</p>
+                                        <p style="font-size: .8rem">Receive daily hospital cash and home nursing care benefits (if doctor recommended)</p>
                                     </div>
 
                                     <div class="item"><span class="material-icons md-dark">savings</span>
 
-                                        <p style="font-size: .8rem">เบี้ยประกันรายปีผ่อน<br />
-                                            ได้สูงสุด 10 เดือน</p>
+                                        <p style="font-size: .8rem">Annual premiums easily payable in 10 credit card installments</p>
                                     </div>
 
                                     <div class="item"><span class="material-icons md-dark">fact_check</span>
 
-                                        <p style="font-size: .8rem">คุ้มครอง 5 กลุ่มโรคร้ายแรง</p>
+                                        <p style="font-size: .8rem">Covers five critical illnesses</p>
                                     </div>
 
                                     <div class="item"><span class="material-icons md-dark">do_not_disturb_alt</span>
 
-                                        <p style="font-size: .8rem">มีบริการความเห็นที่สองทางการแพทย์<br />
-                                            และปรึกษาแพทย์ออนไลน์</p>
+                                        <p style="font-size: .8rem">Option to receive a second medical opinion as well as consulting a doctor online.</p>
                                     </div>
 
                                     <div class="item"><span class="material-icons md-dark">trending_down</span>
 
-                                        <p style="font-size: .8rem">เบี้ยประกันนำไปลดหย่อนภาษีได้*</p>
+                                        <p style="font-size: .8rem">Insurance premiums are tax deductible*</p>
                                     </div>
 
                                     <div class="item"><span class="material-icons md-dark">medical_services</span>
 
-                                        <p style="font-size: .8rem">ตอบคำถามสุขภาพแค่ 3 ข้อ<br />
-                                            ไม่ต้องไปตรวจสุขภาพที่โรงพยาบาล</p>
+                                        <p style="font-size: .8rem">Answer three simple health questions; there is no need to go to the hospital for a check-up</p>
                                     </div>
                                 </div>
                             </div>
@@ -102,67 +104,110 @@
                         </section>
 
                         <div class="service_flexi">
-                            <h2 style="margin: 20px 0">พร้อมรับบริการเสริมที่หลากหลาย เมื่อสมัครประกันภัยโรคร้ายแรง myFlexi CI</h2>
+                            <h2 style="margin: 20px 0">Once you purchase myFlexi CI you will also be eligible to receive additional services provided by the company.</h2>
 
-                            <div class="service_flexi_box">
-                                <div class="inner"><img alt="" src="/images/ico_ci/ci_benner_1.jpg" />
-                                    <div class="text-center"><a class="btn btn-outline" href="">ดูข้อมูลเพิ่มเติม </a></div>
-                                </div>
+                            <div class="service_flexi_box"><a class="inner" href="/en/myHealth/health2go"><img alt="" src="/storage/product/CI/health2go-520x480-en.jpg" /></a> <a class="inner" href="/en/myHealth/health2go"> <img alt="" src="/storage/product/CI/myelitedoctor520x480-en.jpg" /> </a></div>
 
-                                <div class="inner"><img alt="" src="/images/ico_ci/ci_benner_2.jpg" />
-                                    <h3 style="margin: 10px">MSO บริการความเห็นที่ 2 ทางการแพทย์</h3>
-
-                                    <p style="margin: 10px 10px 107px">บริการให้คำปรึกษาความเห็นที่ 2 ทางการแพทย์คือการให้ข้อมูลการรักษาเพื่อให้แพทย์ที่สองวินิจฉัยและ/หรือนำเสนอแผนการรักษา เพื่อเพิ่มทางเลือกในการรักษาให้เกิดประสิทธิภาพสูงสุด</p>
-
-                                    <div class="text-center"><a class="btn btn-outline" href="">ดูข้อมูลเพิ่มเติม </a></div>
-                                </div>
-                            </div>
                             <div class="wrapper text-center">{btn_buy}</div>
                         </div>
 
-                        <div>
-                            <h2 style="margin: 20px 0">ทำไมต้องซื้อ myFlexi CI</h2>
-
-                            <p>เพราะเป็นแบบประกันโรคร้ายแรง ที่พร้อมดูแลคุ้มครองโรคร้ายทุกระยะ และเลือกความคุ้มครองโรคร้ายเพิ่มเติมได้ตามต้องการ อุ่นใกว่าจเพราะ &lsquo;ได้&rsquo; มากกว่า หากวันนั้นมาถึง&hellip;คุณจึงพร้อมจะรับมือกับ ค่าใช้จ่ายก้อนโต จากการรักษา</p>
+                        <section class="why-ci">
                             <div>
-                                <h4 class="text-center" style="color:#FC14CA">5 โรคร้ายอันดับต้นๆ ที่คร่าชีวิตคนไทย</h4>
+                                <h2>Why purchase myFlexi CI?</h2>
 
-                                <h5 class="text-center">จำนวนผู้เสียชีวิตต่อชั่วโมง</h5>
-
-                                <div class="flex-wrapper" style="margin: 10px auto">
-                                    <div class="item"><strong>7.7</strong> <span> โรคมะเร็ง </span> <img alt="" src="/images/ico_ci/heart.png" style="width: 150px" /></div>
-
-                                    <div class="item"><strong>3.2</strong> <span>โรคหลอดเลือดสมองแตก</span> <img alt="" src="/images/ico_ci/heart.png" style="width: 150px" /></div>
-
-                                    <div class="item"><strong>2.8</strong> <span>โรคภาวะหัวใจเต้นผิดจังหวะรุนแรง</span> <img alt="" src="/images/ico_ci/heart.png" style="width: 150px" /></div>
-
-                                    <div class="item"><strong>2.4</strong> <span>โรคปลอดระยะสุดท้าย</span> <img alt="" src="/images/ico_ci/heart.png" style="width: 150px" /></div>
-
-                                    <div class="item"><strong>1.7</strong> <span>โรคไตวายเรื้อรัง</span> <img alt="" src="/images/ico_ci/heart.png" style="width: 150px" /></div>
-                                </div>
-
+                                <p>Because it is critical illness insurance that is ready to take care of you and your loved ones for both early and late stage illnesses. You can also choose additional critical illness coverage for a small additional cost. With this insurance coverage, you will not need to worry about the enormous medical bills that could occur for treatment.</p>
                             </div>
-                        </div>
+
+                            <div>
+                                <h2>Top 5 deadly diseases in Thailand</h2>
+                                <small>*Number of deaths per hour</small>
+
+                                <ul>
+                                    <li><strong style="width: 270px;">7.7</strong> <span> Cancer</span></li>
+                                    <li><strong style="width: 113px;">3.2</strong> <span>Hemorrhagic stroke</span></li>
+                                    <li><strong style="width: 98px;">2.8</strong> <span>Atrial fibrillation severe stroke</span></li>
+                                    <li><strong style="width: 84px;">2.4</strong> <span>Lung disease</span></li>
+                                    <li><strong style="width: 60px;">1.7</strong> <span>Chronic kidney disease</span></li>
+                                </ul>
+                            </div>
+                        </section>
+
                         <div class="wrapper text-center">{btn_buy}</div>
-                    </div>
 
-                    <div class="my-health-condition">
-                        <h2>เงื่อนไขการขอเอาประกันภัย</h2>
+                        <section>
+                            <h2>Examples of the cost of treating severe illnesses
+                            </h2>
+                            <div class="ci-cost">
+                                <div class="ci-cost-table">
+                                    <h6>Cancer
+                                    </h6>
+                                    <ul>
+                                        <li>
+                                            <strong>Breast cancer <span>3D radiation technique</span></strong>
+                                            <span class="col-price">215,600</span>
+                                        </li>
+                                        <li>
+                                            <strong>Lung cancer<span>3D radiation technique</span></strong>
+                                            <span class="col-price">184,800</span>
+                                        </li>
+                                        <li>
+                                            <strong>Cervical cancer<span>3D radiation technique</span></strong>
+                                            <span class="col-price">184,800</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="ci-cost-table">
+                                    <h6>Heart Attack
+                                    </h6>
+                                    <ul>
+                                        <li>
+                                            <strong>Balloon angioplasty therapy
+                                            </strong>
+                                            <span class="col-price">250,000</span>
+                                        </li>
+                                        <li>
+                                            <strong>Coronary artery surgery</strong>
+                                            <span class="col-price">340,000</span>
+                                        </li>
+                                        <li>
+                                            <strong>Coronary angiography examination
+                                            </strong>
+                                            <span class="col-price">150,000</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </section>
+                        <div class="wrapper text-center">{btn_buy}</div>
 
-                        <ul>
-                            <li>1. การพิจารณารับประกันภัยเป็นไปตามหลักเกณฑ์ของบริษัทฯ</li>
-                            <li>2. ผู้ขอเอาประกันภัยต้องมีอายุ 18 &ndash; 60 ปีบริบูรณ์ (ต่ออายุได้ถึง 65 ปี)</li>
-                            <li>3. ผู้ขอเอาประกันภัยต้องมีสุขภาพร่างกายแข็งแรง ก่อนวันที่ขอเอาประกันภัย</li>
-                            <li>4. แถลงสุขภาพ ไม่ต้องตรวจสุขภาพ (กรณีที่ข้อมูลการแถลงสุขภาพไม่เพียงพอต่อการพิจารณารับประกันภัย ทางบริษัทขอสงวนสิทธิ์ในการแจ้งขอตรวจสุขภาพก่อนรับประกันภัย)</li>
-                            <li>5. ข้อมูลในเอกสารนี้เป็นเพียงข้อมูลเบื้องต้นของผลิตภัณฑ์ประกันภัย ผู้ขอเอาประกันภัย/ผู้เอาประกันภัยควรศึกษาข้อมูลเพิ่มเติม และทำความเข้าใจในรายละเอียดเงื่อนไขความคุ้มครอง ผลประโยชน์ และข้อยกเว้น ก่อนตัดสินใจทำประกันภัยทุกครั้ง เมื่อได้รับกรมธรรม์ประกันภัยแล้วโปรดศึกษาเพิ่มเติม</li>
-                            <li>6. เงื่อนไขความคุ้มครองเป็นไปตามที่ระบุในกรมธรรม์</li>
-                            <li>7. กรณีต้องการใบกำกับภาษีฯ หรือกรมธรรม์ฯ ให้จัดส่งทางไปรษณีย์ กรุณาติดต่อฝ่ายบริการลูกค้า โทร. 1183</li>
-                            <li>8. ท่านสามารถใช้สิทธิยกเลิกกรมธรรม์ (Free Look Period) ภายใน 15 วัน นับแต่วันที่ได้รับกรมธรรม์ โดยไม่มีค่าใช้จ่าย</li>
-                        </ul>
+                        <section>
+                            <h2>Purchasing critical illness insurance myFlexi CI is a better choice! Because you can choose to pay your annual premium in 10 easy credit card installments.</h2>
 
-                        <div class="wrapper text-center"> {btn_buy}</div>
+                            <p>Pay for your insurance comfortably with the option of paying your annual premium in 10 credit card installments. Or you can pay the full annual premium via credit or debit cards accepted for all banks in Thailand.*<br />
+                                <em>*Payment terms and conditions are specified by each bank.</em></p>
+
+                            <div class="wrapper text-center">{btn_buy}</div>
+                        </section>
+
+                        <div class="my-health-condition">
+                            <h2>Insurance underwriting conditions</h2>
+
+                            <ol class="has-bullet">
+                                <li>The underwriting consideration is in accordance with the Company&#39;s guidelines.</li>
+                                <li>The applicant must be between 18 to 60 years old (renewable up to 65 years).</li>
+                                <li>The applicant must be in good health before the date of applying for insurance</li>
+                                <li>A health declaration is needed without requiring medical tests (If the health declaration information is insufficient for consideration, the company reserves the right to request a health check-up before issuing the insurance.)</li>
+                                <li>The information in this document is preliminary only and does not replace the policy wording. The applicant/insured should study the policy wording in detail to understand the details of coverage conditions, benefits, and exclusions before deciding to purchase the insurance.</li>
+                                <li>The coverage conditions are specified in the actual policy wording.</li>
+                                <li>If the insured needs a tax invoice or policy to be delivered by post, please contact customer service at 1183.</li>
+                                <li>You have the right to amend and cancel the policy free of charge (Free Look Period) within 15 days of receiving the insurance policy.</li>
+                            </ol>
+
+                            <div class="wrapper text-center">{btn_buy}</div>
+                        </div>
                     </div>
                 </div>
+
 
             </main>
 

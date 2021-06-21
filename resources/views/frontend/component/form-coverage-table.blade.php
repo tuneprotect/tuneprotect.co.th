@@ -1,4 +1,4 @@
-<section style="display: none" id="step2" class="product-detail">
+<section style="display: block" id="step2" class="product-detail">
     @if(strtolower($selected) == 'onvacina')
         <section id="sectionPackage" class="wrapper">
             <form method="post" action="" class="insurance-form">
@@ -35,6 +35,8 @@
                 <th>
                     @if($selected != "CI")
                         <h3>@lang('global.coverage')</h3>
+                    @else
+                        <h3>@lang('product.ci_coverage')</h3>
                     @endif
                     <?php $i = 1 ?>
                     <div class="choose-plan-mobile">

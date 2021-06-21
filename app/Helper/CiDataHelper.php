@@ -61,7 +61,7 @@ class CiDataHelper
 
             $age_range = explode("-", $v['age_range']);
 
-            if ($age_range[0] != 60 && $age_range[1] != 65) {
+            if ($age_range[0] >= 61 && $age_range[1] >= 65) {
                 for ($i = 1; $i <= 9; $i++) {
 
                     switch ($i) {
