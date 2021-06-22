@@ -25,7 +25,7 @@ import intlTelInput from "intl-tel-input";
 require('../main');
 require('../product');
 require('../lib/rSlider.min');
-if($('#title_wrapper')) {
+if ($('#title_wrapper')) {
     validate.validators.idcard = function (value, options, key, attributes) {
         for (var i = 0, sum = 0; i < 12; i++) {
             sum += parseFloat(value.charAt(i)) * (13 - i);
@@ -424,7 +424,7 @@ if($('#title_wrapper')) {
                 $el.classList.add("basePrice");
             });
 
-            $$(".choose-plan-mobile a[data-package='"+last+"'] ").forEach($el => {
+            $$(".choose-plan-mobile a[data-package='" + last + "'] ").forEach($el => {
                 $el.classList.add("basePrice");
             });
         }
@@ -501,6 +501,25 @@ if($('#title_wrapper')) {
             });
         });
 
+
+        const hideShowDiseaseBox = (goToStep) => {
+            switch (parseInt(goToStep)) {
+                case 1:
+                    $('#disease_box').style.display = "block";
+                    break;
+
+                case 2:
+                    $('#disease_box').style.display = "block";
+                    $('.goto-step1').style.display = "block";
+                    break;
+                default:
+                    $('#disease_box').style.display = "none";
+                    break;
+            }
+
+        }
+
+
         const $btnGoto = $$('.btn-goto');
         $btnGoto.forEach($btn => {
             $btn.addEventListener("click", function (e) {
@@ -510,18 +529,7 @@ if($('#title_wrapper')) {
 
                     if (step > goToStep) {
                         status = true;
-                        switch (parseInt(step)) {
-                            case 2:
-                                $('.goto-step1').style.display = "block";
-                                break;
-                            case 3:
-
-                                $('#disease_box').style.display = "block";
-                                break;
-                            case 4:
-                                $('#disease_box').style.display = "block";
-                                break;
-                        }
+                        hideShowDiseaseBox(goToStep);
                     } else {
                         switch (parseInt(step)) {
                             case 1:
@@ -539,6 +547,7 @@ if($('#title_wrapper')) {
 
                                     genPrice();
                                     $('.goto-step1').style.display = "none";
+                                    hideShowDiseaseBox(goToStep);
                                 } else {
                                     scrollToTargetAdjusted($('.controls-wrapper.error'));
                                 }
@@ -546,7 +555,7 @@ if($('#title_wrapper')) {
                                 let el = $('h3[data-type]');
 
                                 el.innerHTML = "";
-console.log($("#ctrl_buy_for").value)
+
                                 if ($("#ctrl_buy_for").value == 'own_insurance') {
                                     el.innerHTML = el.dataset.own_insurance;
 
@@ -567,6 +576,7 @@ console.log($("#ctrl_buy_for").value)
                                     }
                                     showTitle('', data.fdAge)
                                     status = true;
+                                    hideShowDiseaseBox(goToStep);
                                 } else {
                                     Swal.fire({
                                         title: 'Error!',
@@ -577,7 +587,6 @@ console.log($("#ctrl_buy_for").value)
                                     status = false;
                                 }
 
-                                $('#disease_box').style.display = "none";
                                 break;
                             case 3:
 
@@ -676,7 +685,9 @@ console.log($("#ctrl_buy_for").value)
                         <div><span>${$('#receve_channel_title').innerText} : </span><strong>${data.fdSendType === 'P' ? $('label[for=ctrl_channel_post]').innerText : $('label[for=ctrl_channel_email]').innerText}</strong></div>
                     </div>` + sb;
                                     status = true;
+                                    hideShowDiseaseBox(goToStep);
                                 }
+
                                 break;
                         }
                     }

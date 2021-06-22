@@ -374,16 +374,6 @@ main[data-package="CI"] {
                     margin: 10px 0;
                     width: 100%;
                 }
-                a{
-                    position: absolute;
-                    top: 50%;
-                    left: 50%;
-                    margin-left: -25px;
-                    @media all and (max-width: $md) {
-                        margin-left: -48px;
-                    }
-                }
-
                 img {
                     width: 100%;
                     display: block;
@@ -394,12 +384,16 @@ main[data-package="CI"] {
 
     .installment-ci{
         display: flex;
+        .img-wrapper{
+            flex: 0 0 50%;
+            margin-right: 20px;
+            @media all and (max-width: $md) {
+                flex: 0 0 100%;
+            }
+        }
         @media all and (max-width: $md) {
             justify-content: space-between;
             flex-wrap:wrap;
-        }
-        img{
-            margin-right: 20px;
         }
     }
 
@@ -440,16 +434,16 @@ main[data-package="CI"] {
                     margin: 10px 0;
                     padding: 10px 20px;
                     border-radius: 10px;
-
+                    display: flex;
+                    align-items: center;
+                    i{
+                        font-size: 2rem;
+                        margin-right: 10px;
+                        color: $primary-color;
+                    }
                     @media all and (max-width: $md) {
-                      i{
-                          text-align: center;
-                          top: 0 !important;
-                          display: block !important;
-                      }
                         div{
                             margin-top: 10px;
-                            width: 100% !important;
                         }
                     }
                     strong,
