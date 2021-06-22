@@ -27,6 +27,7 @@ class ProductController extends BaseController
     protected $thankYouParam = '';
     protected $controller = 'product';
     protected $payment = 'CC,FULL';
+    protected $ipp_interest_type = "";
 
     public function index($link = null, $selected = null)
     {
@@ -222,6 +223,7 @@ class ProductController extends BaseController
         }elseif (substr($data['fdPackage'], 0, 2) === 'CI') {
             $obj = new CIObject();
             $this->payment =  'CC,FULL,IPP';
+            $this->ipp_interest_type = "A";
         }else {
             $obj = new BaseInsuranceObject();
         }
@@ -416,6 +418,7 @@ class ProductController extends BaseController
         $arr_post['result_url_1'] = url("{$this->locale}/{$this->controller}/result");
 
         $arr_post['payment_option'] = $this->payment;
+        $arr_post['ipp_interest_type'] = $this->ipp_interest_type;;
         $arr_post['default_lang'] = $this->locale;
         $params = join($arr_post);
         $arr_post['hash_value'] = hash_hmac('sha256', $params, config('payment.secret'), false);    //Compute hash value
@@ -620,6 +623,7 @@ class ProductController extends BaseController
         $arr_post['payment_option'] = "CC,FULL,IPP";
         $arr_post['ipp_interest_type'] = 'A';
         $arr_post['ipp_period_filter'] = '3,6';
+        $arr_post['ipp_interest_type'] = $this->ipp_interest_type;
         $arr_post['default_lang'] = $this->locale;
         $params = join($arr_post);
         $arr_post['hash_value'] = hash_hmac('sha256', $params, config('payment.secret'), false);    //Compute hash value

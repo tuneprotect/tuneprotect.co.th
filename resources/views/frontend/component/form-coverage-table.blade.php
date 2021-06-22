@@ -62,12 +62,12 @@
                                     @if($selected == "CI")
                                         <span class="show_on_mobile" data-price-{{$k}}></span>
                                     @endif
-                                    @if($selected == "CI")
-                                        @if($i ==3 || $i==4)
-                                            <img class="show_on_mobile h_2_g"
-                                                 src="/images/my_health/Logo-My-Health.png">
-                                        @endif
-                                    @endif
+{{--                                    @if($selected == "CI")--}}
+{{--                                        @if($i ==3 || $i==4)--}}
+{{--                                            <img class="show_on_mobile h_2_g"--}}
+{{--                                                 src="/images/my_health/Logo-My-Health.png">--}}
+{{--                                        @endif--}}
+{{--                                    @endif--}}
                                 </a>
 
                                 <?php $i++ ?>
