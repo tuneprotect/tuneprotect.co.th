@@ -15,7 +15,7 @@
             <main data-package="CI">
 
                 <div>
-                    <section class="wrapper">
+                    <section class="wrapper" style="padding-top: 0">
                         <h2>Critical illness insurance from Tune Protect</h2>
 
                         <p>Taking care of every major disease. Determine the Coverage that best fits you with a simple

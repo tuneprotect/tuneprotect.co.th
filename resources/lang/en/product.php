@@ -7,22 +7,22 @@ return [
         "sum_insured_1" => "<h6> ข้อตกลงคุ้มครองการป่วยเฉพาะโรคร้ายแรงระดับเริ่มต้นถึงระดับปานกลาง
 กรณีที่เจ็บป่วยด้วยโรคใดโรคหนึ่งที่ระบุไว้ดังนี้</h6>
 &bull; โรคมะเร็งระยะไม่ลุกลาม (Non-invasive Cancer)<br>
-<span data-disease='c'>&bull; โรคหลอดเลือดหัวใจตีบที่รักษาด้วยการสวน หลอดเลือดหัวใจ (Coronary Artery Disease requiring Angioplasty)<br>
+<span data-disease='C'>&bull; โรคหลอดเลือดหัวใจตีบที่รักษาด้วยการสวน หลอดเลือดหัวใจ (Coronary Artery Disease requiring Angioplasty)<br>
 &bull; โรคหลอดเลือดสมองโป่งพองที่รักษาโดยใช้ขดลวดผ่านสายสวนทางหลอดเลือด
 (Cerebral Aneurysm Treatment by Endovascular Coiling)</span>
-<span data-disease='t'>&bull; แผลไหม้ชนิดรุนแรงน้อย (Less severe burns / Second degree burn)</span>",
+<span data-disease='T'>&bull; แผลไหม้ชนิดรุนแรงน้อย (Less severe burns / Second degree burn)</span>",
         "sum_insured_2" => "<h6> ข้อตกลงคุ้มครองการป่วยเฉพาะโรคร้ายแรงระดับรุนแรง
 กรณีเจ็บป่วยด้วยโรคใดโรคหนึ่งที่ระบุไว้ดังนี้</h6>
 &bull; โรคมะเร็งระยะลุกลาม (Invasive Cancer)<br>
-<span data-disease='c'>&bull; กล้ามเนื้อหัวใจตายเฉียบพลันจากการขาดเลือด (Acute Heart Attack)
+<span data-disease='C'>&bull; กล้ามเนื้อหัวใจตายเฉียบพลันจากการขาดเลือด (Acute Heart Attack)
 &bull; โรคหลอดเลือดสมองแตกหรืออุดตัน (Major Stroke)</span>
-<span data-disease='o'>&bull; การผ่าตัดเปลี่ยนอวัยวะหรือปลูกถ่ายไขกระดูก (Major Organs Transplantation or Bone Marrow Transplantation)
+<span data-disease='O'>&bull; การผ่าตัดเปลี่ยนอวัยวะหรือปลูกถ่ายไขกระดูก (Major Organs Transplantation or Bone Marrow Transplantation)
 &bull; ไตวายเรื้อรัง (Chronic Kidney Failure)
 &bull; ตับวาย (Chronic Liver Disease / End-stage Liver disease / Liver Failure)</span>
-<span data-disease='t'>&bull; แผลไหม้ฉกรรจ์ (Major burn)</span>
-<span data-disease='o'>&bull; อัมพาตของกล้ามเนื้อแขนหรือขา (Paralysis)</span>
-<span data-disease='t'>&bull; การบาดเจ็บที่ศีรษะอย่างรุนแรง (Major Head Trauma)</span>",
-        "sum_insured_3" => "<span data-disease='d'><h6> ข้อตกลงคุ้มครองการป่วยเฉพาะโรคเบาหวานกรณีเจ็บป่วยด้วยโรคใดโรคหนึ่งที่ระบุไว้ดังนี้</h6>
+<span data-disease='T'>&bull; แผลไหม้ฉกรรจ์ (Major burn)</span>
+<span data-disease='O'>&bull; อัมพาตของกล้ามเนื้อแขนหรือขา (Paralysis)</span>
+<span data-disease='T'>&bull; การบาดเจ็บที่ศีรษะอย่างรุนแรง (Major Head Trauma)</span>",
+        "sum_insured_3" => "<span data-disease='D'><h6> ข้อตกลงคุ้มครองการป่วยเฉพาะโรคเบาหวานกรณีเจ็บป่วยด้วยโรคใดโรคหนึ่งที่ระบุไว้ดังนี้</h6>
 &bull; เบาหวานเข้าจอประสาทตา (Diabetic Retinopathy)<br>
 &bull; โคม่าจากเบาหวาน (Diabetic coma)<br>
 &bull; การสูญเสียอวัยวะจากโรคเบาหวาน (Limb amputation)<br>

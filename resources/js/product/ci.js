@@ -506,11 +506,12 @@ if ($('#title_wrapper')) {
             switch (parseInt(goToStep)) {
                 case 1:
                     $('#disease_box').style.display = "block";
+                    $('.goto-step1').style.display = "block";
                     break;
 
                 case 2:
                     $('#disease_box').style.display = "block";
-                    $('.goto-step1').style.display = "block";
+                    $('.goto-step1').style.display = "none";
                     break;
                 default:
                     $('#disease_box').style.display = "none";
@@ -546,7 +547,6 @@ if ($('#title_wrapper')) {
                                     }
 
                                     genPrice();
-                                    $('.goto-step1').style.display = "none";
                                     hideShowDiseaseBox(goToStep);
                                 } else {
                                     scrollToTargetAdjusted($('.controls-wrapper.error'));
@@ -577,6 +577,7 @@ if ($('#title_wrapper')) {
                                     showTitle('', data.fdAge)
                                     status = true;
                                     hideShowDiseaseBox(goToStep);
+                                    $('.goto-step1').style.display = "none";
                                 } else {
                                     Swal.fire({
                                         title: 'Error!',
