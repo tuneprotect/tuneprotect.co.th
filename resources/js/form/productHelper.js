@@ -25,7 +25,7 @@ export const getCountryData = async () => {
     let res = await fetch(`/storage/json/country.json`);
     return await res.json();
 }
-export const validateAgeInPackage = (package_data,cal_price) => {
+export const validateAgeInPackage = (package_data, cal_price) => {
     $$('.date-input .controls-wrapper').forEach(el => {
         el.classList.remove('error');
     });
@@ -62,7 +62,7 @@ export const validateAgeInPackage = (package_data,cal_price) => {
 
     const age = calculateAge(birthday)
 
-    if(cal_price!==false){
+    if (cal_price !== false) {
         genPrice(birthday, package_data)
     }
 
@@ -73,6 +73,36 @@ export const validateAgeInPackage = (package_data,cal_price) => {
             fdAge: age.year
         }
     };
+}
+
+export const validatePolicy = async (value, options, key, attributes, new_fdPackage) => {
+    // if (attributes.fdNationalID && attributes.fdName && attributes.fdSurname) {
+
+
+        // let data_post = {
+        //     fdNationalID: attributes.fdNationalID,
+        //     fdName: attributes.fdName,
+        //     fdSurname: attributes.fdSurname,
+        //     fdPackage: new_fdPackage,
+        //     CheckType: ''
+        // };
+
+        // const response = await fetch(`/${$('html').getAttribute('lang')}/Product/checkDup`, {
+        //     method: 'post',
+        //     headers: {
+        //         'Accept': 'application/json',
+        //         'Content-Type': 'application/json',
+        //         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').getAttribute('content')
+        //     },
+        //     body: JSON.stringify(data_post)
+        // })
+        //
+        // return await response.json();
+
+
+
+
+    // }
 }
 
 export const genPrice = (birthday, package_data) => {
@@ -96,8 +126,7 @@ export const checkAge = (birthday, ageRange) => {
 
         // console.log(monthRange.length);
 
-        if(monthRange.length == 2)
-        {
+        if (monthRange.length == 2) {
             //month and year range
             if (
                 (age.year > monthRange[0] || (age.year == monthRange[0] && age.month > monthRange[1]))
@@ -106,41 +135,29 @@ export const checkAge = (birthday, ageRange) => {
 
                 return true;
             }
-        }
-        else
-        {
+        } else {
             //day and year range
             const rangeAll = ageRange.split(',');
             const yearRange = rangeAll[2].split('-');
 
-            console.log('DOB : day month year ' + age.day +' '+ age.month +' '+ age.year)
-            console.log('CON : day month year ' + rangeAll[0] +' '+ rangeAll[1] +' '+ yearRange[1])
+            console.log('DOB : day month year ' + age.day + ' ' + age.month + ' ' + age.year)
+            console.log('CON : day month year ' + rangeAll[0] + ' ' + rangeAll[1] + ' ' + yearRange[1])
 
-            if (age.year <= yearRange[1])
-            {
-                if(age.year == yearRange[0])
-                {
-                    if(age.month <= rangeAll[1])
-                    {
-                        if(age.day >= rangeAll[0])
-                        {
+            if (age.year <= yearRange[1]) {
+                if (age.year == yearRange[0]) {
+                    if (age.month <= rangeAll[1]) {
+                        if (age.day >= rangeAll[0]) {
                             return true;
                         }
-                    }
-                    else
-                    {
+                    } else {
                         return true;
                     }
-                }
-                else
+                } else
                     return true;
-            }
-            else
-            {
+            } else {
                 return false;
             }
         }
-
 
 
     } else if (age.year >= range[0] && age.year < range[1]) {

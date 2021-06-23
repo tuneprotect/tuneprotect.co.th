@@ -4,7 +4,8 @@ import {
     formatTelNumber,
     getPackageData,
     showTitle,
-    validateAgeInPackage
+    validateAgeInPackage,
+    validatePolicy
 } from "../form/productHelper";
 import {
     $,
@@ -35,7 +36,22 @@ if ($('#title_wrapper')) {
             return "^" + $('#fdNationalID').getAttribute('data-error-idcard')
         }
     };
+    validate.validators.checkPolicy = async function (value, options, key, attributes) {
 
+        // console.log({value, options, key, attributes});
+        // let new_fdPackage = attributes.fdPackage + attributes.ctrl_disease.join('').replace("F", "")
+        // return await validatePolicy(value, options, key, attributes, 'CI001CT');
+        return new validate.Promise(function(resolve, reject) {
+            setTimeout(function() {
+                if (value === "foo") resolve();
+                else resolve("is not foo");
+            }, 100);
+        });
+
+
+
+
+    };
 
     const constraints = {
         fdTitle: {
@@ -48,13 +64,15 @@ if ($('#title_wrapper')) {
             presence: {
                 allowEmpty: false,
                 message: "^" + $('#fdName').getAttribute('data-error-name')
-            }
+            },
+            checkPolicy: true
         },
         fdSurname: {
             presence: {
                 allowEmpty: false,
                 message: "^" + $('#fdSurname').getAttribute('data-error-last_name')
-            }
+            },
+            checkPolicy: true
         },
         fdSex: {
             presence: {
@@ -81,7 +99,8 @@ if ($('#title_wrapper')) {
                     },
                     idcard: {
                         message: "^" + $('#fdNationalID').getAttribute('data-error-idcard')
-                    }
+                    },
+                    checkPolicy: true
                 }
 
 
@@ -282,61 +301,6 @@ if ($('#title_wrapper')) {
             disabled: true,
             set: [defaultValue.min, defaultValue.max],
         };
-
-
-        const $$checkDup = $$('#fdName,#fdSurname,#fdNationalID');
-
-        if ($$checkDup) {
-            let CheckType = '';
-            const $fdName = $('#fdName')
-            const $fdSurname = $('#fdSurname');
-            const $fdNationalID = $('#fdNationalID');
-            let display = 'none';
-
-            $$checkDup.forEach($el => {
-                $el.addEventListener("change", function (e) {
-                    if ($fdNationalID.value && $fdName.value && $fdSurname.value && data.fdPackage) {
-                        CheckType = 'DUP';
-                        let str_disease = data.ctrl_disease.join('').replace("F", "")
-                        let data_post = {
-                            fdNationalID: $fdNationalID.value,
-                            fdName: $fdName.value,
-                            fdSurname: $fdSurname.value,
-                            fdPackage: data.fdPackage + str_disease,
-                            CheckType: CheckType
-                        };
-
-                        fetch('/th/Product/checkDup', {
-                            method: 'post',
-                            headers: {
-                                'Accept': 'application/json',
-                                'Content-Type': 'application/json',
-                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').getAttribute('content')
-                            },
-                            body: JSON.stringify(data_post)
-                        }).then(response => response.json())
-                            .then(data => {
-                                const listFd = ["fdNationalID", "fdName", "fdSurname"];
-
-
-                                listFd.some(ell => {
-                                    let c = data.status.includes(ell)
-                                    console.log(ell)
-                                    if (c) {
-                                        $(`#${ell}`).closest('.controls-wrapper').classList.add('error')
-
-                                        $(`#${ell}`).closest('.controls-wrapper').innerHTML += `<cite>${data.status}</cite>`
-                                    }
-                                });
-
-                            });
-
-
-                    }
-                });
-            });
-
-        }
 
 
         let budget_slider = new rSlider(slideOption);

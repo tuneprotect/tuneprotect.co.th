@@ -17,7 +17,10 @@ export const showFieldError = ($this, errors) => {
 
 export const validateField = ($this, constraints) => {
 
-    let field = $this.getAttribute('name');
+    let field = $this.getAttribute('name'), success = alert.bind(this, "The validations passed")
+        , error = function(errors) {
+        alert(JSON.stringify(errors, null, 2));
+    };
 
     if (field) {
 
@@ -32,7 +35,7 @@ export const validateField = ($this, constraints) => {
         $parent.classList.remove('error')
         $$('cite', $parent).forEach($el => $el.remove());
 
-        const result = validate({[field]: fieldValue}, constraints);
+        const result = validate.async({[field]: fieldValue}, constraints).then(success, error);
 
         if (result && result[field]) {
             showFieldError($this, result[field]);

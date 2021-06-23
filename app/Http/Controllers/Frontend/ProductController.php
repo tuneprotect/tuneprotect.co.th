@@ -665,23 +665,24 @@ class ProductController extends BaseController
     {
         $data = $request->all();
 
-        $response = Http::withBasicAuth('TPTWEBSITE', 'TPTWEBSITE@123')
-            ->post('http://webtest1.tuneinsurance.co.th/tunepolicy/api/WEBSITE/PersonalValidationCI', [
-                'fdNationalID' => '',
-                'fdName' => '',
-                'fdSurname' =>'',
-                'fdPackage' => $data['fdPackage'],
-                'CheckType' => $data['CheckType'],
-            ])->json();
+        $client = new Client();
+        $response = $client->request('POST', config('tune-api.url') . 'PersonalValidationCI', [
+            'auth' => [config('tune-api.user'), config('tune-api.password')],
+            'headers' => [
+                'Content-Type' => 'application/json'
+            ],
+            'body' => json_encode($data)
+        ]);
+        $res =  json_decode($response->getBody()->getContents(), true);
 
-        $this->apiResult = $response;
+        $this->apiResult = $res->status ? self::SUCCESS : self::ERROR ;
 
-        if ($response['status'] == 'success') {
+        if ($res->status) {
             $this->apiStatus = self::SUCCESS;
-
+            $this->apiStatusText = self::SUCCESS;
         } else {
-            $this->apiStatus = $response['data']['Message'];
-
+            $this->apiStatus = self::ERROR;
+            $this->apiStatusText = __('product.error.'.$res->message);
         }
 
         return $this->send();
