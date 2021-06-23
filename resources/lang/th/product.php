@@ -349,8 +349,8 @@ return [
 &bull; โรคมะเร็งระยะลุกลาม (Invasive Cancer)<br>
 <span data-disease='c'>&bull; กล้ามเนื้อหัวใจตายเฉียบพลันจากการขาดเลือด (Acute Heart Attack)
 &bull; โรคหลอดเลือดสมองแตกหรืออุดตัน (Major Stroke)</span>
-<span data-disease='o'>&bull; การผ่าตัดเปลี่ยนอวัยวะหรือปลูกถ่ายไขกระดูก (Major Organs Transplantation or Bone Marrow Transplantation)
-&bull; ไตวายเรื้อรัง (Chronic Kidney Failure)
+<span data-disease='o'>&bull; การผ่าตัดเปลี่ยนอวัยวะหรือปลูกถ่ายไขกระดูก (Major Organs Transplantation or Bone Marrow Transplantation)<br>
+&bull; ไตวายเรื้อรัง (Chronic Kidney Failure)<br>
 &bull; ตับวาย (Chronic Liver Disease / End-stage Liver disease / Liver Failure)</span>
 <span data-disease='t'>&bull; แผลไหม้ฉกรรจ์ (Major burn)</span>
 <span data-disease='o'>&bull; อัมพาตของกล้ามเนื้อแขนหรือขา (Paralysis)</span>

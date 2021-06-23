@@ -66,10 +66,10 @@ class CiDataHelper
 
                     switch ($i) {
                         case 7:
-                            $new_data[$new_code_start]['plan']["sum_insured_{$i}"] = $v["sum_insured_{$i}"] == true ? "<img src='/images/my_health/Logo-My-Health.png'>" : '';
+                            $new_data[$new_code_start]['plan']["sum_insured_{$i}"] = $v["sum_insured_{$i}"] == true ? "<i class='icofont-check-circled'  style='color:green'></i>" : "<i class='icofont-close-circled' style='color:red'></i>";
                             break;
                         case 8:
-                            $new_data[$new_code_start]['plan']["sum_insured_{$i}"] = $v["sum_insured_{$i}"] == true ? "<i class='icofont-check-circled'  style='color:green'></i>" : "<i class='icofont-close-circled' style='color:red'></i>";
+                            $new_data[$new_code_start]['plan']["sum_insured_{$i}"] = $v["sum_insured_{$i}"] == true ? "<img src='/images/my_health/Logo-My-Health.png'>" : '';
                             break;
                         default:
                             $new_data[$new_code_start]['plan']["sum_insured_{$i}"] = $v["sum_insured_{$i}"];

@@ -3,7 +3,7 @@
 use App\Http\Controllers\Api\AdminLogController;
 use App\Http\Controllers\Api\SystemController;
 use App\Http\Controllers\Api\UserController;
-
+use App\Http\Controllers\Api\ProductController;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
 

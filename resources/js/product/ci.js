@@ -36,6 +36,7 @@ if ($('#title_wrapper')) {
         }
     };
 
+
     const constraints = {
         fdTitle: {
             presence: {
@@ -221,7 +222,6 @@ if ($('#title_wrapper')) {
         $$(".action-expand-col").forEach($el => {
             $el.addEventListener("click", function (e) {
                 let result = e.target.closest('.expand').getElementsByClassName("package-number-ci");
-                // result[0].classList.toggle("package-number-ci");
                 if (result[0].style.display === "none") {
                     result[0].style.display = 'block';
                     e.target.classList.add("on");
@@ -259,13 +259,13 @@ if ($('#title_wrapper')) {
             fdTaxno: "",
             fdSendType: "",
             fdPayAMT: "",
+            fdOccup: "",
             ctrl_province: "",
             ctrl_terms: "",
             ctrl_accept_insurance_term: "",
             ctrl_document_type: "",
 
             ctrl_buy_for: "",
-            ctrl_carrier: "",
             ctrl_budget: "",
             ctrl_disease: [],
             ctrl_protection_start_date: ""
@@ -282,6 +282,62 @@ if ($('#title_wrapper')) {
             disabled: true,
             set: [defaultValue.min, defaultValue.max],
         };
+
+
+        const $$checkDup = $$('#fdName,#fdSurname,#fdNationalID');
+
+        if ($$checkDup) {
+            let CheckType = '';
+            const $fdName = $('#fdName')
+            const $fdSurname = $('#fdSurname');
+            const $fdNationalID = $('#fdNationalID');
+            let display = 'none';
+
+            $$checkDup.forEach($el => {
+                $el.addEventListener("change", function (e) {
+                    if ($fdNationalID.value && $fdName.value && $fdSurname.value && data.fdPackage) {
+                        CheckType = 'DUP';
+                        let str_disease = data.ctrl_disease.join('').replace("F", "")
+                        let data_post = {
+                            fdNationalID: $fdNationalID.value,
+                            fdName: $fdName.value,
+                            fdSurname: $fdSurname.value,
+                            fdPackage: data.fdPackage + str_disease,
+                            CheckType: CheckType
+                        };
+
+                        fetch('/th/Product/checkDup', {
+                            method: 'post',
+                            headers: {
+                                'Accept': 'application/json',
+                                'Content-Type': 'application/json',
+                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').getAttribute('content')
+                            },
+                            body: JSON.stringify(data_post)
+                        }).then(response => response.json())
+                            .then(data => {
+                                const listFd = ["fdNationalID", "fdName", "fdSurname"];
+
+
+                                listFd.some(ell => {
+                                    let c = data.status.includes(ell)
+                                    console.log(ell)
+                                    if (c) {
+                                        $(`#${ell}`).closest('.controls-wrapper').classList.add('error')
+
+                                        $(`#${ell}`).closest('.controls-wrapper').innerHTML += `<cite>${data.status}</cite>`
+                                    }
+                                });
+
+                            });
+
+
+                    }
+                });
+            });
+
+        }
+
 
         let budget_slider = new rSlider(slideOption);
 
@@ -300,54 +356,6 @@ if ($('#title_wrapper')) {
                     disabled: false
                 });
             }
-
-
-            // if ($('#ctrl_day').value && $('#ctrl_month').value && $('#ctrl_year').value) {
-            //     let yy = $('#ctrl_year').value;
-            //     if (parseInt(yy.substring(0, 2)) > 21) {
-            //         yy = (parseInt(yy) - 543).toString();
-            //     }
-            //     let hbd = `${yy}-${$('#ctrl_month').value}-${$('#ctrl_day').value}`
-            //     let age = calculateAge(hbd);
-            //     let arr = [];
-            //
-            //
-            //     let defaultValue = Object.keys(package_data).reduce((returnValue, k) => {
-            //         Object.keys(package_data[k].price).map((k1) => {
-            //
-            //             let [min, max] = k1.split('-');
-            //
-            //             if (min <= age.year && max >= age.year) {
-            //                 Object.values(package_data[k].price[k1]).map((v) => {
-            //                     arr.push(v);
-            //                 });
-            //             }
-            //         });
-            //
-            //     }, {})
-            //
-            //
-            //     let min = Math.min(...arr);
-            //     let max = Math.max(...arr);
-            //
-            //     let digit_min = Math.pow(10, min.toString().length) / 10;
-            //     let digit_max = Math.pow(10, max.toString().length) / 10;
-            //
-            //     budget_slider = new rSlider({
-            //         target: '#ctrl_budget',
-            //         values: {
-            //             min: Math.floor(min / (digit_min)) * (digit_min),
-            //             max: Math.ceil(max / (digit_max / 10)) * (digit_max / 10)
-            //         },
-            //         range: true,
-            //         tooltip: true,
-            //         scale: true,
-            //         labels: false,
-            //         step: 2000,
-            //         set: [Math.floor(min / (digit_min)) * (digit_min), Math.ceil(max / (digit_max / 10)) * (digit_max / 10)],
-            //         tooltipFormat: (value) => value.toLocaleString()
-            //     });
-            // }
 
 
         }
@@ -541,7 +549,7 @@ if ($('#title_wrapper')) {
                                         ...data,
                                         ...validateResult.data,
                                         ctrl_buy_for: $("#ctrl_buy_for").value,
-                                        ctrl_carrier: $("#ctrl_career").value,
+                                        fdOccup: $("#fdOccup").value,
                                         ctrl_budget: budget_slider.getValue(),
                                         ctrl_disease: getCheckedCheckboxesFor("ctrl_disease")
                                     }
@@ -562,12 +570,10 @@ if ($('#title_wrapper')) {
                                 } else {
                                     el.innerHTML = el.dataset.other_insurance;
                                 }
-
                                 break;
                             case 2:
                                 const fdPackage = $btn.getAttribute('data-package');
                                 $('#form-head').innerHTML = $btn.getAttribute('data-plan');
-
 
                                 if (fdPackage) {
                                     data = {

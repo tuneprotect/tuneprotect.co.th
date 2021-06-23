@@ -38,17 +38,17 @@
 
                                     <ul>
                                         <li>
-                                            <i class="icofont-shield-alt"></i>
+                                            <i class="icofont-shield-alt">&nbsp;</i>
                                             <div><strong><em>Choose</em> the right coverage </strong> <span> You can choose the disease group that most concerns you.</span>
                                             </div>
                                         </li>
                                         <li>
-                                            <i class="icofont-coins"></i>
+                                            <i class="icofont-coins">&nbsp;</i>
                                             <div><strong><em>Choose</em> a plan according to your budget</strong> <span>Adjust, increase, or reduce insurance premiums as you wish.</span>
                                             </div>
                                         </li>
                                         <li>
-                                            <i class="icofont-holding-hands"></i>
+                                            <i class="icofont-holding-hands">&nbsp;</i>
                                             <div><strong><em>Choose</em> for yourself or those you care about</strong>
                                                 <span>Provide protection for you and your loved ones with a simple click.</span>
                                             </div>

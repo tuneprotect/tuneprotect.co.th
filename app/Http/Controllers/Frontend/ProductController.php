@@ -17,6 +17,7 @@ use App\Models\BuyLog;
 use App\Models\WebContent;
 use GuzzleHttp\Client;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Storage;
 use phpDocumentor\Reflection\Project;
 
@@ -50,7 +51,7 @@ class ProductController extends BaseController
         if ($selected) {
             return $this->genDetailPage($selected, false);
         } else {
-            return redirect("/" . $this->locale.'/product/'.$link);
+            return redirect("/" . $this->locale . '/product/' . $link);
         }
     }
 
@@ -156,7 +157,7 @@ class ProductController extends BaseController
 
         $this->template->setBody('id', 'product_page');
 
-        if($isPage){
+        if ($isPage) {
             $this->bodyData['category_leadform'] = WebContent::where('type_id', ProjectEnum::WEB_CONTENT_LEADFORM_CATEGORY)
                 ->with('locales')
                 ->get();
@@ -169,9 +170,9 @@ class ProductController extends BaseController
 
         $this->bodyData['controller'] = $this->controller;
 
-        if($isPage){
+        if ($isPage) {
             $this->bodyData['faq'] = $this->setFaq(ProjectEnum::WEB_CONTENT_FAQ, $this->bodyData['current_package']->id);
-        }else{
+        } else {
             $this->bodyData['faq'] = $this->setFaq('faq.content', $this->bodyData['current_package']->id);
         }
 
@@ -188,15 +189,12 @@ class ProductController extends BaseController
         if ($this->controller != 'product') {
             return $this->genView('frontend.page.portal');
         } else {
-            if(!$isPage){
+            if (!$isPage) {
                 return $this->genView('frontend.page.product_form');
             }
             return $this->genView('frontend.page.product');
         }
-
-
     }
-
 
 
     protected function combindObj($data)
@@ -220,11 +218,13 @@ class ProductController extends BaseController
             $obj = new VACINAObject();
         } elseif (substr($data['fdPackage'], 0, 8) === 'ONVSAFEA') {
             $obj = new VACINAObject();
-        }elseif (substr($data['fdPackage'], 0, 2) === 'CI') {
+        } elseif (substr($data['fdPackage'], 0, 2) === 'CI') {
             $obj = new CIObject();
-            $this->payment =  'CC,FULL,IPP';
-            $this->ipp_interest_type = "A";
-        }else {
+            $this->payment = 'CC,FULL,IPP';
+            $this->ipp_interest_type = "C";
+            $data['fdPackage'] .= str_replace(['F', ','], "", $data['ctrl_disease']);
+
+        } else {
             $obj = new BaseInsuranceObject();
         }
 
@@ -420,6 +420,8 @@ class ProductController extends BaseController
         $arr_post['payment_option'] = $this->payment;
         $arr_post['ipp_interest_type'] = $this->ipp_interest_type;;
         $arr_post['default_lang'] = $this->locale;
+        $arr_post['ipp_period_filter'] = 10;
+
         $params = join($arr_post);
         $arr_post['hash_value'] = hash_hmac('sha256', $params, config('payment.secret'), false);    //Compute hash value
 
@@ -450,6 +452,9 @@ class ProductController extends BaseController
         } elseif (substr($package, 0, 8) === 'ONVSAFEA') {
             $this->thankYouParam = substr($package, 0, 8);
             $link = 'IssuePolicyVsafe';
+        } elseif (substr($package, 0, 2) === 'CI') {
+            $this->thankYouParam = substr($package, 0, 2);
+            $link = 'IssuePolicyCI';
         }
         return config('tune-api.url') . $link;
     }
@@ -619,12 +624,15 @@ class ProductController extends BaseController
 
         $arr_post['amount'] = str_pad((1000) * 100, 12, '0', STR_PAD_LEFT);
         $arr_post['customer_email'] = 'test@test.com';
+        $arr_post['user_defined_1'] = 'aaa';
+        $arr_post['user_defined_2'] = session('return_link');
         $arr_post['result_url_1'] = url("{$this->locale}/product/result");
-        $arr_post['payment_option'] = "CC,FULL,IPP";
-        $arr_post['ipp_interest_type'] = 'A';
-        $arr_post['ipp_period_filter'] = '3,6';
-        $arr_post['ipp_interest_type'] = $this->ipp_interest_type;
+        $arr_post['payment_option'] = "CC,FULL";
+        $arr_post['ipp_interest_type'] = 'M';
         $arr_post['default_lang'] = $this->locale;
+//        $arr_post['ipp_period_filter'] = '10';
+
+
         $params = join($arr_post);
         $arr_post['hash_value'] = hash_hmac('sha256', $params, config('payment.secret'), false);    //Compute hash value
 
@@ -635,7 +643,7 @@ class ProductController extends BaseController
 
     public function testIssueApi()
     {
-        $result = $this->sendToApiIssue("00000000075", "001", "5565654654");
+        $result = $this->sendToApiIssue("00000000119", "001", "5565654654");
         dd($result);
     }
 
@@ -651,6 +659,32 @@ class ProductController extends BaseController
         dd($result);
 
 
+    }
+
+    public function checkDup(Request $request)
+    {
+        $data = $request->all();
+
+        $response = Http::withBasicAuth('TPTWEBSITE', 'TPTWEBSITE@123')
+            ->post('http://webtest1.tuneinsurance.co.th/tunepolicy/api/WEBSITE/PersonalValidationCI', [
+                'fdNationalID' => '',
+                'fdName' => '',
+                'fdSurname' =>'',
+                'fdPackage' => $data['fdPackage'],
+                'CheckType' => $data['CheckType'],
+            ])->json();
+
+        $this->apiResult = $response;
+
+        if ($response['status'] == 'success') {
+            $this->apiStatus = self::SUCCESS;
+
+        } else {
+            $this->apiStatus = $response['data']['Message'];
+
+        }
+
+        return $this->send();
     }
 
 }

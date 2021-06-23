@@ -22,6 +22,7 @@ export function WYSIWYGEditor({label, value, setValues}) {
                 extraPlugins: 'iframe',
                 allowedContent : true,
                 filebrowserImageBrowseUrl: '/file-manager/ckeditor',
+                extraAllowedContent : 'i(*)[*]{*};div(*)[*]{*}'
             }}
             onBlur={(e) => setValues(e.editor.getData())}
             onChange={(e) => setValues(e.editor.getData())}

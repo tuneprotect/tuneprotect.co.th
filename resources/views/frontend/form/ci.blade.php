@@ -15,12 +15,12 @@
                         <label for="ctrl_travel_type">@lang("product.insurer_type")</label>
                     </div>
                     <div class="controls-wrapper">
-                        <select id="ctrl_career" name="ctrl_career">
+                        <select id="fdOccup" name="fdOccup">
                             @foreach(__('product.career_list') as $k => $v)
                                 <option value="{{$k}}">{{$v}}</option>
                             @endforeach
                         </select>
-                        <label for="ctrl_career">@lang("product.career")</label>
+                        <label for="fdOccup">@lang("product.career")</label>
                     </div>
                 </div>
                 @include('frontend.component.form-date-input')
