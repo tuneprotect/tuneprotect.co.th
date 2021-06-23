@@ -1,6 +1,6 @@
 import {$, $$, calculateAge, current_package, fadeIn, fadeOut, scrollToTargetAdjusted} from "../helper";
 import {isValid, parseISO} from "date-fns";
-import {showDateError} from "../validate_form";
+import {showDateError, showFieldError} from "../validate_form";
 
 export const getPackageData = async (currentPackage) => {
     let res = await fetch(`/storage/json/${currentPackage.toLowerCase()}.json`);
@@ -75,34 +75,50 @@ export const validateAgeInPackage = (package_data, cal_price) => {
     };
 }
 
-export const validatePolicy = async (value, options, key, attributes, new_fdPackage) => {
-    // if (attributes.fdNationalID && attributes.fdName && attributes.fdSurname) {
 
+const callValidateApi = async (data) => {
+    const response = await fetch(`/${$('html').getAttribute('lang')}/Product/checkDup`, {
+        method: 'post',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').getAttribute('content')
+        },
+        body: JSON.stringify({...data, CheckType: null})
+    })
 
-        // let data_post = {
-        //     fdNationalID: attributes.fdNationalID,
-        //     fdName: attributes.fdName,
-        //     fdSurname: attributes.fdSurname,
-        //     fdPackage: new_fdPackage,
-        //     CheckType: ''
-        // };
+    return await response.json();
+}
 
-        // const response = await fetch(`/${$('html').getAttribute('lang')}/Product/checkDup`, {
-        //     method: 'post',
-        //     headers: {
-        //         'Accept': 'application/json',
-        //         'Content-Type': 'application/json',
-        //         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').getAttribute('content')
-        //     },
-        //     body: JSON.stringify(data_post)
-        // })
-        //
-        // return await response.json();
+export const validateJSPolicy = async (value, options, key, attributes, fdPackage) => {
+    if (Object.keys(attributes).every((k) => !!attributes[k])) {
+        const result = await callValidateApi({...attributes, fdPackage})
+        if (result.status === 'error') {
+            return "^"+result.message
+        }
+    }
+}
 
+export const validatePolicy = async ($this, fdPackage) => {
 
+    let field = $this.getAttribute('name');
 
+    let data = {fdName: null, fdSurname: null, fdNationalID: null}
+    Object.keys(data).map((k) => {
+        let fieldId = k;
+        if (field.startsWith('data_')) {
+            const index = field.split("_")[1];
+            fieldId = `data_${index}_${k}`;
+        }
+        data = {...data, [k]: $(`#${fieldId}`).value}
+    });
 
-    // }
+    if (Object.keys(data).every((k) => !!data[k])) {
+        const result = await callValidateApi({...data, fdPackage})
+        if (result.status === 'error') {
+            showFieldError($this, [result.message]);
+        }
+    }
 }
 
 export const genPrice = (birthday, package_data) => {

@@ -673,16 +673,16 @@ class ProductController extends BaseController
             ],
             'body' => json_encode($data)
         ]);
-        $res =  json_decode($response->getBody()->getContents(), true);
+        $res = (object)json_decode($response->getBody()->getContents(), true);
 
-        $this->apiResult = $res->status ? self::SUCCESS : self::ERROR ;
+        $this->apiResult = $res->status ? self::SUCCESS : self::ERROR;
 
         if ($res->status) {
             $this->apiStatus = self::SUCCESS;
             $this->apiStatusText = self::SUCCESS;
         } else {
             $this->apiStatus = self::ERROR;
-            $this->apiStatusText = __('product.error.'.$res->message);
+            $this->apiStatusText = __('product.error.' . $res->message);
         }
 
         return $this->send();

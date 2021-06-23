@@ -5,7 +5,8 @@ import {
     getPackageData,
     showTitle,
     validateAgeInPackage,
-    validatePolicy
+    validatePolicy,
+    validateJSPolicy
 } from "../form/productHelper";
 import {
     $,
@@ -36,22 +37,25 @@ if ($('#title_wrapper')) {
             return "^" + $('#fdNationalID').getAttribute('data-error-idcard')
         }
     };
-    validate.validators.checkPolicy = async function (value, options, key, attributes) {
 
-        // console.log({value, options, key, attributes});
+    validate.validators.checkPolicy = async (value, options, key, attributes) => {
         // let new_fdPackage = attributes.fdPackage + attributes.ctrl_disease.join('').replace("F", "")
-        // return await validatePolicy(value, options, key, attributes, 'CI001CT');
-        return new validate.Promise(function(resolve, reject) {
-            setTimeout(function() {
-                if (value === "foo") resolve();
-                else resolve("is not foo");
-            }, 100);
-        });
-
-
-
-
+        return await validateJSPolicy(value, options, key, attributes, 'CI001CT');
     };
+
+
+    const ajaxConstrains = {
+        fdName: {
+            checkPolicy: true,
+        },
+        fdSurname: {
+            checkPolicy: true,
+        },
+        fdNationalID: {
+            checkPolicy: true,
+        }
+    }
+
 
     const constraints = {
         fdTitle: {
@@ -64,15 +68,13 @@ if ($('#title_wrapper')) {
             presence: {
                 allowEmpty: false,
                 message: "^" + $('#fdName').getAttribute('data-error-name')
-            },
-            checkPolicy: true
+            }
         },
         fdSurname: {
             presence: {
                 allowEmpty: false,
                 message: "^" + $('#fdSurname').getAttribute('data-error-last_name')
-            },
-            checkPolicy: true
+            }
         },
         fdSex: {
             presence: {
@@ -83,7 +85,6 @@ if ($('#title_wrapper')) {
         ctrl_document_type: "",
         fdNationalID: function (value, attributes, attributeName, options, constraints) {
             if (attributes.ctrl_document_type === 'บัตรประจำตัวประชาชน') {
-
                 return {
                     presence: {
                         allowEmpty: false,
@@ -99,11 +100,8 @@ if ($('#title_wrapper')) {
                     },
                     idcard: {
                         message: "^" + $('#fdNationalID').getAttribute('data-error-idcard')
-                    },
-                    checkPolicy: true
+                    }
                 }
-
-
             } else {
                 return {
                     presence: {
@@ -210,7 +208,6 @@ if ($('#title_wrapper')) {
         },
     };
 
-
     document.addEventListener("DOMContentLoaded", async () => {
 
         const package_data = await getPackageData(current_package);
@@ -302,7 +299,6 @@ if ($('#title_wrapper')) {
             set: [defaultValue.min, defaultValue.max],
         };
 
-
         let budget_slider = new rSlider(slideOption);
 
         const genRangeSlidByHbd = () => {
@@ -320,8 +316,6 @@ if ($('#title_wrapper')) {
                     disabled: false
                 });
             }
-
-
         }
 
         $$('#ctrl_day,#ctrl_year,#ctrl_month').forEach($el => {
@@ -457,22 +451,42 @@ if ($('#title_wrapper')) {
         allField.forEach(field => {
             field.addEventListener("change", function (e) {
                 validateField(this, constraints);
+
+                if (['fdName', 'fdSurname', 'fdNationalID'].includes(field.id)) {
+                    validate.async({
+                        fdName: $('#fdName').value,
+                        fdSurname: $('#fdSurname').value,
+                        fdNationalID: $('#fdNationalID').value,
+                    }, ajaxConstrains).then(
+                        () => {},
+                        (error) => {
+
+                            showFieldError($('#fdNationalID'), error['fdNationalID']);
+
+                            console.log({error})
+                        }
+                    );
+                }
             });
         });
 
+        // $$("[id$=fdName],[id$=fdSurname],[id$=fdNationalID]").forEach($el => {
+        //     $el.addEventListener('change', (e) => {
+        //         // validatePolicy(e.target, data.fdPackage + data.ctrl_disease.join('').replace("F", ""));
+        //         validatePolicy(e.target, "CI0001");
+        //     })
+        // });
+
+
         $$(".checkbox_disease").forEach($el => {
             $el.addEventListener("change", function (e) {
-
                 data = {
                     ...data,
                     ctrl_disease: getCheckedCheckboxesFor("ctrl_disease")
                 }
-
-
                 genPrice();
             });
         });
-
 
         const hideShowDiseaseBox = (goToStep) => {
             switch (parseInt(goToStep)) {
