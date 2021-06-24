@@ -7,6 +7,9 @@ export const showFieldError = ($this, errors) => {
     errors.map((v, i) => {
         if (i === 0) {
             $parent.classList.add('error');
+            if(!!$parent.querySelector('cite')){
+                $parent.querySelector('cite').remove();
+            }
             const $cite = document.createElement('cite');
             $cite.innerHTML = v;
             $parent.appendChild($cite);

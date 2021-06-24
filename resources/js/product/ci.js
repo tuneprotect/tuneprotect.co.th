@@ -28,6 +28,10 @@ require('../main');
 require('../product');
 require('../lib/rSlider.min');
 if ($('#title_wrapper')) {
+
+    let $fdPackage, $ctrl_disease;
+
+
     validate.validators.idcard = function (value, options, key, attributes) {
         for (var i = 0, sum = 0; i < 12; i++) {
             sum += parseFloat(value.charAt(i)) * (13 - i);
@@ -39,8 +43,10 @@ if ($('#title_wrapper')) {
     };
 
     validate.validators.checkPolicy = async (value, options, key, attributes) => {
-        // let new_fdPackage = attributes.fdPackage + attributes.ctrl_disease.join('').replace("F", "")
-        return await validateJSPolicy(value, options, key, attributes, 'CI001CT');
+
+        let new_fdPackage = $fdPackage + $ctrl_disease.join('').replace("F", "")
+        console.log({new_fdPackage})
+        return await validateJSPolicy(value, options, key, attributes, new_fdPackage);
     };
 
 
@@ -451,17 +457,20 @@ if ($('#title_wrapper')) {
         allField.forEach(field => {
             field.addEventListener("change", function (e) {
                 validateField(this, constraints);
-
-                if (['fdName', 'fdSurname', 'fdNationalID'].includes(field.id)) {
+                let fdList = ['fdName', 'fdSurname', 'fdNationalID'];
+                if (fdList.includes(field.id)) {
                     validate.async({
                         fdName: $('#fdName').value,
                         fdSurname: $('#fdSurname').value,
                         fdNationalID: $('#fdNationalID').value,
                     }, ajaxConstrains).then(
-                        () => {},
+                        () => {
+                        },
                         (error) => {
-
-                            showFieldError($('#fdNationalID'), error['fdNationalID']);
+                            fdList.map(function(k) {
+                                console.log(k)
+                                showFieldError($(`#${k}`), error[k]);
+                            })
 
                             console.log({error})
                         }
@@ -552,6 +561,8 @@ if ($('#title_wrapper')) {
                             case 2:
                                 const fdPackage = $btn.getAttribute('data-package');
                                 $('#form-head').innerHTML = $btn.getAttribute('data-plan');
+                                $fdPackage = fdPackage;
+                                $ctrl_disease = getCheckedCheckboxesFor("ctrl_disease");
 
                                 if (fdPackage) {
                                     data = {
