@@ -105,22 +105,25 @@ class ProductController extends BaseController
 
         if ($selected) {
             $this->bodyData['selected'] = $selected;
-
-            foreach ($this->bodyData['current_product']->productPackage as $v) {
-                if ($v->code === $selected) {
-                    $this->setStaticPageHeader($v);
-                    $this->bodyData['slideshow'] = [$this->bodyData['current_product']];
+            if (isset($this->bodyData['current_product'])) {
+                foreach ($this->bodyData['current_product']->productPackage as $v) {
+                    if ($v->code === $selected) {
+                        $this->setStaticPageHeader($v);
+                        $this->bodyData['slideshow'] = [$this->bodyData['current_product']];
 //                    dd($this->bodyData['slideshow']);
+                    }
                 }
             }
+
         } else {
             $this->bodyData['selected'] = @$this->bodyData['current_product']->productPackage[0]->code;
             $this->setStaticPageHeader($this->bodyData['current_product']);
         }
-
-        foreach ($this->bodyData['current_product']->productPackage as $v) {
-            if ($v->code === $this->bodyData['selected']) {
-                $this->bodyData['current_package'] = $v;
+        if (isset($this->bodyData['current_product'])) {
+            foreach ($this->bodyData['current_product']->productPackage as $v) {
+                if ($v->code === $this->bodyData['selected']) {
+                    $this->bodyData['current_package'] = $v;
+                }
             }
         }
 
@@ -171,7 +174,7 @@ class ProductController extends BaseController
         $this->bodyData['controller'] = $this->controller;
 
         if ($isPage) {
-            $this->bodyData['faq'] = $this->setFaq(ProjectEnum::WEB_CONTENT_FAQ, $this->bodyData['current_package']->id);
+            $this->bodyData['faq'] = $this->setFaq(ProjectEnum::WEB_CONTENT_FAQ, @$this->bodyData['current_package']->id);
         } else {
             $this->bodyData['faq'] = $this->setFaq('faq.content', $this->bodyData['current_package']->id);
         }

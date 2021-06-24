@@ -4,7 +4,7 @@ import {
     formatTelNumber,
     getPackageData,
     getProvinceData,
-    showMultipleTitle
+    showMultipleTitle, validatePolicy
 } from "../form/productHelper";
 import {$, $$, current_package, getRadioSelectedValue, getZipcodeData, locale, scrollToTargetAdjusted} from "../helper";
 
@@ -231,11 +231,10 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     let Keys = "";
     let myEle = document.getElementById("portal_key");
-    if(myEle){
-        Keys= myEle.value;
+    if (myEle) {
+        Keys = myEle.value;
         let status_api = document.getElementById("status_api");
-        if(!status_api.value)
-        {
+        if (!status_api.value) {
             Swal.fire({
                 title: 'Error!',
                 text: 'Error : Portal keys. User not found.',
@@ -247,7 +246,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     let step = 1;
     let data = {
-        fdKeys : Keys,
+        fdKeys: Keys,
         fdPayAMT: "",
         fdFromDate: "",
         fdToDate: "",
@@ -257,7 +256,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         profile: []
     };
     let iti = {};
-
+    let $dataSubPackage;
     let provinceOption = `<option value="">${$('#fdDestFrom').getAttribute('data-please-select')}</option>`;
 
     provinceData.forEach(v => {
@@ -327,6 +326,15 @@ document.addEventListener("DOMContentLoaded", async () => {
     allField.forEach(field => {
         field.addEventListener("change", function (e) {
             validateField(this, profileConstraints);
+
+            for (let i = 1; i <=  $('#ctrl_no_of_insured').value; i++) {
+                if ([`data_${i}_fdName`, `data_${i}_fdSurname`, `data_${i}_fdNationalID`].includes(field.id)) {
+                    validatePolicy(e.target, $dataSubPackage);
+                }
+            }
+
+
+
         });
     });
 
@@ -357,7 +365,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                         removeError($('#step1'));
                         if (result) {
                             showError($('#step1'), result);
-                            return  false;
+                            return false;
                         }
 
                         let fromDate = ($('#fdFromDate').value).split('/');
@@ -374,6 +382,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                         break;
                     case 2:
                         const fdPackage = $btn.getAttribute('data-package') + $btn.getAttribute('data-sub-package');
+                        $dataSubPackage = fdPackage;
                         $('#form-head').innerHTML = $btn.getAttribute('data-plan');
                         if (fdPackage) {
                             data = {
@@ -393,10 +402,9 @@ document.addEventListener("DOMContentLoaded", async () => {
 
                         //Case web portal
                         let myEle = document.getElementById("portal_key");
-                        if(myEle){
+                        if (myEle) {
                             let status_api = document.getElementById("status_api");
-                            if(!status_api.value)
-                            {
+                            if (!status_api.value) {
                                 Swal.fire({
                                     title: 'Error!',
                                     text: 'Error : Portal keys. User not found.',

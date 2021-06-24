@@ -8,7 +8,7 @@ import {
     getPackageData,
     getSelectedPrice,
     showTitle,
-    validateAgeInPackage
+    validateAgeInPackage, validatePolicy
 } from "../form/productHelper";
 import {format, parseISO} from "date-fns";
 import intlTelInput from "intl-tel-input";
@@ -254,6 +254,9 @@ document.addEventListener("DOMContentLoaded", async () => {
     allField.forEach(field => {
         field.addEventListener("change", function (e) {
             validateField(this, constraints);
+            if (['fdName', 'fdSurname', 'fdNationalID'].includes(field.id)) {
+                validatePolicy(e.target, data.fdPackage);
+            }
         });
     });
 

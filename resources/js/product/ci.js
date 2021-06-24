@@ -29,8 +29,6 @@ require('../product');
 require('../lib/rSlider.min');
 if ($('#title_wrapper')) {
 
-    let $fdPackage, $ctrl_disease;
-
 
     validate.validators.idcard = function (value, options, key, attributes) {
         for (var i = 0, sum = 0; i < 12; i++) {
@@ -41,26 +39,6 @@ if ($('#title_wrapper')) {
             return "^" + $('#fdNationalID').getAttribute('data-error-idcard')
         }
     };
-
-    validate.validators.checkPolicy = async (value, options, key, attributes) => {
-
-        let new_fdPackage = $fdPackage + $ctrl_disease.join('').replace("F", "")
-        console.log({new_fdPackage})
-        return await validateJSPolicy(value, options, key, attributes, new_fdPackage);
-    };
-
-
-    const ajaxConstrains = {
-        fdName: {
-            checkPolicy: true,
-        },
-        fdSurname: {
-            checkPolicy: true,
-        },
-        fdNationalID: {
-            checkPolicy: true,
-        }
-    }
 
 
     const constraints = {
@@ -256,7 +234,6 @@ if ($('#title_wrapper')) {
 
 
         let defaultValue = genMinMax();
-
         let step = 1;
         let data = {
             fdTitle: "",
@@ -457,34 +434,11 @@ if ($('#title_wrapper')) {
         allField.forEach(field => {
             field.addEventListener("change", function (e) {
                 validateField(this, constraints);
-                let fdList = ['fdName', 'fdSurname', 'fdNationalID'];
-                if (fdList.includes(field.id)) {
-                    validate.async({
-                        fdName: $('#fdName').value,
-                        fdSurname: $('#fdSurname').value,
-                        fdNationalID: $('#fdNationalID').value,
-                    }, ajaxConstrains).then(
-                        () => {
-                        },
-                        (error) => {
-                            fdList.map(function(k) {
-                                console.log(k)
-                                showFieldError($(`#${k}`), error[k]);
-                            })
-
-                            console.log({error})
-                        }
-                    );
+                if (['fdName', 'fdSurname', 'fdNationalID'].includes(field.id)) {
+                    validatePolicy(e.target, data.fdPackage + data.ctrl_disease.join('').replace("F", ""));
                 }
             });
         });
-
-        // $$("[id$=fdName],[id$=fdSurname],[id$=fdNationalID]").forEach($el => {
-        //     $el.addEventListener('change', (e) => {
-        //         // validatePolicy(e.target, data.fdPackage + data.ctrl_disease.join('').replace("F", ""));
-        //         validatePolicy(e.target, "CI0001");
-        //     })
-        // });
 
 
         $$(".checkbox_disease").forEach($el => {
@@ -561,8 +515,6 @@ if ($('#title_wrapper')) {
                             case 2:
                                 const fdPackage = $btn.getAttribute('data-package');
                                 $('#form-head').innerHTML = $btn.getAttribute('data-plan');
-                                $fdPackage = fdPackage;
-                                $ctrl_disease = getCheckedCheckboxesFor("ctrl_disease");
 
                                 if (fdPackage) {
                                     data = {
@@ -585,6 +537,7 @@ if ($('#title_wrapper')) {
 
                                 break;
                             case 3:
+
 
                                 let address = ($('#ctrl_province').value).split('*');
                                 let today = new Date();
@@ -622,6 +575,7 @@ if ($('#title_wrapper')) {
                                 }
 
                                 const result = validate(data, constraints);
+
                                 const $cite = $form.getElementsByTagName('cite');
                                 for (let i = 0, len = $cite.length; i !== len; ++i) {
                                     $cite[0].parentNode.removeChild($cite[0]);
@@ -683,7 +637,7 @@ if ($('#title_wrapper')) {
                                     status = true;
                                     hideShowDiseaseBox(goToStep);
                                 }
-
+                                console.log({status})
                                 break;
                         }
                     }

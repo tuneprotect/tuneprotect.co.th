@@ -1,6 +1,7 @@
 import {$, $$, calculateAge, current_package, fadeIn, fadeOut, scrollToTargetAdjusted} from "../helper";
 import {isValid, parseISO} from "date-fns";
 import {showDateError, showFieldError} from "../validate_form";
+import Swal from "sweetalert2";
 
 export const getPackageData = async (currentPackage) => {
     let res = await fetch(`/storage/json/${currentPackage.toLowerCase()}.json`);
@@ -90,19 +91,11 @@ const callValidateApi = async (data) => {
     return await response.json();
 }
 
-export const validateJSPolicy = async (value, options, key, attributes, fdPackage) => {
-    if (Object.keys(attributes).every((k) => !!attributes[k])) {
-        const result = await callValidateApi({...attributes, fdPackage})
-        if (result.status === 'error') {
-            return "^"+result.message
-        }
-    }
-}
 
 export const validatePolicy = async ($this, fdPackage) => {
 
     let field = $this.getAttribute('name');
-
+    console.log({field})
     let data = {fdName: null, fdSurname: null, fdNationalID: null}
     Object.keys(data).map((k) => {
         let fieldId = k;
@@ -112,11 +105,22 @@ export const validatePolicy = async ($this, fdPackage) => {
         }
         data = {...data, [k]: $(`#${fieldId}`).value}
     });
-
+    console.log({data})
     if (Object.keys(data).every((k) => !!data[k])) {
         const result = await callValidateApi({...data, fdPackage})
         if (result.status === 'error') {
-            showFieldError($this, [result.message]);
+            // showFieldError($this, [result.message]);
+            $('button[data-step="4"]').style.display = 'none';
+            $this.closest('.controls-wrapper').classList.add("error");
+
+            Swal.fire({
+                icon: 'error',
+                text: result.message
+            })
+            return false;
+        } else {
+            $('button[data-step="4"]').style.display = 'inline-flex';
+            return true;
         }
     }
 }
