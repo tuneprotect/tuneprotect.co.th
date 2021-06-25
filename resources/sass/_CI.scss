@@ -133,11 +133,26 @@ main[data-package="CI"] {
         }
     }
 
+    .product-detail {
+        #btn-more {
+            display: none;
+        }
+    }
+
     #table-detail {
         thead {
             tr {
                 th {
                     vertical-align: bottom;
+                }
+            }
+        }
+
+        tbody {
+            tr {
+
+                &:nth-child(n+5) {
+                    display: table-row;
                 }
             }
         }
@@ -569,6 +584,7 @@ main[data-package="CI"] {
                 @media all and (max-width: $md) {
                     height: auto !important;
                 }
+
                 li {
                     display: flex;
                     padding: 10px 0;
@@ -604,4 +620,32 @@ main[data-package="CI"] {
             }
         }
     }
+
+    .check_q-wrapper {
+        display: flex;
+        justify-content: center;
+
+        .check_q {
+            position: relative;
+
+            a {
+                max-width: 200px;
+                margin: 0 20px;
+            }
+
+            input {
+                display: none;
+            }
+        }
+    }
+
+    .question {
+        p {
+            border: 1px solid $primary-color;
+            padding: 20px 10px;
+            margin: 10px;
+            border-radius: 14px;
+        }
+    }
+
 }

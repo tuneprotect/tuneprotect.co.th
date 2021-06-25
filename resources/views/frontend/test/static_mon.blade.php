@@ -48,7 +48,7 @@
                                             </div>
                                         </li>
                                         <li>
-                                            <i class="icofont-users-alt-5">&nbsp;</i>
+                                            <img src="/images/ico_ci/2203522.svg" alt="ico_ci" style="margin-right: 34px;width: 50px">
                                             <div><strong><em>Choose</em> for yourself or those you care about</strong>
                                                 <span>Provide protection for you and your loved ones with a simple click.</span>
                                             </div>
@@ -70,71 +70,81 @@
                             <div class="highlight-ci-wrapper" style="margin-bottom: 20px">
                                 <div id="step">
                                     <div class="item">
-                                        <img src="/images/ico_ci/icon_highlight_1.png" alt="headlight"
-                                             style="width: 70px;height: 70px">
+                                        <i class="icofont-sand-clock">&nbsp;</i>
+{{--                                        <img src="/images/ico_ci/icon_highlight_1.png" alt="headlight"--}}
+{{--                                             style="width: 70px;height: 70px">--}}
                                         <p style="font-size: .8rem">Option to adjust, increase or reduce your protection
                                             coverage</p>
                                     </div>
 
                                     <div class="item">
-                                        <img src="/images/ico_ci/icon_highlight_2.png" alt="headlight"
-                                             style="width: 70px;height: 70px">
+{{--                                        <img src="/images/ico_ci/icon_highlight_2.png" alt="headlight"--}}
+{{--                                             style="width: 70px;height: 70px">--}}
+                                        <i class="icofont-sand-clock">&nbsp;</i>
                                         <p style="font-size: .8rem">Easily payable by credit card installments*
                                         </p>
                                     </div>
 
                                     <div class="item">
-                                        <img src="/images/ico_ci/icon_highlight_3.png" alt="headlight"
-                                             style="width: 70px;height: 70px">
+{{--                                        <img src="/images/ico_ci/icon_highlight_3.png" alt="headlight"--}}
+{{--                                             style="width: 70px;height: 70px">--}}
+                                        <i class="icofont-sand-clock">&nbsp;</i>
                                         <p style="font-size: .8rem">Receive daily hospital cash and home nursing care
                                             benefits
                                         </p>
                                     </div>
 
                                     <div class="item">
-                                        <img src="/images/ico_ci/icon_highlight_4.png" alt="headlight"
-                                             style="width: 70px;height: 70px">
+{{--                                        <img src="/images/ico_ci/icon_highlight_4.png" alt="headlight"--}}
+{{--                                             style="width: 70px;height: 70px">--}}
+                                        <i class="icofont-sand-clock">&nbsp;</i>
                                         <p style="font-size: .8rem">Renewable up to 65
                                         </p>
                                     </div>
 
                                     <div class="item">
-                                        <img src="/images/ico_ci/icon_highlight_5.png" alt="headlight"
-                                             style="width: 70px;height: 70px">
+{{--                                        <img src="/images/ico_ci/icon_highlight_5.png" alt="headlight"--}}
+{{--                                             style="width: 70px;height: 70px">--}}
+                                        <i class="icofont-sand-clock">&nbsp;</i>
                                         <p style="font-size: .8rem">Insurance premiums are tax deductible*</p>
                                     </div>
 
                                     <div class="item">
-                                        <img src="/images/ico_ci/icon_highlight_6.png" alt="headlight"
-                                             style="width: 70px;height: 70px">
+{{--                                        <img src="/images/ico_ci/icon_highlight_6.png" alt="headlight"--}}
+{{--                                             style="width: 70px;height: 70px">--}}
+                                        <i class="icofont-sand-clock">&nbsp;</i>
                                         <p style="font-size: .8rem">Protection against critical illnesses with coverage
                                             up to 3 million baht</p>
                                     </div>
 
                                     <div class="item">
-                                        <img src="/images/ico_ci/icon_highlight_7.png" alt="headlight"
-                                             style="width: 70px;height: 70px">
+{{--                                        <img src="/images/ico_ci/icon_highlight_7.png" alt="headlight"--}}
+{{--                                             style="width: 70px;height: 70px">--}}
+                                        <i class="icofont-sand-clock">&nbsp;</i>
                                         <p style="font-size: .8rem">Covers five critical illnesses</p>
                                     </div>
 
                                     <div class="item">
-                                        <img src="/images/ico_ci/icon_highlight_8.png" alt="headlight"
-                                             style="width: 70px;height: 70px">
+{{--                                        <img src="/images/ico_ci/icon_highlight_8.png" alt="headlight"--}}
+{{--                                             style="width: 70px;height: 70px">--}}
+                                        <i class="icofont-sand-clock">&nbsp;</i>
                                         <p style="font-size: .8rem">Receive a second medical opinion as well as
                                             consulting a doctor online
                                         </p>
                                     </div>
 
                                     <div class="item">
-                                        <img src="/images/ico_ci/icon_highlight_9.png" alt="headlight"
-                                             style="width: 70px;height: 70px">
+{{--                                        <img src="/images/ico_ci/icon_highlight_9.png" alt="headlight"--}}
+{{--                                             style="width: 70px;height: 70px">--}}
+                                        <i class="icofont-sand-clock">&nbsp;</i>
                                         <p style="font-size: .8rem">Apply now without having to purchase life
                                             insurance.</p>
                                     </div>
 
                                     <div class="item">
-                                        <img src="/images/ico_ci/icon_highlight_10.png" alt="headlight"
-                                             style="width: 70px;height: 70px">
+{{--                                        <img src="/images/ico_ci/icon_highlight_10.png" alt="headlight"--}}
+{{--                                             style="width: 70px;height: 70px">--}}
+                                        <i class="icofont-sand-clock">&nbsp;</i>
                                         <p style="font-size: .8rem">Answer three simple health questions; no need to go
                                             to the hospital for a check-up</p>
                                     </div>
@@ -173,26 +183,24 @@
                             </div>
 
                             <div>
-                                <h2>Top 5 deadly diseases in Thailand</h2>
+                                <h2>Top 6 deadly diseases in Thailand</h2>
                                 <small>*Number of deaths per hour</small>
 
                                 <ul>
                                     <li><strong style="width: 270px;">7.7</strong> <span> Cancer</span></li>
-                                    <li><strong style="width: 113px;">3.2</strong> <span>Hemorrhagic stroke</span></li>
-                                    <li><strong style="width: 98px;">2.8</strong> <span>Atrial fibrillation severe stroke</span>
+                                    <li><strong style="width: 140px;">3.2</strong> <span>Hemorrhagic stroke</span></li>
+                                    <li><strong style="width: 118px;">2.8</strong> <span>Atrial fibrillation severe stroke</span>
                                     </li>
-                                    <li><strong style="width: 84px;">2.4</strong> <span>Lung disease</span></li>
-                                    <li><strong style="width: 60px;">1.7</strong> <span>Chronic kidney disease</span>
+                                    <li><strong style="width: 94px;">2.4</strong> <span>Lung disease</span></li>
+                                    <li><strong style="width: 70px;">1.7</strong> <span>Chronic kidney disease</span>
                                     </li>
+                                    <li><strong style="width: 60px;">1.0</strong> <span>Diabetes</span></li>
                                 </ul>
                                 <div class="why-ci-source">
-                                    <ul>
-                                        <li>Source : Ministry of public health</li>
-                                        <li>
-                                            Source : Diabetes association of Thailand
-                                        </li>
-                                        <li>Source : bangkokhospital</li>
-                                    </ul>
+                                    <em style="font-size: .6rem">
+                                        Source : Ministry of public health, Diabetes association of Thailand, Bangkok hospital
+                                    </em>
+
                                 </div>
 
                             </div>
@@ -207,15 +215,15 @@
                                 <div class="ci-cost-box">
                                     <div class="ci-cost-table">
                                         <h6>Cancer</h6>
-                                        <ul style="height: 340px">
+                                        <ul>
                                             <li><strong>Diagnostics</strong> <span
-                                                    class="col-price">Premium starts 30,000 Baht</span></li>
+                                                    class="col-price">Starts 30,000฿</span></li>
                                             <li><strong>Surgery operation</strong> <span
-                                                    class="col-price">Premium starts 200,000 Baht</span></li>
+                                                    class="col-price">Starts 200,000฿</span></li>
                                             <li><strong>Intensity Modulated Radiation Therapy</strong> <span
-                                                    class="col-price">100,000 – 500,000 Baht</span></li>
+                                                    class="col-price">100,000 – 500,000฿</span></li>
                                             <li><strong>Chemotherapy</strong> <span
-                                                    class="col-price">Premium starts 400,000 – 1,200,000 Baht</span>
+                                                    class="col-price">400,000 – 1,200,000฿</span>
                                             </li>
                                         </ul>
                                     </div>
@@ -229,13 +237,13 @@
                                 <div class="ci-cost-box">
                                     <div class="ci-cost-table">
                                         <h6>Heart Attack</h6>
-                                        <ul style="height: 340px">
-                                            <li><strong>Balloon angioplasty therapy </strong> <span class="col-price">200,000 – 1,000,000 Baht</span>
+                                        <ul>
+                                            <li><strong>Balloon angioplasty therapy </strong> <span class="col-price">200,000 – 1,000,000฿</span>
                                             </li>
                                             <li><strong>Coronary artery surgery</strong> <span
-                                                    class="col-price">550,000 – 650,000 Baht</span></li>
+                                                    class="col-price">550,000 – 650,000฿</span></li>
                                             <li><strong>Coronary angiography examination </strong> <span
-                                                    class="col-price">150,000 Baht</span>
+                                                    class="col-price">Starts 150,000฿</span>
                                             </li>
                                         </ul>
                                     </div>
@@ -339,7 +347,7 @@
                                                 <span>ปรับ ลด-เพิ่ม เบี้ยประกันได้ตามใจ</span></div>
                                         </li>
                                         <li>
-                                            <i class="icofont-users-alt-5">&nbsp;</i>
+                                          <img src="/images/ico_ci/2203522.svg" alt="ico_ci" style="margin-right: 34px;width: 50px">
                                             <div><strong><em>ได้!</em>
                                                     เลือกให้คุณหรือคนรัก</strong> <span>มอบความคุ้มครอง แทนความห่วงใย ง่ายแค่คลิก</span>
                                             </div>
@@ -361,56 +369,64 @@
                             <div class="highlight-ci-wrapper" style="margin-bottom: 20px">
                                 <div id="step">
                                     <div class="item">
-                                        <img src="/images/ico_ci/icon_highlight_1.png" alt="headlight"
-                                             style="width: 70px;height: 70px">
+{{--                                        <img src="/images/ico_ci/icon_highlight_1.png" alt="headlight"--}}
+{{--                                             style="width: 70px;height: 70px">--}}
+                                        <i class="icofont-sand-clock">&nbsp;</i>
                                         <p style="font-size: .8rem">เลือกปรับเพิ่ม-ลด <span class="nowrap">ความคุ้มครองได้</span>
                                         </p>
                                     </div>
 
                                     <div class="item">
-                                        <img src="/images/ico_ci/icon_highlight_2.png" alt="headlight"
-                                             style="width: 70px;height: 70px">
+{{--                                        <img src="/images/ico_ci/icon_highlight_2.png" alt="headlight"--}}
+{{--                                             style="width: 70px;height: 70px">--}}
+                                        <i class="icofont-sand-clock">&nbsp;</i>
                                         <p style="font-size: .8rem">เลือกผ่อนได้ชิลๆ *
                                             <span class="nowrap">ผ่านบัตรเครดิต</span>
                                         </p>
                                     </div>
 
                                     <div class="item">
-                                        <img src="/images/ico_ci/icon_highlight_3.png" alt="headlight"
-                                             style="width: 70px;height: 70px">
+{{--                                        <img src="/images/ico_ci/icon_highlight_3.png" alt="headlight"--}}
+{{--                                             style="width: 70px;height: 70px">--}}
+                                        <i class="icofont-sand-clock">&nbsp;</i>
                                         <p style="font-size: .8rem">มีค่าชดเชยรายวัน <span
                                                 class="nowrap">และพยาบาลพิเศษ</span></p>
                                     </div>
 
                                     <div class="item">
-                                        <img src="/images/ico_ci/icon_highlight_4.png" alt="headlight"
-                                             style="width: 70px;height: 70px">
+{{--                                        <img src="/images/ico_ci/icon_highlight_4.png" alt="headlight"--}}
+{{--                                             style="width: 70px;height: 70px">--}}
+                                        <i class="icofont-sand-clock">&nbsp;</i>
                                         <p style="font-size: .8rem">คุ้มครองถึงอายุ 65 ปี</p>
                                     </div>
 
                                     <div class="item">
-                                        <img src="/images/ico_ci/icon_highlight_5.png" alt="headlight"
-                                             style="width: 70px;height: 70px">
+{{--                                        <img src="/images/ico_ci/icon_highlight_5.png" alt="headlight"--}}
+{{--                                             style="width: 70px;height: 70px">--}}
+                                        <i class="icofont-sand-clock">&nbsp;</i>
                                         <p style="font-size: .8rem">เบี้ยประกันนำไป<span
                                                 class="nowrap">ลดหย่อนภาษีได้*</span></p>
                                     </div>
 
                                     <div class="item">
-                                        <img src="/images/ico_ci/icon_highlight_6.png" alt="headlight"
-                                             style="width: 70px;height: 70px">
+{{--                                        <img src="/images/ico_ci/icon_highlight_6.png" alt="headlight"--}}
+{{--                                             style="width: 70px;height: 70px">--}}
+                                        <i class="icofont-sand-clock">&nbsp;</i>
                                         <p style="font-size: .8rem">คุ้มครองโรคร้ายทุกระยะ <span class="nowrap">สูงสุดมากกว่า 3 ล้านบาท*</span>
                                         </p>
                                     </div>
 
                                     <div class="item">
-                                        <img src="/images/ico_ci/icon_highlight_7.png" alt="headlight"
-                                             style="width: 70px;height: 70px">
+{{--                                        <img src="/images/ico_ci/icon_highlight_7.png" alt="headlight"--}}
+{{--                                             style="width: 70px;height: 70px">--}}
+                                        <i class="icofont-sand-clock">&nbsp;</i>
                                         <p style="font-size: .8rem">คุ้มครอง 5 กลุ่มโรคร้ายแรง</p>
                                     </div>
 
                                     <div class="item">
-                                        <img src="/images/ico_ci/icon_highlight_8.png" alt="headlight"
-                                             style="width: 70px;height: 70px">
+{{--                                        <img src="/images/ico_ci/icon_highlight_8.png" alt="headlight"--}}
+{{--                                             style="width: 70px;height: 70px">--}}
+                                        <i class="icofont-sand-clock">&nbsp;</i>
                                         <p style="font-size: .8rem">มีบริการความเห็นที่สองทางการแพทย์
                                             และปรึกษาแพทย์ออนไลน์</p>
                                     </div>
@@ -464,26 +480,25 @@
                             </div>
 
                             <div>
-                                <h2>5 โรคร้ายอันดับต้นๆ ที่คร่าชีวิตคนไทย</h2>
+                                <h2>6 โรคร้ายอันดับต้นๆ ที่คร่าชีวิตคนไทย</h2>
                                 <small>*จำนวนผู้เสียชีวิตต่อชั่วโมง</small>
 
                                 <ul>
                                     <li><strong style="width: 270px;">7.7</strong> <span> โรคมะเร็ง </span></li>
-                                    <li><strong style="width: 113px;">3.2</strong> <span>โรคหลอดเลือดสมองแตก</span></li>
-                                    <li><strong style="width: 98px;">2.8</strong>
+                                    <li><strong style="width: 140px;">3.2</strong> <span>โรคหลอดเลือดสมองแตก</span></li>
+                                    <li><strong style="width: 118px;">2.8</strong>
                                         <span>โรคภาวะหัวใจเต้นผิดจังหวะรุนแรง</span></li>
-                                    <li><strong style="width: 84px;">2.4</strong> <span>โรคปลอดระยะสุดท้าย</span></li>
-                                    <li><strong style="width: 60px;">1.7</strong> <span>โรคไตวายเรื้อรัง</span></li>
+                                    <li><strong style="width: 94px;">2.4</strong> <span>โรคปลอดระยะสุดท้าย</span></li>
+                                    <li><strong style="width: 70px;">1.7</strong> <span>โรคไตวายเรื้อรัง</span></li>
+                                    <li><strong style="width: 60px;">1.0</strong> <span>เบาหวาน</span></li>
                                 </ul>
 
                                 <div class="why-ci-source">
-                                    <ul>
-                                        <li>ที่มา : กระทรวงสาธารณสุข ปี พ.ศ. 2556</li>
-                                        <li>
-                                            ที่มา : สมาคมโรคเบาหวานแห่งประเทศไทย
-                                        </li>
-                                        <li>ที่มา : โรงพยาบาลกรุงเทพ</li>
-                                    </ul>
+                                    <em style="font-size: .6rem">
+                                        ที่มา : กระทรวงสาธารณสุข ปี พ.ศ. 2556,
+                                        สมาคมโรคเบาหวานแห่งประเทศไทย,
+                                        โรงพยาบาลกรุงเทพ
+                                    </em>
                                 </div>
                             </div>
                         </section>
@@ -497,15 +512,15 @@
                                 <div class="ci-cost-box">
                                     <div class="ci-cost-table">
                                         <h6>โรคมะเร็ง</h6>
-                                        <ul style="height: 284px">
+                                        <ul>
                                             <li><strong>การตรวจวินิจฉัย</strong> <span
-                                                    class="col-price">เริ่มต้น 30,000 บาท</span></li>
+                                                    class="col-price">เริ่มต้น 30,000</span></li>
                                             <li><strong>การผ่าตัด</strong> <span
-                                                    class="col-price">เริ่มต้น 200,000 บาท</span></li>
+                                                    class="col-price">เริ่มต้น 200,000</span></li>
                                             <li><strong>การให้ยาผ่านการฉายรังสี</strong> <span
-                                                    class="col-price">เริ่มต้น 100,000 – 500,000 บาท</span></li>
+                                                    class="col-price">100,000 – 500,000</span></li>
                                             <li><strong>การใช้เคมีบำบัด</strong> <span
-                                                    class="col-price">เริ่มต้น 400,000 – 1,200,000 บาท</span></li>
+                                                    class="col-price">400,000 – 1,200,000</span></li>
                                         </ul>
                                     </div>
                                     <div class="why-ci-source" style="margin-right: 10px">
@@ -519,13 +534,13 @@
                                     <div class="ci-cost-table">
                                         <h6>โรคหัวใจ</h6>
 
-                                        <ul style="height: 284px">
+                                        <ul>
                                             <li><strong>การรักษาด้วยการขยายหลอดเลือดหัวใจด้วยบอลลูน </strong> <span
-                                                    class="col-price">200,000 – 1,000,000 บาท</span></li>
+                                                    class="col-price">200,000 – 1,000,000</span></li>
                                             <li><strong>การผ่าตัดเส้นเลือดหัวใจ</strong> <span
-                                                    class="col-price">550,000 – 650,000 บาท</span></li>
+                                                    class="col-price">550,000 – 650,000</span></li>
                                             <li><strong>การตรวจด้วยการฉีดสีหลอดเลือดหัวใจ </strong> <span
-                                                    class="col-price">150,000 บาท</span>
+                                                    class="col-price">เริ่มต้น 150,000</span>
                                             </li>
                                         </ul>
                                     </div>
