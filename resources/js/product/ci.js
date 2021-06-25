@@ -258,7 +258,7 @@ if ($('#title_wrapper')) {
             fdTaxno: "",
             fdSendType: "",
             fdPayAMT: "",
-            fdOccup: "",
+            // fdOccup: "",
             ctrl_province: "",
             ctrl_terms: "",
             ctrl_accept_insurance_term: "",
@@ -490,7 +490,7 @@ if ($('#title_wrapper')) {
                                         ...data,
                                         ...validateResult.data,
                                         ctrl_buy_for: $("#ctrl_buy_for").value,
-                                        fdOccup: $("#fdOccup").value,
+                                        // fdOccup: $("#fdOccup").value,
                                         ctrl_budget: budget_slider.getValue(),
                                         ctrl_disease: getCheckedCheckboxesFor("ctrl_disease")
                                     }
@@ -615,9 +615,10 @@ if ($('#title_wrapper')) {
                     <div class="two-col">
                         <div><span>${$summary_section.getAttribute('data-plan')} : </span><strong>${selectedPackage}</strong></div>
                         <div><span>${$summary_section.getAttribute('data-price')} : </span><strong>${parseFloat(data.fdPayAMT).toLocaleString()} ${$summary_section.getAttribute('data-baht')}</strong></div>
-                        <div class="controls-wrapper full no-lable"><span>${$('[data-disease_title]').getAttribute('data-disease_title')} : </span><strong>${data.ctrl_disease.map(text => {
+                        <div><span>${$('[data-disease_title]').getAttribute('data-disease_title')} : </span><strong>${data.ctrl_disease.map(text => {
                                         return $(`input[data-disease-${text}]`).getAttribute(`data-disease-${text}`);
                                     }).join(", ")}</strong></div>
+                        <div><span>${$('[data-pay-installment]').getAttribute('data-pay-installment')}</span></div>
                     </div>
                     <br/>
                     <h3 class="text-primary">${$summary_section.getAttribute('data-profile_data')}</h3><br/>
@@ -633,7 +634,10 @@ if ($('#title_wrapper')) {
                             <div><span>${$('#tax_deduction_title').innerText} : </span><strong>${data.fdRevenue === 'Y' ? $('#fdTaxno').getAttribute('data-yes') : $('#fdTaxno').getAttribute('data-no')}</strong></div>
                         ${data.fdRevenue === 'Y' ? '<div><span>' + $('label[for=fdTaxno]').innerText + ' : </span><strong>' + data.fdTaxno + '</strong></div>' : ''}
                         <div><span>${$('#receve_channel_title').innerText} : </span><strong>${data.fdSendType === 'P' ? $('label[for=ctrl_channel_post]').innerText : $('label[for=ctrl_channel_email]').innerText}</strong></div>
-                    </div>` + sb;
+                    </div>
+<br>
+<div><span>${$('[data-pay-installment-policy]').getAttribute('data-pay-installment-policy')}</span></div>
+` + sb;
                                     status = true;
                                     hideShowDiseaseBox(goToStep);
                                 }

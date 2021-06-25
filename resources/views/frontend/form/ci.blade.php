@@ -2,10 +2,11 @@
 <div class="step_wrapper">
     <section id="step1" class="wrapper">
         <form method="post" action="" class="insurance-form">
-            <div class="form-head">@lang('product.please_specify_birthdate_title')</div>
+            <div class="form-head">@lang('product.please_specify_ci_title')</div>
             <div class="form-inner">
                 <h3>@lang('product.please_ci_info')</h3>
-                <div class="two-col">
+                <div class="col" data-pay-installment="@lang("product.pay-installment")"
+                     data-pay-installment-policy="@lang("product.pay-installment-policy")">
                     <div class="controls-wrapper">
                         <select id="ctrl_buy_for" name="ctrl_buy_for">
                             @foreach(__('product.insurer_list_type') as $k => $v)
@@ -13,14 +14,6 @@
                             @endforeach
                         </select>
                         <label for="ctrl_travel_type">@lang("product.insurer_type")</label>
-                    </div>
-                    <div class="controls-wrapper">
-                        <select id="fdOccup" name="fdOccup">
-                            @foreach(__('product.career_list') as $k => $v)
-                                <option value="{{$k}}">{{$v}}</option>
-                            @endforeach
-                        </select>
-                        <label for="fdOccup">@lang("product.career")</label>
                     </div>
                 </div>
                 @include('frontend.component.form-date-input')
@@ -41,6 +34,7 @@
         <form>
             <div class="controls-wrapper" id="disease_box" data-disease_title="@lang("product.disease_summary")">
                 <h2 class="text-center no-color">@lang('product.disease_title')</h2>
+                <em >@lang('product.disease_title_span')</em>
                 <ul class="check_box_disease">
                     @foreach(array('F', 'C', 'O', 'T', 'D') as $v)
                         <li class="checkbox_disease">

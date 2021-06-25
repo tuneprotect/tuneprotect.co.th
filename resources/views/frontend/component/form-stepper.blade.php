@@ -9,8 +9,6 @@
                     @else
                         @lang('product.please_specify_travel_info')
                     @endif
-
-
                 </strong>
             </a></li>
         <li data-gtm="product-{{strtolower($selected)}}-stepper-2" class="btn-goto" data-step="2"><a
