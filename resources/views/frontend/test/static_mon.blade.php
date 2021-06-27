@@ -70,81 +70,71 @@
                             <div class="highlight-ci-wrapper" style="margin-bottom: 20px">
                                 <div id="step">
                                     <div class="item">
-                                        <i class="icofont-sand-clock">&nbsp;</i>
-{{--                                        <img src="/images/ico_ci/icon_highlight_1.png" alt="headlight"--}}
-{{--                                             style="width: 70px;height: 70px">--}}
+                                        <img src="/images/ico_ci/icon_highlight_1.png" alt="headlight"
+                                             style="width: 70px;height: 70px">
                                         <p style="font-size: .8rem">Option to adjust, increase or reduce your protection
                                             coverage</p>
                                     </div>
 
                                     <div class="item">
-{{--                                        <img src="/images/ico_ci/icon_highlight_2.png" alt="headlight"--}}
-{{--                                             style="width: 70px;height: 70px">--}}
-                                        <i class="icofont-sand-clock">&nbsp;</i>
+                                        <img src="/images/ico_ci/icon_highlight_2.png" alt="headlight"
+                                             style="width: 70px;height: 70px">
                                         <p style="font-size: .8rem">Easily payable by credit card installments*
                                         </p>
                                     </div>
 
                                     <div class="item">
-{{--                                        <img src="/images/ico_ci/icon_highlight_3.png" alt="headlight"--}}
-{{--                                             style="width: 70px;height: 70px">--}}
-                                        <i class="icofont-sand-clock">&nbsp;</i>
+                                        <img src="/images/ico_ci/icon_highlight_3.png" alt="headlight"
+                                             style="width: 70px;height: 70px">
                                         <p style="font-size: .8rem">Receive daily hospital cash and home nursing care
                                             benefits
                                         </p>
                                     </div>
 
                                     <div class="item">
-{{--                                        <img src="/images/ico_ci/icon_highlight_4.png" alt="headlight"--}}
-{{--                                             style="width: 70px;height: 70px">--}}
-                                        <i class="icofont-sand-clock">&nbsp;</i>
+                                        <img src="/images/ico_ci/icon_highlight_4.png" alt="headlight"
+                                             style="width: 70px;height: 70px">
                                         <p style="font-size: .8rem">Renewable up to 65
                                         </p>
                                     </div>
 
                                     <div class="item">
-{{--                                        <img src="/images/ico_ci/icon_highlight_5.png" alt="headlight"--}}
-{{--                                             style="width: 70px;height: 70px">--}}
-                                        <i class="icofont-sand-clock">&nbsp;</i>
+                                        <img src="/images/ico_ci/icon_highlight_5.png" alt="headlight"
+                                             style="width: 70px;height: 70px">
                                         <p style="font-size: .8rem">Insurance premiums are tax deductible*</p>
                                     </div>
 
                                     <div class="item">
-{{--                                        <img src="/images/ico_ci/icon_highlight_6.png" alt="headlight"--}}
-{{--                                             style="width: 70px;height: 70px">--}}
-                                        <i class="icofont-sand-clock">&nbsp;</i>
+                                        <img src="/images/ico_ci/icon_highlight_6.png" alt="headlight"
+                                             style="width: 70px;height: 70px">
                                         <p style="font-size: .8rem">Protection against critical illnesses with coverage
                                             up to 3 million baht</p>
                                     </div>
 
                                     <div class="item">
-{{--                                        <img src="/images/ico_ci/icon_highlight_7.png" alt="headlight"--}}
-{{--                                             style="width: 70px;height: 70px">--}}
-                                        <i class="icofont-sand-clock">&nbsp;</i>
+                                        <img src="/images/ico_ci/icon_highlight_7.png" alt="headlight"
+                                             style="width: 70px;height: 70px">
                                         <p style="font-size: .8rem">Covers five critical illnesses</p>
                                     </div>
 
                                     <div class="item">
-{{--                                        <img src="/images/ico_ci/icon_highlight_8.png" alt="headlight"--}}
-{{--                                             style="width: 70px;height: 70px">--}}
-                                        <i class="icofont-sand-clock">&nbsp;</i>
+                                        <img src="/images/ico_ci/icon_highlight_8.png" alt="headlight"
+                                             style="width: 70px;height: 70px">
                                         <p style="font-size: .8rem">Receive a second medical opinion as well as
                                             consulting a doctor online
                                         </p>
                                     </div>
 
                                     <div class="item">
-{{--                                        <img src="/images/ico_ci/icon_highlight_9.png" alt="headlight"--}}
-{{--                                             style="width: 70px;height: 70px">--}}
-                                        <i class="icofont-sand-clock">&nbsp;</i>
+                                        <img src="/images/ico_ci/icon_highlight_9.png" alt="headlight"
+                                             style="width: 70px;height: 70px">
                                         <p style="font-size: .8rem">Apply now without having to purchase life
                                             insurance.</p>
                                     </div>
 
                                     <div class="item">
-{{--                                        <img src="/images/ico_ci/icon_highlight_10.png" alt="headlight"--}}
-{{--                                             style="width: 70px;height: 70px">--}}
-                                        <i class="icofont-sand-clock">&nbsp;</i>
+                                        <img src="/images/ico_ci/icon_highlight_10.png" alt="headlight"
+                                             style="width: 70px;height: 70px">
                                         <p style="font-size: .8rem">Answer three simple health questions; no need to go
                                             to the hospital for a check-up</p>
                                     </div>
@@ -369,64 +359,56 @@
                             <div class="highlight-ci-wrapper" style="margin-bottom: 20px">
                                 <div id="step">
                                     <div class="item">
-{{--                                        <img src="/images/ico_ci/icon_highlight_1.png" alt="headlight"--}}
-{{--                                             style="width: 70px;height: 70px">--}}
-                                        <i class="icofont-sand-clock">&nbsp;</i>
+                                        <img src="/images/ico_ci/icon_highlight_1.png" alt="headlight"
+                                             style="width: 70px;height: 70px">
                                         <p style="font-size: .8rem">เลือกปรับเพิ่ม-ลด <span class="nowrap">ความคุ้มครองได้</span>
                                         </p>
                                     </div>
 
                                     <div class="item">
-{{--                                        <img src="/images/ico_ci/icon_highlight_2.png" alt="headlight"--}}
-{{--                                             style="width: 70px;height: 70px">--}}
-                                        <i class="icofont-sand-clock">&nbsp;</i>
+                                        <img src="/images/ico_ci/icon_highlight_2.png" alt="headlight"
+                                             style="width: 70px;height: 70px">
                                         <p style="font-size: .8rem">เลือกผ่อนได้ชิลๆ *
                                             <span class="nowrap">ผ่านบัตรเครดิต</span>
                                         </p>
                                     </div>
 
                                     <div class="item">
-{{--                                        <img src="/images/ico_ci/icon_highlight_3.png" alt="headlight"--}}
-{{--                                             style="width: 70px;height: 70px">--}}
-                                        <i class="icofont-sand-clock">&nbsp;</i>
+                                        <img src="/images/ico_ci/icon_highlight_3.png" alt="headlight"
+                                             style="width: 70px;height: 70px">
                                         <p style="font-size: .8rem">มีค่าชดเชยรายวัน <span
                                                 class="nowrap">และพยาบาลพิเศษ</span></p>
                                     </div>
 
                                     <div class="item">
-{{--                                        <img src="/images/ico_ci/icon_highlight_4.png" alt="headlight"--}}
-{{--                                             style="width: 70px;height: 70px">--}}
-                                        <i class="icofont-sand-clock">&nbsp;</i>
+                                        <img src="/images/ico_ci/icon_highlight_4.png" alt="headlight"
+                                             style="width: 70px;height: 70px">
                                         <p style="font-size: .8rem">คุ้มครองถึงอายุ 65 ปี</p>
                                     </div>
 
                                     <div class="item">
-{{--                                        <img src="/images/ico_ci/icon_highlight_5.png" alt="headlight"--}}
-{{--                                             style="width: 70px;height: 70px">--}}
-                                        <i class="icofont-sand-clock">&nbsp;</i>
+                                        <img src="/images/ico_ci/icon_highlight_5.png" alt="headlight"
+                                             style="width: 70px;height: 70px">
                                         <p style="font-size: .8rem">เบี้ยประกันนำไป<span
                                                 class="nowrap">ลดหย่อนภาษีได้*</span></p>
                                     </div>
 
                                     <div class="item">
-{{--                                        <img src="/images/ico_ci/icon_highlight_6.png" alt="headlight"--}}
-{{--                                             style="width: 70px;height: 70px">--}}
-                                        <i class="icofont-sand-clock">&nbsp;</i>
+                                        <img src="/images/ico_ci/icon_highlight_6.png" alt="headlight"
+                                             style="width: 70px;height: 70px">
                                         <p style="font-size: .8rem">คุ้มครองโรคร้ายทุกระยะ <span class="nowrap">สูงสุดมากกว่า 3 ล้านบาท*</span>
                                         </p>
                                     </div>
 
                                     <div class="item">
-{{--                                        <img src="/images/ico_ci/icon_highlight_7.png" alt="headlight"--}}
-{{--                                             style="width: 70px;height: 70px">--}}
-                                        <i class="icofont-sand-clock">&nbsp;</i>
+                                        <img src="/images/ico_ci/icon_highlight_7.png" alt="headlight"
+                                             style="width: 70px;height: 70px">
                                         <p style="font-size: .8rem">คุ้มครอง 5 กลุ่มโรคร้ายแรง</p>
                                     </div>
 
                                     <div class="item">
-{{--                                        <img src="/images/ico_ci/icon_highlight_8.png" alt="headlight"--}}
-{{--                                             style="width: 70px;height: 70px">--}}
-                                        <i class="icofont-sand-clock">&nbsp;</i>
+                                        <img src="/images/ico_ci/icon_highlight_8.png" alt="headlight"
+                                             style="width: 70px;height: 70px">
                                         <p style="font-size: .8rem">มีบริการความเห็นที่สองทางการแพทย์
                                             และปรึกษาแพทย์ออนไลน์</p>
                                     </div>
