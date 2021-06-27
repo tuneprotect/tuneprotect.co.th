@@ -249,7 +249,7 @@ main[data-package="CI"] {
             &.basePrice {
                 &:before {
                     content: "";
-                    background-size: 200%;
+                    background-size: cover;
                     margin: 0 auto;
                     width: 90px;
                     height: 90px;
@@ -310,7 +310,7 @@ main[data-package="CI"] {
                     &.basePrice {
                         &:before {
                             content: "";
-                            background-size: 200%;
+                            background-size: cover;
                             margin: 0 auto;
                             width: 40px;
                             height: 40px;
