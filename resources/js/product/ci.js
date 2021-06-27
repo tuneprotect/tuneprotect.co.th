@@ -5,8 +5,7 @@ import {
     getPackageData,
     showTitle,
     validateAgeInPackage,
-    validatePolicy,
-    validateJSPolicy
+    validatePolicy
 } from "../form/productHelper";
 import {
     $,
@@ -27,9 +26,8 @@ import intlTelInput from "intl-tel-input";
 require('../main');
 require('../product');
 require('../lib/rSlider.min');
+
 if ($('#title_wrapper')) {
-
-
     validate.validators.idcard = function (value, options, key, attributes) {
         for (var i = 0, sum = 0; i < 12; i++) {
             sum += parseFloat(value.charAt(i)) * (13 - i);
@@ -139,7 +137,11 @@ if ($('#title_wrapper')) {
                 message: "^" + $('#fdAddr_PostCode').getAttribute('data-error-postal_code')
             }
         },
-
+        fdQuestion1: {
+            presence: {
+                allowEmpty: false
+            }
+        },
 
         fdBenefit: "",
         fdBenefit_name: function (value, attributes, attributeName, options, constraints) {
@@ -258,7 +260,7 @@ if ($('#title_wrapper')) {
             fdTaxno: "",
             fdSendType: "",
             fdPayAMT: "",
-            // fdOccup: "",
+            fdQuestion1: "",
             ctrl_province: "",
             ctrl_terms: "",
             ctrl_accept_insurance_term: "",
@@ -377,6 +379,7 @@ if ($('#title_wrapper')) {
                 $el.classList.add("basePrice");
             });
         }
+
         const recommendProduct = (dataRecommend) => {
 
             const [min, max] = data.ctrl_budget.split(",")
@@ -429,7 +432,7 @@ if ($('#title_wrapper')) {
         });
 
 
-        const $form = $('#step3');
+        const $form = $('#step4');
         const allField = $form.querySelectorAll('input,select,textarea');
         allField.forEach(field => {
             field.addEventListener("change", function (e) {
@@ -451,16 +454,30 @@ if ($('#title_wrapper')) {
             });
         });
 
+
+        // $(".check_q_y").addEventListener("click", function (e) {
+        //     let data_fdQuestion1 = $('input[name="fdQuestion1"]').checked = true;
+        //     data = {
+        //         ...data,
+        //         fdQuestion1: data_fdQuestion1,
+        //     }
+
+        // changeStep(3, 4);
+        //     console.log({data});
+        // });
+
         const hideShowDiseaseBox = (goToStep) => {
-            switch (parseInt(goToStep)) {
+            switch (goToStep) {
                 case 1:
                     $('#disease_box').style.display = "block";
                     $('.goto-step1').style.display = "block";
                     break;
-
                 case 2:
                     $('#disease_box').style.display = "block";
                     $('.goto-step1').style.display = "none";
+                    break;
+                case 3:
+                    $('#disease_box,#step4').style.display = "none";
                     break;
                 default:
                     $('#disease_box').style.display = "none";
@@ -469,6 +486,19 @@ if ($('#title_wrapper')) {
 
         }
 
+        $('.btn-q-n').addEventListener("click", function (e) {
+            e.defaultPrevented;
+            Swal.fire({
+                text: $('[data-question-block]').getAttribute('data-question-block'),
+                icon: 'error',
+                confirmButtonText: 'OK',
+                confirmButtonColor: '#E71618',
+            })
+            //     .then((result) => {
+            //     window.location.href = $('html').getAttribute('lang') + $('[data-url-redirect]').getAttribute('data-url-redirect');
+            // })
+
+        })
 
         const $btnGoto = $$('.btn-goto');
         $btnGoto.forEach($btn => {
@@ -511,6 +541,7 @@ if ($('#title_wrapper')) {
                                 } else {
                                     el.innerHTML = el.dataset.other_insurance;
                                 }
+                                console.log({goToStep});
                                 break;
                             case 2:
                                 const fdPackage = $btn.getAttribute('data-package');
@@ -534,11 +565,23 @@ if ($('#title_wrapper')) {
                                     })
                                     status = false;
                                 }
-
+                                console.log({goToStep});
                                 break;
                             case 3:
-
-
+                                let data_fdQuestion1 = $('#fdQuestion1').checked = true;
+                                if (data_fdQuestion1) {
+                                    data = {
+                                        ...data,
+                                        fdQuestion1: 'Y',
+                                    }
+                                    status = true;
+                                } else {
+                                    status = false;
+                                }
+                                hideShowDiseaseBox(goToStep);
+                                console.log({goToStep});
+                                break;
+                            case 4:
                                 let address = ($('#ctrl_province').value).split('*');
                                 let today = new Date();
                                 let dd = String(today.getDate()).padStart(2, '0');
@@ -603,7 +646,7 @@ if ($('#title_wrapper')) {
 
                                     const $ddlProvince = $('#ctrl_province');
                                     const province = $ddlProvince.options[$ddlProvince.selectedIndex].text;
-                                    const selectedPackage = $('#step3 .form-head').innerHTML;
+                                    const selectedPackage = $('#step4 .form-head').innerHTML;
 
                                     const $documentType = $('#ctrl_document_type');
 
@@ -614,11 +657,11 @@ if ($('#title_wrapper')) {
                                     $summary_section.innerHTML = `<h3 class="text-primary">${$summary_section.getAttribute('data-insurance_data')}</h3><br/>
                     <div class="two-col">
                         <div><span>${$summary_section.getAttribute('data-plan')} : </span><strong>${selectedPackage}</strong></div>
-                        <div><span>${$summary_section.getAttribute('data-price')} : </span><strong>${parseFloat(data.fdPayAMT).toLocaleString()} ${$summary_section.getAttribute('data-baht')}</strong></div>
-                        <div><span>${$('[data-disease_title]').getAttribute('data-disease_title')} : </span><strong>${data.ctrl_disease.map(text => {
+                        <div><span>${$summary_section.getAttribute('data-price')} : </span><strong>${parseFloat(data.fdPayAMT).toLocaleString()} ${$summary_section.getAttribute('data-baht')}</strong><em style="color: red;display:block">${$('[data-pay-installment]').getAttribute('data-pay-installment')}</em></div>
+                        <div class="controls-wrapper full no-lable"><span>${$('[data-disease_title]').getAttribute('data-disease_title')} : </span><strong>${data.ctrl_disease.map(text => {
                                         return $(`input[data-disease-${text}]`).getAttribute(`data-disease-${text}`);
                                     }).join(", ")}</strong></div>
-                        <div><span>${$('[data-pay-installment]').getAttribute('data-pay-installment')}</span></div>
+
                     </div>
                     <br/>
                     <h3 class="text-primary">${$summary_section.getAttribute('data-profile_data')}</h3><br/>
@@ -639,9 +682,9 @@ if ($('#title_wrapper')) {
 <div><span>${$('[data-pay-installment-policy]').getAttribute('data-pay-installment-policy')}</span></div>
 ` + sb;
                                     status = true;
+                                    console.log({goToStep})
                                     hideShowDiseaseBox(goToStep);
                                 }
-                                console.log({status})
                                 break;
                         }
                     }

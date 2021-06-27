@@ -275,6 +275,7 @@ export const formatTelNumber = (tel, country) => {
 }
 
 export const changeStep = (step, goToStep) => {
+    console.log({step, goToStep})
     fadeOut($('#step' + step), 800);
     setTimeout(() => {
         fadeIn($('#step' + goToStep), 800);
