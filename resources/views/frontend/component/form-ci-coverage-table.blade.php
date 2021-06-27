@@ -111,7 +111,7 @@
             </thead>
             <tbody>
             @if($selected == "CI")
-                <tr>
+                <tr style="font-size: 1.2rem;">
                     <th>@lang('product.installment')</th>
                     <?php $i = 1 ?>
                     @foreach ($package_detail as $k => $v)

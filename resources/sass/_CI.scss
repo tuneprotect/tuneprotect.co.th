@@ -1,3 +1,52 @@
+html[lang="en"] {
+    #table-detail {
+        th[data-package] {
+            &.basePrice {
+                &:before {
+                    background: url(/images/bestprice-en.svg?4b07e01…) no-repeat 50%;
+                }
+            }
+        }
+    }
+
+    .choose-plan-mobile {
+        .wrapper-choose-plan {
+            a:last-child {
+                &.basePrice {
+                    &:before {
+                        background: url(/images/bestprice-en.svg?4b07e01…) no-repeat center;
+                    }
+                }
+            }
+        }
+    }
+}
+
+html[lang="th"] {
+    #table-detail {
+        th[data-package] {
+            &.basePrice {
+                &:before {
+                    background: url(/images/bestprice-th.svg?4b07e01…) no-repeat 50%;
+                }
+            }
+        }
+    }
+
+    .choose-plan-mobile {
+        .wrapper-choose-plan {
+            a:last-child {
+                &.basePrice {
+                    &:before {
+                        background: url(/images/bestprice-th.svg?4b07e01…) no-repeat center;
+                    }
+                }
+            }
+        }
+    }
+
+}
+
 main[data-package="CI"] {
     form {
         .check_box_disease {
@@ -200,8 +249,7 @@ main[data-package="CI"] {
             &.basePrice {
                 &:before {
                     content: "";
-                    background: url(/images/bestprice.png?4b07e01…) no-repeat 50%;
-                    background-size: cover;
+                    background-size: 200%;
                     margin: 0 auto;
                     width: 90px;
                     height: 90px;
@@ -247,27 +295,32 @@ main[data-package="CI"] {
             position: relative;
             flex: 1;
 
-            a:first-child {
-                border-top-left-radius: 10px !important;
-                border-bottom-left-radius: 10px !important;
+
+            &:first-child {
+                a {
+                    border-top-left-radius: 10px !important;
+                    border-bottom-left-radius: 10px !important;
+                }
             }
 
-            a:last-child {
-                border-top-right-radius: 10px !important;
-                border-bottom-right-radius: 10px !important;
-
-                &.basePrice {
-                    &:before {
-                        content: "";
-                        background: url(/images/bestprice.png?4b07e01…) no-repeat center;
-                        background-size: cover;
-                        margin: 0 auto;
-                        width: 40px;
-                        height: 40px;
-                        position: static;
-                        opacity: 1;
+            &:last-child {
+                a {
+                    border-top-right-radius: 10px !important;
+                    border-bottom-right-radius: 10px !important;
+                    &.basePrice {
+                        &:before {
+                            content: "";
+                            background-size: 200%;
+                            margin: 0 auto;
+                            width: 40px;
+                            height: 40px;
+                            position: static;
+                            opacity: 1;
+                        }
                     }
                 }
+
+
             }
 
             a {
