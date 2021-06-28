@@ -21,8 +21,8 @@ class ImportCiController extends BaseApiController
         try {
             $type_id = $request->input('type_id');
             $data = CiDataHelper::formattedImportData($request->input('showColumn'), $request->input('data'));
-//
-            foreach ($data as $k => $v) {
+
+            foreach ($data as $v) {
                 $this->model::updateOrCreate(
                     [
                         'plan_code' => $v['plan_code'],
@@ -43,14 +43,14 @@ class ImportCiController extends BaseApiController
                         'net_premium' => $v['net_premium'],
                         'duty' => $v['duty'],
                         'gross_premium' => $v['gross_premium'],
-                        'sum_insured_1' => $v['sum_insured_1'],
-                        'sum_insured_2' => $v['sum_insured_2'],
-                        'sum_insured_3' => $v['sum_insured_3'],
-                        'sum_insured_4' => $v['sum_insured_4'],
-                        'sum_insured_5' => $v['sum_insured_5'],
-                        'sum_insured_6' => $v['sum_insured_6'],
-                        'sum_insured_7' => ($v['sum_insured_7'] == 'Y' ? true : false),
-                        'sum_insured_8' => ($v['sum_insured_8'] == 'Y' ? true : false),
+                        'early_stage' => $v['early_stage'],
+                        'late_stage' => $v['late_stage'],
+                        'diablete' => $v['diablete'],
+                        'hospital_cash' => $v['hospital_cash'],
+                        'nursing_cash' => $v['nursing_cash'],
+                        'pa' => $v['pa'],
+                        'mso' => ($v['mso'] == 'Y' ? true : false),
+                        'health2go' => ($v['health2go'] == 'Y' ? true : false),
                         'channel' => $type_id,
                         'tax_deduct' => $v['tax_deduct']
                     ]);

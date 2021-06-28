@@ -28,8 +28,8 @@ export default function CiImportPage({type_id, config, fromDB, onSubmit, isSave,
     const [channel, setChannel] = useState("");
 
     const arr = ['plan_code', 'age_range', 'addb', 'cancer', 'hc', 'nc', 'cvd', 'organ', 'trauma', 'diabetes', 'net_premium',
-        'duty', 'gross_premium', 'sum_insured_1', 'sum_insured_2', 'sum_insured_3', 'sum_insured_4', 'sum_insured_5', 'sum_insured_6',
-        'sum_insured_7', 'sum_insured_8', 'channel', 'tax_deduct'];
+        'duty', 'gross_premium', 'early_stage', 'late_stage', 'diablete', 'hospital_cash', 'nursing_cash', 'pa',
+        'mso', 'health2go', 'channel', 'tax_deduct'];
 
 
     const columns = arr.map((col) => {
@@ -66,12 +66,12 @@ export default function CiImportPage({type_id, config, fromDB, onSubmit, isSave,
                 break;
             case 'net_premium':
             case 'gross_premium':
-            case 'sum_insured_1':
-            case 'sum_insured_2':
-            case 'sum_insured_3':
-            // case 'sum_insured_4':
-            // case 'sum_insured_5':
-            case 'sum_insured_6':
+            case 'early_stage':
+            case 'late_stage':
+            case 'diablete':
+            case 'hospital_cash':
+            case 'nursing_cash':
+            case 'pa':
                 field = {
                     ...field, validate: (value) => {
                         return !isNaN(value);

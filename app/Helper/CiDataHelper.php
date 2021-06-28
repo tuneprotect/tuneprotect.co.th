@@ -14,10 +14,9 @@ class CiDataHelper
     protected static $formattedData = [];
     protected static $mapColumn = [];
     protected static $col = ['plan_code', 'age_range', 'addb', 'cancer', 'hc', 'nc', 'cvd', 'organ', 'trauma', 'diabetes', 'net_premium',
-        'duty', 'gross_premium', 'sum_insured_1', 'sum_insured_2', 'sum_insured_3', 'sum_insured_4', 'sum_insured_5', 'sum_insured_6',
-        'sum_insured_7', 'sum_insured_8', 'channel', 'tax_deduct'];
-    protected static $jsonOrder = ['sum_insured_1', 'sum_insured_2', 'sum_insured_3', 'sum_insured_4', 'sum_insured_5', 'sum_insured_6',
-        'sum_insured_7', 'sum_insured_8'];
+        'duty', 'gross_premium', 'early_stage', 'late_stage', 'diablete', 'hospital_cash', 'nursing_cash', 'pa',
+        'mso', 'health2go', 'channel', 'tax_deduct'];
+
 
     protected static function genMapColumn($shownData)
     {
@@ -42,7 +41,8 @@ class CiDataHelper
         self::genMapColumn($shownData);
 
         foreach ($data as $v) {
-            self::$formattedData[$v[self::$mapColumn['plan_code']]] = self::mapData($v, self::$col);
+
+            self::$formattedData[] = self::mapData($v, self::$col);
         }
 
         return self::$formattedData;
@@ -61,22 +61,16 @@ class CiDataHelper
 
             $age_range = explode("-", $v['age_range']);
 
-            if ($age_range[0] >= 61 && $age_range[1] >= 65) {
-                for ($i = 1; $i <= 9; $i++) {
+            if ($age_range[0] != 61 && $age_range[1] != 65) {
 
-                    switch ($i) {
-                        case 7:
-                            $new_data[$new_code_start]['plan']["sum_insured_{$i}"] = $v["sum_insured_{$i}"] == true ? "<i class='icofont-check-circled'  style='color:green'></i>" : "<i class='icofont-close-circled' style='color:red'></i>";
-                            break;
-                        case 8:
-                            $new_data[$new_code_start]['plan']["sum_insured_{$i}"] = $v["sum_insured_{$i}"] == true ? "<img src='/images/my_health/Logo-My-Health.png'>" : '';
-                            break;
-                        default:
-                            $new_data[$new_code_start]['plan']["sum_insured_{$i}"] = $v["sum_insured_{$i}"];
-                            break;
-                    }
-
-                }
+                $new_data[$new_code_start]['plan']["early_stage"] = $v["early_stage"];
+                $new_data[$new_code_start]['plan']["late_stage"] = $v["late_stage"];
+                $new_data[$new_code_start]['plan']["diablete"] = $v["diablete"];
+                $new_data[$new_code_start]['plan']["hospital_cash"] = $v["hospital_cash"];
+                $new_data[$new_code_start]['plan']["nursing_cash"] = $v["nursing_cash"];
+                $new_data[$new_code_start]['plan']["pa"] = $v["pa"];
+                $new_data[$new_code_start]['plan']["health2go"] = $v["health2go"] == true ? "<i class='icofont-check-circled'  style='color:green'></i>" : "<i class='icofont-close-circled' style='color:red'></i>";
+                $new_data[$new_code_start]['plan']["mso"] = $v["mso"] == true ? "<i class='icofont-check-circled'  style='color:green'></i>" : "<i class='icofont-close-circled' style='color:red'></i>";
 
                 $new_data[$new_code_start]['price'][$v['age_range']]['F' . $new_code_end] = $v['net_premium'];
             }

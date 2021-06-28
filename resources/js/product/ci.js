@@ -197,26 +197,29 @@ if ($('#title_wrapper')) {
     document.addEventListener("DOMContentLoaded", async () => {
 
         const package_data = await getPackageData(current_package);
+
         const genMinMax = (age) => {
             return Object.keys(package_data).reduce((returnValue, k) => {
                 Object.keys(package_data[k].price).map((k1) => {
-
                     Object.values(package_data[k].price[k1]).map((v) => {
-                        const digit = Math.pow(10, v.toString().length) / 10;
+                        let data_price = v * 1;
+                        const digit = Math.pow(10, data_price.toString().length) / 10;
                         const [startAge, endAge] = k1.split('-');
 
-                        if (age === undefined || (age >= startAge && age <= endAge)) {
-                            if (returnValue.min === undefined || v < returnValue.min) {
-                                returnValue.min = Math.floor(v / (digit)) * (digit);
+                        if (age === undefined || (parseInt(age) >= parseInt(startAge) && parseInt(age) <= parseInt(endAge))) {
+
+                            if (returnValue.min === undefined || data_price < returnValue.min) {
+                                returnValue.min = Math.floor(data_price / (digit)) * (digit);
                             }
-                            if (returnValue.max === undefined || v > returnValue.max) {
-                                returnValue.max = Math.ceil(v / (digit / 10)) * (digit / 10);
+                            if (returnValue.max === undefined || data_price > returnValue.max) {
+                                returnValue.max = Math.ceil(data_price / (digit / 10)) * (digit / 10);
                             }
                         }
 
                     });
 
                 });
+
                 return returnValue;
             }, {min: undefined, max: undefined})
         }
@@ -313,7 +316,7 @@ if ($('#title_wrapper')) {
         const hideRow = () => {
             $$("span[data-disease]").forEach($el => {
                 switch ($el.getAttribute('data-disease')) {
-                    case 'd':
+                    case 'D':
                         $el.closest("tr").style.display = "none";
                         break;
                     default:
@@ -327,8 +330,8 @@ if ($('#title_wrapper')) {
         const showRow = () => {
             data.ctrl_disease.map(k => {
                 switch (k) {
-                    case 'd':
-                        $$("span[data-disease='d']").forEach($el => {
+                    case 'D':
+                        $$("span[data-disease='D']").forEach($el => {
                             $el.closest("tr").style.display = "table-row";
                         });
                         break;
@@ -454,18 +457,6 @@ if ($('#title_wrapper')) {
             });
         });
 
-
-        // $(".check_q_y").addEventListener("click", function (e) {
-        //     let data_fdQuestion1 = $('input[name="fdQuestion1"]').checked = true;
-        //     data = {
-        //         ...data,
-        //         fdQuestion1: data_fdQuestion1,
-        //     }
-
-        // changeStep(3, 4);
-        //     console.log({data});
-        // });
-
         const hideShowDiseaseBox = (goToStep) => {
             switch (goToStep) {
                 case 1:
@@ -541,7 +532,6 @@ if ($('#title_wrapper')) {
                                 } else {
                                     el.innerHTML = el.dataset.other_insurance;
                                 }
-                                console.log({goToStep});
                                 break;
                             case 2:
                                 const fdPackage = $btn.getAttribute('data-package');
@@ -565,7 +555,7 @@ if ($('#title_wrapper')) {
                                     })
                                     status = false;
                                 }
-                                console.log({goToStep});
+
                                 break;
                             case 3:
                                 let data_fdQuestion1 = $('#fdQuestion1').checked = true;
@@ -579,7 +569,7 @@ if ($('#title_wrapper')) {
                                     status = false;
                                 }
                                 hideShowDiseaseBox(goToStep);
-                                console.log({goToStep});
+
                                 break;
                             case 4:
                                 let address = ($('#ctrl_province').value).split('*');
@@ -616,7 +606,7 @@ if ($('#title_wrapper')) {
                                     ctrl_province: $('#ctrl_province').value,
                                     ctrl_protection_start_date: today
                                 }
-
+                                console.log({data});
                                 const result = validate(data, constraints);
 
                                 const $cite = $form.getElementsByTagName('cite');
@@ -682,7 +672,6 @@ if ($('#title_wrapper')) {
 <div><span>${$('[data-pay-installment-policy]').getAttribute('data-pay-installment-policy')}</span></div>
 ` + sb;
                                     status = true;
-                                    console.log({goToStep})
                                     hideShowDiseaseBox(goToStep);
                                 }
                                 break;
