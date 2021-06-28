@@ -423,7 +423,7 @@ class ProductController extends BaseController
         $arr_post['payment_option'] = $this->payment;
         $arr_post['ipp_interest_type'] = $this->ipp_interest_type;;
         $arr_post['default_lang'] = $this->locale;
-        $arr_post['ipp_period_filter'] = 10;
+//        $arr_post['ipp_period_filter'] = 10;
 
         $params = join($arr_post);
         $arr_post['hash_value'] = hash_hmac('sha256', $params, config('payment.secret'), false);    //Compute hash value
