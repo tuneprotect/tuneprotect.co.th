@@ -224,7 +224,7 @@ class ProductController extends BaseController
         } elseif (substr($data['fdPackage'], 0, 2) === 'CI') {
             $obj = new CIObject();
             $this->payment = 'CC,FULL,IPP';
-            $this->ipp_interest_type = "C";
+            $this->ipp_interest_type = "A";
             $data['fdPackage'] .= str_replace(['F', ','], "", $data['ctrl_disease']);
 
         } else {
@@ -631,7 +631,7 @@ class ProductController extends BaseController
         $arr_post['user_defined_2'] = session('return_link');
         $arr_post['result_url_1'] = url("{$this->locale}/product/result");
         $arr_post['payment_option'] = "CC,FULL";
-        $arr_post['ipp_interest_type'] = 'M';
+        $arr_post['ipp_interest_type'] = 'A';
         $arr_post['default_lang'] = $this->locale;
 //        $arr_post['ipp_period_filter'] = '10';
 
