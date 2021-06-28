@@ -28,7 +28,7 @@ mix.webpackConfig({
             ],
         }),
         new ImageminPlugin({
-            test: /\.(jpe?g|png|gif|svg)$/i,
+            test: /\.(jpe?g|png|gif|svg|webp)$/i,
             plugins: [
                 imageminMozjpeg({
                     quality: 80,
