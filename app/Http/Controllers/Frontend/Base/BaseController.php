@@ -57,7 +57,10 @@ abstract class BaseController extends Controller
             ProjectEnum::WEB_CONTENT_ABOUT => 'about',
             ProjectEnum::WEB_CONTENT_PRODUCT_CATEGORY => 'product_category',
             ProjectEnum::WEB_CONTENT_CLAIM => 'claim',
-            ProjectEnum::WEB_CONTENT_CLAIM_CATEGORY => 'claim_category'
+            ProjectEnum::WEB_CONTENT_CLAIM_CATEGORY => 'claim_category',
+            ProjectEnum::WEB_CONTENT_SERVICE => 'service',
+            ProjectEnum::WEB_CONTENT_SERVICE_CATEGORY => 'service_category',
+
         ];
 
         $layoutContent = WebContent::whereIn('type_id', [
@@ -67,7 +70,9 @@ abstract class BaseController extends Controller
             ProjectEnum::WEB_CONTENT_ABOUT,
             ProjectEnum::WEB_CONTENT_PRODUCT_CATEGORY,
             ProjectEnum::WEB_CONTENT_CLAIM,
-            ProjectEnum::WEB_CONTENT_CLAIM_CATEGORY
+            ProjectEnum::WEB_CONTENT_CLAIM_CATEGORY,
+            ProjectEnum::WEB_CONTENT_SERVICE,
+            ProjectEnum::WEB_CONTENT_SERVICE_CATEGORY
         ])
             ->with('locales')
             ->whereRaw(ProjectEnum::isPublish())

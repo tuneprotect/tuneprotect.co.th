@@ -147,6 +147,9 @@ export const WEB_CONTENT = {
     CLAIM: "claim.content",
     CLAIM_CATEGORY: "claim.category",
 
+    SERVICE: "service.content",
+    SERVICE_CATEGORY: "service.category",
+
     FAQ : "faq.content",
     FAQ_CONTACT_CATEGORY : "faq_contact.category",
     FAQ_CONTACT : "faq_contact.content",
@@ -175,7 +178,7 @@ export const WEB_CONTENT = {
     BANNER: "static.banner",
     SOCIAL: "static.social",
     STICKY_MENU: "static.sticky_menu",
-    SERVICE: "static.service",
+    SERVICE_STATIC: "static.service",
     REVIEW: "static.review",
     MY_HEALTH: "static.my_health",
 

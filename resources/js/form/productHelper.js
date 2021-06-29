@@ -55,7 +55,7 @@ export const validateAgeInPackage = (package_data, cal_price) => {
     const age_in_range = Object.keys(package_data)
         .filter(k => _.startsWith(k, current_package))
         .some(k => Object.keys(package_data[k].price).some(ageRange => checkAge(birthday, ageRange)))
-
+console.log({age_in_range})
     if (!age_in_range) {
         showDateError($('#ctrl_day').getAttribute('data-error-not-qualify'));
         return {status: false};
@@ -105,7 +105,7 @@ export const validatePolicy = async ($this, fdPackage) => {
         }
         data = {...data, [k]: $(`#${fieldId}`).value}
     });
-    console.log({data})
+
     if (Object.keys(data).every((k) => !!data[k])) {
         const result = await callValidateApi({...data, fdPackage})
         if (result.status === 'error') {
@@ -180,7 +180,7 @@ export const checkAge = (birthday, ageRange) => {
         }
 
 
-    } else if (age.year >= range[0] && age.year < range[1]) {
+    } else if (age.year >= range[0] && age.year <= range[1]) {
         return true;
     }
     return false;

@@ -59,7 +59,7 @@
                     </li>
                 @endif
 
-                @if(@$menu_enable[\App\Enum\ProjectEnum::STATIC_PAGE_MY_HEALTH] > 0)
+                @if(@$menu_enable[\App\Enum\ProjectEnum::WEB_CONTENT_SERVICE] > 0)
                     <li>
                         <a class="has_sub" href="#">{!! __('global.nav_my_health') !!}
                             <i class="icofont-caret-right"></i></a>
@@ -68,12 +68,14 @@
                                 <div>
 
                                     <ul>
+                                        @foreach($service as $k =>$v)
                                         <li>
                                             <a data-gtm="main-nav-news"
-                                               href="/{{$locale}}/myHealth/health2go">
-                                                <span>Health2GO</span>
+                                               href="/{{$locale}}/service/{{$v->friendly_url}}">
+                                                <span>{{$v->locales[$locale]->title}}</span>
                                             </a>
                                         </li>
+                                        @endforeach
                                     </ul>
                                 </div>
                             </div>

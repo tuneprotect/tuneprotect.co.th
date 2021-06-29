@@ -215,6 +215,11 @@
             "content": "Claim",
             "main": "Claim"
         },
+        "service": {
+            "category": "Service Category",
+            "content": "Service",
+            "main": "Service"
+        },
         "configuration": {
             "language": "Language",
             "main": "Configuration",

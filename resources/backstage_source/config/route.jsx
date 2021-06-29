@@ -1031,6 +1031,147 @@ let APP_ROUTE = {
             }
         }),
     },
+    service: {
+        id: "service",
+        name: <Translate id={`side_nav.service.main`}/>,
+        url: "/service",
+        icon: 'dynamic_feed',
+        show_on_main_menu: true,
+        layout: "MainLayout",
+        parent: "",
+        group: "main_nav"
+    },
+    [WEB_CONTENT.SERVICE_CATEGORY]: {
+        id: WEB_CONTENT.SERVICE_CATEGORY,
+        name: <Translate id={`side_nav.service.category`}/>,
+        url: "/service/category",
+        icon: 'view_carousel',
+        show_on_main_menu: true,
+        component: () => WebContentPage({
+            type_id: WEB_CONTENT.SERVICE_CATEGORY,
+            config: {
+                isSortable: true,
+            }
+        }),
+        layout: "MainLayout",
+        parent: "service",
+        group: "main_nav"
+    },
+    [`${WEB_CONTENT.SERVICE_CATEGORY}.detail`]: {
+        id: `${WEB_CONTENT.SERVICE_CATEGORY}.detail`,
+        name: <Translate id={`side_nav.service.category`}/>,
+        url: "/service/category/detail/:id?",
+        icon: 'pets',
+        show_on_main_menu: false,
+        layout: "MainLayout",
+        parent: "",
+        group: "",
+        component: () => WebContentMainStep({
+            isWebContent: true,
+            type_id: WEB_CONTENT.SERVICE_CATEGORY,
+            config: {
+                title: {
+                    fieldProp: {
+                        label: <Translate id="global.title"/>,
+                        required: true,
+                    },
+                    validate: Yup.string()
+                        .required(<Translate id="error_message.required"/>)
+                },
+            }
+        }),
+    },
+    [WEB_CONTENT.SERVICE]: {
+        id: WEB_CONTENT.SERVICE,
+        name: <Translate id={`side_nav.service.main`}/>,
+        url: "/service/content",
+        icon: 'view_carousel',
+        show_on_main_menu: true,
+        component: () => WebContentPage({
+            type_id: WEB_CONTENT.SERVICE,
+            cat_id: WEB_CONTENT.SERVICE_CATEGORY,
+            config: {
+                isSortable: true,
+            }
+        }),
+        layout: "MainLayout",
+        parent: "service",
+        group: "main_nav"
+    },
+    [`${WEB_CONTENT.SERVICE}.detail`]: {
+        id: `${WEB_CONTENT.SERVICE}.detail`,
+        name: <Translate id={`side_nav.service.main`}/>,
+        url: "/service/content/detail/:id?",
+        icon: 'pets',
+        show_on_main_menu: false,
+        layout: "MainLayout",
+        parent: "",
+        group: "",
+        component: () => WebContentMainStep({
+            isWebContent: true,
+            type_id: WEB_CONTENT.SERVICE,
+            config: {
+                hasPublishPeriod: true,
+                hasSEO: true,
+                isSortable: true,
+                friendly_url: {
+                    prefix: "/service/"
+                },
+                pic: {
+                    fieldProp: {
+                        label: <Translate id="global.image_thai"/>,
+                        width: 1366,
+                        height: 668,
+                    }
+                },
+                pic_mobile: {
+                    fieldProp: {
+                        label: <Translate id="global.image_mobile_tha"/>,
+                        width: 700,
+                        height: 1050,
+                    }
+                },
+                pic_en: {
+                    fieldProp: {
+                        label: <Translate id="global.image_eng"/>,
+                        width: 1366,
+                        height: 668,
+                    }
+                },
+                pic_mobile_en: {
+                    fieldProp: {
+                        label: <Translate id="global.image_mobile_eng"/>,
+                        width: 700,
+                        height: 1050,
+                    }
+                },
+                video_link: {
+                    fieldProp: {
+                        label: <Translate id="global.video"/>,
+                        isIframe: true
+                    }
+                },
+                title: {
+                    fieldProp: {
+                        label: <Translate id="global.title"/>,
+                        required: true,
+                    },
+                    validate: Yup.string()
+                        .required(<Translate id="error_message.required"/>)
+                },
+                cat_id: {
+                    type_id: WEB_CONTENT.SERVICE_CATEGORY,
+                    label: <Translate id="global.category"/>,
+                },
+                content: {
+                    fieldProp: {
+                        editor: true,
+                        label: <Translate id="global.content"/>
+                    }
+                },
+            }
+        }),
+    },
     partner: {
         id: "partner",
         name: <Translate id={`side_nav.partner.main`}/>,

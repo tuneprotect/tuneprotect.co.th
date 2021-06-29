@@ -1,5 +1,5 @@
 {
-    "/js/backstage/index.js": "/js/backstage/index.js?id=f4eac848baaff04784e4",
+    "/js/backstage/index.js": "/js/backstage/index.js?id=e45cb961f1e76e999cee",
     "/js/frontend/article.js": "/js/frontend/article.js?id=88d7c097fb97992dd724",
     "/js/frontend/biglife.js": "/js/frontend/biglife.js?id=ae9665363f54bf51e269",
     "/js/frontend/contactus.js": "/js/frontend/contactus.js?id=4346a114c674da704ecf",
@@ -9,15 +9,15 @@
     "/css/frontend/style.css": "/css/frontend/style.css?id=c325091be238f4e988f5",
     "/js/frontend/organization.js": "/js/frontend/organization.js?id=8556f94c9e742e9fcd41",
     "/js/frontend/product.js": "/js/frontend/product.js?id=5fbbce6d1877a4a22134",
-    "/js/frontend/product/ci.js": "/js/frontend/product/ci.js?id=358ce65775aa74d22d38",
-    "/js/frontend/product/oncovida.js": "/js/frontend/product/oncovida.js?id=3f149f8d3ba9aeeaf524",
-    "/js/frontend/product/oncovidl.js": "/js/frontend/product/oncovidl.js?id=b2760c837dd4668941eb",
-    "/js/frontend/product/onpaca.js": "/js/frontend/product/onpaca.js?id=291f8df660776d636f73",
-    "/js/frontend/product/onpakd.js": "/js/frontend/product/onpakd.js?id=983a86b7519763f5ec60",
-    "/js/frontend/product/onpasn.js": "/js/frontend/product/onpasn.js?id=a2cf4b37598cb7944d66",
-    "/js/frontend/product/onta.js": "/js/frontend/product/onta.js?id=f7eaf32859466e87bac5",
-    "/js/frontend/product/ontadm.js": "/js/frontend/product/ontadm.js?id=3f409458b127704ababf",
-    "/js/frontend/product/ontaln.js": "/js/frontend/product/ontaln.js?id=98d394dddea5a7863f73",
-    "/js/frontend/product/onvacina.js": "/js/frontend/product/onvacina.js?id=0b54d75d20a2e2caa51a",
-    "/js/frontend/product/onvsafea.js": "/js/frontend/product/onvsafea.js?id=daf6977d561896a2446c"
+    "/js/frontend/product/ci.js": "/js/frontend/product/ci.js?id=9a4df752e350d25b53b4",
+    "/js/frontend/product/oncovida.js": "/js/frontend/product/oncovida.js?id=149544a50b1510f4f325",
+    "/js/frontend/product/oncovidl.js": "/js/frontend/product/oncovidl.js?id=7f4940727d1a71e1ed65",
+    "/js/frontend/product/onpaca.js": "/js/frontend/product/onpaca.js?id=1326e9c0636d4316d9b6",
+    "/js/frontend/product/onpakd.js": "/js/frontend/product/onpakd.js?id=2db05591c00eca0e1a87",
+    "/js/frontend/product/onpasn.js": "/js/frontend/product/onpasn.js?id=824fe458df06a69a31e1",
+    "/js/frontend/product/onta.js": "/js/frontend/product/onta.js?id=26d20a6262da54992a95",
+    "/js/frontend/product/ontadm.js": "/js/frontend/product/ontadm.js?id=2ed60f214ba61694d20b",
+    "/js/frontend/product/ontaln.js": "/js/frontend/product/ontaln.js?id=660e92fe7b1974ee623d",
+    "/js/frontend/product/onvacina.js": "/js/frontend/product/onvacina.js?id=cf1a4a0f849cc24dcc50",
+    "/js/frontend/product/onvsafea.js": "/js/frontend/product/onvsafea.js?id=06c65988669866a416e8"
 }
