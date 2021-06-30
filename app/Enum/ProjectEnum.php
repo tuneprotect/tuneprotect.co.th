@@ -55,8 +55,7 @@ class ProjectEnum
     const WEB_CONTENT_NEWS_CATEGORY = "news.category";
     const WEB_CONTENT_ORGANIZATION = "about.organization";
     const WEB_CONTENT_PROVINCE = "configuration.province";
-    const WEB_CONTENT_SERVICE = "service.content";
-    const WEB_CONTENT_SERVICE_CATEGORY = "service.category";
+    const WEB_CONTENT_SERVICE_MY_HEALTH = "service_my_health.content";
     const WEB_CONTENT_SOCIAL = "static.social";
     const WEB_CONTENT_STICKY_MENU = "static.sticky_menu";
     const WEB_CONTENT_CLAIM = "claim.content";

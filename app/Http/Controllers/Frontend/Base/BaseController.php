@@ -58,8 +58,7 @@ abstract class BaseController extends Controller
             ProjectEnum::WEB_CONTENT_PRODUCT_CATEGORY => 'product_category',
             ProjectEnum::WEB_CONTENT_CLAIM => 'claim',
             ProjectEnum::WEB_CONTENT_CLAIM_CATEGORY => 'claim_category',
-            ProjectEnum::WEB_CONTENT_SERVICE => 'service',
-            ProjectEnum::WEB_CONTENT_SERVICE_CATEGORY => 'service_category',
+            ProjectEnum::WEB_CONTENT_SERVICE_MY_HEALTH => 'service_my_health',
 
         ];
 
@@ -71,8 +70,7 @@ abstract class BaseController extends Controller
             ProjectEnum::WEB_CONTENT_PRODUCT_CATEGORY,
             ProjectEnum::WEB_CONTENT_CLAIM,
             ProjectEnum::WEB_CONTENT_CLAIM_CATEGORY,
-            ProjectEnum::WEB_CONTENT_SERVICE,
-            ProjectEnum::WEB_CONTENT_SERVICE_CATEGORY
+            ProjectEnum::WEB_CONTENT_SERVICE_MY_HEALTH
         ])
             ->with('locales')
             ->whereRaw(ProjectEnum::isPublish())

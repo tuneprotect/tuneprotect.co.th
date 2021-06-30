@@ -53,6 +53,10 @@ export default function WebContentMainStep(props) {
             // arrStep.push({id: "package_detail", label: t("global.package_detail")});
         }
 
+        if (id && props.config.hasFaq === true) {
+            arrStep.push({id: "faq", label: t("global.faq")});
+        }
+
         if (id && props.config.hasGallery === true) {
             arrStep.push({id: "gallery", label: t("global.gallery")});
         }
@@ -60,7 +64,7 @@ export default function WebContentMainStep(props) {
         if (id && props.config.hasChildContent) {
             arrStep.push({id: "child", label: props.config.hasChildContent.tabName});
         }
-
+console.log(arrStep,props.config)
         setStep(arrStep);
 
     }, [id]);

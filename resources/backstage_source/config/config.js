@@ -147,8 +147,7 @@ export const WEB_CONTENT = {
     CLAIM: "claim.content",
     CLAIM_CATEGORY: "claim.category",
 
-    SERVICE: "service.content",
-    SERVICE_CATEGORY: "service.category",
+    SERVICE_MY_HEALTH: "service_my_health.content",
 
     FAQ : "faq.content",
     FAQ_CONTACT_CATEGORY : "faq_contact.category",

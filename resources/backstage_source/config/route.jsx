@@ -1041,55 +1041,14 @@ let APP_ROUTE = {
         parent: "",
         group: "main_nav"
     },
-    [WEB_CONTENT.SERVICE_CATEGORY]: {
-        id: WEB_CONTENT.SERVICE_CATEGORY,
-        name: <Translate id={`side_nav.service.category`}/>,
-        url: "/service/category",
-        icon: 'view_carousel',
-        show_on_main_menu: true,
-        component: () => WebContentPage({
-            type_id: WEB_CONTENT.SERVICE_CATEGORY,
-            config: {
-                isSortable: true,
-            }
-        }),
-        layout: "MainLayout",
-        parent: "service",
-        group: "main_nav"
-    },
-    [`${WEB_CONTENT.SERVICE_CATEGORY}.detail`]: {
-        id: `${WEB_CONTENT.SERVICE_CATEGORY}.detail`,
-        name: <Translate id={`side_nav.service.category`}/>,
-        url: "/service/category/detail/:id?",
-        icon: 'pets',
-        show_on_main_menu: false,
-        layout: "MainLayout",
-        parent: "",
-        group: "",
-        component: () => WebContentMainStep({
-            isWebContent: true,
-            type_id: WEB_CONTENT.SERVICE_CATEGORY,
-            config: {
-                title: {
-                    fieldProp: {
-                        label: <Translate id="global.title"/>,
-                        required: true,
-                    },
-                    validate: Yup.string()
-                        .required(<Translate id="error_message.required"/>)
-                },
-            }
-        }),
-    },
-    [WEB_CONTENT.SERVICE]: {
+    [WEB_CONTENT.SERVICE_MY_HEALTH]: {
         id: WEB_CONTENT.SERVICE,
         name: <Translate id={`side_nav.service.main`}/>,
-        url: "/service/content",
+        url: "/service_my_health/content",
         icon: 'view_carousel',
         show_on_main_menu: true,
         component: () => WebContentPage({
-            type_id: WEB_CONTENT.SERVICE,
-            cat_id: WEB_CONTENT.SERVICE_CATEGORY,
+            type_id: WEB_CONTENT.SERVICE_MY_HEALTH,
             config: {
                 isSortable: true,
             }
@@ -1098,10 +1057,10 @@ let APP_ROUTE = {
         parent: "service",
         group: "main_nav"
     },
-    [`${WEB_CONTENT.SERVICE}.detail`]: {
-        id: `${WEB_CONTENT.SERVICE}.detail`,
+    [`${WEB_CONTENT.SERVICE_MY_HEALTH}.detail`]: {
+        id: `${WEB_CONTENT.SERVICE_MY_HEALTH}.detail`,
         name: <Translate id={`side_nav.service.main`}/>,
-        url: "/service/content/detail/:id?",
+        url: "/service_my_health/content/detail/:id?",
         icon: 'pets',
         show_on_main_menu: false,
         layout: "MainLayout",
@@ -1109,8 +1068,9 @@ let APP_ROUTE = {
         group: "",
         component: () => WebContentMainStep({
             isWebContent: true,
-            type_id: WEB_CONTENT.SERVICE,
+            type_id: WEB_CONTENT.SERVICE_MY_HEALTH,
             config: {
+                hasFaq:true,
                 hasPublishPeriod: true,
                 hasSEO: true,
                 isSortable: true,
@@ -1158,10 +1118,6 @@ let APP_ROUTE = {
                     },
                     validate: Yup.string()
                         .required(<Translate id="error_message.required"/>)
-                },
-                cat_id: {
-                    type_id: WEB_CONTENT.SERVICE_CATEGORY,
-                    label: <Translate id="global.category"/>,
                 },
                 content: {
                     fieldProp: {
@@ -1793,18 +1749,6 @@ let APP_ROUTE = {
         component: ContactPage,
         permission: ['delete']
     },
-    // lead_form: {
-    //     id: 'lead_form',
-    //     name: <Translate id={`side_nav.lead_form`}/>,
-    //     url: "/lead_form",
-    //     icon: 'contact_phone',
-    //     show_on_main_menu: true,
-    //     layout: "MainLayout",
-    //     parent: "",
-    //     group: "main_nav",
-    //     component: LeadFormPage,
-    //     permission: ['delete']
-    // },
     lead_form: {
         id: "leadform",
         name: <Translate id={`side_nav.lead_form.main`}/>,
@@ -1866,7 +1810,7 @@ let APP_ROUTE = {
         parent: "leadform",
         group: "main_nav"
     },
-    faq_contact : {
+    faq_contact: {
         id: "faq_contact",
         name: <Translate id={`side_nav.faq.main`}/>,
         url: "/faq",

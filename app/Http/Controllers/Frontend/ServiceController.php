@@ -26,13 +26,13 @@ class ServiceController extends BaseController
     protected function genDetail($link)
     {
 
-        $content = WebContent::where('type_id', ProjectEnum::WEB_CONTENT_SERVICE)
+        $content = WebContent::where('type_id', ProjectEnum::WEB_CONTENT_SERVICE_MY_HEALTH)
             ->with('locales')
             ->where('friendly_url', $link)
             ->whereRaw(ProjectEnum::isPublish())
             ->first();
-
-
+        $this->bodyData['faq'] = $this->setFaq(ProjectEnum::WEB_CONTENT_FAQ, $content->id);
+//dd($content);
         if ($content) {
             return $this->genStaticPage($content, 'frontend.page.static');
         }
