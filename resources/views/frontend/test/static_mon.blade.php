@@ -31,24 +31,23 @@
                     <section class="select-ci-wrapper">
                         <div class="wrapper">
                             <div class="box">
-                                <div><img alt="" src="/storage/product/CI/phone.png"/></div>
+                                <div><img alt="" src="/storage/product/CI/520x480-phone-en.png"/></div>
 
                                 <div>
                                     <h2 style="color: #FFFFFF">Customize your Own Plan</h2>
 
                                     <ul>
-                                        <li>
-                                            <i class="icofont-shield-alt">&nbsp;</i>
+                                        <li><i class="icofont-shield-alt">&nbsp;</i>
+
                                             <div><strong><em>Choose</em> the right coverage </strong> <span> You can choose the disease group that most concerns you.</span>
                                             </div>
                                         </li>
-                                        <li>
-                                            <i class="icofont-coins">&nbsp;</i>
+                                        <li><i class="icofont-coins">&nbsp;</i>
                                             <div><strong><em>Choose</em> a plan according to your budget</strong> <span>Adjust, increase, or reduce insurance premiums as you wish.</span>
                                             </div>
                                         </li>
-                                        <li>
-                                            <img src="/images/ico_ci/2203522.svg" alt="ico_ci" style="margin-right: 34px;width: 50px">
+                                        <li><img alt="ico_ci" src="/images/ico_ci/2203522.svg"
+                                                 style="margin-right: 34px;width: 50px"/>
                                             <div><strong><em>Choose</em> for yourself or those you care about</strong>
                                                 <span>Provide protection for you and your loved ones with a simple click.</span>
                                             </div>
@@ -69,72 +68,58 @@
 
                             <div class="highlight-ci-wrapper" style="margin-bottom: 20px">
                                 <div id="step">
-                                    <div class="item">
-                                        <img src="/images/ico_ci/icon_highlight_1.png" alt="headlight"
-                                             style="width: 70px;height: 70px">
+                                    <div class="item"><img alt="headlight" src="/images/ico_ci/icon_highlight_1.png"
+                                                           style="width: 70px;height: 70px"/>
                                         <p style="font-size: .8rem">Option to adjust, increase or reduce your protection
                                             coverage</p>
                                     </div>
 
-                                    <div class="item">
-                                        <img src="/images/ico_ci/icon_highlight_2.png" alt="headlight"
-                                             style="width: 70px;height: 70px">
-                                        <p style="font-size: .8rem">Easily payable by credit card installments*
-                                        </p>
+                                    <div class="item"><img alt="headlight" src="/images/ico_ci/icon_highlight_2.png"
+                                                           style="width: 70px;height: 70px"/>
+                                        <p style="font-size: .8rem">Easily payable by credit card installments*</p>
                                     </div>
 
-                                    <div class="item">
-                                        <img src="/images/ico_ci/icon_highlight_3.png" alt="headlight"
-                                             style="width: 70px;height: 70px">
+                                    <div class="item"><img alt="headlight" src="/images/ico_ci/icon_highlight_3.png"
+                                                           style="width: 70px;height: 70px"/>
                                         <p style="font-size: .8rem">Receive daily hospital cash and home nursing care
-                                            benefits
-                                        </p>
+                                            benefits</p>
                                     </div>
 
-                                    <div class="item">
-                                        <img src="/images/ico_ci/icon_highlight_4.png" alt="headlight"
-                                             style="width: 70px;height: 70px">
-                                        <p style="font-size: .8rem">Renewable up to 65
-                                        </p>
+                                    <div class="item"><img alt="headlight" src="/images/ico_ci/icon_highlight_4.png"
+                                                           style="width: 70px;height: 70px"/>
+                                        <p style="font-size: .8rem">Renewable up to 65</p>
                                     </div>
 
-                                    <div class="item">
-                                        <img src="/images/ico_ci/icon_highlight_5.png" alt="headlight"
-                                             style="width: 70px;height: 70px">
+                                    <div class="item"><img alt="headlight" src="/images/ico_ci/icon_highlight_5.png"
+                                                           style="width: 70px;height: 70px"/>
                                         <p style="font-size: .8rem">Insurance premiums are tax deductible*</p>
                                     </div>
 
-                                    <div class="item">
-                                        <img src="/images/ico_ci/icon_highlight_6.png" alt="headlight"
-                                             style="width: 70px;height: 70px">
+                                    <div class="item"><img alt="headlight" src="/images/ico_ci/icon_highlight_6.png"
+                                                           style="width: 70px;height: 70px"/>
                                         <p style="font-size: .8rem">Protection against critical illnesses with coverage
                                             up to 3 million baht</p>
                                     </div>
 
-                                    <div class="item">
-                                        <img src="/images/ico_ci/icon_highlight_7.png" alt="headlight"
-                                             style="width: 70px;height: 70px">
+                                    <div class="item"><img alt="headlight" src="/images/ico_ci/icon_highlight_7.png"
+                                                           style="width: 70px;height: 70px"/>
                                         <p style="font-size: .8rem">Covers five critical illnesses</p>
                                     </div>
 
-                                    <div class="item">
-                                        <img src="/images/ico_ci/icon_highlight_8.png" alt="headlight"
-                                             style="width: 70px;height: 70px">
+                                    <div class="item"><img alt="headlight" src="/images/ico_ci/icon_highlight_8.png"
+                                                           style="width: 70px;height: 70px"/>
                                         <p style="font-size: .8rem">Receive a second medical opinion as well as
-                                            consulting a doctor online
-                                        </p>
+                                            consulting a doctor online</p>
                                     </div>
 
-                                    <div class="item">
-                                        <img src="/images/ico_ci/icon_highlight_9.png" alt="headlight"
-                                             style="width: 70px;height: 70px">
+                                    <div class="item"><img alt="headlight" src="/images/ico_ci/icon_highlight_9.png"
+                                                           style="width: 70px;height: 70px"/>
                                         <p style="font-size: .8rem">Apply now without having to purchase life
                                             insurance.</p>
                                     </div>
 
-                                    <div class="item">
-                                        <img src="/images/ico_ci/icon_highlight_10.png" alt="headlight"
-                                             style="width: 70px;height: 70px">
+                                    <div class="item"><img alt="headlight" src="/images/ico_ci/icon_highlight_10.png"
+                                                           style="width: 70px;height: 70px"/>
                                         <p style="font-size: .8rem">Answer three simple health questions; no need to go
                                             to the hospital for a check-up</p>
                                     </div>
@@ -145,8 +130,7 @@
                         </section>
 
                         <div class="service_flexi">
-                            <h2 style="margin: 20px 0">Once you purchase myFlexi CI you will also be eligible to receive
-                                additional services provided by the company.</h2>
+                            <h2 style="margin: 20px 0">Purchase and Receive Additional Medical Services.</h2>
 
                             <div class="service_flexi_box">
                                 <div class="inner"><a href="/en/myHealth/health2go"><img alt=""
@@ -163,18 +147,18 @@
 
                         <section class="why-ci">
                             <div>
-                                <h2>Why purchase myFlexi CI?</h2>
+                                <h2 style="font-size: 1.2rem">Why purchase myFlexi CI?</h2>
+                                <ul>
+                                    <li>&bull; Taking care of you for both early and late stage illnesses.</li>
+                                    <li>&bull; Can choose additional critical illness coverage for a small additional cost.</li>
+                                    <li>&bull; Worry-Free about the enormous medical bills that could occur for treatment.</li>
+                                </ul>
 
-                                <p>Because it is critical illness insurance that is ready to take care of you and your
-                                    loved ones for both early and late stage illnesses. You can also choose additional
-                                    critical illness coverage for a small additional cost. With this insurance coverage,
-                                    you will not need to worry about the enormous medical bills that could occur for
-                                    treatment.</p>
                             </div>
 
                             <div>
-                                <h2>Top 6 deadly diseases in Thailand</h2>
-                                <small>*Number of deaths per hour</small>
+                                <h2 style="font-size: 1.2rem">Top 6 deadly diseases in Thailand</h2>
+                                <small>*Number of deaths <span style="font-size: 1rem;font-weight: bold">per hour</span></small>
 
                                 <ul>
                                     <li><strong style="width: 270px;">7.7</strong> <span> Cancer</span></li>
@@ -186,13 +170,9 @@
                                     </li>
                                     <li><strong style="width: 60px;">1.0</strong> <span>Diabetes</span></li>
                                 </ul>
-                                <div class="why-ci-source">
-                                    <em style="font-size: .6rem">
-                                        Source : Ministry of public health, Diabetes association of Thailand, Bangkok hospital
-                                    </em>
 
-                                </div>
-
+                                <div class="why-ci-source"><em style="font-size: .6rem">Source : Ministry of public
+                                        health, Diabetes association of Thailand, Bangkok hospital </em></div>
                             </div>
                         </section>
 
@@ -205,19 +185,26 @@
                                 <div class="ci-cost-box">
                                     <div class="ci-cost-table">
                                         <h6>Cancer</h6>
+
                                         <ul>
                                             <li><strong>Diagnostics</strong> <span
                                                     class="col-price">Starts 30,000฿</span></li>
-                                            <li><strong>Surgery operation</strong> <span
-                                                    class="col-price">Starts 200,000฿</span></li>
+                                            <li><strong>Surgery operation</strong> <span class="col-price">Starts 200,000฿</span>
+                                            </li>
                                             <li><strong>Intensity Modulated Radiation Therapy</strong> <span
-                                                    class="col-price">100,000 – 500,000฿</span></li>
-                                            <li><strong>Chemotherapy</strong> <span
-                                                    class="col-price">400,000 – 1,200,000฿</span>
+                                                    class="col-price">100,000 &ndash; 500,000฿</span></li>
+                                            <li><strong>Chemotherapy</strong> <span class="col-price">400,000 &ndash; 1,200,000฿</span>
+                                            </li>
+                                            <li>
+                                                <strong>Total 1,930,000฿</strong>
+                                                <span>
+                                                        (Excluding Specialty nurse fee benefits and inpatient treatment)
+                                                </span>
                                             </li>
                                         </ul>
                                     </div>
-                                    <div class="why-ci-source" style="margin-right: 10px">
+
+                                    <div class="why-ci-source cost" style="margin-right: 10px">
                                         <ul>
                                             <li>Source : Ministry of public health</li>
                                         </ul>
@@ -227,41 +214,42 @@
                                 <div class="ci-cost-box">
                                     <div class="ci-cost-table">
                                         <h6>Heart Attack</h6>
+
                                         <ul>
-                                            <li><strong>Balloon angioplasty therapy </strong> <span class="col-price">200,000 – 1,000,000฿</span>
+                                            <li><strong>Balloon angioplasty therapy </strong> <span class="col-price">200,000 &ndash; 1,000,000฿</span>
                                             </li>
-                                            <li><strong>Coronary artery surgery</strong> <span
-                                                    class="col-price">550,000 – 650,000฿</span></li>
+                                            <li><strong>Coronary artery surgery</strong> <span class="col-price">550,000 &ndash; 650,000฿</span>
+                                            </li>
                                             <li><strong>Coronary angiography examination </strong> <span
-                                                    class="col-price">Starts 150,000฿</span>
-                                            </li>
+                                                    class="col-price">Starts 150,000฿</span></li>
                                         </ul>
                                     </div>
-                                    <div class="why-ci-source" style="margin-right: 10px">
+
+                                    <div class="why-ci-source cost" style="margin-right: 10px">
                                         <ul>
                                             <li>Source: Central Chest Institute Of Thailand</li>
                                         </ul>
                                     </div>
                                 </div>
                             </div>
-
                         </section>
 
                         <div class="wrapper text-center">{btn_buy}</div>
 
                         <section class="installment-ci">
-                            <div class="img-wrapper">
-                                <img alt="ci"
-                                     src="/storage/product/CI/waist-portrait-happy-smiling-young-600w-1959752341.webp"/>
+                            <div class="img-wrapper"><img alt="ci"
+                                                          src="/storage/product/CI/waist-portrait-happy-smiling-young-600w-1959752341.webp"/>
                             </div>
+
                             <div>
-                                <h2>Purchasing critical illness insurance myFlexi CI is a better choice! Because you can
-                                    choose to pay your annual premium easy credit card installments.</h2>
+                                <h2>Choose to pay your annual premium in easy credit card installments.</h2>
 
                                 <p>Pay for your insurance comfortably with the option of paying your annual premium
-                                    installments. Or you can pay the full annual premium via credit or
-                                    debit cards accepted for all banks in Thailand.*<br/>
-                                    <em>*Payment terms and conditions are specified by each bank.</em></p>
+                                    installments. Or you can pay the full annual premium via credit or debit cards
+                                    accepted for all banks in Thailand.*<br/>
+                                    <em>*Payment terms and conditions are specified by each bank.
+                                    </em>
+                                </p>
                             </div>
                         </section>
 
@@ -320,26 +308,21 @@
                                 <div><img alt="" src="/storage/product/CI/phone.png"/></div>
 
                                 <div>
-                                    <h2 style="color: #FFFFFF">ได้เลือกทุกความต้องการ
-                                    </h2>
+                                    <h2 style="color: #FFFFFF">ได้เลือกทุกความต้องการ</h2>
 
                                     <ul>
-                                        <li>
-                                            <i class="icofont-shield-alt">&nbsp;</i>
-                                            <div><strong><em>ได้!</em>
-                                                    เลือกความคุ้มครองที่ใช่ </strong> <span>สามารถเลือกกลุ่มโรคร้ายที่คุณกังวล</span>
+                                        <li><i class="icofont-shield-alt">&nbsp;</i>
+
+                                            <div><strong><em>ได้!</em> เลือกความคุ้มครองที่ใช่ </strong> <span>สามารถเลือกกลุ่มโรคร้ายที่คุณกังวล</span>
                                             </div>
                                         </li>
-                                        <li>
-                                            <i class="icofont-coins">&nbsp;</i>
-                                            <div><strong><em>ได้!</em>
-                                                    เลือกแผนตามงบ</strong>
-                                                <span>ปรับ ลด-เพิ่ม เบี้ยประกันได้ตามใจ</span></div>
+                                        <li><i class="icofont-coins">&nbsp;</i>
+                                            <div><strong><em>ได้!</em> เลือกแผนตามงบ</strong> <span>ปรับ ลด-เพิ่ม เบี้ยประกันได้ตามใจ</span>
+                                            </div>
                                         </li>
-                                        <li>
-                                          <img src="/images/ico_ci/2203522.svg" alt="ico_ci" style="margin-right: 34px;width: 50px">
-                                            <div><strong><em>ได้!</em>
-                                                    เลือกให้คุณหรือคนรัก</strong> <span>มอบความคุ้มครอง แทนความห่วงใย ง่ายแค่คลิก</span>
+                                        <li><img alt="ico_ci" src="/images/ico_ci/2203522.svg"
+                                                 style="margin-right: 34px;width: 50px"/>
+                                            <div><strong><em>ได้!</em> เลือกให้คุณหรือคนรัก</strong> <span>มอบความคุ้มครอง แทนความห่วงใย ง่ายแค่คลิก</span>
                                             </div>
                                         </li>
                                     </ul>
@@ -358,70 +341,59 @@
 
                             <div class="highlight-ci-wrapper" style="margin-bottom: 20px">
                                 <div id="step">
-                                    <div class="item">
-                                        <img src="/images/ico_ci/icon_highlight_1.png" alt="headlight"
-                                             style="width: 70px;height: 70px">
+                                    <div class="item"><img alt="headlight" src="/images/ico_ci/icon_highlight_1.png"
+                                                           style="width: 70px;height: 70px"/>
                                         <p style="font-size: .8rem">เลือกปรับเพิ่ม-ลด <span class="nowrap">ความคุ้มครองได้</span>
                                         </p>
                                     </div>
 
-                                    <div class="item">
-                                        <img src="/images/ico_ci/icon_highlight_2.png" alt="headlight"
-                                             style="width: 70px;height: 70px">
-                                        <p style="font-size: .8rem">เลือกผ่อนได้ชิลๆ *
-                                            <span class="nowrap">ผ่านบัตรเครดิต</span>
+                                    <div class="item"><img alt="headlight" src="/images/ico_ci/icon_highlight_2.png"
+                                                           style="width: 70px;height: 70px"/>
+                                        <p style="font-size: .8rem">เลือกผ่อนได้ชิลๆ <span class="nowrap">ผ่านบัตรเครดิต*</span>
                                         </p>
                                     </div>
 
-                                    <div class="item">
-                                        <img src="/images/ico_ci/icon_highlight_3.png" alt="headlight"
-                                             style="width: 70px;height: 70px">
+                                    <div class="item"><img alt="headlight" src="/images/ico_ci/icon_highlight_3.png"
+                                                           style="width: 70px;height: 70px"/>
                                         <p style="font-size: .8rem">มีค่าชดเชยรายวัน <span
                                                 class="nowrap">และพยาบาลพิเศษ</span></p>
                                     </div>
 
-                                    <div class="item">
-                                        <img src="/images/ico_ci/icon_highlight_4.png" alt="headlight"
-                                             style="width: 70px;height: 70px">
+                                    <div class="item"><img alt="headlight" src="/images/ico_ci/icon_highlight_4.png"
+                                                           style="width: 70px;height: 70px"/>
                                         <p style="font-size: .8rem">คุ้มครองถึงอายุ 65 ปี</p>
                                     </div>
 
-                                    <div class="item">
-                                        <img src="/images/ico_ci/icon_highlight_5.png" alt="headlight"
-                                             style="width: 70px;height: 70px">
+                                    <div class="item"><img alt="headlight" src="/images/ico_ci/icon_highlight_5.png"
+                                                           style="width: 70px;height: 70px"/>
                                         <p style="font-size: .8rem">เบี้ยประกันนำไป<span
                                                 class="nowrap">ลดหย่อนภาษีได้*</span></p>
                                     </div>
 
-                                    <div class="item">
-                                        <img src="/images/ico_ci/icon_highlight_6.png" alt="headlight"
-                                             style="width: 70px;height: 70px">
+                                    <div class="item"><img alt="headlight" src="/images/ico_ci/icon_highlight_6.png"
+                                                           style="width: 70px;height: 70px"/>
                                         <p style="font-size: .8rem">คุ้มครองโรคร้ายทุกระยะ <span class="nowrap">สูงสุดมากกว่า 3 ล้านบาท*</span>
                                         </p>
                                     </div>
 
-                                    <div class="item">
-                                        <img src="/images/ico_ci/icon_highlight_7.png" alt="headlight"
-                                             style="width: 70px;height: 70px">
+                                    <div class="item"><img alt="headlight" src="/images/ico_ci/icon_highlight_7.png"
+                                                           style="width: 70px;height: 70px"/>
                                         <p style="font-size: .8rem">คุ้มครอง 5 กลุ่มโรคร้ายแรง</p>
                                     </div>
 
-                                    <div class="item">
-                                        <img src="/images/ico_ci/icon_highlight_8.png" alt="headlight"
-                                             style="width: 70px;height: 70px">
+                                    <div class="item"><img alt="headlight" src="/images/ico_ci/icon_highlight_8.png"
+                                                           style="width: 70px;height: 70px"/>
                                         <p style="font-size: .8rem">มีบริการความเห็นที่สองทางการแพทย์
                                             และปรึกษาแพทย์ออนไลน์</p>
                                     </div>
 
-                                    <div class="item">
-                                        <img src="/images/ico_ci/icon_highlight_9.png" alt="headlight"
-                                             style="width: 70px;height: 70px">
+                                    <div class="item"><img alt="headlight" src="/images/ico_ci/icon_highlight_9.png"
+                                                           style="width: 70px;height: 70px"/>
                                         <p style="font-size: .8rem">สมัครได้เลย โดยไม่ต้องซื้อประกันชีวิต</p>
                                     </div>
 
-                                    <div class="item">
-                                        <img src="/images/ico_ci/icon_highlight_10.png" alt="headlight"
-                                             style="width: 70px;height: 70px">
+                                    <div class="item"><img alt="headlight" src="/images/ico_ci/icon_highlight_10.png"
+                                                           style="width: 70px;height: 70px"/>
                                         <p style="font-size: .8rem">ตอบคำถามสุขภาพแค่ 3 ข้อ ไม่ต้องไปตรวจสุขภาพที่<span
                                                 class="nowrap">โรงพยาบาล</span></p>
                                     </div>
@@ -432,20 +404,16 @@
                         </section>
 
                         <div class="service_flexi">
-                            <h2 style="margin: 20px 0">พร้อมรับบริการเสริมที่หลากหลาย เมื่อสมัครประกันภัยโรคร้ายแรง
-                                myFlexi CI</h2>
+                            <h2 style="margin: 20px 0">พร้อมรับบริการเสริมทางการแพทย์ที่หลากหลาย</h2>
 
                             <div class="service_flexi_box">
-                                <div class="inner">
-                                    <a href="/th/myHealth/health2go">
-                                        <img alt="" src="/storage/product/CI/health2go-520x480th.jpg"/> </a>
-                                </div>
+                                <div class="inner"><a href="/th/myHealth/health2go"><img alt=""
+                                                                                         src="/storage/product/CI/health2go-520x480th.jpg"/>
+                                    </a></div>
 
-                                <div class="inner">
-                                    <a href="/th/myHealth/health2go">
-                                        <img alt="" src="/storage/product/CI/myelitedoctor520x480-th.jpg"/>
-                                    </a>
-                                </div>
+                                <div class="inner"><a href="/th/myHealth/health2go"><img alt=""
+                                                                                         src="/storage/product/CI/myelitedoctor520x480-th.jpg"/>
+                                    </a></div>
                             </div>
 
                             <div class="wrapper text-center">{btn_buy}</div>
@@ -454,11 +422,12 @@
                         <section class="why-ci">
                             <div>
                                 <h2>ทำไมต้องซื้อ myFlexi CI</h2>
+                                <ul>
+                                    <li>&bull; พร้อมดูแลคุ้มครองโรคร้ายทุกระยะ</li>
+                                    <li>&bull; เลือกความคุ้มครองโรคร้ายเพิ่มเติมได้ตามต้องการ</li>
+                                    <li>&bull; รับมือสบายใจกับค่าใช้จ่ายก้อนโตในการรักษา</li>
+                                </ul>
 
-                                <p>เพราะเป็นแบบประกันโรคร้ายแรง ที่พร้อมดูแลคุ้มครองโรคร้ายทุกระยะ
-                                    และเลือกความคุ้มครองโรคร้ายเพิ่มเติมได้ตามต้องการ อุ่นใกว่าจเพราะ &lsquo;ได้&rsquo;
-                                    มากกว่า หากวันนั้นมาถึง&hellip;คุณจึงพร้อมจะรับมือกับ ค่าใช้จ่ายก้อนโต
-                                    จากการรักษา</p>
                             </div>
 
                             <div>
@@ -472,16 +441,11 @@
                                         <span>โรคภาวะหัวใจเต้นผิดจังหวะรุนแรง</span></li>
                                     <li><strong style="width: 94px;">2.4</strong> <span>โรคปลอดระยะสุดท้าย</span></li>
                                     <li><strong style="width: 70px;">1.7</strong> <span>โรคไตวายเรื้อรัง</span></li>
-                                    <li><strong style="width: 60px;">1.0</strong> <span>เบาหวาน</span></li>
+                                    <li><strong style="width: 60px;">1.0</strong> <span>โรคเบาหวาน</span></li>
                                 </ul>
 
-                                <div class="why-ci-source">
-                                    <em style="font-size: .6rem">
-                                        ที่มา : กระทรวงสาธารณสุข ปี พ.ศ. 2556,
-                                        สมาคมโรคเบาหวานแห่งประเทศไทย,
-                                        โรงพยาบาลกรุงเทพ
-                                    </em>
-                                </div>
+                                <div class="why-ci-source"><em style="font-size: .6rem">ที่มา : กระทรวงสาธารณสุข ปี พ.ศ.
+                                        2556, สมาคมโรคเบาหวานแห่งประเทศไทย, โรงพยาบาลกรุงเทพ </em></div>
                             </div>
                         </section>
 
@@ -494,18 +458,24 @@
                                 <div class="ci-cost-box">
                                     <div class="ci-cost-table">
                                         <h6>โรคมะเร็ง</h6>
+
                                         <ul>
                                             <li><strong>การตรวจวินิจฉัย</strong> <span
                                                     class="col-price">เริ่มต้น 30,000</span></li>
                                             <li><strong>การผ่าตัด</strong> <span
                                                     class="col-price">เริ่มต้น 200,000</span></li>
-                                            <li><strong>การให้ยาผ่านการฉายรังสี</strong> <span
-                                                    class="col-price">100,000 – 500,000</span></li>
-                                            <li><strong>การใช้เคมีบำบัด</strong> <span
-                                                    class="col-price">400,000 – 1,200,000</span></li>
+                                            <li><strong>การให้ยาผ่านการฉายรังสี</strong> <span class="col-price">100,000 &ndash; 500,000</span>
+                                            </li>
+                                            <li><strong>การใช้เคมีบำบัด</strong> <span class="col-price">400,000 &ndash; 1,200,000</span>
+                                            </li>
+                                            <li>
+                                                <strong>รวม 1,930,000 บาท</strong>
+                                                <span>(ไม่รวมค่าพักรักษาตัวเป็นผู้ป่วยในรวมถึงค่าจ้างพยาบาลพิเศษ)</span>
+                                            </li>
                                         </ul>
                                     </div>
-                                    <div class="why-ci-source" style="margin-right: 10px">
+
+                                    <div class="why-ci-source cost" style="margin-right: 10px">
                                         <ul>
                                             <li>ที่มา: สถานบันมะเร็งแห่งชาติ</li>
                                         </ul>
@@ -518,30 +488,30 @@
 
                                         <ul>
                                             <li><strong>การรักษาด้วยการขยายหลอดเลือดหัวใจด้วยบอลลูน </strong> <span
-                                                    class="col-price">200,000 – 1,000,000</span></li>
-                                            <li><strong>การผ่าตัดเส้นเลือดหัวใจ</strong> <span
-                                                    class="col-price">550,000 – 650,000</span></li>
-                                            <li><strong>การตรวจด้วยการฉีดสีหลอดเลือดหัวใจ </strong> <span
-                                                    class="col-price">เริ่มต้น 150,000</span>
+                                                    class="col-price">200,000 &ndash; 1,000,000</span></li>
+                                            <li><strong>การผ่าตัดเส้นเลือดหัวใจ</strong> <span class="col-price">550,000 &ndash; 650,000</span>
                                             </li>
+                                            <li><strong>การตรวจด้วยการฉีดสีหลอดเลือดหัวใจ </strong> <span
+                                                    class="col-price">เริ่มต้น 150,000</span></li>
                                         </ul>
                                     </div>
-                                    <div class="why-ci-source" style="margin-right: 10px">
+
+                                    <div class="why-ci-source cost" style="margin-right: 10px">
                                         <ul>
                                             <li>ที่มา: สถาบันโรคทรวงอก</li>
                                         </ul>
                                     </div>
                                 </div>
-
                             </div>
                         </section>
 
                         <div class="wrapper text-center">{btn_buy}</div>
 
                         <section class="installment-ci">
-                            <div class="img-wrapper"><img
-                                    src="/storage/product/CI/waist-portrait-happy-smiling-young-600w-1959752341.webp"
-                                    alt="ci"></div>
+                            <div class="img-wrapper"><img alt="ci"
+                                                          src="/storage/product/CI/waist-portrait-happy-smiling-young-600w-1959752341.webp"/>
+                            </div>
+
                             <div>
                                 <h2>สบายใจกว่า! เพราะเลือกผ่อนชำระได้</h2>
 

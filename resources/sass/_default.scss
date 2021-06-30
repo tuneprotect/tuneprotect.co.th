@@ -471,7 +471,12 @@ input[type="search"]::-webkit-search-results-decoration {
         border: 1px solid $primary-color;
         color: $primary-color;
         background: #ffffff;
-
+        &.red {
+            border-color: $primary-color;
+        }
+        &.green {
+            border-color: green;
+        }
         &.on {
             color: #ffffff;
             background: $primary-color;
@@ -489,6 +494,8 @@ input[type="search"]::-webkit-search-results-decoration {
                 color: #ffffff;
             }
         }
+
+
     }
 
     &.btn-primary {
@@ -508,6 +515,7 @@ input[type="search"]::-webkit-search-results-decoration {
             background-color: $primary-color;
             border-color: $primary-color;
         }
+
     }
 
     &.btn-sm {

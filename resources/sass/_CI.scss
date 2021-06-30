@@ -442,6 +442,13 @@ main[data-package="CI"] {
         display: flex;
         justify-content: flex-end;
         margin-top: 10px;
+
+        &.cost {
+            position: absolute;
+            right: 0;
+            bottom: -22px;
+        }
+
         @media all and (max-width: $md) {
             justify-content: flex-start;
         }
@@ -616,18 +623,18 @@ main[data-package="CI"] {
 
         .ci-cost-box {
             width: 100%;
+            border: 1px solid #f2bd30;
+            border-radius: 14px;
+            position: relative;
             @media all and (min-width: $md) {
                 width: 49%;
             }
         }
 
         .ci-cost-table {
-            border: 1px solid #f2bd30;
-            border-radius: 14px;
             width: 100%;
             margin: 20px auto;
             @media all and (min-width: $md) {
-                width: 98%;
                 margin: 0;
             }
 
@@ -685,6 +692,7 @@ main[data-package="CI"] {
     .check_q-wrapper {
         display: flex;
         justify-content: center;
+        margin: 20px auto;
 
         .check_q {
             position: relative;
@@ -708,5 +716,16 @@ main[data-package="CI"] {
             border-radius: 14px;
         }
     }
+
+    .btn-q-n {
+        border: 1px solid $primary-color;
+        color: $primary-color;
+    }
+
+    .btn-q-y {
+        border: 1px solid green;
+        color: green;
+    }
+
 
 }

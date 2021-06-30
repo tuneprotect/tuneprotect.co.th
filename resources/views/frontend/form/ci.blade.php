@@ -51,7 +51,7 @@
     <div class="wrapper">
         <form>
             <div class="controls-wrapper" id="disease_box" data-disease_title="@lang("product.disease_summary")">
-                <h2 class="text-center no-color">@lang('product.disease_title')</h2>
+                <h2 class="no-color">@lang('product.disease_title')</h2>
                 <div>@lang('product.disease_title_span')</div>
                 <ul class="check_box_disease">
                     @foreach(array('F', 'C', 'O', 'T', 'D') as $v)
@@ -111,20 +111,21 @@
     </div>
     <div class="btn-wrapper text-center check_q-wrapper">
         <div class="check_q">
-            <a class="btn btn-primary btn-q-n">@lang('product.proceed_q_n')</a>
+            <a class="btn btn-outlin  btn-q-n" >@lang('product.proceed_q_n')</a>
         </div>
 
         <div class="check_q check_q_y">
             <input id="fdQuestion1" name="fdQuestion1" type="checkbox"
                    data-error-insurance_term="@lang('product.proceed_q_y')" value="1"
                    data-gtm="product-{{strtolower($selected)}}-proceed-step-3" data-step="4">
-            <label for="fdQuestion1"><a data-gtm="product-{{strtolower($selected)}}-proceed-step-3" data-step="4"
-                                        class="btn btn-primary btn-goto btn-q-y">@lang('product.proceed_q_y')</a></label>
+            <label for="fdQuestion1">
+                <a data-gtm="product-{{strtolower($selected)}}-proceed-step-3" data-step="4"
+                                        class="btn btn-outlin  btn-goto btn-q-y">@lang('product.proceed_q_y')</a></label>
         </div>
 
     </div>
-    <div class="controls-wrapper text-center">
-
+    <div class="controls-wrapper">
+        @lang('product.question_p_4')
 
     </div>
 </section>
