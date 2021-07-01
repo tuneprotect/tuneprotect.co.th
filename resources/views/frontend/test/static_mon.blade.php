@@ -13,7 +13,6 @@
             @endif
 
             <main data-package="CI">
-
                 <div>
                     <section class="wrapper" style="padding-top: 0">
                         <h2>Critical illness insurance from Tune Protect</h2>
@@ -222,6 +221,12 @@
                                             </li>
                                             <li><strong>Coronary angiography examination </strong> <span
                                                     class="col-price">Starts 150,000฿</span></li>
+                                            <li>
+                                                <strong>Total 1,800,000฿</strong>
+                                                <span>
+                                                       (Excluding specialty nurse fee benefits and inpatient treatment)
+                                                </span>
+                                            </li>
                                         </ul>
                                     </div>
 
@@ -238,7 +243,7 @@
 
                         <section class="installment-ci">
                             <div class="img-wrapper"><img alt="ci"
-                                                          src="/storage/product/CI/waist-portrait-happy-smiling-young-600w-1959752341.webp"/>
+                                                          src="/storage/product/CI/520x480-raisecard.jpg"/>
                             </div>
 
                             <div>
@@ -285,7 +290,6 @@
                         </div>
                     </div>
                 </div>
-
 
                 <div>
                     <section class="wrapper">
@@ -485,7 +489,6 @@
                                 <div class="ci-cost-box">
                                     <div class="ci-cost-table">
                                         <h6>โรคหัวใจ</h6>
-
                                         <ul>
                                             <li><strong>การรักษาด้วยการขยายหลอดเลือดหัวใจด้วยบอลลูน </strong> <span
                                                     class="col-price">200,000 &ndash; 1,000,000</span></li>
@@ -493,6 +496,12 @@
                                             </li>
                                             <li><strong>การตรวจด้วยการฉีดสีหลอดเลือดหัวใจ </strong> <span
                                                     class="col-price">เริ่มต้น 150,000</span></li>
+                                            <li>
+                                                <strong>รวม 1,800,000 บาท</strong>
+                                                <span>
+                                                    (ไม่รวมค่าพักรักษาตัวเป็นผู้ป่วยในรวมถึงค่าจ้างพยาบาลพิเศษ)
+                                                </span>
+                                            </li>
                                         </ul>
                                     </div>
 
@@ -509,7 +518,7 @@
 
                         <section class="installment-ci">
                             <div class="img-wrapper"><img alt="ci"
-                                                          src="/storage/product/CI/waist-portrait-happy-smiling-young-600w-1959752341.webp"/>
+                                                          src="/storage/product/CI/520x480-raisecard.jpg"/>
                             </div>
 
                             <div>
@@ -553,7 +562,6 @@
                         </div>
                     </div>
                 </div>
-
 
             </main>
 

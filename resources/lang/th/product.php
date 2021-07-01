@@ -60,6 +60,8 @@ return [
     "postal_code" => "รหัสไปรษณีย์",
     "prefix" => "คำนำหน้าชื่อ",
     "price" => 'ราคา',
+    "your-details"=>"โปรดใส่ข้อมูลของคุณ",
+    "loved-one"=>"โปรดใส่ข้อมูลของคนที่คุณรัก",
     "price_per_year" => '<strong>ราคาเบี้ยประกันต่อปี</strong>',
     "installment" => '<strong>ราคาเบี้ยประกันต่อเดือน (ราคาเบี้ย/12เดือน)</strong>
 <br>

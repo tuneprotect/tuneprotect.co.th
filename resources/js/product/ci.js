@@ -224,6 +224,23 @@ if ($('#title_wrapper')) {
             }, {min: undefined, max: undefined})
         }
 
+        $('#ctrl_buy_for').addEventListener('change', function(e){
+            let result = e.target.value;
+            changeTitle(result);
+        });
+
+        const changeTitle = (result) =>{
+
+            $('[data-your-details]').innerText = "";
+            if(result === "own_insurance"){
+                $('[data-your-details]').innerText = $('[data-your-details]').getAttribute('data-your-details')
+            }else{
+                $('[data-loved-one]').innerText = $('[data-loved-one]').getAttribute('data-loved-one')
+            }
+
+        }
+        changeTitle("own_insurance");
+
         $$(".action-expand-col").forEach($el => {
             $el.addEventListener("click", function (e) {
                 let result = e.target.closest('.expand').getElementsByClassName("package-number-ci");
