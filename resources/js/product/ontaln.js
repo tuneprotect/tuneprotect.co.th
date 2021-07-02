@@ -260,10 +260,13 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     let nationality_option = `<option value="">${$('#data_1_fdNationality').getAttribute('data-please-select')}</option>`;
 
+
+    // alert($('#ctrl_sub_package').value);
+    //30 and 60 Only
     Object.keys(nationality_data).map(v => {
-        if (v !== "Thailand") {
+        // if (v !== "Thailand") {
             nationality_option += `<option value="${v}">${v}</option>`;
-        }
+        // }
     });
 
     $('#ctrl_no_of_insured').addEventListener('change', (e) => {
