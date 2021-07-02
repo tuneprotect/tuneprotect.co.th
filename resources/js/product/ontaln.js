@@ -259,14 +259,31 @@ document.addEventListener("DOMContentLoaded", async () => {
     $('#fdDestTo').innerHTML = `<option value="THA">${desination}</option>`;
 
     let nationality_option = `<option value="">${$('#data_1_fdNationality').getAttribute('data-please-select')}</option>`;
-
-
-    // alert($('#ctrl_sub_package').value);
-    //30 and 60 Only
     Object.keys(nationality_data).map(v => {
-        // if (v !== "Thailand") {
+        if (v !== "Thailand") {
             nationality_option += `<option value="${v}">${v}</option>`;
-        // }
+        }
+    });
+
+    $('#ctrl_sub_package').addEventListener('change', (e) => {
+        let nationality_option = `<option value="">${$('#data_1_fdNationality').getAttribute('data-please-select')}</option>`;
+        // console.log($('#ctrl_sub_package').value);
+        if($('#ctrl_sub_package').value == '01' || $('#ctrl_sub_package').value == '05' ){
+            //30 and 60 Only
+            Object.keys(nationality_data).map(v => {
+                nationality_option += `<option value="${v}">${v}</option>`;
+            });
+        }
+        else {
+            Object.keys(nationality_data).map(v => {
+                if (v !== "Thailand") {
+                    nationality_option += `<option value="${v}">${v}</option>`;
+                }
+            });
+        }
+        for (let i = 1; i < 10; i++) {
+            $(`#data_${i}_fdNationality`).innerHTML = nationality_option;
+        }
     });
 
     $('#ctrl_no_of_insured').addEventListener('change', (e) => {
