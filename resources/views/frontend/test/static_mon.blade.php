@@ -149,8 +149,12 @@
                                 <h2 style="font-size: 1.2rem">Why purchase myFlexi CI?</h2>
                                 <ul>
                                     <li>&bull; Taking care of you for both early and late stage illnesses.</li>
-                                    <li>&bull; Can choose additional critical illness coverage for a small additional cost.</li>
-                                    <li>&bull; Worry-Free about the enormous medical bills that could occur for treatment.</li>
+                                    <li>&bull; Can choose additional critical illness coverage for a small additional
+                                        cost.
+                                    </li>
+                                    <li>&bull; Worry-Free about the enormous medical bills that could occur for
+                                        treatment.
+                                    </li>
                                 </ul>
 
                             </div>
@@ -261,28 +265,28 @@
                         <div class="wrapper text-center">{btn_buy}</div>
 
                         <div class="my-health-condition">
-                            <h2>Insurance underwriting conditions</h2>
-
+                            <h2>Insurance claim conditions</h2>
                             <ol class="has-bullet">
-                                <li>The underwriting consideration is in accordance with the Company&#39;s guidelines.
+                                <li>The underwriting consideration is made strictly following the Company’s guidelines.
                                 </li>
-                                <li>The applicant must be between 18 to 60 years old (renewable up to 65 years).</li>
-                                <li>The applicant must be in good health before the date of applying for insurance</li>
-                                <li>A health declaration is needed without requiring medical tests (If the health
-                                    declaration information is insufficient for consideration, the company reserves the
-                                    right to request a health check-up before issuing the insurance.)
+                                <li>The applicant must be 18-60 years of age (renewable up to 65 years).</li>
+                                <li>The applicant must be in good health before applying for the insurance</li>
+                                <li>No health check necessary unless there are discrepancies in the health declaration (In the
+                                    event which there is a discrepancy in the health declaration or information is insufficient.
+                                    The Company reserves the right to request a health check-up before issuing an insurance
+                                    policy.)
                                 </li>
-                                <li>The information in this document is preliminary only and does not replace the policy
-                                    wording. The applicant/insured should study the policy wording in detail to
-                                    understand the details of coverage conditions, benefits, and exclusions before
-                                    deciding to purchase the insurance.
+                                <li>The information on this document is only preliminary information on the insurance
+                                    products. The applicant/insured should conduct more research and understand the details of
+                                    coverage conditions, benefits, and exclusions before deciding to purchase the insurance.
+                                    After receiving the insurance policy, please review the information.
                                 </li>
-                                <li>The coverage conditions are specified in the actual policy wording.</li>
-                                <li>If the insured needs a tax invoice or policy to be delivered by post, please contact
-                                    customer service at 1183.
+                                <li>The coverage conditions are as stipulated in the policy.</li>
+                                <li>If you need a tax invoice or policy to be delivered by post, please contact our customer
+                                    service team at 1183.
                                 </li>
-                                <li>You have the right to amend and cancel the policy free of charge (Free Look Period)
-                                    within 15 days of receiving the insurance policy.
+                                <li>You are entitled to the right to cancel the policy (Free Look Period) within 15 days from
+                                    the date of receiving the policy. Free of charge.
                                 </li>
                             </ol>
 
@@ -536,9 +540,9 @@
                         <div class="my-health-condition">
                             <h2>เงื่อนไขการขอเอาประกันภัย</h2>
 
-                            <ol class="has-bullet">
+                            <ol class="has-bullet">.
                                 <li>การพิจารณารับประกันภัยเป็นไปตามหลักเกณฑ์ของบริษัทฯ</li>
-                                <li>ผู้ขอเอาประกันภัยต้องมีอายุ 18 &ndash; 60 ปีบริบูรณ์ (ต่ออายุได้ถึง 65 ปี)</li>
+                                <li>ผู้ขอเอาประกันภัยต้องมีอายุ 18 – 60 ปีบริบูรณ์ (ต่ออายุได้ถึง 65 ปี)</li>
                                 <li>ผู้ขอเอาประกันภัยต้องมีสุขภาพร่างกายแข็งแรง ก่อนวันที่ขอเอาประกันภัย</li>
                                 <li>แถลงสุขภาพ ไม่ต้องตรวจสุขภาพ
                                     (กรณีที่ข้อมูลการแถลงสุขภาพไม่เพียงพอต่อการพิจารณารับประกันภัย
@@ -553,7 +557,7 @@
                                 <li>กรณีต้องการใบกำกับภาษีฯ หรือกรมธรรม์ฯ ให้จัดส่งทางไปรษณีย์
                                     กรุณาติดต่อฝ่ายบริการลูกค้า โทร. 1183
                                 </li>
-                                <li>ท่านสามารถใช้สิทธิยกเลิกกรมธรรม์ (Free Look Period) ภายใน 15 วัน
+                                <li>ท่านสามารถใช้สิทธิ์ยกเลิกกรมธรรม์ (Free Look Period) ภายใน 15 วัน
                                     นับแต่วันที่ได้รับกรมธรรม์ โดยไม่มีค่าใช้จ่าย
                                 </li>
                             </ol>

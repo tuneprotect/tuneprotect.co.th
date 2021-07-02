@@ -76,7 +76,6 @@ main[data-package="CI"] {
             input[type="checkbox"] {
                 &:checked + label {
                     border: 1px solid $primary-color;
-                    //border-radius: 14px;
 
                     &:after {
                         opacity: 1;
@@ -122,6 +121,10 @@ main[data-package="CI"] {
                             height: 100px;
                             padding: 5px;
                             overflow: visible;
+                            @media all and (max-width: $sm) {
+                                height: 140px;
+                                z-index: 1;
+                            }
 
                             &:after {
                                 bottom: -10px;
@@ -262,6 +265,16 @@ main[data-package="CI"] {
                     height: 90px;
                     display: block;
 
+                }
+            }
+        }
+
+        td {
+            &.recommendPackage ,&.hovered{
+                strong {
+                    i {
+                        color: #fff !important;
+                    }
                 }
             }
         }

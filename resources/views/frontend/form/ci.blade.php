@@ -106,7 +106,7 @@
             @lang('product.question_p_3')
         </p>
         <div>
-            @lang('product.question_p_4')
+            @lang('product.question_p_5')
         </div>
     </div>
     <div class="btn-wrapper text-center check_q-wrapper">
@@ -126,12 +126,11 @@
     </div>
     <div class="controls-wrapper">
         @lang('product.question_p_4')
-
     </div>
 </section>
 <section style="display: none" id="step4" class="wrapper">
     <form class="insurance-form">
-        <div class="form-head"> {{$package->locales[$locale]->title}} <span id="form-head"></span></div>
+        <div class="form-head"> @lang('product.title_plan_4') <span id="form-head"></span></div>
         <div class="form-inner">
             @include('frontend.component.form-profile',['id_card_field' => 'both' ,'id_card_field_title' => __("product.id_card_no") ,'prefix' => '' ,'selected' =>$selected])
             @include('frontend.component.form-address',['prefix' => ''])

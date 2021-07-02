@@ -1069,7 +1069,7 @@ header {
                         }
                     }
 
-                    strong {
+                    strong,i {
                         color: #ffffff;
                     }
 
@@ -2612,7 +2612,7 @@ main {
 
                     &.hovered, &.recommendPackage {
                         background: $primary-color;
-                        color: #fff;
+                        color: #fff !important;
                     }
 
                     @media all and (max-width: $md - 1) {
