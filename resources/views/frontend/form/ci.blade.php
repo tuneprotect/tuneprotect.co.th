@@ -109,7 +109,7 @@
                    data-gtm="product-{{strtolower($selected)}}-proceed-step-3" data-step="4">
             <label for="fdQuestion1">
                 <a data-gtm="product-{{strtolower($selected)}}-proceed-step-3" data-step="4"
-                   class="btn btn-outline green  btn-goto">@lang('product.proceed_q_y')</a></label>
+                   class="btn btn-outline green  btn-goto" id="btn-fdQuestion1">@lang('product.proceed_q_y')</a></label>
         </div>
 
     </div>

@@ -589,16 +589,20 @@ if ($('#title_wrapper')) {
 
                                 break;
                             case 3:
-                                status = $('#fdQuestion1').checked = true
+                                console.log(e.target.tagName)
+                                status = false;
+                                if(e.target.id === 'btn-fdQuestion1'){
+                                    status = true;
 
-                                if (status) {
                                     data = {
                                         ...data,
                                         fdQuestion1: 'Y',
                                     }
                                 }
-                                hideShowDiseaseBox(goToStep);
 
+
+                                hideShowDiseaseBox(goToStep);
+                                console.log(status)
                                 break;
                             case 4:
                                 let address = ($('#ctrl_province').value).split('*');
