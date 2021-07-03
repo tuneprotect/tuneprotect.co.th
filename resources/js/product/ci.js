@@ -498,7 +498,7 @@ if ($('#title_wrapper')) {
             e.defaultPrevented;
             Swal.fire({
                 text: $('[data-question-block]').getAttribute('data-question-block'),
-                icon: 'error',
+                imageUrl: '/images/ico_ci/pngegg.png',
                 confirmButtonText: 'OK',
                 confirmButtonColor: '#E71618',
             })
