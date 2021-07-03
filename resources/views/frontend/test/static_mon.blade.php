@@ -199,10 +199,13 @@
                                             <li><strong>Chemotherapy</strong> <span class="col-price">400,000 &ndash; 1,200,000฿</span>
                                             </li>
                                             <li>
-                                                <strong>Total 1,930,000฿</strong>
-                                                <span>
-                                                        (Excluding Specialty nurse fee benefits and inpatient treatment)
-                                                </span>
+                                                <strong>Total </strong>
+                                                <span class="col-price">1,930,000฿</span>
+                                            </li>
+                                            <li style="justify-content: flex-end">
+                                                <em style="font-size: .6rem; ">(Excluding Specialty nurse fee benefits
+                                                    and inpatient
+                                                    treatment)</em>
                                             </li>
                                         </ul>
                                     </div>
@@ -226,10 +229,13 @@
                                             <li><strong>Coronary angiography examination </strong> <span
                                                     class="col-price">Starts 150,000฿</span></li>
                                             <li>
-                                                <strong>Total 1,800,000฿</strong>
-                                                <span>
-                                                       (Excluding specialty nurse fee benefits and inpatient treatment)
-                                                </span>
+                                                <strong>Total</strong> <span class="col-price">1,800,000฿</span>
+
+                                            </li>
+                                            <li style="justify-content: flex-end">
+                                                <em style="font-size: .6rem; ">(Excluding Specialty nurse fee benefits
+                                                    and inpatient
+                                                    treatment)</em>
                                             </li>
                                         </ul>
                                     </div>
@@ -253,7 +259,7 @@
                             <div>
                                 <h2>Choose to pay your annual premium in easy credit card installments.</h2>
 
-                                <p>Pay for your insurance comfortably with the option of paying your annual premium
+                                <p>Pay for your insurance comfortably with the option of Pay your premium in credit card
                                     installments. Or you can pay the full annual premium via credit or debit cards
                                     accepted for all banks in Thailand.*<br/>
                                     <em>*Payment terms and conditions are specified by each bank.
@@ -271,21 +277,28 @@
                                 </li>
                                 <li>The applicant must be 18-60 years of age (renewable up to 65 years).</li>
                                 <li>The applicant must be in good health before applying for the insurance</li>
-                                <li>No health check necessary unless there are discrepancies in the health declaration (In the
-                                    event which there is a discrepancy in the health declaration or information is insufficient.
-                                    The Company reserves the right to request a health check-up before issuing an insurance
+                                <li>No health check necessary unless there are discrepancies in the health declaration
+                                    (In the
+                                    event which there is a discrepancy in the health declaration or information is
+                                    insufficient.
+                                    The Company reserves the right to request a health check-up before issuing an
+                                    insurance
                                     policy.)
                                 </li>
                                 <li>The information on this document is only preliminary information on the insurance
-                                    products. The applicant/insured should conduct more research and understand the details of
-                                    coverage conditions, benefits, and exclusions before deciding to purchase the insurance.
+                                    products. The applicant/insured should conduct more research and understand the
+                                    details of
+                                    coverage conditions, benefits, and exclusions before deciding to purchase the
+                                    insurance.
                                     After receiving the insurance policy, please review the information.
                                 </li>
                                 <li>The coverage conditions are as stipulated in the policy.</li>
-                                <li>If you need a tax invoice or policy to be delivered by post, please contact our customer
+                                <li>If you need a tax invoice or policy to be delivered by post, please contact our
+                                    customer
                                     service team at 1183.
                                 </li>
-                                <li>You are entitled to the right to cancel the policy (Free Look Period) within 15 days from
+                                <li>You are entitled to the right to cancel the policy (Free Look Period) within 15 days
+                                    from
                                     the date of receiving the policy. Free of charge.
                                 </li>
                             </ol>
@@ -440,7 +453,8 @@
 
                             <div>
                                 <h2>6 โรคร้ายอันดับต้นๆ ที่คร่าชีวิตคนไทย</h2>
-                                <small>*จำนวนผู้เสียชีวิตต่อชั่วโมง</small>
+                                <small>*จำนวนผู้เสียชีวิต<span
+                                        style="font-size: 1rem;font-weight: bold">ต่อชั่วโมง</span></small>
 
                                 <ul>
                                     <li><strong style="width: 270px;">7.7</strong> <span> โรคมะเร็ง </span></li>
@@ -477,8 +491,11 @@
                                             <li><strong>การใช้เคมีบำบัด</strong> <span class="col-price">400,000 &ndash; 1,200,000</span>
                                             </li>
                                             <li>
-                                                <strong>รวม 1,930,000 บาท</strong>
-                                                <span>(ไม่รวมค่าพักรักษาตัวเป็นผู้ป่วยในรวมถึงค่าจ้างพยาบาลพิเศษ)</span>
+                                                <strong>รวม </strong> <span
+                                                    class="col-price">1,930,000</span>
+                                            </li>
+                                            <li style="justify-content: flex-end">
+                                                <em style="font-size: .6rem; ">(ไม่รวมค่าพักรักษาตัวเป็นผู้ป่วยในรวมถึงค่าจ้างพยาบาลพิเศษ)</em>
                                             </li>
                                         </ul>
                                     </div>
@@ -501,10 +518,12 @@
                                             <li><strong>การตรวจด้วยการฉีดสีหลอดเลือดหัวใจ </strong> <span
                                                     class="col-price">เริ่มต้น 150,000</span></li>
                                             <li>
-                                                <strong>รวม 1,800,000 บาท</strong>
-                                                <span>
-                                                    (ไม่รวมค่าพักรักษาตัวเป็นผู้ป่วยในรวมถึงค่าจ้างพยาบาลพิเศษ)
-                                                </span>
+                                                <strong>รวม </strong> <span
+                                                    class="col-price">1,800,000 </span>
+
+                                            </li>
+                                            <li style="justify-content: flex-end">
+                                                <em style="font-size: .6rem; ">(ไม่รวมค่าพักรักษาตัวเป็นผู้ป่วยในรวมถึงค่าจ้างพยาบาลพิเศษ)</em>
                                             </li>
                                         </ul>
                                     </div>

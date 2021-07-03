@@ -214,6 +214,7 @@ export default function WebContentDetailForm({type_id, config, fromDB, onSubmit,
                                     label={config[k].fieldProp.label}
                                     value={values?.locales?.[v.code]?.[k] || ''}
                                     setValues={(val) => setFieldValue(`locales.${v.code}.${k}`, val)}
+                                    helperText={config[k]?.fieldProp?.helperText || ''}
                                 />
                             }
 

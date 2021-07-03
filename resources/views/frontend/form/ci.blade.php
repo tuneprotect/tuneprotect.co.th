@@ -1,5 +1,4 @@
 <section>
-
     <ol class="step">
         <li data-gtm="product-{{strtolower($selected)}}-stepper-1" class="btn-goto on" data-step="1"><a
                 href="#">
@@ -34,9 +33,10 @@
                         <label for="ctrl_travel_type">@lang("product.insurer_type")</label>
                     </div>
                 </div>
+                <br>
+                <strong data-your-details="@lang('product.your-details')" data-loved-one="@lang('product.loved-one')"></strong>
                 @include('frontend.component.form-date-input')
                 <br>
-
                 <div class="slider-wrapper" data-not-qualify="@lang('product.error.birthdate.not-qualify')">
                     <h3>@lang("product.budget")</h3>
                     <div class="controls-wrapper slider_budget">
@@ -44,7 +44,6 @@
                         <input type="text" id="ctrl_budget"/>
                     </div>
                 </div>
-
             </div>
         </form>
     </section>
@@ -56,11 +55,9 @@
                 <ul class="check_box_disease">
                     @foreach(array('F', 'C', 'O', 'T', 'D') as $v)
                         <li class="checkbox_disease">
-
                             <input type="checkbox" name="ctrl_disease" id="checkbox_disease_{{$v}}"
                                    data-disease-{{$v}}="@lang('product.ci_disease.'.$v)"
                                    {{($v=='F'?'checked disabled':'checked')}} value="{{$v}}"/>
-
                             <label for="checkbox_disease_{{$v}}">
                                 <img src="{{asset('images/ico_ci/'.$v.'.svg')}}" alt="@lang('product.ci_disease.'.$v)"/>
                                 <span>
@@ -95,41 +92,55 @@
 </div>
 <section style="display: none" id="step3" class="wrapper">
     <h2>@lang('product.question_title')</h2>
-    <div class="question" data-question-block="@lang('product.question_block')" data-url-redirect="/product/health">
-        <p>
-            @lang('product.question_p_1')
-        </p>
-        <p>
-            @lang('product.question_p_2')
-        </p>
-        <p>
-            @lang('product.question_p_3')
-        </p>
-        <div>
-            @lang('product.question_p_5')
-        </div>
+    <div class="question">
+        <p>@lang('product.question_p_1')</p>
+        <p>@lang('product.question_p_2')</p>
+        <p>@lang('product.question_p_3')</p>
+        <div>@lang('product.question_p_5')</div>
     </div>
     <div class="btn-wrapper text-center check_q-wrapper">
         <div class="check_q">
-            <a class="btn btn-outlin  btn-q-n" >@lang('product.proceed_q_n')</a>
+            <a id="btn-q-n" class="btn btn-outline red">@lang('product.proceed_q_n')</a>
         </div>
 
-        <div class="check_q check_q_y">
+        <div class="check_q">
             <input id="fdQuestion1" name="fdQuestion1" type="checkbox"
                    data-error-insurance_term="@lang('product.proceed_q_y')" value="1"
                    data-gtm="product-{{strtolower($selected)}}-proceed-step-3" data-step="4">
             <label for="fdQuestion1">
                 <a data-gtm="product-{{strtolower($selected)}}-proceed-step-3" data-step="4"
-                                        class="btn btn-outlin  btn-goto btn-q-y">@lang('product.proceed_q_y')</a></label>
+                   class="btn btn-outline green  btn-goto">@lang('product.proceed_q_y')</a></label>
         </div>
 
     </div>
     <div class="controls-wrapper">
         @lang('product.question_p_4')
     </div>
+
+    <div class="page-overlay" style="display: none">
+        <div class="popup-wrapper">
+            <a data-gtm="index-question-close" class="close"><i class="icofont-close"></i></a>
+            <div class="popup-inner-wrapper">
+                <div>
+                    <div class="text-primary" style="text-align: center">
+                        <i style="font-size: 2.5rem" class="icofont-alarm"></i>
+                    </div>
+                    <br>
+                    @lang('product.question_block')
+                    <br>
+                    <br>
+                    <div style="text-align: center">
+                        <a class="btn btn-primary" href="{{$overview_link}}#leadform-section"
+                           data-gtm="ci-goto-leadform">@lang('product.leave_us_your_lead')</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
 </section>
 <section style="display: none" id="step4" class="wrapper">
-    <form class="insurance-form">
+    <form class="insurance-form" data-error-eng-only="@lang('product.error.eng_only')">
         <div class="form-head"> @lang('product.title_plan_4') <span id="form-head"></span></div>
         <div class="form-inner">
             @include('frontend.component.form-profile',['id_card_field' => 'both' ,'id_card_field_title' => __("product.id_card_no") ,'prefix' => '' ,'selected' =>$selected])

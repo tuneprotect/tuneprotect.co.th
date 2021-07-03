@@ -11,7 +11,7 @@ const useStyles = makeStyles((theme) => ({
     ...globalStyle(theme)
 }));
 
-export function WYSIWYGEditor({label, value, setValues}) {
+export function WYSIWYGEditor({label, value, setValues,helperText}) {
     const classes = useStyles();
     return <div className={classes.root}>
         <Typography>{label}</Typography>
@@ -27,5 +27,6 @@ export function WYSIWYGEditor({label, value, setValues}) {
             onBlur={(e) => setValues(e.editor.getData())}
             onChange={(e) => setValues(e.editor.getData())}
         />
+        <Typography>{helperText}</Typography>
     </div>
 }

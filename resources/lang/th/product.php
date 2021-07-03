@@ -45,7 +45,9 @@ return [
     "insurance_data" => "ข้อมูลการประกันภัย",
     "insurance_plan" => "แผนประกันภัย",
     "profile_data" => "ข้อมูลผู้เอาประกันภัย",
+
     "last_name" => "นามสกุล",
+    "leave_us_your_lead" => "ติดต่อเรา",
     "male" => "ชาย",
     "more" => "เพิ่มเติม",
     "nationality" => "สัญชาติ",

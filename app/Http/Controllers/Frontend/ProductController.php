@@ -49,6 +49,9 @@ class ProductController extends BaseController
 
         $this->getProductDetail($link, $selected);
         if ($selected) {
+
+            $this->bodyData['overview_link'] = "/{$this->locale}/product/{$link}/{$selected}";
+
             return $this->genDetailPage($selected, false);
         } else {
             return redirect("/" . $this->locale . '/product/' . $link);

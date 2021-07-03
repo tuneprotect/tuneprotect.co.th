@@ -40,7 +40,9 @@ const config = {
     sub_title: {
         fieldProp: {
             editor: true,
-            label: <Translate id="global.overview"/>
+            label: <Translate id="global.overview"/>,
+            helperText : "{btn_buy} = Buy Button"
+
         }
     },
     content: {

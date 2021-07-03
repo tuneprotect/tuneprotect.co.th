@@ -268,7 +268,7 @@ main[data-package="CI"] {
         }
 
         td {
-            &.recommendPackage ,&.hovered{
+            &.recommendPackage, &.hovered {
                 strong {
                     i {
                         color: #fff !important;
@@ -313,16 +313,15 @@ main[data-package="CI"] {
             position: relative;
             flex: 1;
 
-
             &:first-child {
-                a {
+                div {
                     border-top-left-radius: 10px !important;
                     border-bottom-left-radius: 10px !important;
                 }
             }
 
             &:last-child {
-                a {
+                div {
                     border-top-right-radius: 10px !important;
                     border-bottom-right-radius: 10px !important;
 
@@ -342,7 +341,7 @@ main[data-package="CI"] {
 
             }
 
-            a {
+            div {
                 display: block;
                 padding-left: 0;
                 padding-right: 0;
@@ -372,6 +371,11 @@ main[data-package="CI"] {
                 span[data-recommend] {
                     font-size: 0.5rem;
                     display: none !important;
+                }
+
+                a {
+                    font-size: 0.6rem;
+                    height: 20px;
                 }
             }
 
@@ -702,19 +706,17 @@ main[data-package="CI"] {
 
     .check_q-wrapper {
         display: flex;
-        justify-content: center;
+        justify-content: space-between;
         margin: 20px auto;
+        max-width: 500px;
 
         .check_q {
             position: relative;
+            margin: 0 10px;
+            flex: 1;
 
             a {
-                margin: 0 20px;
-                @media all and (max-width: $md) {
-                    margin: 0 10px;
-                    width: 92%;
-                }
-
+                width: 100%;
             }
 
             input {
@@ -725,22 +727,12 @@ main[data-package="CI"] {
 
     .question {
         p {
-            border: 1px solid $primary-color;
-            padding: 20px 10px;
-            margin: 10px;
-            border-radius: 14px;
+            margin: 20px 0;
         }
     }
 
-    .btn-q-n {
-        border: 1px solid $primary-color;
-        color: $primary-color;
+    .popup-inner-wrapper {
+        padding: 50px 20px;
     }
-
-    .btn-q-y {
-        border: 1px solid green;
-        color: green;
-    }
-
 
 }

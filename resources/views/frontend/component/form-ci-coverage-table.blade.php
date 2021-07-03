@@ -11,11 +11,11 @@
 
                         @foreach ($package_detail as $k => $v)
                             <div class="wrapper-choose-plan">
-                                <a href="#"
-                                   data-package="{{$k}}"
-                                   data-index="{{$i}}"
-                                   data-gtm="product-{{strtolower($selected)}}-mobile-choose-plan-{{$i}}"
-                                   class="btn btn-block btn-outline btn-choose-plan {{$i == 1 ? 'on' : '' }}">
+                                <div
+                                    data-package="{{$k}}"
+                                    data-index="{{$i}}"
+                                    data-gtm="product-{{strtolower($selected)}}-mobile-choose-plan-{{$i}}"
+                                    class="btn btn-block btn-outline btn-choose-plan {{$i == 1 ? 'on' : '' }}">
                                     @if(isset($v->no))
                                         @if(isset($v->name))
                                             <strong>{{$v->name}} @lang('product.plan') {{$v->no}}</strong>
@@ -26,12 +26,15 @@
                                         <span data-recommend>@lang('product.recommend')</span>
                                         <strong class="package-number">@lang('product.plan') {{$i}}</strong>
                                     @endif
+                                    <span class="show_on_mobile" data-price-{{$k}}></span>
+                                    <br>
+                                    <a href="#"
+                                       data-gtm="product-{{strtolower($selected)}}-top-choose-plan-{{$i}}"
+                                       data-step="3" data-package="{{$k}}" data-sub-package=""
+                                       data-plan="@lang('product.plan') {{$i}}"
+                                       class="btn btn-block btn-outline btn-goto">@lang('product.choose_plan')</a>
 
-                                    @if($selected == "CI")
-                                        <span class="show_on_mobile" data-price-{{$k}}></span>
-                                    @endif
-
-                                </a>
+                                </div>
 
                                 <?php $i++ ?>
                             </div>
@@ -51,7 +54,7 @@
                             @endif
                         @else
                             @if($selected == "CI")
-                                <span data-recommend>@lang('product.recommend')</span>
+                                <span data-recommend></span>
                             @endif
                             <strong class="package-number">@lang('product.plan') {{$i}}</strong>
                         @endif

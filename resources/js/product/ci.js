@@ -113,11 +113,26 @@ if ($('#title_wrapper')) {
                 message: "^" + $('#fdTelephone').getAttribute('data-error-tel-format')
             }
         },
-        fdAddr_Num: {
-            presence: {
-                allowEmpty: false,
-                message: "^" + $('#fdAddr_Num').getAttribute('data-error-address')
+        fdAddr_Num: function (value, attributes, attributeName, options, constraints) {
+
+            let rule = {
+                presence: {
+                    allowEmpty: false,
+                    message: "^" + $('#fdAddr_Num').getAttribute('data-error-address')
+                }
             }
+            if (locale === 'en') {
+                rule = {
+                    ...rule,
+                    format: {
+                        pattern: /^[a-zA-Z0-9 \-_!@#$&()\\-`.+,/\"\n\r]*$/,
+                        flags: "i",
+                        message: "^" + $('[data-error-eng-only]').getAttribute('data-error-eng-only')
+                    }
+                }
+            }
+
+            return rule;
         },
         fdAddr_District: {
             presence: {
@@ -395,7 +410,7 @@ if ($('#title_wrapper')) {
                 $el.classList.add("basePrice");
             });
 
-            $$(".choose-plan-mobile a[data-package='" + last + "'] ").forEach($el => {
+            $$(".choose-plan-mobile div[data-package='" + last + "'] ").forEach($el => {
                 $el.classList.add("basePrice");
             });
         }
@@ -412,14 +427,14 @@ if ($('#title_wrapper')) {
             }, dataRecommend[0])
 
 
-            $$("th.recommendPackage,td.recommendPackage,a.btn-choose-plan,td[data-package").forEach($el => {
+            $$("th.recommendPackage,td.recommendPackage,div.btn-choose-plan,td[data-package").forEach($el => {
                 $el.classList.remove("recommendPackage", "on");
                 $el.classList.add("hide");
             });
 
             $$("th[data-package='" + dataRecommendMax.package + "']," +
                 "td[data-package='" + dataRecommendMax.package + "']," +
-                "a[data-package='" + dataRecommendMax.package + "']").forEach($el => {
+                "div[data-package='" + dataRecommendMax.package + "']").forEach($el => {
                 $el.classList.add("recommendPackage", "on");
                 $el.classList.remove("hide");
             });
@@ -494,19 +509,17 @@ if ($('#title_wrapper')) {
 
         }
 
-        $('.btn-q-n').addEventListener("click", function (e) {
+        $('#btn-q-n').addEventListener("click", function (e) {
             e.defaultPrevented;
-            Swal.fire({
-                text: $('[data-question-block]').getAttribute('data-question-block'),
-                imageUrl: '/images/ico_ci/pngegg.png',
-                confirmButtonText: 'OK',
-                confirmButtonColor: '#E71618',
-            })
-            //     .then((result) => {
-            //     window.location.href = $('html').getAttribute('lang') + $('[data-url-redirect]').getAttribute('data-url-redirect');
-            // })
+            $('.page-overlay').style.display = 'flex';
 
         })
+
+        $(".page-overlay .close").addEventListener('click', (e) => {
+            e.preventDefault();
+            $('.page-overlay').style.display = 'none';
+        }, true);
+
 
         const $btnGoto = $$('.btn-goto');
         $btnGoto.forEach($btn => {
@@ -576,15 +589,13 @@ if ($('#title_wrapper')) {
 
                                 break;
                             case 3:
-                                let data_fdQuestion1 = $('#fdQuestion1').checked = true;
-                                if (data_fdQuestion1) {
+                                status = $('#fdQuestion1').checked = true
+
+                                if (status) {
                                     data = {
                                         ...data,
                                         fdQuestion1: 'Y',
                                     }
-                                    status = true;
-                                } else {
-                                    status = false;
                                 }
                                 hideShowDiseaseBox(goToStep);
 
