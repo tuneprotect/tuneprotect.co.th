@@ -1,43 +1,11 @@
 <section style="display: none" id="step2" class="product-detail">
-    @if(strtolower($selected) == 'onvacina')
-        <section id="sectionPackage" class="wrapper">
-            <form method="post" action="" class="insurance-form">
-                @if($locale == 'en')
-                    <div class="form-head">@lang('product.please_specify_birthdate_title')</div>
-                @else
-                    <div class="form-head">เลือกแผนประกันภัย</div>
-                @endif
-
-                <div class="form-inner">
-                    <div class="controls-wrapper">
-                        <select id="ctrl_package" name="ctrl_package">
-                            <option value="1">Silver</option>
-                            <option value="2">Gold</option>
-                            <option value="3" selected="selected">Platinum</option>
-                        </select>
-                        @if($locale == 'en')
-                            <label for="ctrl_package">Package</label>
-                        @else
-                            <label for="ctrl_package">แผนประกันภัย</label>
-                        @endif
-
-
-                    </div>
-                </div>
-            </form>
-        </section>
-    @endif
 
     <div class="wrapper">
-        <table id="table-detail">
+        <table id="table-detail" data-package_name="{{$package->locales[$locale]->title}}">
             <thead>
             <tr>
                 <th>
-                    @if($selected != "CI")
-                        <h3>@lang('global.coverage')</h3>
-                    @else
-                        <h3>@lang('product.ci_coverage')</h3>
-                    @endif
+                    <h3>@lang('product.ci_coverage')</h3>
                     <?php $i = 1 ?>
                     <div class="choose-plan-mobile">
 

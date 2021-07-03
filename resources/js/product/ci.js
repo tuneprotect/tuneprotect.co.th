@@ -224,17 +224,17 @@ if ($('#title_wrapper')) {
             }, {min: undefined, max: undefined})
         }
 
-        $('#ctrl_buy_for').addEventListener('change', function(e){
+        $('#ctrl_buy_for').addEventListener('change', function (e) {
             let result = e.target.value;
             changeTitle(result);
         });
 
-        const changeTitle = (result) =>{
+        const changeTitle = (result) => {
 
             $('[data-your-details]').innerText = "";
-            if(result === "own_insurance"){
+            if (result === "own_insurance") {
                 $('[data-your-details]').innerText = $('[data-your-details]').getAttribute('data-your-details')
-            }else{
+            } else {
                 $('[data-loved-one]').innerText = $('[data-loved-one]').getAttribute('data-loved-one')
             }
 
@@ -552,7 +552,8 @@ if ($('#title_wrapper')) {
                                 break;
                             case 2:
                                 const fdPackage = $btn.getAttribute('data-package');
-                                $('#form-head').innerHTML = $btn.getAttribute('data-plan');
+
+                                $("#table-detail").setAttribute('data-package_plan', $btn.getAttribute('data-plan'));
 
                                 if (fdPackage) {
                                     data = {
@@ -653,7 +654,8 @@ if ($('#title_wrapper')) {
 
                                     const $ddlProvince = $('#ctrl_province');
                                     const province = $ddlProvince.options[$ddlProvince.selectedIndex].text;
-                                    const selectedPackage = $('#step4 .form-head').innerHTML;
+
+                                    const selectedPackage = $("#table-detail").getAttribute('data-package_name') + ' ' + $("#table-detail").getAttribute('data-package_plan');
 
                                     const $documentType = $('#ctrl_document_type');
 

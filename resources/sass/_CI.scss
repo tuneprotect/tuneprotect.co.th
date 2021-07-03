@@ -118,13 +118,11 @@ main[data-package="CI"] {
 
                     &:hover {
                         span {
-                            height: 100px;
+                            min-height: 100px;
                             padding: 5px;
                             overflow: visible;
-                            @media all and (max-width: $sm) {
-                                height: 140px;
-                                z-index: 1;
-                            }
+                            z-index: 1;
+                            max-height: 999em;
 
                             &:after {
                                 bottom: -10px;
@@ -140,7 +138,7 @@ main[data-package="CI"] {
                         left: -20px;
                         right: -20px;
                         bottom: calc(100% + 30px);
-                        height: 0;
+                        max-height: 0;
                         font-size: 0.7rem;
                         border-radius: 10px;
                         padding: 0;
@@ -711,8 +709,12 @@ main[data-package="CI"] {
             position: relative;
 
             a {
-                max-width: 200px;
                 margin: 0 20px;
+                @media all and (max-width: $md) {
+                    margin: 0 10px;
+                    width: 92%;
+                }
+
             }
 
             input {
