@@ -246,16 +246,8 @@ main[data-package="CI"] {
 
             span[data-recommend] {
                 display: block;
-                //background: #FAED1A;
                 width: calc(100% + 40px);
                 margin-left: -16px;
-                //margin-top: 10px;
-                //font-weight: bold;
-                //box-shadow: 0 0 15px rgb(0 0 0 / 50%);
-                //text-transform: uppercase;
-                //font-size: .7rem;
-                //letter-spacing: 1px;
-                //color: #000;
                 @media all and (max-width: $sm) {
                     margin-left: 0;
                     margin-top: 5px;
@@ -266,7 +258,7 @@ main[data-package="CI"] {
 
             .package-number {
                 display: block;
-                margin-top: 10px;
+                margin-top: 0;
 
             }
         }
@@ -290,7 +282,7 @@ main[data-package="CI"] {
                     background-size: cover !important;
                     margin: 0 auto;
                     width: 100px;
-                    height: 100px;
+                    height: 84px;
                     display: block;
                     position: relative;
                     top: -40px;
