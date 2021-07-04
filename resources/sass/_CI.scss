@@ -12,6 +12,11 @@ html[lang="en"] {
                 &:before {
                     background: url(/images/bestvalue-250x250.png) no-repeat 50%;
                 }
+                &.hovered{
+                    &:before {
+                        background: url(/images/bestvalue-g-en.png) no-repeat 50%;
+                    }
+                }
             }
         }
     }
@@ -50,6 +55,11 @@ html[lang="th"] {
                 &:before {
 
                     background: url(/images/bestvalueth-250x250.png) no-repeat 50%;
+                }
+                &.hovered{
+                    &:before {
+                        background: url(/images/bestvalueth-g-th.png) no-repeat 50%;
+                    }
                 }
             }
         }
@@ -252,7 +262,7 @@ main[data-package="CI"] {
                     margin-left: 0;
                     margin-top: 5px;
                     position: static;
-                    width: 85%;
+                    width: 100%;
                 }
             }
 
@@ -279,13 +289,13 @@ main[data-package="CI"] {
             &.basePrice {
                 &:before {
                     content: "";
-                    background-size: cover !important;
+                    background-size: 100% !important;
                     margin: 0 auto;
                     width: 100px;
                     height: 84px;
                     display: block;
                     position: relative;
-                    top: -40px;
+                    top: -36px;
                 }
             }
         }
@@ -354,7 +364,7 @@ main[data-package="CI"] {
                             background-size: cover !important;
                             margin: 0 auto;
                             width: 60px;
-                            height: 40px;
+                            height: 26px;
                             position: static;
                             opacity: 1;
                         }
