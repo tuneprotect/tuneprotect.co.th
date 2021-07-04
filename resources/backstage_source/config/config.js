@@ -180,7 +180,7 @@ export const WEB_CONTENT = {
     SERVICE_STATIC: "static.service",
     REVIEW: "static.review",
     MY_HEALTH: "static.my_health",
-
+    SERVICE: "static.service",
     NEWS: "news.content",
     NEWS_CATEGORY: "news.category",
 
