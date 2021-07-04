@@ -1,9 +1,16 @@
 html[lang="en"] {
     #table-detail {
         th[data-package] {
+            &.recommendPackage{
+                &.basePrice {
+                    &:before {
+                        background: url(/images/bestvalue-g-en.png) no-repeat 50%;
+                    }
+                }
+            }
             &.basePrice {
                 &:before {
-                    background: url(/images/bestprice-en.svg?4b07e01…) no-repeat 50%;
+                    background: url(/images/bestvalue-250x250.png) no-repeat 50%;
                 }
             }
         }
@@ -11,10 +18,17 @@ html[lang="en"] {
 
     .choose-plan-mobile {
         .wrapper-choose-plan {
-            a:last-child {
+            div:last-child {
+                &.recommendPackage{
+                    &.basePrice {
+                        &:before {
+                            background: url(/images/bestvalue-g-en.png) no-repeat 50%;
+                        }
+                    }
+                }
                 &.basePrice {
                     &:before {
-                        background: url(/images/bestprice-en.svg?4b07e01…) no-repeat center;
+                        background: url(/images/bestvalue-250x250.png) no-repeat 50%;
                     }
                 }
             }
@@ -25,9 +39,17 @@ html[lang="en"] {
 html[lang="th"] {
     #table-detail {
         th[data-package] {
+            &.recommendPackage{
+                &.basePrice {
+                    &:before {
+                        background: url(/images/bestvalueth-g-th.png) no-repeat 50%;
+                    }
+                }
+            }
             &.basePrice {
                 &:before {
-                    background: url(/images/bestprice-th.svg?4b07e01…) no-repeat 50%;
+
+                    background: url(/images/bestvalueth-250x250.png) no-repeat 50%;
                 }
             }
         }
@@ -35,10 +57,17 @@ html[lang="th"] {
 
     .choose-plan-mobile {
         .wrapper-choose-plan {
-            a:last-child {
+            div:last-child {
+                &.recommendPackage{
+                    &.basePrice {
+                        &:before {
+                            background: url(/images/bestvalueth-g-th.png) no-repeat 50%;
+                        }
+                    }
+                }
                 &.basePrice {
                     &:before {
-                        background: url(/images/bestprice-th.svg?4b07e01…) no-repeat center;
+                        background: url(/images/bestvalueth-250x250.png) no-repeat 50%;
                     }
                 }
             }
@@ -217,20 +246,21 @@ main[data-package="CI"] {
 
             span[data-recommend] {
                 display: block;
-                background: #FAED1A;
+                //background: #FAED1A;
                 width: calc(100% + 40px);
-                margin-left: -20px;
-                margin-top: 10px;
-                font-weight: bold;
-                box-shadow: 0 0 15px rgb(0 0 0 / 50%);
-                text-transform: uppercase;
-                font-size: .7rem;
-                letter-spacing: 1px;
-                color: #000;
+                margin-left: -16px;
+                //margin-top: 10px;
+                //font-weight: bold;
+                //box-shadow: 0 0 15px rgb(0 0 0 / 50%);
+                //text-transform: uppercase;
+                //font-size: .7rem;
+                //letter-spacing: 1px;
+                //color: #000;
                 @media all and (max-width: $sm) {
                     margin-left: 0;
                     margin-top: 5px;
                     position: static;
+                    width: 85%;
                 }
             }
 
@@ -257,12 +287,13 @@ main[data-package="CI"] {
             &.basePrice {
                 &:before {
                     content: "";
-                    background-size: cover;
+                    background-size: cover !important;
                     margin: 0 auto;
-                    width: 90px;
-                    height: 90px;
+                    width: 100px;
+                    height: 100px;
                     display: block;
-
+                    position: relative;
+                    top: -40px;
                 }
             }
         }
@@ -328,9 +359,9 @@ main[data-package="CI"] {
                     &.basePrice {
                         &:before {
                             content: "";
-                            background-size: cover;
+                            background-size: cover !important;
                             margin: 0 auto;
-                            width: 40px;
+                            width: 60px;
                             height: 40px;
                             position: static;
                             opacity: 1;

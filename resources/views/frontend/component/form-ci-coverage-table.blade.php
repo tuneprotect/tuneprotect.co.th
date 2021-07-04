@@ -23,7 +23,16 @@
                                             <strong>@lang('product.plan') {{$v->no}}</strong>
                                         @endif
                                     @else
-                                        <span data-recommend>@lang('product.recommend')</span>
+                                        @if($locale == 'th')
+                                            <span data-recommend>
+                                                <img src="/images/ico_ci/recommendth-100x200.svg" alt="recommendth">
+                                            </span>
+                                        @else
+                                            <span data-recommend>
+                                                <img src="/images/ico_ci/recommend-100x200.svg" alt="recommendth">
+                                            </span>
+                                        @endif
+
                                         <strong class="package-number">@lang('product.plan') {{$i}}</strong>
                                     @endif
                                     <span class="show_on_mobile" data-price-{{$k}}></span>
@@ -47,14 +56,29 @@
                 @foreach ($package_detail as $k => $v)
                     <th data-package="{{$k}}">
                         @if(isset($v->no))
+                            @if($locale == 'th')
+                                <span data-recommend>
+                                                <img src="/images/ico_ci/recommendth-100x200.svg" alt="recommendth">
+                                            </span>
+                            @else
+                                <span data-recommend>
+                                                <img src="/images/ico_ci/recommend-100x200.svg" alt="recommendth">
+                                            </span>
+                            @endif
                             @if(isset($v->name))
                                 <strong>{{$v->name}} @lang('product.plan') {{$v->no}}</strong>
                             @else
                                 <strong>@lang('product.plan') {{$v->no}}</strong>
                             @endif
                         @else
-                            @if($selected == "CI")
-                                <span data-recommend></span>
+                            @if($locale == 'th')
+                                <span data-recommend>
+                                                <img src="/images/ico_ci/recommendth-100x200.svg" alt="recommendth">
+                                            </span>
+                            @else
+                                <span data-recommend>
+                                                <img src="/images/ico_ci/recommend-100x200.svg" alt="recommendth">
+                                            </span>
                             @endif
                             <strong class="package-number">@lang('product.plan') {{$i}}</strong>
                         @endif
