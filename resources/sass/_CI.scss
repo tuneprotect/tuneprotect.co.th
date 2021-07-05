@@ -4,17 +4,17 @@ html[lang="en"] {
             &.recommendPackage{
                 &.basePrice {
                     &:before {
-                        background: url(/images/bestvalue-g-en.png) no-repeat 50%;
+                        background-image: url(/images/bestvalue-g-en.png);
                     }
                 }
             }
             &.basePrice {
                 &:before {
-                    background: url(/images/bestvalue-250x250.png) no-repeat 50%;
+                    background-image: url(/images/bestvalue-250x250.png);
                 }
                 &.hovered{
                     &:before {
-                        background: url(/images/bestvalue-g-en.png) no-repeat 50%;
+                        background-image: url(/images/bestvalue-g-en.png);
                     }
                 }
             }
@@ -27,13 +27,13 @@ html[lang="en"] {
                 &.recommendPackage{
                     &.basePrice {
                         &:before {
-                            background: url(/images/bestvalue-g-en.png) no-repeat 50%;
+                            background-image: url(/images/bestvalue-g-en.png);
                         }
                     }
                 }
                 &.basePrice {
                     &:before {
-                        background: url(/images/bestvalue-250x250.png) no-repeat 50%;
+                        background-image: url(/images/bestvalue-250x250.png);
                     }
                 }
             }
@@ -47,18 +47,18 @@ html[lang="th"] {
             &.recommendPackage{
                 &.basePrice {
                     &:before {
-                        background: url(/images/bestvalueth-g-th.png) no-repeat 50%;
+                        background-image: url(/images/bestvalueth-g-th.png);
                     }
                 }
             }
             &.basePrice {
                 &:before {
 
-                    background: url(/images/bestvalueth-250x250.png) no-repeat 50%;
+                    background-image: url(/images/bestvalueth-250x250.png);
                 }
                 &.hovered{
                     &:before {
-                        background: url(/images/bestvalueth-g-th.png) no-repeat 50%;
+                        background-image: url(/images/bestvalueth-g-th.png);
                     }
                 }
             }
@@ -71,13 +71,13 @@ html[lang="th"] {
                 &.recommendPackage{
                     &.basePrice {
                         &:before {
-                            background: url(/images/bestvalueth-g-th.png) no-repeat 50%;
+                            background-image: url(/images/bestvalueth-g-th.png);
                         }
                     }
                 }
                 &.basePrice {
                     &:before {
-                        background: url(/images/bestvalueth-250x250.png) no-repeat 50%;
+                        background-image: url(/images/bestvalueth-250x250.png);
                     }
                 }
             }
@@ -229,6 +229,8 @@ main[data-package="CI"] {
     }
 
     #table-detail {
+        border-radius: 0;
+        overflow: visible;
         thead {
             tr {
                 th {
@@ -239,7 +241,6 @@ main[data-package="CI"] {
 
         tbody {
             tr {
-
                 &:nth-child(n+5) {
                     display: table-row;
                 }
@@ -248,8 +249,6 @@ main[data-package="CI"] {
 
         th {
             position: relative;
-            overflow: hidden;
-
             span {
                 display: block;
             }
@@ -289,13 +288,16 @@ main[data-package="CI"] {
             &.basePrice {
                 &:before {
                     content: "";
-                    background-size: 100% !important;
+                    background-size: 100% auto;
+                    background-position: top center;
+                    background-repeat: no-repeat;
                     margin: 0 auto;
-                    width: 100px;
-                    height: 84px;
+                    width: calc(100% + 40px);
+                    height: 63px;
                     display: block;
                     position: relative;
-                    top: -36px;
+                    top: -31px;
+                    left: -20px;
                 }
             }
         }
@@ -346,32 +348,29 @@ main[data-package="CI"] {
             position: relative;
             flex: 1;
 
-            &:first-child {
-                div {
-                    border-top-left-radius: 10px !important;
-                    border-bottom-left-radius: 10px !important;
-                }
-            }
+
 
             &:last-child {
                 div {
-                    border-top-right-radius: 10px !important;
-                    border-bottom-right-radius: 10px !important;
-
                     &.basePrice {
+                        overflow: visible;
+                        padding-top: 9vw;
                         &:before {
                             content: "";
-                            background-size: cover !important;
+                            background-color: transparent;
+                            background-size: 100% auto !important;
+                            background-repeat: no-repeat;
+                            background-position: top center;
                             margin: 0 auto;
-                            width: 60px;
-                            height: 26px;
-                            position: static;
+                            width: 100%;
+                            height: 10vw;
+                            position: absolute;
                             opacity: 1;
+                            top:-2vw;
+
                         }
                     }
                 }
-
-
             }
 
             div {
@@ -409,6 +408,7 @@ main[data-package="CI"] {
                 a {
                     font-size: 0.6rem;
                     height: 20px;
+                    max-width: 90%;
                 }
             }
 
@@ -766,6 +766,7 @@ main[data-package="CI"] {
 
     .popup-inner-wrapper {
         padding: 50px 20px;
+        text-align: center;
     }
 
 }

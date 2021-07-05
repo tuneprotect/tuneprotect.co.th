@@ -50,13 +50,15 @@ if ($('#title_wrapper')) {
             presence: {
                 allowEmpty: false,
                 message: "^" + $('#fdName').getAttribute('data-error-name')
-            }
+            },
+            format: formatInputFieldByLanguage()
         },
         fdSurname: {
             presence: {
                 allowEmpty: false,
                 message: "^" + $('#fdSurname').getAttribute('data-error-last_name')
-            }
+            },
+            format: formatInputFieldByLanguage()
         },
         fdSex: {
             presence: {
@@ -120,12 +122,13 @@ if ($('#title_wrapper')) {
             },
             format: formatInputFieldByLanguage()
         },
-
         fdAddr_District: {
             presence: {
                 allowEmpty: false,
                 message: "^" + $('#fdAddr_District').getAttribute('data-error-district')
-            }
+            },
+            format: formatInputFieldByLanguage()
+
         },
         ctrl_province: {
             presence: {
@@ -144,7 +147,6 @@ if ($('#title_wrapper')) {
                 allowEmpty: false
             }
         },
-
         fdBenefit: "",
         fdBenefit_name: function (value, attributes, attributeName, options, constraints) {
             if (attributes.fdBenefit !== 'other') return null;
@@ -152,7 +154,8 @@ if ($('#title_wrapper')) {
                 presence: {
                     allowEmpty: false,
                     message: "^" + $('#fdBenefit_name').getAttribute('data-error-beneficiary')
-                }
+                },
+                format: formatInputFieldByLanguage()
             };
         },
         fdRelation: function (value, attributes, attributeName, options, constraints) {
@@ -161,7 +164,8 @@ if ($('#title_wrapper')) {
                 presence: {
                     allowEmpty: false,
                     message: "^" + $('#fdRelation').getAttribute('data-error-relation')
-                }
+                },
+                format: formatInputFieldByLanguage()
             };
         },
         fdRevenue: "",
