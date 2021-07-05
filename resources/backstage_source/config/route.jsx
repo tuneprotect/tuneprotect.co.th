@@ -24,6 +24,7 @@ import PartnerPage from "../view/page/partner/PartnerPage";
 import PartnerMainStep from "../view/page/partner/PartnerMainStep";
 import TestingEmailPage from "../view/page/testing/TestingEmailPage";
 import LeadFormPage from "../view/page/lead_form/LeadFormPage";
+import CiImportPage from "../view/page/import/CiImportPage";
 
 let APP_ROUTE = {
     login: {
@@ -1030,6 +1031,103 @@ let APP_ROUTE = {
             }
         }),
     },
+    service: {
+        id: "service",
+        name: <Translate id={`side_nav.service.main`}/>,
+        url: "/service",
+        icon: 'dynamic_feed',
+        show_on_main_menu: true,
+        layout: "MainLayout",
+        parent: "",
+        group: "main_nav"
+    },
+    [WEB_CONTENT.SERVICE_MY_HEALTH]: {
+        id: WEB_CONTENT.SERVICE,
+        name: <Translate id={`side_nav.service.main`}/>,
+        url: "/service_my_health/content",
+        icon: 'view_carousel',
+        show_on_main_menu: true,
+        component: () => WebContentPage({
+            type_id: WEB_CONTENT.SERVICE_MY_HEALTH,
+            config: {
+                isSortable: true,
+            }
+        }),
+        layout: "MainLayout",
+        parent: "service",
+        group: "main_nav"
+    },
+    [`${WEB_CONTENT.SERVICE_MY_HEALTH}.detail`]: {
+        id: `${WEB_CONTENT.SERVICE_MY_HEALTH}.detail`,
+        name: <Translate id={`side_nav.service.main`}/>,
+        url: "/service_my_health/content/detail/:id?",
+        icon: 'pets',
+        show_on_main_menu: false,
+        layout: "MainLayout",
+        parent: "",
+        group: "",
+        component: () => WebContentMainStep({
+            isWebContent: true,
+            type_id: WEB_CONTENT.SERVICE_MY_HEALTH,
+            config: {
+                hasFaq:true,
+                hasPublishPeriod: true,
+                hasSEO: true,
+                isSortable: true,
+                friendly_url: {
+                    prefix: "/service/"
+                },
+                pic: {
+                    fieldProp: {
+                        label: <Translate id="global.image_thai"/>,
+                        width: 1366,
+                        height: 668,
+                    }
+                },
+                pic_mobile: {
+                    fieldProp: {
+                        label: <Translate id="global.image_mobile_tha"/>,
+                        width: 700,
+                        height: 1050,
+                    }
+                },
+                pic_en: {
+                    fieldProp: {
+                        label: <Translate id="global.image_eng"/>,
+                        width: 1366,
+                        height: 668,
+                    }
+                },
+                pic_mobile_en: {
+                    fieldProp: {
+                        label: <Translate id="global.image_mobile_eng"/>,
+                        width: 700,
+                        height: 1050,
+                    }
+                },
+                video_link: {
+                    fieldProp: {
+                        label: <Translate id="global.video"/>,
+                        isIframe: true
+                    }
+                },
+                title: {
+                    fieldProp: {
+                        label: <Translate id="global.title"/>,
+                        required: true,
+                    },
+                    validate: Yup.string()
+                        .required(<Translate id="error_message.required"/>)
+                },
+                content: {
+                    fieldProp: {
+                        editor: true,
+                        label: <Translate id="global.content"/>
+                    }
+                },
+            }
+        }),
+    },
     partner: {
         id: "partner",
         name: <Translate id={`side_nav.partner.main`}/>,
@@ -1651,18 +1749,6 @@ let APP_ROUTE = {
         component: ContactPage,
         permission: ['delete']
     },
-    // lead_form: {
-    //     id: 'lead_form',
-    //     name: <Translate id={`side_nav.lead_form`}/>,
-    //     url: "/lead_form",
-    //     icon: 'contact_phone',
-    //     show_on_main_menu: true,
-    //     layout: "MainLayout",
-    //     parent: "",
-    //     group: "main_nav",
-    //     component: LeadFormPage,
-    //     permission: ['delete']
-    // },
     lead_form: {
         id: "leadform",
         name: <Translate id={`side_nav.lead_form.main`}/>,
@@ -1724,7 +1810,7 @@ let APP_ROUTE = {
         parent: "leadform",
         group: "main_nav"
     },
-    faq_contact : {
+    faq_contact: {
         id: "faq_contact",
         name: <Translate id={`side_nav.faq.main`}/>,
         url: "/faq",
@@ -1821,6 +1907,77 @@ let APP_ROUTE = {
                 },
             }
         }),
+    },
+
+    import: {
+        id: "import",
+        name: <Translate id={`side_nav.import.main`}/>,
+        url: "/import",
+        icon: 'view_carousel',
+        show_on_main_menu: true,
+        layout: "MainLayout",
+        parent: "",
+        group: "main_nav"
+    },
+    [WEB_CONTENT.IMPORT_CI_CATEGORY]: {
+        id: WEB_CONTENT.IMPORT_CI_CATEGORY,
+        name: <Translate id={`side_nav.import.category_ci`}/>,
+        url: "/import/ci_category",
+        icon: 'view_carousel',
+        show_on_main_menu: true,
+        component: () => WebContentPage({
+            type_id: WEB_CONTENT.IMPORT_CI_CATEGORY,
+            config: {
+                isSortable: true,
+            }
+        }),
+        layout: "MainLayout",
+        parent: "import",
+        group: "main_nav"
+    },
+    [`${WEB_CONTENT.IMPORT_CI_CATEGORY}.detail`]: {
+        id: `${WEB_CONTENT.IMPORT_CI_CATEGORY}.detail`,
+        name: <Translate id={`side_nav.import.category_ci`}/>,
+        url: "/import/ci_category/detail/:id?",
+        icon: 'pets',
+        show_on_main_menu: false,
+        layout: "MainLayout",
+        parent: "",
+        group: "",
+        component: () => WebContentMainStep({
+            isWebContent: true,
+            type_id: WEB_CONTENT.IMPORT_CI_CATEGORY,
+            config: {
+                code: {
+                    fieldProp: {
+                        label: <Translate id="global.code"/>,
+                        required: true,
+                    },
+                    validate: Yup.string()
+                        .required(<Translate id="error_message.required"/>)
+                },
+                title: {
+                    fieldProp: {
+                        label: <Translate id="global.title"/>,
+                        required: true,
+                    },
+
+                    validate: Yup.string()
+                        .required(<Translate id="error_message.required"/>)
+                },
+            }
+        }),
+    },
+    ['import.ci']: {
+        id: "import.ci",
+        name: <Translate id={`side_nav.import.ci`}/>,
+        url: "/import/ci",
+        icon: 'view_carousel',
+        show_on_main_menu: true,
+        component: CiImportPage,
+        layout: "MainLayout",
+        parent: "import",
+        group: "main_nav"
     },
     testing: {
         id: 'testing',

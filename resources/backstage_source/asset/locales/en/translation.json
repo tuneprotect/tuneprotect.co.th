@@ -78,7 +78,6 @@
         "email": "Email",
         "enable": "Enable",
         "end_date": "End Date",
-        "export": "Export",
         "faq": "Faq",
         "file_name": "Filename",
         "first_name": "First Name",
@@ -107,11 +106,13 @@
         "no": "Disagree",
         "no_data": "No records to display",
         "none": "None",
+        "channel": "Channel",
         "og_desc": "OG Description (Recommend < 200 characters)",
         "og_image": "OG Image",
         "og_title": "OG Title (Recommend 55–95 characters)",
         "old_password": "Old Password",
         "or": "or",
+        "overview": "Overview",
         "package": "Package",
         "package_detail": "Package Detail",
         "page": "Page",
@@ -156,7 +157,6 @@
         "website": "Website",
         "year": "Year",
         "yes": "Agree",
-        "created_at": "Created at",
         "export": "Export",
         "product_name": "product"
     },
@@ -215,6 +215,11 @@
             "content": "Claim",
             "main": "Claim"
         },
+        "service": {
+            "category": "Service Category",
+            "content": "Service",
+            "main": "Service"
+        },
         "configuration": {
             "language": "Language",
             "main": "Configuration",
@@ -232,6 +237,11 @@
         "faq": {
             "category": "FAQ Category",
             "main": "FAQ"
+        },
+        "import": {
+            "main": "IMPORT",
+            "ci": "IMPORT CI",
+            "category_ci": "IMPORT CATEGORY"
         },
         "frontend": "Frontend",
         "lead_form": {
@@ -298,7 +308,7 @@
                 "my_health": "My Health"
             },
             "review": "Review",
-            "service": "Service",
+            "service": "Service Tune",
             "social": "Social",
             "sticky_menu": "Sticky Menu"
         },
@@ -323,5 +333,32 @@
     },
     "translation": {
         "load_from_live": "Load from file"
+    },
+    "import": {
+        "ci": {
+            "validate": {
+                "success": "สำเร็จ",
+                "plan_code": "There is {{count}} row with not valid plan_code. {{errorValue}}",
+                "age_range": "There is {{count}} row with not valid age_range. {{errorValue}}",
+                "diabetes": "There is {{count}} row with not valid diabetes. {{errorValue}}",
+                "addb":"There is {{count}} row with not valid addb. {{errorValue}}",
+                "cancer":"There is {{count}} row with not valid cancer. {{errorValue}}",
+                "hc":"There is {{count}} row with not valid hc. {{errorValue}}",
+                "nc":"There is {{count}} row with not valid nc. {{errorValue}}",
+                "cvd":"There is {{count}} row with not valid cvd. {{errorValue}}",
+                "organ":"There is {{count}} row with not valid organ. {{errorValue}}",
+                "trauma":"There is {{count}} row with not valid trauma. {{errorValue}}",
+                "sum_insured_1":"There is {{count}} row with not valid sum_insured_1. {{errorValue}}",
+                "sum_insured_2":"There is {{count}} row with not valid sum_insured_2. {{errorValue}}",
+                "sum_insured_3":"There is {{count}} row with not valid sum_insured_3. {{errorValue}}",
+                "sum_insured_4":"There is {{count}} row with not valid sum_insured_4. {{errorValue}}",
+                "sum_insured_5":"There is {{count}} row with not valid sum_insured_4. {{errorValue}}",
+                "sum_insured_6":"There is {{count}} row with not valid sum_insured_4. {{errorValue}}",
+                "sum_insured_7":"There is {{count}} row with not valid sum_insured_7. {{errorValue}}",
+                "sum_insured_8":"There is {{count}} row with not valid sum_insured_8. {{errorValue}}",
+                "net_premium": "There is {{count}} row with not valid net_premium. {{errorValue}}",
+                "gross_premium": "There is {{count}} row with not valid gross_premium. {{errorValue}}"
+            }
+        }
     }
 }

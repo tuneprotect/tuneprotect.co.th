@@ -4,7 +4,7 @@ import {
     formatTelNumber,
     getCountryData,
     getPackageData,
-    showMultipleTitle
+    showMultipleTitle, validatePolicy
 } from "../form/productHelper";
 import {$, $$, current_package, getRadioSelectedValue, getZipcodeData, locale, scrollToTargetAdjusted} from "../helper";
 
@@ -205,13 +205,12 @@ const getSelectedPrice = (packageCode, package_data) => {
 }
 
 
-
 const genPrice = (package_data, subpackage, fdFromDate, fdToDate) => {
 
     const allPack = Object.keys(package_data)
         .filter(k => _.startsWith(k, current_package + subpackage))
 
-    if(document.body.clientWidth > 767) {
+    if (document.body.clientWidth > 767) {
         $$('#table-detail td[data-package],#table-detail th[data-package]').forEach($el => {
             if (allPack.includes($el.getAttribute("data-package"))) {
                 $el.style.display = "table-cell";
@@ -219,9 +218,9 @@ const genPrice = (package_data, subpackage, fdFromDate, fdToDate) => {
                 $el.style.display = "none";
             }
         });
-    }else{
+    } else {
         $$('#table-detail thead a[data-package]').forEach($el => {
-            if ($el.getAttribute("data-package").startsWith('ONTA' + subpackage )) {
+            if ($el.getAttribute("data-package").startsWith('ONTA' + subpackage)) {
                 $el.style.display = "inline-flex";
             } else {
                 $el.style.display = "none";
@@ -270,11 +269,10 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     let Keys = "";
     let myEle = document.getElementById("portal_key");
-    if(myEle){
-        Keys= myEle.value;
+    if (myEle) {
+        Keys = myEle.value;
         let status_api = document.getElementById("status_api");
-        if(!status_api.value)
-        {
+        if (!status_api.value) {
             Swal.fire({
                 title: 'Error!',
                 text: 'Error : Portal keys. User not found.',
@@ -286,7 +284,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     let step = 1;
     let data = {
-        fdKeys : Keys,
+        fdKeys: Keys,
         fdPayAMT: "",
         fdFromDate: "",
         fdToDate: "",
@@ -298,6 +296,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         profile: []
     };
     let iti = {};
+    let $dataSubPackage;
 
     changeDestinationOption(countryData, 'WW');
 
@@ -375,6 +374,12 @@ document.addEventListener("DOMContentLoaded", async () => {
     allField.forEach(field => {
         field.addEventListener("change", function (e) {
             validateField(this, profileConstraints);
+            for (let i = 1; i <=  $('#ctrl_no_of_insured').value; i++) {
+                if ([`data_${i}_fdName`, `data_${i}_fdSurname`, `data_${i}_fdNationalID`].includes(field.id)) {
+                    validatePolicy(e.target, $dataSubPackage);
+                }
+            }
+
         });
     });
 
@@ -429,6 +434,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                         break;
                     case 2:
                         const fdPackage = $btn.getAttribute('data-package') + $btn.getAttribute('data-sub-package');
+                        $dataSubPackage = fdPackage;
                         $('#form-head').innerHTML = $btn.getAttribute('data-plan');
                         if (fdPackage) {
                             data = {
@@ -449,10 +455,9 @@ document.addEventListener("DOMContentLoaded", async () => {
 
                         //Case web portal
                         let myEle = document.getElementById("portal_key");
-                        if(myEle){
+                        if (myEle) {
                             let status_api = document.getElementById("status_api");
-                            if(!status_api.value)
-                            {
+                            if (!status_api.value) {
                                 Swal.fire({
                                     title: 'Error!',
                                     text: 'Error : Portal keys. User not found.',

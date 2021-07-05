@@ -117,6 +117,56 @@
                         @endforeach
 
                     </div>
+                    @if(@$last_highlight_product)
+                        <div class="main_product reveal">
+                            @if($last_highlight_product->productSlideshow)
+                                <div class="product_slide_wrapper">
+                                    <div id="product_slide_1" class="product_slider">
+                                        @foreach($last_highlight_product->productSlideshow AS $v)
+                                            <div class="product-slide-item rotate-bg no-rotate">
+                                                <picture>
+                                                    <source media="(min-width:768px)" srcset="{{url($v->pic)}}">
+                                                    <img src="{{url($v->pic_mobile)}}"
+                                                         alt="{{$v->locales[$locale]->title}}">
+                                                </picture>
+                                                <div class="caption">
+                                                    <h3>{{$v->locales[$locale]->title}}</h3>
+                                                    <p>{{$v->locales[$locale]->content}}</p>
+                                                </div>
+
+                                            </div>
+                                        @endforeach
+                                    </div>
+                                </div>
+                            @endif
+                            <div class="description">
+
+                                <div>
+                                    <h2>{{$last_highlight_product->locales[$locale]->title}}</h2>
+                                    <p>{{$last_highlight_product->locales[$locale]->sub_title}}</p>
+                                </div>
+                                <ul>
+                                    @foreach($last_highlight_product->productPackage AS $v)
+                                        <li>
+                                            <a
+                                                data-gtm="index-product-image-{{$last_highlight_product->friendly_url}}-{{$v->code}}"
+                                                href="{{route('current',['locale' => $locale,'controller' => 'product','func' => $last_highlight_product->friendly_url,'params' => $v->code ])}}">
+                                                <div class="two-tone-icon">
+                                                    <span><img src="{{url($v->pic)}}" alt=""></span>
+                                                    <strong>{{$v->locales[$locale]->title}}</strong>
+                                                </div>
+                                            </a>
+                                            <div class="btn-wrapper">
+                                                <a class="btn btn-gradient"
+                                                   data-gtm="index-product-button-{{$last_highlight_product->friendly_url}}-{{$v->code}}"
+                                                   href="{{route('current',['locale' => $locale,'controller' => 'product','func' => $last_highlight_product->friendly_url,'params' => $v->code ])}}">@lang('global.choose_product')</a>
+                                            </div>
+                                        </li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        </div>
+                    @endif
                 </div>
             </section>
         @endif

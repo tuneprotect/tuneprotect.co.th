@@ -1,6 +1,7 @@
-import {$, $$, calculateAge, current_package, fadeIn, fadeOut, scrollToTargetAdjusted} from "../helper";
+import {$, $$, calculateAge, current_package, fadeIn, fadeOut, locale, scrollToTargetAdjusted} from "../helper";
 import {isValid, parseISO} from "date-fns";
-import {showDateError} from "../validate_form";
+import {showDateError, showFieldError} from "../validate_form";
+import Swal from "sweetalert2";
 
 export const getPackageData = async (currentPackage) => {
     let res = await fetch(`/storage/json/${currentPackage.toLowerCase()}.json`);
@@ -25,7 +26,7 @@ export const getCountryData = async () => {
     let res = await fetch(`/storage/json/country.json`);
     return await res.json();
 }
-export const validateAgeInPackage = (package_data) => {
+export const validateAgeInPackage = (package_data, cal_price) => {
     $$('.date-input .controls-wrapper').forEach(el => {
         el.classList.remove('error');
     });
@@ -61,7 +62,11 @@ export const validateAgeInPackage = (package_data) => {
     }
 
     const age = calculateAge(birthday)
-    genPrice(birthday, package_data)
+
+    if (cal_price !== false) {
+        genPrice(birthday, package_data)
+    }
+
 
     return {
         status: true, data: {
@@ -69,6 +74,55 @@ export const validateAgeInPackage = (package_data) => {
             fdAge: age.year
         }
     };
+}
+
+
+const callValidateApi = async (data) => {
+    const response = await fetch(`/${$('html').getAttribute('lang')}/Product/checkDup`, {
+        method: 'post',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').getAttribute('content')
+        },
+        body: JSON.stringify({...data, CheckType: null})
+    })
+
+    return await response.json();
+}
+
+
+export const validatePolicy = async ($this, fdPackage) => {
+
+    let field = $this.getAttribute('name');
+    console.log({field})
+    let data = {fdName: null, fdSurname: null, fdNationalID: null}
+    Object.keys(data).map((k) => {
+        let fieldId = k;
+        if (field.startsWith('data_')) {
+            const index = field.split("_")[1];
+            fieldId = `data_${index}_${k}`;
+        }
+        data = {...data, [k]: $(`#${fieldId}`).value}
+    });
+
+    if (Object.keys(data).every((k) => !!data[k])) {
+        const result = await callValidateApi({...data, fdPackage})
+        if (result.status === 'error') {
+            // showFieldError($this, [result.message]);
+            $('button[data-step="4"]').style.display = 'none';
+            $this.closest('.controls-wrapper').classList.add("error");
+
+            Swal.fire({
+                icon: 'error',
+                text: result.message
+            })
+            return false;
+        } else {
+            $('button[data-step="4"]').style.display = 'inline-flex';
+            return true;
+        }
+    }
 }
 
 export const genPrice = (birthday, package_data) => {
@@ -87,12 +141,10 @@ export const checkAge = (birthday, ageRange) => {
     const range = ageRange.split('-');
     const age = calculateAge(birthday)
 
-    console.log('DOB : day month year ' + age.day +' '+ age.month +' '+ age.year)
-
     if (range[0].indexOf(',') !== -1) {
         const monthRange = range[0].split(',');
         if(monthRange.length == 2)
-        {            
+        {
             console.log('DOB : month ' + monthRange[1]);
             console.log('DOB : year ' + monthRange[0] +' - '+  range[1]);
 
@@ -128,29 +180,19 @@ export const checkAge = (birthday, ageRange) => {
             const rangeAll = ageRange.split(',');
             const yearRange = rangeAll[2].split('-');
 
-            console.log('2. CON : day month year ' + rangeAll[0] +' '+ rangeAll[1] +' '+ yearRange[1])
 
-            if (age.year <= yearRange[1])
-            {
-                if(age.year == yearRange[0])
-                {
-                    if(age.month <= rangeAll[1])
-                    {
-                        if(age.day >= rangeAll[0])
-                        {
+            if (age.year <= yearRange[1]) {
+                if (age.year == yearRange[0]) {
+                    if (age.month <= rangeAll[1]) {
+                        if (age.day >= rangeAll[0]) {
                             return true;
                         }
-                    }
-                    else
-                    {
+                    } else {
                         return true;
                     }
-                }
-                else
+                } else
                     return true;
-            }
-            else
-            {
+            } else {
                 return false;
             }
         }
@@ -366,4 +408,22 @@ export const checkTaBirthDateIPass = (i) => {
             fdAge: age.year
         }
     };
+}
+
+export const formatInputFieldByLanguage = () => {
+
+    if (locale === 'en') {
+        return {
+            pattern: /^[a-zA-Z0-9 \-_!@#$&()\\-`.+,/\"\n\r]*$/,
+            flags: "i",
+            message: "^Only English Allowed"
+        }
+    } else {
+        return {
+            pattern: /^[ก-๙0-9 \-_!@#$&()\\-`.+,/\"\n\r]*$/,
+            flags: "i",
+            message: "^กรุณาใส่ภาษาไทยเท่านั้น"
+        }
+    }
+
 }

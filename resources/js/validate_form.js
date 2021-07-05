@@ -3,11 +3,13 @@ import {$, $$, scrollToTargetAdjusted} from "./helper";
 
 export const showFieldError = ($this, errors) => {
 
-
     const $parent = $this.closest('.controls-wrapper');
     errors.map((v, i) => {
         if (i === 0) {
             $parent.classList.add('error');
+            if(!!$parent.querySelector('cite')){
+                $parent.querySelector('cite').remove();
+            }
             const $cite = document.createElement('cite');
             $cite.innerHTML = v;
             $parent.appendChild($cite);
@@ -32,7 +34,7 @@ export const validateField = ($this, constraints) => {
         $parent.classList.remove('error')
         $$('cite', $parent).forEach($el => $el.remove());
 
-        const result = validate({[field]: fieldValue}, constraints);
+        const result = validate({[field]: fieldValue}, constraints)
 
         if (result && result[field]) {
             showFieldError($this, result[field]);

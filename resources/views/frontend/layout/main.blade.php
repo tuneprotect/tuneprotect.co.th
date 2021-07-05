@@ -59,21 +59,22 @@
                     </li>
                 @endif
 
-                @if(@$menu_enable[\App\Enum\ProjectEnum::STATIC_PAGE_MY_HEALTH] > 0)
+                @if(@$menu_enable[\App\Enum\ProjectEnum::WEB_CONTENT_SERVICE_MY_HEALTH] > 0)
                     <li>
                         <a class="has_sub" href="#">{!! __('global.nav_my_health') !!}
                             <i class="icofont-caret-right"></i></a>
                         <div class="sub">
                             <div class="section">
                                 <div>
-
                                     <ul>
+                                        @foreach($service_my_health as $k =>$v)
                                         <li>
                                             <a data-gtm="main-nav-news"
-                                               href="/{{$locale}}/myHealth/health2go">
-                                                <span>Health2GO</span>
+                                               href="/{{$locale}}/service/{{$v->friendly_url}}">
+                                                <span>{{$v->locales[$locale]->title}}</span>
                                             </a>
                                         </li>
+                                        @endforeach
                                     </ul>
                                 </div>
                             </div>
@@ -174,16 +175,18 @@
                             @if(!empty($v->pic_en))
                                 @if(isset($selected))
                                     @if($selected==='ONVSAFEA')
-                                    <picture>
-                                            <source media="(min-width:768px)" srcset="{{url(str_replace('Banner_Covid_D_EN', 'Banner_VSafe_D_EN', $v->pic_en))}}">
-                                            <img src="{{url(!empty($v->pic_mobile_en) ? url(str_replace('Banner_Covid_D_EN', 'Banner_VSafe_D_EN', $v->pic_mobile_en)) : url(str_replace('Banner_Covid_D_EN', 'Banner_VSafe_M_EN', $v->pic_en)) )}}"
+                                        <picture>
+                                            <source media="(min-width:768px)"
+                                                    srcset="{{url(str_replace('Banner_Covid_D_EN', 'Banner_VSafe_D_EN', $v->pic_en))}}">
+                                            <img
+                                                src="{{url(!empty($v->pic_mobile_en) ? url(str_replace('Banner_Covid_D_EN', 'Banner_VSafe_D_EN', $v->pic_mobile_en)) : url(str_replace('Banner_Covid_D_EN', 'Banner_VSafe_M_EN', $v->pic_en)) )}}"
                                                 alt="{{$v->locales[$locale]->title}}">
                                         </picture>
                                     @else
-                                            <picture>
+                                        <picture>
                                             <source media="(min-width:768px)" srcset="{{url($v->pic_en)}}">
                                             <img src="{{url(!empty($v->pic_mobile_en) ? $v->pic_mobile_en : $v->pic_en )}}"
-                                                alt="{{$v->locales[$locale]->title}}">
+                                                 alt="{{$v->locales[$locale]->title}}">
                                         </picture>
                                     @endif
                                 @else
@@ -215,7 +218,7 @@
                                     <picture>
                                         <source media="(min-width:768px)" srcset="{{url($v->pic)}}">
                                         <img src="{{url(!empty($v->pic_mobile) ? $v->pic_mobile : $v->pic )}}"
-                                            alt="{{$v->locales[$locale]->title}}">
+                                             alt="{{$v->locales[$locale]->title}}">
                                     </picture>
                                 @endif
                             @endif
@@ -270,19 +273,21 @@
                     @endforeach
                     {{--                    </div>--}}
                 </section>
-                @if(@$menu_enable[\App\Enum\ProjectEnum::STATIC_PAGE_MY_HEALTH] > 0)
-                <section>
-                    <h6 class="collapse">@lang('global.nav_service')</h6>
-                    <ul class="collapse">
-                        <li><a href="#"><strong>@lang('global.nav_service_my_health')</strong></a></li>
-                        <li>
-                            <a data-gtm="footer-nav-my-health"
-                               target="_blank"
-                               href="/{{$locale}}/myHealth/health2go">@lang('global.nav_service_health_to_go')
-                            </a>
-                        </li>
-                    </ul>
-                </section>
+                @if(@$menu_enable[\App\Enum\ProjectEnum::WEB_CONTENT_SERVICE_MY_HEALTH] > 0)
+                    <section>
+                        <h6 class="collapse">@lang('global.nav_service')</h6>
+                        <ul class="collapse">
+                            <li><a href="#"><strong>@lang('global.nav_service_my_health')</strong></a></li>
+                            @foreach($service_my_health as $k =>$v)
+                                <li>
+                                    <a data-gtm="footer-nav-my-health"
+                                       href="/{{$locale}}/service/{{$v->friendly_url}}">
+                                        <span>{{$v->locales[$locale]->title}}</span>
+                                    </a>
+                                </li>
+                            @endforeach
+                        </ul>
+                    </section>
                 @endif
                 <section>
                     <h6 class="collapse">@lang('global.nav_claim')</h6>
@@ -294,10 +299,10 @@
                                 @foreach ($claim as $v1)
                                     @if($v->id == $v1->cat_id )
                                         @if(strtolower($v1->locales[$locale]->title) !== 'vsure')
-                                        <li>
-                                            <a data-gtm="footer-nav-claim-{{$v1->friendly_url}}"
-                                               href="{{route('current',['locale' => $locale,'controller' => 'claim','func' => $v1->friendly_url ])}}">{{$v1->locales[$locale]->title}}</a>
-                                        </li>
+                                            <li>
+                                                <a data-gtm="footer-nav-claim-{{$v1->friendly_url}}"
+                                                   href="{{route('current',['locale' => $locale,'controller' => 'claim','func' => $v1->friendly_url ])}}">{{$v1->locales[$locale]->title}}</a>
+                                            </li>
                                         @endif
                                     @endif
                                 @endforeach

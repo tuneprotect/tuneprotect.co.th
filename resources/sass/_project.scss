@@ -1,9 +1,14 @@
+@import "https://fonts.googleapis.com/icon?family=Material+Icons";
+
 html {
     scroll-behavior: smooth;
     font: 30px/1 'DB SaiKrok X', serif;
     font-weight: 300;
 }
 
+body {
+    counter-reset: section;
+}
 
 h1, h2, h3, h4, h5, h6 {
     font-weight: bold;
@@ -20,6 +25,10 @@ h1 {
 h2 {
     font-size: 1.5rem;
     color: $primary-color;
+
+    &.no-color {
+        color: #000000;
+    }
 }
 
 .underline {
@@ -51,7 +60,9 @@ h2 {
 address {
     font-style: normal;
 }
-
+i{
+    font-size: 1.5rem;
+}
 a {
     text-decoration: none;
 
@@ -908,6 +919,7 @@ header {
     left: 20px;
     bottom: 20px;
     background: #F79340;
+    z-index: 1;
     @include project_transition();
     border-radius: 100%;
     width: 60px;
@@ -1057,7 +1069,7 @@ header {
                         }
                     }
 
-                    strong {
+                    strong,i {
                         color: #ffffff;
                     }
 
@@ -1321,8 +1333,9 @@ main {
 
                 > div {
                     flex: 1;
-                    margin-right: 20px;
+
                     @media all and (min-width: $md) {
+                        margin-right: 20px;
                         &:last-child {
                             margin-right: 0;
                         }
@@ -1397,6 +1410,8 @@ main {
                 font-size: 1rem;
                 top: 23px;
                 left: 20px;
+                right: 0;
+                @include truncate();
             }
 
             &::placeholder {
@@ -1423,6 +1438,7 @@ main {
             width: 100%;
             font-weight: bold;
             @include project_transition();
+
         }
 
 
@@ -2576,6 +2592,11 @@ main {
             table-layout: fixed;
 
             .btn-choose-plan {
+                height: 100%;
+                border-radius: inherit;
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-end;
                 @media all and (min-width: $md) {
                     display: none;
                 }
@@ -2589,9 +2610,9 @@ main {
                         padding: 20px;
                     }
 
-                    &.hovered {
+                    &.hovered, &.recommendPackage {
                         background: $primary-color;
-                        color: #fff;
+                        color: #fff !important;
                     }
 
                     @media all and (max-width: $md - 1) {
@@ -2614,9 +2635,22 @@ main {
                         }
                     }
 
+                    &.pink {
+                        background: linear-gradient(152deg, rgba(227, 48, 108, 1) 0%, rgba(247, 224, 31, 1) 100%);
+                        color: #FFFFFF;
+                        font-size: 1.2rem;
+                        th {
+                            @media all and (max-width: $md - 1) {
+                                text-align: center;
+                                font-size: 1.1rem;
+                                font-weight: bold;
+                            }
+                        }
+                    }
+
                     &:nth-child(odd) {
                         th, td {
-                            &.hovered {
+                            &.hovered, &.recommendPackage {
                                 background: #BE0001;
                             }
                         }
@@ -3033,13 +3067,6 @@ main {
                     }
                 }
 
-                //strong {
-                //    color: #ffffff;
-                //
-                //    &:before {
-                //        background: rgb(255, 255, 255);
-                //    }
-                //}
             }
 
             .clip {
@@ -3306,8 +3333,9 @@ main {
 
 #leadform-section {
     z-index: 0;
-    .insurance-form{
-        .form-inner{
+
+    .insurance-form {
+        .form-inner {
 
             @media all and (max-width: $sm) {
                 padding: 0;
@@ -3365,6 +3393,32 @@ main {
     strong {
         display: block;
     }
+
+
+    .step-wrapper {
+        #step {
+            display: flex;
+            @media all and (max-width: $sm) {
+                flex-flow: row wrap;
+            }
+            @media all and (max-width: 420px) {
+                flex-direction: column;
+            }
+
+            .item {
+                text-align: center;
+                flex: 1;
+                @media all and (max-width: $sm) {
+                    flex: none;
+                    width: 50%;
+                }
+                @media all and (max-width: 420px) {
+                    flex: 1;
+                    width: 100%;
+                }
+            }
+        }
+    }
 }
 
 .btn_my_health {
@@ -3372,6 +3426,7 @@ main {
     margin: 0 auto;
     height: 100%;
     padding: 0;
+
     &.gradient {
         background: rgb(227, 48, 108);
         background: linear-gradient(152deg, rgba(227, 48, 108, 1) 0%, rgba(247, 224, 31, 1) 100%);
@@ -3379,36 +3434,76 @@ main {
     }
 }
 
-.step-wrapper {
-    #step {
-        display: flex;
-        @media all and (max-width: $sm) {
-            flex-flow: row wrap;
-        }
-        @media all and (max-width: 420px) {
-            flex-direction: column;
-        }
-        .item {
-            text-align: center;
-            flex: 1;
-            @media all and (max-width: $sm) {
-                flex:none;
-                width: 50%;
-            }
-            @media all and (max-width: 420px) {
-                flex: 1;
-                width: 100%;
-            }
-        }
+.show_on_mobile {
+    display: none !important;
+    @media all and (max-width: $sm) {
+        display: block !important;
     }
 }
 
-.show_on_mobile{
-    display: none;
-    @media all and (max-width: $sm) {
-        display: block;
+.btn-overview {
+    max-width: 200px;
+}
+
+.rs-container .rs-selected {
+    background-color: $primary-color;
+    border: 1px solid $primary-color;
+}
+
+.rs-tooltip {
+    //border: 1px solid $primary-color;
+    border: none;
+}
+
+.rs-container .rs-pointer {
+    background-color: $primary-color;
+    border-radius: 50%;
+    width: 20px;
+}
+
+.rs-container .rs-pointer::after, .rs-container .rs-pointer::before {
+    background-color: $primary-color;
+}
+
+.rs-pointer[data-dir="right"] {
+    .rs-tooltip {
+        left: 7px;
     }
 }
+
+.flex-wrapper {
+    display: flex;
+    @media all and (max-width: $sm) {
+        flex-direction: column;
+    }
+
+    .item {
+        flex: 1;
+        margin: 0 10px;
+        text-align: center;
+        background: #81EAF7;
+        border-radius: 4px;
+        @media all and (max-width: $sm) {
+            margin: 10px auto;
+        }
+
+        strong, span {
+            display: block;
+            color: #FFFFFF;
+        }
+
+        strong {
+            font-size: 2rem
+        }
+
+        span {
+            margin: 0 0 10px 0;
+            height: 50px;
+        }
+    }
+
+}
+
 
 main[data-package="ONPACA"]{
     #table-detail{

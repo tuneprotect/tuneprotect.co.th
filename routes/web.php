@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Frontend\TestController;
 use Illuminate\Contracts\Container\BindingResolutionException;
+use App\Http\Controllers\Frontend\ProductController;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\DB;

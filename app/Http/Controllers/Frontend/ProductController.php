@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Enum\Base\BaseInsuranceObject;
 use App\Enum\Base\BaseTAObject;
+use App\Enum\CIObject;
 use App\Enum\COVIDAObject;
 use App\Enum\COVIDLObject;
 use App\Enum\ONTALNObject;
@@ -17,6 +18,7 @@ use App\Models\BuyLog;
 use App\Models\WebContent;
 use GuzzleHttp\Client;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Storage;
 use phpDocumentor\Reflection\Project;
 
@@ -26,10 +28,39 @@ class ProductController extends BaseController
 
     protected $thankYouParam = '';
     protected $controller = 'product';
+    protected $payment = 'CC,FULL';
+    protected $ipp_interest_type = "";
 
     public function index($link = null, $selected = null)
     {
-//        dd('link : ' . $link . '$selected : ' . $selected);
+
+        $this->getProductDetail($link, $selected);
+
+        if ($selected) {
+            return $this->genDetailPage($selected);
+        } else {
+            $this->bodyData['faq'] = $this->setFaq(ProjectEnum::WEB_CONTENT_FAQ, $this->bodyData['current_product']->id);
+            return $this->genListPage();
+        }
+
+    }
+
+    public function form($link = null, $selected = null)
+    {
+
+        $this->getProductDetail($link, $selected);
+        if ($selected) {
+
+            $this->bodyData['overview_link'] = "/{$this->locale}/product/{$link}/{$selected}";
+
+            return $this->genDetailPage($selected, false);
+        } else {
+            return redirect("/" . $this->locale . '/product/' . $link);
+        }
+    }
+
+    protected function getProductDetail($link = null, $selected = null)
+    {
         if (empty($link)) {
             return redirect("/" . $this->locale);
         }
@@ -48,12 +79,6 @@ class ProductController extends BaseController
             ->whereRaw(ProjectEnum::isPublish())
             ->first();
 
-        if ($selected) {
-            return $this->genDetailPage($selected);
-        } else {
-            $this->bodyData['faq'] = $this->setFaq(ProjectEnum::WEB_CONTENT_FAQ, $this->bodyData['current_product']->id);
-            return $this->genListPage();
-        }
 
     }
 
@@ -79,29 +104,32 @@ class ProductController extends BaseController
         }
     }
 
-    protected function genDetailPage($selected)
+    protected function genDetailPage($selected, $isPage = true)
     {
 
         if ($selected) {
             $this->bodyData['selected'] = $selected;
-            foreach ($this->bodyData['current_product']->productPackage as $v) {
-                if ($v->code === $selected) {
-                    $this->setStaticPageHeader($v);
-                    $this->bodyData['slideshow'] = [$this->bodyData['current_product']];
+            if (isset($this->bodyData['current_product'])) {
+                foreach ($this->bodyData['current_product']->productPackage as $v) {
+                    if ($v->code === $selected) {
+                        $this->setStaticPageHeader($v);
+                        $this->bodyData['slideshow'] = [$this->bodyData['current_product']];
+//                    dd($this->bodyData['slideshow']);
+                    }
                 }
             }
+
         } else {
             $this->bodyData['selected'] = @$this->bodyData['current_product']->productPackage[0]->code;
             $this->setStaticPageHeader($this->bodyData['current_product']);
         }
-
-        foreach ($this->bodyData['current_product']->productPackage as $v) {
-            if ($v->code === $this->bodyData['selected']) {
-                $this->bodyData['current_package'] = $v;
+        if (isset($this->bodyData['current_product'])) {
+            foreach ($this->bodyData['current_product']->productPackage as $v) {
+                if ($v->code === $this->bodyData['selected']) {
+                    $this->bodyData['current_package'] = $v;
+                }
             }
         }
-
-        // dd($this->bodyData['current_product']->locales[$this->locale]);
 
         if (Storage::disk('public')->exists('json/' . strtolower($this->bodyData['selected']) . '.json')) {
             $package_detail = json_decode(Storage::disk('public')->get('json/' . strtolower($this->bodyData['selected']) . '.json'));
@@ -147,34 +175,45 @@ class ProductController extends BaseController
 
         $this->template->setBody('id', 'product_page');
 
-        $this->bodyData['category_leadform'] = WebContent::where('type_id', ProjectEnum::WEB_CONTENT_LEADFORM_CATEGORY)
-            ->with('locales')
-            ->get();
+        if ($isPage) {
+            $this->bodyData['category_leadform'] = WebContent::where('type_id', ProjectEnum::WEB_CONTENT_LEADFORM_CATEGORY)
+                ->with('locales')
+                ->get();
+
+        }
 
         $this->bodyData['privacy'] = WebContent::where('type_id', ProjectEnum::STATIC_PAGE_PRIVACY_POLICY)
             ->with('locales')
             ->first();
 
         $this->bodyData['controller'] = $this->controller;
-        $this->bodyData['faq'] = $this->setFaq(ProjectEnum::WEB_CONTENT_FAQ, $this->bodyData['current_package']->id);
 
+        if ($isPage) {
+            $this->bodyData['faq'] = $this->setFaq(ProjectEnum::WEB_CONTENT_FAQ, @$this->bodyData['current_package']->id);
+        } else {
+            $this->bodyData['faq'] = $this->setFaq('faq.content', $this->bodyData['current_package']->id);
+        }
+
+//        dd($this->bodyData['current_product']);
 
         try {
+
             $this->template->setFootJS(mix("/js/frontend/product/" . strtolower($this->bodyData['selected']) . ".js"));
         } catch (\Exception $exception) {
             // dd('js error.');
         }
 
-        // dd($this->bodyData['controller']);
         //Swich main page product / portal
         if ($this->controller != 'product') {
             return $this->genView('frontend.page.portal');
         } else {
+            if (!$isPage) {
+                return $this->genView('frontend.page.product_form');
+            }
             return $this->genView('frontend.page.product');
         }
-
-
     }
+
 
     protected function combindObj($data)
     {
@@ -197,7 +236,12 @@ class ProductController extends BaseController
             $obj = new VACINAObject();
         } elseif (substr($data['fdPackage'], 0, 8) === 'ONVSAFEA') {
            $obj = new VSAFEAObject();
-            // $obj = new VACINAObject();
+        } elseif (substr($data['fdPackage'], 0, 2) === 'CI') {
+            $obj = new CIObject();
+            $this->payment = 'CC,FULL,IPP';
+            $this->ipp_interest_type = "A";
+            $data['fdPackage'] .= str_replace(['F', ','], "", $data['ctrl_disease']);
+
         } else {
             $obj = new BaseInsuranceObject();
         }
@@ -292,7 +336,6 @@ class ProductController extends BaseController
             $obj->fdlanguage = 1;
         }
 
-        // dd($obj);
 
         return $obj;
     }
@@ -320,7 +363,6 @@ class ProductController extends BaseController
     {
         $data = $request->all();
 
-//        dd($data);
 
         if (isset($data['send_data'])) {
             $data = (array)json_decode($data['send_data']);
@@ -344,7 +386,7 @@ class ProductController extends BaseController
             }
 
 
-            if(session('nopayment_status')) {
+            if (session('nopayment_status')) {
                 return $this->noPayment($result, $price, $log_id);
             }
 
@@ -354,7 +396,7 @@ class ProductController extends BaseController
             $obj = $this->combindObj($data);
             $result = $this->logData($obj);
 
-            if(session('nopayment_status')) {
+            if (session('nopayment_status')) {
                 return $this->noPayment($result);
             }
 
@@ -363,6 +405,7 @@ class ProductController extends BaseController
 
 
     }
+
     protected function noPayment($obj, $price = null, $log_id = null)
     {
         $result = $this->sendToApiIssue(ProjectEnum::INVOICE_PREFIX . $obj->fdInvoice, '', '');
@@ -377,8 +420,6 @@ class ProductController extends BaseController
         return redirect()->route('current', ['locale' => $this->locale, 'controller' => $this->controller, 'func' => $func, 'params' => $this->thankYouParam]);
 
     }
-
-
 
 
     protected function sendTo2C2P($obj, $price = null, $log_id = null)
@@ -397,20 +438,11 @@ class ProductController extends BaseController
         $arr_post['user_defined_2'] = session('return_link');
         $arr_post['result_url_1'] = url("{$this->locale}/{$this->controller}/result");
 
-        //case check product / portal
-        // $strKeys = $obj->data["fdKeys"];
-        // if((!isset($strKeys) || trim($strKeys) === ''))
-        // {
-        //     $arr_post['result_url_1'] = url("{$this->locale}/product/result");
-        // }
-        // else{
-
-        //     $arr_post['result_url_1'] = url("{$this->locale}/portal/results");//เติม s เพราะจำซ้ำกับตัว product
-        // }
-
-
-        $arr_post['payment_option'] = "CC,FULL";
+        $arr_post['payment_option'] = $this->payment;
+        $arr_post['ipp_interest_type'] = $this->ipp_interest_type;;
         $arr_post['default_lang'] = $this->locale;
+//        $arr_post['ipp_period_filter'] = 10;
+
         $params = join($arr_post);
         $arr_post['hash_value'] = hash_hmac('sha256', $params, config('payment.secret'), false);    //Compute hash value
 
@@ -441,6 +473,9 @@ class ProductController extends BaseController
         } elseif (substr($package, 0, 8) === 'ONVSAFEA') {
             $this->thankYouParam = substr($package, 0, 8);
             $link = 'IssuePolicyVsafe';
+        } elseif (substr($package, 0, 2) === 'CI') {
+            $this->thankYouParam = substr($package, 0, 2);
+            $link = 'IssuePolicyCI';
         }
         return config('tune-api.url') . $link;
     }
@@ -505,8 +540,7 @@ class ProductController extends BaseController
             $PolicyData = $apiResult['data'];
 
             foreach ($PolicyData as $k => $v) {
-                if ($k === 'BigPoint')
-                {
+                if ($k === 'BigPoint') {
                     if (is_numeric($v)) {
                         $Point = $Point + $v;
                     }
@@ -527,13 +561,13 @@ class ProductController extends BaseController
         }
 
         //Array 2 dimension
-        $arrResult[] =  $PolicyArr;
-        $arrResult[] =  $Point;
+        $arrResult[] = $PolicyArr;
+        $arrResult[] = $Point;
         return $arrResult;
 
     }
 
-    public function error()
+    public function error(Request $request)
     {
         return $this->genStatusPage(ProjectEnum::STATIC_PAGE_PAYMENT_ERROR);
     }
@@ -610,9 +644,15 @@ class ProductController extends BaseController
 
         $arr_post['amount'] = str_pad((1000) * 100, 12, '0', STR_PAD_LEFT);
         $arr_post['customer_email'] = 'test@test.com';
+        $arr_post['user_defined_1'] = 'aaa';
+        $arr_post['user_defined_2'] = session('return_link');
         $arr_post['result_url_1'] = url("{$this->locale}/product/result");
-        $arr_post['payment_option'] = "CC,ALIPAY,BANK";
+        $arr_post['payment_option'] = "CC,FULL";
+        $arr_post['ipp_interest_type'] = 'A';
         $arr_post['default_lang'] = $this->locale;
+//        $arr_post['ipp_period_filter'] = '10';
+
+
         $params = join($arr_post);
         $arr_post['hash_value'] = hash_hmac('sha256', $params, config('payment.secret'), false);    //Compute hash value
 
@@ -623,7 +663,7 @@ class ProductController extends BaseController
 
     public function testIssueApi()
     {
-        $result = $this->sendToApiIssue("00000000075", "001", "5565654654");
+        $result = $this->sendToApiIssue("00000000119", "001", "5565654654");
         dd($result);
     }
 
@@ -639,6 +679,33 @@ class ProductController extends BaseController
         dd($result);
 
 
+    }
+
+    public function checkDup(Request $request)
+    {
+        $data = $request->all();
+
+        $client = new Client();
+        $response = $client->request('POST', config('tune-api.url') . 'PersonalValidationCI', [
+            'auth' => [config('tune-api.user'), config('tune-api.password')],
+            'headers' => [
+                'Content-Type' => 'application/json'
+            ],
+            'body' => json_encode($data)
+        ]);
+        $res = (object)json_decode($response->getBody()->getContents(), true);
+
+        $this->apiResult = $res->status ? self::SUCCESS : self::ERROR;
+
+        if ($res->status) {
+            $this->apiStatus = self::SUCCESS;
+            $this->apiStatusText = self::SUCCESS;
+        } else {
+            $this->apiStatus = self::ERROR;
+            $this->apiStatusText = __('product.error.' . $res->message);
+        }
+
+        return $this->send();
     }
 
 }

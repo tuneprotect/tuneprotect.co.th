@@ -22,6 +22,7 @@
                 <br/>
             @endif
         </article>
+
         @if(isset($relatedProduct))
             @include('frontend.component.product_list')
         @endif
@@ -30,6 +31,9 @@
             @include('frontend.component.related_article', ['relatedArticle' => $relatedArticle])
         @endif
 
+        @if($faq)
+            @include('frontend.component.faq')
+        @endif
 
     </main>
 

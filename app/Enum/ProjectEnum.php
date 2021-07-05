@@ -55,7 +55,8 @@ class ProjectEnum
     const WEB_CONTENT_NEWS_CATEGORY = "news.category";
     const WEB_CONTENT_ORGANIZATION = "about.organization";
     const WEB_CONTENT_PROVINCE = "configuration.province";
-    const WEB_CONTENT_SERVICE = "static.service";
+    const WEB_CONTENT_SERVICE = "service.content";
+    const WEB_CONTENT_SERVICE_MY_HEALTH = "service_my_health.content";
     const WEB_CONTENT_SOCIAL = "static.social";
     const WEB_CONTENT_STICKY_MENU = "static.sticky_menu";
     const WEB_CONTENT_CLAIM = "claim.content";
@@ -64,7 +65,8 @@ class ProjectEnum
     const CACHE_MENU_ENABLE = 'menu_enable';
 
 
-    const INVOICE_PREFIX = 'W';
+    //TODO : invoice prefix for test only
+    const INVOICE_PREFIX = 'WT';
 
     public static function isPublish()
     {

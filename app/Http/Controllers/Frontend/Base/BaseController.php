@@ -57,7 +57,9 @@ abstract class BaseController extends Controller
             ProjectEnum::WEB_CONTENT_ABOUT => 'about',
             ProjectEnum::WEB_CONTENT_PRODUCT_CATEGORY => 'product_category',
             ProjectEnum::WEB_CONTENT_CLAIM => 'claim',
-            ProjectEnum::WEB_CONTENT_CLAIM_CATEGORY => 'claim_category'
+            ProjectEnum::WEB_CONTENT_CLAIM_CATEGORY => 'claim_category',
+            ProjectEnum::WEB_CONTENT_SERVICE_MY_HEALTH => 'service_my_health',
+
         ];
 
         $layoutContent = WebContent::whereIn('type_id', [
@@ -67,7 +69,8 @@ abstract class BaseController extends Controller
             ProjectEnum::WEB_CONTENT_ABOUT,
             ProjectEnum::WEB_CONTENT_PRODUCT_CATEGORY,
             ProjectEnum::WEB_CONTENT_CLAIM,
-            ProjectEnum::WEB_CONTENT_CLAIM_CATEGORY
+            ProjectEnum::WEB_CONTENT_CLAIM_CATEGORY,
+            ProjectEnum::WEB_CONTENT_SERVICE_MY_HEALTH
         ])
             ->with('locales')
             ->whereRaw(ProjectEnum::isPublish())
@@ -108,6 +111,7 @@ abstract class BaseController extends Controller
 
     protected function setFaq($typeId, $parentId = '')
     {
+
         if (is_string($typeId)) {
             $data = WebContent::where('type_id', $typeId);
 

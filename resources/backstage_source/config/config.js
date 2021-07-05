@@ -112,6 +112,8 @@ export const API_URL_LIST = {
     partnerSetEnable: `${API_URL}/Partner/setEnable`,
     partnerSetDelete: `${API_URL}/Partner/setDelete`,
     partnerSaveReorder: `${API_URL}/Partner/saveReorder`,
+    //Import
+    importCi: `${API_URL}/ImportCi/index`,
     // Testing
     testEmail: `${API_URL}/Testing/email`,
 };
@@ -145,6 +147,8 @@ export const WEB_CONTENT = {
     CLAIM: "claim.content",
     CLAIM_CATEGORY: "claim.category",
 
+    SERVICE_MY_HEALTH: "service_my_health.content",
+
     FAQ : "faq.content",
     FAQ_CONTACT_CATEGORY : "faq_contact.category",
     FAQ_CONTACT : "faq_contact.content",
@@ -159,6 +163,11 @@ export const WEB_CONTENT = {
     SERVICE_CENTER: "partner.service_center",
     SERVICE_CENTER_CATEGORY: "partner.service_center_category",
 
+    IMPORT : "import",
+    IMPORT_CI:"import.ci",
+    IMPORT_CI_CATEGORY : "import.ci_category",
+
+
     PRODUCT : "product.content",
     PRODUCT_CATEGORY : "product.category",
     PRODUCT_SLIDESHOW : "product.slideshow",
@@ -168,10 +177,10 @@ export const WEB_CONTENT = {
     BANNER: "static.banner",
     SOCIAL: "static.social",
     STICKY_MENU: "static.sticky_menu",
-    SERVICE: "static.service",
+    SERVICE_STATIC: "static.service",
     REVIEW: "static.review",
     MY_HEALTH: "static.my_health",
-
+    SERVICE: "static.service",
     NEWS: "news.content",
     NEWS_CATEGORY: "news.category",
 

@@ -1,4 +1,11 @@
-<h3>{{ isset($index) ? __('product.profiles').' '.$index : __('product.profile')   }}</h3>
+@if($selected == 'CI')
+    <h3 data-type data-own_insurance="@lang('product.insurer_list_type.own_insurance')"
+        data-other_insurance="@lang('product.insurer_list_type.other_insurance')"></h3>
+@else
+    <h3>{{ isset($index) ? __('product.profiles').' '.$index : __('product.profile')   }}</h3>
+@endif
+
+
 @if(isset($eng_only))
     <h4 data-error-eng-only="@lang('product.error.eng_only')" class="text-primary">@lang('product.eng_only')</h4>
 @endif
