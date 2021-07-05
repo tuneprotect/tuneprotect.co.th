@@ -1,4 +1,4 @@
-import {$, $$, calculateAge, current_package, fadeIn, fadeOut, scrollToTargetAdjusted} from "../helper";
+import {$, $$, calculateAge, current_package, fadeIn, fadeOut, locale, scrollToTargetAdjusted} from "../helper";
 import {isValid, parseISO} from "date-fns";
 import {showDateError, showFieldError} from "../validate_form";
 import Swal from "sweetalert2";
@@ -55,7 +55,7 @@ export const validateAgeInPackage = (package_data, cal_price) => {
     const age_in_range = Object.keys(package_data)
         .filter(k => _.startsWith(k, current_package))
         .some(k => Object.keys(package_data[k].price).some(ageRange => checkAge(birthday, ageRange)))
-console.log({age_in_range})
+    console.log({age_in_range})
     if (!age_in_range) {
         showDateError($('#ctrl_day').getAttribute('data-error-not-qualify'));
         return {status: false};
@@ -389,4 +389,22 @@ export const checkTaBirthDateIPass = (i) => {
             fdAge: age.year
         }
     };
+}
+
+export const formatInputFieldByLanguage = () => {
+
+    if (locale === 'en') {
+        return {
+            pattern: /^[a-zA-Z0-9 \-_!@#$&()\\-`.+,/\"\n\r]*$/,
+            flags: "i",
+            message: "^Only English Allowed"
+        }
+    } else {
+        return {
+            pattern: /^[ก-๙0-9 \-_!@#$&()\\-`.+,/\"\n\r]*$/,
+            flags: "i",
+            message: "^กรุณาใส่ภาษาไทยเท่านั้น"
+        }
+    }
+
 }

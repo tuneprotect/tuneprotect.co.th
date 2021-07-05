@@ -1,6 +1,6 @@
 import {
     changeStep,
-    checkAge,
+    checkAge, formatInputFieldByLanguage,
     formatTelNumber,
     getPackageData,
     showTitle,
@@ -113,27 +113,14 @@ if ($('#title_wrapper')) {
                 message: "^" + $('#fdTelephone').getAttribute('data-error-tel-format')
             }
         },
-        fdAddr_Num: function (value, attributes, attributeName, options, constraints) {
-
-            let rule = {
-                presence: {
-                    allowEmpty: false,
-                    message: "^" + $('#fdAddr_Num').getAttribute('data-error-address')
-                }
-            }
-            if (locale === 'en') {
-                rule = {
-                    ...rule,
-                    format: {
-                        pattern: /^[a-zA-Z0-9 \-_!@#$&()\\-`.+,/\"\n\r]*$/,
-                        flags: "i",
-                        message: "^" + $('[data-error-eng-only]').getAttribute('data-error-eng-only')
-                    }
-                }
-            }
-
-            return rule;
+        fdAddr_Num: {
+            presence: {
+                allowEmpty: false,
+                message: "^" + $('#fdAddr_Num').getAttribute('data-error-address')
+            },
+            format: formatInputFieldByLanguage()
         },
+
         fdAddr_District: {
             presence: {
                 allowEmpty: false,
@@ -591,7 +578,7 @@ if ($('#title_wrapper')) {
                             case 3:
                                 console.log(e.target.tagName)
                                 status = false;
-                                if(e.target.id === 'btn-fdQuestion1'){
+                                if (e.target.id === 'btn-fdQuestion1') {
                                     status = true;
 
                                     data = {
