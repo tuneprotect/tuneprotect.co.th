@@ -29,7 +29,7 @@ class ProductController extends BaseController
     protected $thankYouParam = '';
     protected $controller = 'product';
     protected $payment = 'CC,FULL';
-    protected $ipp_interest_type = "";
+    protected $ipp_interest_type = "C";
 
     public function index($link = null, $selected = null)
     {
@@ -439,7 +439,7 @@ class ProductController extends BaseController
         $arr_post['result_url_1'] = url("{$this->locale}/{$this->controller}/result");
 
         $arr_post['payment_option'] = $this->payment;
-        $arr_post['ipp_interest_type'] = $this->ipp_interest_type;;
+        $arr_post['ipp_interest_type'] = $this->ipp_interest_type;
         $arr_post['default_lang'] = $this->locale;
 //        $arr_post['ipp_period_filter'] = 10;
 
