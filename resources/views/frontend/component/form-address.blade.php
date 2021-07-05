@@ -16,7 +16,7 @@
     <div class="controls-wrapper">
         <input id="{{$prefix}}fdAddr_PostCode" name="{{$prefix}}fdAddr_PostCode" type="tel"
                data-error-postal_code="@lang("product.error.postal_code")"
-               placeholder="@lang("product.postal_code")"/>
+               placeholder="@lang("product.postal_code")" autocomplete='off' />
         <label for="{{$prefix}}fdAddr_PostCode">@lang("product.postal_code")</label>
     </div>
     <div class="controls-wrapper">

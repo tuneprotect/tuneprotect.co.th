@@ -199,16 +199,21 @@
                             @endif
                         @else
                             @if(!empty($v->pic))
+                                @if(isset($selected))
+                                    @if($selected==='ONVSAFEA')
+                                        <picture>
+                                            <source media="(min-width:768px)" srcset="{{url(str_replace('Banner_Covid_D', 'Banner_VSafe_D', $v->pic))}}">
+                                            <img src="{{url(!empty($v->pic_mobile) ? url(str_replace('Banner_Covid_D', 'Banner_VSafe_D', $v->pic_mobile)) : url(str_replace('Banner_Covid_D', 'Banner_VSafe_M', $v->pic)) )}}"
+                                                alt="{{$v->locales[$locale]->title}}">
+                                        </picture>
+                                    @else
+                                        <picture>
+                                            <source media="(min-width:768px)" srcset="{{url($v->pic)}}">
+                                            <img src="{{url(!empty($v->pic_mobile) ? $v->pic_mobile : $v->pic )}}"
+                                                alt="{{$v->locales[$locale]->title}}">
+                                        </picture>
 
-                                @if(@$selected==='ONVSAFEA')
-                                    <picture>
-                                        <source media="(min-width:768px)"
-                                                srcset="{{url(str_replace('Banner_Covid_D', 'Banner_VSafe_D', $v->pic))}}">
-                                        <img
-                                            src="{{url(!empty($v->pic_mobile) ? url(str_replace('Banner_Covid_D', 'Banner_VSafe_D', $v->pic_mobile)) : url(str_replace('Banner_Covid_D', 'Banner_VSafe_M', $v->pic)) )}}"
-                                            alt="{{$v->locales[$locale]->title}}">
-                                    </picture>
-
+                                    @endif
                                 @else
                                     <picture>
                                         <source media="(min-width:768px)" srcset="{{url($v->pic)}}">

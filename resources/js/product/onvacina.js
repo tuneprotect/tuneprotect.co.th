@@ -206,7 +206,12 @@ const constraints = {
             }
         };
     },
-
+    fdQuestion5: {
+        presence: {
+            allowEmpty: false,
+            message: "^" + $('#ctrl_question_5_N').getAttribute('data-error-q5')
+        }
+    },
     fdBenefit_name: function (value, attributes, attributeName, options, constraints) {
         if (attributes.fdBenefit !== 'other') return null;
         return {
@@ -478,7 +483,8 @@ document.addEventListener("DOMContentLoaded", async () => {
         fdQuestion2_1: [],
         ctrl_question_2_specify: "",
         ctrl_province: "",
-        ctrl_terms: ""
+        ctrl_terms: "",
+        fdQuestion5: ""
     };
 
     const iti = intlTelInput($('#fdTelephone'), {
@@ -657,7 +663,8 @@ document.addEventListener("DOMContentLoaded", async () => {
                             ctrl_accept_insurance_term: $('#ctrl_accept_insurance_term').checked ? true : undefined,
                             ctrl_terms: $('#ctrl_terms').checked ? true : undefined,
                             ctrl_province: $('#ctrl_province').value,
-                            fdPayAMT: getSelectedPriceVC(data.fdPackage, package_data)
+                            fdPayAMT: getSelectedPriceVC(data.fdPackage, package_data),
+                            fdQuestion5:getRadioSelectedValue('fdQuestion5')
                         }
 
 
@@ -680,6 +687,20 @@ document.addEventListener("DOMContentLoaded", async () => {
                             scrollToTargetAdjusted($('.controls-wrapper.error'));
                             status = false;
                         } else {
+
+                            let fdQuestion5 = getRadioSelectedValue('fdQuestion5');
+                            let fdQuestion5Alert = $('#ctrl_question_5_N').getAttribute('data-q5_alert');
+                            if (fdQuestion5 =='Y') {
+                                Swal.fire({
+                                    text: fdQuestion5Alert,
+                                    confirmButtonColor: '#d33',
+                                    confirmButtonText: 'OK'
+                                })
+                                scrollToTargetAdjusted($('#frm_contact'));
+                                status = false;
+                                break;
+                            }
+
                             let sb = ''
 
                             Object.keys(data).map(k => {

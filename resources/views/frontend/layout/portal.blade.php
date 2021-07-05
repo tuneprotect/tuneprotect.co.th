@@ -8,7 +8,7 @@
         <meta name="csrf-token" content="{{ csrf_token() }}" />
         <a class="nav-icon"><span></span></a>
         <div class="logo">
-            <a data-gtm="logo" href=""><img
+            <a data-gtm="logo"><img
                     src="{{url('images/favicon/favicon.png')}}"
                     alt="Tune Protect Logo"></a>
         </div>
@@ -19,7 +19,6 @@
         <div class="right">
             <div class="language-section" id="language" name="language">
                 @if(count($activeLanguage) > 1 )
-
                     <ul class="language-switcher">
                         <li class="current">
                             <strong>{{$locale}} <i class="icofont-caret-right"></i></strong>
@@ -117,7 +116,7 @@
     <div class="sticky-menu">
     </div>
     <footer>
-        <div class="wrapper">
+        {{--<div class="wrapper">
             <div class="logo-wrapper">
                 <img src="{{url('images/template/white_logo.svg')}}" alt="">
                 @include('frontend.component.call_center', ['color' => 'white','gtm' => 'footer-call-center'])
@@ -191,7 +190,7 @@
                     </ul>
                 </section>
             </nav>
-        </div>
+        </div>--}}
         <p class="copyright">{!! __('global.copyright') !!}  </p>
     </footer>
 

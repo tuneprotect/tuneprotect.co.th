@@ -15,8 +15,7 @@
             <h3>@lang('product.ONCOVIDA_question.title')</h3>
             <p id="q1"
                data-summary="@lang('product.ONCOVIDA_question.q1_summary')"
-               data-budget="@lang('product.ONCOVIDA_question.q1_budget')"
-            >
+               data-budget="@lang('product.ONCOVIDA_question.q1_budget')">
                 @lang('product.ONCOVIDA_question.q1')
             </p>
             <div class="two-col">
@@ -109,6 +108,32 @@
                     </div>
                 </div>
             </div>
+
+            <h4 id="q3" data-summary="@lang('product.VSAFE_question.q1_summary')" data-none="@lang('product.VSAFE_question.q1_none')">
+                @lang('product.VSAFE_question.q1')</h4>
+                <div class="two-col">
+                <div class="controls-wrapper">
+                    <ul class="check-wrapper">
+                        <li>
+                            <input id="ctrl_question_5_N" name="fdQuestion5" type="radio" value="N" data-error-q3="@lang('product.error.vsafe_health')" data-q5_alert="@lang('product.VSAFE_question.q5_alert')"/>
+                            @if($locale == 'en')
+                                <label for="ctrl_question_5_N">@lang("product.no")</label>
+                            @else
+                                <label for="ctrl_question_5_N">ไม่เคย</label>
+                            @endif
+                        </li>
+                        <li>
+                            <input id="ctrl_question_5_Y" name="fdQuestion5" type="radio" value="Y"/>
+                            @if($locale == 'en')
+                                <label for="ctrl_question_5_Y">@lang("product.yes")</label>
+                            @else
+                                <label for="ctrl_question_5_Y">เคย</label>
+                            @endif
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
             @include('frontend.component.form-tax-deduct')
             @include('frontend.component.form-privacy')
         </div>

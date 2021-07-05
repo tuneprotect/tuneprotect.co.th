@@ -6,7 +6,7 @@ namespace App\Enum;
 
 use App\Enum\Base\BaseInsuranceObject;
 
-class VACINAObject extends BaseInsuranceObject
+class VSAFEAObject extends BaseInsuranceObject
 {
     public $fdNationality;
     public $fdRevenue;

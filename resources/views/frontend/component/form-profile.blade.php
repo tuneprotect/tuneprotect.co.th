@@ -66,6 +66,7 @@
                data-type="{{$id_card_field}}"
                data-error-idcard="@lang("product.error.id_card")"
                data-error-passport="@lang("product.error.passport")"
+               autocomplete='off'
         />
         <label for="{{$prefix}}fdNationalID">{{$id_card_field_title}}</label>
     </div>

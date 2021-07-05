@@ -144,6 +144,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     const $postalCode = $('#fdAddr_PostCode');
     if ($postalCode) {
+        $postalCode.value = '';
         const zipcode_data = await getZipcodeData();
         $postalCode.addEventListener("change", function (e) {
             const value = $postalCode.value;

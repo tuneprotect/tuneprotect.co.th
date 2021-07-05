@@ -10,6 +10,7 @@ use App\Enum\COVIDAObject;
 use App\Enum\COVIDLObject;
 use App\Enum\ONTALNObject;
 use App\Enum\VACINAObject;
+use App\Enum\VSAFEAObject;
 use App\Enum\PAObject;
 use App\Enum\ProjectEnum;
 use App\Http\Controllers\Frontend\Base\BaseController;
@@ -130,25 +131,37 @@ class ProductController extends BaseController
             }
         }
 
+        // dd($this->bodyData['current_product']->locales[$this->locale]);
+
         if (Storage::disk('public')->exists('json/' . strtolower($this->bodyData['selected']) . '.json')) {
             $package_detail = json_decode(Storage::disk('public')->get('json/' . strtolower($this->bodyData['selected']) . '.json'));
             foreach ($package_detail as $k => $v) {
                 if (str_starts_with($k, $selected)) {
 
                     //Fix code lang for urgent(vacin)
-                    if ($this->locale === 'en') {
-                        if ($selected === 'ONVSAFEA') {
-                            if ($v->plan->VSAFEA3 !== '-') {
-                                $v->plan->VSAFEA3 = '1,000 (Per day maximun 14 days)';
-                            }
-                            if ($v->plan->VSAFEB2 !== '-') {
-                                $v->plan->VSAFEB2 = 'Service of online Health2GO medical consultation';
-                            }
+                    if($this->locale === 'en')
+                    {
+                        if($selected === 'ONVSAFEA')
+                        {
+                            if($v->plan->VSAFEA3 !== '-'){$v->plan->VSAFEA3 = __('product.healt2go_plan');}
+                            if($v->plan->VSAFEB2 !== '-'){$v->plan->VSAFEB2 = __('product.healt2go_word');}
                         }
-                        if ($selected === 'ONVACINA') {
-                            if ($v->plan->VACINA3 !== '-') {
-                                $v->plan->VACINA3 = '1,000 (Per day maximun 14 days)';
-                            }
+                        if($selected === 'ONVACINA')
+                        {
+                            if($v->plan->VACINA3 !== '-'){$v->plan->VACINA3 = __('product.healt2go_plan');}
+                        }
+
+                        if($selected === 'ONPACA')
+                        {
+                            if($v->plan->PADRCA10 !== '-'){$v->plan->PADRCA10 = __('product.healt2go_word');}
+                        }
+                        if($selected === 'ONPAKD')
+                        {
+                            if($v->plan->PADRKD07 !== '-'){$v->plan->PADRKD07 = __('product.healt2go_word');}
+                        }
+                        if($selected === 'ONPASN')
+                        {
+                            if($v->plan->PADRSN07 !== '-'){$v->plan->PADRSN07 = __('product.healt2go_word');}
                         }
                     }
 
@@ -160,6 +173,7 @@ class ProductController extends BaseController
             }
         }
 
+        // dd( $this->bodyData['package_detail']);
 
         $this->template->setBody('id', 'product_page');
 
@@ -223,7 +237,7 @@ class ProductController extends BaseController
         } elseif (substr($data['fdPackage'], 0, 8) === 'ONVACINA') {
             $obj = new VACINAObject();
         } elseif (substr($data['fdPackage'], 0, 8) === 'ONVSAFEA') {
-            $obj = new VACINAObject();
+           $obj = new VSAFEAObject();
         } elseif (substr($data['fdPackage'], 0, 2) === 'CI') {
             $obj = new CIObject();
             $this->payment = 'CC,FULL,IPP';
@@ -286,8 +300,8 @@ class ProductController extends BaseController
         }
 
         if (substr($data['fdPackage'], 0, 8) === 'ONCOVIDA'
-            || substr($data['fdPackage'], 0, 8) === 'ONVACINA'
-            || substr($data['fdPackage'], 0, 8) === 'ONVSAFEA') {
+        || substr($data['fdPackage'], 0, 8) === 'ONVACINA'
+        || substr($data['fdPackage'], 0, 8) === 'ONVSAFEA') {
 
 
             if (isset($data['fdQuestion2_1']) && ($key = array_search('other', $data['fdQuestion2_1'])) !== false) {
@@ -321,6 +335,7 @@ class ProductController extends BaseController
             $obj->fdlanguage = 1;
         }
 
+        // dd($obj);
 
         return $obj;
     }
