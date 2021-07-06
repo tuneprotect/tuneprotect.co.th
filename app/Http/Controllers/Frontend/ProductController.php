@@ -328,14 +328,13 @@ class ProductController extends BaseController
 
             $obj->fdPackage = $package[$data['fdPackage']]->apiPackage;
 
-            // dd($obj->fdPackage);
+
 
         } elseif (substr($data['fdPackage'], 0, 8) === 'ONCOVIDL' ||
             substr($data['fdPackage'], 0, 6) === 'ONTALN'
         ) {
             $obj->fdlanguage = 1;
         }
-
 
         return $obj;
     }
@@ -362,7 +361,6 @@ class ProductController extends BaseController
     public function makePayment(Request $request)
     {
         $data = $request->all();
-
 
         if (isset($data['send_data'])) {
             $data = (array)json_decode($data['send_data']);

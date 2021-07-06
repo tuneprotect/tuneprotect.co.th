@@ -17,7 +17,7 @@ import {
     locale, scrollToTargetAdjusted
 } from "../helper";
 
-import {showFieldError, validateField} from "../validate_form";
+import {removeError, showError, showFieldError, validateField} from "../validate_form";
 import Swal from "sweetalert2";
 import validate from "validate.js";
 import {format, parseISO} from "date-fns";
@@ -235,9 +235,18 @@ const constraints = {
     }
 };
 
+const step1Constraints = {
+    fdFromDate: {
+        presence: {
+            allowEmpty: false,
+            message: "^" + $('#fdFromDate')?.getAttribute('data-error')
+        }
+    }
+};
+
+
 document.addEventListener("DOMContentLoaded", async () => {
     const package_data = await getPackageData(current_package);
-
     let Keys = "";
     var myEle = document.getElementById("portal_key");
     if(myEle){
@@ -376,7 +385,6 @@ document.addEventListener("DOMContentLoaded", async () => {
 
             const goToStep = parseInt($btn.getAttribute('data-step'));
             let status = false;
-
             if (step > goToStep) {
                 status = true;
             } else {
@@ -415,6 +423,21 @@ document.addEventListener("DOMContentLoaded", async () => {
                                     icon: 'error',
                                     confirmButtonText: 'OK'
                                 })
+                                status = false;
+                            }
+                        }
+
+
+
+
+                        if(data.fdKeys != "")
+                        {
+                            data = {
+                                ...data,
+                                fdFromDate: $('#fdFromDate').value
+                            }
+                            let resultVal = validate(data, step1Constraints);
+                            if (resultVal) {
                                 status = false;
                             }
                         }
@@ -481,7 +504,6 @@ document.addEventListener("DOMContentLoaded", async () => {
                             fdPayAMT: getSelectedPrice(data.fdHBD, data.fdPackage, package_data)
                         }
 
-
                         const result = validate(data, constraints);
                         const $cite = $form.getElementsByTagName('cite');
                         for (let i = 0, len = $cite.length; i !== len; ++i) {
@@ -502,6 +524,17 @@ document.addEventListener("DOMContentLoaded", async () => {
                             status = false;
                         } else {
                             let sb = ''
+
+                            if(data.fdKeys != "")
+                            {
+                                let fromDate = ($('#fdFromDate').value).split('/');
+                                let fdFromDate = `${fromDate[2]}-${fromDate[1]}-${fromDate[0]}`;
+                                data = {
+                                    ...data,
+                                    fdFromDate
+                                }
+                            }
+
 
                             Object.keys(data).map(k => {
 
@@ -536,6 +569,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                     <div class="two-col">
                         <div><span>${$summary_section.getAttribute('data-plan')} : </span><strong>${selectedPackage}</strong></div>
                         <div><span>${$summary_section.getAttribute('data-price')} : </span><strong>${parseFloat(data.fdPayAMT).toLocaleString()} ${$summary_section.getAttribute('data-baht')}</strong></div>
+
                     </div>
                     <br/>
                     <h3 class="text-primary">${$summary_section.getAttribute('data-profile_data')}</h3><br/>

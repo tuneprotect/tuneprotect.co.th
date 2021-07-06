@@ -64,7 +64,7 @@ return [
             'url' => env('DATABASE_URL'),
             'host' => env('DB_HOST', '10.2.2.12'),
             'port' => env('DB_PORT', '1433'),
-            'database' => env('DB_DATABASE_PACKAGE', 'tune_insurance_package'),
+            'database' => env('DB_DATABASE_PACKAGE', 'tune_plancode'),
             'username' => env('DB_USERNAME', 'sikarudb'),
             'password' => env('DB_PASSWORD', '4BMUpBv2KVWV'),
             'charset' => 'utf8',
