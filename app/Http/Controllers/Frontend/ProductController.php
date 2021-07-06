@@ -29,7 +29,7 @@ class ProductController extends BaseController
     protected $thankYouParam = '';
     protected $controller = 'product';
     protected $payment = 'CC,FULL';
-    protected $ipp_interest_type = "C";
+    protected $ipp_interest_type = "";
 
     public function index($link = null, $selected = null)
     {
@@ -241,7 +241,7 @@ class ProductController extends BaseController
         } elseif (substr($data['fdPackage'], 0, 2) === 'CI') {
             $obj = new CIObject();
             $this->payment = 'CC,FULL,IPP';
-            $this->ipp_interest_type = "A";
+            $this->ipp_interest_type = "C";
             $data['fdPackage'] .= str_replace(['F', ','], "", $data['ctrl_disease']);
 
         } else {
