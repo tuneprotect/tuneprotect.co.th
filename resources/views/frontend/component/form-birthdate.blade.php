@@ -8,9 +8,9 @@
             <div class="controls-wrapper">
                 <input id="fdFromDate" name="fdFromDate" type="date" min="{{date('Y-m-d')}}" class="flatpickr"
                        data-maxdate="{{date('Y-m-d',strtotime( "+60 days"))}}"
-                       data-error="@lang('product.error.travel_start_date')"
+                       data-error="@lang('product.effectived_start_date')"
                 />
-                <label for="fdFromDate">@lang("product.effective_date")</label>
+                <label for="fdFromDate">@lang("product.effectived_date")</label>
             </div>
         @endif
     </div>
