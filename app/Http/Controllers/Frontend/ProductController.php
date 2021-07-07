@@ -34,6 +34,14 @@ class ProductController extends BaseController
     public function index($link = null, $selected = null)
     {
 
+        if (empty($link)) {
+            return redirect("/" . $this->locale);
+        }
+
+        if (in_array($selected, ['ONTALN', 'ONCOVIDL', 'ONTA']) && $this->locale === 'th') {
+            return redirect()->route('current', ['locale' => 'en', 'controller' => 'product', 'func' => $link, 'params' => $selected]);
+        }
+
         $this->getProductDetail($link, $selected);
 
         if ($selected) {
@@ -48,6 +56,14 @@ class ProductController extends BaseController
     public function form($link = null, $selected = null)
     {
 
+        if (empty($link)) {
+            return redirect("/" . $this->locale);
+        }
+
+        if (in_array($selected, ['ONTALN', 'ONCOVIDL', 'ONTA']) && $this->locale === 'th') {
+            return redirect()->route('current', ['locale' => 'en', 'controller' => 'product', 'func' => $link, 'params' => $selected]);
+        }
+
         $this->getProductDetail($link, $selected);
         if ($selected) {
 
@@ -61,13 +77,6 @@ class ProductController extends BaseController
 
     protected function getProductDetail($link = null, $selected = null)
     {
-        if (empty($link)) {
-            return redirect("/" . $this->locale);
-        }
-
-        if (in_array($selected, ['ONTALN', 'ONCOVIDL', 'ONTA']) && $this->locale === 'th') {
-            return redirect()->route('current', ['locale' => 'en', 'controller' => 'product', 'func' => $link, 'params' => $selected]);
-        }
 
         $this->bodyData['current_product'] = WebContent::where('type_id', ProjectEnum::WEB_CONTENT_PRODUCT)
             ->where('friendly_url', $link)
@@ -131,43 +140,35 @@ class ProductController extends BaseController
             }
         }
 
-        // dd($this->bodyData['current_product']->locales[$this->locale]);
-
         if (Storage::disk('public')->exists('json/' . strtolower($this->bodyData['selected']) . '.json')) {
             $package_detail = json_decode(Storage::disk('public')->get('json/' . strtolower($this->bodyData['selected']) . '.json'));
             foreach ($package_detail as $k => $v) {
                 if (str_starts_with($k, $selected)) {
 
                     //Fix code lang for urgent(vacin)
-                    if ($this->locale === 'en') {
-                        if ($selected === 'ONVSAFEA') {
-                            if ($v->plan->VSAFEA3 !== '-') {
-                                $v->plan->VSAFEA3 = __('product.healt2go_plan');
-                            }
-                            if ($v->plan->VSAFEB2 !== '-') {
-                                $v->plan->VSAFEB2 = __('product.healt2go_word');
-                            }
+                    if($this->locale === 'en')
+                    {
+                        if($selected === 'ONVSAFEA')
+                        {
+                            if($v->plan->VSAFEA3 !== '-'){$v->plan->VSAFEA3 = __('product.healt2go_plan');}
+                            if($v->plan->VSAFEB2 !== '-'){$v->plan->VSAFEB2 = __('product.healt2go_word');}
                         }
-                        if ($selected === 'ONVACINA') {
-                            if ($v->plan->VACINA3 !== '-') {
-                                $v->plan->VACINA3 = __('product.healt2go_plan');
-                            }
+                        if($selected === 'ONVACINA')
+                        {
+                            if($v->plan->VACINA3 !== '-'){$v->plan->VACINA3 = __('product.healt2go_plan');}
                         }
 
-                        if ($selected === 'ONPACA') {
-                            if ($v->plan->PADRCA10 !== '-') {
-                                $v->plan->PADRCA10 = __('product.healt2go_word');
-                            }
+                        if($selected === 'ONPACA')
+                        {
+                            if($v->plan->PADRCA10 !== '-'){$v->plan->PADRCA10 = __('product.healt2go_word');}
                         }
-                        if ($selected === 'ONPAKD') {
-                            if ($v->plan->PADRKD07 !== '-') {
-                                $v->plan->PADRKD07 = __('product.healt2go_word');
-                            }
+                        if($selected === 'ONPAKD')
+                        {
+                            if($v->plan->PADRKD07 !== '-'){$v->plan->PADRKD07 = __('product.healt2go_word');}
                         }
-                        if ($selected === 'ONPASN') {
-                            if ($v->plan->PADRSN07 !== '-') {
-                                $v->plan->PADRSN07 = __('product.healt2go_word');
-                            }
+                        if($selected === 'ONPASN')
+                        {
+                            if($v->plan->PADRSN07 !== '-'){$v->plan->PADRSN07 = __('product.healt2go_word');}
                         }
                     }
 
@@ -243,7 +244,7 @@ class ProductController extends BaseController
         } elseif (substr($data['fdPackage'], 0, 8) === 'ONVACINA') {
             $obj = new VACINAObject();
         } elseif (substr($data['fdPackage'], 0, 8) === 'ONVSAFEA') {
-            $obj = new VSAFEAObject();
+           $obj = new VSAFEAObject();
         } elseif (substr($data['fdPackage'], 0, 2) === 'CI') {
             $obj = new CIObject();
 
@@ -309,8 +310,8 @@ class ProductController extends BaseController
         }
 
         if (substr($data['fdPackage'], 0, 8) === 'ONCOVIDA'
-            || substr($data['fdPackage'], 0, 8) === 'ONVACINA'
-            || substr($data['fdPackage'], 0, 8) === 'ONVSAFEA') {
+        || substr($data['fdPackage'], 0, 8) === 'ONVACINA'
+        || substr($data['fdPackage'], 0, 8) === 'ONVSAFEA') {
 
 
             if (isset($data['fdQuestion2_1']) && ($key = array_search('other', $data['fdQuestion2_1'])) !== false) {
@@ -324,27 +325,28 @@ class ProductController extends BaseController
             if (isset($data['fdQuestion2_1'])) {
                 $obj->fdQuestion2_1 = implode(',', $data['fdQuestion2_1']);
             }
-            if (substr($data['fdPackage'], 0, 8) === 'ONCOVIDA') {
+            if (substr($data['fdPackage'], 0, 8) === 'ONCOVIDA')
+            {
                 $package = (array)json_decode(Storage::disk('public')->get('json/oncovida.json'));
             }
-            if (substr($data['fdPackage'], 0, 8) === 'ONVACINA') {
+            if (substr($data['fdPackage'], 0, 8) === 'ONVACINA')
+            {
                 $package = (array)json_decode(Storage::disk('public')->get('json/onvacina.json'));
             }
-            if (substr($data['fdPackage'], 0, 8) === 'ONVSAFEA') {
+            if (substr($data['fdPackage'], 0, 8) === 'ONVSAFEA')
+            {
                 $package = (array)json_decode(Storage::disk('public')->get('json/onvsafea.json'));
             }
 
             $obj->fdPackage = $package[$data['fdPackage']]->apiPackage;
 
-            // dd($obj->fdPackage);
+
 
         } elseif (substr($data['fdPackage'], 0, 8) === 'ONCOVIDL' ||
             substr($data['fdPackage'], 0, 6) === 'ONTALN'
         ) {
             $obj->fdlanguage = 1;
         }
-
-        // dd($obj);
 
         return $obj;
     }
@@ -371,7 +373,6 @@ class ProductController extends BaseController
     public function makePayment(Request $request)
     {
         $data = $request->all();
-
 
         if (isset($data['send_data'])) {
             $data = (array)json_decode($data['send_data']);
@@ -578,7 +579,6 @@ class ProductController extends BaseController
 
     public function error(Request $request)
     {
-//        dd($request->input());
         return $this->genStatusPage(ProjectEnum::STATIC_PAGE_PAYMENT_ERROR);
     }
 

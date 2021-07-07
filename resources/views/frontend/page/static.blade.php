@@ -31,7 +31,7 @@
             @include('frontend.component.related_article', ['relatedArticle' => $relatedArticle])
         @endif
 
-        @if($faq)
+        @if(isset($faq))
             @include('frontend.component.faq')
         @endif
 

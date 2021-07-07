@@ -55,7 +55,7 @@ export const validateAgeInPackage = (package_data, cal_price) => {
     const age_in_range = Object.keys(package_data)
         .filter(k => _.startsWith(k, current_package))
         .some(k => Object.keys(package_data[k].price).some(ageRange => checkAge(birthday, ageRange)))
-    console.log({age_in_range})
+
     if (!age_in_range) {
         showDateError($('#ctrl_day').getAttribute('data-error-not-qualify'));
         return {status: false};
@@ -141,8 +141,6 @@ export const checkAge = (birthday, ageRange) => {
     const range = ageRange.split('-');
     const age = calculateAge(birthday)
 
-    console.log('DOB : day month year ' + age.day +' '+ age.month +' '+ age.year)
-
     if (range[0].indexOf(',') !== -1) {
         const monthRange = range[0].split(',');
         if(monthRange.length == 2)
@@ -182,6 +180,7 @@ export const checkAge = (birthday, ageRange) => {
             const rangeAll = ageRange.split(',');
             const yearRange = rangeAll[2].split('-');
 
+
             if (age.year <= yearRange[1]) {
                 if (age.year == yearRange[0]) {
                     if (age.month <= rangeAll[1]) {
@@ -201,6 +200,7 @@ export const checkAge = (birthday, ageRange) => {
 
 
     } else if (age.year >= range[0] && age.year <= range[1]) {
+        console.log('Normal case');
         return true;
     }
     return false;
@@ -295,7 +295,6 @@ export const formatTelNumber = (tel, country) => {
 }
 
 export const changeStep = (step, goToStep) => {
-    console.log({step, goToStep})
     fadeOut($('#step' + step), 800);
     setTimeout(() => {
         fadeIn($('#step' + goToStep), 800);

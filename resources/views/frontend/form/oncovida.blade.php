@@ -1,6 +1,49 @@
 @include('frontend.component.form-stepper')
 <section id="step1" class="wrapper">
-    @include('frontend.component.form-birthdate')
+    <form method="post" action="" class="insurance-form">
+        <div class="form-head">@lang('product.please_specify_birthdate_title')</div>
+        <div class="form-inner">
+            <h3>@lang('product.please_specify_birthdate')</h3>
+            @include('frontend.component.form-date-input')
+
+            @if($controller == 'portal')
+                @if($portal_key == 'BD5Q6GFRZ4MXQLWW3GRL6PT3YGVM6DERA2UBNGFRGUSXNH9RPTUVX6A' || $portal_key == 'BE3QGEWQKQXRGQRRZ4MVQ6Y3NJWWNTARD8UXNEKZ28MVN5ER36JQ')
+                    <div class="controls-wrapper">
+                        <input id="fdFromDate" name="fdFromDate" type="date" min="{{date('Y-m-d')}}" class="flatpickr"
+                               data-maxdate="{{date('Y-m-d',strtotime( "+60 days"))}}"
+                               data-error="@lang('product.effectived_start_date')"
+                        />
+                        <label for="fdFromDate">@lang("product.effectived_date")</label>
+                    </div>
+                @endif
+            @endif
+        </div>
+
+
+        <div class="btn-wrapper">
+            <button data-gtm="product-{{strtolower($selected)}}-proceed-step-1" data-step="2" class="btn btn-primary btn-goto">@lang('product.next')</button>
+        </div>
+
+
+        <input type="hidden" id="controller" value="{{$controller}}"/>
+
+        @if($controller == 'portal')
+            <div class="btn-wrapper">
+                <input type="hidden" id="portal_key" value="{{$portal_key}}"/>
+                <input type="hidden" id="status_api" value="{{$status_api}}"/>
+                <input type="hidden" id="nopayment_status" value="{{$nopayment_status}}"/>
+            </div>
+        @endif
+
+        @if($controller == 'biglife')
+            <div class="btn-wrapper">
+                <input type="hidden" id="member_id" value="{{$member_id}}"/>
+                <input type="hidden" id="status_api" value="{{$status_api}}"/>
+            </div>
+        @endif
+
+    </form>
+
     <br/>
     {!! $package->locales[$locale]->remark !!}
 </section>

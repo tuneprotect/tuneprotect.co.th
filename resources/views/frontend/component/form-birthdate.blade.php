@@ -3,7 +3,10 @@
     <div class="form-inner">
         <h3>@lang('product.please_specify_birthdate')</h3>
         @include('frontend.component.form-date-input')
+
     </div>
+
+
     <div class="btn-wrapper">
         <button data-gtm="product-{{strtolower($selected)}}-proceed-step-1" data-step="2" class="btn btn-primary btn-goto">@lang('product.next')</button>
     </div>
