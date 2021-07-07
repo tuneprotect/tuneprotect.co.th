@@ -139,29 +139,35 @@ class ProductController extends BaseController
                 if (str_starts_with($k, $selected)) {
 
                     //Fix code lang for urgent(vacin)
-                    if($this->locale === 'en')
-                    {
-                        if($selected === 'ONVSAFEA')
-                        {
-                            if($v->plan->VSAFEA3 !== '-'){$v->plan->VSAFEA3 = __('product.healt2go_plan');}
-                            if($v->plan->VSAFEB2 !== '-'){$v->plan->VSAFEB2 = __('product.healt2go_word');}
+                    if ($this->locale === 'en') {
+                        if ($selected === 'ONVSAFEA') {
+                            if ($v->plan->VSAFEA3 !== '-') {
+                                $v->plan->VSAFEA3 = __('product.healt2go_plan');
+                            }
+                            if ($v->plan->VSAFEB2 !== '-') {
+                                $v->plan->VSAFEB2 = __('product.healt2go_word');
+                            }
                         }
-                        if($selected === 'ONVACINA')
-                        {
-                            if($v->plan->VACINA3 !== '-'){$v->plan->VACINA3 = __('product.healt2go_plan');}
+                        if ($selected === 'ONVACINA') {
+                            if ($v->plan->VACINA3 !== '-') {
+                                $v->plan->VACINA3 = __('product.healt2go_plan');
+                            }
                         }
 
-                        if($selected === 'ONPACA')
-                        {
-                            if($v->plan->PADRCA10 !== '-'){$v->plan->PADRCA10 = __('product.healt2go_word');}
+                        if ($selected === 'ONPACA') {
+                            if ($v->plan->PADRCA10 !== '-') {
+                                $v->plan->PADRCA10 = __('product.healt2go_word');
+                            }
                         }
-                        if($selected === 'ONPAKD')
-                        {
-                            if($v->plan->PADRKD07 !== '-'){$v->plan->PADRKD07 = __('product.healt2go_word');}
+                        if ($selected === 'ONPAKD') {
+                            if ($v->plan->PADRKD07 !== '-') {
+                                $v->plan->PADRKD07 = __('product.healt2go_word');
+                            }
                         }
-                        if($selected === 'ONPASN')
-                        {
-                            if($v->plan->PADRSN07 !== '-'){$v->plan->PADRSN07 = __('product.healt2go_word');}
+                        if ($selected === 'ONPASN') {
+                            if ($v->plan->PADRSN07 !== '-') {
+                                $v->plan->PADRSN07 = __('product.healt2go_word');
+                            }
                         }
                     }
 
@@ -237,11 +243,14 @@ class ProductController extends BaseController
         } elseif (substr($data['fdPackage'], 0, 8) === 'ONVACINA') {
             $obj = new VACINAObject();
         } elseif (substr($data['fdPackage'], 0, 8) === 'ONVSAFEA') {
-           $obj = new VSAFEAObject();
+            $obj = new VSAFEAObject();
         } elseif (substr($data['fdPackage'], 0, 2) === 'CI') {
             $obj = new CIObject();
-            $this->payment = 'CC,FULL,IPP';
-            $this->ipp_interest_type = "C";
+
+            if ($data['fdPayAMT'] >= 3000) {
+                $this->payment = 'CC,FULL,IPP';
+                $this->ipp_interest_type = "C";
+            }
             $data['fdPackage'] .= str_replace(['F', ','], "", $data['ctrl_disease']);
 
         } else {
@@ -300,8 +309,8 @@ class ProductController extends BaseController
         }
 
         if (substr($data['fdPackage'], 0, 8) === 'ONCOVIDA'
-        || substr($data['fdPackage'], 0, 8) === 'ONVACINA'
-        || substr($data['fdPackage'], 0, 8) === 'ONVSAFEA') {
+            || substr($data['fdPackage'], 0, 8) === 'ONVACINA'
+            || substr($data['fdPackage'], 0, 8) === 'ONVSAFEA') {
 
 
             if (isset($data['fdQuestion2_1']) && ($key = array_search('other', $data['fdQuestion2_1'])) !== false) {
