@@ -11,6 +11,7 @@
                         {!! $current_package->locales[$locale]->content !!}
                     </div>
                 </div>
+
                 @includeIf('frontend.form.'.strtolower($selected) ,[ 'product' => $current_product,'package' => $current_package,'selected' => $selected])
             @else
                 <div>

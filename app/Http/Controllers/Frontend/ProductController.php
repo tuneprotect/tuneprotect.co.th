@@ -34,6 +34,14 @@ class ProductController extends BaseController
     public function index($link = null, $selected = null)
     {
 
+        if (empty($link)) {
+            return redirect("/" . $this->locale);
+        }
+
+        if (in_array($selected, ['ONTALN', 'ONCOVIDL', 'ONTA']) && $this->locale === 'th') {
+            return redirect()->route('current', ['locale' => 'en', 'controller' => 'product', 'func' => $link, 'params' => $selected]);
+        }
+
         $this->getProductDetail($link, $selected);
 
         if ($selected) {
@@ -48,6 +56,14 @@ class ProductController extends BaseController
     public function form($link = null, $selected = null)
     {
 
+        if (empty($link)) {
+            return redirect("/" . $this->locale);
+        }
+
+        if (in_array($selected, ['ONTALN', 'ONCOVIDL', 'ONTA']) && $this->locale === 'th') {
+            return redirect()->route('current', ['locale' => 'en', 'controller' => 'product', 'func' => $link, 'params' => $selected]);
+        }
+
         $this->getProductDetail($link, $selected);
         if ($selected) {
 
@@ -61,13 +77,6 @@ class ProductController extends BaseController
 
     protected function getProductDetail($link = null, $selected = null)
     {
-        if (empty($link)) {
-            return redirect("/" . $this->locale);
-        }
-
-        if (in_array($selected, ['ONTALN', 'ONCOVIDL', 'ONTA']) && $this->locale === 'th') {
-            return redirect()->route('current', ['locale' => 'en', 'controller' => 'product', 'func' => $link, 'params' => $selected]);
-        }
 
         $this->bodyData['current_product'] = WebContent::where('type_id', ProjectEnum::WEB_CONTENT_PRODUCT)
             ->where('friendly_url', $link)
@@ -210,6 +219,7 @@ class ProductController extends BaseController
             if (!$isPage) {
                 return $this->genView('frontend.page.product_form');
             }
+
             return $this->genView('frontend.page.product');
         }
     }
