@@ -430,7 +430,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 
 
-                        if(data.fdKeys != "")
+                        if(data.fdKeys == "BD5Q6GFRZ4MXQLWW3GRL6PT3YGVM6DERA2UBNGFRGUSXNH9RPTUVX6A" || data.fdKeys == "BE3QGEWQKQXRGQRRZ4MVQ6Y3NJWWNTARD8UXNEKZ28MVN5ER36JQ")
                         {
                             data = {
                                 ...data,
@@ -525,7 +525,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                         } else {
                             let sb = ''
 
-                            if(data.fdKeys != "")
+                            if(data.fdKeys == "BD5Q6GFRZ4MXQLWW3GRL6PT3YGVM6DERA2UBNGFRGUSXNH9RPTUVX6A" || data.fdKeys == "BE3QGEWQKQXRGQRRZ4MVQ6Y3NJWWNTARD8UXNEKZ28MVN5ER36JQ")
                             {
                                 let fromDate = ($('#fdFromDate').value).split('/');
                                 let fdFromDate = `${fromDate[2]}-${fromDate[1]}-${fromDate[0]}`;
