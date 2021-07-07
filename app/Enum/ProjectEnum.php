@@ -66,7 +66,7 @@ class ProjectEnum
 
 
     //TODO : invoice prefix for test only
-    const INVOICE_PREFIX = 'WT';
+    const INVOICE_PREFIX = 'W';
 
     public static function isPublish()
     {
