@@ -14,7 +14,7 @@ class TestController extends BaseController
     {
         $this->template->setBody('id', 'static_page');
         $this->template->setFootJS(mix("/js/frontend/main.js"));
-        return $this->genView('frontend.test.static');
+        return $this->genView('frontend.test.static_mso');
     }
 
     public function mon()

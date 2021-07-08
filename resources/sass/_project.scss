@@ -60,9 +60,11 @@ h2 {
 address {
     font-style: normal;
 }
-i{
+
+i {
     font-size: 1.5rem;
 }
+
 a {
     text-decoration: none;
 
@@ -1069,7 +1071,7 @@ header {
                         }
                     }
 
-                    strong,i {
+                    strong, i {
                         color: #ffffff;
                     }
 
@@ -2639,6 +2641,7 @@ main {
                         background: linear-gradient(152deg, rgba(227, 48, 108, 1) 0%, rgba(247, 224, 31, 1) 100%);
                         color: #FFFFFF;
                         font-size: 1.2rem;
+
                         th {
                             @media all and (max-width: $md - 1) {
                                 text-align: center;
@@ -3505,11 +3508,11 @@ main {
 }
 
 
-main[data-package="ONPACA"]{
-    #table-detail{
-        thead{
-            tr{
-                th:first-child{
+main[data-package="ONPACA"] {
+    #table-detail {
+        thead {
+            tr {
+                th:first-child {
                     @media all and (min-width: $lg) {
                         width: 35%;
                     }
@@ -3519,16 +3522,149 @@ main[data-package="ONPACA"]{
     }
 }
 
-main[data-package="ONPAKD"],[data-package="ONPASN"]{
-    #table-detail{
-        thead{
-            tr{
-                th:first-child{
+main[data-package="ONPAKD"], [data-package="ONPASN"] {
+    #table-detail {
+        thead {
+            tr {
+                th:first-child {
                     @media all and (min-width: $lg) {
                         width: 40%;
                     }
                 }
             }
+        }
+    }
+}
+
+.mso_benefit {
+    margin-top: 20px;
+
+    li {
+        display: flex;
+        align-items: center;
+
+        div {
+            flex: 0 0 61px;
+            text-align: center;
+            margin-right: 20px;
+        }
+    }
+}
+
+.mso_step {
+
+
+    margin-top: 20px;
+    counter-reset: li;
+    @media all and (min-width: $md) {
+        display: flex;
+    }
+
+    li {;
+        flex: 1;
+        padding: 20px 10px;
+
+        @media all and (max-width: $md) {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+        }
+    }
+
+    div {
+
+
+        border: 2px solid $primary-color;
+        width: 100px;
+        height: 100px;
+        border-radius: 100%;
+        text-align: center;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+
+        flex: 0 0 100px;
+        margin-right: 20px;
+        @media all and (min-width: $md) {
+            width: 130px;
+            height: 130px;
+            margin: 0 auto;
+            border: 3px solid $primary-color;
+        }
+
+        &:before {
+            counter-increment: li;
+            content: counter(li);
+            width: 20px;
+            height: 20px;
+            position: absolute;
+            border: 1px solid $primary-color;
+            background: #FFFFFF;
+            border-radius: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: $primary-color;
+            top: 3px;
+            left: 3px;
+            font-weight: bold;
+            font-size: 0.8rem;
+            @media all and (min-width: $md) {
+                width: 37px;
+                height: 37px;
+                top: 0;
+                left: 0;
+                font-size: 1rem;
+            }
+        }
+
+
+        img {
+            max-width: 90%;
+        }
+    }
+
+    p {
+        font-size: 0.8rem;
+        @media all and (min-width: $md) {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+    }
+}
+
+.mso_doctor {
+    background: linear-gradient(90deg, #f4c42c, #e7575b);
+    color: #ffffff;
+
+    .wrapper {
+
+        padding: 0;
+        @media all and (min-width: $lg) {
+            display: flex;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        > div:first-child {
+            flex: 0 0 60%;
+        }
+
+        > div:last-child {
+            padding: 10px 20px;
+        }
+
+        img {
+            display: block;
+        }
+
+        h2 {
+            color: #ffffff;
+            margin-bottom: 5px;
         }
     }
 }
