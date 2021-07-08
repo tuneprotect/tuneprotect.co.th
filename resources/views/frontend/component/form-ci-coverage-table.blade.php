@@ -63,7 +63,7 @@
                             @endif
                         @else
 
-                                <span data-recommend>
+                            <span data-recommend>
                                     <img src="/images/ico_ci/recommended-{{$locale}}.png" alt="recommendth">
                                 </span>
                             <strong class="package-number">@lang('product.plan') {{$i}}</strong>
@@ -112,20 +112,22 @@
                 @endforeach
             </tr>
 
-            @foreach (__('product.'.$selected) as $k => $v)
+            <?php $arr_sort = ['early_stage', 'late_stage', 'diablete', 'hospital_cash', 'nursing_cash', 'pa', 'mso', 'health2go']; ?>
+
+            @foreach ( $arr_sort as $v)
                 <tr>
-                    <th>{!! $v !!}</th>
+                    <th>{!! __('product.'.$selected.'.'.$v) !!}</th>
                     <?php $i = 1 ?>
 
                     @foreach ($package_detail as $k1 => $v1)
                         <td {{$i > 1 ? 'class=hide' : ""}} data-index="{{$i}}" data-package="{{$k1}}">
-                            @if(isset($v1->plan->$k))
-                                @if((is_numeric($v1->plan->$k)))
-                                    <strong>{{number_format( $v1->plan->$k,0)}}</strong>
-                                @elseif( strpos($v1->plan->$k,'__') === 0 )
-                                    <strong>{!!__( str_replace('__','',$v1->plan->$k) )!!}</strong>
+                            @if(isset($v1->plan->$v))
+                                @if((is_numeric($v1->plan->$v)))
+                                    <strong>{{number_format( $v1->plan->$v,0)}}</strong>
+                                @elseif( strpos($v1->plan->$v,'__') === 0 )
+                                    <strong>{!!__( str_replace('__','',$v1->plan->$v) )!!}</strong>
                                 @else
-                                    <strong>{!! $v1->plan->$k !!}</strong>
+                                    <strong>{!! $v1->plan->$v !!}</strong>
                                 @endif
                             @endif
                         </td>

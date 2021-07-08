@@ -73,9 +73,19 @@
                                             coverage</p>
                                     </div>
 
-                                    <div class="item"><img alt="headlight" src="/images/ico_ci/icon_highlight_2.png"
+                                    <div class="item"><img alt="headlight" src="/images/ico_ci/icon_highlight_6.png"
+                                                           style="width: 70px;height: 70px"/>
+                                        <p style="font-size: .8rem">Protection against critical illnesses with coverage
+                                            up to 3 million baht</p>
+                                    </div>
+                                    <div class="item"><img alt="headlight" src="/images/ico_ci/icon_highlight_7.png"
                                                            style="width: 70px;height: 70px"/>
                                         <p style="font-size: .8rem">Easily payable by credit card installments*</p>
+                                    </div>
+
+                                    <div class="item"><img alt="headlight" src="/images/ico_ci/icon_highlight_2.png"
+                                                           style="width: 70px;height: 70px"/>
+                                        <p style="font-size: .8rem">Covers five critical illnesses</p>
                                     </div>
 
                                     <div class="item"><img alt="headlight" src="/images/ico_ci/icon_highlight_3.png"
@@ -84,37 +94,26 @@
                                             benefits</p>
                                     </div>
 
-                                    <div class="item"><img alt="headlight" src="/images/ico_ci/icon_highlight_4.png"
-                                                           style="width: 70px;height: 70px"/>
-                                        <p style="font-size: .8rem">Renewable up to 65</p>
-                                    </div>
-
-                                    <div class="item"><img alt="headlight" src="/images/ico_ci/icon_highlight_5.png"
-                                                           style="width: 70px;height: 70px"/>
-                                        <p style="font-size: .8rem">Insurance premiums are tax deductible*</p>
-                                    </div>
-
-                                    <div class="item"><img alt="headlight" src="/images/ico_ci/icon_highlight_6.png"
-                                                           style="width: 70px;height: 70px"/>
-                                        <p style="font-size: .8rem">Protection against critical illnesses with coverage
-                                            up to 3 million baht</p>
-                                    </div>
-
-                                    <div class="item"><img alt="headlight" src="/images/ico_ci/icon_highlight_7.png"
-                                                           style="width: 70px;height: 70px"/>
-                                        <p style="font-size: .8rem">Covers five critical illnesses</p>
-                                    </div>
-
                                     <div class="item"><img alt="headlight" src="/images/ico_ci/icon_highlight_8.png"
                                                            style="width: 70px;height: 70px"/>
                                         <p style="font-size: .8rem">Receive a second medical opinion as well as
                                             consulting a doctor online</p>
                                     </div>
 
+                                    <div class="item"><img alt="headlight" src="/images/ico_ci/icon_highlight_4.png"
+                                                           style="width: 70px;height: 70px"/>
+                                        <p style="font-size: .8rem">Renewable up to 65</p>
+                                    </div>
+
                                     <div class="item"><img alt="headlight" src="/images/ico_ci/icon_highlight_9.png"
                                                            style="width: 70px;height: 70px"/>
                                         <p style="font-size: .8rem">Apply now without having to purchase life
                                             insurance.</p>
+                                    </div>
+
+                                    <div class="item"><img alt="headlight" src="/images/ico_ci/icon_highlight_5.png"
+                                                           style="width: 70px;height: 70px"/>
+                                        <p style="font-size: .8rem">Insurance premiums are tax deductible*</p>
                                     </div>
 
                                     <div class="item"><img alt="headlight" src="/images/ico_ci/icon_highlight_10.png"
@@ -147,23 +146,23 @@
                         <section class="why-ci">
                             <div>
                                 <h2 style="font-size: 1.2rem">Why purchase myFlexi CI?</h2>
-                                <ul>
-                                    <li>&bull; Taking care of you for both early and late stage illnesses.</li>
-                                    <li>&bull; Can choose additional critical illness coverage for a small additional
+
+                                <ul class="has-bullet">
+                                    <li>Taking care of you for both early and late stage illnesses.</li>
+                                    <li>Can choose additional critical illness coverage for a small additional
                                         cost.
                                     </li>
-                                    <li>&bull; Worry-Free about the enormous medical bills that could occur for
+                                    <li>Worry-Free about the enormous medical bills that could occur for
                                         treatment.
                                     </li>
                                 </ul>
-
                             </div>
 
                             <div>
                                 <h2 style="font-size: 1.2rem">Top 6 deadly diseases in Thailand</h2>
                                 <small>*Number of deaths <span style="font-size: 1rem;font-weight: bold">per hour</span></small>
 
-                                <ul>
+                                <ul class="stat">
                                     <li><strong style="width: 270px;">7.7</strong> <span> Cancer</span></li>
                                     <li><strong style="width: 140px;">3.2</strong> <span>Hemorrhagic stroke</span></li>
                                     <li><strong style="width: 118px;">2.8</strong> <span>Atrial fibrillation severe stroke</span>
@@ -198,15 +197,12 @@
                                                     class="col-price">100,000 &ndash; 500,000฿</span></li>
                                             <li><strong>Chemotherapy</strong> <span class="col-price">400,000 &ndash; 1,200,000฿</span>
                                             </li>
-                                            <li>
-                                                <strong>Total </strong>
-                                                <span class="col-price">1,930,000฿</span>
+                                            <li style="background: #e71618;padding-left:20px;padding-right: 20px">
+                                                <strong style="color: #ffffff">Total </strong> <span class="col-price"
+                                                                                                     style="color: #ffffff">1,930,000฿</span>
                                             </li>
-                                            <li style="justify-content: flex-end">
-                                                <em style="font-size: .6rem; ">(Excluding Specialty nurse fee benefits
-                                                    and inpatient
-                                                    treatment)</em>
-                                            </li>
+                                            <li style="justify-content: flex-end"><em style="font-size: .6rem; ">(Excluding
+                                                    Specialty nurse fee benefits and inpatient treatment)</em></li>
                                         </ul>
                                     </div>
 
@@ -228,15 +224,12 @@
                                             </li>
                                             <li><strong>Coronary angiography examination </strong> <span
                                                     class="col-price">Starts 150,000฿</span></li>
-                                            <li>
-                                                <strong>Total</strong> <span class="col-price">1,800,000฿</span>
-
+                                            <li style="background: #e71618;padding-left:20px;padding-right: 20px">
+                                                <strong style="color: #ffffff">Total</strong> <span class="col-price"
+                                                                                                    style="color: #ffffff">1,800,000฿</span>
                                             </li>
-                                            <li style="justify-content: flex-end">
-                                                <em style="font-size: .6rem; ">(Excluding Specialty nurse fee benefits
-                                                    and inpatient
-                                                    treatment)</em>
-                                            </li>
+                                            <li style="justify-content: flex-end"><em style="font-size: .6rem; ">(Excluding
+                                                    Specialty nurse fee benefits and inpatient treatment)</em></li>
                                         </ul>
                                     </div>
 
@@ -252,19 +245,16 @@
                         <div class="wrapper text-center">{btn_buy}</div>
 
                         <section class="installment-ci">
-                            <div class="img-wrapper"><img alt="ci"
-                                                          src="/storage/product/CI/520x480-raisecard.jpg"/>
+                            <div class="img-wrapper"><img alt="ci" src="/storage/product/CI/520x480-raisecard.jpg"/>
                             </div>
 
                             <div>
                                 <h2>Choose to pay your annual premium in easy credit card installments.</h2>
 
-                                <p>Pay for your insurance comfortably with the option of Pay your premium in credit card
+                                <p>Pay for your insurance comfortably with the option of credit card
                                     installments. Or you can pay the full annual premium via credit or debit cards
                                     accepted for all banks in Thailand.*<br/>
-                                    <em>*Payment terms and conditions are specified by each bank.
-                                    </em>
-                                </p>
+                                    <em>*Payment terms and conditions are specified by each bank. </em></p>
                             </div>
                         </section>
 
@@ -272,34 +262,29 @@
 
                         <div class="my-health-condition">
                             <h2>Insurance claim conditions</h2>
+
                             <ol class="has-bullet">
-                                <li>The underwriting consideration is made strictly following the Company’s guidelines.
+                                <li>The underwriting consideration is made strictly following the Company&rsquo;s
+                                    guidelines.
                                 </li>
                                 <li>The applicant must be 18-60 years of age (renewable up to 65 years).</li>
                                 <li>The applicant must be in good health before applying for the insurance</li>
                                 <li>No health check necessary unless there are discrepancies in the health declaration
-                                    (In the
-                                    event which there is a discrepancy in the health declaration or information is
-                                    insufficient.
-                                    The Company reserves the right to request a health check-up before issuing an
-                                    insurance
-                                    policy.)
+                                    (In the event which there is a discrepancy in the health declaration or information
+                                    is insufficient. The Company reserves the right to request a health check-up before
+                                    issuing an insurance policy.)
                                 </li>
                                 <li>The information on this document is only preliminary information on the insurance
                                     products. The applicant/insured should conduct more research and understand the
-                                    details of
-                                    coverage conditions, benefits, and exclusions before deciding to purchase the
-                                    insurance.
-                                    After receiving the insurance policy, please review the information.
+                                    details of coverage conditions, benefits, and exclusions before deciding to purchase
+                                    the insurance. After receiving the insurance policy, please review the information.
                                 </li>
                                 <li>The coverage conditions are as stipulated in the policy.</li>
                                 <li>If you need a tax invoice or policy to be delivered by post, please contact our
-                                    customer
-                                    service team at 1183.
+                                    customer service team at 1183.
                                 </li>
                                 <li>You are entitled to the right to cancel the policy (Free Look Period) within 15 days
-                                    from
-                                    the date of receiving the policy. Free of charge.
+                                    from the date of receiving the policy. Free of charge.
                                 </li>
                             </ol>
 
@@ -316,8 +301,6 @@
                             ประกันโรคร้ายแรงจาก Tune Protect พร้อมดูแลคุ้มครองโรคร้ายทุกระยะ
                             และเลือกความคุ้มครองโรคร้ายเพิ่มเติมได้ตามต้องการ สมัครได้ตั้งแต่อายุ 18-60 ปี ต่ออายุได้ถึง
                             65 ปี ลดหย่อนภาษีได้ พร้อมบริการความเห็นที่สองทางการแพทย์และบริการปรึกษาแพทย์ออนไลน์</p>
-                        &nbsp;
-
                         <div class="wrapper text-center"><a class="btn btn-primary" href="" style="width: 200px">ดาวน์โหลด</a>
                             {btn_buy}
                         </div>
@@ -326,7 +309,7 @@
                     <section class="select-ci-wrapper">
                         <div class="wrapper">
                             <div class="box">
-                                <div><img alt="" src="/storage/product/CI/phone.png"/></div>
+                                <div><img alt="" src="/storage/product/CI/520x480-phone.png"/></div>
 
                                 <div>
                                     <h2 style="color: #FFFFFF">ได้เลือกทุกความต้องการ</h2>
@@ -367,30 +350,6 @@
                                         <p style="font-size: .8rem">เลือกปรับเพิ่ม-ลด <span class="nowrap">ความคุ้มครองได้</span>
                                         </p>
                                     </div>
-
-                                    <div class="item"><img alt="headlight" src="/images/ico_ci/icon_highlight_2.png"
-                                                           style="width: 70px;height: 70px"/>
-                                        <p style="font-size: .8rem">เลือกผ่อนได้ชิลๆ <span class="nowrap">ผ่านบัตรเครดิต*</span>
-                                        </p>
-                                    </div>
-
-                                    <div class="item"><img alt="headlight" src="/images/ico_ci/icon_highlight_3.png"
-                                                           style="width: 70px;height: 70px"/>
-                                        <p style="font-size: .8rem">มีค่าชดเชยรายวัน <span
-                                                class="nowrap">และพยาบาลพิเศษ</span></p>
-                                    </div>
-
-                                    <div class="item"><img alt="headlight" src="/images/ico_ci/icon_highlight_4.png"
-                                                           style="width: 70px;height: 70px"/>
-                                        <p style="font-size: .8rem">คุ้มครองถึงอายุ 65 ปี</p>
-                                    </div>
-
-                                    <div class="item"><img alt="headlight" src="/images/ico_ci/icon_highlight_5.png"
-                                                           style="width: 70px;height: 70px"/>
-                                        <p style="font-size: .8rem">เบี้ยประกันนำไป<span
-                                                class="nowrap">ลดหย่อนภาษีได้*</span></p>
-                                    </div>
-
                                     <div class="item"><img alt="headlight" src="/images/ico_ci/icon_highlight_6.png"
                                                            style="width: 70px;height: 70px"/>
                                         <p style="font-size: .8rem">คุ้มครองโรคร้ายทุกระยะ <span class="nowrap">สูงสุดมากกว่า 3 ล้านบาท*</span>
@@ -399,20 +358,38 @@
 
                                     <div class="item"><img alt="headlight" src="/images/ico_ci/icon_highlight_7.png"
                                                            style="width: 70px;height: 70px"/>
+                                        <p style="font-size: .8rem">เลือกผ่อนได้ชิลๆ <span class="nowrap">ผ่านบัตรเครดิต*</span>
+                                        </p>
+                                    </div>
+                                    <div class="item"><img alt="headlight" src="/images/ico_ci/icon_highlight_2.png"
+                                                           style="width: 70px;height: 70px"/>
                                         <p style="font-size: .8rem">คุ้มครอง 5 กลุ่มโรคร้ายแรง</p>
                                     </div>
-
+                                    <div class="item"><img alt="headlight" src="/images/ico_ci/icon_highlight_3.png"
+                                                           style="width: 70px;height: 70px"/>
+                                        <p style="font-size: .8rem">มีค่าชดเชยรายวัน <span
+                                                class="nowrap">และพยาบาลพิเศษ</span></p>
+                                    </div>
                                     <div class="item"><img alt="headlight" src="/images/ico_ci/icon_highlight_8.png"
                                                            style="width: 70px;height: 70px"/>
                                         <p style="font-size: .8rem">มีบริการความเห็นที่สองทางการแพทย์
                                             และปรึกษาแพทย์ออนไลน์</p>
                                     </div>
 
+
+                                    <div class="item"><img alt="headlight" src="/images/ico_ci/icon_highlight_4.png"
+                                                           style="width: 70px;height: 70px"/>
+                                        <p style="font-size: .8rem">คุ้มครองถึงอายุ 65 ปี</p>
+                                    </div>
                                     <div class="item"><img alt="headlight" src="/images/ico_ci/icon_highlight_9.png"
                                                            style="width: 70px;height: 70px"/>
                                         <p style="font-size: .8rem">สมัครได้เลย โดยไม่ต้องซื้อประกันชีวิต</p>
                                     </div>
-
+                                    <div class="item"><img alt="headlight" src="/images/ico_ci/icon_highlight_5.png"
+                                                           style="width: 70px;height: 70px"/>
+                                        <p style="font-size: .8rem">เบี้ยประกันนำไป<span
+                                                class="nowrap">ลดหย่อนภาษีได้*</span></p>
+                                    </div>
                                     <div class="item"><img alt="headlight" src="/images/ico_ci/icon_highlight_10.png"
                                                            style="width: 70px;height: 70px"/>
                                         <p style="font-size: .8rem">ตอบคำถามสุขภาพแค่ 3 ข้อ ไม่ต้องไปตรวจสุขภาพที่<span
@@ -443,12 +420,12 @@
                         <section class="why-ci">
                             <div>
                                 <h2>ทำไมต้องซื้อ myFlexi CI</h2>
-                                <ul>
-                                    <li>&bull; พร้อมดูแลคุ้มครองโรคร้ายทุกระยะ</li>
-                                    <li>&bull; เลือกความคุ้มครองโรคร้ายเพิ่มเติมได้ตามต้องการ</li>
-                                    <li>&bull; รับมือสบายใจกับค่าใช้จ่ายก้อนโตในการรักษา</li>
-                                </ul>
 
+                                <ul class="has-bullet">
+                                    <li>พร้อมดูแลคุ้มครองโรคร้ายทุกระยะ</li>
+                                    <li>เลือกความคุ้มครองโรคร้ายเพิ่มเติมได้ตามต้องการ</li>
+                                    <li>รับมือสบายใจกับค่าใช้จ่ายก้อนโตในการรักษา</li>
+                                </ul>
                             </div>
 
                             <div>
@@ -456,7 +433,7 @@
                                 <small>*จำนวนผู้เสียชีวิต<span
                                         style="font-size: 1rem;font-weight: bold">ต่อชั่วโมง</span></small>
 
-                                <ul>
+                                <ul class="stat">
                                     <li><strong style="width: 270px;">7.7</strong> <span> โรคมะเร็ง </span></li>
                                     <li><strong style="width: 140px;">3.2</strong> <span>โรคหลอดเลือดสมองแตก</span></li>
                                     <li><strong style="width: 118px;">2.8</strong>
@@ -490,12 +467,11 @@
                                             </li>
                                             <li><strong>การใช้เคมีบำบัด</strong> <span class="col-price">400,000 &ndash; 1,200,000</span>
                                             </li>
-                                            <li>
-                                                <strong>รวม </strong> <span
-                                                    class="col-price">1,930,000</span>
+                                            <li style="background: #e71618;padding-left:20px;padding-right: 20px">
+                                                <strong style="color: #ffffff">รวม </strong> <span class="col-price"
+                                                                                                   style="color: #ffffff">1,930,000</span>
                                             </li>
-                                            <li style="justify-content: flex-end">
-                                                <em style="font-size: .6rem; ">(ไม่รวมค่าพักรักษาตัวเป็นผู้ป่วยในรวมถึงค่าจ้างพยาบาลพิเศษ)</em>
+                                            <li style="justify-content: flex-end"><em style="font-size: .6rem; ">(ไม่รวมค่าพักรักษาตัวเป็นผู้ป่วยในรวมถึงค่าจ้างพยาบาลพิเศษ)</em>
                                             </li>
                                         </ul>
                                     </div>
@@ -510,6 +486,7 @@
                                 <div class="ci-cost-box">
                                     <div class="ci-cost-table">
                                         <h6>โรคหัวใจ</h6>
+
                                         <ul>
                                             <li><strong>การรักษาด้วยการขยายหลอดเลือดหัวใจด้วยบอลลูน </strong> <span
                                                     class="col-price">200,000 &ndash; 1,000,000</span></li>
@@ -517,13 +494,11 @@
                                             </li>
                                             <li><strong>การตรวจด้วยการฉีดสีหลอดเลือดหัวใจ </strong> <span
                                                     class="col-price">เริ่มต้น 150,000</span></li>
-                                            <li>
-                                                <strong>รวม </strong> <span
-                                                    class="col-price">1,800,000 </span>
-
+                                            <li style="background: #e71618;padding-left:20px;padding-right: 20px">
+                                                <strong style="color: #ffffff">รวม </strong> <span class="col-price"
+                                                                                                   style="color: #ffffff">1,800,000 </span>
                                             </li>
-                                            <li style="justify-content: flex-end">
-                                                <em style="font-size: .6rem; ">(ไม่รวมค่าพักรักษาตัวเป็นผู้ป่วยในรวมถึงค่าจ้างพยาบาลพิเศษ)</em>
+                                            <li style="justify-content: flex-end"><em style="font-size: .6rem; ">(ไม่รวมค่าพักรักษาตัวเป็นผู้ป่วยในรวมถึงค่าจ้างพยาบาลพิเศษ)</em>
                                             </li>
                                         </ul>
                                     </div>
@@ -540,8 +515,7 @@
                         <div class="wrapper text-center">{btn_buy}</div>
 
                         <section class="installment-ci">
-                            <div class="img-wrapper"><img alt="ci"
-                                                          src="/storage/product/CI/520x480-raisecard.jpg"/>
+                            <div class="img-wrapper"><img alt="ci" src="/storage/product/CI/520x480-raisecard.jpg"/>
                             </div>
 
                             <div>
@@ -559,9 +533,9 @@
                         <div class="my-health-condition">
                             <h2>เงื่อนไขการขอเอาประกันภัย</h2>
 
-                            <ol class="has-bullet">.
+                            <ol class="has-bullet">
                                 <li>การพิจารณารับประกันภัยเป็นไปตามหลักเกณฑ์ของบริษัทฯ</li>
-                                <li>ผู้ขอเอาประกันภัยต้องมีอายุ 18 – 60 ปีบริบูรณ์ (ต่ออายุได้ถึง 65 ปี)</li>
+                                <li>ผู้ขอเอาประกันภัยต้องมีอายุ 18 &ndash; 60 ปีบริบูรณ์ (ต่ออายุได้ถึง 65 ปี)</li>
                                 <li>ผู้ขอเอาประกันภัยต้องมีสุขภาพร่างกายแข็งแรง ก่อนวันที่ขอเอาประกันภัย</li>
                                 <li>แถลงสุขภาพ ไม่ต้องตรวจสุขภาพ
                                     (กรณีที่ข้อมูลการแถลงสุขภาพไม่เพียงพอต่อการพิจารณารับประกันภัย
@@ -585,6 +559,7 @@
                         </div>
                     </div>
                 </div>
+
 
             </main>
 
