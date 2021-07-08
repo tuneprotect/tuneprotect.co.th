@@ -1,4 +1,4 @@
 <?php
 
-header('Location: http://staging.tuneprotect.co.th/');
+header('Location: https://staging.tuneprotect.co.th/');
 exit;
