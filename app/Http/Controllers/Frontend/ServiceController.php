@@ -32,7 +32,7 @@ class ServiceController extends BaseController
             ->whereRaw(ProjectEnum::isPublish())
             ->first();
         $this->bodyData['faq'] = $this->setFaq(ProjectEnum::WEB_CONTENT_FAQ, $content->id);
-//dd($content);
+
         if ($content) {
             return $this->genStaticPage($content, 'frontend.page.static');
         }

@@ -22,7 +22,7 @@
                             thousands of baht, you will have critical illness insurance cover up to several million
                             baht.</p>
 
-                        <div class="wrapper text-center"><a class="btn btn-primary" href="" style="width: 200px">download</a>
+                        <div class="wrapper text-center"><a class="btn btn-primary" href="/storage/product/CI/brochure_th.pdf" style="width: 200px">download</a>
                             {btn_buy}
                         </div>
                     </section>
@@ -54,7 +54,7 @@
                                     </ul>
 
                                     <div class="wrapper text-center" style="margin: 20px auto 0 auto"><a
-                                            class="btn btn-primary" href="" style="width: 200px">download</a> {btn_buy}
+                                            class="btn btn-primary" href="/storage/product/CI/brochure_th.pdf" style="width: 200px">download</a> {btn_buy}
                                     </div>
                                 </div>
                             </div>
@@ -301,7 +301,7 @@
                             ประกันโรคร้ายแรงจาก Tune Protect พร้อมดูแลคุ้มครองโรคร้ายทุกระยะ
                             และเลือกความคุ้มครองโรคร้ายเพิ่มเติมได้ตามต้องการ สมัครได้ตั้งแต่อายุ 18-60 ปี ต่ออายุได้ถึง
                             65 ปี ลดหย่อนภาษีได้ พร้อมบริการความเห็นที่สองทางการแพทย์และบริการปรึกษาแพทย์ออนไลน์</p>
-                        <div class="wrapper text-center"><a class="btn btn-primary" href="" style="width: 200px">ดาวน์โหลด</a>
+                        <div class="wrapper text-center"><a class="btn btn-primary" href="/storage/product/CI/brochure_th.pdf" style="width: 200px">ดาวน์โหลด</a>
                             {btn_buy}
                         </div>
                     </section>
@@ -332,7 +332,7 @@
                                     </ul>
 
                                     <div class="wrapper text-center" style="margin: 20px auto 0 auto"><a
-                                            class="btn btn-primary" href="" style="width: 200px">ดาวน์โหลด</a> {btn_buy}
+                                            class="btn btn-primary" href="/storage/product/CI/brochure_th.pdf" style="width: 200px">ดาวน์โหลด</a> {btn_buy}
                                     </div>
                                 </div>
                             </div>
