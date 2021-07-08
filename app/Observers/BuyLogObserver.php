@@ -51,11 +51,11 @@ class BuyLogObserver
         $buyLog->RefCode = $this->genRefCode();
         if (empty($data['fdInvoice'])) {
             $buyLog->fdInvoice = $this->genInvoice();
-            $data['fdInvoice'] = ProjectEnum::INVOICE_PREFIX . $buyLog->fdInvoice;
+            $data['fdInvoice'] = config('project.invoice_prefix') . $buyLog->fdInvoice;
         } else {
-            $buyLog->fdInvoice = str_replace(ProjectEnum::INVOICE_PREFIX, '', $data['fdInvoice']);
+            $buyLog->fdInvoice = str_replace(config('project.invoice_prefix'), '', $data['fdInvoice']);
         }
-        $data['RefCode'] = ProjectEnum::INVOICE_PREFIX . $buyLog->RefCode;
+        $data['RefCode'] = config('project.invoice_prefix') . $buyLog->RefCode;
 
         $buyLog->data = $data;
 

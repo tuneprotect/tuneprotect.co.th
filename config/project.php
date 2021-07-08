@@ -24,4 +24,6 @@ return [
     'gtm' => env('PROJECT_GTM',  ''),
     'gtm_body' => env('PROJECT_GTM_BODY',  ''),
     'gtm_staging' => env('PROJECT_GTM_STAGING',  ''),
+
+    'invoice_prefix' => env('INVOICE_PREFIX','W')
 ];

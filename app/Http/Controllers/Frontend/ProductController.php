@@ -219,7 +219,6 @@ class ProductController extends BaseController
             if (!$isPage) {
                 return $this->genView('frontend.page.product_form');
             }
-
             return $this->genView('frontend.page.product');
         }
     }
@@ -248,8 +247,11 @@ class ProductController extends BaseController
            $obj = new VSAFEAObject();
         } elseif (substr($data['fdPackage'], 0, 2) === 'CI') {
             $obj = new CIObject();
-            $this->payment = 'CC,FULL,IPP';
-            $this->ipp_interest_type = "A";
+
+            if ($data['fdPayAMT'] >= 3000) {
+                $this->payment = 'CC,FULL,IPP';
+                $this->ipp_interest_type = "C";
+            }
             $data['fdPackage'] .= str_replace(['F', ','], "", $data['ctrl_disease']);
 
         } else {
@@ -380,7 +382,7 @@ class ProductController extends BaseController
             $log_id[] = $result->log_id;
 
 
-            $arr['fdInvoice'] = ProjectEnum::INVOICE_PREFIX . $result->fdInvoice;
+            $arr['fdInvoice'] = config('project.invoice_prefix') . $result->fdInvoice;
             $price = $obj->fdPayAMT;
 
             foreach ($data["profile"] as $k => $profile) {
@@ -416,7 +418,7 @@ class ProductController extends BaseController
 
     protected function noPayment($obj, $price = null, $log_id = null)
     {
-        $result = $this->sendToApiIssue(ProjectEnum::INVOICE_PREFIX . $obj->fdInvoice, '', '');
+        $result = $this->sendToApiIssue(config('project.invoice_prefix') . $obj->fdInvoice, '', '');
         if ($result) {
             session()->put('doc_no', implode(', ', $result[0]));
             session()->put('point', $result[1]);
@@ -436,7 +438,7 @@ class ProductController extends BaseController
         $arr_post['version'] = '8.5';
         $arr_post['merchant_id'] = config('payment.mid');
         $arr_post['payment_description'] = "Buy Insurance";
-        $arr_post['order_id'] = ProjectEnum::INVOICE_PREFIX . $obj->fdInvoice;
+        $arr_post['order_id'] = config('project.invoice_prefix') . $obj->fdInvoice;
         $arr_post['currency'] = "764";
 
         $arr_post['amount'] = str_pad(($price ? $price : $obj->data["fdPayAMT"]) * 100, 12, '0', STR_PAD_LEFT);
@@ -447,7 +449,7 @@ class ProductController extends BaseController
         $arr_post['result_url_1'] = url("{$this->locale}/{$this->controller}/result");
 
         $arr_post['payment_option'] = $this->payment;
-        $arr_post['ipp_interest_type'] = $this->ipp_interest_type;;
+        $arr_post['ipp_interest_type'] = $this->ipp_interest_type;
         $arr_post['default_lang'] = $this->locale;
 //        $arr_post['ipp_period_filter'] = 10;
 
@@ -506,7 +508,7 @@ class ProductController extends BaseController
     protected function sendToApiIssue($fdInvoice, $fdPaymentCh, $fdCard_No)
     {
 
-        $result = BuyLog::where('fdInvoice', str_replace(ProjectEnum::INVOICE_PREFIX, "", $fdInvoice))->get();
+        $result = BuyLog::where('fdInvoice', str_replace(config('project.invoice_prefix'), "", $fdInvoice))->get();
 
 //        $arrResult = [];
         $PolicyArr = [];
