@@ -254,7 +254,7 @@
                                 <p>Pay for your insurance comfortably with the option of credit card
                                     installments. Or you can pay the full annual premium via credit or debit cards
                                     accepted for all banks in Thailand.*<br/>
-                                    <em>*Payment terms and conditions are specified by each bank. </em></p>
+                                    <em>*Payment terms and conditions are specified by each bank and must have a minimum balance of 3,000 baht</em></p>
                             </div>
                         </section>
 
@@ -524,7 +524,7 @@
                                 <p>ชำระค่าเบี้ยสบาย ตามสไตล์คุณ ให้คุณผ่อนชำระค่าเบี้ยประกันภัยแบบเบาๆ
                                     ด้วยการผ่อนชำระเงินผ่านทางบัตรเครดิต หรือ ชำระเต็มจำนวนแบบรายปี
                                     ผ่านบัตรเครดิตหรือเดบิตของทุกธนาคารในประเทศไทย<br/>
-                                    <em>*เงื่อนไขการผ่อนชำระเป็นไปตามแต่ละธนาคารกำหนด</em></p>
+                                    <em>*เงื่อนไขการผ่อนชำระขึ้นอยู่กับธนาคารที่ร่วมรายการ และต้องมียอดขั้นต่ำ 3,000 บาทขึ้นไป</em></p>
                             </div>
                         </section>
 
