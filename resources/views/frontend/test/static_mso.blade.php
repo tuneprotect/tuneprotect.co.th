@@ -70,6 +70,7 @@
                             โดยลูกค้าทราบผลวินิจฉัยว่าเป็น มะเร็งหรือโรคร้ายแรง
                             ซึ่งเข้าหลักเกณฑ์ที่อยู่ภายใต้เงื่อนไขบริการ
                         </p>
+                        <br>
                         <div class="text-center">
                             <a class="btn btn-primary btn-open-popup" style="width: 150px"
                                href="#">เริ่มต้นใช้บริการ</a>
@@ -272,13 +273,12 @@
                                     Assign a Care Manager to take care of you
                                 </p>
                             </li>
-                            <br>
-                            <div class="text-center">
-                                <a class="btn btn-primary"
-                                   href="/storage/my_health/mso/brochure_th.pdf">Download Brochure</a>
-                            </div>
-                            <br>
                         </ul>
+                        <br>
+                        <div class="text-center">
+                            <a class="btn btn-primary"
+                               href="/storage/my_health/mso/brochure_th.pdf">Download Brochure</a>
+                        </div>
                     </div>
                     <div>
                         <h2>When is the effective date after purchasing our insurance?</h2>
@@ -288,6 +288,7 @@
                             include cancer or severe diseases under the terms of service.
 
                         </p>
+                        <br>
                         <div class="text-center">
                             <a class="btn btn-primary btn-open-popup" href="#">SERVICE REQUEST</a>
                         </div>
