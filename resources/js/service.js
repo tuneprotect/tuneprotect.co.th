@@ -3,9 +3,7 @@ import Swal from "sweetalert2";
 import validate from "validate.js";
 import {showFieldError, validateField} from "./validate_form";
 
-require('./main');
 document.addEventListener("DOMContentLoaded", async () => {
-
 
     const toggltField = (isShow) => {
         $$('.hideField').forEach($el => {
