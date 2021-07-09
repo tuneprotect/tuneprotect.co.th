@@ -72,6 +72,7 @@ class ServiceController extends BaseController
                 'Email' => $request->input('email'),
                 'Telephone' => $request->input('tel'),
                 'Text' => $request->input('message'),
+                'Language' => $this->locale,
             ])
         ]);
         return json_decode($response->getBody()->getContents(), true);
