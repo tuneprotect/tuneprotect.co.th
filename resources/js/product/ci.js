@@ -672,7 +672,7 @@ if ($('#title_wrapper')) {
                                     $summary_section.innerHTML = `<h3 class="text-primary">${$summary_section.getAttribute('data-insurance_data')}</h3><br/>
                     <div class="two-col">
                         <div><span>${$summary_section.getAttribute('data-plan')} : </span><strong>${selectedPackage}</strong></div>
-                        <div><span>${$summary_section.getAttribute('data-price')} : </span><strong>${parseFloat(data.fdPayAMT).toLocaleString()} ${$summary_section.getAttribute('data-baht')}</strong><em style="color: red;display:block">${$('[data-pay-installment]').getAttribute('data-pay-installment')}</em></div>
+                        <div><span>${$summary_section.getAttribute('data-price')} : </span><strong>${parseFloat(data.fdPayAMT).toLocaleString()} ${$summary_section.getAttribute('data-baht')}</strong><em style="font-size:0.8rem; color: red;display:block">${$('[data-pay-installment]').getAttribute('data-pay-installment')}</em></div>
                         <div class="controls-wrapper full no-lable"><span>${$('[data-disease_title]').getAttribute('data-disease_title')} : </span><strong>${data.ctrl_disease.map(text => {
                                         return $(`input[data-disease-${text}]`).getAttribute(`data-disease-${text}`);
                                     }).join(", ")}</strong></div>
