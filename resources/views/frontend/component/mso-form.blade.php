@@ -29,7 +29,7 @@
 
                 >
                     <div class="form-inner">
-                        <h3>@lang('global.lead_form_header')</h3>
+                        <h3>@lang('global.lead_form_mso_header')</h3>
                         <div class="two-col">
                             <div class="controls-wrapper">
                                 <input id="ctrl_policy" name="tel" type="text" placeholder="@lang('global.tel')"
@@ -71,7 +71,6 @@
             <span class="small">
                 @lang('global.lead_form_consent')<br/>
             </span>
-                                <span class="text-primary small">@lang('product.lead_form_consent_remark')</span>
                             </label>
                         </div>
                     </div>
