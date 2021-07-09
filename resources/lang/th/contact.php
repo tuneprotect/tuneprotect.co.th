@@ -11,4 +11,5 @@ return [
     'success' => 'Success',
     'success_description' => 'Success description',
     'success_button' =>'Back to main page',
+    'error_no_policy_found' => "No Policy Found"
 ];

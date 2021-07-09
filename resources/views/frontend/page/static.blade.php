@@ -35,6 +35,11 @@
             @include('frontend.component.faq')
         @endif
 
+        @if(isset($extraComponent))
+            @includeIf($extraComponent)
+        @endif
+
+
     </main>
 
 @endsection

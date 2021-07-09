@@ -55,7 +55,7 @@ return [
     'service_center_list' => 'Service Center List',
     'submit' => 'Submit',
     'tel' => 'Tel',
-    'available_time' => 'Available Time',
+    'policy' => 'myFlexiCi Policy no.',
     'lead_form_consent' => 'ยอมรับข้อตกลง <a target="_blank" href="/privacy-policy">อ่าน</a>',
     'lead_form_header' => 'Lead form',
     'website' => 'Website',
