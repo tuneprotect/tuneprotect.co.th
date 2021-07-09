@@ -71,7 +71,8 @@
                             ซึ่งเข้าหลักเกณฑ์ที่อยู่ภายใต้เงื่อนไขบริการ
                         </p>
                         <div class="text-center">
-                            <!-- <a class="btn btn-primary" style="width: 150px" href="#">เริ่มต้นใช้บริการ</a>-->
+                            <a class="btn btn-primary btn-open-popup" style="width: 150px"
+                               href="#">เริ่มต้นใช้บริการ</a>
                         </div>
                     </div>
                 </div>
@@ -152,7 +153,9 @@
                             <p>ระหว่างแพทย์กับแพทย์ จะประเมิณและวินิจฉัยการรักษา</p>
                         </li>
                     </ul>
-
+                    <div class="text-center">
+                        <a class="btn btn-primary btn-open-popup" style="width: 150px" href="#">เริ่มต้นใช้บริการ</a>
+                    </div>
                 </section>
             </div>
             <div class="mso_doctor">
@@ -286,7 +289,7 @@
 
                         </p>
                         <div class="text-center">
-                            <!--                            <a class="btn btn-primary"  href="#">เริ่มต้นใช้บริการ</a>-->
+                            <a class="btn btn-primary btn-open-popup" href="#">SERVICE REQUEST</a>
                         </div>
                     </div>
                 </div>
@@ -374,7 +377,9 @@
                             </p>
                         </li>
                     </ul>
-
+                    <div class="text-center">
+                        <a class="btn btn-primary btn-open-popup" href="#">SERVICE REQUEST</a>
+                    </div>
                 </section>
             </div>
             <div class="mso_doctor">

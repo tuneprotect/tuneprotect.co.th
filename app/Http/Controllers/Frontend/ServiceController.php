@@ -6,6 +6,8 @@ namespace App\Http\Controllers\Frontend;
 use App\Enum\ProjectEnum;
 use App\Http\Controllers\Frontend\Base\BaseController;
 use App\Models\WebContent;
+use GuzzleHttp\Client;
+use Illuminate\Http\Request;
 
 class ServiceController extends BaseController
 {
@@ -15,11 +17,7 @@ class ServiceController extends BaseController
             return $this->genDetail($link);
         }
 
-        $this->template->setBody('id', 'contact_us_page');
-        $this->template->setFootJS(mix("/js/frontend/main.js"));
-        $this->bodyData['content'] = $this->setStaticPageHeader(ProjectEnum::STATIC_PAGE_MY_HEALTH);
-
-        return $this->genView('frontend.page.claim');
+        abort(404);
     }
 
 
@@ -32,10 +30,51 @@ class ServiceController extends BaseController
             ->whereRaw(ProjectEnum::isPublish())
             ->first();
         $this->bodyData['faq'] = $this->setFaq(ProjectEnum::WEB_CONTENT_FAQ, $content->id);
-//dd($content);
+        $this->template->setFootJS(mix("/js/frontend/service.js"));
         if ($content) {
+
+            $this->bodyData['extraComponent'] = 'frontend.component.mso-form';
+
             return $this->genStaticPage($content, 'frontend.page.static');
         }
+
+    }
+
+    public function checkPolicy(Request $request)
+    {
+
+        $client = new Client();
+        $response = $client->request('POST', config('tune-api.url') . 'CheckPolicyCI', [
+            'auth' => [config('tune-api.user'), config('tune-api.password')],
+            'headers' => [
+                'Content-Type' => 'application/json'
+            ],
+            'body' => json_encode([
+                'Policy_No' => $request->input('policy')
+            ])
+        ]);
+        return json_decode($response->getBody()->getContents(), true);
+
+    }
+
+    public function sendContact(Request $request)
+    {
+
+        $client = new Client();
+        $response = $client->request('POST', config('tune-api.url') . 'ContractMSO', [
+            'auth' => [config('tune-api.user'), config('tune-api.password')],
+            'headers' => [
+                'Content-Type' => 'application/json'
+            ],
+            'body' => json_encode([
+                'Policy_No' => $request->input('policy'),
+                'Name' => $request->input('name'),
+                'Email' => $request->input('email'),
+                'Telephone' => $request->input('tel'),
+                'Text' => $request->input('message'),
+            ])
+        ]);
+        return json_decode($response->getBody()->getContents(), true);
 
     }
 }
