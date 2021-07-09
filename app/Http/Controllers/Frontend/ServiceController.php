@@ -35,7 +35,7 @@ class ServiceController extends BaseController
 
             $this->bodyData['extraComponent'] = 'frontend.component.mso-form';
 
-            return $this->genStaticPage($content, 'frontend.page.static');
+            return $this->genStaticPage($content, 'frontend.page.service');
         }
 
     }
