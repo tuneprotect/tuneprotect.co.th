@@ -12,12 +12,10 @@ class PortalController extends ProductController
     protected $controller = 'portal';
     public function index($link = null, $selected = null,$portal_key = null)
     {
-        //test push
-        //Get current url.
         $return_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
         session(['return_link' => $return_link]);
 
-        //dd(session('return_link'));
+        $this->bodyData['controller'] = $this->controller;
 
         $massage_key = $portal_key;
         $status_api = false;
@@ -48,9 +46,49 @@ class PortalController extends ProductController
 
 
 
+
         return parent::index($link,$selected);
 
     }
+
+    public function form($link = null, $selected = null,$portal_key = null)
+    {
+        $return_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+        session(['return_link' => $return_link]);
+
+        $this->bodyData['controller'] = $this->controller;
+
+        $massage_key = $portal_key;
+        $status_api = false;
+        $this->bodyData['portal_key'] = $portal_key;
+
+        //Check username and password , web portal.
+        $apiResult = $this->sendToApiPortalLogin($portal_key);
+        if (!$apiResult["status"]) {
+            $status_api = false;
+            $massage_key = "Error : " . $apiResult["message"];
+        }
+        else
+        {
+            $status_api = true;
+            $massage_key = "Portal Key : " . $portal_key;
+
+        }
+        $this->bodyData['status_api'] = $status_api;
+        $this->bodyData['massage_key'] = $massage_key;
+
+        $nopayment_status = false;
+        $apiResult2 = $this->sendToApiCheckNoPayment($portal_key);
+        if ($apiResult2["status"]) {
+            $nopayment_status = true;
+        }
+        $this->bodyData['nopayment_status'] = $nopayment_status;
+        session(['nopayment_status' => $nopayment_status]);
+
+        return parent::form($link,$selected);
+
+    }
+
 
     protected function sendToApiPortalLogin($portal_key)
     {

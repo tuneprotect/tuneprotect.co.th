@@ -54,11 +54,10 @@ class ImportCiController extends BaseApiController
                         'channel' => $type_id,
                         'tax_deduct' => $v['tax_deduct']
                     ]);
+            }
 
-            }
-            if($type_id == 'TPT Website'){
-                CiDataHelper::genJsonFile($data);
-            }
+            CiDataHelper::genJsonFile($data,$type_id);
+
 
             $this->apiStatus = self::SUCCESS;
             $this->apiStatusText['global.save_success'] = self::SUCCESS;

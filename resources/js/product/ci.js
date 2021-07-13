@@ -202,6 +202,26 @@ if ($('#title_wrapper')) {
 
     document.addEventListener("DOMContentLoaded", async () => {
 
+        //=====================================================================
+        // AddOn Portal
+        let Keys = "";
+        var myEle = document.getElementById("portal_key");
+        if(myEle){
+            Keys= myEle.value;
+            var status_api = document.getElementById("status_api");
+            if(!status_api.value)
+            {
+                Swal.fire({
+                    title: 'Error!',
+                    text: 'Error : Portal keys. User not found.',
+                    icon: 'error',
+                    confirmButtonText: 'OK'
+                })
+                status = false;
+            }
+        }
+        //=====================================================================
+
         const package_data = await getPackageData(current_package);
 
         const genMinMax = (age) => {
@@ -295,7 +315,8 @@ if ($('#title_wrapper')) {
             ctrl_buy_for: "",
             ctrl_budget: "",
             ctrl_disease: [],
-            ctrl_protection_start_date: ""
+            ctrl_protection_start_date: "",
+            fdKeys : Keys
         };
         let slideOption = {
             target: '#ctrl_budget',
@@ -553,6 +574,25 @@ if ($('#title_wrapper')) {
                                 } else {
                                     el.innerHTML = el.dataset.other_insurance;
                                 }
+
+                                //=====================================================================
+                                // AddOn Portal
+                                var myEle = document.getElementById("portal_key");
+                                if(myEle){
+                                    var status_api = document.getElementById("status_api");
+                                    if(!status_api.value)
+                                    {
+                                        Swal.fire({
+                                            title: 'Error!',
+                                            text: 'Error : Portal keys. User not found.',
+                                            icon: 'error',
+                                            confirmButtonText: 'OK'
+                                        })
+                                        status = false;
+                                    }
+                                }
+                                //=====================================================================
+
                                 break;
                             case 2:
                                 const fdPackage = $btn.getAttribute('data-package');

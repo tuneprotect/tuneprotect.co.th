@@ -49,7 +49,7 @@ class CiDataHelper
     }
 
 
-    public static function genJsonFile()
+    public static function genJsonFile($type_id)
     {
         $new_data = [];
         $data = Import::get();
@@ -78,7 +78,7 @@ class CiDataHelper
 
         }
 
-        Storage::put('public/json/ci.json', stripslashes(json_encode($new_data)));
+        Storage::put('public/json/ci'.($type_id !== "TPT Website" ?'_'. $type_id : '' ).'.json', stripslashes(json_encode($new_data)));
 
 
     }

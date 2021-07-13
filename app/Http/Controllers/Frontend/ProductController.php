@@ -33,6 +33,7 @@ class ProductController extends BaseController
 
     public function index($link = null, $selected = null)
     {
+        $this->bodyData['controller'] = $this->controller;
 
         if (empty($link)) {
             return redirect("/" . $this->locale);
@@ -55,6 +56,7 @@ class ProductController extends BaseController
 
     public function form($link = null, $selected = null)
     {
+        $this->bodyData['controller'] = $this->controller;
 
         if (empty($link)) {
             return redirect("/" . $this->locale);
@@ -123,7 +125,6 @@ class ProductController extends BaseController
                     if ($v->code === $selected) {
                         $this->setStaticPageHeader($v);
                         $this->bodyData['slideshow'] = [$this->bodyData['current_product']];
-//                    dd($this->bodyData['slideshow']);
                     }
                 }
             }
@@ -140,8 +141,14 @@ class ProductController extends BaseController
             }
         }
 
-        if (Storage::disk('public')->exists('json/' . strtolower($this->bodyData['selected']) . '.json')) {
-            $package_detail = json_decode(Storage::disk('public')->get('json/' . strtolower($this->bodyData['selected']) . '.json'));
+        $packageJson = strtolower($this->bodyData['selected']);
+        if($packageJson === 'ci' && $this->controller === 'portal')
+        {
+            $packageJson = "ci_broker";
+        }
+
+        if (Storage::disk('public')->exists('json/' . $packageJson . '.json')) {
+            $package_detail = json_decode(Storage::disk('public')->get('json/' . $packageJson . '.json'));
             foreach ($package_detail as $k => $v) {
                 if (str_starts_with($k, $selected)) {
 
@@ -203,8 +210,6 @@ class ProductController extends BaseController
             $this->bodyData['faq'] = $this->setFaq('faq.content', $this->bodyData['current_package']->id);
         }
 
-//        dd($this->bodyData['current_product']);
-
         try {
 
             $this->template->setFootJS(mix("/js/frontend/product/" . strtolower($this->bodyData['selected']) . ".js"));
@@ -212,7 +217,6 @@ class ProductController extends BaseController
             // dd('js error.');
         }
 
-        //Swich main page product / portal
         if ($this->controller != 'product') {
             return $this->genView('frontend.page.portal');
         } else {

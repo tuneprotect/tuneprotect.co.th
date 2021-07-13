@@ -15,6 +15,17 @@
         <li data-gtm="product-{{strtolower($selected)}}-stepper-5" class="btn-goto" data-step="5"><a
                 href="#"><strong>@lang('product.confirm')</strong></a></li>
     </ol>
+
+
+    <input type="hidden" id="controller" value="{{$controller}}"/>
+    @if($controller == 'portal')
+        <div class="btn-wrapper">
+            <input type="hidden" id="portal_key" value="{{$portal_key}}"/>
+            <input type="hidden" id="status_api" value="{{$status_api}}"/>
+            <input type="hidden" id="nopayment_status" value="{{$nopayment_status}}"/>
+        </div>
+    @endif
+
 </section>
 
 <div class="step_wrapper">
