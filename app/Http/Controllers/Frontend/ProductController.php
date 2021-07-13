@@ -142,8 +142,10 @@ class ProductController extends BaseController
         }
 
         $packageJson = strtolower($this->bodyData['selected']);
+        $this->bodyData['channel'] = "";
         if($packageJson === 'ci' && $this->controller === 'portal')
         {
+            $this->bodyData['channel'] = "broker";
             $packageJson = "ci_broker";
         }
 
@@ -187,7 +189,7 @@ class ProductController extends BaseController
             }
         }
 
-        // dd( $this->bodyData['package_detail']);
+//        dd( $this->bodyData['package_detail']);
 
         $this->template->setBody('id', 'product_page');
 

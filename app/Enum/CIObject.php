@@ -10,4 +10,5 @@ class CIObject extends BaseInsuranceObject
 {
     public $fdQuestion1;
     public $fdNationality;
+    public $channel;
 }

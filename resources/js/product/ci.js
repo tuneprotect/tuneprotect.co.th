@@ -205,7 +205,7 @@ if ($('#title_wrapper')) {
         //=====================================================================
         // AddOn Portal
         let Keys = "";
-        var myEle = document.getElementById("portal_key");
+        var myEle = $("#portal_key");
         if(myEle){
             Keys= myEle.value;
             var status_api = document.getElementById("status_api");
@@ -222,7 +222,12 @@ if ($('#title_wrapper')) {
         }
         //=====================================================================
 
-        const package_data = await getPackageData(current_package);
+        let channel = $("#channel")?.value;
+        channel = (channel ? channel : 'TPT Website');
+
+        console.log(channel);
+
+        const package_data = await getPackageData(current_package,$("#channel")?.value);
 
         const genMinMax = (age) => {
             return Object.keys(package_data).reduce((returnValue, k) => {
@@ -316,7 +321,8 @@ if ($('#title_wrapper')) {
             ctrl_budget: "",
             ctrl_disease: [],
             ctrl_protection_start_date: "",
-            fdKeys : Keys
+            fdKeys : Keys,
+            channel : channel
         };
         let slideOption = {
             target: '#ctrl_budget',

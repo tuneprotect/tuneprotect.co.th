@@ -3,8 +3,8 @@ import {isValid, parseISO} from "date-fns";
 import {showDateError, showFieldError} from "../validate_form";
 import Swal from "sweetalert2";
 
-export const getPackageData = async (currentPackage) => {
-    let res = await fetch(`/storage/json/${currentPackage.toLowerCase()}.json`);
+export const getPackageData = async (currentPackage,channel) => {
+    let res = await fetch(`/storage/json/${currentPackage.toLowerCase() + (channel ? '_'+channel : '') }.json`);
     return await res.json();
 }
 

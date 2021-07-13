@@ -49,10 +49,9 @@ class CiDataHelper
     }
 
 
-    public static function genJsonFile($type_id)
+    public static function genJsonFile($data,$type_id)
     {
         $new_data = [];
-        $data = Import::get();
 
         foreach ($data as $k => $v) {
 
