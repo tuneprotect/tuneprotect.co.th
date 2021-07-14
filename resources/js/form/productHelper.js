@@ -92,7 +92,7 @@ const callValidateApi = async (data) => {
 }
 
 
-export const validatePolicy = async ($this, fdPackage) => {
+export const validatePolicy = async ($this, fdPackage,fdFromDate) => {
 
     let field = $this.getAttribute('name');
     console.log({field})
@@ -107,7 +107,7 @@ export const validatePolicy = async ($this, fdPackage) => {
     });
 
     if (Object.keys(data).every((k) => !!data[k])) {
-        const result = await callValidateApi({...data, fdPackage})
+        const result = await callValidateApi({...data, fdPackage,fdFromDate})
         if (result.status === 'error') {
             // showFieldError($this, [result.message]);
             $('button[data-step="4"]').style.display = 'none';
