@@ -217,9 +217,11 @@ export const showTitle = (sex, age) => {
         el.style.display = 'block';
     });
 
+    // console.log(age);
+
     let arrHide = [];
 
-    if (age > 15) {
+    if (age >= 15) {
         arrHide.push('#li_title_184');
         arrHide.push('#li_title_185');
     } else {
