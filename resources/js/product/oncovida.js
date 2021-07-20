@@ -281,10 +281,30 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
     }
 
+    let promocode = "";
+    // var myPromocode = document.getElementById("promocode");
+    // if(myPromocode){
+    //     promocode= myPromocode.value;
+    //     let status_api = document.getElementById("status_api");
+    //     if(!status_api.value)
+    //     {
+    //         let myMsg = document.getElementById("massage_key");
+    //         Swal.fire({
+    //             title: 'Error!',
+    //             text: myMsg.value,
+    //             icon: 'error',
+    //             confirmButtonText: 'OK'
+    //         })
+    //         status = false;
+    //     }
+    // }
+
+
     let step = 1;
     let data = {
         fdMember_ID : member_id,
         fdKeys : Keys,
+        fdPromoCode : promocode,
         fdTitle: "",
         fdName: "",
         fdSurname: "",
@@ -430,8 +450,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 
 
-                        if(data.fdKeys == "BD5Q6GFRZ4MXQLWW3GRL6PT3YGVM6DERA2UBNGFRGUSXNH9RPTUVX6A"
-                            || data.fdKeys == "BE3QGEWQKQXRGQRRZ4MVQ6Y3NJWWNTARD8UXNEKZ28MVN5ER36JQ")
+                        if(data.fdKeys == "BD5Q6GFRZ4MXQLWW3GRL6PT3YGVM6DERA2UBNGFRGUSXNH9RPTUVX6A")
                         {
                             data = {
                                 ...data,
@@ -526,8 +545,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                         } else {
                             let sb = ''
 
-                            if(data.fdKeys == "BD5Q6GFRZ4MXQLWW3GRL6PT3YGVM6DERA2UBNGFRGUSXNH9RPTUVX6A"
-                                || data.fdKeys == "BE3QGEWQKQXRGQRRZ4MVQ6Y3NJWWNTARD8UXNEKZ28MVN5ER36JQ")
+                            if(data.fdKeys == "BD5Q6GFRZ4MXQLWW3GRL6PT3YGVM6DERA2UBNGFRGUSXNH9RPTUVX6A")
                             {
                                 let fromDate = ($('#fdFromDate').value).split('/');
                                 let fdFromDate = `${fromDate[2]}-${fromDate[1]}-${fromDate[0]}`;

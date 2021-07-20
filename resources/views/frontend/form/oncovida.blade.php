@@ -7,7 +7,7 @@
             @include('frontend.component.form-date-input')
 
             @if($controller == 'portal')
-                @if($portal_key == 'BD5Q6GFRZ4MXQLWW3GRL6PT3YGVM6DERA2UBNGFRGUSXNH9RPTUVX6A' || $portal_key == 'BE3QGEWQKQXRGQRRZ4MVQ6Y3NJWWNTARD8UXNEKZ28MVN5ER36JQ')
+                @if($portal_key == 'BD5Q6GFRZ4MXQLWW3GRL6PT3YGVM6DERA2UBNGFRGUSXNH9RPTUVX6A')
                     <div class="controls-wrapper">
                         <input id="fdFromDate" name="fdFromDate" type="date" min="{{date('Y-m-d')}}" class="flatpickr"
                                data-maxdate="{{date('Y-m-d',strtotime( "+60 days"))}}"
@@ -41,6 +41,15 @@
                 <input type="hidden" id="status_api" value="{{$status_api}}"/>
             </div>
         @endif
+
+{{--        @if($controller == 'amado')--}}
+{{--            <div class="btn-wrapper">--}}
+{{--                <input type="hidden" id="promocode" value="{{$promocode}}"/>--}}
+{{--                <input type="hidden" id="status_api" value="{{$status_api}}"/>--}}
+{{--                <input type="hidden" id="massage_key" value="{{$massage_key}}"/>--}}
+{{--            </div>--}}
+{{--        @endif--}}
+
 
     </form>
 

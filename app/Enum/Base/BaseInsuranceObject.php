@@ -47,5 +47,6 @@ class BaseInsuranceObject
     public $fdPaymentCh;
     public $fdInstallment = 1;
     public $fdMember_ID;
+    public $fdPromoCode;
 
 }
