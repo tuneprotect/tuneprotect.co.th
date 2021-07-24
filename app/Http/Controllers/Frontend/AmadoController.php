@@ -13,8 +13,8 @@ class AmadoController  extends ProductController
     protected $controller = 'amado';
     public function index($link = null, $selected = null)
     {
-        return redirect('http://webtest1.tuneinsurance.co.th/WebPortal/Pages/CovidRM.aspx');
-
+//        return redirect('http://webtest1.tuneinsurance.co.th/WebPortal/Pages/CovidRM.aspx');
+        return redirect('https://www.tuneinsurance.co.th/WebPortal/Pages/CovidRM.aspx');
 //        $return_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 //        session(['return_link' => $return_link]);
 //
