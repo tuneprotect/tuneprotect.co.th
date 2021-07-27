@@ -179,6 +179,10 @@ class ProductController extends BaseController
                         {
                             if($v->plan->PADRSN07 !== '-'){$v->plan->PADRSN07 = __('product.healt2go_word');}
                         }
+                        if($selected === 'ONCOVIDA')
+                        {
+                            if($v->plan->COVIDB3 !== '-'){$v->plan->COVIDB3 = __('product.healt2go_word');}
+                        }
                     }
 
                     //Nomakl
@@ -346,13 +350,14 @@ class ProductController extends BaseController
 
             $obj->fdPackage = $package[$data['fdPackage']]->apiPackage;
 
-
-
         } elseif (substr($data['fdPackage'], 0, 8) === 'ONCOVIDL' ||
             substr($data['fdPackage'], 0, 6) === 'ONTALN'
         ) {
             $obj->fdlanguage = 1;
         }
+
+
+//        dd($obj);
 
         return $obj;
     }
@@ -474,7 +479,7 @@ class ProductController extends BaseController
         if (str_starts_with($package, 'ONPA')) {
             $this->thankYouParam = 'ONPA';
             $link = 'IssuePolicyPAChoice';
-        } elseif (substr($package, 0, 8) === 'ONCOVIDA' || substr($package, 0, 8) === 'ONCOVIDL') {
+        } elseif (substr($package, 0, 8) === 'ONCOVIDA' || substr($package, 0, 8) === 'ONCOVIDL'|| substr($package, 0, 8) === 'ONISAFEX') {
             $this->thankYouParam = substr($package, 0, 8);
             $link = 'IssuePolicyCovid19';
         } elseif (substr($package, 0, 6) === 'ONTALN') {
@@ -486,7 +491,7 @@ class ProductController extends BaseController
         } elseif (substr($package, 0, 8) === 'ONVACINA') {
             $this->thankYouParam = substr($package, 0, 8);
             $link = 'IssuePolicyVacin';
-        } elseif (substr($package, 0, 8) === 'ONVSAFEA') {
+        } elseif (substr($package, 0, 8) === 'ONVSAFEA' || substr($package, 0, 8) === 'ONVSAFEC') {
             $this->thankYouParam = substr($package, 0, 8);
             $link = 'IssuePolicyVsafe';
         } elseif (substr($package, 0, 2) === 'CI') {
@@ -516,10 +521,9 @@ class ProductController extends BaseController
 
         $result = BuyLog::where('fdInvoice', str_replace(config('project.invoice_prefix'), "", $fdInvoice))->get();
 
-//        $arrResult = [];
         $PolicyArr = [];
         $Point = 0;
-
+        $Status = false;
         foreach ($result as $v) {
             $data = $v->data;
 
@@ -549,11 +553,9 @@ class ProductController extends BaseController
             $v->result = $apiResult;
             $v->save();
 
-//            $arrResult[] = $apiResult['message'];
-
             $PolicyArr[] = $apiResult['message'];//Policy add for group policy
-
             $PolicyData = $apiResult['data'];
+            $Status = $apiResult["status"];
 
             foreach ($PolicyData as $k => $v) {
                 if ($k === 'BigPoint') {
@@ -563,28 +565,28 @@ class ProductController extends BaseController
                 }
             }
 
-//            if($PolicyData['BigPoint'])
-//            {
-//                if (is_numeric($PolicyData['BigPoint'])) {
-//                    $Point = $Point + $PolicyData['BigPoint'];
-//                }
+            if ($apiResult["status"]) {
+                $Status = true;
+            }
+
+//            if (!$apiResult["status"]) {
+//                return false;
 //            }
 
-
-            if (!$apiResult["status"]) {
-                return false;
-            }
         }
 
-        //Array 2 dimension
+        //Array 3 dimension
         $arrResult[] = $PolicyArr;
         $arrResult[] = $Point;
+        $arrResult[] = $Status;
+
         return $arrResult;
 
     }
 
     public function error(Request $request)
     {
+        $this->bodyData['doc_no'] =$request->session()->get('error');
         return $this->genStatusPage(ProjectEnum::STATIC_PAGE_PAYMENT_ERROR);
     }
 
@@ -619,13 +621,13 @@ class ProductController extends BaseController
             case '000':
 
                 $result = $this->sendToApiIssue($request->input('order_id'), $request->input('payment_channel'), $request->input('masked_pan'));
-                if ($result) {
+                if ($result[2]) {
                     $request->session()->put('doc_no', implode(', ', $result[0]));
                     $request->session()->put('point', $result[1]);
                     $request->session()->put('return_link', $request->input('user_defined_2'));
                     $func = 'thankyou';
                 } else {
-//                    dd($result);
+                    $request->session()->put('error', implode(', ', $result[0]));
                     $func = 'error';
                 }
                 break;

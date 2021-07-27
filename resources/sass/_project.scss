@@ -3536,6 +3536,20 @@ main[data-package="ONPAKD"], [data-package="ONPASN"] {
     }
 }
 
+main[data-package="ONCOVIDA"], [data-package="ONVSAFEA"] {
+    #table-detail {
+        thead {
+            tr {
+                th:first-child {
+                    @media all and (min-width: $lg) {
+                        width: 45%;
+                    }
+                }
+            }
+        }
+    }
+}
+
 .mso_benefit {
     margin-top: 20px;
 
