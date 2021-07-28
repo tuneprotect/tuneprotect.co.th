@@ -179,10 +179,10 @@ class ProductController extends BaseController
                         {
                             if($v->plan->PADRSN07 !== '-'){$v->plan->PADRSN07 = __('product.healt2go_word');}
                         }
-                        if($selected === 'ONCOVIDA')
-                        {
-                            if($v->plan->COVIDB3 !== '-'){$v->plan->COVIDB3 = __('product.healt2go_word');}
-                        }
+//                        if($selected === 'ONCOVIDA')
+//                        {
+//                            if($v->plan->COVIDB3 !== '-'){$v->plan->COVIDB3 = __('product.healt2go_word');}
+//                        }
                     }
 
                     //Nomakl
