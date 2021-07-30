@@ -498,7 +498,8 @@ class ProductController extends BaseController
             $this->thankYouParam = substr($package, 0, 2);
             $link = 'IssuePolicyCI';
         }
-        return config('tune-api.url') . $link;
+//        return config('tune-api.url') . $link;
+        return $link;
     }
 
     protected function sendToApiLog($obj)
@@ -537,7 +538,7 @@ class ProductController extends BaseController
 
             $client = new Client();
 
-            $response = $client->request('POST', $this->getApiIssueLink($data['fdPackage']), [
+            $response = $client->request('POST', config('tune-api.url') . $this->getApiIssueLink($data['fdPackage']), [
                 'auth' => [config('tune-api.user'), config('tune-api.password')],
                 'headers' => [
                     'Content-Type' => 'application/json'
@@ -546,9 +547,9 @@ class ProductController extends BaseController
             ]);
             $apiResult = (array)json_decode($response->getBody()->getContents(), true);
 
-            if ($apiResult["status"]) {
-                $v->data = null;
-            }
+//            if ($apiResult["status"]) {
+//                $v->data = null;
+//            }
 
             $v->result = $apiResult;
             $v->save();
@@ -619,7 +620,11 @@ class ProductController extends BaseController
 
         $oBuyLog = BuyLog::where('fdInvoice', str_replace(config('project.invoice_prefix'), "", $request->input('order_id')))->get();
         foreach ($oBuyLog as $v) {
-            $v->payment_status = json_encode($request->input());
+            $data = $v->data;
+            $v->payment_log = json_encode($request->input());
+            $v->payment_status = $request->input('payment_status');
+            $v->issuepolicy_api =  $this->getApiIssueLink($data['fdPackage']);
+            $v->issuepolicy_status =  'W';
             $v->save();
         }
 
