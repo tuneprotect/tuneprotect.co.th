@@ -550,7 +550,7 @@ class ProductController extends BaseController
 //            if ($apiResult["status"]) {
 //                $v->data = null;
 //            }
-
+            $v->issuepolicy_status =  'S';
             $v->result = $apiResult;
             $v->save();
 
