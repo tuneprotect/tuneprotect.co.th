@@ -4,7 +4,7 @@ import {
     getPackageData,
     getSelectedPrice,
     showTitle,
-    validateAgeInPackage
+    validateAgeInPackage, validatePolicy
 } from "../form/productHelper";
 import {
     $,
@@ -396,7 +396,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     // document.getElementById("fdNationality").disabled = true;
     // document.getElementById("ctrl_document_type").disabled = true;
-    
+
     let nationality_option = `<option value="">${$('#fdNationality').getAttribute('data-please-select')}</option>`;
     if(locale === 'th')
     {
@@ -414,7 +414,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         $(`#fdNationality`).innerHTML = nationality_option;
         document.getElementById("fdNationality").value = "Thailand";
     }
-    
+
 
     let Keys = "";
     var myEle = document.getElementById("portal_key");
@@ -541,11 +541,22 @@ document.addEventListener("DOMContentLoaded", async () => {
         });
     });
 
+    // const $form = $('#step3');
+    // const allField = $form.querySelectorAll('input,select,textarea');
+    // allField.forEach(field => {
+    //     field.addEventListener("change", function (e) {
+    //         validateField(this, constraints);
+    //     });
+    // });
+
     const $form = $('#step3');
     const allField = $form.querySelectorAll('input,select,textarea');
     allField.forEach(field => {
         field.addEventListener("change", function (e) {
             validateField(this, constraints);
+            if (['fdName', 'fdSurname', 'fdNationalID'].includes(field.id)) {
+                validatePolicy(e.target, data.fdPackage);
+            }
         });
     });
 
