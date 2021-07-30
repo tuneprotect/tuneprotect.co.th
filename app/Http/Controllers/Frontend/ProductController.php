@@ -179,10 +179,10 @@ class ProductController extends BaseController
                         {
                             if($v->plan->PADRSN07 !== '-'){$v->plan->PADRSN07 = __('product.healt2go_word');}
                         }
-//                        if($selected === 'ONCOVIDA')
-//                        {
-//                            if($v->plan->COVIDB3 !== '-'){$v->plan->COVIDB3 = __('product.healt2go_word');}
-//                        }
+                        if($selected === 'ONCOVIDA')
+                        {
+                            if($v->plan->COVIDB3 !== '-'){$v->plan->COVIDB3 = __('product.healt2go_word');}
+                        }
                     }
 
                     //Nomakl
@@ -617,6 +617,13 @@ class ProductController extends BaseController
     {
         $result = null;
 
+        $oBuyLog = BuyLog::where('fdInvoice', str_replace(config('project.invoice_prefix'), "", $request->input('order_id')))->get();
+        foreach ($oBuyLog as $v) {
+            $v->payment_status = json_encode($request->input());
+            $v->save();
+        }
+
+
         switch ($request->input('payment_status')) {
             case '000':
 
@@ -643,9 +650,6 @@ class ProductController extends BaseController
             default:
                 $func = 'error';
         }
-
-
-        //dd($this->controller);
 
         return redirect()->route('current', ['locale' => $this->locale, 'controller' => $this->controller, 'func' => $func, 'params' => $this->thankYouParam]);
     }
