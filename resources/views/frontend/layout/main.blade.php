@@ -177,9 +177,9 @@
                                     @if($selected==='ONVSAFEA')
                                         <picture>
                                             <source media="(min-width:768px)"
-                                                    srcset="{{url(str_replace('Banner_Covid_D_EN', 'Banner_VSafe_D_EN', $v->pic_en))}}">
+                                                    srcset="{{url(str_replace('Banner_Covid_D_EN', 'Banner_VSafe_D_EN2', $v->pic_en))}}">
                                             <img
-                                                src="{{url(!empty($v->pic_mobile_en) ? url(str_replace('Banner_Covid_D_EN', 'Banner_VSafe_D_EN', $v->pic_mobile_en)) : url(str_replace('Banner_Covid_D_EN', 'Banner_VSafe_M_EN', $v->pic_en)) )}}"
+                                                src="{{url(!empty($v->pic_mobile_en) ? url(str_replace('Banner_Covid_D_EN', 'Banner_VSafe_D_EN2', $v->pic_mobile_en)) : url(str_replace('Banner_Covid_D_EN', 'Banner_VSafe_M_EN2', $v->pic_en)) )}}"
                                                 alt="{{$v->locales[$locale]->title}}">
                                         </picture>
                                     @else
@@ -202,8 +202,8 @@
                                 @if(isset($selected))
                                     @if($selected==='ONVSAFEA')
                                         <picture>
-                                            <source media="(min-width:768px)" srcset="{{url(str_replace('Banner_Covid_D', 'Banner_VSafe_D', $v->pic))}}">
-                                            <img src="{{url(!empty($v->pic_mobile) ? url(str_replace('Banner_Covid_D', 'Banner_VSafe_D', $v->pic_mobile)) : url(str_replace('Banner_Covid_D', 'Banner_VSafe_M', $v->pic)) )}}"
+                                            <source media="(min-width:768px)" srcset="{{url(str_replace('Banner_Covid_D', 'Banner_VSafe_D2', $v->pic))}}">
+                                            <img src="{{url(!empty($v->pic_mobile) ? url(str_replace('Banner_Covid_D', 'Banner_VSafe_D2', $v->pic_mobile)) : url(str_replace('Banner_Covid_D', 'Banner_VSafe_M2', $v->pic)) )}}"
                                                 alt="{{$v->locales[$locale]->title}}">
                                         </picture>
                                     @else
