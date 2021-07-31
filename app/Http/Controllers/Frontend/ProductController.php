@@ -547,11 +547,15 @@ class ProductController extends BaseController
             ]);
             $apiResult = (array)json_decode($response->getBody()->getContents(), true);
 
-//            if ($apiResult["status"]) {
+            if ($apiResult["status"]) {
+                $v->issuepolicy_status =  'S';
 //                $v->data = null;
-//            }
+            }
+            else{
+                $v->issuepolicy_status =  'W';
+            }
 
-            $v->issuepolicy_status =  'S';
+
             $v->result = $apiResult;
             $v->save();
 
