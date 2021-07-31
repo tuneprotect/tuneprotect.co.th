@@ -338,6 +338,10 @@ class ProductController extends BaseController
             if (substr($data['fdPackage'], 0, 8) === 'ONCOVIDA')
             {
                 $package = (array)json_decode(Storage::disk('public')->get('json/oncovida.json'));
+                if($data['fdKeys'] === 'QAVRZTUXAJUWNY9QXD5R6DERA2UBNGFRGUSXXTARPQJRX')
+                {
+                    $package = (array)json_decode(Storage::disk('public')->get('json/oncovida_old.json'));
+                }
             }
             if (substr($data['fdPackage'], 0, 8) === 'ONVACINA')
             {

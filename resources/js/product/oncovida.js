@@ -246,7 +246,7 @@ const step1Constraints = {
 
 
 document.addEventListener("DOMContentLoaded", async () => {
-    const package_data = await getPackageData(current_package);
+    let package_data = await getPackageData(current_package);
     let Keys = "";
     var myEle = document.getElementById("portal_key");
     if(myEle){
@@ -279,6 +279,11 @@ document.addEventListener("DOMContentLoaded", async () => {
             })
             status = false;
         }
+    }
+
+    if(Keys == 'QAVRZTUXAJUWNY9QXD5R6DERA2UBNGFRGUSXXTARPQJRX')
+    {
+        package_data = await getPackageData('oncovida_old');
     }
 
     let promocode = "";
@@ -450,7 +455,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 
 
-                        if(data.fdKeys == "BD5Q6GFRZ4MXQLWW3GRL6PT3YGVM6DERA2UBNGFRGUSXNH9RPTUVX6A")
+                        if(data.fdKeys == "BD5Q6GFRZ4MXQLWW3GRL6PT3YGVM6DERA2UBNGFRGUSXNH9RPTUVX6A" || data.fdKeys == "QAVRZTUXAJUWNY9QXD5R6DERA2UBNGFRGUSXXTARPQJRX")
                         {
                             data = {
                                 ...data,
@@ -545,7 +550,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                         } else {
                             let sb = ''
 
-                            if(data.fdKeys == "BD5Q6GFRZ4MXQLWW3GRL6PT3YGVM6DERA2UBNGFRGUSXNH9RPTUVX6A")
+                            if(data.fdKeys == "BD5Q6GFRZ4MXQLWW3GRL6PT3YGVM6DERA2UBNGFRGUSXNH9RPTUVX6A" || data.fdKeys == "QAVRZTUXAJUWNY9QXD5R6DERA2UBNGFRGUSXXTARPQJRX")
                             {
                                 let fromDate = ($('#fdFromDate').value).split('/');
                                 let fdFromDate = `${fromDate[2]}-${fromDate[1]}-${fromDate[0]}`;

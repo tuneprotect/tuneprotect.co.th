@@ -7,7 +7,7 @@
             @include('frontend.component.form-date-input')
 
             @if($controller == 'portal')
-                @if($portal_key == 'BD5Q6GFRZ4MXQLWW3GRL6PT3YGVM6DERA2UBNGFRGUSXNH9RPTUVX6A')
+                @if($portal_key == 'BD5Q6GFRZ4MXQLWW3GRL6PT3YGVM6DERA2UBNGFRGUSXNH9RPTUVX6A' || $portal_key == 'QAVRZTUXAJUWNY9QXD5R6DERA2UBNGFRGUSXXTARPQJRX')
                     <div class="controls-wrapper">
                         <input id="fdFromDate" name="fdFromDate" type="date" min="{{date('Y-m-d')}}" class="flatpickr"
                                data-maxdate="{{date('Y-m-d',strtotime( "+60 days"))}}"
