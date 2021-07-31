@@ -550,6 +550,7 @@ class ProductController extends BaseController
 //            if ($apiResult["status"]) {
 //                $v->data = null;
 //            }
+
             $v->issuepolicy_status =  'S';
             $v->result = $apiResult;
             $v->save();
@@ -566,9 +567,6 @@ class ProductController extends BaseController
                 }
             }
 
-            if ($apiResult["status"]) {
-                $Status = true;
-            }
 
 //            if (!$apiResult["status"]) {
 //                return false;
@@ -628,10 +626,8 @@ class ProductController extends BaseController
             $v->save();
         }
 
-
         switch ($request->input('payment_status')) {
             case '000':
-
                 $result = $this->sendToApiIssue($request->input('order_id'), $request->input('payment_channel'), $request->input('masked_pan'));
                 if ($result[2]) {
                     $request->session()->put('doc_no', implode(', ', $result[0]));
