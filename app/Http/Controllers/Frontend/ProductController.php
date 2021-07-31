@@ -552,7 +552,7 @@ class ProductController extends BaseController
 //                $v->data = null;
             }
             else{
-                $v->issuepolicy_status =  'W';
+                $v->issuepolicy_status =  'E';
             }
 
 
