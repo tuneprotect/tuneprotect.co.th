@@ -149,6 +149,12 @@ class ProductController extends BaseController
             $packageJson = "ci_broker";
         }
 
+        //Srikrung
+        if($this->bodyData['portal_key'] === 'QAVRZTUXAJUWNY9QXD5R6DERA2UBNGFRGUSXXTARPQJRX')
+        {
+            $packageJson = 'oncovida_old';
+        }
+
         if (Storage::disk('public')->exists('json/' . $packageJson . '.json')) {
             $package_detail = json_decode(Storage::disk('public')->get('json/' . $packageJson . '.json'));
             foreach ($package_detail as $k => $v) {

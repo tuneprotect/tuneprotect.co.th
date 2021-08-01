@@ -284,6 +284,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     if(Keys == 'QAVRZTUXAJUWNY9QXD5R6DERA2UBNGFRGUSXXTARPQJRX')
     {
         package_data = await getPackageData('oncovida_old');
+        console.log(package_data);
     }
 
     let promocode = "";
