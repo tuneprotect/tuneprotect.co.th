@@ -3,7 +3,16 @@
 @section('page')
     <main data-package="{{$selected}}">
         @if(isset($current_package))
-            <h1 class="product-header">{{$current_package->locales[$locale]->title}}</h1>
+            @if(isset($portal_key))
+                @if($portal_key == 'QAVRZTUXAJUWNY9QXD5R6DERA2UBNGFRGUSXXTARPQJRX')
+                    <h1 class="product-header">iSafe</h1>
+                @else
+                    <h1 class="product-header">{{$current_package->locales[$locale]->title}}</h1>
+                @endif
+            @else
+                <h1 class="product-header">{{$current_package->locales[$locale]->title}}</h1>
+            @endif
+
             <div class="two-tone-icon">
                 <span><img src="{{url($current_package->pic)}}" alt=""></span>
                 <div class="description-product">
