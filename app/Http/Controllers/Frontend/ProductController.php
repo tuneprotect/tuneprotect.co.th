@@ -470,7 +470,7 @@ class ProductController extends BaseController
 
         $arr_post['customer_email'] = $obj->data["fdEmail"];
         $arr_post['user_defined_1'] = ($log_id ? implode(',', $log_id) : $obj->log_id);
-        $arr_post['user_defined_2'] = session('return_link');
+        $arr_post['user_defined_2'] = preg_replace('/\?.*/', '', session('return_link'));
         $arr_post['result_url_1'] = url("{$this->locale}/{$this->controller}/result");
 
         $arr_post['payment_option'] = $this->payment;
@@ -686,7 +686,7 @@ class ProductController extends BaseController
         $arr_post['amount'] = str_pad((1000) * 100, 12, '0', STR_PAD_LEFT);
         $arr_post['customer_email'] = 'test@test.com';
         $arr_post['user_defined_1'] = 'aaa';
-        $arr_post['user_defined_2'] = session('return_link');
+        $arr_post['user_defined_2'] = preg_replace('/\?.*/', '', session('return_link'));
         $arr_post['result_url_1'] = url("{$this->locale}/product/result");
         $arr_post['payment_option'] = "CC,FULL";
         $arr_post['ipp_interest_type'] = 'A';
