@@ -637,6 +637,14 @@ class ProductController extends BaseController
         $oBuyLog = BuyLog::where('fdInvoice', str_replace(config('project.invoice_prefix'), "", $request->input('order_id')))->get();
         foreach ($oBuyLog as $v) {
             $data = $v->data;
+            if($v->result)
+            {
+                dd('result');
+                $request->session()->put('return_link', $request->input('user_defined_2'));
+                $func = 'thankyou';
+                return redirect()->route('current', ['locale' => $this->locale, 'controller' => $this->controller, 'func' => $func, 'params' => $this->thankYouParam]);
+            }
+
             $v->payment_log = json_encode($request->input());
             $v->payment_status = $request->input('payment_status');
             $v->issuepolicy_api =  $this->getApiIssueLink($data['fdPackage']);
