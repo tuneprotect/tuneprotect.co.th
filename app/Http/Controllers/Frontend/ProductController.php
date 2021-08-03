@@ -152,7 +152,7 @@ class ProductController extends BaseController
         //Srikrung
         if(isset($this->bodyData['portal_key']))
         {
-            if($this->bodyData['portal_key'] === 'QAVRZTUXAJUWNY9QXD5R6DERA2UBNGFRGUSXXTARPQJRX')
+            if($this->bodyData['portal_key'] === 'QAVM2LRWBGCXXGSFBQFR6LKW24JXXUJRX8MBNGFRGUSXXTARPQJRX')
             {
                 $packageJson = 'oncovida_old';
             }
@@ -348,7 +348,7 @@ class ProductController extends BaseController
             if (substr($data['fdPackage'], 0, 8) === 'ONCOVIDA')
             {
                 $package = (array)json_decode(Storage::disk('public')->get('json/oncovida.json'));
-                if($data['fdKeys'] === 'QAVRZTUXAJUWNY9QXD5R6DERA2UBNGFRGUSXXTARPQJRX')
+                if($data['fdKeys'] === 'QAVM2LRWBGCXXGSFBQFR6LKW24JXXUJRX8MBNGFRGUSXXTARPQJRX')
                 {
                     $package = (array)json_decode(Storage::disk('public')->get('json/oncovida_old.json'));
                 }
@@ -563,7 +563,6 @@ class ProductController extends BaseController
 
             if ($apiResult["status"]) {
                 $v->issuepolicy_status =  'S';
-//                $v->data = null;
             }
             else{
                 $v->issuepolicy_status =  'E';
@@ -639,7 +638,6 @@ class ProductController extends BaseController
             $data = $v->data;
             if($v->result)
             {
-                dd('result');
                 $request->session()->put('return_link', $request->input('user_defined_2'));
                 $func = 'thankyou';
                 return redirect()->route('current', ['locale' => $this->locale, 'controller' => $this->controller, 'func' => $func, 'params' => $this->thankYouParam]);

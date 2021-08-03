@@ -4,7 +4,7 @@
     <main data-package="{{$selected}}">
         @if(isset($current_package))
             @if(isset($portal_key))
-                @if($portal_key == 'QAVRZTUXAJUWNY9QXD5R6DERA2UBNGFRGUSXXTARPQJRX')
+                @if($portal_key == 'QAVM2LRWBGCXXGSFBQFR6LKW24JXXUJRX8MBNGFRGUSXXTARPQJRX')
                     <h1 class="product-header">iSafe</h1>
                 @else
                     <h1 class="product-header">{{$current_package->locales[$locale]->title}}</h1>
