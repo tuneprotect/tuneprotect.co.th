@@ -443,7 +443,7 @@ class ProductController extends BaseController
 
     protected function noPayment($obj, $price = null, $log_id = null)
     {
-        $result = $this->sendToApiIssue(config('project.invoice_prefix') . $obj->fdInvoice, '', '');
+        $result = $this->sendToApiIssue(config('project.invoice_prefixxxx') . $obj->fdInvoice, '', '');
         if ($result) {
             session()->put('doc_no', implode(', ', $result[0]));
             session()->put('point', $result[1]);
@@ -638,11 +638,11 @@ class ProductController extends BaseController
             $data = $v->data;
             if($v->result)
             {
+                $request->session()->put('doc_no',  $v->result['message']);
                 $request->session()->put('return_link', $request->input('user_defined_2'));
                 $func = 'thankyou';
                 return redirect()->route('current', ['locale' => $this->locale, 'controller' => $this->controller, 'func' => $func, 'params' => $this->thankYouParam]);
             }
-
             $v->payment_log = json_encode($request->input());
             $v->payment_status = $request->input('payment_status');
             $v->issuepolicy_api =  $this->getApiIssueLink($data['fdPackage']);
