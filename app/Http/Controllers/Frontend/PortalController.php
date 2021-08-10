@@ -51,6 +51,12 @@ class PortalController extends ProductController
 
     }
 
+    public function list($link = null,$portal_key = null)
+    {
+        $this->bodyData['portal_key'] = $portal_key;
+        return parent::index($link);
+    }
+
     public function form($link = null, $selected = null,$portal_key = null)
     {
         $return_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";

@@ -12,15 +12,24 @@
                             </div>
                             <div class="description ">
                                 @if(strpos($v->locales[$locale]->content, 'data-gtm') === false)
+                                    @if($controller == 'portal')
+                                        <input type="hidden" id="portal_key" value="{{$portal_key}}"/>
+                                        {!! @str_replace('{portal_key}',$portal_key , $v->locales[$locale]->content) !!}
+                                    @else
+                                        {!! $v->locales[$locale]->content !!}
+                                    @endif
 
-                                    {!! $v->locales[$locale]->content !!}
                                     <a href="{{route('current',['locale' => $locale,'controller' => 'product','func' => $product->friendly_url,'params' => $v->code ])}}"
                                        data-gtm="all-product-{{strtolower($product->friendly_url)}}-{{$v->code}}"
                                        class="btn btn-block btn-outline">@lang('global.choose_product')</a>
 
                                 @else
-                                    {!! $v->locales[$locale]->content !!}
-
+                                    @if($controller == 'portal')
+                                        <input type="hidden" id="portal_key" value="{{$portal_key}}"/>
+                                        {!! @str_replace('{portal_key}',$portal_key , $v->locales[$locale]->content) !!}
+                                    @else
+                                        {!! $v->locales[$locale]->content !!}
+                                    @endif
                                 @endif
                             </div>
 
