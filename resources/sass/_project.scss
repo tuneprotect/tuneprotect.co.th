@@ -3508,7 +3508,7 @@ main {
 }
 
 
-main[data-package="ONPACA"] {
+main[data-package="ONPACA"],[data-package="ONPACAA"] {
     #table-detail {
         thead {
             tr {
@@ -3522,7 +3522,7 @@ main[data-package="ONPACA"] {
     }
 }
 
-main[data-package="ONPAKD"], [data-package="ONPASN"] {
+main[data-package="ONPAKD"], [data-package="ONPASN"],[data-package="ONPAKDA"], [data-package="ONPASNA"] {
     #table-detail {
         thead {
             tr {

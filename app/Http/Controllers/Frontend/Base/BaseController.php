@@ -72,11 +72,13 @@ abstract class BaseController extends Controller
             ProjectEnum::WEB_CONTENT_CLAIM_CATEGORY,
             ProjectEnum::WEB_CONTENT_SERVICE_MY_HEALTH
         ])
+            ->where('friendly_url','!=','pa-choice-insurance-broker')
             ->with('locales')
             ->whereRaw(ProjectEnum::isPublish())
             ->orderBy('s_order')
             ->get();
 
+//        dd($layoutContent);
 
         foreach ($layoutContent as $v) {
             if ($v->type_id == ProjectEnum::WEB_CONTENT_ABOUT) {
@@ -88,7 +90,10 @@ abstract class BaseController extends Controller
 
 //        dd($this->bodyData);
 
+//        $matchThese = ['type_id' => ProjectEnum::WEB_CONTENT_PRODUCT];
+
         $this->bodyData['product'] = WebContent::where('type_id', ProjectEnum::WEB_CONTENT_PRODUCT)
+            ->where('friendly_url','!=','pa-choice-insurance-broker')
             ->with(['locales', 'productPackage' => function ($q) {
                 $q->with('locales');
             }])
@@ -102,9 +107,13 @@ abstract class BaseController extends Controller
             $this->layoutData['current_path'] = implode('/', $current);
         }
 
+//        dd($this->bodyData['product'] );
+
         $this->layoutData['menu_enable'] = Cache::rememberForever(ProjectEnum::CACHE_MENU_ENABLE, function () {
             return $this->menuEnable();
         });
+
+//        dd($this->layoutData['menu_enable']);
 
         $this->addBreadcrumb(Lang::get('nav.home'), App::make('url')->to('/'));
     }

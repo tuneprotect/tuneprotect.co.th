@@ -148,7 +148,6 @@ class ProductController extends BaseController
             $this->bodyData['channel'] = "broker";
             $packageJson = "ci_broker";
         }
-
         //Srikrung
         if(isset($this->bodyData['portal_key']))
         {
@@ -158,13 +157,10 @@ class ProductController extends BaseController
             }
         }
 
-
         if (Storage::disk('public')->exists('json/' . $packageJson . '.json')) {
             $package_detail = json_decode(Storage::disk('public')->get('json/' . $packageJson . '.json'));
             foreach ($package_detail as $k => $v) {
                 if (str_starts_with($k, $selected)) {
-
-                    //Fix code lang for urgent(vacin)
                     if($this->locale === 'en')
                     {
                         if($selected === 'ONVSAFEA')
@@ -193,6 +189,18 @@ class ProductController extends BaseController
                         {
                             if($v->plan->COVIDB3 !== '-'){$v->plan->COVIDB3 = __('product.healt2go_word');}
                         }
+                        if($selected === 'ONPACAA')
+                        {
+                            if($v->plan->PACAA09 !== '-'){$v->plan->PACAA09 = __('product.healt2go_word');}
+                        }
+                        if($selected === 'ONPAKDA')
+                        {
+                            if($v->plan->PAKD07 !== '-'){$v->plan->PAKD07 = __('product.healt2go_word');}
+                        }
+                        if($selected === 'ONPASNA')
+                        {
+                            if($v->plan->PASN07 !== '-'){$v->plan->PASN07 = __('product.healt2go_word');}
+                        }
                     }
 
                     //Nomakl
@@ -202,8 +210,11 @@ class ProductController extends BaseController
                 }
             }
         }
-
-//        dd( $this->bodyData['package_detail']);
+//        else
+//        {
+//            dd("load json error " . 'json/' . $packageJson . '.json');
+//        }
+//        dd($this->bodyData['package_detail']);
 
         $this->template->setBody('id', 'product_page');
 
@@ -230,7 +241,7 @@ class ProductController extends BaseController
 
             $this->template->setFootJS(mix("/js/frontend/product/" . strtolower($this->bodyData['selected']) . ".js"));
         } catch (\Exception $exception) {
-            // dd('js error.');
+             dd('js error.');
         }
 
         if ($this->controller != 'product') {
@@ -372,7 +383,7 @@ class ProductController extends BaseController
 
 
 //        dd($obj);
-
+        $obj->fdController = $this->controller;
         return $obj;
     }
 
@@ -459,6 +470,27 @@ class ProductController extends BaseController
 
     protected function sendTo2C2P($obj, $price = null, $log_id = null)
     {
+        $invalidkey = false;
+        if(strtolower($this->controller) === "portal")
+        {
+            $data = $obj->data;
+            if(!$data["fdKeys"])
+            {
+                $invalidkey = true;
+            }
+            else{
+                if($data["fdKeys"] === "")
+                {
+                    $invalidkey = true;
+                }
+            }
+            if($invalidkey === true)
+            {
+                session(['error' => "Invalid link, Can not find key please check link again."]);
+                $func = 'error';
+                return redirect()->route('current', ['locale' => $this->locale, 'controller' => $this->controller, 'func' => $func, 'params' => $this->thankYouParam]);
+            }
+        }
 
         $arr_post['version'] = '8.5';
         $arr_post['merchant_id'] = config('payment.mid');

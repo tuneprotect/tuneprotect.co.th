@@ -561,7 +561,6 @@ document.addEventListener("DOMContentLoaded", async () => {
                                 }
                             }
 
-
                             Object.keys(data).map(k => {
 
                                 if (Array.isArray(data[k])) {

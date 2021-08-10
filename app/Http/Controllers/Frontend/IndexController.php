@@ -24,6 +24,7 @@ class IndexController extends BaseController
             ->get();
 
         $highlight_product = WebContent::where('type_id', ProjectEnum::WEB_CONTENT_PRODUCT)
+            ->where('friendly_url','!=','pa-choice-insurance-broker')
             ->with(['locales','productPackage' => function ($q) {
                 $q->with('locales');
             },'productSlideshow' => function ($q) {

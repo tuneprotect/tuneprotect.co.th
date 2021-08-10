@@ -48,5 +48,6 @@ class BaseInsuranceObject
     public $fdInstallment = 1;
     public $fdMember_ID;
     public $fdPromoCode;
+    public $fdController;
 
 }
