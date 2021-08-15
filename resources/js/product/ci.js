@@ -201,7 +201,6 @@ if ($('#title_wrapper')) {
     };
 
     document.addEventListener("DOMContentLoaded", async () => {
-
         //=====================================================================
         // AddOn Portal
         let Keys = "";
@@ -626,6 +625,18 @@ if ($('#title_wrapper')) {
 
                                 break;
                             case 3:
+                                //=====================================================================
+                                //For sale view only.
+                                var myEle = document.getElementById("portal_key");
+                                if(myEle){
+                                    if(myEle.value == 'QGRL28KWKA5L6GDRD8QU6TKWBJ5Q3GSRQ4MW2MUX9JDZ6TT3UGFZZ')
+                                    {
+                                        $('button[data-step="5"]').style.display = 'none';
+                                    }
+                                }
+                                //=====================================================================
+
+
                                 console.log(e.target.tagName)
                                 status = false;
                                 if (e.target.id === 'btn-fdQuestion1') {
