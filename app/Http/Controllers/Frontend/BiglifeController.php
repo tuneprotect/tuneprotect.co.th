@@ -61,6 +61,7 @@ class BiglifeController  extends ProductController
 //        }
 
 
+
         $this->template->setFootJS(mix("/js/frontend/biglife.js"));
         return $this->genView('frontend.page.biglife_validation');
 
