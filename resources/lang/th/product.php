@@ -504,7 +504,9 @@ return [
     ,"healt2go_plan" => "1,000 (ต่อวัน สูงสุด 14 วัน)"
     ,"healt2go_word" => "บริการปรึกษาแพทย์ออนไลน์ Health2GO ฟรี 1 ครั้ง"
     ,"effectived_date" => "วันที่เริ่มต้นคุ้มครอง"
-    ,'effectived_start_date' => "โปรดระบุวันที่เริ่มต้นคุ้มครอง",
+    ,'effectived_start_date' => "โปรดระบุวันที่เริ่มต้นคุ้มครอง"
+    ,'ci_brochure_broker_th' => "/storage/product/CI/brochure_broker_th.pdf"
+    ,'ci_brochure_broker_en' => "/storage/product/CI/brochure_broker_en.pdf"
 ];
 
 

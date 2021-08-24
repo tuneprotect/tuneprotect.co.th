@@ -44,9 +44,6 @@ class PortalController extends ProductController
         $this->bodyData['nopayment_status'] = $nopayment_status;
         session(['nopayment_status' => $nopayment_status]);
 
-
-
-
         return parent::index($link,$selected);
 
     }
@@ -90,6 +87,14 @@ class PortalController extends ProductController
         }
         $this->bodyData['nopayment_status'] = $nopayment_status;
         session(['nopayment_status' => $nopayment_status]);
+
+        //Fix brochure
+        $this->bodyData['brochure_ci'] = __('product.ci_brochure_broker_th');
+        if($this->locale == 'en')
+        {
+            $this->bodyData['brochure_ci'] = __('product.ci_brochure_broker_en');
+        }
+
 
         return parent::form($link,$selected);
 

@@ -224,7 +224,14 @@ if ($('#title_wrapper')) {
         let channel = $("#channel")?.value;
         channel = (channel ? channel : 'TPT Website');
 
-        console.log(channel);
+        if($("#controller")?.value == 'portal')
+        {
+            let aBrochureci = document.getElementById('brochureci');
+            aBrochureci.href = $("#brochure_ci")?.value;
+            // console.log(aBrochureci.href);
+            // console.log($("#brochure_ci")?.value);
+        }
+
 
         const package_data = await getPackageData(current_package,$("#channel")?.value);
 
