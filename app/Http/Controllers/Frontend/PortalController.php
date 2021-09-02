@@ -92,7 +92,16 @@ class PortalController extends ProductController
         $this->bodyData['brochure_ci'] = __('product.ci_brochure_broker_th');
         if($this->locale == 'en')
         {
-            $this->bodyData['brochure_ci'] = __('product.ci_brochure_broker_en');
+
+             $this->bodyData['brochure_ci'] = 'https://www.tuneprotect.co.th/storage/product/CI/brochure_broker_th.pdf';           
+            // $this->bodyData['brochure_ci'] = __('product.ci_brochure_broker_en');
+            ///https://www.tuneprotect.co.th/storage/product/CI/brochure_broker_th.pdf
+
+
+        }
+        else
+        {
+            $this->bodyData['brochure_ci'] = 'https://www.tuneprotect.co.th/storage/product/CI/brochure_broker_en.pdf';      
         }
 
 
