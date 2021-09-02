@@ -227,7 +227,7 @@ if ($('#title_wrapper')) {
         if($("#controller")?.value == 'portal')
         {
             let aBrochureci = document.getElementById('brochureci');
-            aBrochureci.href = $("#brochure_ci")?.value;
+            // aBrochureci.href = $("#brochure_ci")?.value;
             // console.log(aBrochureci.href);
             // console.log($("#brochure_ci")?.value);
         }
