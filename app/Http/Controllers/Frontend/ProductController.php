@@ -98,7 +98,6 @@ class ProductController extends BaseController
             ->whereRaw(ProjectEnum::isPublish())
             ->first();
 
-
     }
 
     protected function genListPage()

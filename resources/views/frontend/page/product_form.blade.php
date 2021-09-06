@@ -13,9 +13,9 @@
             @includeIf('frontend.form.'.strtolower($selected) ,[ 'product' => $current_product,'package' => $current_package,'selected' => $selected])
 
             @if($selected === "CI")
-
-                {!! $current_package->locales[$locale]->remark !!}
-
+                <div id="healtcontent">
+                    {!! $current_package->locales[$locale]->remark !!}
+                </div>
                 @include('frontend.component.faq')
                 @include('frontend.component.lead-form')
             @endif
