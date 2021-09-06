@@ -71,6 +71,14 @@ class ProductController extends BaseController
 
             $this->bodyData['overview_link'] = "/{$this->locale}/product/{$link}/{$selected}";
 
+            if($selected === 'CI')
+            {
+                $this->bodyData['faq'] = $this->setFaq(ProjectEnum::WEB_CONTENT_FAQ, @$this->bodyData['current_package']->id);
+                $this->bodyData['category_leadform'] = WebContent::where('type_id', ProjectEnum::WEB_CONTENT_LEADFORM_CATEGORY)
+                    ->with('locales')
+                    ->get();
+            }
+
             return $this->genDetailPage($selected, false);
         } else {
             return redirect("/" . $this->locale . '/product/' . $link);
