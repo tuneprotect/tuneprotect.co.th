@@ -7,7 +7,7 @@
             @include('frontend.component.form-date-input')
 
             @if($controller == 'portal')
-                @if($portal_key == 'BD5Q6GFRZ4MXQLWW3GRL6PT3YGVM6DERA2UBNGFRGUSXNH9RPTUVX6A' 
+                @if($portal_key == 'BD5Q6GFRZ4MXQLWW3GRL6PT3YGVM6DERA2UBNGFRGUSXNH9RPTUVX6A'
                 || $portal_key == 'QAVM2LRWBGCXXGSFBQFR6LKW24JXXUJRX8MBNGFRGUSXXTARPQJRX'
                 || $portal_key == 'QAVM2LRWBGCXNTSFBQFR6LKW24JWXUJRX6MBNGFRGUSXXTARPQJRX')
                     <div class="controls-wrapper">
