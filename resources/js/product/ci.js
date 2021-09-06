@@ -516,13 +516,16 @@ if ($('#title_wrapper')) {
                 case 1:
                     $('#disease_box').style.display = "block";
                     $('.goto-step1').style.display = "block";
+                    $("#healtcontent").style.display = "block";
                     break;
                 case 2:
                     $('#disease_box').style.display = "block";
                     $('.goto-step1').style.display = "none";
+                    $("#healtcontent").style.display = "none";
                     break;
                 case 3:
                     $('#disease_box,#step4').style.display = "none";
+                    $("#healtcontent").style.display = "none";
                     break;
                 default:
                     $('#disease_box').style.display = "none";
@@ -556,7 +559,6 @@ if ($('#title_wrapper')) {
                     } else {
                         switch (parseInt(step)) {
                             case 1:
-                                $("#healtcontent").style.display = "none";
                                 const validateResult = validateAgeInPackage(package_data, false);
                                 status = validateResult.status;
                                 if (validateResult.status) {
@@ -606,7 +608,6 @@ if ($('#title_wrapper')) {
 
                                 break;
                             case 2:
-                                $("#healtcontent").style.display = "none";
                                 const fdPackage = $btn.getAttribute('data-package');
 
                                 $("#table-detail").setAttribute('data-package_plan', $btn.getAttribute('data-plan'));
@@ -632,7 +633,6 @@ if ($('#title_wrapper')) {
 
                                 break;
                             case 3:
-                                $("#healtcontent").style.display = "none";
                                 //=====================================================================
                                 //For sale view only.
                                 var myEle = document.getElementById("portal_key");
@@ -661,7 +661,6 @@ if ($('#title_wrapper')) {
                                 console.log(status)
                                 break;
                             case 4:
-                                $("#healtcontent").style.display = "none";
                                 let address = ($('#ctrl_province').value).split('*');
                                 let today = new Date();
                                 let dd = String(today.getDate()).padStart(2, '0');
