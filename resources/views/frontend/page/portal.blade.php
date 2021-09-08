@@ -19,8 +19,17 @@
                     {!! $current_package->locales[$locale]->content !!}
                 </div>
             </div>
+
             @includeIf('frontend.form.'.strtolower($selected) ,[ 'product' => $current_product,'package' => $current_package,'selected' => $selected])
-            @include('frontend.component.faq')
+
+                @if($selected === "CI")
+                    <div id="h-cont">
+                        {!! $current_package->locales[$locale]->remark !!}
+                    </div>
+                    @include('frontend.component.faq')
+                    @include('frontend.component.lead-form')
+                @endif
+
         @endif
     </main>
 

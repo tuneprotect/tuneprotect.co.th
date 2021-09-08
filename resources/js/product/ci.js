@@ -516,16 +516,16 @@ if ($('#title_wrapper')) {
                 case 1:
                     $('#disease_box').style.display = "block";
                     $('.goto-step1').style.display = "block";
-                    $("#healtcontent").style.display = "block";
+                    $('#h-cont').style.display = "none";
                     break;
                 case 2:
                     $('#disease_box').style.display = "block";
                     $('.goto-step1').style.display = "none";
-                    $("#healtcontent").style.display = "none";
+                    $('#h-cont').style.display = "none";
                     break;
                 case 3:
                     $('#disease_box,#step4').style.display = "none";
-                    $("#healtcontent").style.display = "none";
+                    $('#h-cont').style.display = "none";
                     break;
                 default:
                     $('#disease_box').style.display = "none";
