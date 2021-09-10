@@ -164,6 +164,8 @@ class ProductController extends BaseController
             }
         }
 
+//        dd($this->bodyData['current_product']);
+
         if (Storage::disk('public')->exists('json/' . $packageJson . '.json')) {
             $package_detail = json_decode(Storage::disk('public')->get('json/' . $packageJson . '.json'));
             foreach ($package_detail as $k => $v) {
@@ -221,6 +223,7 @@ class ProductController extends BaseController
 //        {
 //            dd("load json error " . 'json/' . $packageJson . '.json');
 //        }
+
 //        dd($this->bodyData['package_detail']);
 
         $this->template->setBody('id', 'product_page');
@@ -251,7 +254,10 @@ class ProductController extends BaseController
              dd('js error.');
         }
 
+//        dd($this->bodyData['package_detail']);
 //        dd($this->bodyData['current_package']);
+
+
 
         if ($this->controller != 'product') {
             return $this->genView('frontend.page.portal');
