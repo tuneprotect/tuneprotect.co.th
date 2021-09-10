@@ -202,11 +202,11 @@ class ProductController extends BaseController
                         }
                         if($selected === 'ONPAKDA')
                         {
-                            if($v->plan->PAKD07 !== '-'){$v->plan->PAKD07 = __('product.healt2go_word');}
+                            if($v->plan->PAKDA06 !== '-'){$v->plan->PAKDA06 = __('product.healt2go_word');}
                         }
                         if($selected === 'ONPASNA')
                         {
-                            if($v->plan->PASN07 !== '-'){$v->plan->PASN07 = __('product.healt2go_word');}
+                            if($v->plan->PASNA07 !== '-'){$v->plan->PASNA07 = __('product.healt2go_word');}
                         }
                     }
 
