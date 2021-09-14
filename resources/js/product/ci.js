@@ -652,7 +652,7 @@ if ($('#title_wrapper')) {
 
                                     data = {
                                         ...data,
-                                        fdQuestion1: 'Y',
+                                        fdQuestion1: 'N',
                                     }
                                 }
 
