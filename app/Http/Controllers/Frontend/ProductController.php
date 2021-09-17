@@ -483,6 +483,7 @@ class ProductController extends BaseController
     }
 
 
+
     protected function sendTo2C2P($obj, $price = null, $log_id = null)
     {
         $invalidkey = false;
