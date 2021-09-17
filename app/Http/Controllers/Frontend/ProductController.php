@@ -423,8 +423,12 @@ class ProductController extends BaseController
 
     public function makePayment(Request $request)
     {
-        $data = $request->all();
+        if($this->controller === 'product')
+        {
+            session(['nopayment_status' => false]);
+        }
 
+        $data = $request->all();
         if (isset($data['send_data'])) {
             $data = (array)json_decode($data['send_data']);
 
