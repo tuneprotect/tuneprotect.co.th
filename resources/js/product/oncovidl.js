@@ -17,10 +17,10 @@ import {
     locale, scrollToTargetAdjusted
 } from "../helper";
 
-import {showFieldError, validateField} from "../validate_form";
+import {removeError, showError, showFieldError, validateField} from "../validate_form";
 import Swal from "sweetalert2";
 import validate from "validate.js";
-import {format, parseISO} from "date-fns";
+import {addDays, addYears, format, parseISO, subDays} from "date-fns";
 import intlTelInput from "intl-tel-input";
 
 require('../main');
@@ -401,7 +401,8 @@ document.addEventListener("DOMContentLoaded", async () => {
         fdQuestion4_2: "",
         fdQuestion4_3: "",
         ctrl_province: "",
-        ctrl_terms: ""
+        ctrl_terms: "",
+        fdFromDate: ""
     };
 
     const iti = intlTelInput($('#fdTelephone'), {
@@ -477,10 +478,20 @@ document.addEventListener("DOMContentLoaded", async () => {
         field.addEventListener("change", function (e) {
             validateField(this, constraints);
             if (['fdName', 'fdSurname', 'fdNationalID'].includes(field.id)) {
-                validatePolicy(e.target, data.fdPackage);
+                validatePolicy(e.target, data.fdPackage,$('#fdFromDate')?.value);
             }
         });
     });
+
+    const step1Constraints = {
+        fdFromDate: {
+            presence: {
+                allowEmpty: false,
+                message: "^" + $('#fdFromDate').getAttribute('data-error')
+            }
+        }
+    };
+
 
     const $btnGoto = $$('.btn-goto');
     $btnGoto.forEach($btn => {
@@ -491,12 +502,32 @@ document.addEventListener("DOMContentLoaded", async () => {
 
             const goToStep = parseInt($btn.getAttribute('data-step'));
             let status = false;
-
             if (step > goToStep) {
                 status = true;
             } else {
                 switch (parseInt(step)) {
                     case 1:
+                        data = {
+                            ...data,
+                            fdFromDate: $('#fdFromDate')?.value
+                        }
+                        let result1 = validate(data, step1Constraints);
+                        // removeError($('#step1'));
+                        if (result1) {
+                            showError($('#step1'), result1);
+                            status = false;
+                            break;
+                        }
+                        else
+                        {
+                            let fromDate = ($('#fdFromDate').value).split('/');
+                            let fdFromDate = `${fromDate[2]}-${fromDate[1]}-${fromDate[0]}`;
+                            data = {
+                                ...data,
+                                fdFromDate
+                            }
+                        }
+
                         const validateResult = validateAgeInPackage(package_data);
                         status = validateResult.status;
                         if (validateResult.status) {
@@ -516,6 +547,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                                 status = false;
                             }
                         }
+
                         break;
                     case 2:
                         const fdPackage = $btn.getAttribute('data-package');

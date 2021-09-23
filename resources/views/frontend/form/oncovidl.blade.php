@@ -1,6 +1,6 @@
 @include('frontend.component.form-stepper')
 <section id="step1" class="wrapper">
-    @include('frontend.component.form-birthdate')
+    @include('frontend.component.form-birthdate-effectivedate')
     <br/>
     {!! $package->locales[$locale]->remark !!}
 </section>
