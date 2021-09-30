@@ -24,3 +24,4 @@ class FIMPObject extends BaseInsuranceObject
     public $fdAddress2_Province;
     public $channel;
 }
+
