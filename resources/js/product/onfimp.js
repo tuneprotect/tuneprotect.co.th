@@ -430,6 +430,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
 
 
+    //Validation duplicate
     // const $form = $('#step3');
     // const allField = $form.querySelectorAll('input,select,textarea');
     // allField.forEach(field => {
