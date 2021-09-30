@@ -430,16 +430,16 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
 
 
-    const $form = $('#step3');
-    const allField = $form.querySelectorAll('input,select,textarea');
-    allField.forEach(field => {
-        field.addEventListener("change", function (e) {
-            validateField(this, constraints);
-            if (['fdName', 'fdSurname', 'fdNationalID'].includes(field.id)) {
-                validatePolicy(e.target, data.fdPackage,$('#fdFromDate')?.value);
-            }
-        });
-    });
+    // const $form = $('#step3');
+    // const allField = $form.querySelectorAll('input,select,textarea');
+    // allField.forEach(field => {
+    //     field.addEventListener("change", function (e) {
+    //         validateField(this, constraints);
+    //         if (['fdName', 'fdSurname', 'fdNationalID'].includes(field.id)) {
+    //             validatePolicy(e.target, data.fdPackage,$('#fdFromDate')?.value);
+    //         }
+    //     });
+    // });
 
     const step1Constraints = {
         fdFromDate: {
