@@ -387,8 +387,6 @@ document.addEventListener("DOMContentLoaded", async () => {
         });
     }
 
-
-
     let Keys = "";
     var myEle = document.getElementById("portal_key");
     if(myEle){
