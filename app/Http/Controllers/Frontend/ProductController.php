@@ -11,6 +11,7 @@ use App\Enum\COVIDLObject;
 use App\Enum\ONTALNObject;
 use App\Enum\VACINAObject;
 use App\Enum\VSAFEAObject;
+use App\Enum\FIMPObject;
 use App\Enum\PAObject;
 use App\Enum\ProjectEnum;
 use App\Http\Controllers\Frontend\Base\BaseController;
@@ -165,6 +166,7 @@ class ProductController extends BaseController
         }
 
 //        dd($this->bodyData['current_product']);
+//        dd($packageJson);
 
         if (Storage::disk('public')->exists('json/' . $packageJson . '.json')) {
             $package_detail = json_decode(Storage::disk('public')->get('json/' . $packageJson . '.json'));
@@ -211,18 +213,14 @@ class ProductController extends BaseController
                             if($v->plan->PASNA07 !== '-'){$v->plan->PASNA07 = __('product.healt2go_word');}
                         }
                     }
-
-                    //Nomakl
                     $this->bodyData['package_detail'][$k] = $v;
-
-
                 }
             }
         }
-//        else
-//        {
+        else
+        {
 //            dd("load json error " . 'json/' . $packageJson . '.json');
-//        }
+        }
 
 //        dd($this->bodyData['package_detail']);
 
@@ -300,6 +298,8 @@ class ProductController extends BaseController
             }
             $data['fdPackage'] .= str_replace(['F', ','], "", $data['ctrl_disease']);
 
+        }elseif (substr($data['fdPackage'], 0, 6) === 'ONFIMP') {
+            $obj = new FIMPObject();
         } else {
             $obj = new BaseInsuranceObject();
         }
@@ -563,6 +563,9 @@ class ProductController extends BaseController
         } elseif (substr($package, 0, 2) === 'CI') {
             $this->thankYouParam = substr($package, 0, 2);
             $link = 'IssuePolicyCI';
+        } elseif (substr($package, 0, 6) === 'ONFIMP') {
+            $this->thankYouParam = substr($package, 0, 6);
+            $link = 'IssuePolicyMyHomePlus';
         }
 //        return config('tune-api.url') . $link;
         return $link;

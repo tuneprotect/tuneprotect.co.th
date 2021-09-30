@@ -93,9 +93,8 @@ const callValidateApi = async (data) => {
 
 
 export const validatePolicy = async ($this, fdPackage,fdFromDate) => {
-
     let field = $this.getAttribute('name');
-    console.log({field})
+    // console.log({field});
     let data = {fdName: null, fdSurname: null, fdNationalID: null}
     Object.keys(data).map((k) => {
         let fieldId = k;
@@ -251,6 +250,37 @@ export const showTitle = (sex, age) => {
 
     })
 
+}
+
+
+export const showTitleOnly = (sex) => {
+
+    $$('.title-wrapper').forEach(el => {
+        el.style.display = 'block';
+    });
+
+    let arrHide = [];
+
+    if (sex === 'M') {
+        arrHide.push('#li_title_185');
+        arrHide.push('#li_title_040');
+        arrHide.push('#li_title_041');
+        arrHide.push('#li_title_002');
+        arrHide.push('#li_title_003');
+    }
+
+    if (sex === 'F') {
+        arrHide.push('#li_title_042');
+        arrHide.push('#li_title_184');
+        arrHide.push('#li_title_001');
+    }
+
+    arrHide.map(v => {
+        if ($(v)) {
+            $(v).style.display = "none";
+        }
+
+    })
 }
 
 

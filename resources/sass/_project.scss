@@ -3550,6 +3550,21 @@ main[data-package="ONCOVIDA"], [data-package="ONVSAFEA"] {
     }
 }
 
+main[data-package="ONFIMP"] {
+    #table-detail {
+        thead {
+            tr {
+                th:first-child {
+                    @media all and (min-width: $lg) {
+                        width: 65%;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
 .mso_benefit {
     margin-top: 20px;
 

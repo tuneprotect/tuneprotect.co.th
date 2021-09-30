@@ -62,12 +62,6 @@
                                     @if($selected == "CI")
                                         <span class="show_on_mobile" data-price-{{$k}}></span>
                                     @endif
-{{--                                    @if($selected == "CI")--}}
-{{--                                        @if($i ==3 || $i==4)--}}
-{{--                                            <img class="show_on_mobile h_2_g"--}}
-{{--                                                 src="/images/my_health/Logo-My-Health.png">--}}
-{{--                                        @endif--}}
-{{--                                    @endif--}}
                                 </a>
 
                                 <?php $i++ ?>
@@ -138,8 +132,8 @@
 
             @foreach (__('product.'.$selected) as $k => $v)
                 <tr>
-                    <th>{!! $v !!}</th>
                     <?php $i = 1 ?>
+                    <th data-cover-{{$k}}>{!! $v !!}</th>
 
                     @foreach ($package_detail as $k1 => $v1)
                         <td {{$i > 1 ? 'class=hide' : ""}} data-index="{{$i}}" data-package="{{$k1}}">
