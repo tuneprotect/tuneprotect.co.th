@@ -75,7 +75,6 @@ class PortalController extends ProductController
         {
             $status_api = true;
             $massage_key = "Portal Key : " . $portal_key;
-
         }
         $this->bodyData['status_api'] = $status_api;
         $this->bodyData['massage_key'] = $massage_key;
