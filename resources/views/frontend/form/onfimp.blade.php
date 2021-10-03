@@ -77,7 +77,7 @@
         <div class="form-head"> {{$package->locales[$locale]->title}} <span id="form-head"></span></div>
         <div class="form-inner">
             @include('frontend.component.form-profile',['id_card_field' => 'both' ,'id_card_field_title' => __("product.id_card_no") ,'prefix' => '','has_birthdate' => true ])
-            @include('frontend.component.form-address',['prefix' => ''])
+            @include('frontend.component.form-address-home',['prefix' => ''])
 
             <div class="controls-wrapper full">
                 <div class="controls-wrapper">
@@ -85,52 +85,55 @@
                     <label for="fdAddressDup"><span class="small">@lang('product.fire_address_data')</span></label>
                 </div>
             </div>
-                <h3>@lang('product.fire_address_location_data')</h3>
-                <div class="two-col">
-                    <div class="controls-wrapper">
-                        <input id="fdAddress2_Home" name="fdAddress2_Home" type="text"
-                               placeholder="@lang("product.fire_home")"
-                               data-error-home="@lang("product.error.fire_home")" autocomplete='off' />
-                        <label for="fdAddress2_Home">@lang("product.fire_home")</label>
-                    </div>
-                    <div class="controls-wrapper full">
-                        <textarea id="fdAddress2_Village" name="fdAddress2_Village" cols="30" rows="5" type="text"
-                               placeholder="@lang("product.fire_village")" autocomplete='off'
-                               data-error-village="@lang("product.error.fire_village")" ></textarea>
-                        <label for="fdAddress2_Village">@lang("product.fire_village")</label>
-                    </div>
-                    <div class="controls-wrapper">
-                        <input id="fdAddress2_Alley" name="fdAddress2_Alley" type="text"
-                               placeholder="@lang("product.fire_alley")"
-                               data-error-alley="@lang("product.error.fire_alley")" autocomplete='off' />
-                        <label for="fdAddress2_Alley">@lang("product.fire_alley")</label>
-                    </div>
 
-                    <div class="controls-wrapper">
-                        <input id="fdAddress2_Road" name="fdAddress2_Road" type="text"
-                               placeholder="@lang("product.fire_road")"
-                               data-error-road="@lang("product.error.fire_road")" autocomplete='off' />
-                        <label for="fdAddress2_Road">@lang("product.fire_road")</label>
-                    </div>
-                    <div class="controls-wrapper">
-                        <input id="fdAddress2_District" name="fdAddress2_District" type="text"
-                               data-error-district="@lang("product.error.district")"
-                               placeholder="@lang("product.district")" autocomplete='off' />
-                        <label for="fdAddress2_District">@lang("product.district")</label>
-                    </div>
-                    <div class="controls-wrapper">
-                        <input id="fdAddress2_PostCode" name="fdAddress2_PostCode" type="tel"
-                               data-error-postal_code="@lang("product.error.postal_code")"
-                               placeholder="@lang("product.postal_code")" autocomplete='off' />
-                        <label for="fdAddress2_PostCode">@lang("product.postal_code")</label>
-                    </div>
-                    <div class="controls-wrapper">
-                        <select id="fdAddress2_ctrl_province" name="fdAddress2_ctrl_province"
-                                data-please-select="@lang("global.default_select_option")"
-                                data-error-province="@lang("product.error.province")"></select>
-                        <label for="fdAddress2_ctrl_province">@lang("product.province")</label>
-                    </div>
-                </div>
+            @include('frontend.component.form-address-home',['prefix' => 'loc_'])
+
+{{--            <h3>@lang('product.fire_address_location_data')</h3>--}}
+{{--                <div class="two-col">--}}
+{{--                    <div class="controls-wrapper">--}}
+{{--                        <input id="fdAddress2_Home" name="fdAddress2_Home" type="text"--}}
+{{--                               placeholder="@lang("product.fire_home")"--}}
+{{--                               data-error-home="@lang("product.error.fire_home")" autocomplete='off' />--}}
+{{--                        <label for="fdAddress2_Home">@lang("product.fire_home")</label>--}}
+{{--                    </div>--}}
+{{--                    <div class="controls-wrapper full">--}}
+{{--                        <textarea id="fdAddress2_Village" name="fdAddress2_Village" cols="30" rows="5" type="text"--}}
+{{--                               placeholder="@lang("product.fire_village")" autocomplete='off'--}}
+{{--                               data-error-village="@lang("product.error.fire_village")" ></textarea>--}}
+{{--                        <label for="fdAddress2_Village">@lang("product.fire_village")</label>--}}
+{{--                    </div>--}}
+{{--                    <div class="controls-wrapper">--}}
+{{--                        <input id="fdAddress2_Alley" name="fdAddress2_Alley" type="text"--}}
+{{--                               placeholder="@lang("product.fire_alley")"--}}
+{{--                               data-error-alley="@lang("product.error.fire_alley")" autocomplete='off' />--}}
+{{--                        <label for="fdAddress2_Alley">@lang("product.fire_alley")</label>--}}
+{{--                    </div>--}}
+
+{{--                    <div class="controls-wrapper">--}}
+{{--                        <input id="fdAddress2_Road" name="fdAddress2_Road" type="text"--}}
+{{--                               placeholder="@lang("product.fire_road")"--}}
+{{--                               data-error-road="@lang("product.error.fire_road")" autocomplete='off' />--}}
+{{--                        <label for="fdAddress2_Road">@lang("product.fire_road")</label>--}}
+{{--                    </div>--}}
+{{--                    <div class="controls-wrapper">--}}
+{{--                        <input id="fdAddress2_District" name="fdAddress2_District" type="text"--}}
+{{--                               data-error-district="@lang("product.error.district")"--}}
+{{--                               placeholder="@lang("product.district")" autocomplete='off' />--}}
+{{--                        <label for="fdAddress2_District">@lang("product.district")</label>--}}
+{{--                    </div>--}}
+{{--                    <div class="controls-wrapper">--}}
+{{--                        <input id="fdAddress2_PostCode" name="fdAddress2_PostCode" type="tel"--}}
+{{--                               data-error-postal_code="@lang("product.error.postal_code")"--}}
+{{--                               placeholder="@lang("product.postal_code")" autocomplete='off' />--}}
+{{--                        <label for="fdAddress2_PostCode">@lang("product.postal_code")</label>--}}
+{{--                    </div>--}}
+{{--                    <div class="controls-wrapper">--}}
+{{--                        <select id="fdAddress2_ctrl_province" name="fdAddress2_ctrl_province"--}}
+{{--                                data-please-select="@lang("global.default_select_option")"--}}
+{{--                                data-error-province="@lang("product.error.province")"></select>--}}
+{{--                        <label for="fdAddress2_ctrl_province">@lang("product.province")</label>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
             <br/>
             @include('frontend.component.form-beneficiary',['prefix' => ''])
             @include('frontend.component.form-tax-deduct')

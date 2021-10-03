@@ -429,6 +429,9 @@ class ProductController extends BaseController
         }
 
         $data = $request->all();
+
+//        dd($data);
+
         if (isset($data['send_data'])) {
             $data = (array)json_decode($data['send_data']);
 
@@ -626,6 +629,8 @@ class ProductController extends BaseController
 
             $v->result = $apiResult;
             $v->save();
+
+//            dd($apiResult);
 
             $PolicyArr[] = $apiResult['message'];//Policy add for group policy
             $PolicyData = $apiResult['data'];

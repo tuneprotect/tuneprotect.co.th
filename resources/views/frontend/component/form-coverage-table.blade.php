@@ -75,11 +75,16 @@
                 @foreach ($package_detail as $k => $v)
                     <th data-package="{{$k}}">
                         @if(isset($v->no))
-                            @if(isset($v->name))
-                                <strong>{{$v->name}} @lang('product.plan') {{$v->no}}</strong>
+                            @if($v->no == 0)
+                                <strong>@lang('product.no_plan')</strong>
                             @else
-                                <strong>@lang('product.plan') {{$v->no}}</strong>
+                                @if(isset($v->name))
+                                    <strong>{{$v->name}} @lang('product.plan') {{$v->no}}</strong>
+                                @else
+                                    <strong>@lang('product.plan') {{$v->no}}</strong>
+                                @endif
                             @endif
+
                         @else
                             @if($selected == "CI")
                                 <span data-recommend>@lang('product.recommend')</span>
@@ -89,17 +94,22 @@
 
                         <a href="#"
                            data-gtm="product-{{strtolower($selected)}}-top-choose-plan-{{$i}}"
+
                            @if(isset($v->no))
-                           @if(isset($v->name))
-                           data-step="3" data-package="{{$k}}" data-sub-package=""
-                           data-plan="{{$v->name}} @lang('product.plan') {{$v->no}}"
+                               @if($v->no == 0)
+                                    data-step="3" data-package="{{$k}}" data-sub-package="" data-plan=""
+                               @else
+                                   @if(isset($v->name))
+                                   data-step="3" data-package="{{$k}}" data-sub-package=""
+                                   data-plan="{{$v->name}} @lang('product.plan') {{$v->no}}"
+                                   @else
+                                   data-step="3" data-package="{{$k}}" data-sub-package=""
+                                   data-plan="@lang('product.plan') {{$v->no}}"
+                                    @endif
+                               @endif
                            @else
-                           data-step="3" data-package="{{$k}}" data-sub-package=""
-                           data-plan="@lang('product.plan') {{$v->no}}"
-                           @endif
-                           @else
-                           data-step="3" data-package="{{$k}}" data-sub-package=""
-                           data-plan="@lang('product.plan') {{$i}}"
+                               data-step="3" data-package="{{$k}}" data-sub-package=""
+                               data-plan="@lang('product.plan') {{$i}}"
                            @endif
 
                            class="btn btn-block btn-outline btn-goto">@lang('product.choose_plan')</a>
@@ -161,19 +171,24 @@
                 @foreach ($package_detail as $k => $v)
                     <td {{$i > 1 ? 'class=hide' : ""}} data-index="{{$i}}" data-package="{{$k}}">
                         @if(isset($v->no))
-                            @if(isset($v->name))
+                            @if($v->no == 0)
+                                <strong style="display: block"
+                                        class="text-center">@lang('product.no_plan')</strong>
+                            @else
                                 @if(isset($v->name))
-                                    <strong style="display: block"
-                                            class="text-center">{{$v->name}} @lang('product.plan') {{$v->no}}</strong>
+                                    @if(isset($v->name))
+                                        <strong style="display: block"
+                                                class="text-center">{{$v->name}} @lang('product.plan') {{$v->no}}</strong>
+                                    @else
+                                        <strong style="display: block"
+                                                class="text-center">@lang('product.plan') {{$v->no}}</strong>
+                                    @endif
                                 @else
                                     <strong style="display: block"
                                             class="text-center">@lang('product.plan') {{$v->no}}</strong>
                                 @endif
-
-                            @else
-                                <strong style="display: block"
-                                        class="text-center">@lang('product.plan') {{$v->no}}</strong>
                             @endif
+
                         @else
                             <strong style="display: block" class="text-center">@lang('product.plan') {{$i}}</strong>
                         @endif
