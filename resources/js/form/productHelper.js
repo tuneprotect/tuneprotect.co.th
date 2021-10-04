@@ -92,6 +92,39 @@ const callValidateApi = async (data) => {
 }
 
 
+export const validatePolicyLoc = async ($this, fdPackage,fdFromDate) => {
+    let field = $this.getAttribute('name');
+    console.log({field});
+    let data = {fdNationalID: null, loc_fdAddr_Home:null}
+    Object.keys(data).map((k) => {
+        let fieldId = k;
+        if (field.startsWith('data_')) {
+            const index = field.split("_")[1];
+            fieldId = `data_${index}_${k}`;
+        }
+        data = {...data, [k]: $(`#${fieldId}`).value}
+    });
+
+    if (Object.keys(data).every((k) => !!data[k])) {
+        console.log("Call Validation");
+        const result = await callValidateApi({...data, fdPackage,fdFromDate})
+        if (result.status === 'error') {
+            // showFieldError($this, [result.message]);
+            $('button[data-step="4"]').style.display = 'none';
+            $this.closest('.controls-wrapper').classList.add("error");
+
+            Swal.fire({
+                icon: 'error',
+                text: result.message
+            })
+            return false;
+        } else {
+            $('button[data-step="4"]').style.display = 'inline-flex';
+            return true;
+        }
+    }
+}
+
 export const validatePolicy = async ($this, fdPackage,fdFromDate) => {
     let field = $this.getAttribute('name');
     // console.log({field});

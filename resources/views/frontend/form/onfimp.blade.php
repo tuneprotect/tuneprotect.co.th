@@ -136,7 +136,7 @@
 {{--                </div>--}}
             <br/>
             @include('frontend.component.form-beneficiary',['prefix' => ''])
-            @include('frontend.component.form-tax-deduct')
+{{--            @include('frontend.component.form-tax-deduct')--}}
             @include('frontend.component.form-privacy')
         </div>
 

@@ -3,7 +3,7 @@ import {
     formatTelNumber,
     getPackageData,
     showTitleOnly,
-    validatePolicy
+    validatePolicyLoc
 } from "../form/productHelper";
 import {
     $,
@@ -136,24 +136,24 @@ const constraints = {
             }
         };
     },
-    fdRevenue: "",
-    fdTaxno: function (value, attributes, attributeName, options, constraints) {
-        if (attributes.fdRevenue === 'N') return null;
-        return {
-            presence: {
-                allowEmpty: false,
-                message: "^" + $('#fdTaxno').getAttribute('data-error-tax_no-require')
-            },
-            length: {
-                is: 13,
-                message: "^" + $('#fdTaxno').getAttribute('data-error-tax_no-format')
-            },
-            format: {
-                pattern: /^[0-9]{13}$/,
-                message: "^" + $('#fdTaxno').getAttribute('data-error-tax_no-format')
-            },
-        };
-    },
+    // fdRevenue: "",
+    // fdTaxno: function (value, attributes, attributeName, options, constraints) {
+    //     if (attributes.fdRevenue === 'N') return null;
+    //     return {
+    //         presence: {
+    //             allowEmpty: false,
+    //             message: "^" + $('#fdTaxno').getAttribute('data-error-tax_no-require')
+    //         },
+    //         length: {
+    //             is: 13,
+    //             message: "^" + $('#fdTaxno').getAttribute('data-error-tax_no-format')
+    //         },
+    //         format: {
+    //             pattern: /^[0-9]{13}$/,
+    //             message: "^" + $('#fdTaxno').getAttribute('data-error-tax_no-format')
+    //         },
+    //     };
+    // },
     ctrl_accept_insurance_term: {
         presence: {
             allowEmpty: false,
@@ -462,17 +462,16 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
 
 
-    //Validation duplicate
-    // const $form = $('#step3');
-    // const allField = $form.querySelectorAll('input,select,textarea');
-    // allField.forEach(field => {
-    //     field.addEventListener("change", function (e) {
-    //         validateField(this, constraints);
-    //         if (['fdName', 'fdSurname', 'fdNationalID'].includes(field.id)) {
-    //             validatePolicy(e.target, data.fdPackage,$('#fdFromDate')?.value);
-    //         }
-    //     });
-    // });
+    const $form = $('#step3');
+    const allField = $form.querySelectorAll('input,select,textarea');
+    allField.forEach(field => {
+        field.addEventListener("change", function (e) {
+            validateField(this, constraints);
+            if (['fdNationalID', 'loc_fdAddr_Home'].includes(field.id)) {
+                validatePolicyLoc(e.target, data.fdPackage,$('#fdFromDate')?.value);
+            }
+        });
+    });
 
     const step1Constraints = {
         fdFromDate: {
@@ -649,7 +648,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                             fdBenefit_name: $('#fdBenefit_name').value,
                             fdRelation: $('#fdRelation').value,
                             fdRevenue: $('#fdRevenue').checked ? 'Y' : 'N',
-                            fdTaxno: $('#fdTaxno').value,
+                            // fdTaxno: $('#fdTaxno').value,
                             fdPayAMT: getSelectedPricePackage(data.fdPackage, package_data),
                             ctrl_accept_insurance_term: $('#ctrl_accept_insurance_term').checked ? true : undefined,
                             ctrl_terms: $('#ctrl_terms').checked ? true : undefined,
