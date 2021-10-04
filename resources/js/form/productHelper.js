@@ -94,7 +94,7 @@ const callValidateApi = async (data) => {
 
 export const validatePolicyLoc = async ($this, fdPackage,fdFromDate) => {
     let field = $this.getAttribute('name');
-    console.log({field});
+    // console.log({field});
     let data = {fdNationalID: null, loc_fdAddr_Home:null}
     Object.keys(data).map((k) => {
         let fieldId = k;
@@ -106,7 +106,7 @@ export const validatePolicyLoc = async ($this, fdPackage,fdFromDate) => {
     });
 
     if (Object.keys(data).every((k) => !!data[k])) {
-        console.log("Call Validation");
+        // console.log("Call Validation");
         const result = await callValidateApi({...data, fdPackage,fdFromDate})
         if (result.status === 'error') {
             // showFieldError($this, [result.message]);
