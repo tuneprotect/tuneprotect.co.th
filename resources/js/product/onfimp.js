@@ -776,13 +776,13 @@ document.addEventListener("DOMContentLoaded", async () => {
                         }
 
                         loc_address_insure = " " + loc_address_insure + ", " + loc_label_district + data.loc_fdAddr_District;
-                        loc_fdAddr_Num = loc_address_insure;
+                        // loc_fdAddr_Num = loc_address_insure;
 
                         const $loc_ddlProvince = $('#loc_ctrl_province');
                         const loc_province = $loc_ddlProvince.options[$loc_ddlProvince.selectedIndex].text;
                         loc_address_insure = " " + loc_address_insure + ", " + loc_province.replace(",", "")  + " " + data.loc_fdAddr_PostCode;
 
-                        // loc_fdAddr_Num = loc_address_insure;
+                        loc_fdAddr_Num = loc_address_insure;
                         //=========================================================================================================
 
                         data = {
