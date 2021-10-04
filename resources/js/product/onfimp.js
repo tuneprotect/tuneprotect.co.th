@@ -730,12 +730,12 @@ document.addEventListener("DOMContentLoaded", async () => {
                         }
 
                         address_insure = " " + address_insure + ", " + label_district + data.fdAddr_District;
-                        // fdAddr_Num = address_insure;
+                        fdAddr_Num = address_insure;
 
                         const $ddlProvince = $('#ctrl_province');
                         const province = $ddlProvince.options[$ddlProvince.selectedIndex].text;
                         address_insure = " " + address_insure + ", " + province.replace(",", "") + " " + data.fdAddr_PostCode;
-                        fdAddr_Num = address_insure;
+                        // fdAddr_Num = address_insure;
                         //=========================================================================================================
                         //location insure
                         let loc_address_insure = "";
@@ -776,13 +776,13 @@ document.addEventListener("DOMContentLoaded", async () => {
                         }
 
                         loc_address_insure = " " + loc_address_insure + ", " + loc_label_district + data.loc_fdAddr_District;
-                        // loc_fdAddr_Num = loc_address_insure;
+                        loc_fdAddr_Num = loc_address_insure;
 
                         const $loc_ddlProvince = $('#loc_ctrl_province');
                         const loc_province = $loc_ddlProvince.options[$loc_ddlProvince.selectedIndex].text;
                         loc_address_insure = " " + loc_address_insure + ", " + loc_province.replace(",", "")  + " " + data.loc_fdAddr_PostCode;
 
-                        loc_fdAddr_Num = loc_address_insure;
+                        // loc_fdAddr_Num = loc_address_insure;
                         //=========================================================================================================
 
                         data = {
