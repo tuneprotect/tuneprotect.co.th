@@ -647,7 +647,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                             fdBenefit: $('#fdBenefit').value,
                             fdBenefit_name: $('#fdBenefit_name').value,
                             fdRelation: $('#fdRelation').value,
-                            fdRevenue: $('#fdRevenue').checked ? 'Y' : 'N',
+                            // fdRevenue: $('#fdRevenue').checked ? 'Y' : 'N',
                             // fdTaxno: $('#fdTaxno').value,
                             fdPayAMT: getSelectedPricePackage(data.fdPackage, package_data),
                             ctrl_accept_insurance_term: $('#ctrl_accept_insurance_term').checked ? true : undefined,
@@ -848,8 +848,6 @@ document.addEventListener("DOMContentLoaded", async () => {
                             <strong>${loc_address_insure}</strong>
                         </div>
                         <div class="controls-wrapper full no-lable"><span>${$('#beneficiary_header').innerText} : </span><strong>${data.fdBenefit === 'other' ? data.fdBenefit_name + ' (' + data.fdRelation + ')' : data.fdBenefit}</strong></div>
-                            <div><span>${$('#tax_deduction_title').innerText} : </span><strong>${data.fdRevenue === 'Y' ? $('#fdTaxno').getAttribute('data-yes') : $('#fdTaxno').getAttribute('data-no')}</strong></div>
-                        ${data.fdRevenue === 'Y' ? '<div><span>' + $('label[for=fdTaxno]').innerText + ' : </span><strong>' + data.fdTaxno + '</strong></div>' : ''}
                         <div><span>${$('#receve_channel_title').innerText} : </span><strong>${data.fdSendType === 'P' ? $('label[for=ctrl_channel_post]').innerText : $('label[for=ctrl_channel_email]').innerText}</strong></div>
                         </div>` + sb;
 
