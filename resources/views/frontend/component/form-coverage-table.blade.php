@@ -176,8 +176,7 @@
                     <td {{$i > 1 ? 'class=hide' : ""}} data-index="{{$i}}" data-package="{{$k}}">
                         @if(isset($v->no))
                             @if($v->no == 0)
-                                <strong style="display: block"
-                                        class="text-center">@lang('product.no_plan')</strong>
+                                <strong style="display: block" class="text-center">@lang('product.no_plan')</strong>
                             @else
                                 @if(isset($v->name))
                                     @if(isset($v->name))
@@ -200,14 +199,17 @@
                         <a href="#"
                            data-gtm="product-{{strtolower($selected)}}-bottom-choose-plan-{{$i}}"
                            @if(isset($v->no))
-                           @if(isset($v->name))
-                           data-step="3" data-package="{{$k}}" data-sub-package=""
-                           data-plan="{{$v->name}}  @lang('product.plan') {{$v->no}}"
-                           @else
-                           data-step="3" data-package="{{$k}}" data-sub-package=""
-                           data-plan="@lang('product.plan') {{$v->no}}"
-                           @endif
-
+                                @if($v->no == 0)
+                                       data-step="3" data-package="{{$k}}" data-sub-package="" data-plan=""
+                                @else
+                                       @if(isset($v->name))
+                                           data-step="3" data-package="{{$k}}" data-sub-package=""
+                                           data-plan="{{$v->name}}  @lang('product.plan') {{$v->no}}"
+                                       @else
+                                           data-step="3" data-package="{{$k}}" data-sub-package=""
+                                           data-plan="@lang('product.plan') {{$v->no}}"
+                                       @endif
+                               @endif
                            @else
                            data-step="3" data-package="{{$k}}" data-sub-package=""
                            data-plan="@lang('product.plan') {{$i}}"
