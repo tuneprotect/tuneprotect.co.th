@@ -451,6 +451,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                 el.value= $('#fdAddr_Home').value;
                 el.dispatchEvent(new Event('change'));
 
+                $('#loc_fdAddr_Moo').value = $('#fdAddr_Moo').value;
                 $('#loc_fdAddr_Village').value = $('#fdAddr_Village').value;
                 $('#loc_fdAddr_Building').value = $('#fdAddr_Building').value;
                 $('#loc_fdAddr_Floor').value = $('#fdAddr_Floor').value;
@@ -538,6 +539,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         fdAddr_Num: "",
 
         loc_fdAddr_Home: "",
+        loc_fdAddr_Moo: "",
         loc_fdAddr_Village: "",
         loc_fdAddr_Building: "",
         loc_fdAddr_Floor: "",
@@ -660,6 +662,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                             ctrl_terms: $('#ctrl_terms').checked ? true : undefined,
 
                             fdAddr_Home: $('#fdAddr_Home').value,
+                            fdAddr_Moo: $('#fdAddr_Moo').value,
                             fdAddr_Village: $('#fdAddr_Village').value,
                             fdAddr_Building: $('#fdAddr_Building').value,
                             fdAddr_Alley: $('#fdAddr_Alley').value,
@@ -671,6 +674,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                             fdProvince: address[0],
 
                             loc_fdAddr_Home: $('#loc_fdAddr_Home').value,
+                            loc_fdAddr_Moo: $('#loc_fdAddr_Moo').value,
                             loc_fdAddr_Village: $('#loc_fdAddr_Village').value,
                             loc_fdAddr_Building: $('#loc_fdAddr_Building').value,
                             loc_fdAddr_Alley: $('#loc_fdAddr_Alley').value,
@@ -696,6 +700,10 @@ document.addEventListener("DOMContentLoaded", async () => {
                         let label_home = $('label[for=fdAddr_Home]').innerText;
                         label_home = label_home.replace("*", "");
                         address_insure = label_home + data.fdAddr_Home;
+                        if(data.fdAddr_Moo != "")
+                        {
+                            address_insure = " " + address_insure + ", " + $('label[for=fdAddr_Moo]').innerText + data.fdAddr_Moo;
+                        }
                         if(data.fdAddr_Village != "")
                         {
                             address_insure = " " + address_insure + ", " + $('label[for=fdAddr_Village]').innerText + data.fdAddr_Village;
@@ -743,6 +751,10 @@ document.addEventListener("DOMContentLoaded", async () => {
                         let loc_label_home = $('label[for=loc_fdAddr_Home]').innerText;
                         loc_label_home = loc_label_home.replace("*", "");
                         loc_address_insure = loc_label_home + data.loc_fdAddr_Home;
+                        if(data.loc_fdAddr_Moo  != "")
+                        {
+                            loc_address_insure = " " + loc_address_insure + ", " + $('label[for=loc_fdAddr_Moo]').innerText + data.loc_fdAddr_Moo;
+                        }
                         if(data.loc_fdAddr_Village  != "")
                         {
                             loc_address_insure = " " + loc_address_insure + ", " + $('label[for=loc_fdAddr_Village]').innerText + data.loc_fdAddr_Village;

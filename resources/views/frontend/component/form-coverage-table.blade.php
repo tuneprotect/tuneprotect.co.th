@@ -49,10 +49,14 @@
                                    data-gtm="product-{{strtolower($selected)}}-mobile-choose-plan-{{$i}}"
                                    class="btn btn-block btn-outline btn-choose-plan {{$i == 1 ? 'on' : '' }}">
                                     @if(isset($v->no))
-                                        @if(isset($v->name))
-                                            <strong>{{$v->name}} @lang('product.plan') {{$v->no}}</strong>
+                                        @if($v->no == 0)
+                                            <strong>@lang('product.no_plan')</strong>
                                         @else
-                                            <strong>@lang('product.plan') {{$v->no}}</strong>
+                                            @if(isset($v->name))
+                                                <strong>{{$v->name}} @lang('product.plan') {{$v->no}}</strong>
+                                            @else
+                                                <strong>@lang('product.plan') {{$v->no}}</strong>
+                                            @endif
                                         @endif
                                     @else
                                         <span data-recommend>@lang('product.recommend')</span>
@@ -100,11 +104,11 @@
                                     data-step="3" data-package="{{$k}}" data-sub-package="" data-plan=""
                                @else
                                    @if(isset($v->name))
-                                   data-step="3" data-package="{{$k}}" data-sub-package=""
-                                   data-plan="{{$v->name}} @lang('product.plan') {{$v->no}}"
+                                       data-step="3" data-package="{{$k}}" data-sub-package=""
+                                       data-plan="{{$v->name}} @lang('product.plan') {{$v->no}}"
                                    @else
-                                   data-step="3" data-package="{{$k}}" data-sub-package=""
-                                   data-plan="@lang('product.plan') {{$v->no}}"
+                                       data-step="3" data-package="{{$k}}" data-sub-package=""
+                                       data-plan="@lang('product.plan') {{$v->no}}"
                                     @endif
                                @endif
                            @else

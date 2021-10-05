@@ -15,6 +15,12 @@
         <label for="{{$prefix}}fdAddr_Home">*@lang("product.address_home")</label>
     </div>
     <div class="controls-wrapper">
+        <input id="{{$prefix}}fdAddr_Moo" name="{{$prefix}}fdAddr_Moo" type="text"
+               data-error-address_moo="@lang("product.error.address_moo")"
+               placeholder="@lang("product.address_moo")"/>
+        <label for="{{$prefix}}fdAddr_Moo">@lang("product.address_moo")</label>
+    </div>
+    <div class="controls-wrapper">
         <input id="{{$prefix}}fdAddr_Village" name="{{$prefix}}fdAddr_Village" type="text"
                data-error-address_village="@lang("product.error.address_village")"
                placeholder="@lang("product.address_village")"/>

@@ -25,6 +25,7 @@ class FIMPObject extends BaseInsuranceObject
     public $loc_fdBuilding;
     public $loc_fdOwner;
     public $loc_fdAddr_Home;
+    public $loc_fdAddr_Moo;
     public $loc_fdAddr_Village;
     public $loc_fdAddr_Building;
     public $loc_fdAddr_Floor;
