@@ -15,7 +15,11 @@
                 @includeIf('frontend.form.'.strtolower($selected) ,[ 'product' => $current_product,'package' => $current_package,'selected' => $selected])
             @else
                 <div>
-                    {!!  str_replace('{btn_buy}','<a href="'.'/'.$locale.'/'.'product/form/'.strtolower($current_product->friendly_url).'/'.$current_package->code.'" class="btn btn-primary" style="width: 200px;margin: 10px">'.__('global.choose_product').'</a>',$current_package->locales[$locale]->sub_title) !!}
+                    {!!  str_replace(['{btn_buy}','{rating}'],
+                    ['<a href="'.'/'.$locale.'/'.'product/form/'.strtolower($current_product->friendly_url).'/'.$current_package->code.'" class="btn btn-primary" style="width: 200px;margin: 10px">'.__('global.choose_product').'</a>',
+                        $review
+                    ],
+                    $current_package->locales[$locale]->sub_title) !!}
                 </div>
             @endif
 

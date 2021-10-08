@@ -86,7 +86,7 @@ html[lang="th"] {
 
 }
 
-main[data-package="CI"] {
+main[data-package="CI"],[data-package="ONTAOB"] {
     form {
         .check_box_disease {
             display: flex;

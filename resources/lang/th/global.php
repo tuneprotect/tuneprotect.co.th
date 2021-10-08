@@ -67,5 +67,6 @@ return [
 
     'copyright' => '&copy; 2020 Tune Protect Group Berhad Company No.: 201101020320 (948454-K). <a href="/th/privacy-policy">Privacy
                 Policy</a> | <a href="/th/terms">Terms of Use</a>',
-    'lead_form_mso_header' => 'สมัครบริการ'
+    'lead_form_mso_header' => 'สมัครบริการ',
+    'review_header_product' => 'ความรู้สึกลูกค้ากับประกันเดินทางจาก Tune Protect Thailand'
 ];

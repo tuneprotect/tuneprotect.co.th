@@ -226,6 +226,20 @@ class ProductController extends BaseController
 
         $this->template->setBody('id', 'product_page');
 
+        if($selected === 'ONTAOB')
+        {
+            $review = WebContent::where('type_id', ProjectEnum::WEB_CONTENT_REVIEW)
+                ->where('custom_input_1','ONTAOB')
+                ->with('locales')
+                ->whereRaw(ProjectEnum::isPublish())
+                ->inRandomOrder()
+                ->take(5)
+                ->get();
+
+            $this->bodyData['review'] = view('frontend.component.review_product',['review' => $review,'locale' => $this->locale])->render();
+
+        }
+
         if ($isPage) {
             $this->bodyData['category_leadform'] = WebContent::where('type_id', ProjectEnum::WEB_CONTENT_LEADFORM_CATEGORY)
                 ->with('locales')
