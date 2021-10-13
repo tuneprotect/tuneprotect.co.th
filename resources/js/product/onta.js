@@ -232,9 +232,12 @@ const genPrice = (package_data, subpackage, fdFromDate, fdToDate) => {
     let endDate = parseISO(fdToDate);
     const day = differenceInDays(endDate, startDate) + 1;
 
+    console.log(allPack);
+
     allPack.map(k => {
         const pack = Object.keys(package_data[k].price).filter(subPackage => {
             const dateRange = (package_data[k].price[subPackage].day).split('-');
+            console.log(dateRange);
             return day >= dateRange[0] && day <= dateRange[1];
         })
 

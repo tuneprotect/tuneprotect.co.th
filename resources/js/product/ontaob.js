@@ -205,10 +205,36 @@ const getSelectedPrice = (packageCode, package_data) => {
 }
 
 
-const genPrice = (package_data, subpackage, fdFromDate, fdToDate) => {
+const genPrice = (package_data,country_data, subpackage, fdFromDate, fdToDate) => {
+
+    console.log(package_data);
+    // console.log(subpackage);
+    // console.log(fdFromDate);
+    // console.log(fdToDate);
+
+    let startDate = parseISO(fdFromDate);
+    let endDate = parseISO(fdToDate);
+
+    if ($('#ctrl_travel_type').value === 'annual') {
+        endDate = new Date(startDate.getFullYear() + 1, startDate.getMonth(), startDate.getDate());
+    }
+    else
+    {
+        let country_zone = '';
+        country_data.map(v => {
+                if (v.code === $('#fdDestTo').value) {
+                    country_zone = v.zone;
+                }
+            });
+        console.log(country_zone);
+        subpackage = country_zone;
+    }
+
 
     const allPack = Object.keys(package_data)
         .filter(k => _.startsWith(k, current_package + subpackage))
+
+    console.log(allPack);
 
     if (document.body.clientWidth > 767) {
         $$('#table-detail td[data-package],#table-detail th[data-package]').forEach($el => {
@@ -220,7 +246,7 @@ const genPrice = (package_data, subpackage, fdFromDate, fdToDate) => {
         });
     } else {
         $$('#table-detail thead a[data-package]').forEach($el => {
-            if ($el.getAttribute("data-package").startsWith('ONTA' + subpackage)) {
+            if ($el.getAttribute("data-package").startsWith('ONTAOB' + subpackage)) {
                 $el.style.display = "inline-flex";
             } else {
                 $el.style.display = "none";
@@ -228,44 +254,41 @@ const genPrice = (package_data, subpackage, fdFromDate, fdToDate) => {
         });
     }
 
-    let startDate = parseISO(fdFromDate);
-    let endDate = parseISO(fdToDate);
-    const day = differenceInDays(endDate, startDate) + 1;
 
+    const day = differenceInDays(endDate, startDate) + 1;
     allPack.map(k => {
         const pack = Object.keys(package_data[k].price).filter(subPackage => {
             const dateRange = (package_data[k].price[subPackage].day).split('-');
-            return day >= dateRange[0] && day <= dateRange[1];
+            if(dateRange.length === 1)
+            {
+                return day >= dateRange[0] && day <= dateRange[0];
+            }
+            else
+            {
+                return day >= dateRange[0] && day <= dateRange[1];
+            }
         })
+
+        // console.log(pack);
 
         $$('[data-sub-package]').forEach($el => {
             $el.setAttribute('data-sub-package', pack)
         });
-
         $(`strong[data-price-${k}]`).innerHTML = parseInt(package_data[k].price[pack].price).toLocaleString();
     });
-}
 
-const changeDestinationOption = (countryData, zone) => {
 
-    let sb = `<option value="">${$('#fdDestTo').getAttribute('data-please-select')}</option>`;
-
-    countryData.sort((a, b) => (a[locale] > b[locale]) ? 1 : ((b[locale] > a[locale]) ? -1 : 0))
-        .map(v => {
-            if (v.zone === zone) {
-                sb += `<option value="${v.code}">${v[locale]}</option>`;
-            }
-        });
-
-    $('#fdDestTo').innerHTML = sb;
 
 }
+
 
 document.addEventListener("DOMContentLoaded", async () => {
 
     const package_data = await getPackageData(current_package);
     const countryData = await getCountryData();
     const zipcode_data = await getZipcodeData();
+
+    // console.log(package_data);
 
     let Keys = "";
     let myEle = document.getElementById("portal_key");
@@ -298,25 +321,60 @@ document.addEventListener("DOMContentLoaded", async () => {
     let iti = {};
     let $dataSubPackage;
 
-    changeDestinationOption(countryData, 'WW');
+    let sb = "";
+    let sb1 = `<option value="">${$('#fdDestTo').getAttribute('data-please-select')}</option>`;
+    let sbSCHENGEN = '';
+    countryData.sort((a, b) => (a[locale] > b[locale]) ? 1 : ((b[locale] > a[locale]) ? -1 : 0))
+        .map(v => {
+            if (v.code === 'THA' || v.code === 'WRW' || v.code === 'ASN'
+                || v.code === 'AFG' || v.code === 'AZE' || v.code === 'CUB'|| v.code === 'IRN'|| v.code === 'IRQ'
+                || v.code === 'ISR' || v.code === 'KGZ' || v.code === 'LBN'|| v.code === 'LBY'|| v.code === 'NPL'
+                || v.code === 'NIC' || v.code === 'PRK' || v.code === 'PAK'|| v.code === 'PSE'|| v.code === 'SYR'
+                || v.code === 'TJK' || v.code === 'TKM' || v.code === 'UZB') {
+            }
+            else if(v.code === 'SCG'){
+                sbSCHENGEN = `<option value="${v.code}">${v[locale]}</option>`;
+            }
+            else
+            {
+                sb += `<option value="${v.code}">${v[locale]}</option>`;
+            }
+        });
+
+    $('#fdDestTo').innerHTML = sb1 + sbSCHENGEN + sb;
 
     $('#ctrl_travel_type').addEventListener('change', (e) => {
 
-        let display = 'block'
+        let display_sub_package = 'block'
+        let display_fdDestTo = 'block'
+        let display_fdToDate = 'block'
 
         if (e.target.value === 'annual') {
-            display = "none";
+            display_sub_package ='block';
+            display_fdDestTo  = "none";
+            display_fdToDate  = "none";
         }
-
-        $$("#fdToDate,#fdDestTo").forEach(($el) => {
-            $el.closest('.controls-wrapper').style.display = display;
+        else
+        {
+            display_sub_package = "none";
+            display_fdDestTo  = 'block';
+            display_fdToDate  = 'block';
+        }
+        $$("#ctrl_sub_package,#fdDestTo").forEach(($el) => {
+            $el.closest('.controls-wrapper').style.display = display_sub_package;
         });
-
+        $$("#fdDestTo").forEach(($el) => {
+            $el.closest('.controls-wrapper').style.display = display_fdDestTo;
+        });
+        $$("#fdToDate").forEach(($el) => {
+            $el.closest('.controls-wrapper').style.display = display_fdToDate;
+        });
     })
 
-    $('#ctrl_sub_package').addEventListener('change', (e) => {
-        changeDestinationOption(countryData, e.target.value);
-    })
+    //Set start selection
+    let el = document.getElementById('ctrl_travel_type');
+    el.dispatchEvent(new Event('change'));
+
 
     $('#ctrl_no_of_insured').addEventListener('change', (e) => {
 
@@ -430,7 +488,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                             fdToDate: `${toDate[2]}-${toDate[1]}-${toDate[0]}`,
                         }
 
-                        genPrice(package_data, $('#ctrl_sub_package').value, data.fdFromDate, data.fdToDate, $('#ctrl_travel_type').value);
+                        genPrice(package_data,countryData, $('#ctrl_sub_package').value, data.fdFromDate, data.fdToDate, $('#ctrl_travel_type').value);
 
                         break;
                     case 2:

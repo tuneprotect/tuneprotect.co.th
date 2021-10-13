@@ -221,13 +221,13 @@ class ProductController extends BaseController
         {
 //            dd("load json error " . 'json/' . $packageJson . '.json');
         }
-
 //        dd($this->bodyData['package_detail']);
 
         $this->template->setBody('id', 'product_page');
 
         if($selected === 'ONTAOB')
         {
+            //Replace view in body content.
             $review = WebContent::where('type_id', ProjectEnum::WEB_CONTENT_REVIEW)
                 ->where('custom_input_1','ONTAOB')
                 ->with('locales')
