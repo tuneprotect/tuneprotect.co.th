@@ -219,7 +219,7 @@ class ProductController extends BaseController
         }
         else
         {
-//            dd("load json error " . 'json/' . $packageJson . '.json');
+            dd("load json error " . 'json/' . $packageJson . '.json');
         }
 //        dd($this->bodyData['package_detail']);
 
