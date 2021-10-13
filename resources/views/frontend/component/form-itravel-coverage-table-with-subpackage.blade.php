@@ -8,31 +8,32 @@
                                 <h3>@lang('global.coverage')</h3>
                                 <?php $i = 1 ?>
                                 <div class="choose-plan-mobile">
-
                                     @foreach ($package_detail as $k => $v)
                                         <div class="wrapper-choose-plan">
                                             <div
                                                 data-package="{{$k}}"
                                                 data-index="{{$i}}"
-                                                data-gtm="product-{{strtolower($selected)}}-mobile-choose-plan-{{$i}}"
+                                                data-gtm="product-{{strtolower($selected)}}-mobile-choose-plan-{{$v->no}}"
                                                 class="btn btn-block btn-outline btn-choose-plan {{$i == 1 ? 'on' : '' }}">
 
-                                                @if($i > 1)
+                                                @if($v->no > 1)
                                                     <span><img src="/images/ico_ci/recommended-th.png"></span>
                                                 @endif
-                                                <strong class="package-number">@lang('product.plan') {{$i}}</strong>
+
+                                                <strong class="package-number">@lang('product.plan') {{$v->no}}</strong>
 
                                                 <span class="show_on_mobile" data-price-{{$k}}></span>
                                                 <br>
                                                 <a href="#"
-                                                   data-gtm="product-{{strtolower($selected)}}-top-choose-plan-{{$i}}"
-                                                   data-step="3" data-package="{{$k}}" data-sub-package=""
-                                                   data-plan="@lang('product.plan') {{$i}}"
+                                                   data-gtm="product-{{strtolower($selected)}}-top-choose-plan-{{$v->no}}"
+                                                   data-step="3" data-package="{{$v->no}}" data-sub-package=""
+                                                   data-plan="@lang('product.plan') {{$v->no}}"
                                                    class="btn btn-block btn-outline btn-goto">@lang('product.choose_plan')</a>
 
                                             </div>
 
                                             <?php $i++ ?>
+
                                         </div>
 
                                     @endforeach
@@ -42,26 +43,14 @@
                             <?php $i = 1 ?>
                             @foreach ($package_detail as $k => $v)
                                 <th data-package="{{$k}}">
-                                    @if($i > 1)
+                                    @if($v->no > 1)
                                         <span><img src="/images/ico_ci/recommended-th.png"></span>
                                     @endif
-                                    <strong class="package-number">@lang('product.plan') {{$i}}</strong>
-
+                                    <strong class="package-number">@lang('product.plan') {{$v->no}}</strong>
                                     <a href="#"
-                                       data-gtm="product-{{strtolower($selected)}}-top-choose-plan-{{$i}}"
-                                       @if(isset($v->no))
-                                       @if(isset($v->name))
-                                       data-step="3" data-package="{{$k}}" data-sub-package=""
-                                       data-plan="{{$v->name}} @lang('product.plan') {{$v->no}}"
-                                       @else
+                                       data-gtm="product-{{strtolower($selected)}}-top-choose-plan-{{$v->no}}"
                                        data-step="3" data-package="{{$k}}" data-sub-package=""
                                        data-plan="@lang('product.plan') {{$v->no}}"
-                                       @endif
-                                       @else
-                                       data-step="3" data-package="{{$k}}" data-sub-package=""
-                                       data-plan="@lang('product.plan') {{$i}}"
-                                       @endif
-
                                        class="btn btn-block btn-outline btn-goto">@lang('product.choose_plan')</a>
                                 </th>
                                 <?php $i++ ?>
@@ -142,11 +131,11 @@
                 <?php $i = 1 ?>
                 @foreach ($package_detail as $k => $v)
                     <td {{$i > 1 ? 'class=hide' : ""}} data-index="{{$i}}" data-package="{{$k}}">
-                        <strong style="display: block" class="text-center">@lang('product.plan') {{$i}}</strong>
+                        <strong style="display: block" class="text-center">@lang('product.plan') {{$v->no}}</strong>
                         <a href="#"
-                           data-gtm="product-{{strtolower($selected)}}-bottom-choose-plan-{{$i}}"
+                           data-gtm="product-{{strtolower($selected)}}-bottom-choose-plan-{{$v->no}}"
                            data-step="3" data-package="{{$k}}" data-sub-package=""
-                           data-plan="@lang('product.plan') {{$i}}"
+                           data-plan="@lang('product.plan') {{$v->no}}"
                            class="btn btn-block btn-outline btn-goto">@lang('product.choose_plan')</a>
                     </td>
                     <?php $i++ ?>
