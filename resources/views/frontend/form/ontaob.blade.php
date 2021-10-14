@@ -45,14 +45,16 @@
                     <input id="fdFromDate" name="fdFromDate" type="text" class="flatpickr"
                            data-mindate="{{date('Y-m-d',strtotime( "+1 days"))}}"
                            data-maxdate="{{date('Y-m-d',strtotime( "+60 days"))}}"
-                           data-setmindateto="fdToDate" data-setmaxdateto="fdToDate" data-setmaxdaterange="180"
+                           data-setmindatetoequal ="fdToDate"
+                           data-setmaxdateto="fdToDate"
+                           data-setmaxdaterange="179"
                            data-error="@lang('product.error.travel_start_date')"
                     />
                     <label for="fdFromDate">@lang("product.effective_date")</label>
                 </div>
                 <div class="controls-wrapper">
                     <input id="fdToDate" name="fdToDate" type="text" class="flatpickr"
-                           data-mindate="{{date('Y-m-d',strtotime( "+2 days"))}}"
+                           data-mindate="{{date('Y-m-d',strtotime( "+1 days"))}}"
                            data-error="@lang('product.error.travel_end_date')"/>
                     <label for="fdToDate">@lang("product.expiry_date")</label>
                 </div>

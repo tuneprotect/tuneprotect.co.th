@@ -207,7 +207,7 @@ const getSelectedPrice = (packageCode, package_data) => {
 
 const genPrice = (package_data,country_data, subpackage, fdFromDate, fdToDate) => {
 
-    console.log(package_data);
+    // console.log(package_data);
     // console.log(subpackage);
     // console.log(fdFromDate);
     // console.log(fdToDate);
@@ -230,11 +230,13 @@ const genPrice = (package_data,country_data, subpackage, fdFromDate, fdToDate) =
         subpackage = country_zone;
     }
 
+    const day = differenceInDays(endDate, startDate) + 1;
+    console.log("days : "  + day);
 
     const allPack = Object.keys(package_data)
         .filter(k => _.startsWith(k, current_package + subpackage))
 
-    console.log(allPack);
+    console.log("packs : "  + allPack);
 
     if (document.body.clientWidth > 767) {
         $$('#table-detail td[data-package],#table-detail th[data-package]').forEach($el => {
@@ -254,8 +256,6 @@ const genPrice = (package_data,country_data, subpackage, fdFromDate, fdToDate) =
         });
     }
 
-
-    const day = differenceInDays(endDate, startDate) + 1;
     allPack.map(k => {
         const pack = Object.keys(package_data[k].price).filter(subPackage => {
             const dateRange = (package_data[k].price[subPackage].day).split('-');
