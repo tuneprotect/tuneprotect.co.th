@@ -253,14 +253,15 @@ const genPrice = (package_data,country_data, subpackage, fdFromDate, fdToDate) =
 
     $('#all_pack').value = allPack;
 
-    // console.log("packs : "  + allPack);
+    console.log("packs : "  + allPack);
 
     if (document.body.clientWidth > 767) {
-        $$('#table-detail td[data-package],#table-detail th[data-package]').forEach($el => {
+        $$('#table-detail td[data-package],#table-detail th[data-package],.choose-plan-mobile').forEach($el => {
             if (allPack.includes($el.getAttribute("data-package"))) {
                 $el.style.display = "table-cell";
             } else {
                 $el.style.display = "none";
+                console.log($el);
             }
         });
     } else {
@@ -268,9 +269,20 @@ const genPrice = (package_data,country_data, subpackage, fdFromDate, fdToDate) =
             if ($el.getAttribute("data-package").startsWith('ONTAOB' + subpackage)) {
                 $el.style.display = "inline-flex";
             } else {
+                console.log($el);
                 $el.style.display = "none";
             }
         });
+
+        $$('#table-detail thead div.btn-choose-plan').forEach($el => {
+            if ($el.getAttribute("data-package").startsWith('ONTAOB' + subpackage)) {
+                $el.style.display = "inline-flex";
+            } else {
+                console.log($el);
+                $el.style.display = "none";
+            }
+        });
+
     }
 
     allPack.map(k => {
