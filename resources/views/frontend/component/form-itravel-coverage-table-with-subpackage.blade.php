@@ -1,7 +1,6 @@
 <section style="display: none" id="step2" class="product-detail">
     <div class="wrapper">
         <table id="table-detail" data-package_name="{{$package->locales[$locale]->title}}">
-
                         <thead>
                         <tr>
                             <th>
@@ -57,42 +56,6 @@
                             @endforeach
                         </tr>
                         </thead>
-
-{{--            <thead>--}}
-{{--            <tr>--}}
-{{--                <th>--}}
-{{--                    <h3>@lang('global.coverage')</h3>--}}
-{{--                    <?php $i = 1 ?>--}}
-{{--                    @foreach ($package_detail as $k => $v)--}}
-{{--                        <a href="#" data-index="{{$i}}"--}}
-{{--                           data-gtm="product-{{strtolower($selected)}}-mobile-choose-plan-{{$i}}"--}}
-{{--                           data-package="{{$k}}"--}}
-{{--                           class="btn btn-block btn-outline btn-choose-plan {{$i == 1 ? 'on' : '' }}">--}}
-
-{{--                            @if($i > 1)--}}
-{{--                                <span><img src="/images/ico_ci/recommended-th.png"></span>--}}
-{{--                            @endif--}}
-
-{{--                            <strong>@lang('product.plan') {{$v->no}}</strong>--}}
-{{--                        </a>--}}
-{{--                        <?php $i++ ?>--}}
-{{--                    @endforeach--}}
-{{--                </th>--}}
-{{--                <?php $i = 1 ?>--}}
-{{--                @foreach ($package_detail as $k => $v)--}}
-{{--                    <th data-package="{{$k}}">--}}
-{{--                        <strong>@lang('product.plan') {{$v->no}}</strong>--}}
-{{--                        <a href="#"--}}
-{{--                           data-gtm="product-{{strtolower($selected)}}-top-choose-plan-{{$i}}"--}}
-{{--                           data-step="3" data-package="{{$k}}" data-sub-package=""--}}
-{{--                           data-plan="@lang('product.plan') {{$v->no}}"--}}
-{{--                           class="btn btn-block btn-outline btn-goto">@lang('product.choose_plan')</a>--}}
-{{--                    </th>--}}
-{{--                    <?php $i++ ?>--}}
-{{--                @endforeach--}}
-{{--            </tr>--}}
-{{--            </thead>--}}
-
             <tbody>
             <tr class="orange">
                 <th>@lang('product.price')</th>

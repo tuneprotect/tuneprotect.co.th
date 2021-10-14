@@ -411,7 +411,7 @@ class ProductController extends BaseController
         }
 
 
-//        dd($obj);
+        dd($obj);
         $obj->fdController = $this->controller;
         return $obj;
     }
@@ -562,6 +562,9 @@ class ProductController extends BaseController
         if (str_starts_with($package, 'ONPA')) {
             $this->thankYouParam = 'ONPA';
             $link = 'IssuePolicyPAChoice';
+        } elseif (substr($package, 0, 6) === 'ONTAOB') {
+            $this->thankYouParam = substr($package, 0, 6);
+            $link = "IssuePolicyOutBound";
         } elseif (substr($package, 0, 8) === 'ONCOVIDA' || substr($package, 0, 8) === 'ONCOVIDL'|| substr($package, 0, 8) === 'ONISAFEX') {
             $this->thankYouParam = substr($package, 0, 8);
             $link = 'IssuePolicyCovid19';

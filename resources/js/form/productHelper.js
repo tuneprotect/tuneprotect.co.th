@@ -492,3 +492,15 @@ export const formatInputFieldByLanguage = () => {
     }
 
 }
+
+export const formatInputFieldOnlyEnglish = () => {
+    let message = "^กรุณาใส่อังกฤษเท่านั้น";
+    if (locale === 'en') {
+        message= "^Only English Allowed";
+    }
+    return {
+        pattern: /^[a-zA-Z0-9 \-_!@#$&()\\-`.+,/\"\n\r]*$/,
+        flags: "i",
+        message: message
+    }
+}

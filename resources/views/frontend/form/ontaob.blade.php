@@ -75,6 +75,9 @@
             </div>
         @endif
 
+        <input type="hidden" id="sub_code"/>
+        <input type="hidden" id="all_pack"/>
+
     </form>
 
     <br/>
@@ -110,4 +113,5 @@
         </div>
     </form>
 </section>
-@include('frontend.component.form-summary')
+@include('frontend.component.form-summary-itravel')
+

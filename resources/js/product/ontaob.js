@@ -4,7 +4,7 @@ import {
     formatTelNumber,
     getCountryData,
     getPackageData,
-    showMultipleTitle, validatePolicy
+    showMultipleTitle, validatePolicy,formatInputFieldOnlyEnglish
 } from "../form/productHelper";
 import {$, $$, current_package, getRadioSelectedValue, getZipcodeData, locale, scrollToTargetAdjusted} from "../helper";
 
@@ -85,12 +85,14 @@ const profileConstraints = {
             allowEmpty: false,
             message: "^" + $('#data_1_fdName').getAttribute('data-error-name')
         }
+        ,format: formatInputFieldOnlyEnglish()
     },
     fdSurname: {
         presence: {
             allowEmpty: false,
             message: "^" + $('#data_1_fdSurname').getAttribute('data-error-last_name')
         }
+        ,format: formatInputFieldOnlyEnglish()
     },
     fdHBD: {
         presence: {
@@ -124,6 +126,7 @@ const profileConstraints = {
                     allowEmpty: false,
                     message: "^" + $('#data_1_fdNationalID').getAttribute('data-error-passport')
                 }
+                ,format: formatInputFieldOnlyEnglish()
             }
         }
     },
@@ -135,7 +138,7 @@ const profileConstraints = {
         email: {
             allowEmpty: false,
             message: "^" + $('#data_1_fdEmail').getAttribute('data-error-email-format')
-        },
+        }
     },
     fdTelephone: {
         presence: {
@@ -152,12 +155,14 @@ const profileConstraints = {
             allowEmpty: false,
             message: "^" + $('#data_1_fdAddr_Num').getAttribute('data-error-address')
         }
+        ,format: formatInputFieldOnlyEnglish()
     },
     fdAddr_District: {
         presence: {
             allowEmpty: false,
             message: "^" + $('#data_1_fdAddr_District').getAttribute('data-error-district')
         }
+        ,format: formatInputFieldOnlyEnglish()
     },
     ctrl_province: {
         presence: {
@@ -179,6 +184,7 @@ const profileConstraints = {
                 allowEmpty: false,
                 message: "^" + $('#data_1_fdBenefit_name').getAttribute('data-error-beneficiary')
             }
+            ,format: formatInputFieldOnlyEnglish()
         };
     },
     fdRelation: function (value, attributes, attributeName, options, constraints) {
@@ -188,6 +194,7 @@ const profileConstraints = {
                 allowEmpty: false,
                 message: "^" + $('#data_1_fdRelation').getAttribute('data-error-relation')
             }
+            ,format: formatInputFieldOnlyEnglish()
         };
     }
 };
@@ -199,8 +206,16 @@ const zoneCode = {
 }
 
 const getSelectedPrice = (packageCode, package_data) => {
-    const code = packageCode.substring(0, 7);
-    const sub_code = packageCode.substring(7);
+
+    const code = packageCode;
+    const sub_code = $('#sub_code').value ;
+
+    // const code = packageCode.substring(0, 9);
+    // const sub_code = packageCode.substring(9);
+    // console.log("code : "+ code);
+    // console.log("sub_code : "+ sub_code);
+    // console.log("package_data : "+ package_data);
+
     return package_data[code].price[sub_code].price;
 }
 
@@ -216,7 +231,7 @@ const genPrice = (package_data,country_data, subpackage, fdFromDate, fdToDate) =
     let endDate = parseISO(fdToDate);
 
     if ($('#ctrl_travel_type').value === 'annual') {
-        endDate = new Date(startDate.getFullYear() + 1, startDate.getMonth(), startDate.getDate());
+        // endDate = new Date(startDate.getFullYear() + 1, startDate.getMonth(), startDate.getDate());
     }
     else
     {
@@ -231,12 +246,14 @@ const genPrice = (package_data,country_data, subpackage, fdFromDate, fdToDate) =
     }
 
     const day = differenceInDays(endDate, startDate) + 1;
-    console.log("days : "  + day);
+    // console.log("days : "  + day);
 
     const allPack = Object.keys(package_data)
         .filter(k => _.startsWith(k, current_package + subpackage))
 
-    console.log("packs : "  + allPack);
+    $('#all_pack').value = allPack;
+
+    // console.log("packs : "  + allPack);
 
     if (document.body.clientWidth > 767) {
         $$('#table-detail td[data-package],#table-detail th[data-package]').forEach($el => {
@@ -275,6 +292,7 @@ const genPrice = (package_data,country_data, subpackage, fdFromDate, fdToDate) =
             $el.setAttribute('data-sub-package', pack)
         });
         $(`strong[data-price-${k}]`).innerHTML = parseInt(package_data[k].price[pack].price).toLocaleString();
+        $('#sub_code').value = pack;
     });
 
 
@@ -319,7 +337,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         profile: []
     };
     let iti = {};
-    let $dataSubPackage;
+    // let $dataSubPackage;
 
     let sb = "";
     let sb1 = `<option value="">${$('#fdDestTo').getAttribute('data-please-select')}</option>`;
@@ -435,12 +453,39 @@ document.addEventListener("DOMContentLoaded", async () => {
             validateField(this, profileConstraints);
             for (let i = 1; i <=  $('#ctrl_no_of_insured').value; i++) {
                 if ([`data_${i}_fdName`, `data_${i}_fdSurname`, `data_${i}_fdNationalID`].includes(field.id)) {
-                    validatePolicy(e.target, $dataSubPackage,$('#fdFromDate')?.value);
+                    validatePolicy(e.target, data.fdPackage,$('#fdFromDate')?.value);
                 }
             }
 
         });
     });
+
+    const office = $$(".officer");
+    office.forEach($el => {
+        $el.addEventListener('click', (e) => {
+            e.preventDefault();
+            $('.page-overlay').style.display = 'flex';
+            $('#table-scroll').innerHTML = $('#table-detail').innerHTML;
+
+            $$('#table-scroll td[data-package],#table-detail th[data-package]').forEach($el => {
+                if ($el.getAttribute("data-package").startsWith(data.fdPackage)) {
+                    $el.style.display = "inline-flex";
+                } else {
+                    $el.style.display = "none";
+                }
+            });
+
+            let tb = document.getElementById("table-scroll");
+            tb.getElementsByTagName("thead")[0].style.display = "none";
+            tb.getElementsByTagName("tfoot")[0].style.display = "none";
+
+        }, true);
+    });
+    const close = $(".page-overlay .close");
+    close.addEventListener('click', (e) => {
+        e.preventDefault();
+        $('.page-overlay').style.display = 'none';
+    }, true);
 
 
     const $btnGoto = $$('.btn-goto');
@@ -492,8 +537,10 @@ document.addEventListener("DOMContentLoaded", async () => {
 
                         break;
                     case 2:
-                        const fdPackage = $btn.getAttribute('data-package') + $btn.getAttribute('data-sub-package');
-                        $dataSubPackage = fdPackage;
+                        // const fdPackage = $btn.getAttribute('data-package') + $btn.getAttribute('data-sub-package');
+                        // $dataSubPackage = fdPackage;
+
+                        const fdPackage = $btn.getAttribute('data-package');
                         $('#form-head').innerHTML = $btn.getAttribute('data-plan');
                         if (fdPackage) {
                             data = {
@@ -635,7 +682,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                             <div><span>${$('label[for=data_1_fdEmail]').innerText} : </span><strong>${v.fdEmail}</strong></div>
                             <div class="controls-wrapper full no-lable"><span>${$('label[for=data_1_fdAddr_Num]').innerText} : </span><strong>${v.fdAddr_Num} ${v.fdAddr_District} ${province} ${v.fdAddr_PostCode}</strong></div>
                             <div class="controls-wrapper full no-lable"><span>${$('#beneficiary_header').innerText} : </span><strong>${v.fdBenefit === 'other' ? v.fdBenefit_name + ' (' + v.fdRelation + ')' : v.fdBenefit} </strong></div>
-                        </div><br/>`;
+                        </div>`;
                         });
 
                         sb += `<input type="hidden" name="send_data" value='${JSON.stringify(data)}'>`;
