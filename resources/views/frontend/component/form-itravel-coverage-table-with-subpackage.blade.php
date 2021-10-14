@@ -16,7 +16,7 @@
                                                 class="btn btn-block btn-outline btn-choose-plan {{$i == 1 ? 'on' : '' }}">
 
                                                 @if($v->no > 1)
-                                                    <span><img src="/storage/iTravel/icon_visa_approved.png"></span>
+                                                    <span><img src="/storage/product/iTravel/icon_visa_approved.png"></span>
                                                 @endif
 
                                                 <strong class="package-number">@lang('product.plan') {{$v->no}}</strong>
@@ -43,7 +43,7 @@
                             @foreach ($package_detail as $k => $v)
                                 <th data-package="{{$k}}">
                                     @if($v->no > 1)
-                                        <span><img src="/storage/iTravel/icon_visa_approved.png"></span>
+                                        <span><img src="/storage/product/iTravel/icon_visa_approved.png"></span>
                                     @endif
                                     <strong class="package-number">@lang('product.plan') {{$v->no}}</strong>
                                     <a href="#"

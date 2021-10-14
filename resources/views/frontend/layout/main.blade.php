@@ -183,11 +183,22 @@
                                                 alt="{{$v->locales[$locale]->title}}">
                                         </picture>
                                     @else
-                                        <picture>
-                                            <source media="(min-width:768px)" srcset="{{url($v->pic_en)}}">
-                                            <img src="{{url(!empty($v->pic_mobile_en) ? $v->pic_mobile_en : $v->pic_en )}}"
-                                                 alt="{{$v->locales[$locale]->title}}">
-                                        </picture>
+                                        @if($selected==='ONTAOB')
+                                            <picture>
+                                                <source media="(min-width:768px)"
+                                                        srcset="{{url(str_replace('Banner_TA_D_EN', 'Banner_iTravel_D_EN', $v->pic_en))}}">
+                                                <img
+                                                    src="{{url(!empty($v->pic_mobile_en) ? url(str_replace('Banner_TA_D_EN', 'Banner_iTravel_D_EN', $v->pic_mobile_en)) : url(str_replace('Banner_TA_D_EN', 'Banner_iTravel_M_EN', $v->pic_en)) )}}"
+                                                    alt="{{$v->locales[$locale]->title}}">
+                                            </picture>
+                                        @endif
+                                        @if($selected !== 'ONTAOB')
+                                                <picture>
+                                                    <source media="(min-width:768px)" srcset="{{url($v->pic_en)}}">
+                                                    <img src="{{url(!empty($v->pic_mobile_en) ? $v->pic_mobile_en : $v->pic_en )}}"
+                                                         alt="{{$v->locales[$locale]->title}}">
+                                                </picture>
+                                            @endif
                                     @endif
                                 @else
                                     <picture>
@@ -207,11 +218,21 @@
                                                 alt="{{$v->locales[$locale]->title}}">
                                         </picture>
                                     @else
-                                        <picture>
-                                            <source media="(min-width:768px)" srcset="{{url($v->pic)}}">
-                                            <img src="{{url(!empty($v->pic_mobile) ? $v->pic_mobile : $v->pic )}}"
-                                                alt="{{$v->locales[$locale]->title}}">
-                                        </picture>
+                                        @if($selected==='ONTAOB')
+                                            <picture>
+                                                <source media="(min-width:768px)" srcset="{{url(str_replace('Banner_TA_D', 'Banner_iTravel_D', $v->pic))}}">
+                                                <img src="{{url(!empty($v->pic_mobile) ? url(str_replace('Banner_TA_D', 'Banner_iTravel_D', $v->pic_mobile)) : url(str_replace('Banner_TA_D', 'Banner_iTravel_M', $v->pic)) )}}"
+                                                     alt="{{$v->locales[$locale]->title}}">
+                                            </picture>
+                                        @endif
+                                        @if($selected !== 'ONTAOB')
+                                                <picture>
+                                                    <source media="(min-width:768px)" srcset="{{url($v->pic)}}">
+                                                    <img src="{{url(!empty($v->pic_mobile) ? $v->pic_mobile : $v->pic )}}"
+                                                         alt="{{$v->locales[$locale]->title}}">
+                                                </picture>
+                                        @endif
+
 
                                     @endif
                                 @else

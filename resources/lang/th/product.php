@@ -440,10 +440,6 @@ return [
         "COV25" => "25. โฮล-อิน-วัน",
         "COV26" => "26. ความรับผิดส่วนแรกสำหรับรถเช่า",
     ],
-    "ADDON_ONTAOB" => [
-        "health2go" => "<h6><em style='color: red'>ฟรี</em> พิเศษ ค่าบริการแพทย์ทางไกล 1 ครั้งต่อปี</h6>
-                        <img src='/images/my_health/logo-myhealth.png' style='height:60px'>",
-    ],
     "CI" => [
         "early_stage" => "<h6> ข้อตกลงคุ้มครองการป่วยเฉพาะโรคร้ายแรงระดับเริ่มต้นถึงระดับปานกลาง(ตรวจพบ รับเงินก้อน)</h6>
 กรณีที่เจ็บป่วยด้วยโรคใดโรคหนึ่งที่ระบุไว้ดังนี้<br>
@@ -592,6 +588,7 @@ return [
     ,'effectived_start_date' => "โปรดระบุวันที่เริ่มต้นคุ้มครอง"
     ,'ci_brochure_broker_th' => "/storage/product/CI/brochure_broker_th.pdf"
     ,'ci_brochure_broker_en' => "/storage/product/CI/brochure_broker_en.pdf"
+    ,'itravel_warning' =>"กรุณาซื้อกรมธรรม์ก่อนการเดินทางออกจากประเทศไทยล่วงหน้าอย่างน้อย 2 ชั่วโมง และเลือกวันที่เดินทางให้ครอบคลุมตั้งแต่ออกจากประเทศไทยจนกลับถึงประเทศไทย"
 ];
 
 

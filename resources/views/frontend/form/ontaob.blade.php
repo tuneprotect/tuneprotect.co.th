@@ -59,7 +59,12 @@
                     <label for="fdToDate">@lang("product.expiry_date")</label>
                 </div>
             </div>
+
+            <div>
+                <p class="small">@lang('product.itravel_warning')</p>
+            </div>
         </div>
+
 
         <div class="btn-wrapper">
             <button data-gtm="product-{{strtolower($selected)}}-proceed-step-1" data-step="2" class="btn btn-primary btn-goto">@lang('product.next')</button>
