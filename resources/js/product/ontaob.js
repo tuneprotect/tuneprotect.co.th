@@ -222,13 +222,10 @@ const getSelectedPrice = (packageCode, package_data) => {
 
 const genPrice = (package_data,country_data, subpackage, fdFromDate, fdToDate) => {
 
-    // console.log(package_data);
-    // console.log(subpackage);
-    // console.log(fdFromDate);
-    // console.log(fdToDate);
-
     let startDate = parseISO(fdFromDate);
     let endDate = parseISO(fdToDate);
+
+    console.log($('#ctrl_travel_type').value);
 
     if ($('#ctrl_travel_type').value === 'annual') {
         // endDate = new Date(startDate.getFullYear() + 1, startDate.getMonth(), startDate.getDate());
@@ -243,7 +240,15 @@ const genPrice = (package_data,country_data, subpackage, fdFromDate, fdToDate) =
             });
         console.log(country_zone);
         subpackage = country_zone;
+        $('#ctrl_sub_package').value = subpackage;
     }
+
+    // console.log(package_data);
+    console.log(subpackage);
+    console.log(fdFromDate);
+    console.log(fdToDate);
+
+
 
     const day = differenceInDays(endDate, startDate) + 1;
     // console.log("days : "  + day);
@@ -261,7 +266,6 @@ const genPrice = (package_data,country_data, subpackage, fdFromDate, fdToDate) =
                 $el.style.display = "table-cell";
             } else {
                 $el.style.display = "none";
-                console.log($el);
             }
         });
     } else {
@@ -269,7 +273,6 @@ const genPrice = (package_data,country_data, subpackage, fdFromDate, fdToDate) =
             if ($el.getAttribute("data-package").startsWith('ONTAOB' + subpackage)) {
                 $el.style.display = "inline-flex";
             } else {
-                console.log($el);
                 $el.style.display = "none";
             }
         });
@@ -278,7 +281,6 @@ const genPrice = (package_data,country_data, subpackage, fdFromDate, fdToDate) =
             if ($el.getAttribute("data-package").startsWith('ONTAOB' + subpackage)) {
                 $el.style.display = "inline-flex";
             } else {
-                console.log($el);
                 $el.style.display = "none";
             }
         });
@@ -640,7 +642,9 @@ document.addEventListener("DOMContentLoaded", async () => {
                             fdSendType: getRadioSelectedValue('fdSendType'),
                             ctrl_terms: $('#ctrl_terms').checked ? true : undefined,
                             ctrl_accept_insurance_term: $('#ctrl_accept_insurance_term').checked ? true : undefined,
-                            profile: profileData
+                            profile: profileData,
+                            fdDay: $('#sub_code').value,
+                            rpcNumber: 190
                         }
 
                         result = validate(data, step3Constraints);

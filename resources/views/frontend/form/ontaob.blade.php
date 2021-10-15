@@ -82,7 +82,6 @@
 
         <input type="hidden" id="sub_code"/>
         <input type="hidden" id="all_pack"/>
-
     </form>
 
     <br/>

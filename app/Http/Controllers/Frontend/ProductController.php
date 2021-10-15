@@ -296,6 +296,9 @@ class ProductController extends BaseController
         } elseif (substr($data['fdPackage'], 0, 6) === 'ONTALN') {
             $obj = new ONTALNObject();
             $obj->fdFlgInbound = "I";
+        } elseif (substr($data['fdPackage'], 0, 6) === 'ONTAOB') {
+            $obj = new BaseTAObject();
+            $obj->fdDestFrom = "THA";
         } elseif (substr($data['fdPackage'], 0, 4) === 'ONTA') {
             $obj = new BaseTAObject();
             $obj->fdDestFrom = "THA";
@@ -411,7 +414,7 @@ class ProductController extends BaseController
         }
 
 
-        dd($obj);
+//        dd($obj);
         $obj->fdController = $this->controller;
         return $obj;
     }
@@ -562,15 +565,15 @@ class ProductController extends BaseController
         if (str_starts_with($package, 'ONPA')) {
             $this->thankYouParam = 'ONPA';
             $link = 'IssuePolicyPAChoice';
-        } elseif (substr($package, 0, 6) === 'ONTAOB') {
-            $this->thankYouParam = substr($package, 0, 6);
-            $link = "IssuePolicyOutBound";
         } elseif (substr($package, 0, 8) === 'ONCOVIDA' || substr($package, 0, 8) === 'ONCOVIDL'|| substr($package, 0, 8) === 'ONISAFEX') {
             $this->thankYouParam = substr($package, 0, 8);
             $link = 'IssuePolicyCovid19';
         } elseif (substr($package, 0, 6) === 'ONTALN') {
             $this->thankYouParam = substr($package, 0, 6);
             $link = "IssuePolicyInbound";
+        } elseif (substr($package, 0, 6) === 'ONTAOB') {
+            $this->thankYouParam = substr($package, 0, 6);
+            $link = "IssuePolicyiTravel";
         } elseif (substr($package, 0, 6) === 'ONTADM' || substr($package, 0, 4) === 'ONTA') {
             $this->thankYouParam = substr($package, 0, 6);
             $link = "IssuePolicy";
