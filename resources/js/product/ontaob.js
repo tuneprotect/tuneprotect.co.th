@@ -194,7 +194,6 @@ const profileConstraints = {
                 allowEmpty: false,
                 message: "^" + $('#data_1_fdRelation').getAttribute('data-error-relation')
             }
-            ,format: formatInputFieldOnlyEnglish()
         };
     }
 };
