@@ -36,7 +36,7 @@
 
         <div class="form-inner" style="text-align: left;">
             <div class="officer">
-                <a><u>ความคุ้มครองที่เลือกไว้</u></a>
+                <a><u>>@lang('product.itravel_coverage_choose')</u></a>
             </div>
         </div>
 
