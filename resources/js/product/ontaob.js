@@ -431,8 +431,9 @@ document.addEventListener("DOMContentLoaded", async () => {
                 if (location_data !== undefined) {
                     let items = ['<option value="">' + $(`#data_1_ctrl_province`).getAttribute('data-please-select') + '</option>'];
 
+                    //Fix to eng
                     location_data.map(v => {
-                        items.push(`<option value="${v.district.code}">${v.district.locales[locale]}, ${v.province.locales[locale]}</option>`);
+                        items.push(`<option value="${v.district.code}">${v.district.locales['en']}, ${v.province.locales['en']}</option>`);
                     });
                     $(`#data_${i}_ctrl_province`).innerHTML = items.join('');
                 }

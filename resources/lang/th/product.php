@@ -31,6 +31,8 @@ return [
     "document_type" => "ประเภทเอกสาร",
     "edit" => "แก้ไขข้อมูล",
     "effective_date" => "วันที่เริ่มต้นเดินทาง",
+    "departure_date" => "วันที่เริ่มต้นเดินทาง",
+    "return_date" => "วันที่เดินทางกลับ",
     "email" => "อีเมล",
     "expiry_date" => "วันที่สิ้นสุดการเดินทาง",
     "female" => "หญิง",
@@ -590,6 +592,7 @@ return [
     ,'ci_brochure_broker_en' => "/storage/product/CI/brochure_broker_en.pdf"
     ,'itravel_warning' =>"กรุณาซื้อกรมธรรม์ก่อนการเดินทางออกจากประเทศไทยล่วงหน้าอย่างน้อย 2 ชั่วโมง และเลือกวันที่เดินทางให้ครอบคลุมตั้งแต่ออกจากประเทศไทยจนกลับถึงประเทศไทย"
     ,'itravel_coverage_choose' =>"ความคุ้มครองที่เลือกไว้"
+    ,'itravel_coverage_fix1' =>"ต่อ 6 ชม."
 ];
 
 

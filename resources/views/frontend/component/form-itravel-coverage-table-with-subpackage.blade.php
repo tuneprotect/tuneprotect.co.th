@@ -78,7 +78,7 @@
                                 @if((is_numeric($v1->plan->$k)))
                                     <strong>{{number_format($v1->plan->$k,0)}}</strong>
                                 @else
-                                    <strong>{!! $v1->plan->$k !!}</strong>
+                                    <strong>{!! str_replace('{itravel_coverage_fix1}',__('product.itravel_coverage_fix1'),$v1->plan->$k) !!}</strong>
                                 @endif
                             @endif
                         </td>

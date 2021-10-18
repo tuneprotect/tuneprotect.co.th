@@ -7,7 +7,7 @@
             <div class="two-col">
                 <div class="controls-wrapper">
                     <select id="ctrl_travel_type" name="ctrl_travel_type">
-                        @foreach(__('product.trip_type') as $k => $v)
+                            @foreach(__('product.trip_type') as $k => $v)
                             <option value="{{$k}}">{{$v}}</option>
                         @endforeach
                     </select>
@@ -50,13 +50,13 @@
                            data-setmaxdaterange="179"
                            data-error="@lang('product.error.travel_start_date')"
                     />
-                    <label for="fdFromDate">@lang("product.effective_date")</label>
+                    <label for="fdFromDate">@lang("product.departure_date")</label>
                 </div>
                 <div class="controls-wrapper">
                     <input id="fdToDate" name="fdToDate" type="text" class="flatpickr"
                            data-mindate="{{date('Y-m-d',strtotime( "+1 days"))}}"
                            data-error="@lang('product.error.travel_end_date')"/>
-                    <label for="fdToDate">@lang("product.expiry_date")</label>
+                    <label for="fdToDate">@lang("product.return_date")</label>
                 </div>
             </div>
 
