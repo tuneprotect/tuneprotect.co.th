@@ -67,24 +67,32 @@
                 @endforeach
             </tr>
 
-
+            <?php $j = 1 ?>
             @foreach (__('product.'.$selected) as $k => $v)
                 <tr>
-                    <th>{!! $v !!}</th>
                     <?php $i = 1 ?>
+                    <th>{!! $v !!}</th>
+{{--                        <th>{!! $j !!}</th>--}}
                     @foreach ($package_detail as $k1 => $v1)
-                        <td {{$i > 1 ? 'class=hide' : ""}} data-index="{{$i}}" data-package="{{$k1}}">
+                        <td {{$i > 1 ? 'class=hide' : ""}} data-index="{{$i}}" data-package="{{$k1}}" data-h2go={{$j.$i}}>
                             @if(isset($v1->plan->$k))
                                 @if((is_numeric($v1->plan->$k)))
                                     <strong>{{number_format($v1->plan->$k,0)}}</strong>
                                 @else
-                                    <strong>{!! str_replace('{itravel_coverage_fix1}',__('product.itravel_coverage_fix1'),$v1->plan->$k) !!}</strong>
+{{--                                    @if($j === 7 && ($i === 3 || $i ===4) && $days <= 5)--}}
+{{--                                        <strong><i class='icofont-close-circled' style='color:red'></i></strong>--}}
+{{--                                        <strong>{{$days}}</strong>--}}
+{{--                                    @else--}}
+                                        <strong>{!! str_replace('{itravel_coverage_fix1}',__('product.itravel_coverage_fix1'),$v1->plan->$k) !!}</strong>
+{{--                                    @endif--}}
+
                                 @endif
                             @endif
                         </td>
                         <?php $i++ ?>
                     @endforeach
                 </tr>
+                <?php $j++ ?>
             @endforeach
 
             </tbody>

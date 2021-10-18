@@ -31,10 +31,11 @@ class ProductController extends BaseController
     protected $controller = 'product';
     protected $payment = 'CC,FULL';
     protected $ipp_interest_type = "";
-
+//    protected $days = 1;
     public function index($link = null, $selected = null)
     {
         $this->bodyData['controller'] = $this->controller;
+//        $this->bodyData['days'] = $this->days;
 
         if (empty($link)) {
             return redirect("/" . $this->locale);
@@ -58,6 +59,7 @@ class ProductController extends BaseController
     public function form($link = null, $selected = null)
     {
         $this->bodyData['controller'] = $this->controller;
+//        $this->bodyData['days'] = $this->days;
 
         if (empty($link)) {
             return redirect("/" . $this->locale);
