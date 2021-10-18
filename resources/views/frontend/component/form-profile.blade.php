@@ -2,7 +2,11 @@
     <h3 data-type data-own_insurance="@lang('product.insurer_list_type.own_insurance')"
         data-other_insurance="@lang('product.insurer_list_type.other_insurance')"></h3>
 @else
-    <h3>{{ isset($index) ? __('product.profiles').' '.$index : __('product.profile')   }}</h3>
+    @if($selected == 'ONTAOB')
+        <h3>{{ isset($index) ? __('product.profiles_travel').' '.$index : __('product.profile_travel')   }}</h3>
+    @else
+        <h3>{{ isset($index) ? __('product.profiles').' '.$index : __('product.profile')   }}</h3>
+    @endif
 @endif
 
 
