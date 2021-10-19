@@ -250,14 +250,14 @@ const genPrice = (package_data,country_data, subpackage, fdFromDate, fdToDate) =
 
 
     const day = differenceInDays(endDate, startDate) + 1;
-    // $('#days').value = day;
+    console.log("day : "  + day);
 
     const allPack = Object.keys(package_data)
         .filter(k => _.startsWith(k, current_package + subpackage))
 
     $('#all_pack').value = allPack;
 
-    console.log("packs : "  + allPack);
+    // console.log("packs : "  + allPack);
 
     if (document.body.clientWidth > 767) {
         $$('#table-detail td[data-package],#table-detail th[data-package],.choose-plan-mobile').forEach($el => {
@@ -328,7 +328,7 @@ const genPrice = (package_data,country_data, subpackage, fdFromDate, fdToDate) =
         $(`strong[data-price-${k}]`).innerHTML = parseInt(package_data[k].price[pack].price).toLocaleString();
         $('#sub_code').value = pack;
 
-        console.log(k);
+        console.log("pack : "  + pack);
     });
 
 
