@@ -1,17 +1,25 @@
 import {
     changeStep,
-    checkTaBirthDate,
+    iTravelCheckBirthDate,
     formatTelNumber,
     getCountryData,
     getPackageData,
     showMultipleTitle, validatePolicy,formatInputFieldOnlyEnglish
 } from "../form/productHelper";
-import {$, $$, current_package, getRadioSelectedValue, getZipcodeData, locale, scrollToTargetAdjusted} from "../helper";
+import {
+    $,
+    $$,
+    current_package,
+    getRadioSelectedValue,
+    getZipcodeData,
+    locale,
+    scrollToTargetAdjusted
+} from "../helper";
 
 import {removeError, showError, showFieldError, validateField} from "../validate_form";
 import Swal from "sweetalert2";
 import validate from "validate.js";
-import {addYears, differenceInDays, format, parseISO, subDays} from "date-fns";
+import {addYears, differenceInDays, format, isValid, parseISO, subDays} from "date-fns";
 import intlTelInput from "intl-tel-input";
 
 require('../main');
@@ -335,7 +343,6 @@ const genPrice = (package_data,country_data, subpackage, fdFromDate, fdToDate) =
 
 }
 
-
 document.addEventListener("DOMContentLoaded", async () => {
 
     const package_data = await getPackageData(current_package);
@@ -621,7 +628,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
                         for (let i = 1; i <= $('#ctrl_no_of_insured').value; i++) {
                             let address = ($(`#data_${i}_ctrl_province`).value).split('*');
-                            let dateResult = checkTaBirthDate(i);
+                            let dateResult = iTravelCheckBirthDate(i);
 
                             const currentProfile = {
                                 fdSex: getRadioSelectedValue(`data_${i}_fdSex`),

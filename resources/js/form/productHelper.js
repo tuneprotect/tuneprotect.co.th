@@ -437,6 +437,44 @@ export const checkTaBirthDate = (i) => {
     };
 }
 
+export const iTravelCheckBirthDate = (i) => {
+
+    const dd = $(`#data_${i}_ctrl_day`).value,
+        mm = $(`#data_${i}_ctrl_month`).value;
+    let yy = $(`#data_${i}_ctrl_year`).value;
+
+    if (dd === '' || mm === '' || yy === '') {
+        showMultipleDateError($(`#data_1_ctrl_day`).getAttribute('data-error-format'), i);
+        return {status: false};
+    }
+
+    if (parseInt(yy.substring(0, 2)) > 21) {
+        yy = (parseInt(yy) - 543).toString();
+    }
+
+    const birthday = `${yy}-${mm}-${dd}`;
+
+    if (!isValid(parseISO(birthday))) {
+        showMultipleDateError($(`#data_1_ctrl_day`).getAttribute('data-error-format'), i);
+        return {status: false};
+    }
+
+    const age = calculateAge(birthday)
+
+    if (age.year < 1 || age.year > 85) {
+        showMultipleDateError($(`#data_1_ctrl_day`).getAttribute('data-error-not-qualify'), i);
+        return {status: false};
+    }
+
+    return {
+        status: true,
+        data: {
+            fdHBD: birthday,
+            fdAge: age.year
+        }
+    };
+}
+
 export const checkTaBirthDateIPass = (i) => {
 
     const dd = $(`#data_${i}_ctrl_day`).value,
