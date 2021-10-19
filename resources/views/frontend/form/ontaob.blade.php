@@ -44,7 +44,7 @@
                 <div class="controls-wrapper">
                     <input id="fdFromDate" name="fdFromDate" type="text" class="flatpickr"
                            data-mindate="{{date('Y-m-d',strtotime( "+1 days"))}}"
-                           data-maxdate="{{date('Y-m-d',strtotime( "+60 days"))}}"
+                           data-maxdate="{{date('Y-m-d',strtotime( "+8 months"))}}"
                            data-setmindatetoequal ="fdToDate"
                            data-setmaxdateto="fdToDate"
                            data-setmaxdaterange="179"
@@ -82,7 +82,7 @@
 
         <input type="hidden" id="sub_code"/>
         <input type="hidden" id="all_pack"/>
-{{--        <input type="hidden" id="days" value="{{$days}}"/>--}}
+
     </form>
 
     <br/>
