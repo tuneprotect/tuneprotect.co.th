@@ -201,6 +201,8 @@ if ($('#title_wrapper')) {
     };
 
     document.addEventListener("DOMContentLoaded", async () => {
+
+        console.log(1);
         //=====================================================================
         // AddOn Portal
         let Keys = "";

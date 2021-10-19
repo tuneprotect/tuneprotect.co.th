@@ -127,7 +127,6 @@ class ProductController extends BaseController
 
     protected function genDetailPage($selected, $isPage = true)
     {
-
         if ($selected) {
             $this->bodyData['selected'] = $selected;
             if (isset($this->bodyData['current_product'])) {
@@ -262,7 +261,6 @@ class ProductController extends BaseController
         }
 
         try {
-
             $this->template->setFootJS(mix("/js/frontend/product/" . strtolower($this->bodyData['selected']) . ".js"));
         } catch (\Exception $exception) {
              dd('js error.');

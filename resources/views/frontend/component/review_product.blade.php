@@ -2,6 +2,7 @@
     <section class="review_section">
         <div class="wrapper">
             <h1>@lang('global.review_header_product')</h1>
+            <p>@lang('global.review_description_product')</p>
         </div>
 
         <div id="review_slider">
