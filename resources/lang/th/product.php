@@ -220,8 +220,7 @@ return [
         "AE" => 'AEC'
     ],
     "iTravel_zone" => [
-        "WW" => 'WorldWide/Schengen',
-        "AS" => 'ASIA'
+        "WW" => 'WorldWide/Schengen'
     ],
     "own_insurance" => 'ผู้ทำประกันภัย',
     "other_insurance" => 'ผู้อื่นที่ทำประกันภัย',
