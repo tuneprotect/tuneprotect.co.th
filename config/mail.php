@@ -40,7 +40,7 @@ return [
             'port' => env('MAIL_PORT', 25),
             'encryption' => env('MAIL_ENCRYPTION', ''),
             'username' => env('MAIL_USERNAME','insurance.madeeasy@tuneprotect.com'),
-            'password' => env('MAIL_PASSWORD','R23ra%8z'),
+            'password' => env('MAIL_PASSWORD','5Q4]YjXL'),
             'timeout' => null,
             'auth_mode' => null,
         ],

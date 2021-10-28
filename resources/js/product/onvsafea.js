@@ -288,6 +288,7 @@ const validateAgeInPackageVC = (package_data) => {
     genPriceVC(package_data)
 
     const age = calculateAge(birthday)
+    console.log(age);
     return {
         status: true, data: {
             fdHBD: birthday,
