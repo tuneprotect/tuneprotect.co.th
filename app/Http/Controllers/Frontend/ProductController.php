@@ -42,7 +42,7 @@ class ProductController extends BaseController
         }
 
         //Maintenance https://www.tuneprotect.co.th/index.html
-        if($selected ==='ONCOVIDA' || $selected ==='ONVSAFEA')
+        if($selected ==='ONCOVIDA')
         {
             return redirect('https://www.tuneprotect.co.th/index.html');
         }
