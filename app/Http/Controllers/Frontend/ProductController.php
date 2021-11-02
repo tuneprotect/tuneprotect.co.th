@@ -421,7 +421,7 @@ class ProductController extends BaseController
             if( substr($data['fdPackage'], 0, 6) === 'ONTALN')
             {
                 $package = (array)json_decode(Storage::disk('public')->get('json/ontaln.json'));
-                $obj->fdPackage = $package[substr($data['fdPackage'], 0, 7)]->apiPackage;
+                $obj->fdApiPackage = $package[substr($data['fdPackage'], 0, 7)]->apiPackage;
             }
         }
 
@@ -583,6 +583,9 @@ class ProductController extends BaseController
         } elseif (substr($package, 0, 6) === 'ONTALN') {
             $this->thankYouParam = substr($package, 0, 6);
             $link = "IssuePolicyInbound";
+        } elseif (substr($package, 0, 6) === 'TAIPAS') {
+            $this->thankYouParam = substr($package, 0, 6);
+            $link = "IssuePolicyInbound";
         } elseif (substr($package, 0, 6) === 'ONTAOB') {
             $this->thankYouParam = substr($package, 0, 6);
             $link = "IssuePolicyiTravel";
@@ -603,6 +606,7 @@ class ProductController extends BaseController
             $link = 'IssuePolicyMyHomePlus';
         }
 //        return config('tune-api.url') . $link;
+//        dd($package);
         return $link;
     }
 
