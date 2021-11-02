@@ -12,7 +12,7 @@ import {$, $$, current_package, getRadioSelectedValue, getZipcodeData, locale, s
 import {removeError, showError, showFieldError, validateField} from "../validate_form";
 import Swal from "sweetalert2";
 import validate from "validate.js";
-import {addDays, addYears, format, parseISO, subDays} from "date-fns";
+import {addDays, addYears, differenceInDays, format, parseISO, subDays} from "date-fns";
 import intlTelInput from "intl-tel-input";
 
 require('../main');
@@ -33,6 +33,12 @@ const step1Constraints = {
         presence: {
             allowEmpty: false,
             message: "^" + $('#fdFromDate').getAttribute('data-error')
+        }
+    },
+    fdToDate: {
+        presence: {
+            allowEmpty: false,
+            message: "^" + $('#fdToDate').getAttribute('data-error')
         }
     },
     fdDestFrom: {
@@ -187,21 +193,57 @@ const getSelectedPrice = (packageCode, package_data) => {
     return package_data[code].price[sub_code].price;
 }
 
-const genPrice = (package_data, sub_package) => {
+// const genPrice = (package_data, sub_package) => {
+//
+//     Object.keys(package_data)
+//         .filter(k => _.startsWith(k, current_package))
+//         .map(k => {
+//             const pack = Object.keys(package_data[k].price).filter(k => k === sub_package)
+//
+//             $$('[data-sub-package]').forEach($el => {
+//                 $el.setAttribute('data-sub-package', pack)
+//             });
+//
+//             $(`strong[data-price-${k}]`).innerHTML = parseInt(package_data[k].price[pack].price).toLocaleString();
+//
+//         })
+// }
+
+const genPrice = (package_data, fdFromDate, fdToDate) => {
+
+    let startDate = parseISO(fdFromDate);
+    let endDate = parseISO(fdToDate);
+
+    console.log(package_data);
+    console.log(fdFromDate);
+    console.log(fdToDate);
+
+    const day = differenceInDays(endDate, startDate) + 1;
+    console.log("day : "  + day);
+
 
     Object.keys(package_data)
         .filter(k => _.startsWith(k, current_package))
         .map(k => {
-            const pack = Object.keys(package_data[k].price).filter(k => k === sub_package)
-
+            const pack = Object.keys(package_data[k].price).filter(subPackage => {
+                const dateRange = (package_data[k].price[subPackage].day).split('-');
+                if(dateRange.length === 1)
+                {
+                    return day >= dateRange[0] && day <= dateRange[0];
+                }
+                else
+                {
+                    return day >= dateRange[0] && day <= dateRange[1];
+                }
+            })
             $$('[data-sub-package]').forEach($el => {
                 $el.setAttribute('data-sub-package', pack)
             });
-
             $(`strong[data-price-${k}]`).innerHTML = parseInt(package_data[k].price[pack].price).toLocaleString();
-
+            $('#sub_code').value = pack;
         })
 }
+
 
 
 document.addEventListener("DOMContentLoaded", async () => {
@@ -210,6 +252,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     const country_data = await getCountryData();
     const nationality_data = await getNationalityData();
     const zipcode_data = await getZipcodeData();
+
+    // console.log(package_data);
 
     let Keys = "";
     let myEle = document.getElementById("portal_key");
@@ -264,26 +308,26 @@ document.addEventListener("DOMContentLoaded", async () => {
             nationality_option += `<option value="${v}">${v}</option>`;
     });
 
-    $('#ctrl_sub_package').addEventListener('change', (e) => {
-        let nationality_option = `<option value="">${$('#data_1_fdNationality').getAttribute('data-please-select')}</option>`;
-        // console.log($('#ctrl_sub_package').value);
-        if($('#ctrl_sub_package').value == '01' || $('#ctrl_sub_package').value == '05' ){
-            //30 and 60 Only
-            Object.keys(nationality_data).map(v => {
-                nationality_option += `<option value="${v}">${v}</option>`;
-            });
-        }
-        else {
-            Object.keys(nationality_data).map(v => {
-                if (v !== "Thailand") {
-                    nationality_option += `<option value="${v}">${v}</option>`;
-                }
-            });
-        }
-        for (let i = 1; i < 10; i++) {
-            $(`#data_${i}_fdNationality`).innerHTML = nationality_option;
-        }
-    });
+    // $('#ctrl_sub_package').addEventListener('change', (e) => {
+    //     let nationality_option = `<option value="">${$('#data_1_fdNationality').getAttribute('data-please-select')}</option>`;
+    //     // console.log($('#ctrl_sub_package').value);
+    //     if($('#ctrl_sub_package').value == '01' || $('#ctrl_sub_package').value == '05' ){
+    //         //30 and 60 Only
+    //         Object.keys(nationality_data).map(v => {
+    //             nationality_option += `<option value="${v}">${v}</option>`;
+    //         });
+    //     }
+    //     else {
+    //         Object.keys(nationality_data).map(v => {
+    //             if (v !== "Thailand") {
+    //                 nationality_option += `<option value="${v}">${v}</option>`;
+    //             }
+    //         });
+    //     }
+    //     for (let i = 1; i < 10; i++) {
+    //         $(`#data_${i}_fdNationality`).innerHTML = nationality_option;
+    //     }
+    // });
 
     $('#ctrl_no_of_insured').addEventListener('change', (e) => {
         for (let i = 1; i <= e.target.value; i++) {
@@ -371,7 +415,8 @@ document.addEventListener("DOMContentLoaded", async () => {
                             ...data,
                             fdDestFrom: $('#fdDestFrom').value,
                             fdDestTo: $('#fdDestTo').value,
-                            fdFromDate: $('#fdFromDate').value
+                            fdFromDate: $('#fdFromDate').value,
+                            fdToDate: $('#fdToDate').value
                         }
                         result = validate(data, step1Constraints);
                         removeError($('#step1'));
@@ -379,24 +424,27 @@ document.addEventListener("DOMContentLoaded", async () => {
                             showError($('#step1'), result);
                             status = false;
                         } else {
-                            let fromDate = ($('#fdFromDate').value).split('/');
-                            const duration = package_data[Object.keys(package_data)[0]].price[$("#ctrl_sub_package").value].duration;
-                            let fdFromDate = `${fromDate[2]}-${fromDate[1]}-${fromDate[0]}`;
-                            let fdToDate = '';
-                            if (duration.indexOf('d') !== -1) {
-                                fdToDate = format(subDays(addDays(parseISO(fdFromDate), duration.replace('d', '')), 1), 'yyyy-MM-dd');
-                            } else if (duration.indexOf('y') !== -1) {
-                                fdToDate = format(subDays(addYears(parseISO(fdFromDate), duration.replace('y', '')), 1), 'yyyy-MM-dd');
-                            }
+                            // let fromDate = ($('#fdFromDate').value).split('/');
+                            // const duration = package_data[Object.keys(package_data)[0]].price[$("#ctrl_sub_package").value].duration;
+                            // let fdFromDate = `${fromDate[2]}-${fromDate[1]}-${fromDate[0]}`;
+                            // let fdToDate = '';
+                            // if (duration.indexOf('d') !== -1) {
+                            //     fdToDate = format(subDays(addDays(parseISO(fdFromDate), duration.replace('d', '')), 1), 'yyyy-MM-dd');
+                            // } else if (duration.indexOf('y') !== -1) {
+                            //     fdToDate = format(subDays(addYears(parseISO(fdFromDate), duration.replace('y', '')), 1), 'yyyy-MM-dd');
+                            // }
 
+                            let fromDate = ($('#fdFromDate').value).split('/');
+                            let toDate = ($('#fdToDate').value).split('/');
                             data = {
                                 ...data,
-                                fdFromDate,
-                                fdToDate,
-                                duration
+                                fdFromDate: `${fromDate[2]}-${fromDate[1]}-${fromDate[0]}`,
+                                fdToDate: `${toDate[2]}-${toDate[1]}-${toDate[0]}`,
                             }
 
-                            genPrice(package_data, $('#ctrl_sub_package').value);
+                            // genPrice(package_data, $('#ctrl_sub_package').value);
+                            genPrice(package_data, data.fdFromDate, data.fdToDate);
+
                         }
 
 
@@ -491,6 +539,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                             fdSendType: getRadioSelectedValue('fdSendType'),
                             ctrl_terms: $('#ctrl_terms').checked ? true : undefined,
                             ctrl_accept_insurance_term: $('#ctrl_accept_insurance_term').checked ? true : undefined,
+                            fdDay: $('#sub_code').value,
                             profile: profileData
                         }
 
@@ -513,7 +562,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
                         const $destFrom = $('#fdDestFrom');
                         const $destTo = $('#fdDestTo');
-                        const $ctrl_sub_package = $('#ctrl_sub_package');
+                        // const $ctrl_sub_package = $('#ctrl_sub_package');
 
                         const $summary_section = $('#summary_section');
 
@@ -525,7 +574,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                             <div><span>${$('label[for=fdDestFrom]').innerText} : </span><strong>${$destFrom.options[$destFrom.selectedIndex].text}</strong></div>
                             <div><span>${$('label[for=fdDestTo]').innerText} : </span><strong>${$destTo.options[$destTo.selectedIndex].text}</strong></div>
                             <div><span>${$('label[for=fdFromDate]').innerText} : </span><strong>${fromDate}</strong></div>
-                            <div><span>${$('label[for=ctrl_sub_package]').innerText} : </span><strong>${$ctrl_sub_package.options[$ctrl_sub_package.selectedIndex].text}</strong></div>
+                            <div><span>${$('label[for=fdToDate]').innerText} : </span><strong>${toDate}</strong></div>
                            <div><span>${$summary_section.getAttribute('data-price-perperson')} : </span><strong>${parseFloat(data.fdPayAMT).toLocaleString()} ${$summary_section.getAttribute('data-baht')}</strong></div>
                             <div><span>${$summary_section.getAttribute('data-total-price')} : </span><strong>${parseFloat(data.fdPayAMT * data.profile.length).toLocaleString()} ${$summary_section.getAttribute('data-baht')}</strong></div>
 

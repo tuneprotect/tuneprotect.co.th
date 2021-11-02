@@ -228,6 +228,7 @@ class ProductController extends BaseController
         {
 //            dd("load json error " . 'json/' . $packageJson . '.json');
         }
+
 //        dd($this->bodyData['package_detail']);
 
         $this->template->setBody('id', 'product_page');
@@ -413,10 +414,15 @@ class ProductController extends BaseController
 
             $obj->fdPackage = $package[$data['fdPackage']]->apiPackage;
 
-        } elseif (substr($data['fdPackage'], 0, 8) === 'ONCOVIDL' ||
-            substr($data['fdPackage'], 0, 6) === 'ONTALN'
-        ) {
+        }
+        elseif (substr($data['fdPackage'], 0, 8) === 'ONCOVIDL' || substr($data['fdPackage'], 0, 6) === 'ONTALN')
+        {
             $obj->fdlanguage = 1;
+            if( substr($data['fdPackage'], 0, 6) === 'ONTALN')
+            {
+                $package = (array)json_decode(Storage::disk('public')->get('json/ontaln.json'));
+                $obj->fdPackage = $package[substr($data['fdPackage'], 0, 7)]->apiPackage;
+            }
         }
 
 

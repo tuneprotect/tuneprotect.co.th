@@ -5,24 +5,42 @@
         <div class="form-inner">
             <h3>@lang('product.please_specify_travel_info')</h3>
             <div class="two-col">
+{{--                <div class="controls-wrapper">--}}
+{{--                    <select id="ctrl_sub_package" name="ctrl_sub_package">--}}
+{{--                        <option value="01">30 @lang('global.day')</option>--}}
+{{--                        <option value="05">60 @lang('global.day')</option>--}}
+{{--                        <option value="02">90 @lang('global.day')</option>--}}
+{{--                        <option value="03">180 @lang('global.day')</option>--}}
+{{--                        <option value="06">270 @lang('global.day')</option>--}}
+{{--                        <option value="04">@lang('product.annual_trip')</option>--}}
+{{--                    </select>--}}
+{{--                    <label for="ctrl_sub_package">@lang("product.coverage_period")</label>--}}
+{{--                </div>--}}
+{{--                <div class="controls-wrapper">--}}
+{{--                    <input id="fdFromDate" name="fdFromDate" type="date" min="{{date('Y-m-d')}}" class="flatpickr"--}}
+{{--                           data-mindate="{{date('Y-m-d')}}"--}}
+{{--                           data-maxdate="{{date('Y-m-d',strtotime( "+60 days"))}}"--}}
+{{--                           data-error="@lang('product.error.travel_start_date')"--}}
+{{--                    />--}}
+{{--                    <label for="fdFromDate">@lang("product.effective_date")</label>--}}
+{{--                </div>--}}
+
                 <div class="controls-wrapper">
-                    <select id="ctrl_sub_package" name="ctrl_sub_package">
-                        <option value="01">30 @lang('global.day')</option>
-                        <option value="05">60 @lang('global.day')</option>
-                        <option value="02">90 @lang('global.day')</option>
-                        <option value="03">180 @lang('global.day')</option>
-                        <option value="06">270 @lang('global.day')</option>
-                        <option value="04">@lang('product.annual_trip')</option>
-                    </select>
-                    <label for="ctrl_sub_package">@lang("product.coverage_period")</label>
-                </div>
-                <div class="controls-wrapper">
-                    <input id="fdFromDate" name="fdFromDate" type="date" min="{{date('Y-m-d')}}" class="flatpickr"
+                    <input id="fdFromDate" name="fdFromDate" type="text" class="flatpickr"
                            data-mindate="{{date('Y-m-d')}}"
-                           data-maxdate="{{date('Y-m-d',strtotime( "+60 days"))}}"
+                           data-maxdate="{{date('Y-m-d',strtotime( "+8 months"))}}"
+                           data-setmindatetoequal ="fdToDate"
+                           data-setmaxdateto="fdToDate"
+                           data-setmaxdaterange="364"
                            data-error="@lang('product.error.travel_start_date')"
                     />
-                    <label for="fdFromDate">@lang("product.effective_date")</label>
+                    <label for="fdFromDate">@lang("product.departure_date")</label>
+                </div>
+                <div class="controls-wrapper">
+                    <input id="fdToDate" name="fdToDate" type="text" class="flatpickr"
+                           data-mindate="{{date('Y-m-d')}}"
+                           data-error="@lang('product.error.travel_end_date')"/>
+                    <label for="fdToDate">@lang("product.return_date")</label>
                 </div>
 
                 <div class="controls-wrapper">
@@ -62,6 +80,7 @@
             </div>
         @endif
 
+        <input type="hidden" id="sub_code"/>
 
 
     </form>
@@ -69,10 +88,10 @@
     <br/>
     {!! $package->locales[$locale]->remark !!}
 </section>
-@include('frontend.component.form-coverage-table',['package_detail' => $package_detail,'selected' =>$selected ])
+@include('frontend.component.form-lite-coverage-table',['package_detail' => $package_detail,'selected' =>$selected ])
 <section style="display: none" id="step3" class="wrapper">
     <form class="insurance-form">
-        <div class="form-head"> {{$package->locales[$locale]->title}} <span id="form-head"></span></div>
+        <div class="form-head">{{$package->locales[$locale]->title}} <span id="form-head"></span></div>
         <div id="multipleform">
             @for($i = 1;$i < 10;$i++)
                 <div class="form-inner" id="form_profile_{{$i}}" {{$i > 1 ? 'style=display:none;' : ''}}>
