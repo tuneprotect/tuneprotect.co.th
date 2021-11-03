@@ -42,10 +42,10 @@ class ProductController extends BaseController
         }
 
         //Maintenance https://www.tuneprotect.co.th/index.html
-        if($selected ==='ONCOVIDA')
-        {
-            return redirect('https://www.tuneprotect.co.th/index.html');
-        }
+//        if($selected ==='ONCOVIDA')
+//        {
+//            return redirect('https://www.tuneprotect.co.th/index.html');
+//        }
 
         if (in_array($selected, ['ONTALN', 'ONCOVIDL', 'ONTA']) && $this->locale === 'th') {
             return redirect()->route('current', ['locale' => 'en', 'controller' => 'product', 'func' => $link, 'params' => $selected]);
