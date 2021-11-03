@@ -16,7 +16,6 @@
                                    data-gtm="product-{{strtolower($selected)}}-mobile-choose-plan-{{$i-1}}"
                                    class="btn btn-block btn-outline btn-choose-plan {{$i == 1 ? 'on' : '' }}">
 
-                                    <span data-recommend>@lang('product.recommend')</span>
                                     @if($i == 1)
                                         <strong class="package-number">LITE @lang('product.plan')</strong>
                                     @else

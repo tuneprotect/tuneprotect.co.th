@@ -31,11 +31,9 @@ class ProductController extends BaseController
     protected $controller = 'product';
     protected $payment = 'CC,FULL';
     protected $ipp_interest_type = "";
-//    protected $days = 1;
     public function index($link = null, $selected = null)
     {
-        //Set redirect by product
-        //Maintenance https://www.tuneprotect.co.th/index.html
+        //Set redirect by product , Maintenance https://www.tuneprotect.co.th/index.html
         if($selected ==='ONCOVIDA')
         {
             return redirect('https://www.tuneprotect.co.th/index.html');
