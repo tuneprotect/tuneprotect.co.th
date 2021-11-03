@@ -34,19 +34,18 @@ class ProductController extends BaseController
 //    protected $days = 1;
     public function index($link = null, $selected = null)
     {
-        $this->bodyData['controller'] = $this->controller;
-//        $this->bodyData['days'] = $this->days;
+        //Set redirect by product
+        //Maintenance https://www.tuneprotect.co.th/index.html
+        if($selected ==='ONCOVIDA')
+        {
+            return redirect('https://www.tuneprotect.co.th/index.html');
+        }
 
+
+        $this->bodyData['controller'] = $this->controller;
         if (empty($link)) {
             return redirect("/" . $this->locale);
         }
-
-        //Maintenance https://www.tuneprotect.co.th/index.html
-//        if($selected ==='ONCOVIDA')
-//        {
-//            return redirect('https://www.tuneprotect.co.th/index.html');
-//        }
-
         if (in_array($selected, ['ONTALN', 'ONCOVIDL', 'ONTA']) && $this->locale === 'th') {
             return redirect()->route('current', ['locale' => 'en', 'controller' => 'product', 'func' => $link, 'params' => $selected]);
         }
@@ -422,6 +421,11 @@ class ProductController extends BaseController
             {
                 $package = (array)json_decode(Storage::disk('public')->get('json/ontaln.json'));
                 $obj->fdApiPackage = $package[substr($data['fdPackage'], 0, 7)]->apiPackage;
+            }
+            if( substr($data['fdPackage'], 0, 8) === 'ONCOVIDL')
+            {
+                $package = (array)json_decode(Storage::disk('public')->get('json/oncovidl.json'));
+                $obj->fdApiPackage = $package[$data['fdPackage']]->apiPackage;
             }
         }
 
