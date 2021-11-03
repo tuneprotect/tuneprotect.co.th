@@ -5,26 +5,6 @@
         <div class="form-inner">
             <h3>@lang('product.please_specify_travel_info')</h3>
             <div class="two-col">
-{{--                <div class="controls-wrapper">--}}
-{{--                    <select id="ctrl_sub_package" name="ctrl_sub_package">--}}
-{{--                        <option value="01">30 @lang('global.day')</option>--}}
-{{--                        <option value="05">60 @lang('global.day')</option>--}}
-{{--                        <option value="02">90 @lang('global.day')</option>--}}
-{{--                        <option value="03">180 @lang('global.day')</option>--}}
-{{--                        <option value="06">270 @lang('global.day')</option>--}}
-{{--                        <option value="04">@lang('product.annual_trip')</option>--}}
-{{--                    </select>--}}
-{{--                    <label for="ctrl_sub_package">@lang("product.coverage_period")</label>--}}
-{{--                </div>--}}
-{{--                <div class="controls-wrapper">--}}
-{{--                    <input id="fdFromDate" name="fdFromDate" type="date" min="{{date('Y-m-d')}}" class="flatpickr"--}}
-{{--                           data-mindate="{{date('Y-m-d')}}"--}}
-{{--                           data-maxdate="{{date('Y-m-d',strtotime( "+60 days"))}}"--}}
-{{--                           data-error="@lang('product.error.travel_start_date')"--}}
-{{--                    />--}}
-{{--                    <label for="fdFromDate">@lang("product.effective_date")</label>--}}
-{{--                </div>--}}
-
                 <div class="controls-wrapper">
                     <input id="fdFromDate" name="fdFromDate" type="text" class="flatpickr"
                            data-mindate="{{date('Y-m-d')}}"
@@ -77,6 +57,7 @@
                 <input type="hidden" id="portal_key" value="{{$portal_key}}"/>
                 <input type="hidden" id="status_api" value="{{$status_api}}"/>
                 <input type="hidden" id="nopayment_status" value="{{$nopayment_status}}"/>
+                <input type="hidden" id="partner" value="{{$partner}}"/>
             </div>
         @endif
 

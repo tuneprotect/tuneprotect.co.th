@@ -20,7 +20,7 @@ class PortalController extends ProductController
         $massage_key = $portal_key;
         $status_api = false;
         $this->bodyData['portal_key'] = $portal_key;
-
+        $partner = '';
         //Check username and password , web portal.
         $apiResult = $this->sendToApiPortalLogin($portal_key);
         if (!$apiResult["status"]) {
@@ -31,8 +31,11 @@ class PortalController extends ProductController
         {
             $status_api = true;
             $massage_key = "Portal Key : " . $portal_key;
-
+            $partner = $apiResult["partner"];
         }
+        $this->bodyData['partner'] = $partner;
+        session(['partner' => $partner]);
+
         $this->bodyData['status_api'] = $status_api;
         $this->bodyData['massage_key'] = $massage_key;
 
@@ -142,10 +145,10 @@ class PortalController extends ProductController
 
     public function thankyou(Request $request)
     {
+        $this->bodyData['partner'] = $request->session()->get('partner');
         $this->bodyData['doc_no'] = $request->session()->get('doc_no');
         $this->bodyData['return_link'] = $request->session()->get('return_link');
         $this->bodyData['point'] = '';
-        // dd($this->bodyData['return_link']);
 
         return $this->genStatusPage_Portal(ProjectEnum::STATIC_PAGE_PAYMENT_THANK_YOU);
     }

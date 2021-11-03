@@ -512,6 +512,7 @@ class ProductController extends BaseController
             session()->put('doc_no', implode(', ', $result[0]));
             session()->put('point', $result[1]);
             session()->put('return_link', session('return_link'));
+            session()->put('partner', session('partner'));
             $func = 'thankyou';
         } else {
             $func = 'error';
@@ -557,6 +558,7 @@ class ProductController extends BaseController
         $arr_post['customer_email'] = $obj->data["fdEmail"];
         $arr_post['user_defined_1'] = ($log_id ? implode(',', $log_id) : $obj->log_id);
         $arr_post['user_defined_2'] = preg_replace('/\?.*/', '', session('return_link'));
+        $arr_post['user_defined_3'] = session('partner');
         $arr_post['result_url_1'] = url("{$this->locale}/{$this->controller}/result");
 
         $arr_post['payment_option'] = $this->payment;
@@ -730,7 +732,6 @@ class ProductController extends BaseController
     public function result(Request $request)
     {
         $result = null;
-
         $oBuyLog = BuyLog::where('fdInvoice', str_replace(config('project.invoice_prefix'), "", $request->input('order_id')))->get();
         foreach ($oBuyLog as $v) {
             $data = $v->data;
@@ -738,6 +739,7 @@ class ProductController extends BaseController
             {
                 $request->session()->put('doc_no',  $v->result['message']);
                 $request->session()->put('return_link', $request->input('user_defined_2'));
+                $request->session()->put('partner', $request->input('user_defined_3'));
                 $func = 'thankyou';
                 return redirect()->route('current', ['locale' => $this->locale, 'controller' => $this->controller, 'func' => $func, 'params' => $this->thankYouParam]);
             }
@@ -755,6 +757,7 @@ class ProductController extends BaseController
                     $request->session()->put('doc_no', implode(', ', $result[0]));
                     $request->session()->put('point', $result[1]);
                     $request->session()->put('return_link', $request->input('user_defined_2'));
+                    $request->session()->put('partner', $request->input('user_defined_3'));
                     $func = 'thankyou';
                 } else {
                     $request->session()->put('error', implode(', ', $result[0]));

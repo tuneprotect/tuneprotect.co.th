@@ -1,44 +1,49 @@
 @extends('base.template')
 
 @section('layout')
-    <header>
+
 {{--        <script src = "https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>--}}
 {{--        <meta name="csrf-token" content="{{ csrf_token() }}" />--}}
 
         <meta name="csrf-token" content="{{ csrf_token() }}" />
-        <a class="nav-icon"><span></span></a>
-        <div class="logo">
-            <a data-gtm="logo"><img
-                    src="{{url('images/favicon/favicon.png')}}"
-                    alt="Tune Protect Logo"></a>
-        </div>
-        <nav>
-            <ul class="main">
-            </ul>
-        </nav>
-        <div class="right">
-            <div class="language-section" id="language" name="language">
-                @if(count($activeLanguage) > 1 )
-                    <ul class="language-switcher">
-                        <li class="current">
-                            <strong>{{$locale}} <i class="icofont-caret-right"></i></strong>
-                            <ul>
-                                @foreach($activeLanguage as $v)
-                                    @if($v->code !== $locale )
-                                        <li>
-                                            <a data-gtm="language-switcher-{{$v->code}}"
-                                               href="{{ url("/{$v->code}/{$current_path}") }}">{{  strtoupper($v->code)}}</a>
-                                        </li>
-                                    @endif
-                                @endforeach
-                            </ul>
-                        </li>
-                    </ul>
-                @endif
+        @if(isset($partner))
+        @else
+            <header>
+            <a class="nav-icon"><span></span></a>
+            <div class="logo">
+                <a data-gtm="logo"><img
+                        src="{{url('images/favicon/favicon.png')}}"
+                        alt="Tune Protect Logo"></a>
             </div>
-            @include('frontend.component.call_center', ['color' => 'red','gtm' => 'header-call-center'])
-        </div>
-    </header>
+            <nav>
+                <ul class="main">
+                </ul>
+            </nav>
+            <div class="right">
+                <div class="language-section" id="language" name="language">
+                    @if(count($activeLanguage) > 1 )
+                        <ul class="language-switcher">
+                            <li class="current">
+                                <strong>{{$locale}} <i class="icofont-caret-right"></i></strong>
+                                <ul>
+                                    @foreach($activeLanguage as $v)
+                                        @if($v->code !== $locale )
+                                            <li>
+                                                <a data-gtm="language-switcher-{{$v->code}}"
+                                                   href="{{ url("/{$v->code}/{$current_path}") }}">{{  strtoupper($v->code)}}</a>
+                                            </li>
+                                        @endif
+                                    @endforeach
+                                </ul>
+                            </li>
+                        </ul>
+                    @endif
+                </div>
+                @include('frontend.component.call_center', ['color' => 'red','gtm' => 'header-call-center'])
+            </div>
+            </header>
+        @endif
+
     @if(isset($slideshow))
         <section class="slide_wrapper">
             <div class="slider">
@@ -62,27 +67,33 @@
 
                             </div>
                         @elseif($locale == 'en')
-                        @if(!empty($v->pic_en))
-                                @if($selected==='ONVACINA')
-                                    <picture>
-                                    <source media="(min-width:768px)" srcset="{{url(str_replace('Banner_Covid_D_EN', 'Banner_VSURE_D_EN', $v->pic_en))}}">
-                                            <img src="{{url(!empty($v->pic_mobile_en) ? url(str_replace('Banner_Covid_D_EN', 'Banner_VSURE_D_EN', $v->pic_mobile_en)) : url(str_replace('Banner_Covid_D_EN', 'Banner_VSURE_M_EN', $v->pic_en)) )}}"
-                                                alt="{{$v->locales[$locale]->title}}">
-                                                </picture>
-                                                @elseif($selected==='ONVSAFEA')
-                                    <picture>
-                                            <source media="(min-width:768px)" srcset="{{url(str_replace('Banner_Covid_D_EN', 'Banner_VSafe_D_EN2', $v->pic_en))}}">
-                                            <img src="{{url(!empty($v->pic_mobile_en) ? url(str_replace('Banner_Covid_D_EN', 'Banner_VSafe_D_EN2', $v->pic_mobile_en)) : url(str_replace('Banner_Covid_D_EN', 'Banner_VSafe_M_EN2', $v->pic_en)) )}}"
-                                                alt="{{$v->locales[$locale]->title}}">
-                                        </picture>
+                            @if(!empty($v->pic_en))
+                                    @if($selected==='ONVACINA')
+                                        <picture>
+                                        <source media="(min-width:768px)" srcset="{{url(str_replace('Banner_Covid_D_EN', 'Banner_VSURE_D_EN', $v->pic_en))}}">
+                                                <img src="{{url(!empty($v->pic_mobile_en) ? url(str_replace('Banner_Covid_D_EN', 'Banner_VSURE_D_EN', $v->pic_mobile_en)) : url(str_replace('Banner_Covid_D_EN', 'Banner_VSURE_M_EN', $v->pic_en)) )}}"
+                                                    alt="{{$v->locales[$locale]->title}}">
+                                                    </picture>
+                                                    @elseif($selected==='ONVSAFEA')
+                                        <picture>
+                                                <source media="(min-width:768px)" srcset="{{url(str_replace('Banner_Covid_D_EN', 'Banner_VSafe_D_EN2', $v->pic_en))}}">
+                                                <img src="{{url(!empty($v->pic_mobile_en) ? url(str_replace('Banner_Covid_D_EN', 'Banner_VSafe_D_EN2', $v->pic_mobile_en)) : url(str_replace('Banner_Covid_D_EN', 'Banner_VSafe_M_EN2', $v->pic_en)) )}}"
+                                                    alt="{{$v->locales[$locale]->title}}">
+                                            </picture>
+                                    @elseif($partner==='LUMA')
+                                            <picture>
+                                                <source media="(min-width:768px)" srcset="/storage/Banner/Banner_Luma_D.jpg">
+                                                <img src="{{url(!empty($v->pic_mobile_en) ? "/storage/Banner/Banner_Luma_D.jpg" : "/storage/Banner/Banner_Luma_M.jpg" )}}"
+                                                     alt="{{$v->locales[$locale]->title}}">
+                                            </picture>
                                     @else
-                                    <picture>
-                                        <source media="(min-width:768px)" srcset="{{url($v->pic_en)}}">
-                                        <img src="{{url(!empty($v->pic_mobile_en) ? $v->pic_mobile_en : $v->pic_en )}}"
-                                            alt="{{$v->locales[$locale]->title}}">
-                                    </picture>
+                                            <picture>
+                                                <source media="(min-width:768px)" srcset="{{url($v->pic_en)}}">
+                                                <img src="{{url(!empty($v->pic_mobile_en) ? $v->pic_mobile_en : $v->pic_en )}}"
+                                                    alt="{{$v->locales[$locale]->title}}">
+                                            </picture>
                                     @endif
-                            @endif
+                                @endif
                         @else
                             @if(!empty($v->pic))
                                 @if($selected==='ONVACINA')
@@ -116,82 +127,11 @@
     <div class="sticky-menu">
     </div>
     <footer>
-        {{--<div class="wrapper">
-            <div class="logo-wrapper">
-                <img src="{{url('images/template/white_logo.svg')}}" alt="">
-                @include('frontend.component.call_center', ['color' => 'white','gtm' => 'footer-call-center'])
-            </div>
-            <nav>
-                <section>
-                    <h6 class="collapse">@lang('global.nav_claim')</h6>
-                    @if($claim_category)
-                        @foreach ($claim_category as $v)
-                            <ul class="collapse">
-                                <li><a href="#"><strong>{{$v->locales[$locale]->title}}</strong></a></li>
+        @if(isset($partner))
+        @else
+            <p class="copyright">{!! __('global.copyright') !!}  </p>
+        @endif
 
-                                @foreach ($claim as $v1)
-                                    @if($v->id == $v1->cat_id )
-                                        <li>
-                                            <a data-gtm="footer-nav-claim-{{$v1->friendly_url}}" href="{{route('current',['locale' => $locale,'controller' => 'claim','func' => $v1->friendly_url ])}}">{{$v1->locales[$locale]->title}}</a>
-                                        </li>
-                                    @endif
-                                @endforeach
-
-                            </ul>
-                        @endforeach
-                    @endif
-                </section>
-                <section>
-                    <h6 class="collapse">@lang('global.nav_about')</h6>
-
-                    @if(isset($about_category))
-                        @foreach ($about_category as $v)
-                            <ul class="collapse">
-                                <li><a href="#"><strong>{{$v->locales[$locale]->title}}</strong></a></li>
-                                @foreach ($about[$v->id] as $v1)
-                                    <li>
-                                        <a data-gtm="footer-nav-about-{{$v1->friendly_url}}" href="{{route('current',['locale' => $locale,'controller' => 'aboutus','func' => $v1->friendly_url ])}}">{{$v1->locales[$locale]->title}}</a>
-                                    </li>
-                                @endforeach
-                            </ul>
-                        @endforeach
-                    @endif
-
-                    <ul class="collapse">
-                        <li>
-                            <a data-gtm="footer-nav-contact-{{$v1->friendly_url}}" href="{{route('current',['locale' => $locale,'controller' => 'contactus'],false)}}"><strong> {{__('global.nav_contact')}}</strong></a>
-                        </li>
-                    </ul>
-
-                    <ul class="collapse">
-                        <li><a data-gtm="footer-nav-tune-group" target="_blank" href="https://www.tuneprotect.com/corporate/group/about-us/"><strong>Tune
-                                    Protect
-                                    Group</strong></a></li>
-                    </ul>
-
-                    <ul class="collapse">
-                        <li><a><strong>@lang('global.our_partner')</strong></a></li>
-                        <li>
-                            <a data-gtm="footer-nav-partner-hospital" href="{{route('current',['locale' => $locale,'controller' => 'partner','func' => 'hospital' ])}}">@lang('global.hospital')</a>
-                        </li>
-                        <li>
-                            <a data-gtm="footer-nav-partner-garage" href="{{route('current',['locale' => $locale,'controller' => 'partner','func' => 'garage' ])}}">@lang('global.garage')</a>
-                        </li>
-                        <li>
-                            <a data-gtm="footer-nav-partner-service-center" href="{{route('current',['locale' => $locale,'controller' => 'partner','func' => 'service_center' ])}}">@lang('global.service_center')</a>
-                        </li>
-                    </ul>
-
-
-                    <ul class="social">
-                        @foreach($social AS $v)
-                            <li><a data-gtm="footer-nav-social" target="_blank" href="{{$v->action_link}}"><i class="{{$v->pic}}"></i></a></li>
-                        @endforeach
-                    </ul>
-                </section>
-            </nav>
-        </div>--}}
-        <p class="copyright">{!! __('global.copyright') !!}  </p>
     </footer>
 
     <!-- Load Facebook SDK for JavaScript -->
