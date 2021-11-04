@@ -269,6 +269,11 @@ document.addEventListener("DOMContentLoaded", async () => {
                 confirmButtonText: 'OK'
             })
         }
+        if($('#partner').value == 'LUMA')
+        {
+            let element = document.getElementById("btnBrochure");
+            element.parentNode.removeChild(element);
+        }
     }
 
     let step = 1;
