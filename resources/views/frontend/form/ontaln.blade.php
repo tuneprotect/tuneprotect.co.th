@@ -62,7 +62,7 @@
         @endif
 
         <input type="hidden" id="sub_code"/>
-
+        <input type="hidden" id="days"/>
 
     </form>
 

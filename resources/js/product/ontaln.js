@@ -221,6 +221,7 @@ const genPrice = (package_data, fdFromDate, fdToDate) => {
     const day = differenceInDays(endDate, startDate) + 1;
     console.log("day : "  + day);
 
+    $('#days').value = day;
 
     Object.keys(package_data)
         .filter(k => _.startsWith(k, current_package))
@@ -241,6 +242,7 @@ const genPrice = (package_data, fdFromDate, fdToDate) => {
             });
             $(`strong[data-price-${k}]`).innerHTML = parseInt(package_data[k].price[pack].price).toLocaleString();
             $('#sub_code').value = pack;
+
         })
 }
 
@@ -544,7 +546,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                             fdSendType: getRadioSelectedValue('fdSendType'),
                             ctrl_terms: $('#ctrl_terms').checked ? true : undefined,
                             ctrl_accept_insurance_term: $('#ctrl_accept_insurance_term').checked ? true : undefined,
-                            fdDay: $('#sub_code').value,
+                            fdDay: $('#days').value,
                             profile: profileData
                         }
 
