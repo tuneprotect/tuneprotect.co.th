@@ -68,11 +68,19 @@
 
     <br/>
     {!! $package->locales[$locale]->remark !!}
+    @if($partner == 'LUMA')
+        @lang('product.Luma_faq')
+    @endif
 </section>
 @include('frontend.component.form-lite-coverage-table',['package_detail' => $package_detail,'selected' =>$selected ])
 <section style="display: none" id="step3" class="wrapper">
     <form class="insurance-form">
-        <div class="form-head">{{$package->locales[$locale]->title}} <span id="form-head"></span></div>
+        @if($partner == 'LUMA')
+            <div class="form-head">@lang('product.Luma_plan') <span id="form-head"></span></div>
+        @else
+            <div class="form-head">{{$package->locales[$locale]->title}} <span id="form-head"></span></div>
+        @endif
+
         <div id="multipleform">
             @for($i = 1;$i < 10;$i++)
                 <div class="form-inner" id="form_profile_{{$i}}" {{$i > 1 ? 'style=display:none;' : ''}}>

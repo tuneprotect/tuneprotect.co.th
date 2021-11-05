@@ -595,7 +595,8 @@ return [
     ,'itravel_warning' =>"กรุณาซื้อกรมธรรม์ก่อนการเดินทางออกจากประเทศไทยล่วงหน้าอย่างน้อย 2 ชั่วโมง และเลือกวันที่เดินทางให้ครอบคลุมตั้งแต่ออกจากประเทศไทยจนกลับถึงประเทศไทย"
     ,'itravel_coverage_choose' =>"ความคุ้มครองที่เลือกไว้"
     ,'itravel_coverage_fix1' =>"ต่อ 6 ชม."
-    ,'iPass_Brochure' =>""
+    ,"Luma_plan" => "Luma Thailand Pass"
+    ,"Luma_faq" => "https://www.lumahealth.com/luma-thailand-pass-faq/"
 ];
 
 
