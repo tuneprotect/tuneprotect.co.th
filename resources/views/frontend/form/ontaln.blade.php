@@ -14,13 +14,13 @@
                            data-setmaxdaterange="364"
                            data-error="@lang('product.error.travel_start_date')"
                     />
-                    <label for="fdFromDate">@lang("product.departure_date")</label>
+                    <label for="fdFromDate">@lang("product.ipass_arrival_date")</label>
                 </div>
                 <div class="controls-wrapper">
                     <input id="fdToDate" name="fdToDate" type="text" class="flatpickr"
                            data-mindate="{{date('Y-m-d')}}"
                            data-error="@lang('product.error.travel_end_date')"/>
-                    <label for="fdToDate">@lang("product.return_date")</label>
+                    <label for="fdToDate">@lang("product.ipass_departure_date")</label>
                 </div>
 
                 <div class="controls-wrapper">

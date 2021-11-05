@@ -597,6 +597,8 @@ return [
     ,'itravel_coverage_fix1' =>"ต่อ 6 ชม."
     ,"Luma_plan" => "Luma Thailand Pass"
     ,"Luma_faq" => "https://www.lumahealth.com/luma-thailand-pass-faq/"
+    ,"ipass_arrival_date" => "Arrival Date to Thailand"
+    ,"ipass_departure_date" => "Departure Date from to Thailand"
 ];
 
 
