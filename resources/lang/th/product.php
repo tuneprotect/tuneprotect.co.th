@@ -600,6 +600,8 @@ return [
     ,"ipass_arrival_date" => "Arrival Date to Thailand"
     ,"ipass_departure_date" => "Departure Date from to Thailand"
     ,'ipass_warning' =>"*Travel within 30 days is subject to the minimum premium."
+    ,'ipass_day_wording' =>"The period of coverage"
+    ,'ipass_day' =>"Days"
 ];
 
 

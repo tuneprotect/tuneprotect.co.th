@@ -3508,7 +3508,7 @@ main {
 }
 
 
-main[data-package="ONPACA"],[data-package="ONPACAA"],[data-package="ONTAOB"] {
+main[data-package="ONPACA"],[data-package="ONPACAA"],[data-package="ONTAOB"],[data-package="ONTAOB"], [data-package="ONTALN"] {
     #table-detail {
         thead {
             tr {
@@ -3522,7 +3522,7 @@ main[data-package="ONPACA"],[data-package="ONPACAA"],[data-package="ONTAOB"] {
     }
 }
 
-main[data-package="ONPAKD"], [data-package="ONPASN"],[data-package="ONPAKDA"], [data-package="ONPASNA"] {
+main[data-package="ONPAKD"], [data-package="ONPASN"],[data-package="ONPAKDA"] {
     #table-detail {
         thead {
             tr {

@@ -10,6 +10,8 @@
              data-plan="@lang('product.insurance_plan')"
              data-price-perperson="@lang('product.price_perperson')"
              data-total-price="@lang('product.total_price')"
+             data-day-wording="@lang("product.ipass_day_wording")"
+             data-day="@lang("product.ipass_day")"
         ></div>
         <div class="btn-wrapper">
             @csrf
