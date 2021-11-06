@@ -275,14 +275,12 @@ export const showTitle = (sex, age) => {
         arrHide.push('#li_title_184');
         arrHide.push('#li_title_001');
     }
-
     arrHide.map(v => {
         if ($(v)) {
             $(v).style.display = "none";
         }
 
     })
-
 }
 
 
