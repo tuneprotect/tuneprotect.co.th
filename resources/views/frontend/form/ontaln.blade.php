@@ -44,6 +44,9 @@
                     <label for="ctrl_no_of_insured">@lang("product.no_of_insured")</label>
                 </div>
             </div>
+            <div>
+                <p class="small">@lang('product.ipass_warning')</p>
+            </div>
         </div>
         <div class="btn-wrapper">
             <button id="nextstep1" data-gtm="product-{{strtolower($selected)}}-proceed-step-1" data-step="2"

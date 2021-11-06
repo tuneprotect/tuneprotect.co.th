@@ -599,6 +599,7 @@ return [
     ,"Luma_faq" => "https://www.lumahealth.com/luma-thailand-pass-faq/"
     ,"ipass_arrival_date" => "Arrival Date to Thailand"
     ,"ipass_departure_date" => "Departure Date from to Thailand"
+    ,'ipass_warning' =>"*Travel within 30 days is subject to the minimum premium."
 ];
 
 

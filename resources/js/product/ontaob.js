@@ -260,6 +260,8 @@ const genPrice = (package_data,country_data, subpackage, fdFromDate, fdToDate) =
     const day = differenceInDays(endDate, startDate) + 1;
     console.log("day : "  + day);
 
+    $('#days').value = day;
+
     const allPack = Object.keys(package_data)
         .filter(k => _.startsWith(k, current_package + subpackage))
 
@@ -673,7 +675,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                             ctrl_terms: $('#ctrl_terms').checked ? true : undefined,
                             ctrl_accept_insurance_term: $('#ctrl_accept_insurance_term').checked ? true : undefined,
                             profile: profileData,
-                            fdDay: $('#sub_code').value,
+                            fdDay: $('#days').value,
                             rpcNumber: 190
                         }
 
