@@ -34,9 +34,13 @@ class ProductController extends BaseController
     public function index($link = null, $selected = null)
     {
         //Set redirect by product , Maintenance https://www.tuneprotect.co.th/index.html
-//        if($selected ==='ONCOVIDA')
+        if($selected ==='ONCOVIDA')
+        {
+            return redirect('https://www.tuneprotect.co.th/index.html');
+        }
+//        if($selected ==='ONTALN'||$selected ==='ONCOVIDL')
 //        {
-//            return redirect('https://www.tuneprotect.co.th/index.html');
+//            return redirect('https://www.tuneprotect.co.th/Maintenance.html');
 //        }
 
 
