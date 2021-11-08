@@ -244,6 +244,7 @@ const genPrice = (package_data, fdFromDate, fdToDate) => {
             $('#sub_code').value = pack;
 
         })
+
 }
 
 
