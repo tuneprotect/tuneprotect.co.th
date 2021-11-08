@@ -80,12 +80,21 @@
                                                 <img src="{{url(!empty($v->pic_mobile_en) ? url(str_replace('Banner_Covid_D_EN', 'Banner_VSafe_D_EN2', $v->pic_mobile_en)) : url(str_replace('Banner_Covid_D_EN', 'Banner_VSafe_M_EN2', $v->pic_en)) )}}"
                                                     alt="{{$v->locales[$locale]->title}}">
                                             </picture>
-                                    @elseif($partner==='LUMA')
+                                    @elseif(isset($partner))
+                                        @if($partner==='LUMA')
                                             <picture>
                                                 <source media="(min-width:768px)" srcset="/storage/Banner/Banner_Luma_D.jpg">
                                                 <img src="{{url(!empty($v->pic_mobile_en) ? "/storage/Banner/Banner_Luma_D.jpg" : "/storage/Banner/Banner_Luma_M.jpg" )}}"
                                                      alt="{{$v->locales[$locale]->title}}">
                                             </picture>
+                                        @else
+                                            <picture>
+                                                <source media="(min-width:768px)" srcset="{{url($v->pic_en)}}">
+                                                <img src="{{url(!empty($v->pic_mobile_en) ? $v->pic_mobile_en : $v->pic_en )}}"
+                                                     alt="{{$v->locales[$locale]->title}}">
+                                            </picture>
+                                        @endif
+
                                     @else
                                             <picture>
                                                 <source media="(min-width:768px)" srcset="{{url($v->pic_en)}}">

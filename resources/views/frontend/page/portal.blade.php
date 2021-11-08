@@ -7,11 +7,16 @@
                 @if($portal_key == 'QAVM2LRWBGCXXGSFBQFR6LKW24JXXUJRX8MBNGFRGUSXXTARPQJRX')
                     <h1 class="product-header">iSafe</h1>
                 @else
-                    @if($partner==='LUMA')
-                        <h1 class="product-header">Luma Thailand Pass</h1>
+                    @if(isset($partner))
+                        @if($partner==='LUMA')
+                            <h1 class="product-header">Luma Thailand Pass</h1>
+                        @else
+                            <h1 class="product-header">{{$current_package->locales[$locale]->title}}</h1>
+                        @endif
                     @else
                         <h1 class="product-header">{{$current_package->locales[$locale]->title}}</h1>
                     @endif
+
                 @endif
             @else
                 <h1 class="product-header">{{$current_package->locales[$locale]->title}}</h1>
