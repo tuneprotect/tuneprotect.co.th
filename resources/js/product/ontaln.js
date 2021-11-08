@@ -214,12 +214,12 @@ const genPrice = (package_data, fdFromDate, fdToDate) => {
     let startDate = parseISO(fdFromDate);
     let endDate = parseISO(fdToDate);
 
-    console.log(package_data);
-    console.log(fdFromDate);
-    console.log(fdToDate);
+    // console.log(package_data);
+    // console.log(fdFromDate);
+    // console.log(fdToDate);
 
     const day = differenceInDays(endDate, startDate) + 1;
-    console.log("day : "  + day);
+    // console.log("day : "  + day);
 
     $('#days').value = day;
 
