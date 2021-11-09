@@ -38,7 +38,7 @@ class ProductController extends BaseController
         {
             $boolRedirect = true;
             if (isset($this->bodyData['portal_key'])) {
-                if($this->bodyData['portal_key'] === 'QAVM2LRWBGCXNTSFBQFR6LKW24JWXUJRX6MBNGFRGUSXXTARPQJRX')
+                if($this->bodyData['portal_key'] === 'QAVM2LRWBGCXNTSFBQFR6LKW24JWXUJRX6MBNGFRGUSXXTARPQJRX' || $this->bodyData['portal_key'] === 'QAVM2LRWBGCXXGSFBQFR6LKW24JXXUJRX8MBNGFRGUSXXTARPQJRX')
                 {
                     $boolRedirect = false;
                 }
