@@ -36,13 +36,18 @@ class ProductController extends BaseController
         //Set redirect by product , Maintenance https://www.tuneprotect.co.th/index.html
         if($selected ==='ONCOVIDA')
         {
-            return redirect('https://www.tuneprotect.co.th/index.html');
+            $boolRedirect = true;
+            if (isset($this->bodyData['portal_key'])) {
+                if($this->bodyData['portal_key'] === 'QAVM2LRWBGCXNTSFBQFR6LKW24JWXUJRX6MBNGFRGUSXXTARPQJRX')
+                {
+                    $boolRedirect = false;
+                }
+            }
+            if($boolRedirect === true)
+            {
+                return redirect('https://www.tuneprotect.co.th/index.html');
+            }
         }
-//        if($selected ==='ONTALN'||$selected ==='ONCOVIDL')
-//        {
-//            return redirect('https://www.tuneprotect.co.th/Maintenance.html');
-//        }
-
 
         $this->bodyData['controller'] = $this->controller;
         if (empty($link)) {
