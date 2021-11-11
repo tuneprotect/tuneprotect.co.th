@@ -299,6 +299,9 @@ class ProductController extends BaseController
     {
         if (substr($data['fdPackage'], 0, 4) === 'ONPA') {
             $obj = new PAObject();
+        } elseif (substr($data['fdPackage'], 0, 6) === 'CVISAFE') {
+            $obj = new COVIDAObject();
+            dd($obj);
         } elseif (substr($data['fdPackage'], 0, 8) === 'ONCOVIDA') {
             $obj = new COVIDAObject();
         } elseif (substr($data['fdPackage'], 0, 8) === 'ONCOVIDL') {
@@ -386,8 +389,9 @@ class ProductController extends BaseController
         }
 
         if (substr($data['fdPackage'], 0, 8) === 'ONCOVIDA'
-        || substr($data['fdPackage'], 0, 8) === 'ONVACINA'
-        || substr($data['fdPackage'], 0, 8) === 'ONVSAFEA') {
+            || substr($data['fdPackage'], 0, 8) === 'ONVACINA'
+            || substr($data['fdPackage'], 0, 8) === 'ONVSAFEA'
+            ||substr($data['fdPackage'], 0, 7) === 'CVISAFE') {
 
 
             if (isset($data['fdQuestion2_1']) && ($key = array_search('other', $data['fdQuestion2_1'])) !== false) {
@@ -418,8 +422,15 @@ class ProductController extends BaseController
                 $package = (array)json_decode(Storage::disk('public')->get('json/onvsafea.json'));
             }
 
-            $obj->fdPackage = $package[$data['fdPackage']]->apiPackage;
-
+            if(substr($data['fdPackage'], 0, 7) === 'CVISAFE')
+            {
+                $package = (array)json_decode(Storage::disk('public')->get('json/cvisafe.json'));
+                $obj->fdApiPackage = $package[$data['fdPackage']]->apiPackage;
+            }
+            else
+            {
+                $obj->fdPackage = $package[$data['fdPackage']]->apiPackage;
+            }
         }
         elseif (substr($data['fdPackage'], 0, 8) === 'ONCOVIDL' || substr($data['fdPackage'], 0, 6) === 'ONTALN')
         {
@@ -436,8 +447,6 @@ class ProductController extends BaseController
             }
         }
 
-
-//        dd($obj);
         $obj->fdController = $this->controller;
         return $obj;
     }
@@ -586,11 +595,12 @@ class ProductController extends BaseController
     {
 
         $link = "";
-
         if (str_starts_with($package, 'ONPA')) {
             $this->thankYouParam = 'ONPA';
             $link = 'IssuePolicyPAChoice';
-        } elseif (substr($package, 0, 8) === 'ONCOVIDA' || substr($package, 0, 8) === 'ONCOVIDL'|| substr($package, 0, 8) === 'ONISAFEX') {
+        } elseif (substr($package, 0, 8) === 'ONCOVIDA'
+            || substr($package, 0, 8) === 'ONCOVIDL'
+            || substr($package, 0, 8) === 'ONISAFEX') {
             $this->thankYouParam = substr($package, 0, 8);
             $link = 'IssuePolicyCovid19';
         } elseif (substr($package, 0, 6) === 'ONTALN') {
@@ -617,8 +627,11 @@ class ProductController extends BaseController
         } elseif (substr($package, 0, 6) === 'ONFIMP') {
             $this->thankYouParam = substr($package, 0, 6);
             $link = 'IssuePolicyMyHomePlus';
+        } elseif (substr($package, 0, 7) === 'CVISAFE') {
+            $this->thankYouParam = 'CVISAFE';
+            $link = 'IssuePolicyCovid19';
         }
-//        return config('tune-api.url') . $link;
+//        dd(config('tune-api.url') . $link);
 //        dd($package);
         return $link;
     }
