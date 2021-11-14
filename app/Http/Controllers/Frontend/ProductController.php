@@ -225,6 +225,10 @@ class ProductController extends BaseController
                         {
                             if($v->plan->PASNA07 !== '-'){$v->plan->PASNA07 = __('product.healt2go_word');}
                         }
+                        if($selected === 'CVISAFE')
+                        {
+                            if($v->plan->COVCVISAFE4 !== '-'){$v->plan->COVCVISAFE4 = __('product.healt2go_word');}
+                        }
                     }
                     $this->bodyData['package_detail'][$k] = $v;
                 }
