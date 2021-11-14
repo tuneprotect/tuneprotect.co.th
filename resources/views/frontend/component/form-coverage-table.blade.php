@@ -59,7 +59,9 @@
                                             @endif
                                         @endif
                                     @else
-                                        <span data-recommend>@lang('product.recommend')</span>
+                                        @if($selected == "CI")
+                                            <span data-recommend>@lang('product.recommend')</span>
+                                        @endif
                                         <strong class="package-number">@lang('product.plan') {{$i}}</strong>
                                     @endif
 
