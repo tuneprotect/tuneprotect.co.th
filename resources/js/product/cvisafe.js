@@ -4,7 +4,7 @@ import {
     getPackageData,
     getSelectedPrice,
     showTitle,
-    validateAgeInPackage, validatePolicy
+    validateAgeInPackage, validatePolicy,validateQuestion
 } from "../form/productHelper";
 import {
     $,
@@ -282,11 +282,11 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
     }
 
-    if(Keys == 'QAVM2LRWBGCXXGSFBQFR6LKW24JXXUJRX8MBNGFRGUSXXTARPQJRX')
-    {
-        package_data = await getPackageData('oncovida_old');
-        // console.log(package_data);
-    }
+    // if(Keys == 'QAVM2LRWBGCXXGSFBQFR6LKW24JXXUJRX8MBNGFRGUSXXTARPQJRX')
+    // {
+    //     package_data = await getPackageData('oncovida_old');
+    //     // console.log(package_data);
+    // }
 
     let promocode = "";
     // var myPromocode = document.getElementById("promocode");
@@ -403,6 +403,16 @@ document.addEventListener("DOMContentLoaded", async () => {
         });
     });
 
+    const allFieldQ = $form.querySelectorAll('input');
+    allFieldQ.forEach(field => {
+        field.addEventListener("change", function (e) {
+            validateField(this, constraints);
+            if (['ctrl_question_1_Y', 'ctrl_question_2_Y','ctrl_question_1_N','ctrl_question_2_N'].includes(field.id)) {
+                validateQuestion(e.target);
+            }
+        });
+    });
+
 
     const $btnGoto = $$('.btn-goto');
     $btnGoto.forEach($btn => {
@@ -458,19 +468,19 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 
 
-                        if(data.fdKeys == "BD5Q6GFRZ4MXQLWW3GRL6PT3YGVM6DERA2UBNGFRGUSXNH9RPTUVX6A"
-                        || data.fdKeys == "QAVM2LRWBGCXXGSFBQFR6LKW24JXXUJRX8MBNGFRGUSXXTARPQJRX"
-                        || data.fdKeys == "QAVM2LRWBGCXNTSFBQFR6LKW24JWXUJRX6MBNGFRGUSXXTARPQJRX")
-                        {
-                            data = {
-                                ...data,
-                                fdFromDate: $('#fdFromDate').value
-                            }
-                            let resultVal = validate(data, step1Constraints);
-                            if (resultVal) {
-                                status = false;
-                            }
-                        }
+                        // if(data.fdKeys == "BD5Q6GFRZ4MXQLWW3GRL6PT3YGVM6DERA2UBNGFRGUSXNH9RPTUVX6A"
+                        // || data.fdKeys == "QAVM2LRWBGCXXGSFBQFR6LKW24JXXUJRX8MBNGFRGUSXXTARPQJRX"
+                        // || data.fdKeys == "QAVM2LRWBGCXNTSFBQFR6LKW24JWXUJRX6MBNGFRGUSXXTARPQJRX")
+                        // {
+                        //     data = {
+                        //         ...data,
+                        //         fdFromDate: $('#fdFromDate').value
+                        //     }
+                        //     let resultVal = validate(data, step1Constraints);
+                        //     if (resultVal) {
+                        //         status = false;
+                        //     }
+                        // }
 
                         break;
 
@@ -553,20 +563,20 @@ document.addEventListener("DOMContentLoaded", async () => {
                             scrollToTargetAdjusted($('.controls-wrapper.error'));
                             status = false;
                         } else {
-                            let sb = ''
 
-                            if(data.fdKeys == "BD5Q6GFRZ4MXQLWW3GRL6PT3YGVM6DERA2UBNGFRGUSXNH9RPTUVX6A"
-                            || data.fdKeys == "QAVM2LRWBGCXXGSFBQFR6LKW24JXXUJRX8MBNGFRGUSXXTARPQJRX"
-                            || data.fdKeys == "QAVM2LRWBGCXNTSFBQFR6LKW24JWXUJRX6MBNGFRGUSXXTARPQJRX")
-                            {
-                                let fromDate = ($('#fdFromDate').value).split('/');
-                                let fdFromDate = `${fromDate[2]}-${fromDate[1]}-${fromDate[0]}`;
-                                data = {
-                                    ...data,
-                                    fdFromDate
-                                }
-                            }
+                            // if(data.fdKeys == "BD5Q6GFRZ4MXQLWW3GRL6PT3YGVM6DERA2UBNGFRGUSXNH9RPTUVX6A"
+                            // || data.fdKeys == "QAVM2LRWBGCXXGSFBQFR6LKW24JXXUJRX8MBNGFRGUSXXTARPQJRX"
+                            // || data.fdKeys == "QAVM2LRWBGCXNTSFBQFR6LKW24JWXUJRX6MBNGFRGUSXXTARPQJRX")
+                            // {
+                            //     let fromDate = ($('#fdFromDate').value).split('/');
+                            //     let fdFromDate = `${fromDate[2]}-${fromDate[1]}-${fromDate[0]}`;
+                            //     data = {
+                            //         ...data,
+                            //         fdFromDate
+                            //     }
+                            // }
 
+                            let sb = '';
                             Object.keys(data).map(k => {
 
                                 if (Array.isArray(data[k])) {
