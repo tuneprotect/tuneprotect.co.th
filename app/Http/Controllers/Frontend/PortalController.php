@@ -17,7 +17,7 @@ class PortalController extends ProductController
 
         if($selected ==='CVISAFE')
         {
-            return redirect('https://www.tuneprotect.co.th/index.html');
+            return redirect('https://www.tuneprotect.co.th/Maintenance.html');
         }
 
         $this->bodyData['controller'] = $this->controller;
