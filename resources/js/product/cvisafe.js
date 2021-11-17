@@ -465,12 +465,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                             }
                         }
 
-
-
-
-                        // if(data.fdKeys == "BD5Q6GFRZ4MXQLWW3GRL6PT3YGVM6DERA2UBNGFRGUSXNH9RPTUVX6A"
-                        // || data.fdKeys == "QAVM2LRWBGCXXGSFBQFR6LKW24JXXUJRX8MBNGFRGUSXXTARPQJRX"
-                        // || data.fdKeys == "QAVM2LRWBGCXNTSFBQFR6LKW24JWXUJRX6MBNGFRGUSXXTARPQJRX")
+                        // if(data.fdKeys == "3TAMA4RRZ4MVQ2Y226UBNGFR7T3XNG9R7UUXX")
                         // {
                         //     data = {
                         //         ...data,
@@ -564,9 +559,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                             status = false;
                         } else {
 
-                            // if(data.fdKeys == "BD5Q6GFRZ4MXQLWW3GRL6PT3YGVM6DERA2UBNGFRGUSXNH9RPTUVX6A"
-                            // || data.fdKeys == "QAVM2LRWBGCXXGSFBQFR6LKW24JXXUJRX8MBNGFRGUSXXTARPQJRX"
-                            // || data.fdKeys == "QAVM2LRWBGCXNTSFBQFR6LKW24JWXUJRX6MBNGFRGUSXXTARPQJRX")
+                            // if(data.fdKeys == "3TAMA4RRZ4MVQ2Y226UBNGFR7T3XNG9R7UUXX")
                             // {
                             //     let fromDate = ($('#fdFromDate').value).split('/');
                             //     let fdFromDate = `${fromDate[2]}-${fromDate[1]}-${fromDate[0]}`;

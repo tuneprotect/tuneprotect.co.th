@@ -346,6 +346,14 @@ const getSelectedPriceVC = (packageCode, package_data) => {
     return package_data[packageCode].price;
 }
 
+const step1Constraints = {
+    fdFromDate: {
+        presence: {
+            allowEmpty: false,
+            message: "^" + $('#fdFromDate')?.getAttribute('data-error')
+        }
+    }
+};
 
 document.addEventListener("DOMContentLoaded", async () => {
     const package_data = await getPackageData(current_package);
@@ -571,6 +579,20 @@ document.addEventListener("DOMContentLoaded", async () => {
                             }
                         }
 
+
+                        if(data.fdKeys == "QAVM2LRWBGCXXTSFBQFR6LKW28UQXUJR22UBNGFRGUSXXTARPQJRX")
+                        {
+                            data = {
+                                ...data,
+                                fdFromDate: $('#fdFromDate').value
+                            }
+                            let resultVal = validate(data, step1Constraints);
+                            if (resultVal) {
+                                status = false;
+                            }
+                        }
+
+
                         break;
                     case 2:
                         // console.log('STEP 2 ');
@@ -667,6 +689,15 @@ document.addEventListener("DOMContentLoaded", async () => {
                                 break;
                             }
 
+                            if(data.fdKeys == "QAVM2LRWBGCXXTSFBQFR6LKW28UQXUJR22UBNGFRGUSXXTARPQJRX")
+                            {
+                                let fromDate = ($('#fdFromDate').value).split('/');
+                                let fdFromDate = `${fromDate[2]}-${fromDate[1]}-${fromDate[0]}`;
+                                data = {
+                                    ...data,
+                                    fdFromDate
+                                }
+                            }
 
                             let sb = ''
 
