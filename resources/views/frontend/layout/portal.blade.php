@@ -6,7 +6,33 @@
 {{--        <meta name="csrf-token" content="{{ csrf_token() }}" />--}}
 
         <meta name="csrf-token" content="{{ csrf_token() }}" />
-        @if(isset($partner))
+        @if($partner==='LUMA' && $selected==='ONTALN')
+        @elseif($partner==='LUMA' && $selected==='CVCARE')
+            <header>
+                <nav>
+                </nav>
+                <div class="right">
+                    <div class="language-section" id="language" name="language">
+                        @if(count($activeLanguage) > 1 )
+                            <ul class="language-switcher">
+                                <li class="current">
+                                    <strong>{{$locale}} <i class="icofont-caret-right"></i></strong>
+                                    <ul>
+                                        @foreach($activeLanguage as $v)
+                                            @if($v->code !== $locale )
+                                                <li>
+                                                    <a data-gtm="language-switcher-{{$v->code}}"
+                                                       href="{{ url("/{$v->code}/{$current_path}") }}">{{  strtoupper($v->code)}}</a>
+                                                </li>
+                                            @endif
+                                        @endforeach
+                                    </ul>
+                                </li>
+                            </ul>
+                        @endif
+                    </div>
+                </div>
+            </header>
         @else
             <header>
             <a class="nav-icon"><span></span></a>
@@ -74,17 +100,23 @@
                                                 <img src="{{url(!empty($v->pic_mobile_en) ? url(str_replace('Banner_Covid_D_EN', 'Banner_VSURE_D_EN', $v->pic_mobile_en)) : url(str_replace('Banner_Covid_D_EN', 'Banner_VSURE_M_EN', $v->pic_en)) )}}"
                                                     alt="{{$v->locales[$locale]->title}}">
                                                     </picture>
-                                                    @elseif($selected==='ONVSAFEA')
+                                    @elseif($selected==='ONVSAFEA')
                                         <picture>
                                                 <source media="(min-width:768px)" srcset="{{url(str_replace('Banner_Covid_D_EN', 'Banner_VSafe_D_EN2', $v->pic_en))}}">
                                                 <img src="{{url(!empty($v->pic_mobile_en) ? url(str_replace('Banner_Covid_D_EN', 'Banner_VSafe_D_EN2', $v->pic_mobile_en)) : url(str_replace('Banner_Covid_D_EN', 'Banner_VSafe_M_EN2', $v->pic_en)) )}}"
                                                     alt="{{$v->locales[$locale]->title}}">
                                             </picture>
                                     @elseif(isset($partner))
-                                        @if($partner==='LUMA')
+                                        @if($partner==='LUMA' && $selected==='ONTALN')
                                             <picture>
                                                 <source media="(min-width:768px)" srcset="/storage/Banner/Banner_Luma_D.jpg">
                                                 <img src="{{url(!empty($v->pic_mobile_en) ? "/storage/Banner/Banner_Luma_D.jpg" : "/storage/Banner/Banner_Luma_M.jpg" )}}"
+                                                     alt="{{$v->locales[$locale]->title}}">
+                                            </picture>
+                                        @elseif($selected==='CVCARE')
+                                            <picture>
+                                                <source media="(min-width:768px)" srcset="/storage/Banner/Banner_LumaCare_D.jpg">
+                                                <img src="{{url(!empty($v->pic_mobile_en) ? "/storage/Banner/Banner_LumaCare_D.jpg" : "/storage/Banner/Banner_LumaCare_M.jpg" )}}"
                                                      alt="{{$v->locales[$locale]->title}}">
                                             </picture>
                                         @else
@@ -116,6 +148,12 @@
                                             <source media="(min-width:768px)" srcset="{{url(str_replace('Banner_Covid_D', 'Banner_VSafe_D2', $v->pic))}}">
                                             <img src="{{url(!empty($v->pic_mobile) ? url(str_replace('Banner_Covid_D', 'Banner_VSafe_D2', $v->pic_mobile)) : url(str_replace('Banner_Covid_D', 'Banner_VSafe_M2', $v->pic)) )}}"
                                                 alt="{{$v->locales[$locale]->title}}">
+                                        </picture>
+                                @elseif($selected==='CVCARE')
+                                        <picture>
+                                            <source media="(min-width:768px)" srcset="/storage/Banner/Banner_LumaCare_D.jpg">
+                                            <img src="{{url(!empty($v->pic_mobile_en) ? "/storage/Banner/Banner_LumaCare_D.jpg" : "/storage/Banner/Banner_LumaCare_M.jpg" )}}"
+                                                 alt="{{$v->locales[$locale]->title}}">
                                         </picture>
                                 @else
                                     <picture>

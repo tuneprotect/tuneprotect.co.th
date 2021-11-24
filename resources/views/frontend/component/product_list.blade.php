@@ -4,7 +4,8 @@
             <h1>{{$product->locales[$locale]->title}}</h1>
             <div class="item-wrapper">
                 @foreach ($product->productPackage as $v)
-                    @if($v->code !== "ONVACINA")
+                    @if($v->code === 'ONVACINA' || $v->code === 'CVCARE')
+                    @else
                         <div class="item">
                             <div class="two-tone-icon">
                                 <span><img src="{{url($v->pic)}}" alt=""></span>

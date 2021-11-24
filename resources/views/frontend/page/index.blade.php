@@ -90,7 +90,8 @@
                                     </div>
                                     <ul>
                                         @foreach($v->productPackage AS $v1)
-                                            @if($v1->code !== "ONVACINA")
+                                            @if($v1->code === 'ONVACINA' || $v1->code === 'CVCARE')
+                                            @else
                                                 <li>
                                                     <a
                                                         data-gtm="index-product-image-{{$v->friendly_url}}-{{$v1->code}}"

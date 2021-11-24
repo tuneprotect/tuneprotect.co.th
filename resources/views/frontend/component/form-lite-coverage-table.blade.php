@@ -78,6 +78,12 @@
                                     <strong>{{number_format( $v1->plan->$k,0)}}</strong>
                                 @elseif( strpos($v1->plan->$k,'__') === 0 )
                                     <strong>{!!__( str_replace('__','',$v1->plan->$k) )!!}</strong>
+                                @elseif(str_contains($v1->plan->$k,'healt2go_plan'))
+                                    <strong>{!!__( str_replace('healt2go_plan',__('product.healt2go_plan'),$v1->plan->$k)) !!}</strong>
+                                @elseif(str_contains($v1->plan->$k,'healt2go_desc'))
+                                    <strong>{!!__( str_replace('healt2go_desc',__('product.healt2go_desc'),$v1->plan->$k)) !!}</strong>
+                                @elseif(str_contains($v1->plan->$k,'healt2go_word'))
+                                    <strong>{!!__( str_replace('healt2go_word',__('product.healt2go_word'),$v1->plan->$k)) !!}</strong>
                                 @else
                                     <strong>{!! $v1->plan->$k !!}</strong>
                                 @endif

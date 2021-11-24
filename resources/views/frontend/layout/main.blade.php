@@ -35,7 +35,8 @@
                                                     <ul>
                                                         @foreach ($v1->productPackage as $v2)
                                                             <li>
-                                                                @if($v2->code !== "ONVACINA")
+                                                            @if($v2->code === 'ONVACINA' || $v2->code === 'CVCARE')
+                                                            @else
                                                                     <a data-gtm="main-nav-product-{{$v1->friendly_url}}-{{$v2->code}}"
                                                                        href="{{route('current',['locale' => $locale,'controller' => 'product','func' => $v1->friendly_url,'params' => $v2->code ])}}">
                                                                         <span>{{$v2->locales[$locale]->title}}</span></a>

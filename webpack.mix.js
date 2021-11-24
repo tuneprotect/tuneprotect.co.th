@@ -72,6 +72,7 @@ mix.react('resources/backstage_source/index.js', 'public/js/backstage')
     .js('resources/js/product/onfimp.js', 'public/js/frontend/product/')
     .js('resources/js/product/ontaob.js', 'public/js/frontend/product/')
     .js('resources/js/product/cvisafe.js', 'public/js/frontend/product/')
+    .js('resources/js/product/cvcare.js', 'public/js/frontend/product/')
     .sass('resources/sass/style.scss', 'public/css/frontend')
     .browserSync('https://staging.tuneprotect.local')
     .version();

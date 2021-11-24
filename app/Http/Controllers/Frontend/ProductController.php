@@ -178,9 +178,6 @@ class ProductController extends BaseController
             }
         }
 
-//        dd($this->bodyData['current_product']);
-//        dd($packageJson);
-
         if (Storage::disk('public')->exists('json/' . $packageJson . '.json')) {
             $package_detail = json_decode(Storage::disk('public')->get('json/' . $packageJson . '.json'));
             foreach ($package_detail as $k => $v) {
@@ -236,10 +233,9 @@ class ProductController extends BaseController
         }
         else
         {
-//            dd("load json error " . 'json/' . $packageJson . '.json');
+
         }
 
-//        dd($this->bodyData['package_detail']);
 
         $this->template->setBody('id', 'product_page');
 
@@ -283,10 +279,6 @@ class ProductController extends BaseController
              dd('js error.');
         }
 
-//        dd($this->bodyData['package_detail']);
-//        dd($this->bodyData['current_package']);
-
-
 
         if ($this->controller != 'product') {
             return $this->genView('frontend.page.portal');
@@ -305,7 +297,6 @@ class ProductController extends BaseController
             $obj = new PAObject();
         } elseif (substr($data['fdPackage'], 0, 6) === 'CVISAFE') {
             $obj = new COVIDAObject();
-            dd($obj);
         } elseif (substr($data['fdPackage'], 0, 8) === 'ONCOVIDA') {
             $obj = new COVIDAObject();
         } elseif (substr($data['fdPackage'], 0, 8) === 'ONCOVIDL') {
@@ -326,6 +317,8 @@ class ProductController extends BaseController
             $obj = new VACINAObject();
         } elseif (substr($data['fdPackage'], 0, 8) === 'ONVSAFEA') {
            $obj = new VSAFEAObject();
+        } elseif (substr($data['fdPackage'], 0, 6) === 'CVCARE') {
+            $obj = new VSAFEAObject();
         } elseif (substr($data['fdPackage'], 0, 2) === 'CI') {
             $obj = new CIObject();
 
@@ -395,20 +388,20 @@ class ProductController extends BaseController
         if (substr($data['fdPackage'], 0, 8) === 'ONCOVIDA'
             || substr($data['fdPackage'], 0, 8) === 'ONVACINA'
             || substr($data['fdPackage'], 0, 8) === 'ONVSAFEA'
-            ||substr($data['fdPackage'], 0, 7) === 'CVISAFE') {
+            || substr($data['fdPackage'], 0, 7) === 'CVISAFE'
+            || substr($data['fdPackage'], 0, 6) === 'CVCARE') {
 
 
             if (isset($data['fdQuestion2_1']) && ($key = array_search('other', $data['fdQuestion2_1'])) !== false) {
                 unset($data['fdQuestion2_1'][$key]);
             }
-
             if (!empty($data['ctrl_question_2_specify'])) {
                 $data['fdQuestion2_1'][] = $data['ctrl_question_2_specify'];
             }
-
             if (isset($data['fdQuestion2_1'])) {
                 $obj->fdQuestion2_1 = implode(',', $data['fdQuestion2_1']);
             }
+
             if (substr($data['fdPackage'], 0, 8) === 'ONCOVIDA')
             {
                 $package = (array)json_decode(Storage::disk('public')->get('json/oncovida.json'));
@@ -431,14 +424,25 @@ class ProductController extends BaseController
                 $package = (array)json_decode(Storage::disk('public')->get('json/cvisafe.json'));
                 $obj->fdApiPackage = $package[$data['fdPackage']]->apiPackage;
             }
-            else
+            if(substr($data['fdPackage'], 0, 6) === 'CVCARE')
             {
-                $obj->fdPackage = $package[$data['fdPackage']]->apiPackage;
+                $package = (array)json_decode(Storage::disk('public')->get('json/cvcare.json'));
+                $obj->fdApiPackage = $package[$data['fdPackage']]->apiPackage;
             }
         }
         elseif (substr($data['fdPackage'], 0, 8) === 'ONCOVIDL' || substr($data['fdPackage'], 0, 6) === 'ONTALN')
         {
             $obj->fdlanguage = 1;
+            if (isset($data['fdQuestion2_1']) && ($key = array_search('other', $data['fdQuestion2_1'])) !== false) {
+                unset($data['fdQuestion2_1'][$key]);
+            }
+            if (!empty($data['ctrl_question_2_specify'])) {
+                $data['fdQuestion2_1'][] = $data['ctrl_question_2_specify'];
+            }
+            if (isset($data['fdQuestion2_1'])) {
+                $obj->fdQuestion2_1 = implode(',', $data['fdQuestion2_1']);
+            }
+
             if( substr($data['fdPackage'], 0, 6) === 'ONTALN')
             {
                 $package = (array)json_decode(Storage::disk('public')->get('json/ontaln.json'));
@@ -482,9 +486,6 @@ class ProductController extends BaseController
         }
 
         $data = $request->all();
-
-//        dd($data);
-
         if (isset($data['send_data'])) {
             $data = (array)json_decode($data['send_data']);
 
@@ -597,7 +598,6 @@ class ProductController extends BaseController
 
     protected function getApiIssueLink($package)
     {
-
         $link = "";
         if (str_starts_with($package, 'ONPA')) {
             $this->thankYouParam = 'ONPA';
@@ -625,6 +625,9 @@ class ProductController extends BaseController
         } elseif (substr($package, 0, 8) === 'ONVSAFEA' || substr($package, 0, 8) === 'ONVSAFEC') {
             $this->thankYouParam = substr($package, 0, 8);
             $link = 'IssuePolicyVsafe';
+        } elseif (substr($package, 0, 6) === 'CVCARE') {
+            $this->thankYouParam = substr($package, 0, 6);
+            $link = 'IssuePolicyVsafe';
         } elseif (substr($package, 0, 2) === 'CI') {
             $this->thankYouParam = substr($package, 0, 2);
             $link = 'IssuePolicyCI';
@@ -635,8 +638,6 @@ class ProductController extends BaseController
             $this->thankYouParam = 'CVISAFE';
             $link = 'IssuePolicyCovid19';
         }
-//        dd(config('tune-api.url') . $link);
-//        dd($package);
         return $link;
     }
 
@@ -696,9 +697,7 @@ class ProductController extends BaseController
             $v->result = $apiResult;
             $v->save();
 
-//            dd($apiResult);
-
-            $PolicyArr[] = $apiResult['message'];//Policy add for group policy
+            $PolicyArr[] = $apiResult['message'];
             $PolicyData = $apiResult['data'];
             $Status = $apiResult["status"];
 
@@ -710,14 +709,8 @@ class ProductController extends BaseController
                 }
             }
 
-
-//            if (!$apiResult["status"]) {
-//                return false;
-//            }
-
         }
 
-        //Array 3 dimension
         $arrResult[] = $PolicyArr;
         $arrResult[] = $Point;
         $arrResult[] = $Status;

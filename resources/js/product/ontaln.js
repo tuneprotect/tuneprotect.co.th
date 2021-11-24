@@ -526,6 +526,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                                 fdRelation: $(`#data_${i}_fdRelation`).value,
                             };
 
+                            // console.log(currentProfile);
                             profileData.push(currentProfile);
 
                             result = validate(currentProfile, profileConstraints);

@@ -17,4 +17,5 @@ class VSAFEAObject extends BaseInsuranceObject
     public $fdQuestion2;
     public $fdQuestion2_1;
     public $fdQuestion5;
+    public $fdApiPackage;
 }
