@@ -774,8 +774,7 @@ class ProductController extends BaseController
             case '000':
                 $result = $this->sendToApiIssue($request->input('order_id'), $request->input('payment_channel'), $request->input('masked_pan'));
                 if ($result[2]) {
-//                    $request->session()->put('doc_no', implode(', ', $result[0]));
-                    $request->session()->put('doc_no', $result[0]);
+                    $request->session()->put('doc_no', implode(', ', $result[0]));
                     $request->session()->put('point', $result[1]);
                     $request->session()->put('return_link', $request->input('user_defined_2'));
                     $request->session()->put('partner', $request->input('user_defined_3'));
