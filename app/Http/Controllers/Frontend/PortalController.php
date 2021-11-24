@@ -14,6 +14,7 @@ class PortalController extends ProductController
     {
         $return_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
         session(['return_link' => $return_link]);
+        session(['selected' => $selected]);
 
         if($selected ==='CVISAFE')
         {
@@ -154,6 +155,7 @@ class PortalController extends ProductController
         $this->bodyData['doc_no'] = $request->session()->get('doc_no');
         $this->bodyData['return_link'] = $request->session()->get('return_link');
         $this->bodyData['point'] = '';
+        $this->bodyData['selected'] = $request->session()->get('selected');
 
         return $this->genStatusPage_Portal(ProjectEnum::STATIC_PAGE_PAYMENT_THANK_YOU);
     }
