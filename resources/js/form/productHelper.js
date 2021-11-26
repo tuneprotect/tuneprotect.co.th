@@ -180,6 +180,30 @@ export const validateQuestion = async ($this) => {
 }
 
 
+export const validateQuestion3 = async ($this) => {
+
+    // console.log($this);
+
+    let message = "ข้อมูลการสมัครไม่ตรงกับเงื่อนไขเกณฑ์การพิจารณารับประกัน จึงไม่สามารถทำรายการต่อได้";
+    if (locale === 'en') {
+        message= "The application information does not meet the criteria for underwriting insurance, therefore unable to continue the transaction.";
+    }
+    if ($this.value === 'Y' && ($this.id === 'ctrl_question_1_Y'||$this.id === 'ctrl_question_2_Y' ||$this.id === 'ctrl_question_5_Y' )) {
+        $('button[data-step="4"]').style.display = 'none';
+        $this.closest('.controls-wrapper').classList.add("error");
+        Swal.fire({
+            icon: 'error',
+            text: message
+        })
+        return false;
+    } else {
+        // $('button[data-step="4"]').style.display = 'inline-flex';
+        return true;
+    }
+}
+
+
+
 export const genPrice = (birthday, package_data) => {
     Object.keys(package_data)
         .filter(k => _.startsWith(k, current_package))
