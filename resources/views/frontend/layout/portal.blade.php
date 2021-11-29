@@ -181,7 +181,7 @@
 {{--                        <p class="copyright">{!! __('global.copyright_luma_care') !!}  </p>--}}
 {{--                    @endif--}}
 {{--                @endif--}}
-            @endif
+{{--            @endif--}}
         @else
             <p class="copyright">{!! __('global.copyright') !!}  </p>
         @endif
