@@ -429,6 +429,10 @@ class ProductController extends BaseController
                 $package = (array)json_decode(Storage::disk('public')->get('json/cvcare.json'));
                 $obj->fdApiPackage = $package[$data['fdPackage']]->apiPackage;
             }
+            if(isset($package[$data['fdPackage']]->apiPackage))
+            {
+                $obj->fdApiPackage = $package[$data['fdPackage']]->apiPackage;
+            }
         }
         elseif (substr($data['fdPackage'], 0, 8) === 'ONCOVIDL' || substr($data['fdPackage'], 0, 6) === 'ONTALN')
         {
@@ -451,6 +455,10 @@ class ProductController extends BaseController
             if( substr($data['fdPackage'], 0, 8) === 'ONCOVIDL')
             {
                 $package = (array)json_decode(Storage::disk('public')->get('json/oncovidl.json'));
+                $obj->fdApiPackage = $package[$data['fdPackage']]->apiPackage;
+            }
+            if(isset($package[$data['fdPackage']]->apiPackage))
+            {
                 $obj->fdApiPackage = $package[$data['fdPackage']]->apiPackage;
             }
         }
