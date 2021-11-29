@@ -175,6 +175,13 @@
     </div>
     <footer>
         @if(isset($partner))
+            @if($partner === 'LUMA')
+                @if(isset($selected))
+                    @if($selected === 'CVCARE')
+                        <p class="copyright">{!! __('global.copyright_luma_care') !!}  </p>
+                    @endif
+                @endif
+            @endif
         @else
             <p class="copyright">{!! __('global.copyright') !!}  </p>
         @endif
