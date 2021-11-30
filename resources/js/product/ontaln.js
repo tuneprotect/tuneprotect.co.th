@@ -474,6 +474,10 @@ document.addEventListener("DOMContentLoaded", async () => {
 
                         break;
                     case 2:
+                        for (let i = 1; i <= $('#ctrl_no_of_insured').value; i++) {
+                            $(`#data_${i}_fdNationalID`).value = "";
+                        }
+
                         const fdPackage = $btn.getAttribute('data-package') + $btn.getAttribute('data-sub-package');
                         $dataSubPackage =fdPackage;
                         $('#form-head').innerHTML = $btn.getAttribute('data-plan');
