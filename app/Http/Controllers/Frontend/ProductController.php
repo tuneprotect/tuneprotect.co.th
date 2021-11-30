@@ -395,6 +395,7 @@ class ProductController extends BaseController
             if (isset($data['fdQuestion2_1']) && ($key = array_search('other', $data['fdQuestion2_1'])) !== false) {
                 unset($data['fdQuestion2_1'][$key]);
             }
+
             if (!empty($data['ctrl_question_2_specify'])) {
                 $data['fdQuestion2_1'][] = $data['ctrl_question_2_specify'];
             }
@@ -437,15 +438,18 @@ class ProductController extends BaseController
         elseif (substr($data['fdPackage'], 0, 8) === 'ONCOVIDL' || substr($data['fdPackage'], 0, 6) === 'ONTALN')
         {
             $obj->fdlanguage = 1;
-            if (isset($data['fdQuestion2_1']) && ($key = array_search('other', $data['fdQuestion2_1'])) !== false) {
-                unset($data['fdQuestion2_1'][$key]);
-            }
-            if (!empty($data['ctrl_question_2_specify'])) {
-                $data['fdQuestion2_1'][] = $data['ctrl_question_2_specify'];
-            }
-            if (isset($data['fdQuestion2_1'])) {
-                $obj->fdQuestion2_1 = implode(',', $data['fdQuestion2_1']);
-            }
+
+//            if (isset($data['fdQuestion2_1']) && ($key = array_search('other', $data['fdQuestion2_1'])) !== false) {
+//                    unset($data['fdQuestion2_1'][$key]);
+//            }
+
+
+//            if (!empty($data['ctrl_question_2_specify'])) {
+//                $data['fdQuestion2_1'][] = $data['ctrl_question_2_specify'];
+//            }
+//            if (isset($data['fdQuestion2_1'])) {
+//                $obj->fdQuestion2_1 = implode(',', $data['fdQuestion2_1']);
+//            }
 
             if( substr($data['fdPackage'], 0, 6) === 'ONTALN')
             {

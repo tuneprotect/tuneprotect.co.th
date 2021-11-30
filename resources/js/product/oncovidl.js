@@ -619,6 +619,8 @@ document.addEventListener("DOMContentLoaded", async () => {
                             fdPayAMT: getSelectedPrice(data.fdHBD, data.fdPackage, package_data)
                         }
 
+                        console.log(data);
+
                         const result = validate(data, constraints);
                         const $cite = $form.getElementsByTagName('cite');
                         for (let i = 0, len = $cite.length; i !== len; ++i) {
