@@ -193,7 +193,6 @@ class ProductController extends BaseController
                         {
                             if($v->plan->VACINA3 !== '-'){$v->plan->VACINA3 = __('product.healt2go_plan');}
                         }
-
                         if($selected === 'ONPACA')
                         {
                             if($v->plan->PADRCA10 !== '-'){$v->plan->PADRCA10 = __('product.healt2go_word');}
@@ -301,6 +300,8 @@ class ProductController extends BaseController
             $obj = new COVIDAObject();
         } elseif (substr($data['fdPackage'], 0, 8) === 'ONCOVIDL') {
             $obj = new COVIDLObject();
+        } elseif (substr($data['fdPackage'], 0, 9) === 'ONCOVIDMW') {
+            $obj = new COVIDAObject();
         } elseif (substr($data['fdPackage'], 0, 6) === 'ONTADM') {
             $obj = new BaseTAObject();
             $obj->fdFlgInbound = "D";
@@ -389,7 +390,8 @@ class ProductController extends BaseController
             || substr($data['fdPackage'], 0, 8) === 'ONVACINA'
             || substr($data['fdPackage'], 0, 8) === 'ONVSAFEA'
             || substr($data['fdPackage'], 0, 7) === 'CVISAFE'
-            || substr($data['fdPackage'], 0, 6) === 'CVCARE') {
+            || substr($data['fdPackage'], 0, 6) === 'CVCARE'
+            || substr($data['fdPackage'], 0, 9) === 'ONCOVIDMW') {
 
 
             if (isset($data['fdQuestion2_1']) && ($key = array_search('other', $data['fdQuestion2_1'])) !== false) {
@@ -423,13 +425,16 @@ class ProductController extends BaseController
             if(substr($data['fdPackage'], 0, 7) === 'CVISAFE')
             {
                 $package = (array)json_decode(Storage::disk('public')->get('json/cvisafe.json'));
-                $obj->fdApiPackage = $package[$data['fdPackage']]->apiPackage;
             }
             if(substr($data['fdPackage'], 0, 6) === 'CVCARE')
             {
                 $package = (array)json_decode(Storage::disk('public')->get('json/cvcare.json'));
-                $obj->fdApiPackage = $package[$data['fdPackage']]->apiPackage;
             }
+            if(substr($data['fdPackage'], 0, 9) === 'ONCOVIDMW')
+            {
+                $package = (array)json_decode(Storage::disk('public')->get('json/oncovidmw.json'));
+            }
+
             if(isset($package[$data['fdPackage']]->apiPackage))
             {
                 $obj->fdApiPackage = $package[$data['fdPackage']]->apiPackage;
@@ -603,7 +608,8 @@ class ProductController extends BaseController
             $link = 'IssuePolicyPAChoice';
         } elseif (substr($package, 0, 8) === 'ONCOVIDA'
             || substr($package, 0, 8) === 'ONCOVIDL'
-            || substr($package, 0, 8) === 'ONISAFEX') {
+            || substr($package, 0, 8) === 'ONISAFEX'
+            || substr($package, 0, 9) === 'ONCOVIDMW') {
             $this->thankYouParam = substr($package, 0, 8);
             $link = 'IssuePolicyCovid19';
         } elseif (substr($package, 0, 6) === 'ONTALN') {
