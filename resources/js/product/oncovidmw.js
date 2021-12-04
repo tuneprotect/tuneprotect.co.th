@@ -325,8 +325,21 @@ const constraints = {
 //
 
 document.addEventListener("DOMContentLoaded", async () => {
-    let package_data = await getPackageData(current_package);
     const country_data = await getCountryData();
+    let package_data_all = await getPackageData(current_package);
+    let package_data = [];
+    const allPack = Object.keys(package_data_all);
+    allPack.map(k => {
+        // console.log(allPack);
+        // console.log(k);
+        // console.log(package_data[k]);
+        if(k === $('#agentCode').value)
+        {
+            package_data = package_data_all[k];
+        }
+    });
+    // console.log(package_data);
+
 
     let sb1 = `<option value="">${$('#fdDestFrom').getAttribute('data-please-select')}</option>`;
     country_data.sort((a, b) => (a[locale] > b[locale]) ? 1 : ((b[locale] > a[locale]) ? -1 : 0))

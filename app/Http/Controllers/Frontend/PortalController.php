@@ -27,6 +27,7 @@ class PortalController extends ProductController
         $status_api = false;
         $this->bodyData['portal_key'] = $portal_key;
         $partner = '';
+        $agentCode = '';
         //Check username and password , web portal.
         $apiResult = $this->sendToApiPortalLogin($portal_key);
         if (!$apiResult["status"]) {
@@ -38,9 +39,12 @@ class PortalController extends ProductController
             $status_api = true;
             $massage_key = "Portal Key : " . $portal_key;
             $partner = $apiResult["partner"];
+            $agentCode = $apiResult["agent_code"];
         }
         $this->bodyData['partner'] = $partner;
         session(['partner' => $partner]);
+
+        $this->bodyData['agentCode'] = $agentCode;
 
         $this->bodyData['status_api'] = $status_api;
         $this->bodyData['massage_key'] = $massage_key;
