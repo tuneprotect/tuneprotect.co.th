@@ -258,75 +258,10 @@ const constraints = {
     }
 };
 
-// const step1Constraints = {
-//     fdFromDate: {
-//         presence: {
-//             allowEmpty: false,
-//             message: "^" + $('#fdFromDate')?.getAttribute('data-error')
-//         }
-//     },
-//     fdDestFrom: {
-//         presence: {
-//             allowEmpty: false,
-//             message: "^" + $('#fdDestFrom')?.getAttribute('data-error')
-//         }
-//     }
-// };
-
-// export const validateAgeInPackage = (package_data, cal_price) => {
-//     // $$('.date-input .controls-wrapper').forEach(el => {
-//     //     el.classList.remove('error');
-//     // });
-//     // $('.date-input cite').innerHTML = "";
-//
-//     const dd = $('#ctrl_day').value,
-//         mm = $('#ctrl_month').value;
-//     let yy = $('#ctrl_year').value;
-//
-//     if (dd === '' || mm === '' || yy === '') {
-//         showDateError($('#ctrl_day').getAttribute('data-error-format'));
-//         return {status: false};
-//     }
-//
-//     if (parseInt(yy.substring(0, 2)) > 21) {
-//         yy = (parseInt(yy) - 543).toString();
-//     }
-//
-//     const birthday = `${yy}-${mm}-${dd}`;
-//
-//     if (!isValid(parseISO(birthday))) {
-//         showDateError($('#ctrl_day').getAttribute('data-error-format'));
-//         return {status: false};
-//     }
-//
-//     const age_in_range = Object.keys(package_data)
-//         .filter(k => _.startsWith(k, current_package))
-//         .some(k => Object.keys(package_data[k].price).some(ageRange => checkAge(birthday, ageRange)))
-//
-//     if (!age_in_range) {
-//         showDateError($('#ctrl_day').getAttribute('data-error-not-qualify'));
-//         return {status: false};
-//     }
-//
-//     const age = calculateAge(birthday)
-//
-//     if (cal_price !== false) {
-//         genPrice(birthday, package_data)
-//     }
-//
-//
-//     return {
-//         status: true, data: {
-//             fdHBD: birthday,
-//             fdAge: age.year
-//         }
-//     };
-// }
-//
-
 document.addEventListener("DOMContentLoaded", async () => {
     const country_data = await getCountryData();
-    let package_data = await getPackageData(current_package,$('#agentCode').value);
+    let package_data = await getPackageData(current_package);
+
     // let package_data_all = await getPackageData(current_package);
     // let package_data = [];
     // const allPack = Object.keys(package_data_all);
@@ -339,8 +274,35 @@ document.addEventListener("DOMContentLoaded", async () => {
     //         package_data = package_data_all[k];
     //     }
     // });
-    // // console.log(package_data);
+    // console.log(current_package);
+    // console.log(package_data);
 
+    // const allPack = Object.keys(package_data)
+    //     .filter(k => _.startsWith(k,"ONCOVIDMW_" +$('#agentCode').value))
+    //
+    // if(document.body.clientWidth > 767) {
+    //     $$('#table-detail td[data-package],#table-detail th[data-package]').forEach($el => {
+    //         if (allPack.includes($el.getAttribute("data-package"))) {
+    //             $el.style.display = "table-cell";
+    //         } else {
+    //             $el.style.display = "none";
+    //         }
+    //     });
+    // }else{
+    //     $$('#table-detail thead a[data-package]').forEach($el => {
+    //         if ($el.getAttribute("data-package").startsWith("ONCOVIDMW_" +$('#agentCode').value )) {
+    //             $el.style.display = "inline-flex";
+    //         } else {
+    //             $el.style.display = "none";
+    //         }
+    //     });
+    // }
+    //
+    // allPack.map(k => {
+    //     // $('#fdPremium').value = parseInt(package_data[k].plan.COV1).toLocaleString();
+    //     $(`strong[data-price-${k}]`).innerHTML = parseInt(package_data[k].price).toLocaleString();
+    //     // $(`th[data-cover-cov1]`).innerHTML = $('#cover_fire_'+packageSelect).value;
+    // });
 
     let sb1 = `<option value="">${$('#fdDestFrom').getAttribute('data-please-select')}</option>`;
     country_data.sort((a, b) => (a[locale] > b[locale]) ? 1 : ((b[locale] > a[locale]) ? -1 : 0))
@@ -491,7 +453,6 @@ document.addEventListener("DOMContentLoaded", async () => {
             }
         });
     });
-
 
     const $btnGoto = $$('.btn-goto');
     $btnGoto.forEach($btn => {

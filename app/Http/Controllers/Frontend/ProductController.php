@@ -438,7 +438,7 @@ class ProductController extends BaseController
             if(substr($data['fdPackage'], 0, 9) === 'ONCOVIDMW')
             {
 //                $package = (array)json_decode(Storage::disk('public')->get('json/' . strtolower($this->bodyData['selected']) . '_' . $this->bodyData['agentCode'] . '.json'));
-                $package = (array)json_decode(Storage::disk('public')->get('json/' . strtolower($this->bodyData['selected']) . '.json'));
+                $package = (array)json_decode(Storage::disk('public')->get('json/oncovidmw.json'));
             }
 
             if(isset($package[$data['fdPackage']]->apiPackage))
@@ -617,6 +617,9 @@ class ProductController extends BaseController
             || substr($package, 0, 8) === 'ONISAFEX'
             || substr($package, 0, 9) === 'ONCOVIDMW') {
             $this->thankYouParam = substr($package, 0, 8);
+            $link = 'IssuePolicyCovid19';
+        } elseif (substr($package, 0, 9) === 'ONCOVIDMW') {
+            $this->thankYouParam = substr($package, 0, 9);
             $link = 'IssuePolicyCovid19';
         } elseif (substr($package, 0, 6) === 'ONTALN') {
             $this->thankYouParam = substr($package, 0, 6);
