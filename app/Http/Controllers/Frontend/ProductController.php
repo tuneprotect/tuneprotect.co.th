@@ -178,6 +178,11 @@ class ProductController extends BaseController
             }
         }
 
+//        if(isset($this->bodyData['agentCode']) && $this->bodyData['selected'] === 'ONCOVIDMW')
+//        {
+//            $packageJson = $packageJson . '_' . $this->bodyData['agentCode'];
+//        }
+
         if (Storage::disk('public')->exists('json/' . $packageJson . '.json')) {
             $package_detail = json_decode(Storage::disk('public')->get('json/' . $packageJson . '.json'));
             foreach ($package_detail as $k => $v) {
@@ -432,7 +437,8 @@ class ProductController extends BaseController
             }
             if(substr($data['fdPackage'], 0, 9) === 'ONCOVIDMW')
             {
-                $package = (array)json_decode(Storage::disk('public')->get('json/oncovidmw.json'));
+//                $package = (array)json_decode(Storage::disk('public')->get('json/' . strtolower($this->bodyData['selected']) . '_' . $this->bodyData['agentCode'] . '.json'));
+                $package = (array)json_decode(Storage::disk('public')->get('json/' . strtolower($this->bodyData['selected']) . '.json'));
             }
 
             if(isset($package[$data['fdPackage']]->apiPackage))

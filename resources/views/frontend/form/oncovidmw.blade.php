@@ -40,6 +40,7 @@
                 <input type="hidden" id="status_api" value="{{$status_api}}"/>
                 <input type="hidden" id="nopayment_status" value="{{$nopayment_status}}"/>
                 <input type="hidden" id="agentCode" value="{{$agentCode}}"/>
+                <input type="hidden" id="partner" value="{{$partner}}"/>
             </div>
         @endif
 

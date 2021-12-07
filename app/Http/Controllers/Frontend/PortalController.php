@@ -77,7 +77,7 @@ class PortalController extends ProductController
         $massage_key = $portal_key;
         $status_api = false;
         $this->bodyData['portal_key'] = $portal_key;
-
+        $partner = '';
         //Check username and password , web portal.
         $apiResult = $this->sendToApiPortalLogin($portal_key);
         if (!$apiResult["status"]) {
@@ -99,6 +99,9 @@ class PortalController extends ProductController
         }
         $this->bodyData['nopayment_status'] = $nopayment_status;
         session(['nopayment_status' => $nopayment_status]);
+
+        $this->bodyData['partner'] = $partner;
+        session(['partner' => $partner]);
 
         //Fix brochure
         $this->bodyData['brochure_ci'] = __('product.ci_brochure_broker_th');
