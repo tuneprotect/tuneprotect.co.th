@@ -214,7 +214,7 @@ const constraints = {
             presence: {
                 allowEmpty: false,
                 message: "^" + $('#fdBenefit_name').getAttribute('data-error-beneficiary')
-            }
+            },format: formatInputFieldOnlyEnglish()
         };
     },
     fdRelation: function (value, attributes, attributeName, options, constraints) {
