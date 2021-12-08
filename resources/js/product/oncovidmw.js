@@ -209,28 +209,15 @@ const constraints = {
     },
 
     fdBenefit_name: function (value, attributes, attributeName, options, constraints) {
-        if (attributes.fdBenefit === 'other')
-        {
-            return {
-                presence: {
-                    allowEmpty: false,
-                    message: "^" + $('#fdBenefit_name').getAttribute('data-error-beneficiary')
-                },format: formatInputFieldOnlyEnglish()
-            };
-        }
-        else
-        {
+        if (attributes.fdBenefit !== 'other')
             return null;
-        }
-
+        return {
+            presence: {
+                allowEmpty: false,
+                message: "^" + $('#fdBenefit_name').getAttribute('data-error-beneficiary')
+            },format: formatInputFieldOnlyEnglish()
+        };
     },
-
-    // fdBenefit_name: {
-    //     presence: {
-    //         allowEmpty: false,
-    //         message: "^" + $('#fdBenefit_name').getAttribute('data-error-last_name')
-    //     },format: formatInputFieldOnlyEnglish()
-    // },
     fdRelation: function (value, attributes, attributeName, options, constraints) {
         if (attributes.fdBenefit !== 'other') return null;
         return {
