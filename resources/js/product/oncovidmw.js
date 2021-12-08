@@ -209,13 +209,12 @@ const constraints = {
     },
 
     fdBenefit_name: function (value, attributes, attributeName, options, constraints) {
-        if (attributes.fdBenefit !== 'other')
-            return null;
+        if (attributes.fdBenefit !== 'other') return null;
         return {
             presence: {
                 allowEmpty: false,
                 message: "^" + $('#fdBenefit_name').getAttribute('data-error-beneficiary')
-            },format: formatInputFieldOnlyEnglish()
+            }
         };
     },
     fdRelation: function (value, attributes, attributeName, options, constraints) {
