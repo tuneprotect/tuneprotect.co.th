@@ -9,6 +9,7 @@
             <div class="two-col">
                 <div class="controls-wrapper">
                     <input id="fdFromDate" name="fdFromDate" type="date" min="{{date('Y-m-d')}}" class="flatpickr"
+                           data-mindate="{{date('Y-m-d')}}"
                            data-maxdate="{{date('Y-m-d',strtotime( "+60 days"))}}"
                            data-error="@lang('product.effectived_start_date')"
                     />
