@@ -16,4 +16,6 @@ class COVIDAObject extends BaseInsuranceObject
     public $fdQuestion2;
     public $fdQuestion2_1;
     public $fdApiPackage;
+    public $fdNationality;
+    public $fdDestFrom;
 }

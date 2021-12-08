@@ -1,6 +1,6 @@
 import {
     changeStep, checkAge, formatInputFieldOnlyEnglish,
-    formatTelNumber, genPrice, getCountryData,
+    formatTelNumber, genPrice, getCountryData, getNationalityData,
     getPackageData,
     getSelectedPrice,
     showTitle,
@@ -261,6 +261,7 @@ const constraints = {
 document.addEventListener("DOMContentLoaded", async () => {
     const country_data = await getCountryData();
     let package_data = await getPackageData(current_package);
+    const nationality_data = await getNationalityData();
 
     // let package_data_all = await getPackageData(current_package);
     // let package_data = [];
@@ -382,7 +383,8 @@ document.addEventListener("DOMContentLoaded", async () => {
         ctrl_question_2_specify: "",
         ctrl_province: "",
         ctrl_terms: "",
-        fdApiPackage:""
+        fdApiPackage:"",
+        fdNationality:""
     };
 
     const iti = intlTelInput($('#fdTelephone'), {
@@ -396,6 +398,13 @@ document.addEventListener("DOMContentLoaded", async () => {
             });
         }
     });
+
+    let nationality_option = `<option value="">${$('#fdNationality').getAttribute('data-please-select')}</option>`;
+    Object.keys(nationality_data).map(v => {
+        nationality_option += `<option value="${v}">${v}</option>`;
+    });
+
+    $('#fdNationality').innerHTML = nationality_option;
 
     $$("input[name=fdQuestion1]").forEach($el => {
         $el.addEventListener("change", function (e) {
@@ -481,7 +490,8 @@ document.addEventListener("DOMContentLoaded", async () => {
 
                         data = {
                             ...data,
-                            fdFromDate: $('#fdFromDate').value
+                            fdFromDate: $('#fdFromDate').value,
+                            fdDestFrom: $('#fdDestFrom').value
                         }
 
                         if($('#fdFromDate').value === '')
@@ -558,6 +568,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                             fdName: $('#fdName').value,
                             fdSurname: $('#fdSurname').value,
                             fdNationalID: $('#fdNationalID').value,
+                            fdNationality: $("#fdNationality").value,
                             fdEmail: $('#fdEmail').value,
                             fdTelephone: formatTelNumber($('#fdTelephone').value, iti.getSelectedCountryData()),
                             fdAddr_Num: $('#fdAddr_Num').value,
@@ -655,6 +666,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                         <div><span>${$('label[for=fdName]').innerText} : </span><strong>${$('label[for=title_' + data.fdTitle + ']').innerText} ${data.fdName} ${data.fdSurname}</strong></div>
                         <div><span>${$('label[for=fdSex]').innerText} : </span><strong>${data.fdSex === 'M' ? $('label[for=male]').innerText : $('label[for=female]').innerText}</strong></div>
                         <div><span>${$('label[for=fdNationalID]').innerText} : </span><strong>${data.fdNationalID}</strong></div>
+                        <div><span>${$('label[for=fdNationality]').innerText} : </span><strong>${data.fdNationality}</strong></div>
                         <div><span>${$('#ctrl_day').getAttribute('data-birthdate')} : </span><strong>${dob} (${data.fdAge} ${$('#ctrl_day').getAttribute('data-years-old')})</strong></div>
                         <div><span>${$('label[for=fdTelephone]').innerText} : </span><strong>${data.fdTelephone}</strong></div>
                         <div><span>${$('label[for=fdEmail]').innerText} : </span><strong>${data.fdEmail}</strong></div>
