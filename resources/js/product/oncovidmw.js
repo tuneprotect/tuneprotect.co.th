@@ -209,14 +209,28 @@ const constraints = {
     },
 
     fdBenefit_name: function (value, attributes, attributeName, options, constraints) {
-        if (attributes.fdBenefit !== 'other') return null;
-        return {
-            presence: {
-                allowEmpty: false,
-                message: "^" + $('#fdBenefit_name').getAttribute('data-error-beneficiary')
-            },format: formatInputFieldOnlyEnglish()
-        };
+        if (attributes.fdBenefit === 'other')
+        {
+            return {
+                presence: {
+                    allowEmpty: false,
+                    message: "^" + $('#fdBenefit_name').getAttribute('data-error-beneficiary')
+                },format: formatInputFieldOnlyEnglish()
+            };
+        }
+        else
+        {
+            return null;
+        }
+
     },
+
+    // fdBenefit_name: {
+    //     presence: {
+    //         allowEmpty: false,
+    //         message: "^" + $('#fdBenefit_name').getAttribute('data-error-last_name')
+    //     },format: formatInputFieldOnlyEnglish()
+    // },
     fdRelation: function (value, attributes, attributeName, options, constraints) {
         if (attributes.fdBenefit !== 'other') return null;
         return {
@@ -306,11 +320,11 @@ document.addEventListener("DOMContentLoaded", async () => {
     // });
 
     let sb1 = `<option value="">${$('#fdDestFrom').getAttribute('data-please-select')}</option>`;
-    country_data.sort((a, b) => (a[locale] > b[locale]) ? 1 : ((b[locale] > a[locale]) ? -1 : 0))
+    country_data.sort((a, b) => (a['en'] > b['en']) ? 1 : ((b['en'] > a['en']) ? -1 : 0))
         .map(v => {
             if (v.code !== 'THA')
             {
-                sb1 += `<option value="${v.code}">${v[locale]}</option>`;
+                sb1 += `<option value="${v.code}">${v['en']}</option>`;
             }
         });
     $('#fdDestFrom').innerHTML = sb1;
