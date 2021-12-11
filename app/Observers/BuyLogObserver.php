@@ -47,6 +47,7 @@ class BuyLogObserver
     public function creating(BuyLog $buyLog)
     {
         $data = $buyLog->data;
+        
 
         $buyLog->RefCode = $this->genRefCode();
         if (empty($data['fdInvoice'])) {
@@ -56,6 +57,11 @@ class BuyLogObserver
             $buyLog->fdInvoice = str_replace(config('project.invoice_prefix'), '', $data['fdInvoice']);
         }
         $data['RefCode'] = config('project.invoice_prefix') . $buyLog->RefCode;
+
+        if(!empty($data['fdMember_ID']))
+        {
+            $data['RefCode'] = $data['fdMember_ID'];
+        }
 
         $buyLog->data = $data;
 

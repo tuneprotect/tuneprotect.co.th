@@ -23,7 +23,7 @@
         </div>
     @endif
 
-    @if($controller == 'biglife')
+    @if($controller == 'biglife' || $controller == 'tg')
         <div class="btn-wrapper">
             <input type="hidden" id="member_id" value="{{$member_id}}"/>
             <input type="hidden" id="status_api" value="{{$status_api}}"/>

@@ -53,7 +53,7 @@ class ProductController extends BaseController
         if (empty($link)) {
             return redirect("/" . $this->locale);
         }
-        if (in_array($selected, ['ONTALN', 'ONCOVIDL', 'ONTA']) && $this->locale === 'th') {
+        if (in_array($selected, ['ONTALN', 'ONCOVIDL', 'ONTA','TGCVLP']) && $this->locale === 'th') {
             return redirect()->route('current', ['locale' => 'en', 'controller' => 'product', 'func' => $link, 'params' => $selected]);
         }
 
@@ -77,7 +77,7 @@ class ProductController extends BaseController
             return redirect("/" . $this->locale);
         }
 
-        if (in_array($selected, ['ONTALN', 'ONCOVIDL', 'ONTA']) && $this->locale === 'th') {
+        if (in_array($selected, ['ONTALN', 'ONCOVIDL', 'ONTA','TGCVLP']) && $this->locale === 'th') {
             return redirect()->route('current', ['locale' => 'en', 'controller' => 'product', 'func' => $link, 'params' => $selected]);
         }
 
@@ -305,6 +305,8 @@ class ProductController extends BaseController
             $obj = new COVIDAObject();
         } elseif (substr($data['fdPackage'], 0, 8) === 'ONCOVIDL') {
             $obj = new COVIDLObject();
+        } elseif (substr($data['fdPackage'], 0, 6) === 'TGCVLP') {
+            $obj = new COVIDLObject();
         } elseif (substr($data['fdPackage'], 0, 9) === 'ONCOVIDMW') {
             $obj = new COVIDAObject();
         } elseif (substr($data['fdPackage'], 0, 6) === 'ONTADM') {
@@ -446,7 +448,7 @@ class ProductController extends BaseController
                 $obj->fdApiPackage = $package[$data['fdPackage']]->apiPackage;
             }
         }
-        elseif (substr($data['fdPackage'], 0, 8) === 'ONCOVIDL' || substr($data['fdPackage'], 0, 6) === 'ONTALN')
+        elseif (substr($data['fdPackage'], 0, 8) === 'ONCOVIDL' || substr($data['fdPackage'], 0, 6) === 'ONTALN'|| substr($data['fdPackage'], 0, 6) === 'TGCVLP')
         {
             $obj->fdlanguage = 1;
             if( substr($data['fdPackage'], 0, 6) === 'ONTALN')
@@ -457,6 +459,11 @@ class ProductController extends BaseController
             if( substr($data['fdPackage'], 0, 8) === 'ONCOVIDL')
             {
                 $package = (array)json_decode(Storage::disk('public')->get('json/oncovidl.json'));
+                $obj->fdApiPackage = $package[$data['fdPackage']]->apiPackage;
+            }
+            if( substr($data['fdPackage'], 0, 6) === 'TGCVLP')
+            {
+                $package = (array)json_decode(Storage::disk('public')->get('json/tgcvlp.json'));
                 $obj->fdApiPackage = $package[$data['fdPackage']]->apiPackage;
             }
             if(isset($package[$data['fdPackage']]->apiPackage))
@@ -617,6 +624,9 @@ class ProductController extends BaseController
             || substr($package, 0, 8) === 'ONISAFEX') {
             $this->thankYouParam = substr($package, 0, 8);
             $link = 'IssuePolicyCovid19';
+        } elseif (substr($package, 0, 6) === 'TGCVLP') {
+            $this->thankYouParam = substr($package, 0, 6);
+            $link = 'IssuePolicyCovidTGCVLP';
         } elseif (substr($package, 0, 9) === 'ONCOVIDMW') {
             $this->thankYouParam = substr($package, 0, 9);
             $link = 'IssuePolicyMigration';
