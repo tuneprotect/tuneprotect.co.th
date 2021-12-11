@@ -1,6 +1,71 @@
 @include('frontend.component.form-stepper')
 <section id="step1" class="wrapper">
-    @include('frontend.component.form-birthdate-effectivedate')
+{{--    @include('frontend.component.form-birthdate-effectivedate')--}}
+
+    <form method="post" action="" class="insurance-form">
+        <div class="form-head">@lang('product.please_specify_birthdate_title')</div>
+        <div class="form-inner">
+            <h3>@lang('product.please_specify_birthdate')</h3>
+            @include('frontend.component.form-date-input')
+            <div class="date-input">
+                <strong data-your-details="@lang('product.your-details')" data-loved-one="@lang('product.loved-one')"></strong>
+                <div class="date-wrapper">
+                    <div class="controls-wrapper">
+                        <input id="fdFromDate" name="fdFromDate" type="date" min="{{date('Y-m-d')}}" class="flatpickr"
+                               data-mindate="{{date('Y-m-d')}}"
+                               data-maxdate="{{date('Y-m-d',strtotime( "+180 days"))}}"
+                               data-error="@lang('product.error.travel_start_date')"
+                        />
+                        <label for="fdFromDate">@lang("product.effective_date")</label>
+                    </div>
+                    <div class="controls-wrapper">
+                        <input id="fdFlightNo" name="fdFlightNo" type="text" placeholder="Flight no."
+                               data-error="Please fill in Flight no."
+                        />
+                        <label for="fdFlightNo">Flight no.</label>
+                    </div>
+                    <div class="controls-wrapper">
+                        <select id="ctrl_destination" name="ctrl_destination">
+                                            <option selected="selected" value="">@lang('product.please_select')</option>
+                                            <option value="BKK">Thailand (Bangkok)</option>
+                                            <option value="HKT">Thailand (Phuket)</option>
+                                        </select>
+                                        <label for="ctrl_destination">Destination</label>
+                        </select>
+                    </div>
+                </div>
+                <div class="date-wrapper">
+                    <div class="controls-wrapper">
+                        <input id="fdFlightTickerNo" name="fdFlightTickerNo" type="text" placeholder="Flight ticket number"
+                               data-error="Please fill in Flight ticket number"
+                        />
+                        <label for="fdFlightTickerNo">Flight ticket number</label>
+                    </div>
+                    <div class="controls-wrapper"></div>
+                    <div class="controls-wrapper"></div>
+                </div>
+                <cite></cite>
+            </div>
+
+        </div>
+
+
+        <div class="btn-wrapper">
+            <a href="{{url()->current()}}#step2" data-gtm="product-{{strtolower($selected)}}-proceed-step-1" data-step="2" class="btn btn-primary btn-goto">@lang('product.next')</a>
+        </div>
+
+
+        <input type="hidden" id="controller" value="{{$controller}}"/>
+
+        <input type="hidden" id="partner" value="{{$partner}}"/>
+        <div class="btn-wrapper">
+            <input type="hidden" id="member_id" value="{{$member_id}}"/>
+            <input type="hidden" id="status_api" value="{{$status_api}}"/>
+        </div>
+
+    </form>
+
+
     <br/>
     {!! $package->locales[$locale]->remark !!}
 </section>

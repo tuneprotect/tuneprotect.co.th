@@ -360,6 +360,8 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
     }
 
+
+
     let step = 1;
     let data = {
         fdMember_ID : member_id,
@@ -418,13 +420,12 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
     });
 
-    let nationality_option = `<option value="">${$('#fdNationality').getAttribute('data-please-select')}</option>`;
+    // let nationality_option = `<option value="">${$('#fdNationality').getAttribute('data-please-select')}</option>`;
+    // Object.keys(nationality_data).map(v => {
+    //         nationality_option += `<option value="${v}">${v}</option>`;
+    // });
 
-    Object.keys(nationality_data).map(v => {
-        nationality_option += `<option value="${v}">${v}</option>`;
-    });
-
-    $('#fdNationality').innerHTML = nationality_option;
+    $('#fdNationality').innerHTML =  `<option value="Australia">Australia</option>`;
 
     $$("input[name=fdQuestion1]").forEach($el => {
         $el.addEventListener("change", function (e) {
@@ -508,6 +509,75 @@ document.addEventListener("DOMContentLoaded", async () => {
             } else {
                 switch (parseInt(step)) {
                     case 1:
+                        if($('#fdFlightNo').value === '')
+                        {
+                            Swal.fire({
+                                title: 'Warning!',
+                                text: "Please fill in " + $('label[for=fdFlightNo]').innerText,
+                                icon: 'info',
+                                confirmButtonText: 'OK'
+                            })
+                            return false;
+                        }
+
+                        if($('#fdFlightNo').value.length < 3)
+                        {
+                            Swal.fire({
+                                title: 'Warning!',
+                                text: "Please check format " + $('label[for=fdFlightNo]').innerText,
+                                icon: 'info',
+                                confirmButtonText: 'OK'
+                            })
+                            return false;
+                        }
+
+                        if($('#fdFlightNo').value.substring(0,2) !== "TG")
+                        {
+                            Swal.fire({
+                                title: 'Warning!',
+                                text: "Please check format " + $('label[for=fdFlightNo]').innerText,
+                                icon: 'info',
+                                confirmButtonText: 'OK'
+                            })
+                            return false;
+                        }
+
+                        if($('#fdFlightTickerNo').value === '')
+                        {
+                            Swal.fire({
+                                title: 'Warning!',
+                                text: "Please fill in " + $('label[for=fdFlightTickerNo]').innerText,
+                                icon: 'info',
+                                confirmButtonText: 'OK'
+                            })
+                            return false;
+                        }
+                        if($('#fdFlightTickerNo').value.substring(0,5) !== "217-2")
+                        {
+                            Swal.fire({
+                                title: 'Warning!',
+                                text: "Please check format " + $('label[for=fdFlightTickerNo]').innerText,
+                                icon: 'info',
+                                confirmButtonText: 'OK'
+                            })
+                            return false;
+                        }
+
+
+
+                        if($('#ctrl_destination').value === '')
+                        {
+                            Swal.fire({
+                                title: 'Warning!',
+                                text: $('label[for=ctrl_destination]').innerText,
+                                icon: 'info',
+                                confirmButtonText: 'OK'
+                            })
+                            return false;
+                        }
+
+
+
                         data = {
                             ...data,
                             fdFromDate: $('#fdFromDate')?.value
@@ -534,20 +604,8 @@ document.addEventListener("DOMContentLoaded", async () => {
                         if (validateResult.status) {
                             data = {...data, ...validateResult.data}
                         }
-                        //Case web portal
-                        var myEle = document.getElementById("portal_key");
-                        if (myEle) {
-                            var status_api = document.getElementById("status_api");
-                            if (!status_api.value) {
-                                Swal.fire({
-                                    title: 'Error!',
-                                    text: 'Error : Portal keys. User not found.',
-                                    icon: 'error',
-                                    confirmButtonText: 'OK'
-                                })
-                                status = false;
-                            }
-                        }
+
+
 
                         break;
                     case 2:
