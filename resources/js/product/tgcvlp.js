@@ -638,6 +638,17 @@ document.addEventListener("DOMContentLoaded", async () => {
                         break;
                     case 3:
 
+                        if($('#fdEmail').value !== $('#fdEmailConfirm').value)
+                        {
+                            Swal.fire({
+                                title: 'Warning!',
+                                text: "Please check " + $('label[for=fdEmailConfirm]').innerText,
+                                icon: 'info',
+                                confirmButtonText: 'OK'
+                            })
+                            return false;
+                        }
+
                         let address = ($('#ctrl_province').value).split('*');
 
                         data = {

@@ -74,7 +74,7 @@
     <form class="insurance-form">
         <div class="form-head"> {{$package->locales[$locale]->title}} <span id="form-head"></span></div>
         <div class="form-inner">
-            @include('frontend.component.form-profile',['id_card_field' => 'passport','has_nationality' => true ,'id_card_field_title' => __("product.passport_no"),'prefix' => '','eng_only' => true ])
+            @include('frontend.component.form-profile',['id_card_field' => 'passport','has_nationality' => true ,'id_card_field_title' => __("product.passport_no"),'prefix' => '','eng_only' => true ,'emailconfirm' => true ])
             @include('frontend.component.form-address',['prefix' => ''])
             @include('frontend.component.form-beneficiary',['prefix' => ''])
             <h3>@lang('product.ONCOVIDL_question.title')</h3>

@@ -131,6 +131,15 @@
         />
         <label for="{{$prefix}}fdEmail">@lang("product.email")</label>
     </div>
+    @if(isset($emailconfirm))
+        <div class="controls-wrapper">
+            <input id="{{$prefix}}fdEmailConfirm" name="{{$prefix}}fdEmailConfirm" type="email" placeholder="@lang("product.email_confirm")"
+                   data-error-email-require="@lang("product.error.email_confirm.require")"
+                   data-error-email-format="@lang("product.error.email_confirm.format")"
+            />
+            <label for="{{$prefix}}fdEmailConfirm">@lang("product.email_confirm")</label>
+        </div>
+    @endif
     <div class="controls-wrapper">
         <input id="{{$prefix}}fdTelephone" name="{{$prefix}}fdTelephone" type="tel" placeholder="@lang("product.tel")"
                data-error-tel-require="@lang("product.error.tel.require")"
