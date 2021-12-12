@@ -501,6 +501,10 @@ class ProductController extends BaseController
         {
             session(['nopayment_status' => false]);
         }
+        if($this->controller === 'tg')
+        {
+            session(['nopayment_status' => true]);
+        }
 
         $data = $request->all();
         if (isset($data['send_data'])) {

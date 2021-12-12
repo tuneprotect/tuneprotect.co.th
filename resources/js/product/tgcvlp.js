@@ -420,7 +420,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
     });
 
-    console.log(iti);
+    // console.log(iti);
     // let nationality_option = `<option value="">${$('#fdNationality').getAttribute('data-please-select')}</option>`;
     // Object.keys(nationality_data).map(v => {
     //         nationality_option += `<option value="${v}">${v}</option>`;
