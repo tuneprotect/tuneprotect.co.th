@@ -414,12 +414,13 @@ document.addEventListener("DOMContentLoaded", async () => {
             fetch("https://ipinfo.io", {
                 mode: 'no-cors' // 'cors' by default
             }).then(function (resp) {
-                let countryCode = (resp && resp.country) ? resp.country : "th";
+                let countryCode = (resp && resp.country) ? resp.country : "au";
                 success(countryCode);
             });
         }
     });
 
+    console.log(iti);
     // let nationality_option = `<option value="">${$('#fdNationality').getAttribute('data-please-select')}</option>`;
     // Object.keys(nationality_data).map(v => {
     //         nationality_option += `<option value="${v}">${v}</option>`;
@@ -542,7 +543,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                             return false;
                         }
 
-                        if($('#fdFlightTickerNo').value === '')
+                        if($('#fdFlightTickerNo').value.length !== 13)
                         {
                             Swal.fire({
                                 title: 'Warning!',

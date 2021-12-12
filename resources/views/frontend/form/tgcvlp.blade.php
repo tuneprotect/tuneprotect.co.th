@@ -22,7 +22,7 @@
                         <input id="fdFlightNo" name="fdFlightNo" type="text" placeholder="Flight no."
                                data-error="Please fill in Flight no."
                         />
-                        <label for="fdFlightNo">Flight no.</label>
+                        <label for="fdFlightNo">Flight no. (TGxxx)</label>
                     </div>
                     <div class="controls-wrapper">
                         <select id="ctrl_destination" name="ctrl_destination">
@@ -39,7 +39,7 @@
                         <input id="fdFlightTickerNo" name="fdFlightTickerNo" type="text" placeholder="Flight ticket number"
                                data-error="Please fill in Flight ticket number"
                         />
-                        <label for="fdFlightTickerNo">Flight ticket number</label>
+                        <label for="fdFlightTickerNo">Flight ticket number (217-2xxxxxxxx)</label>
                     </div>
                     <div class="controls-wrapper"></div>
                     <div class="controls-wrapper"></div>
