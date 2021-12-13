@@ -28,16 +28,6 @@ require('../product');
 
 
 const constraints = {
-    fdEmailConfirm: {
-        presence: {
-            allowEmpty: false,
-            message: "^" + $('#fdEmailConfirm').getAttribute('data-error-email-require')
-        },
-        email: {
-            allowEmpty: false,
-            message: "^" + $('#fdEmailConfirm').getAttribute('data-error-email-format')
-        },
-    },
     fdAddr_Num2: {
         presence: {
             allowEmpty: false,
