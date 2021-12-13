@@ -637,7 +637,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
                         const fdPackage = $btn.getAttribute('data-package');
 
-                        $('#form-head').innerHTML = $btn.getAttribute('data-plan');
+                        $('#form-head').innerHTML = "- " + $btn.getAttribute('data-plan');
 
 
                         if (fdPackage) {
