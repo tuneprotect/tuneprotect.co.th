@@ -28,6 +28,33 @@ require('../product');
 
 
 const constraints = {
+    fdEmailConfirm: {
+        presence: {
+            allowEmpty: false,
+            message: "^" + $('#fdEmailConfirm').getAttribute('data-error-email-require')
+        },
+        email: {
+            allowEmpty: false,
+            message: "^" + $('#fdEmailConfirm').getAttribute('data-error-email-format')
+        },
+    },
+    fdAddr_Num2: {
+        presence: {
+            allowEmpty: false,
+            message: "^" + $('#fdAddr_Num2').getAttribute('data-error-address')
+        },
+        format: {
+            pattern: /^[a-zA-Z0-9 !@#$&()\\-`.+,/\"\n\r"]*$/,
+            flags: "i",
+            message: "^" + $('[data-error-eng-only]').getAttribute('data-error-eng-only')
+        }
+    },
+    fdAddr_PostCode2: {
+        presence: {
+            allowEmpty: false,
+            message: "^" + $('#fdAddr_PostCode2').getAttribute('data-error-postal_code')
+        }
+    },
     fdSex: {
         presence: {
             allowEmpty: false,
@@ -361,10 +388,10 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
 
 
-
     let step = 1;
     let data = {
         fdMember_ID : member_id,
+        fdAgent : "00AA517T88",
         fdKeys : "",
         fdTitle: "",
         fdName: "",
@@ -405,7 +432,12 @@ document.addEventListener("DOMContentLoaded", async () => {
         fdQuestion4_3: "",
         ctrl_province: "",
         ctrl_terms: "",
-        fdFromDate: ""
+        fdFromDate: "",
+        fdFlightNo: "",
+        fdFlightTickerNo: "",
+        fdDestination:"",
+        fdAddr_Num2:"",
+        fdAddr_PostCode2:""
     };
 
     const iti = intlTelInput($('#fdTelephone'), {
@@ -638,6 +670,28 @@ document.addEventListener("DOMContentLoaded", async () => {
                         break;
                     case 3:
 
+                        if($('#ctrl_state').value === '')
+                        {
+                            Swal.fire({
+                                title: 'Warning!',
+                                text: "Please select "+ $('label[for=ctrl_state]').innerText,
+                                icon: 'info',
+                                confirmButtonText: 'OK'
+                            })
+                            return false;
+                        }
+
+                        if($('#fdAddr_PostCode2').value.length !== 4)
+                        {
+                            Swal.fire({
+                                title: 'Warning!',
+                                text: "Please fill in 4 digits " + $('label[for=fdAddr_PostCode2]').innerText,
+                                icon: 'info',
+                                confirmButtonText: 'OK'
+                            })
+                            return false;
+                        }
+
                         if($('#fdEmail').value !== $('#fdEmailConfirm').value)
                         {
                             Swal.fire({
@@ -690,10 +744,15 @@ document.addEventListener("DOMContentLoaded", async () => {
                             ctrl_accept_insurance_term: $('#ctrl_accept_insurance_term').checked ? true : undefined,
                             ctrl_terms: $('#ctrl_terms').checked ? true : undefined,
                             ctrl_province: $('#ctrl_province').value,
-                            fdPayAMT: getSelectedPrice(data.fdHBD, data.fdPackage, package_data)
+                            fdPayAMT: getSelectedPrice(data.fdHBD, data.fdPackage, package_data),
+                            fdFlightNo: $('#fdFlightNo').value,
+                            fdFlightTickerNo: $('#fdFlightTickerNo').value,
+                            fdDestination: $('#ctrl_destination').value,
+                            fdAddr_Num2: $('#fdAddr_Num2').value,
+                            fdAddr_PostCode2: $('#fdAddr_PostCode2').value,
                         }
 
-                        console.log(data);
+                        // console.log(data);
 
                         const result = validate(data, constraints);
                         const $cite = $form.getElementsByTagName('cite');
@@ -729,7 +788,12 @@ document.addEventListener("DOMContentLoaded", async () => {
                             });
 
                             const $ddlProvince = $('#ctrl_province');
+                            const $ddlDestination = $('#ctrl_destination');
+                            const $ddlState = $('#ctrl_state');
                             const province = $ddlProvince.options[$ddlProvince.selectedIndex].text;
+                            const destination = $ddlDestination.options[$ddlDestination.selectedIndex].text;
+                            const state = $ddlState.options[$ddlState.selectedIndex].text;
+
                             const selectedPackage = $('#step3 .form-head').innerHTML;
 
                             const dob = format(parseISO(data.fdHBD), 'dd/MM/') + (locale === 'th' ? (parseInt(format(parseISO(data.fdHBD), 'yyyy')) + 543) : format(parseISO(data.fdHBD), 'yyyy'))
@@ -763,8 +827,13 @@ document.addEventListener("DOMContentLoaded", async () => {
                         ${data.fdQuestion3 === 'Y' ? `<div><span>${$('#q3').getAttribute('data-summary')} : </span><strong>${data.fdQuestion3_1}</strong></div>` : ""}
                         ${data.fdQuestion3 === 'Y' ? `<div><span>${$('label[for=fdQuestion3_2]').innerText} : </span><strong>${parseFloat(data.fdQuestion3_2).toLocaleString() + ' ' + $summary_section.getAttribute('data-baht')}</strong></div>` : ""}
                         <div class="controls-wrapper full no-lable"><span>${$('#q4').getAttribute('data-summary')} : </span><strong>${data.fdQuestion4 === 'Y' ? data.fdQuestion4_1 : $('#q1').getAttribute('data-none')}</strong></div>
-                        ${data.fdQuestion4 === 'Y' ? '<div><span>' + $('label[for=fdQuestion4_2]').innerText + ' : </span><strong>' + data.fdQuestion4_2 + '</strong></div><div><span>' + $('label[for=fdQuestion4_3]').innerText + ' : </span><strong>' + data.fdQuestion4_3 + '</strong></div>' : ''}
-                    </div>` + sb;
+                        ${data.fdQuestion4 === 'Y' ? '<div><span>' + $('label[for=fdQuestion4_2]').innerText + ' : </span><strong>' + data.fdQuestion4_2 + '</strong></div><div><span>' + $('label[for=fdQuestion4_3]').innerText + ' : </span><strong>' + data.fdQuestion4_3 + '</strong></div>' : ''}</div>
+                        <br/><div><span>${$('label[for=fdFlightNo]').innerText} : </span><strong>${data.fdFlightNo}</strong></div>
+                        <div><span>${$('label[for=fdFlightTickerNo]').innerText} : </span><strong>${data.fdFlightTickerNo}</strong></div>
+                        <div><span>${$('label[for=ctrl_destination]').innerText} : </span><strong>${destination}</strong></div>
+                        <div><span>${$('label[for=fdAddr_Num2]').innerText} : </span><strong>${data.fdAddr_Num2}</strong></div>
+                        <div><span>${$('label[for=ctrl_state]').innerText} : </span><strong>${state}</strong></div>
+                        <div><span>${$('label[for=fdAddr_PostCode2]').innerText} : </span><strong>${data.fdAddr_PostCode2}</strong></div>` + sb;
                             status = true;
                         }
                         break;

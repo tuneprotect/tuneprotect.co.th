@@ -6,7 +6,7 @@
 {{--        <meta name="csrf-token" content="{{ csrf_token() }}" />--}}
 
         <meta name="csrf-token" content="{{ csrf_token() }}" />
-        @if($partner==='LUMA' && $selected==='ONTALN')
+        @if(($partner==='LUMA' && $selected==='ONTALN') || $selected==='TGCVLP')
         @elseif($partner==='LUMA' && $selected==='CVCARE')
             <header>
                 <nav>

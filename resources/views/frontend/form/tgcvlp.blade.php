@@ -76,6 +76,35 @@
         <div class="form-inner">
             @include('frontend.component.form-profile',['id_card_field' => 'passport','has_nationality' => true ,'id_card_field_title' => __("product.passport_no"),'prefix' => '','eng_only' => true ,'emailconfirm' => true ])
             @include('frontend.component.form-address',['prefix' => ''])
+            <h3>Address in Australia</h3>
+            <div class="controls-wrapper full">
+                <textarea placeholder="Address" id="fdAddr_Num2" name="fdAddr_Num2" cols="30" rows="5"
+                  data-error-address="@lang("product.error.address")"></textarea>
+                <label for="fdAddr_Num2">Address in Australia</label>
+            </div>
+            <div class="two-col">
+            <div class="controls-wrapper">
+                <select id="ctrl_state" name="ctrl_state">
+                    <option selected="selected" value="">@lang('product.please_select')</option>
+                    <option value="WA">WA</option>
+                    <option value="NSW">NSW</option>
+                    <option value="VIC">VIC</option>
+                    <option value="SA">SA</option>
+                    <option value="QLD">QLD</option>
+                    <option value="NT">NT</option>
+                    <option value="CBR">CBR</option>
+                </select>
+                <label for="ctrl_state">State</label>
+                </select>
+            </div>
+            <div class="controls-wrapper">
+                <input id="fdAddr_PostCode2" name="fdAddr_PostCode2" type="tel"
+                       data-error-postal_code="@lang("product.error.postal_code")"
+                       placeholder="@lang("product.postal_code")" autocomplete='off' />
+                <label for="fdAddr_PostCode2">@lang("product.postal_code") in Australia</label>
+            </div>
+            </div>
+
             @include('frontend.component.form-beneficiary',['prefix' => ''])
             <h3>@lang('product.ONCOVIDL_question.title')</h3>
             <p>@lang('product.ONCOVIDL_question.q1')</p>

@@ -49,7 +49,12 @@
                                 data-plan="@lang('product.plan') {{$i-1}}"
                            @endif
 
-                           class="btn btn-block btn-outline btn-goto">@lang('product.choose_plan')</a>
+                           @if($selected === 'TGCVLP')
+                                class="btn btn-block btn-outline btn-goto">Accept & Continue</a>
+                           @else
+                                class="btn btn-block btn-outline btn-goto">@lang('product.choose_plan')</a>
+                           @endif
+
                     </th>
                     <?php $i++ ?>
                 @endforeach
@@ -57,7 +62,13 @@
             </thead>
             <tbody>
             <tr class="orange">
-                <th>@lang('product.price_per_year')</th>
+                @if($selected === 'TGCVLP')
+                    <th>Total Premium / person</th>
+                @else
+                    <th>@lang('product.price_per_year')</th>
+                @endif
+
+
                 <?php $i = 1 ?>
                 @foreach ($package_detail as $k => $v)
                     <td {{$i > 1 ? 'class=hide' : ""}} data-index="{{$i-1}}" data-package="{{$k}}"><strong
@@ -118,7 +129,13 @@
                                 data-plan="@lang('product.plan') {{$i-1}}"
                            @endif
 
-                           class="btn btn-block btn-outline btn-goto">@lang('product.choose_plan')</a>
+
+                           @if($selected === 'TGCVLP')
+                                class="btn btn-block btn-outline btn-goto">Accept & Continue</a>
+                           @else
+                                class="btn btn-block btn-outline btn-goto">@lang('product.choose_plan')</a>
+                           @endif
+
                     </td>
                     <?php $i++ ?>
                 @endforeach

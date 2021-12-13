@@ -97,15 +97,7 @@ class TGController  extends ProductController
         session(['partner' => $partner]);
 
         $this->bodyData['doc_no'] = $request->session()->get('doc_no');
-
-//        if($this->locale =='th')
-//        {
-//            $this->bodyData['point'] = '<p>ท่านได้รับคะแนน BIG Point '. $request->session()->get('point') .' คะแนน จากการซื้อครั้งนี้ </p>';
-//        }
-//        else{
-//            $this->bodyData['point'] = '<p>You will earn '. $request->session()->get('point') .' Big Point from this purchase. </p>';
-//        }
-
+        $this->bodyData['selected'] = 'TGCVLP';
         $this->bodyData['return_link'] = "/en/tg";
         return $this->genStatusPage_Portal(ProjectEnum::STATIC_PAGE_PAYMENT_THANK_YOU);
     }

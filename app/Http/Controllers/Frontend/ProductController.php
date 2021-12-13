@@ -14,6 +14,7 @@ use App\Enum\VSAFEAObject;
 use App\Enum\FIMPObject;
 use App\Enum\PAObject;
 use App\Enum\ProjectEnum;
+use App\Enum\TGCVLPObject;
 use App\Http\Controllers\Frontend\Base\BaseController;
 use App\Models\BuyLog;
 use App\Models\WebContent;
@@ -306,7 +307,7 @@ class ProductController extends BaseController
         } elseif (substr($data['fdPackage'], 0, 8) === 'ONCOVIDL') {
             $obj = new COVIDLObject();
         } elseif (substr($data['fdPackage'], 0, 6) === 'TGCVLP') {
-            $obj = new COVIDLObject();
+            $obj = new TGCVLPObject();
         } elseif (substr($data['fdPackage'], 0, 9) === 'ONCOVIDMW') {
             $obj = new COVIDAObject();
         } elseif (substr($data['fdPackage'], 0, 6) === 'ONTADM') {
