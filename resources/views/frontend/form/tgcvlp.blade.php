@@ -19,10 +19,10 @@
                         <label for="fdFromDate">@lang("product.effective_date")</label>
                     </div>
                     <div class="controls-wrapper">
-                        <input id="fdFlightNo" name="fdFlightNo" type="text" placeholder="Flight no."
+                        <input id="fdFlightNo" name="fdFlightNo" type="text" placeholder="Flight no. (TGxxx)"
                                data-error="Please fill in Flight no."
                         />
-                        <label for="fdFlightNo">Flight no.</label>
+                        <label for="fdFlightNo">Flight no. (TGxxx)</label>
                     </div>
                     <div class="controls-wrapper">
                         <select id="ctrl_destination" name="ctrl_destination">
@@ -36,10 +36,10 @@
                 </div>
                 <div class="date-wrapper">
                     <div class="controls-wrapper">
-                        <input id="fdFlightTickerNo" name="fdFlightTickerNo" type="text" placeholder="Flight ticket number"
+                        <input id="fdFlightTickerNo" name="fdFlightTickerNo" type="text" placeholder="Flight ticket number (217-xxxxxxxxx)"
                                data-error="Please fill in Flight ticket number"
                         />
-                        <label for="fdFlightTickerNo">Flight ticket number</label>
+                        <label for="fdFlightTickerNo">Flight ticket number (217-xxxxxxxxx)</label>
                     </div>
                     <div class="controls-wrapper"></div>
                     <div class="controls-wrapper"></div>

@@ -16,6 +16,14 @@
         <li data-gtm="product-{{strtolower($selected)}}-stepper-3" class="btn-goto" data-step="3"><a
                 href="#"><strong>@lang('product.fill_in_information')</strong></a></li>
         <li data-gtm="product-{{strtolower($selected)}}-stepper-4" class="btn-goto" data-step="4"><a
-                href="#"><strong>@lang('product.confirm')</strong></a></li>
+                href="#">
+                <strong>
+                @if($controller == 'tg')
+                    Confirmation
+                @else
+                    @lang('product.confirm')
+                @endif
+                    </strong>
+            </a></li>
     </ol>
 </section>

@@ -1,7 +1,13 @@
 <section style="display: none" id="step4" class="wrapper">
     <form class="insurance-form" method="post"
           action="{{route('current',['locale' => $locale,'controller' => $controller,'func' => "make-payment"],false)}}">
-        <div class="form-head">@lang('product.confirmation')</div>
+        <div class="form-head">
+            @if($controller == 'tg')
+                Confirmation
+            @else
+                @lang('product.confirmation')
+            @endif
+                </div>
         <div id="summary_section" class="form-inner"
              data-insurance_data="@lang('product.insurance_data')"
              data-profile_data="@lang('product.profile_data')"
