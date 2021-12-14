@@ -40,16 +40,16 @@
                             <strong class="package-number">@lang('product.plan') {{$i-1}}</strong>
                         @endif
 
-                        <a href="#"
-                           data-gtm="product-{{strtolower($selected)}}-top-choose-plan-{{$i-1}}"
-                           data-step="3" data-package="{{$k}}" data-sub-package=""
-                           @if($i == 1)
-                                data-plan='LITE Plan'
-                           @else
-                                data-plan="@lang('product.plan') {{$i-1}}"
-                           @endif
+{{--                        <a href="#"--}}
+{{--                           data-gtm="product-{{strtolower($selected)}}-top-choose-plan-{{$i-1}}"--}}
+{{--                           data-step="3" data-package="{{$k}}" data-sub-package=""--}}
+{{--                           @if($i == 1)--}}
+{{--                                data-plan='LITE Plan'--}}
+{{--                           @else--}}
+{{--                                data-plan="@lang('product.plan') {{$i-1}}"--}}
+{{--                           @endif--}}
 
-                           class="btn btn-block btn-outline btn-goto">@lang('product.choose_plan')</a>
+{{--                           class="btn btn-block btn-outline btn-goto">Accept & Continue</a>--}}
 
                     </th>
                     <?php $i++ ?>
@@ -58,7 +58,8 @@
             </thead>
             <tbody>
             <tr class="orange">
-                <th>@lang('product.price_per_year')</th>
+                <th>Total Premium / person</th>
+
 
                 <?php $i = 1 ?>
                 @foreach ($package_detail as $k => $v)
@@ -121,7 +122,7 @@
                            @endif
 
 
-                           class="btn btn-block btn-outline btn-goto">@lang('product.choose_plan')</a>
+                           class="btn btn-block btn-outline btn-goto">Accept & Continue</a>
 
                     </td>
                     <?php $i++ ?>
@@ -131,10 +132,10 @@
         </table>
 
         <br><br>
-        <a href="#" data-gtm="product-{{strtolower($selected)}}-more" id="btn-more" data-expand="@lang('product.more')"
-           data-collapse="@lang('product.collapse')">
-            @lang('product.more')
-        </a>
+{{--        <a href="#" data-gtm="product-{{strtolower($selected)}}-more" id="btn-more" data-expand="@lang('product.more')"--}}
+{{--           data-collapse="@lang('product.collapse')">--}}
+{{--            @lang('product.more')--}}
+{{--        </a>--}}
 
     </div>
 </section>

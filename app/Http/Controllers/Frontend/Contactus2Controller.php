@@ -14,18 +14,16 @@ use App\Models\Setting;
 use App\Models\WebContent;
 use Illuminate\Support\Facades\Mail;
 
-class ContactusController extends BaseController
+class Contactus2Controller extends BaseController
 {
     public function index()
     {
-//        $this->template->setBody('id', 'contact_us_page');
-//        $this->template->setFootJS(mix("/js/frontend/contactus.js"));
-//        $this->bodyData['content'] = $this->setStaticPageHeader(ProjectEnum::STATIC_PAGE_CONTACT_US);
-//        $this->bodyData['faq'] = $this->setFaq(ProjectEnum::WEB_CONTACTUS_FAQ);
-//
-//        return $this->genView('frontend.page.contactus');
+        $this->template->setBody('id', 'contact_us_page');
+        $this->template->setFootJS(mix("/js/frontend/contactus.js"));
+        $this->bodyData['content'] = $this->setStaticPageHeader(ProjectEnum::STATIC_PAGE_CONTACT_US);
+        $this->bodyData['faq'] = $this->setFaq(ProjectEnum::WEB_CONTACTUS_FAQ);
 
-        return redirect('https://w3.tuneprotect.co.th/WebPortal/Pages/RedeemPA.aspx');
+        return $this->genView('frontend.page.contactus');
 
     }
 

@@ -360,6 +360,9 @@ document.addEventListener("DOMContentLoaded", async () => {
     const package_data = await getPackageData(current_package);
     const nationality_data = await getNationalityData();
 
+    $('#fdFlightNo').value = "TG";
+    $('#fdFlightTickerNo').value = "217-";
+
     let member_id = "";
     var myEle = document.getElementById("member_id");
     if(myEle){

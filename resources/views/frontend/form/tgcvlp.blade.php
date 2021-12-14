@@ -22,7 +22,7 @@
                         <input id="fdFlightNo" name="fdFlightNo" type="text" placeholder="Flight no."
                                data-error="Please fill in Flight no."
                         />
-                        <label for="fdFlightNo">Flight no. (TGxxx)</label>
+                        <label for="fdFlightNo">Flight no.</label>
                     </div>
                     <div class="controls-wrapper">
                         <select id="ctrl_destination" name="ctrl_destination">
@@ -39,7 +39,7 @@
                         <input id="fdFlightTickerNo" name="fdFlightTickerNo" type="text" placeholder="Flight ticket number"
                                data-error="Please fill in Flight ticket number"
                         />
-                        <label for="fdFlightTickerNo">Flight ticket number (217-2xxxxxxxx)</label>
+                        <label for="fdFlightTickerNo">Flight ticket number</label>
                     </div>
                     <div class="controls-wrapper"></div>
                     <div class="controls-wrapper"></div>
@@ -69,7 +69,7 @@
     <br/>
     {!! $package->locales[$locale]->remark !!}
 </section>
-@include('frontend.component.form-lite-coverage-table',['package_detail' => $package_detail,'selected' =>$selected ,'prefix' => '' ])
+@include('frontend.component.form-lite-tgcvlp-coverage-table',['package_detail' => $package_detail,'selected' =>$selected ,'prefix' => '' ])
 <section style="display: none" id="step3" class="wrapper">
     <form class="insurance-form">
         <div class="form-head"> {{$package->locales[$locale]->title}} <span id="form-head"></span></div>

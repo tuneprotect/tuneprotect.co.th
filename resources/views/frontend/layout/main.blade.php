@@ -91,7 +91,7 @@
                 @endif
                 <li>
                     <a data-gtm="main-nav-contactus"
-                       href="{{route('current',['locale' => $locale,'controller' => 'contactus'],false)}}">{{__('global.nav_contact')}}</a>
+                       href="{{route('current',['locale' => $locale,'controller' => 'contactus2'],false)}}">{{__('global.nav_contact')}}</a>
                 </li>
                 @if(@$menu_enable[\App\Enum\ProjectEnum::WEB_CONTENT_ABOUT] > 0 || @$menu_enable[\App\Enum\ProjectEnum::WEB_CONTENT_ORGANIZATION > 0])
                     <li>
@@ -353,7 +353,7 @@
                     <ul class="collapse">
                         <li>
                             <a data-gtm="footer-nav-contact-{{$v1->friendly_url}}"
-                               href="{{route('current',['locale' => $locale,'controller' => 'contactus'],false)}}"><strong> {{__('global.nav_contact')}}</strong></a>
+                               href="{{route('current',['locale' => $locale,'controller' => 'contactus2'],false)}}"><strong> {{__('global.nav_contact')}}</strong></a>
                         </li>
                     </ul>
 
