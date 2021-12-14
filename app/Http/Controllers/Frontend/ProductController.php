@@ -602,6 +602,16 @@ class ProductController extends BaseController
 
         $arr_post['customer_email'] = $obj->data["fdEmail"];
         $arr_post['user_defined_1'] = ($log_id ? implode(',', $log_id) : $obj->log_id);
+
+//        dd(strlen($arr_post['user_defined_1']));
+
+        if(strlen($arr_post['user_defined_1'])>150)
+        {
+            $arr_post['user_defined_1'] = substr($arr_post['user_defined_1'], 0, 150);
+        }
+
+//        dd(strlen($arr_post['user_defined_1']));
+
         $arr_post['user_defined_2'] = preg_replace('/\?.*/', '', session('return_link'));
         $arr_post['user_defined_3'] = session('partner');
         $arr_post['result_url_1'] = url("{$this->locale}/{$this->controller}/result");

@@ -187,11 +187,22 @@ const profileConstraints = {
     }
 };
 
-const getSelectedPrice = (packageCode, package_data) => {
-    const code = packageCode.substring(0, 7);
-    const sub_code = packageCode.substring(7);
-    return package_data[code].price[sub_code].price;
-}
+// const getSelectedPrice = (packageCode, package_data) => {
+//     // const code = packageCode.substring(0, 7);
+//     // const sub_code = packageCode.substring(7);
+//     // console.log(packageCode);
+//     // console.log(package_data);
+//     // console.log('code : ' + code);
+//     // console.log('sub_code : ' + sub_code);
+//     // console.log('price : ' + package_data[code].price[sub_code].price);
+//     // return package_data[code].price[sub_code].price;
+//
+//     //fdPackage
+//     //$('#sub_code').value
+//     //Price = package_data[Package].price[price key id].price
+//
+//     return package_data[packageCode].price[$('#sub_code').value].price;
+// }
 
 // const genPrice = (package_data, sub_package) => {
 //
@@ -219,7 +230,7 @@ const genPrice = (package_data, fdFromDate, fdToDate) => {
     // console.log(fdToDate);
 
     const day = differenceInDays(endDate, startDate) + 1;
-    console.log("day : "  + day);
+    // console.log("day : "  + day);
 
     $('#days').value = day;
 
@@ -243,6 +254,12 @@ const genPrice = (package_data, fdFromDate, fdToDate) => {
             $(`strong[data-price-${k}]`).innerHTML = parseInt(package_data[k].price[pack].price).toLocaleString();
             $('#sub_code').value = pack;
 
+            console.log('k : ' + k );
+            console.log('sub_code pack : ' + pack );
+
+            //fdPackage
+            //$('#sub_code').value
+            //Price = package_data[Package].price[price key id].price
         })
 
 }
@@ -292,7 +309,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     };
     let iti = {};
     let desination = '';
-    let $dataSubPackage;
+    // let $dataSubPackage;
     let provinceOption = `<option value="">${$('#fdDestFrom').getAttribute('data-please-select')}</option>`;
 
     country_data
@@ -396,7 +413,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             validateField(this, profileConstraints);
             for (let i = 1; i <=  $('#ctrl_no_of_insured').value; i++) {
                 if ([`data_${i}_fdName`, `data_${i}_fdSurname`, `data_${i}_fdNationalID`].includes(field.id)) {
-                    validatePolicy(e.target, $dataSubPackage,$('#fdFromDate')?.value);
+                    validatePolicy(e.target, data.fdPackage,$('#fdFromDate')?.value);
                 }
             }
 
@@ -478,8 +495,15 @@ document.addEventListener("DOMContentLoaded", async () => {
                             $(`#data_${i}_fdNationalID`).value = "";
                         }
 
-                        const fdPackage = $btn.getAttribute('data-package') + $btn.getAttribute('data-sub-package');
-                        $dataSubPackage =fdPackage;
+                        // const fdPackage = $btn.getAttribute('data-package') + $btn.getAttribute('data-sub-package');
+                        // $dataSubPackage =fdPackage;
+                        // console.log($btn.getAttribute('data-plan'));
+
+                        const fdPackage = $btn.getAttribute('data-package');
+                        // $dataSubPackage =fdPackage;
+
+                        // console.log(fdPackage);
+
                         $('#form-head').innerHTML = $btn.getAttribute('data-plan');
                         if (fdPackage) {
                             data = {
@@ -546,16 +570,21 @@ document.addEventListener("DOMContentLoaded", async () => {
                             }
                         }
 
+                        // console.log('data.fdPackage : ' + data.fdPackage);
+                        // console.log('sub_code : ' + $('#sub_code').value);
+
                         data = {
                             ...data,
-                            fdPayAMT: getSelectedPrice(data.fdPackage, package_data),
+                            fdPayAMT: package_data[data.fdPackage].price[$('#sub_code').value].price,
                             fdSendType: getRadioSelectedValue('fdSendType'),
                             ctrl_terms: $('#ctrl_terms').checked ? true : undefined,
                             ctrl_accept_insurance_term: $('#ctrl_accept_insurance_term').checked ? true : undefined,
                             fdDay: $('#days').value,
                             profile: profileData
                         }
+                        // fdPayAMT: getSelectedPrice(data.fdPackage, package_data),
 
+                        console.log('fdPayAMT : ' + data.fdPayAMT);
                         result = validate(data, step3Constraints);
 
                         if (result) {
