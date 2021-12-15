@@ -5,7 +5,7 @@ import {
     getCountryData,
     getNationalityData,
     getPackageData,
-    showMultipleTitle, validatePolicy,validatePolicyCheck
+    showMultipleTitle, validatePolicy,validatePolicyPayment
 } from "../form/productHelper";
 import {$, $$, current_package, getRadioSelectedValue, getZipcodeData, locale, scrollToTargetAdjusted} from "../helper";
 
@@ -536,7 +536,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                             let dateResult = checkTaBirthDateIPass(i);
 
                             let valCheck = false;
-                            valCheck = validatePolicyCheck($(`#data_${i}_fdNationalID`).value,data.fdPackage,$('#fdFromDate')?.value);
+                            valCheck = validatePolicyPayment($(`#data_${i}_fdNationalID`).value,data.fdPackage,$('#fdFromDate')?.value);
                             if(!valCheck)
                             {
                                 status = false;
