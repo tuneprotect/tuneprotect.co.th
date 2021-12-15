@@ -158,6 +158,28 @@ export const validatePolicy = async ($this, fdPackage,fdFromDate) => {
     }
 }
 
+export const validatePolicyCheck = async (pfdNationalID,pfdPackage,pfdFromDate) => {
+    let data = {fdNationalID: pfdNationalID,fdPackage: pfdPackage,fdFromDate:pfdFromDate}
+    // console.log(data);
+    // console.log(pfdPackage);
+    // console.log(pfdFromDate);
+
+    const result = await callValidateApi(data)
+
+    if (result.status === 'error') {
+        $('button[data-gtm="product-ontaln-make-payment"]').style.display = 'none';
+        Swal.fire({
+            icon: 'error',
+            text: result.message + ' National ID / Passport : ' + pfdNationalID
+        })
+        return false;
+    } else {
+        $('button[data-gtm="product-ontaln-make-payment"]').style.display = 'inline-flex';
+        return true;
+    }
+}
+
+
 export const validateQuestion = async ($this) => {
 
     // console.log($this);

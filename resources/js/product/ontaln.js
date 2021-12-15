@@ -5,7 +5,7 @@ import {
     getCountryData,
     getNationalityData,
     getPackageData,
-    showMultipleTitle, validatePolicy
+    showMultipleTitle, validatePolicy,validatePolicyCheck
 } from "../form/productHelper";
 import {$, $$, current_package, getRadioSelectedValue, getZipcodeData, locale, scrollToTargetAdjusted} from "../helper";
 
@@ -254,8 +254,8 @@ const genPrice = (package_data, fdFromDate, fdToDate) => {
             $(`strong[data-price-${k}]`).innerHTML = parseInt(package_data[k].price[pack].price).toLocaleString();
             $('#sub_code').value = pack;
 
-            console.log('k : ' + k );
-            console.log('sub_code pack : ' + pack );
+            // console.log('k : ' + k );
+            // console.log('sub_code pack : ' + pack );
 
             //fdPackage
             //$('#sub_code').value
@@ -264,7 +264,13 @@ const genPrice = (package_data, fdFromDate, fdToDate) => {
 
 }
 
-
+function resolveAfter2Seconds() {
+    return new Promise(resolve => {
+        setTimeout(() => {
+            resolve('resolved');
+        }, 2000);
+    });
+}
 
 document.addEventListener("DOMContentLoaded", async () => {
 
@@ -523,14 +529,19 @@ document.addEventListener("DOMContentLoaded", async () => {
                         break;
                     case 3:
                         let profileData = []
-
                         status = true;
-
                         removeError($('#step3'));
-
                         for (let i = 1; i <= $('#ctrl_no_of_insured').value; i++) {
                             let address = ($(`#data_${i}_ctrl_province`).value).split('*');
                             let dateResult = checkTaBirthDateIPass(i);
+
+                            let valCheck = false;
+                            valCheck = validatePolicyCheck($(`#data_${i}_fdNationalID`).value,data.fdPackage,$('#fdFromDate')?.value);
+                            if(!valCheck)
+                            {
+                                status = false;
+                                return false;
+                            }
 
                             const currentProfile = {
                                 fdSex: getRadioSelectedValue(`data_${i}_fdSex`),
