@@ -203,6 +203,25 @@ export const validateQuestion = async ($this) => {
 }
 
 
+export const validateQuestionTG = async ($this) => {
+    let message = "ข้อมูลการสมัครไม่ตรงกับเงื่อนไขเกณฑ์การพิจารณารับประกัน จึงไม่สามารถทำรายการต่อได้";
+    if (locale === 'en') {
+        message= "The application information does not meet the criteria for underwriting insurance, therefore unable to continue the transaction.";
+    }
+    if ($this.value === 'Y' && ($this.id === 'ctrl_question_1_Y'||$this.id === 'ctrl_question_2_Y' ||$this.id === 'ctrl_question_3_Y' ||$this.id === 'ctrl_question_4_Y' )) {
+        $('button[data-step="4"]').style.display = 'none';
+        $this.closest('.controls-wrapper').classList.add("error");
+        Swal.fire({
+            icon: 'error',
+            text: message
+        })
+        return false;
+    } else {
+        return true;
+    }
+}
+
+
 export const validateQuestion3 = async ($this) => {
 
     // console.log($this);
