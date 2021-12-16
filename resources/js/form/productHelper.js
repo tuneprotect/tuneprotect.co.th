@@ -345,6 +345,8 @@ export const showTitle = (sex, age) => {
     if (age >= 15) {
         arrHide.push('#li_title_184');
         arrHide.push('#li_title_185');
+        arrHide.push('#li_title_280');
+        arrHide.push('#li_title_283');
     } else {
         arrHide.push('#li_title_040');
         arrHide.push('#li_title_041');
@@ -357,12 +359,14 @@ export const showTitle = (sex, age) => {
         arrHide.push('#li_title_041');
         arrHide.push('#li_title_002');
         arrHide.push('#li_title_003');
+        arrHide.push('#li_title_280');
     }
 
     if (sex === 'F') {
         arrHide.push('#li_title_042');
         arrHide.push('#li_title_184');
         arrHide.push('#li_title_001');
+        arrHide.push('#li_title_283');
     }
     arrHide.map(v => {
         if ($(v)) {
