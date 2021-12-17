@@ -52,7 +52,6 @@ class ProductController extends BaseController
 
         $this->bodyData['controller'] = $this->controller;
 
-
         if (empty($link)) {
             return redirect("/" . $this->locale);
         }

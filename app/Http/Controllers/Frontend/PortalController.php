@@ -10,6 +10,7 @@ use App\Enum\ProjectEnum;
 class PortalController extends ProductController
 {
     protected $controller = 'portal';
+    protected $use_effective = 'N';
     public function index($link = null, $selected = null,$portal_key = null)
     {
         $return_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
@@ -29,7 +30,7 @@ class PortalController extends ProductController
         $partner = '';
         $agentCode = '';
         $use_effective = 'N';
-        //Check username and password , web portal.
+        $nopayment_status = false;
         $apiResult = $this->sendToApiPortalLogin($portal_key);
         if (!$apiResult["status"]) {
             $status_api = false;
@@ -42,21 +43,20 @@ class PortalController extends ProductController
             $partner = $apiResult["partner"];
             $agentCode = $apiResult["agent_code"];
             $use_effective = $apiResult["user_effective"];
+            if($apiResult["user_nopayment"] == 'Y')
+            {
+                $nopayment_status = true;
+            }
         }
-        session(['partner' => $partner]);
         $this->bodyData['partner'] = $partner;
-        $this->bodyData['use_effective'] = $use_effective;
         $this->bodyData['agentCode'] = $agentCode;
         $this->bodyData['status_api'] = $status_api;
         $this->bodyData['massage_key'] = $massage_key;
-
-        $nopayment_status = false;
-        $apiResult2 = $this->sendToApiCheckNoPayment($portal_key);
-        if ($apiResult2["status"]) {
-            $nopayment_status = true;
-        }
+        $this->bodyData['use_effective'] = $use_effective;
         $this->bodyData['nopayment_status'] = $nopayment_status;
+
         session(['nopayment_status' => $nopayment_status]);
+        session(['partner' => $partner]);
 
         return parent::index($link,$selected);
 
@@ -79,7 +79,9 @@ class PortalController extends ProductController
         $status_api = false;
         $this->bodyData['portal_key'] = $portal_key;
         $partner = '';
-        //Check username and password , web portal.
+        $agentCode = '';
+        $use_effective = 'N';
+        $nopayment_status = false;
         $apiResult = $this->sendToApiPortalLogin($portal_key);
         if (!$apiResult["status"]) {
             $status_api = false;
@@ -89,37 +91,32 @@ class PortalController extends ProductController
         {
             $status_api = true;
             $massage_key = "Portal Key : " . $portal_key;
-        }
-        $this->bodyData['status_api'] = $status_api;
-        $this->bodyData['massage_key'] = $massage_key;
+            $partner = $apiResult["partner"];
+            $agentCode = $apiResult["agent_code"];
+            $use_effective = $apiResult["user_effective"];
+            if($apiResult["user_nopayment"] == 'Y')
+            {
+                $nopayment_status = true;
+            }
 
-        $nopayment_status = false;
-        $apiResult2 = $this->sendToApiCheckNoPayment($portal_key);
-        if ($apiResult2["status"]) {
-            $nopayment_status = true;
         }
-        $this->bodyData['nopayment_status'] = $nopayment_status;
-        session(['nopayment_status' => $nopayment_status]);
 
         $this->bodyData['partner'] = $partner;
+        $this->bodyData['agentCode'] = $agentCode;
+        $this->bodyData['status_api'] = $status_api;
+        $this->bodyData['massage_key'] = $massage_key;
+        $this->bodyData['use_effective'] = $use_effective;
+        $this->bodyData['nopayment_status'] = $nopayment_status;
+
+        session(['nopayment_status' => $nopayment_status]);
         session(['partner' => $partner]);
 
-        //Fix brochure
         $this->bodyData['brochure_ci'] = __('product.ci_brochure_broker_th');
         if($this->locale == 'en')
         {
 
             $this->bodyData['brochure_ci'] = __('product.ci_brochure_broker_en');
-            //  $this->bodyData['brochure_ci'] = 'https://www.tuneprotect.co.th/storage/product/CI/brochure_broker_th.pdf';
-            ///https://www.tuneprotect.co.th/storage/product/CI/brochure_broker_th.pdf
-
-
         }
-        // else
-        // {
-        //     $this->bodyData['brochure_ci'] = 'https://www.tuneprotect.co.th/storage/product/CI/brochure_broker_en.pdf';
-        // }
-
 
         return parent::form($link,$selected);
 

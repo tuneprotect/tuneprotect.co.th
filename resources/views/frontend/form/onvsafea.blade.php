@@ -6,13 +6,15 @@
             <h3>@lang('product.please_specify_birthdate')</h3>
             @include('frontend.component.form-date-input')
 
-            @if($use_effective == 'Y')
-                    <div class="controls-wrapper">
-                        <input id="fdFromDate" name="fdFromDate" type="date" min="{{date('Y-m-d')}}" class="flatpickr"
-                               data-error="@lang('product.effectived_start_date')"
-                        />
-                        <label for="fdFromDate">@lang("product.effectived_date")</label>
-                    </div>
+            @if(isset($use_effective))
+                @if($use_effective == 'Y')
+                        <div class="controls-wrapper">
+                            <input id="fdFromDate" name="fdFromDate" type="date" min="{{date('Y-m-d')}}" class="flatpickr"
+                                   data-error="@lang('product.effectived_start_date')"
+                            />
+                            <label for="fdFromDate">@lang("product.effectived_date")</label>
+                        </div>
+                @endif
             @endif
         </div>
 
