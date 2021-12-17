@@ -25,6 +25,7 @@
 
 
         <input type="hidden" id="controller" value="{{$controller}}"/>
+        <input type="hidden" id="use_effective" value="{{$use_effective}}"/>
 
         @if($controller == 'portal')
             <div class="btn-wrapper">
@@ -32,7 +33,7 @@
                 <input type="hidden" id="status_api" value="{{$status_api}}"/>
                 <input type="hidden" id="nopayment_status" value="{{$nopayment_status}}"/>
                 <input type="hidden" id="partner" value="{{$partner}}"/>
-                <input type="hidden" id="use_effective" value="{{$use_effective}}"/>
+
             </div>
         @endif
 

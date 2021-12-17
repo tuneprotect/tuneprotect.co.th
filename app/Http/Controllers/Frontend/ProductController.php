@@ -32,6 +32,7 @@ class ProductController extends BaseController
     protected $controller = 'product';
     protected $payment = 'CC,FULL';
     protected $ipp_interest_type = "";
+    protected $use_effective = 'N';
     public function index($link = null, $selected = null)
     {
         //Set redirect by product , Maintenance https://www.tuneprotect.co.th/index.html
@@ -51,6 +52,7 @@ class ProductController extends BaseController
         }
 
         $this->bodyData['controller'] = $this->controller;
+        $this->bodyData['use_effective'] = $this->use_effective;
 
         if (empty($link)) {
             return redirect("/" . $this->locale);

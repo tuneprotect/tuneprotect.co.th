@@ -22,14 +22,11 @@ class PortalController extends ProductController
             return redirect('https://www.tuneprotect.co.th/Maintenance.html');
         }
 
-        $this->bodyData['controller'] = $this->controller;
-
         $massage_key = $portal_key;
         $status_api = false;
         $this->bodyData['portal_key'] = $portal_key;
         $partner = '';
         $agentCode = '';
-        $use_effective = 'N';
         $nopayment_status = false;
         $apiResult = $this->sendToApiPortalLogin($portal_key);
         if (!$apiResult["status"]) {
@@ -42,7 +39,7 @@ class PortalController extends ProductController
             $massage_key = "Portal Key : " . $portal_key;
             $partner = $apiResult["partner"];
             $agentCode = $apiResult["agent_code"];
-            $use_effective = $apiResult["user_effective"];
+            $this->use_effective = $apiResult["user_effective"];
             if($apiResult["user_nopayment"] == 'Y')
             {
                 $nopayment_status = true;
@@ -52,8 +49,10 @@ class PortalController extends ProductController
         $this->bodyData['agentCode'] = $agentCode;
         $this->bodyData['status_api'] = $status_api;
         $this->bodyData['massage_key'] = $massage_key;
-        $this->bodyData['use_effective'] = $use_effective;
         $this->bodyData['nopayment_status'] = $nopayment_status;
+
+        $this->bodyData['controller'] = $this->controller;
+        $this->bodyData['use_effective'] = $this->use_effective;
 
         session(['nopayment_status' => $nopayment_status]);
         session(['partner' => $partner]);
