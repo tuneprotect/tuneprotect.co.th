@@ -6,15 +6,13 @@
             <h3>@lang('product.please_specify_birthdate')</h3>
             @include('frontend.component.form-date-input')
 
-            @if($controller == 'portal')
-                @if($portal_key == 'QAVM2LRWBGCXXTSFBQFR6LKW28UQXUJR22UBNGFRGUSXXTARPQJRX')
+            @if($use_effective == 'Y')
                     <div class="controls-wrapper">
                         <input id="fdFromDate" name="fdFromDate" type="date" min="{{date('Y-m-d')}}" class="flatpickr"
                                data-error="@lang('product.effectived_start_date')"
                         />
                         <label for="fdFromDate">@lang("product.effectived_date")</label>
                     </div>
-                @endif
             @endif
         </div>
 
@@ -32,6 +30,7 @@
                 <input type="hidden" id="status_api" value="{{$status_api}}"/>
                 <input type="hidden" id="nopayment_status" value="{{$nopayment_status}}"/>
                 <input type="hidden" id="partner" value="{{$partner}}"/>
+                <input type="hidden" id="use_effective" value="{{$use_effective}}"/>
             </div>
         @endif
 

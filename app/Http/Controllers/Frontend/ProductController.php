@@ -51,6 +51,8 @@ class ProductController extends BaseController
         }
 
         $this->bodyData['controller'] = $this->controller;
+
+
         if (empty($link)) {
             return redirect("/" . $this->locale);
         }
@@ -472,6 +474,8 @@ class ProductController extends BaseController
                 $obj->fdApiPackage = $package[$data['fdPackage']]->apiPackage;
             }
         }
+
+//        dd($obj);
 
         $obj->fdController = $this->controller;
         return $obj;

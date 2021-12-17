@@ -446,7 +446,8 @@ document.addEventListener("DOMContentLoaded", async () => {
         ctrl_question_2_specify: "",
         ctrl_province: "",
         ctrl_terms: "",
-        fdQuestion5: ""
+        fdQuestion5: "",
+        fdFromDate:""
     };
 
     const iti = intlTelInput($('#fdTelephone'), {
@@ -579,8 +580,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                             }
                         }
 
-
-                        if(data.fdKeys == "QAVM2LRWBGCXXTSFBQFR6LKW28UQXUJR22UBNGFRGUSXXTARPQJRX")
+                        if($('#use_effective')?.value == 'Y')
                         {
                             data = {
                                 ...data,
@@ -595,7 +595,8 @@ document.addEventListener("DOMContentLoaded", async () => {
 
                         break;
                     case 2:
-                        // console.log('STEP 2 ');
+                        $(`#fdNationalID`).value = "";
+
                         const fdPackage = $btn.getAttribute('data-package');
                         $('#form-head').innerHTML = $btn.getAttribute('data-plan');
 
@@ -689,7 +690,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                                 break;
                             }
 
-                            if(data.fdKeys == "QAVM2LRWBGCXXTSFBQFR6LKW28UQXUJR22UBNGFRGUSXXTARPQJRX")
+                            if($('#use_effective')?.value == 'Y')
                             {
                                 let fromDate = ($('#fdFromDate').value).split('/');
                                 let fdFromDate = `${fromDate[2]}-${fromDate[1]}-${fromDate[0]}`;
@@ -698,6 +699,8 @@ document.addEventListener("DOMContentLoaded", async () => {
                                     fdFromDate
                                 }
                             }
+
+                            console.log(data);
 
                             let sb = ''
 
