@@ -383,7 +383,8 @@ document.addEventListener("DOMContentLoaded", async () => {
         ctrl_province: "",
         ctrl_terms: "",
         fdApiPackage:"",
-        fdNationality:""
+        fdNationality:"",
+        fdFromDate:""
     };
 
     const iti = intlTelInput($('#fdTelephone'), {
@@ -530,6 +531,8 @@ document.addEventListener("DOMContentLoaded", async () => {
                             }
                         }
 
+                        console.log(data);
+
                         break;
 
                     case 2:
@@ -613,15 +616,17 @@ document.addEventListener("DOMContentLoaded", async () => {
                             status = false;
                         } else {
 
-                            // if(data.fdKeys == "3TAMA4RRZ4MVQ2Y226UBNGFR7T3XNG9R7UUXX")
-                            // {
-                            //     let fromDate = ($('#fdFromDate').value).split('/');
-                            //     let fdFromDate = `${fromDate[2]}-${fromDate[1]}-${fromDate[0]}`;
-                            //     data = {
-                            //         ...data,
-                            //         fdFromDate
-                            //     }
-                            // }
+
+                                let fromDate = ($('#fdFromDate').value).split('/');
+                                let fdFromDate = `${fromDate[2]}-${fromDate[1]}-${fromDate[0]}`;
+                                data = {
+                                    ...data,
+                                    fdFromDate
+                                }
+
+
+                                console.log(data);
+
 
                             let sb = '';
                             Object.keys(data).map(k => {
