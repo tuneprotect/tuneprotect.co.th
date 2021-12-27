@@ -23,7 +23,11 @@ class ServiceController extends BaseController
 
     protected function genDetail($link)
     {
-
+        $linkTemp = $link;
+        if(strtolower($link) == 'health2goview')
+        {
+            $link = 'health2go';
+        }
         $content = WebContent::where('type_id', ProjectEnum::WEB_CONTENT_SERVICE_MY_HEALTH)
             ->with('locales')
             ->where('friendly_url', $link)
@@ -35,6 +39,10 @@ class ServiceController extends BaseController
 
             $this->bodyData['extraComponent'] = 'frontend.component.mso-form';
 
+            if(strtolower($linkTemp) == 'health2goview')
+            {
+                return $this->genStaticPage($content, 'frontend.page.serviceview');
+            }
             return $this->genStaticPage($content, 'frontend.page.service');
         }
 
