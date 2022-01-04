@@ -90,7 +90,7 @@ const constraints = {
             message: "^" + $('#fdAddr_Num').getAttribute('data-error-address')
         },
         format: {
-            pattern: /^[a-zA-Z0-9 !@#$&()\\-`.+,/\"\n\r"]*$/,
+            pattern: /^[a-zA-Z0-9 !@#$&()\\`.+\-,/\"\n\r"]*$/,
             flags: "i",
             message: "^" + $('[data-error-eng-only]').getAttribute('data-error-eng-only')
         }

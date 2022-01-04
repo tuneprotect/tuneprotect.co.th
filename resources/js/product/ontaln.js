@@ -133,7 +133,7 @@ const profileConstraints = {
             message: "^" + $('#data_1_fdAddr_Num').getAttribute('data-error-address')
         },
         format: {
-            pattern: /^[a-zA-Z0-9 !@#$&()\\-`.+,/\"]*$/,
+            pattern: /^[a-zA-Z0-9 !@#$&()\\`.+\-,/\"\n\r"]*$/,
             flags: "i",
             message: "^" + $('[data-error-eng-only]').getAttribute('data-error-eng-only')
         }
@@ -144,7 +144,7 @@ const profileConstraints = {
             message: "^" + $('#data_1_fdAddr_District').getAttribute('data-error-district')
         },
         format: {
-            pattern: /^[a-zA-Z0-9 !@#$&()\\-`.+,/\"]*$/,
+            pattern: /^[a-zA-Z0-9 !@#$&()\\`.+\-,/\"]*$/,
             flags: "i",
             message: "^" + $('[data-error-eng-only]').getAttribute('data-error-eng-only')
         }
