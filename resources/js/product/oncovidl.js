@@ -5,7 +5,7 @@ import {
     getPackageData,
     getSelectedPrice,
     showTitle,
-    validateAgeInPackage, validatePolicy, validatePolicyPayment
+    validateAgeInPackage, validatePolicy, validatePolicyPayment,formatInputFieldByLanguage
 } from "../form/productHelper";
 import {
     $,
@@ -89,11 +89,12 @@ const constraints = {
             allowEmpty: false,
             message: "^" + $('#fdAddr_Num').getAttribute('data-error-address')
         },
-        format: {
-            pattern: /^[a-zA-Z0-9 !@#$&()\\`.+\-,/\"\n\r"]*$/,
-            flags: "i",
-            message: "^" + $('[data-error-eng-only]').getAttribute('data-error-eng-only')
-        }
+        format: formatInputFieldByLanguage()
+        // format: {
+        //     pattern: /^[a-zA-Z0-9 !@#$&()\\`.+\-,/\"\n\r"]*$/,
+        //     flags: "i",
+        //     message: "^" + $('[data-error-eng-only]').getAttribute('data-error-eng-only')
+        // }
 
     },
     fdAddr_District: {
@@ -102,7 +103,7 @@ const constraints = {
             message: "^" + $('#fdAddr_District').getAttribute('data-error-district')
         },
         format: {
-            pattern: /^[a-zA-Z0-9 !@#$&()\\-`.+,/\"]*$/,
+            pattern: /^[a-zA-Z0-9 !@#$&()\\`.+\-,/\"]*$/,
             flags: "i",
             message: "^" + $('[data-error-eng-only]').getAttribute('data-error-eng-only')
         }

@@ -5,7 +5,7 @@ import {
     getCountryData,
     getNationalityData,
     getPackageData,
-    showMultipleTitle, validatePolicy,validatePolicyPayment
+    showMultipleTitle, validatePolicy,validatePolicyPayment,formatInputFieldByLanguage
 } from "../form/productHelper";
 import {$, $$, current_package, getRadioSelectedValue, getZipcodeData, locale, scrollToTargetAdjusted} from "../helper";
 
@@ -132,11 +132,12 @@ const profileConstraints = {
             allowEmpty: false,
             message: "^" + $('#data_1_fdAddr_Num').getAttribute('data-error-address')
         },
-        format: {
-            pattern: /^[a-zA-Z0-9 !@#$&()\\`.+\-,/\"\n\r"]*$/,
-            flags: "i",
-            message: "^" + $('[data-error-eng-only]').getAttribute('data-error-eng-only')
-        }
+        format: formatInputFieldByLanguage()
+        // format: {
+        //     pattern: /^[a-zA-Z0-9 !@#$&()\\`.+\-,/\"\n\r"]*$/,
+        //     flags: "i",
+        //     message: "^" + $('[data-error-eng-only]').getAttribute('data-error-eng-only')
+        // }
     },
     fdAddr_District: {
         presence: {
