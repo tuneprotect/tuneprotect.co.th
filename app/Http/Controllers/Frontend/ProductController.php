@@ -60,16 +60,16 @@ class ProductController extends BaseController
         }
 
         //Renew pricing and redirect to new product.
-        if (in_array($selected, ['ONVACINA'])) {
-            $selected = "ONVSUREA";
-            return redirect()->route('current', ['locale' => $this->locale, 'controller' => 'product', 'func' => $link, 'params' => $selected]);
-        }
-        if (in_array($selected, ['ONVSAFEA'])) {
+        if (in_array($selected, ['CVISAFE'])) {
             $selected = "CVIS22JAN";
             return redirect()->route('current', ['locale' => $this->locale, 'controller' => 'product', 'func' => $link, 'params' => $selected]);
         }
         if (in_array($selected, ['ONVSAFEA'])) {
             $selected = "ONVS22JAN";
+            return redirect()->route('current', ['locale' => $this->locale, 'controller' => 'product', 'func' => $link, 'params' => $selected]);
+        }
+        if (in_array($selected, ['ONVACINA'])) {
+            $selected = "ONVSUREA";
             return redirect()->route('current', ['locale' => $this->locale, 'controller' => 'product', 'func' => $link, 'params' => $selected]);
         }
 
@@ -450,7 +450,7 @@ class ProductController extends BaseController
             }
              if (substr($data['fdPackage'], 0, 8) === 'ONVSUREA')
             {
-                $package = (array)json_decode(Storage::disk('public')->get('json/onvsure.json'));
+                $package = (array)json_decode(Storage::disk('public')->get('json/onvsurea.json'));
             }
             if (substr($data['fdPackage'], 0, 8) === 'ONVSAFEA')
             {
