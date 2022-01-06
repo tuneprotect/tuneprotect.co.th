@@ -1,5 +1,5 @@
 <section style="display: none" id="step2" class="product-detail">
-    @if(strtolower($selected) == 'onvacina')
+    @if(strtolower($selected) == 'onvacina' || strtolower($selected) == 'onvsurea')
         <section id="sectionPackage" class="wrapper">
             <form method="post" action="" class="insurance-form">
                 @if($locale == 'en')
@@ -12,8 +12,10 @@
                     <div class="controls-wrapper">
                         <select id="ctrl_package" name="ctrl_package">
                             <option value="1">Silver</option>
-                            <option value="2">Gold</option>
+                            <option value="2" selected="selected">Gold</option>
+                            @if(strtolower($selected) == 'onvacina')
                             <option value="3" selected="selected">Platinum</option>
+                            @endif
                         </select>
                         @if($locale == 'en')
                             <label for="ctrl_package">Package</label>

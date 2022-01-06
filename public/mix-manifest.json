@@ -1,5 +1,5 @@
 {
-    "/js/backstage/index.js": "/js/backstage/index.js?id=a34aad6a09799aff06a4",
+    "/js/backstage/index.js": "/js/backstage/index.js?id=a3e9dff8d95e9b1d5199",
     "/js/frontend/amado.js": "/js/frontend/amado.js?id=40af35df7419eded125f",
     "/js/frontend/article.js": "/js/frontend/article.js?id=88d7c097fb97992dd724",
     "/js/frontend/biglife.js": "/js/frontend/biglife.js?id=cb7e1a579ccde6ae710b",
@@ -7,7 +7,7 @@
     "/js/frontend/hospital.js": "/js/frontend/hospital.js?id=4daed430cce36e7a65c9",
     "/js/frontend/index.js": "/js/frontend/index.js?id=137fa22338232c143596",
     "/js/frontend/main.js": "/js/frontend/main.js?id=80f1ee60ab83341c461d",
-    "/css/frontend/style.css": "/css/frontend/style.css?id=034406a901b1dceb117c",
+    "/css/frontend/style.css": "/css/frontend/style.css?id=83dc6a8f3649fb7c0def",
     "/js/frontend/organization.js": "/js/frontend/organization.js?id=0331c66db4dc8b6db8ac",
     "/js/frontend/product.js": "/js/frontend/product.js?id=c176d7777a9a82f2bb0c",
     "/js/frontend/product/ci.js": "/js/frontend/product/ci.js?id=b5d0e2ec547c13963dee",
@@ -28,7 +28,9 @@
     "/js/frontend/product/ontaln.js": "/js/frontend/product/ontaln.js?id=f14d8b9cb0c68ed69e86",
     "/js/frontend/product/ontaob.js": "/js/frontend/product/ontaob.js?id=ccd19345d67f55e4339e",
     "/js/frontend/product/onvacina.js": "/js/frontend/product/onvacina.js?id=aaf5631286286accdd0f",
+    "/js/frontend/product/onvs22jan.js": "/js/frontend/product/onvs22jan.js?id=7072495c555533beb792",
     "/js/frontend/product/onvsafea.js": "/js/frontend/product/onvsafea.js?id=05176d35441549f4bd11",
+    "/js/frontend/product/onvsurea.js": "/js/frontend/product/onvsurea.js?id=b832767fdbe321687769",
     "/js/frontend/product/tgcvlp.js": "/js/frontend/product/tgcvlp.js?id=47d5a363d26285783a1b",
     "/js/frontend/service.js": "/js/frontend/service.js?id=b86cac21462feed3a464",
     "/js/frontend/tg.js": "/js/frontend/tg.js?id=9a07d60194fda0a97e4f"
