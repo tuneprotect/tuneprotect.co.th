@@ -17,9 +17,19 @@ class PortalController extends ProductController
         session(['return_link' => $return_link]);
         session(['selected' => $selected]);
 
-        if($selected ==='CVISAFE')
-        {
-            return redirect('https://www.tuneprotect.co.th/Maintenance.html');
+//        if($selected ==='CVISAFE')
+//        {
+//            return redirect('https://www.tuneprotect.co.th/Maintenance.html');
+//        }
+
+        if (in_array($selected, ['CVISAFE'])) {
+            $selected = "CVIS22JAN";
+        }
+        if (in_array($selected, ['ONVSAFEA'])) {
+            $selected = "ONVS22JAN";
+        }
+        if (in_array($selected, ['ONVACINA'])) {
+            $selected = "ONVSUREA";
         }
 
         $massage_key = $portal_key;

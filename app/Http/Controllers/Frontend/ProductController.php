@@ -33,7 +33,7 @@ class ProductController extends BaseController
     protected $payment = 'CC,FULL';
     protected $ipp_interest_type = "";
     protected $use_effective = 'N';
-    public function index($link = null, $selected = null)
+    public function index($link = null, $selected = null,$portal_key = null)
     {
         //Set redirect by product , Maintenance https://www.tuneprotect.co.th/index.html
         if($selected ==='ONCOVIDA')
@@ -63,12 +63,10 @@ class ProductController extends BaseController
         if (in_array($selected, ['CVISAFE'])) {
             $selected = "CVIS22JAN";
             return redirect()->route('current', ['locale' => $this->locale, 'controller' => 'product', 'func' => $link, 'params' => $selected]);
-
         }
         if (in_array($selected, ['ONVSAFEA'])) {
             $selected = "ONVS22JAN";
             return redirect()->route('current', ['locale' => $this->locale, 'controller' => 'product', 'func' => $link, 'params' => $selected]);
-//            return redirect('https://www.tuneprotect.co.th/vsafe_maintenance.html');
         }
         if (in_array($selected, ['ONVACINA'])) {
             $selected = "ONVSUREA";
