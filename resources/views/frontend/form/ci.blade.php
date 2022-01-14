@@ -48,16 +48,28 @@
                     </div>
                 </div>
                 <br>
+
                 <strong data-your-details="@lang('product.your-details')" data-loved-one="@lang('product.loved-one')"></strong>
-                @include('frontend.component.form-date-input')
-                <br>
-                <div class="slider-wrapper" data-not-qualify="@lang('product.error.birthdate.not-qualify')">
-                    <h3>@lang("product.budget")</h3>
-                    <div class="controls-wrapper slider_budget">
-                        <br>
-                        <input type="text" id="ctrl_budget"/>
+                    @include('frontend.component.form-date-input')
+                @if($controller == 'portal')
+                        <div class="slider-wrapper" data-not-qualify="@lang('product.error.birthdate.not-qualify')"style="display: none">
+                            <h3>@lang("product.budget")</h3>
+                            <div class="controls-wrapper slider_budget">
+                                <br>
+                                <input type="text" id="ctrl_budget"/>
+                            </div>
+                        </div>
+                @else
+                    <br>
+                    <div class="slider-wrapper" data-not-qualify="@lang('product.error.birthdate.not-qualify')">
+                        <h3>@lang("product.budget")</h3>
+                        <div class="controls-wrapper slider_budget">
+                            <br>
+                            <input type="text" id="ctrl_budget"/>
+                        </div>
                     </div>
-                </div>
+                @endif
+
             </div>
         </form>
     </section>
@@ -69,9 +81,15 @@
                 <ul class="check_box_disease">
                     @foreach(array('F', 'C', 'O', 'T', 'D') as $v)
                         <li class="checkbox_disease">
+                        @if($controller == 'portal')
                             <input type="checkbox" name="ctrl_disease" id="checkbox_disease_{{$v}}"
-                                   data-disease-{{$v}}="@lang('product.ci_disease.'.$v)"
-                                   {{($v=='F'?'checked disabled':'checked')}} value="{{$v}}"/>
+                                    data-disease-{{$v}}="@lang('product.ci_disease.'.$v)"
+                                    {{('checked disabled')}} value="{{$v}}"/>
+                        @else
+                            <input type="checkbox" name="ctrl_disease" id="checkbox_disease_{{$v}}"
+                                    data-disease-{{$v}}="@lang('product.ci_disease.'.$v)"
+                                    {{($v=='F'?'checked disabled':'checked')}} value="{{$v}}"/>
+                        @endif
                             <label for="checkbox_disease_{{$v}}">
                                 <img src="{{asset('images/ico_ci/'.$v.'.svg')}}" alt="@lang('product.ci_disease.'.$v)"/>
                                 <span>
