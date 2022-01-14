@@ -2,6 +2,7 @@
 
 @section('layout')
     <header>
+        <meta name="facebook-domain-verification" content="4ojuebt1n4u0c2808tn6hhc3vi6e75" />
         <a class="nav-icon"><span></span></a>
         <div class="logo">
             <a data-gtm="logo" href="{{route('current',['locale' => $locale],false)}}"><img
