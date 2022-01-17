@@ -7,7 +7,8 @@
             <div class="two-tone-icon" id="two-tone-icon">
                 <span><img src="{{url($current_package->pic)}}"></span>
                 <div class="description-product">
-                    {!! $current_package->locales[$locale]->content !!}
+                    <!-- {!! $current_package->locales[$locale]->content !!} -->
+                    {!! @str_replace('{ci_content1}',__('product.ci_content1') , $current_package->locales[$locale]->content) !!}
                 </div>
             </div>
             @includeIf('frontend.form.'.strtolower($selected) ,[ 'product' => $current_product,'package' => $current_package,'selected' => $selected])

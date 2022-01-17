@@ -653,6 +653,8 @@ return [
     ,'ipass_warning' =>"*Travel within 30 days is subject to the minimum premium."
     ,'ipass_day_wording' =>"The period of coverage"
     ,'ipass_day' =>"Days"
+    ,'ci_content1' =>"เลือกปรับเพิ่ม-ลด ความคุ้มครอง กลุ่มโรคร้ายแรงได้"
+    ,'ci_portal_content1' =>"คุ้มครองทุกกลุ่มโรคร้าย"
 ];
 
 

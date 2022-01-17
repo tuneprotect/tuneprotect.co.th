@@ -25,7 +25,8 @@
             <div class="two-tone-icon">
                 <span><img src="{{url($current_package->pic)}}" alt=""></span>
                 <div class="description-product">
-                    {!! $current_package->locales[$locale]->content !!}
+                    <!-- {!! $current_package->locales[$locale]->content !!} -->
+                    {!! @str_replace('{ci_content1}',__('product.ci_portal_content1') , $current_package->locales[$locale]->content) !!}
                 </div>
             </div>
 
