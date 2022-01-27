@@ -70,5 +70,7 @@ return [
     'lead_form_mso_header' => 'สมัครบริการ',
     'review_header_product' => 'ความรู้สึกลูกค้ากับประกันเดินทางจาก Tune Protect Thailand',
     'review_description_product' => 'about travel insurance from Tune Protect Thailand',
-    'copyright_luma_care' => 'Luma Covid Care is the commercial name of the Individual Coronavirus Disease 2019 (Covid-19) Insurance Policy insured by Tune Protect. '
+    'copyright_luma_care' => 'Luma Covid Care is the commercial name of the Individual Coronavirus Disease 2019 (Covid-19) Insurance Policy insured by Tune Protect. ',
+    'accept' => 'ยอมรับ',
+    'decline' => 'ไม่ยอมรับ',
 ];

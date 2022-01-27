@@ -10,7 +10,7 @@
     >
         <div class="form-inner">
             <h3>@lang('global.lead_form_header')</h3>
-
+            <input type="hidden" name="_token" id ="_token" value="{{ csrf_token() }}">
             <div class="two-col">
                 <div class="controls-wrapper">
                     <input id="ctrl_name" name="name" type="text" placeholder="@lang('global.name')"
