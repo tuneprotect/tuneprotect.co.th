@@ -13,23 +13,23 @@ use Illuminate\Http\Request;
 use App\Enum\ProjectEnum;
 use Illuminate\Support\Facades\Mail;
 
-class TaxReductionController extends BaseController
+class TaxDeductionController extends BaseController
 {
     public function index()
     {
-        $this->template->setFootJS(mix("/js/frontend/taxreduction.js"));
-        return $this->genView('frontend.page.tax_reduction');
+        $this->template->setFootJS(mix("/js/frontend/taxdeduction.js"));
+        return $this->genView('frontend.page.tax_deduction');
 
     }
 
-    public function apiTaxReduction(Request $request)
+    public function apiTaxDeduction(Request $request)
     {
         $status = 'error';
         $message = '';
         try {
             $data = $request->all();
             $client = new Client();
-            $response = $client->request('POST', config('tune-api.url') . 'TaxReduction', [
+            $response = $client->request('POST', config('tune-api.url') . 'TaxDeduction', [
                 'auth' => [config('tune-api.user'), config('tune-api.password')],
                 'headers' => [
                     'Content-Type' => 'application/json'

@@ -70,12 +70,15 @@
                                 <div>
                                     <ul>
                                         @foreach($service_my_health as $k =>$v)
-                                        <li>
-                                            <a data-gtm="main-nav-news"
-                                               href="/{{$locale}}/service/{{$v->friendly_url}}">
-                                                <span>{{$v->locales[$locale]->title}}</span>
-                                            </a>
-                                        </li>
+                                            @if($v->friendly_url === 'tax-deduction')
+                                            @else
+                                                <li>
+                                                    <a data-gtm="main-nav-news"
+                                                       href="/{{$locale}}/service/{{$v->friendly_url}}">
+                                                        <span>{{$v->locales[$locale]->title}}</span>
+                                                    </a>
+                                                </li>
+                                            @endif
                                         @endforeach
                                     </ul>
                                 </div>

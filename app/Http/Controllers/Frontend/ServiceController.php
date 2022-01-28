@@ -28,6 +28,12 @@ class ServiceController extends BaseController
         {
             $link = 'health2go';
         }
+        if(strtolower($link) == 'tax-deduction')
+        {
+            return redirect('/taxdeduction');
+        }
+
+
         $content = WebContent::where('type_id', ProjectEnum::WEB_CONTENT_SERVICE_MY_HEALTH)
             ->with('locales')
             ->where('friendly_url', $link)

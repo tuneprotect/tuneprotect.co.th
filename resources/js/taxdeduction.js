@@ -29,7 +29,7 @@ validate.validators.idcard = function (value, options, key, attributes) {
 
 
 document.addEventListener("DOMContentLoaded", function () {
-    const $form = $('#frm_taxreduction');
+    const $form = $('#frm_taxdeduction');
     if ($form) {
         let contactConstraints = {
             card_id: {
@@ -51,7 +51,7 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         };
 
-        const apiTaxReduction = async (data) => {
+        const apiTaxDeduction = async (data) => {
             $form.classList.add('ajax_loader');
             try {
                 let res = await fetch($form.getAttribute('action'), {
@@ -149,7 +149,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 return false;
             }
 
-            await apiTaxReduction(data);
+            await apiTaxDeduction(data);
 
             return false;
         }));
