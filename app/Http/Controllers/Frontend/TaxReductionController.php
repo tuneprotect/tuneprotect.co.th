@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Frontend;
+
 use App\Http\Controllers\Frontend\Base\BaseController;
 use App\Mail\ContactUsEmail;
 use App\Models\LeadForms;
@@ -14,8 +15,6 @@ use Illuminate\Support\Facades\Mail;
 
 class TaxReductionController extends BaseController
 {
-    protected $action = '';
-
     public function index()
     {
         $this->template->setFootJS(mix("/js/frontend/taxreduction.js"));
@@ -23,26 +22,40 @@ class TaxReductionController extends BaseController
 
     }
 
-    public function saveData(Request $request)
+    public function apiTaxReduction(Request $request)
     {
+        $status = 'error';
+        $message = '';
         try {
-            switch ($request->input('action')) {
-                case 'accept':
-                    $this->action = 'accept';
-                    break;
-                case 'decline':
-                    $this->action = 'decline';
-                    break;
+            $data = $request->all();
+            $client = new Client();
+            $response = $client->request('POST', config('tune-api.url') . 'TaxReduction', [
+                'auth' => [config('tune-api.user'), config('tune-api.password')],
+                'headers' => [
+                    'Content-Type' => 'application/json'
+                ],
+                'body' => json_encode($data)
+            ]);
+            $res = (object)json_decode($response->getBody()->getContents(), true);
+
+            if ($res->status) {
+                $status = self::SUCCESS;
+            } else {
+                $status = self::ERROR;
+                $message = $res->message;
             }
+
         } catch (\Exception $ex) {
-            $this->action = 'error';
+            $message = $ex->getMessage();
+
         }
 
-//        dd($this->action);
-
         return response()->json([
-            self::API_STATUS => $this->action
+            'status' => $status,
+            'message' => $message
         ]);
 
+
     }
+
 }

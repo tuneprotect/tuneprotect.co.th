@@ -3,18 +3,17 @@
 @section('page')
     <main>
         <section class="wrapper contact-section" id="taxreductionform-section">
-            <form class="insurance-form" action="/{{$locale}}/TaxReduction/saveData" method="post" id="frm_taxreduction"
+            <form class="insurance-form" action="/{{$locale}}/TaxReduction/apiTaxReduction" method="post" id="frm_taxreduction"
                   data-form-type="taxreductionform"
                   novalidate
                   data-error="บริษัทได้รับข้อมูลของท่านเรียบร้อยแล้ว"
+                  data-duplicate="ขออภัยเลขประจำตัวประชาชนนี้ มีการขอทำรายการแล้ว"
                   data-error-description="เนื่องจากเกิดข้อผิดพลาดบางประการ"
                   data-error-button="ลองอีกครั้ง"
                   data-success="บริษัทได้รับข้อมูลของท่านในการเปิดเผยข้อมูลต่อกรมสรรพากรเพื่อสิทธิประโยชน์ทางภาษีเรียบร้อยแล้ว บริษัทจะทำการจัดส่งหนังสือรับรองเบี้ยประกันภัยเพื่อการลดหย่อนภาษีเงินได้ ไปยังอีเมล์ของท่าน ภายใน 7 วันทำการ"
                   data-success-description="หากท่านมีข้อสอบถามเพิ่มเติม กรุณาติดต่อ ศูนย์บริการลูกค้า  Tune Customer Service หมายเลข 02-078-5656 ต่อ 600 หรือ E-mail customercare@tuneprotect.com"
                   data-success-button="กลับสู่หน้าหลัก"
-
           >
-                @csrf
                 <div class="form-inner">
                     <h3>Tax Consent (on TPT’s website)</h3>
                     <br>
@@ -32,6 +31,7 @@
                     <div class="controls-wrapper">
                         <input id="ctrl_card_id" name="name" type="text" placeholder=*"เลขประจำตัวประชาชน"
                                required="required"
+                               data-error-idcard="กรุณาตรวจสอบรูปแบบ เลขประจำตัวประชาชน"
                                data-error-required="กรุณาระบุ เลขประจำตัวประชาชน"/>
                         <label for="ctrl_card_id">*เลขประจำตัวประชาชน</label>
                     </div>
@@ -51,18 +51,13 @@
                             โดยข้าพเจ้าคลิกปุ่ม <b>“ยอมรับ”</b> หรือ <b>“accept”</b> ถือว่าข้าพเจ้าได้แสดงเจตนารับรองและให้ความยิมยอมในการเปิดเผยข้อมูลต่อกรมสรรพากร และมีผลผูกพันตามกฎหมาย</span>
 
                 </div>
-
-
-
                 <div class="btn-wrapper">
-                    <button data-gtm="contact-form-accept" class="btn btn-primary" name="action"
+                    <button data-gtm="contact-form-accept" class="btn btn-primary" name="action" type="button"
                             value="accept">@lang('global.accept')</button>
-                    <button data-gtm="contact-form-decline" class="btn btn-primary" name="action"
+                    <button data-gtm="contact-form-decline" class="btn btn-primary" name="action" type="button"
                             value="decline">@lang('global.decline')</button>
                 </div>
-
-                <input type="hidden" name="_token" id ="_token" value="{{ csrf_token() }}">
-
+{{--                <input type="hidden" name="_token" id ="_token" value="{{ csrf_token() }}">--}}
             </form>
         </section>
     </main>

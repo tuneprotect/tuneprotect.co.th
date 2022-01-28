@@ -175,8 +175,10 @@ return [
         'older_sister' => 'พี่สาว',
         'younger_brother' => 'น้องชาย',
         'younger_sister' => 'น้องสาว',
+        'niece' => 'หลานสาว',
         'daughter' => 'บุตรสาว',
-        'son' => 'บุตรชาย'
+        'son' => 'บุตรชาย',
+        'nephew' => 'หลานชาย'
     ],
     'travel_type' => 'ลักษณะการเดินทาง',
     "trip_type" => [
