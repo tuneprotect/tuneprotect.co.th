@@ -632,7 +632,10 @@ document.addEventListener("DOMContentLoaded", async () => {
                             ctrl_province: $('#ctrl_province').value,
                             fdPayAMT: getSelectedPrice(data.fdHBD, data.fdPackage, package_data)
                         }
-
+                        data = {
+                            ...data,
+                            fdMarketing_Consent: $('#ctrl_marketing').checked ? true : undefined
+                        }
                         console.log(data);
 
                         const result = validate(data, constraints);

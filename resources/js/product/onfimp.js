@@ -690,7 +690,10 @@ document.addEventListener("DOMContentLoaded", async () => {
                             loc_fdBuilding: $('#ctrl_fire_building').value,
                             loc_fdOwner: $('#ctrl_fire_owner').value,
                         }
-
+                        data = {
+                            ...data,
+                            fdMarketing_Consent: $('#ctrl_marketing').checked ? true : undefined
+                        }
 
                         console.log(data);
                         //=========================================================================================================

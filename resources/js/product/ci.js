@@ -697,6 +697,12 @@ if ($('#title_wrapper')) {
                                     ctrl_province: $('#ctrl_province').value,
                                     ctrl_protection_start_date: today
                                 }
+
+                                data = {
+                                    ...data,
+                                    fdMarketing_Consent: $('#ctrl_marketing').checked ? true : undefined
+                                }
+
                                 console.log({data});
                                 const result = validate(data, constraints);
 

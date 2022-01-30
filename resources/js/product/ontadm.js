@@ -473,6 +473,11 @@ document.addEventListener("DOMContentLoaded", async () => {
                             profile: profileData
                         }
 
+                        data = {
+                            ...data,
+                            fdMarketing_Consent: $('#ctrl_marketing').checked ? true : undefined
+                        }
+
                         result = validate(data, step3Constraints);
 
                         if (result) {

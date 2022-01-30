@@ -759,7 +759,10 @@ document.addEventListener("DOMContentLoaded", async () => {
                             fdAddr_Num2: $('#fdAddr_Num2').value,
                             fdAddr_PostCode2: $('#fdAddr_PostCode2').value,
                         }
-
+                        data = {
+                            ...data,
+                            fdMarketing_Consent: $('#ctrl_marketing').checked ? true : undefined
+                        }
                         // console.log(data);
 
                         const result = validate(data, constraints);

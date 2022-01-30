@@ -49,5 +49,5 @@ class BaseInsuranceObject
     public $fdMember_ID;
     public $fdPromoCode;
     public $fdController;
-
+    public $fdMarketing_Consent;
 }

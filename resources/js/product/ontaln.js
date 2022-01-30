@@ -594,6 +594,10 @@ document.addEventListener("DOMContentLoaded", async () => {
                             fdDay: $('#days').value,
                             profile: profileData
                         }
+                        data = {
+                            ...data,
+                            fdMarketing_Consent: $('#ctrl_marketing').checked ? true : undefined
+                        }
                         // fdPayAMT: getSelectedPrice(data.fdPackage, package_data),
 
                         console.log('fdPayAMT : ' + data.fdPayAMT);

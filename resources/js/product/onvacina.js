@@ -677,7 +677,10 @@ document.addEventListener("DOMContentLoaded", async () => {
                             fdPayAMT: getSelectedPriceVC(data.fdPackage, package_data),
                             fdQuestion5:getRadioSelectedValue('fdQuestion5')
                         }
-
+                        data = {
+                            ...data,
+                            fdMarketing_Consent: $('#ctrl_marketing').checked ? true : undefined
+                        }
 
                         const result = validate(data, constraints);
                         const $cite = $form.getElementsByTagName('cite');

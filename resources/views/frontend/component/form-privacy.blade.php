@@ -36,3 +36,10 @@
     /><label
         for="ctrl_terms">@lang('product.accept_terms')</label>
 </div>
+<p class="small">{!! nl2br(__('product.marketing_consent')) !!}</p>
+<div class="controls-wrapper full">
+    <input id="ctrl_marketing" name="ctrl_marketing" type="checkbox" value="1"
+           data-error-terms="@lang("product.error.terms")"
+    /><label
+        for="ctrl_marketing">@lang('product.accept_terms')</label>
+</div>

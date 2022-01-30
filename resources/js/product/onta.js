@@ -525,7 +525,10 @@ document.addEventListener("DOMContentLoaded", async () => {
                             ctrl_accept_insurance_term: $('#ctrl_accept_insurance_term').checked ? true : undefined,
                             profile: profileData
                         }
-
+                        data = {
+                            ...data,
+                            fdMarketing_Consent: $('#ctrl_marketing').checked ? true : undefined
+                        }
                         result = validate(data, step3Constraints);
 
                         if (result) {
