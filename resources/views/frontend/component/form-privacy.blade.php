@@ -41,5 +41,5 @@
     <input id="ctrl_marketing" name="ctrl_marketing" type="checkbox" value="1"
            data-error-terms="@lang("product.error.terms")"
     /><label
-        for="ctrl_marketing">@lang('product.accept_terms')</label>
+        for="ctrl_marketing">@lang('product.accept_marketing')</label>
 </div>
