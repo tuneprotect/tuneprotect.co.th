@@ -758,7 +758,9 @@ class ProductController extends BaseController
             $data['fdPaymentCh'] = $fdPaymentCh;
             $data['fdCard_No'] = $fdCard_No;
             $data['fdPayStatus'] = 'success';
-
+            if (session('nopayment_status')) {
+                $data['fdInvoice'] = '';
+            }
             $v->data = $data;
 
             $client = new Client();
