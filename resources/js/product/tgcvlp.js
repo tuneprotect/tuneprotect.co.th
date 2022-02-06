@@ -583,16 +583,16 @@ document.addEventListener("DOMContentLoaded", async () => {
                             return false;
                         }
 
-                        if($('#fdFlightTickerNo').value.length !== 13)
-                        {
-                            Swal.fire({
-                                title: 'Warning!',
-                                text: "Please fill in " + $('label[for=fdFlightTickerNo]').innerText,
-                                icon: 'info',
-                                confirmButtonText: 'OK'
-                            })
-                            return false;
-                        }
+                        // if($('#fdFlightTickerNo').value.length !== 13)
+                        // {
+                        //     Swal.fire({
+                        //         title: 'Warning!',
+                        //         text: "Please fill in " + $('label[for=fdFlightTickerNo]').innerText,
+                        //         icon: 'info',
+                        //         confirmButtonText: 'OK'
+                        //     })
+                        //     return false;
+                        // }
                         if($('#fdFlightTickerNo').value.substring(0,4) !== "217-")
                         {
                             Swal.fire({
