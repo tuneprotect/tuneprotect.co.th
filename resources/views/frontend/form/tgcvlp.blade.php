@@ -63,6 +63,7 @@
             <input type="hidden" id="status_api" value="{{$status_api}}"/>
         </div>
 
+        <input type="hidden" name="_token" id ="_token" value="{{ csrf_token() }}">
     </form>
 
 
