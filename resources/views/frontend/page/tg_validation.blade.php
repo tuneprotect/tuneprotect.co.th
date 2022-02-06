@@ -29,13 +29,13 @@
                     <button data-gtm="validate-memberid" id="btnValidate" class="btn btn-primary btn-goto">{{$buttontext}}</button>
                 </div>
 
-
-                <input type="hidden" name="_token" id ="_token" value="{{ csrf_token() }}">
                 <input type="hidden" id="partner" value="{{$partner}}"/>
 
                 @if(isset($status_api))
                     <input type="hidden" id="status_api" value="{{$status_api}}"/>
                 @endif
+
+                <input type="hidden" name="_token" id ="_token" value="{{ csrf_token() }}">
             </form>
             <br>
 

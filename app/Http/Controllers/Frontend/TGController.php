@@ -86,6 +86,8 @@ class TGController  extends ProductController
 
          }
 
+//         dd($memberId);
+
          return $this->index();
 
      }
