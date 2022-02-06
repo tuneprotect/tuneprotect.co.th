@@ -593,6 +593,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                         //     })
                         //     return false;
                         // }
+
                         if($('#fdFlightTickerNo').value.substring(0,4) !== "217-")
                         {
                             Swal.fire({
