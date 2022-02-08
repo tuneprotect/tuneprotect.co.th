@@ -100,7 +100,7 @@ export const fadeOut = (elem, ms) => {
 
 
 export const getZipcodeData = async () => {
-    let res = await fetch('/storage/json/zipcode.json');
+    let res = await fetch('/storage/json/zipcode.json?1234567890');
     return await res.json();
 }
 
