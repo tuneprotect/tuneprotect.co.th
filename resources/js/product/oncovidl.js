@@ -26,7 +26,6 @@ import intlTelInput from "intl-tel-input";
 require('../main');
 require('../product');
 
-
 const constraints = {
     fdSex: {
         presence: {
