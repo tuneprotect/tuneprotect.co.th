@@ -326,6 +326,24 @@ const getSelectedPricePackage = (packageCode, package_data) => {
 document.addEventListener("DOMContentLoaded", async () => {
     const package_data = await getPackageData(current_package);
 
+    let Redeem_Code = "";
+    if(document.getElementById("redeem_code")){
+        Redeem_Code= document.getElementById("redeem_code").value;
+        if(document.getElementById("massage_error")){
+            let msg_error= document.getElementById("massage_error").value;
+            if(msg_error != '')
+            {
+                Swal.fire({
+                    title: 'Error!',
+                    text: msg_error,
+                    icon: 'error',
+                    confirmButtonText: 'OK'
+                })
+                status = false;
+            }
+        }
+    }
+
     let Keys = "";
     var myEle = document.getElementById("portal_key");
     if(myEle){
@@ -342,6 +360,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             status = false;
         }
     }
+
 
     const $form = $('#step3');
     const allField = $form.querySelectorAll('input,select,textarea');
@@ -553,6 +572,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
         loc_fdBuilding: "",
         loc_fdOwner: "",
+        fdUniqKey:Redeem_Code
 
     };
 
@@ -592,6 +612,23 @@ document.addEventListener("DOMContentLoaded", async () => {
                             }
                         }
 
+                        let Redeem_Code = "";
+                        if(document.getElementById("redeem_code")){
+                            Redeem_Code= document.getElementById("redeem_code").value;
+                            if(document.getElementById("massage_error")){
+                                let msg_error= document.getElementById("massage_error").value;
+                                if(msg_error != '')
+                                {
+                                    Swal.fire({
+                                        title: 'Error!',
+                                        text: msg_error,
+                                        icon: 'error',
+                                        confirmButtonText: 'OK'
+                                    })
+                                    status = false;
+                                }
+                            }
+                        }
                         //Case web portal
                         var myEle = document.getElementById("portal_key");
                         if (myEle) {

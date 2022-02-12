@@ -14,7 +14,7 @@ class AmadoController  extends ProductController
     public function index($link = null, $selected = null)
     {
         //TUNE_API_AMADO_LINK=https://w3.tuneprotect.co.th/WebPortal/Pages/CovidRM.aspx
-        return redirect(config('tune-api.amado_link'));
+//        return redirect(config('tune-api.amado_link'));
 
 //        return redirect('http://webtest1.tuneinsurance.co.th/WebPortal/Pages/CovidRM.aspx');
 //        return redirect('https://www.tuneinsurance.co.th/WebPortal/Pages/CovidRM.aspx');

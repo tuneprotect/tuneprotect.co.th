@@ -50,4 +50,5 @@ class BaseInsuranceObject
     public $fdPromoCode;
     public $fdController;
     public $fdMarketing_Consent;
+    public $fdUniqKey;
 }

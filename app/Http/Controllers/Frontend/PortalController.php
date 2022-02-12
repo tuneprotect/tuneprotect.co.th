@@ -11,16 +11,11 @@ class PortalController extends ProductController
 {
     protected $controller = 'portal';
     protected $use_effective = 'N';
-    public function index($link = null, $selected = null,$portal_key = null)
+    public function index($link = null, $selected = null,$portal_key = null,$redeem_code =null)
     {
         $return_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
         session(['return_link' => $return_link]);
         session(['selected' => $selected]);
-
-//        if($selected ==='CVISAFE')
-//        {
-//            return redirect('https://www.tuneprotect.co.th/Maintenance.html');
-//        }
 
         if (in_array($selected, ['CVISAFE'])) {
             $selected = "CVIS22JAN";
@@ -31,6 +26,35 @@ class PortalController extends ProductController
         if (in_array($selected, ['ONVACINA'])) {
             $selected = "ONVSUREA";
         }
+
+        $massage_error = '';
+        if (!empty($redeem_code)) {
+            $apiResult = $this->sendToApiPromoCodeValidation($redeem_code);
+            if (!$apiResult["status"]) {
+                $apiData = $apiResult['data'];
+                $apiErrorCode = $apiData["error_code"];
+                $apiErrorMsg = '';
+                if ($apiErrorCode === 'E0001') {
+                    $apiErrorMsg = __('product.error.promocode_invalid');
+                }
+                elseif ($apiErrorCode === 'E0002') {
+                    $apiErrorMsg = __('product.error.promocode_inused') . ' ' . $apiData["data"];
+                }
+                elseif ($apiErrorCode === 'E0000') {
+                    $apiErrorMsg = __('product.error.promocode_invalid') . ' ' . $apiData["message"];;
+                }
+
+                $massage_error= $apiErrorMsg;
+            }
+            else
+            {
+                $massage_error = '';
+            }
+        }
+
+        $this->bodyData['redeem_code'] = $redeem_code;
+        $this->bodyData['massage_error'] = $massage_error;
+
 
         $massage_key = $portal_key;
         $status_api = false;
@@ -55,6 +79,8 @@ class PortalController extends ProductController
                 $nopayment_status = true;
             }
         }
+
+
         $this->bodyData['partner'] = $partner;
         $this->bodyData['agentCode'] = $agentCode;
         $this->bodyData['status_api'] = $status_api;
@@ -131,7 +157,6 @@ class PortalController extends ProductController
 
     }
 
-
     protected function sendToApiPortalLogin($portal_key)
     {
         $client = new Client();
@@ -142,6 +167,21 @@ class PortalController extends ProductController
             ],
             'body' => json_encode([
                 'KeyValue' => $portal_key
+            ])
+        ]);
+        return json_decode($response->getBody()->getContents(), true);
+    }
+
+    protected function sendToApiPromoCodeValidation($redeem_code)
+    {
+        $client = new Client();
+        $response = $client->request('POST', config('tune-api.url') . 'PromoCodeValidation', [
+            'auth' => [config('tune-api.user'), config('tune-api.password')],
+            'headers' => [
+                'Content-Type' => 'application/json'
+            ],
+            'body' => json_encode([
+                'Code' => $redeem_code
             ])
         ]);
         return json_decode($response->getBody()->getContents(), true);

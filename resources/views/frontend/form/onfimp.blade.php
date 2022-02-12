@@ -56,6 +56,8 @@
                 <input type="hidden" id="status_api" value="{{$status_api}}"/>
                 <input type="hidden" id="nopayment_status" value="{{$nopayment_status}}"/>
                 <input type="hidden" id="partner" value="{{$partner}}"/>
+                <input type="hidden" id="redeem_code" value="{{$redeem_code}}"/>
+                <input type="hidden" id="massage_error" value="{{$massage_error}}"/>
             </div>
         @endif
 
