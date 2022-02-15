@@ -17,7 +17,7 @@
             <div class="two-col">
                 <div class="controls-wrapper">
                     <input id="fdFromDate" name="fdFromDate" type="date" min="{{date('Y-m-d')}}" class="flatpickr"
-                           data-mindate="{{date('Y-m-d')}}"
+                           data-mindate="{{date('Y-m-d',strtotime( "+1 days"))}}"
                            data-maxdate="{{date('Y-m-d',strtotime( "+60 days"))}}"
                            data-error="@lang('product.error.fire_effective_date')"
                     />
