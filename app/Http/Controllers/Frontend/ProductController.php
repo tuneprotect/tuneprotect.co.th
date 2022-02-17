@@ -60,17 +60,17 @@ class ProductController extends BaseController
         }
 
         //Renew pricing and redirect to new product.
-        if (in_array($selected, ['CVISAFE'])) {
+        if (in_array($selected, ['CVISAFE','CVIS22JAN'])) {
             $selected = "CVIS22JAN";
             return redirect('https://www.tuneprotect.co.th/ma_isafe.html');
 //            return redirect()->route('current', ['locale' => $this->locale, 'controller' => 'product', 'func' => $link, 'params' => $selected]);
         }
-        if (in_array($selected, ['ONVSAFEA'])) {
+        if (in_array($selected, ['ONVSAFEA','ONVS22JAN'])) {
             $selected = "ONVS22JAN";
             return redirect('https://www.tuneprotect.co.th/ma_vsafe.html');
 //            return redirect()->route('current', ['locale' => $this->locale, 'controller' => 'product', 'func' => $link, 'params' => $selected]);
         }
-        if (in_array($selected, ['ONVACINA'])) {
+        if (in_array($selected, ['ONVACINA','ONVSUREA'])) {
             $selected = "ONVSUREA";
             return redirect('https://www.tuneprotect.co.th/ma_vsure.html');
 //            return redirect()->route('current', ['locale' => $this->locale, 'controller' => 'product', 'func' => $link, 'params' => $selected]);
