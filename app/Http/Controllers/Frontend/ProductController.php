@@ -603,7 +603,7 @@ class ProductController extends BaseController
 
     protected function noPayment($obj, $price = null, $log_id = null)
     {
-        $result = $this->sendToApiIssue(config('project.invoice_prefixxxx') . $obj->fdInvoice, '', '');
+        $result = $this->sendToApiIssueNoPayment(config('project.invoice_prefixxxx') . $obj->fdInvoice, '', '');
         if ($result) {
             session()->put('doc_no', implode(', ', $result[0]));
             session()->put('point', $result[1]);
@@ -617,7 +617,138 @@ class ProductController extends BaseController
 
     }
 
+    protected function sendToApiIssueNoPayment($fdInvoice, $fdPaymentCh, $fdCard_No)
+    {
 
+        $result = BuyLog::where('fdInvoice', str_replace(config('project.invoice_prefix'), "", $fdInvoice))->get();
+
+        $PolicyArr = [];
+        $Point = 0;
+        $Status = false;
+        foreach ($result as $v) {
+            $data = $v->data;
+
+            $data['fdPayDate'] = date('d/m/Y');
+            $data['fdPayTime'] = date('H:i');
+            $data['fdPaymentCh'] = $fdPaymentCh;
+            $data['fdCard_No'] = $fdCard_No;
+            $data['fdPayStatus'] = 'success';
+            $data['fdInvoice'] = '';
+            $v->data = $data;
+
+            $client = new Client();
+
+            $response = $client->request('POST', config('tune-api.url') . $this->getApiIssueLink($data['fdPackage']), [
+                'auth' => [config('tune-api.user'), config('tune-api.password')],
+                'headers' => [
+                    'Content-Type' => 'application/json'
+                ],
+                'body' => json_encode($data)
+            ]);
+            $apiResult = (array)json_decode($response->getBody()->getContents(), true);
+
+            if ($apiResult["status"]) {
+                $v->issuepolicy_status =  'S';
+            }
+            else{
+                $v->issuepolicy_status =  'E';
+            }
+
+
+            $v->result = $apiResult;
+            $v->save();
+
+            $PolicyArr[] = $apiResult['message'];
+            $PolicyData = $apiResult['data'];
+            $Status = $apiResult["status"];
+
+
+            foreach ($PolicyData as $k => $v) {
+                if ($k === 'BigPoint') {
+                    if (is_numeric($v)) {
+                        $Point = $Point + $v;
+                    }
+                }
+            }
+
+        }
+
+        $arrResult[] = $PolicyArr;
+        $arrResult[] = $Point;
+        $arrResult[] = $Status;
+
+        return $arrResult;
+
+    }
+
+    protected function sendToApiIssue($fdInvoice, $fdPaymentCh, $fdCard_No,$fdNoPayment)
+    {
+
+        $result = BuyLog::where('fdInvoice', str_replace(config('project.invoice_prefix'), "", $fdInvoice))->get();
+
+        $PolicyArr = [];
+        $Point = 0;
+        $Status = false;
+        foreach ($result as $v) {
+            $data = $v->data;
+
+            $data['fdPayDate'] = date('d/m/Y');
+            $data['fdPayTime'] = date('H:i');
+            $data['fdPaymentCh'] = $fdPaymentCh;
+            $data['fdCard_No'] = $fdCard_No;
+            $data['fdPayStatus'] = 'success';
+
+            if($fdNoPayment == 'Yes')
+            {
+                $data['fdInvoice'] = '';
+            }
+
+            $v->data = $data;
+
+            $client = new Client();
+
+            $response = $client->request('POST', config('tune-api.url') . $this->getApiIssueLink($data['fdPackage']), [
+                'auth' => [config('tune-api.user'), config('tune-api.password')],
+                'headers' => [
+                    'Content-Type' => 'application/json'
+                ],
+                'body' => json_encode($data)
+            ]);
+            $apiResult = (array)json_decode($response->getBody()->getContents(), true);
+
+            if ($apiResult["status"]) {
+                $v->issuepolicy_status =  'S';
+            }
+            else{
+                $v->issuepolicy_status =  'E';
+            }
+
+
+            $v->result = $apiResult;
+            $v->save();
+
+            $PolicyArr[] = $apiResult['message'];
+            $PolicyData = $apiResult['data'];
+            $Status = $apiResult["status"];
+
+
+            foreach ($PolicyData as $k => $v) {
+                if ($k === 'BigPoint') {
+                    if (is_numeric($v)) {
+                        $Point = $Point + $v;
+                    }
+                }
+            }
+
+        }
+
+        $arrResult[] = $PolicyArr;
+        $arrResult[] = $Point;
+        $arrResult[] = $Status;
+
+        return $arrResult;
+
+    }
 
     protected function sendTo2C2P($obj, $price = null, $log_id = null)
     {
@@ -752,69 +883,6 @@ class ProductController extends BaseController
             ])
         ]);
         return json_decode($response->getBody()->getContents(), true);
-    }
-
-    protected function sendToApiIssue($fdInvoice, $fdPaymentCh, $fdCard_No)
-    {
-
-        $result = BuyLog::where('fdInvoice', str_replace(config('project.invoice_prefix'), "", $fdInvoice))->get();
-
-        $PolicyArr = [];
-        $Point = 0;
-        $Status = false;
-        foreach ($result as $v) {
-            $data = $v->data;
-
-            $data['fdPayDate'] = date('d/m/Y');
-            $data['fdPayTime'] = date('H:i');
-            $data['fdPaymentCh'] = $fdPaymentCh;
-            $data['fdCard_No'] = $fdCard_No;
-            $data['fdPayStatus'] = 'success';
-            $v->data = $data;
-
-            $client = new Client();
-
-            $response = $client->request('POST', config('tune-api.url') . $this->getApiIssueLink($data['fdPackage']), [
-                'auth' => [config('tune-api.user'), config('tune-api.password')],
-                'headers' => [
-                    'Content-Type' => 'application/json'
-                ],
-                'body' => json_encode($data)
-            ]);
-            $apiResult = (array)json_decode($response->getBody()->getContents(), true);
-
-            if ($apiResult["status"]) {
-                $v->issuepolicy_status =  'S';
-            }
-            else{
-                $v->issuepolicy_status =  'E';
-            }
-
-
-            $v->result = $apiResult;
-            $v->save();
-
-            $PolicyArr[] = $apiResult['message'];
-            $PolicyData = $apiResult['data'];
-            $Status = $apiResult["status"];
-
-
-            foreach ($PolicyData as $k => $v) {
-                if ($k === 'BigPoint') {
-                    if (is_numeric($v)) {
-                        $Point = $Point + $v;
-                    }
-                }
-            }
-
-        }
-
-        $arrResult[] = $PolicyArr;
-        $arrResult[] = $Point;
-        $arrResult[] = $Status;
-
-        return $arrResult;
-
     }
 
     public function error(Request $request)
