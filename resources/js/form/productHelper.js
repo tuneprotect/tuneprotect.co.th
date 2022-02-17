@@ -9,7 +9,7 @@ export const getPackageData = async (currentPackage,channel) => {
 }
 
 export const getNationalityData = async () => {
-    let res = await fetch(`/storage/json/nationality.json`);
+    let res = await fetch(`/storage/json/nationality.json?1645082151`);
     return await res.json();
 }
 export const getNationalityDataTH = async () => {
