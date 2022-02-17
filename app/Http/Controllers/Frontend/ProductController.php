@@ -62,15 +62,18 @@ class ProductController extends BaseController
         //Renew pricing and redirect to new product.
         if (in_array($selected, ['CVISAFE'])) {
             $selected = "CVIS22JAN";
-            return redirect()->route('current', ['locale' => $this->locale, 'controller' => 'product', 'func' => $link, 'params' => $selected]);
+            return redirect('https://www.tuneprotect.co.th/ma_isafe.html');
+//            return redirect()->route('current', ['locale' => $this->locale, 'controller' => 'product', 'func' => $link, 'params' => $selected]);
         }
         if (in_array($selected, ['ONVSAFEA'])) {
             $selected = "ONVS22JAN";
-            return redirect()->route('current', ['locale' => $this->locale, 'controller' => 'product', 'func' => $link, 'params' => $selected]);
+            return redirect('https://www.tuneprotect.co.th/ma_vsafe.html');
+//            return redirect()->route('current', ['locale' => $this->locale, 'controller' => 'product', 'func' => $link, 'params' => $selected]);
         }
         if (in_array($selected, ['ONVACINA'])) {
             $selected = "ONVSUREA";
-            return redirect()->route('current', ['locale' => $this->locale, 'controller' => 'product', 'func' => $link, 'params' => $selected]);
+            return redirect('https://www.tuneprotect.co.th/ma_vsure.html');
+//            return redirect()->route('current', ['locale' => $this->locale, 'controller' => 'product', 'func' => $link, 'params' => $selected]);
         }
 
         if (in_array($selected, ['ONTALN', 'ONCOVIDL', 'ONTA','TGCVLP']) && $this->locale === 'th') {
