@@ -59,35 +59,44 @@ class ProductController extends BaseController
             return redirect("/" . $this->locale);
         }
 
-        //Renew pricing and redirect to new product.
+        //MA
         if (in_array($selected, ['CVISAFE','CVIS22JAN'])) {
-            $selected = "CVIS22JAN";
             return redirect('https://www.tuneprotect.co.th/ma_isafe.html');
-//            return redirect()->route('current', ['locale' => $this->locale, 'controller' => 'product', 'func' => $link, 'params' => $selected]);
         }
         if (in_array($selected, ['ONVSAFEA','ONVS22JAN'])) {
-            $selected = "ONVS22JAN";
             return redirect('https://www.tuneprotect.co.th/ma_vsafe.html');
-//            return redirect()->route('current', ['locale' => $this->locale, 'controller' => 'product', 'func' => $link, 'params' => $selected]);
         }
         if (in_array($selected, ['ONVACINA','ONVSUREA'])) {
-            $selected = "ONVSUREA";
             return redirect('https://www.tuneprotect.co.th/ma_vsure.html');
+        }
+
+
+//        //Renew pricing and redirect to new product.
+//        if (in_array($selected, ['CVISAFE'])) {
+//            $selected = "CVIS22JAN";
 //            return redirect()->route('current', ['locale' => $this->locale, 'controller' => 'product', 'func' => $link, 'params' => $selected]);
-        }
-
-        if (in_array($selected, ['ONTALN', 'ONCOVIDL', 'ONTA','TGCVLP']) && $this->locale === 'th') {
-            return redirect()->route('current', ['locale' => 'en', 'controller' => 'product', 'func' => $link, 'params' => $selected]);
-        }
-
-        $this->getProductDetail($link, $selected);
-
-        if ($selected) {
-            return $this->genDetailPage($selected);
-        } else {
-            $this->bodyData['faq'] = $this->setFaq(ProjectEnum::WEB_CONTENT_FAQ, $this->bodyData['current_product']->id);
-            return $this->genListPage();
-        }
+//        }
+//        if (in_array($selected, ['ONVSAFEA'])) {
+//            $selected = "ONVS22JAN";
+//            return redirect()->route('current', ['locale' => $this->locale, 'controller' => 'product', 'func' => $link, 'params' => $selected]);
+//        }
+//        if (in_array($selected, ['ONVACINA'])) {
+//            $selected = "ONVSUREA";
+//            return redirect()->route('current', ['locale' => $this->locale, 'controller' => 'product', 'func' => $link, 'params' => $selected]);
+//        }
+//
+//        if (in_array($selected, ['ONTALN', 'ONCOVIDL', 'ONTA','TGCVLP']) && $this->locale === 'th') {
+//            return redirect()->route('current', ['locale' => 'en', 'controller' => 'product', 'func' => $link, 'params' => $selected]);
+//        }
+//
+//        $this->getProductDetail($link, $selected);
+//
+//        if ($selected) {
+//            return $this->genDetailPage($selected);
+//        } else {
+//            $this->bodyData['faq'] = $this->setFaq(ProjectEnum::WEB_CONTENT_FAQ, $this->bodyData['current_product']->id);
+//            return $this->genListPage();
+//        }
 
     }
 
@@ -761,9 +770,6 @@ class ProductController extends BaseController
             $data['fdPaymentCh'] = $fdPaymentCh;
             $data['fdCard_No'] = $fdCard_No;
             $data['fdPayStatus'] = 'success';
-            if (session('nopayment_status')) {
-                $data['fdInvoice'] = '';
-            }
             $v->data = $data;
 
             $client = new Client();
