@@ -88,15 +88,15 @@ class ProductController extends BaseController
 //        if (in_array($selected, ['ONTALN', 'ONCOVIDL', 'ONTA','TGCVLP']) && $this->locale === 'th') {
 //            return redirect()->route('current', ['locale' => 'en', 'controller' => 'product', 'func' => $link, 'params' => $selected]);
 //        }
-//
-//        $this->getProductDetail($link, $selected);
-//
-//        if ($selected) {
-//            return $this->genDetailPage($selected);
-//        } else {
-//            $this->bodyData['faq'] = $this->setFaq(ProjectEnum::WEB_CONTENT_FAQ, $this->bodyData['current_product']->id);
-//            return $this->genListPage();
-//        }
+
+        $this->getProductDetail($link, $selected);
+
+        if ($selected) {
+            return $this->genDetailPage($selected);
+        } else {
+            $this->bodyData['faq'] = $this->setFaq(ProjectEnum::WEB_CONTENT_FAQ, $this->bodyData['current_product']->id);
+            return $this->genListPage();
+        }
 
     }
 
