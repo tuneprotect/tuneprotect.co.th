@@ -58,36 +58,36 @@ class ProductController extends BaseController
         if (empty($link)) {
             return redirect("/" . $this->locale);
         }
+
+        //MA
+        if (in_array($selected, ['CVISAFE','CVIS22JAN'])) {
+            return redirect('https://www.tuneprotect.co.th/ma_isafe.html');
+        }
+        if (in_array($selected, ['ONVSAFEA','ONVS22JAN'])) {
+            return redirect('https://www.tuneprotect.co.th/ma_vsafe.html');
+        }
+        if (in_array($selected, ['ONVACINA','ONVSUREA'])) {
+            return redirect('https://www.tuneprotect.co.th/ma_vsure.html');
+        }
+
 //
-//        //MA
-//        if (in_array($selected, ['CVISAFE','CVIS22JAN'])) {
-//            return redirect('https://www.tuneprotect.co.th/ma_isafe.html');
+//        //Renew pricing and redirect to new product.
+//        if (in_array($selected, ['CVISAFE'])) {
+//            $selected = "CVIS22JAN";
+//            return redirect()->route('current', ['locale' => $this->locale, 'controller' => 'product', 'func' => $link, 'params' => $selected]);
 //        }
-//        if (in_array($selected, ['ONVSAFEA','ONVS22JAN'])) {
-//            return redirect('https://www.tuneprotect.co.th/ma_vsafe.html');
+//        if (in_array($selected, ['ONVSAFEA'])) {
+//            $selected = "ONVS22JAN";
+//            return redirect()->route('current', ['locale' => $this->locale, 'controller' => 'product', 'func' => $link, 'params' => $selected]);
 //        }
-//        if (in_array($selected, ['ONVACINA','ONVSUREA'])) {
-//            return redirect('https://www.tuneprotect.co.th/ma_vsure.html');
+//        if (in_array($selected, ['ONVACINA'])) {
+//            $selected = "ONVSUREA";
+//            return redirect()->route('current', ['locale' => $this->locale, 'controller' => 'product', 'func' => $link, 'params' => $selected]);
 //        }
-
-
-        //Renew pricing and redirect to new product.
-        if (in_array($selected, ['CVISAFE'])) {
-            $selected = "CVIS22JAN";
-            return redirect()->route('current', ['locale' => $this->locale, 'controller' => 'product', 'func' => $link, 'params' => $selected]);
-        }
-        if (in_array($selected, ['ONVSAFEA'])) {
-            $selected = "ONVS22JAN";
-            return redirect()->route('current', ['locale' => $this->locale, 'controller' => 'product', 'func' => $link, 'params' => $selected]);
-        }
-        if (in_array($selected, ['ONVACINA'])) {
-            $selected = "ONVSUREA";
-            return redirect()->route('current', ['locale' => $this->locale, 'controller' => 'product', 'func' => $link, 'params' => $selected]);
-        }
-
-        if (in_array($selected, ['ONTALN', 'ONCOVIDL', 'ONTA','TGCVLP']) && $this->locale === 'th') {
-            return redirect()->route('current', ['locale' => 'en', 'controller' => 'product', 'func' => $link, 'params' => $selected]);
-        }
+//
+//        if (in_array($selected, ['ONTALN', 'ONCOVIDL', 'ONTA','TGCVLP']) && $this->locale === 'th') {
+//            return redirect()->route('current', ['locale' => 'en', 'controller' => 'product', 'func' => $link, 'params' => $selected]);
+//        }
 
         $this->getProductDetail($link, $selected);
 
@@ -681,7 +681,7 @@ class ProductController extends BaseController
 
     }
 
-    protected function sendToApiIssue($fdInvoice, $fdPaymentCh, $fdCard_No,$fdNoPayment)
+    protected function sendToApiIssue($fdInvoice, $fdPaymentCh, $fdCard_No)
     {
 
         $result = BuyLog::where('fdInvoice', str_replace(config('project.invoice_prefix'), "", $fdInvoice))->get();
@@ -697,11 +697,6 @@ class ProductController extends BaseController
             $data['fdPaymentCh'] = $fdPaymentCh;
             $data['fdCard_No'] = $fdCard_No;
             $data['fdPayStatus'] = 'success';
-
-            if($fdNoPayment == 'Yes')
-            {
-                $data['fdInvoice'] = '';
-            }
 
             $v->data = $data;
 
