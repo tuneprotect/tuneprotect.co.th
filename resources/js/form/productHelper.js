@@ -230,6 +230,8 @@ export const validateQuestion3 = async ($this) => {
     if (locale === 'en') {
         message= "The application information does not meet the criteria for underwriting insurance, therefore unable to continue the transaction.";
     }
+    // console.log($this.value);
+    // console.log($this.id);
     if ($this.value === 'Y' && ($this.id === 'ctrl_question_1_Y'||$this.id === 'ctrl_question_2_Y' ||$this.id === 'ctrl_question_5_Y' )) {
         $('button[data-step="4"]').style.display = 'none';
         $this.closest('.controls-wrapper').classList.add("error");

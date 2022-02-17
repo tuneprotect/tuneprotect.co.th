@@ -4,7 +4,7 @@ import {
     getPackageData,
     getSelectedPrice,
     showTitle,
-    validateAgeInPackage, validatePolicy
+    validateAgeInPackage, validatePolicy, validateQuestion3
 } from "../form/productHelper";
 import {
     $,
@@ -556,6 +556,21 @@ document.addEventListener("DOMContentLoaded", async () => {
             validateField(this, constraints);
             if (['fdName', 'fdSurname', 'fdNationalID'].includes(field.id)) {
                 validatePolicy(e.target, data.fdPackage);
+            }
+        });
+    });
+
+    const allFieldQ = $form.querySelectorAll('input');
+    allFieldQ.forEach(field => {
+        field.addEventListener("change", function (e) {
+            validateField(this, constraints);
+            if (['ctrl_question_1_Y', 'ctrl_question_2_Y','ctrl_question_5_Y','ctrl_question_1_N','ctrl_question_2_N','ctrl_question_5_N'].includes(field.id)) {
+                validateQuestion3(e.target);
+
+                if($('#ctrl_question_1_N').checked === true && $('#ctrl_question_2_N').checked === true && $('#ctrl_question_5_N').checked === true )
+                {
+                    $('button[data-step="4"]').style.display = 'inline-flex';
+                }
             }
         });
     });
