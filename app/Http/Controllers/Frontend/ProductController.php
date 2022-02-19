@@ -35,7 +35,17 @@ class ProductController extends BaseController
     protected $use_effective = 'N';
     public function index($link = null, $selected = null)
     {
-        //Set redirect by product , Maintenance https://www.tuneprotect.co.th/index.html
+//        //MA
+//        if (in_array($selected, ['CVISAFE','CVIS22JAN'])) {
+//            return redirect('https://www.tuneprotect.co.th/ma_isafe.html');
+//        }
+//        if (in_array($selected, ['ONVSAFEA','ONVS22JAN'])) {
+//            return redirect('https://www.tuneprotect.co.th/ma_vsafe.html');
+//        }
+//        if (in_array($selected, ['ONVACINA','ONVSUREA'])) {
+//            return redirect('https://www.tuneprotect.co.th/ma_vsure.html');
+//        }
+
         if($selected ==='ONCOVIDA')
         {
             $boolRedirect = true;
@@ -58,20 +68,7 @@ class ProductController extends BaseController
         if (empty($link)) {
             return redirect("/" . $this->locale);
         }
-//
-//        //MA
-//        if (in_array($selected, ['CVISAFE','CVIS22JAN'])) {
-//            return redirect('https://www.tuneprotect.co.th/ma_isafe.html');
-//        }
-//        if (in_array($selected, ['ONVSAFEA','ONVS22JAN'])) {
-//            return redirect('https://www.tuneprotect.co.th/ma_vsafe.html');
-//        }
-//        if (in_array($selected, ['ONVACINA','ONVSUREA'])) {
-//            return redirect('https://www.tuneprotect.co.th/ma_vsure.html');
-//        }
 
-
-        //Renew pricing and redirect to new product.
         if (in_array($selected, ['CVISAFE'])) {
             $selected = "CVIS22JAN";
             return redirect()->route('current', ['locale' => $this->locale, 'controller' => 'product', 'func' => $link, 'params' => $selected]);
@@ -103,7 +100,6 @@ class ProductController extends BaseController
     public function form($link = null, $selected = null)
     {
         $this->bodyData['controller'] = $this->controller;
-//        $this->bodyData['days'] = $this->days;
 
         if (empty($link)) {
             return redirect("/" . $this->locale);
