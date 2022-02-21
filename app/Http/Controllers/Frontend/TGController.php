@@ -101,7 +101,13 @@ class TGController  extends ProductController
         $this->bodyData['doc_no'] = $request->session()->get('doc_no');
         $this->bodyData['selected'] = 'TGCVLP';
         $this->bodyData['return_link'] = "/en/tg";
-        return $this->genStatusPage_Portal(ProjectEnum::STATIC_PAGE_PAYMENT_THANK_YOU);
+        $this->bodyData['fdKeys'] = config('tune-api.portal_tg') ;
+
+
+        $this->template->setFootJS(mix("/js/frontend/main.js"));
+        $this->template->setBody('id', 'thankyou_page');
+        return $this->genView('frontend.page.thanktg');
+
     }
 
 
