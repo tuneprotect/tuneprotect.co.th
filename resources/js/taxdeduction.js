@@ -7,6 +7,7 @@ import ScrollReveal from 'scrollreveal'
 import {$, $$} from "./helper"
 import validate from "validate.js";
 import {showFieldError, validateField} from "./validate_form";
+import {validatePolicy} from "./form/productHelper";
 
 validate.validators.idcard = function (value, options, key, attributes) {
 
@@ -48,6 +49,12 @@ document.addEventListener("DOMContentLoaded", function () {
                 idcard: {
                     message: "^" + $('#ctrl_card_id').getAttribute('data-error-idcard')
                 }
+            },
+            email: {
+                presence: {
+                    allowEmpty: false,
+                    message: "^" + $('#ctrl_email').getAttribute('data-error-email')
+                }
             }
         };
 
@@ -80,6 +87,8 @@ document.addEventListener("DOMContentLoaded", function () {
                     $('#ctrl_name').value = '';
                     $('#ctrl_card_id').value = '';
                     $('#ctrl_tax_id').value = '';
+                    $('#ctrl_mobile').value = '';
+                    $('#ctrl_email').value = '';
 
                 } else if (response.status == 'success' && data.action == 'decline') {
                     Swal.fire(
@@ -94,6 +103,8 @@ document.addEventListener("DOMContentLoaded", function () {
                     $('#ctrl_name').value = '';
                     $('#ctrl_card_id').value = '';
                     $('#ctrl_tax_id').value = '';
+                    $('#ctrl_mobile').value = '';
+                    $('#ctrl_email').value = '';
 
                 } else if(response.message == 'duplicate')
                 {
@@ -135,6 +146,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 name: $('#ctrl_name').value,
                 card_id: $('#ctrl_card_id').value,
                 tax_id: $('#ctrl_tax_id').value,
+                email: $('#ctrl_email').value,
+                mobile: $('#ctrl_mobile').value,
             }
             // console.log({data})
 
@@ -158,6 +171,11 @@ document.addEventListener("DOMContentLoaded", function () {
             $$('input,select,textarea', $form).forEach($el => $el.addEventListener(evt, function (e) {
                 e.preventDefault();
                 validateField($el, contactConstraints);
+
+                if (['ctrl_card_id'].includes($el.id)) {
+                    $('#ctrl_tax_id').value = $('#ctrl_card_id').value;
+                }
+
             }));
         });
 

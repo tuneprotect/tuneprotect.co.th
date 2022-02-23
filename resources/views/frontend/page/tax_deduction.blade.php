@@ -2,7 +2,8 @@
 
 @section('page')
     <main>
-        <section class="wrapper contact-section" id="taxdeductionform-section">
+        <div class="-wrapper">
+        <section class="wrapper" id="taxdeductionform-section">
             <form class="insurance-form" action="/{{$locale}}/TaxDeduction/apiTaxDeduction" method="post" id="frm_taxdeduction"
                   data-form-type="taxdeductionform"
                   novalidate
@@ -15,8 +16,6 @@
                   data-success-button="กลับสู่หน้าหลัก"
           >
                 <div class="form-inner">
-                    <h3>Tax Consent (on TPT’s website)</h3>
-                    <br>
                     <h4>แบบฟอร์มให้ความยินยอมในการเปิดเผยข้อมูลต่อกรมสรรพากรเพื่อสิทธิประโยชน์ทางภาษี</h4>
                     <br>
                     <span class="small">
@@ -29,7 +28,7 @@
                     </div>
 
                     <div class="controls-wrapper">
-                        <input id="ctrl_card_id" name="name" type="text" placeholder=*"เลขประจำตัวประชาชน"
+                        <input id="ctrl_card_id" name="card_id" type="text" placeholder=*"เลขประจำตัวประชาชน"
                                required="required"
                                data-error-idcard="กรุณาตรวจสอบรูปแบบ เลขประจำตัวประชาชน"
                                data-error-required="กรุณาระบุ เลขประจำตัวประชาชน"/>
@@ -38,9 +37,24 @@
 
                     <div class="controls-wrapper">
                         <span class="small"><b>เลขประจำตัวผู้เสียภาษีอากร (ถ้ามี) (สำหรับชาวต่างชาติ Non-Thai Residence และเป็นผู้ที่มีหน้าที่เสียภาษีเงินได้ตามกฎหมายว่าด้วยภาษีอาการ)</b></span>
-                        <input id="ctrl_tax_id" name="name" type="text"
+                        <input id="ctrl_tax_id" name="tax_id" type="text"
                                placeholder="เลขประจำตัวผู้เสียภาษีอากร (ถ้ามี)"/>
                     </div>
+
+                    <div class="controls-wrapper">
+                        <input id="ctrl_mobile" name="mobile" type="text" placeholder="เบอร์โทร"/>
+                        <label for="ctrl_mobile">เบอร์โทร</label>
+                    </div>
+
+
+                    <div class="controls-wrapper">
+                        <input id="ctrl_email" name="email" type="text" placeholder=*"email"
+                               required="required"
+                               data-error-email="กรุณาตรวจสอบ email"
+                               data-error-required="กรุณาระบุ email"/>
+                        <label for="ctrl_email">*email</label>
+                    </div>
+
 
                     <br>
                     <span class="small">
@@ -60,6 +74,7 @@
 {{--                <input type="hidden" name="_token" id ="_token" value="{{ csrf_token() }}">--}}
             </form>
         </section>
+        </div>
     </main>
 @endsection
 
