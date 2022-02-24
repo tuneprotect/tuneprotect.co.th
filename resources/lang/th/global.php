@@ -73,4 +73,5 @@ return [
     'copyright_luma_care' => 'Luma Covid Care is the commercial name of the Individual Coronavirus Disease 2019 (Covid-19) Insurance Policy insured by Tune Protect. ',
     'accept' => 'ยอมรับ',
     'decline' => 'ไม่ยอมรับ',
+    'search' => 'ค้นหา',
 ];

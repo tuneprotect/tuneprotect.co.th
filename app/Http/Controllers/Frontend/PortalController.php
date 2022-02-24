@@ -211,7 +211,16 @@ class PortalController extends ProductController
         $this->bodyData['point'] = '';
         $this->bodyData['selected'] = $request->session()->get('selected');
 
+        if (session('partner')) {
+            if(session('partner') ==='THAIAIRWAY')
+            {
+                return (new TGController)->thankyou($request);
+            }
+
+        }
+
         return $this->genStatusPage_Portal(ProjectEnum::STATIC_PAGE_PAYMENT_THANK_YOU);
+
     }
 
 }
