@@ -31,7 +31,7 @@
                         </div>
                         <div class="date-wrapper">
                             <div class="controls-wrapper">
-                                <input id="ctrl_password" name="ctrl_password" type="text" placeholder="*รหัสผู้ใช้งาน"
+                                <input id="ctrl_password" name="ctrl_password" type="password" placeholder="*รหัสผู้ใช้งาน"
                                        required="required"
                                        data-error-password="กรุณาตรวจสอบรหัสผู้ใช้งาน"
                                        data-error-required="กรุณาระบุรหัสผู้ใช้งาน"/>
