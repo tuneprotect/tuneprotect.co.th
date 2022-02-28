@@ -1,4 +1,4 @@
-@extends('frontend.layout.main')
+@extends('frontend.layout.nofooter')
 
 @section('page')
     <main>
@@ -16,14 +16,26 @@
           >
                 <div class="form-inner">
                     <h4>ค้นหากรมธรรม์</h4>
+                    <div class="two-col">
                     <div class="controls-wrapper">
-                        <input id="policyNumber" name="policyNumber" type="text" placeholder=*"เลขกรมธรรม์"
-                               required="required"
+                        <input id="policyNumber" name="policyNumber" type="text" placeholder="เลขกรมธรรม์"
                                data-error-idcard="กรุณาตรวจสอบเลขกรมธรรม์"
                                data-error-required="กรุณาระบุเลขกรมธรรม์"/>
-                        <label for="policyNumber">*เลขกรมธรรม์</label>
+                        <label for="policyNumber">เลขกรมธรรม์</label>
                     </div>
-
+                    <div class="controls-wrapper">
+                        <input id="IDCard" name="IDCard" type="text" placeholder="เลขบัตรประชาชน/passport"
+                               data-error-idcard="กรุณาตรวจสอบ เลขบัตรประชาชน/passport"
+                               data-error-required="กรุณาระบุ เลขบัตรประชาชน/passport"/>
+                        <label for="IDCard">เลขบัตรประชาชน/passport</label>
+                    </div>
+                    <div class="controls-wrapper">
+                        <input id="InvoiceNumber" name="InvoiceNumber" type="text" placeholder="เลขอินวอยซ์"
+                               data-error-idcard="กรุณาตรวจสอบ เลขอินวอยซ์"
+                               data-error-required="กรุณาระบุ เลขอินวอยซ์"/>
+                        <label for="InvoiceNumber">เลขอินวอยซ์</label>
+                    </div>
+                    </div>
                 </div>
                 <div class="btn-wrapper">
                     <button data-gtm="contact-form-accept" class="btn btn-primary" name="action" type="button"

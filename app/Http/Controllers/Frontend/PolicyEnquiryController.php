@@ -17,8 +17,14 @@ class PolicyEnquiryController extends BaseController
 {
     public function index()
     {
-        $this->template->setFootJS(mix("/js/frontend/policyenquiry.js"));
-        return $this->genView('frontend.page.policyenquiry');
+        if (session('status')) {
+            if(session('status') === true){
+                $this->template->setFootJS(mix("/js/frontend/policyenquiry.js"));
+                return $this->genView('frontend.page.policyenquiry');
+            }
+        }
+
+        return (new PortalLoginController())->index();
 
     }
 
