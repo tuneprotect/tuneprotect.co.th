@@ -36,54 +36,33 @@ class PolicyEnquiryController extends BaseController
         ]);
         $res = (object)json_decode($response->getBody()->getContents(), true);
 
-//        $this->apiResult = $res->status ? self::SUCCESS : self::ERROR;
-        $this->apiResult = $res->data;
-
-        if ($res->status) {
-            $this->apiStatus = self::SUCCESS;
-            $this->apiStatusText = self::SUCCESS;
-        } else {
-            $this->apiStatus = self::ERROR;
-            $this->apiStatusText = __('product.error.' . $res->message);
-        }
-
-        return $this->send();
+        return response()->json([
+            'status' => $res->status ,
+            'message' => $res->message,
+            'data' => $res->data
+        ]);
     }
 
-    public function apiTaxDeduction(Request $request)
+    public function CheckPolicyEnquiry(Request $request)
     {
-        $status = 'error';
-        $message = '';
-        try {
-            $data = $request->all();
-            $client = new Client();
-            $response = $client->request('POST', config('tune-api.url') . 'TaxDeduction', [
-                'auth' => [config('tune-api.user'), config('tune-api.password')],
-                'headers' => [
-                    'Content-Type' => 'application/json'
-                ],
-                'body' => json_encode($data)
-            ]);
-            $res = (object)json_decode($response->getBody()->getContents(), true);
+        $data = $request->all();
 
-            if ($res->status) {
-                $status = self::SUCCESS;
-            } else {
-                $status = self::ERROR;
-                $message = $res->message;
-            }
-
-        } catch (\Exception $ex) {
-            $message = $ex->getMessage();
-
-        }
+        $client = new Client();
+        $response = $client->request('POST', config('tune-api.url') . 'CheckPolicyEnquiry', [
+            'auth' => [config('tune-api.user'), config('tune-api.password')],
+            'headers' => [
+                'Content-Type' => 'application/json'
+            ],
+            'body' => json_encode($data)
+        ]);
+        $res = (object)json_decode($response->getBody()->getContents(), true);
 
         return response()->json([
-            'status' => $status,
-            'message' => $message
+            'status' => $res->status ,
+            'message' => $res->message,
+            'data' => $res->data
         ]);
-
-
     }
+
 
 }

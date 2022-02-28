@@ -33,6 +33,8 @@
                 </div>
 
                 <br>
+                <div id="policy_section" class="form-inner"></div>
+                <br>
                 <div id="summary_section" class="form-inner"></div>
 
             </form>

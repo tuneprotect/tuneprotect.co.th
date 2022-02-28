@@ -56,15 +56,66 @@ document.addEventListener("DOMContentLoaded", function () {
             const data = {
                 PolicyNo: $('#policyNumber').value
             }
-            console.log(data);
             await apiPolicyEnquiry(data);
+
+            // const data = {
+            //     IDCard: $('#policyNumber').value
+            // }
+            // await apiCheckPolicyEnquiry(data);
+
             return false;
         }));
 
+        //
+        // const apiCheckPolicyEnquiry = async (data) => {
+        //     $form.classList.add('ajax_loader');
+        //     const $policy_section = $('#policy_section');
+        //     $policy_section.innerHTML = ``;
+        //     try {
+        //         let res = await fetch(`/${$('html').getAttribute('lang')}/PolicyEnquiry/CheckPolicyEnquiry`, {
+        //             method: 'post',
+        //             headers: {
+        //                 'Accept': 'application/json',
+        //                 'Content-Type': 'application/json',
+        //                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').getAttribute('content')
+        //             },
+        //             body: JSON.stringify(data)
+        //         });
+        //         const response = await res.json()
+        //         let filteredData = response.data;
+        //         let innerHTML =  `<h3 class="text-primary">รายการกรมธรรม์ที่ยังมีความคุ้มครอง</h3>`;
+        //         if (response.status) {
+        //             filteredData.map(v => {
+        //                 innerHTML = innerHTML +  `<div class="two-col">
+        //                 <div><span>เลขกรมธรรม์ : </span><strong>${v.DOC_NBR}</span></strong></div>
+        //                 <div onclick='alert("1");'><span>รายละเอียดกรมธรรม์ : </span><strong><a>คลิก</a></span></strong></div>
+        //                 <div><span>วันที่เริ่มคุ้มครอง : </span><strong>${v.POLM_EDATE}</span></strong></div>
+        //                 <div><span>วันที่สิ้นสุดความคุ้มครอง : </span><strong>${v.POLM_XDATE}</span></strong></div>
+        //                 </div><br>`;
+        //             });
+        //
+        //         }else{
+        //             innerHTML = `<h3 class="text-primary">ไม่พบข้อมูล</h3><br>`;
+        //         }
+        //         $policy_section.innerHTML = innerHTML;
+        //         $form.classList.remove('ajax_loader');
+        //     } catch (err) {
+        //         Swal.fire(
+        //             {
+        //                 title: `<i class="icofont-alarm" style="color:red"></i>`,
+        //                 html: `<strong>${$form.getAttribute('data-error')}</strong><br>${$form.getAttribute('data-error-description')}`,
+        //                 confirmButtonText: $form.getAttribute('data-error-button'),
+        //             }
+        //         )
+        //     }
+        // }
+
         const apiPolicyEnquiry = async (data) => {
             $form.classList.add('ajax_loader');
+            const $summary_section = $('#summary_section');
+            $summary_section.innerHTML = ``;
             try {
-                let res = await fetch($form.getAttribute('action'), {
+                let res = await fetch(`/${$('html').getAttribute('lang')}/PolicyEnquiry/policyEnquiry`, {
                     method: 'post',
                     headers: {
                         'Accept': 'application/json',
@@ -75,33 +126,42 @@ document.addEventListener("DOMContentLoaded", function () {
                 });
 
                 const response = await res.json();
-
-                console.log(response);
-
-                const $summary_section = $('#summary_section');
-                $summary_section.innerHTML = `<h3 class="text-primary">ข้อมูลการประกันภัย</h3><br>
+                let respData = response.data;
+                if (response.status) {
+                    $summary_section.innerHTML = `<h3 class="text-primary">ข้อมูลการประกันภัย</h3><br>
                         <div class="two-col">
-                            <div><span>แผนประกันภัย : </span><strong> iSafe Extra <span id="form-head">แผน 2</span></strong></div>
-                            <div><span>ราคา : </span><strong>875 บาท</strong></div>
-
+                            <div><span>เลขกรมธรรม์ : </span><strong>${respData.POLICY_NO}</strong></div>
+                            <div><span>วันที่ออกกรมธรรม์ : </span><strong>${respData.FDISSUEDATE}</strong></div>
+                            <div><span>แผนประกันภัย : </span><strong>${respData.PLANNAME}</span></strong></div>
+                            <div><span>ราคา : </span><strong>${respData.FDPAYAMT} บาท</strong></div>
+                            <div><span>วันที่เริ่มคุ้มครอง : </span><strong>${respData.FDFROMDATE}</strong></div>
+                            <div><span>วันที่สิ้นสุดความคุ้มครอง : </span><strong>${respData.FDTODATE}</strong></div>
+                            <div><span>เลขอ้างอิง : </span><strong>${respData.REFCODE}</strong></div>
+                            <div><span>เลขอินวอยซ์ : </span><strong>${respData.FDINVOICE}</strong></div>
                         </div>
                         <br>
                         <h3 class="text-primary">ข้อมูลผู้เอาประกันภัย</h3><br>
                         <div class="two-col">
-                            <div><span>ชื่อ : </span><strong>นาย DHONG DHONG</strong></div>
-                            <div><span>เพศ : </span><strong>ชาย</strong></div>
-                            <div><span>บัตรประจำตัวประชาชน : </span><strong>3821631020932</strong></div>
-                            <div><span>วันเกิด : </span><strong>11/01/2527 (38 ปี)</strong></div>
-                            <div><span>เบอร์โทรศัพท์มือถือ : </span><strong>0222222222</strong></div>
-                            <div><span>อีเมล : </span><strong>pattarapong.k@tuneprotect.com</strong></div>
-                            <div class="controls-wrapper full no-lable"><span>ที่อยู่ : </span><strong>xxxxx xxx เขตลาดพร้าว, กรุงเทพมหานคร 10230</strong></div>
-                            <div class="controls-wrapper full no-lable"><span>ผู้รับผลประโยชน์ : </span><strong>ทายาทโดยชอบธรรม</strong></div>
-                            <div><span>การขอสิทธิ์ลดหย่อนภาษี : </span><strong>ไม่ใช่</strong></div>
-                            <div><span>ต้องการรับกรมธรรม์ประกันภัยผ่านช่องทาง : </span><strong>อีเมล</strong></div>
-                            <div class="controls-wrapper full no-lable"><span>โรคประจำตัว : </span><strong>ไม่มี</strong></div>
+                            <div><span>ชื่อ : </span><strong>${respData.FDNAME}  ${respData.FDSURNAME}</strong></div>
+                            <div><span>เพศ : </span><strong>${respData.FDSEX === 'F' ? 'หญิง' : 'ชาย'}</strong></div>
+                            <div><span>บัตรประจำตัวประชาชน : </span><strong>${respData.FDNATIONALID}</strong></div>
+                            <div><span>วันเกิด : </span><strong>${respData.FDHBD} (${respData.FDAGE} ปี ณ วันออกกรมธรรม์)</strong></div>
+                            <div><span>เบอร์โทรศัพท์มือถือ : </span><strong>${respData.FDTELEPHONE}</strong></div>
+                            <div><span>อีเมล : </span><strong>${respData.FDEMAIL}</strong></div>
+                            <div class="controls-wrapper full no-lable"><span>ที่อยู่ : </span><strong>${respData.FDADDR_NUM}</strong></div>
+                            <div class="controls-wrapper full no-lable"><span>ผู้รับผลประโยชน์ : </span><strong>${respData.FDBENEFIT}</strong></div>
+                        </div>
+                        <br>
+                        <h3 class="text-primary">ข้อมูลการเดินทาง</h3><br>
+                        <div class="two-col">
+                            <div><span>ต้นทาง : </span><strong>${respData.FDDESTFROM_DESC}</strong></div>
+                            <div><span>ปลายทาง : </span><strong>${respData.FDDESTTO_DESC}</strong></div>
                         </div>`;
 
-
+                }else{
+                    $summary_section.innerHTML = `<h3 class="text-primary">ไม่พบข้อมูล</h3><br>`;
+                }
+                $form.classList.remove('ajax_loader');
             } catch (err) {
                 Swal.fire(
                     {
@@ -111,13 +171,12 @@ document.addEventListener("DOMContentLoaded", function () {
                     }
                 )
             }
-
-            $form.classList.remove('ajax_loader');
         }
 
-
-
+        $form.classList.remove('ajax_loader');
 
     }
 
 });
+
+// <div><span>ลิ้งกรมธรรม์ (กรมธรรม์ที่รองรับการดูแบบออนไลน์เท่านั้น) : </span><strong><a href="${respData.PUBLICLINKPOLICY}" target="_blank" title=""><u>คลิก</u></a></strong></div>
