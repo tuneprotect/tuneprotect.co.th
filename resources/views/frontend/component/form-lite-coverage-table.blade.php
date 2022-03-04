@@ -17,9 +17,11 @@
                                    class="btn btn-block btn-outline btn-choose-plan {{$i == 1 ? 'on' : '' }}">
 
                                     @if($i == 1)
-                                        <strong class="package-number">LITE @lang('product.plan')</strong>
+                                        <strong class="package-number">Super Lite</strong>
+                                    @elseif($i == 2)
+                                        <strong class="package-number">Lite @lang('product.plan')</strong>
                                     @else
-                                        <strong class="package-number">@lang('product.plan') {{$i-1}}</strong>
+                                        <strong class="package-number">@lang('product.plan') {{$i-2}}</strong>
                                     @endif
 
                                 </a>
@@ -35,19 +37,23 @@
                 @foreach ($package_detail as $k => $v)
                     <th data-package="{{$k}}">
                         @if($i == 1)
-                            <strong class="package-number">LITE Plan</strong>
+                            <strong class="package-number">Super Lite</strong>
+                        @elseif($i == 2)
+                            <strong class="package-number">Lite @lang('product.plan')</strong>
                         @else
-                            <strong class="package-number">@lang('product.plan') {{$i-1}}</strong>
+                            <strong class="package-number">@lang('product.plan') {{$i-2}}</strong>
                         @endif
 
                         <a href="#"
                            data-gtm="product-{{strtolower($selected)}}-top-choose-plan-{{$i-1}}"
                            data-step="3" data-package="{{$k}}" data-sub-package=""
-                           @if($i == 1)
-                                data-plan='LITE Plan'
-                           @else
-                                data-plan="@lang('product.plan') {{$i-1}}"
-                           @endif
+                            @if($i == 1)
+                                data-plan ='Super Lite'
+                            @elseif($i == 2)
+                                    data-plan='Lite Plan'
+                            @else
+                                data-plan="@lang('product.plan') {{$i-2}}"
+                            @endif
 
                            class="btn btn-block btn-outline btn-goto">@lang('product.choose_plan')</a>
 
@@ -104,20 +110,24 @@
                 <?php $i = 1 ?>
                 @foreach ($package_detail as $k => $v)
                     <td {{$i > 1 ? 'class=hide' : ""}} data-index="{{$i-1}}" data-package="{{$k}}">
-                        @if($i == 1)
-                            <strong style="display: block" class="text-center">LITE @lang('product.plan')</strong>
-                        @else
-                            <strong style="display: block" class="text-center">@lang('product.plan') {{$i-1}}</strong>
-                        @endif
+                            @if($i == 1)
+                                <strong style="display: block" class="text-center">Super Lite</strong>
+                            @elseif($i == 2)
+                                <strong style="display: block" class="text-center">Lite @lang('product.plan')</strong>
+                            @else
+                                <strong style="display: block" class="text-center">@lang('product.plan') {{$i-2}}</strong>
+                            @endif
 
                         <a href="#"
                            data-gtm="product-{{strtolower($selected)}}-bottom-choose-plan-{{$i-1}}"
                                data-step="3" data-package="{{$k}}" data-sub-package=""
 
                            @if($i == 1)
-                                data-plan='LITE Plan'
+                                data-plan ='Super Lite'
+                           @elseif($i == 2)
+                                data-plan='Lite Plan'
                            @else
-                                data-plan="@lang('product.plan') {{$i-1}}"
+                                data-plan="@lang('product.plan') {{$i-2}}"
                            @endif
 
 
