@@ -95,7 +95,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                 <div><span>ชื่อ : </span><strong>${v.FDNAME}  ${v.FDSURNAME}</strong></div>
                                 <div><span>เพศ : </span><strong>${v.FDSEX === 'F' ? 'หญิง' : 'ชาย'}</strong></div>
                                 <div><span>บัตรประจำตัวประชาชน : </span><strong>${v.FDNATIONALID}</strong></div>
-                                <div><span>วันเกิด : </span><strong>${v.FDHBD} (${v.FDAGE} ปี ณ วันออกกรมธรรม์)</strong></div>
+                                <div><span>วันเกิด : </span><strong>${v.FDHBD}</strong></div>
                                 <div><span>เบอร์โทรศัพท์มือถือ : </span><strong>${v.FDTELEPHONE}</strong></div>
                                 <div><span>อีเมล : </span><strong>${v.FDEMAIL}</strong></div>
                                 <div class="controls-wrapper full no-lable"><span>ที่อยู่ : </span><strong>${v.FDADDR_NUM}</strong></div>

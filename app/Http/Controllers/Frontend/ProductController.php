@@ -71,19 +71,19 @@ class ProductController extends BaseController
 
         if (in_array($selected, ['CVISAFE'])) {
             $selected = "CVIS22JAN";
-            return redirect()->route('current', ['locale' => $this->locale, 'controller' => 'product', 'func' => $link, 'params' => $selected]);
+            return redirect()->route('current', ['locale' => $this->locale, 'controller' => $this->controller, 'func' => $link, 'params' => $selected]);
         }
         if (in_array($selected, ['ONVSAFEA'])) {
             $selected = "ONVS22JAN";
-            return redirect()->route('current', ['locale' => $this->locale, 'controller' => 'product', 'func' => $link, 'params' => $selected]);
+            return redirect()->route('current', ['locale' => $this->locale, 'controller' => $this->controller, 'func' => $link, 'params' => $selected]);
         }
         if (in_array($selected, ['ONVACINA'])) {
             $selected = "ONVSUREA";
-            return redirect()->route('current', ['locale' => $this->locale, 'controller' => 'product', 'func' => $link, 'params' => $selected]);
+            return redirect()->route('current', ['locale' => $this->locale, 'controller' => $this->controller, 'func' => $link, 'params' => $selected]);
         }
 
         if (in_array($selected, ['ONTALN', 'ONCOVIDL', 'ONTA','TGCVLP']) && $this->locale === 'th') {
-            return redirect()->route('current', ['locale' => 'en', 'controller' => 'product', 'func' => $link, 'params' => $selected]);
+            return redirect()->route('current', ['locale' => 'en', 'controller' => $this->controller, 'func' => $link, 'params' => $selected]);
         }
 
         $this->getProductDetail($link, $selected);
@@ -106,7 +106,7 @@ class ProductController extends BaseController
         }
 
         if (in_array($selected, ['ONTALN', 'ONCOVIDL', 'ONTA','TGCVLP']) && $this->locale === 'th') {
-            return redirect()->route('current', ['locale' => 'en', 'controller' => 'product', 'func' => $link, 'params' => $selected]);
+            return redirect()->route('current', ['locale' => 'en', 'controller' => $this->controller, 'func' => $link, 'params' => $selected]);
         }
 
         $this->getProductDetail($link, $selected);
@@ -533,7 +533,7 @@ class ProductController extends BaseController
         $apiResult = $this->sendToApiLog($obj);
 
         if (!$apiResult["status"]) {
-            return redirect()->route('current', ['locale' => $this->locale, 'controller' => 'product', 'func' => 'error']);
+            return redirect()->route('current', ['locale' => $this->locale, 'controller' => $this->controller, 'func' => 'error']);
         }
 
         $result->log_id = $apiResult['message'];
@@ -878,22 +878,33 @@ class ProductController extends BaseController
 
     public function error(Request $request)
     {
+        $this->bodyData['partner'] =session('partner');
+        $this->bodyData['selected'] =session('selected');
         $this->bodyData['doc_no'] =$request->session()->get('error');
         return $this->genStatusPage(ProjectEnum::STATIC_PAGE_PAYMENT_ERROR);
     }
 
     public function cancel()
     {
+        $this->bodyData['partner'] =session('partner');
+        $this->bodyData['selected'] =session('selected');
+        $this->bodyData['doc_no'] =session('error');
         return redirect('/' . $this->locale);
     }
 
     public function pending()
     {
+        $this->bodyData['partner'] =session('partner');
+        $this->bodyData['selected'] =session('selected');
+        $this->bodyData['doc_no'] =session('error');
         return $this->genStatusPage(ProjectEnum::STATIC_PAGE_PAYMENT_PENDING);
     }
 
     public function reject()
     {
+        $this->bodyData['partner'] =session('partner');
+        $this->bodyData['selected'] =session('selected');
+        $this->bodyData['doc_no'] =session('error');
         return $this->genStatusPage(ProjectEnum::STATIC_PAGE_PAYMENT_REJECT);
     }
 
@@ -942,17 +953,20 @@ class ProductController extends BaseController
                 break;
             case '001':
                 $func = 'pending';
+                $request->session()->put('error', $request->input('channel_response_desc'));
                 break;
             case '002':
                 $func = 'reject';
+                $request->session()->put('error', $request->input('channel_response_desc'));
                 break;
             case '003':
                 $func = 'cancel';
+                $request->session()->put('error', $request->input('channel_response_desc'));
                 break;
             default:
                 $func = 'error';
+                $request->session()->put('error', $request->input('channel_response_desc'));
         }
-
         return redirect()->route('current', ['locale' => $this->locale, 'controller' => $this->controller, 'func' => $func, 'params' => $this->thankYouParam]);
     }
 

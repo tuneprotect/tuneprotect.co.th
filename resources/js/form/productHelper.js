@@ -424,12 +424,14 @@ export const showMultipleTitle = (sex, index) => {
         arrHide.push('#li_title_041_' + index);
         arrHide.push('#li_title_002_' + index);
         arrHide.push('#li_title_003_' + index);
+        arrHide.push('#li_title_280_' + index);
     }
 
     if (sex === 'F') {
         arrHide.push('#li_title_042_' + index);
         arrHide.push('#li_title_184_' + index);
         arrHide.push('#li_title_001_' + index);
+        arrHide.push('#li_title_283_' + index);
     }
 
     arrHide.map(v => {
