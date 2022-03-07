@@ -21,7 +21,7 @@
 {{--                                    @elseif($i == 2)--}}
 {{--                                        <strong class="package-number">Lite @lang('product.plan')</strong>--}}
                                     @else
-                                        <strong class="package-number">@lang('product.plan') {{$i-2}}</strong>
+                                        <strong class="package-number">@lang('product.plan') {{$i-1}}</strong>
                                     @endif
 
                                 </a>
@@ -41,7 +41,7 @@
 {{--                        @elseif($i == 2)--}}
 {{--                            <strong class="package-number">Lite @lang('product.plan')</strong>--}}
                         @else
-                            <strong class="package-number">@lang('product.plan') {{$i-2}}</strong>
+                            <strong class="package-number">@lang('product.plan') {{$i-1}}</strong>
                         @endif
 
                         <a href="#"
@@ -52,7 +52,7 @@
 {{--                            @elseif($i == 2)--}}
 {{--                                    data-plan='Lite Plan'--}}
                             @else
-                                data-plan="@lang('product.plan') {{$i-2}}"
+                                data-plan="@lang('product.plan') {{$i-1}}"
                             @endif
 
                            class="btn btn-block btn-outline btn-goto">@lang('product.choose_plan')</a>
@@ -115,7 +115,7 @@
 {{--                            @elseif($i == 2)--}}
 {{--                                <strong style="display: block" class="text-center">Lite @lang('product.plan')</strong>--}}
                             @else
-                                <strong style="display: block" class="text-center">@lang('product.plan') {{$i-2}}</strong>
+                                <strong style="display: block" class="text-center">@lang('product.plan') {{$i-1}}</strong>
                             @endif
 
                         <a href="#"
@@ -127,7 +127,7 @@
 {{--                           @elseif($i == 2)--}}
 {{--                                data-plan='Lite Plan'--}}
                            @else
-                                data-plan="@lang('product.plan') {{$i-2}}"
+                                data-plan="@lang('product.plan') {{$i-1}}"
                            @endif
 
 
