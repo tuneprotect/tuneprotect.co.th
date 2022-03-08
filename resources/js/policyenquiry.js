@@ -31,14 +31,6 @@ validate.validators.idcard = function (value, options, key, attributes) {
 document.addEventListener("DOMContentLoaded", function () {
     const $form = $('#frm_policyenquiry');
     if ($form) {
-        // const $btnUnlock = $$('.btn-unlock');
-        // if ($btnUnlock) {
-        //     $btnUnlock.addEventListener("click", function (e) {
-        //         e.preventDefault();
-        //         alert('test');
-        //     });
-        // }
-
         $$('cite', $form).forEach($el => $el.remove());
         $$('.controls-wrapper', $form).forEach($el => $el.classList.remove('error'));
         $$('input,select,textarea', $form).forEach($el => $el.classList.remove('error'));
@@ -88,6 +80,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                 <div><span>วันที่สิ้นสุดความคุ้มครอง : </span><strong>${v.FDTODATE}</strong></div>
                                 <div><span>เลขอ้างอิง : </span><strong>${v.REFCODE}</strong></div>
                                 <div><span>เลขอินวอยซ์ : </span><strong>${v.FDINVOICE}</strong></div>
+                                <div class="btn-wrapper"><a class="btn btn-primary" target="_blank" href="/${$('html').getAttribute('lang')}/PolicyEnquiry/Unlock/${v.FDNATIONALID}">Unlock</a></div>
                             </div>
                             <br>
                             <h3 class="text-primary">ข้อมูลผู้เอาประกันภัย</h3><br>

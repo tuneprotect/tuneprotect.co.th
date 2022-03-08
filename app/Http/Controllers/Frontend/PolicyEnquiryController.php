@@ -70,5 +70,38 @@ class PolicyEnquiryController extends BaseController
         ]);
     }
 
+    public function Unlock($Nationality =null)
+    {
+        if (session('status')) {
+            $this->bodyData['UnlockStatus'] = 'Unlock Success';
+            $this->bodyData['UnlockDisplay'] = 'Nationality/Passport ID '.$Nationality;
+        }
+        else{
+            $this->bodyData['UnlockStatus'] = 'Unlock Fail';
+            $this->bodyData['UnlockDisplay'] = 'Unauthenticated. please login';
+        }
+        $this->bodyData['partner'] = '';
+        $this->bodyData['selected'] = '';
+        return $this->genView('frontend.page.Unlock');
+
+//        $data = $request->all();
+//
+//        $client = new Client();
+//        $response = $client->request('POST', config('tune-api.url') . 'CheckPolicyEnquiry', [
+//            'auth' => [config('tune-api.user'), config('tune-api.password')],
+//            'headers' => [
+//                'Content-Type' => 'application/json'
+//            ],
+//            'body' => json_encode($data)
+//        ]);
+//        $res = (object)json_decode($response->getBody()->getContents(), true);
+//
+//        return response()->json([
+//            'status' => $res->status ,
+//            'message' => $res->message,
+//            'data' => $res->data
+//        ]);
+    }
+
 
 }

@@ -39,12 +39,14 @@ class PortalLoginController extends BaseController
         $apiResult =json_decode($response->getBody()->getContents(), true);
         $this->bodyData['message'] = $apiResult["message"];
         if (!$apiResult["status"]) {
-            $this->bodyData['status'] = false;
             session(['status' => false]);
+            $this->bodyData['status'] = false;
             return $this->index();
         }
         else
         {
+            session(['username_p' => $username]);
+            session(['password_p' => $password]);
             session(['status' => true]);
             $this->bodyData['status']= true;
             return (new PolicyEnquiryController)->index();
