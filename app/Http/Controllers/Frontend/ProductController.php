@@ -36,7 +36,7 @@ class ProductController extends BaseController
     public function index($link = null, $selected = null)
     {
 //        //MA
-//        if (in_array($selected, ['CVISAFE','CVIS22JAN'])) {
+//        if (in_array($selected, ['CVISAFE','CVIS22JAN','ONCOVIDA'])) {
 //            return redirect('https://www.tuneprotect.co.th/ma_isafe.html');
 //        }
 //        if (in_array($selected, ['ONVSAFEA','ONVS22JAN'])) {
@@ -46,20 +46,20 @@ class ProductController extends BaseController
 //            return redirect('https://www.tuneprotect.co.th/ma_vsure.html');
 //        }
 
-        if($selected ==='ONCOVIDA')
-        {
-            $boolRedirect = true;
-            if (isset($this->bodyData['portal_key'])) {
-                if($this->bodyData['portal_key'] === 'QAVM2LRWBGCXNTSFBQFR6LKW24JWXUJRX6MBNGFRGUSXXTARPQJRX' || $this->bodyData['portal_key'] === 'QAVM2LRWBGCXXGSFBQFR6LKW24JXXUJRX8MBNGFRGUSXXTARPQJRX')
-                {
-                    $boolRedirect = false;
-                }
-            }
-            if($boolRedirect === true)
-            {
-                return redirect('https://www.tuneprotect.co.th/index.html');
-            }
-        }
+//        if($selected ==='ONCOVIDA')
+//        {
+//            $boolRedirect = true;
+//            if (isset($this->bodyData['portal_key'])) {
+//                if($this->bodyData['portal_key'] === 'QAVM2LRWBGCXNTSFBQFR6LKW24JWXUJRX6MBNGFRGUSXXTARPQJRX' || $this->bodyData['portal_key'] === 'QAVM2LRWBGCXXGSFBQFR6LKW24JXXUJRX8MBNGFRGUSXXTARPQJRX')
+//                {
+//                    $boolRedirect = false;
+//                }
+//            }
+//            if($boolRedirect === true)
+//            {
+//                return redirect('https://www.tuneprotect.co.th/index.html');
+//            }
+//        }
 
         $this->bodyData['controller'] = $this->controller;
         $this->bodyData['use_effective'] = $this->use_effective;
@@ -69,7 +69,7 @@ class ProductController extends BaseController
             return redirect("/" . $this->locale);
         }
 
-        if (in_array($selected, ['CVISAFE'])) {
+        if (in_array($selected, ['CVISAFE','ONCOVIDA'])) {
             $selected = "CVIS22JAN";
             return redirect()->route('current', ['locale' => $this->locale, 'controller' => $this->controller, 'func' => $link, 'params' => $selected]);
         }

@@ -19,6 +19,7 @@ class PolicyEnquiryController extends BaseController
     {
         if (session('status')) {
             if(session('status') === true){
+                $this->bodyData['group_p'] = session('group_p');
                 $this->template->setFootJS(mix("/js/frontend/policyenquiry.js"));
                 return $this->genView('frontend.page.policyenquiry');
             }
@@ -72,14 +73,38 @@ class PolicyEnquiryController extends BaseController
 
     public function Unlock($Nationality =null)
     {
+
         if (session('status')) {
-            $this->bodyData['UnlockStatus'] = 'Unlock Success';
-            $this->bodyData['UnlockDisplay'] = 'Nationality/Passport ID '.$Nationality;
+            $client = new Client();
+            $response = $client->request('POST', config('tune-api.url') . 'UnlockPolicy', [
+                'auth' => [config('tune-api.user'), config('tune-api.password')],
+                'headers' => [
+                    'Content-Type' => 'application/json'
+                ],
+                'body' => json_encode([
+                    'fdNationalID' => $Nationality,
+                    'username' => session('username_p'),
+                    'password' => session('password_p'),
+                ])
+            ]);
+
+            $apiResult =json_decode($response->getBody()->getContents(), true);
+
+            if ($apiResult["status"]) {
+                $this->bodyData['UnlockStatus'] = 'Unlock Success';
+                $this->bodyData['UnlockDisplay'] = 'Nationality/Passport ID '.$Nationality;
+            }
+            else{
+                $this->bodyData['UnlockStatus'] = 'Unlock Fail';
+                $this->bodyData['UnlockDisplay'] = $apiResult["message"];
+            }
+
         }
         else{
             $this->bodyData['UnlockStatus'] = 'Unlock Fail';
             $this->bodyData['UnlockDisplay'] = 'Unauthenticated. please login';
         }
+
         $this->bodyData['partner'] = '';
         $this->bodyData['selected'] = '';
         return $this->genView('frontend.page.Unlock');

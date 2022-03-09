@@ -63,6 +63,8 @@ document.addEventListener("DOMContentLoaded", function () {
                     body: JSON.stringify(data)
                 });
 
+                let group_p = document.getElementById("group_p");
+
                 const response = await res.json();
                 let respData = response.data;
                 let innerHTML =  ``;
@@ -80,7 +82,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                 <div><span>วันที่สิ้นสุดความคุ้มครอง : </span><strong>${v.FDTODATE}</strong></div>
                                 <div><span>เลขอ้างอิง : </span><strong>${v.REFCODE}</strong></div>
                                 <div><span>เลขอินวอยซ์ : </span><strong>${v.FDINVOICE}</strong></div>
-                                <div class="btn-wrapper"><a class="btn btn-primary" target="_blank" href="/${$('html').getAttribute('lang')}/PolicyEnquiry/Unlock/${v.FDNATIONALID}">Unlock</a></div>
+                                ${group_p.value == 'tune' ? `<div class="btn-wrapper"><a class="btn btn-primary" target="_blank" href="/${$('html').getAttribute('lang')}/PolicyEnquiry/Unlock/${v.FDNATIONALID}">Unlock</a></div>` : ''}
                             </div>
                             <br>
                             <h3 class="text-primary">ข้อมูลผู้เอาประกันภัย</h3><br>

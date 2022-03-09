@@ -49,6 +49,8 @@
                 <br>
                 <div id="summary_section" class="form-inner"></div>
 
+                <input type="hidden" id="group_p" value="{{$group_p}}"/>
+
             </form>
         </section>
         </div>

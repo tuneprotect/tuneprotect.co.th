@@ -38,6 +38,7 @@ class PortalLoginController extends BaseController
         ]);
         $apiResult =json_decode($response->getBody()->getContents(), true);
         $this->bodyData['message'] = $apiResult["message"];
+        session(['group_p' => $apiResult["message"]]);
         if (!$apiResult["status"]) {
             session(['status' => false]);
             $this->bodyData['status'] = false;
