@@ -36,9 +36,9 @@ class ProductController extends BaseController
     public function index($link = null, $selected = null)
     {
         //MA
-        if (in_array($selected, ['ONTALN'])) {
-            return redirect('https://www.tuneprotect.co.th/maintenance.html');
-        }
+//        if (in_array($selected, ['ONTALN'])) {
+//            return redirect('https://www.tuneprotect.co.th/maintenance.html');
+//        }
 
 //        if (in_array($selected, ['CVISAFE','CVIS22JAN','ONCOVIDA'])) {
 //            return redirect('https://www.tuneprotect.co.th/ma_isafe.html');
