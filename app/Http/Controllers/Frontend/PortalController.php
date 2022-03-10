@@ -223,38 +223,38 @@ class PortalController extends ProductController
 
     }
 
-    public function cancel()
-    {
-        $this->bodyData['partner'] =session('partner');
-        $this->bodyData['selected'] =session('selected');
-        $this->bodyData['doc_no'] =session('error');
-        return redirect('/' . $this->locale);
-    }
-
-    public function error()
-    {
-        $this->bodyData['partner'] =session('partner');
-        $this->bodyData['selected'] =session('selected');
-        $this->bodyData['doc_no'] =session('error');
-        return $this->genStatusPage_Portal(ProjectEnum::STATIC_PAGE_PAYMENT_ERROR);
-    }
-
-    public function pending()
-    {
-        $this->bodyData['partner'] =session('partner');
-        $this->bodyData['selected'] =session('selected');
-        $this->bodyData['doc_no'] =session('error');
-
-        return $this->genStatusPage_Portal(ProjectEnum::STATIC_PAGE_PAYMENT_PENDING);
-    }
-
-    public function reject()
-    {
-        $this->bodyData['partner'] =session('partner');
-        $this->bodyData['selected'] =session('selected');
-        $this->bodyData['doc_no'] =session('error');
-        return $this->genStatusPage_Portal(ProjectEnum::STATIC_PAGE_PAYMENT_REJECT);
-    }
+//    public function cancel()
+//    {
+//        $this->bodyData['partner'] =session('partner');
+//        $this->bodyData['selected'] =session('selected');
+//        $this->bodyData['doc_no'] =session('error');
+//        return redirect('/' . $this->locale);
+//    }
+//
+//    public function error()
+//    {
+//        $this->bodyData['partner'] =session('partner');
+//        $this->bodyData['selected'] =session('selected');
+//        $this->bodyData['doc_no'] =session('error');
+//        return $this->genStatusPage_Portal(ProjectEnum::STATIC_PAGE_PAYMENT_ERROR);
+//    }
+//
+//    public function pending()
+//    {
+//        $this->bodyData['partner'] =session('partner');
+//        $this->bodyData['selected'] =session('selected');
+//        $this->bodyData['doc_no'] =session('error');
+//
+//        return $this->genStatusPage_Portal(ProjectEnum::STATIC_PAGE_PAYMENT_PENDING);
+//    }
+//
+//    public function reject()
+//    {
+//        $this->bodyData['partner'] =session('partner');
+//        $this->bodyData['selected'] =session('selected');
+//        $this->bodyData['doc_no'] =session('error');
+//        return $this->genStatusPage_Portal(ProjectEnum::STATIC_PAGE_PAYMENT_REJECT);
+//    }
 
 }
 
