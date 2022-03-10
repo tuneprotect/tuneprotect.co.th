@@ -802,6 +802,14 @@ class ProductController extends BaseController
         $arr_post['hash_value'] = hash_hmac('sha256', $params, config('payment.secret'), false);    //Compute hash value
 
         $this->bodyData['arr_post'] = $arr_post;
+
+
+//        if(strtolower($this->controller) === "portal")
+//        {
+//                $this->bodyData['partner'] =session('partner');
+//                $this->bodyData['selected'] =session('selected');
+//                return $this->genView('frontend.page.payment_portal');
+//        }
         return $this->genView('frontend.page.payment');
     }
 
@@ -965,6 +973,7 @@ class ProductController extends BaseController
                 break;
             case '003':
                 $func = 'cancel';
+                $request->session()->put('return_link', $request->input('user_defined_2'));
                 $request->session()->put('error', $request->input('channel_response_desc'));
                 break;
             default:

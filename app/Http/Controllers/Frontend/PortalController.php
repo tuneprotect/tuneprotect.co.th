@@ -236,6 +236,10 @@ class PortalController extends ProductController
         $this->bodyData['partner'] =$request->session()->get('partner');
         $this->bodyData['selected'] =$request->session()->get('selected');
         $this->bodyData['doc_no'] =$request->session()->get('error');
+        if($request->session()->get('return_link'))
+        {
+            return redirect($request->session()->get('return_link'));
+        }
         return redirect('/' . $this->locale);
     }
 
