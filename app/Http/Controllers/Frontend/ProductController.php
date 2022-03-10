@@ -908,8 +908,6 @@ class ProductController extends BaseController
 
     public function reject(Request $request)
     {
-        $this->bodyData['partner'] =$request->session()->get('partner');
-        $this->bodyData['selected'] =$request->session()->get('selected');
         $this->bodyData['doc_no'] =$request->session()->get('error');
         return $this->genStatusPage(ProjectEnum::STATIC_PAGE_PAYMENT_REJECT);
     }
