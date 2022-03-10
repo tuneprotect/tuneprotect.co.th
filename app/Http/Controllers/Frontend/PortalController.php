@@ -225,33 +225,33 @@ class PortalController extends ProductController
 
     public function error(Request $request)
     {
-        $this->bodyData['partner'] =session('partner');
-        $this->bodyData['selected'] =session('selected');
+        $this->bodyData['partner'] =$request->session()->get('partner');
+        $this->bodyData['selected'] =$request->session()->get('selected');
         $this->bodyData['doc_no'] =$request->session()->get('error');
         return $this->genStatusPage_Portal(ProjectEnum::STATIC_PAGE_PAYMENT_ERROR);
     }
 
-    public function cancel()
+    public function cancel(Request $request)
     {
-        $this->bodyData['partner'] =session('partner');
-        $this->bodyData['selected'] =session('selected');
-        $this->bodyData['doc_no'] =session('error');
+        $this->bodyData['partner'] =$request->session()->get('partner');
+        $this->bodyData['selected'] =$request->session()->get('selected');
+        $this->bodyData['doc_no'] =$request->session()->get('error');
         return redirect('/' . $this->locale);
     }
 
-    public function pending()
+    public function pending(Request $request)
     {
-        $this->bodyData['partner'] =session('partner');
-        $this->bodyData['selected'] =session('selected');
-        $this->bodyData['doc_no'] =session('error');
+        $this->bodyData['partner'] =$request->session()->get('partner');
+        $this->bodyData['selected'] =$request->session()->get('selected');
+        $this->bodyData['doc_no'] =$request->session()->get('error');
         return $this->genStatusPage_Portal(ProjectEnum::STATIC_PAGE_PAYMENT_PENDING);
     }
 
-    public function reject()
+    public function reject(Request $request)
     {
-        $this->bodyData['partner'] =session('partner');
-        $this->bodyData['selected'] =session('selected');
-        $this->bodyData['doc_no'] =session('error');
+        $this->bodyData['partner'] =$request->session()->get('partner');
+        $this->bodyData['selected'] =$request->session()->get('selected');
+        $this->bodyData['doc_no'] =$request->session()->get('error');
         return $this->genStatusPage_Portal(ProjectEnum::STATIC_PAGE_PAYMENT_REJECT);
     }
 }
