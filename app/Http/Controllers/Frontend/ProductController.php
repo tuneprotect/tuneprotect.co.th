@@ -890,24 +890,18 @@ class ProductController extends BaseController
 
     public function error(Request $request)
     {
-        $this->bodyData['partner'] =session('partner');
-        $this->bodyData['selected'] =session('selected');
         $this->bodyData['doc_no'] =$request->session()->get('error');
         return $this->genStatusPage(ProjectEnum::STATIC_PAGE_PAYMENT_ERROR);
     }
 
     public function cancel(Request $request)
     {
-        $this->bodyData['partner'] =$request->session()->get('partner');
-        $this->bodyData['selected'] =$request->session()->get('selected');
         $this->bodyData['doc_no'] =$request->session()->get('error');
         return redirect('/' . $this->locale);
     }
 
     public function pending(Request $request)
     {
-        $this->bodyData['partner'] =$request->session()->get('partner');
-        $this->bodyData['selected'] =$request->session()->get('selected');
         $this->bodyData['doc_no'] =$request->session()->get('error');
         return $this->genStatusPage(ProjectEnum::STATIC_PAGE_PAYMENT_PENDING);
     }
