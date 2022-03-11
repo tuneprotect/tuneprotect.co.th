@@ -1,3 +1,18 @@
+@if(isset($partner))
+    @if($partner == 'partnership')
+        <!-- Activity name for this tag: TuneProtect-Confirmation Page -->
+        <script>
+            (function() {
+                var a = String(Math.floor(Math.random() * 10000000000000000));
+                new Image().src = 'https://pubads.g.doubleclick.net/activity;xsp=4909934;ord='+ a +'?';
+            })();
+        </script>
+        <noscript>
+            <img src='https://pubads.g.doubleclick.net/activity;xsp=4909934;ord=1?' width=1 height=1 border=0>
+        </noscript>
+    @endif
+@endif
+
 <section style="display: none" id="step4" class="wrapper">
     <form class="insurance-form" method="post"
           action="{{route('current',['locale' => $locale,'controller' => $controller,'func' => "make-payment"],false)}}">

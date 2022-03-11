@@ -1,4 +1,21 @@
 @include('frontend.component.form-stepper')
+
+@if(isset($partner))
+    @if($partner == 'partnership')
+        <!-- Activity name for this tag: TuneProtect-LandingPageViews -->
+        <script>
+            (function() {
+                var a = String(Math.floor(Math.random() * 10000000000000000));
+                new Image().src = 'https://pubads.g.doubleclick.net/activity;xsp=4909913;ord='+ a +'?';
+            })();
+        </script>
+        <noscript>
+            <img src='https://pubads.g.doubleclick.net/activity;xsp=4909913;ord=1?' width=1 height=1 border=0>
+        </noscript>
+    @endif
+@endif
+
+
 <section id="step1" class="wrapper">
     <form method="post" action="" class="insurance-form">
         <div class="form-head">@lang('product.please_specify_birthdate_title')</div>

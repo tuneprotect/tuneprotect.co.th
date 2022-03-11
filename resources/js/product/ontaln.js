@@ -301,6 +301,13 @@ document.addEventListener("DOMContentLoaded", async () => {
             let element = document.getElementById("btnBrochure");
             element.parentNode.removeChild(element);
         }
+        if($('#partner').value == 'partnership')
+        {
+            $('#btnBrochure').addEventListener('click', (e) => {
+                // alert( "Handler for .click() called." );
+
+            });
+        }
     }
 
     let step = 1;
