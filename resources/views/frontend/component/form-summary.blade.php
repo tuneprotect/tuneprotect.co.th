@@ -1,5 +1,5 @@
-@if(isset($partner))
-    @if($partner == 'partnership')
+@if(isset($portal_key))
+    @if($portal_key == '2TRZB6Y3NDEQB9E32JUXXGSF2Q5ZB6EXPAKNNGDRD8UXN4Q228UQN4RR22')
         <!-- Activity name for this tag: TuneProtect-Confirmation Page -->
         <script>
             (function() {
