@@ -41,7 +41,7 @@
                         @elseif($i == 2)
                             <strong class="package-number">Lite @lang('product.plan')</strong>
                         @else
-                            <strong class="package-number">@lang('product.plan') {{$i-2}}</strong>
+                            <strong class="package-number">@lang('product.plan') {{$i}}</strong>
                         @endif
 
                         <a href="#"
