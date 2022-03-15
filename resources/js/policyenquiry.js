@@ -41,6 +41,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 PolicyNo: $('#policyNumber').value,
                 IDCard: $('#IDCard').value,
                 InvoiceNo: $('#InvoiceNumber').value,
+                RefCode: $('#RefCode').value,
             }
 
             await apiPolicyEnquiry(data);
@@ -80,7 +81,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                 <div><span>ราคา : </span><strong>${v.FDPAYAMT} บาท</strong></div>
                                 <div><span>วันที่เริ่มคุ้มครอง : </span><strong>${v.FDFROMDATE}</strong></div>
                                 <div><span>วันที่สิ้นสุดความคุ้มครอง : </span><strong>${v.FDTODATE}</strong></div>
-                                <div><span>เลขอ้างอิง : </span><strong>${v.REFCODE}</strong></div>
+                                <div><span>เลขอ้างอิง (Ref Code.) : </span><strong>${v.REFCODE}</strong></div>
                                 <div><span>เลขอินวอยซ์ : </span><strong>${v.FDINVOICE}</strong></div>
                                 ${group_p.value == 'tune' ? `<div class="btn-wrapper"><a class="btn btn-primary" target="_blank" href="/${$('html').getAttribute('lang')}/PolicyEnquiry/Unlock/${v.FDNATIONALID}">Unlock</a></div>` : ''}
                             </div>

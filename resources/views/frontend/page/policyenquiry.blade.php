@@ -29,6 +29,12 @@
                                data-error-required="กรุณาระบุ เลขบัตรประชาชน/passport"/>
                         <label for="IDCard">เลขบัตรประชาชน/passport</label>
                     </div>
+                        <div class="controls-wrapper">
+                            <input id="RefCode" name="RefCode" type="text" placeholder="เลขอ้างอิง (Ref Code.)"
+                                   data-error-idcard="กรุณาตรวจสอบ เลขอ้างอิง (Ref Code.)"
+                                   data-error-required="กรุณาระบุ เลขอ้างอิง (Ref Code.)"/>
+                            <label for="RefCode">เลขอ้างอิง (Ref Code.)</label>
+                        </div>
                     <div class="controls-wrapper">
                         <input id="InvoiceNumber" name="InvoiceNumber" type="text" placeholder="เลขอินวอยซ์"
                                data-error-idcard="กรุณาตรวจสอบ เลขอินวอยซ์"
