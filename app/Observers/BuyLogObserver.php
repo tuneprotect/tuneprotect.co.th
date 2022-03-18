@@ -32,7 +32,16 @@ class BuyLogObserver
         } else {
             $max = $document->id + 1;
         }
-        return strval(date('Ymd').str_pad($max, 5, 0, STR_PAD_LEFT));
+
+        if(strlen($max)>5)
+        {
+            $str_max= substr($max, 0, 5);
+        }
+        else{
+            $str_max = str_pad($max, 5, 0, STR_PAD_LEFT);
+        }
+
+        return strval(date('Ymd').$str_max);
     }
 
     protected function genInvoice()

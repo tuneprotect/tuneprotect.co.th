@@ -1062,17 +1062,30 @@ class ProductController extends BaseController
 //            ->first();
 //        dd($document->RefCode);
 
-        $document = BuyLog::orderBy("id", "DESC")
-            ->first();
+//        $document = BuyLog::orderBy("id", "DESC")
+//            ->first();
 
-        if (empty($document)) {
-            $max = 1;
-        } else {
-            $max = $document->id + 1;
+//        if (empty($document)) {
+//            $max = 1;
+//        } else {
+//            $max = $document->id + 1;
+//        }
+
+        $str_max = '';
+        $max = 111;
+//        dd(str_pad($max, 5, 0, STR_PAD_LEFT));
+
+        if(strlen($max)>5)
+        {
+            $str_max= substr($max, 0, 5);
+        }
+        else{
+            $str_max = str_pad($max, 5, 0, STR_PAD_LEFT);
         }
 
+//        dd($str_max);
 
-        dd(strval(date('Ymd').str_pad($max, 5, 0, STR_PAD_LEFT)));
+        dd(strval(date('Ymd').$str_max));
 
     }
 
