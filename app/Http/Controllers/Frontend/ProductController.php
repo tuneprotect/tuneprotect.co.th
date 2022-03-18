@@ -1052,5 +1052,30 @@ class ProductController extends BaseController
         return $this->send();
     }
 
+
+    public function testDebug()
+    {
+//        $document = BuyLog::whereYear("created_at", date("Y"))
+//            ->whereMonth("created_at", date("m"))
+//            ->whereDay("created_at", date("d"))
+//            ->orderBy("RefCode", "DESC")
+//            ->first();
+//        dd($document->RefCode);
+
+        $document = BuyLog::orderBy("id", "DESC")
+            ->first();
+
+        if (empty($document)) {
+            $max = 1;
+        } else {
+            $max = $document->id + 1;
+        }
+
+
+        dd(strval(date('Ymd').str_pad($max, 5, 0, STR_PAD_LEFT)));
+
+    }
+
+
 }
 

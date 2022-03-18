@@ -11,18 +11,28 @@ class BuyLogObserver
 
     protected function genRefCode()
     {
-        $document = BuyLog::whereYear("created_at", date("Y"))
-            ->whereMonth("created_at", date("m"))
-            ->whereDay("created_at", date("d"))
-            ->orderBy("RefCode", "DESC")
+//        $document = BuyLog::whereYear("created_at", date("Y"))
+//            ->whereMonth("created_at", date("m"))
+//            ->whereDay("created_at", date("d"))
+//            ->orderBy("RefCode", "DESC")
+//            ->first();
+//
+//
+//        if (empty($document)) {
+//            return date('Ymd00001');
+//        } else {
+//            return strval($document->RefCode + 1);
+//        }
+
+        $document = BuyLog::orderBy("id", "DESC")
             ->first();
 
-
         if (empty($document)) {
-            return date('Ymd00001');
+            $max = 1;
         } else {
-            return strval($document->RefCode + 1);
+            $max = $document->id + 1;
         }
+        return strval(date('Ymd').str_pad($max, 5, 0, STR_PAD_LEFT));
     }
 
     protected function genInvoice()
@@ -47,7 +57,7 @@ class BuyLogObserver
     public function creating(BuyLog $buyLog)
     {
         $data = $buyLog->data;
-        
+
 
         $buyLog->RefCode = $this->genRefCode();
         if (empty($data['fdInvoice'])) {
