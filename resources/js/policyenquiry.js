@@ -97,12 +97,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                 <div class="controls-wrapper full no-lable"><span>ที่อยู่ : </span><strong>${v.FDADDR_NUM}</strong></div>
                                 <div class="controls-wrapper full no-lable"><span>ผู้รับผลประโยชน์ : </span><strong>${v.FDBENEFIT}</strong></div>
                             </div>
-                            <br>
-                            <h3 class="text-primary">ข้อมูลการเดินทาง</h3><br>
-                            <div class="two-col">
-                                <div><span>ต้นทาง : </span><strong>${v.FDDESTFROM_DESC}</strong></div>
-                                <div><span>ปลายทาง : </span><strong>${v.FDDESTTO_DESC}</strong></div>
-                            </div><br>`;
+                            <br>`;
                         NumOfPol= NumOfPol+1;
                     });
                 }else{
@@ -126,7 +121,15 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 });
-
+//
+//
+// <h3 className="text-primary">ข้อมูลการเดินทาง</h3>
+// <br>
+//     <div className="two-col">
+//         <div><span>ต้นทาง : </span><strong>${v.FDDESTFROM_DESC}</strong></div>
+//         <div><span>ปลายทาง : </span><strong>${v.FDDESTTO_DESC}</strong></div>
+//     </div>
+//     <br>
 //<div><button class="btn btn-primary" name="unlock" type="button" value=${v.POLICY_NO}>unlock</button></div>
 
 // <div><span>ลิ้งกรมธรรม์ (กรมธรรม์ที่รองรับการดูแบบออนไลน์เท่านั้น) : </span><strong><a href="${respData.PUBLICLINKPOLICY}" target="_blank" title=""><u>คลิก</u></a></strong></div>
