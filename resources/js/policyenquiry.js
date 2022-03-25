@@ -83,7 +83,9 @@ document.addEventListener("DOMContentLoaded", function () {
                                 <div><span>วันที่สิ้นสุดความคุ้มครอง : </span><strong>${v.FDTODATE}</strong></div>
                                 <div><span>เลขอ้างอิง (Ref Code.) : </span><strong>${v.REFCODE}</strong></div>
                                 <div><span>เลขอินวอยซ์ : </span><strong>${v.FDINVOICE}</strong></div>
+                                <div><span>สถานะ : </span><strong>${v.ACTIVE}</strong></div>
                                 ${group_p.value == 'tune' ? `<div class="btn-wrapper"><a class="btn btn-primary" target="_blank" href="/${$('html').getAttribute('lang')}/PolicyEnquiry/Unlock/${v.FDNATIONALID}">Unlock</a></div>` : ''}
+
                             </div>
                             <br>
                             <h3 class="text-primary">ข้อมูลผู้เอาประกันภัย</h3><br>
@@ -121,18 +123,16 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 });
-//
-//
-// <h3 className="text-primary">ข้อมูลการเดินทาง</h3>
+
 // <br>
+//     <h3 className="text-primary">ข้อมูลการเดินทาง</h3><br>
 //     <div className="two-col">
 //         <div><span>ต้นทาง : </span><strong>${v.FDDESTFROM_DESC}</strong></div>
 //         <div><span>ปลายทาง : </span><strong>${v.FDDESTTO_DESC}</strong></div>
 //     </div>
-//     <br>
 //<div><button class="btn btn-primary" name="unlock" type="button" value=${v.POLICY_NO}>unlock</button></div>
 
-// <div><span>ลิ้งกรมธรรม์ (กรมธรรม์ที่รองรับการดูแบบออนไลน์เท่านั้น) : </span><strong><a href="${respData.PUBLICLINKPOLICY}" target="_blank" title=""><u>คลิก</u></a></strong></div>
+// <div><span>ลิ้งกรมธรรม์ (กรมธรรม์ที่รองรับการดูแบบออนไลน์เท่านั้น) : </span><strong><a href="${v.PUBLICLINKPOLICY}" target="_blank" title=""><u>คลิก</u></a></strong></div>
 
 //
 // const apiCheckPolicyEnquiry = async (data) => {
