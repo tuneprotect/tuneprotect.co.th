@@ -45,6 +45,9 @@ class ProductController extends BaseController
         if (in_array($selected, ['ONVSAFEA','ONVS22JAN'])) {
             return redirect('https://www.tuneprotect.co.th/ma_vsafe.html');
         }
+        if (in_array($selected, ['CVCARE'])) {
+            return redirect('https://www.tuneprotect.co.th/ma_lumacare.html');
+        }
 //        if (in_array($selected, ['ONVACINA','ONVSUREA'])) {
 //            return redirect('https://www.tuneprotect.co.th/ma_vsure.html');
 //        }
