@@ -187,6 +187,11 @@
             </div>
         </section>
         @include('frontend.component.review',['review' => $review,'locale' => $locale])
+
+        @if(isset($overlayComponent))
+            @includeIf($overlayComponent)
+        @endif
+
     </main>
 
 @endsection
