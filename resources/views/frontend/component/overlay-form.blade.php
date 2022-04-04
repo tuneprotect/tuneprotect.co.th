@@ -29,8 +29,8 @@
             padding: 15px;
             flex: 1 1 650px;
             border-radius: 20px;
-            background: #e3306c;
-            background: linear-gradient(152deg, #e3306c 0%, #f7e01f 100%);
+            /*background: #e3306c;*/
+            /*background: linear-gradient(152deg, #e3306c 0%, #f7e01f 100%);*/
         }
 
         .overlay-section form h3,
@@ -63,7 +63,7 @@
                     <div class="form-inner">
                         <picture>
 {{--                            <source media="(min-width:768px)" srcset="https://www.tuneprotect.co.th/storage/Banner/Banner_Overlay.png">--}}
-                            <img src="https://www.tuneprotect.co.th/storage/Banner/Banner_Overlay.png" alt="overlay">
+                            <img src="https://www.tuneprotect.co.th/storage/Banner/Banner_OverlayV2.png" alt="overlay">
                         </picture>
                     </div>
                     <div class="btn-wrapper hideField" style="">
