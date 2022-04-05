@@ -92,4 +92,11 @@ class ServiceController extends BaseController
         return json_decode($response->getBody()->getContents(), true);
 
     }
+
+    public function claiminfo()
+    {
+        return $this->genView('frontend.page.claim_info');
+
+    }
+
 }
