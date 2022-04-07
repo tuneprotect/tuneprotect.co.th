@@ -188,8 +188,13 @@
         </section>
         @include('frontend.component.review',['review' => $review,'locale' => $locale])
 
+
         @if(isset($overlayComponent))
             @includeIf($overlayComponent)
+        @endif
+
+        @if(isset($overlayCloseComponent))
+            @includeIf($overlayCloseComponent)
         @endif
 
     </main>
