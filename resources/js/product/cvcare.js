@@ -301,19 +301,21 @@ const checkAgeVSafe = (birthday, ageRange) => {
 
     const age = calculateAge(birthday)
     const rangeAll = ageRange.split(',');
+    const rangeDay = rangeAll[0].split('-');
     const rangeMonth = rangeAll[1].split('-');
     const rangeYear = rangeAll[2].split('-');
-    if (age.year <= rangeYear[1])
+
+    console.log(age);
+    console.log(rangeYear[1]);
+    console.log(rangeYear[0]);
+    console.log(rangeMonth);
+
+    if (age.year >= rangeYear[0] && age.year <= rangeYear[1])
     {
-        if(age.year == rangeYear[0])
+        if(age.month >= rangeMonth)
         {
-            if(age.month >= rangeMonth)
-            {
-                return true;
-            }
-        }
-        else
             return true;
+        }
     }
     else
     {

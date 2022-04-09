@@ -23,6 +23,14 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
+    // const $formOverlay = $('#frm_overlay');
+    // if ($formOverlay) {
+    //     $(".page-overlay .close").addEventListener('click', (e) => {
+    //         e.preventDefault();
+    //         $('.page-overlay').style.display = 'none';
+    //     }, true);
+    // }
+
     const $formOverlay = $('#frm_overlay');
     if ($formOverlay) {
         $('.page-overlay').style.display = 'none';

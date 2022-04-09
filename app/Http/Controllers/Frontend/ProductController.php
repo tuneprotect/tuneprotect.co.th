@@ -35,19 +35,19 @@ class ProductController extends BaseController
     protected $use_effective = 'N';
     public function index($link = null, $selected = null)
     {
-        //MA
+//MA
+//        if (in_array($selected, ['ONVSAFEA','ONVSAFE','ONVS22JAN'])) {
+//            return redirect('https://www.tuneprotect.co.th/ma_vsafe.html');
+//        }
+//        if (in_array($selected, ['CVCARE'])) {
+//            return redirect('https://www.tuneprotect.co.th/ma_lumacare.html');
+//        }
 //        if (in_array($selected, ['ONCOVIDL'])) {
 //            return redirect('https://www.tuneprotect.co.th/maintenance.html');
 //        }
 //        if (in_array($selected, ['CVISAFE','CVIS22JAN','ONCOVIDA'])) {
 //            return redirect('https://www.tuneprotect.co.th/ma_isafe.html');
 //        }
-        if (in_array($selected, ['ONVSAFEA','ONVS22JAN'])) {
-            return redirect('https://www.tuneprotect.co.th/ma_vsafe.html');
-        }
-        if (in_array($selected, ['CVCARE'])) {
-            return redirect('https://www.tuneprotect.co.th/ma_lumacare.html');
-        }
 //        if (in_array($selected, ['ONVACINA','ONVSUREA'])) {
 //            return redirect('https://www.tuneprotect.co.th/ma_vsure.html');
 //        }
@@ -66,7 +66,7 @@ class ProductController extends BaseController
             return redirect()->route('current', ['locale' => $this->locale, 'controller' => $this->controller, 'func' => $link, 'params' => $selected]);
         }
         if (in_array($selected, ['ONVSAFEA'])) {
-            $selected = "ONVS22JAN";
+            $selected = "ONVSAFE";
             return redirect()->route('current', ['locale' => $this->locale, 'controller' => $this->controller, 'func' => $link, 'params' => $selected]);
         }
         if (in_array($selected, ['ONVACINA'])) {
@@ -345,6 +345,8 @@ class ProductController extends BaseController
             $obj = new VACINAObject();
         } elseif (substr($data['fdPackage'], 0, 8) === 'ONVSAFEA') {
            $obj = new VSAFEAObject();
+        } elseif (substr($data['fdPackage'], 0, 7) === 'ONVSAFE') {
+            $obj = new VSAFEAObject();
         } elseif (substr($data['fdPackage'], 0, 9) === 'ONVS22JAN') {
             $obj = new VSAFEAObject();
         } elseif (substr($data['fdPackage'], 0, 6) === 'CVCARE') {
@@ -423,7 +425,9 @@ class ProductController extends BaseController
             || substr($data['fdPackage'], 0, 7) === 'CVISAFE'
             || substr($data['fdPackage'], 0, 9) === 'CVIS22JAN'
             || substr($data['fdPackage'], 0, 6) === 'CVCARE'
-            || substr($data['fdPackage'], 0, 9) === 'ONCOVIDMW') {
+            || substr($data['fdPackage'], 0, 9) === 'ONCOVIDMW'
+            || substr($data['fdPackage'], 0, 7) === 'ONVSAFE'
+        ){
 
 
             if (isset($data['fdQuestion2_1']) && ($key = array_search('other', $data['fdQuestion2_1'])) !== false) {
@@ -460,6 +464,10 @@ class ProductController extends BaseController
             if (substr($data['fdPackage'], 0, 9) === 'ONVS22JAN')
             {
                 $package = (array)json_decode(Storage::disk('public')->get('json/onvs22jan.json'));
+            }
+            if (substr($data['fdPackage'], 0, 7) === 'ONVSAFE')
+            {
+                $package = (array)json_decode(Storage::disk('public')->get('json/onvsafe.json'));
             }
             if(substr($data['fdPackage'], 0, 7) === 'CVISAFE')
             {
@@ -841,6 +849,9 @@ class ProductController extends BaseController
             $link = 'IssuePolicyVsafe';
         } elseif (substr($package, 0, 9) === 'ONVS22JAN') {
             $this->thankYouParam = substr($package, 0, 9);
+            $link = 'IssuePolicyVsafe';
+        } elseif (substr($package, 0, 7) === 'ONVSAFE') {
+            $this->thankYouParam = substr($package, 0, 7);
             $link = 'IssuePolicyVsafe';
         } elseif (substr($package, 0, 6) === 'CVCARE') {
             $this->thankYouParam = substr($package, 0, 6);
