@@ -62,7 +62,7 @@
                 <form class="insurance-form" id="frm_overlayClose">
                     <div class="form-inner">
                         <picture>
-                            <img src="https://www.tuneprotect.co.th/storage/Service/Banner_Close_8Apr2022.png" alt="overlay">
+                            <img src="https://www.tuneprotect.co.th/storage/Service/Banner_songkran_2022.png" alt="overlay">
                         </picture>
                     </div>
                 </form>
