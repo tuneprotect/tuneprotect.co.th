@@ -66,7 +66,7 @@ class ProductController extends BaseController
             $selected = "CVIS22JAN";
             return redirect()->route('current', ['locale' => $this->locale, 'controller' => $this->controller, 'func' => $link, 'params' => $selected]);
         }
-        if (in_array($selected, ['ONVSAFEA'])) {
+        if (in_array($selected, ['ONVSAFEA','ONVS22JAN'])) {
             $selected = "ONVSAFE";
             return redirect()->route('current', ['locale' => $this->locale, 'controller' => $this->controller, 'func' => $link, 'params' => $selected]);
         }
