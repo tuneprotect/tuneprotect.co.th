@@ -20,8 +20,8 @@ class PortalController extends ProductController
         if (in_array($selected, ['CVISAFE'])) {
             $selected = "CVIS22JAN";
         }
-        if (in_array($selected, ['ONVSAFEA'])) {
-            $selected = "ONVS22JAN";
+        if (in_array($selected, ['ONVSAFEA','ONVS22JAN'])) {
+            $selected = "ONVSAFE";
         }
         if (in_array($selected, ['ONVACINA'])) {
             $selected = "ONVSUREA";
