@@ -97,6 +97,7 @@ class PortalController extends ProductController
 
     }
 
+    //https://www.tuneprotect.co.th/th/portal/list/pa-choice-insurance-broker/AUAWAMUX9JDXNGFFD4WZZLQ3NDEXNGFF6EJXNHSF28UZG4ERZ6JLGTGRA2
     public function list($link = null,$portal_key = null)
     {
         $this->bodyData['portal_key'] = $portal_key;
