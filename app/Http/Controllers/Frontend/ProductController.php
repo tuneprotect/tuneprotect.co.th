@@ -53,10 +53,10 @@ class ProductController extends BaseController
 //            return redirect('https://www.tuneprotect.co.th/ma_vsure.html');
 //        }
 
-
-        if (in_array($selected, ['ONTALN'])) {
-            return redirect('https://www.tuneprotect.co.th/maintenance.html');
-        }
+//
+//        if (in_array($selected, ['ONTALN'])) {
+//            return redirect('https://www.tuneprotect.co.th/maintenance.html');
+//        }
 
 
         $this->bodyData['controller'] = $this->controller;
