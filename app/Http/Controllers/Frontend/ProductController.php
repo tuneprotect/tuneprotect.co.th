@@ -54,6 +54,11 @@ class ProductController extends BaseController
 //        }
 
 
+        if (in_array($selected, ['ONTALN'])) {
+            return redirect('https://www.tuneprotect.co.th/maintenance.html');
+        }
+
+
         $this->bodyData['controller'] = $this->controller;
         $this->bodyData['use_effective'] = $this->use_effective;
 
