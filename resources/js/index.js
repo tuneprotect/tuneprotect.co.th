@@ -23,14 +23,14 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
-    //One page
-    const $formOverlay = $('#frm_overlay');
-    if ($formOverlay) {
-        $(".page-overlay .close").addEventListener('click', (e) => {
-            e.preventDefault();
-            $('.page-overlay').style.display = 'none';
-        }, true);
-    }
+    // //One page
+    // const $formOverlay = $('#frm_overlay');
+    // if ($formOverlay) {
+    //     $(".page-overlay .close").addEventListener('click', (e) => {
+    //         e.preventDefault();
+    //         $('.page-overlay').style.display = 'none';
+    //     }, true);
+    // }
 
     //Two page
     // const $formOverlay = $('#frm_overlay');
