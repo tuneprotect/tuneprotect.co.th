@@ -45,7 +45,7 @@ class IndexController extends BaseController
         $this->bodyData['main_highlight_product'] = $highlight_product->first();
 
 
-        $this->bodyData['overlayComponent'] = 'frontend.component.overlay-form';
+//        $this->bodyData['overlayComponent'] = 'frontend.component.overlay-form';
 
 //        $this->bodyData['overlayCloseComponent'] = 'frontend.component.overlay-close-form';
 
