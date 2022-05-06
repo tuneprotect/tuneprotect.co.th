@@ -187,6 +187,14 @@
                                                 src="{{url(!empty($v->pic_mobile_en) ? url(str_replace('Banner_Covid_D_EN', 'Banner_VSafe_D_EN2', $v->pic_mobile_en)) : url(str_replace('Banner_Covid_D_EN', 'Banner_VSafe_M_EN2', $v->pic_en)) )}}"
                                                 alt="{{$v->locales[$locale]->title}}">
                                         </picture>
+                                     @elseif($selected==='ONTALN')
+                                            <picture>
+                                                <source media="(min-width:768px)"
+                                                        srcset="{{url(str_replace('Banner_TA_D_EN', 'Banner_Tune_iPass', $v->pic_en))}}">
+                                                <img
+                                                    src="{{url(!empty($v->pic_mobile_en) ? url(str_replace('Banner_TA_D_EN', 'Banner_Tune_iPass', $v->pic_mobile_en)) : url(str_replace('Banner_TA_D_EN', 'Banner_Tune_iPass', $v->pic_en)) )}}"
+                                                    alt="{{$v->locales[$locale]->title}}">
+                                            </picture>
                                     @else
                                         @if($selected==='ONTAOB')
                                             <picture>
