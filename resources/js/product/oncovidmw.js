@@ -303,11 +303,11 @@ document.addEventListener("DOMContentLoaded", async () => {
     //     $(`strong[data-price-${k}]`).innerHTML = parseInt(package_data[k].price).toLocaleString();
     //     // $(`th[data-cover-cov1]`).innerHTML = $('#cover_fire_'+packageSelect).value;
     // });
-
+    // LAO,MMR,KHM
     let sb1 = `<option value="">${$('#fdDestFrom').getAttribute('data-please-select')}</option>`;
     country_data.sort((a, b) => (a['en'] > b['en']) ? 1 : ((b['en'] > a['en']) ? -1 : 0))
         .map(v => {
-            if (v.code !== 'THA')
+            if (v.code === 'LAO'|| v.code === 'MMR'||v.code === 'KHM')
             {
                 sb1 += `<option value="${v.code}">${v['en']}</option>`;
             }
