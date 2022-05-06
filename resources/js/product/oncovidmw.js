@@ -350,6 +350,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     let promocode = "";
     let step = 1;
     let data = {
+        rpcNumber : "191",
         fdMember_ID : member_id,
         fdKeys : Keys,
         fdPromoCode : promocode,
