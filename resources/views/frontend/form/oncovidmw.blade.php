@@ -140,7 +140,7 @@
                     </div>
                 </div>
             </div>
-            @include('frontend.component.form-tax-deduct')
+{{--            @include('frontend.component.form-tax-deduct')--}}
             @include('frontend.component.form-privacy')
         </div>
         <div class="btn-wrapper">
