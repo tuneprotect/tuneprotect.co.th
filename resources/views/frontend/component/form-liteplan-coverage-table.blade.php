@@ -107,7 +107,7 @@
                         @if($i == 1)
                             <strong style="display: block" class="text-center">Lite @lang('product.plan')</strong>
                         @else
-                            <strong style="display: block" class="text-center">@lang('product.plan') {{$i-2}}</strong>
+                            <strong style="display: block" class="text-center">@lang('product.plan') {{$i-1}}</strong>
                         @endif
 
                         <a href="#"
@@ -117,7 +117,7 @@
                            @if($i == 1)
                            data-plan='Lite Plan'
                            @else
-                           data-plan="@lang('product.plan') {{$i-2}}"
+                           data-plan="@lang('product.plan') {{$i-1}}"
                            @endif
 
 
