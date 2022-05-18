@@ -43,12 +43,6 @@
     @endif
 </head>
 <body <?php echo @TemplateHelper::genAttribute($template[TemplateHelper::BODY]) ?>>
-
-<!-- OneTrust Cookies List start -->
-<div id="ot-sdk-cookie-policy"></div>
-<!-- OneTrust Cookies List end -->
-
-
 @if(isset($template[TemplateHelper::OPEN_BODY] ))
     @foreach ($template[TemplateHelper::OPEN_BODY] as $v)
         {!! $v !!}
