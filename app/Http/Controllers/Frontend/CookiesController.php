@@ -14,11 +14,11 @@ use App\Models\Setting;
 use App\Models\WebContent;
 use Illuminate\Support\Facades\Mail;
 
-class CookieController extends BaseController
+class CookiesController extends BaseController
 {
     public function index()
     {
-        return $this->genView('frontend.page.cookie');
+        return $this->genView('frontend.page.cookies');
     }
 
 
