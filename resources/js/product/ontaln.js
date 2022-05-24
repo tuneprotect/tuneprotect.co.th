@@ -275,12 +275,10 @@ function resolveAfter2Seconds() {
 
 document.addEventListener("DOMContentLoaded", async () => {
 
-    const package_data = await getPackageData(current_package);
+    let package_data = await getPackageData(current_package);
     const country_data = await getCountryData();
     const nationality_data = await getNationalityData();
     const zipcode_data = await getZipcodeData();
-
-    // console.log(package_data);
 
     let Keys = "";
     let myEle = document.getElementById("portal_key");
@@ -309,6 +307,13 @@ document.addEventListener("DOMContentLoaded", async () => {
             });
         }
     }
+
+    if(Keys == 'BQQWAMUX9JDXNTFFD4WZZLQ3NDEXNTFFT6UCXGSF68UXNEKZ24UYN5TRZ2')
+    {
+        package_data = await getPackageData('ontalnlite');
+    }
+
+    console.log(package_data);
 
     let step = 1;
     let data = {

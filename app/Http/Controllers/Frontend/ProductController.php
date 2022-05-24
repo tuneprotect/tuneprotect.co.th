@@ -202,6 +202,10 @@ class ProductController extends BaseController
             {
                 $packageJson = 'oncovida_old';
             }
+            if($this->bodyData['portal_key'] === 'BQQWAMUX9JDXNTFFD4WZZLQ3NDEXNTFFT6UCXGSF68UXNEKZ24UYN5TRZ2')
+            {
+                $packageJson = 'ontalnlite';
+            }
         }
 
 //        dd(Storage::disk('public')->get('json/' . $packageJson . '.json'));
@@ -304,6 +308,8 @@ class ProductController extends BaseController
         } catch (\Exception $exception) {
              dd('js error.');
         }
+
+//        dd($this->bodyData['package_detail']);
 
 
         if ($this->controller != 'product') {
@@ -505,8 +511,15 @@ class ProductController extends BaseController
             $obj->fdlanguage = 1;
             if( substr($data['fdPackage'], 0, 6) === 'ONTALN')
             {
-                $package = (array)json_decode(Storage::disk('public')->get('json/ontaln.json'));
-                $obj->fdApiPackage = $package[substr($data['fdPackage'], 0, 7)]->apiPackage;
+                if($data['fdKeys'] === 'BQQWAMUX9JDXNTFFD4WZZLQ3NDEXNTFFT6UCXGSF68UXNEKZ24UYN5TRZ2')
+                {
+                    $package = (array)json_decode(Storage::disk('public')->get('json/ontalnlite.json'));
+                    $obj->fdApiPackage = $package[substr($data['fdPackage'], 0, 7)]->apiPackage;
+                }
+                else{
+                    $package = (array)json_decode(Storage::disk('public')->get('json/ontaln.json'));
+                    $obj->fdApiPackage = $package[substr($data['fdPackage'], 0, 7)]->apiPackage;
+                }
             }
             if( substr($data['fdPackage'], 0, 8) === 'ONCOVIDL')
             {
