@@ -1,36 +1,19 @@
-<div class="page-overlay-close" style="display: flex;">
+<div class="page-overlay-close" style="overflow:auto;">
     <style>
-
-
         @media all and (min-width: 1200px) {
             .popup-wrapper {
                 min-width: 1200px;
             }
         }
-
-        /*@media all and (min-width: 768px) {*/
-        /*    .overlay-section {*/
-        /*        display: flex;*/
-        /*        margin-left: auto;*/
-        /*        margin-right: auto;*/
-        /*    }*/
-        /*}*/
-
         .overlay-section.move-up {
             transform: translateY(-50px);
         }
-
-        /*.overlay-section address {*/
-        /*    padding: 30px;*/
-        /*    flex: 1 1 350px;*/
-        /*}*/
 
         .overlay-section form {
             padding: 15px;
             flex: 1 1 650px;
             border-radius: 20px;
-            /*background: #e3306c;*/
-            /*background: linear-gradient(152deg, #e3306c 0%, #f7e01f 100%);*/
+            overflow-y: scroll;
         }
 
         .overlay-section form h3,
@@ -46,25 +29,16 @@
             z-index: 0;
         }
 
-        /*@media all and (max-width: 600px) {*/
-        /*    #overlayform-section .insurance-form .form-inner {*/
-        /*        padding: 0;*/
-        /*    }*/
-        /*}*/
-
-
     </style>
-    <div class="popup-wrapper">
+    <div class="popup-wrapper" >
         <a data-gtm="index-question-close" class="close"><i class="icofont-close"></i></a>
         <div class="popup-inner-wrapper">
-
             <div class="overlay-section" style="margin-top: 0;width: 100%" id="overlayform-section">
                 <form class="insurance-form" id="frm_overlayClose">
                     <article class="wrapper">
-                        <center><p><strong>หนังสือแจ้งสิทธิของเจ้าของข้อมูลส่วนบุคคล บริษัท ทูนประกันภัย จำกัด (มหาชน)</strong><br>
-                            <strong>(Tune Protect Privacy Notice)</strong><br></p></center><br>
-                        <div>
                             <div>
+                                <center><p><strong>หนังสือแจ้งสิทธิของเจ้าของข้อมูลส่วนบุคคล บริษัท ทูนประกันภัย จำกัด (มหาชน)</strong><br>
+                                        <strong>(Tune Protect Privacy Notice)</strong><br></p></center><br>
                                 <p>เรียน ผู้เอาประกันภัย ผู้รับผลประโยชน์ ลูกค้า ผู้มุ่งหวัง และบุคคลทั่วไป</p>
                                 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;บริษัท ทูนประกันภัย จำกัด (มหาชน) (“บริษัท”) ขอแจ้งให้ท่านทราบว่าบริษัทได้มีการเก็บรวบรวม และ/หรือใช้ข้อมูลส่วนบุคคลของท่าน ตัวอย่างเช่น  ข้อมูลส่วนตัวของท่าน ชื่อ-นามสกุล เพศ วันเดือนปีเกิด อายุ สัญชาติ สถานภาพสมรส ที่อยู่ เบอร์โทรศัพท์ Email Address เลขบัตรประจาตัวประชาชนหรือเลขที่หนังสือเดินทาง ข้อมูลกรมธรรม์ และข้อมูลอื่นๆ ก่อนวันที่พระราชบัญญัติคุ้มครองข้อมูลส่วนบุคคล พ.ศ. 2562 (“พ.ร.บ. คุ้มครองข้อมูลส่วนบุคคล”) จะมีผลบังคับใช้ทั้งฉบับ</p>
                                 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;และเพื่อเป็นการ ปฏิบัติตามบทบัญญัติของมาตรา 95 แห่งพ.ร.บ. คุ้มครองข้อมูลส่วนบุคคล บริษัทขอแจ้งให้ท่านในฐานะเจ้าของข้อมูลส่วนบุคคล ทราบว่า บริษัทจะยังคงเก็บ รวบรวม และ/หรือใช้ข้อมูลส่วนบุคคลของท่าน ภายใต้วัตถุประสงค์เดิมต่อไป โดยท่านสามารถตรวจสอบวัตถุประสงค์ดังกล่าว รายละเอียดของการประมวลผลข้อมูลส่วนบุคคล ข้อมูลที่บริษัททำการประมวลผล และสิทธิตามกฎหมายของท่านที่เกี่ยวข้องกับข้อมูลส่วนบุคคล (รวมถึงสิทธิในการยกเลิกความยินยอม) ได้ที่นโยบายคุ้มครองข้อมูลส่วนบุคคลของบริษัท <a href="https://www.tuneprotect.co.th/th/privacy-policy">https://www.tuneprotect.co.th/th/privacy-policy</a></p>
@@ -79,7 +53,6 @@
                                     <strong>ช่องทางติดต่อ</strong><br>
                                     เจ้าหน้าที่ข้อมูลส่วนบุคคล (Data Protection Officer) บริษัท ทูนประกันภัย จำกัด (มหาชน) เลขที่ 3199 อาคารมาลีนนท์ทาวเวอร์ ชั้น 14 ถนนพระราม 4 แขวงคลองตัน เขตคลองเตย กรุงเทพมหานคร 10110 อีเมล์ : privacy.th@tuneprotect.com</p>
                             </div>
-                        </div>
                         <br>
                         <br>
                     </article>
