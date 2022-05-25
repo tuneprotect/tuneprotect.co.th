@@ -9,7 +9,7 @@
             transform: translateY(-50px);
         }
         .page-overlay-close .popup-wrapper .popup-inner-wrapper{
-            max-height: 85vh;
+            max-height: 80vh;
             overflow: auto;
         }
         .overlay-section form {
@@ -53,7 +53,7 @@
 
                                 <p>
                                     <strong>ช่องทางติดต่อ</strong><br>
-                                    เจ้าหน้าที่ข้อมูลส่วนบุคคล (Data Protection Officer) บริษัท ทูนประกันภัย จำกัด (มหาชน) เลขที่ 3199 อาคารมาลีนนท์ทาวเวอร์ ชั้น 14 ถนนพระราม 4 แขวงคลองตัน เขตคลองเตย กรุงเทพมหานคร 10110 อีเมล์ : privacy.th@tuneprotect.com</p>
+                                    เจ้าหน้าที่ข้อมูลส่วนบุคคล (Data Protection Officer) บริษัท ทูนประกันภัย จำกัด (มหาชน) เลขที่ 3199 อาคารมาลีนนท์ทาวเวอร์ ชั้น 14 ถนนพระราม 4 แขวงคลองตัน เขตคลองเตย กรุงเทพมหานคร 10110 อีเมล์ : privacy.th@tuneprotect.co.th</p>
                             </div>
                         <br>
                         <br>
