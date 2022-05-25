@@ -1,19 +1,21 @@
-<div class="page-overlay-close" style="overflow:auto;">
+<div class="page-overlay-close" style="display: flex; overflow:auto;">
     <style>
-        @media all and (min-width: 1200px) {
-            .popup-wrapper {
-                min-width: 1200px;
-            }
-        }
+        /*@media all and (min-width: 1200px) {*/
+        /*    .popup-wrapper {*/
+        /*        min-width: 1200px;*/
+        /*    }*/
+        /*}*/
         .overlay-section.move-up {
             transform: translateY(-50px);
         }
-
+        .page-overlay-close .popup-wrapper .popup-inner-wrapper{
+            max-height: 85vh;
+            overflow: auto;
+        }
         .overlay-section form {
             padding: 15px;
             flex: 1 1 650px;
             border-radius: 20px;
-            overflow-y: scroll;
         }
 
         .overlay-section form h3,
