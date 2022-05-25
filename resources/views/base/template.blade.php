@@ -5,13 +5,22 @@
 <head>
 
 {{--    TEST--}}
+{{--    <!-- OneTrust Cookies Consent Notice start for tuneprotect.co.th -->--}}
+{{--    <script type="text/javascript" src="https://cdn-apac.onetrust.com/consent/e1a3cf11-6147-44de-b09e-241fa390bac3-test/OtAutoBlock.js" ></script>--}}
+{{--    <script src="https://cdn-apac.onetrust.com/scripttemplates/otSDKStub.js" data-document-language="true" type="text/javascript" charset="UTF-8" data-domain-script="e1a3cf11-6147-44de-b09e-241fa390bac3-test" ></script>--}}
+{{--    <script type="text/javascript">--}}
+{{--        function OptanonWrapper() { }--}}
+{{--    </script>--}}
+{{--    <!-- OneTrust Cookies Consent Notice end for tuneprotect.co.th -->--}}
+
     <!-- OneTrust Cookies Consent Notice start for tuneprotect.co.th -->
-    <script type="text/javascript" src="https://cdn-apac.onetrust.com/consent/e1a3cf11-6147-44de-b09e-241fa390bac3-test/OtAutoBlock.js" ></script>
-    <script src="https://cdn-apac.onetrust.com/scripttemplates/otSDKStub.js" data-document-language="true" type="text/javascript" charset="UTF-8" data-domain-script="e1a3cf11-6147-44de-b09e-241fa390bac3-test" ></script>
+    <script type="text/javascript" src="https://cdn-apac.onetrust.com/consent/e1a3cf11-6147-44de-b09e-241fa390bac3/OtAutoBlock.js" ></script>
+    <script src="https://cdn-apac.onetrust.com/scripttemplates/otSDKStub.js" data-document-language="true" type="text/javascript" charset="UTF-8" data-domain-script="e1a3cf11-6147-44de-b09e-241fa390bac3" ></script>
     <script type="text/javascript">
         function OptanonWrapper() { }
     </script>
     <!-- OneTrust Cookies Consent Notice end for tuneprotect.co.th -->
+
 
     <meta name="facebook-domain-verification" content="pa4vdurvww8ktkzh7xbm2tyrc7iwzv" />
     @if(isset($template[TemplateHelper::META] ))
