@@ -4,26 +4,13 @@
     <main>
         <br>
         <article class="wrapper">
-            <!-- OneTrust Web Form start -->
-            <style>
-                .ot-form-wrapper {
-                    max-width: 750px;
-                    height: 800px;
-                    border: 1px solid #c0c2c7;
-                    margin: auto;
-                }
-                .ot-form-wrapper iframe {
-                    width: 100%;
-                    height: 100%;
-                    border: none;
-                }
-            </style>
-            <div class="ot-form-wrapper">
-                <iframe
-                    src="https://privacyportaluatde.onetrust.com/ui/#/preferences/multipage/login/ec966dee-bdbd-40cb-bd09-945e77bcb36c">
-                </iframe>
-            </div>
-            <!-- OneTrust Web Form end -->
+            <h1>การจัดการความยินยอม (Consent Management)</h1><br>
+            <h4><a href="https://privacyportaluatde.onetrust.com/hosted-webform/consent/57ee11fd-b018-48a4-be73-4abc0f30bbbe/ecd11121-937b-485f-b4eb-70d1bd28bf10" target="_blank">
+                    1. แบบฟอร์มให้ความยินยอมในการเปิดเผยข้อมูลต่อกรมสรรพากรเพื่อสิทธิประโยชน์ทางภาษี</a></h4><br>
+            <h4><a href="https://privacyportaluatde.onetrust.com/hosted-webform/consent/57ee11fd-b018-48a4-be73-4abc0f30bbbe/534cbf2a-0e4f-4497-8b91-64757a4464b2" target="_blank">
+                    2. สำหรับตัวแทนประกันภัย และนายหน้าประกันภัย </a></h4><br>
+            <h4><a href="https://privacyportaluatde.onetrust.com/hosted-webform/consent/57ee11fd-b018-48a4-be73-4abc0f30bbbe/74d03a17-1a23-4e20-b711-e08713d06b1f" target="_blank">
+                    3. สำหรับผู้สมัครงาน และพนักงานบริษัท</a></h4><br>
 
         </article>
         <br>
