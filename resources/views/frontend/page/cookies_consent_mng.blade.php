@@ -2,9 +2,9 @@
 
 @section('page')
     <main>
-        <br>
+        <br><br>
         <article class="wrapper">
-            <h1>การจัดการความยินยอม (Consent Management)</h1><br>
+            <h1>การจัดการความยินยอม ในการเก็บรวบรวม เปิดเผย และ/หรือใช้ข้อมูลส่วนบุคคล (Consent Management)</h1><br>
             <h4><a href="https://privacyportaluatde.onetrust.com/hosted-webform/consent/57ee11fd-b018-48a4-be73-4abc0f30bbbe/ecd11121-937b-485f-b4eb-70d1bd28bf10" target="_blank">
                     1. สำหรับผู้เอาประกันภัย และบุคคลทั่วไป</a></h4><br>
             <h4><a href="https://privacyportaluatde.onetrust.com/hosted-webform/consent/57ee11fd-b018-48a4-be73-4abc0f30bbbe/534cbf2a-0e4f-4497-8b91-64757a4464b2" target="_blank">
