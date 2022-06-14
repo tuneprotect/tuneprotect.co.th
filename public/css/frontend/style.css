@@ -19476,3 +19476,513 @@ main[data-package=CI] .popup-inner-wrapper,
   text-align: center;
 }
 
+main[data-package=DIABETES] #table-detail {
+  border-radius: 0;
+  overflow: visible;
+}
+
+main[data-package=DIABETES] #table-detail thead tr th {
+  vertical-align: bottom;
+}
+
+main[data-package=DIABETES] #table-detail tbody tr:nth-child(n+6) {
+  display: table-row;
+}
+
+main[data-package=DIABETES] #table-detail th {
+  position: relative;
+}
+
+main[data-package=DIABETES] #table-detail th span {
+  display: block;
+}
+
+main[data-package=DIABETES] #table-detail th span[data-recommend] {
+  display: block;
+  width: calc(100% + 40px);
+  margin-left: -16px;
+}
+
+@media all and (max-width: 600px) {
+  main[data-package=DIABETES] #table-detail th span[data-recommend] {
+    margin-left: 0;
+    margin-top: 5px;
+    position: static;
+    width: 100%;
+  }
+}
+
+main[data-package=DIABETES] #table-detail th .package-number {
+  display: block;
+  margin-top: 0;
+}
+
+main[data-package=DIABETES] #table-detail th[data-package] {
+  vertical-align: bottom;
+}
+
+main[data-package=DIABETES] #table-detail th[data-package] span[data-recommend] {
+  display: none;
+}
+
+main[data-package=DIABETES] #table-detail th[data-package].recommendPackage span[data-recommend] {
+  display: block;
+}
+
+main[data-package=DIABETES] #table-detail th[data-package].basePrice:before {
+  content: "";
+  background-size: 100% auto;
+  background-position: top center;
+  background-repeat: no-repeat;
+  margin: 0 auto;
+  width: calc(100% + 40px);
+  height: 63px;
+  display: block;
+  position: relative;
+  top: -31px;
+  left: -20px;
+}
+
+main[data-package=DIABETES] #table-detail td.recommendPackage strong i,
+main[data-package=DIABETES] #table-detail td.hovered strong i {
+  color: #fff !important;
+}
+
+main[data-package=DIABETES] #table-detail th:first-child {
+  width: 45%;
+}
+
+@media all and (max-width: 768px) {
+  main[data-package=DIABETES] #table-detail th:first-child {
+    width: auto;
+  }
+}
+
+main[data-package=DIABETES] #table-detail h6::before {
+  counter-increment: section;
+  content: counter(section) ". ";
+}
+
+main[data-package=DIABETES] .check_q-wrapper {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px auto;
+  max-width: 500px;
+}
+
+main[data-package=DIABETES] .check_q-wrapper .check_q {
+  position: relative;
+  margin: 0 10px;
+  flex: 1;
+}
+
+main[data-package=DIABETES] .check_q-wrapper .check_q a {
+  width: 100%;
+}
+
+main[data-package=DIABETES] .check_q-wrapper .check_q input {
+  display: none;
+}
+
+main[data-package=DIABETES] .question p {
+  margin: 20px 0;
+}
+
+main[data-package=DIABETES] .popup-inner-wrapper {
+  padding: 50px 20px;
+  text-align: center;
+}
+
+@media all and (min-width: 768px) {
+  main[data-package=DIABETES] form .bmi-input .bmi-wrapper {
+    display: flex;
+  }
+}
+
+main[data-package=DIABETES] form .bmi-input .bmi-wrapper > div {
+  flex: 1;
+}
+
+@media all and (min-width: 768px) {
+  main[data-package=DIABETES] form .bmi-input .bmi-wrapper > div {
+    margin-right: 20px;
+  }
+
+  main[data-package=DIABETES] form .bmi-input .bmi-wrapper > div:last-child {
+    margin-right: 0;
+  }
+}
+
+main[data-package=DIABETES] .choose-plan-mobile {
+  display: flex;
+  margin: 20px 0;
+}
+
+@media all and (min-width: 768px) {
+  main[data-package=DIABETES] .choose-plan-mobile {
+    margin: 0;
+  }
+}
+
+main[data-package=DIABETES] .choose-plan-mobile .wrapper-choose-plan {
+  position: relative;
+  flex: 1;
+}
+
+main[data-package=DIABETES] .choose-plan-mobile .wrapper-choose-plan:last-child div.basePrice {
+  overflow: visible;
+  padding-top: 9vw;
+}
+
+main[data-package=DIABETES] .choose-plan-mobile .wrapper-choose-plan:last-child div.basePrice:before {
+  content: "";
+  background-color: transparent;
+  background-size: 100% auto !important;
+  background-repeat: no-repeat;
+  background-position: top center;
+  margin: 0 auto;
+  width: 100%;
+  height: 10vw;
+  position: absolute;
+  opacity: 1;
+  top: -2vw;
+}
+
+main[data-package=DIABETES] .choose-plan-mobile .wrapper-choose-plan div {
+  display: block;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+main[data-package=DIABETES] .choose-plan-mobile .wrapper-choose-plan div.recommendPackage {
+  background: #E71618;
+  color: #ffffff;
+}
+
+main[data-package=DIABETES] .choose-plan-mobile .wrapper-choose-plan div.recommendPackage span[data-recommend] {
+  position: absolute;
+  top: 3px;
+  left: 0;
+  display: block !important;
+}
+
+main[data-package=DIABETES] .choose-plan-mobile .wrapper-choose-plan div .package-number {
+  display: block;
+  margin-top: 25px;
+}
+
+main[data-package=DIABETES] .choose-plan-mobile .wrapper-choose-plan div span {
+  display: block;
+  line-height: 0.7rem;
+}
+
+main[data-package=DIABETES] .choose-plan-mobile .wrapper-choose-plan div span[data-recommend] {
+  font-size: 0.5rem;
+  display: none !important;
+}
+
+main[data-package=DIABETES] .choose-plan-mobile .wrapper-choose-plan div a {
+  font-size: 0.6rem;
+  height: 20px;
+  max-width: 90%;
+}
+
+main[data-package=DIABETES] .choose-plan-mobile .wrapper-choose-plan .h_2_g {
+  width: 30px;
+  height: 37px;
+  margin: 0 auto;
+}
+
+.bmi_wrapper {
+  display: flex;
+  align-items: center;
+}
+
+#bmi_result {
+  max-width: 230px;
+  text-align: center;
+  padding: 2px 20px;
+  border: 1px solid #707070;
+  border-radius: 20px;
+  font-weight: bold;
+  margin-left: 20px;
+}
+
+#btn-more-diabetes {
+  width: 64px;
+  height: 64px;
+  background: #E71618;
+  color: #ffffff;
+  display: flex;
+  margin: 0 auto;
+  border-radius: 100%;
+  font-weight: bold;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-size: 0.85rem;
+}
+
+#btn-more-diabetes:before {
+  content: "\EA98";
+  font-family: "IcoFont" !important;
+  display: block;
+  transform: rotate(90deg);
+  font-weight: normal;
+  font-size: 25px;
+  line-height: 23px;
+  padding-left: 10px;
+}
+
+#btn-more-diabetes.expand:before {
+  transform: rotate(270deg);
+}
+
+.product-list div.item-wrapper > div div.description .insurance {
+  display: none;
+}
+
+.dfit-title {
+  margin-bottom: 20px;
+}
+
+.dfit-title img {
+  max-width: 250px;
+}
+
+@media all and (max-width: 599px) {
+  .dfit-title img {
+    max-width: 175px;
+  }
+}
+
+.btn-black {
+  color: #000000;
+}
+
+.dfit-btn-wrapper {
+  display: flex;
+  text-align: center;
+}
+
+@media all and (max-width: 767px) {
+  .dfit-btn-wrapper {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+@media all and (min-width: 768px) {
+  .dfit-btn-wrapper {
+    justify-content: space-evenly;
+  }
+}
+
+.dfit-program {
+  padding: 10px 0;
+}
+
+@media all and (min-width: 768px) {
+  .dfit-program {
+    padding: 20px 0 40px;
+  }
+}
+
+@media all and (max-width: 767px) {
+  .dfit-program .dfit-description {
+    margin-bottom: 40px;
+  }
+}
+
+@media all and (max-width: 767px) {
+  .dfit-program .dfit-img {
+    margin-bottom: 20px;
+  }
+}
+
+.dfit-program .rotate-bg {
+  transition-duration: 1.6s;
+  -webkit-animation-duration: 1.6s;
+          animation-duration: 1.6s;
+}
+
+.dfit-program .rotate-bg img {
+  width: 100%;
+  position: relative;
+  z-index: 1;
+  display: block;
+  border-radius: 30px;
+}
+
+.dfit-wrapper {
+  padding: 20px 0;
+}
+
+@media all and (max-width: 767px) {
+  .dfit-wrapper {
+    padding-bottom: 0;
+  }
+}
+
+.dfit-register {
+  padding: 20px 0;
+}
+
+@media all and (min-width: 768px) {
+  .dfit-register {
+    padding-top: 0;
+    padding-bottom: 40px;
+  }
+}
+
+@media all and (max-width: 767px) {
+  .dfit-h2 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+}
+
+.dfit-bg-shadow {
+  box-shadow: 0px 5px 12px #00000029;
+  background: #FFFFFF 0% 0% no-repeat padding-box;
+  border-radius: 20px;
+}
+
+@media all and (max-width: 599px) {
+  .dfit-bg-shadow {
+    margin-top: 40px;
+  }
+}
+
+@media all and (min-width: 992px) {
+  .dfit-bg-shadow {
+    padding: 20px 20px 40px;
+    margin: 20px 0 60px;
+  }
+}
+
+@media all and (min-width: 992px) {
+  #static_page article .dfit-slide-caption p {
+    margin-left: 100px;
+    margin-right: 100px;
+  }
+}
+
+.dfit-slide-caption {
+  margin: 20px 10px;
+}
+
+@media all and (max-width: 599px) {
+  .dfit-slide-caption {
+    padding: 20px 0 40px;
+  }
+}
+
+@media all and (min-width: 768px) {
+  .dfit-slide-caption {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+}
+
+@media all and (min-width: 992px) {
+  .dfit-slide-caption {
+    margin: 40px 0 20px;
+  }
+}
+
+.dfit_slide_wrapper {
+  position: relative;
+}
+
+@media all and (min-width: 992px) {
+  .dfit_slide_wrapper {
+    max-width: 80%;
+    margin: 0 auto;
+  }
+}
+
+@media all and (max-width: 767px) {
+  .dfit_slide_wrapper .dfit-slide-item.rotate-bg:after {
+    transform: rotate(0);
+  }
+}
+
+.dfit_slide_wrapper .dfit-slide-item img {
+  width: 100%;
+  position: relative;
+  z-index: 1;
+  display: block;
+  border-radius: 30px;
+}
+
+.dfit_slide_wrapper .tns-controls button {
+  width: 40px;
+  height: 40px;
+  border-radius: 40px;
+  background: rgba(255, 255, 255, 0.7);
+  position: absolute;
+  top: 50%;
+  margin-top: -20px;
+  color: #606060;
+  z-index: 10;
+  line-height: 50px;
+  text-align: center;
+  display: block;
+}
+
+.dfit_slide_wrapper .tns-controls button[data-controls=prev] {
+  left: 10px;
+}
+
+.dfit_slide_wrapper .tns-controls button[data-controls=next] {
+  right: 10px;
+}
+
+@media all and (max-width: 599px) {
+  .dfit_slide_wrapper .tns-controls button[data-controls=prev] {
+    left: 0;
+  }
+
+  .dfit_slide_wrapper .tns-controls button[data-controls=next] {
+    right: 0;
+  }
+}
+
+@media all and (max-width: 767px) {
+  .dfit_slide_wrapper .tns-controls button {
+    top: 33%;
+  }
+}
+
+@media all and (min-width: 992px) {
+  .dfit_slide_wrapper .tns-controls button[data-controls=prev],
+  .dfit_slide_wrapper .tns-controls button[data-controls=next] {
+    color: #fff;
+    background-color: #E71618;
+  }
+
+  .dfit_slide_wrapper .tns-controls button[data-controls=prev] {
+    left: -60px;
+  }
+
+  .dfit_slide_wrapper .tns-controls button[data-controls=next] {
+    right: -50px;
+  }
+}
+
+.dfit_slide_wrapper .tns-nav {
+  margin: 20px 0;
+  text-align: center;
+  width: 100%;
+}
+
+.dfit_slide_wrapper .tns-nav button {
+  border: 1px solid #D6D6D6;
+}
+
+.dfit_slide_wrapper .tns-nav button.tns-nav-active {
+  height: 4px;
+  background: #E71618;
+}
+

@@ -75,3 +75,11 @@ export const showDateError = (message) => {
         el.classList.add('error');
     });
 }
+
+export const showBMIError = (message) => {
+    $('.bmi-input cite').innerHTML = message;
+    $$('.bmi-input .controls-wrapper').forEach(el => {
+        el.classList.add('error');
+    });
+    scrollToTargetAdjusted($('.controls-wrapper.error'));
+}

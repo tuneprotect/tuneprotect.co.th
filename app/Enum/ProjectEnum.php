@@ -19,6 +19,7 @@ class ProjectEnum
     const STATIC_META_NEWS = 'static.page.news';
     const STATIC_PAGE_SERVICE_CENTER = 'static.page.service_center';
     const STATIC_PAGE_PAYMENT_THANK_YOU = 'static.page.payment_thank_you';
+    const STATIC_PAGE_PAYMENT_THANK_YOU_DIABETES = 'static.page.payment_thank_you_diabetes';
     const STATIC_PAGE_PAYMENT_ERROR = 'static.page.payment_error';
     const STATIC_PAGE_PAYMENT_CANCEL = 'static.page.payment_cancel';
     const STATIC_PAGE_PAYMENT_PENDING = 'static.page.payment_pending';

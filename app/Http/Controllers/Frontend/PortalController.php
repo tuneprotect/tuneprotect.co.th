@@ -219,7 +219,7 @@ class PortalController extends ProductController
             }
 
         }
-
+        // Todo : check param query string (in request) static payment thank you.
         return $this->genStatusPage_Portal(ProjectEnum::STATIC_PAGE_PAYMENT_THANK_YOU);
 
     }
