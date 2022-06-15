@@ -556,17 +556,16 @@ class ProductController extends BaseController
             'data' => $obj
         ]);
 
-        //$apiResult = $this->sendToApiLog($obj);
+        $apiResult = $this->sendToApiLog($obj);
 
-//        if (!$apiResult["status"]) {
-//            return redirect()->route('current', ['locale' => $this->locale, 'controller' => $this->controller, 'func' => 'error']);
-//        }
+        if (!$apiResult["status"]) {
+            return redirect()->route('current', ['locale' => $this->locale, 'controller' => $this->controller, 'func' => 'error']);
+        }
 
-//        $result->log_id = $apiResult['message'];
+        $result->log_id = $apiResult['message'];
         $result->save();
 
         return $result;
-
     }
 
     public function makePayment(Request $request)
@@ -581,7 +580,6 @@ class ProductController extends BaseController
         }
 
         $data = $request->all();
-        dd($data);
 
         if (isset($data['send_data'])) {
             $data = (array)json_decode($data['send_data']);
@@ -828,12 +826,12 @@ class ProductController extends BaseController
         $this->bodyData['arr_post'] = $arr_post;
 
 
-//        if(strtolower($this->controller) === "portal")
-//        {
-//                $this->bodyData['partner'] =session('partner');
-//                $this->bodyData['selected'] =session('selected');
-//                return $this->genView('frontend.page.payment_portal');
-//        }
+        if(strtolower($this->controller) === "portal")
+        {
+                $this->bodyData['partner'] =session('partner');
+                $this->bodyData['selected'] =session('selected');
+                return $this->genView('frontend.page.payment_portal');
+        }
         return $this->genView('frontend.page.payment');
     }
 
@@ -896,8 +894,8 @@ class ProductController extends BaseController
         } elseif (substr($package, 0, 9) === 'CVIS22JAN') {
             $this->thankYouParam = 'CVIS22JAN';
             $link = 'IssuePolicyCovid19';
-        }elseif (substr($package, 0, 8) ===  ProjectEnum::PLAN_CODE_DIABETES) {
-            $this->thankYouParam = ProjectEnum::PLAN_CODE_DIABETES;
+        }elseif (substr($package, 0, 8) === ProjectEnum::DIABETES_URL) {
+            $this->thankYouParam =  ProjectEnum::DIABETES_URL;
             $link = ProjectEnum::ISSUE_POLICY_DIABETES;
         }
 
@@ -950,9 +948,11 @@ class ProductController extends BaseController
         $this->bodyData['point'] = '';
 
         $thank_you_page = ProjectEnum::STATIC_PAGE_PAYMENT_THANK_YOU;
-        if(ProjectEnum::ISSUE_POLICY_DIABETES == $this->thankYouParam){
+        if(ProjectEnum::DIABETES_URL == $this->thankYouParam){
             $thank_you_page = ProjectEnum::STATIC_PAGE_PAYMENT_THANK_YOU_DIABETES;
         }
+
+        dd($request,$thank_you_page);
 
         return $this->genStatusPage($thank_you_page);
     }
