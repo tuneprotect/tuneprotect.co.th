@@ -81,7 +81,7 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 29);
+/******/ 	return __webpack_require__(__webpack_require__.s = 28);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -56240,7 +56240,7 @@ var showBMIError = function showBMIError(message) {
 
 /***/ }),
 
-/***/ 29:
+/***/ 28:
 /*!**********************************************!*\
   !*** multi ./resources/js/product/onfimp.js ***!
   \**********************************************/

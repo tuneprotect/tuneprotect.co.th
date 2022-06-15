@@ -81,7 +81,7 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 12);
+/******/ 	return __webpack_require__(__webpack_require__.s = 11);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -49885,7 +49885,7 @@ var showBMIError = function showBMIError(message) {
 
 /***/ }),
 
-/***/ 12:
+/***/ 11:
 /*!**********************************!*\
   !*** multi ./resources/js/tg.js ***!
   \**********************************/

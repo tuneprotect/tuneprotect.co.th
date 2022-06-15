@@ -81,7 +81,7 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 27);
+/******/ 	return __webpack_require__(__webpack_require__.s = 26);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -55782,7 +55782,7 @@ var showBMIError = function showBMIError(message) {
 
 /***/ }),
 
-/***/ 27:
+/***/ 26:
 /*!***********************************************!*\
   !*** multi ./resources/js/product/onpakda.js ***!
   \***********************************************/

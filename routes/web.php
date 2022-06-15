@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Frontend\BiglifeController;
 use App\Http\Controllers\Frontend\TestController;
 use Illuminate\Contracts\Container\BindingResolutionException;
 use App\Http\Controllers\Frontend\ProductController;

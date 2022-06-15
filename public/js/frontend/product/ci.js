@@ -81,7 +81,7 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 25);
+/******/ 	return __webpack_require__(__webpack_require__.s = 24);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -56515,7 +56515,7 @@ var showBMIError = function showBMIError(message) {
 
 /***/ }),
 
-/***/ 25:
+/***/ 24:
 /*!******************************************!*\
   !*** multi ./resources/js/product/ci.js ***!
   \******************************************/

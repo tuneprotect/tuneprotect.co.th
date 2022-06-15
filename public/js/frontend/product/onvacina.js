@@ -81,7 +81,7 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 23);
+/******/ 	return __webpack_require__(__webpack_require__.s = 22);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -56140,7 +56140,7 @@ var showBMIError = function showBMIError(message) {
 
 /***/ }),
 
-/***/ 23:
+/***/ 22:
 /*!************************************************!*\
   !*** multi ./resources/js/product/onvacina.js ***!
   \************************************************/

@@ -298,12 +298,14 @@ main[data-package="DIABETES"] {
 .dfit-btn-wrapper{
     display:flex;
     text-align: center;
+
     @media all and (max-width: $md - 1) {
         flex-direction: column;
         align-items: center;
     }
     @media all and (min-width: $md) {
-        justify-content: space-evenly;
+        justify-content: center;
+        column-gap: 40px;
     }
 }
 .dfit-program{
@@ -317,19 +319,11 @@ main[data-package="DIABETES"] {
         }
     }
     .dfit-img{
+        img{
+            border-radius: 20px;
+        }
         @media all and (max-width: $md - 1) {
             margin-bottom: 20px;
-        }
-    }
-    .rotate-bg{
-        transition-duration:1.6s;
-        animation-duration: 1.6s;
-        img{
-            width: 100%;
-            position: relative;
-            z-index: 1;
-            display: block;
-            border-radius: 30px;
         }
     }
 }
@@ -347,9 +341,9 @@ main[data-package="DIABETES"] {
     }
 }
 .dfit-h2{
+    margin-bottom:20px;
     @media all and (max-width: $md - 1) {
         text-align: center;
-        margin-bottom:20px;
     }
 }
 
@@ -413,16 +407,18 @@ main[data-package="DIABETES"] {
         button {
             width: 40px;
             height: 40px;
-            border-radius: 40px;
+            border-radius: 50px;
             background: rgba(255, 255, 255, 0.7);
             position: absolute;
             top: 50%;
             margin-top: -20px;
-            color: #606060;
+            color: #afafaf;
             z-index: 10;
             line-height: 50px;
             text-align: center;
-            display: block;
+            display: inline-flex;
+            align-content: center;
+            justify-content: center;
 
             &[data-controls=prev] {
                 left: 10px;
@@ -471,4 +467,12 @@ main[data-package="DIABETES"] {
         }
     }
 
+}
+
+.dfit-thankyou-caption{
+    margin-top: 40px;
+    @media all and (min-width: $xl ) {
+        margin-left: 25%;
+        margin-right: 25%;
+    }
 }

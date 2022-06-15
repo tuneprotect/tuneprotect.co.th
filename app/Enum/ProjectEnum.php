@@ -65,6 +65,8 @@ class ProjectEnum
     const WEB_CONTENT_LEADFORM_CATEGORY = "leadform.category";
     const CACHE_MENU_ENABLE = 'menu_enable';
 
+    const PLAN_CODE_DIABETES = 'DIABETES';
+    const ISSUE_POLICY_DIABETES = 'IssuePolicyDIABETES';
 
     //TODO : invoice prefix for test only
     const INVOICE_PREFIX = 'W';

@@ -19774,7 +19774,9 @@ main[data-package=DIABETES] .choose-plan-mobile .wrapper-choose-plan .h_2_g {
 
 @media all and (min-width: 768px) {
   .dfit-btn-wrapper {
-    justify-content: space-evenly;
+    justify-content: center;
+    -moz-column-gap: 40px;
+         column-gap: 40px;
   }
 }
 
@@ -19794,24 +19796,14 @@ main[data-package=DIABETES] .choose-plan-mobile .wrapper-choose-plan .h_2_g {
   }
 }
 
+.dfit-program .dfit-img img {
+  border-radius: 20px;
+}
+
 @media all and (max-width: 767px) {
   .dfit-program .dfit-img {
     margin-bottom: 20px;
   }
-}
-
-.dfit-program .rotate-bg {
-  transition-duration: 1.6s;
-  -webkit-animation-duration: 1.6s;
-          animation-duration: 1.6s;
-}
-
-.dfit-program .rotate-bg img {
-  width: 100%;
-  position: relative;
-  z-index: 1;
-  display: block;
-  border-radius: 30px;
 }
 
 .dfit-wrapper {
@@ -19835,10 +19827,13 @@ main[data-package=DIABETES] .choose-plan-mobile .wrapper-choose-plan .h_2_g {
   }
 }
 
+.dfit-h2 {
+  margin-bottom: 20px;
+}
+
 @media all and (max-width: 767px) {
   .dfit-h2 {
     text-align: center;
-    margin-bottom: 20px;
   }
 }
 
@@ -19919,16 +19914,18 @@ main[data-package=DIABETES] .choose-plan-mobile .wrapper-choose-plan .h_2_g {
 .dfit_slide_wrapper .tns-controls button {
   width: 40px;
   height: 40px;
-  border-radius: 40px;
+  border-radius: 50px;
   background: rgba(255, 255, 255, 0.7);
   position: absolute;
   top: 50%;
   margin-top: -20px;
-  color: #606060;
+  color: #afafaf;
   z-index: 10;
   line-height: 50px;
   text-align: center;
-  display: block;
+  display: inline-flex;
+  align-content: center;
+  justify-content: center;
 }
 
 .dfit_slide_wrapper .tns-controls button[data-controls=prev] {
@@ -19984,5 +19981,16 @@ main[data-package=DIABETES] .choose-plan-mobile .wrapper-choose-plan .h_2_g {
 .dfit_slide_wrapper .tns-nav button.tns-nav-active {
   height: 4px;
   background: #E71618;
+}
+
+.dfit-thankyou-caption {
+  margin-top: 40px;
+}
+
+@media all and (min-width: 1200px) {
+  .dfit-thankyou-caption {
+    margin-left: 25%;
+    margin-right: 25%;
+  }
 }
 

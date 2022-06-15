@@ -896,10 +896,9 @@ class ProductController extends BaseController
         } elseif (substr($package, 0, 9) === 'CVIS22JAN') {
             $this->thankYouParam = 'CVIS22JAN';
             $link = 'IssuePolicyCovid19';
-        }elseif (substr($package, 0, 9) === 'DIABETES') {
-            $this->thankYouParam = 'DIABETES';
-            $link = 'IssuePolicyDIABETES';
-            // Todo : add param (bao wan) query string. Ex $link Code DIABETES.
+        }elseif (substr($package, 0, 8) ===  ProjectEnum::PLAN_CODE_DIABETES) {
+            $this->thankYouParam = ProjectEnum::PLAN_CODE_DIABETES;
+            $link = ProjectEnum::ISSUE_POLICY_DIABETES;
         }
 
         return $link;
@@ -950,13 +949,12 @@ class ProductController extends BaseController
         $this->bodyData['return_link'] = '/' . $this->locale;
         $this->bodyData['point'] = '';
 
-        // Todo : check param query string (in request) static payment thank you.
-        // debug param link  here
-//        if('IssuePolicyDIABETES' == $request->fullUrl()){
-//            return $this->genStatusPage(ProjectEnum::STATIC_PAGE_PAYMENT_THANK_YOU_DIABETES);
-//        }else{
-            return $this->genStatusPage(ProjectEnum::STATIC_PAGE_PAYMENT_THANK_YOU);
-//        }
+        $thank_you_page = ProjectEnum::STATIC_PAGE_PAYMENT_THANK_YOU;
+        if(ProjectEnum::ISSUE_POLICY_DIABETES == $this->thankYouParam){
+            $thank_you_page = ProjectEnum::STATIC_PAGE_PAYMENT_THANK_YOU_DIABETES;
+        }
+
+        return $this->genStatusPage($thank_you_page);
     }
 
     public function result(Request $request)

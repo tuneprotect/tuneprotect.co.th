@@ -81,7 +81,7 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 18);
+/******/ 	return __webpack_require__(__webpack_require__.s = 17);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -56049,7 +56049,7 @@ var showBMIError = function showBMIError(message) {
 
 /***/ }),
 
-/***/ 18:
+/***/ 17:
 /*!**********************************************!*\
   !*** multi ./resources/js/product/ontaln.js ***!
   \**********************************************/

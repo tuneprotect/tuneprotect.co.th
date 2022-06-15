@@ -81,7 +81,7 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 22);
+/******/ 	return __webpack_require__(__webpack_require__.s = 21);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -55942,7 +55942,7 @@ var showBMIError = function showBMIError(message) {
 
 /***/ }),
 
-/***/ 22:
+/***/ 21:
 /*!********************************************!*\
   !*** multi ./resources/js/product/onta.js ***!
   \********************************************/

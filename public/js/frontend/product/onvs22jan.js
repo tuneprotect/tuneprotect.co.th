@@ -81,7 +81,7 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 36);
+/******/ 	return __webpack_require__(__webpack_require__.s = 35);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -56138,7 +56138,7 @@ var showBMIError = function showBMIError(message) {
 
 /***/ }),
 
-/***/ 36:
+/***/ 35:
 /*!*************************************************!*\
   !*** multi ./resources/js/product/onvs22jan.js ***!
   \*************************************************/

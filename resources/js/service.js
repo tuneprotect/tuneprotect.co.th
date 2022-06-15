@@ -3,6 +3,8 @@ import Swal from "sweetalert2";
 import validate from "validate.js";
 import {showFieldError, validateField} from "./validate_form";
 
+import {tns} from "tiny-slider/src/tiny-slider"
+
 document.addEventListener("DOMContentLoaded", async () => {
 
     const toggltField = (isShow) => {
@@ -187,5 +189,33 @@ document.addEventListener("DOMContentLoaded", async () => {
             e.preventDefault();
             $('.page-overlay').style.display = 'none';
         }, true);
+    }
+
+    /* slideshow */
+    if ($('.dfit_slider')) {
+        tns({
+            container: '.dfit_slider',
+            slideBy: 'page',
+            mode: "gallery",
+            speed : 1600,
+            autoplay: false,
+            autoplayButton: false,
+            autoplayButtonOutput: false,
+            autoplayHoverPause: true,
+            navPosition: 'bottom',
+            controlsText: ['<i class="icofont-rounded-left"></i>', '<i class="icofont-rounded-right"></i>'],
+            responsive: {
+                350: {
+                    items: 1,
+                    controls: true,
+                    // edgePadding: 30
+                },
+                600: {
+                    items: 3,
+                    controls: true,
+                    gutter: 20
+                }
+            },
+        });
     }
 });

@@ -81,7 +81,7 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 32);
+/******/ 	return __webpack_require__(__webpack_require__.s = 31);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -56088,7 +56088,7 @@ var showBMIError = function showBMIError(message) {
 
 /***/ }),
 
-/***/ 32:
+/***/ 31:
 /*!**********************************************!*\
   !*** multi ./resources/js/product/cvcare.js ***!
   \**********************************************/

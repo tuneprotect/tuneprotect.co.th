@@ -81,7 +81,7 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 17);
+/******/ 	return __webpack_require__(__webpack_require__.s = 16);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -55890,7 +55890,7 @@ var showBMIError = function showBMIError(message) {
 
 /***/ }),
 
-/***/ 17:
+/***/ 16:
 /*!**********************************************!*\
   !*** multi ./resources/js/product/ontadm.js ***!
   \**********************************************/

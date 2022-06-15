@@ -81,7 +81,7 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 38);
+/******/ 	return __webpack_require__(__webpack_require__.s = 37);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -56138,7 +56138,7 @@ var showBMIError = function showBMIError(message) {
 
 /***/ }),
 
-/***/ 38:
+/***/ 37:
 /*!***********************************************!*\
   !*** multi ./resources/js/product/onvsafe.js ***!
   \***********************************************/

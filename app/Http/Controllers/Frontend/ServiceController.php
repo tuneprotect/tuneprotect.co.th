@@ -42,11 +42,6 @@ class ServiceController extends BaseController
         $this->bodyData['faq'] = $this->setFaq(ProjectEnum::WEB_CONTENT_FAQ, $content->id);
         $this->template->setFootJS(mix("/js/frontend/service.js"));
 
-//      if(strtolower($link) == 'dfit')
-//        {
-//            $this->template->setFootJS(mix("/js/frontend/service-dfit.js"));
-//        }
-//  return $this->genStaticPage($content, 'frontend.demo.service.my-health');
         if ($content) {
 
             $this->bodyData['extraComponent'] = 'frontend.component.mso-form';
