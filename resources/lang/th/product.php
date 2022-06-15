@@ -578,6 +578,11 @@ return [
     "fire_insurance_limit" => "ทุนประกันภัย ตามลักษณะสิ่งปลูกสร้างที่คุณเลือกไว้",
     "fire_address_data" => "ที่อยู่ปัจจุบันเป็นสถานที่เดียวกันกับสถานที่เอาประกันภัย (กรณีคนละสถานที่ โปรดกรอกข้อมูลด้านล่าง)",
     'error' => [
+        'bmi'=> [
+            'fill_in_number_only' => 'โปรดกรอกน้ำหนักและส่วนสูงเป็นตัวเลขจำนวนเต็มเท่านั้น',
+            'text-not-qualify' => 'ต้องขออภัยค่ะ ข้อมูลของคุณไม่ผ่านเงื่อนไขการพิจารณารับประกันภัยกับทางเรา ขอขอบคุณที่สนใจประกันออนไลน์กับทาง Tune Protect ค่ะ',
+            'question-not-qualify' => '<strong>ต้องขออภัยค่ะ ข้อมูลของคุณไม่ผ่านเงื่อนไขการพิจารณารับประกันภัยกับทางเรา</strong><br><br>ขอขอบคุณที่สนใจประกันออนไลน์กับทาง Tune Protect ค่ะ'
+        ],
         'id_card' => 'บัตรประจำตัวประชาชนไม่ถูกต้อง',
         'sex' => 'โปรดกรอกเพศ',
         'eng_only' => 'โปรดกรอกภาษาอังกฤษเท่านั้น',
@@ -668,7 +673,43 @@ return [
     ,'ipass_day_wording' =>"The period of coverage"
     ,'ipass_day' =>"Days"
     ,'ci_content1' =>"เลือกปรับเพิ่ม-ลด ความคุ้มครอง กลุ่มโรคร้ายแรงได้"
-    ,'ci_portal_content1' =>"คุ้มครองทุกกลุ่มโรคร้าย"
+    ,'ci_portal_content1' =>"คุ้มครองทุกกลุ่มโรคร้าย",
+    "DIABETES" => [
+        "DIABETES01" => "อาการโคม่าจากโรคเบาหวาน (Diabetic Coma)",
+        "DIABETES02" => "เบาหวานเข้าจอประสาทตา 2 ข้าง (Retinopathy 2 eye)",
+        "DIABETES03" => "เบาหวานเข้าจอประสาทตา 1 ข้าง (Retinopathy 1 eye)",
+        "DIABETES04" => "ได้รับการวินิจฉัยว่าเป็นเบาหวาน ชนิดที่ 1 หรือ 2 (Diagnosed Type 1 or Type 2 Diabetes)",
+        "DIABETES05" => "<h5>การสูญเสียการมองเห็น ตาบอดจากโรคเบาหวาน (Blindness)</h5>
+<ul class='has-bullet'><li>การสูญเสียการตัดแขนขา (Limb Amputation)</li>
+<li> โรคเบาหวานลงไต (Diabetic Nephropathy)</li>
+<li>ร่างกายปฏิเสธการปลูกถ่ายอวัยวะ (Body Rejects Transplantation)</li>
+<li>การผ่าตัดเปลี่ยนอวัยวะ (Major Organs Transplantation)</li>
+<li>โรคหลอดเลือดหัวใจตีบ (Coronary Artery Disease)</li></ul>",
+
+        "DIABETES06" => "<h5>รับเงินชดเชยกรณีเป็นคนไข้ในของโรงพยาบาล อันเนื่องมาจากโรคเบาหวาน</h5>
+(ผู้ป่วยใน สูงสุด 30 วัน) Hospital Cash (IPD, up to 30 days)",
+        "DIABETES07" => "<div style='text-align: left'><p style='text-align: center;'><img src='/storage/Icon/logo-dfit.png' style='width: 120px;'> <br/> ฟรี! เข้าใช้โปรแกรมสุขภาพ Dfit และโปรแกรมตรวจสุขภาพ</p></div>",
+        "DIABETES08" => "อุบัติเหตุส่วนบุคคล (Personal Accident)",
+        "DIABETES09" => "ถูกฆาตกรรมและทำร้ายร่างกาย (Murder and Assault)"
+],
+
+    "weight" => "น้ำหนัก (Kg.)",
+    "height" => "ส่วนสูง (cm.)",
+    "bmi_calculator" => "ผลคำนวนดัชนีมวลกาย (BMI)",
+    "bmi_title" => "โปรดกรอกข้อมูลเพื่อคำนวณดัชนีมวลกาย (BMI) Please fill out the information to calculate your body mass index (BMI)",
+    "question_diabetes_1"=>"<strong>1. ท่านเคยถูกปฏิเสธการขอเอาประกันชีวิต หรือประกันภัยอุบัติเหตุส่วนบุคคล หรือประกันภัยสุขภาพ
+        หรือประกันชดเชยรายได้ หรือประกันภัยโรคร้ายแรง หรือถูกปฏิเสธการต่ออายุสัญญาประกันภัย
+        หรือถูกเรียกเก็บเบี้ยประกันภัยเพิ่มสำหรับการประกันภัยดังกล่าวหรือไม่?</strong>",
+    "question_diabetes_2"=>"<strong>2. ท่านเป็นหรือเคยมีอาการ หรือเคยได้รับการรักษา หรือขณะนี้รับการรักษาอยู่
+        หรือเคยได้รับการบอกเล่าจากแพทย์ </strong><br>
+    ด้วยโรคหัวใจ โรคเบาหวาน โรคความดันโลหิตสูง โรคไต โรคตับหรือทางเดินน้ำดี (รวมทั้งไวรัสตับอักเสบ B/C) โรคเลือด วัณโรค โรคหลอดเลือดสมอง โรคพิษสุราเรื้อรัง โรคแผลในกระเพาะอาหารหรือโรคระบบทางเดินอาหารอื่นๆ หรือพิการทางร่างกาย หรือบิดามารดาพี่น้องบุคคลใดบุคคลหนึ่งเคยได้รับการวินิจฉัยว่าเป็นโรคมะเร็ง โรคหัวใจ หรือโรคหลอดเลือดสมอง ก่อนอายุ 60 ปี?",
+    "question_diabetes_3"=>"<strong>3. ดัชนีมวลกาย (BMI) ของท่าน ตามข้อมูลที่ได้กรอกไว้ เกิน 35 หรือไม่?</strong>",
+    "question_diabetes_4"=>"ดัชนีมวลกาย (BMI) ของท่านคือ",
+
+//    ,'bao_wan_content1' => "Coma caused by diabetes coverage up to 2,000,000 Baht* "
+//    ,'bao_wan_content2' => "Receive compensation in case of inpatient treatment (Max 30 days)"
+//    ,'bao_wan_content3' => "The applicant must be 1 - 65 years of age"
+//    ,'bao_wan_content4' => "Free! access to the D-Fit Health app for a wide range of protection just for you and blood test program by affiliated hospitals"
 ];
 
 

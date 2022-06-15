@@ -3,6 +3,7 @@
 
 namespace App\Http\Controllers\Frontend;
 
+use App\Enum\BAOWANObject;
 use App\Enum\Base\BaseInsuranceObject;
 use App\Enum\Base\BaseTAObject;
 use App\Enum\CIObject;
@@ -311,7 +312,6 @@ class ProductController extends BaseController
 
 //        dd($this->bodyData['package_detail']);
 
-
         if ($this->controller != 'product') {
             return $this->genView('frontend.page.portal');
         } else {
@@ -374,7 +374,10 @@ class ProductController extends BaseController
 
         }elseif (substr($data['fdPackage'], 0, 6) === 'ONFIMP') {
             $obj = new FIMPObject();
-        } else {
+        }elseif (substr($data['fdPackage'], 0, 8) === 'DIABETES') {
+            $obj = new BAOWANObject();
+        }
+        else {
             $obj = new BaseInsuranceObject();
         }
 
@@ -501,6 +504,10 @@ class ProductController extends BaseController
             {
                 $package = (array)json_decode(Storage::disk('public')->get('json/onvsurea.json'));
             }
+            if (substr($data['fdPackage'], 0, 8) === 'DIABETES')
+            {
+                $package = (array)json_decode(Storage::disk('public')->get('json/diabetes.json'));
+            }
             if(isset($package[$data['fdPackage']]->apiPackage))
             {
                 $obj->fdApiPackage = $package[$data['fdPackage']]->apiPackage;
@@ -549,13 +556,13 @@ class ProductController extends BaseController
             'data' => $obj
         ]);
 
-        $apiResult = $this->sendToApiLog($obj);
+        //$apiResult = $this->sendToApiLog($obj);
 
-        if (!$apiResult["status"]) {
-            return redirect()->route('current', ['locale' => $this->locale, 'controller' => $this->controller, 'func' => 'error']);
-        }
+//        if (!$apiResult["status"]) {
+//            return redirect()->route('current', ['locale' => $this->locale, 'controller' => $this->controller, 'func' => 'error']);
+//        }
 
-        $result->log_id = $apiResult['message'];
+//        $result->log_id = $apiResult['message'];
         $result->save();
 
         return $result;
@@ -574,6 +581,8 @@ class ProductController extends BaseController
         }
 
         $data = $request->all();
+        dd($data);
+
         if (isset($data['send_data'])) {
             $data = (array)json_decode($data['send_data']);
 
@@ -887,7 +896,11 @@ class ProductController extends BaseController
         } elseif (substr($package, 0, 9) === 'CVIS22JAN') {
             $this->thankYouParam = 'CVIS22JAN';
             $link = 'IssuePolicyCovid19';
+        }elseif (substr($package, 0, 8) ===  ProjectEnum::PLAN_CODE_DIABETES) {
+            $this->thankYouParam = ProjectEnum::PLAN_CODE_DIABETES;
+            $link = ProjectEnum::ISSUE_POLICY_DIABETES;
         }
+
         return $link;
     }
 
@@ -935,7 +948,13 @@ class ProductController extends BaseController
         $this->bodyData['doc_no'] = $request->session()->get('doc_no');
         $this->bodyData['return_link'] = '/' . $this->locale;
         $this->bodyData['point'] = '';
-        return $this->genStatusPage(ProjectEnum::STATIC_PAGE_PAYMENT_THANK_YOU);
+
+        $thank_you_page = ProjectEnum::STATIC_PAGE_PAYMENT_THANK_YOU;
+        if(ProjectEnum::ISSUE_POLICY_DIABETES == $this->thankYouParam){
+            $thank_you_page = ProjectEnum::STATIC_PAGE_PAYMENT_THANK_YOU_DIABETES;
+        }
+
+        return $this->genStatusPage($thank_you_page);
     }
 
     public function result(Request $request)

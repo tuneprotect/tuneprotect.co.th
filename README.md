@@ -39,6 +39,10 @@ You have to install following software on developing machine
 
         php artisan migrate:refresh --seed && php artisan passport:install
 
+- Run command to map path storage
+
+        php artisan storage:link
+
 - Run command to start development mode
 
         npm run watch
@@ -46,3 +50,4 @@ You have to install following software on developing machine
 - Command To compile for production
 
         npm run prod
+

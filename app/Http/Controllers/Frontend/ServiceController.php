@@ -41,6 +41,7 @@ class ServiceController extends BaseController
             ->first();
         $this->bodyData['faq'] = $this->setFaq(ProjectEnum::WEB_CONTENT_FAQ, $content->id);
         $this->template->setFootJS(mix("/js/frontend/service.js"));
+
         if ($content) {
 
             $this->bodyData['extraComponent'] = 'frontend.component.mso-form';

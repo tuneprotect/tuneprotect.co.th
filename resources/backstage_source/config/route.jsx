@@ -2016,6 +2016,7 @@ const static_content = {
         'payment_pending',
         'payment_reject',
         'payment_thank_you',
+        'payment_thank_you_diabetes',
         'privacy',
         'service_center',
         'terms',
