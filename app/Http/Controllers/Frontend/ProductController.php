@@ -949,11 +949,9 @@ class ProductController extends BaseController
         $this->bodyData['point'] = '';
 
         $thank_you_page = ProjectEnum::STATIC_PAGE_PAYMENT_THANK_YOU;
-        if(ProjectEnum::DIABETES_URL == $this->thankYouParam){
+        if(Str::contains($request->getRequestUri(),ProjectEnum::DIABETES_URL)){
             $thank_you_page = ProjectEnum::STATIC_PAGE_PAYMENT_THANK_YOU_DIABETES;
         }
-
-//        dd($request,$thank_you_page);
 
         return $this->genStatusPage($thank_you_page);
     }

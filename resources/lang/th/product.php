@@ -705,11 +705,6 @@ return [
     ด้วยโรคหัวใจ โรคเบาหวาน โรคความดันโลหิตสูง โรคไต โรคตับหรือทางเดินน้ำดี (รวมทั้งไวรัสตับอักเสบ B/C) โรคเลือด วัณโรค โรคหลอดเลือดสมอง โรคพิษสุราเรื้อรัง โรคแผลในกระเพาะอาหารหรือโรคระบบทางเดินอาหารอื่นๆ หรือพิการทางร่างกาย หรือบิดามารดาพี่น้องบุคคลใดบุคคลหนึ่งเคยได้รับการวินิจฉัยว่าเป็นโรคมะเร็ง โรคหัวใจ หรือโรคหลอดเลือดสมอง ก่อนอายุ 60 ปี?",
     "question_diabetes_3"=>"<strong>3. ดัชนีมวลกาย (BMI) ของท่าน ตามข้อมูลที่ได้กรอกไว้ เกิน 35 หรือไม่?</strong>",
     "question_diabetes_4"=>"ดัชนีมวลกาย (BMI) ของท่านคือ",
-
-//    ,'bao_wan_content1' => "Coma caused by diabetes coverage up to 2,000,000 Baht* "
-//    ,'bao_wan_content2' => "Receive compensation in case of inpatient treatment (Max 30 days)"
-//    ,'bao_wan_content3' => "The applicant must be 1 - 65 years of age"
-//    ,'bao_wan_content4' => "Free! access to the D-Fit Health app for a wide range of protection just for you and blood test program by affiliated hospitals"
 ];
 
 
