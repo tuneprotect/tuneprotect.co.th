@@ -265,7 +265,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         ctrl_weight: "",
         ctrl_height: "",
         ctrl_bmi_calculator: "",
-        ctrl_protection_start_date: "",
+        fdFromDate: "",
         fdKeys: Keys,
         channel: channel
     };
