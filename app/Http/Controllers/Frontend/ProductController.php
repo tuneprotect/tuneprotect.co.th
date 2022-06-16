@@ -442,6 +442,7 @@ class ProductController extends BaseController
             || substr($data['fdPackage'], 0, 6) === 'CVCARE'
             || substr($data['fdPackage'], 0, 9) === 'ONCOVIDMW'
             || substr($data['fdPackage'], 0, 7) === 'ONVSAFE'
+            || substr($data['fdPackage'], 0, 8) === 'DIABETES'
         ){
 
 
@@ -952,7 +953,7 @@ class ProductController extends BaseController
             $thank_you_page = ProjectEnum::STATIC_PAGE_PAYMENT_THANK_YOU_DIABETES;
         }
 
-        dd($request,$thank_you_page);
+//        dd($request,$thank_you_page);
 
         return $this->genStatusPage($thank_you_page);
     }

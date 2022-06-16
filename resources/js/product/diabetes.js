@@ -561,7 +561,6 @@ document.addEventListener("DOMContentLoaded", async () => {
                                 ctrl_accept_insurance_term: $('#ctrl_accept_insurance_term').checked ? true : undefined,
                                 ctrl_document_type: $('#ctrl_document_type').value,
                                 ctrl_province: $('#ctrl_province').value,
-                                ctrl_protection_start_date: today,
                                 fdFromDate :today
                             }
 
