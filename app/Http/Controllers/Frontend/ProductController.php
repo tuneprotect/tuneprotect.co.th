@@ -24,7 +24,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Storage;
 use phpDocumentor\Reflection\Project;
-
+use Illuminate\Support\Str;
 
 class ProductController extends BaseController
 {
