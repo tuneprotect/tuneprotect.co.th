@@ -261,11 +261,9 @@ document.addEventListener("DOMContentLoaded", async () => {
         ctrl_terms: "",
         ctrl_accept_insurance_term: "",
         ctrl_document_type: "",
-
         ctrl_weight: "",
         ctrl_height: "",
         ctrl_bmi_calculator: "",
-        fdFromDate: "",
         fdKeys: Keys,
         channel: channel
     };
@@ -560,8 +558,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                                 ctrl_terms: $('#ctrl_terms').checked ? true : undefined,
                                 ctrl_accept_insurance_term: $('#ctrl_accept_insurance_term').checked ? true : undefined,
                                 ctrl_document_type: $('#ctrl_document_type').value,
-                                ctrl_province: $('#ctrl_province').value,
-                                fdFromDate :today
+                                ctrl_province: $('#ctrl_province').value
                             }
 
                             data = {
