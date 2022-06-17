@@ -47,7 +47,6 @@ return [
             'prefix_indexes' => true,
         ],
         'live' => [
-
             'driver' => 'sqlsrv',
             'url' => env('DATABASE_URL'),
             'host' => env('DB_HOST', '10.8.12.2'),
