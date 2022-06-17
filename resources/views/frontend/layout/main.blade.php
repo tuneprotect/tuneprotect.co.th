@@ -195,7 +195,7 @@
                                                 src="{{url(!empty($v->pic_mobile_en) ? url(str_replace('Banner-baowan-main-en', 'Banner_myFlexi_CI_ENv2', $v->pic_mobile_en)) : url(str_replace('Banner-baowan-main-en', 'Banner_myFlexi_CI_ENv2', $v->pic_en)) )}}"
                                                 alt="{{$v->locales[$locale]->title}}">
                                         </picture>
-                                    @elseif($selected==='BAOWANPROTECT')
+                                    @elseif($selected==='DIABETES')
                                         <picture>
                                             <source media="(min-width:768px)"
                                                     srcset="{{url(str_replace('Banner-baowan-main-en', 'Banner-baowan-detail-en', $v->pic_en))}}">
@@ -254,7 +254,7 @@
                                                 src="{{url(!empty($v->pic_mobile) ? url(str_replace('Banner-baowan-main-th', 'Banner_myFlexi_CI_THv2', $v->pic_mobile)) : url(str_replace('Banner-baowan-main-th', 'Banner_myFlexi_CI_THv2', $v->pic)) )}}"
                                                 alt="{{$v->locales[$locale]->title}}">
                                         </picture>
-                                    @elseif($selected==='BAOWANPROTECT')
+                                    @elseif($selected==='DIABETES')
                                         <picture>
                                             <source media="(min-width:768px)"
                                                     srcset="{{url(str_replace('Banner-baowan-main-th', 'Banner-baowan-detail-th', $v->pic))}}">

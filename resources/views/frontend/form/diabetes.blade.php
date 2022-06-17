@@ -95,12 +95,12 @@
                     </div>
                     <br>
                     @lang('product.error.bmi.question-not-qualify')
-                    <br>
-                    <br>
-                    <div style="text-align: center">
-                        <a class="btn btn-primary" href="#leadform-section"
-                           data-gtm="ci-goto-leadform">@lang('product.leave_us_your_lead')</a>
-                    </div>
+{{--                    <br>--}}
+{{--                    <br>--}}
+{{--                    <div style="text-align: center">--}}
+{{--                        <a class="btn btn-primary" href="#leadform-section"--}}
+{{--                           data-gtm="diabetes-goto-leadform">@lang('product.leave_us_your_lead')</a>--}}
+{{--                    </div>--}}
                 </div>
             </div>
         </div>
