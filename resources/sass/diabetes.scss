@@ -400,6 +400,12 @@ main[data-package="DIABETES"] {
             z-index: 1;
             display: block;
             border-radius: 30px;
+            &:hover{
+                @media all and (min-width: $lg) {
+                    @include project_transition();
+                    transform: scale(1.1);
+                }
+            }
         }
     }
 
