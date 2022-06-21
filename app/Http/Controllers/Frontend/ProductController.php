@@ -88,6 +88,7 @@ class ProductController extends BaseController
         $this->getProductDetail($link, $selected);
 
         if ($selected) {
+            $this->bodyData['overview_link'] = "/{$this->locale}/product/{$link}/{$selected}";
             return $this->genDetailPage($selected);
         } else {
             $this->bodyData['faq'] = $this->setFaq(ProjectEnum::WEB_CONTENT_FAQ, $this->bodyData['current_product']->id);

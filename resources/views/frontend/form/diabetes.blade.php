@@ -63,6 +63,7 @@
         <div class="bmi_wrapper">
             <p>@lang('product.question_diabetes_4')</p>
             <div id="bmi_result">25</div>
+            <p>@lang('product.question_diabetes_4_1')</p>
         </div>
         <br>
         <div>@lang('product.question_p_5')</div>
@@ -95,16 +96,15 @@
                     </div>
                     <br>
                     @lang('product.error.bmi.question-not-qualify')
-{{--                    <br>--}}
-{{--                    <br>--}}
-{{--                    <div style="text-align: center">--}}
-{{--                        <a class="btn btn-primary" href="#leadform-section"--}}
-{{--                           data-gtm="diabetes-goto-leadform">@lang('product.leave_us_your_lead')</a>--}}
-{{--                    </div>--}}
+                    <br>
+                    <br>
+                    <div style="text-align: center">
+                        <a class="btn btn-primary" id="btn_next_close" href="{{$overview_link}}#leadform-section"
+                           data-gtm="diabetes-goto-leadform">@lang('product.leave_us_your_lead')</a>
+                    </div>
                 </div>
             </div>
         </div>
-
     </div>
 </section>
 <section style="display: none;" id="step4" class="wrapper">

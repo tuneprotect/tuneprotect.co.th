@@ -11,9 +11,10 @@ main[data-package="DIABETES"] {
             }
         }
 
+
         tbody {
             tr {
-                &:nth-child(n+6) {
+                &:nth-child(n+6),&:nth-child(n+7){
                     display: table-row;
                 }
             }
@@ -237,6 +238,11 @@ main[data-package="DIABETES"] {
         //align-items: flex-start;
     }
 }
+.bmi_title_wrapper{
+    display:flex;
+    align-items: center;
+
+}
 #bmi_result{
     max-width: 230px;
     text-align: center;
@@ -245,8 +251,80 @@ main[data-package="DIABETES"] {
     border-radius: 20px;
     font-weight: bold;
     margin-left:20px;
-
+    margin-right: 20px;
 }
+.bmi-tooltip{
+    color: #000000; outline: none;
+    cursor: help; text-decoration: none;
+    position: relative;
+    margin-left:10px;
+    display:inline-flex;
+    align-items: center;
+    .span{
+        color:#fff;
+        padding:0 10px;
+        background-color: $primary-color;
+        border-radius: 50%;
+    }
+    .info{
+        margin-left: -999em;
+        position: absolute;
+        padding:10px 20px;
+        background: #fff;
+        color:$btn-primary-color;
+        font-size:.9em;
+    }
+    &:hover{
+        .info{
+            -webkit-box-shadow: 0 0 24px 1px rgba(0, 0, 0, 0.16);
+            box-shadow: 0 0 24px 1px rgba(0, 0, 0, 0.16);
+            border-radius: 10px;
+
+            position: absolute;
+            z-index: 99;
+            margin-left: 0;
+            width: 250px;
+            top: -275px;
+            left: -250px;
+            content:'';
+            display:inline-flex;
+            @media all and (min-width: $sm){
+                width: 300px;
+                top: auto;
+                left: auto;
+                bottom: 30px;
+                right: -300px;
+            }
+        }
+    }
+}
+
+
+
+//.tooltip {
+//    border-bottom: 1px dotted #000000; color: #000000; outline: none;
+//    cursor: help;
+//    text-decoration: none;
+//    position: relative;
+//}
+//.tooltip span {
+//    margin-left: -999em;
+//    position: absolute;
+//}
+//.tooltip:hover span {
+//    border-radius: 5px 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px;
+//    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1); -webkit-box-shadow: 5px 5px rgba(0, 0, 0, 0.1); -moz-box-shadow: 5px 5px rgba(0, 0, 0, 0.1);
+//    font-family: Calibri, Tahoma, Geneva, sans-serif;
+//    position: absolute; left: 1em; top: 2em; z-index: 99;
+//    margin-left: 0; width: 250px;
+//}
+//.classic { padding: 0.8em 1em; }
+//.custom { padding: 0.5em 0.8em 0.8em 2em; }
+////* html a:hover { background: transparent; }
+//.help { background: #9FDAEE; border: 1px solid #2BB0D7;	}
+//.info { background: #9FDAEE; border: 1px solid #2BB0D7;	}
+//.warning { background: #FFFFAA; border: 1px solid #FFAD33; }
+
 
 #btn-more-diabetes {
 
@@ -292,6 +370,7 @@ main[data-package="DIABETES"] {
         }
     }
 }
+
 .btn-black{
     color:#000000;
 }

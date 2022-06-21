@@ -196,7 +196,7 @@ const constraints = {
             allowEmpty: false,
             message: "^" + $('#ctrl_terms').getAttribute('data-error-terms')
         }
-    },
+    }
 };
 
 document.addEventListener("DOMContentLoaded", async () => {
@@ -225,8 +225,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     channel = (channel ? channel : 'TPT Website');
 
     if ($("#controller")?.value == 'portal') {
-        let aBrochureci = document.getElementById('brochureci');
-        aBrochureci.href = $("#brochure_ci")?.value;
+        let aBrochureci = document.getElementById('brochure_diabetes');
+        aBrochureci.href = $("#brochure_diabetes")?.value;
     }
 
     const package_data = await getPackageData(current_package, $("#channel")?.value);
@@ -269,34 +269,55 @@ document.addEventListener("DOMContentLoaded", async () => {
     };
 
     const validateBMI = () => {
+        $$('.bmi-input .controls-wrapper').forEach(el => {
+            el.classList.remove('error');
+        });
+        $('.bmi-input cite').innerHTML = "";
 
         const weight = parseInt($('#ctrl_weight').value),
             height = parseInt($('#ctrl_height').value);
-        let bmi_calculated = 0;
+        let bmi_calculated = '';
+        let bmi_valid = true;
 
-        if (isNaN(weight) ||  weight === '') {
+        if (weight === '' || height === '') {
             showBMIError($('#ctrl_weight').getAttribute('data-error-fill-in-number-only'));
-            return {status: false};
+            bmi_valid = false;
+            return {status: bmi_valid, data: { bmi: bmi_calculated }};
         }
 
-        if(isNaN(height) ||  height === ''){
+        if (isNaN(weight)) {
             showBMIError($('#ctrl_weight').getAttribute('data-error-fill-in-number-only'));
-            return {status: false};
+            bmi_valid = false;
+            return {status: bmi_valid, data: { bmi: bmi_calculated }};
         }
 
-        let floatHeight = parseFloat(parseFloat(height).toFixed(2));
-        let round_height = (floatHeight / 100);
-        bmi_calculated = (weight / (round_height * round_height)).toFixed(1);
+        if (isNaN(height)) {
+            showBMIError($('#ctrl_weight').getAttribute('data-error-fill-in-number-only'));
+            bmi_valid = false;
+            return {status: bmi_valid, data: { bmi: bmi_calculated }};
+        }
 
-        if (parseFloat(bmi_calculated) >= 35.1) {
-            showBMIError($('#ctrl_weight').getAttribute('data-error-not-qualify'));
-            return {status: false};
-        }else{
-            removeError($('#bmi_input'));
+        if (bmi_valid) {
+            let floatHeight = parseFloat(parseFloat(height).toFixed(2));
+            let round_height = (floatHeight / 100);
+
+            if (height > 225 || height <= 0 || weight > 200 || weight <= 0  ) {
+                showBMIError($('#ctrl_weight').getAttribute('data-error-not-qualify'));
+                bmi_valid = false;
+                return {status: bmi_valid, data: { bmi: bmi_calculated }};
+            }
+
+            bmi_calculated = (weight / (round_height * round_height)).toFixed(1);
+            if (parseFloat(bmi_calculated) >= 35.1 ) {
+                showBMIError($('#ctrl_weight').getAttribute('data-error-not-qualify'));
+                bmi_valid = false;
+            } else {
+                $('.bmi-input cite').innerHTML = "";
+            }
         }
 
         return {
-            status: true, data: {
+            status: bmi_valid, data: {
                 bmi: bmi_calculated
             }
         };
@@ -304,13 +325,16 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     const genBMI = () => {
         const bmiResult = validateBMI();
-        if (bmiResult.status) {
+        if (!bmiResult) {
+            document.getElementById("ctrl_bmi_calculator").value = '';
+            document.getElementById("bmi_result").innerHTML = '';
+            return {status: false};
+        }else{
             defaultBmi = bmiResult.data.bmi;
             document.getElementById("ctrl_bmi_calculator").value = bmiResult.data.bmi;
             document.getElementById("bmi_result").innerHTML = bmiResult.data.bmi;
-            return { status: true };
         }
-        return {status: false};
+        return {status: true};
     }
 
     const genPrice = () => {
@@ -334,6 +358,11 @@ document.addEventListener("DOMContentLoaded", async () => {
     $$('#ctrl_weight,#ctrl_height').forEach($el => {
         $el.addEventListener($el.tagName.toLowerCase() === 'input' ? "keyup" : "change", event => {
             genBMI();
+        });
+        $el.addEventListener($el.tagName.toLowerCase() === 'input' ? "keydown" : "focus", event => {
+            if (event.keyCode == 8 || event.keyCode == 46) {
+                genBMI();
+            }
         });
     })
 
@@ -383,9 +412,12 @@ document.addEventListener("DOMContentLoaded", async () => {
         $('.page-overlay').style.display = 'none';
     }, true);
 
+    $("#btn_next_close").addEventListener('click', (e) => {
+        e.preventDefault();
+        $('.page-overlay').style.display = 'none';
+    }, true);
+
     let expandDetailDiabetes = false;
-    console.log(2);
-    console.log(expandDetailDiabetes);
 
     /* more detail Baowan */
     const $btnMoreDiabetes = $('#btn-more-diabetes');
@@ -400,7 +432,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                     $btnMoreDiabetes.classList.add("expand");
                 });
             } else {
-                $$('#table-detail tbody tr:nth-child(n+6)').forEach(row => {
+                $$('#table-detail tbody tr:nth-child(n+7)').forEach(row => {
                     row.style.display = 'none';
                     $btnMoreDiabetes.innerText = $btnMoreDiabetes.getAttribute('data-expand');
                     $btnMoreDiabetes.classList.remove("expand");
@@ -424,7 +456,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                     // console.log('step' + step);
                     switch (parseInt(step)) {
                         case 1:
-                            const validateResult = validateAgeInPackage(package_data,false);
+                            const validateResult = validateAgeInPackage(package_data, false);
                             const validateBMIResult = validateBMI();
 
                             if (validateResult.status && validateBMIResult.status) {
@@ -432,18 +464,18 @@ document.addEventListener("DOMContentLoaded", async () => {
                                 data = {
                                     ...data,
                                     ...validateResult.data,
-                                    fdBMI_Weight:$('#ctrl_weight').value,
-                                    fdBMI_Height:$("#ctrl_height").value,
-                                    fdBMI_Value:$("#ctrl_bmi_calculator").value
+                                    fdBMI_Weight: $('#ctrl_weight').value,
+                                    fdBMI_Height: $("#ctrl_height").value,
+                                    fdBMI_Value: $("#ctrl_bmi_calculator").value
                                 }
 
                                 genPrice();
-
                                 let $btnMore_Diabetes = $('#btn-more-diabetes');
-                                $$('#table-detail tbody tr:nth-child(n+6)').forEach(row => {
+                                $$('#table-detail tbody tr:nth-child(n+7)').forEach(row => {
                                     row.style.display = 'none';
                                     $btnMore_Diabetes.innerText = $btnMore_Diabetes.getAttribute('data-expand');
                                     $btnMore_Diabetes.classList.remove("expand");
+
                                     scrollToTargetAdjusted($("ol.step"));
                                 });
 
@@ -456,10 +488,9 @@ document.addEventListener("DOMContentLoaded", async () => {
                             //=====================================================================
                             // AddOn Portal
                             var myEle = document.getElementById("portal_key");
-                            if(myEle){
+                            if (myEle) {
                                 var status_api = document.getElementById("status_api");
-                                if(!status_api.value)
-                                {
+                                if (!status_api.value) {
                                     Swal.fire({
                                         title: 'Error!',
                                         text: 'Error : Portal keys. User not found.',
@@ -494,9 +525,6 @@ document.addEventListener("DOMContentLoaded", async () => {
                                 })
                                 status = false;
                             }
-                            // console.log(data.fdHBD);
-                            // console.log(data.fdPackage);
-                            // console.log(package_data);
                             break;
                         case 3:
                             //=====================================================================
@@ -508,9 +536,6 @@ document.addEventListener("DOMContentLoaded", async () => {
                             //     }
                             // }
                             //=====================================================================
-
-                            console.log('click 3');
-                            console.log(e.target.tagName)
                             status = false;
                             if (e.target.id === 'btn-fdQuestion1') {
                                 status = true;
@@ -520,13 +545,8 @@ document.addEventListener("DOMContentLoaded", async () => {
                                     fdQuestion1: 'N',
                                 }
                             }
-
-                            console.log(status)
-
                             break;
                         case 4:
-                            console.log('click 4');
-
                             let address = ($('#ctrl_province').value).split('*');
                             let today = new Date();
                             let dd = String(today.getDate()).padStart(2, '0');
@@ -565,8 +585,6 @@ document.addEventListener("DOMContentLoaded", async () => {
                                 ...data,
                                 fdMarketing_Consent: $('#ctrl_marketing').checked ? true : undefined
                             }
-
-                            console.log({data});
                             const result = validate(data, constraints);
                             const $cite = $form.getElementsByTagName('cite');
                             for (let i = 0, len = $cite.length; i !== len; ++i) {
@@ -576,7 +594,6 @@ document.addEventListener("DOMContentLoaded", async () => {
                             $form.querySelectorAll('.controls-wrapper').forEach(($el) => {
                                 $el.classList.remove('error')
                             });
-                            // console.log('done')
 
                             if (result) {
                                 Object.keys(result).map(k => {

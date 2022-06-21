@@ -99,7 +99,7 @@
                     <?php $i++ ?>
                 @endforeach
             </tr>
-            <?php $arr_sort = ['DIABETES01', 'DIABETES02', 'DIABETES03', 'DIABETES04', 'DIABETES05', 'DIABETES06', 'DIABETES07', 'DIABETES08','DIABETES09']; ?>            @foreach ( $arr_sort as $v)
+            <?php $arr_sort = ['DIABETES01', 'DIABETES02', 'DIABETES03', 'DIABETES04', 'DIABETES07','DIABETES05', 'DIABETES06','DIABETES08','DIABETES09']; ?>            @foreach ( $arr_sort as $v)
                 <tr>
                     <th>{!! __('product.'.$selected.'.'.$v) !!}</th>
                     <?php $i = 1 ?>
