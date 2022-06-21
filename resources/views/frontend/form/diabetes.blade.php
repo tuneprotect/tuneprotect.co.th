@@ -38,6 +38,7 @@
                 @include('frontend.component.form-date-input')
                 <br>
                 @include('frontend.component.form-bmi-input')
+
             </div>
             <div class="btn-wrapper">
                 <a href="{{url()->current()}}#step2" data-gtm="product-{{strtolower($selected)}}-proceed-step-1" data-step="2" class="btn btn-primary btn-goto">@lang('product.next')</a>
