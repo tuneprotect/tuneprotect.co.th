@@ -149,3 +149,5 @@
 <div id="h-cont">
     {!! $current_package->locales[$locale]->remark !!}
 </div>
+
+
