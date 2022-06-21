@@ -412,10 +412,10 @@ document.addEventListener("DOMContentLoaded", async () => {
         $('.page-overlay').style.display = 'none';
     }, true);
 
-    $("#btn_next_close").addEventListener('click', (e) => {
-        e.preventDefault();
-        $('.page-overlay').style.display = 'none';
-    }, true);
+    // $("#btn_next_close").addEventListener('click', (e) => {
+    //     e.preventDefault();
+    //     $('.page-overlay').style.display = 'none';
+    // }, true);
 
     let expandDetailDiabetes = false;
 

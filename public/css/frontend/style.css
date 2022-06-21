@@ -19485,7 +19485,8 @@ main[data-package=DIABETES] #table-detail thead tr th {
   vertical-align: bottom;
 }
 
-main[data-package=DIABETES] #table-detail tbody tr:nth-child(n+6) {
+main[data-package=DIABETES] #table-detail tbody tr:nth-child(n+6),
+main[data-package=DIABETES] #table-detail tbody tr:nth-child(n+7) {
   display: table-row;
 }
 
@@ -19698,6 +19699,11 @@ main[data-package=DIABETES] .choose-plan-mobile .wrapper-choose-plan .h_2_g {
   align-items: center;
 }
 
+.bmi_title_wrapper {
+  display: flex;
+  align-items: center;
+}
+
 #bmi_result {
   max-width: 230px;
   text-align: center;
@@ -19706,6 +19712,57 @@ main[data-package=DIABETES] .choose-plan-mobile .wrapper-choose-plan .h_2_g {
   border-radius: 20px;
   font-weight: bold;
   margin-left: 20px;
+  margin-right: 20px;
+}
+
+.bmi-tooltip {
+  color: #000000;
+  outline: none;
+  cursor: help;
+  text-decoration: none;
+  position: relative;
+  margin-left: 10px;
+  display: inline-flex;
+  align-items: center;
+}
+
+.bmi-tooltip .span {
+  color: #fff;
+  padding: 0 10px;
+  background-color: #E71618;
+  border-radius: 50%;
+}
+
+.bmi-tooltip .info {
+  margin-left: -999em;
+  position: absolute;
+  padding: 10px 20px;
+  background: #fff;
+  color: #000000;
+  font-size: 0.9em;
+}
+
+.bmi-tooltip:hover .info {
+  box-shadow: 0 0 24px 1px rgba(0, 0, 0, 0.16);
+  border-radius: 10px;
+  position: absolute;
+  z-index: 99;
+  margin-left: 0;
+  width: 250px;
+  top: -275px;
+  left: -250px;
+  content: "";
+  display: inline-flex;
+}
+
+@media all and (min-width: 600px) {
+  .bmi-tooltip:hover .info {
+    width: 300px;
+    top: auto;
+    left: auto;
+    bottom: 30px;
+    right: -300px;
+  }
 }
 
 #btn-more-diabetes {
@@ -19909,6 +19966,13 @@ main[data-package=DIABETES] .choose-plan-mobile .wrapper-choose-plan .h_2_g {
   z-index: 1;
   display: block;
   border-radius: 30px;
+}
+
+@media all and (min-width: 992px) {
+  .dfit_slide_wrapper .dfit-slide-item img:hover {
+    transition: 500ms all cubic-bezier(0.4, 0, 0.2, 1);
+    transform: scale(1.1);
+  }
 }
 
 .dfit_slide_wrapper .tns-controls button {
