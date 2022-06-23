@@ -1,4 +1,12 @@
-import {removeError, showBMIError, showDateError, showError, showFieldError, validateField} from "../validate_form";
+import {
+    removeError,
+    showBMIError,
+    showBMIValidateError,
+    showDateError,
+    showError,
+    showFieldError,
+    validateField
+} from "../validate_form";
 import validate from "validate.js";
 import {
     $,
@@ -272,7 +280,9 @@ document.addEventListener("DOMContentLoaded", async () => {
         $$('.bmi-input .controls-wrapper').forEach(el => {
             el.classList.remove('error');
         });
-        $('.bmi-input cite').innerHTML = "";
+        $('.bmi-input cite.error_weight').innerHTML = "";
+        $('.bmi-input cite.error_height').innerHTML = "";
+        $('.bmi-input cite.bmi_error').innerHTML = "";
 
         const weight = parseInt($('#ctrl_weight').value),
             height = parseInt($('#ctrl_height').value);
@@ -301,7 +311,15 @@ document.addEventListener("DOMContentLoaded", async () => {
             let floatHeight = parseFloat(parseFloat(height).toFixed(2));
             let round_height = (floatHeight / 100);
 
-            if (height > 225 || height <= 0 || weight > 200 || weight <= 0  ) {
+            if( weight > 200 || weight <= 0){
+                showBMIValidateError($('#ctrl_weight').getAttribute('data-error-weight-not-qualify'),'error_weight');
+                showBMIError($('#ctrl_weight').getAttribute('data-error-not-qualify'));
+                bmi_valid = false;
+                return {status: bmi_valid, data: { bmi: bmi_calculated }};
+            }
+
+            if (height > 225 || height <= 0  ) {
+                showBMIValidateError($('#ctrl_weight').getAttribute('data-error-height-not-qualify'),'error_height');
                 showBMIError($('#ctrl_weight').getAttribute('data-error-not-qualify'));
                 bmi_valid = false;
                 return {status: bmi_valid, data: { bmi: bmi_calculated }};
@@ -312,7 +330,9 @@ document.addEventListener("DOMContentLoaded", async () => {
                 showBMIError($('#ctrl_weight').getAttribute('data-error-not-qualify'));
                 bmi_valid = false;
             } else {
-                $('.bmi-input cite').innerHTML = "";
+                $('.bmi-input cite.error_weight').innerHTML = "";
+                $('.bmi-input cite.error_height').innerHTML = "";
+                $('.bmi-input cite.bmi_error').innerHTML = "";
             }
         }
 
