@@ -318,7 +318,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                 return {status: bmi_valid, data: { bmi: bmi_calculated }};
             }
 
-            if (height > 225 || height <= 0  ) {
+            if (height > 220 || height <= 0  ) {
                 showBMIValidateError($('#ctrl_weight').getAttribute('data-error-height-not-qualify'),'error_height');
                 showBMIError($('#ctrl_weight').getAttribute('data-error-not-qualify'));
                 bmi_valid = false;
