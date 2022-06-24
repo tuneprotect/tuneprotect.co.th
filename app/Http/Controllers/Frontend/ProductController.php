@@ -814,6 +814,7 @@ class ProductController extends BaseController
 
         $arr_post['user_defined_2'] = preg_replace('/\?.*/', '', session('return_link'));
         $arr_post['user_defined_3'] = session('partner');
+        $arr_post['user_defined_4'] = $this->thankYouParam;
         $arr_post['result_url_1'] = url("{$this->locale}/{$this->controller}/result");
 
         $arr_post['payment_option'] = $this->payment;
@@ -947,8 +948,10 @@ class ProductController extends BaseController
         $this->bodyData['doc_no'] = $request->session()->get('doc_no');
         $this->bodyData['return_link'] = '/' . $this->locale;
         $this->bodyData['point'] = '';
+        $this->thankYouParam = $request->session()->get('thankyou_param');
 
         $thank_you_page = ProjectEnum::STATIC_PAGE_PAYMENT_THANK_YOU;
+        dd($this->thankYouParam,$request->getRequestUri());
         if(Str::contains($request->getRequestUri(),ProjectEnum::DIABETES_URL)){
             $thank_you_page = ProjectEnum::STATIC_PAGE_PAYMENT_THANK_YOU_DIABETES;
         }
@@ -967,6 +970,8 @@ class ProductController extends BaseController
                 $request->session()->put('doc_no',  $v->result['message']);
                 $request->session()->put('return_link', $request->input('user_defined_2'));
                 $request->session()->put('partner', $request->input('user_defined_3'));
+                $request->session()->put('thankyou_param', $request->input('user_defined_4'));
+                $this->thankYouParam = $request->input('user_defined_4');
                 $func = 'thankyou';
                 return redirect()->route('current', ['locale' => $this->locale, 'controller' => $this->controller, 'func' => $func, 'params' => $this->thankYouParam]);
             }
@@ -985,6 +990,8 @@ class ProductController extends BaseController
                     $request->session()->put('point', $result[1]);
                     $request->session()->put('return_link', $request->input('user_defined_2'));
                     $request->session()->put('partner', $request->input('user_defined_3'));
+                    $request->session()->put('thankyou_param', $request->input('user_defined_4'));
+                    $this->thankYouParam = $request->input('user_defined_4');
                     $func = 'thankyou';
                 } else {
                     $request->session()->put('error', implode(', ', $result[0]));
