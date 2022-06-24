@@ -176,7 +176,7 @@ export const validatePolicyStep5 = async ($this, fdPackage,fdFromDate) => {
         const result = await callValidateApi({...data, fdPackage,fdFromDate})
         if (result.status === 'error') {
             // showFieldError($this, [result.message]);
-            $('button[data-step="4"]').style.display = 'none';
+            $('button[data-step="5"]').style.display = 'none';
             $this.closest('.controls-wrapper').classList.add("error");
 
             Swal.fire({

@@ -52841,7 +52841,7 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /*!********************************************!*\
   !*** ./resources/js/form/productHelper.js ***!
   \********************************************/
-/*! exports provided: getPackageData, getNationalityData, getNationalityDataTH, getProvinceData, getCountryData, validateAgeInPackage, validatePolicyLoc, validatePolicy, validatePolicyPayment, validateQuestion, validateQuestionTG, validateQuestion3, genPrice, checkAge, getSelectedPrice, showTitle, showTitleOnly, showMultipleTitle, formatTelNumber, changeStep, checkTaBirthDate, iTravelCheckBirthDate, checkTaBirthDateIPass, formatInputFieldByLanguage, formatInputFieldOnlyEnglish */
+/*! exports provided: getPackageData, getNationalityData, getNationalityDataTH, getProvinceData, getCountryData, validateAgeInPackage, validatePolicyLoc, validatePolicy, validatePolicyStep5, validatePolicyPayment, validateQuestion, validateQuestionTG, validateQuestion3, genPrice, checkAge, getSelectedPrice, showTitle, showTitleOnly, showMultipleTitle, formatTelNumber, changeStep, checkTaBirthDate, iTravelCheckBirthDate, checkTaBirthDateIPass, formatInputFieldByLanguage, formatInputFieldOnlyEnglish */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -52854,6 +52854,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "validateAgeInPackage", function() { return validateAgeInPackage; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "validatePolicyLoc", function() { return validatePolicyLoc; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "validatePolicy", function() { return validatePolicy; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "validatePolicyStep5", function() { return validatePolicyStep5; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "validatePolicyPayment", function() { return validatePolicyPayment; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "validateQuestion", function() { return validateQuestion; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "validateQuestionTG", function() { return validateQuestionTG; });
@@ -53361,12 +53362,83 @@ var validatePolicy = /*#__PURE__*/function () {
     return _ref8.apply(this, arguments);
   };
 }();
-var validatePolicyPayment = /*#__PURE__*/function () {
-  var _ref9 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee9(pfdNationalID, pfdPackage, pfdFromDate) {
-    var data, result;
+var validatePolicyStep5 = /*#__PURE__*/function () {
+  var _ref9 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee9($this, fdPackage, fdFromDate) {
+    var field, data, result;
     return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee9$(_context9) {
       while (1) {
         switch (_context9.prev = _context9.next) {
+          case 0:
+            field = $this.getAttribute('name'); // console.log({field});
+
+            data = {
+              fdName: null,
+              fdSurname: null,
+              fdNationalID: null
+            };
+            Object.keys(data).map(function (k) {
+              var fieldId = k;
+
+              if (field.startsWith('data_')) {
+                var index = field.split("_")[1];
+                fieldId = "data_".concat(index, "_").concat(k);
+              }
+
+              data = _objectSpread(_objectSpread({}, data), {}, _defineProperty({}, k, Object(_helper__WEBPACK_IMPORTED_MODULE_1__["$"])("#".concat(fieldId)).value));
+            });
+
+            if (!Object.keys(data).every(function (k) {
+              return !!data[k];
+            })) {
+              _context9.next = 16;
+              break;
+            }
+
+            _context9.next = 6;
+            return callValidateApi(_objectSpread(_objectSpread({}, data), {}, {
+              fdPackage: fdPackage,
+              fdFromDate: fdFromDate
+            }));
+
+          case 6:
+            result = _context9.sent;
+
+            if (!(result.status === 'error')) {
+              _context9.next = 14;
+              break;
+            } // showFieldError($this, [result.message]);
+
+
+            Object(_helper__WEBPACK_IMPORTED_MODULE_1__["$"])('button[data-step="5"]').style.display = 'none';
+            $this.closest('.controls-wrapper').classList.add("error");
+            sweetalert2__WEBPACK_IMPORTED_MODULE_4___default.a.fire({
+              icon: 'error',
+              text: result.message
+            });
+            return _context9.abrupt("return", false);
+
+          case 14:
+            Object(_helper__WEBPACK_IMPORTED_MODULE_1__["$"])('button[data-step="5"]').style.display = 'inline-flex';
+            return _context9.abrupt("return", true);
+
+          case 16:
+          case "end":
+            return _context9.stop();
+        }
+      }
+    }, _callee9);
+  }));
+
+  return function validatePolicyStep5(_x10, _x11, _x12) {
+    return _ref9.apply(this, arguments);
+  };
+}();
+var validatePolicyPayment = /*#__PURE__*/function () {
+  var _ref10 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee10(pfdNationalID, pfdPackage, pfdFromDate) {
+    var data, result;
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee10$(_context10) {
+      while (1) {
+        switch (_context10.prev = _context10.next) {
           case 0:
             data = {
               fdNationalID: pfdNationalID,
@@ -53376,14 +53448,14 @@ var validatePolicyPayment = /*#__PURE__*/function () {
             console.log(data);
             console.log(pfdPackage);
             console.log(pfdFromDate);
-            _context9.next = 6;
+            _context10.next = 6;
             return callValidateApi(data);
 
           case 6:
-            result = _context9.sent;
+            result = _context10.sent;
 
             if (!(result.status === 'error')) {
-              _context9.next = 13;
+              _context10.next = 13;
               break;
             }
 
@@ -53392,30 +53464,30 @@ var validatePolicyPayment = /*#__PURE__*/function () {
               icon: 'error',
               text: result.message + ' National ID / Passport : ' + pfdNationalID
             });
-            return _context9.abrupt("return", false);
+            return _context10.abrupt("return", false);
 
           case 13:
             Object(_helper__WEBPACK_IMPORTED_MODULE_1__["$"])('button[data-step="payment"]').style.display = 'inline-flex';
-            return _context9.abrupt("return", true);
+            return _context10.abrupt("return", true);
 
           case 15:
           case "end":
-            return _context9.stop();
+            return _context10.stop();
         }
       }
-    }, _callee9);
+    }, _callee10);
   }));
 
-  return function validatePolicyPayment(_x10, _x11, _x12) {
-    return _ref9.apply(this, arguments);
+  return function validatePolicyPayment(_x13, _x14, _x15) {
+    return _ref10.apply(this, arguments);
   };
 }();
 var validateQuestion = /*#__PURE__*/function () {
-  var _ref10 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee10($this) {
+  var _ref11 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee11($this) {
     var message;
-    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee10$(_context10) {
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee11$(_context11) {
       while (1) {
-        switch (_context10.prev = _context10.next) {
+        switch (_context11.prev = _context11.next) {
           case 0:
             // console.log($this);
             message = "ข้อมูลการสมัครไม่ตรงกับเงื่อนไขเกณฑ์การพิจารณารับประกัน จึงไม่สามารถทำรายการต่อได้";
@@ -53425,48 +53497,6 @@ var validateQuestion = /*#__PURE__*/function () {
             }
 
             if (!($this.value === 'Y' && ($this.id === 'ctrl_question_1_Y' || $this.id === 'ctrl_question_2_Y'))) {
-              _context10.next = 9;
-              break;
-            }
-
-            Object(_helper__WEBPACK_IMPORTED_MODULE_1__["$"])('button[data-step="4"]').style.display = 'none';
-            $this.closest('.controls-wrapper').classList.add("error");
-            sweetalert2__WEBPACK_IMPORTED_MODULE_4___default.a.fire({
-              icon: 'error',
-              text: message
-            });
-            return _context10.abrupt("return", false);
-
-          case 9:
-            Object(_helper__WEBPACK_IMPORTED_MODULE_1__["$"])('button[data-step="4"]').style.display = 'inline-flex';
-            return _context10.abrupt("return", true);
-
-          case 11:
-          case "end":
-            return _context10.stop();
-        }
-      }
-    }, _callee10);
-  }));
-
-  return function validateQuestion(_x13) {
-    return _ref10.apply(this, arguments);
-  };
-}();
-var validateQuestionTG = /*#__PURE__*/function () {
-  var _ref11 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee11($this) {
-    var message;
-    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee11$(_context11) {
-      while (1) {
-        switch (_context11.prev = _context11.next) {
-          case 0:
-            message = "ข้อมูลการสมัครไม่ตรงกับเงื่อนไขเกณฑ์การพิจารณารับประกัน จึงไม่สามารถทำรายการต่อได้";
-
-            if (_helper__WEBPACK_IMPORTED_MODULE_1__["locale"] === 'en') {
-              message = "The application information does not meet the criteria for underwriting insurance, therefore unable to continue the transaction.";
-            }
-
-            if (!($this.value === 'Y' && ($this.id === 'ctrl_question_1_Y' || $this.id === 'ctrl_question_2_Y' || $this.id === 'ctrl_question_3_Y' || $this.id === 'ctrl_question_4_Y'))) {
               _context11.next = 9;
               break;
             }
@@ -53480,9 +53510,10 @@ var validateQuestionTG = /*#__PURE__*/function () {
             return _context11.abrupt("return", false);
 
           case 9:
+            Object(_helper__WEBPACK_IMPORTED_MODULE_1__["$"])('button[data-step="4"]').style.display = 'inline-flex';
             return _context11.abrupt("return", true);
 
-          case 10:
+          case 11:
           case "end":
             return _context11.stop();
         }
@@ -53490,27 +53521,24 @@ var validateQuestionTG = /*#__PURE__*/function () {
     }, _callee11);
   }));
 
-  return function validateQuestionTG(_x14) {
+  return function validateQuestion(_x16) {
     return _ref11.apply(this, arguments);
   };
 }();
-var validateQuestion3 = /*#__PURE__*/function () {
+var validateQuestionTG = /*#__PURE__*/function () {
   var _ref12 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee12($this) {
     var message;
     return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee12$(_context12) {
       while (1) {
         switch (_context12.prev = _context12.next) {
           case 0:
-            // console.log($this);
             message = "ข้อมูลการสมัครไม่ตรงกับเงื่อนไขเกณฑ์การพิจารณารับประกัน จึงไม่สามารถทำรายการต่อได้";
 
             if (_helper__WEBPACK_IMPORTED_MODULE_1__["locale"] === 'en') {
               message = "The application information does not meet the criteria for underwriting insurance, therefore unable to continue the transaction.";
-            } // console.log($this.value);
-            // console.log($this.id);
+            }
 
-
-            if (!($this.value === 'Y' && ($this.id === 'ctrl_question_1_Y' || $this.id === 'ctrl_question_2_Y' || $this.id === 'ctrl_question_5_Y'))) {
+            if (!($this.value === 'Y' && ($this.id === 'ctrl_question_1_Y' || $this.id === 'ctrl_question_2_Y' || $this.id === 'ctrl_question_3_Y' || $this.id === 'ctrl_question_4_Y'))) {
               _context12.next = 9;
               break;
             }
@@ -53534,8 +53562,52 @@ var validateQuestion3 = /*#__PURE__*/function () {
     }, _callee12);
   }));
 
-  return function validateQuestion3(_x15) {
+  return function validateQuestionTG(_x17) {
     return _ref12.apply(this, arguments);
+  };
+}();
+var validateQuestion3 = /*#__PURE__*/function () {
+  var _ref13 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee13($this) {
+    var message;
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee13$(_context13) {
+      while (1) {
+        switch (_context13.prev = _context13.next) {
+          case 0:
+            // console.log($this);
+            message = "ข้อมูลการสมัครไม่ตรงกับเงื่อนไขเกณฑ์การพิจารณารับประกัน จึงไม่สามารถทำรายการต่อได้";
+
+            if (_helper__WEBPACK_IMPORTED_MODULE_1__["locale"] === 'en') {
+              message = "The application information does not meet the criteria for underwriting insurance, therefore unable to continue the transaction.";
+            } // console.log($this.value);
+            // console.log($this.id);
+
+
+            if (!($this.value === 'Y' && ($this.id === 'ctrl_question_1_Y' || $this.id === 'ctrl_question_2_Y' || $this.id === 'ctrl_question_5_Y'))) {
+              _context13.next = 9;
+              break;
+            }
+
+            Object(_helper__WEBPACK_IMPORTED_MODULE_1__["$"])('button[data-step="4"]').style.display = 'none';
+            $this.closest('.controls-wrapper').classList.add("error");
+            sweetalert2__WEBPACK_IMPORTED_MODULE_4___default.a.fire({
+              icon: 'error',
+              text: message
+            });
+            return _context13.abrupt("return", false);
+
+          case 9:
+            return _context13.abrupt("return", true);
+
+          case 10:
+          case "end":
+            return _context13.stop();
+        }
+      }
+    }, _callee13);
+  }));
+
+  return function validateQuestion3(_x18) {
+    return _ref13.apply(this, arguments);
   };
 }();
 var genPrice = function genPrice(birthday, package_data) {
@@ -55779,7 +55851,7 @@ document.addEventListener("DOMContentLoaded", /*#__PURE__*/_asyncToGenerator( /*
 /*!***************************************!*\
   !*** ./resources/js/validate_form.js ***!
   \***************************************/
-/*! exports provided: showFieldError, validateField, removeErrorMessage, removeError, showError, showDateError, showBMIError */
+/*! exports provided: showFieldError, validateField, removeErrorMessage, removeError, showError, showDateError, showBMIError, showBMIValidateError */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -55791,6 +55863,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "showError", function() { return showError; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "showDateError", function() { return showDateError; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "showBMIError", function() { return showBMIError; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "showBMIValidateError", function() { return showBMIValidateError; });
 /* harmony import */ var validate_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! validate.js */ "./node_modules/validate.js/validate.js");
 /* harmony import */ var validate_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(validate_js__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _helper__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./helper */ "./resources/js/helper.js");
@@ -55881,7 +55954,14 @@ var showDateError = function showDateError(message) {
   });
 };
 var showBMIError = function showBMIError(message) {
-  Object(_helper__WEBPACK_IMPORTED_MODULE_1__["$"])('.bmi-input cite').innerHTML = message;
+  Object(_helper__WEBPACK_IMPORTED_MODULE_1__["$"])('.bmi-input cite.bmi_error').innerHTML = message;
+  Object(_helper__WEBPACK_IMPORTED_MODULE_1__["$$"])('.bmi-input .controls-wrapper').forEach(function (el) {
+    el.classList.add('error');
+  });
+  Object(_helper__WEBPACK_IMPORTED_MODULE_1__["scrollToTargetAdjusted"])(Object(_helper__WEBPACK_IMPORTED_MODULE_1__["$"])('.controls-wrapper.error'));
+};
+var showBMIValidateError = function showBMIValidateError(message, selector) {
+  Object(_helper__WEBPACK_IMPORTED_MODULE_1__["$"])('.bmi-input cite.' + selector).innerHTML = message;
   Object(_helper__WEBPACK_IMPORTED_MODULE_1__["$$"])('.bmi-input .controls-wrapper').forEach(function (el) {
     el.classList.add('error');
   });

@@ -28390,7 +28390,7 @@ document.addEventListener("DOMContentLoaded", /*#__PURE__*/_asyncToGenerator( /*
 /*!***************************************!*\
   !*** ./resources/js/validate_form.js ***!
   \***************************************/
-/*! exports provided: showFieldError, validateField, removeErrorMessage, removeError, showError, showDateError, showBMIError */
+/*! exports provided: showFieldError, validateField, removeErrorMessage, removeError, showError, showDateError, showBMIError, showBMIValidateError */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -28402,6 +28402,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "showError", function() { return showError; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "showDateError", function() { return showDateError; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "showBMIError", function() { return showBMIError; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "showBMIValidateError", function() { return showBMIValidateError; });
 /* harmony import */ var validate_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! validate.js */ "./node_modules/validate.js/validate.js");
 /* harmony import */ var validate_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(validate_js__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _helper__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./helper */ "./resources/js/helper.js");
@@ -28492,7 +28493,14 @@ var showDateError = function showDateError(message) {
   });
 };
 var showBMIError = function showBMIError(message) {
-  Object(_helper__WEBPACK_IMPORTED_MODULE_1__["$"])('.bmi-input cite').innerHTML = message;
+  Object(_helper__WEBPACK_IMPORTED_MODULE_1__["$"])('.bmi-input cite.bmi_error').innerHTML = message;
+  Object(_helper__WEBPACK_IMPORTED_MODULE_1__["$$"])('.bmi-input .controls-wrapper').forEach(function (el) {
+    el.classList.add('error');
+  });
+  Object(_helper__WEBPACK_IMPORTED_MODULE_1__["scrollToTargetAdjusted"])(Object(_helper__WEBPACK_IMPORTED_MODULE_1__["$"])('.controls-wrapper.error'));
+};
+var showBMIValidateError = function showBMIValidateError(message, selector) {
+  Object(_helper__WEBPACK_IMPORTED_MODULE_1__["$"])('.bmi-input cite.' + selector).innerHTML = message;
   Object(_helper__WEBPACK_IMPORTED_MODULE_1__["$$"])('.bmi-input .controls-wrapper').forEach(function (el) {
     el.classList.add('error');
   });

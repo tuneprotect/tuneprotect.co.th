@@ -19614,6 +19614,21 @@ main[data-package=DIABETES] form .bmi-input .bmi-wrapper > div {
   }
 }
 
+main[data-package=DIABETES] form .bmi-input .error_height,
+main[data-package=DIABETES] form .bmi-input .error_weight {
+  position: absolute;
+  font-size: 0.6rem;
+  pointer-events: none;
+  bottom: 50px;
+  text-align: right;
+  left: 0;
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-weight: bold;
+}
+
 main[data-package=DIABETES] .choose-plan-mobile {
   display: flex;
   margin: 20px 0;
