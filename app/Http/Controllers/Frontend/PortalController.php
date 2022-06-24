@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Frontend;
 use GuzzleHttp\Client;
 use Illuminate\Http\Request;
 use App\Enum\ProjectEnum;
+use Illuminate\Support\Str;
+
 // use App\Http\Requests\MemberidRequest;
 
 class PortalController extends ProductController
@@ -219,8 +221,12 @@ class PortalController extends ProductController
             }
 
         }
-        // Todo : check param query string (in request) static payment thank you.
-        return $this->genStatusPage_Portal(ProjectEnum::STATIC_PAGE_PAYMENT_THANK_YOU);
+
+        $thank_you_page = ProjectEnum::STATIC_PAGE_PAYMENT_THANK_YOU;
+        if(Str::contains($request->getRequestUri(),ProjectEnum::DIABETES_URL)){
+            $thank_you_page = ProjectEnum::STATIC_PAGE_PAYMENT_THANK_YOU_DIABETES;
+        }
+        return $this->genStatusPage_Portal($thank_you_page);
 
     }
 

@@ -25,7 +25,7 @@ import {
     getSelectedPrice,
     showTitle,
     validateAgeInPackage,
-    validatePolicy
+    validatePolicy, validatePolicyStep5
 } from "../form/productHelper";
 
 import Swal from "sweetalert2";
@@ -216,10 +216,10 @@ document.addEventListener("DOMContentLoaded", async () => {
     let channel = $("#channel")?.value;
     channel = (channel ? channel : 'TPT Website');
 
-    if ($("#controller")?.value == 'portal') {
-        let aBrochureci = document.getElementById('brochure_diabetes');
-        aBrochureci.href = $("#brochure_diabetes")?.value;
-    }
+    // if ($("#controller")?.value == 'portal') {
+    //     let aBrochureci = document.getElementById('brochure_diabetes');
+    //     aBrochureci.href = $("#brochure_diabetes")?.value;
+    // }
 
     const package_data = await getPackageData(current_package, $("#channel")?.value);
 
@@ -394,7 +394,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         field.addEventListener("change", function (e) {
             validateField(this, constraints);
             if (['fdName', 'fdSurname', 'fdNationalID'].includes(field.id)) {
-                validatePolicy(e.target, data.fdPackage);
+                validatePolicyStep5(e.target, data.fdPackage);
             }
         });
     });

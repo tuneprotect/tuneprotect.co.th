@@ -159,6 +159,38 @@ export const validatePolicy = async ($this, fdPackage,fdFromDate) => {
     }
 }
 
+export const validatePolicyStep5 = async ($this, fdPackage,fdFromDate) => {
+    let field = $this.getAttribute('name');
+    // console.log({field});
+    let data = {fdName: null, fdSurname: null, fdNationalID: null}
+    Object.keys(data).map((k) => {
+        let fieldId = k;
+        if (field.startsWith('data_')) {
+            const index = field.split("_")[1];
+            fieldId = `data_${index}_${k}`;
+        }
+        data = {...data, [k]: $(`#${fieldId}`).value}
+    });
+
+    if (Object.keys(data).every((k) => !!data[k])) {
+        const result = await callValidateApi({...data, fdPackage,fdFromDate})
+        if (result.status === 'error') {
+            // showFieldError($this, [result.message]);
+            $('button[data-step="4"]').style.display = 'none';
+            $this.closest('.controls-wrapper').classList.add("error");
+
+            Swal.fire({
+                icon: 'error',
+                text: result.message
+            })
+            return false;
+        } else {
+            $('button[data-step="5"]').style.display = 'inline-flex';
+            return true;
+        }
+    }
+}
+
 export const validatePolicyPayment = async (pfdNationalID,pfdPackage,pfdFromDate) => {
     let data = {fdNationalID: pfdNationalID,fdPackage: pfdPackage,fdFromDate:pfdFromDate}
     console.log(data);
