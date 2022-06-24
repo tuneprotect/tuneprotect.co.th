@@ -589,7 +589,6 @@ class ProductController extends BaseController
             $result = $this->logData($obj);
             $log_id[] = $result->log_id;
 
-
             $arr['fdInvoice'] = config('project.invoice_prefix') . $result->fdInvoice;
             $price = $obj->fdPayAMT;
 
@@ -603,7 +602,6 @@ class ProductController extends BaseController
                 }
             }
 
-
             if (session('nopayment_status')) {
                 return $this->noPayment($result, $price, $log_id);
             }
@@ -611,6 +609,11 @@ class ProductController extends BaseController
             return $this->sendTo2C2P($result, $price, $log_id);
 
         } else {
+
+            if(Str::contains($data['fdPackage'],ProjectEnum::DIABETES_URL)){
+                $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::DIABETES_URL;
+            }
+
             $obj = $this->combindObj($data);
             $result = $this->logData($obj);
 
@@ -948,14 +951,12 @@ class ProductController extends BaseController
         $this->bodyData['doc_no'] = $request->session()->get('doc_no');
         $this->bodyData['return_link'] = '/' . $this->locale;
         $this->bodyData['point'] = '';
-        $this->thankYouParam = $request->session()->get('thankyou_param');
+        //$this->thankYouParam = $request->session()->get('thankyou_param');
 
         $thank_you_page = ProjectEnum::STATIC_PAGE_PAYMENT_THANK_YOU;
-        dd($this->thankYouParam,$request->getRequestUri());
         if(Str::contains($request->getRequestUri(),ProjectEnum::DIABETES_URL)){
             $thank_you_page = ProjectEnum::STATIC_PAGE_PAYMENT_THANK_YOU_DIABETES;
         }
-
         return $this->genStatusPage($thank_you_page);
     }
 
