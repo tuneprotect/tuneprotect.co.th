@@ -32,7 +32,10 @@ class ServiceController extends BaseController
         {
             return redirect('/taxdeduction');
         }
-
+//        if(strtolower($link) == 'bloodtest')
+//        {
+//            return redirect('/bloodtest');
+//        }
 
         $content = WebContent::where('type_id', ProjectEnum::WEB_CONTENT_SERVICE_MY_HEALTH)
             ->with('locales')
@@ -43,7 +46,11 @@ class ServiceController extends BaseController
         $this->template->setFootJS(mix("/js/frontend/service.js"));
 
         if ($content) {
-
+            if(strtolower($link) == 'bloodtest')
+            {
+//                $this->bodyData['no_share'] = true;
+                $this->bodyData['bloodTestComponent'] = 'frontend.page.blood_test';
+            }
             $this->bodyData['extraComponent'] = 'frontend.component.mso-form';
 
             if(strtolower($linkTemp) == 'health2goview')
@@ -97,6 +104,25 @@ class ServiceController extends BaseController
     public function claiminfo()
     {
         return $this->genView('frontend.page.claim_info');
+
+    }
+
+    public function sendBloodTestOTP(Request $request)
+    {
+        $client = new Client();
+        $response = $client->request('POST', config('tune-api.url') . 'SendBloodTestOTP', [
+            'auth' => [config('tune-api.user'), config('tune-api.password')],
+            'headers' => [
+                'Content-Type' => 'application/json'
+            ],
+            'body' => json_encode([
+                'IDCard' => $request->input('IDCard'),
+                'Policy_No' => $request->input('Policy_No'),
+                'Mobile' => $request->input('Mobile'),
+            ])
+        ]);
+
+        return json_decode($response->getBody()->getContents(), true);
 
     }
 
