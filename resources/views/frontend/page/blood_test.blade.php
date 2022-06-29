@@ -6,23 +6,24 @@
           id="frm_bloodtest" method="post">
 
         <div class="form-inner">
-            <span class="small"><b>โปรดระบุเลขประจำตัวประชาชน หรือ หนังสือเดินทาง (ID card number or Passport number)</b> </span>
+            <span class="small"><b>โปรดระบุเลขประจำตัวประชาชน หรือ หนังสือเดินทาง (ID card number or Passport number)</b></span>
             <div class="controls-wrapper">
                 <input data-error-required="โปรดระบุเลขประจำตัวประชาชน หรือ หนังสือเดินทาง (ID card number or Passport number)"
                        id="ctrl_card_id" name="card_id" placeholder="เลขที่บัตรประชาชน/หนังสือเดินทาง" required="required" type="text" />
                 <label for="ctrl_card_id">เลขที่บัตรประชาชน/หนังสือเดินทาง</label></div>
-            <span class="small"> <b>โปรดระบุเลขที่กรมธรรม์ประกันภัยเบาหวาน Protect ของคุณ (Your Policy number diabetes insurance.)</b> </span>
 
+            <span class="small"> <b>โปรดระบุเลขที่กรมธรรม์ประกันภัยเบาหวาน Protect ของคุณ (Your Policy number diabetes insurance.)</b></span>
             <div class="controls-wrapper">
                 <input data-error-required="โปรดระบุเลขที่กรมธรรม์ประกันภัยเบาหวาน Protect ของคุณ (Your Policy number diabetes insurance.)"
                        id="ctrl_policy_no" name="policy_no" placeholder="โปรดระบุเลขที่กรมธรรม์ประกันภัยเบาหวาน Protect ของคุณ" required="required" type="text" />
                 <label for="ctrl_policy_no">เลขที่กรมธรรม์ประกันภัยเบาหวาน Protect ของคุณ</label></div>
-            <span class="small"> <b>เบอร์โทรศัพท์ (Mobile number)</b> </span>
 
+            <span class="small"> <b>เบอร์โทรศัพท์ (Mobile number)</b></span>
             <div class="controls-wrapper">
                 <input data-error-required="โปรดระบุหมายเลขโทรศัพท์"
                        id="ctrl_mobile" name="mobile" placeholder="โปรดระบุหมายเลขโทรศัพท์" required="required" type="text" />
                 <label for="ctrl_mobile">โปรดระบุหมายเลขโทรศัพท์</label></div>
+
         </div>
         <div>
             <h2><span class="small">โรงพยาบาลในเครือที่สามารถเข้ารับบริการตรวจเลือดฟรี</span></h2>
@@ -61,7 +62,7 @@
         </div>
         <br>
         <div class="text-center">
-            <button class="btn btn-primary" data-gtm="bloodtest-form-submit">เริ่มต้นใช้บริการ</button>
+            <button class="btn btn-primary" data-gtm="bloodtest-form-submit">รับบริการตรวจเลือด</button>
         </div>
     </form>
 </section>
