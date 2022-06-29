@@ -34,7 +34,11 @@ class ClaimController extends BaseController
 
 
         if ($content) {
-            return $this->genStaticPage($content, 'frontend.page.static');
+            if($link){
+                return $this->genStaticPage($content, 'frontend.page.static_diabetes');
+            }else{
+                return $this->genStaticPage($content, 'frontend.page.static');
+            }
         }
 
     }

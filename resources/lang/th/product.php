@@ -711,6 +711,7 @@ return [
     "question_diabetes_3"=>"<strong>3. ดัชนีมวลกาย (BMI) ของท่าน ตามข้อมูลที่ได้กรอกไว้ เกิน 35 หรือไม่?</strong>",
     "question_diabetes_4"=>"ดัชนีมวลกาย (BMI) ของท่านคือ",
     "question_diabetes_4_1"=>"(นี่เป็นค่า BMI ของคุณ ที่ได้คำนวณไว้ก่อนหน้านี้)",
+    "diabetes_claim_title"=>"เคลม"
 ];
 
 
