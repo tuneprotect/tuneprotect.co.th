@@ -4,6 +4,7 @@ import validate from "validate.js";
 import {showFieldError, validateField} from "./validate_form";
 
 import {tns} from "tiny-slider/src/tiny-slider"
+import {showTitle} from "./form/productHelper";
 
 document.addEventListener("DOMContentLoaded", function () {
     const toggltField = (isShow) => {
@@ -108,12 +109,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
                     const $ddlHospital = $('#ctrl_hospital');
                     const hospital = $ddlHospital.options[$ddlHospital.selectedIndex].text;
-
                     let param = $('#ctrl_ref_code').value + '|' + hospital;
-
                     $summary_section.innerHTML = innerHTML;
                     const $submit_section = $('#submit_section');
-                    $submit_section.innerHTML = `<div class="btn-wrapper"><a class="btn btn-primary" href="/${$('html').getAttribute('lang')}/BloodTest/UsedBloodTest/${param}">กดใช้สิทธิ์</a></div>`;
+                    $submit_section.innerHTML = `<div class="btn-wrapper"><a id="btnThank" class="btn btn-primary" href="/${$('html').getAttribute('lang')}/BloodTest/UsedBloodTest/${param}">กดใช้สิทธิ์</a></div>`;
 
                 } else {
                     Swal.fire(
@@ -154,30 +153,45 @@ document.addEventListener("DOMContentLoaded", function () {
 
         });
 
+        $$("#ctrl_hospital").forEach($el => {
+            $el.addEventListener("change", function (e) {
+
+                let url = $frmBloodCheck.getAttribute('action2') + $('#ctrl_ref_code').value + '|' + $el.options[$el.selectedIndex].text;
+                let btnThank = document.getElementById('btnThank');
+                btnThank.href = url;
+
+            });
+        });
+
+
         // $$('button[name="action"]', $frmBloodCheck).forEach($el => $el.addEventListener("click", async function (e) {
         //     e.preventDefault();
-        //
         //     const $ddlHospital = $('#ctrl_hospital');
         //     const hospital = $ddlHospital.options[$ddlHospital.selectedIndex].text;
-        //     alert(hospital);
+        //     let param = $('#ctrl_ref_code').value + '|' + hospital;
         //
-        //     let data = {
-        //         RefCode: $('#ctrl_ref_code').value,
-        //         Hospital: hospital,
-        //     }
+        //     // const $submit_section = $('#submit_section');
+        //     // $submit_section.innerHTML = `<div class="btn-wrapper"><a id="my-link" class="btn btn-primary" href="/${$('html').getAttribute('lang')}/BloodTest/UsedBloodTest/${param}">กดใช้สิทธิ์</a></div>`;
+        //     // let link = document.getElementById('my-link');
+        //     // link.click();
         //
-        //     alert($frmBloodCheck.getAttribute('action2'));
+        //     // $.post($frmBloodCheck.getAttribute('action2') + param, function(response) {
+        //     //     // handle your response here
+        //     //     console.log(response);
+        //     // })
         //
-        //     let res = await fetch($frmBloodCheck.getAttribute('action2'), {
-        //         method: 'post',
-        //         headers: {
-        //             'Accept': 'application/json',
-        //             'Content-Type': 'application/json',
-        //             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').getAttribute('content')
-        //         },
-        //         body: JSON.stringify(data)
-        //     });
-        //
+        //     // alert($frmBloodCheck.getAttribute('action2'));
+        //     //
+        //     // let res = await fetch(url, {
+        //     //     method: 'post',
+        //     //     headers: {
+        //     //         'Accept': 'application/json',
+        //     //         'Content-Type': 'application/json',
+        //     //         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').getAttribute('content')
+        //     //     }
+        //     // });
+        //     //
+        //     // return true;
         //
         // }));
 
