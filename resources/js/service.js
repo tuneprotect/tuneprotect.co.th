@@ -314,5 +314,4 @@ document.addEventListener("DOMContentLoaded", async () => {
             $frmBloodtest.classList.remove('ajax_loader');
         }
     }
-
 });
