@@ -97,7 +97,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                <div><span>ชื่อ </span><strong>${v.FDNAME}</strong><span> นามสกุล </span><strong>${v.FDSURNAME}</strong></div>
                                <div><span>เลขที่กรมธรรม์ </span><strong>${v.POLICY_NO}</strong></div>
                                <div><span>ประกันภัยที่ได้รับความคุ้มครอง </span><strong>ประกันภัยเบาหวาน โพรเทค</span></strong></div>
-                               <div><span>วันที่หมดอายุความคุ้มครอง </span><strong>${v.FDFROMDATE}</strong></div>
+                               <div><span>วันที่เริ่มต้นความคุ้มครอง </span><strong>${v.FDFROMDATE}</strong></div>
                                <div><span>วันที่สิ้นสุดความคุ้มครอง </span><strong>${v.FDTODATE}</strong></div>
                                <div><span>Free Blood Test </span><strong>ได้รับ 1 สิทธิ์/ปี</strong></div>
                             </div>
