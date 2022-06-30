@@ -1,6 +1,6 @@
 <section class="wrapper" id="bloodtest-section">
     <form action="/{{$locale}}/Service/sendBloodTestOTP" class="insurance-form" data-form-type="taxdeductionform"
-          data-error="ขออภัย กรุณาลองใหม่อีกครั้ง"
+          data-error="ขออภัย"
           data-error-description="เนื่องจากเกิดข้อผิดพลาดบางประการ"
           data-success-description="ขอบคุณค่ะ โค้ดได้ถูกส่งไปยังเบอร์มือถือของท่านแล้ว! <br> สามารถแจ้งโค้ดของคุณ เพื่อรับบริการตรวจเลือดฟรี! ได้ที่ <br> โรงพยาบาลที่ท่านเลือก"
           id="frm_bloodtest" method="post">
