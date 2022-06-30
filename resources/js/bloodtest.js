@@ -84,10 +84,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     body: JSON.stringify(data)
                 });
                 const response = await res.json();
-
                 if (response.status) {
-                    toggltField(true);
-
                     const $summary_section = $('#summary_section');
                     $summary_section.innerHTML = ``;
 
@@ -114,6 +111,8 @@ document.addEventListener("DOMContentLoaded", function () {
                     const $submit_section = $('#submit_section');
                     $submit_section.innerHTML = `<div class="btn-wrapper"><a id="btnThank" class="btn btn-primary" href="/${$('html').getAttribute('lang')}/BloodTest/UsedBloodTest/${param}">กดใช้สิทธิ์</a></div>`;
 
+                    toggltField(true);
+
                 } else {
                     Swal.fire(
                         $frmBloodCheck.getAttribute('data-error'),
@@ -137,6 +136,8 @@ document.addEventListener("DOMContentLoaded", function () {
             $$('cite', $frmBloodCheck).forEach($el => $el.remove());
             $$('.controls-wrapper', $frmBloodCheck).forEach($el => $el.classList.remove('error'));
             $$('input,select,textarea', $frmBloodCheck).forEach($el => $el.classList.remove('error'));
+
+            toggltField(false);
 
             let data = {
                 RefCode: $('#ctrl_ref_code').value,

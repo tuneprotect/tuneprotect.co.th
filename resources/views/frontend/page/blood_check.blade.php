@@ -33,7 +33,7 @@
 {{--            <div id="summary_section" name="summary_section" class="form-inner"></div>--}}
 {{--        </div>--}}
 
-        <div id="summary_section" name="summary_section" class="form-inner"></div>
+        <div id="summary_section" name="summary_section" class="form-inner hideField"></div>
 
 
         <div class="controls-wrapper hideField">
