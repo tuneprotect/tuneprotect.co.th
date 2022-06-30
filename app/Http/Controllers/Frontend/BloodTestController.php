@@ -18,7 +18,7 @@ class BloodTestController extends BaseController
     public function index($link = null)
     {
         if (!empty($link)) {
-            if($link!=='BloodCheck')
+            if(strtolower($link)!=='bloodcheck')
             {
                 abort(404);
             }
