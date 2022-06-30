@@ -5,7 +5,7 @@
             <thead>
             <tr>
                 <th>
-                    <h3>@lang('product.ci_coverage')</h3>
+                    <h3>@lang('global.coverage')</h3>
                     <?php $i = 1 ?>
                     <div class="choose-plan-mobile">
                         @foreach ($package_detail as $k => $v)
