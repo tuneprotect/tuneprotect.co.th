@@ -33,14 +33,8 @@ class ClaimController extends BaseController
             ->whereRaw(ProjectEnum::isPublish())
             ->first();
 
-
         if ($content) {
-            if($link == Str::lower(ProjectEnum::DIABETES_URL)){
-                return $this->genStaticPage($content, 'frontend.page.static_diabetes');
-            }else{
-                return $this->genStaticPage($content, 'frontend.page.static');
-            }
+            return $this->genStaticPage($content, 'frontend.page.static');
         }
-
     }
 }
