@@ -92,14 +92,14 @@ document.addEventListener("DOMContentLoaded", function () {
                     let innerHTML =  ``;
                     respData.map(v => {
                         innerHTML = innerHTML + `<br>
-                            <h3 class="text-primary">ข้อมูลลูกค้าในการรับสิทธิ์</h3>
+                            <h3 class="text-primary">${$('label[for=policy_info]').innerText}</h3>
                             <div class="two-col">
-                               <div><span>ชื่อ </span><strong>${v.FDNAME}</strong><span> นามสกุล </span><strong>${v.FDSURNAME}</strong></div>
-                               <div><span>เลขที่กรมธรรม์ </span><strong>${v.POLICY_NO}</strong></div>
-                               <div><span>ประกันภัยที่ได้รับความคุ้มครอง </span><strong>ประกันภัยเบาหวาน โพรเทค</span></strong></div>
-                               <div><span>วันที่เริ่มต้นความคุ้มครอง </span><strong>${v.FDFROMDATE}</strong></div>
-                               <div><span>วันที่สิ้นสุดความคุ้มครอง </span><strong>${v.FDTODATE}</strong></div>
-                               <div><span>Free Blood Test </span><strong>ได้รับ 1 สิทธิ์/ปี</strong></div>
+                               <div><span>${$('label[for=policy_name]').innerText} </span><strong>${v.FDNAME}</strong><span> ${$('label[for=policy_sure_name]').innerText} </span><strong>${v.FDSURNAME}</strong></div>
+                               <div><span>${$('label[for=policy_no]').innerText} </span><strong>${v.POLICY_NO}</strong></div>
+                               <div><span>${$('label[for=policy_plan]').innerText} </span><strong>${$('label[for=policy_plan_description]').innerText}</span></strong></div>
+                               <div><span>${$('label[for=policy_from]').innerText} </span><strong>${v.FDFROMDATE}</strong></div>
+                               <div><span>${$('label[for=policy_to]').innerText} </span><strong>${v.FDTODATE}</strong></div>
+                               <div><span>Free Blood Test </span><strong>${$('label[for=policy_privilege]').innerText}</strong></div>
                             </div>
                             <br>`;
                     });
@@ -109,7 +109,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     let param = $('#ctrl_ref_code').value + '|' + hospital;
                     $summary_section.innerHTML = innerHTML;
                     const $submit_section = $('#submit_section');
-                    $submit_section.innerHTML = `<div class="btn-wrapper"><a id="btnThank" class="btn btn-primary" href="/${$('html').getAttribute('lang')}/BloodTest/UsedBloodTest/${param}">กดใช้สิทธิ์</a></div>`;
+                    $submit_section.innerHTML = `<div class="btn-wrapper"><a id="btnThank" class="btn btn-primary" href="/${$('html').getAttribute('lang')}/BloodTest/UsedBloodTest/${param}">${$('label[for=policy_submit3]').innerText}</a></div>`;
 
                     toggltField(true);
 
@@ -141,6 +141,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             let data = {
                 RefCode: $('#ctrl_ref_code').value,
+                Lang:$('html').getAttribute('lang')
             }
 
             const result = validate(data, contactConstraints3);

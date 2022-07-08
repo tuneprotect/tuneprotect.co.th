@@ -119,6 +119,7 @@ class ServiceController extends BaseController
                 'IDCard' => $request->input('IDCard'),
                 'Policy_No' => $request->input('Policy_No'),
                 'Mobile' => $request->input('Mobile'),
+                'Lang' => $request->input('Lang'),
             ])
         ]);
 

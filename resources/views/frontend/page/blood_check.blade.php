@@ -20,6 +20,19 @@
                     </div>
                 </div>
             </div>
+
+        <label for="policy_info" type="hidden">@lang("product.blood_test.policy-info")</label>
+        <label for="policy_name" type="hidden">@lang("product.blood_test.policy-name")</label>
+        <label for="policy_sure_name" type="hidden">@lang("product.blood_test.policy-sure-name")</label>
+        <label for="policy_no" type="hidden">@lang("product.blood_test.policy-no")</label>
+        <label for="policy_plan" type="hidden">@lang("product.blood_test.policy-plan")</label>
+        <label for="policy_from" type="hidden">@lang("product.blood_test.policy-from")</label>
+        <label for="policy_to" type="hidden">@lang("product.blood_test.policy-to")</label>
+        <label for="policy_privilege" type="hidden">@lang("product.blood_test.policy-privilege")</label>
+        <label for="policy_plan_description" type="hidden">@lang("product.blood_test.policy-privilege")</label>
+        <label for="policy_plan_description" type="hidden">@lang("product.blood_test.policy-privilege")</label>
+        <label for="policy_submit3" type="hidden">@lang("product.blood_test.submit3")</label>
+
         <div id="summary_section" name="summary_section" class="form-inner hideField"></div>
 
 
@@ -52,7 +65,7 @@
                         <option value="">โรงพยาบาลการุญเวช ปทุมธานี (Karunvej Pathumthani Hospital)</option>
                         <option value="">โรงพยาบาลการุญเวช อยุธยา (Karunvej Ayutthaya Hospital)</option>
                     </select>
-                    <label for="ctrl_hospital">@lang("product.blood_test.hospital-validation")</label>
+{{--                    <label for="ctrl_hospital">@lang("product.blood_test.hospital-validation")</label>--}}
                 </div>
             </div>
         </div>

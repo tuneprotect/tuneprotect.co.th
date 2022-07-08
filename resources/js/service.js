@@ -253,6 +253,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                 IDCard: $('#ctrl_card_id').value,
                 Policy_No: $('#ctrl_policy_no').value,
                 Mobile: $('#ctrl_mobile').value,
+                Lang:$('html').getAttribute('lang'),
             }
 
             const result = validate(data, contactConstraints2);

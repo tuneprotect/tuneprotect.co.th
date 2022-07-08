@@ -52,6 +52,7 @@ class BloodTestController extends BaseController
             ],
             'body' => json_encode([
                 'RefCode' => $request->input('RefCode'),
+                'Lang' => $request->input('Lang'),
             ])
         ]);
 
