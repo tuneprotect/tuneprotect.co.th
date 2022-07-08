@@ -711,7 +711,32 @@ return [
     "question_diabetes_3"=>"<strong>3. ดัชนีมวลกาย (BMI) ของท่าน ตามข้อมูลที่ได้กรอกไว้ เกิน 35 หรือไม่?</strong>",
     "question_diabetes_4"=>"ดัชนีมวลกาย (BMI) ของท่านคือ",
     "question_diabetes_4_1"=>"(นี่เป็นค่า BMI ของคุณ ที่ได้คำนวณไว้ก่อนหน้านี้)",
-    "diabetes_claim_title"=>"เคลม"
+    "diabetes_claim_title"=>"เคลม",
+    "blood_test" => [
+        "data-error" => "ขออภัย",
+        "data-error-description" => "เนื่องจากเกิดข้อผิดพลาดบางประการ",
+        "data-success-description" => "ขอบคุณค่ะ โค้ดได้ถูกส่งไปยังเบอร์มือถือของท่านแล้ว! <br> สามารถแจ้งโค้ดของคุณ เพื่อรับบริการตรวจเลือดฟรี! ได้ที่ <br> โรงพยาบาลที่ท่านเลือก",
+        "code-validation" => "โปรดใส่โค้ดตรวจเลือดฟรี ของลูกค้าเพื่อตรวจสอบสิทธิ์(Please fill in a free blood test code for validation.)",
+        "code-placeholder" => "โปรดใส่โค้ดตรวจเลือดฟรี",
+        "submit" => "รับบริการตรวจเลือด",
+        "hospital-select" => "เลือกโรงพยาบาลในเครือที่ลูกค้าต้องการเข้ารับบริการตรวจเลือด (Please select a Hospital in the network to receive a free blood test code.)",
+        "hospital-validation" => "โปรดเลือกโรงพยาบาล",
+        "hospital" => "โรงพยาบาลในเครือที่สามารถเข้ารับบริการตรวจเลือดฟรี",
+        "underwrite-condition" => "เงื่อนไขการให้บริการ",
+        "underwrite-condition1" => "1. ผู้ที่สามารถใช้บริการโปรแกรมตรวจเลือดได้คือ ลูกค้าที่ถือกรมธรรม์ของ Tune Protect Thailand ตามแผนประกันเบาหวาน Protect (Bao wan protect)",
+        "underwrite-condition2" => "2. ใช้บริการได้ 1 สิทธิต่อ 1 กรมธรรม์* (เป็นไปตามบริษัทกำหนด) โดยสามารถใช้ได้ตั้งแต่วันที่กรมธรรม์มีผลบังคับ",
+        "underwrite-condition3" => "3. ไม่สามารถโอนสิทธิให้ผู้อื่นหรือแลกเปลี่ยนหรือทอนเป็นเงินสดหรือสิ่งอื่นได้",
+        "underwrite-condition4" => "4. ทั้งนี้เงื่อนไขเป็นไปตามบริษัทฯ กำหนด และบริษัทฯ ขอสงวนสิทธิในการเปลี่ยนแปลงโปรโมชันได้โดยไม่แจ้งล่วงหน้า",
+        "underwrite-condition5" => "5. บริการตรวจเลือดฟรี เป็นการตรวจน้ำตาลในเลือดย้อนหลัง 3 เดือน โดยไม่พบแพทย์ และไม่ต้องงดน้ำหรืออาหารเพื่อรับการตรวจ",
+        "card-validation" => "โปรดระบุเลขประจำตัวประชาชน หรือ หนังสือเดินทาง (ID card number or Passport number)",
+        "card-placeholder" => "เลขที่บัตรประชาชน/หนังสือเดินทาง",
+        "policy-validation" => "โปรดระบุเลขที่กรมธรรม์ประกันภัยเบาหวาน Protect ของคุณ (Your Policy number diabetes insurance.)",
+        "policy-placeholder" => "โปรดระบุเลขที่กรมธรรม์ประกันภัยเบาหวาน Protect ของคุณ",
+        "policy" => "เลขที่กรมธรรม์ประกันภัยเบาหวาน Protect ของคุณ",
+        "mobile" => "เบอร์โทรศัพท์ (Mobile number)",
+        "mobile-validation" => "โปรดระบุหมายเลขโทรศัพท์",
+        "submit2" => "รับบริการตรวจเลือด",
+        ],
 ];
 
 

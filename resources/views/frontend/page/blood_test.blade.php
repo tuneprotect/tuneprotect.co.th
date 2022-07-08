@@ -1,32 +1,32 @@
 <section class="wrapper" id="bloodtest-section">
     <form action="/{{$locale}}/Service/sendBloodTestOTP" class="insurance-form" data-form-type="taxdeductionform"
-          data-error="ขออภัย"
-          data-error-description="เนื่องจากเกิดข้อผิดพลาดบางประการ"
-          data-success-description="ขอบคุณค่ะ โค้ดได้ถูกส่งไปยังเบอร์มือถือของท่านแล้ว! <br> สามารถแจ้งโค้ดของคุณ เพื่อรับบริการตรวจเลือดฟรี! ได้ที่ <br> โรงพยาบาลที่ท่านเลือก"
+          data-error="@lang("product.blood_test.data-error")"
+          data-error-description="@lang("product.blood_test.data-error-description")"
+          data-success-description="@lang("product.blood_test.data-success-description")"
           id="frm_bloodtest" method="post">
 
         <div class="form-inner">
-            <span class="small"><b>โปรดระบุเลขประจำตัวประชาชน หรือ หนังสือเดินทาง (ID card number or Passport number)</b></span>
+            <span class="small"><b>@lang("product.blood_test.card-validation")</b></span>
             <div class="controls-wrapper">
-                <input data-error-required="โปรดระบุเลขประจำตัวประชาชน หรือ หนังสือเดินทาง (ID card number or Passport number)"
-                       id="ctrl_card_id" name="card_id" placeholder="เลขที่บัตรประชาชน/หนังสือเดินทาง" required="required" type="text" />
-                <label for="ctrl_card_id">เลขที่บัตรประชาชน/หนังสือเดินทาง</label></div>
+                <input data-error-required=@lang("product.blood_test.card-validation")
+                       id="ctrl_card_id" name="card_id" placeholder=@lang("product.blood_test.card-placeholder") required="required" type="text" />
+                <label for="ctrl_card_id">@lang("product.blood_test.card-placeholder")</label></div>
 
-            <span class="small"> <b>โปรดระบุเลขที่กรมธรรม์ประกันภัยเบาหวาน Protect ของคุณ (Your Policy number diabetes insurance.)</b></span>
+            <span class="small"> <b>@lang("product.blood_test.policy-validation")</b></span>
             <div class="controls-wrapper">
-                <input data-error-required="โปรดระบุเลขที่กรมธรรม์ประกันภัยเบาหวาน Protect ของคุณ (Your Policy number diabetes insurance.)"
-                       id="ctrl_policy_no" name="policy_no" placeholder="โปรดระบุเลขที่กรมธรรม์ประกันภัยเบาหวาน Protect ของคุณ" required="required" type="text" />
-                <label for="ctrl_policy_no">เลขที่กรมธรรม์ประกันภัยเบาหวาน Protect ของคุณ</label></div>
+                <input data-error-required=@lang("product.blood_test.policy-validation")
+                       id="ctrl_policy_no" name="policy_no" placeholder=@lang("product.blood_test.policy-placeholder") required="required" type="text" />
+                <label for="ctrl_policy_no">@lang("product.blood_test.policy")</label></div>
 
-            <span class="small"> <b>เบอร์โทรศัพท์ (Mobile number)</b></span>
+            <span class="small"> <b>@lang("product.blood_test.mobile")</b></span>
             <div class="controls-wrapper">
-                <input data-error-required="โปรดระบุหมายเลขโทรศัพท์"
-                       id="ctrl_mobile" name="mobile" placeholder="โปรดระบุหมายเลขโทรศัพท์" required="required" type="text" />
-                <label for="ctrl_mobile">โปรดระบุหมายเลขโทรศัพท์</label></div>
+                <input data-error-required=@lang("product.blood_test.mobile-validation")
+                       id="ctrl_mobile" name="mobile" placeholder=@lang("product.blood_test.mobile-validation") required="required" type="text" />
+                <label for="ctrl_mobile">@lang("product.blood_test.mobile-validation")</label></div>
 
         </div>
         <div>
-            <h2><span class="small">โรงพยาบาลในเครือที่สามารถเข้ารับบริการตรวจเลือดฟรี</span></h2>
+            <h2><span class="small">@lang("product.blood_test.hospital")</span></h2>
             <ul class="has-bullet">
                 <li><span class="small">โรงพยาบาลปิยะเวท (Piyavate Hospital)</span></li>
                 <li><span class="small">โรงพยาบาลบางปะกอก 1 (Bangpakok 1 International Hospital)</span></li>
@@ -54,16 +54,16 @@
             </ul>
         </div>
         <div>
-            <h2><span class="small">เงื่อนไขการให้บริการ</span></h2>
-            <span class="small">1. ผู้ที่สามารถใช้บริการโปรแกรมตรวจเลือดได้คือ ลูกค้าที่ถือกรมธรรม์ของ Tune Protect Thailand ตามแผนประกันเบาหวาน Protect (Bao wan protect)</span><br>
-            <span class="small">2. ใช้บริการได้ 1 สิทธิต่อ 1 กรมธรรม์* (เป็นไปตามบริษัทกำหนด) โดยสามารถใช้ได้ตั้งแต่วันที่กรมธรรม์มีผลบังคับ</span><br>
-            <span class="small">3. ไม่สามารถโอนสิทธิให้ผู้อื่นหรือแลกเปลี่ยนหรือทอนเป็นเงินสดหรือสิ่งอื่นได้</span><br>
-            <span class="small">4. ทั้งนี้เงื่อนไขเป็นไปตามบริษัทฯ กำหนด และบริษัทฯ ขอสงวนสิทธิในการเปลี่ยนแปลงโปรโมชันได้โดยไม่แจ้งล่วงหน้า</span><br>
-            <span class="small">5. บริการตรวจเลือดฟรี เป็นการตรวจน้ำตาลในเลือดย้อนหลัง 3 เดือน โดยไม่พบแพทย์ และไม่ต้องงดน้ำหรืออาหารเพื่อรับการตรวจ</span>
+            <h2><span class="small">@lang("product.blood_test.underwrite-condition")</span></h2>
+            <span class="small">@lang("product.blood_test.underwrite-condition1")</span><br>
+            <span class="small">@lang("product.blood_test.underwrite-condition2")</span><br>
+            <span class="small">@lang("product.blood_test.underwrite-condition3")</span><br>
+            <span class="small">@lang("product.blood_test.underwrite-condition4")</span><br>
+            <span class="small">@lang("product.blood_test.underwrite-condition5")</span>
         </div>
         <br>
         <div class="text-center">
-            <button class="btn btn-primary" data-gtm="bloodtest-form-submit">รับบริการตรวจเลือด</button>
+            <button class="btn btn-primary" data-gtm="bloodtest-form-submit">@lang("product.blood_test.submit2")</button>
         </div>
     </form>
 </section>
