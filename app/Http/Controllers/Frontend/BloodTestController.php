@@ -89,7 +89,14 @@ class BloodTestController extends BaseController
 
             if ($apiResult["status"]) {
                 $this->bodyData['UnlockStatus'] = 'Thank you';
-                $this->bodyData['UnlockDisplay'] = 'ท่านได้กดใช้สิทธิ์บริการตรวจเลือดฟรีเป็นที่เรียบร้อย';
+                if($this->locale === 'en')
+                {
+                    $this->bodyData['UnlockDisplay'] = 'You have already pressed the right to use the free blood test service.';
+                }
+                else{
+                    $this->bodyData['UnlockDisplay'] = 'ท่านได้กดใช้สิทธิ์บริการตรวจเลือดฟรีเป็นที่เรียบร้อย';
+                }
+
             }
             else{
                 $this->bodyData['UnlockStatus'] = 'Fail';
