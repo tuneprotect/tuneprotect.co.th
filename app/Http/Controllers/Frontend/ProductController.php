@@ -81,7 +81,7 @@ class ProductController extends BaseController
             return redirect()->route('current', ['locale' => $this->locale, 'controller' => $this->controller, 'func' => $link, 'params' => $selected]);
         }
 
-        if (in_array($selected, ['ONTALN', 'ONCOVIDL', 'ONTA','TGCVLP']) && $this->locale === 'th') {
+        if (in_array($selected, ['ONTALN', 'ONCOVIDL', 'ONTA','TGCVLP','TAISM']) && $this->locale === 'th') {
             return redirect()->route('current', ['locale' => 'en', 'controller' => $this->controller, 'func' => $link, 'params' => $selected]);
         }
 
@@ -104,7 +104,7 @@ class ProductController extends BaseController
             return redirect("/" . $this->locale);
         }
 
-        if (in_array($selected, ['ONTALN', 'ONCOVIDL', 'ONTA','TGCVLP']) && $this->locale === 'th') {
+        if (in_array($selected, ['ONTALN', 'ONCOVIDL', 'ONTA','TGCVLP','TAISM']) && $this->locale === 'th') {
             return redirect()->route('current', ['locale' => 'en', 'controller' => $this->controller, 'func' => $link, 'params' => $selected]);
         }
 
@@ -345,6 +345,9 @@ class ProductController extends BaseController
         } elseif (substr($data['fdPackage'], 0, 6) === 'ONTALN') {
             $obj = new ONTALNObject();
             $obj->fdFlgInbound = "I";
+        } elseif (substr($data['fdPackage'], 0, 5) === 'TAISM') {
+            $obj = new ONTALNObject();
+            $obj->fdFlgInbound = "I";
         } elseif (substr($data['fdPackage'], 0, 6) === 'ONTAOB') {
             $obj = new BaseTAObject();
             $obj->fdDestFrom = "THA";
@@ -514,7 +517,10 @@ class ProductController extends BaseController
                 $obj->fdApiPackage = $package[$data['fdPackage']]->apiPackage;
             }
         }
-        elseif (substr($data['fdPackage'], 0, 8) === 'ONCOVIDL' || substr($data['fdPackage'], 0, 6) === 'ONTALN'|| substr($data['fdPackage'], 0, 6) === 'TGCVLP')
+        elseif (substr($data['fdPackage'], 0, 8) === 'ONCOVIDL'
+            || substr($data['fdPackage'], 0, 6) === 'ONTALN'
+            || substr($data['fdPackage'], 0, 6) === 'TGCVLP'
+            || substr($data['fdPackage'], 0, 5) === 'TAISM')
         {
             $obj->fdlanguage = 1;
             if( substr($data['fdPackage'], 0, 6) === 'ONTALN')
@@ -584,6 +590,10 @@ class ProductController extends BaseController
 
         if (isset($data['send_data'])) {
             $data = (array)json_decode($data['send_data']);
+
+            if(Str::contains($data['fdPackage'],ProjectEnum::ISMILE_URL)){
+                $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::ISMILE_URL;
+            }
 
             $obj = $this->combindObj(array_merge($data, (array)$data["profile"][0]));
             $result = $this->logData($obj);
@@ -861,6 +871,9 @@ class ProductController extends BaseController
         } elseif (substr($package, 0, 6) === 'ONTALN') {
             $this->thankYouParam = substr($package, 0, 6);
             $link = "IssuePolicyInbound";
+        } elseif (substr($package, 0, 5) === 'TAISM') {
+            $this->thankYouParam = substr($package, 0, 5);
+            $link = "IssuePolicyiSmile";
         } elseif (substr($package, 0, 6) === 'TAIPAS') {
             $this->thankYouParam = substr($package, 0, 6);
             $link = "IssuePolicyInbound";
@@ -903,6 +916,9 @@ class ProductController extends BaseController
         }elseif (substr($package, 0, 8) === ProjectEnum::DIABETES_URL) {
             $this->thankYouParam =  ProjectEnum::DIABETES_URL;
             $link = ProjectEnum::ISSUE_POLICY_DIABETES;
+        } elseif (substr($package, 0, 5) === 'TAISM') {
+            $this->thankYouParam =  ProjectEnum::ISMILE_URL;
+            $link = "IssuePolicyiSmile";
         }
 
         return $link;
@@ -958,6 +974,10 @@ class ProductController extends BaseController
         if(Str::contains($request->getRequestUri(),ProjectEnum::DIABETES_URL)){
             $thank_you_page = ProjectEnum::STATIC_PAGE_PAYMENT_THANK_YOU_DIABETES;
         }
+        if(Str::contains($request->getRequestUri(),ProjectEnum::ISMILE_URL)){
+            $thank_you_page = ProjectEnum::STATIC_PAGE_PAYMENT_THANK_YOU_ISMILE;
+        }
+
         return $this->genStatusPage($thank_you_page);
     }
 

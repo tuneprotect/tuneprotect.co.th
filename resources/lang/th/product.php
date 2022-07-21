@@ -532,6 +532,25 @@ return [
         "COV2" => "ภัยจากลมพายุ น้ำท่วม แผ่นดินไหว ภูเขาไฟระเบิด หรือคลื่นใต้น้ำ สึนามิ ภัยจากลูกเห็บ",
         "COV3" => "ค่าเช่าที่พักอาศัยชั่วคราว (กรณีสิ่งปลูกสร้างได้รับความเสียหายจนเป็นผลให้ผู้เอาประกันภัยต้องหาที่พักอาศัยชั่วคราว)"
     ],
+    "TAISM" => [
+        "TAISM01" => "1. Accidental Death",
+        "TAISM02" => "1.1 Extreme sports; diving, parachute,",
+        "TAISM03" => "2. ME (Accident, Sickness, Covid-19)",
+        "TAISM04" => "2.1 Room & Board",
+        "TAISM05" => "3. Emergency Evac Repat",
+        "TAISM06" => "4. Repat of Mortal Remains",
+        "TAISM07" => "5. Expenses of Visiting Patients",
+        "TAISM08" => "6. Loss or Damage of Travel Documents",
+        "TAISM09" => "7. Public Liability (DD 1,000 Baht)",
+        "TAISM10" => "8. Trip Cancellation",
+        "TAISM11" => "9. Trip Curtailment",
+        "TAISM12" => "10. Travel Delay(Flat payment 4,000 Baht every 6 consecutive hours delay)",
+        "TAISM13" => "11. Baggage Delay(Flat payment 4,000 Baht every 6 consecutive hours delay)",
+        "TAISM14" => "12. Loss or Damage of Baggage or Personal Effects(Deductible 600 Baht)",
+        "TAISM15" => "13. Rental vehicle excess",
+        "TAISM16" => "14. Golf equipment and hole-in-one",
+        "TAISM17" => "<h6>12. Health2GO Online doctor consultation <em style='color: red'>Free 1 time*</em></h6> <img src='/images/my_health/logo-myhealth.png' style='height:60px'>"
+    ],
     "cover_fire" => [
         "COV2" => "ทุกภัยรวมกันแล้วไม่เกิน 10,000 บาท/ปี",
         "COV3" => "300 บาท/วัน (ไม่เกิน 30 วัน)",
@@ -672,6 +691,7 @@ return [
     ,"ipass_arrival_date" => "Arrival Date to Thailand"
     ,"ipass_departure_date" => "Departure Date from to Thailand"
     ,'ipass_warning' =>"*Travel within 30 days is subject to the minimum premium."
+    ,'ismile_warning' =>"*Travel within 7 days is subject to the minimum premium."
     ,'ipass_day_wording' =>"The period of coverage"
     ,'ipass_day' =>"Days"
     ,'ci_content1' =>"เลือกปรับเพิ่ม-ลด ความคุ้มครอง กลุ่มโรคร้ายแรงได้"

@@ -1,5 +1,5 @@
 {
-    "/js/backstage/index.js": "/js/backstage/index.js?id=6a3a1a63baee8d140ac0",
+    "/js/backstage/index.js": "/js/backstage/index.js?id=67db3385560ba8dbce45",
     "/js/frontend/amado.js": "/js/frontend/amado.js?id=6b1e5078ed34097ccf33",
     "/js/frontend/article.js": "/js/frontend/article.js?id=d61cc7bd87b58419bae1",
     "/js/frontend/biglife.js": "/js/frontend/biglife.js?id=fbb97436ebb73191aa4b",
@@ -8,7 +8,7 @@
     "/js/frontend/hospital.js": "/js/frontend/hospital.js?id=0906256f0fe49d64f448",
     "/js/frontend/index.js": "/js/frontend/index.js?id=8c0137d0d2cbe6bac65e",
     "/js/frontend/main.js": "/js/frontend/main.js?id=9246fb90412d59a6fd16",
-    "/css/frontend/style.css": "/css/frontend/style.css?id=db75f5b60ee468ffda31",
+    "/css/frontend/style.css": "/css/frontend/style.css?id=d946d7ca537452af63d8",
     "/js/frontend/organization.js": "/js/frontend/organization.js?id=49bbc585e49ced348785",
     "/js/frontend/policyenquiry.js": "/js/frontend/policyenquiry.js?id=da728db52f0b3846ba21",
     "/js/frontend/portallogin.js": "/js/frontend/portallogin.js?id=391de464ff50d544e004",
@@ -37,6 +37,7 @@
     "/js/frontend/product/onvsafe.js": "/js/frontend/product/onvsafe.js?id=e9d8aba9adcef3523980",
     "/js/frontend/product/onvsafea.js": "/js/frontend/product/onvsafea.js?id=47ea38f63f1ba300096e",
     "/js/frontend/product/onvsurea.js": "/js/frontend/product/onvsurea.js?id=ef5eca4091cd9b354536",
+    "/js/frontend/product/taism.js": "/js/frontend/product/taism.js?id=d8adff4f07b8576869a6",
     "/js/frontend/product/tgcvlp.js": "/js/frontend/product/tgcvlp.js?id=26d732933c9a3a4531a1",
     "/js/frontend/service.js": "/js/frontend/service.js?id=5464aeb06a5c48ae1e3c",
     "/js/frontend/taxdeduction.js": "/js/frontend/taxdeduction.js?id=a7326596576496cc8089",

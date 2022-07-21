@@ -2017,6 +2017,7 @@ const static_content = {
         'payment_reject',
         'payment_thank_you',
         'payment_thank_you_diabetes',
+        'payment_thank_you_ismile',
         'privacy',
         'service_center',
         'terms',
