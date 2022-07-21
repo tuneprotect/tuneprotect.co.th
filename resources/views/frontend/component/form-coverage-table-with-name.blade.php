@@ -37,7 +37,7 @@
                            data-gtm="product-{{strtolower($selected)}}-top-choose-plan-{{$i-1}}"
                            data-step="3" data-package="{{$k}}" data-sub-package=""
 
-                           data-plan={{$v->name}}
+                           data-plan="{{$v->name}}"
 
                            class="btn btn-block btn-outline btn-goto">@lang('product.choose_plan')</a>
 
@@ -101,7 +101,7 @@
                            data-gtm="product-{{strtolower($selected)}}-bottom-choose-plan-{{$i-1}}"
                            data-step="3" data-package="{{$k}}" data-sub-package=""
 
-                           data-plan={{$v->name}}
+                           data-plan="{{$v->name}}"
 
                            class="btn btn-block btn-outline btn-goto">@lang('product.choose_plan')</a>
 
