@@ -19,6 +19,8 @@ class ProjectEnum
     const STATIC_META_NEWS = 'static.page.news';
     const STATIC_PAGE_SERVICE_CENTER = 'static.page.service_center';
     const STATIC_PAGE_PAYMENT_THANK_YOU = 'static.page.payment_thank_you';
+    const STATIC_PAGE_PAYMENT_THANK_YOU_DIABETES = 'static.page.payment_thank_you_diabetes';
+    const STATIC_PAGE_PAYMENT_THANK_YOU_ISMILE = 'static.page.payment_thank_you_ismile';
     const STATIC_PAGE_PAYMENT_ERROR = 'static.page.payment_error';
     const STATIC_PAGE_PAYMENT_CANCEL = 'static.page.payment_cancel';
     const STATIC_PAGE_PAYMENT_PENDING = 'static.page.payment_pending';
@@ -64,6 +66,9 @@ class ProjectEnum
     const WEB_CONTENT_LEADFORM_CATEGORY = "leadform.category";
     const CACHE_MENU_ENABLE = 'menu_enable';
 
+    const DIABETES_URL = 'DIABETES';
+    const ISMILE_URL = 'TAISM';
+    const ISSUE_POLICY_DIABETES = 'IssuePolicyDiabetes';
 
     //TODO : invoice prefix for test only
     const INVOICE_PREFIX = 'W';

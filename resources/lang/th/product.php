@@ -532,6 +532,25 @@ return [
         "COV2" => "ภัยจากลมพายุ น้ำท่วม แผ่นดินไหว ภูเขาไฟระเบิด หรือคลื่นใต้น้ำ สึนามิ ภัยจากลูกเห็บ",
         "COV3" => "ค่าเช่าที่พักอาศัยชั่วคราว (กรณีสิ่งปลูกสร้างได้รับความเสียหายจนเป็นผลให้ผู้เอาประกันภัยต้องหาที่พักอาศัยชั่วคราว)"
     ],
+    "TAISM" => [
+        "TAISM01" => "1. Accidental Death",
+        "TAISM02" => "1.1 Extreme sports; diving, parachute,",
+        "TAISM03" => "2. ME (Accident, Sickness, Covid-19)",
+        "TAISM04" => "2.1 Room & Board",
+        "TAISM05" => "3. Emergency Evac Repat",
+        "TAISM06" => "4. Repat of Mortal Remains",
+        "TAISM07" => "5. Expenses of Visiting Patients",
+        "TAISM08" => "6. Loss or Damage of Travel Documents",
+        "TAISM09" => "7. Public Liability (DD 1,000 Baht)",
+        "TAISM10" => "8. Trip Cancellation",
+        "TAISM11" => "9. Trip Curtailment",
+        "TAISM12" => "10. Travel Delay(Flat payment 4,000 Baht every 6 consecutive hours delay)",
+        "TAISM13" => "11. Baggage Delay(Flat payment 4,000 Baht every 6 consecutive hours delay)",
+        "TAISM14" => "12. Loss or Damage of Baggage or Personal Effects(Deductible 600 Baht)",
+        "TAISM15" => "13. Rental vehicle excess",
+        "TAISM16" => "14. Golf equipment and hole-in-one",
+        "TAISM17" => "<h6>12. Health2GO Online doctor consultation <em style='color: red'>Free 1 time*</em></h6> <img src='/images/my_health/logo-myhealth.png' style='height:60px'>"
+    ],
     "cover_fire" => [
         "COV2" => "ทุกภัยรวมกันแล้วไม่เกิน 10,000 บาท/ปี",
         "COV3" => "300 บาท/วัน (ไม่เกิน 30 วัน)",
@@ -578,6 +597,13 @@ return [
     "fire_insurance_limit" => "ทุนประกันภัย ตามลักษณะสิ่งปลูกสร้างที่คุณเลือกไว้",
     "fire_address_data" => "ที่อยู่ปัจจุบันเป็นสถานที่เดียวกันกับสถานที่เอาประกันภัย (กรณีคนละสถานที่ โปรดกรอกข้อมูลด้านล่าง)",
     'error' => [
+        'bmi'=> [
+            'fill_in_number_only' => 'โปรดกรอกน้ำหนักและส่วนสูงเป็นตัวเลขจำนวนเต็มเท่านั้น',
+            'text-not-qualify' => 'ต้องขออภัยค่ะ ข้อมูลของคุณไม่ผ่านเงื่อนไขการพิจารณารับประกันภัยกับทางเรา ขอขอบคุณที่สนใจประกันออนไลน์กับทาง Tune Protect ค่ะ',
+            'weight-not-qualify' => 'น้ำหนักไม่เกิน 200 Kg.',
+            'height-not-qualify' => 'ส่วนสูงไม่เกิน 220 Cm.',
+            'question-not-qualify' => '<strong>ต้องขออภัยค่ะ ข้อมูลของคุณไม่ผ่านเงื่อนไขการพิจารณารับประกันภัยกับทางเรา</strong><br><br>ขอขอบคุณที่สนใจประกันออนไลน์กับทาง Tune Protect ค่ะ'
+        ],
         'id_card' => 'บัตรประจำตัวประชาชนไม่ถูกต้อง',
         'sex' => 'โปรดกรอกเพศ',
         'eng_only' => 'โปรดกรอกภาษาอังกฤษเท่านั้น',
@@ -665,10 +691,82 @@ return [
     ,"ipass_arrival_date" => "Arrival Date to Thailand"
     ,"ipass_departure_date" => "Departure Date from to Thailand"
     ,'ipass_warning' =>"*Travel within 30 days is subject to the minimum premium."
+    ,'ismile_warning' =>"*Travel within 7 days is subject to the minimum premium."
     ,'ipass_day_wording' =>"The period of coverage"
     ,'ipass_day' =>"Days"
     ,'ci_content1' =>"เลือกปรับเพิ่ม-ลด ความคุ้มครอง กลุ่มโรคร้ายแรงได้"
-    ,'ci_portal_content1' =>"คุ้มครองทุกกลุ่มโรคร้าย"
+    ,'ci_portal_content1' =>"คุ้มครองทุกกลุ่มโรคร้าย",
+    "DIABETES" => [
+        "DIABETES01" => "อาการโคม่าจากโรคเบาหวาน (Diabetic Coma)",
+        "DIABETES02" => "เบาหวานเข้าจอประสาทตา 2 ข้าง (Retinopathy 2 eye)",
+        "DIABETES03" => "เบาหวานเข้าจอประสาทตา 1 ข้าง (Retinopathy 1 eye)",
+        "DIABETES04" => "ได้รับการวินิจฉัยว่าเป็นเบาหวาน ชนิดที่ 1 หรือ 2 (Diagnosed Type 1 or Type 2 Diabetes)",
+        "DIABETES05" => "<h5>เจ็บป่วยขั้นรุนแรงเนื่องมาจากเบาหวาน</h5>
+<ul class='has-bullet'>
+<li>การสูญเสียการมองเห็น ตาบอดจากโรคเบาหวาน (Blindness)</li>
+<li>การสูญเสียการตัดแขนขา (Limb Amputation)</li>
+<li> โรคเบาหวานลงไต (Diabetic Nephropathy)</li>
+<li>ร่างกายปฏิเสธการปลูกถ่ายอวัยวะ (Body Rejects Transplantation)</li>
+<li>การผ่าตัดเปลี่ยนอวัยวะ (Major Organs Transplantation)</li>
+<li>โรคหลอดเลือดหัวใจตีบ (Coronary Artery Disease)</li></ul>",
+
+        "DIABETES06" => "<h5>รับเงินชดเชยกรณีเป็นคนไข้ในของโรงพยาบาล อันเนื่องมาจากโรคเบาหวาน</h5>
+(ผู้ป่วยใน สูงสุด 30 วัน) Hospital Cash (IPD, up to 30 days)",
+        "DIABETES07" => "<div style='text-align: left'><p style='text-align: center;'><img src='/storage/Icon/logo-dfit.png' style='width: 120px;'> <br/> ฟรี! เข้าใช้โปรแกรมสุขภาพ Dfit และโปรแกรมตรวจสุขภาพ</p></div>",
+        "DIABETES08" => "อุบัติเหตุส่วนบุคคล (Personal Accident)",
+        "DIABETES09" => "ถูกฆาตกรรมและทำร้ายร่างกาย (Murder and Assault)"
+],
+
+    "weight" => "น้ำหนัก (Kg.)",
+    "height" => "ส่วนสูง (cm.)",
+    "bmi_calculator" => "ผลคำนวนดัชนีมวลกาย (BMI)",
+    "bmi_title" => "โปรดกรอกข้อมูลเพื่อคำนวณดัชนีมวลกาย (BMI)",
+    "bmi_info" => "การหาค่าดัชนีมวลกาย (Body Mass Index : BMI) คือมาตรการที่ใช้ประเมินภาวะอ้วนและผอมในผู้ใหญ่ ตั้งแต่อายุ 20 ปีขึ้นไป สามารถทำได้โดยการชั่งน้ำหนักตัวเป็นกิโลกรัม และวัดส่วนสูงเป็นเซนติเมตร แล้วนำมาหาดัชมีมวลกาย โดยใช้โปรแกรมวัดค่าความอ้วนข้างต้น",
+    "question_diabetes_1"=>"<strong>1. ท่านเคยถูกปฏิเสธการขอเอาประกันชีวิต หรือประกันภัยอุบัติเหตุส่วนบุคคล หรือประกันภัยสุขภาพ
+        หรือประกันชดเชยรายได้ หรือประกันภัยโรคร้ายแรง หรือถูกปฏิเสธการต่ออายุสัญญาประกันภัย
+        หรือถูกเรียกเก็บเบี้ยประกันภัยเพิ่มสำหรับการประกันภัยดังกล่าวหรือไม่?</strong>",
+    "question_diabetes_2"=>"<strong>2. ท่านเป็นหรือเคยมีอาการ หรือเคยได้รับการรักษา หรือขณะนี้รับการรักษาอยู่
+        หรือเคยได้รับการบอกเล่าจากแพทย์ </strong><br>
+    ด้วยโรคหัวใจ โรคเบาหวาน โรคความดันโลหิตสูง โรคไต โรคตับหรือทางเดินน้ำดี (รวมทั้งไวรัสตับอักเสบ B/C) โรคเลือด วัณโรค โรคหลอดเลือดสมอง โรคพิษสุราเรื้อรัง โรคแผลในกระเพาะอาหารหรือโรคระบบทางเดินอาหารอื่นๆ หรือพิการทางร่างกาย หรือบิดามารดาพี่น้องบุคคลใดบุคคลหนึ่งเคยได้รับการวินิจฉัยว่าเป็นโรคมะเร็ง โรคหัวใจ หรือโรคหลอดเลือดสมอง ก่อนอายุ 60 ปี?",
+    "question_diabetes_3"=>"<strong>3. ดัชนีมวลกาย (BMI) ของท่าน ตามข้อมูลที่ได้กรอกไว้ เกิน 35 หรือไม่?</strong>",
+    "question_diabetes_4"=>"ดัชนีมวลกาย (BMI) ของท่านคือ",
+    "question_diabetes_4_1"=>"(นี่เป็นค่า BMI ของคุณ ที่ได้คำนวณไว้ก่อนหน้านี้)",
+    "diabetes_claim_title"=>"เคลม",
+    "blood_test" => [
+        "data-error" => "ขออภัย",
+        "data-error-description" => "เนื่องจากเกิดข้อผิดพลาดบางประการ",
+        "data-success-description" => "ขอบคุณค่ะ โค้ดได้ถูกส่งไปยังเบอร์มือถือของท่านแล้ว! <br> สามารถแจ้งโค้ดของคุณ เพื่อรับบริการตรวจเลือดฟรี! ได้ที่ <br> โรงพยาบาลที่ท่านเลือก",
+        "code-validation" => "โปรดใส่โค้ดตรวจเลือดฟรี ของลูกค้าเพื่อตรวจสอบสิทธิ์(Please fill in a free blood test code for validation.)",
+        "code-placeholder" => "โปรดใส่โค้ดตรวจเลือดฟรี",
+        "submit" => "รับบริการตรวจเลือด",
+        "hospital-select" => "เลือกโรงพยาบาลในเครือที่ลูกค้าต้องการเข้ารับบริการตรวจเลือด (Please select a Hospital in the network to receive a free blood test code.)",
+        "hospital-validation" => "โปรดเลือกโรงพยาบาล",
+        "hospital" => "โรงพยาบาลในเครือที่สามารถเข้ารับบริการตรวจเลือดฟรี",
+        "underwrite-condition" => "เงื่อนไขการให้บริการ",
+        "underwrite-condition1" => "1. ผู้ที่สามารถใช้บริการโปรแกรมตรวจเลือดได้คือ ลูกค้าที่ถือกรมธรรม์ของ Tune Protect Thailand ตามแผนประกันเบาหวาน Protect (Bao wan protect)",
+        "underwrite-condition2" => "2. ใช้บริการได้ 1 สิทธิต่อ 1 กรมธรรม์* (เป็นไปตามบริษัทกำหนด) โดยสามารถใช้ได้ตั้งแต่วันที่กรมธรรม์มีผลบังคับ",
+        "underwrite-condition3" => "3. ไม่สามารถโอนสิทธิให้ผู้อื่นหรือแลกเปลี่ยนหรือทอนเป็นเงินสดหรือสิ่งอื่นได้",
+        "underwrite-condition4" => "4. ทั้งนี้เงื่อนไขเป็นไปตามบริษัทฯ กำหนด และบริษัทฯ ขอสงวนสิทธิในการเปลี่ยนแปลงโปรโมชันได้โดยไม่แจ้งล่วงหน้า",
+        "underwrite-condition5" => "5. บริการตรวจเลือดฟรี เป็นการตรวจน้ำตาลในเลือดย้อนหลัง 3 เดือน โดยไม่พบแพทย์ และไม่ต้องงดน้ำหรืออาหารเพื่อรับการตรวจ",
+        "card-validation" => "โปรดระบุเลขประจำตัวประชาชน หรือ หนังสือเดินทาง (ID card number or Passport number)",
+        "card-placeholder" => "เลขที่บัตรประชาชน/หนังสือเดินทาง",
+        "policy-validation" => "โปรดระบุเลขที่กรมธรรม์ประกันภัยเบาหวาน Protect ของคุณ (Your Policy number diabetes insurance.)",
+        "policy-placeholder" => "โปรดระบุเลขที่กรมธรรม์ประกันภัยเบาหวาน Protect ของคุณ",
+        "policy" => "เลขที่กรมธรรม์ประกันภัยเบาหวาน Protect ของคุณ",
+        "mobile" => "เบอร์โทรศัพท์ (Mobile number)",
+        "mobile-validation" => "โปรดระบุหมายเลขโทรศัพท์",
+        "submit2" => "รับบริการตรวจเลือด",
+        "policy-name" => "ชื่อ",
+        "policy-sure-name" => "นามสกุล",
+        "policy-no" => "เลขที่กรมธรรม์",
+        "policy-plan" => "ประกันภัยที่ได้รับความคุ้มครอง",
+        "policy-from" => "วันที่เริ่มต้นความคุ้มครอง",
+        "policy-to" => "วันที่สิ้นสุดความคุ้มครอง",
+        "policy-privilege" => "ได้รับ 1 สิทธิ์/ปี",
+        "policy-plan-description" => "ประกันภัยเบาหวาน โพรเทค",
+        "policy-info" => "ประกันภัยเบาหวาน โพรเทค",
+        "submit3" => "กดใช้สิทธิ์",
+        ],
 ];
 
 

@@ -3,6 +3,8 @@ import Swal from "sweetalert2";
 import validate from "validate.js";
 import {showFieldError, validateField} from "./validate_form";
 
+import {tns} from "tiny-slider/src/tiny-slider"
+
 document.addEventListener("DOMContentLoaded", async () => {
 
     const toggltField = (isShow) => {
@@ -187,5 +189,130 @@ document.addEventListener("DOMContentLoaded", async () => {
             e.preventDefault();
             $('.page-overlay').style.display = 'none';
         }, true);
+    }
+
+    /* slideshow */
+    if ($('.dfit_slider')) {
+        tns({
+            container: '.dfit_slider',
+            slideBy: 'page',
+            mode: "gallery",
+            speed : 1600,
+            autoplay: false,
+            autoplayButton: false,
+            autoplayButtonOutput: false,
+            autoplayHoverPause: true,
+            navPosition: 'bottom',
+            controlsText: ['<i class="icofont-rounded-left"></i>', '<i class="icofont-rounded-right"></i>'],
+            responsive: {
+                350: {
+                    items: 1,
+                    controls: true,
+                    // edgePadding: 30
+                },
+                600: {
+                    items: 3,
+                    controls: true,
+                    gutter: 20
+                }
+            },
+        });
+    }
+
+    const $frmBloodtest = $('#frm_bloodtest');
+    if ($frmBloodtest){
+        let contactConstraints2 = {
+            IDCard: {
+                presence: {
+                    allowEmpty: false,
+                    message: '^' + $('#ctrl_card_id').getAttribute('data-error-required')
+                },
+            },
+            Policy_No: {
+                presence: {
+                    allowEmpty: false,
+                    message: '^' + $('#ctrl_policy_no').getAttribute('data-error-required')
+                },
+            },
+            Mobile: {
+                presence: {
+                    allowEmpty: false,
+                    message: '^' + $('#ctrl_mobile').getAttribute('data-error-required')
+                },
+            }
+
+        };
+
+        $frmBloodtest.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            $$('cite', $frmBloodtest).forEach($el => $el.remove());
+            $$('.controls-wrapper', $frmBloodtest).forEach($el => $el.classList.remove('error'));
+            $$('input,select,textarea', $frmBloodtest).forEach($el => $el.classList.remove('error'));
+
+            let data = {
+                IDCard: $('#ctrl_card_id').value,
+                Policy_No: $('#ctrl_policy_no').value,
+                Mobile: $('#ctrl_mobile').value,
+                Lang:$('html').getAttribute('lang'),
+            }
+
+            const result = validate(data, contactConstraints2);
+
+            if (result) {
+                Object.keys(result).map(k => showFieldError($(`#ctrl_${k}`), result[k]));
+                return false;
+            }
+
+            // console.log(data);
+            await sendBloodTestOTP(data);
+
+        });
+
+        const sendBloodTestOTP = async (data) => {
+            $frmBloodtest.classList.add('ajax_loader');
+
+            console.log(data);
+
+            try {
+                let res = await fetch($frmBloodtest.getAttribute('action'), {
+                    method: 'post',
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json',
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').getAttribute('content')
+                    },
+                    body: JSON.stringify(data)
+                });
+                const response = await res.json();
+
+                if (response.status) {
+                    Swal.fire(
+                        "Thank you",
+                        $frmBloodtest.getAttribute('data-success-description'),
+                        'success'
+                    )
+                    toggltField(false);
+                    $('.page-overlay').style.display = 'none';
+
+                    $('#ctrl_card_id').value ='';
+                    $('#ctrl_policy_no').value='';
+                    $('#ctrl_mobile').value='';
+
+                } else {
+                    Swal.fire(
+                        $frmBloodtest.getAttribute('data-error'),
+                        response.message,
+                        'error'
+                    )
+                }
+            } catch (err) {
+                Swal.fire({
+                    title: $frmBloodtest.getAttribute('data-error'),
+                    text: $frmBloodtest.getAttribute('data-error-description'),
+                    icon: 'error',
+                })
+            }
+            $frmBloodtest.classList.remove('ajax_loader');
+        }
     }
 });

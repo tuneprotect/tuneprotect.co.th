@@ -11,8 +11,14 @@
                     </div>
                 </div>
             @endif
-            <div>{!! $content->locales[$locale]->content !!}</div>
-            <br/>
+            <div>{!! $content->locales[$locale]->content !!}
+                @if(isset($bloodTestComponent))
+                    @includeIf($bloodTestComponent)
+                @endif
+            </div>
+
+
+                <br/>
             @if(!isset($no_share))
                 <script type='text/javascript'
                         src='https://platform-api.sharethis.com/js/sharethis.js#property=5fe33658948afa0012592b2d&product=inline-share-buttons'
@@ -37,6 +43,7 @@
         @if(isset($extraComponent))
             @includeIf($extraComponent)
         @endif
+
 
 
     </main>

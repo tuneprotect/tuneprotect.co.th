@@ -20,6 +20,4 @@ class CookiesController extends BaseController
     {
         return $this->genView('frontend.page.cookies');
     }
-
-
 }

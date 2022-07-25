@@ -3,6 +3,7 @@
 
 namespace App\Http\Controllers\Frontend;
 
+use App\Enum\BAOWANObject;
 use App\Enum\Base\BaseInsuranceObject;
 use App\Enum\Base\BaseTAObject;
 use App\Enum\CIObject;
@@ -23,7 +24,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Storage;
 use phpDocumentor\Reflection\Project;
-
+use Illuminate\Support\Str;
 
 class ProductController extends BaseController
 {
@@ -80,7 +81,7 @@ class ProductController extends BaseController
             return redirect()->route('current', ['locale' => $this->locale, 'controller' => $this->controller, 'func' => $link, 'params' => $selected]);
         }
 
-        if (in_array($selected, ['ONTALN', 'ONCOVIDL', 'ONTA','TGCVLP']) && $this->locale === 'th') {
+        if (in_array($selected, ['ONTALN', 'ONCOVIDL', 'ONTA','TGCVLP','TAISM']) && $this->locale === 'th') {
             return redirect()->route('current', ['locale' => 'en', 'controller' => $this->controller, 'func' => $link, 'params' => $selected]);
         }
 
@@ -103,7 +104,7 @@ class ProductController extends BaseController
             return redirect("/" . $this->locale);
         }
 
-        if (in_array($selected, ['ONTALN', 'ONCOVIDL', 'ONTA','TGCVLP']) && $this->locale === 'th') {
+        if (in_array($selected, ['ONTALN', 'ONCOVIDL', 'ONTA','TGCVLP','TAISM']) && $this->locale === 'th') {
             return redirect()->route('current', ['locale' => 'en', 'controller' => $this->controller, 'func' => $link, 'params' => $selected]);
         }
 
@@ -311,7 +312,6 @@ class ProductController extends BaseController
 
 //        dd($this->bodyData['package_detail']);
 
-
         if ($this->controller != 'product') {
             return $this->genView('frontend.page.portal');
         } else {
@@ -345,6 +345,9 @@ class ProductController extends BaseController
         } elseif (substr($data['fdPackage'], 0, 6) === 'ONTALN') {
             $obj = new ONTALNObject();
             $obj->fdFlgInbound = "I";
+        } elseif (substr($data['fdPackage'], 0, 5) === 'TAISM') {
+            $obj = new ONTALNObject();
+            $obj->fdFlgInbound = "I";
         } elseif (substr($data['fdPackage'], 0, 6) === 'ONTAOB') {
             $obj = new BaseTAObject();
             $obj->fdDestFrom = "THA";
@@ -374,7 +377,10 @@ class ProductController extends BaseController
 
         }elseif (substr($data['fdPackage'], 0, 6) === 'ONFIMP') {
             $obj = new FIMPObject();
-        } else {
+        }elseif (substr($data['fdPackage'], 0, 8) === 'DIABETES') {
+            $obj = new BAOWANObject();
+        }
+        else {
             $obj = new BaseInsuranceObject();
         }
 
@@ -439,6 +445,7 @@ class ProductController extends BaseController
             || substr($data['fdPackage'], 0, 6) === 'CVCARE'
             || substr($data['fdPackage'], 0, 9) === 'ONCOVIDMW'
             || substr($data['fdPackage'], 0, 7) === 'ONVSAFE'
+            || substr($data['fdPackage'], 0, 8) === 'DIABETES'
         ){
 
 
@@ -501,12 +508,19 @@ class ProductController extends BaseController
             {
                 $package = (array)json_decode(Storage::disk('public')->get('json/onvsurea.json'));
             }
+            if (substr($data['fdPackage'], 0, 8) === 'DIABETES')
+            {
+                $package = (array)json_decode(Storage::disk('public')->get('json/diabetes.json'));
+            }
             if(isset($package[$data['fdPackage']]->apiPackage))
             {
                 $obj->fdApiPackage = $package[$data['fdPackage']]->apiPackage;
             }
         }
-        elseif (substr($data['fdPackage'], 0, 8) === 'ONCOVIDL' || substr($data['fdPackage'], 0, 6) === 'ONTALN'|| substr($data['fdPackage'], 0, 6) === 'TGCVLP')
+        elseif (substr($data['fdPackage'], 0, 8) === 'ONCOVIDL'
+            || substr($data['fdPackage'], 0, 6) === 'ONTALN'
+            || substr($data['fdPackage'], 0, 6) === 'TGCVLP'
+            || substr($data['fdPackage'], 0, 5) === 'TAISM')
         {
             $obj->fdlanguage = 1;
             if( substr($data['fdPackage'], 0, 6) === 'ONTALN')
@@ -559,7 +573,6 @@ class ProductController extends BaseController
         $result->save();
 
         return $result;
-
     }
 
     public function makePayment(Request $request)
@@ -574,13 +587,17 @@ class ProductController extends BaseController
         }
 
         $data = $request->all();
+
         if (isset($data['send_data'])) {
             $data = (array)json_decode($data['send_data']);
+
+            if(Str::contains($data['fdPackage'],ProjectEnum::ISMILE_URL)){
+                $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::ISMILE_URL;
+            }
 
             $obj = $this->combindObj(array_merge($data, (array)$data["profile"][0]));
             $result = $this->logData($obj);
             $log_id[] = $result->log_id;
-
 
             $arr['fdInvoice'] = config('project.invoice_prefix') . $result->fdInvoice;
             $price = $obj->fdPayAMT;
@@ -595,7 +612,6 @@ class ProductController extends BaseController
                 }
             }
 
-
             if (session('nopayment_status')) {
                 return $this->noPayment($result, $price, $log_id);
             }
@@ -603,6 +619,11 @@ class ProductController extends BaseController
             return $this->sendTo2C2P($result, $price, $log_id);
 
         } else {
+
+            if(Str::contains($data['fdPackage'],ProjectEnum::DIABETES_URL)){
+                $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::DIABETES_URL;
+            }
+
             $obj = $this->combindObj($data);
             $result = $this->logData($obj);
 
@@ -677,11 +698,12 @@ class ProductController extends BaseController
             $PolicyData = $apiResult['data'];
             $Status = $apiResult["status"];
 
-
-            foreach ($PolicyData as $k => $v) {
-                if ($k === 'BigPoint') {
-                    if (is_numeric($v)) {
-                        $Point = $Point + $v;
+            if($apiResult['data'] !== null){
+                foreach ($PolicyData as $k => $v) {
+                    if ($k === 'BigPoint') {
+                        if (is_numeric($v)) {
+                            $Point = $Point + $v;
+                        }
                     }
                 }
             }
@@ -806,6 +828,7 @@ class ProductController extends BaseController
 
         $arr_post['user_defined_2'] = preg_replace('/\?.*/', '', session('return_link'));
         $arr_post['user_defined_3'] = session('partner');
+        $arr_post['user_defined_4'] = $this->thankYouParam;
         $arr_post['result_url_1'] = url("{$this->locale}/{$this->controller}/result");
 
         $arr_post['payment_option'] = $this->payment;
@@ -819,12 +842,12 @@ class ProductController extends BaseController
         $this->bodyData['arr_post'] = $arr_post;
 
 
-//        if(strtolower($this->controller) === "portal")
-//        {
-//                $this->bodyData['partner'] =session('partner');
-//                $this->bodyData['selected'] =session('selected');
-//                return $this->genView('frontend.page.payment_portal');
-//        }
+        if(strtolower($this->controller) === "portal")
+        {
+                $this->bodyData['partner'] =session('partner');
+                $this->bodyData['selected'] =session('selected');
+                return $this->genView('frontend.page.payment_portal');
+        }
         return $this->genView('frontend.page.payment');
     }
 
@@ -848,6 +871,9 @@ class ProductController extends BaseController
         } elseif (substr($package, 0, 6) === 'ONTALN') {
             $this->thankYouParam = substr($package, 0, 6);
             $link = "IssuePolicyInbound";
+        } elseif (substr($package, 0, 5) === 'TAISM') {
+            $this->thankYouParam = substr($package, 0, 5);
+            $link = "IssuePolicyiSmile";
         } elseif (substr($package, 0, 6) === 'TAIPAS') {
             $this->thankYouParam = substr($package, 0, 6);
             $link = "IssuePolicyInbound";
@@ -887,7 +913,14 @@ class ProductController extends BaseController
         } elseif (substr($package, 0, 9) === 'CVIS22JAN') {
             $this->thankYouParam = 'CVIS22JAN';
             $link = 'IssuePolicyCovid19';
+        }elseif (substr($package, 0, 8) === ProjectEnum::DIABETES_URL) {
+            $this->thankYouParam =  ProjectEnum::DIABETES_URL;
+            $link = ProjectEnum::ISSUE_POLICY_DIABETES;
+        } elseif (substr($package, 0, 5) === 'TAISM') {
+            $this->thankYouParam =  ProjectEnum::ISMILE_URL;
+            $link = "IssuePolicyiSmile";
         }
+
         return $link;
     }
 
@@ -935,7 +968,17 @@ class ProductController extends BaseController
         $this->bodyData['doc_no'] = $request->session()->get('doc_no');
         $this->bodyData['return_link'] = '/' . $this->locale;
         $this->bodyData['point'] = '';
-        return $this->genStatusPage(ProjectEnum::STATIC_PAGE_PAYMENT_THANK_YOU);
+        //$this->thankYouParam = $request->session()->get('thankyou_param');
+
+        $thank_you_page = ProjectEnum::STATIC_PAGE_PAYMENT_THANK_YOU;
+        if(Str::contains($request->getRequestUri(),ProjectEnum::DIABETES_URL)){
+            $thank_you_page = ProjectEnum::STATIC_PAGE_PAYMENT_THANK_YOU_DIABETES;
+        }
+        if(Str::contains($request->getRequestUri(),ProjectEnum::ISMILE_URL)){
+            $thank_you_page = ProjectEnum::STATIC_PAGE_PAYMENT_THANK_YOU_ISMILE;
+        }
+
+        return $this->genStatusPage($thank_you_page);
     }
 
     public function result(Request $request)
@@ -949,6 +992,8 @@ class ProductController extends BaseController
                 $request->session()->put('doc_no',  $v->result['message']);
                 $request->session()->put('return_link', $request->input('user_defined_2'));
                 $request->session()->put('partner', $request->input('user_defined_3'));
+                $request->session()->put('thankyou_param', $request->input('user_defined_4'));
+                $this->thankYouParam = $request->input('user_defined_4');
                 $func = 'thankyou';
                 return redirect()->route('current', ['locale' => $this->locale, 'controller' => $this->controller, 'func' => $func, 'params' => $this->thankYouParam]);
             }
@@ -967,6 +1012,8 @@ class ProductController extends BaseController
                     $request->session()->put('point', $result[1]);
                     $request->session()->put('return_link', $request->input('user_defined_2'));
                     $request->session()->put('partner', $request->input('user_defined_3'));
+                    $request->session()->put('thankyou_param', $request->input('user_defined_4'));
+                    $this->thankYouParam = $request->input('user_defined_4');
                     $func = 'thankyou';
                 } else {
                     $request->session()->put('error', implode(', ', $result[0]));

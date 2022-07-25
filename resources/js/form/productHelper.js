@@ -4,7 +4,7 @@ import {showDateError, showFieldError} from "../validate_form";
 import Swal from "sweetalert2";
 
 export const getPackageData = async (currentPackage,channel) => {
-    let res = await fetch(`/storage/json/${currentPackage.toLowerCase() + (channel ? '_'+channel : '') }.json?1652785119`);
+    let res = await fetch(`/storage/json/${currentPackage.toLowerCase() + (channel ? '_'+channel : '') }.json?1655814514567`);
     return await res.json();
 }
 
@@ -154,6 +154,38 @@ export const validatePolicy = async ($this, fdPackage,fdFromDate) => {
             return false;
         } else {
             $('button[data-step="4"]').style.display = 'inline-flex';
+            return true;
+        }
+    }
+}
+
+export const validatePolicyStep5 = async ($this, fdPackage,fdFromDate) => {
+    let field = $this.getAttribute('name');
+    // console.log({field});
+    let data = {fdName: null, fdSurname: null, fdNationalID: null}
+    Object.keys(data).map((k) => {
+        let fieldId = k;
+        if (field.startsWith('data_')) {
+            const index = field.split("_")[1];
+            fieldId = `data_${index}_${k}`;
+        }
+        data = {...data, [k]: $(`#${fieldId}`).value}
+    });
+
+    if (Object.keys(data).every((k) => !!data[k])) {
+        const result = await callValidateApi({...data, fdPackage,fdFromDate})
+        if (result.status === 'error') {
+            // showFieldError($this, [result.message]);
+            $('button[data-step="5"]').style.display = 'none';
+            $this.closest('.controls-wrapper').classList.add("error");
+
+            Swal.fire({
+                icon: 'error',
+                text: result.message
+            })
+            return false;
+        } else {
+            $('button[data-step="5"]').style.display = 'inline-flex';
             return true;
         }
     }

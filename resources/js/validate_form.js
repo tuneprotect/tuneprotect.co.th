@@ -75,3 +75,19 @@ export const showDateError = (message) => {
         el.classList.add('error');
     });
 }
+
+export const showBMIError = (message) => {
+    $('.bmi-input cite.bmi_error').innerHTML = message;
+    $$('.bmi-input .controls-wrapper').forEach(el => {
+        el.classList.add('error');
+    });
+    scrollToTargetAdjusted($('.controls-wrapper.error'));
+}
+
+export const showBMIValidateError = (message,selector) => {
+    $('.bmi-input cite.' + selector).innerHTML = message;
+    $$('.bmi-input .controls-wrapper').forEach(el => {
+        el.classList.add('error');
+    });
+    scrollToTargetAdjusted($('.controls-wrapper.error'));
+}

@@ -6,6 +6,7 @@ namespace App\Http\Controllers\Frontend;
 use App\Enum\ProjectEnum;
 use App\Http\Controllers\Frontend\Base\BaseController;
 use App\Models\WebContent;
+use Illuminate\Support\Str;
 
 class ClaimController extends BaseController
 {
@@ -32,10 +33,8 @@ class ClaimController extends BaseController
             ->whereRaw(ProjectEnum::isPublish())
             ->first();
 
-
         if ($content) {
             return $this->genStaticPage($content, 'frontend.page.static');
         }
-
     }
 }
