@@ -767,6 +767,13 @@ return [
         "policy-info" => "ประกันภัยเบาหวาน โพรเทค",
         "submit3" => "กดใช้สิทธิ์",
         ],
+    "claim" => [
+        "claim_description" => "Let's get started to see a simple guide on how you can submit your claim",
+        "claim_category" => "Product you want to make a claim",
+        "claim_detail" => "Select the type of policy you want to make a claim.",
+        "data-error" => "Error",
+        "data-error-description" => "Please select Product you want to make a claim.",
+    ],
 ];
 
 

@@ -1,0 +1,274 @@
+main.claim {
+    h1 {
+        font-size: 1.2rem;
+        @media all and (min-width: $md) {
+            font-size: 1.4rem;
+        }
+    }
+
+    article {
+        margin-top: 60px;
+    }
+
+    form {
+        .controls-wrapper {
+            padding-top: 30px;
+            padding-bottom: 15px;
+        }
+
+        label {
+            @media all and (max-width: $sm) {
+                font-size: .8rem;
+            }
+            @media all and (min-width: $sm) {
+                font-size: 1rem;
+            }
+        }
+    }
+}
+
+.claim-wrapper {
+    padding: 25px 0 50px;
+    @media all and (min-width: $sm) {
+        display: flex;
+        justify-content: space-between;
+    }
+}
+
+.claim-menu {
+    border-radius: 30px;
+    -webkit-box-shadow: 0 0 24px 1px rgba(0, 0, 0, 0.16);
+    box-shadow: 0 0 24px 1px rgba(0, 0, 0, 0.16);
+    @media all and (min-width: $sm) {
+        flex-basis: 30%;
+        padding: 15px 0;
+    }
+    @media all and (min-width: $lg) {
+        padding: 30px 0;
+    }
+
+    li {
+        @media all and (max-width: $sm) {
+            border-bottom: 1px solid #000;
+        }
+
+        &:hover {
+            h2 {
+                color: #fff;
+                background-color: #E71618;
+
+                i {color: #fff;}
+                @media all and (min-width: $sm) {
+                    color: #fff;
+                }
+            }
+        }
+
+        &.on {
+            h2 {
+                @media all and (max-width: $sm) {
+                    color: #fff;
+                    background-color: #E71618;
+                    i {
+                        color: #E71618;
+                    }
+                }
+                @media all and (min-width: $sm) {
+                    color: #E71618;
+                    i {
+                        color: #fff;
+                    }
+                }
+            }
+
+            &:hover {
+                h2 {
+                    @media all and (min-width: $sm) {
+                        color: #fff;
+                    }
+                }
+            }
+            .claimCollapse {
+                &:after {
+                    content: '\ef98';
+                    color: #fff;
+                }
+            }
+        }
+
+        &:first-child {
+            &.on {
+                @media all and (max-width: $sm) {
+                    h2 {
+                        border-radius: 30px 30px 0 0;
+                    }
+                }
+            }
+        }
+
+        &:last-child {
+            border-bottom: none;
+        }
+    }
+
+    &.out-source {
+        @media all and (min-width: $sm) {
+            background-color: #E71618;
+        }
+
+        li {
+            &:hover {
+                //background-color: #E71618;
+            }
+
+            &:first-child {
+                @media all and (max-width: $sm) {
+                    h2 {
+                        border-radius: 30px 30px 0 0;
+                    }
+                }
+                @media all and (min-width: $sm) {
+                    h2 {
+                        border-radius: 0;
+                    }
+                }
+
+                &.on {
+                    @media all and (max-width: $sm) {
+                        h2 {
+                            border-radius: 30px 30px 0 0;
+                        }
+                    }
+                }
+            }
+
+            h2 {
+                @media all and (max-width: $sm) {
+                    background-color: #E71618;
+                    color: #fff;
+                    i {
+                        color: #fff;
+                    }
+                }
+                @media all and (min-width: $sm) {
+                    background-color: #E71618;
+                    color: #fff;
+                }
+            }
+
+            @media all and (max-width: $sm) {
+                .claimCollapse {
+                    &:after {
+                        content: '\ef98';
+                        color: #fff;
+                    }
+                }
+            }
+        }
+
+        .claimCollapse {
+            @media all and (min-width: $sm) {
+                justify-content: center;
+                text-align: center;
+            }
+        }
+    }
+}
+
+
+.claimCollapse {
+    color: #707070;
+    @include project_transition();
+    padding: 10px 30px;
+    display: flex;
+    font-weight: bold;
+    justify-content: space-between;
+    align-items: center;
+    font-size: .8rem;
+    cursor: pointer;
+    position: relative;
+
+    &:after {
+        @include project_transition();
+        position: absolute;
+        top: 12px;
+        right: 30px;
+        content: '\efc0';
+        font-family: icofont;
+        font-style: normal;
+        font-size: .75rem;
+        display: block;
+        color: #E71618;
+        @media all and (min-width: $sm) {
+            display: none;
+        }
+    }
+}
+
+.claimCollapsePanel {
+    display: none;
+
+    &.on {
+        display: block;
+    }
+}
+
+.claim-icon {
+    text-align: center;
+    @media all and (max-width: $sm) {
+        padding: 25px 0 0;
+    }
+
+    img {
+        width: 75px;
+    }
+
+    @media all and (min-width: $sm) {
+        display: none;
+    }
+}
+
+.claim-content {
+    @media all and (max-width: $sm) {
+        padding: 10px 20px 30px;
+        text-align: center;
+    }
+    @media all and (min-width: $sm) {
+        display: none;
+    }
+}
+
+.claim-result {
+    display: none;
+    @media all and (min-width: $sm) {
+        display: block;
+        flex-basis: 70%;
+    }
+    @media all and (min-width: $lg) {
+        padding-top: 30px;
+    }
+
+    .claimCollapsePanel {
+        display: flex;
+        @media all and (min-width: $sm) {
+
+        }
+    }
+
+    .claim-icon {
+        flex-basis: 30%;
+        display: flex !important;
+        align-items: center;
+        flex-direction: column;
+
+        img {
+            width: 80px;
+        }
+    }
+
+    .claim-content {
+        display: block !important;
+        flex-basis: 70%;
+        padding-right: 20px;
+    }
+}

@@ -1,34 +1,40 @@
 @extends('frontend.layout.main')
 
 @section('page')
-
-    <main>
+    <main class="claim">
         <article class="wrapper">
             <h1>{{$content->locales[$locale]->title}}</h1>
+            <div>@lang("product.claim.claim_description")</div>
+            <br>
+            <form action="#"
+                  data-error="@lang("product.claim.data-error")"
+                  data-error-description="@lang("product.claim.data-error-description")"
+                  data-select="@lang('product.please_select')"
+                  id="frm_claim" method="post">
+            <div class="form-inner">
+                <div class="controls-wrapper">
+                    <select id="ctrl_category" name="ctrl_category">
+                        @if($claim_category)
+                            <option value="">@lang('product.please_select')</option>
+                            @foreach ($claim_category as $v)
+                                <option value="{{$v->id}}" >{{$v->locales[$locale]->title}}</option>
+                            @endforeach
+                        @endif
+                    </select>
+                    <label for="ctrl_category">@lang('product.claim.claim_category')</label>
+                </div>
+                <div class="controls-wrapper">
+                    <select id="ctrl_detail" name="ctrl_detail">
+                    </select>
+                    <label for="ctrl_detail">@lang('product.claim.claim_detail')</label>
+                </div>
+            </div>
+            <div id="div_result" style="display:none;">
+                {{ json_encode( $claim) }}
+            </div>
+            <br/>
+            <br/>
             <div>{!! $content->locales[$locale]->content !!}</div>
-
-            @if($claim_category)
-                @foreach ($claim_category as $v)
-
-                    <h2 class="underline">{{$v->locales[$locale]->title}}</h2>
-                    <ul>
-                        @foreach ($claim as $v1)
-                            @if($v->id == $v1->cat_id )
-                            @if(strtolower($v1->locales[$locale]->title) !== 'vsure')
-                                <li><a class="text-primary"
-                                       data-gtm="claim-page-{{$v1->friendly_url}}"
-                                       href="{{route('current',['locale' => $locale,'controller' => 'claim','func' => $v1->friendly_url ])}}">{{$v1->locales[$locale]->title}}</a>
-                                </li>
-                                @endif
-                            @endif
-                        @endforeach
-                    </ul>
-                @endforeach
-            @endif
-
-
-            <br/>
-            <br/>
             <script type='text/javascript'
                     src='https://platform-api.sharethis.com/js/sharethis.js#property=5fe33658948afa0012592b2d&product=inline-share-buttons'
                     async='async'></script>
@@ -36,5 +42,4 @@
             <br/>
         </article>
     </main>
-
 @endsection

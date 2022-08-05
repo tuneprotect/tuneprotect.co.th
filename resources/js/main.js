@@ -437,6 +437,7 @@ document.addEventListener("DOMContentLoaded", function () {
             }
 
             if ($form.getAttribute('data-form-type') === 'leadform') {
+                
 
                 data = {
                     ...data,
