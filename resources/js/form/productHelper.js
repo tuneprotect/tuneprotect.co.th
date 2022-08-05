@@ -4,7 +4,7 @@ import {showDateError, showFieldError} from "../validate_form";
 import Swal from "sweetalert2";
 
 export const getPackageData = async (currentPackage,channel) => {
-    let res = await fetch(`/storage/json/${currentPackage.toLowerCase() + (channel ? '_'+channel : '') }.json?1655814514567`);
+    let res = await fetch(`/storage/json/${currentPackage.toLowerCase() + (channel ? '_'+channel : '') }.json?1655814514568`);
     return await res.json();
 }
 

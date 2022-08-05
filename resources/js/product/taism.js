@@ -294,18 +294,18 @@ document.addEventListener("DOMContentLoaded", async () => {
                 confirmButtonText: 'OK'
             })
         }
-        if($('#partner').value == 'LUMA')
-        {
-            let element = document.getElementById("btnBrochure");
-            element.parentNode.removeChild(element);
-        }
-        if($('#partner').value == 'partnership')
-        {
-            $('#btnBrochure').addEventListener('click', (e) => {
-                // alert( "Handler for .click() called." );
-
-            });
-        }
+        // if($('#partner').value == 'LUMA')
+        // {
+        //     let element = document.getElementById("btnBrochure");
+        //     element.parentNode.removeChild(element);
+        // }
+        // if($('#partner').value == 'partnership')
+        // {
+        //     $('#btnBrochure').addEventListener('click', (e) => {
+        //         // alert( "Handler for .click() called." );
+        //
+        //     });
+        // }
     }
 
     // if(Keys == 'BQQWAMUX9JDXNTFFD4WZZLQ3NDEXNTFFT6UCXGSF68UXNEKZ24UYN5TRZ2')
