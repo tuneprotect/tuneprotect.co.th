@@ -19,14 +19,13 @@ class ClaimController extends BaseController
         $this->template->setBody('id', 'contact_us_page');
         $this->template->setFootJS(mix("/js/frontend/main.js"));
         $this->bodyData['content'] = $this->setStaticPageHeader(ProjectEnum::STATIC_PAGE_CLAIM);
-
+        $this->template->setFootJS(mix("/js/frontend/claim.js"));
         return $this->genView('frontend.page.claim');
     }
 
 
     protected function genDetail($link)
     {
-
         $content = WebContent::where('type_id', ProjectEnum::WEB_CONTENT_CLAIM)
             ->with('locales')
             ->where('friendly_url', $link)
@@ -34,7 +33,8 @@ class ClaimController extends BaseController
             ->first();
 
         if ($content) {
-            return $this->genStaticPage($content, 'frontend.page.static');
+            $this->template->setFootJS(mix("/js/frontend/claim_detail.js"));
+            return $this->genStaticPage($content, 'frontend.page.claim_static');
         }
     }
 }
