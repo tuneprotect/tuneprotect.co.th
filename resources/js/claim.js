@@ -63,7 +63,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                 })
                 return false;
             }
-            window.open($('#ctrl_detail').value);
+            window.location.href = $('#ctrl_detail').value;
         });
     }
 
