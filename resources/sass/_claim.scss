@@ -18,7 +18,7 @@ main.claim {
 
         label {
             @media all and (max-width: $sm) {
-                font-size: .8rem;
+                font-size: .75rem;
             }
             @media all and (min-width: $sm) {
                 font-size: 1rem;
@@ -117,10 +117,6 @@ main.claim {
         }
 
         li {
-            &:hover {
-                //background-color: #E71618;
-            }
-
             &:first-child {
                 @media all and (max-width: $sm) {
                     h2 {
