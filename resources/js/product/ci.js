@@ -5,7 +5,7 @@ import {
     getPackageData,
     showTitle,
     validateAgeInPackage,
-    validatePolicy
+    validatePolicy,validatePolicyStep5
 } from "../form/productHelper";
 import {
     $,
@@ -497,7 +497,7 @@ if ($('#title_wrapper')) {
             field.addEventListener("change", function (e) {
                 validateField(this, constraints);
                 if (['fdName', 'fdSurname', 'fdNationalID'].includes(field.id)) {
-                    validatePolicy(e.target, data.fdPackage + data.ctrl_disease.join('').replace("F", ""));
+                    validatePolicyStep5(e.target, data.fdPackage + data.ctrl_disease.join('').replace("F", ""));
                 }
             });
         });

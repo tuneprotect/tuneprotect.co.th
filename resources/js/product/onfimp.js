@@ -2,7 +2,7 @@ import {
     changeStep,
     formatTelNumber,
     getPackageData,
-    showTitleOnly,
+    showTitleOnly, validatePolicy,
     validatePolicyLoc
 } from "../form/productHelper";
 import {
@@ -370,6 +370,11 @@ document.addEventListener("DOMContentLoaded", async () => {
             if (['fdNationalID', 'loc_fdAddr_Home'].includes(field.id)) {
                 validatePolicyLoc(e.target, data.fdPackage,$('#fdFromDate')?.value);
             }
+
+            if (['fdName', 'fdSurname', 'fdNationalID'].includes(field.id)) {
+                validatePolicy(e.target, data.fdPackage);
+            }
+            
         });
     });
 
