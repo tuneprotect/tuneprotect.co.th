@@ -561,6 +561,7 @@ if ($('#title_wrapper')) {
                     } else {
                         switch (parseInt(step)) {
                             case 1:
+                                console.log(1);
                                 const validateResult = validateAgeInPackage(package_data, false);
                                 status = validateResult.status;
                                 if (validateResult.status) {
@@ -610,6 +611,7 @@ if ($('#title_wrapper')) {
 
                                 break;
                             case 2:
+                                console.log(2);
                                 const fdPackage = $btn.getAttribute('data-package');
 
                                 $("#table-detail").setAttribute('data-package_plan', $btn.getAttribute('data-plan'));
@@ -635,6 +637,7 @@ if ($('#title_wrapper')) {
 
                                 break;
                             case 3:
+                                console.log(3);
                                 //=====================================================================
                                 //For sale view only.
                                 var myEle = document.getElementById("portal_key");
@@ -663,6 +666,14 @@ if ($('#title_wrapper')) {
                                 console.log(status)
                                 break;
                             case 4:
+                                console.log(4);
+
+                                if($('button[data-step="5"]').style.display == 'none')
+                                {
+                                    status = false;
+                                    return;
+                                }
+
                                 let address = ($('#ctrl_province').value).split('*');
                                 let today = new Date();
                                 let dd = String(today.getDate()).padStart(2, '0');
