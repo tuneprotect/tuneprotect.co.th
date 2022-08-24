@@ -5,7 +5,7 @@ import {
     getPackageData,
     getSelectedPrice,
     showTitle,
-    validateAgeInPackage, validatePolicy, validateQuestionTG
+    validateAgeInPackage, validatePolicy, validatePolicyPayment, validateQuestionTG
 } from "../form/productHelper";
 import {
     $,
@@ -678,6 +678,13 @@ document.addEventListener("DOMContentLoaded", async () => {
 
                         break;
                     case 3:
+                        let valCheck = false;
+                        valCheck = validatePolicyPayment($('#fdNationalID').value,data.fdPackage,$('#fdFromDate')?.value);
+                        if(!valCheck)
+                        {
+                            status = false;
+                            return false;
+                        }
 
                         if($('#ctrl_state').value === '')
                         {

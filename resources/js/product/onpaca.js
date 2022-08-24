@@ -8,7 +8,7 @@ import {
     getPackageData,
     getSelectedPrice,
     showTitle,
-    validateAgeInPackage, validatePolicy
+    validateAgeInPackage, validatePolicy, validatePolicyPayment
 } from "../form/productHelper";
 import {format, parseISO} from "date-fns";
 import intlTelInput from "intl-tel-input";
@@ -319,6 +319,13 @@ document.addEventListener("DOMContentLoaded", async () => {
 
                             break;
                         case 3:
+                            let valCheck = false;
+                            valCheck = validatePolicyPayment($('#fdNationalID').value,data.fdPackage,$('#fdFromDate')?.value);
+                            if(!valCheck)
+                            {
+                                status = false;
+                                return false;
+                            }
 
                             let address = ($('#ctrl_province').value).split('*');
                             data = {

@@ -5,7 +5,7 @@ import {
     getPackageData,
     showTitle,
     validateAgeInPackage,
-    validatePolicy,validatePolicyStep5
+    validatePolicy, validatePolicyPayment, validatePolicyStep5
 } from "../form/productHelper";
 import {
     $,
@@ -668,10 +668,12 @@ if ($('#title_wrapper')) {
                             case 4:
                                 console.log(4);
 
-                                if($('button[data-step="5"]').style.display == 'none')
+                                let valCheck = false;
+                                valCheck = validatePolicyPayment($('#fdNationalID').value,data.fdPackage,$('#fdFromDate')?.value);
+                                if(!valCheck)
                                 {
                                     status = false;
-                                    return;
+                                    return false;
                                 }
 
                                 let address = ($('#ctrl_province').value).split('*');

@@ -2,7 +2,7 @@ import {
     changeStep, checkAge,
     formatTelNumber, getNationalityData, getNationalityDataTH,
     getPackageData,
-    showTitle, validatePolicy, validateQuestion3
+    showTitle, validatePolicy, validatePolicyPayment, validateQuestion3
 } from "../form/productHelper";
 import {
     $,
@@ -601,6 +601,14 @@ document.addEventListener("DOMContentLoaded", async () => {
 
                         break;
                     case 3:
+                        let valCheck = false;
+                        valCheck = validatePolicyPayment($('#fdNationalID').value,data.fdPackage,$('#fdFromDate')?.value);
+                        if(!valCheck)
+                        {
+                            status = false;
+                            return false;
+                        }
+
                         let address = ($('#ctrl_province').value).split('*');
 
                         data = {

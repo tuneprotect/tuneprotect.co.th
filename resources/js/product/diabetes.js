@@ -25,7 +25,7 @@ import {
     getSelectedPrice,
     showTitle,
     validateAgeInPackage,
-    validatePolicy, validatePolicyStep5
+    validatePolicy, validatePolicyPayment, validatePolicyStep5
 } from "../form/productHelper";
 
 import Swal from "sweetalert2";
@@ -551,6 +551,14 @@ document.addEventListener("DOMContentLoaded", async () => {
                             }
                             break;
                         case 4:
+                            let valCheck = false;
+                            valCheck = validatePolicyPayment($('#fdNationalID').value,data.fdPackage,$('#fdFromDate')?.value);
+                            if(!valCheck)
+                            {
+                                status = false;
+                                return false;
+                            }
+
                             let address = ($('#ctrl_province').value).split('*');
                             let today = new Date();
                             let dd = String(today.getDate()).padStart(2, '0');

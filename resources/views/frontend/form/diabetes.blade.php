@@ -134,7 +134,7 @@
             @csrf
             <button data-gtm="product-{{strtolower($selected)}}-back-step-5" data-step="4"
                     class="btn btn-secondary btn-goto">@lang('product.edit')</button>
-            <button data-gtm="product-{{strtolower($selected)}}-make-payment" type="submit"
+            <button data-gtm="product-{{strtolower($selected)}}-make-payment" data-step="payment" type="submit"
                     class="btn btn-primary">@lang('product.proceed')</button>
         </div>
     </form>

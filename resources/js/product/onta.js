@@ -4,7 +4,7 @@ import {
     formatTelNumber,
     getCountryData,
     getPackageData,
-    showMultipleTitle, validatePolicy
+    showMultipleTitle, validatePolicy, validatePolicyPayment
 } from "../form/productHelper";
 import {$, $$, current_package, getRadioSelectedValue, getZipcodeData, locale, scrollToTargetAdjusted} from "../helper";
 
@@ -480,6 +480,15 @@ document.addEventListener("DOMContentLoaded", async () => {
                         for (let i = 1; i <= $('#ctrl_no_of_insured').value; i++) {
                             let address = ($(`#data_${i}_ctrl_province`).value).split('*');
                             let dateResult = checkTaBirthDate(i);
+
+                            let valCheck = false;
+                            valCheck = validatePolicyPayment($(`#data_${i}_fdNationalID`).value,data.fdPackage,$('#fdFromDate')?.value);
+                            if(!valCheck)
+                            {
+                                status = false;
+                                return false;
+                            }
+
 
                             const currentProfile = {
                                 fdSex: getRadioSelectedValue(`data_${i}_fdSex`),

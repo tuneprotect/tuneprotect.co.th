@@ -3,7 +3,7 @@ import {
     formatTelNumber,
     getPackageData,
     showTitleOnly, validatePolicy,
-    validatePolicyLoc
+    validatePolicyLoc, validatePolicyPayment
 } from "../form/productHelper";
 import {
     $,
@@ -374,7 +374,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             if (['fdName', 'fdSurname', 'fdNationalID'].includes(field.id)) {
                 validatePolicy(e.target, data.fdPackage);
             }
-            
+
         });
     });
 
@@ -675,6 +675,13 @@ document.addEventListener("DOMContentLoaded", async () => {
 
                         break;
                     case 3:
+                        let valCheck = false;
+                        valCheck = validatePolicyPayment($('#fdNationalID').value,data.fdPackage,$('#fdFromDate')?.value);
+                        if(!valCheck)
+                        {
+                            status = false;
+                            return false;
+                        }
 
                         status = true;
                         removeError($('#step3'));
