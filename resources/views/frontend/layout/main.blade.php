@@ -86,17 +86,16 @@
                         </div>
                     </li>
                 @endif
-
+                <li>
+                    <a data-gtm="main-nav-claim"
+                       href="{{route('current',['locale' => $locale,'controller' => 'claim'],false)}}">{{__('global.nav_claim')}}</a>
+                </li>
                 @if(@$menu_enable[\App\Enum\ProjectEnum::WEB_CONTENT_ARTICLE] > 0)
                     <li>
                         <a data-gtm="main-nav-article"
                            href="{{route('current',['locale' => $locale,'controller' => 'article'],false)}}">{{__('global.nav_article')}}</a>
                     </li>
                 @endif
-                <li>
-                    <a data-gtm="main-nav-claim"
-                       href="{{route('current',['locale' => $locale,'controller' => 'claim'],false)}}">{{__('global.nav_claim')}}</a>
-                </li>
                 <li>
                     <a data-gtm="main-nav-contactus"
                        href="{{route('current',['locale' => $locale,'controller' => 'contactus2'],false)}}">{{__('global.nav_contact')}}</a>
