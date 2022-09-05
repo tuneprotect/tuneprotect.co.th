@@ -94,6 +94,10 @@
                     </li>
                 @endif
                 <li>
+                    <a data-gtm="main-nav-claim"
+                       href="{{route('current',['locale' => $locale,'controller' => 'claim'],false)}}">{{__('global.nav_claim')}}</a>
+                </li>
+                <li>
                     <a data-gtm="main-nav-contactus"
                        href="{{route('current',['locale' => $locale,'controller' => 'contactus2'],false)}}">{{__('global.nav_contact')}}</a>
                 </li>

@@ -36,6 +36,7 @@ return [
     'name' => 'Name',
     'nav_about' => 'เกี่ยวกับเรา',
     'nav_article' => 'บทความแนะนำ',
+    'nav_claim' => 'สินไหม',
     'nav_contact' => 'ติดต่อเรา',
     'nav_news' => 'ข่าวและกิจกรรม',
     'nav_my_health' => '<span style="font-size:.9rem;color:#e71618">my</span>Health',
