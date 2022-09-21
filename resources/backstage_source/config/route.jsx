@@ -2021,8 +2021,7 @@ const static_content = {
         'privacy',
         'service_center',
         'terms',
-        'my_health',
-        'biglife'
+        'my_health'
     ],
     meta: [],
     email: []

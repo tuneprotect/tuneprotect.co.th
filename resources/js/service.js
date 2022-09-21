@@ -6,7 +6,6 @@ import {showFieldError, validateField} from "./validate_form";
 import {tns} from "tiny-slider/src/tiny-slider"
 
 document.addEventListener("DOMContentLoaded", async () => {
-
     const toggltField = (isShow) => {
         $$('.hideField').forEach($el => {
             if (isShow) {
@@ -314,5 +313,6 @@ document.addEventListener("DOMContentLoaded", async () => {
             }
             $frmBloodtest.classList.remove('ajax_loader');
         }
+        
     }
 });

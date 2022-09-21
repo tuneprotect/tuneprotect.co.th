@@ -21,24 +21,49 @@ class BiglifeController  extends ProductController
 
         if($this->locale =='th')
         {
-            $this->bodyData['headertext'] = 'กรุณากรอกรายละเอียด';
-            $this->bodyData['labeltext'] = 'กรุณาใส่หมายเลขสมาชิก airasia';
-            $this->bodyData['placeholdertext'] = 'หมายเลขสมาชิก airasia';
-            $this->bodyData['buttontext'] = 'ดำเนินการต่อ';
+            $this->bodyData['headertext'] = 'ระบุรายละเอียด';
+            $this->bodyData['labeltext'] = 'กรุณากรอกหมายเลขสมาชิก BIG ของท่านเพื่อดำเนินการต่อและสะสม BIG Points';
+            $this->bodyData['placeholdertext'] = 'BIG Membership Number';
+            $this->bodyData['buttontext'] = 'ล็อกอิน';
 
         }
         else{
             $this->bodyData['headertext'] = 'Fill in information';
-            $this->bodyData['labeltext'] = 'Please enter your aiaasia member ID';
-            $this->bodyData['placeholdertext'] = 'Enter your aiaasia member ID';
-            $this->bodyData['buttontext'] = 'Enter';
+            $this->bodyData['labeltext'] = 'Please Enter your BIG Membership Number';
+            $this->bodyData['placeholdertext'] = 'BIG Membership Number';
+            $this->bodyData['buttontext'] = 'Login';
         }
 
-//        $this->bodyData['addonComponent'] = 'frontend.page.blood_test';
-        $this->template->setFootJS(mix("/js/frontend/biglife.js"));
-        return $this->genStatusPage(ProjectEnum::STATIC_PAGE_BIGLIFE);
+//        Defualt Cocid for load image and slideshow
+        $selected = 'ONCOVIDA';
+        $link = 'coronavirus-covid-19-insurance';
+        $this->bodyData['selected'] = $selected;
 
-//        return $this->genView('frontend.page.biglife_validation');
+        $this->bodyData['current_product'] = WebContent::where('type_id', ProjectEnum::WEB_CONTENT_PRODUCT)
+            ->where('friendly_url', $link)
+            ->with(['locales', 'productPackage' => function ($q) {
+                $q->with('locales');
+            }])
+            ->whereRaw(ProjectEnum::isPublish())
+            ->first();
+
+        foreach ($this->bodyData['current_product']->productPackage as $v) {
+            if ($v->code === $selected) {
+                $this->setStaticPageHeader($v);
+                $this->bodyData['slideshow'] = [$this->bodyData['current_product']];
+            }
+        }
+
+//        foreach ($this->bodyData['current_product']->productPackage as $v) {
+//            if ($v->code === $this->bodyData['selected']) {
+//                $this->bodyData['current_package'] = $v;
+//            }
+//        }
+
+
+
+        $this->template->setFootJS(mix("/js/frontend/biglife.js"));
+        return $this->genView('frontend.page.biglife_validation');
 
     }
 
@@ -63,54 +88,69 @@ class BiglifeController  extends ProductController
          $apiResult =json_decode($response->getBody()->getContents(), true);
 
          if (!$apiResult["status"]) {
-
-             $Error_massage = "Please enter a valid airasia member ID";
-             $Error_massage_alert = "Warning";
-             $Error_massage_confirm = "OK";
-             if($this->locale =='th'){
-                 $Error_massage = "กรุณาใส่หมายเลขสมาชิก airasia ที่ถูกต้องเพื่อทำรายการต่อไป";
-                 $Error_massage_alert = "คำเตือน";
-                 $Error_massage_confirm='ยืนยัน';
-             }
-
-
-
              $this->bodyData['member_id'] = '';
              $this->bodyData['status_api'] = false;
-             $this->bodyData['massage_key'] = $Error_massage;
-             $this->bodyData['massage_alert'] = $Error_massage_alert;
-             $this->bodyData['massage_confirm'] = $Error_massage_confirm;
+             $this->bodyData['massage_key'] = "Error : " . $apiResult["message"];
              return $this->index();
-
          }
          else
          {
              $this->bodyData['member_id'] = $memberId;
              $this->bodyData['status_api']= true;
              $this->bodyData['massage_key'] = '';
-             $this->bodyData['massage_alert'] = '';
-             $this->bodyData['massage_confirm'] = '';
 
-             return $this->genView('frontend.page.airasia_survey');
+              //coronavirus-covid-19-insurance/ONCOVIDA
+             //Covid only
+
+             return parent::index('coronavirus-covid-19-insurance','ONCOVIDA',$memberId);
+
+
+//             //Package list
+//
+////             dd(ProjectEnum::WEB_CONTENT_PRODUCT);
+//
+////             dd(ProjectEnum::isPublish());
+//
+//             $this->bodyData['current_product'] = WebContent::where('type_id', ProjectEnum::WEB_CONTENT_PRODUCT)
+//                 ->where('friendly_url', 'coronavirus-covid-19-insurance')
+//                 ->with(['locales', 'productPackage' => function ($q) {
+//                     $q->with('locales');
+//                 }])
+//                 ->whereRaw(ProjectEnum::isPublish())
+//                 ->first();
+//
+//             //ExClude FAQ.
+//
+////             dd($this->bodyData['current_product']);
+//
+//             $this->setStaticPageHeader($this->bodyData['current_product']);
+//             $this->template->setFootJS(mix("/js/frontend/main.js"));
+//
+//             //return $this->genListPage();
+//             return $this->genView('frontend.page.biglife_product_main');
+
+
 
          }
+
+         return $this->index();
+
      }
 
     public function thankyou(Request $request)
     {
-//        $this->bodyData['doc_no'] = $request->session()->get('doc_no');
-//
-//        if($this->locale =='th')
-//        {
-//            $this->bodyData['point'] = '<p>ท่านได้รับคะแนน BIG Point '. $request->session()->get('point') .' คะแนน จากการซื้อครั้งนี้ </p>';
-//        }
-//        else{
-//            $this->bodyData['point'] = '<p>You will earn '. $request->session()->get('point') .' Big Point from this purchase. </p>';
-//        }
-//
-//        $this->bodyData['return_link'] = $request->session()->get('return_link');
-//        return $this->genStatusPage_Portal(ProjectEnum::STATIC_PAGE_PAYMENT_THANK_YOU);
+        $this->bodyData['doc_no'] = $request->session()->get('doc_no');
 
+        if($this->locale =='th')
+        {
+            $this->bodyData['point'] = '<p>ท่านได้รับคะแนน BIG Point '. $request->session()->get('point') .' คะแนน จากการซื้อครั้งนี้ </p>';
+        }
+        else{
+            $this->bodyData['point'] = '<p>You will earn '. $request->session()->get('point') .' Big Point from this purchase. </p>';
+        }
+
+        $this->bodyData['return_link'] = $request->session()->get('return_link');
+        return $this->genStatusPage_Portal(ProjectEnum::STATIC_PAGE_PAYMENT_THANK_YOU);
     }
 
 

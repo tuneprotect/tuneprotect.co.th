@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\AdminLogController;
 use App\Http\Controllers\Api\SystemController;
+use App\Http\Controllers\Api\ApiConnectController;
 use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\Api\ProductController;
 use Illuminate\Support\Facades\App;
@@ -21,6 +22,9 @@ use Illuminate\Support\Facades\Route;
 Route::post('/User/login', [UserController::class, 'login']);
 Route::post('/System/overallCheck', [SystemController::class, 'overallCheck']);
 Route::post('/AdminLog/add', [AdminLogController::class, 'add']);
+Route::post('/ApiConnect/myHomeSmartPackage', [ApiConnectController::class, 'myHomeSmartPackage']);
+Route::post('/ApiConnect/myHomeSmartPackage1y', [ApiConnectController::class, 'myHomeSmartPackage1y']);
+Route::post('/ApiConnect/myHomeSmartPackage3y', [ApiConnectController::class, 'myHomeSmartPackage3y']);
 
 Route::middleware('auth:api')
     ->any('/{controller}/{func}', function ($controller, $func) {
