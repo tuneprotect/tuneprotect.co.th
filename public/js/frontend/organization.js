@@ -19238,7 +19238,7 @@ document.addEventListener("DOMContentLoaded", function () {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Pattarapong\Tuneprotect\tuneprotect.co.th\resources\js\organization.js */"./resources/js/organization.js");
+module.exports = __webpack_require__(/*! D:\Project\PRD\Tune\resources\js\organization.js */"./resources/js/organization.js");
 
 
 /***/ })

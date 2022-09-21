@@ -100,7 +100,23 @@ class ServiceController extends BaseController
         return json_decode($response->getBody()->getContents(), true);
 
     }
+    /*
+    public function TestCallmyHomeSmart(Request $request)
+    {
 
+        $client = new Client();
+        $response = $client->request('POST', 'http://webtest1.tuneinsurance.co.th/tunepolicy/api/WEBSITE' . 'myHomeSmartPackage', [
+            'auth' => ['TPTWEBSITE', 'TPTWEBSITE@123'],
+            'headers' => [
+                'Content-Type' => 'application/json'
+            ],
+            
+        ]);
+        
+        return json_decode($response->getBody()->getContents(), true);
+
+    }
+*/
     public function claiminfo()
     {
         return $this->genView('frontend.page.claim_info');
@@ -126,5 +142,7 @@ class ServiceController extends BaseController
         return json_decode($response->getBody()->getContents(), true);
 
     }
+    
+    
 
 }

@@ -85,11 +85,14 @@ class ProductController extends BaseController
             return redirect()->route('current', ['locale' => 'en', 'controller' => $this->controller, 'func' => $link, 'params' => $selected]);
         }
 
+        
         $this->getProductDetail($link, $selected);
 
-        if ($selected) {
+        if ($selected) {      
+            //dd($selected));      
             return $this->genDetailPage($selected);
         } else {
+            //return $this->genDetailPage($selected);
             $this->bodyData['faq'] = $this->setFaq(ProjectEnum::WEB_CONTENT_FAQ, $this->bodyData['current_product']->id);
             return $this->genListPage();
         }
@@ -129,7 +132,7 @@ class ProductController extends BaseController
 
     protected function getProductDetail($link = null, $selected = null)
     {
-
+        //echo var_dump($link,$selected);exit();
         $this->bodyData['current_product'] = WebContent::where('type_id', ProjectEnum::WEB_CONTENT_PRODUCT)
             ->where('friendly_url', $link)
             ->with(['locales', 'productPackage' => function ($q) {
@@ -166,9 +169,11 @@ class ProductController extends BaseController
 
     protected function genDetailPage($selected, $isPage = true)
     {
+        
         if ($selected) {
+            
             $this->bodyData['selected'] = $selected;
-            if (isset($this->bodyData['current_product'])) {
+            if (isset($this->bodyData['current_product'])) {                
                 foreach ($this->bodyData['current_product']->productPackage as $v) {
                     if ($v->code === $selected) {
                         $this->setStaticPageHeader($v);
@@ -176,7 +181,6 @@ class ProductController extends BaseController
                     }
                 }
             }
-
         } else {
             $this->bodyData['selected'] = @$this->bodyData['current_product']->productPackage[0]->code;
             $this->setStaticPageHeader($this->bodyData['current_product']);
@@ -197,6 +201,7 @@ class ProductController extends BaseController
             $packageJson = "ci_broker";
         }
         //Srikrung
+        
         if(isset($this->bodyData['portal_key']))
         {
             if($this->bodyData['portal_key'] === 'QAVM2LRWBGCXXGSFBQFR6LKW24JXXUJRX8MBNGFRGUSXXTARPQJRX')
@@ -211,8 +216,11 @@ class ProductController extends BaseController
 
 //        dd(Storage::disk('public')->get('json/' . $packageJson . '.json'));
 
+//        dd($packageJson);
+
         if (Storage::disk('public')->exists('json/' . $packageJson . '.json')) {
             $package_detail = json_decode(Storage::disk('public')->get('json/' . $packageJson . '.json'));
+            //echo var_dump($package_detail);exit();
             foreach ($package_detail as $k => $v) {
                 if (str_starts_with($k, $selected)) {
                     if($this->locale === 'en')
@@ -268,6 +276,8 @@ class ProductController extends BaseController
 
         }
 
+        //dd( $this->bodyData['package_detail']);
+
         $this->template->setBody('id', 'product_page');
 
         if($selected === 'ONTAOB')
@@ -304,17 +314,18 @@ class ProductController extends BaseController
             $this->bodyData['faq'] = $this->setFaq('faq.content', $this->bodyData['current_package']->id);
         }
 
-        try {
+        
+        try {            
             $this->template->setFootJS(mix("/js/frontend/product/" . strtolower($this->bodyData['selected']) . ".js"));
         } catch (\Exception $exception) {
              dd('js error.');
         }
-
-//        dd($this->bodyData['package_detail']);
-
+          
+      //dd($this->bodyData['package_detail']);
         if ($this->controller != 'product') {
             return $this->genView('frontend.page.portal');
         } else {
+            
             if (!$isPage) {
                 return $this->genView('frontend.page.product_form');
             }
@@ -376,6 +387,8 @@ class ProductController extends BaseController
             $data['fdPackage'] .= str_replace(['F', ','], "", $data['ctrl_disease']);
 
         }elseif (substr($data['fdPackage'], 0, 6) === 'ONFIMP') {
+            $obj = new FIMPObject();
+        }elseif (substr($data['fdPackage'], 0, 5) === 'ONMHS') {
             $obj = new FIMPObject();
         }elseif (substr($data['fdPackage'], 0, 8) === 'DIABETES') {
             $obj = new BAOWANObject();
@@ -577,6 +590,7 @@ class ProductController extends BaseController
 
     public function makePayment(Request $request)
     {
+        echo var_dump(2);exit();
         if($this->controller === 'product')
         {
             session(['nopayment_status' => false]);
@@ -907,6 +921,9 @@ class ProductController extends BaseController
         } elseif (substr($package, 0, 6) === 'ONFIMP') {
             $this->thankYouParam = substr($package, 0, 6);
             $link = 'IssuePolicyMyHomePlus';
+        } elseif (substr($package, 0, 5) === 'ONMHS') {
+            $this->thankYouParam = substr($package, 0, 5);
+            $link = 'IssuePolicyMyHomeSmart';
         } elseif (substr($package, 0, 7) === 'CVISAFE') {
             $this->thankYouParam = 'CVISAFE';
             $link = 'IssuePolicyCovid19';
@@ -1091,6 +1108,7 @@ class ProductController extends BaseController
 
     public function checkDup(Request $request)
     {
+        echo var_dump(1);exit();
         $data = $request->all();
 
         $client = new Client();
@@ -1116,7 +1134,10 @@ class ProductController extends BaseController
         return $this->send();
     }
 
-
+    public function myHomeSmart()
+    {
+        dd(1);
+    }
     public function testDebug()
     {
 //        $document = BuyLog::whereYear("created_at", date("Y"))
@@ -1128,7 +1149,6 @@ class ProductController extends BaseController
 
 //        $document = BuyLog::orderBy("id", "DESC")
 //            ->first();
-
 //        if (empty($document)) {
 //            $max = 1;
 //        } else {

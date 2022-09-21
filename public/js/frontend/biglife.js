@@ -48852,19 +48852,15 @@ __webpack_require__(/*! ./main */ "./resources/js/main.js");
 
 document.addEventListener("DOMContentLoaded", function () {
   var myEle = document.getElementById("status_api");
-  var myMassage = document.getElementById("massage_key"); //Please enter a valid airasia member ID , กรุณาใส่หมายเลขสมาชิก airasia ที่ถูกต้องเพื่อทำรายการต่อไป
-
-  var myMassage_alert = document.getElementById("massage_alert"); //Warning , คำเตือน
-
-  var myMassage_confirm = document.getElementById("massage_confirm"); //OK , ยืนยัน
 
   if (myEle) {
-    if (!myEle.value) {
+    // alert(myEle.value);
+    if (!status_api.value) {
       sweetalert2__WEBPACK_IMPORTED_MODULE_0___default.a.fire({
-        title: myMassage_alert.value,
-        text: myMassage.value,
-        icon: 'warning',
-        confirmButtonText: myMassage_confirm.value
+        title: 'Error!',
+        text: 'Error : Member ID not found.',
+        icon: 'error',
+        confirmButtonText: 'OK'
       });
     }
   } // const $btnValidate = $('#btnValidate');
@@ -49983,7 +49979,7 @@ var showBMIValidateError = function showBMIValidateError(message, selector) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Pattarapong\Tuneprotect\tuneprotect.co.th\resources\js\biglife.js */"./resources/js/biglife.js");
+module.exports = __webpack_require__(/*! D:\Project\PRD\Tune\resources\js\biglife.js */"./resources/js/biglife.js");
 
 
 /***/ })

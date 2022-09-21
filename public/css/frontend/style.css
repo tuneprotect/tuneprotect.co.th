@@ -9408,7 +9408,7 @@ input[type=search]::-webkit-search-results-decoration {
 @font-face {
   font-family: "icomoon";
   src: url(/fonts/icomoon.eot?f412de0eebd784fce93d33a57c7c4a58);
-  src: url(/fonts/icomoon.eot?f412de0eebd784fce93d33a57c7c4a58) format("embedded-opentype"), url(/fonts/icomoon.ttf?f6ff24dd65398cb22f1f4f887297da39) format("truetype"), url(/fonts/icomoon.woff?363a20ef147bc0a896439e1d115b4844) format("woff"), url(/fonts/icomoon.svg?c1f142884ac135b0a6088990cd009e36) format("svg");
+  src: url(/fonts/icomoon.eot?f412de0eebd784fce93d33a57c7c4a58) format("embedded-opentype"), url(/fonts/icomoon.ttf?f6ff24dd65398cb22f1f4f887297da39) format("truetype"), url(/fonts/icomoon.woff?363a20ef147bc0a896439e1d115b4844) format("woff"), url(/fonts/icomoon.svg?1676c2caf8c2d805c6c34bc72c4da77c) format("svg");
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -14291,7 +14291,7 @@ table.payment tbody td {
   font-weight: bold;
   padding-left: 60px;
   overflow: hidden;
-  background: url(/images/phone_icon_red.svg?c433987cb39a5d0210843b498380aede) no-repeat;
+  background: url(/images/phone_icon_red.svg?87676839364574bc8a9b7b7bb4a236a7) no-repeat;
   display: block;
 }
 
@@ -14301,7 +14301,7 @@ table.payment tbody td {
 }
 
 .call-center.white {
-  background: url(/images/phone_icon_white.svg?2aa30488307229bc765cc159af29382f) no-repeat;
+  background: url(/images/phone_icon_white.svg?bdbf788db88226d217264cc207b259d7) no-repeat;
 }
 
 .call-center.white,
@@ -17791,6 +17791,7 @@ main form input[type=checkbox]:checked + label:after {
 
 @media all and (min-width: 992px) {
   main[data-package=ONFIMP] #table-detail thead tr th:first-child,
+  [data-package=ONFIMPS] #table-detail thead tr th:first-child,
   [data-package=ONCOVIDMW] #table-detail thead tr th:first-child {
     width: 65%;
   }
