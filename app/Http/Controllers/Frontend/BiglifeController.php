@@ -6,6 +6,7 @@ use App\Http\Controllers\Frontend\Base\BaseController;
 use App\Models\WebContent;
 use GuzzleHttp\Client;
 use Illuminate\Http\Request;
+use App\Enum\ProjectEnum;
 
 class BiglifeController  extends BaseController
 {

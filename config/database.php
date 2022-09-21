@@ -40,7 +40,7 @@ return [
             'host' => env('DB_HOST', '10.8.12.2'),//10.2.2.16 //prd
             //'host' => env('DB_HOST', '10.2.2.16'),
             'port' => env('DB_PORT', '1433'),
-            'database' => env('DB_DATABASE_STAGING', 'tune_insurance_staging_dev'),
+            'database' => env('DB_DATABASE_STAGING', 'tune_insurance_staging'),
             'username' => env('DB_USERNAME', 'sa'),
             'password' => env('DB_PASSWORD', 'Tunedbadmin987'),
             'charset' => 'utf8',
@@ -53,7 +53,7 @@ return [
             'host' => env('DB_HOST', '10.8.12.2'), //prd
             //'host' => env('DB_HOST', '10.2.2.16'),
             'port' => env('DB_PORT', '1433'),
-            'database' => env('DB_DATABASE_STAGING', 'tune_insurance_master_dev'),
+            'database' => env('DB_DATABASE_STAGING', 'tune_insurance_master'),
             'username' => env('DB_USERNAME', 'sa'),
             'password' => env('DB_PASSWORD', 'Tunedbadmin987'),
             'charset' => 'utf8',

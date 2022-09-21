@@ -56059,7 +56059,7 @@ var showBMIValidateError = function showBMIValidateError(message, selector) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! D:\Project\PRD\Tune\resources\js\product\oncovida.js */"./resources/js/product/oncovida.js");
+module.exports = __webpack_require__(/*! C:\Pattarapong\Tuneprotect\tuneprotect.co.th\resources\js\product\oncovida.js */"./resources/js/product/oncovida.js");
 
 
 /***/ })
