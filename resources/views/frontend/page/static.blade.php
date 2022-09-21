@@ -12,7 +12,15 @@
                 </div>
             @endif
             <h1>{{$content->locales[$locale]->title}}</h1>
-            <div>{!! $content->locales[$locale]->content !!}</div>
+                <div>{!! $content->locales[$locale]->content !!}
+
+{{--                    @if(isset($addonComponent))--}}
+{{--                        @includeIf($addonComponent)--}}
+{{--                    @endif--}}
+
+                </div>
+
+                @includeIf('frontend.page.blood_test')
             <br/>
             @if(!isset($no_share))
                 <script type='text/javascript'

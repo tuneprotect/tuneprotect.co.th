@@ -4,16 +4,18 @@ require('./main');
 import {$, $$} from "./helper"
 
 document.addEventListener("DOMContentLoaded", function () {
-    var myEle = document.getElementById("status_api");
+    let myEle = document.getElementById("status_api");
+    let myMassage = document.getElementById("massage_key"); //Please enter a valid airasia member ID , กรุณาใส่หมายเลขสมาชิก airasia ที่ถูกต้องเพื่อทำรายการต่อไป
+    let myMassage_alert = document.getElementById("massage_alert");//Warning , คำเตือน
+    let myMassage_confirm = document.getElementById("massage_confirm");//OK , ยืนยัน
     if(myEle){
-        // alert(myEle.value);
-        if(!status_api.value)
+        if(!myEle.value)
         {
             Swal.fire({
-                title: 'Error!',
-                text: 'Error : Member ID not found.',
-                icon: 'error',
-                        confirmButtonText: 'OK'
+                title: myMassage_alert.value,
+                text: myMassage.value,
+                icon: 'warning',
+                        confirmButtonText: myMassage_confirm.value
             })
         }
     }

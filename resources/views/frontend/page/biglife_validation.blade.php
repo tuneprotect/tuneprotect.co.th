@@ -6,7 +6,17 @@
     <main>
         <h1 class="product-header"></h1>
         <div>
-            <center><span><img src="{{url('/storage/Icon/BIGRewardsLogo.png')}}"></span></center>
+            <center><span>
+{{--                    <img src="{{url('/storage/Icon/BIGRewardsLogo.png')}}">--}}
+                       <picture>
+                                                <source media="(min-width:768px)"
+                                                        srcset="/storage/Banner/BiglifeSurvey-D-{{$locale}}.png">
+                                                <img
+                                                    src="/storage/Banner/BiglifeSurvey-D-{{$locale}}.png"
+                                                    alt="Biglife">
+                                            </picture>
+
+                </span></center>
         </div>
         <section id="step1" class="wrapper">
             <form class="insurance-form" action="/{{$locale}}/Biglife/Validation" method="post" id="frm_validate">
@@ -34,6 +44,15 @@
 
                 @if(isset($status_api))
                     <input type="hidden" id="status_api" value="{{$status_api}}"/>
+                @endif
+                @if(isset($massage_key))
+                    <input type="hidden" id="massage_key" value="{{$massage_key}}"/>
+                @endif
+                @if(isset($massage_alert))
+                    <input type="hidden" id="massage_alert" value="{{$massage_alert}}"/>
+                @endif
+                @if(isset($massage_confirm))
+                    <input type="hidden" id="massage_confirm" value="{{$massage_confirm}}"/>
                 @endif
             </form>
             <br>
