@@ -2022,7 +2022,7 @@ const static_content = {
         'service_center',
         'terms',
         'my_health',
-        'biglife'
+        'biglife_point'
     ],
     meta: [],
     email: []

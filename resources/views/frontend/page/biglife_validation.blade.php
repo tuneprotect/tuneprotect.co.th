@@ -5,19 +5,6 @@
     <body id="product_page" style="height: 100%;">
     <main>
         <h1 class="product-header"></h1>
-        <div>
-            <center><span>
-{{--                    <img src="{{url('/storage/Icon/BIGRewardsLogo.png')}}">--}}
-                       <picture>
-                                                <source media="(min-width:768px)"
-                                                        srcset="/storage/Banner/BiglifeSurvey-D-{{$locale}}.png">
-                                                <img
-                                                    src="/storage/Banner/BiglifeSurvey-D-{{$locale}}.png"
-                                                    alt="Biglife">
-                                            </picture>
-
-                </span></center>
-        </div>
         <section id="step1" class="wrapper">
             <form class="insurance-form" action="/{{$locale}}/Biglife/Validation" method="post" id="frm_validate">
                 <div class="form-head">{{$headertext}}</div>

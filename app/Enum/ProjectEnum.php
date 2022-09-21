@@ -70,7 +70,7 @@ class ProjectEnum
     const ISMILE_URL = 'TAISM';
     const ISSUE_POLICY_DIABETES = 'IssuePolicyDiabetes';
 
-    const STATIC_PAGE_BIGLIFE = 'static.page.biglife';
+    const STATIC_PAGE_BIGLIFE_POINT = 'static.page.biglife_point';
 
     //TODO : invoice prefix for test only
     const INVOICE_PREFIX = 'W';

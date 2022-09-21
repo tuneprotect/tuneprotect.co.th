@@ -2,22 +2,18 @@
 
 
 namespace App\Http\Controllers\Frontend;
+
+use App\Enum\ProjectEnum;
 use App\Http\Controllers\Frontend\Base\BaseController;
 use App\Models\WebContent;
 use GuzzleHttp\Client;
 use Illuminate\Http\Request;
-use App\Enum\ProjectEnum;
-// use App\Http\Requests\MemberidRequest;
 
-class BiglifeController  extends ProductController
+class BiglifeController  extends BaseController
 {
     protected $controller = 'biglife';
-    public function index($link = null, $selected = null)
+    public function index()
     {
-        $return_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-        session(['return_link' => $return_link]);
-
-        //Fix code wording
 
         if($this->locale =='th')
         {
@@ -34,11 +30,18 @@ class BiglifeController  extends ProductController
             $this->bodyData['buttontext'] = 'Enter';
         }
 
-//        $this->bodyData['addonComponent'] = 'frontend.page.blood_test';
-        $this->template->setFootJS(mix("/js/frontend/biglife.js"));
-        return $this->genStatusPage(ProjectEnum::STATIC_PAGE_BIGLIFE);
 
-//        return $this->genView('frontend.page.biglife_validation');
+
+
+        $content = WebContent::where('type_id', ProjectEnum::STATIC_PAGE_BIGLIFE_POINT)
+            ->with('locales')
+            ->whereRaw(ProjectEnum::isPublish())
+            ->first();
+
+        $this->template->setFootJS(mix("/js/frontend/biglife.js"));
+        $this->bodyData['content'] = $content;
+        $this->setStaticPageHeader($content);
+        return $this->genView('frontend.page.biglife');
 
     }
 
@@ -56,9 +59,6 @@ class BiglifeController  extends ProductController
                  'memberId' => $memberId
              ])
          ]);
-
-//         dd(config('tune-api.url'));
-
 
          $apiResult =json_decode($response->getBody()->getContents(), true);
 
@@ -95,24 +95,24 @@ class BiglifeController  extends ProductController
 
          }
      }
-
-    public function thankyou(Request $request)
-    {
-//        $this->bodyData['doc_no'] = $request->session()->get('doc_no');
 //
-//        if($this->locale =='th')
-//        {
-//            $this->bodyData['point'] = '<p>ท่านได้รับคะแนน BIG Point '. $request->session()->get('point') .' คะแนน จากการซื้อครั้งนี้ </p>';
-//        }
-//        else{
-//            $this->bodyData['point'] = '<p>You will earn '. $request->session()->get('point') .' Big Point from this purchase. </p>';
-//        }
+//    public function thankyou(Request $request)
+//    {
+////        $this->bodyData['doc_no'] = $request->session()->get('doc_no');
+////
+////        if($this->locale =='th')
+////        {
+////            $this->bodyData['point'] = '<p>ท่านได้รับคะแนน BIG Point '. $request->session()->get('point') .' คะแนน จากการซื้อครั้งนี้ </p>';
+////        }
+////        else{
+////            $this->bodyData['point'] = '<p>You will earn '. $request->session()->get('point') .' Big Point from this purchase. </p>';
+////        }
+////
+////        $this->bodyData['return_link'] = $request->session()->get('return_link');
+////        return $this->genStatusPage_Portal(ProjectEnum::STATIC_PAGE_PAYMENT_THANK_YOU);
 //
-//        $this->bodyData['return_link'] = $request->session()->get('return_link');
-//        return $this->genStatusPage_Portal(ProjectEnum::STATIC_PAGE_PAYMENT_THANK_YOU);
-
-    }
-
+//    }
+//
 
 
 }

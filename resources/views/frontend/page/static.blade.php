@@ -1,7 +1,6 @@
 @extends('frontend.layout.main')
 
 @section('page')
-
     <main>
         <article class="wrapper">
             @if(isset($articleImage))
@@ -12,15 +11,7 @@
                 </div>
             @endif
             <h1>{{$content->locales[$locale]->title}}</h1>
-                <div>{!! $content->locales[$locale]->content !!}
-
-{{--                    @if(isset($addonComponent))--}}
-{{--                        @includeIf($addonComponent)--}}
-{{--                    @endif--}}
-
-                </div>
-
-                @includeIf('frontend.page.blood_test')
+                <div>{!! $content->locales[$locale]->content !!}</div>
             <br/>
             @if(!isset($no_share))
                 <script type='text/javascript'
