@@ -42,7 +42,7 @@ class BiglifeController  extends BaseController
      {
          $memberId = $request->get('memberid');
          $client = new Client();
-         $response = $client->request('POST', config('tune-api.url') . 'Validate', [
+         $response = $client->request('POST', config('tune-api.url') . 'BigLifeValidateSurvey', [
              'auth' => [config('tune-api.user'), config('tune-api.password')],
              'headers' => [
                  'Content-Type' => 'application/json'
@@ -180,7 +180,7 @@ class BiglifeController  extends BaseController
         $apiResult =json_decode($response->getBody()->getContents(), true);
         if (!$apiResult["status"]) {
             $this->bodyData['doc_no'] =$apiResult["message"];
-            return $this->genStatusPage_AddOn(ProjectEnum::STATIC_PAGE_PAYMENT_ERROR);
+            return $this->genStatusPage_AddOn(ProjectEnum::STATIC_PAGE_ERROR);
         }
 
         return $this->genStatusPage_AddOn(ProjectEnum::STATIC_PAGE_BIGLIFE_POINT_THANK_YOU);

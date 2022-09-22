@@ -2023,7 +2023,8 @@ const static_content = {
         'terms',
         'my_health',
         'biglife_point',
-        'biglife_point_thank_you'
+        'biglife_point_thank_you',
+        'page_error'
     ],
     meta: [],
     email: []

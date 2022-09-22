@@ -72,6 +72,7 @@ class ProjectEnum
 
     const STATIC_PAGE_BIGLIFE_POINT = 'static.page.biglife_point';
     const STATIC_PAGE_BIGLIFE_POINT_THANK_YOU = 'static.page.biglife_point_thank_you';
+    const STATIC_PAGE_ERROR = 'static.page.page_error';
 
     //TODO : invoice prefix for test only
     const INVOICE_PREFIX = 'W';

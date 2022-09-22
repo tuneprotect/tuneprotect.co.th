@@ -309,7 +309,8 @@
                 "terms": "Terms & Condition",
                 "my_health": "My Health",
                 "biglife_point": "BIG LIFE POINT",
-                "biglife_point_thank_you": "BIG LIFE POINT THANK"
+                "biglife_point_thank_you": "BIG LIFE POINT THANK",
+                "page_error":"PAGE ERROR"
             },
             "review": "Review",
             "service": "Service Tune",
