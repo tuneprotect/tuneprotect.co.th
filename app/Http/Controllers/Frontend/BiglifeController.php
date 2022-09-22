@@ -14,22 +14,15 @@ class BiglifeController  extends BaseController
     public function index()
     {
 
-        if($this->locale =='th')
-        {
-            $this->bodyData['headertext'] = 'กรุณากรอกรายละเอียด';
-            $this->bodyData['labeltext'] = 'กรุณาใส่หมายเลขสมาชิก airasia';
-            $this->bodyData['placeholdertext'] = 'หมายเลขสมาชิก airasia';
-            $this->bodyData['buttontext'] = 'ดำเนินการต่อ';
+            $this->bodyData['headertext'] = __('product.biglife.headertext');
+            $this->bodyData['labeltext'] = __('product.biglife.labeltext');
+            $this->bodyData['placeholdertext'] = __('product.biglife.placeholdertext');
+            $this->bodyData['buttontext'] = __('product.biglife.buttontext');
 
-        }
-        else{
-            $this->bodyData['headertext'] = 'Fill in information';
-            $this->bodyData['labeltext'] = 'Please enter your aiaasia member ID';
-            $this->bodyData['placeholdertext'] = 'Enter your aiaasia member ID';
-            $this->bodyData['buttontext'] = 'Enter';
-        }
-
-
+//            $this->bodyData['headertext'] = 'Fill in information';
+//            $this->bodyData['labeltext'] = 'Please enter your aiaasia member ID';
+//            $this->bodyData['placeholdertext'] = 'Enter your aiaasia member ID';
+//            $this->bodyData['buttontext'] = 'Enter';
 
 
         $content = WebContent::where('type_id', ProjectEnum::STATIC_PAGE_BIGLIFE_POINT)
@@ -61,24 +54,18 @@ class BiglifeController  extends BaseController
 
          $apiResult =json_decode($response->getBody()->getContents(), true);
 
+         $massage1 = __('product.biglife.massage1');
+         $massage2 = __('product.biglife.massage2');
+         $massage3 = __('product.biglife.massage3');
+
+         $this->bodyData['massage_key'] = $massage1;
+         $this->bodyData['massage_alert'] = $massage2;
+         $this->bodyData['massage_confirm'] = $massage3;
+
          if (!$apiResult["status"]) {
-
-             $Error_massage = "Please enter a valid airasia member ID";
-             $Error_massage_alert = "Warning";
-             $Error_massage_confirm = "OK";
-             if($this->locale =='th'){
-                 $Error_massage = "กรุณาใส่หมายเลขสมาชิก airasia ที่ถูกต้องเพื่อทำรายการต่อไป";
-                 $Error_massage_alert = "คำเตือน";
-                 $Error_massage_confirm='ยืนยัน';
-             }
-
-
-
              $this->bodyData['member_id'] = '';
              $this->bodyData['status_api'] = false;
-             $this->bodyData['massage_key'] = $Error_massage;
-             $this->bodyData['massage_alert'] = $Error_massage_alert;
-             $this->bodyData['massage_confirm'] = $Error_massage_confirm;
+
              return $this->index();
 
          }
@@ -86,33 +73,133 @@ class BiglifeController  extends BaseController
          {
              $this->bodyData['member_id'] = $memberId;
              $this->bodyData['status_api']= true;
-             $this->bodyData['massage_key'] = '';
-             $this->bodyData['massage_alert'] = '';
-             $this->bodyData['massage_confirm'] = '';
 
-             return $this->genView('frontend.page.airasia_survey');
+             $content = WebContent::where('type_id', ProjectEnum::STATIC_PAGE_BIGLIFE_POINT)
+                 ->with('locales')
+                 ->whereRaw(ProjectEnum::isPublish())
+                 ->first();
+
+             $this->template->setFootJS(mix("/js/frontend/biglife.js"));
+             $this->bodyData['content'] = $content;
+             $this->setStaticPageHeader($content);
+             return $this->genView('frontend.page.biglife_survey');
 
          }
      }
-//
-//    public function thankyou(Request $request)
-//    {
-////        $this->bodyData['doc_no'] = $request->session()->get('doc_no');
-////
-////        if($this->locale =='th')
-////        {
-////            $this->bodyData['point'] = '<p>ท่านได้รับคะแนน BIG Point '. $request->session()->get('point') .' คะแนน จากการซื้อครั้งนี้ </p>';
-////        }
-////        else{
-////            $this->bodyData['point'] = '<p>You will earn '. $request->session()->get('point') .' Big Point from this purchase. </p>';
-////        }
-////
-////        $this->bodyData['return_link'] = $request->session()->get('return_link');
-////        return $this->genStatusPage_Portal(ProjectEnum::STATIC_PAGE_PAYMENT_THANK_YOU);
-//
-//    }
-//
 
+    public function SendMessage(Request $request)
+    {
+        $data = $request->all();
+
+        $client = new Client();
+        $response = $client->request('POST', config('tune-api.url') . 'SendMessageOTP', [
+            'auth' => [config('tune-api.user'), config('tune-api.password')],
+            'headers' => [
+                'Content-Type' => 'application/json'
+            ],
+            'body' => json_encode($data)
+        ]);
+        $res = (object)json_decode($response->getBody()->getContents(), true);
+
+        return response()->json([
+            'status' => $res->status ,
+            'message' => $res->message,
+            'data' => $res->data
+        ]);
+    }
+
+
+    public function sendSurvey(Request $request)
+    {
+//        $data = $request->all();
+
+        $client = new Client();
+        $response = $client->request('POST', config('tune-api.url') . 'SendBiglifeSuyvey', [
+            'auth' => [config('tune-api.user'), config('tune-api.password')],
+            'headers' => [
+                'Content-Type' => 'application/json'
+            ],
+            'body' => json_encode([
+                'Name' =>  $request->get('name'),
+                'Lastname' =>  $request->get('lastname'),
+                'Mobile' =>  $request->get('mobile'),
+                'Email' =>  $request->get('email'),
+                'Lang' =>  $request->get('lang'),
+            ])
+        ]);
+
+        $res = (object)json_decode($response->getBody()->getContents(), true);
+        return response()->json([
+            'status' => $res->status ,
+            'message' => $res->message,
+            'data' => $res->data
+        ]);
+
+    }
+
+    public function thankyou(Request $request)
+    {
+        $data = json_encode([
+            'MemberID' =>  $request->input('member_id'),
+            'RefCode' =>  $request->input('OTP'),
+            'Name' =>  $request->input('name'),
+            'Lastname' =>  $request->get('lastname'),
+            'Mobile' =>  $request->get('mobile'),
+            'Email' =>  $request->get('email'),
+            'Lang' =>  $this->locale,
+            'Question1'=> [
+                'Question' =>  __('product.biglife.question1'),
+                __('product.biglife.question11') => $request->get('ctrl_question11'),
+                __('product.biglife.question12') => $request->get('ctrl_question12'),
+                __('product.biglife.question13') => $request->get('ctrl_question13'),
+                __('product.biglife.question14') => $request->get('ctrl_question14'),
+                ],
+            'Question2'=> [
+                'Question' =>  __('product.biglife.question2'),
+                __('product.biglife.question21') => $request->get('ctrl_question21'),
+                __('product.biglife.question22') => $request->get('ctrl_question22'),
+                __('product.biglife.question23') => $request->get('ctrl_question23'),
+                __('product.biglife.question24') => $request->get('ctrl_question24'),
+            ],
+            'Question3'=> [
+                'Question' =>  __('product.biglife.question3'),
+                'Answer' => $request->get('ctrl_question3'),
+            ],
+
+        ]);
+
+        $client = new Client();
+        $response = $client->request('POST', config('tune-api.url') . 'SendBiglifeSuyvey', [
+            'auth' => [config('tune-api.user'), config('tune-api.password')],
+            'headers' => [
+                'Content-Type' => 'application/json'
+            ],
+            'body' => $data
+        ]);
+
+        $apiResult =json_decode($response->getBody()->getContents(), true);
+        if (!$apiResult["status"]) {
+            $this->bodyData['doc_no'] =$apiResult["message"];
+            return $this->genStatusPage_AddOn(ProjectEnum::STATIC_PAGE_PAYMENT_ERROR);
+        }
+
+        return $this->genStatusPage_AddOn(ProjectEnum::STATIC_PAGE_BIGLIFE_POINT_THANK_YOU);
+    }
+
+    protected function genStatusPage_AddOn($typeId)
+    {
+        $content = WebContent::where('type_id', $typeId)
+            ->whereRaw(ProjectEnum::isPublish())
+            ->with(['locales' => function ($q) {
+                $q->where('locale', $this->locale);
+            }])->first();
+
+        $this->template->setFootJS(mix("/js/frontend/main.js"));
+        $this->template->setBody('id', 'thankyou_page');
+        $this->bodyData['content'] = $content;
+        $this->setStaticPageHeader($content);
+        return $this->genView('frontend.page.thank_addon');
+    }
 
 }
 

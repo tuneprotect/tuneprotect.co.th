@@ -1,90 +1,157 @@
-@extends('frontend.layout.main')
+@extends('frontend.layout.mainaddon')
 
 @section('page')
-
+    <body id="product_page" style="height: 100%;">
     <main>
-        <article class="wrapper">
-            <div class="reveal">
-                <div class="main-img rotate-bg no-rotate">
-                    <img src="{{url($content->pic)}}" alt="{{$content->locales[$locale]->title}}">
+        <h1 class="product-header"></h1>
+        <section id="step1" class="wrapper">
+            <form class="insurance-form" action="/{{$locale}}/Biglife/thankyou" method="post" id="frm_survey"
+                  data-error="@lang("product.blood_test.data-error")"
+                  data-error-description="@lang("product.blood_test.data-error-description")"
+                  data-success-description="@lang("product.blood_test.data-success-description")"
+            >
+                <div class="form-head">@lang("product.biglife.header")</div>
+                <div class="form-inner">
+                    <span class="small"><b>@lang("product.biglife.name")</b></span>
+                    <div class="controls-wrapper">
+                        <input data-error-required=@lang("product.biglife.name_placeholder")
+                            id="ctrl_name" name="name" placeholder=@lang("product.biglife.name_placeholder") required="required" type="text" />
+                        <label for="ctrl_name">@lang("product.biglife.name_placeholder")</label></div>
+
+                    <span class="small"><b>@lang("product.biglife.lastname")</b></span>
+                    <div class="controls-wrapper">
+                        <input data-error-required=@lang("product.biglife.lastname_placeholder")
+                            id="ctrl_lastname" name="lastname" placeholder=@lang("product.biglife.lastname_placeholder") required="required" type="text" />
+                        <label for="ctrl_lastname">@lang("product.biglife.lastname_placeholder")</label></div>
+
+                    <span class="small"><b>@lang("product.biglife.mobile")</b></span>
+                    <div class="controls-wrapper">
+                        <input data-error-required=@lang("product.biglife.mobile_placeholder")
+                            id="ctrl_mobile" name="mobile" placeholder=@lang("product.biglife.mobile_placeholder") required="required" type="text" />
+                        <label for="ctrl_mobile">@lang("product.biglife.mobile_placeholder")</label></div>
+
+                    <span class="small"><b>@lang("product.biglife.email")</b></span>
+                    <div class="controls-wrapper">
+                        <input data-error-required=@lang("product.biglife.email_placeholder")
+                            id="ctrl_email" name="email" placeholder=@lang("product.biglife.email_placeholder") required="required" type="text" />
+                        <label for="ctrl_email">@lang("product.biglife.email_placeholder")</label></div>
+
+                    <br>
+
+                    <div class="controls-wrapper">
+                        <h2>@lang("product.biglife.question")</h2><br>
+
+                        <b><p>@lang("product.biglife.question1")</p></b>
+
+                        <input id="ctrl_question11" name="ctrl_question11" type="checkbox" value="1"/>
+                        <label for="ctrl_question11">
+                            <span class="small">@lang('product.biglife.question11')</span>
+                        </label>
+
+                        <input id="ctrl_question12" name="ctrl_question12" type="checkbox" value="1"/>
+                        <label for="ctrl_question12">
+                            <span class="small">@lang('product.biglife.question12')</span>
+                        </label>
+
+                        <input id="ctrl_question13" name="ctrl_question13" type="checkbox" value="1"/>
+                        <label for="ctrl_question13">
+                            <span class="small">@lang('product.biglife.question13')</span>
+                        </label>
+
+                        <input id="ctrl_question14" name="ctrl_question14" type="checkbox" value="1"/>
+                        <label for="ctrl_question14">
+                            <span class="small">@lang('product.biglife.question14')</span>
+                        </label>
+
+                        <b><p>@lang("product.biglife.question2")</p></b>
+
+                        <input id="ctrl_question21" name="ctrl_question21" type="checkbox" value="1"/>
+                        <label for="ctrl_question21">
+                            <span class="small">@lang('product.biglife.question21')</span>
+                        </label>
+
+                        <input id="ctrl_question22" name="ctrl_question22" type="checkbox" value="1"/>
+                        <label for="ctrl_question22">
+                            <span class="small">@lang('product.biglife.question22')</span>
+                        </label>
+
+                        <input id="ctrl_question23" name="ctrl_question23" type="checkbox" value="1"/>
+                        <label for="ctrl_question23">
+                            <span class="small">@lang('product.biglife.question23')</span>
+                        </label>
+
+                        <input id="ctrl_question24" name="ctrl_question24" type="checkbox" value="1"/>
+                        <label for="ctrl_question24">
+                            <span class="small">@lang('product.biglife.question24')</span>
+                        </label>
+
+                        <b><p>@lang("product.biglife.question3")</p></b>
+
+                        <input id="ctrl_question31" name="ctrl_question3" type="radio" value="Y" />
+                        <label for="ctrl_question31">
+                            <span class="small">@lang('product.biglife.question31')</span>
+                        </label>
+                        <input id="ctrl_question32" name="ctrl_question3" type="radio" value="N" />
+                        <label for="ctrl_question32">
+                            <span class="small">@lang('product.biglife.question32')</span>
+                        </label>
+
+                    </div>
+
+                    <br>
+                    <div class="controls-wrapper">
+                        <h2>@lang("product.biglife.consent_header")</h2><br>
+                        <div class="controls-wrapper">
+                            <input id="ctrl_marketing" name="ctrl_marketing" type="checkbox" value="1"
+                                   data-error-required="@lang("product.error.terms")"
+                            /><label
+                                for="ctrl_marketing">@lang('product.marketing_consent')</label>
+                        </div>
+                    </div>
+
                 </div>
-            </div>
-
-            <br/>
-        </article>
 
 
+                <div class="btn-wrapper">
+{{--                    <button data-gtm="validate-memberid" id="btnValidate" value="validate" class="btn btn-primary btn-goto">@lang("product.biglife.OTP_confirm1")</button>--}}
+                    <button data-gtm="contact-form-accept" class="btn btn-primary" name="action" type="button"
+                            value="validate">@lang("product.biglife.OTP_confirm1")</button>
+                </div>
+
+                <div class="form-inner hideField">
+                    <h2>@lang("product.biglife.OTP_confirm5")</h2>
+                    <span class="small"><b>@lang("product.biglife.OTP_confirm2")</b></span>
+                        <div class="controls-wrapper">
+                            <input data-error-required=@lang("product.biglife.OTP_confirm4")
+                                id="ctrl_ref_code" name="ctrl_ref_code" placeholder=@lang("product.biglife.OTP_confirm4") type="text" />
+                            <label for="ctrl_ref_code">@lang("product.biglife.OTP_confirm4")</label></div>
+
+                        <div class="controls-wrapper">
+{{--                            <button class="btn btn-primary" id="btnConfirm" value="confirm" data-gtm="survey-form-submit">@lang("product.biglife.buttontext")</button>--}}
+{{--                            <button data-gtm="validate-memberid" id="btnValidate" class="btn btn-primary btn-goto">{{$buttontext}}</button>--}}
+
+                            <button data-gtm="contact-form-accept" class="btn btn-primary" name="action" type="button"
+                                    value="confirm">@lang("product.biglife.buttontext")</button>
+                        </div>
+                </div>
+
+                <input type="hidden" id="ctrl_massage2" value="@lang("product.biglife.massage2")"/>
+                <input type="hidden" id="ctrl_massage3" value="@lang("product.biglife.massage3")"/>
+                <input type="hidden" id="ctrl_massage4" value="@lang("product.biglife.massage4")"/>
+                <input type="hidden" id="ctrl_massage6" value="@lang("product.biglife.OTP_confirm6")"/>
+                <input type="hidden" id="ctrl_memberID" name="member_id" value="{{$member_id}}"/>
+                <input type="hidden" id="ctrl_otp" name="OTP"/>
+                <input type="hidden" name="_token" id ="_token" value="{{ csrf_token() }}">
+
+
+            </form>
+            <br>
+
+        </section>
     </main>
 
+
+    </body>
+
+
 @endsection
-
-
-{{--<section class="wrapper" id="bloodtest-section">--}}
-{{--    <form action="/{{$locale}}/Service/sendBloodTestOTP" class="insurance-form" data-form-type="taxdeductionform"--}}
-{{--          data-error="@lang("product.blood_test.data-error")"--}}
-{{--          data-error-description="@lang("product.blood_test.data-error-description")"--}}
-{{--          data-success-description="@lang("product.blood_test.data-success-description")"--}}
-{{--          id="frm_bloodtest" method="post">--}}
-
-{{--        <div class="form-inner">--}}
-{{--            <span class="small"><b>@lang("product.blood_test.card-validation")</b></span>--}}
-{{--            <div class="controls-wrapper">--}}
-{{--                <input data-error-required=@lang("product.blood_test.card-validation")--}}
-{{--                    id="ctrl_card_id" name="card_id" placeholder=@lang("product.blood_test.card-placeholder") required="required" type="text" />--}}
-{{--                <label for="ctrl_card_id">@lang("product.blood_test.card-placeholder")</label></div>--}}
-
-{{--            <span class="small"> <b>@lang("product.blood_test.policy-validation")</b></span>--}}
-{{--            <div class="controls-wrapper">--}}
-{{--                <input data-error-required=@lang("product.blood_test.policy-validation")--}}
-{{--                    id="ctrl_policy_no" name="policy_no" placeholder=@lang("product.blood_test.policy-placeholder") required="required" type="text" />--}}
-{{--                <label for="ctrl_policy_no">@lang("product.blood_test.policy")</label></div>--}}
-
-{{--            <span class="small"> <b>@lang("product.blood_test.mobile")</b></span>--}}
-{{--            <div class="controls-wrapper">--}}
-{{--                <input data-error-required=@lang("product.blood_test.mobile-validation")--}}
-{{--                    id="ctrl_mobile" name="mobile" placeholder=@lang("product.blood_test.mobile-validation") required="required" type="text" />--}}
-{{--                <label for="ctrl_mobile">@lang("product.blood_test.mobile-validation")</label></div>--}}
-
-{{--        </div>--}}
-{{--        <div>--}}
-{{--            <h2><span class="small">@lang("product.blood_test.hospital")</span></h2>--}}
-{{--            <ul class="has-bullet">--}}
-{{--                <li><span class="small">โรงพยาบาลปิยะเวท (Piyavate Hospital)</span></li>--}}
-{{--                <li><span class="small">โรงพยาบาลบางปะกอก 1 (Bangpakok 1 International Hospital)</span></li>--}}
-{{--                <li><span class="small">โรงพยาบาลบางปะกอก-รังสิต 2 (Bangpakok Rangsit 2 International Hospital)</span></li>--}}
-{{--                <li><span class="small">โรงพยาบาลบางปะกอก 3 (Bangpakok 3 International Hospital)</span></li>--}}
-{{--                <li><span class="small">โรงพยาบาลบางปะกอก 8 (Bangpakok 8 International Hospital)</span></li>--}}
-{{--                <li><span class="small">โรงพยาบาลบางปะกอก 9 (Bangpakok 9 International Hospital)</span></li>--}}
-{{--                <li><span class="small">โรงพยาบาลบางปะกอก สมุทรปราการ (Bangpakok Samut Prakan International Hospital)</span></li>--}}
-{{--                <li><span class="small">เกษมราษฎร์ ประชาชื่น (Kasemrad Prachachuen)</span></li>--}}
-{{--                <li><span class="small">เกษมราษฎร์ บางแค (Kasemrad Bangkae)</span></li>--}}
-{{--                <li><span class="small">เกษมราษฎร์ สระบุรี (Kasemrad Saraburi)</span></li>--}}
-{{--                <li><span class="small">เกษมราษฎร์ ศรีบุรินทร์ (Kasemrad Sriburin)</span></li>--}}
-{{--                <li><span class="small">เกษมราษฎร์ ฉะเชิงเทรา (Kasemrad Chachoengsao)</span></li>--}}
-{{--                <li><span class="small">เกษมราษฎร์ รัตนาธิเบศร์ (Kasemrad Rattanatibeth)</span></li>--}}
-{{--                <li><span class="small">เกษมราษฎร์ รามคำแหง (Kasemrad Ramkhamhaeng)</span></li>--}}
-{{--                <li><span class="small">เกษมราษฎร์ ปราจีนบุรี (Kasemrad Prachinburi)</span></li>--}}
-{{--                <li><span class="small">เกษมราษฎร์ แม่สาย (Kasemrad Hospital Mae Sai)</span></li>--}}
-{{--                <li><span class="small">เชียงแสน โพลี่คลินิก (Chiang Saen Polyclinic)</span></li>--}}
-{{--                <li><span class="small">โรงพยาบาลเกษมราษฏร์อินเตอร์เนชั่นแนล รัตนาธิเบศร์ (Kasemrad International Hospital Rattanatibeth)</span></li>--}}
-{{--                <li><span class="small">โรงพยาบาลเกษมราษฏร์อินเตอร์เนชั่นแนล เวียงจันทน์ (Kasemrad International Hospital Vientiane)</span></li>--}}
-{{--                <li><span class="small">โรงพยาบาลเกษมราษฏร์อินเตอร์เนชั่นแนล อรัญประเทศ (Kasemrad International Hospital Aranyaprathet)</span></li>--}}
-{{--                <li><span class="small">โรงพยาบาลเวิลด์เมดิคอล (World Medical Hospital)</span></li>--}}
-{{--                <li><span class="small">โรงพยาบาลการุญเวช ปทุมธานี (Karunvej Pathumthani Hospital)</span></li>--}}
-{{--                <li><span class="small">โรงพยาบาลการุญเวช อยุธยา (Karunvej Ayutthaya Hospital)</span></li>--}}
-{{--            </ul>--}}
-{{--        </div>--}}
-{{--        <div>--}}
-{{--            <h2><span class="small">@lang("product.blood_test.underwrite-condition")</span></h2>--}}
-{{--            <span class="small">@lang("product.blood_test.underwrite-condition1")</span><br>--}}
-{{--            <span class="small">@lang("product.blood_test.underwrite-condition2")</span><br>--}}
-{{--            <span class="small">@lang("product.blood_test.underwrite-condition3")</span><br>--}}
-{{--            <span class="small">@lang("product.blood_test.underwrite-condition4")</span><br>--}}
-{{--            <span class="small">@lang("product.blood_test.underwrite-condition5")</span>--}}
-{{--        </div>--}}
-{{--        <br>--}}
-{{--        <div class="text-center">--}}
-{{--            <button class="btn btn-primary" data-gtm="bloodtest-form-submit">@lang("product.blood_test.submit2")</button>--}}
-{{--        </div>--}}
-{{--    </form>--}}
-{{--</section>--}}

@@ -308,7 +308,8 @@
                 "service_center": "Service Center",
                 "terms": "Terms & Condition",
                 "my_health": "My Health",
-                "biglife_point": "BIG LIFE POINT"
+                "biglife_point": "BIG LIFE POINT",
+                "biglife_point_thank_you": "BIG LIFE POINT THANK"
             },
             "review": "Review",
             "service": "Service Tune",

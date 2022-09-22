@@ -1,4 +1,4 @@
-@extends('frontend.layout.main')
+@extends('frontend.layout.mainaddon')
 
 @section('page')
     <body id="product_page" style="height: 100%;">

@@ -48842,106 +48842,591 @@ module.exports = function(module) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! sweetalert2 */ "./node_modules/sweetalert2/dist/sweetalert2.all.js");
-/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(sweetalert2__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _helper__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./helper */ "./resources/js/helper.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! sweetalert2 */ "./node_modules/sweetalert2/dist/sweetalert2.all.js");
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(sweetalert2__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _helper__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./helper */ "./resources/js/helper.js");
+/* harmony import */ var validate_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! validate.js */ "./node_modules/validate.js/validate.js");
+/* harmony import */ var validate_js__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(validate_js__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _validate_form__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./validate_form */ "./resources/js/validate_form.js");
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {
+  try {
+    var info = gen[key](arg);
+    var value = info.value;
+  } catch (error) {
+    reject(error);
+    return;
+  }
+
+  if (info.done) {
+    resolve(value);
+  } else {
+    Promise.resolve(value).then(_next, _throw);
+  }
+}
+
+function _asyncToGenerator(fn) {
+  return function () {
+    var self = this,
+        args = arguments;
+    return new Promise(function (resolve, reject) {
+      var gen = fn.apply(self, args);
+
+      function _next(value) {
+        asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);
+      }
+
+      function _throw(err) {
+        asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);
+      }
+
+      _next(undefined);
+    });
+  };
+}
+
 
 
 __webpack_require__(/*! ./main */ "./resources/js/main.js");
 
 
+
+
 document.addEventListener("DOMContentLoaded", function () {
-  var myEle = document.getElementById("status_api");
+  var toggltField = function toggltField(isShow) {
+    Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$$"])('.hideField').forEach(function ($el) {
+      if (isShow) {
+        $el.style.removeProperty('display');
+      } else {
+        $el.style.display = 'none';
+      }
+    });
+  };
 
-  if (myEle) {
-    // alert(myEle.value);
-    if (!status_api.value) {
-      sweetalert2__WEBPACK_IMPORTED_MODULE_0___default.a.fire({
-        title: 'Error!',
-        text: 'Error : Member ID not found.',
-        icon: 'error',
-        confirmButtonText: 'OK'
-      });
+  toggltField(false);
+  var $form1 = Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$"])('#frm_validate');
+
+  if ($form1) {
+    var status = document.getElementById("status_api");
+    var massage1 = document.getElementById("massage1");
+    var massage2 = document.getElementById("massage2");
+    var massage3 = document.getElementById("massage3");
+
+    if (status) {
+      if (!status.value) {
+        sweetalert2__WEBPACK_IMPORTED_MODULE_1___default.a.fire({
+          title: massage2.value,
+          text: massage1.value,
+          icon: 'warning',
+          confirmButtonText: massage3.value
+        });
+      }
     }
-  } // const $btnValidate = $('#btnValidate');
-  // $btnValidate.addEventListener("click", function (e) {
-  //     e.preventDefault();
-  //
-  //
-  //     const userAction = fetch('http://webtest1.tuneinsurance.co.th/tunepolicy/api/WEBSITE/Validate',
-  //         {
-  //             method: "post",
-  //             headers: new Headers({
-  //                 'Authorization': 'Basic '+btoa('TUNE:TUNE@123'),
-  //                 "Content-Type": "application/json"
-  //             }),
-  //             body: JSON.stringify({
-  //                 memberId: '9999990005235411'
-  //             })
-  //         }
-  //     ).then((data) => data.json()
-  //     ).catch((error) => console.log(error))
-  //
-  //     console.log(userAction);
-  //
-  // const express = require('express')
-  // const app = express()
-  //
-  // app.use((req, res, next) => {
-  //     res.header('Access-Control-Allow-Origin', 'http://localhost:52446')
-  //     res.header('Access-Control-Allow-Methods','POST, GET, PUT, PATCH, DELETE, OPTIONS')
-  //     res.header('Access-Control-Allow-Headers','Content-Type, Option, Authorization')
-  //     next()
-  // })
-  // let otoken = document.getElementById("_token");
-  // alert(btoa('TUNE:TUNE@123'));
-  // let Keys = "";
-  // let myEle = document.getElementById("ctrl_memberid");
-  // let isMember = false;
-  // if(myEle){
-  //     Keys= myEle.value;
-  //     if(Keys != '') {
-  //
-  //         let urlValidate = document.getElementById("urllinkvalidate");
-  //         let auth = document.getElementById("auth");
-  //
-  //         const userAction = fetch('http://webtest1.tuneinsurance.co.th/tunepolicy/api/WEBSITE/Validate',
-  //             {
-  //             method: "post",
-  //                 headers: new Headers({
-  //                 'Authorization': 'Basic '+btoa('TPTWEBSITE:TPTWEBSITE@123'),
-  //                 "Content-Type": "application/json"
-  //             }),
-  //                 body: JSON.stringify({
-  //                     memberId: Keys
-  //                 })
-  //         }
-  //         ).then((data) => data.json()
-  //         ).catch((error) => console.log(error))
-  //
-  //         console.log(userAction);
-  //
-  //         return;
-  //     }
-  //
-  // }
-  // else {
-  //     isMember = false;
-  // }
-  //
-  // if(!isMember) {
-  //     Swal.fire({
-  //         title: 'Error!',
-  //         text: 'Error : Member ID not found.',
-  //         icon: 'error',
-  //         confirmButtonText: 'OK'
-  //     })
-  //     status = false;
-  //
-  //     return;
-  // }
-  // });
+  }
 
+  var $form2 = Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$"])('#frm_survey');
+
+  if ($form2) {
+    // const sendSurvey = async (data) => {
+    //     $form2.classList.add('ajax_loader');
+    //     try {
+    //         let res = await fetch($form2.getAttribute('action'), {
+    //             method: 'post',
+    //             headers: {
+    //                 'Accept': 'application/json',
+    //                 'Content-Type': 'application/json',
+    //                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').getAttribute('content')
+    //             },
+    //             body: JSON.stringify(data)
+    //         });
+    //         const response = await res.json();
+    //         // alert(response.status);
+    //         // console.log(response.status);
+    //         if (response.status) {
+    //             //
+    //             // alert(1);
+    //             // // console.log(response.status);
+    //             // // $form2.classList.remove('ajax_loader');
+    //             // // return true;
+    //         } else {
+    //             // alert(2);
+    //             Swal.fire(
+    //                 $form2.getAttribute('data-error'),
+    //                 response.message,
+    //                 'error'
+    //             )
+    //         }
+    //     } catch (err) {
+    //         // alert(3);
+    //         Swal.fire({
+    //             title: $form2.getAttribute('data-error'),
+    //             text: $form2.getAttribute('data-error-description'),
+    //             icon: 'error',
+    //         })
+    //     }
+    //     $form2.classList.remove('ajax_loader');
+    // }
+    var validationData = function validationData() {
+      Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$$"])('cite', $form2).forEach(function ($el) {
+        return $el.remove();
+      });
+      Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$$"])('.controls-wrapper', $form2).forEach(function ($el) {
+        return $el.classList.remove('error');
+      });
+      Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$$"])('input,select,textarea', $form2).forEach(function ($el) {
+        return $el.classList.remove('error');
+      });
+      var data = {
+        name: Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$"])('#ctrl_name').value,
+        lastname: Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$"])('#ctrl_lastname').value,
+        mobile: Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$"])('#ctrl_mobile').value,
+        email: Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$"])('#ctrl_email').value,
+        lang: Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$"])('html').getAttribute('lang')
+      };
+      var result = validate_js__WEBPACK_IMPORTED_MODULE_3___default()(data, contactConstraints);
+
+      if (result) {
+        Object.keys(result).map(function (k) {
+          return Object(_validate_form__WEBPACK_IMPORTED_MODULE_4__["showFieldError"])(Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$"])("#ctrl_".concat(k)), result[k]);
+        });
+        Object(_helper__WEBPACK_IMPORTED_MODULE_2__["scrollToTargetAdjusted"])(Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$"])('.controls-wrapper.error'));
+        return false;
+      }
+
+      var question1 = false;
+      var question11 = Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$"])('#ctrl_question11').checked ? true : false;
+      var question12 = Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$"])('#ctrl_question12').checked ? true : false;
+      var question13 = Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$"])('#ctrl_question13').checked ? true : false;
+      var question14 = Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$"])('#ctrl_question14').checked ? true : false;
+
+      if (question11 || question12 || question13 || question14) {
+        question1 = true;
+      }
+
+      var question2 = false;
+      var question21 = Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$"])('#ctrl_question21').checked ? true : false;
+      var question22 = Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$"])('#ctrl_question22').checked ? true : false;
+      var question23 = Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$"])('#ctrl_question23').checked ? true : false;
+      var question24 = Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$"])('#ctrl_question24').checked ? true : false;
+
+      if (question21 || question22 || question23 || question24) {
+        question2 = true;
+      }
+
+      var question3 = true;
+      var question31 = Object(_helper__WEBPACK_IMPORTED_MODULE_2__["getRadioSelectedValue"])('ctrl_question3');
+
+      if (question31 === undefined) {
+        question3 = false;
+      }
+
+      var marketing = Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$"])('#ctrl_marketing').checked ? true : false;
+
+      if (!(marketing && question1 && question2 && question3)) {
+        var _massage = Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$"])('#ctrl_massage2').value;
+        var _massage2 = Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$"])('#ctrl_massage3').value;
+        var massage4 = Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$"])('#ctrl_massage4').value;
+        sweetalert2__WEBPACK_IMPORTED_MODULE_1___default.a.fire({
+          title: _massage,
+          text: massage4,
+          icon: 'warning',
+          confirmButtonText: _massage2
+        });
+        return false;
+      }
+
+      return true;
+    }; // $form2.addEventListener('submit', logSubmit);
+    // function logSubmit(event) {
+    //     event.preventDefault();
+    //     if($('#ctrl_otp').value == $('#ctrl_ref_code').value){
+    //         return true;
+    //     }
+    //     else{
+    //         let massage2 = $('#ctrl_massage2').value;
+    //         let massage3 = $('#ctrl_massage3').value;
+    //         let massage6 = $('#ctrl_massage6').value;
+    //         Swal.fire({
+    //             title: massage2,
+    //             text: massage6,
+    //             icon: 'warning',
+    //             confirmButtonText: massage3
+    //         });
+    //         return false;
+    //     }
+    //
+    // }
+
+
+    var contactConstraints = {
+      name: {
+        presence: {
+          allowEmpty: false,
+          message: '^' + Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$"])('#ctrl_name').getAttribute('data-error-required')
+        }
+      },
+      lastname: {
+        presence: {
+          allowEmpty: false,
+          message: '^' + Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$"])('#ctrl_lastname').getAttribute('data-error-required')
+        }
+      },
+      mobile: {
+        presence: {
+          allowEmpty: false,
+          message: '^' + Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$"])('#ctrl_mobile').getAttribute('data-error-required')
+        }
+      },
+      email: {
+        presence: {
+          allowEmpty: false,
+          message: '^' + Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$"])('#ctrl_email').getAttribute('data-error-required')
+        }
+      }
+    };
+
+    var otpRequest = /*#__PURE__*/function () {
+      var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee(data) {
+        var res, response;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                $form2.classList.add('ajax_loader');
+                _context.prev = 1;
+                _context.next = 4;
+                return fetch("/".concat(Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$"])('html').getAttribute('lang'), "/Biglife/SendMessage"), {
+                  method: 'post',
+                  headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$"])('meta[name="csrf-token"]').getAttribute('content')
+                  },
+                  body: JSON.stringify(data)
+                });
+
+              case 4:
+                res = _context.sent;
+                _context.next = 7;
+                return res.json();
+
+              case 7:
+                response = _context.sent;
+
+                if (response.status) {
+                  toggltField(true); // console.log(response.message);
+
+                  Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$"])('#ctrl_otp').value = response.message; // alert($('#ctrl_otp').value);
+                } else {
+                  sweetalert2__WEBPACK_IMPORTED_MODULE_1___default.a.fire($form2.getAttribute('data-error'), response.message, 'error');
+                }
+
+                _context.next = 14;
+                break;
+
+              case 11:
+                _context.prev = 11;
+                _context.t0 = _context["catch"](1);
+                sweetalert2__WEBPACK_IMPORTED_MODULE_1___default.a.fire({
+                  title: $form2.getAttribute('data-error'),
+                  text: $form2.getAttribute('data-error-description'),
+                  icon: 'error'
+                });
+
+              case 14:
+                $form2.classList.remove('ajax_loader');
+
+              case 15:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee, null, [[1, 11]]);
+      }));
+
+      return function otpRequest(_x) {
+        return _ref.apply(this, arguments);
+      };
+    }();
+
+    Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$$"])('button[name="action"]', $form2).forEach(function ($el) {
+      return $el.addEventListener("click", /*#__PURE__*/function () {
+        var _ref2 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2(e) {
+          var action, data, val, _val, _massage3, _massage4, massage6;
+
+          return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
+            while (1) {
+              switch (_context2.prev = _context2.next) {
+                case 0:
+                  e.preventDefault();
+                  action = e.target.value;
+                  data = {
+                    name: Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$"])('#ctrl_name').value,
+                    lastname: Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$"])('#ctrl_lastname').value,
+                    mobile: Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$"])('#ctrl_mobile').value,
+                    email: Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$"])('#ctrl_email').value,
+                    lang: Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$"])('html').getAttribute('lang')
+                  };
+
+                  if (!(action === 'validate')) {
+                    _context2.next = 11;
+                    break;
+                  }
+
+                  toggltField(false);
+                  val = validationData();
+
+                  if (!val) {
+                    _context2.next = 9;
+                    break;
+                  }
+
+                  _context2.next = 9;
+                  return otpRequest(data);
+
+                case 9:
+                  _context2.next = 22;
+                  break;
+
+                case 11:
+                  _val = validationData();
+
+                  if (!_val) {
+                    _context2.next = 22;
+                    break;
+                  }
+
+                  if (!(Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$"])('#ctrl_otp').value == Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$"])('#ctrl_ref_code').value)) {
+                    _context2.next = 17;
+                    break;
+                  }
+
+                  $form2.submit();
+                  _context2.next = 22;
+                  break;
+
+                case 17:
+                  _massage3 = Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$"])('#ctrl_massage2').value;
+                  _massage4 = Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$"])('#ctrl_massage3').value;
+                  massage6 = Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$"])('#ctrl_massage6').value;
+                  sweetalert2__WEBPACK_IMPORTED_MODULE_1___default.a.fire({
+                    title: _massage3,
+                    text: massage6,
+                    icon: 'warning',
+                    confirmButtonText: _massage4
+                  });
+                  return _context2.abrupt("return", false);
+
+                case 22:
+                case "end":
+                  return _context2.stop();
+              }
+            }
+          }, _callee2);
+        }));
+
+        return function (_x2) {
+          return _ref2.apply(this, arguments);
+        };
+      }());
+    }); // const validateData = async (action) => {
+    //     $$('cite', $form2).forEach($el => $el.remove());
+    //     $$('.controls-wrapper', $form2).forEach($el => $el.classList.remove('error'));
+    //     $$('input,select,textarea', $form2).forEach($el => $el.classList.remove('error'));
+    //
+    //     let data = {
+    //         name: $('#ctrl_name').value,
+    //         lastname: $('#ctrl_lastname').value,
+    //         mobile: $('#ctrl_mobile').value,
+    //         email: $('#ctrl_email').value,
+    //         lang:$('html').getAttribute('lang'),
+    //     }
+    //
+    //     const result = validate(data, contactConstraints);
+    //     if (result) {
+    //         Object.keys(result).map(k => showFieldError($(`#ctrl_${k}`), result[k]));
+    //         scrollToTargetAdjusted($('.controls-wrapper.error'));
+    //         return false;
+    //     }
+    //
+    //     let question1 = false;
+    //     let question11  = $('#ctrl_question11').checked ? true : false;
+    //     let question12  = $('#ctrl_question12').checked ? true : false;
+    //     let question13  = $('#ctrl_question13').checked ? true : false;
+    //     let question14  = $('#ctrl_question14').checked ? true : false;
+    //     if(question11||question12||question13||question14){
+    //         question1 = true;
+    //     }
+    //
+    //     let question2 = false;
+    //     let question21  = $('#ctrl_question21').checked ? true : false;
+    //     let question22  = $('#ctrl_question22').checked ? true : false;
+    //     let question23  = $('#ctrl_question23').checked ? true : false;
+    //     let question24  = $('#ctrl_question24').checked ? true : false;
+    //     if(question21||question22||question23||question24){
+    //         question2 = true;
+    //     }
+    //
+    //     let question3 = true;
+    //     let question31  = getRadioSelectedValue('ctrl_question3');
+    //     if(question31 === undefined){
+    //         question3 = false;
+    //     }
+    //     let marketing  = $('#ctrl_marketing').checked ? true : false;
+    //     if(!(marketing&&question1&&question2&&question3)){
+    //         let massage2 = $('#ctrl_massage2').value;
+    //         let massage3 = $('#ctrl_massage3').value;
+    //         let massage4 = $('#ctrl_massage4').value;
+    //
+    //         Swal.fire({
+    //             title: massage2,
+    //             text: massage4,
+    //             icon: 'warning',
+    //             confirmButtonText: massage3
+    //         })
+    //         return false;
+    //     }
+    //
+    //     if(action === 'validate'){
+    //         await otpRequest(data);
+    //     // }
+    //     // else{
+    //     //     await sendSurvey(data);
+    //     }
+    //
+    //     return  true;
+    //
+    // }
+    //
+    // $form2.addEventListener('submit', async (e) => {
+    //     e.preventDefault();
+    //     let val = validationData();
+    //     if(val){
+    //         if($('#ctrl_otp').value == $('#ctrl_ref_code').value){
+    //             let data = {
+    //                 name: $('#ctrl_name').value,
+    //                 lastname: $('#ctrl_lastname').value,
+    //                 mobile: $('#ctrl_mobile').value,
+    //                 email: $('#ctrl_email').value,
+    //                 lang:$('html').getAttribute('lang'),
+    //             }
+    //             await sendSurvey(data);
+    //         }
+    //         else{
+    //             let massage2 = $('#ctrl_massage2').value;
+    //             let massage3 = $('#ctrl_massage3').value;
+    //             let massage6 = $('#ctrl_massage6').value;
+    //             Swal.fire({
+    //                 title: massage2,
+    //                 text: massage6,
+    //                 icon: 'warning',
+    //                 confirmButtonText: massage3
+    //             });
+    //         }
+    //     }
+    //
+    //     // e.preventDefault();
+    //     // toggltField(false);
+    //     // // let val = validateData('validate');
+    //     // let val = validationData();
+    //     // if(val){
+    //     //     let data = {
+    //     //         name: $('#ctrl_name').value,
+    //     //         lastname: $('#ctrl_lastname').value,
+    //     //         mobile: $('#ctrl_mobile').value,
+    //     //         email: $('#ctrl_email').value,
+    //     //         lang:$('html').getAttribute('lang'),
+    //     //     }
+    //     //     await otpRequest(data);
+    //     // }
+    //     // return false;
+    // });
+    //
+    // $$('button[name="action"]', $form2).forEach($el => $el.addEventListener("click", async function (e) {
+    //
+    //     e.preventDefault();
+    //     toggltField(false);
+    //     // let val = validateData('validate');
+    //     let val = validationData();
+    //     if(val){
+    //         let data = {
+    //             name: $('#ctrl_name').value,
+    //             lastname: $('#ctrl_lastname').value,
+    //             mobile: $('#ctrl_mobile').value,
+    //             email: $('#ctrl_email').value,
+    //             lang:$('html').getAttribute('lang'),
+    //         }
+    //         await otpRequest(data);
+    //     }
+    //     return false;
+    //
+    //     // e.preventDefault();
+    //     // let val = validationData();
+    //     // if(val){
+    //     //     if($('#ctrl_otp').value == $('#ctrl_ref_code').value){
+    //     //         let data = {
+    //     //             name: $('#ctrl_name').value,
+    //     //             lastname: $('#ctrl_lastname').value,
+    //     //             mobile: $('#ctrl_mobile').value,
+    //     //             email: $('#ctrl_email').value,
+    //     //             lang:$('html').getAttribute('lang'),
+    //     //         }
+    //     //         await sendSurvey(data);
+    //     //     }
+    //     //     else{
+    //     //         let massage2 = $('#ctrl_massage2').value;
+    //     //         let massage3 = $('#ctrl_massage3').value;
+    //     //         let massage6 = $('#ctrl_massage6').value;
+    //     //         Swal.fire({
+    //     //             title: massage2,
+    //     //             text: massage6,
+    //     //             icon: 'warning',
+    //     //             confirmButtonText: massage3
+    //     //         });
+    //     //     }
+    //     // }
+    // }));
+    //
+    //
+    //
+    // $$('button[name="action"]', $form2).forEach($el => $el.addEventListener("click", async function (e) {
+    //     e.preventDefault();
+    //     toggltField(false);
+    //     let val = validateData(e.target.value);
+    //     // if(val){
+    //     //     await otpRequest(data);
+    //     // }
+    // }));
+    //
+    //
+    // $form2.addEventListener('submit', async (e) => {
+    //     e.preventDefault();
+    //     let val = validateData();
+    //     if(val){
+    //         if($('#ctrl_otp').value == $('#ctrl_ref_code').value){
+    //             // await sendSurvey(data);
+    //             e.preventDefault();
+    //             return true;
+    //         }
+    //         else{
+    //             let massage2 = $('#ctrl_massage2').value;
+    //             let massage3 = $('#ctrl_massage3').value;
+    //             let massage6 = $('#ctrl_massage6').value;
+    //
+    //             Swal.fire({
+    //                 title: massage2,
+    //                 text: massage6,
+    //                 icon: 'warning',
+    //                 confirmButtonText: massage3
+    //             });
+    //         }
+    //     }
+    //     return false;
+    // });
+  }
 });
 
 /***/ }),

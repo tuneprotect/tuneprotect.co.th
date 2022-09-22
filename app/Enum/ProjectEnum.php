@@ -71,6 +71,7 @@ class ProjectEnum
     const ISSUE_POLICY_DIABETES = 'IssuePolicyDiabetes';
 
     const STATIC_PAGE_BIGLIFE_POINT = 'static.page.biglife_point';
+    const STATIC_PAGE_BIGLIFE_POINT_THANK_YOU = 'static.page.biglife_point_thank_you';
 
     //TODO : invoice prefix for test only
     const INVOICE_PREFIX = 'W';
