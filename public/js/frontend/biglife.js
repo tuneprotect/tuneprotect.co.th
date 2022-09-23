@@ -48911,9 +48911,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
   if ($form1) {
     var status = document.getElementById("status_api");
-    var massage1 = document.getElementById("massage1");
-    var massage2 = document.getElementById("massage2");
-    var massage3 = document.getElementById("massage3");
+    var massage1 = document.getElementById("massage_key");
+    var massage2 = document.getElementById("massage_alert");
+    var massage3 = document.getElementById("massage_confirm");
 
     if (status) {
       if (!status.value) {

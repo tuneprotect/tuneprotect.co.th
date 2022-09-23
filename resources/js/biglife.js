@@ -20,9 +20,9 @@ document.addEventListener("DOMContentLoaded", function () {
     const $form1 = $('#frm_validate');
     if ($form1) {
         let status = document.getElementById("status_api");
-        let massage1 = document.getElementById("massage1");
-        let massage2 = document.getElementById("massage2");
-        let massage3 = document.getElementById("massage3");
+        let massage1 = document.getElementById("massage_key");
+        let massage2 = document.getElementById("massage_alert");
+        let massage3 = document.getElementById("massage_confirm");
 
         if(status){
             if(!status.value)

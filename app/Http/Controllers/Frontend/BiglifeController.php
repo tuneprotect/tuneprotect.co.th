@@ -54,17 +54,21 @@ class BiglifeController  extends BaseController
 
          $apiResult =json_decode($response->getBody()->getContents(), true);
 
-         $massage1 = __('product.biglife.massage1');
-         $massage2 = __('product.biglife.massage2');
-         $massage3 = __('product.biglife.massage3');
+         $message1 = __('product.biglife.message1');
+         $message2 = __('product.biglife.message2');
+         $message3 = __('product.biglife.message3');
 
-         $this->bodyData['massage_key'] = $massage1;
-         $this->bodyData['massage_alert'] = $massage2;
-         $this->bodyData['massage_confirm'] = $massage3;
+         $this->bodyData['massage_key'] = $message1;
+         $this->bodyData['massage_alert'] = $message2;
+         $this->bodyData['massage_confirm'] = $message3;
 
          if (!$apiResult["status"]) {
              $this->bodyData['member_id'] = '';
              $this->bodyData['status_api'] = false;
+
+             if($apiResult["message"]==='DUPLICATE'){
+                 $this->bodyData['massage_key'] = __('product.biglife.message5');
+             }
 
              return $this->index();
 

@@ -105,7 +105,11 @@
                             <input id="ctrl_marketing" name="ctrl_marketing" type="checkbox" value="1"
                                    data-error-required="@lang("product.error.terms")"
                             /><label
-                                for="ctrl_marketing">@lang('product.marketing_consent')</label>
+                                for="ctrl_marketing">
+                                @lang('product.biglife.marketing_consent1')<br>
+                                @lang('product.biglife.marketing_consent2')<br>
+                                @lang('product.biglife.marketing_consent3')<br>
+                                @lang('product.biglife.marketing_consent4')</label>
                         </div>
                     </div>
 
@@ -135,9 +139,9 @@
                         </div>
                 </div>
 
-                <input type="hidden" id="ctrl_massage2" value="@lang("product.biglife.massage2")"/>
-                <input type="hidden" id="ctrl_massage3" value="@lang("product.biglife.massage3")"/>
-                <input type="hidden" id="ctrl_massage4" value="@lang("product.biglife.massage4")"/>
+                <input type="hidden" id="ctrl_massage2" value="@lang("product.biglife.message2")"/>
+                <input type="hidden" id="ctrl_massage3" value="@lang("product.biglife.message3")"/>
+                <input type="hidden" id="ctrl_massage4" value="@lang("product.biglife.message4")"/>
                 <input type="hidden" id="ctrl_massage6" value="@lang("product.biglife.OTP_confirm6")"/>
                 <input type="hidden" id="ctrl_memberID" name="member_id" value="{{$member_id}}"/>
                 <input type="hidden" id="ctrl_otp" name="OTP"/>
