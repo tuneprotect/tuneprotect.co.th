@@ -630,7 +630,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                     apiMyHomeSmart1y(result[i].id);
                     apiMyHomeSmart3y(result[i].id);
                     //ข้อ 1.
-                    
+                    /*
                     document.getElementById("rate_2").innerHTML = parseNumber(result[i].ITEM1_1_PERIL_SUMINS);
                     document.getElementById("rate_3").innerHTML = parseNumber(result[i].ITEM1_2_PERIL_SUMINS);
                     document.getElementById("rate_4").innerHTML = parseNumber(result[i].ITEM1_3_PERIL_SUMINS);
@@ -688,7 +688,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
                     document.getElementById("txtDeposit1").innerHTML = parseNumber(result[i].LIABILITY_PERIL_PREM);
                     document.getElementById("txtDeposit3").innerHTML = parseNumber(result[i].LIABILITY_PERIL_PREM);
-
+*/
                     //sp_amount3
                 }
 
