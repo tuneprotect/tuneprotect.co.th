@@ -55990,7 +55990,6 @@ document.addEventListener("DOMContentLoaded", /*#__PURE__*/_asyncToGenerator( /*
                           apiMyHomeSmart1y(result[i].id);
                           apiMyHomeSmart3y(result[i].id); //ข้อ 1.
 
-                          /*
                           document.getElementById("rate_2").innerHTML = parseNumber(result[i].ITEM1_1_PERIL_SUMINS);
                           document.getElementById("rate_3").innerHTML = parseNumber(result[i].ITEM1_2_PERIL_SUMINS);
                           document.getElementById("rate_4").innerHTML = parseNumber(result[i].ITEM1_3_PERIL_SUMINS);
@@ -56000,7 +55999,7 @@ document.addEventListener("DOMContentLoaded", /*#__PURE__*/_asyncToGenerator( /*
                           document.getElementById("rate_8").innerHTML = parseNumber(result[i].ITEM1_6_PERIL_SUMINS);
                           document.getElementById("rate_10").innerHTML = parseNumber(result[i].ITEM1_7_PERIL_SUMINS);
                           document.getElementById("rate_11").innerHTML = parseNumber(result[i].ITEM1_8_PERIL_SUMINS);
-                            document.getElementById("rate_2_3").innerHTML = parseNumber(result[i].ITEM1_1_PERIL_SUMINS);
+                          document.getElementById("rate_2_3").innerHTML = parseNumber(result[i].ITEM1_1_PERIL_SUMINS);
                           document.getElementById("rate_3_3").innerHTML = parseNumber(result[i].ITEM1_2_PERIL_SUMINS);
                           document.getElementById("rate_4_3").innerHTML = parseNumber(result[i].ITEM1_3_PERIL_SUMINS);
                           document.getElementById("rate_5_3").innerHTML = parseNumber(result[i].ITEM1_3_PERIL_SUMINS);
@@ -56008,37 +56007,35 @@ document.addEventListener("DOMContentLoaded", /*#__PURE__*/_asyncToGenerator( /*
                           document.getElementById("rate_7_3").innerHTML = parseNumber(result[i].ITEM1_5_PERIL_SUMINS);
                           document.getElementById("rate_8_3").innerHTML = parseNumber(result[i].ITEM1_6_PERIL_SUMINS);
                           document.getElementById("rate_10_3").innerHTML = parseNumber(result[i].ITEM1_7_PERIL_SUMINS);
-                          document.getElementById("rate_11_3").innerHTML = parseNumber(result[i].ITEM1_8_PERIL_SUMINS);
-                            //ข้อ 2.
+                          document.getElementById("rate_11_3").innerHTML = parseNumber(result[i].ITEM1_8_PERIL_SUMINS); //ข้อ 2.
+
                           document.getElementById("rate_13").innerHTML = parseNumber(result[i].NATURAL);
-                          document.getElementById("rate_13_3").innerHTML = parseNumber(result[i].NATURAL);
-                            //ข้อ 3.
+                          document.getElementById("rate_13_3").innerHTML = parseNumber(result[i].NATURAL); //ข้อ 3.
+
                           document.getElementById("rate_15").innerHTML = parseNumber(result[i].PA_PERIL_SUMINS);
-                          document.getElementById("rate_15_3").innerHTML = parseNumber(result[i].PA_PERIL_SUMINS);
-                            //ข้อ 4.
+                          document.getElementById("rate_15_3").innerHTML = parseNumber(result[i].PA_PERIL_SUMINS); //ข้อ 4.
+
                           document.getElementById("rate_17").innerHTML = parseNumber(result[i].GLASS_PERIL_SUMINS);
-                          document.getElementById("rate_17_3").innerHTML = parseNumber(result[i].GLASS_PERIL_SUMINS);
-                            //ข้อ 5.
+                          document.getElementById("rate_17_3").innerHTML = parseNumber(result[i].GLASS_PERIL_SUMINS); //ข้อ 5.
+
                           document.getElementById("rate_19").innerHTML = parseNumber(result[i].CASH_PERIL_SUMINS);
-                          document.getElementById("rate_19_3").innerHTML = parseNumber(result[i].CASH_PERIL_SUMINS);
-                            //ข้อ 6.
+                          document.getElementById("rate_19_3").innerHTML = parseNumber(result[i].CASH_PERIL_SUMINS); //ข้อ 6.
+
                           document.getElementById("rate_21").innerHTML = parseNumber(result[i].THEFT_PERIL_SUMINS);
-                          document.getElementById("rate_21_3").innerHTML = parseNumber(result[i].THEFT_PERIL_SUMINS);
-                            //ข้อ 7.
+                          document.getElementById("rate_21_3").innerHTML = parseNumber(result[i].THEFT_PERIL_SUMINS); //ข้อ 7.
+
                           document.getElementById("rate_22").innerHTML = parseNumber(result[i].DANGER_PERIL_SPE_AMOUNT);
                           document.getElementById("rate_23").innerHTML = parseNumber(result[i].DANGER_PERIL_SUMINS);
                           document.getElementById("rate_22_3").innerHTML = parseNumber(result[i].DANGER_PERIL_SPE_AMOUNT);
-                          document.getElementById("rate_23_3").innerHTML = parseNumber(result[i].DANGER_PERIL_SUMINS);
-                            //ข้อ 9.
+                          document.getElementById("rate_23_3").innerHTML = parseNumber(result[i].DANGER_PERIL_SUMINS); //ข้อ 9.
+
                           document.getElementById("drpCompensation3").value = result[i].RENT_PERIL_SUMINS;
-                          document.getElementById("drpCompensation1").value = result[i].RENT_PERIL_SUMINS;
-                            //ข้อ 10.    
-                            document.getElementById("sp_amount1").innerHTML = parseNumber(result[i].LIABILITY_PERIL_SUMINS);
+                          document.getElementById("drpCompensation1").value = result[i].RENT_PERIL_SUMINS; //ข้อ 10.    
+
+                          document.getElementById("sp_amount1").innerHTML = parseNumber(result[i].LIABILITY_PERIL_SUMINS);
                           document.getElementById("sp_amount3").innerHTML = parseNumber(result[i].LIABILITY_PERIL_SUMINS);
-                            document.getElementById("txtDeposit1").innerHTML = parseNumber(result[i].LIABILITY_PERIL_PREM);
-                          document.getElementById("txtDeposit3").innerHTML = parseNumber(result[i].LIABILITY_PERIL_PREM);
-                          */
-                          //sp_amount3
+                          document.getElementById("txtDeposit1").innerHTML = parseNumber(result[i].LIABILITY_PERIL_PREM);
+                          document.getElementById("txtDeposit3").innerHTML = parseNumber(result[i].LIABILITY_PERIL_PREM); //sp_amount3
                         }
                       }
 
