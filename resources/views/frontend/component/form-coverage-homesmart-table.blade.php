@@ -41,7 +41,7 @@
             width: 700px;
             display: inline-block;
         }
-        .td-onmhs{
+        .td-onmhs {
             display: table-cell !important;
         }
         
@@ -73,7 +73,7 @@
                     <div class="choose-plan-mobile">
                         @foreach ($package_detail as $k => $v)
                             <div class="wrapper-choose-plan">
-                                <a href="#"
+                                <a href=" #"
                                    data-package="{{$k}}"
                                    data-index="{{$i}}"
                                    data-gtm="product-{{strtolower($selected)}}-mobile-choose-plan-{{$i}}"

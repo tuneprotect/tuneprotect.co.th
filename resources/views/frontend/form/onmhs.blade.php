@@ -7,7 +7,7 @@
             <h3>@lang('product.please_specify_travel_info')</h3>
             <div class="col" data-pay-installment="" data-pay-installment-policy="">
                 <div class="controls-wrapper">
-                    <select id="ctrl_fire_building" name="ctrl_fire_building">
+                    <select id="ctrl_fire_building " name="ctrl_fire_building">
                       
                         @if($locale == 'en')
                             <option value="ONMHS1">Construction is made of concrete</option>
@@ -34,7 +34,7 @@
 
                 <div class="col" data-pay-installment="" data-pay-installment-policy="">
                     <div class="controls-wrapper">
-                        <select id="ctrl_fire_owner" name="ctrl_fire_owner">
+                        <select id="ctrl_fire_owner" name="ctrl_fire_owner ">
                             @foreach(__('product.insurer_fire_list_owner') as $k => $v)
                                 <option value="{{$k}}">{{$v}}</option>
                             @endforeach
