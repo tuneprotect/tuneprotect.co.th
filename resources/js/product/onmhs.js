@@ -846,9 +846,11 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 
     const changeTextPremium = (packageSelect) => {
-        let building = $('#ctrl_fire_building');
+        let building = document.getElementById('ctrl_fire_building');//$('#ctrl_fire_building');
         let text = building.options[building.selectedIndex].text;
         let text_value = building.options[building.selectedIndex].value;
+
+        
 
         let select = $('#ctrl_insurer_capital');
         let cover_amount = select.options[select.selectedIndex].value;
