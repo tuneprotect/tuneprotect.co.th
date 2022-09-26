@@ -56245,44 +56245,46 @@ document.addEventListener("DOMContentLoaded", /*#__PURE__*/_asyncToGenerator( /*
           */
 
           changeTextPremium = function changeTextPremium(packageSelect) {
-            /*
-            let building = document.getElementById('ctrl_fire_building');//$('#ctrl_fire_building');
-            let text = building.options[building.selectedIndex].text;
-            let text_value = building.options[building.selectedIndex].value;
-              
-              let select = $('#ctrl_insurer_capital');
-            let cover_amount = select.options[select.selectedIndex].value;
-              $('#ctrl_fire_building_text').value = text;
+            var building = document.getElementById('ctrl_fire_building'); //$('#ctrl_fire_building');
+
+            var text = building.options[building.selectedIndex].text;
+            var text_value = building.options[building.selectedIndex].value;
+            var select = Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$"])('#ctrl_insurer_capital');
+            var cover_amount = select.options[select.selectedIndex].value;
+            Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$"])('#ctrl_fire_building_text').value = text;
+
             if (text_value == "ONMHS3") {
-                document.getElementById("tr-condo-9").classList.add("d-none");
-                document.getElementById("tr-condo-9-detail").classList.add("d-none");
-                document.getElementById("tr-condo-10").classList.add("d-none");
-                document.getElementById("tr-condo-10-detail").classList.add("d-none");
-                document.getElementById("divamount").classList.add("d-none");
-                document.getElementById("lbSelectHome").classList.add("d-none");
-                document.getElementById("lbSelectCondo").classList.remove("d-none");
+              document.getElementById("tr-condo-9").classList.add("d-none");
+              document.getElementById("tr-condo-9-detail").classList.add("d-none");
+              document.getElementById("tr-condo-10").classList.add("d-none");
+              document.getElementById("tr-condo-10-detail").classList.add("d-none");
+              document.getElementById("divamount").classList.add("d-none");
+              document.getElementById("lbSelectHome").classList.add("d-none");
+              document.getElementById("lbSelectCondo").classList.remove("d-none");
             } else {
-                document.getElementById("tr-condo-9").classList.remove("d-none");
-                document.getElementById("tr-condo-9-detail").classList.remove("d-none");
-                document.getElementById("tr-condo-10").classList.remove("d-none");
-                document.getElementById("tr-condo-10-detail").classList.remove("d-none");
-                document.getElementById("divamount").classList.remove("d-none");
-                document.getElementById("lbSelectHome").classList.remove("d-none");
-                document.getElementById("lbSelectCondo").classList.add("d-none");
-                $("#fdAccording").value = parseNumber(cover_amount * 0.8);
-                $("#fdContent").value = parseNumber(cover_amount * 0.2);
+              document.getElementById("tr-condo-9").classList.remove("d-none");
+              document.getElementById("tr-condo-9-detail").classList.remove("d-none");
+              document.getElementById("tr-condo-10").classList.remove("d-none");
+              document.getElementById("tr-condo-10-detail").classList.remove("d-none");
+              document.getElementById("divamount").classList.remove("d-none");
+              document.getElementById("lbSelectHome").classList.remove("d-none");
+              document.getElementById("lbSelectCondo").classList.add("d-none");
+              Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$"])("#fdAccording").value = parseNumber(cover_amount * 0.8);
+              Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$"])("#fdContent").value = parseNumber(cover_amount * 0.2);
             }
+
             document.getElementById("check_rate_3").checked = true;
             document.getElementById("check_rate_4").checked = true;
             document.getElementById("check_rate_5").checked = true;
             document.getElementById("check_rate_6").checked = true;
-            document.getElementById("check_rate_7").checked = true;
-            //document.getElementById("check_rate_8").checked = true;
+            document.getElementById("check_rate_7").checked = true; //document.getElementById("check_rate_8").checked = true;
+
             document.getElementById("check_rate_9").checked = true;
             document.getElementById("check_rate_10").checked = true;
-              const allPack = Object.keys(package_data)
-                .filter(k => _.startsWith(k, packageSelect))
-            */
+            var allPack = Object.keys(package_data).filter(function (k) {
+              return _.startsWith(k, packageSelect);
+            });
+
             if (document.body.clientWidth > 767) {
               Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$$"])('#table-detail td[data-package],#table-detail th[data-package]').forEach(function ($el) {
                 if (allPack.includes($el.getAttribute("data-package"))) {

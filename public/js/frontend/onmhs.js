@@ -839,6 +839,8 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 
     const changeTextPremium = (packageSelect) => {
+
+        /*
         let building = $('#ctrl_fire_building');
         let text = building.options[building.selectedIndex].text;
         let text_value = building.options[building.selectedIndex].value;
@@ -874,6 +876,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         //document.getElementById("check_rate_8").checked = true;
         document.getElementById("check_rate_9").checked = true;
         document.getElementById("check_rate_10").checked = true;
+*/
 
         const allPack = Object.keys(package_data)
             .filter(k => _.startsWith(k, packageSelect))

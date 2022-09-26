@@ -846,8 +846,6 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 
     const changeTextPremium = (packageSelect) => {
-
-        /*
         let building = document.getElementById('ctrl_fire_building');//$('#ctrl_fire_building');
         let text = building.options[building.selectedIndex].text;
         let text_value = building.options[building.selectedIndex].value;
@@ -889,7 +887,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         const allPack = Object.keys(package_data)
             .filter(k => _.startsWith(k, packageSelect))
 
-*/
+
 
         if (document.body.clientWidth > 767) {
             $$('#table-detail td[data-package],#table-detail th[data-package]').forEach($el => {
