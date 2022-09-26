@@ -15,10 +15,10 @@ import {
     locale, scrollToTargetAdjusted
 } from "../helper";
 
-import {removeError, showError, showFieldError, validateField} from "../validate_form";
+import { removeError, showError, showFieldError, validateField } from "../validate_form";
 import Swal from "sweetalert2";
 import validate from "validate.js";
-import {addDays, addYears, format, isValid, parseISO, subDays} from "date-fns";
+import { addDays, addYears, format, isValid, parseISO, subDays } from "date-fns";
 import intlTelInput from "intl-tel-input";
 
 require('../main');
@@ -279,7 +279,7 @@ const checkTaBirthDate = () => {
 
     if (dd === '' || mm === '' || yy === '') {
         showDateError($('#ctrl_day').getAttribute('data-error-format'));
-        return {status: false};
+        return { status: false };
     }
     if (parseInt(yy.substring(0, 2)) > 21) {
         yy = (parseInt(yy) - 543).toString();
@@ -289,7 +289,7 @@ const checkTaBirthDate = () => {
 
     if (!isValid(parseISO(birthday))) {
         showDateError($('#ctrl_day').getAttribute('data-error-format'));
-        return {status: false};
+        return { status: false };
     }
 
     const age = calculateAge(birthday);
@@ -326,15 +326,14 @@ const getSelectedPricePackage = (packageCode, package_data) => {
 document.addEventListener("DOMContentLoaded", async () => {
     const package_data = await getPackageData(current_package);
 
-    
+
 
     let Redeem_Code = "";
-    if(document.getElementById("redeem_code")){
-        Redeem_Code= document.getElementById("redeem_code").value;
-        if(document.getElementById("massage_error")){
-            let msg_error= document.getElementById("massage_error").value;
-            if(msg_error != '')
-            {
+    if (document.getElementById("redeem_code")) {
+        Redeem_Code = document.getElementById("redeem_code").value;
+        if (document.getElementById("massage_error")) {
+            let msg_error = document.getElementById("massage_error").value;
+            if (msg_error != '') {
                 Swal.fire({
                     title: 'Error!',
                     text: msg_error,
@@ -348,11 +347,10 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     let Keys = "";
     var myEle = document.getElementById("portal_key");
-    if(myEle){
-        Keys= myEle.value;
+    if (myEle) {
+        Keys = myEle.value;
         var status_api = document.getElementById("status_api");
-        if(!status_api.value)
-        {
+        if (!status_api.value) {
             Swal.fire({
                 title: 'Error!',
                 text: 'Error : Portal keys. User not found.',
@@ -370,7 +368,8 @@ document.addEventListener("DOMContentLoaded", async () => {
         field.addEventListener("change", function (e) {
             validateField(this, constraints);
             if (['fdNationalID', 'loc_fdAddr_Home'].includes(field.id)) {
-                validatePolicyLoc(e.target, data.fdPackage,$('#fdFromDate')?.value);
+                console.log(e.target, data.fdPackage, $('#fdFromDate')?.value);
+                validatePolicyLoc(e.target, data.fdPackage, $('#fdFromDate')?.value);
             }
 
             if (['fdName', 'fdSurname', 'fdNationalID'].includes(field.id)) {
@@ -407,41 +406,44 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 
 
+    let MyHomeSmart = [];
+    let oneYear = [];
+    let treeYear = [];
+    let drpCompensation = [];
+    let drpCompensationText = [];
+    let dep1 = "1";
+    let dep3 = "1";
+    let p_packget="";
+    let p_price="";
+    let p_price1="";
+    let p_price3="";
+    let P = "P", G = "G", C = "C", T = "T", D = "D", L = "L", R = "R";
+    let code = `FN${P}${G}${C}${T}${D}A${L}${R}`;
+    let amount = sessionStorage.getItem("amount");
+
+
     $$("select[name=ctrl_fire_building]").forEach($el => {
         $el.addEventListener("change", function (e) {
-            
+
             changeTextPremium(e.target.value);
-             //alert(e.target.value);
+            //alert(e.target.value);
         });
     });
     $$("select[name=ctrl_insurer_capital]").forEach($el => {
         $el.addEventListener("change", function (e) {
             changeTextAmount(e.target.value);
             apiMyHomeSmart(e.target.value);
-             //alert(e.target.value);
+            //alert(e.target.value);
         });
     });
-    $$("select[name=drpDeposit1]").forEach($el => {
-        $el.addEventListener("change", function (e) {
-            drpDeposit1(e.target.value);
-        });
-    });
-    $$("select[name=drpDeposit3]").forEach($el => {
-        $el.addEventListener("change", function (e) {
-            drpDeposit3(e.target.value);
-        });
-    });
-    
-    
 
-    let P = "P",G="G",C="C",T="T",D="D",L="L",R="R";
-    let code = `FN${P}${G}${C}${T}${D}A${L}${R}`;
+
     $$("input[id=check_rate_3]").forEach($el => {
         $el.addEventListener("change", function (e) {
             if (e.target.checked) {
                 //code.format("{0}", e.target.value)
                 P = e.target.value;
-            } else{                
+            } else {
                 P = "X";
             }
             code = `FN${P}${G}${C}${T}${D}A${L}${R}`;
@@ -453,7 +455,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             if (e.target.checked) {
                 //code.format("{0}", e.target.value)
                 G = e.target.value;
-            } else{                
+            } else {
                 G = "X";
             }
             code = `FN${P}${G}${C}${T}${D}A${L}${R}`;
@@ -465,7 +467,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             if (e.target.checked) {
                 //code.format("{0}", e.target.value)
                 C = e.target.value;
-            } else{                
+            } else {
                 C = "X";
             }
             code = `FN${P}${G}${C}${T}${D}A${L}${R}`;
@@ -477,7 +479,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             if (e.target.checked) {
                 //code.format("{0}", e.target.value)
                 T = e.target.value;
-            } else{                
+            } else {
                 T = "X";
             }
             code = `FN${P}${G}${C}${T}${D}A${L}${R}`;
@@ -489,7 +491,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             if (e.target.checked) {
                 //code.format("{0}", e.target.value)
                 D = e.target.value;
-            } else{                
+            } else {
                 D = "X";
             }
             code = `FN${P}${G}${C}${T}${D}A${L}${R}`;
@@ -501,8 +503,10 @@ document.addEventListener("DOMContentLoaded", async () => {
             if (e.target.checked) {
                 //code.format("{0}", e.target.value)
                 R = e.target.value;
-            } else{                
+            } else {
                 R = "X";
+                dep1 = "";
+                dep3 = "";
             }
             code = `FN${P}${G}${C}${T}${D}A${L}${R}`;
             sumTotal(code);
@@ -513,42 +517,49 @@ document.addEventListener("DOMContentLoaded", async () => {
             if (e.target.checked) {
                 //code.format("{0}", e.target.value)
                 L = e.target.value;
-            } else{                
+            } else {
                 L = "X";
             }
             code = `FN${P}${G}${C}${T}${D}A${L}${R}`;
             sumTotal(code);
         });
     });
-    
+
+    $$("select[id=drpCompensation3]").forEach($el => {
+        $el.addEventListener("change", function (e) {
+            dep3 = e.target.value == 10000 ? '1' : e.target.value == 15000 ? '2' : '3';
+            sumTotal(code);
+            //alert(e.target.value);
+        });
+    });
 
     const sumTotal = async (packageSelect) => {
-        alert(packageSelect)
+        //alert(packageSelect)
         try {
-            let amount = sessionStorage.getItem("amount");
-            let js = sessionStorage.getItem("apiMyHomeSmart");
+
+            alert(packageSelect);
+            let js = MyHomeSmart;
             const result = JSON.parse(js);
-            
             for (let i = 0; i < result.length; i++) {
-                if (result[i].Combination.trim()==packageSelect+1 && result[i].CoverageAmount==amount) {
+                if (result[i].TAGNAME.trim() == packageSelect + dep1 && result[i].FIRE == amount) {
                     apiMyHomeSmart1y(result[i].id);
-                    //console.log("result",result[i]);
+                    //console.log("result", result[i]);
                     //console.log("result",result[i].Liability);
                     //let total = parseInt(result[i].RentTotalPerMonth*12);
                     //alert(total);
                     //document.getElementById("txtDeposit1").value=total; 
-                }    
-                if (result[i].Combination.trim()==packageSelect+3 && result[i].CoverageAmount==amount) {
+                }
+                if (result[i].TAGNAME.trim() == packageSelect + dep3 && result[i].FIRE == amount) {
                     apiMyHomeSmart3y(result[i].id);
                     //console.log("resul3t",result[i]);
                     //console.log("result",result[i].Liability);
                     //let total = parseInt(result[i].RentTotalPerMonth*12);
                     //alert(total);
                     //document.getElementById("txtDeposit1").value=total; 
-                }            
+                }
             }
         } catch (err) {
-            console.log("1111",err);
+            console.log("sumTotal", err);
             Swal.fire(
                 {
                     title: `<i class="icofont-alarm" style="color:red"></i>`,
@@ -561,99 +572,23 @@ document.addEventListener("DOMContentLoaded", async () => {
         $form.classList.remove('ajax_loader');
     }
     //sessionStorage.setItem("itemCode",code);
-/*
-    function validate() {
-        var remember = document.getElementById("remember");
-        if (remember.checked) {
-          alert("checked");
-        } else {
-          alert("You didn't check it! Let me check it for you.");
-        }
-      }
-*/
 
-    
-    const drpDeposit1 = async (packageSelect) => {
-        
-        try {
-            
-
-            //let result = sessionStorage.getItem("combination1y");
-            let js = sessionStorage.getItem("combination1y");
-            const result = JSON.parse(js);
-            //console.log(result);
-            
-            for (let i = 0; i < result.length; i++) {
-                if (parseInt(result[i].Liability)==parseInt(packageSelect)) {
-                    
-                    //console.log("result",result[i].Liability);
-                    let total = parseInt(result[i].RentTotalPerMonth*12);
-                    //alert(total);
-                    document.getElementById("txtDeposit1").value=total; 
-                }               
-            }
-        } catch (err) {
-            console.log("1111",err);
-            Swal.fire(
-                {
-                    title: `<i class="icofont-alarm" style="color:red"></i>`,
-                    html: `<strong>${$form.getAttribute('data-error')}</strong><br>${$form.getAttribute('data-error-description')}`,
-                    confirmButtonText: $form.getAttribute('data-error-button'),
-                }
-            )
-        }
-
-        $form.classList.remove('ajax_loader');
-    }
-    const drpDeposit3 = async (packageSelect) => {
-        
-        try {
-            
-
-            //let result = sessionStorage.getItem("combination1y");
-            let js = sessionStorage.getItem("combination3y");
-            const result = JSON.parse(js);
-            //console.log(result);
-            
-            for (let i = 0; i < result.length; i++) {
-                if (parseInt(result[i].Liability)==parseInt(packageSelect)) {
-                    
-                    //console.log("result",result[i].Liability);
-                    let total = parseInt(result[i].RentTotalPerMonth*12);
-                    //alert(total);
-                    document.getElementById("txtDeposit3").value=total; 
-                }               
-            }
-        } catch (err) {
-            console.log("1111",err);
-            Swal.fire(
-                {
-                    title: `<i class="icofont-alarm" style="color:red"></i>`,
-                    html: `<strong>${$form.getAttribute('data-error')}</strong><br>${$form.getAttribute('data-error-description')}`,
-                    confirmButtonText: $form.getAttribute('data-error-button'),
-                }
-            )
-        }
-
-        $form.classList.remove('ajax_loader');
-    }
     /* dum-soken 20220914
     const changeTextAmount = (packageSelect) => {
         let select = $('#ctrl_insurer_capital');
         let cover_amount = select.options[select.selectedIndex].value;
-        $("#fdAccording").value = parseInt(cover_amount*0.8).format();;
-        $("#fdContent").value = parseInt(cover_amount*0.2).format();;
+        $("#fdAccording").value = parseInt(cover_amount*0.8);;
+        $("#fdContent").value = parseInt(cover_amount*0.2);;
         
     }
     */
-
     const apiMyHomeSmart = async (packageSelect) => {
         try {
             let select = $('#ctrl_insurer_capital');
             let cover_amount = select.options[select.selectedIndex].value;
 
             let res = await fetch(`/appApi/ApiConnect/myHomeSmartPackage`, {
-                method: 'post',                
+                method: 'post',
                 headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json',
@@ -663,61 +598,104 @@ document.addEventListener("DOMContentLoaded", async () => {
             const response = await res.json();
             const js = JSON.parse(response);
             let result = js.data;
-            sessionStorage.setItem("apiMyHomeSmart", JSON.stringify(result));
+
             sessionStorage.setItem("amount", cover_amount);
-            let oneYear = [];
-            let treeYear = [];
+            MyHomeSmart = JSON.stringify(result);
+            var chk = "";
             for (let i = 0; i < result.length; i++) {
-                if(result[i].Combination.trim() == "FNPGCTDALR1"){
+                /*
+                if(chk!=result[i].RENT_PERIL_PREM){
+                    drpCompensation.push(result[i].RENT_PERIL_PREM);
+                    drpCompensationText.push(result[i].RENT_PERIL_SUMINS);
+                    chk=result[i].RENT_PERIL_PREM;
+                }
+                */
+                drpCompensation.push(result[i].RENT_PERIL_PREM);
+                drpCompensationText.push(result[i].RENT_PERIL_SUMINS);
+                //RENT_PERIL_PREM //value
+                //RENT_PERIL_SUMINS //text 
+
+                /*
+                if(result[i].TAGNAME.trim() == "FNPGCTDALR1"){
                     oneYear.push(result[i]);
                 }
-                if(result[i].Combination.trim() == "FNPGCTDALR3"){
+                if(result[i].TAGNAME == "FNPGCTDALR3"){
+                    //console.log("result3",result[i]);
                     treeYear.push(result[i]);                    
                 }
-                
-                if (result[i].Combination.trim() == "FNPGCTDALR1" && result[i].CoverageAmount==cover_amount) {
-                    
-                    //oneYear.push(result[i]);
+                */
+                //default 
+                if (result[i].TAGNAME.trim() == "FNPGCTDALR1" && result[i].FIRE == cover_amount) {
+                    //console.log("data",result[i])
                     apiMyHomeSmart1y(result[i].id);
-                    document.getElementById("rate_15").innerHTML=parseInt(result[i].PA).format();
-                    document.getElementById("rate_17").innerHTML=parseInt(result[i].Glass).format();
-                    document.getElementById("rate_19").innerHTML=parseInt(result[i].Cash).format();
-                    document.getElementById("rate_21").innerHTML=parseInt(result[i].Theft).format(); 
-                    document.getElementById("rate_22").innerHTML=parseInt(result[i].DangerPerDays).format(); 
-                    document.getElementById("rate_23").innerHTML=parseInt(result[i].Danger).format();                     
-                    document.getElementById("drpCompensation1").value = result[i].Rent;                    
-                    document.getElementById("drpDeposit1").value = result[i].Liability;
-                    document.getElementById("txtDeposit1").value = parseInt(result[i].RentTotalPerMonth*12); 
-                    //document.getElementById("rate_2").innerHTML="10000000";
-                }
-                if (result[i].Combination.trim() == "FNPGCTDALR3" && result[i].CoverageAmount==cover_amount) {   
                     apiMyHomeSmart3y(result[i].id);
-                    document.getElementById("rate_15_3").innerHTML=parseInt(result[i].PA).format();
-                    document.getElementById("rate_17_3").innerHTML=parseInt(result[i].Glass).format();
-                    document.getElementById("rate_19_3").innerHTML=parseInt(result[i].Cash).format();
-                    document.getElementById("rate_21_3").innerHTML=parseInt(result[i].Theft).format(); 
-                    document.getElementById("rate_22_3").innerHTML=parseInt(result[i].DangerPerDays).format(); 
-                    document.getElementById("rate_23_3").innerHTML=parseInt(result[i].Danger).format(); 
-                    document.getElementById("drpCompensation3").value = result[i].Rent;
-                    document.getElementById("drpDeposit3").value = result[i].Liability;
-                    document.getElementById("txtDeposit3").value = parseInt(result[i].RentTotalPerMonth*12); 
-                    /*
-                    const changeSelected = (e) => {
-                        const $select = document.querySelector('#drpCompensation3');
-                        $select.value = 'steve'
-                      };
+                    //ข้อ 1.
+                    
+                    document.getElementById("rate_2").innerHTML = parseNumber(result[i].ITEM1_1_PERIL_SUMINS);
+                    document.getElementById("rate_3").innerHTML = parseNumber(result[i].ITEM1_2_PERIL_SUMINS);
+                    document.getElementById("rate_4").innerHTML = parseNumber(result[i].ITEM1_3_PERIL_SUMINS);
+                    document.getElementById("rate_5").innerHTML = parseNumber(result[i].ITEM1_3_PERIL_SUMINS);
+                    document.getElementById("rate_6").innerHTML = parseNumber(result[i].ITEM1_5_PERIL_SPE_AMOUNT);
+                    document.getElementById("rate_7").innerHTML = parseNumber(result[i].ITEM1_5_PERIL_SUMINS);
+                    document.getElementById("rate_8").innerHTML = parseNumber(result[i].ITEM1_6_PERIL_SUMINS);
+                    document.getElementById("rate_10").innerHTML = parseNumber(result[i].ITEM1_7_PERIL_SUMINS);
+                    document.getElementById("rate_11").innerHTML = parseNumber(result[i].ITEM1_8_PERIL_SUMINS);
 
-                    */
-                    //treeYear.push(result[i]);
+                    document.getElementById("rate_2_3").innerHTML = parseNumber(result[i].ITEM1_1_PERIL_SUMINS);
+                    document.getElementById("rate_3_3").innerHTML = parseNumber(result[i].ITEM1_2_PERIL_SUMINS);
+                    document.getElementById("rate_4_3").innerHTML = parseNumber(result[i].ITEM1_3_PERIL_SUMINS);
+                    document.getElementById("rate_5_3").innerHTML = parseNumber(result[i].ITEM1_3_PERIL_SUMINS);
+                    document.getElementById("rate_6_3").innerHTML = parseNumber(result[i].ITEM1_5_PERIL_SPE_AMOUNT);
+                    document.getElementById("rate_7_3").innerHTML = parseNumber(result[i].ITEM1_5_PERIL_SUMINS);
+                    document.getElementById("rate_8_3").innerHTML = parseNumber(result[i].ITEM1_6_PERIL_SUMINS);
+                    document.getElementById("rate_10_3").innerHTML = parseNumber(result[i].ITEM1_7_PERIL_SUMINS);
+                    document.getElementById("rate_11_3").innerHTML = parseNumber(result[i].ITEM1_8_PERIL_SUMINS);
+
+                    //ข้อ 2.
+                    document.getElementById("rate_13").innerHTML = parseNumber(result[i].NATURAL);
+                    document.getElementById("rate_13_3").innerHTML = parseNumber(result[i].NATURAL);
+
+                    //ข้อ 3.
+                    document.getElementById("rate_15").innerHTML = parseNumber(result[i].PA_PERIL_SUMINS);
+                    document.getElementById("rate_15_3").innerHTML = parseNumber(result[i].PA_PERIL_SUMINS);
+
+                    //ข้อ 4.
+                    document.getElementById("rate_17").innerHTML = parseNumber(result[i].GLASS_PERIL_SUMINS);
+                    document.getElementById("rate_17_3").innerHTML = parseNumber(result[i].GLASS_PERIL_SUMINS);
+
+                    //ข้อ 5.
+                    document.getElementById("rate_19").innerHTML = parseNumber(result[i].CASH_PERIL_SUMINS);
+                    document.getElementById("rate_19_3").innerHTML = parseNumber(result[i].CASH_PERIL_SUMINS);
+
+                    //ข้อ 6.
+                    document.getElementById("rate_21").innerHTML = parseNumber(result[i].THEFT_PERIL_SUMINS);
+                    document.getElementById("rate_21_3").innerHTML = parseNumber(result[i].THEFT_PERIL_SUMINS);
+
+                    //ข้อ 7.
+                    document.getElementById("rate_22").innerHTML = parseNumber(result[i].DANGER_PERIL_SPE_AMOUNT);
+                    document.getElementById("rate_23").innerHTML = parseNumber(result[i].DANGER_PERIL_SUMINS);
+                    document.getElementById("rate_22_3").innerHTML = parseNumber(result[i].DANGER_PERIL_SPE_AMOUNT);
+                    document.getElementById("rate_23_3").innerHTML = parseNumber(result[i].DANGER_PERIL_SUMINS);
+
+                    //ข้อ 9.
+                    document.getElementById("drpCompensation3").value = result[i].RENT_PERIL_SUMINS;
+                    document.getElementById("drpCompensation1").value = result[i].RENT_PERIL_SUMINS;
+
+                    //ข้อ 10.    
+
+                    document.getElementById("sp_amount1").innerHTML = parseNumber(result[i].LIABILITY_PERIL_SUMINS);
+                    document.getElementById("sp_amount3").innerHTML = parseNumber(result[i].LIABILITY_PERIL_SUMINS);
+
+                    document.getElementById("txtDeposit1").innerHTML = parseNumber(result[i].LIABILITY_PERIL_PREM);
+                    document.getElementById("txtDeposit3").innerHTML = parseNumber(result[i].LIABILITY_PERIL_PREM);
+
+                    //sp_amount3
                 }
+
             }
-            //console.log(oneYear);            
-            sessionStorage.setItem("combination1y", JSON.stringify(oneYear));
-            sessionStorage.setItem("combination3y", JSON.stringify(treeYear));
-            //console.log(treeYear);
 
         } catch (err) {
-            console.log("1111",err);
+            console.log("apiMyHomeSmart", err);
             Swal.fire(
                 {
                     title: `<i class="icofont-alarm" style="color:red"></i>`,
@@ -729,34 +707,42 @@ document.addEventListener("DOMContentLoaded", async () => {
 
         $form.classList.remove('ajax_loader');
     }
-    
+
+    function parseNumber(value) {
+        //console.log("cnt",value)
+        return value ? parseInt(value).format() : 0;
+    }
+
     const apiMyHomeSmart1y = async (packageSelect) => {
         try {
             let res = await fetch(`/appApi/ApiConnect/myHomeSmartPackage1y`, {
-                method: 'post',                
+                method: 'post',
                 headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json',
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').getAttribute('content')
                 },
-                
+
                 //body: JSON.stringify(data)
             });
             const response = await res.json();
             const js = JSON.parse(response);
             let result = js.data;
-            let oneYear = [];
             for (let i = 0; i < result.length; i++) {
-                if (result[i].id==packageSelect) {
-                    oneYear.push(result[i]);
-                    document.getElementById("txtAmount1").value=numberWithCommas(result[i].Total);
-                }               
+
+                //drpOneYear = 
+                if (result[i].id == packageSelect) {
+                    oneYear = result[i];
+                    //console.log("oneYear", oneYear);
+                    document.getElementById("txtAmount1").value = numberWithCommas(result[i].Total);
+                    p_price1 = result[i].Total;
+                }
             }
             //console.log("1y",oneYear)
-           
+
 
         } catch (err) {
-            console.log("1111",err);
+            console.log("apiMyHomeSmart1y", err);
             Swal.fire(
                 {
                     title: `<i class="icofont-alarm" style="color:red"></i>`,
@@ -771,28 +757,29 @@ document.addEventListener("DOMContentLoaded", async () => {
     const apiMyHomeSmart3y = async (packageSelect) => {
         try {
             let res = await fetch(`/appApi/ApiConnect/myHomeSmartPackage3y`, {
-                method: 'post',                
+                method: 'post',
                 headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json',
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').getAttribute('content')
                 },
-                
+
                 //body: JSON.stringify(data)
             });
             const response = await res.json();
             const js = JSON.parse(response);
             let result = js.data;
-            let treeYear = [];
             for (let i = 0; i < result.length; i++) {
-                if (result[i].id==packageSelect) {
-                    treeYear.push(result[i]);
+                if (result[i].id == packageSelect) {
+                    treeYear = result[i];
+                    //treeYear", treeYear);
                     document.getElementById("txtAmount3").value = numberWithCommas(result[i].Total);
-                }               
+                    p_price3 = result[i].Total;
+                }
             }
             //console.log("3y",treeYear)
         } catch (err) {
-            console.log("1111",err);
+            console.log("apiMyHomeSmart3y", err);
             Swal.fire(
                 {
                     title: `<i class="icofont-alarm" style="color:red"></i>`,
@@ -806,17 +793,17 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
 
     apiMyHomeSmart("500000");
-    
-    
+
+
 
     function numberWithCommas(x) {
         var parts = x.toString().split(".");
         parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
         return parts.join(".");
     }
-   
 
-    Number.prototype.format = function(n, x) {
+
+    Number.prototype.format = function (n, x) {
         var re = '\\d(?=(\\d{' + (x || 3) + '})+' + (n > 0 ? '\\.' : '$') + ')';
         return this.toFixed(Math.max(0, ~~n)).replace(new RegExp(re, 'g'), '$&,');
     };
@@ -827,26 +814,26 @@ document.addEventListener("DOMContentLoaded", async () => {
 
         let select = $('#ctrl_insurer_capital');
         let cover_amount = select.options[select.selectedIndex].value;
-         
-        $("#rate_1").innerHTML = parseInt(cover_amount).format();
-        $("#rate_1_3").innerHTML = parseInt(cover_amount).format();
 
-        if(text_value!="ONMHS3"){ 
-            $("#fdAccording").value = parseInt(cover_amount*0.8).format();
-            $("#fdContent").value = parseInt(cover_amount*0.2).format();
+        $("#rate_1").innerHTML = parseNumber(cover_amount);
+        $("#rate_1_3").innerHTML = parseNumber(cover_amount);
+
+        if (text_value != "ONMHS3") {
+            $("#fdAccording").value = parseNumber(cover_amount * 0.8);
+            $("#fdContent").value = parseNumber(cover_amount * 0.2);
         }
 
 
-        
-        
+
+
         document.getElementById("ONMHS2").style.display = "table-cell";
         document.getElementById("head-ONMHS2").style.display = "table-cell";
         document.getElementById("foot-ONMHS2").style.display = "table-cell";
-        
-        
+
+
     }
     changeTextAmount("500000");
-    
+
     /*
     const myHomeSmartAPI = async () => {
         const request = await fetch('https://gbfs.citibikenyc.com/gbfs/en/station_information.json');
@@ -856,7 +843,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     myHomeSmartAPI();
     */
 
-    
+
     const changeTextPremium = (packageSelect) => {
         let building = $('#ctrl_fire_building');
         let text = building.options[building.selectedIndex].text;
@@ -864,9 +851,9 @@ document.addEventListener("DOMContentLoaded", async () => {
 
         let select = $('#ctrl_insurer_capital');
         let cover_amount = select.options[select.selectedIndex].value;
-        
+
         $('#ctrl_fire_building_text').value = text;
-        if(text_value=="ONMHS3"){           
+        if (text_value == "ONMHS3") {
             document.getElementById("tr-condo-9").classList.add("d-none");
             document.getElementById("tr-condo-9-detail").classList.add("d-none");
             document.getElementById("tr-condo-10").classList.add("d-none");
@@ -874,7 +861,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             document.getElementById("divamount").classList.add("d-none");
             document.getElementById("lbSelectHome").classList.add("d-none");
             document.getElementById("lbSelectCondo").classList.remove("d-none");
-        }else{
+        } else {
             document.getElementById("tr-condo-9").classList.remove("d-none");
             document.getElementById("tr-condo-9-detail").classList.remove("d-none");
             document.getElementById("tr-condo-10").classList.remove("d-none");
@@ -882,8 +869,8 @@ document.addEventListener("DOMContentLoaded", async () => {
             document.getElementById("divamount").classList.remove("d-none");
             document.getElementById("lbSelectHome").classList.remove("d-none");
             document.getElementById("lbSelectCondo").classList.add("d-none");
-            $("#fdAccording").value = parseInt(cover_amount*0.8).format();
-            $("#fdContent").value = parseInt(cover_amount*0.2).format();
+            $("#fdAccording").value = parseNumber(cover_amount * 0.8);
+            $("#fdContent").value = parseNumber(cover_amount * 0.2);
         }
         document.getElementById("check_rate_3").checked = true;
         document.getElementById("check_rate_4").checked = true;
@@ -895,11 +882,11 @@ document.addEventListener("DOMContentLoaded", async () => {
         document.getElementById("check_rate_10").checked = true;
 
         const allPack = Object.keys(package_data)
-            .filter(k => _.startsWith(k,packageSelect))
+            .filter(k => _.startsWith(k, packageSelect))
 
 
 
-        if(document.body.clientWidth > 767) {
+        if (document.body.clientWidth > 767) {
             $$('#table-detail td[data-package],#table-detail th[data-package]').forEach($el => {
                 if (allPack.includes($el.getAttribute("data-package"))) {
                     $el.style.display = "table-cell";
@@ -907,9 +894,9 @@ document.addEventListener("DOMContentLoaded", async () => {
                     $el.style.display = "none";
                 }
             });
-        }else{
+        } else {
             $$('#table-detail thead a[data-package]').forEach($el => {
-                if ($el.getAttribute("data-package").startsWith(packageSelect )) {
+                if ($el.getAttribute("data-package").startsWith(packageSelect)) {
                     $el.style.display = "inline-flex";
                 } else {
                     $el.style.display = "none";
@@ -920,7 +907,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         allPack.map(k => {
             $('#fdPremium').value = parseInt(package_data[k].plan.COV1).toLocaleString();
             $(`strong[data-price-${k}]`).innerHTML = parseInt(package_data[k].price).toLocaleString();
-            $(`th[data-cover-cov1]`).innerHTML = $('#cover_fire_'+packageSelect).value;
+            $(`th[data-cover-cov1]`).innerHTML = $('#cover_fire_' + packageSelect).value;
         });
 
     }
@@ -951,7 +938,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             if ($address_dup.checked) {
 
                 let el = document.getElementById('loc_fdAddr_Home');
-                el.value= $('#fdAddr_Home').value;
+                el.value = $('#fdAddr_Home').value;
                 el.dispatchEvent(new Event('change'));
 
                 $('#loc_fdAddr_Moo').value = $('#fdAddr_Moo').value;
@@ -1003,7 +990,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     let step = 1;
     let data = {
-        fdKeys : Keys,
+        fdKeys: Keys,
         fdIDYPE: fdIDTYPE,
         fdTitle: "",
         fdName: "",
@@ -1056,7 +1043,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
         loc_fdBuilding: "",
         loc_fdOwner: "",
-        fdUniqKey:Redeem_Code
+        fdUniqKey: Redeem_Code
 
     };
 
@@ -1086,8 +1073,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                             status = false;
                             break;
                         }
-                        else
-                        {
+                        else {
                             let fromDate = ($('#fdFromDate').value).split('/');
                             let fdFromDate = `${fromDate[2]}-${fromDate[1]}-${fromDate[0]}`;
                             data = {
@@ -1097,12 +1083,11 @@ document.addEventListener("DOMContentLoaded", async () => {
                         }
 
                         let Redeem_Code = "";
-                        if(document.getElementById("redeem_code")){
-                            Redeem_Code= document.getElementById("redeem_code").value;
-                            if(document.getElementById("massage_error")){
-                                let msg_error= document.getElementById("massage_error").value;
-                                if(msg_error != '')
-                                {
+                        if (document.getElementById("redeem_code")) {
+                            Redeem_Code = document.getElementById("redeem_code").value;
+                            if (document.getElementById("massage_error")) {
+                                let msg_error = document.getElementById("massage_error").value;
+                                if (msg_error != '') {
                                     Swal.fire({
                                         title: 'Error!',
                                         text: msg_error,
@@ -1131,7 +1116,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                         break;
                     case 2:
                         const fdPackage = $btn.getAttribute('data-package');
-
+                        p_packget=fdPackage;
                         $('#form-head').innerHTML = $btn.getAttribute('data-plan');
 
 
@@ -1155,16 +1140,15 @@ document.addEventListener("DOMContentLoaded", async () => {
                         break;
                     case 3:
                         let valCheck = false;
-                        valCheck = validatePolicyPayment($('#fdNationalID').value,data.fdPackage,$('#fdFromDate')?.value);
-                        if(!valCheck)
-                        {
+                        valCheck = validatePolicyPayment($('#fdNationalID').value, data.fdPackage, $('#fdFromDate')?.value);
+                        if (!valCheck) {
                             status = false;
                             return false;
                         }
 
                         status = true;
                         removeError($('#step3'));
-
+                        p_price = p_packget=="ONMHS1" ? p_price1: p_price3;
                         let address = ($('#ctrl_province').value).split('*');
                         let address2 = ($('#loc_ctrl_province').value).split('*');
                         let dateResult = checkTaBirthDate();
@@ -1185,7 +1169,8 @@ document.addEventListener("DOMContentLoaded", async () => {
                             fdRelation: $('#fdRelation').value,
                             // fdRevenue: $('#fdRevenue').checked ? 'Y' : 'N',
                             // fdTaxno: $('#fdTaxno').value,
-                            fdPayAMT: getSelectedPricePackage(data.fdPackage, package_data),
+                            //fdPayAMT: getSelectedPricePackage(data.fdPackage, package_data),
+                            fdPayAMT: p_packget=="ONMHS1" ? p_price1: p_price3,
                             ctrl_accept_insurance_term: $('#ctrl_accept_insurance_term').checked ? true : undefined,
                             ctrl_terms: $('#ctrl_terms').checked ? true : undefined,
 
@@ -1231,40 +1216,32 @@ document.addEventListener("DOMContentLoaded", async () => {
                         let label_home = $('label[for=fdAddr_Home]').innerText;
                         label_home = label_home.replace("*", "");
                         address_insure = label_home + data.fdAddr_Home;
-                        if(data.fdAddr_Moo != "")
-                        {
+                        if (data.fdAddr_Moo != "") {
                             address_insure = " " + address_insure + ", " + $('label[for=fdAddr_Moo]').innerText + data.fdAddr_Moo;
                         }
-                        if(data.fdAddr_Village != "")
-                        {
+                        if (data.fdAddr_Village != "") {
                             address_insure = " " + address_insure + ", " + $('label[for=fdAddr_Village]').innerText + data.fdAddr_Village;
                         }
-                        if(data.fdAddr_Building  != "")
-                        {
+                        if (data.fdAddr_Building != "") {
                             address_insure = " " + address_insure + ", " + $('label[for=fdAddr_Building]').innerText + data.fdAddr_Building;
                         }
-                        if(data.fdAddr_Floor  != "")
-                        {
+                        if (data.fdAddr_Floor != "") {
                             address_insure = " " + address_insure + ", " + $('label[for=fdAddr_Floor]').innerText + data.fdAddr_Floor;
                         }
-                        if(data.fdAddr_Alley  != "")
-                        {
+                        if (data.fdAddr_Alley != "") {
                             address_insure = " " + address_insure + ", " + $('label[for=fdAddr_Alley]').innerText + data.fdAddr_Alley;
                         }
-                        if(data.fdAddr_Street  != "")
-                        {
+                        if (data.fdAddr_Street != "") {
                             address_insure = " " + address_insure + ", " + $('label[for=fdAddr_Street]').innerText + data.fdAddr_Street;
                         }
 
                         let label_district = $('label[for=fdAddr_District]').innerText;
                         label_district = label_district.replace("*", "");
                         console.log(data.fdProvince);
-                        if(data.fdProvince == "00")
-                        {
+                        if (data.fdProvince == "00") {
                             label_district = label_district.replace("แขวง / ตำบล", "แขวง");
                         }
-                        else
-                        {
+                        else {
                             label_district = label_district.replace("แขวง / ตำบล", "ตำบล");
                         }
 
@@ -1278,43 +1255,35 @@ document.addEventListener("DOMContentLoaded", async () => {
                         //=========================================================================================================
                         //location insure
                         let loc_address_insure = "";
-                        let loc_fdAddr_Num="";
+                        let loc_fdAddr_Num = "";
                         let loc_label_home = $('label[for=loc_fdAddr_Home]').innerText;
                         loc_label_home = loc_label_home.replace("*", "");
                         loc_address_insure = loc_label_home + data.loc_fdAddr_Home;
-                        if(data.loc_fdAddr_Moo  != "")
-                        {
+                        if (data.loc_fdAddr_Moo != "") {
                             loc_address_insure = " " + loc_address_insure + ", " + $('label[for=loc_fdAddr_Moo]').innerText + data.loc_fdAddr_Moo;
                         }
-                        if(data.loc_fdAddr_Village  != "")
-                        {
+                        if (data.loc_fdAddr_Village != "") {
                             loc_address_insure = " " + loc_address_insure + ", " + $('label[for=loc_fdAddr_Village]').innerText + data.loc_fdAddr_Village;
                         }
-                        if(data.loc_fdAddr_Building  != "")
-                        {
+                        if (data.loc_fdAddr_Building != "") {
                             loc_address_insure = " " + loc_address_insure + ", " + $('label[for=loc_fdAddr_Building]').innerText + data.loc_fdAddr_Building;
                         }
-                        if(data.loc_fdAddr_Floor  != "")
-                        {
+                        if (data.loc_fdAddr_Floor != "") {
                             address_insure = " " + address_insure + ", " + $('label[for=loc_fdAddr_Floor]').innerText + data.loc_fdAddr_Floor;
                         }
-                        if(data.loc_fdAddr_Alley  != "")
-                        {
+                        if (data.loc_fdAddr_Alley != "") {
                             loc_address_insure = " " + loc_address_insure + ", " + $('label[for=loc_fdAddr_Alley]').innerText + data.loc_fdAddr_Alley;
                         }
-                        if(data.loc_fdAddr_Street  != "")
-                        {
+                        if (data.loc_fdAddr_Street != "") {
                             loc_address_insure = " " + loc_address_insure + ", " + $('label[for=loc_fdAddr_Street]').innerText + data.loc_fdAddr_Street;
                         }
 
                         let loc_label_district = $('label[for=loc_fdAddr_District]').innerText;
                         loc_label_district = loc_label_district.replace("*", "");
-                        if(data.loc_fdAddr_Province == "00")
-                        {
+                        if (data.loc_fdAddr_Province == "00") {
                             loc_label_district = loc_label_district.replace("แขวง / ตำบล", "แขวง");
                         }
-                        else
-                        {
+                        else {
                             loc_label_district = loc_label_district.replace("แขวง / ตำบล", "ตำบล");
                         }
 
@@ -1323,7 +1292,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
                         const $loc_ddlProvince = $('#loc_ctrl_province');
                         const loc_province = $loc_ddlProvince.options[$loc_ddlProvince.selectedIndex].text;
-                        loc_address_insure = " " + loc_address_insure + ", " + loc_province.replace(",", "")  + " " + data.loc_fdAddr_PostCode;
+                        loc_address_insure = " " + loc_address_insure + ", " + loc_province.replace(",", "") + " " + data.loc_fdAddr_PostCode;
 
                         loc_fdAddr_Num = loc_address_insure;
                         //=========================================================================================================
@@ -1376,7 +1345,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                         $summary_section.innerHTML = `<h3 class="text-primary">${$summary_section.getAttribute('data-insurance_data')}</h3><br/>
                     <div class="two-col">
                         <div><span>${$summary_section.getAttribute('data-plan')} : </span><strong>${selectedPackage}</strong></div>
-                        <div><span>${$summary_section.getAttribute('data-price')} : </span><strong>${parseFloat(data.fdPayAMT).toLocaleString()} ${$summary_section.getAttribute('data-baht')}</strong></div>
+                        <div><span>${$summary_section.getAttribute('data-price')} : </span><strong>${parseFloat(p_price).toLocaleString()} ${$summary_section.getAttribute('data-baht')}</strong></div>
                         <div class="controls-wrapper full no-lable"><span>${$('#ctrl_fire_building_sum').value} : </span>
                         <strong>${$('#ctrl_fire_building_text').value}</strong>
                         </div>
