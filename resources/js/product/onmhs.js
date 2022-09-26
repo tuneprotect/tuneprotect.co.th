@@ -810,7 +810,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     const changeTextAmount = (packageSelect) => {
 
         let building = $('#ctrl_fire_building');
-        let text_value = building.options[building.selectedIndex].value;
+        //let text_value = building.options[building.selectedIndex].value;
 
         let select = $('#ctrl_insurer_capital');
         let cover_amount = select.options[select.selectedIndex].value;
@@ -818,11 +818,12 @@ document.addEventListener("DOMContentLoaded", async () => {
         $("#rate_1").innerHTML = parseNumber(cover_amount);
         $("#rate_1_3").innerHTML = parseNumber(cover_amount);
 
+        /*
         if (text_value != "ONMHS3") {
             $("#fdAccording").value = parseNumber(cover_amount * 0.8);
             $("#fdContent").value = parseNumber(cover_amount * 0.2);
         }
-
+*/
 
 
 

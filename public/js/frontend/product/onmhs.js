@@ -56216,17 +56216,18 @@ document.addEventListener("DOMContentLoaded", /*#__PURE__*/_asyncToGenerator( /*
           };
 
           changeTextAmount = function changeTextAmount(packageSelect) {
-            var building = Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$"])('#ctrl_fire_building');
-            var text_value = building.options[building.selectedIndex].value;
+            var building = Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$"])('#ctrl_fire_building'); //let text_value = building.options[building.selectedIndex].value;
+
             var select = Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$"])('#ctrl_insurer_capital');
             var cover_amount = select.options[select.selectedIndex].value;
             Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$"])("#rate_1").innerHTML = parseNumber(cover_amount);
             Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$"])("#rate_1_3").innerHTML = parseNumber(cover_amount);
-
+            /*
             if (text_value != "ONMHS3") {
-              Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$"])("#fdAccording").value = parseNumber(cover_amount * 0.8);
-              Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$"])("#fdContent").value = parseNumber(cover_amount * 0.2);
+                $("#fdAccording").value = parseNumber(cover_amount * 0.8);
+                $("#fdContent").value = parseNumber(cover_amount * 0.2);
             }
+            */
 
             document.getElementById("ONMHS2").style.display = "table-cell";
             document.getElementById("head-ONMHS2").style.display = "table-cell";
