@@ -41,10 +41,12 @@
             width: 700px;
             display: inline-block;
         }
-        .td-onmhs {
+        .td-onmhs{
             display: table-cell !important;
         }
-        
+        .display-th{
+            width:50%;
+        }
     }
     @media (max-width: 1025px) {
         #btnPlan3year{
@@ -73,7 +75,7 @@
                     <div class="choose-plan-mobile">
                         @foreach ($package_detail as $k => $v)
                             <div class="wrapper-choose-plan">
-                                <a href=" #"
+                                <a href="#"
                                    data-package="{{$k}}"
                                    data-index="{{$i}}"
                                    data-gtm="product-{{strtolower($selected)}}-mobile-choose-plan-{{$i}}"
@@ -134,7 +136,7 @@
                 @endforeach
             </tr>
             <tr>
-                <th>
+                <th class="display-th">
                     <h3>@lang('global.coverage')</h3>
                     <div class="choose-plan-mobile">
                         <div class="wrapper-choose-plan">
@@ -243,10 +245,10 @@
                         @endif
                     </th>
                     <td class="td-onmhs" data-index="1" data-package="ONMHS1">
-                        <strong id="rate_3">50,000</strong>
+                        <strong id="rate_3">0</strong>
                     </td>
                     <td class="hide td-onmhs" data-index="2" data-package="ONMHS2">
-                        <strong id="rate_3_3">50,000</strong>
+                        <strong id="rate_3_3">0</strong>
                     </td>
                     
                   
@@ -260,10 +262,10 @@
                         @endif
                     </th>
                     <td class="td-onmhs" data-index="1" data-package="ONMHS1">
-                        <strong id="rate_4">10,000</strong>
+                        <strong id="rate_4">0</strong>
                     </td>
                     <td class="hide td-onmhs" data-index="2" data-package="ONMHS2">
-                        <strong id="rate_4_3">10,000</strong>
+                        <strong id="rate_4_3">0</strong>
                     </td>
                 </tr>
                 <tr>
@@ -275,10 +277,10 @@
                         @endif
                     </th>
                     <td class="td-onmhs" data-index="1" data-package="ONMHS1">
-                        <strong id="rate_5">20,000</strong>
+                        <strong id="rate_5">0</strong>
                     </td>
                     <td class="hide td-onmhs" data-index="2" data-package="ONMHS2">
-                        <strong id="rate_5_3">20,000</strong>
+                        <strong id="rate_5_3">0</strong>
                     </td>
                 </tr>
                 <tr>
@@ -300,14 +302,14 @@
                     </th>
                     <td class="position-relative td-onmhs" data-index="1" data-package="ONMHS1">                  
                         <div class="amt-center">
-                            <strong id="rate_6">1,000</strong><br/>
-                            <strong id="rate_7">100,000</strong>
+                            <strong id="rate_6">0</strong><br/>
+                            <strong id="rate_7">0</strong>
                         </div>
                     </td>
                     <td class="position-relative hide td-onmhs" data-index="2" data-package="ONMHS2">
                         <div class="amt-center">
-                            <strong id="rate_6_3">1,000</strong><br/>
-                            <strong id="rate_7_3">100,000</strong>
+                            <strong id="rate_6_3">0</strong><br/>
+                            <strong id="rate_7_3">0</strong>
                         </div>
                     </td>
                 </tr>
@@ -320,10 +322,10 @@
                         @endif
                     </th>
                     <td class="td-onmhs" data-index="1" data-package="ONMHS1">
-                        <strong id="rate_8">20,000</strong>
+                        <strong id="rate_8">0</strong>
                     </td>
                     <td class="hide td-onmhs" data-index="2" data-package="ONMHS2">
-                        <strong id="rate_8_3">20,000</strong>
+                        <strong id="rate_8_3">0</strong>
                     </td>
                 </tr>
                 <tr>
@@ -335,10 +337,10 @@
                         @endif
                     </th>
                     <td class="td-onmhs" data-index="1" data-package="ONMHS1">
-                        <strong id="rate_10">50,000</strong>
+                        <strong id="rate_10">0</strong>
                     </td>
                     <td class="hide td-onmhs" data-index="2" data-package="ONMHS2">
-                        <strong id="rate_10_3">50,000</strong>
+                        <strong id="rate_10_3">0</strong>
                     </td>
                 </tr>
                 <tr>
@@ -350,10 +352,10 @@
                         @endif
                     </th>
                     <td class="td-onmhs" data-index="1" data-package="ONMHS1">
-                        <strong id="rate_11">35,000</strong>
+                        <strong id="rate_11">0</strong>
                     </td>
                     <td class="hide td-onmhs" data-index="2" data-package="ONMHS2">
-                        <strong id="rate_11_3">35,000</strong>
+                        <strong id="rate_11_3">0</strong>
                     </td>
                 </tr>
                 <tr class="orange">
@@ -378,10 +380,10 @@
                         @endif                      
                     </th>
                     <td class="td-onmhs" data-index="1" data-package="ONMHS1">
-                        <strong id="rate_13">50,000</strong>
+                        <strong id="rate_13">0</strong>
                     </td>
                     <td class="hide td-onmhs" data-index="2" data-package="ONMHS2">
-                        <strong id="rate_13_3">50,000</strong>
+                        <strong id="rate_13_3">0</strong>
                     </th>
                 </tr>  
                 <tr class="orange">
@@ -511,10 +513,10 @@
                         @endif 
                     </th>
                     <td class="td-onmhs" data-index="1" data-package="ONMHS1">
-                        <strong id="rate_21">100,000</strong>
+                        <strong id="rate_21">0</strong>
                     </td>
                     <td class="hide td-onmhs" data-index="2" data-package="ONMHS2">
-                        <strong id="rate_21_3">100,000</strong>
+                        <strong id="rate_21_3">0</strong>
                     </td>
                 </tr>
                 <tr class="orange">
@@ -554,14 +556,14 @@
                     </th>
                     <td class="position-relative td-onmhs" data-index="1" data-package="ONMHS1">                  
                         <div class="amt-center">
-                            <strong id="rate_22">1,000</strong><br/>
-                            <strong id="rate_23">100,000</strong>
+                            <strong id="rate_22">0</strong><br/>
+                            <strong id="rate_23">0</strong>
                         </div>
                     </td>
                     <td class="position-relative hide td-onmhs" data-index="2" data-package="ONMHS2">
                         <div class="amt-center">
-                            <strong id="rate_22_3">1,000</strong><br/>
-                            <strong id="rate_23_3">100,000</strong>
+                            <strong id="rate_22_3">0</strong><br/>
+                            <strong id="rate_23_3">0</strong>
                         </div>
                     </td>
                 </tr>
@@ -640,8 +642,8 @@
                             <select id="drpCompensation1">
                                 @if($locale == 'en')
                                     <option value="10000">Coverage 10,000 baht premium is at 99 baht per year</option>
-                                    <option value="15000">Coverage 15,000 baht premium is at 99 baht per year</option>
-                                    <option value="20000">Coverage 20,000 baht premium is at 99 baht per year</option>
+                                    <option value="15000">Coverage 15,000 baht premium is at 148 baht per year</option>
+                                    <option value="20000">Coverage 20,000 baht premium is at 197 baht per year</option>
                                 @else
                                     <option value="10000">ความคุ้มครอง 10,000 บาท เบี้ย 99 บาท/ 1 ปี</option>
                                     <option value="15000">ความคุ้มครอง 15,000 บาท เบี้ย 148 บาท/ 1 ปี</option>
@@ -655,8 +657,8 @@
                             <select id="drpCompensation3">
                                 @if($locale == 'en')
                                     <option value="10000">Coverage 10,000 baht premium is at 99 baht 3 year</option>
-                                    <option value="15000">Coverage 15,000 baht premium is at 99 baht 3 year</option>
-                                    <option value="20000">Coverage 20,000 baht premium is at 99 baht 3 year</option>
+                                    <option value="15000">Coverage 15,000 baht premium is at 148 baht 3 year</option>
+                                    <option value="20000">Coverage 20,000 baht premium is at 197 baht 3 year</option>
                                 @else
                                     <option value="10000">ความคุ้มครอง 10,000 บาท เบี้ย 99 บาท/ 3ปี</option>
                                     <option value="15000">ความคุ้มครอง 15,000 บาท เบี้ย 148 บาท/ 3ปี</option>
@@ -694,45 +696,24 @@
                         @endif   
                     </th>
                     <td class="td-onmhs" data-index="1" data-package="ONMHS1">
-                        <form>
-                            <select id="drpDeposit1" name="drpDeposit1" style="width: auto;">
-                                <option value="50000">50,000</option>
-                                <option value="60000">60,000</option>
-                                <option value="70000">70,000</option>
-                                <option value="80000">80,000</option>
-                                <option value="90000">90,000</option>
-                                <option value="100000">100,000</option>
-                                <option value="150000">150,000</option>
-                                <option value="200000">200,000</option>
-                            </select>
-                            <input id="txtDeposit1" name="txtDeposit1" type="text" readonly="" style="width: 90px;background-color: gainsboro;">
-                        
                             @if($locale == 'en')
-                                baht/ 1 year
+                                Coverage <span id="sp_amount1"></span> baht<br/>
+                                premium is at <span id="txtDeposit1"></span> baht 3 year
                             @else
-                                บาท / 1 ปี
+                                ความคุ้มครอง <span id="sp_amount1"></span> บาท<br/>
+                                เบี้ย <span id="txtDeposit1"></span> บาท/ 3ปี
                             @endif  
+                       
                         </form>
                     </td>
                     <td class="hide td-onmhs" data-index="2" data-package="ONMHS2">
-                        <form>
-                            <select id="drpDeposit3" name="drpDeposit3" style="width: auto;">
-                                <option value="50000">50,000</option>
-                                <option value="60000">60,000</option>
-                                <option value="70000">70,000</option>
-                                <option value="80000">80,000</option>
-                                <option value="90000">90,000</option>
-                                <option value="100000">100,000</option>
-                                <option value="150000">150,000</option>
-                                <option value="200000">200,000</option>                                
-                            </select>
-                            <input id="txtDeposit3" name="txtDeposit3" type="text" readonly="" style="width: 90px;background-color: gainsboro;">                            
-                            @if($locale == 'en')
-                                baht/ 3 year
-                            @else
-                                บาท / 3 ปี
-                            @endif  
-                        </form>
+                        @if($locale == 'en')
+                            Coverage <span id="sp_amount3"></span> baht<br/>
+                            premium is at <span id="txtDeposit3"></span> baht 3 year
+                        @else
+                            ความคุ้มครอง <span id="sp_amount3"></span> บาท<br/>
+                            เบี้ย <span id="txtDeposit3"></span> บาท/ 3ปี
+                        @endif  
                     </td>
                 </tr>
 
