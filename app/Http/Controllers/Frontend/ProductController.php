@@ -590,7 +590,7 @@ class ProductController extends BaseController
 
     public function makePayment(Request $request)
     {
-        echo var_dump(2);exit();
+        //echo var_dump(2);exit();
         if($this->controller === 'product')
         {
             session(['nopayment_status' => false]);
@@ -1108,7 +1108,7 @@ class ProductController extends BaseController
 
     public function checkDup(Request $request)
     {
-        echo var_dump(1);exit();
+        //echo var_dump(1);exit();
         $data = $request->all();
 
         $client = new Client();
