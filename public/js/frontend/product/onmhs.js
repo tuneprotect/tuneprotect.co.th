@@ -56247,7 +56247,7 @@ document.addEventListener("DOMContentLoaded", /*#__PURE__*/_asyncToGenerator( /*
           changeTextPremium = function changeTextPremium(packageSelect) {
             var building = document.getElementById('ctrl_fire_building'); //$('#ctrl_fire_building');
 
-            console.log("text", building.options[building.selectedIndex].text);
+            console.log("text", building.text);
             var text = building.options[building.selectedIndex].text;
             var text_value = building.options[building.selectedIndex].value;
             var select = Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$"])('#ctrl_insurer_capital');

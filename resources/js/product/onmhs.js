@@ -847,7 +847,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     const changeTextPremium = (packageSelect) => {
         let building = document.getElementById('ctrl_fire_building');//$('#ctrl_fire_building');
-        console.log("text",building.options[building.selectedIndex].text);
+        console.log("text",building.text);
         let text = building.options[building.selectedIndex].text;
         let text_value = building.options[building.selectedIndex].value;
 
