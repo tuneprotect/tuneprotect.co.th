@@ -195,6 +195,14 @@
                                                 src="{{url(!empty($v->pic_mobile_en) ? url(str_replace('Banner-baowan-main-en', 'Banner_myFlexi_CI_ENv2', $v->pic_mobile_en)) : url(str_replace('Banner-baowan-main-en', 'Banner_myFlexi_CI_ENv2', $v->pic_en)) )}}"
                                                 alt="{{$v->locales[$locale]->title}}">
                                         </picture>
+                                    @elseif($selected==='ONMHS')
+                                        <picture>
+                                            <source media="(min-width:768px)"
+                                                    srcset="/storage/product/myHomeSmart/Banner for Website sale page1.png">
+                                            <img
+                                                src="/storage/product/myHomeSmart/Banner for Website sale page1.png"
+                                                alt="{{$v->locales[$locale]->title}}">
+                                        </picture>
                                     @elseif($selected==='DIABETES')
                                         <picture>
                                             <source media="(min-width:768px)"
