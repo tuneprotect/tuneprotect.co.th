@@ -55837,8 +55837,8 @@ document.addEventListener("DOMContentLoaded", /*#__PURE__*/_asyncToGenerator( /*
                     break;
 
                   case 2:
-                    var fdPackage = "MWASEP22"; //$btn.getAttribute('data-package');
-
+                    //const fdPackage = "MWASEP22";//$btn.getAttribute('data-package');
+                    var fdPackage = "ONCOVIDMW";
                     Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$"])('#form-head').innerHTML = $btn.getAttribute('data-plan');
 
                     if (fdPackage) {
