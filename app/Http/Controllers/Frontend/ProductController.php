@@ -843,7 +843,6 @@ class ProductController extends BaseController
         $arr_post['user_defined_2'] = preg_replace('/\?.*/', '', session('return_link'));
         $arr_post['user_defined_3'] = session('partner');
         $arr_post['user_defined_4'] = $this->thankYouParam;
-        echo var_dump('url',url("{$this->locale}/{$this->controller}/result"));
         $arr_post['result_url_1'] = url("{$this->locale}/{$this->controller}/result");
 
         $arr_post['payment_option'] = $this->payment;
@@ -882,6 +881,12 @@ class ProductController extends BaseController
             $link = 'IssuePolicyCovidTGCVLP';
         } elseif (substr($package, 0, 9) === 'ONCOVIDMW') {
             $this->thankYouParam = substr($package, 0, 9);
+            $link = 'IssuePolicyMigration';
+        } elseif (substr($package, 0, 8) === 'MWASEP22') {
+            $this->thankYouParam = substr($package, 0, 8);
+            $link = 'IssuePolicyMigration';
+        } elseif (substr($package, 0, 8) === 'MWBSEP22') {
+            $this->thankYouParam = substr($package, 0, 8);
             $link = 'IssuePolicyMigration';
         } elseif (substr($package, 0, 6) === 'ONTALN') {
             $this->thankYouParam = substr($package, 0, 6);
