@@ -55897,7 +55897,8 @@ document.addEventListener("DOMContentLoaded", /*#__PURE__*/_asyncToGenerator( /*
                       ctrl_accept_insurance_term: Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$"])('#ctrl_accept_insurance_term').checked ? true : undefined,
                       ctrl_terms: Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$"])('#ctrl_terms').checked ? true : undefined,
                       ctrl_province: Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$"])('#ctrl_province').value,
-                      fdPayAMT: Object(_form_productHelper__WEBPACK_IMPORTED_MODULE_1__["getSelectedPrice"])(data.fdHBD, data.fdPackage, package_data)
+                      //fdPayAMT: getSelectedPrice(data.fdHBD, data.fdPackage, package_data)
+                      fdPayAMT: '990'
                     });
                     data = _objectSpread(_objectSpread({}, data), {}, {
                       fdMarketing_Consent: Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$"])('#ctrl_marketing').checked ? true : undefined

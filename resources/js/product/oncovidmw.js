@@ -583,7 +583,8 @@ document.addEventListener("DOMContentLoaded", async () => {
                             ctrl_accept_insurance_term: $('#ctrl_accept_insurance_term').checked ? true : undefined,
                             ctrl_terms: $('#ctrl_terms').checked ? true : undefined,
                             ctrl_province: $('#ctrl_province').value,
-                            fdPayAMT: getSelectedPrice(data.fdHBD, data.fdPackage, package_data)
+                            //fdPayAMT: getSelectedPrice(data.fdHBD, data.fdPackage, package_data)
+                            fdPayAMT: '990'
                         }
                         data = {
                             ...data,
