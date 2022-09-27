@@ -519,7 +519,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                         break;
 
                     case 2:
-                        const fdPackage = $btn.getAttribute('data-package');
+                        const fdPackage = "MWASEP22";//$btn.getAttribute('data-package');
 
                         $('#form-head').innerHTML = $btn.getAttribute('data-plan');
 
