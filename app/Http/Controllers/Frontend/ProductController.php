@@ -843,6 +843,7 @@ class ProductController extends BaseController
         $arr_post['user_defined_2'] = preg_replace('/\?.*/', '', session('return_link'));
         $arr_post['user_defined_3'] = session('partner');
         $arr_post['user_defined_4'] = $this->thankYouParam;
+        echo var_dump('url',url("{$this->locale}/{$this->controller}/result"));
         $arr_post['result_url_1'] = url("{$this->locale}/{$this->controller}/result");
 
         $arr_post['payment_option'] = $this->payment;
