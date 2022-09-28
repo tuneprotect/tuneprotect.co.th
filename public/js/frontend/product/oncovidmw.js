@@ -55462,6 +55462,12 @@ var constraints = {
       message: "^" + Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$"])('#ctrl_province').getAttribute('data-error-province')
     }
   },
+  fdNationality: {
+    presence: {
+      allowEmpty: false,
+      message: "^" + Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$"])('#fdNationality').getAttribute('data-error-nationality')
+    }
+  },
   fdAddr_PostCode: {
     presence: {
       allowEmpty: false,
@@ -55552,7 +55558,7 @@ var constraints = {
   }
 };
 document.addEventListener("DOMContentLoaded", /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
-  var country_data, package_data, nationality_data, sb1, Keys, myEle, status_api, member_id, promocode, step, data, iti, nationality_option, $form, allField, allFieldQ, $btnGoto;
+  var country_data, package_data, nationality_data, sb1, Keys, myEle, status_api, member_id, promocode, step, data, iti, sb2, $form, allField, allFieldQ, $btnGoto;
   return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
     while (1) {
       switch (_context.prev = _context.next) {
@@ -55611,7 +55617,7 @@ document.addEventListener("DOMContentLoaded", /*#__PURE__*/_asyncToGenerator( /*
           //     $(`strong[data-price-${k}]`).innerHTML = parseInt(package_data[k].price).toLocaleString();
           //     // $(`th[data-cover-cov1]`).innerHTML = $('#cover_fire_'+packageSelect).value;
           // });
-          // LAO,MMR,KHM
+          // LAO,MMR,KHM,VNM
 
           sb1 = "<option value=\"\">".concat(Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$"])('#fdDestFrom').getAttribute('data-please-select'), "</option>");
           country_data.sort(function (a, b) {
@@ -55709,12 +55715,25 @@ document.addEventListener("DOMContentLoaded", /*#__PURE__*/_asyncToGenerator( /*
                 success(countryCode);
               });
             }
+          }); // LAO,MMR,KHM,VNM
+
+          sb2 = "<option value=\"\">".concat(Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$"])('#fdNationality').getAttribute('data-please-select'), "</option>");
+          country_data.sort(function (a, b) {
+            return a['en'] > b['en'] ? 1 : b['en'] > a['en'] ? -1 : 0;
+          }).map(function (v) {
+            if (v.code === 'LAO' || v.code === 'MMR' || v.code === 'KHM' || v.code === 'VNM') {
+              sb2 += "<option value=\"".concat(v.code, "\">").concat(v['en'], "</option>");
+            }
           });
-          nationality_option = "<option value=\"\">".concat(Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$"])('#fdNationality').getAttribute('data-please-select'), "</option>");
-          Object.keys(nationality_data).map(function (v) {
-            nationality_option += "<option value=\"".concat(v, "\">").concat(v, "</option>");
+          Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$"])('#fdNationality').innerHTML = sb2;
+          /*
+          let nationality_option = `<option value="">${$('#fdNationality').getAttribute('data-please-select')}</option>`;
+          Object.keys(nationality_data).map(v => {
+              nationality_option += `<option value="${v}">${v}</option>`;
           });
-          Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$"])('#fdNationality').innerHTML = nationality_option;
+            $('#fdNationality').innerHTML = nationality_option;
+          */
+
           Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$$"])("input[name=fdQuestion1]").forEach(function ($el) {
             $el.addEventListener("change", function (e) {
               if (Object(_helper__WEBPACK_IMPORTED_MODULE_2__["getRadioSelectedValue"])('fdQuestion1') === 'Y') {

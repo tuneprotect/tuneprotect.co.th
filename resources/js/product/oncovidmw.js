@@ -149,6 +149,12 @@ const constraints = {
             message: "^" + $('#ctrl_province').getAttribute('data-error-province')
         }
     },
+    fdNationality: {
+        presence: {
+            allowEmpty: false,
+            message: "^" + $('#fdNationality').getAttribute('data-error-nationality')
+        }
+    },
     fdAddr_PostCode: {
         presence: {
             allowEmpty: false,
@@ -285,16 +291,18 @@ document.addEventListener("DOMContentLoaded", async () => {
     //     $(`strong[data-price-${k}]`).innerHTML = parseInt(package_data[k].price).toLocaleString();
     //     // $(`th[data-cover-cov1]`).innerHTML = $('#cover_fire_'+packageSelect).value;
     // });
-    // LAO,MMR,KHM
+    // LAO,MMR,KHM,VNM
     let sb1 = `<option value="">${$('#fdDestFrom').getAttribute('data-please-select')}</option>`;
     country_data.sort((a, b) => (a['en'] > b['en']) ? 1 : ((b['en'] > a['en']) ? -1 : 0))
         .map(v => {
-            if (v.code === 'LAO'|| v.code === 'MMR' || v.code === 'KHM' || v.code === 'VNM')
+            if (v.code === 'LAO'|| v.code === 'MMR' || v.code === 'KHM'|| v.code === 'VNM')
             {
                 sb1 += `<option value="${v.code}">${v['en']}</option>`;
             }
         });
     $('#fdDestFrom').innerHTML = sb1;
+
+   
 
     let Keys = "";
     var myEle = document.getElementById("portal_key");
@@ -382,13 +390,25 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
     });
 
+     // LAO,MMR,KHM,VNM
+     let sb2 = `<option value="">${$('#fdNationality').getAttribute('data-please-select')}</option>`;
+     country_data.sort((a, b) => (a['en'] > b['en']) ? 1 : ((b['en'] > a['en']) ? -1 : 0))
+         .map(v => {
+             if (v.code === 'LAO'|| v.code === 'MMR'||v.code === 'KHM' || v.code === 'VNM')
+             {
+                 sb2 += `<option value="${v.code}">${v['en']}</option>`;
+             }
+         });
+     $('#fdNationality').innerHTML = sb2;
+
+    /*
     let nationality_option = `<option value="">${$('#fdNationality').getAttribute('data-please-select')}</option>`;
     Object.keys(nationality_data).map(v => {
         nationality_option += `<option value="${v}">${v}</option>`;
     });
 
     $('#fdNationality').innerHTML = nationality_option;
-
+*/
     $$("input[name=fdQuestion1]").forEach($el => {
         $el.addEventListener("change", function (e) {
             if (getRadioSelectedValue('fdQuestion1') === 'Y') {
