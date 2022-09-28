@@ -289,7 +289,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     let sb1 = `<option value="">${$('#fdDestFrom').getAttribute('data-please-select')}</option>`;
     country_data.sort((a, b) => (a['en'] > b['en']) ? 1 : ((b['en'] > a['en']) ? -1 : 0))
         .map(v => {
-            if (v.code === 'LAO'|| v.code === 'MMR'||v.code === 'KHM')
+            if (v.code === 'LAO'|| v.code === 'MMR' || v.code === 'KHM' || v.code === 'VNM')
             {
                 sb1 += `<option value="${v.code}">${v['en']}</option>`;
             }

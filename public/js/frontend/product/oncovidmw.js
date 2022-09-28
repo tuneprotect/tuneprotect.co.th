@@ -55617,7 +55617,7 @@ document.addEventListener("DOMContentLoaded", /*#__PURE__*/_asyncToGenerator( /*
           country_data.sort(function (a, b) {
             return a['en'] > b['en'] ? 1 : b['en'] > a['en'] ? -1 : 0;
           }).map(function (v) {
-            if (v.code === 'LAO' || v.code === 'MMR' || v.code === 'KHM') {
+            if (v.code === 'LAO' || v.code === 'MMR' || v.code === 'KHM' || v.code === 'VNM') {
               sb1 += "<option value=\"".concat(v.code, "\">").concat(v['en'], "</option>");
             }
           });
@@ -55837,8 +55837,8 @@ document.addEventListener("DOMContentLoaded", /*#__PURE__*/_asyncToGenerator( /*
                     break;
 
                   case 2:
-                    //const fdPackage = "MWASEP22";//$btn.getAttribute('data-package');
-                    var fdPackage = "ONCOVIDMW";
+                    var fdPackage = "MWASEP22,MWBSEP22"; //$btn.getAttribute('data-package');
+
                     Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$"])('#form-head').innerHTML = $btn.getAttribute('data-plan');
 
                     if (fdPackage) {
