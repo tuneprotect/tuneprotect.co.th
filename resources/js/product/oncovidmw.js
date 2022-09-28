@@ -301,7 +301,15 @@ document.addEventListener("DOMContentLoaded", async () => {
             }
         });
     $('#fdDestFrom').innerHTML = sb1;
+    let fdNationalityText = "";
 
+    $$("select[id=fdNationality]").forEach($el => {
+        $el.addEventListener("change", function (e) {
+            let select = $('#fdNationality');
+            fdNationalityText = select.options[select.selectedIndex].text;
+            //console.log(fdNationalityText);
+        });
+    });
    
 
     let Keys = "";
@@ -684,7 +692,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                         <div><span>${$('label[for=fdName]').innerText} : </span><strong>${$('label[for=title_' + data.fdTitle + ']').innerText} ${data.fdName} ${data.fdSurname}</strong></div>
                         <div><span>${$('label[for=fdSex]').innerText} : </span><strong>${data.fdSex === 'M' ? $('label[for=male]').innerText : $('label[for=female]').innerText}</strong></div>
                         <div><span>${$('label[for=fdNationalID]').innerText} : </span><strong>${data.fdNationalID}</strong></div>
-                        <div><span>${$('label[for=fdNationality]').innerText} : </span><strong>${data.fdNationality}</strong></div>
+                        <div><span>${$('label[for=fdNationality]').innerText} : </span><strong>${fdNationalityText}</strong></div>
                         <div><span>${$('#ctrl_day').getAttribute('data-birthdate')} : </span><strong>${dob} (${data.fdAge} ${$('#ctrl_day').getAttribute('data-years-old')})</strong></div>
                         <div><span>${$('label[for=fdTelephone]').innerText} : </span><strong>${data.fdTelephone}</strong></div>
                         <div><span>${$('label[for=fdEmail]').innerText} : </span><strong>${data.fdEmail}</strong></div>
