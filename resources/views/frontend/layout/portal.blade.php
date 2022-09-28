@@ -102,8 +102,8 @@
                                                     </picture>
                                 @elseif($selected==='ONCOVIDMW')
                                     <picture>
-                                        <source media="(min-width:768px)" srcset="{{url(str_replace('Banner_iPass_COVID', 'Banner_Covid_D_EN', $v->pic_en))}}">
-                                        <img src="{{url(!empty($v->pic_mobile_en) ? url(str_replace('Banner_iPass_COVID', 'Banner_Covid_D_EN', $v->pic_mobile_en)) : url(str_replace('Banner_iPass_COVID', 'Banner_Covid_D_EN-', $v->pic_en)) )}}"
+                                        <source media="(min-width:768px)" srcset="{{url(str_replace('Banner_iPass_COVID', 'Migrant-Banner-En01', $v->pic_en))}}">
+                                        <img src="{{url(!empty($v->pic_mobile_en) ? url(str_replace('Banner_iPass_COVID', 'Migrant-Banner-En01', $v->pic_mobile_en)) : url(str_replace('Banner_iPass_COVID', 'Migrant-Banner-En02', $v->pic_en)) )}}"
                                              alt="{{$v->locales[$locale]->title}}">
                                     </picture>
                                 @elseif($selected==='ONVSAFEA')
@@ -173,8 +173,8 @@
                                     </picture>
                                 @elseif($selected==='ONCOVIDMW')
                                     <picture>
-                                        <source media="(min-width:768px)" srcset="{{url(str_replace('Banner_iPass_COVID', 'Banner_Covid_D', $v->pic))}}">
-                                        <img src="{{url(!empty($v->pic_mobile) ? url(str_replace('Banner_iPass_COVID', 'Banner_Covid_D', $v->pic_mobile)) : url(str_replace('Banner_iPass_COVID', 'Banner_Covid_D', $v->pic)) )}}"
+                                        <source media="(min-width:768px)" srcset="{{url(str_replace('Banner_iPass_COVID', 'Migrant-Banner-Th01', $v->pic_en))}}">
+                                        <img src="{{url(!empty($v->pic_mobile_en) ? url(str_replace('Banner_iPass_COVID', 'Migrant-Banner-Th01', $v->pic_mobile_en)) : url(str_replace('Banner_iPass_COVID', 'Migrant-Banner-Th02', $v->pic_en)) )}}"
                                              alt="{{$v->locales[$locale]->title}}">
                                     </picture>
                                 @elseif($selected==='ONVSAFEA')

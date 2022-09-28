@@ -62,8 +62,7 @@ class ProductController extends BaseController
 
         $this->bodyData['controller'] = $this->controller;
         $this->bodyData['use_effective'] = $this->use_effective;
-
-
+		
         if (empty($link)) {
             return redirect("/" . $this->locale);
         }
@@ -753,6 +752,7 @@ class ProductController extends BaseController
 
             $client = new Client();
 
+			//echo var_dump(json_encode($data));
             $response = $client->request('POST', config('tune-api.url') . $this->getApiIssueLink($data['fdPackage']), [
                 'auth' => [config('tune-api.user'), config('tune-api.password')],
                 'headers' => [
@@ -761,7 +761,7 @@ class ProductController extends BaseController
                 'body' => json_encode($data)
             ]);
             $apiResult = (array)json_decode($response->getBody()->getContents(), true);
-
+//dd($apiResult);
             if ($apiResult["status"]) {
                 $v->issuepolicy_status =  'S';
             }
@@ -842,9 +842,8 @@ class ProductController extends BaseController
 
         $arr_post['user_defined_2'] = preg_replace('/\?.*/', '', session('return_link'));
         $arr_post['user_defined_3'] = session('partner');
-        $arr_post['user_defined_4'] = $this->thankYouParam;
+        $arr_post['user_defined_4'] = $this->thankYouParam;        
         $arr_post['result_url_1'] = url("{$this->locale}/{$this->controller}/result");
-
         $arr_post['payment_option'] = $this->payment;
         $arr_post['ipp_interest_type'] = $this->ipp_interest_type;
         $arr_post['default_lang'] = $this->locale;
@@ -883,9 +882,6 @@ class ProductController extends BaseController
             $this->thankYouParam = substr($package, 0, 9);
             $link = 'IssuePolicyMigration';
         } elseif (substr($package, 0, 8) === 'MWASEP22') {
-            $this->thankYouParam = substr($package, 0, 8);
-            $link = 'IssuePolicyMigration';
-        } elseif (substr($package, 0, 8) === 'MWBSEP22') {
             $this->thankYouParam = substr($package, 0, 8);
             $link = 'IssuePolicyMigration';
         } elseif (substr($package, 0, 6) === 'ONTALN') {

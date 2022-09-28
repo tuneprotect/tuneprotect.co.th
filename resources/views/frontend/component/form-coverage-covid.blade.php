@@ -113,7 +113,7 @@
                 </tr>
             @endif
             <tr class="orange">
-                <th>@lang('product.price_per_year')ss</th>
+                <th>@lang('product.price_per_year').</th>
                 <td data-index="1" data-package="ONCOVIDMW1" class="">
                     <strong class="d-none" data-price-oncovidmw1="">990</strong>
                     <strong>990</strong>
