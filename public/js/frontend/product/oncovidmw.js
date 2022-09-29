@@ -55917,6 +55917,7 @@ document.addEventListener("DOMContentLoaded", /*#__PURE__*/_asyncToGenerator( /*
                       ctrl_question_2_specify: Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$"])('#ctrl_question_2_specify').value,
                       fdSendType: Object(_helper__WEBPACK_IMPORTED_MODULE_2__["getRadioSelectedValue"])('fdSendType'),
                       fdBenefit: Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$"])('#fdBenefit').value,
+                      fdDestFrom: Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$"])('#fdDestFrom').value,
                       fdBenefit_name: Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$"])('#fdBenefit_name').value,
                       fdRelation: Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$"])('#fdRelation').value,
                       fdRevenue: 'N',
