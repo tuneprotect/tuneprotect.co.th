@@ -604,7 +604,6 @@ document.addEventListener("DOMContentLoaded", async () => {
                             ctrl_question_2_specify: $('#ctrl_question_2_specify').value,
                             fdSendType: getRadioSelectedValue('fdSendType'),
                             fdBenefit: $('#fdBenefit').value,
-                            fdDestFrom: $('#fdDestFrom').value,
                             fdBenefit_name: $('#fdBenefit_name').value,
                             fdRelation: $('#fdRelation').value,
                             fdRevenue: 'N',
