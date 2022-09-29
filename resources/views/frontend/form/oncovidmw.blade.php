@@ -1,4 +1,10 @@
 @include('frontend.component.form-stepper')
+<style>
+    .step-disable {
+        cursor: not-allowed;
+        pointer-events: none;   
+    }
+</style>
 <section id="step1" class="wrapper">
     <form method="post" action="" class="insurance-form">
         <div class="form-head">@lang('product.please_specify_birthdate_title')</div>

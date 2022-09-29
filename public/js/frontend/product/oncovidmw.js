@@ -55744,6 +55744,8 @@ document.addEventListener("DOMContentLoaded", /*#__PURE__*/_asyncToGenerator( /*
           Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$$"])("input[name=fdQuestion1]").forEach(function ($el) {
             $el.addEventListener("change", function (e) {
               if (Object(_helper__WEBPACK_IMPORTED_MODULE_2__["getRadioSelectedValue"])('fdQuestion1') === 'Y') {
+                var btn = document.getElementsByClassName("product-oncovidmw-stepper-4");
+                btn.className += " step-disable";
                 Object(_helper__WEBPACK_IMPORTED_MODULE_2__["fadeIn"])(Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$"])('#ctrl_question_1_other'));
               } else {
                 Object(_helper__WEBPACK_IMPORTED_MODULE_2__["fadeOut"])(Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$"])('#ctrl_question_1_other'));
@@ -55753,6 +55755,8 @@ document.addEventListener("DOMContentLoaded", /*#__PURE__*/_asyncToGenerator( /*
           Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$$"])("input[name=fdQuestion2]").forEach(function ($el) {
             $el.addEventListener("change", function (e) {
               if (Object(_helper__WEBPACK_IMPORTED_MODULE_2__["getRadioSelectedValue"])('fdQuestion2') === 'Y') {
+                var btn = document.getElementsByClassName("product-oncovidmw-stepper-4");
+                btn.className += " step-disable";
                 Object(_helper__WEBPACK_IMPORTED_MODULE_2__["fadeIn"])(Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$"])('#ctrl_question_2_choice'));
               } else {
                 Object(_helper__WEBPACK_IMPORTED_MODULE_2__["fadeOut"])(Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$"])('#ctrl_question_2_choice'));

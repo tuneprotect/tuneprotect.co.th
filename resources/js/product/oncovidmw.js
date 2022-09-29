@@ -420,6 +420,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     $$("input[name=fdQuestion1]").forEach($el => {
         $el.addEventListener("change", function (e) {
             if (getRadioSelectedValue('fdQuestion1') === 'Y') {
+                var btn = document.getElementById("step_4");
+                btn.className += " step-disable";
                 fadeIn($('#ctrl_question_1_other'));
             } else {
                 fadeOut($('#ctrl_question_1_other'));
@@ -430,6 +432,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     $$("input[name=fdQuestion2]").forEach($el => {
         $el.addEventListener("change", function (e) {
             if (getRadioSelectedValue('fdQuestion2') === 'Y') {
+                var btn = document.getElementById("step_4");
+                btn.className += " step-disable";
                 fadeIn($('#ctrl_question_2_choice'));
             } else {
                 fadeOut($('#ctrl_question_2_choice'));
