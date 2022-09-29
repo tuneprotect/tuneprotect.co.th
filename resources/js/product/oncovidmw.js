@@ -420,7 +420,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     $$("input[name=fdQuestion1]").forEach($el => {
         $el.addEventListener("change", function (e) {
             if (getRadioSelectedValue('fdQuestion1') === 'Y') {
-                $('.product-oncovidmw-stepper-4').attr("style", "cursor: not-allowed; pointer-events: none;");
                 fadeIn($('#ctrl_question_1_other'));
             } else {
                 fadeOut($('#ctrl_question_1_other'));
@@ -431,7 +430,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     $$("input[name=fdQuestion2]").forEach($el => {
         $el.addEventListener("change", function (e) {
             if (getRadioSelectedValue('fdQuestion2') === 'Y') {
-                $('.product-oncovidmw-stepper-4').attr("style", "cursor: not-allowed; pointer-events: none;");
                 fadeIn($('#ctrl_question_2_choice'));
             } else {
                 fadeOut($('#ctrl_question_2_choice'));
