@@ -686,7 +686,7 @@ class ProductController extends BaseController
             $v->data = $data;
 
             $client = new Client();
-            echo var_dump(json_encode($data));
+
             $response = $client->request('POST', config('tune-api.url') . $this->getApiIssueLink($data['fdPackage']), [
                 'auth' => [config('tune-api.user'), config('tune-api.password')],
                 'headers' => [
@@ -752,7 +752,8 @@ class ProductController extends BaseController
 
             $client = new Client();
 
-			//echo var_dump(json_encode($data));
+			echo var_dump(json_encode($data));
+            
             $response = $client->request('POST', config('tune-api.url') . $this->getApiIssueLink($data['fdPackage']), [
                 'auth' => [config('tune-api.user'), config('tune-api.password')],
                 'headers' => [
