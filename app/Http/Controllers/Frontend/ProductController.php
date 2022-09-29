@@ -609,6 +609,7 @@ class ProductController extends BaseController
             }
 
             $obj = $this->combindObj(array_merge($data, (array)$data["profile"][0]));
+            echo ('if');
             dd($obj);
             $result = $this->logData($obj);
             $log_id[] = $result->log_id;
@@ -639,6 +640,8 @@ class ProductController extends BaseController
             }
 
             $obj = $this->combindObj($data);
+            echo ('else');
+            dd($obj);
             $result = $this->logData($obj);
 
             if (session('nopayment_status')) {
