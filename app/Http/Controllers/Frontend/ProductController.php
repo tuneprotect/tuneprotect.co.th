@@ -588,7 +588,7 @@ class ProductController extends BaseController
     }
 
     public function makePayment(Request $request)
-    {
+    {        
         //echo var_dump(2);exit();
         if($this->controller === 'product')
         {
@@ -600,6 +600,7 @@ class ProductController extends BaseController
         }
 
         $data = $request->all();
+        dd($request,$data);
 
         if (isset($data['send_data'])) {
             $data = (array)json_decode($data['send_data']);
