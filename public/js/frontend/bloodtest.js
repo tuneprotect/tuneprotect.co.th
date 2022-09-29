@@ -28338,6 +28338,7 @@ var validateAgeInPackage = function validateAgeInPackage(package_data, cal_price
       return checkAge(birthday, ageRange);
     });
   });
+  console.log('age_in_range', package_data);
 
   if (!age_in_range) {
     Object(_validate_form__WEBPACK_IMPORTED_MODULE_3__["showDateError"])(Object(_helper__WEBPACK_IMPORTED_MODULE_1__["$"])('#ctrl_day').getAttribute('data-error-not-qualify'));

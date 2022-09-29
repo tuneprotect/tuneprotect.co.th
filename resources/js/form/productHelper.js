@@ -57,7 +57,8 @@ export const validateAgeInPackage = (package_data, cal_price) => {
     const age_in_range = Object.keys(package_data)
         .filter(k => _.startsWith(k, current_package))
         .some(k => Object.keys(package_data[k].price).some(ageRange => checkAge(birthday, ageRange)))
-
+    
+    console.log('age_in_range',package_data);
     if (!age_in_range) {
         showDateError($('#ctrl_day').getAttribute('data-error-not-qualify'));
         return {status: false};
