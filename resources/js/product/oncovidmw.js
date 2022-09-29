@@ -310,6 +310,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             //console.log(fdNationalityText);
         });
     });
+    /*
     let fdDestFromText = "";
     $$("select[id=fdDestFrom]").forEach($el => {
         $el.addEventListener("change", function (e) {
@@ -318,7 +319,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             //console.log(fdNationalityText);
         });
     });
-
+*/
     let Keys = "";
     var myEle = document.getElementById("portal_key");
     if(myEle){
@@ -513,7 +514,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                         data = {
                             ...data,
                             fdFromDate: $('#fdFromDate').value,
-                            fdDestFrom: fdDestFromText //$('#fdDestFrom').value
+                            fdDestFrom: $('#fdDestFrom').value //fdDestFromText 
                         }
 
                         if($('#fdFromDate').value === '')
