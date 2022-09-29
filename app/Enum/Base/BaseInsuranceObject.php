@@ -43,6 +43,8 @@ class BaseInsuranceObject
     public $fdETime = "00:01";
     public $fdXTime = "24:00";
     public $fdInvoice;
+    public $fdDestFrom;
+    public $fdDestTo;
     public $fdPaymentType = 3;
     public $fdPaymentCh;
     public $fdInstallment = 1;
