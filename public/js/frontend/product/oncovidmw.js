@@ -55558,7 +55558,7 @@ var constraints = {
   }
 };
 document.addEventListener("DOMContentLoaded", /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
-  var country_data, package_data, nationality_data, sb1, fdNationalityText, Keys, myEle, status_api, member_id, promocode, step, data, iti, sb2, $form, allField, allFieldQ, $btnGoto;
+  var country_data, package_data, nationality_data, sb1, fdNationalityText, fdDestFromText, Keys, myEle, status_api, member_id, promocode, step, data, iti, sb2, $form, allField, allFieldQ, $btnGoto;
   return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
     while (1) {
       switch (_context.prev = _context.next) {
@@ -55633,6 +55633,13 @@ document.addEventListener("DOMContentLoaded", /*#__PURE__*/_asyncToGenerator( /*
             $el.addEventListener("change", function (e) {
               var select = Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$"])('#fdNationality');
               fdNationalityText = select.options[select.selectedIndex].text; //console.log(fdNationalityText);
+            });
+          });
+          fdDestFromText = "";
+          Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$$"])("select[id=fdDestFrom]").forEach(function ($el) {
+            $el.addEventListener("change", function (e) {
+              var select = Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$"])('#fdDestFrom');
+              fdDestFromText = select.options[select.selectedIndex].text; //console.log(fdNationalityText);
             });
           });
           Keys = "";
@@ -55824,7 +55831,8 @@ document.addEventListener("DOMContentLoaded", /*#__PURE__*/_asyncToGenerator( /*
 
                     data = _objectSpread(_objectSpread({}, data), {}, {
                       fdFromDate: Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$"])('#fdFromDate').value,
-                      fdDestFrom: Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$"])('#fdDestFrom').value
+                      fdDestFrom: fdDestFromText //$('#fdDestFrom').value
+
                     });
 
                     if (Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$"])('#fdFromDate').value === '') {
@@ -55996,7 +56004,7 @@ document.addEventListener("DOMContentLoaded", /*#__PURE__*/_asyncToGenerator( /*
             });
           });
 
-        case 38:
+        case 40:
         case "end":
           return _context.stop();
       }

@@ -301,8 +301,8 @@ document.addEventListener("DOMContentLoaded", async () => {
             }
         });
     $('#fdDestFrom').innerHTML = sb1;
-    let fdNationalityText = "";
 
+    let fdNationalityText = "";
     $$("select[id=fdNationality]").forEach($el => {
         $el.addEventListener("change", function (e) {
             let select = $('#fdNationality');
@@ -310,7 +310,14 @@ document.addEventListener("DOMContentLoaded", async () => {
             //console.log(fdNationalityText);
         });
     });
-   
+    let fdDestFromText = "";
+    $$("select[id=fdDestFrom]").forEach($el => {
+        $el.addEventListener("change", function (e) {
+            let select = $('#fdDestFrom');
+            fdDestFromText = select.options[select.selectedIndex].text;
+            //console.log(fdNationalityText);
+        });
+    });
 
     let Keys = "";
     var myEle = document.getElementById("portal_key");
@@ -506,7 +513,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                         data = {
                             ...data,
                             fdFromDate: $('#fdFromDate').value,
-                            fdDestFrom: $('#fdDestFrom').value
+                            fdDestFrom: fdDestFromText //$('#fdDestFrom').value
                         }
 
                         if($('#fdFromDate').value === '')
