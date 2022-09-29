@@ -42,8 +42,9 @@ class BaseInsuranceObject
     public $fdBenpct;
     public $fdETime = "00:01";
     public $fdXTime = "24:00";
+    public $fdNationality;
     public $fdInvoice;
-    public $fdDestFrom;
+    public $fdDestFrom;    
     public $fdDestTo;
     public $fdPaymentType = 3;
     public $fdPaymentCh;
