@@ -599,7 +599,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                             fdName: $('#fdName').value,
                             fdSurname: $('#fdSurname').value,
                             fdNationalID: $('#fdNationalID').value,
-                            fdNationality: $("#fdNationality").value,
+                            fdNationality: fdNationalityText, //$("#fdNationality").value,
                             fdEmail: $('#fdEmail').value,
                             fdTelephone: formatTelNumber($('#fdTelephone').value, iti.getSelectedCountryData()),
                             fdAddr_Num: $('#fdAddr_Num').value,
