@@ -1,7 +1,7 @@
 @include('frontend.component.form-stepper')
 <style>
     .step-disable {
-        cursor: not-allowed;
+        cursor: not-allowed !important;
         pointer-events: none;   
     }
 </style>
