@@ -52,7 +52,7 @@ class PolicyEnquiryController extends BaseController
 
     public function CheckPolicyEnquiry(Request $request)
     {
-        echo var_dump(1);exit();
+        //echo var_dump(1);exit();
         $data = $request->all();
 
         $client = new Client();
