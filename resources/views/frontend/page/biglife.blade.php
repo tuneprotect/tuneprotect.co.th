@@ -8,7 +8,7 @@
             <form class="insurance-form" action="/{{$locale}}/Biglife/Validation" method="post" id="frm_validate">
                 <div class="form-head">{{$headertext}}</div>
                 <div class="form-inner">
-                    <h3>{{$labeltext}}</h3>
+                    <h3>{{$labeltext}}.</h3>
                     <div class="date-input">
                         <div class="date-wrapper">
                             <div class="controls-wrapper">
