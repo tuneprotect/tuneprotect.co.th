@@ -413,150 +413,60 @@ document.addEventListener("DOMContentLoaded", async () => {
     let drpCompensationText = [];
     let dep1 = "1";
     let dep3 = "1";
+
     let p_packget="";
     let p_price="";
     let p_price1="";
     let p_price3="";
     let P = "P", G = "G", C = "C", T = "T", D = "D", L = "L", R = "R";
-    let code = `FN${P}${G}${C}${T}${D}A${L}${R}`;
+    let code = `FN${P}${G}${C}${T}${D}A${L}${R}1`;
     let amount = sessionStorage.getItem("amount");
 
 
+    /*
     $$("select[name=ctrl_fire_building]").forEach($el => {
-        $el.addEventListener("change", function (e) {
-
+        $el.addEventListener("change", function (e) { 
+            if(e.target.value !="ONMHS3"){
+                code= `FN${P}${G}${C}${T}${D}A${L}${R}1`;
+            }else{
+                code= `FN${P}${G}${C}${T}${D}AXX`;
+            }  
             changeTextPremium(e.target.value);
             //alert(e.target.value);
+            sumTotal(code);
         });
     });
+    /*
     $$("select[name=ctrl_insurer_capital]").forEach($el => {
-        $el.addEventListener("change", function (e) {
+        $el.addEventListener("change", function (e) {            
             changeTextAmount(e.target.value);
             apiMyHomeSmart(e.target.value);
             //alert(e.target.value);
         });
     });
+*/
+    
+    
+    
+    
+    
 
-
-    $$("input[id=check_rate_3]").forEach($el => {
-        $el.addEventListener("change", function (e) {
-            if (e.target.checked) {
-                //code.format("{0}", e.target.value)
-                P = e.target.value;
-            } else {
-                P = "X";
-            }
-            code = `FN${P}${G}${C}${T}${D}A${L}${R}`;
-            sumTotal(code);
-        });
-    });
-    $$("input[id=check_rate_4]").forEach($el => {
-        $el.addEventListener("change", function (e) {
-            if (e.target.checked) {
-                //code.format("{0}", e.target.value)
-                G = e.target.value;
-            } else {
-                G = "X";
-            }
-            code = `FN${P}${G}${C}${T}${D}A${L}${R}`;
-            sumTotal(code);
-        });
-    });
-    $$("input[id=check_rate_5]").forEach($el => {
-        $el.addEventListener("change", function (e) {
-            if (e.target.checked) {
-                //code.format("{0}", e.target.value)
-                C = e.target.value;
-            } else {
-                C = "X";
-            }
-            code = `FN${P}${G}${C}${T}${D}A${L}${R}`;
-            sumTotal(code);
-        });
-    });
-    $$("input[id=check_rate_6]").forEach($el => {
-        $el.addEventListener("change", function (e) {
-            if (e.target.checked) {
-                //code.format("{0}", e.target.value)
-                T = e.target.value;
-            } else {
-                T = "X";
-            }
-            code = `FN${P}${G}${C}${T}${D}A${L}${R}`;
-            sumTotal(code);
-        });
-    });
-    $$("input[id=check_rate_7]").forEach($el => {
-        $el.addEventListener("change", function (e) {
-            if (e.target.checked) {
-                //code.format("{0}", e.target.value)
-                D = e.target.value;
-            } else {
-                D = "X";
-            }
-            code = `FN${P}${G}${C}${T}${D}A${L}${R}`;
-            sumTotal(code);
-        });
-    });
-    $$("input[id=check_rate_9]").forEach($el => {
-        $el.addEventListener("change", function (e) {
-            if (e.target.checked) {
-                //code.format("{0}", e.target.value)
-                R = e.target.value;
-            } else {
-                R = "X";
-                dep1 = "";
-                dep3 = "";
-            }
-            code = `FN${P}${G}${C}${T}${D}A${L}${R}`;
-            sumTotal(code);
-        });
-    });
-    $$("input[id=check_rate_10]").forEach($el => {
-        $el.addEventListener("change", function (e) {
-            if (e.target.checked) {
-                //code.format("{0}", e.target.value)
-                L = e.target.value;
-            } else {
-                L = "X";
-            }
-            code = `FN${P}${G}${C}${T}${D}A${L}${R}`;
-            sumTotal(code);
-        });
-    });
-
-    $$("select[id=drpCompensation3]").forEach($el => {
-        $el.addEventListener("change", function (e) {
-            dep3 = e.target.value == 10000 ? '1' : e.target.value == 15000 ? '2' : '3';
-            sumTotal(code);
-            //alert(e.target.value);
-        });
-    });
-
+    
     const sumTotal = async (packageSelect) => {
         //alert(packageSelect)
         try {
 
-            alert(packageSelect);
+            console.log("packageSelect",packageSelect);
             let js = MyHomeSmart;
             const result = JSON.parse(js);
             for (let i = 0; i < result.length; i++) {
-                if (result[i].TAGNAME.trim() == packageSelect + dep1 && result[i].FIRE == amount) {
+
+                if (result[i].TAGNAME.trim() == packageSelect && result[i].FIRE == amount) {
                     apiMyHomeSmart1y(result[i].id);
-                    //console.log("result", result[i]);
-                    //console.log("result",result[i].Liability);
-                    //let total = parseInt(result[i].RentTotalPerMonth*12);
-                    //alert(total);
-                    //document.getElementById("txtDeposit1").value=total; 
-                }
-                if (result[i].TAGNAME.trim() == packageSelect + dep3 && result[i].FIRE == amount) {
                     apiMyHomeSmart3y(result[i].id);
-                    //console.log("resul3t",result[i]);
-                    //console.log("result",result[i].Liability);
-                    //let total = parseInt(result[i].RentTotalPerMonth*12);
-                    //alert(total);
-                    //document.getElementById("txtDeposit1").value=total; 
+                    
                 }
+               
             }
         } catch (err) {
             console.log("sumTotal", err);
@@ -582,6 +492,496 @@ document.addEventListener("DOMContentLoaded", async () => {
         
     }
     */
+
+   
+
+
+
+
+    let package_1year="1";
+    let package_3year="1";
+    //let P = "P", G = "G", C = "C", T = "T", D = "D", L = "L", R = "R";
+    let package_code_1y = `FN${P}${G}${C}${T}${D}A${L}${R}1`;
+    let package_code_3y = `FN${P}${G}${C}${T}${D}A${L}${R}1`;
+    let package_amount="500000";
+    let amount1y =[];
+    let amount3y =[];
+    /* Step 1 */
+    $$("select[name=ctrl_fire_building]").forEach($el => {
+        $el.addEventListener("change", function (e) { 
+            if(e.target.value !="ONMHS3"){
+                package_code_1y= 'FNPGCTDALR1';
+                package_code_3y= 'FNPGCTDALR1';
+            }else{
+                package_code_1y= 'FNPGCTDAXX';
+                package_code_3y= 'FNPGCTDAXX';
+            }  
+            setDataStep1(e.target.value);
+        });
+    });
+    $$("select[name=ctrl_insurer_capital]").forEach($el => {
+        $el.addEventListener("change", function (e) {  
+            package_amount=e.target.value;          
+            changeTextAmount();
+            setData();
+        });
+    });
+    $$("button[id=btnStep1]").forEach($el => {
+        $el.addEventListener("click", function (e) {   
+            let arr = document.getElementsByClassName("error");
+            if(arr.length==0){
+                setData();
+                console.log("package_code",package_code_1y);
+            }
+        });
+    });
+    /* End Step 1 */
+
+    /* Step 2 */
+    $$("select[id=drpCompensation1]").forEach($el => {
+        $el.addEventListener("change", function (e) {            
+            var checkBox = document.getElementById("check_rate_9");
+            if (checkBox.checked == true){
+                package_1year = e.target.value == 10000 ? '1' : e.target.value == 15000 ? '2' : '3';
+            }            
+            getDataAmount1y(package_1year);
+        });
+    });
+    $$("select[id=drpCompensation3]").forEach($el => {
+        $el.addEventListener("change", function (e) {            
+            var checkBox = document.getElementById("check_rate_9");
+            if (checkBox.checked == true){
+                package_3year = e.target.value == 10000 ? '1' : e.target.value == 15000 ? '2' : '3';
+            }
+            getDataAmount3y(package_3year);
+        });
+    });
+    
+
+    const getDataAmount1y = (package_1year) => { 
+        const result = MyHomeSmart;
+        if(package_1year!=""){
+            package_code_1y = package_code_1y.slice(0, -1)+package_1year;
+        }
+        console.log("package_code1",package_code_1y);
+        //console.log("package_code1",package_code,package_1year);
+        const results = result.filter(element => {
+            return element.TAGNAME === package_code_1y && element.FIRE == package_amount;
+        });
+        const result_1y = amount1y.filter(element => {
+            return element.myhome_id === results[0].id;
+        });
+        document.getElementById("txtAmount1").value = numberWithCommas(result_1y[0].Total);
+
+        
+    }
+    const getDataAmount3y = (package_3year) => { 
+        const result = MyHomeSmart;        
+        if(package_3year!=""){
+            package_code_3y = package_code_3y.slice(0, -1)+package_3year;
+        }
+        console.log("package_code3",package_code_3y);
+        const results = result.filter(element => {
+            return element.TAGNAME === package_code_3y && element.FIRE == package_amount;
+          });      
+        //console.log("package_code",package_code);
+        console.log("amount3y",amount3y);
+        const result_3y = amount3y.filter(element => {
+            return element.myhome_id === results[0].id;
+        });
+        console.log("result_3y",result_3y);
+        document.getElementById("txtAmount3").value = numberWithCommas(result_3y[0].Total);
+        
+    }
+
+
+    $$("input[id=check_rate_3]").forEach($el => {
+        $el.addEventListener("change", function (e) {
+            if (e.target.checked) {
+                //code.format("{0}", e.target.value)
+                P = e.target.value;
+            } else {
+                P = "X";
+            }
+            package_code_1y = `FN${P}${G}${C}${T}${D}A${L}${R}`+package_1year;
+            package_code_3y = `FN${P}${G}${C}${T}${D}A${L}${R}`+package_3year;
+            
+            getDataAmount1y(package_1year);
+            getDataAmount3y(package_3year);
+        });
+    });
+    $$("input[id=check_rate_4]").forEach($el => {
+        $el.addEventListener("change", function (e) {
+            if (e.target.checked) {
+                //code.format("{0}", e.target.value)
+                G = e.target.value;
+            } else {
+                G = "X";
+            }
+            package_code_1y = `FN${P}${G}${C}${T}${D}A${L}${R}`+package_1year;
+            package_code_3y = `FN${P}${G}${C}${T}${D}A${L}${R}`+package_3year;
+            
+            getDataAmount1y(package_1year);
+            getDataAmount3y(package_3year);
+        });
+    });
+    $$("input[id=check_rate_5]").forEach($el => {
+        $el.addEventListener("change", function (e) {
+            if (e.target.checked) {
+                //code.format("{0}", e.target.value)
+                C = e.target.value;
+            } else {
+                C = "X";
+            }
+            package_code_1y = `FN${P}${G}${C}${T}${D}A${L}${R}`+package_1year;
+            package_code_3y = `FN${P}${G}${C}${T}${D}A${L}${R}`+package_3year;
+            
+            getDataAmount1y(package_1year);
+            getDataAmount3y(package_3year);
+        });
+    });
+
+    $$("input[id=check_rate_6]").forEach($el => {
+        $el.addEventListener("change", function (e) {
+            if (e.target.checked) {
+                //code.format("{0}", e.target.value)
+                T = e.target.value;
+            } else {
+                T = "X";
+            }
+            package_code_1y = `FN${P}${G}${C}${T}${D}A${L}${R}`+package_1year;
+            package_code_3y = `FN${P}${G}${C}${T}${D}A${L}${R}`+package_3year;
+            
+            getDataAmount1y(package_1year);
+            getDataAmount3y(package_3year);
+        });
+    });
+
+    $$("input[id=check_rate_7]").forEach($el => {
+        $el.addEventListener("change", function (e) {
+            
+            if (e.target.checked) {
+                D = e.target.value;
+            } else {
+                D = "X";
+            }
+            package_code_1y = `FN${P}${G}${C}${T}${D}A${L}${R}`+package_1year;
+            package_code_3y = `FN${P}${G}${C}${T}${D}A${L}${R}`+package_3year;
+            
+            getDataAmount1y(package_1year);
+            getDataAmount3y(package_3year);
+        });
+    });
+    
+    $$("input[id=check_rate_9]").forEach($el => {
+        $el.addEventListener("change", function (e) {
+            if (e.target.checked) {
+                
+                var compen_1 = document.getElementById("drpCompensation1");
+                package_1year = compen_1.value == 10000 ? '1' : compen_1.value == 15000 ? '2' : '3';
+
+                var compen_3 = document.getElementById("drpCompensation3");
+                package_3year = compen_3.value == 10000 ? '1' : compen_3.value == 15000 ? '2' : '3';
+                R='R';
+                package_code_1y = `FN${P}${G}${C}${T}${D}A${L}${R}`+package_1year;
+                package_code_3y = `FN${P}${G}${C}${T}${D}A${L}${R}`+package_3year;
+            } else {
+                R='X';
+                package_code_1y = `FN${P}${G}${C}${T}${D}A${L}${R}`;
+                package_code_3y = `FN${P}${G}${C}${T}${D}A${L}${R}`;
+                package_1year="";
+                package_3year="";
+            }
+            
+            getDataAmount1y(package_1year);
+            getDataAmount3y(package_3year);
+        });
+    });
+    $$("input[id=check_rate_10]").forEach($el => {
+        $el.addEventListener("change", function (e) {
+            if (e.target.checked) {
+                L = e.target.value;
+            } else {
+                L = "X";
+            }
+            package_code_1y = `FN${P}${G}${C}${T}${D}A${L}${R}`+package_1year;
+            package_code_3y = `FN${P}${G}${C}${T}${D}A${L}${R}`+package_3year;
+            
+            getDataAmount1y(package_1year);
+            getDataAmount3y(package_3year);
+        });
+    });
+    /* End Step 2 */
+
+
+    
+
+
+
+    const apiMyHomeSmartData = async () => {
+        let select = $('#ctrl_insurer_capital');
+        let cover_amount = select.options[select.selectedIndex].value;
+
+        let res = await fetch(`/appApi/ApiConnect/myHomeSmartPackage`, {
+            method: 'post',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').getAttribute('content')
+            },
+        });
+        const response = await res.json();
+        const js = JSON.parse(response);
+        let result = js.data;
+
+        sessionStorage.setItem("amount", cover_amount);
+        MyHomeSmart = result;
+    }
+    const apiAmount1y = async () => {
+        try {
+            let res = await fetch(`/appApi/ApiConnect/myHomeSmartPackage1y`, {
+                method: 'post',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').getAttribute('content')
+                },
+
+                //body: JSON.stringify(data)
+            });
+            const response = await res.json();
+            const js = JSON.parse(response);
+            amount1y = js.data;
+
+
+        } catch (err) {
+            console.log("apiMyHomeSmart1y", err);
+            Swal.fire(
+                {
+                    title: `<i class="icofont-alarm" style="color:red"></i>`,
+                    html: `<strong>${$form.getAttribute('data-error')}</strong><br>${$form.getAttribute('data-error-description')}`,
+                    confirmButtonText: $form.getAttribute('data-error-button'),
+                }
+            )
+        }
+
+        $form.classList.remove('ajax_loader');
+    }
+    const apiAmount3y = async () => {
+        try {
+            let res = await fetch(`/appApi/ApiConnect/myHomeSmartPackage3y`, {
+                method: 'post',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').getAttribute('content')
+                },
+
+                //body: JSON.stringify(data)
+            });
+            const response = await res.json();
+            const js = JSON.parse(response);
+            amount3y = js.data;
+
+
+        } catch (err) {
+            console.log("apiAmount3y", err);
+            Swal.fire(
+                {
+                    title: `<i class="icofont-alarm" style="color:red"></i>`,
+                    html: `<strong>${$form.getAttribute('data-error')}</strong><br>${$form.getAttribute('data-error-description')}`,
+                    confirmButtonText: $form.getAttribute('data-error-button'),
+                }
+            )
+        }
+
+        $form.classList.remove('ajax_loader');
+    }
+    const changeTextAmount = () => {
+        let building = $('#ctrl_fire_building');
+        let text_value = building.options[building.selectedIndex].value;
+
+        $("#rate_1").innerHTML = numberWithCommas(package_amount);
+        $("#rate_1_3").innerHTML = numberWithCommas(package_amount);
+
+        if (text_value != "ONMHS3") {
+            $("#fdAccording").value = numberWithCommas(package_amount * 0.8);
+            $("#fdContent").value = numberWithCommas(package_amount * 0.2);
+        }
+        document.getElementById("ONMHS2").style.display = "table-cell";
+        document.getElementById("head-ONMHS2").style.display = "table-cell";
+        document.getElementById("foot-ONMHS2").style.display = "table-cell";
+
+    }
+    
+
+
+    const setData = () => {      
+        const result = MyHomeSmart;
+        //console.log('result',result);
+        for (let i = 0; i < result.length; i++) 
+        {
+            drpCompensation.push(result[i].RENT_PERIL_PREM);
+            drpCompensationText.push(result[i].RENT_PERIL_SUMINS);
+            if (result[i].TAGNAME.trim() == package_code_1y && result[i].FIRE == package_amount) {
+                apiMyHomeSmart1y(result[i].id);
+                apiMyHomeSmart3y(result[i].id);
+                document.getElementById("rate_2").innerHTML = numberWithCommas(result[i].ITEM1_1_PERIL_SUMINS);
+                document.getElementById("rate_3").innerHTML = numberWithCommas(result[i].ITEM1_2_PERIL_SUMINS);
+                document.getElementById("rate_4").innerHTML = numberWithCommas(result[i].ITEM1_3_PERIL_SUMINS);
+                document.getElementById("rate_5").innerHTML = numberWithCommas(result[i].ITEM1_3_PERIL_SUMINS);
+                document.getElementById("rate_6").innerHTML = numberWithCommas(result[i].ITEM1_5_PERIL_SPE_AMOUNT);
+                document.getElementById("rate_7").innerHTML = numberWithCommas(result[i].ITEM1_5_PERIL_SUMINS);
+                document.getElementById("rate_8").innerHTML = numberWithCommas(result[i].ITEM1_6_PERIL_SUMINS);
+                document.getElementById("rate_10").innerHTML = numberWithCommas(result[i].ITEM1_7_PERIL_SUMINS);
+                document.getElementById("rate_11").innerHTML = numberWithCommas(result[i].ITEM1_8_PERIL_SUMINS);
+
+                document.getElementById("rate_2_3").innerHTML = numberWithCommas(result[i].ITEM1_1_PERIL_SUMINS);
+                document.getElementById("rate_3_3").innerHTML = numberWithCommas(result[i].ITEM1_2_PERIL_SUMINS);
+                document.getElementById("rate_4_3").innerHTML = numberWithCommas(result[i].ITEM1_3_PERIL_SUMINS);
+                document.getElementById("rate_5_3").innerHTML = numberWithCommas(result[i].ITEM1_3_PERIL_SUMINS);
+                document.getElementById("rate_6_3").innerHTML = numberWithCommas(result[i].ITEM1_5_PERIL_SPE_AMOUNT);
+                document.getElementById("rate_7_3").innerHTML = numberWithCommas(result[i].ITEM1_5_PERIL_SUMINS);
+                document.getElementById("rate_8_3").innerHTML = numberWithCommas(result[i].ITEM1_6_PERIL_SUMINS);
+                document.getElementById("rate_10_3").innerHTML = numberWithCommas(result[i].ITEM1_7_PERIL_SUMINS);
+                document.getElementById("rate_11_3").innerHTML = numberWithCommas(result[i].ITEM1_8_PERIL_SUMINS);
+
+                //ข้อ 2.
+                document.getElementById("rate_13").innerHTML = numberWithCommas(result[i].NATURAL);
+                document.getElementById("rate_13_3").innerHTML = numberWithCommas(result[i].NATURAL);
+
+                //ข้อ 3.
+                document.getElementById("rate_15").innerHTML = numberWithCommas(result[i].PA_PERIL_SUMINS);
+                document.getElementById("rate_15_3").innerHTML = numberWithCommas(result[i].PA_PERIL_SUMINS);
+
+                //ข้อ 4.
+                document.getElementById("rate_17").innerHTML = numberWithCommas(result[i].GLASS_PERIL_SUMINS);
+                document.getElementById("rate_17_3").innerHTML = numberWithCommas(result[i].GLASS_PERIL_SUMINS);
+
+                //ข้อ 5.
+                document.getElementById("rate_19").innerHTML = numberWithCommas(result[i].CASH_PERIL_SUMINS);
+                document.getElementById("rate_19_3").innerHTML = numberWithCommas(result[i].CASH_PERIL_SUMINS);
+
+                //ข้อ 6.
+                document.getElementById("rate_21").innerHTML = numberWithCommas(result[i].THEFT_PERIL_SUMINS);
+                document.getElementById("rate_21_3").innerHTML = numberWithCommas(result[i].THEFT_PERIL_SUMINS);
+
+                //ข้อ 7.
+                document.getElementById("rate_22").innerHTML = numberWithCommas(result[i].DANGER_PERIL_SPE_AMOUNT);
+                document.getElementById("rate_23").innerHTML = numberWithCommas(result[i].DANGER_PERIL_SUMINS);
+                document.getElementById("rate_22_3").innerHTML = numberWithCommas(result[i].DANGER_PERIL_SPE_AMOUNT);
+                document.getElementById("rate_23_3").innerHTML = numberWithCommas(result[i].DANGER_PERIL_SUMINS);
+
+                //ข้อ 9.
+                document.getElementById("drpCompensation3").value = result[i].RENT_PERIL_SUMINS;
+                document.getElementById("drpCompensation1").value = result[i].RENT_PERIL_SUMINS;
+
+                //ข้อ 10.    
+
+                document.getElementById("sp_amount1").innerHTML = numberWithCommas(result[i].LIABILITY_PERIL_SUMINS);
+                document.getElementById("sp_amount3").innerHTML = numberWithCommas(result[i].LIABILITY_PERIL_SUMINS);
+
+                document.getElementById("txtDeposit1").innerHTML = numberWithCommas(result[i].LIABILITY_PERIL_PREM);
+                document.getElementById("txtDeposit3").innerHTML = numberWithCommas(result[i].LIABILITY_PERIL_PREM);
+            }
+            
+        }
+    }
+    const setDataAmount1y = (id) => {      
+        let data_amount1y = amount1y;
+        let data_amount3y = amount3y;
+        const result_1y = data_amount1y.filter(element => {
+            return element.TAGNAME === package_code && element.FIRE == package_amount;
+          });
+    }
+    const setDataAmount3y = (id) => {      
+        let data_amount1y = amount1y;
+        let data_amount3y = amount3y;
+        const result_1y = data_amount1y.filter(element => {
+            return element.TAGNAME === package_code && element.FIRE == package_amount;
+          });
+    }
+    const setDataStep1 = async (packageSelect) => {    
+        let building = $('#ctrl_fire_building');
+        let text = building.options[building.selectedIndex].text;
+        let text_value = building.options[building.selectedIndex].value;
+
+        let select = $('#ctrl_insurer_capital');
+        let cover_amount = select.options[select.selectedIndex].value;
+
+        $('#ctrl_fire_building_text').value = text;
+        
+        if (text_value == "ONMHS3") {
+            document.getElementById("tr-condo-9").classList.add("d-none");
+            document.getElementById("tr-condo-9-detail").classList.add("d-none");
+            document.getElementById("tr-condo-10").classList.add("d-none");
+            document.getElementById("tr-condo-10-detail").classList.add("d-none");
+            document.getElementById("divamount").classList.add("d-none");
+            document.getElementById("lbSelectHome").classList.add("d-none");
+            document.getElementById("lbSelectCondo").classList.remove("d-none");
+            
+        } else {
+            document.getElementById("tr-condo-9").classList.remove("d-none");
+            document.getElementById("tr-condo-9-detail").classList.remove("d-none");
+            document.getElementById("tr-condo-10").classList.remove("d-none");
+            document.getElementById("tr-condo-10-detail").classList.remove("d-none");
+            document.getElementById("divamount").classList.remove("d-none");
+            document.getElementById("lbSelectHome").classList.remove("d-none");
+            document.getElementById("lbSelectCondo").classList.add("d-none");
+            $("#fdAccording").value = numberWithCommas(cover_amount * 0.8);
+            $("#fdContent").value = numberWithCommas(cover_amount * 0.2);
+           
+        }
+        document.getElementById("check_rate_3").checked = true;
+        document.getElementById("check_rate_4").checked = true;
+        document.getElementById("check_rate_5").checked = true;
+        document.getElementById("check_rate_6").checked = true;
+        document.getElementById("check_rate_7").checked = true;
+        //document.getElementById("check_rate_8").checked = true;
+        document.getElementById("check_rate_9").checked = true;
+        document.getElementById("check_rate_10").checked = true;
+
+        const allPack = Object.keys(package_data)
+            .filter(k => _.startsWith(k, packageSelect))
+
+
+
+        if (document.body.clientWidth > 767) {
+            $$('#table-detail td[data-package],#table-detail th[data-package]').forEach($el => {
+                if (allPack.includes($el.getAttribute("data-package"))) {
+                    $el.style.display = "table-cell";
+                } else {
+                    $el.style.display = "none";
+                }
+            });
+        } else {
+            $$('#table-detail thead a[data-package]').forEach($el => {
+                if ($el.getAttribute("data-package").startsWith(packageSelect)) {
+                    $el.style.display = "inline-flex";
+                } else {
+                    $el.style.display = "none";
+                }
+            });
+        }
+
+        allPack.map(k => {
+            $('#fdPremium').value = parseInt(package_data[k].plan.COV1).toLocaleString();
+            $(`strong[data-price-${k}]`).innerHTML = parseInt(package_data[k].price).toLocaleString();
+            $(`th[data-cover-cov1]`).innerHTML = $('#cover_fire_' + packageSelect).value;
+        });
+
+
+    }
+
+    apiAmount1y();
+    apiAmount3y();
+    apiMyHomeSmartData();
+    setDataStep1(500000);
+
+
+
+
+
     const apiMyHomeSmart = async (packageSelect) => {
         try {
             let select = $('#ctrl_insurer_capital');
@@ -625,8 +1025,9 @@ document.addEventListener("DOMContentLoaded", async () => {
                 }
                 */
                 //default 
-                if (result[i].TAGNAME.trim() == "FNPGCTDALR1" && result[i].FIRE == cover_amount) {
-                    //console.log("data",result[i])
+                console.log("code-",code)
+                if (result[i].TAGNAME.trim() == code && result[i].FIRE == cover_amount) {
+                    console.log("data",result[i])
                     apiMyHomeSmart1y(result[i].id);
                     apiMyHomeSmart3y(result[i].id);
                     //ข้อ 1.
@@ -792,7 +1193,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         $form.classList.remove('ajax_loader');
     }
 
-    apiMyHomeSmart("500000");
+    //apiMyHomeSmart("500000");
 
 
 
@@ -807,32 +1208,8 @@ document.addEventListener("DOMContentLoaded", async () => {
         var re = '\\d(?=(\\d{' + (x || 3) + '})+' + (n > 0 ? '\\.' : '$') + ')';
         return this.toFixed(Math.max(0, ~~n)).replace(new RegExp(re, 'g'), '$&,');
     };
-    const changeTextAmount = (packageSelect) => {
-
-        let building = $('#ctrl_fire_building');
-        let text_value = building.options[building.selectedIndex].value;
-
-        let select = $('#ctrl_insurer_capital');
-        let cover_amount = select.options[select.selectedIndex].value;
-
-        $("#rate_1").innerHTML = parseNumber(cover_amount);
-        $("#rate_1_3").innerHTML = parseNumber(cover_amount);
-
-        if (text_value != "ONMHS3") {
-            $("#fdAccording").value = parseNumber(cover_amount * 0.8);
-            $("#fdContent").value = parseNumber(cover_amount * 0.2);
-        }
-
-
-
-
-        document.getElementById("ONMHS2").style.display = "table-cell";
-        document.getElementById("head-ONMHS2").style.display = "table-cell";
-        document.getElementById("foot-ONMHS2").style.display = "table-cell";
-
-
-    }
-    changeTextAmount("500000");
+    
+    //changeTextAmount("500000");
 
     /*
     const myHomeSmartAPI = async () => {
@@ -861,6 +1238,8 @@ document.addEventListener("DOMContentLoaded", async () => {
             document.getElementById("divamount").classList.add("d-none");
             document.getElementById("lbSelectHome").classList.add("d-none");
             document.getElementById("lbSelectCondo").classList.remove("d-none");
+            dep1="";
+            dep3="";
         } else {
             document.getElementById("tr-condo-9").classList.remove("d-none");
             document.getElementById("tr-condo-9-detail").classList.remove("d-none");
@@ -871,6 +1250,8 @@ document.addEventListener("DOMContentLoaded", async () => {
             document.getElementById("lbSelectCondo").classList.add("d-none");
             $("#fdAccording").value = parseNumber(cover_amount * 0.8);
             $("#fdContent").value = parseNumber(cover_amount * 0.2);
+            dep1="1";
+            dep3="3";
         }
         document.getElementById("check_rate_3").checked = true;
         document.getElementById("check_rate_4").checked = true;
@@ -912,7 +1293,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     }
 
-    changeTextPremium("ONMHS1");
+    //changeTextPremium("ONMHS1");
 
 
     const zipcode_data = await getZipcodeData();
@@ -1170,7 +1551,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                             // fdRevenue: $('#fdRevenue').checked ? 'Y' : 'N',
                             // fdTaxno: $('#fdTaxno').value,
                             //fdPayAMT: getSelectedPricePackage(data.fdPackage, package_data),
-                            fdPayAMT: p_packget=="ONMHS1" ? p_price1: p_price3,
+                            fdPayAMT: p_packget=="ONMHS1" ? $('#txtAmount1').value : $('#txtAmount3').value,
                             ctrl_accept_insurance_term: $('#ctrl_accept_insurance_term').checked ? true : undefined,
                             ctrl_terms: $('#ctrl_terms').checked ? true : undefined,
 
@@ -1345,7 +1726,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                         $summary_section.innerHTML = `<h3 class="text-primary">${$summary_section.getAttribute('data-insurance_data')}</h3><br/>
                     <div class="two-col">
                         <div><span>${$summary_section.getAttribute('data-plan')} : </span><strong>${selectedPackage}</strong></div>
-                        <div><span>${$summary_section.getAttribute('data-price')} : </span><strong>${parseFloat(p_price).toLocaleString()} ${$summary_section.getAttribute('data-baht')}</strong></div>
+                        <div><span>${$summary_section.getAttribute('data-price')} : </span><strong>${data.fdPayAMT} ${$summary_section.getAttribute('data-baht')}</strong></div>
                         <div class="controls-wrapper full no-lable"><span>${$('#ctrl_fire_building_sum').value} : </span>
                         <strong>${$('#ctrl_fire_building_text').value}</strong>
                         </div>
