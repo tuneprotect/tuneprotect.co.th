@@ -1,7 +1,10 @@
 @extends('frontend.layout.nofooter')
 
 @section('page')
-
+<style>
+    .aaaaaa{
+        display:block;
+    }
     <body id="product_page" style="height: 100%;">
     <main>
         <h1 class="product-header"></h1>

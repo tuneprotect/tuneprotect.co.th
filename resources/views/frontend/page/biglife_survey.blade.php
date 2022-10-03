@@ -4,7 +4,7 @@
     <body id="product_page" style="height: 100%;">
     <main>
         <h1 class="product-header"></h1>
-        <section id="step1" class="wrapper b">
+        <section id="step1" class="wrapper">
             <form class="insurance-form" action="/{{$locale}}/Biglife/thankyou" method="post" id="frm_survey"
                   data-error="@lang("product.blood_test.data-error")"
                   data-error-description="@lang("product.blood_test.data-error-description")"
