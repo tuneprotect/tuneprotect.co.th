@@ -6,15 +6,33 @@
         <h1 class="product-header"></h1>
         <section id="step1" class="wrapper">
             <form class="insurance-form" action="/{{$locale}}/Biglife/Validation" method="post" id="frm_validate">
-                <div class="form-head">{{$headertext}}</div>
+                <div class="form-head"> 
+                    @if($locale == 'en')
+                        Fill in information
+                    @else
+                        กรุณากรอกรายละเอียด
+                    @endif
+                </div>
                 <div class="form-inner">
-                    <h3>{{$labeltext}}</h3>
+                    <h3> Enter your airasia member ID
+                        @if($locale == 'en')
+                            Please enter your airasia member ID
+                        @else
+                            กรุณาใส่หมายเลขสมาชิก airasia
+                        @endif
+                    </h3>
                     <div class="date-input">
                         <div class="date-wrapper">
                             <div class="controls-wrapper">
                                 <input id="memberid" name="memberid" type="text" placeholder={{$placeholdertext}}
                                     required="required" data-error-required="The Member ID. field is required.">
-                                <label for="memberid">{{$placeholdertext}}</label>
+                                <label for="memberid">
+                                @if($locale == 'en')
+                                    Enter your airasia member ID
+                                @else
+                                    หมายเลขสมาชิก airasia
+                                @endif
+                                </label>
                             </div>
                         </div>
                         <cite></cite>
