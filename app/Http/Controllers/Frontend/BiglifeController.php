@@ -56,19 +56,7 @@ class BiglifeController  extends BaseController
                 $this->bodyData['question3'] = '3. Do you think that travel insurance is necessary when traveling? ';
                 $this->bodyData['question31'] = 'Yes, it is.';
                 $this->bodyData['question32'] = 'No, it is not necessary.';
-                $this->bodyData['consent_header'] = 'Name';
-                $this->bodyData['marketing_consent'] = 'I hereby give consent to Tune Insurance Public Company Limited (“Company”, “Tune Protect Thailand”) to collect, use, process and disclose my personal data to the Company’s service providers, employees, agents, partners, vendors and/or affiliates (collectively referred to as the “Company’s Representatives”) for the following purposes: -  
-
-        
-
-                (i)  offering of the products and/or services of the Company and/or Company’s Representatives;  
-                
-                (ii) communicating the Company’s and/or Company’s Representatives’ products and services, marketing campaign, newsletter, promotions, customer relationship/engagement or customer surveys 
-                
-                
-                
-                I further acknowledge that the my personal data shall be collected, used, processed in accordance with the Company’s  Privacy Policy which can be located at  https://www.tuneprotect.co.th/th/privacy-policy  ';
-                
+               
                 /*$this->bodyData['consent_confirm'] = 'Name';
                 $this->bodyData['OTP_confirm1'] = 'Name';
                 $this->bodyData['OTP_confirm2'] = 'Name';
