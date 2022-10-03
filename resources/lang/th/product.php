@@ -790,8 +790,8 @@ return [
     ],
     "biglife" => [
         "headertext" => "กรุณากรอกรายละเอียด",
-        "labeltext" => "กรุณาใส่หมายเลขสมาชิก airasia",
-        "placeholdertext" => "หมายเลขสมาชิก airasia",
+        "labeltext" => "กรุณาใส่หมายเลขสมาชิก airasia.",
+        "placeholdertext" => "หมายเลขสมาชิก airasia.",
         "buttontext" => "ดำเนินการต่อ",
         "message1" => "กรุณาใส่หมายเลขสมาชิก airasia ที่ถูกต้องเพื่อทำรายการต่อไป",
         "message2" => "คำเตือน",
