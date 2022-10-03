@@ -1,13 +1,9 @@
 @extends('frontend.layout.nofooter')
 
 @section('page')
-<style>
-    .aaaaaa{
-        display:block;
-    }
     <body id="product_page" style="height: 100%;">
     <main>
-        <h1 class="product-header"></h1>
+        <h1 class="product-header aaaa"></h1>
         <section id="step1" class="wrapper">
             <form class="insurance-form" action="/{{$locale}}/Biglife/Validation" method="post" id="frm_validate">
                 <div class="form-head">{{$headertext}}</div>
