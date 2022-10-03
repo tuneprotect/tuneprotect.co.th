@@ -19,58 +19,6 @@ class BiglifeController  extends BaseController
             $this->bodyData['placeholdertext'] = __('product.biglife.placeholdertext');
             $this->bodyData['buttontext'] = __('product.biglife.buttontext');
 
-            if($this->locale !='th')
-            {
-           
-                $this->bodyData['headertext'] = 'Fill in information';
-                $this->bodyData['labeltext'] = 'Please enter your airasia member ID';
-                $this->bodyData['placeholdertext'] = 'Enter your airasia member ID';
-                $this->bodyData['buttontext'] = 'Enter';
-
-                /*
-                $this->bodyData['massage1" => "กรุณาใส่หมายเลขสมาชิก airasia ที่ถูกต้องเพื่อทำรายการต่อไป",
-                $this->bodyData['massage2" => "คำเตือน",
-                $this->bodyData['massage3" => "ยืนยัน",
-                $this->bodyData['massage4" => "กรุณาตอบคำถามให้ครบทุกข้อและกดยินยอมเพื่อเพื่อดำเนินการต่อไป",
-                $this->bodyData['header" => "กรุณาใส่ข้อมูลสมาชิก",
-                */
-                $this->bodyData['name'] = 'First Name';
-                $this->bodyData['name_placeholder'] = 'Enter your first name';
-                $this->bodyData['lastname'] = 'Last Name';
-                $this->bodyData['lastname_placeholder'] = 'Enter your last name';
-                $this->bodyData['mobile'] = 'Mobile Phone';
-                $this->bodyData['mobile_placeholder'] = 'Enter your mobile phone';
-                $this->bodyData['email'] = 'Email Address';
-                $this->bodyData['email_placeholder'] = 'Enter your email address';
-                $this->bodyData['question'] = 'Please complete all the questions below:';
-                $this->bodyData['question1'] = '1. What would you do if you had a vacation of more than 5 days? ';
-                $this->bodyData['question11'] = 'Stay safe at home due to COVID-19 ';
-                $this->bodyData['question12'] = 'Taking a day trip';
-                $this->bodyData['question13'] = 'Going on a domestic overnight trip';
-                $this->bodyData['question14'] = 'Taking oversea trip';
-                $this->bodyData['question2'] = '2. What kinds of activities do you like to do when you travel?';
-                $this->bodyData['question21'] = 'Taking a photo';
-                $this->bodyData['question22'] = 'Shopping';
-                $this->bodyData['question23'] = 'Natural Sights';
-                $this->bodyData['question24'] = 'Temple Trip';
-                $this->bodyData['question3'] = '3. Do you think that travel insurance is necessary when traveling? ';
-                $this->bodyData['question31'] = 'Yes, it is.';
-                $this->bodyData['question32'] = 'No, it is not necessary.';
-               
-                /*$this->bodyData['consent_confirm'] = 'Name';
-                $this->bodyData['OTP_confirm1'] = 'Name';
-                $this->bodyData['OTP_confirm2'] = 'Name';
-                $this->bodyData['OTP_confirm3'] = 'Name';
-                $this->bodyData['OTP_confirm4'] = 'Name';
-                $this->bodyData['OTP_confirm5'] = 'Name';
-                $this->bodyData['OTP_confirm6'] = 'Name';
-                */
-            }
-
-//            $this->bodyData['headertext'] = 'Fill in information';
-//            $this->bodyData['labeltext'] = 'Please enter your aiaasia member ID';
-//            $this->bodyData['placeholdertext'] = 'Enter your aiaasia member ID';
-//            $this->bodyData['buttontext'] = 'Enter';
 
 
         $content = WebContent::where('type_id', ProjectEnum::STATIC_PAGE_BIGLIFE_POINT)
