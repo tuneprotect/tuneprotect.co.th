@@ -519,8 +519,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     let total3 = '';
     let c_sum='';
 
-    const data_result_1y = [];
-    const data_result_3y = [];
+    let data_result_1y = [];
+    let data_result_3y = [];
 
     /* Step 1 */
     $$("select[name=ctrl_fire_building]").forEach($el => {
@@ -547,7 +547,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             let arr = document.getElementsByClassName("error");
             if(arr.length==0){
                 setData();
-                console.log("package_code",package_code_1y);
+                //console.log("package_code",package_code_1y);
             }
         });
     });
@@ -584,11 +584,13 @@ document.addEventListener("DOMContentLoaded", async () => {
         const results = result.filter(element => {
             return element.TAGNAME === package_code_1y && element.FIRE == package_amount;
         });
-        console.log("results1",results);
+        
+        data_result_1y = results;
+        console.log("results1",data_result_1y);
         const result_1y = amount1y.filter(element => {
             return element.myhome_id === results[0].id;
         });
-        data_result_1y = result_1y;
+        //data_result_1y = result_1y;
         net1=numberWithCommas(result_1y[0].Net);
         document.getElementById("txtAmount1").value = numberWithCommas(result_1y[0].Total);
 
@@ -599,17 +601,17 @@ document.addEventListener("DOMContentLoaded", async () => {
         if(package_3year!=""){
             package_code_3y = package_code_3y.slice(0, -1)+package_3year;
         }
-        console.log("package_code3",package_code_3y);
         const results = result.filter(element => {
             return element.TAGNAME === package_code_3y && element.FIRE == package_amount;
           });      
         //console.log("package_code",package_code);
-        console.log("results3",results);
+        data_result_3y = results;
+        console.log("results3",data_result_3y);
         const result_3y = amount3y.filter(element => {
             return element.myhome_id === results[0].id;
         });
         //console.log("result_3y",result_3y);
-        data_result_3y = result_3y;
+        //data_result_3y = result_3y;
         net3=numberWithCommas(result_3y[0].Net);
         document.getElementById("txtAmount3").value = numberWithCommas(result_3y[0].Total);
         
@@ -841,73 +843,91 @@ document.addEventListener("DOMContentLoaded", async () => {
     const setData = () => {      
         const result = MyHomeSmart;
         //console.log('result',result);
+        const results = result.filter(element => {
+            return element.TAGNAME === package_code_1y && element.FIRE == package_amount;
+        }); 
+        data_result_1y = results[0];
+        data_result_3y = results[0];
+        if(results!=""){
+            apiMyHomeSmart1y(data_result_1y.id);
+            apiMyHomeSmart3y(data_result_1y.id);
+            drpCompensation.push(data_result_1y.RENT_PERIL_PREM);
+            drpCompensationText.push(data_result_1y.RENT_PERIL_SUMINS);
+
+            document.getElementById("rate_2").innerHTML = numberWithCommas(data_result_1y.ITEM1_1_PERIL_SUMINS);
+            document.getElementById("rate_3").innerHTML = numberWithCommas(data_result_1y.ITEM1_2_PERIL_SUMINS);
+            document.getElementById("rate_4").innerHTML = numberWithCommas(data_result_1y.ITEM1_3_PERIL_SUMINS);
+            document.getElementById("rate_5").innerHTML = numberWithCommas(data_result_1y.ITEM1_3_PERIL_SUMINS);
+            document.getElementById("rate_6").innerHTML = numberWithCommas(data_result_1y.ITEM1_5_PERIL_SPE_AMOUNT);
+            document.getElementById("rate_7").innerHTML = numberWithCommas(data_result_1y.ITEM1_5_PERIL_SUMINS);
+            document.getElementById("rate_8").innerHTML = numberWithCommas(data_result_1y.ITEM1_6_PERIL_SUMINS);
+            document.getElementById("rate_10").innerHTML = numberWithCommas(data_result_1y.ITEM1_7_PERIL_SUMINS);
+            document.getElementById("rate_11").innerHTML = numberWithCommas(data_result_1y.ITEM1_8_PERIL_SUMINS);
+
+            document.getElementById("rate_2_3").innerHTML = numberWithCommas(data_result_1y.ITEM1_1_PERIL_SUMINS);
+            document.getElementById("rate_3_3").innerHTML = numberWithCommas(data_result_1y.ITEM1_2_PERIL_SUMINS);
+            document.getElementById("rate_4_3").innerHTML = numberWithCommas(data_result_1y.ITEM1_3_PERIL_SUMINS);
+            document.getElementById("rate_5_3").innerHTML = numberWithCommas(data_result_1y.ITEM1_3_PERIL_SUMINS);
+            document.getElementById("rate_6_3").innerHTML = numberWithCommas(data_result_1y.ITEM1_5_PERIL_SPE_AMOUNT);
+            document.getElementById("rate_7_3").innerHTML = numberWithCommas(data_result_1y.ITEM1_5_PERIL_SUMINS);
+            document.getElementById("rate_8_3").innerHTML = numberWithCommas(data_result_1y.ITEM1_6_PERIL_SUMINS);
+            document.getElementById("rate_10_3").innerHTML = numberWithCommas(data_result_1y.ITEM1_7_PERIL_SUMINS);
+            document.getElementById("rate_11_3").innerHTML = numberWithCommas(data_result_1y.ITEM1_8_PERIL_SUMINS);
+
+            //ข้อ 2.
+            document.getElementById("rate_13").innerHTML = numberWithCommas(data_result_1y.NATURAL);
+            document.getElementById("rate_13_3").innerHTML = numberWithCommas(data_result_1y.NATURAL);
+
+            //ข้อ 3.
+            document.getElementById("rate_15").innerHTML = numberWithCommas(data_result_1y.PA_PERIL_SUMINS);
+            document.getElementById("rate_15_3").innerHTML = numberWithCommas(data_result_1y.PA_PERIL_SUMINS);
+
+            //ข้อ 4.
+            document.getElementById("rate_17").innerHTML = numberWithCommas(data_result_1y.GLASS_PERIL_SUMINS);
+            document.getElementById("rate_17_3").innerHTML = numberWithCommas(data_result_1y.GLASS_PERIL_SUMINS);
+
+            //ข้อ 5.
+            document.getElementById("rate_19").innerHTML = numberWithCommas(data_result_1y.CASH_PERIL_SUMINS);
+            document.getElementById("rate_19_3").innerHTML = numberWithCommas(data_result_1y.CASH_PERIL_SUMINS);
+
+            //ข้อ 6.
+            document.getElementById("rate_21").innerHTML = numberWithCommas(data_result_1y.THEFT_PERIL_SUMINS);
+            document.getElementById("rate_21_3").innerHTML = numberWithCommas(data_result_1y.THEFT_PERIL_SUMINS);
+
+            //ข้อ 7.
+            document.getElementById("rate_22").innerHTML = numberWithCommas(data_result_1y.DANGER_PERIL_SPE_AMOUNT);
+            document.getElementById("rate_23").innerHTML = numberWithCommas(data_result_1y.DANGER_PERIL_SUMINS);
+            document.getElementById("rate_22_3").innerHTML = numberWithCommas(data_result_1y.DANGER_PERIL_SPE_AMOUNT);
+            document.getElementById("rate_23_3").innerHTML = numberWithCommas(data_result_1y.DANGER_PERIL_SUMINS);
+
+            //ข้อ 9.
+            document.getElementById("drpCompensation3").value = data_result_1y.RENT_PERIL_SUMINS;
+            document.getElementById("drpCompensation1").value = data_result_1y.RENT_PERIL_SUMINS;
+
+            //ข้อ 10.    
+
+            document.getElementById("sp_amount1").innerHTML = numberWithCommas(data_result_1y.LIABILITY_PERIL_SUMINS);
+            document.getElementById("sp_amount3").innerHTML = numberWithCommas(data_result_1y.LIABILITY_PERIL_SUMINS);
+
+            document.getElementById("txtDeposit1").innerHTML = numberWithCommas(data_result_1y.LIABILITY_PERIL_PREM);
+            document.getElementById("txtDeposit3").innerHTML = numberWithCommas(data_result_1y.LIABILITY_PERIL_PREM);
+        }
+
+
+/*
         for (let i = 0; i < result.length; i++) 
         {
-            drpCompensation.push(result[i].RENT_PERIL_PREM);
-            drpCompensationText.push(result[i].RENT_PERIL_SUMINS);
+            
+            
+           
+              
+
             if (result[i].TAGNAME.trim() == package_code_1y && result[i].FIRE == package_amount) {
-                apiMyHomeSmart1y(result[i].id);
-                apiMyHomeSmart3y(result[i].id);
-                document.getElementById("rate_2").innerHTML = numberWithCommas(result[i].ITEM1_1_PERIL_SUMINS);
-                document.getElementById("rate_3").innerHTML = numberWithCommas(result[i].ITEM1_2_PERIL_SUMINS);
-                document.getElementById("rate_4").innerHTML = numberWithCommas(result[i].ITEM1_3_PERIL_SUMINS);
-                document.getElementById("rate_5").innerHTML = numberWithCommas(result[i].ITEM1_3_PERIL_SUMINS);
-                document.getElementById("rate_6").innerHTML = numberWithCommas(result[i].ITEM1_5_PERIL_SPE_AMOUNT);
-                document.getElementById("rate_7").innerHTML = numberWithCommas(result[i].ITEM1_5_PERIL_SUMINS);
-                document.getElementById("rate_8").innerHTML = numberWithCommas(result[i].ITEM1_6_PERIL_SUMINS);
-                document.getElementById("rate_10").innerHTML = numberWithCommas(result[i].ITEM1_7_PERIL_SUMINS);
-                document.getElementById("rate_11").innerHTML = numberWithCommas(result[i].ITEM1_8_PERIL_SUMINS);
-
-                document.getElementById("rate_2_3").innerHTML = numberWithCommas(result[i].ITEM1_1_PERIL_SUMINS);
-                document.getElementById("rate_3_3").innerHTML = numberWithCommas(result[i].ITEM1_2_PERIL_SUMINS);
-                document.getElementById("rate_4_3").innerHTML = numberWithCommas(result[i].ITEM1_3_PERIL_SUMINS);
-                document.getElementById("rate_5_3").innerHTML = numberWithCommas(result[i].ITEM1_3_PERIL_SUMINS);
-                document.getElementById("rate_6_3").innerHTML = numberWithCommas(result[i].ITEM1_5_PERIL_SPE_AMOUNT);
-                document.getElementById("rate_7_3").innerHTML = numberWithCommas(result[i].ITEM1_5_PERIL_SUMINS);
-                document.getElementById("rate_8_3").innerHTML = numberWithCommas(result[i].ITEM1_6_PERIL_SUMINS);
-                document.getElementById("rate_10_3").innerHTML = numberWithCommas(result[i].ITEM1_7_PERIL_SUMINS);
-                document.getElementById("rate_11_3").innerHTML = numberWithCommas(result[i].ITEM1_8_PERIL_SUMINS);
-
-                //ข้อ 2.
-                document.getElementById("rate_13").innerHTML = numberWithCommas(result[i].NATURAL);
-                document.getElementById("rate_13_3").innerHTML = numberWithCommas(result[i].NATURAL);
-
-                //ข้อ 3.
-                document.getElementById("rate_15").innerHTML = numberWithCommas(result[i].PA_PERIL_SUMINS);
-                document.getElementById("rate_15_3").innerHTML = numberWithCommas(result[i].PA_PERIL_SUMINS);
-
-                //ข้อ 4.
-                document.getElementById("rate_17").innerHTML = numberWithCommas(result[i].GLASS_PERIL_SUMINS);
-                document.getElementById("rate_17_3").innerHTML = numberWithCommas(result[i].GLASS_PERIL_SUMINS);
-
-                //ข้อ 5.
-                document.getElementById("rate_19").innerHTML = numberWithCommas(result[i].CASH_PERIL_SUMINS);
-                document.getElementById("rate_19_3").innerHTML = numberWithCommas(result[i].CASH_PERIL_SUMINS);
-
-                //ข้อ 6.
-                document.getElementById("rate_21").innerHTML = numberWithCommas(result[i].THEFT_PERIL_SUMINS);
-                document.getElementById("rate_21_3").innerHTML = numberWithCommas(result[i].THEFT_PERIL_SUMINS);
-
-                //ข้อ 7.
-                document.getElementById("rate_22").innerHTML = numberWithCommas(result[i].DANGER_PERIL_SPE_AMOUNT);
-                document.getElementById("rate_23").innerHTML = numberWithCommas(result[i].DANGER_PERIL_SUMINS);
-                document.getElementById("rate_22_3").innerHTML = numberWithCommas(result[i].DANGER_PERIL_SPE_AMOUNT);
-                document.getElementById("rate_23_3").innerHTML = numberWithCommas(result[i].DANGER_PERIL_SUMINS);
-
-                //ข้อ 9.
-                document.getElementById("drpCompensation3").value = result[i].RENT_PERIL_SUMINS;
-                document.getElementById("drpCompensation1").value = result[i].RENT_PERIL_SUMINS;
-
-                //ข้อ 10.    
-
-                document.getElementById("sp_amount1").innerHTML = numberWithCommas(result[i].LIABILITY_PERIL_SUMINS);
-                document.getElementById("sp_amount3").innerHTML = numberWithCommas(result[i].LIABILITY_PERIL_SUMINS);
-
-                document.getElementById("txtDeposit1").innerHTML = numberWithCommas(result[i].LIABILITY_PERIL_PREM);
-                document.getElementById("txtDeposit3").innerHTML = numberWithCommas(result[i].LIABILITY_PERIL_PREM);
+                
             }
             
         }
+        */
     }
     const setDataAmount1y = (id) => {      
         let data_amount1y = amount1y;
@@ -994,8 +1014,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 
     }
-    getDataAmount1y();
-    getDataAmount3y();
+
     apiAmount1y();
     apiAmount3y();
     apiMyHomeSmartData();
@@ -1649,6 +1668,179 @@ document.addEventListener("DOMContentLoaded", async () => {
                             fdTerms: $('#ctrl_terms').checked ? true : undefined,
                             loc_fdBuilding: $('#ctrl_fire_building').value,
                             loc_fdOwner: $('#ctrl_fire_owner').value,
+
+                            /* by dum-soken */
+                            coverdays: p_packget=="ONMHS1" ? '365' : '1096',
+                            c_class:'18-59',//test
+                            flg_ind:'F',//test
+                            prem_rate: p_packget=="ONMHS1" ? '100.000000' : '250.000000',
+                            sum_pr_prem:'0.00',
+                            ann_prem: p_packget=="ONMHS1" ? net1 : net3,
+                            sum_ann_prem: p_packget=="ONMHS1" ? net1 : net3,
+                            sum_ins:c_sum,
+                            gross_amt: p_packget=="ONMHS1" ? net1 : net3,
+                            ann_nprem: p_packget=="ONMHS1" ? net1 : net3,
+                            stamp_amt: p_packget=="ONMHS1" ? stamp1 : stamp1,
+                            vat_amt: p_packget=="ONMHS1" ? vat1 : vat3,
+                            total_amt: p_packget=="ONMHS1" ? total1 : total3,
+                            ann_days: p_packget=="ONMHS1" ? '365' : '1096',
+                            invoice:'INV0001',//test
+                            packget_peril: [{
+                                "peril_code": 'TMRT',
+                                "peril_sumins": p_packget=="ONMHS1" ? data_result_1y.ITEM1_5_PERIL_SUMINS : data_result_3y.ITEM1_5_PERIL_SUMINS,
+                                "peril_rate":  p_packget=="ONMHS1" ? data_result_1y.ITEM1_5_PERIL_RATE : data_result_3y.ITEM1_5_PERIL_RATE,
+                                "peril_prem":  p_packget=="ONMHS1" ? data_result_1y.ITEM1_5_PERIL_PREM : data_result_3y.ITEM1_5_PERIL_PREM,
+                                "peril_damage_per": '0',
+                                "peril_damage_all": '0',
+                                "peril_spe_covers":  '0',
+                                "peril_spe_amount":  p_packget=="ONMHS1" ? data_result_1y.ITEM1_5_PERIL_SPE_AMOUNT : data_result_3y.ITEM1_5_PERIL_SPE_AMOUNT,
+                              },
+                              {
+                                "peril_code": 'ANTIQ',
+                                "peril_sumins": p_packget=="ONMHS1" ? data_result_1y.ITEM1_8_PERIL_SUMINS : data_result_3y.ITEM1_8_PERIL_SUMINS,
+                                "peril_rate":  p_packget=="ONMHS1" ? data_result_1y.ITEM1_8_PERIL_RATE : data_result_3y.ITEM1_8_PERIL_RATE,
+                                "peril_prem":  p_packget=="ONMHS1" ? data_result_1y.ITEM1_8_PERIL_PREM : data_result_3y.ITEM1_8_PERIL_PREM,
+                                "peril_damage_per": '0',
+                                "peril_damage_all": '0',
+                                "peril_spe_covers": '0',
+                                "peril_spe_amount": '0',
+                              },
+                              {
+                                "peril_code": 'FFT',
+                                "peril_sumins": p_packget=="ONMHS1" ? data_result_1y.ITEM1_1_PERIL_SUMINS : data_result_3y.ITEM1_1_PERIL_SUMINS,
+                                "peril_rate":  p_packget=="ONMHS1" ? data_result_1y.ITEM1_1_PERIL_RATE : data_result_3y.ITEM1_1_PERIL_RATE,
+                                "peril_prem":  p_packget=="ONMHS1" ? data_result_1y.ITEM1_1_PERIL_PREM : data_result_3y.ITEM1_1_PERIL_PREM,
+                                "peril_damage_per": '0',
+                                "peril_damage_all": '0',
+                                "peril_spe_covers": '0',
+                                "peril_spe_amount": '0',
+                              },
+                              {
+                                "peril_code": '1.37',
+                                "peril_sumins": p_packget=="ONMHS1" ? data_result_1y.ITEM1_2_PERIL_SUMINS : data_result_3y.ITEM1_2_PERIL_SUMINS,
+                                "peril_rate":  p_packget=="ONMHS1" ? data_result_1y.ITEM1_2_PERIL_RATE : data_result_3y.ITEM1_2_PERIL_RATE,
+                                "peril_prem":  p_packget=="ONMHS1" ? data_result_1y.ITEM1_2_PERIL_PREM : data_result_3y.ITEM1_2_PERIL_PREM,
+                                "peril_damage_per": '0',
+                                "peril_damage_all": '0',
+                                "peril_spe_covers": '0',
+                                "peril_spe_amount": '0',
+                              },
+                              {
+                                "peril_code": 'WRK',
+                                "peril_sumins": p_packget=="ONMHS1" ? data_result_1y.ITEM1_3_PERIL_SUMINS : data_result_3y.ITEM1_3_PERIL_SUMINS,
+                                "peril_rate":  p_packget=="ONMHS1" ? data_result_1y.ITEM1_3_PERIL_RATE : data_result_3y.ITEM1_3_PERIL_RATE,
+                                "peril_prem":  p_packget=="ONMHS1" ? data_result_1y.ITEM1_3_PERIL_PREM : data_result_3y.ITEM1_3_PERIL_PREM,
+                                "peril_damage_per": '0',
+                                "peril_damage_all": '0',
+                                "peril_spe_covers": '0',
+                                "peril_spe_amount": '0',
+                              },
+                              {
+                                "peril_code": 'PROF',
+                                "peril_sumins": p_packget=="ONMHS1" ? data_result_1y.ITEM1_4_PERIL_SUMINS : data_result_3y.ITEM1_4_PERIL_SUMINS,
+                                "peril_rate":  p_packget=="ONMHS1" ? data_result_1y.ITEM1_4_PERIL_RATE : data_result_3y.ITEM1_4_PERIL_RATE,
+                                "peril_prem":  p_packget=="ONMHS1" ? data_result_1y.ITEM1_4_PERIL_PREM : data_result_3y.ITEM1_4_PERIL_PREM,
+                                "peril_damage_per": '0',
+                                "peril_damage_all": '0',
+                                "peril_spe_covers": '0',
+                                "peril_spe_amount": '0',
+                              },
+                              {
+                                "peril_code": '1.12',
+                                "peril_sumins": p_packget=="ONMHS1" ? data_result_1y.ITEM1_7_PERIL_SUMINS : data_result_3y.ITEM1_7_PERIL_SUMINS,
+                                "peril_rate":  p_packget=="ONMHS1" ? data_result_1y.ITEM1_7_PERIL_RATE : data_result_3y.ITEM1_7_PERIL_RATE,
+                                "peril_prem":  p_packget=="ONMHS1" ? data_result_1y.ITEM1_7_PERIL_PREM : data_result_3y.ITEM1_7_PERIL_PREM,
+                                "peril_damage_per": '0',
+                                "peril_damage_all": '0',
+                                "peril_spe_covers": '0',
+                                "peril_spe_amount": '0',
+                              },
+                              {
+                                "peril_code": 'PA',
+                                "peril_sumins": p_packget=="ONMHS1" ? data_result_1y.PA_PERIL_SUMINS : data_result_3y.PA_PERIL_SUMINS,
+                                "peril_rate":  p_packget=="ONMHS1" ? data_result_1y.PA_PERIL_RATE : data_result_3y.PA_PERIL_RATE,
+                                "peril_prem":  p_packget=="ONMHS1" ? data_result_1y.PA_PERIL_PREM : data_result_3y.PA_PERIL_PREM,
+                                "peril_damage_per": '0',
+                                "peril_damage_all": '0',
+                                "peril_spe_covers": '0',
+                                "peril_spe_amount":  p_packget=="ONMHS1" ? data_result_1y.PA_PERIL_SPE_AMOUNT : data_result_3y.PA_PERIL_SPE_AMOUNT,
+                              },
+                              {
+                                "peril_code": '0.00',
+                                "peril_sumins": p_packget=="ONMHS1" ? data_result_1y.GLASS_PERIL_SUMINS : data_result_3y.GLASS_PERIL_SUMINS,
+                                "peril_rate":  p_packget=="ONMHS1" ? data_result_1y.GLASS_PERIL_RATE : data_result_3y.GLASS_PERIL_RATE,
+                                "peril_prem":  p_packget=="ONMHS1" ? data_result_1y.GLASS_PERIL_PREM : data_result_3y.GLASS_PERIL_PREM,
+                                "peril_damage_per": '0',
+                                "peril_damage_all": '0',
+                                "peril_spe_covers": '0',
+                                "peril_spe_amount": '0',
+                              },
+                              {
+                                "peril_code": 'CASH',
+                                "peril_sumins": p_packget=="ONMHS1" ? data_result_1y.CASH_PERIL_SUMINS : data_result_3y.CASH_PERIL_SUMINS,
+                                "peril_rate":  p_packget=="ONMHS1" ? data_result_1y.CASH_PERIL_RATE : data_result_3y.CASH_PERIL_RATE,
+                                "peril_prem":  p_packget=="ONMHS1" ? data_result_1y.CASH_PERIL_PREM : data_result_3y.CASH_PERIL_PREM,
+                                "peril_damage_per": '0',
+                                "peril_damage_all": '0',
+                                "peril_spe_covers": '0',
+                                "peril_spe_amount": '0',
+                              },
+                              {
+                                "peril_code": '1.38',
+                                "peril_sumins": p_packget=="ONMHS1" ? data_result_1y.THEFT_PERIL_SUMINS : data_result_3y.THEFT_PERIL_SUMINS,
+                                "peril_rate":  p_packget=="ONMHS1" ? data_result_1y.THEFT_PERIL_RATE : data_result_3y.THEFT_PERIL_RATE,
+                                "peril_prem":  p_packget=="ONMHS1" ? data_result_1y.THEFT_PERIL_PREM : data_result_3y.THEFT_PERIL_PREM,
+                                "peril_damage_per": '0',
+                                "peril_damage_all": '0',
+                                "peril_spe_covers": '0',
+                                "peril_spe_amount": '0',
+                              },
+                              {
+                                "peril_code": '1.40',
+                                "peril_sumins": p_packget=="ONMHS1" ? data_result_1y.LIABILITY_PERIL_SUMINS : data_result_3y.LIABILITY_PERIL_SUMINS,
+                                "peril_rate":  p_packget=="ONMHS1" ? data_result_1y.LIABILITY_PERIL_RATE : data_result_3y.LIABILITY_PERIL_RATE,
+                                "peril_prem":  p_packget=="ONMHS1" ? data_result_1y.LIABILITY_PERIL_PREM : data_result_3y.LIABILITY_PERIL_PREM,
+                                "peril_damage_per": '0',
+                                "peril_damage_all": '0',
+                                "peril_spe_covers": '0',
+                                "peril_spe_amount": '0',
+                              },
+                              {
+                                "peril_code": 'CMRT',
+                                "peril_sumins": p_packget=="ONMHS1" ? data_result_1y.DANGER_PERIL_SUMINS : data_result_3y.DANGER_PERIL_SUMINS,
+                                "peril_rate":  p_packget=="ONMHS1" ? data_result_1y.DANGER_PERIL_RATE : data_result_3y.DANGER_PERIL_RATE,
+                                "peril_prem":  p_packget=="ONMHS1" ? data_result_1y.DANGER_PERIL_PREM : data_result_3y.DANGER_PERIL_PREM,
+                                "peril_damage_per": '0',
+                                "peril_damage_all": '0',
+                                "peril_spe_covers": p_packget=="ONMHS1" ? data_result_1y.DANGER_PERIL_SPE_COVERS : data_result_3y.DANGER_PERIL_SPE_COVERS,
+                                "peril_spe_amount": p_packget=="ONMHS1" ? data_result_1y.DANGER_PERIL_SPE_AMOUNT : data_result_3y.DANGER_PERIL_SPE_AMOUNT,
+                              }
+                              ,
+                              {
+                                "peril_code": 'INST',
+                                "peril_sumins": p_packget=="ONMHS1" ? data_result_1y.RENT_PERIL_SUMINS : data_result_3y.RENT_PERIL_SUMINS,
+                                "peril_rate":  p_packget=="ONMHS1" ? data_result_1y.RENT_PERIL_RATE : data_result_3y.RENT_PERIL_RATE,
+                                "peril_prem":  p_packget=="ONMHS1" ? data_result_1y.RENT_PERIL_PREM : data_result_3y.RENT_PERIL_PREM,
+                                "peril_damage_per": '0',
+                                "peril_damage_all": '0',
+                                "peril_spe_covers": p_packget=="ONMHS1" ? data_result_1y.RENT_PERIL_SPE_COVERS : data_result_3y.RENT_PERIL_SPE_COVERS,
+                                "peril_spe_amount": '0',
+                              }
+                            ],
+                            item_nbr:'1',
+                            interest_item: [{
+                                "int_code": 'B',
+                                "int_sumins": data_result_1y.FIRE_BUILDING
+                              },
+                              {
+                                "int_code": 'F',
+                                "int_sumins": data_result_1y.FIRE_BELONGING
+                              },
+                            ],
+                            sch_sumins:  p_packget=="ONMHS1" ? data_result_1y.FIRE : data_result_3y.FIRE,
+                            sch_prem: p_packget=="ONMHS1" ? net1 : net3,
+                            risk_rate:  '0.08900000',
+                            /* end by dum-soken */
                         }
                         data = {
                             ...data,
@@ -1747,182 +1939,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                         data = {
                             ...data,
                             fdAddr_Num: fdAddr_Num,
-                            loc_fdAddr_Num: loc_fdAddr_Num,
-                            /* by dum-soken */
-
-                            coverdays: p_packget=="ONMHS1" ? '365' : '1096',
-                            c_class:'18-59',//test
-                            flg_ind:'F',//test
-                            prem_rate: p_packget=="ONMHS1" ? '100.000000' : '250.000000',
-                            sum_pr_prem:'0.00',
-                            ann_prem: p_packget=="ONMHS1" ? net1 : net3,
-                            sum_ann_prem: p_packget=="ONMHS1" ? net1 : net3,
-                            sum_ins:c_sum,
-                            gross_amt: p_packget=="ONMHS1" ? net1 : net3,
-                            ann_nprem: p_packget=="ONMHS1" ? net1 : net3,
-                            stamp_amt: p_packget=="ONMHS1" ? stamp1 : stamp1,
-                            vat_amt: p_packget=="ONMHS1" ? vat1 : vat3,
-                            total_amt: p_packget=="ONMHS1" ? total1 : total3,
-                            ann_days: p_packget=="ONMHS1" ? '365' : '1096',
-                            invoice:'INV0001',//test
-
-                            packget_peril: [{
-                                "peril_code": 'TMRT',
-                                "peril_sumins": p_packget=="ONMHS1" ? data_result_1y[0].ITEM1_5_PERIL_SUMINS : data_result_3y[0].ITEM1_5_PERIL_SUMINS,
-                                "peril_rate":  p_packget=="ONMHS1" ? data_result_1y[0].ITEM1_5_PERIL_RATE : data_result_3y[0].ITEM1_5_PERIL_RATE,
-                                "peril_prem":  p_packget=="ONMHS1" ? data_result_1y[0].ITEM1_5_PERIL_PREM : data_result_3y[0].ITEM1_5_PERIL_PREM,
-                                "peril_damage_per": '0',
-                                "peril_damage_all": '0',
-                                "peril_spe_covers":  '0',
-                                "peril_spe_amount":  p_packget=="ONMHS1" ? data_result_1y[0].ITEM1_5_PERIL_SPE_AMOUNT : data_result_3y[0].ITEM1_5_PERIL_SPE_AMOUNT,
-                              },
-                              {
-                                "peril_code": 'ANTIQ',
-                                "peril_sumins": p_packget=="ONMHS1" ? data_result_1y[0].ITEM1_8_PERIL_SUMINS : data_result_3y[0].ITEM1_8_PERIL_SUMINS,
-                                "peril_rate":  p_packget=="ONMHS1" ? data_result_1y[0].ITEM1_8_PERIL_RATE : data_result_3y[0].ITEM1_8_PERIL_RATE,
-                                "peril_prem":  p_packget=="ONMHS1" ? data_result_1y[0].ITEM1_8_PERIL_PREM : data_result_3y[0].ITEM1_8_PERIL_PREM,
-                                "peril_damage_per": '0',
-                                "peril_damage_all": '0',
-                                "peril_spe_covers": '0',
-                                "peril_spe_amount": '0',
-                              },
-                              {
-                                "peril_code": 'FFT',
-                                "peril_sumins": p_packget=="ONMHS1" ? data_result_1y[0].ITEM1_1_PERIL_SUMINS : data_result_3y[0].ITEM1_1_PERIL_SUMINS,
-                                "peril_rate":  p_packget=="ONMHS1" ? data_result_1y[0].ITEM1_1_PERIL_RATE : data_result_3y[0].ITEM1_1_PERIL_RATE,
-                                "peril_prem":  p_packget=="ONMHS1" ? data_result_1y[0].ITEM1_1_PERIL_PREM : data_result_3y[0].ITEM1_1_PERIL_PREM,
-                                "peril_damage_per": '0',
-                                "peril_damage_all": '0',
-                                "peril_spe_covers": '0',
-                                "peril_spe_amount": '0',
-                              },
-                              {
-                                "peril_code": '1.37',
-                                "peril_sumins": p_packget=="ONMHS1" ? data_result_1y[0].ITEM1_2_PERIL_SUMINS : data_result_3y[0].ITEM1_2_PERIL_SUMINS,
-                                "peril_rate":  p_packget=="ONMHS1" ? data_result_1y[0].ITEM1_2_PERIL_RATE : data_result_3y[0].ITEM1_2_PERIL_RATE,
-                                "peril_prem":  p_packget=="ONMHS1" ? data_result_1y[0].ITEM1_2_PERIL_PREM : data_result_3y[0].ITEM1_2_PERIL_PREM,
-                                "peril_damage_per": '0',
-                                "peril_damage_all": '0',
-                                "peril_spe_covers": '0',
-                                "peril_spe_amount": '0',
-                              },
-                              {
-                                "peril_code": 'WRK',
-                                "peril_sumins": p_packget=="ONMHS1" ? data_result_1y[0].ITEM1_3_PERIL_SUMINS : data_result_3y[0].ITEM1_3_PERIL_SUMINS,
-                                "peril_rate":  p_packget=="ONMHS1" ? data_result_1y[0].ITEM1_3_PERIL_RATE : data_result_3y[0].ITEM1_3_PERIL_RATE,
-                                "peril_prem":  p_packget=="ONMHS1" ? data_result_1y[0].ITEM1_3_PERIL_PREM : data_result_3y[0].ITEM1_3_PERIL_PREM,
-                                "peril_damage_per": '0',
-                                "peril_damage_all": '0',
-                                "peril_spe_covers": '0',
-                                "peril_spe_amount": '0',
-                              },
-                              {
-                                "peril_code": 'PROF',
-                                "peril_sumins": p_packget=="ONMHS1" ? data_result_1y[0].ITEM1_4_PERIL_SUMINS : data_result_3y[0].ITEM1_4_PERIL_SUMINS,
-                                "peril_rate":  p_packget=="ONMHS1" ? data_result_1y[0].ITEM1_4_PERIL_RATE : data_result_3y[0].ITEM1_4_PERIL_RATE,
-                                "peril_prem":  p_packget=="ONMHS1" ? data_result_1y[0].ITEM1_4_PERIL_PREM : data_result_3y[0].ITEM1_4_PERIL_PREM,
-                                "peril_damage_per": '0',
-                                "peril_damage_all": '0',
-                                "peril_spe_covers": '0',
-                                "peril_spe_amount": '0',
-                              },
-                              {
-                                "peril_code": '1.12',
-                                "peril_sumins": p_packget=="ONMHS1" ? data_result_1y[0].ITEM1_7_PERIL_SUMINS : data_result_3y[0].ITEM1_7_PERIL_SUMINS,
-                                "peril_rate":  p_packget=="ONMHS1" ? data_result_1y[0].ITEM1_7_PERIL_RATE : data_result_3y[0].ITEM1_7_PERIL_RATE,
-                                "peril_prem":  p_packget=="ONMHS1" ? data_result_1y[0].ITEM1_7_PERIL_PREM : data_result_3y[0].ITEM1_7_PERIL_PREM,
-                                "peril_damage_per": '0',
-                                "peril_damage_all": '0',
-                                "peril_spe_covers": '0',
-                                "peril_spe_amount": '0',
-                              },
-                              {
-                                "peril_code": 'PA',
-                                "peril_sumins": p_packget=="ONMHS1" ? data_result_1y[0].PA_PERIL_SUMINS : data_result_3y[0].PA_PERIL_SUMINS,
-                                "peril_rate":  p_packget=="ONMHS1" ? data_result_1y[0].PA_PERIL_RATE : data_result_3y[0].PA_PERIL_RATE,
-                                "peril_prem":  p_packget=="ONMHS1" ? data_result_1y[0].PA_PERIL_PREM : data_result_3y[0].PA_PERIL_PREM,
-                                "peril_damage_per": '0',
-                                "peril_damage_all": '0',
-                                "peril_spe_covers": '0',
-                                "peril_spe_amount":  p_packget=="ONMHS1" ? data_result_1y[0].PA_PERIL_SPE_AMOUNT : data_result_3y[0].PA_PERIL_SPE_AMOUNT,
-                              },
-                              {
-                                "peril_code": '0.00',
-                                "peril_sumins": p_packget=="ONMHS1" ? data_result_1y[0].GLASS_PERIL_SUMINS : data_result_3y[0].GLASS_PERIL_SUMINS,
-                                "peril_rate":  p_packget=="ONMHS1" ? data_result_1y[0].GLASS_PERIL_RATE : data_result_3y[0].GLASS_PERIL_RATE,
-                                "peril_prem":  p_packget=="ONMHS1" ? data_result_1y[0].GLASS_PERIL_PREM : data_result_3y[0].GLASS_PERIL_PREM,
-                                "peril_damage_per": '0',
-                                "peril_damage_all": '0',
-                                "peril_spe_covers": '0',
-                                "peril_spe_amount": '0',
-                              },
-                              {
-                                "peril_code": 'CASH',
-                                "peril_sumins": p_packget=="ONMHS1" ? data_result_1y[0].CASH_PERIL_SUMINS : data_result_3y[0].CASH_PERIL_SUMINS,
-                                "peril_rate":  p_packget=="ONMHS1" ? data_result_1y[0].CASH_PERIL_RATE : data_result_3y[0].CASH_PERIL_RATE,
-                                "peril_prem":  p_packget=="ONMHS1" ? data_result_1y[0].CASH_PERIL_PREM : data_result_3y[0].CASH_PERIL_PREM,
-                                "peril_damage_per": '0',
-                                "peril_damage_all": '0',
-                                "peril_spe_covers": '0',
-                                "peril_spe_amount": '0',
-                              },
-                              {
-                                "peril_code": '1.38',
-                                "peril_sumins": p_packget=="ONMHS1" ? data_result_1y[0].THEFT_PERIL_SUMINS : data_result_3y[0].THEFT_PERIL_SUMINS,
-                                "peril_rate":  p_packget=="ONMHS1" ? data_result_1y[0].THEFT_PERIL_RATE : data_result_3y[0].THEFT_PERIL_RATE,
-                                "peril_prem":  p_packget=="ONMHS1" ? data_result_1y[0].THEFT_PERIL_PREM : data_result_3y[0].THEFT_PERIL_PREM,
-                                "peril_damage_per": '0',
-                                "peril_damage_all": '0',
-                                "peril_spe_covers": '0',
-                                "peril_spe_amount": '0',
-                              },
-                              {
-                                "peril_code": '1.40',
-                                "peril_sumins": p_packget=="ONMHS1" ? data_result_1y[0].LIABILITY_PERIL_SUMINS : data_result_3y[0].LIABILITY_PERIL_SUMINS,
-                                "peril_rate":  p_packget=="ONMHS1" ? data_result_1y[0].LIABILITY_PERIL_RATE : data_result_3y[0].LIABILITY_PERIL_RATE,
-                                "peril_prem":  p_packget=="ONMHS1" ? data_result_1y[0].LIABILITY_PERIL_PREM : data_result_3y[0].LIABILITY_PERIL_PREM,
-                                "peril_damage_per": '0',
-                                "peril_damage_all": '0',
-                                "peril_spe_covers": '0',
-                                "peril_spe_amount": '0',
-                              },
-                              {
-                                "peril_code": 'CMRT',
-                                "peril_sumins": p_packget=="ONMHS1" ? data_result_1y[0].DANGER_PERIL_SUMINS : data_result_3y[0].DANGER_PERIL_SUMINS,
-                                "peril_rate":  p_packget=="ONMHS1" ? data_result_1y[0].DANGER_PERIL_RATE : data_result_3y[0].DANGER_PERIL_RATE,
-                                "peril_prem":  p_packget=="ONMHS1" ? data_result_1y[0].DANGER_PERIL_PREM : data_result_3y[0].DANGER_PERIL_PREM,
-                                "peril_damage_per": '0',
-                                "peril_damage_all": '0',
-                                "peril_spe_covers": p_packget=="ONMHS1" ? data_result_1y[0].DANGER_PERIL_SPE_COVERS : data_result_3y[0].DANGER_PERIL_SPE_COVERS,
-                                "peril_spe_amount": p_packget=="ONMHS1" ? data_result_1y[0].DANGER_PERIL_SPE_AMOUNT : data_result_3y[0].DANGER_PERIL_SPE_AMOUNT,
-                              }
-                              ,
-                              {
-                                "peril_code": 'INST',
-                                "peril_sumins": p_packget=="ONMHS1" ? data_result_1y[0].RENT_PERIL_SUMINS : data_result_3y[0].RENT_PERIL_SUMINS,
-                                "peril_rate":  p_packget=="ONMHS1" ? data_result_1y[0].RENT_PERIL_RATE : data_result_3y[0].RENT_PERIL_RATE,
-                                "peril_prem":  p_packget=="ONMHS1" ? data_result_1y[0].RENT_PERIL_PREM : data_result_3y[0].RENT_PERIL_PREM,
-                                "peril_damage_per": '0',
-                                "peril_damage_all": '0',
-                                "peril_spe_covers": p_packget=="ONMHS1" ? data_result_1y[0].RENT_PERIL_SPE_COVERS : data_result_3y[0].RENT_PERIL_SPE_COVERS,
-                                "peril_spe_amount": '0',
-                              }
-                            ],
-//ptbd,
-                            item_nbr:'1',
-                            interest_item: [{
-                                "int_code": 'B',
-                                "int_sumins": data_result_1y[0].FIRE_BUILDING
-                              },
-                              {
-                                "int_code": 'F',
-                                "int_sumins": data_result_1y[0].FIRE_BELONGING
-                              },
-                            ],
-                            sch_sumins:  p_packget=="ONMHS1" ? data_result_1y[0].FIRE : data_result_3y[0].FIRE,
-                            sch_prem: p_packget=="ONMHS1" ? net1 : net3,
-                            risk_rate:  '0.08900000',
-                            /* end by dum-soken */
+                            loc_fdAddr_Num: loc_fdAddr_Num
                         }
 
                         // console.log(data);
