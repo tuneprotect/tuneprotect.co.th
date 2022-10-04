@@ -522,6 +522,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     let data_result_1y = [];
     let data_result_3y = [];
 
+    let data_result_amount_1y = [];
+    let data_result_amount_3y = [];
     /* Step 1 */
     $$("select[name=ctrl_fire_building]").forEach($el => {
         $el.addEventListener("change", function (e) { 
@@ -591,6 +593,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             return element.myhome_id === results[0].id;
         });
         //data_result_1y = result_1y;
+        data_result_amount_1y = result_1y;
         net1=numberWithCommas(result_1y[0].Net);
         document.getElementById("txtAmount1").value = numberWithCommas(result_1y[0].Total);
 
@@ -610,6 +613,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         const result_3y = amount3y.filter(element => {
             return element.myhome_id === results[0].id;
         });
+        data_result_amount_3y = result_3y;
         //console.log("result_3y",result_3y);
         //data_result_3y = result_3y;
         net3=numberWithCommas(result_3y[0].Net);
@@ -846,9 +850,20 @@ document.addEventListener("DOMContentLoaded", async () => {
         const results = result.filter(element => {
             return element.TAGNAME === package_code_1y && element.FIRE == package_amount;
         }); 
+       
         data_result_1y = results[0];
         data_result_3y = results[0];
         if(results!=""){
+
+            const result_1y = amount3y.filter(element => {
+                return element.myhome_id === data_result_1y.id;
+            });
+            data_result_amount_1y = result_1y;
+            const result_3y = amount3y.filter(element => {
+                return element.myhome_id === data_result_3y.id;
+            });
+            data_result_amount_3y = result_3y;
+
             apiMyHomeSmart1y(data_result_1y.id);
             apiMyHomeSmart3y(data_result_1y.id);
             drpCompensation.push(data_result_1y.RENT_PERIL_PREM);
@@ -1636,7 +1651,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                             // fdRevenue: $('#fdRevenue').checked ? 'Y' : 'N',
                             // fdTaxno: $('#fdTaxno').value,
                             //fdPayAMT: getSelectedPricePackage(data.fdPackage, package_data),
-                            fdPayAMT: p_packget=="ONMHS1" ? $('#txtAmount1').value : $('#txtAmount3').value,
+                            fdPayAMT: p_packget=="ONMHS1" ? data_result_amount_1y.Total : data_result_amount_3y.Total,
                             ctrl_accept_insurance_term: $('#ctrl_accept_insurance_term').checked ? true : undefined,
                             ctrl_terms: $('#ctrl_terms').checked ? true : undefined,
 
@@ -1984,7 +1999,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                         $summary_section.innerHTML = `<h3 class="text-primary">${$summary_section.getAttribute('data-insurance_data')}</h3><br/>
                     <div class="two-col">
                         <div><span>${$summary_section.getAttribute('data-plan')} : </span><strong>${selectedPackage}</strong></div>
-                        <div><span>${$summary_section.getAttribute('data-price')} : </span><strong>${data.fdPayAMT} ${$summary_section.getAttribute('data-baht')}</strong></div>
+                        <div><span>${$summary_section.getAttribute('data-price')} : </span><strong>${ numberWithCommas(data.fdPayAMT) } ${$summary_section.getAttribute('data-baht')}</strong></div>
                         <div class="controls-wrapper full no-lable"><span>${$('#ctrl_fire_building_sum').value} : </span>
                         <strong>${$('#ctrl_fire_building_text').value}</strong>
                         </div>

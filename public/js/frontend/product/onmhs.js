@@ -55640,7 +55640,7 @@ var getSelectedPricePackage = function getSelectedPricePackage(packageCode, pack
 };
 
 document.addEventListener("DOMContentLoaded", /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee9() {
-  var package_data, Redeem_Code, msg_error, Keys, myEle, status_api, $form, allField, iti, MyHomeSmart, oneYear, treeYear, drpCompensation, drpCompensationText, dep1, dep3, p_packget, p_price, p_price1, p_price3, P, G, C, T, D, L, R, code, amount, sumTotal, package_1year, package_3year, package_code_1y, package_code_3y, package_amount, amount1y, amount3y, net1, net3, stamp1, stamp3, vat1, vat3, total1, total3, c_sum, data_result_1y, data_result_3y, getDataAmount1y, getDataAmount3y, apiMyHomeSmartData, apiAmount1y, apiAmount3y, changeTextAmount, setData, setDataAmount1y, setDataAmount3y, setDataStep1, apiMyHomeSmart, parseNumber, apiMyHomeSmart1y, apiMyHomeSmart3y, numberWithCommas, changeTextPremium, zipcode_data, $address_dup, step1Constraints, fdIDTYPE, step, data, $btnGoto;
+  var package_data, Redeem_Code, msg_error, Keys, myEle, status_api, $form, allField, iti, MyHomeSmart, oneYear, treeYear, drpCompensation, drpCompensationText, dep1, dep3, p_packget, p_price, p_price1, p_price3, P, G, C, T, D, L, R, code, amount, sumTotal, package_1year, package_3year, package_code_1y, package_code_3y, package_amount, amount1y, amount3y, net1, net3, stamp1, stamp3, vat1, vat3, total1, total3, c_sum, data_result_1y, data_result_3y, data_result_amount_1y, data_result_amount_3y, getDataAmount1y, getDataAmount3y, apiMyHomeSmartData, apiAmount1y, apiAmount3y, changeTextAmount, setData, setDataAmount1y, setDataAmount3y, setDataStep1, apiMyHomeSmart, parseNumber, apiMyHomeSmart1y, apiMyHomeSmart3y, numberWithCommas, changeTextPremium, zipcode_data, $address_dup, step1Constraints, fdIDTYPE, step, data, $btnGoto;
   return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee9$(_context9) {
     while (1) {
       switch (_context9.prev = _context9.next) {
@@ -55849,6 +55849,8 @@ document.addEventListener("DOMContentLoaded", /*#__PURE__*/_asyncToGenerator( /*
           c_sum = '';
           data_result_1y = [];
           data_result_3y = [];
+          data_result_amount_1y = [];
+          data_result_amount_3y = [];
           /* Step 1 */
 
           Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$$"])("select[name=ctrl_fire_building]").forEach(function ($el) {
@@ -55925,6 +55927,7 @@ document.addEventListener("DOMContentLoaded", /*#__PURE__*/_asyncToGenerator( /*
               return element.myhome_id === results[0].id;
             }); //data_result_1y = result_1y;
 
+            data_result_amount_1y = result_1y;
             net1 = numberWithCommas(result_1y[0].Net);
             document.getElementById("txtAmount1").value = numberWithCommas(result_1y[0].Total);
           };
@@ -55944,7 +55947,8 @@ document.addEventListener("DOMContentLoaded", /*#__PURE__*/_asyncToGenerator( /*
             console.log("results3", data_result_3y);
             var result_3y = amount3y.filter(function (element) {
               return element.myhome_id === results[0].id;
-            }); //console.log("result_3y",result_3y);
+            });
+            data_result_amount_3y = result_3y; //console.log("result_3y",result_3y);
             //data_result_3y = result_3y;
 
             net3 = numberWithCommas(result_3y[0].Net);
@@ -56248,6 +56252,14 @@ document.addEventListener("DOMContentLoaded", /*#__PURE__*/_asyncToGenerator( /*
             data_result_3y = results[0];
 
             if (results != "") {
+              var result_1y = amount3y.filter(function (element) {
+                return element.myhome_id === data_result_1y.id;
+              });
+              data_result_amount_1y = result_1y;
+              var result_3y = amount3y.filter(function (element) {
+                return element.myhome_id === data_result_3y.id;
+              });
+              data_result_amount_3y = result_3y;
               apiMyHomeSmart1y(data_result_1y.id);
               apiMyHomeSmart3y(data_result_1y.id);
               drpCompensation.push(data_result_1y.RENT_PERIL_PREM);
@@ -56784,10 +56796,10 @@ document.addEventListener("DOMContentLoaded", /*#__PURE__*/_asyncToGenerator( /*
           }; //changeTextPremium("ONMHS1");
 
 
-          _context9.next = 82;
+          _context9.next = 84;
           return Object(_helper__WEBPACK_IMPORTED_MODULE_2__["getZipcodeData"])();
 
-        case 82:
+        case 84:
           zipcode_data = _context9.sent;
           Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$"])("input[name=loc_fdAddr_PostCode]").addEventListener("change", function (e) {
             var value = e.target.value;
@@ -57082,7 +57094,7 @@ document.addEventListener("DOMContentLoaded", /*#__PURE__*/_asyncToGenerator( /*
                       // fdRevenue: $('#fdRevenue').checked ? 'Y' : 'N',
                       // fdTaxno: $('#fdTaxno').value,
                       //fdPayAMT: getSelectedPricePackage(data.fdPackage, package_data),
-                      fdPayAMT: p_packget == "ONMHS1" ? Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$"])('#txtAmount1').value : Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$"])('#txtAmount3').value,
+                      fdPayAMT: p_packget == "ONMHS1" ? data_result_amount_1y.Total : data_result_amount_3y.Total,
                       ctrl_accept_insurance_term: Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$"])('#ctrl_accept_insurance_term').checked ? true : undefined,
                       ctrl_terms: Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$"])('#ctrl_terms').checked ? true : undefined,
                       fdAddr_Home: Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$"])('#fdAddr_Home').value,
@@ -57411,7 +57423,7 @@ document.addEventListener("DOMContentLoaded", /*#__PURE__*/_asyncToGenerator( /*
                     var dob = Object(date_fns__WEBPACK_IMPORTED_MODULE_6__["format"])(Object(date_fns__WEBPACK_IMPORTED_MODULE_6__["parseISO"])(data.fdHBD), 'dd/MM/') + (_helper__WEBPACK_IMPORTED_MODULE_2__["locale"] === 'th' ? parseInt(Object(date_fns__WEBPACK_IMPORTED_MODULE_6__["format"])(Object(date_fns__WEBPACK_IMPORTED_MODULE_6__["parseISO"])(data.fdHBD), 'yyyy')) + 543 : Object(date_fns__WEBPACK_IMPORTED_MODULE_6__["format"])(Object(date_fns__WEBPACK_IMPORTED_MODULE_6__["parseISO"])(data.fdHBD), 'yyyy'));
                     var selectedPackage = Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$"])('#step3 .form-head').innerHTML;
                     var $summary_section = Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$"])('#summary_section');
-                    $summary_section.innerHTML = "<h3 class=\"text-primary\">".concat($summary_section.getAttribute('data-insurance_data'), "</h3><br/>\n                    <div class=\"two-col\">\n                        <div><span>").concat($summary_section.getAttribute('data-plan'), " : </span><strong>").concat(selectedPackage, "</strong></div>\n                        <div><span>").concat($summary_section.getAttribute('data-price'), " : </span><strong>").concat(data.fdPayAMT, " ").concat($summary_section.getAttribute('data-baht'), "</strong></div>\n                        <div class=\"controls-wrapper full no-lable\"><span>").concat(Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$"])('#ctrl_fire_building_sum').value, " : </span>\n                        <strong>").concat(Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$"])('#ctrl_fire_building_text').value, "</strong>\n                        </div>\n                   </div>\n                    <br/>\n                    <h3 class=\"text-primary\">").concat($summary_section.getAttribute('data-profile_data'), "</h3><br/>\n                                        <div class=\"two-col\">\n                        <div><span>").concat(Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$"])('label[for=fdName]').innerText, " : </span><strong>").concat(Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$"])('label[for=title_' + data.fdTitle + ']').innerText, " ").concat(data.fdName, " ").concat(data.fdSurname, "</strong></div>\n                        <div><span>").concat(Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$"])('label[for=fdSex]').innerText, " : </span><strong>").concat(data.fdSex === 'M' ? Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$"])('label[for=male]').innerText : Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$"])('label[for=female]').innerText, "</strong></div>\n                        <div><span>").concat(Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$"])('label[for=fdNationalID]').innerText, " : </span><strong>").concat(data.fdNationalID, "</strong></div>\n                        <div><span>").concat(Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$"])('#ctrl_day').getAttribute('data-birthdate'), " : </span><strong>").concat(dob, " (").concat(data.fdAge, " ").concat(Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$"])('#ctrl_day').getAttribute('data-years-old'), ")</strong></div>\n                        <div><span>").concat(Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$"])('label[for=fdTelephone]').innerText, " : </span><strong>").concat(data.fdTelephone, "</strong></div>\n                        <div><span>").concat(Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$"])('label[for=fdEmail]').innerText, " : </span><strong>").concat(data.fdEmail, "</strong></div>\n                        <div class=\"controls-wrapper full no-lable\">\n                        <span>").concat(Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$"])('label[for=fdAddr_Address_Data]').innerText, " : </span>\n                            <strong>").concat(address_insure, "</strong>\n                        </div>\n                        <div class=\"controls-wrapper full no-lable\">\n                        <span>").concat(Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$"])('label[for=loc_fdAddr_Address_Data]').innerText, " : </span>\n                            <strong>").concat(loc_address_insure, "</strong>\n                        </div>\n                        <div class=\"controls-wrapper full no-lable\"><span>").concat(Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$"])('#beneficiary_header').innerText, " : </span><strong>").concat(data.fdBenefit === 'other' ? data.fdBenefit_name + ' (' + data.fdRelation + ')' : data.fdBenefit, "</strong></div>\n                        <div><span>").concat(Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$"])('#receve_channel_title').innerText, " : </span><strong>").concat(data.fdSendType === 'P' ? Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$"])('label[for=ctrl_channel_post]').innerText : Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$"])('label[for=ctrl_channel_email]').innerText, "</strong></div>\n                        </div>") + sb;
+                    $summary_section.innerHTML = "<h3 class=\"text-primary\">".concat($summary_section.getAttribute('data-insurance_data'), "</h3><br/>\n                    <div class=\"two-col\">\n                        <div><span>").concat($summary_section.getAttribute('data-plan'), " : </span><strong>").concat(selectedPackage, "</strong></div>\n                        <div><span>").concat($summary_section.getAttribute('data-price'), " : </span><strong>").concat(numberWithCommas(data.fdPayAMT), " ").concat($summary_section.getAttribute('data-baht'), "</strong></div>\n                        <div class=\"controls-wrapper full no-lable\"><span>").concat(Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$"])('#ctrl_fire_building_sum').value, " : </span>\n                        <strong>").concat(Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$"])('#ctrl_fire_building_text').value, "</strong>\n                        </div>\n                   </div>\n                    <br/>\n                    <h3 class=\"text-primary\">").concat($summary_section.getAttribute('data-profile_data'), "</h3><br/>\n                                        <div class=\"two-col\">\n                        <div><span>").concat(Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$"])('label[for=fdName]').innerText, " : </span><strong>").concat(Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$"])('label[for=title_' + data.fdTitle + ']').innerText, " ").concat(data.fdName, " ").concat(data.fdSurname, "</strong></div>\n                        <div><span>").concat(Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$"])('label[for=fdSex]').innerText, " : </span><strong>").concat(data.fdSex === 'M' ? Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$"])('label[for=male]').innerText : Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$"])('label[for=female]').innerText, "</strong></div>\n                        <div><span>").concat(Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$"])('label[for=fdNationalID]').innerText, " : </span><strong>").concat(data.fdNationalID, "</strong></div>\n                        <div><span>").concat(Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$"])('#ctrl_day').getAttribute('data-birthdate'), " : </span><strong>").concat(dob, " (").concat(data.fdAge, " ").concat(Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$"])('#ctrl_day').getAttribute('data-years-old'), ")</strong></div>\n                        <div><span>").concat(Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$"])('label[for=fdTelephone]').innerText, " : </span><strong>").concat(data.fdTelephone, "</strong></div>\n                        <div><span>").concat(Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$"])('label[for=fdEmail]').innerText, " : </span><strong>").concat(data.fdEmail, "</strong></div>\n                        <div class=\"controls-wrapper full no-lable\">\n                        <span>").concat(Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$"])('label[for=fdAddr_Address_Data]').innerText, " : </span>\n                            <strong>").concat(address_insure, "</strong>\n                        </div>\n                        <div class=\"controls-wrapper full no-lable\">\n                        <span>").concat(Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$"])('label[for=loc_fdAddr_Address_Data]').innerText, " : </span>\n                            <strong>").concat(loc_address_insure, "</strong>\n                        </div>\n                        <div class=\"controls-wrapper full no-lable\"><span>").concat(Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$"])('#beneficiary_header').innerText, " : </span><strong>").concat(data.fdBenefit === 'other' ? data.fdBenefit_name + ' (' + data.fdRelation + ')' : data.fdBenefit, "</strong></div>\n                        <div><span>").concat(Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$"])('#receve_channel_title').innerText, " : </span><strong>").concat(data.fdSendType === 'P' ? Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$"])('label[for=ctrl_channel_post]').innerText : Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$"])('label[for=ctrl_channel_email]').innerText, "</strong></div>\n                        </div>") + sb;
                     status = true;
                     break;
                 }
@@ -57424,7 +57436,7 @@ document.addEventListener("DOMContentLoaded", /*#__PURE__*/_asyncToGenerator( /*
             });
           });
 
-        case 93:
+        case 95:
         case "end":
           return _context9.stop();
       }
