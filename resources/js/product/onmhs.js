@@ -858,11 +858,14 @@ document.addEventListener("DOMContentLoaded", async () => {
             const result_1y = amount3y.filter(element => {
                 return element.myhome_id === data_result_1y.id;
             });
-            data_result_amount_1y = result_1y;
+            data_result_amount_1y = result_1y[0];
             const result_3y = amount3y.filter(element => {
                 return element.myhome_id === data_result_3y.id;
             });
-            data_result_amount_3y = result_3y;
+            data_result_amount_3y = result_3y[0];
+
+            console.log('data_result_amount_1y',data_result_amount_1y);
+            console.log('data_result_amount_3y',data_result_amount_3y);
 
             apiMyHomeSmart1y(data_result_1y.id);
             apiMyHomeSmart3y(data_result_1y.id);
