@@ -56252,7 +56252,7 @@ document.addEventListener("DOMContentLoaded", /*#__PURE__*/_asyncToGenerator( /*
             data_result_3y = results[0];
 
             if (results != "") {
-              var result_1y = amount3y.filter(function (element) {
+              var result_1y = amount1y.filter(function (element) {
                 return element.myhome_id === data_result_1y.id;
               });
               data_result_amount_1y = result_1y[0];

@@ -855,7 +855,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         data_result_3y = results[0];
         if(results!=""){
 
-            const result_1y = amount3y.filter(element => {
+            const result_1y = amount1y.filter(element => {
                 return element.myhome_id === data_result_1y.id;
             });
             data_result_amount_1y = result_1y[0];
