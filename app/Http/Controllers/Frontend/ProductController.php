@@ -752,7 +752,7 @@ class ProductController extends BaseController
             $client = new Client();
 
 			//echo var_dump(json_encode($data));
-            //dd(json_encode($data));
+            dd(json_encode($data));
             $response = $client->request('POST', config('tune-api.url') . $this->getApiIssueLink($data['fdPackage']), [
                 'auth' => [config('tune-api.user'), config('tune-api.password')],
                 'headers' => [
