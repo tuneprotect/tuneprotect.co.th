@@ -55290,6 +55290,10 @@ function _defineProperty(obj, key, value) {
   return obj;
 }
 
+function _readOnlyError(name) {
+  throw new TypeError("\"" + name + "\" is read-only");
+}
+
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {
   try {
     var info = gen[key](arg);
@@ -55924,7 +55928,7 @@ document.addEventListener("DOMContentLoaded", /*#__PURE__*/_asyncToGenerator( /*
             var result_1y = amount1y.filter(function (element) {
               return element.myhome_id === results[0].id;
             });
-            data_result_1y = result_1y;
+            data_result_1y = (_readOnlyError("data_result_1y"), result_1y);
             net1 = numberWithCommas(result_1y[0].Net);
             document.getElementById("txtAmount1").value = numberWithCommas(result_1y[0].Total);
           };
@@ -55946,7 +55950,7 @@ document.addEventListener("DOMContentLoaded", /*#__PURE__*/_asyncToGenerator( /*
               return element.myhome_id === results[0].id;
             }); //console.log("result_3y",result_3y);
 
-            data_result_3y = result_3y;
+            data_result_3y = (_readOnlyError("data_result_3y"), result_3y);
             net3 = numberWithCommas(result_3y[0].Net);
             document.getElementById("txtAmount3").value = numberWithCommas(result_3y[0].Total);
           };
@@ -56397,6 +56401,8 @@ document.addEventListener("DOMContentLoaded", /*#__PURE__*/_asyncToGenerator( /*
             };
           }();
 
+          getDataAmount1y();
+          getDataAmount3y();
           apiAmount1y();
           apiAmount3y();
           apiMyHomeSmartData();
@@ -56766,10 +56772,10 @@ document.addEventListener("DOMContentLoaded", /*#__PURE__*/_asyncToGenerator( /*
           }; //changeTextPremium("ONMHS1");
 
 
-          _context9.next = 82;
+          _context9.next = 84;
           return Object(_helper__WEBPACK_IMPORTED_MODULE_2__["getZipcodeData"])();
 
-        case 82:
+        case 84:
           zipcode_data = _context9.sent;
           Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$"])("input[name=loc_fdAddr_PostCode]").addEventListener("change", function (e) {
             var value = e.target.value;
@@ -57407,7 +57413,7 @@ document.addEventListener("DOMContentLoaded", /*#__PURE__*/_asyncToGenerator( /*
             });
           });
 
-        case 93:
+        case 95:
         case "end":
           return _context9.stop();
       }

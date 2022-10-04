@@ -519,8 +519,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     let total3 = '';
     let c_sum='';
 
-    let data_result_1y = [];
-    let data_result_3y = [];
+    const data_result_1y = [];
+    const data_result_3y = [];
 
     /* Step 1 */
     $$("select[name=ctrl_fire_building]").forEach($el => {
@@ -994,7 +994,8 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 
     }
-
+    getDataAmount1y();
+    getDataAmount3y();
     apiAmount1y();
     apiAmount3y();
     apiMyHomeSmartData();
