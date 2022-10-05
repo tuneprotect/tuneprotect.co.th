@@ -637,7 +637,7 @@ class ProductController extends BaseController
             }
            
             //dd($data['packget_peril'],$data['interest_item']);
-            dd(json_encode($data['interest_item']));
+            dd(json_decode($data['interest_item']));
             //dd(json_decode($data['packget_peril'],true));
             $obj = $this->combindObj($data);
             //dd($obj);
