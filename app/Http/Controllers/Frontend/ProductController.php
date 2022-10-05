@@ -598,7 +598,7 @@ class ProductController extends BaseController
         {
             session(['nopayment_status' => true]);
         }
-dd($request);
+dd($request->all());
         $data = $request->all();
         if (isset($data['send_data'])) {
             $data = (array)json_decode($data['send_data']);
