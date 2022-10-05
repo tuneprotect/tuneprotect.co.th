@@ -83,9 +83,8 @@ class ProductController extends BaseController
         if (in_array($selected, ['ONTALN', 'ONCOVIDL', 'ONTA','TGCVLP','TAISM']) && $this->locale === 'th') {
             return redirect()->route('current', ['locale' => 'en', 'controller' => $this->controller, 'func' => $link, 'params' => $selected]);
         }
-        
-        dd($link, $selected);
 
+        
         $this->getProductDetail($link, $selected);
 
         if ($selected) {      
