@@ -1865,7 +1865,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                             fdMarketing_Consent: $('#ctrl_marketing').checked ? true : undefined
                         }
 
-                        console.log(data);
+                        console.log("data",data);
                         //=========================================================================================================
                         //address insure
                         let address_insure = "";

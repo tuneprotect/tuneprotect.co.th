@@ -57289,7 +57289,7 @@ document.addEventListener("DOMContentLoaded", /*#__PURE__*/_asyncToGenerator( /*
                     data = _objectSpread(_objectSpread({}, data), {}, {
                       fdMarketing_Consent: Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$"])('#ctrl_marketing').checked ? true : undefined
                     });
-                    console.log(data); //=========================================================================================================
+                    console.log("data", data); //=========================================================================================================
                     //address insure
 
                     var address_insure = "";
