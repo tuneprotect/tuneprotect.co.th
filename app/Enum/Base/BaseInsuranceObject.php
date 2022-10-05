@@ -70,7 +70,7 @@ class BaseInsuranceObject
     public $vat_amt;
     public $total_amt;
     public $ann_days;
-    public $packget_peril=array('peril_code' => '','peril_sumins' => '','peril_rate' => '','peril_prem' => '','peril_damage_per' => '','peril_damage_all' => '','peril_spe_covers' => '','peril_spe_amount' => '');
+    public $packget_peril;
     public $item_nbr;
     public $block_tambun;
     public $risk_loc;
@@ -91,7 +91,7 @@ class BaseInsuranceObject
     public $nbr_storey;
     public $owner_ind;
     //public List<InterestModel> interest_item;
-    public $interest_item=[];
+    public $interest_item;
     public $sch_sumins;
     public $sch_prem;
     public $risk_rate;
