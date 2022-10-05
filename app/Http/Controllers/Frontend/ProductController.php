@@ -12,6 +12,7 @@ use App\Enum\COVIDLObject;
 use App\Enum\ONTALNObject;
 use App\Enum\VACINAObject;
 use App\Enum\VSAFEAObject;
+use App\Enum\ONMHSObject;
 use App\Enum\FIMPObject;
 use App\Enum\PAObject;
 use App\Enum\ProjectEnum;
