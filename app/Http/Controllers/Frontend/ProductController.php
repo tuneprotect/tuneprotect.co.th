@@ -637,7 +637,7 @@ class ProductController extends BaseController
             }
            
             //dd($data['packget_peril'],$data['interest_item']);
-            foreach ($data['interest_item'] as $objectss) {
+            foreach ($data['packget_peril'] as $objectss) {
                 echo var_dump($objectss);exit();
                 dd($objectss);
             }
