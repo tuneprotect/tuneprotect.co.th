@@ -1846,7 +1846,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                               }
                             ]).replaceAll('"',"'"),
                             item_nbr:'1',
-                            interest_item: [{
+                            interest_item: JSON.stringify([{
                                 int_code: 'B',
                                 int_sumins: data_result_1y.FIRE_BUILDING
                               },
@@ -1854,7 +1854,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                                 int_code: 'F',
                                 int_sumins: data_result_1y.FIRE_BELONGING
                               },
-                            ],
+                            ]).replaceAll('"',"'"),
                             sch_sumins:  p_packget=="ONMHS1" ? data_result_1y.FIRE : data_result_3y.FIRE,
                             sch_prem: p_packget=="ONMHS1" ? net1 : net3,
                             risk_rate:  '0.08900000',
