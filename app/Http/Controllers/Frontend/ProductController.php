@@ -635,8 +635,9 @@ class ProductController extends BaseController
             if(Str::contains($data['fdPackage'],ProjectEnum::DIABETES_URL)){
                 $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::DIABETES_URL;
             }
-
+            dd($data);
             $obj = $this->combindObj($data);
+            dd($obj);
             $result = $this->logData($obj);
 
             if (session('nopayment_status')) {
