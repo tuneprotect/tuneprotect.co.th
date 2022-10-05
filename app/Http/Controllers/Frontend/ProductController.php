@@ -642,7 +642,7 @@ class ProductController extends BaseController
             
             //dd(json_decode($data['packget_peril'],true));
             $obj = $this->combindObj($data);
-            dd($obj);
+            //dd($obj);
             $result = $this->logData($obj);
 
             if (session('nopayment_status')) {
