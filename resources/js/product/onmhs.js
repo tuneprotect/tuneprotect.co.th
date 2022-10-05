@@ -1844,7 +1844,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                                 peril_spe_covers: p_packget=="ONMHS1" ? data_result_1y.RENT_PERIL_SPE_COVERS : data_result_3y.RENT_PERIL_SPE_COVERS,
                                 peril_spe_amount: '0',
                               }
-                            ]),
+                            ]).toString(),
                             item_nbr:'1',
                             interest_item: [{
                                 int_code: 'B',
