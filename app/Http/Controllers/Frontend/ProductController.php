@@ -638,7 +638,7 @@ class ProductController extends BaseController
            
             //dd($data['packget_peril'],$data['interest_item']);
             foreach ($data['interest_item'] as $object) {
-                dd(json_decode($object->int_code));
+                dd($object->int_code);
             }
 
             //dd(json_decode($data['interest_item']));
