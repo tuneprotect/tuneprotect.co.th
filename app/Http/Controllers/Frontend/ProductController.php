@@ -84,7 +84,7 @@ class ProductController extends BaseController
             return redirect()->route('current', ['locale' => 'en', 'controller' => $this->controller, 'func' => $link, 'params' => $selected]);
         }
 
-        //dd($link, $selected);
+        dd($link, $selected);
         $this->getProductDetail($link, $selected);
 
         if ($selected) {      
