@@ -635,7 +635,7 @@ class ProductController extends BaseController
             if(Str::contains($data['fdPackage'],ProjectEnum::DIABETES_URL)){
                 $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::DIABETES_URL;
             }
-            dd((array)json_decode($data['fdPackage']));
+            dd((array)json_decode($data['packget_peril']));
             $obj = $this->combindObj($data);
             dd($obj);
             $result = $this->logData($obj);
