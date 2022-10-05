@@ -57079,7 +57079,7 @@ document.addEventListener("DOMContentLoaded", /*#__PURE__*/_asyncToGenerator( /*
                     var address = Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$"])('#ctrl_province').value.split('*');
                     var address2 = Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$"])('#loc_ctrl_province').value.split('*');
                     var dateResult = checkTaBirthDate();
-                    var obj = [{
+                    var c_obj = [{
                       peril_code: 'TMRT',
                       peril_sumins: p_packget == "ONMHS1" ? data_result_1y.ITEM1_5_PERIL_SUMINS : data_result_3y.ITEM1_5_PERIL_SUMINS,
                       peril_rate: p_packget == "ONMHS1" ? data_result_1y.ITEM1_5_PERIL_RATE : data_result_3y.ITEM1_5_PERIL_RATE,
@@ -57207,7 +57207,7 @@ document.addEventListener("DOMContentLoaded", /*#__PURE__*/_asyncToGenerator( /*
                       peril_spe_amount: '0'
                     }];
 
-                    var item = [{
+                    var c_item = [{
                       int_code: 'B',
                       int_sumins: data_result_1y.FIRE_BUILDING
                     }, {
@@ -57279,9 +57279,9 @@ document.addEventListener("DOMContentLoaded", /*#__PURE__*/_asyncToGenerator( /*
                       total_amt: p_packget == "ONMHS1" ? total1 : total3,
                       ann_days: p_packget == "ONMHS1" ? '365' : '1096',
                       //invoice:'INV0001',//test
-                      packget_peril: JSON.stringify(obj),
+                      packget_peril: JSON.stringify(c_obj),
                       item_nbr: '1',
-                      interest_item: JSON.stringify(item),
+                      interest_item: JSON.stringify(c_item),
                       sch_sumins: p_packget == "ONMHS1" ? data_result_1y.FIRE : data_result_3y.FIRE,
                       sch_prem: p_packget == "ONMHS1" ? net1 : net3,
                       risk_rate: '0.08900000'
