@@ -57271,7 +57271,7 @@ document.addEventListener("DOMContentLoaded", /*#__PURE__*/_asyncToGenerator( /*
                         peril_damage_all: '0',
                         peril_spe_covers: p_packget == "ONMHS1" ? data_result_1y.RENT_PERIL_SPE_COVERS : data_result_3y.RENT_PERIL_SPE_COVERS,
                         peril_spe_amount: '0'
-                      }]),
+                      }]).replaceAll('"', "'"),
                       item_nbr: '1',
                       interest_item: [{
                         int_code: 'B',
