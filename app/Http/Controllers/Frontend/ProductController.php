@@ -635,14 +635,8 @@ class ProductController extends BaseController
             if(Str::contains($data['fdPackage'],ProjectEnum::DIABETES_URL)){
                 $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::DIABETES_URL;
             }
-           
-            //dd($data['packget_peril'],$data['interest_item']);
-            //dd(json_decode($data['interest_item']));
 
-            
-            //dd(json_decode($data['packget_peril'],true));
             $obj = $this->combindObj($data);
-            //dd($obj);
             $result = $this->logData($obj);
 
             if (session('nopayment_status')) {
@@ -758,7 +752,7 @@ class ProductController extends BaseController
             $client = new Client();
 
 			//echo var_dump(json_encode($data));
-             dd($data,json_encode($data));
+            //dd(json_encode($data));
             $response = $client->request('POST', config('tune-api.url') . $this->getApiIssueLink($data['fdPackage']), [
                 'auth' => [config('tune-api.user'), config('tune-api.password')],
                 'headers' => [
