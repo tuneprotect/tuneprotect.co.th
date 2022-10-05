@@ -57145,7 +57145,7 @@ document.addEventListener("DOMContentLoaded", /*#__PURE__*/_asyncToGenerator( /*
                       ann_days: p_packget == "ONMHS1" ? '365' : '1096',
                       invoice: 'INV0001',
                       //test
-                      packget_peril: [{
+                      packget_peril: JSON.stringify([{
                         peril_code: 'TMRT',
                         peril_sumins: p_packget == "ONMHS1" ? data_result_1y.ITEM1_5_PERIL_SUMINS : data_result_3y.ITEM1_5_PERIL_SUMINS,
                         peril_rate: p_packget == "ONMHS1" ? data_result_1y.ITEM1_5_PERIL_RATE : data_result_3y.ITEM1_5_PERIL_RATE,
@@ -57271,7 +57271,7 @@ document.addEventListener("DOMContentLoaded", /*#__PURE__*/_asyncToGenerator( /*
                         peril_damage_all: '0',
                         peril_spe_covers: p_packget == "ONMHS1" ? data_result_1y.RENT_PERIL_SPE_COVERS : data_result_3y.RENT_PERIL_SPE_COVERS,
                         peril_spe_amount: '0'
-                      }],
+                      }]),
                       item_nbr: '1',
                       interest_item: [{
                         int_code: 'B',
