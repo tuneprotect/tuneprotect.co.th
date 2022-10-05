@@ -57079,142 +57079,7 @@ document.addEventListener("DOMContentLoaded", /*#__PURE__*/_asyncToGenerator( /*
                     var address = Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$"])('#ctrl_province').value.split('*');
                     var address2 = Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$"])('#loc_ctrl_province').value.split('*');
                     var dateResult = checkTaBirthDate();
-                    var c_obj = [{
-                      peril_code: 'TMRT',
-                      peril_sumins: p_packget == "ONMHS1" ? data_result_1y.ITEM1_5_PERIL_SUMINS : data_result_3y.ITEM1_5_PERIL_SUMINS,
-                      peril_rate: p_packget == "ONMHS1" ? data_result_1y.ITEM1_5_PERIL_RATE : data_result_3y.ITEM1_5_PERIL_RATE,
-                      peril_prem: p_packget == "ONMHS1" ? data_result_1y.ITEM1_5_PERIL_PREM : data_result_3y.ITEM1_5_PERIL_PREM,
-                      peril_damage_per: '0',
-                      peril_damage_all: '0',
-                      peril_spe_covers: '0',
-                      peril_spe_amount: p_packget == "ONMHS1" ? data_result_1y.ITEM1_5_PERIL_SPE_AMOUNT : data_result_3y.ITEM1_5_PERIL_SPE_AMOUNT
-                    }, {
-                      peril_code: 'ANTIQ',
-                      peril_sumins: p_packget == "ONMHS1" ? data_result_1y.ITEM1_8_PERIL_SUMINS : data_result_3y.ITEM1_8_PERIL_SUMINS,
-                      peril_rate: p_packget == "ONMHS1" ? data_result_1y.ITEM1_8_PERIL_RATE : data_result_3y.ITEM1_8_PERIL_RATE,
-                      peril_prem: p_packget == "ONMHS1" ? data_result_1y.ITEM1_8_PERIL_PREM : data_result_3y.ITEM1_8_PERIL_PREM,
-                      peril_damage_per: '0',
-                      peril_damage_all: '0',
-                      peril_spe_covers: '0',
-                      peril_spe_amount: '0'
-                    }, {
-                      peril_code: 'FFT',
-                      peril_sumins: p_packget == "ONMHS1" ? data_result_1y.ITEM1_1_PERIL_SUMINS : data_result_3y.ITEM1_1_PERIL_SUMINS,
-                      peril_rate: p_packget == "ONMHS1" ? data_result_1y.ITEM1_1_PERIL_RATE : data_result_3y.ITEM1_1_PERIL_RATE,
-                      peril_prem: p_packget == "ONMHS1" ? data_result_1y.ITEM1_1_PERIL_PREM : data_result_3y.ITEM1_1_PERIL_PREM,
-                      peril_damage_per: '0',
-                      peril_damage_all: '0',
-                      peril_spe_covers: '0',
-                      peril_spe_amount: '0'
-                    }, {
-                      peril_code: '1.37',
-                      peril_sumins: p_packget == "ONMHS1" ? data_result_1y.ITEM1_2_PERIL_SUMINS : data_result_3y.ITEM1_2_PERIL_SUMINS,
-                      peril_rate: p_packget == "ONMHS1" ? data_result_1y.ITEM1_2_PERIL_RATE : data_result_3y.ITEM1_2_PERIL_RATE,
-                      peril_prem: p_packget == "ONMHS1" ? data_result_1y.ITEM1_2_PERIL_PREM : data_result_3y.ITEM1_2_PERIL_PREM,
-                      peril_damage_per: '0',
-                      peril_damage_all: '0',
-                      peril_spe_covers: '0',
-                      peril_spe_amount: '0'
-                    }, {
-                      peril_code: 'WRK',
-                      peril_sumins: p_packget == "ONMHS1" ? data_result_1y.ITEM1_3_PERIL_SUMINS : data_result_3y.ITEM1_3_PERIL_SUMINS,
-                      peril_rate: p_packget == "ONMHS1" ? data_result_1y.ITEM1_3_PERIL_RATE : data_result_3y.ITEM1_3_PERIL_RATE,
-                      peril_prem: p_packget == "ONMHS1" ? data_result_1y.ITEM1_3_PERIL_PREM : data_result_3y.ITEM1_3_PERIL_PREM,
-                      peril_damage_per: '0',
-                      peril_damage_all: '0',
-                      peril_spe_covers: '0',
-                      peril_spe_amount: '0'
-                    }, {
-                      peril_code: 'PROF',
-                      peril_sumins: p_packget == "ONMHS1" ? data_result_1y.ITEM1_4_PERIL_SUMINS : data_result_3y.ITEM1_4_PERIL_SUMINS,
-                      peril_rate: p_packget == "ONMHS1" ? data_result_1y.ITEM1_4_PERIL_RATE : data_result_3y.ITEM1_4_PERIL_RATE,
-                      peril_prem: p_packget == "ONMHS1" ? data_result_1y.ITEM1_4_PERIL_PREM : data_result_3y.ITEM1_4_PERIL_PREM,
-                      peril_damage_per: '0',
-                      peril_damage_all: '0',
-                      peril_spe_covers: '0',
-                      peril_spe_amount: '0'
-                    }, {
-                      peril_code: '1.12',
-                      peril_sumins: p_packget == "ONMHS1" ? data_result_1y.ITEM1_7_PERIL_SUMINS : data_result_3y.ITEM1_7_PERIL_SUMINS,
-                      peril_rate: p_packget == "ONMHS1" ? data_result_1y.ITEM1_7_PERIL_RATE : data_result_3y.ITEM1_7_PERIL_RATE,
-                      peril_prem: p_packget == "ONMHS1" ? data_result_1y.ITEM1_7_PERIL_PREM : data_result_3y.ITEM1_7_PERIL_PREM,
-                      peril_damage_per: '0',
-                      peril_damage_all: '0',
-                      peril_spe_covers: '0',
-                      peril_spe_amount: '0'
-                    }, {
-                      peril_code: 'PA',
-                      peril_sumins: p_packget == "ONMHS1" ? data_result_1y.PA_PERIL_SUMINS : data_result_3y.PA_PERIL_SUMINS,
-                      peril_rate: p_packget == "ONMHS1" ? data_result_1y.PA_PERIL_RATE : data_result_3y.PA_PERIL_RATE,
-                      peril_prem: p_packget == "ONMHS1" ? data_result_1y.PA_PERIL_PREM : data_result_3y.PA_PERIL_PREM,
-                      peril_damage_per: '0',
-                      peril_damage_all: '0',
-                      peril_spe_covers: '0',
-                      peril_spe_amount: p_packget == "ONMHS1" ? data_result_1y.PA_PERIL_SPE_AMOUNT : data_result_3y.PA_PERIL_SPE_AMOUNT
-                    }, {
-                      peril_code: '0.00',
-                      peril_sumins: p_packget == "ONMHS1" ? data_result_1y.GLASS_PERIL_SUMINS : data_result_3y.GLASS_PERIL_SUMINS,
-                      peril_rate: p_packget == "ONMHS1" ? data_result_1y.GLASS_PERIL_RATE : data_result_3y.GLASS_PERIL_RATE,
-                      peril_prem: p_packget == "ONMHS1" ? data_result_1y.GLASS_PERIL_PREM : data_result_3y.GLASS_PERIL_PREM,
-                      peril_damage_per: '0',
-                      peril_damage_all: '0',
-                      peril_spe_covers: '0',
-                      peril_spe_amount: '0'
-                    }, {
-                      peril_code: 'CASH',
-                      peril_sumins: p_packget == "ONMHS1" ? data_result_1y.CASH_PERIL_SUMINS : data_result_3y.CASH_PERIL_SUMINS,
-                      peril_rate: p_packget == "ONMHS1" ? data_result_1y.CASH_PERIL_RATE : data_result_3y.CASH_PERIL_RATE,
-                      peril_prem: p_packget == "ONMHS1" ? data_result_1y.CASH_PERIL_PREM : data_result_3y.CASH_PERIL_PREM,
-                      peril_damage_per: '0',
-                      peril_damage_all: '0',
-                      peril_spe_covers: '0',
-                      peril_spe_amount: '0'
-                    }, {
-                      peril_code: '1.38',
-                      peril_sumins: p_packget == "ONMHS1" ? data_result_1y.THEFT_PERIL_SUMINS : data_result_3y.THEFT_PERIL_SUMINS,
-                      peril_rate: p_packget == "ONMHS1" ? data_result_1y.THEFT_PERIL_RATE : data_result_3y.THEFT_PERIL_RATE,
-                      peril_prem: p_packget == "ONMHS1" ? data_result_1y.THEFT_PERIL_PREM : data_result_3y.THEFT_PERIL_PREM,
-                      peril_damage_per: '0',
-                      peril_damage_all: '0',
-                      peril_spe_covers: '0',
-                      peril_spe_amount: '0'
-                    }, {
-                      peril_code: '1.40',
-                      peril_sumins: p_packget == "ONMHS1" ? data_result_1y.LIABILITY_PERIL_SUMINS : data_result_3y.LIABILITY_PERIL_SUMINS,
-                      peril_rate: p_packget == "ONMHS1" ? data_result_1y.LIABILITY_PERIL_RATE : data_result_3y.LIABILITY_PERIL_RATE,
-                      peril_prem: p_packget == "ONMHS1" ? data_result_1y.LIABILITY_PERIL_PREM : data_result_3y.LIABILITY_PERIL_PREM,
-                      peril_damage_per: '0',
-                      peril_damage_all: '0',
-                      peril_spe_covers: '0',
-                      peril_spe_amount: '0'
-                    }, {
-                      peril_code: 'CMRT',
-                      peril_sumins: p_packget == "ONMHS1" ? data_result_1y.DANGER_PERIL_SUMINS : data_result_3y.DANGER_PERIL_SUMINS,
-                      peril_rate: p_packget == "ONMHS1" ? data_result_1y.DANGER_PERIL_RATE : data_result_3y.DANGER_PERIL_RATE,
-                      peril_prem: p_packget == "ONMHS1" ? data_result_1y.DANGER_PERIL_PREM : data_result_3y.DANGER_PERIL_PREM,
-                      peril_damage_per: '0',
-                      peril_damage_all: '0',
-                      peril_spe_covers: p_packget == "ONMHS1" ? data_result_1y.DANGER_PERIL_SPE_COVERS : data_result_3y.DANGER_PERIL_SPE_COVERS,
-                      peril_spe_amount: p_packget == "ONMHS1" ? data_result_1y.DANGER_PERIL_SPE_AMOUNT : data_result_3y.DANGER_PERIL_SPE_AMOUNT
-                    }, {
-                      peril_code: 'INST',
-                      peril_sumins: p_packget == "ONMHS1" ? data_result_1y.RENT_PERIL_SUMINS : data_result_3y.RENT_PERIL_SUMINS,
-                      peril_rate: p_packget == "ONMHS1" ? data_result_1y.RENT_PERIL_RATE : data_result_3y.RENT_PERIL_RATE,
-                      peril_prem: p_packget == "ONMHS1" ? data_result_1y.RENT_PERIL_PREM : data_result_3y.RENT_PERIL_PREM,
-                      peril_damage_per: '0',
-                      peril_damage_all: '0',
-                      peril_spe_covers: p_packget == "ONMHS1" ? data_result_1y.RENT_PERIL_SPE_COVERS : data_result_3y.RENT_PERIL_SPE_COVERS,
-                      peril_spe_amount: '0'
-                    }];
-
-                    var c_item = [{
-                      int_code: 'B',
-                      int_sumins: data_result_1y.FIRE_BUILDING
-                    }, {
-                      int_code: 'F',
-                      int_sumins: data_result_1y.FIRE_BELONGING
-                    }],
-                        data = _objectSpread(_objectSpread({}, data), {}, {
+                    data = _objectSpread(_objectSpread({}, data), {}, {
                       fdSex: Object(_helper__WEBPACK_IMPORTED_MODULE_2__["getRadioSelectedValue"])('fdSex'),
                       fdTitle: Object(_helper__WEBPACK_IMPORTED_MODULE_2__["getRadioSelectedValue"])('fdTitle'),
                       fdName: Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$"])('#fdName').value,
@@ -57278,17 +57143,149 @@ document.addEventListener("DOMContentLoaded", /*#__PURE__*/_asyncToGenerator( /*
                       vat_amt: p_packget == "ONMHS1" ? vat1 : vat3,
                       total_amt: p_packget == "ONMHS1" ? total1 : total3,
                       ann_days: p_packget == "ONMHS1" ? '365' : '1096',
-                      //invoice:'INV0001',//test
-                      packget_peril: JSON.stringify(c_obj),
+                      invoice: 'INV0001',
+                      //test
+                      packget_peril: JSON.stringify([{
+                        peril_code: 'TMRT',
+                        peril_sumins: p_packget == "ONMHS1" ? data_result_1y.ITEM1_5_PERIL_SUMINS : data_result_3y.ITEM1_5_PERIL_SUMINS,
+                        peril_rate: p_packget == "ONMHS1" ? data_result_1y.ITEM1_5_PERIL_RATE : data_result_3y.ITEM1_5_PERIL_RATE,
+                        peril_prem: p_packget == "ONMHS1" ? data_result_1y.ITEM1_5_PERIL_PREM : data_result_3y.ITEM1_5_PERIL_PREM,
+                        peril_damage_per: '0',
+                        peril_damage_all: '0',
+                        peril_spe_covers: '0',
+                        peril_spe_amount: p_packget == "ONMHS1" ? data_result_1y.ITEM1_5_PERIL_SPE_AMOUNT : data_result_3y.ITEM1_5_PERIL_SPE_AMOUNT
+                      }, {
+                        peril_code: 'ANTIQ',
+                        peril_sumins: p_packget == "ONMHS1" ? data_result_1y.ITEM1_8_PERIL_SUMINS : data_result_3y.ITEM1_8_PERIL_SUMINS,
+                        peril_rate: p_packget == "ONMHS1" ? data_result_1y.ITEM1_8_PERIL_RATE : data_result_3y.ITEM1_8_PERIL_RATE,
+                        peril_prem: p_packget == "ONMHS1" ? data_result_1y.ITEM1_8_PERIL_PREM : data_result_3y.ITEM1_8_PERIL_PREM,
+                        peril_damage_per: '0',
+                        peril_damage_all: '0',
+                        peril_spe_covers: '0',
+                        peril_spe_amount: '0'
+                      }, {
+                        peril_code: 'FFT',
+                        peril_sumins: p_packget == "ONMHS1" ? data_result_1y.ITEM1_1_PERIL_SUMINS : data_result_3y.ITEM1_1_PERIL_SUMINS,
+                        peril_rate: p_packget == "ONMHS1" ? data_result_1y.ITEM1_1_PERIL_RATE : data_result_3y.ITEM1_1_PERIL_RATE,
+                        peril_prem: p_packget == "ONMHS1" ? data_result_1y.ITEM1_1_PERIL_PREM : data_result_3y.ITEM1_1_PERIL_PREM,
+                        peril_damage_per: '0',
+                        peril_damage_all: '0',
+                        peril_spe_covers: '0',
+                        peril_spe_amount: '0'
+                      }, {
+                        peril_code: '1.37',
+                        peril_sumins: p_packget == "ONMHS1" ? data_result_1y.ITEM1_2_PERIL_SUMINS : data_result_3y.ITEM1_2_PERIL_SUMINS,
+                        peril_rate: p_packget == "ONMHS1" ? data_result_1y.ITEM1_2_PERIL_RATE : data_result_3y.ITEM1_2_PERIL_RATE,
+                        peril_prem: p_packget == "ONMHS1" ? data_result_1y.ITEM1_2_PERIL_PREM : data_result_3y.ITEM1_2_PERIL_PREM,
+                        peril_damage_per: '0',
+                        peril_damage_all: '0',
+                        peril_spe_covers: '0',
+                        peril_spe_amount: '0'
+                      }, {
+                        peril_code: 'WRK',
+                        peril_sumins: p_packget == "ONMHS1" ? data_result_1y.ITEM1_3_PERIL_SUMINS : data_result_3y.ITEM1_3_PERIL_SUMINS,
+                        peril_rate: p_packget == "ONMHS1" ? data_result_1y.ITEM1_3_PERIL_RATE : data_result_3y.ITEM1_3_PERIL_RATE,
+                        peril_prem: p_packget == "ONMHS1" ? data_result_1y.ITEM1_3_PERIL_PREM : data_result_3y.ITEM1_3_PERIL_PREM,
+                        peril_damage_per: '0',
+                        peril_damage_all: '0',
+                        peril_spe_covers: '0',
+                        peril_spe_amount: '0'
+                      }, {
+                        peril_code: 'PROF',
+                        peril_sumins: p_packget == "ONMHS1" ? data_result_1y.ITEM1_4_PERIL_SUMINS : data_result_3y.ITEM1_4_PERIL_SUMINS,
+                        peril_rate: p_packget == "ONMHS1" ? data_result_1y.ITEM1_4_PERIL_RATE : data_result_3y.ITEM1_4_PERIL_RATE,
+                        peril_prem: p_packget == "ONMHS1" ? data_result_1y.ITEM1_4_PERIL_PREM : data_result_3y.ITEM1_4_PERIL_PREM,
+                        peril_damage_per: '0',
+                        peril_damage_all: '0',
+                        peril_spe_covers: '0',
+                        peril_spe_amount: '0'
+                      }, {
+                        peril_code: '1.12',
+                        peril_sumins: p_packget == "ONMHS1" ? data_result_1y.ITEM1_7_PERIL_SUMINS : data_result_3y.ITEM1_7_PERIL_SUMINS,
+                        peril_rate: p_packget == "ONMHS1" ? data_result_1y.ITEM1_7_PERIL_RATE : data_result_3y.ITEM1_7_PERIL_RATE,
+                        peril_prem: p_packget == "ONMHS1" ? data_result_1y.ITEM1_7_PERIL_PREM : data_result_3y.ITEM1_7_PERIL_PREM,
+                        peril_damage_per: '0',
+                        peril_damage_all: '0',
+                        peril_spe_covers: '0',
+                        peril_spe_amount: '0'
+                      }, {
+                        peril_code: 'PA',
+                        peril_sumins: p_packget == "ONMHS1" ? data_result_1y.PA_PERIL_SUMINS : data_result_3y.PA_PERIL_SUMINS,
+                        peril_rate: p_packget == "ONMHS1" ? data_result_1y.PA_PERIL_RATE : data_result_3y.PA_PERIL_RATE,
+                        peril_prem: p_packget == "ONMHS1" ? data_result_1y.PA_PERIL_PREM : data_result_3y.PA_PERIL_PREM,
+                        peril_damage_per: '0',
+                        peril_damage_all: '0',
+                        peril_spe_covers: '0',
+                        peril_spe_amount: p_packget == "ONMHS1" ? data_result_1y.PA_PERIL_SPE_AMOUNT : data_result_3y.PA_PERIL_SPE_AMOUNT
+                      }, {
+                        peril_code: '0.00',
+                        peril_sumins: p_packget == "ONMHS1" ? data_result_1y.GLASS_PERIL_SUMINS : data_result_3y.GLASS_PERIL_SUMINS,
+                        peril_rate: p_packget == "ONMHS1" ? data_result_1y.GLASS_PERIL_RATE : data_result_3y.GLASS_PERIL_RATE,
+                        peril_prem: p_packget == "ONMHS1" ? data_result_1y.GLASS_PERIL_PREM : data_result_3y.GLASS_PERIL_PREM,
+                        peril_damage_per: '0',
+                        peril_damage_all: '0',
+                        peril_spe_covers: '0',
+                        peril_spe_amount: '0'
+                      }, {
+                        peril_code: 'CASH',
+                        peril_sumins: p_packget == "ONMHS1" ? data_result_1y.CASH_PERIL_SUMINS : data_result_3y.CASH_PERIL_SUMINS,
+                        peril_rate: p_packget == "ONMHS1" ? data_result_1y.CASH_PERIL_RATE : data_result_3y.CASH_PERIL_RATE,
+                        peril_prem: p_packget == "ONMHS1" ? data_result_1y.CASH_PERIL_PREM : data_result_3y.CASH_PERIL_PREM,
+                        peril_damage_per: '0',
+                        peril_damage_all: '0',
+                        peril_spe_covers: '0',
+                        peril_spe_amount: '0'
+                      }, {
+                        peril_code: '1.38',
+                        peril_sumins: p_packget == "ONMHS1" ? data_result_1y.THEFT_PERIL_SUMINS : data_result_3y.THEFT_PERIL_SUMINS,
+                        peril_rate: p_packget == "ONMHS1" ? data_result_1y.THEFT_PERIL_RATE : data_result_3y.THEFT_PERIL_RATE,
+                        peril_prem: p_packget == "ONMHS1" ? data_result_1y.THEFT_PERIL_PREM : data_result_3y.THEFT_PERIL_PREM,
+                        peril_damage_per: '0',
+                        peril_damage_all: '0',
+                        peril_spe_covers: '0',
+                        peril_spe_amount: '0'
+                      }, {
+                        peril_code: '1.40',
+                        peril_sumins: p_packget == "ONMHS1" ? data_result_1y.LIABILITY_PERIL_SUMINS : data_result_3y.LIABILITY_PERIL_SUMINS,
+                        peril_rate: p_packget == "ONMHS1" ? data_result_1y.LIABILITY_PERIL_RATE : data_result_3y.LIABILITY_PERIL_RATE,
+                        peril_prem: p_packget == "ONMHS1" ? data_result_1y.LIABILITY_PERIL_PREM : data_result_3y.LIABILITY_PERIL_PREM,
+                        peril_damage_per: '0',
+                        peril_damage_all: '0',
+                        peril_spe_covers: '0',
+                        peril_spe_amount: '0'
+                      }, {
+                        peril_code: 'CMRT',
+                        peril_sumins: p_packget == "ONMHS1" ? data_result_1y.DANGER_PERIL_SUMINS : data_result_3y.DANGER_PERIL_SUMINS,
+                        peril_rate: p_packget == "ONMHS1" ? data_result_1y.DANGER_PERIL_RATE : data_result_3y.DANGER_PERIL_RATE,
+                        peril_prem: p_packget == "ONMHS1" ? data_result_1y.DANGER_PERIL_PREM : data_result_3y.DANGER_PERIL_PREM,
+                        peril_damage_per: '0',
+                        peril_damage_all: '0',
+                        peril_spe_covers: p_packget == "ONMHS1" ? data_result_1y.DANGER_PERIL_SPE_COVERS : data_result_3y.DANGER_PERIL_SPE_COVERS,
+                        peril_spe_amount: p_packget == "ONMHS1" ? data_result_1y.DANGER_PERIL_SPE_AMOUNT : data_result_3y.DANGER_PERIL_SPE_AMOUNT
+                      }, {
+                        peril_code: 'INST',
+                        peril_sumins: p_packget == "ONMHS1" ? data_result_1y.RENT_PERIL_SUMINS : data_result_3y.RENT_PERIL_SUMINS,
+                        peril_rate: p_packget == "ONMHS1" ? data_result_1y.RENT_PERIL_RATE : data_result_3y.RENT_PERIL_RATE,
+                        peril_prem: p_packget == "ONMHS1" ? data_result_1y.RENT_PERIL_PREM : data_result_3y.RENT_PERIL_PREM,
+                        peril_damage_per: '0',
+                        peril_damage_all: '0',
+                        peril_spe_covers: p_packget == "ONMHS1" ? data_result_1y.RENT_PERIL_SPE_COVERS : data_result_3y.RENT_PERIL_SPE_COVERS,
+                        peril_spe_amount: '0'
+                      }]),
                       item_nbr: '1',
-                      interest_item: JSON.stringify(c_item),
+                      interest_item: [{
+                        int_code: 'B',
+                        int_sumins: data_result_1y.FIRE_BUILDING
+                      }, {
+                        int_code: 'F',
+                        int_sumins: data_result_1y.FIRE_BELONGING
+                      }],
                       sch_sumins: p_packget == "ONMHS1" ? data_result_1y.FIRE : data_result_3y.FIRE,
                       sch_prem: p_packget == "ONMHS1" ? net1 : net3,
                       risk_rate: '0.08900000'
                       /* end by dum-soken */
 
                     });
-
                     data = _objectSpread(_objectSpread({}, data), {}, {
                       fdMarketing_Consent: Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$"])('#ctrl_marketing').checked ? true : undefined
                     });
