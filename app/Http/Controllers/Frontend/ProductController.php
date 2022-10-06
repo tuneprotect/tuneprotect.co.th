@@ -16,6 +16,7 @@ use App\Enum\FIMPObject;
 use App\Enum\PAObject;
 use App\Enum\ProjectEnum;
 use App\Enum\TGCVLPObject;
+use App\Enum\TGISMObject;
 use App\Http\Controllers\Frontend\Base\BaseController;
 use App\Models\BuyLog;
 use App\Models\WebContent;
@@ -80,7 +81,7 @@ class ProductController extends BaseController
             return redirect()->route('current', ['locale' => $this->locale, 'controller' => $this->controller, 'func' => $link, 'params' => $selected]);
         }
 
-        if (in_array($selected, ['ONTALN', 'ONCOVIDL', 'ONTA','TGCVLP','TAISM']) && $this->locale === 'th') {
+        if (in_array($selected, ['ONTALN', 'ONCOVIDL', 'ONTA','TGCVLP','TAISM','ONTGISM']) && $this->locale === 'th') {
             return redirect()->route('current', ['locale' => 'en', 'controller' => $this->controller, 'func' => $link, 'params' => $selected]);
         }
 
@@ -106,7 +107,7 @@ class ProductController extends BaseController
             return redirect("/" . $this->locale);
         }
 
-        if (in_array($selected, ['ONTALN', 'ONCOVIDL', 'ONTA','TGCVLP','TAISM']) && $this->locale === 'th') {
+        if (in_array($selected, ['ONTALN', 'ONCOVIDL', 'ONTA','TGCVLP','TAISM','ONTGISM']) && $this->locale === 'th') {
             return redirect()->route('current', ['locale' => 'en', 'controller' => $this->controller, 'func' => $link, 'params' => $selected]);
         }
 
@@ -347,6 +348,8 @@ class ProductController extends BaseController
             $obj = new COVIDLObject();
         } elseif (substr($data['fdPackage'], 0, 6) === 'TGCVLP') {
             $obj = new TGCVLPObject();
+        } elseif (substr($data['fdPackage'], 0, 7) === 'ONTGISM') {
+            $obj = new ONTGISMObject();
         } elseif (substr($data['fdPackage'], 0, 9) === 'ONCOVIDMW') {
             $obj = new COVIDAObject();
         } elseif (substr($data['fdPackage'], 0, 6) === 'ONTADM') {
@@ -532,6 +535,7 @@ class ProductController extends BaseController
         elseif (substr($data['fdPackage'], 0, 8) === 'ONCOVIDL'
             || substr($data['fdPackage'], 0, 6) === 'ONTALN'
             || substr($data['fdPackage'], 0, 6) === 'TGCVLP'
+            || substr($data['fdPackage'], 0, 7) === 'ONTGISM'
             || substr($data['fdPackage'], 0, 5) === 'TAISM')
         {
             $obj->fdlanguage = 1;
@@ -555,6 +559,11 @@ class ProductController extends BaseController
             if( substr($data['fdPackage'], 0, 6) === 'TGCVLP')
             {
                 $package = (array)json_decode(Storage::disk('public')->get('json/tgcvlp.json'));
+                $obj->fdApiPackage = $package[$data['fdPackage']]->apiPackage;
+            }
+            if( substr($data['fdPackage'], 0, 7) === 'ONTGISM')
+            {
+                $package = (array)json_decode(Storage::disk('public')->get('json/ontgism.json'));
                 $obj->fdApiPackage = $package[$data['fdPackage']]->apiPackage;
             }
             if(isset($package[$data['fdPackage']]->apiPackage))
@@ -877,6 +886,9 @@ class ProductController extends BaseController
             $link = 'IssuePolicyCovid19';
         } elseif (substr($package, 0, 6) === 'TGCVLP') {
             $this->thankYouParam = substr($package, 0, 6);
+            $link = 'IssuePolicyCovidTGCVLP';
+        } elseif (substr($package, 0, 7) === 'ONTGISM') {
+            $this->thankYouParam = substr($package, 0, 7);
             $link = 'IssuePolicyCovidTGCVLP';
         } elseif (substr($package, 0, 9) === 'ONCOVIDMW') {
             $this->thankYouParam = substr($package, 0, 9);

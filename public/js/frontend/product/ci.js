@@ -81,7 +81,7 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 27);
+/******/ 	return __webpack_require__(__webpack_require__.s = 28);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -56609,7 +56609,7 @@ var showBMIValidateError = function showBMIValidateError(message, selector) {
 
 /***/ }),
 
-/***/ 27:
+/***/ 28:
 /*!******************************************!*\
   !*** multi ./resources/js/product/ci.js ***!
   \******************************************/

@@ -81,7 +81,7 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 37);
+/******/ 	return __webpack_require__(__webpack_require__.s = 38);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -56244,7 +56244,7 @@ var showBMIValidateError = function showBMIValidateError(message, selector) {
 
 /***/ }),
 
-/***/ 37:
+/***/ 38:
 /*!**********************************************!*\
   !*** multi ./resources/js/product/tgcvlp.js ***!
   \**********************************************/

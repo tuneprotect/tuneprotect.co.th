@@ -81,7 +81,7 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 26);
+/******/ 	return __webpack_require__(__webpack_require__.s = 27);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -56215,7 +56215,7 @@ var showBMIValidateError = function showBMIValidateError(message, selector) {
 
 /***/ }),
 
-/***/ 26:
+/***/ 27:
 /*!************************************************!*\
   !*** multi ./resources/js/product/onvsafea.js ***!
   \************************************************/
