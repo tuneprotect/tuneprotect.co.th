@@ -381,8 +381,21 @@ return [
         "TGCVLPCOV2" => "2. Medical Treatment for COVID - 2019 infectious diseases"
     ],
     "ONTGISM" => [
-        "ONTGISMCOV1" => "1. Sickness that is in consequence of COVID - 2019 infectious diseases (Coma, Brain Death and Neurologic Failure, Terminal Illness)",
-        "ONTGISMCOV2" => "2. Medical Treatment for COVID - 2019 infectious diseases"
+        "TAIS01" => "1. Accidental Death",
+        "TAIS02" => "2. ME (Accident, Sickness, Covid-19)",
+        "TAIS021" => "   2.1 Room & Board",
+        "TAIS03" => "3. Emergency Evac Repat",
+        "TAIS04" => "4. Repat of Mortal Remains",
+        "TAIS05" => "5. Expenses of Visiting Patients",
+        "TAIS06" => "6. Loss or Damage of Travel Documents",
+        "TAIS07" => "7. Public Liability (DD 1,000 Baht)",
+        "TAIS08" => "8. Trip Cancellation",
+        "TAIS09" => "9. Trip Curtailment",
+        "TAIS10" => "10. Travel Delay",
+        "TAIS11" => "11. Baggage Delay",
+        "TAIS12" => "12. Loss or Damage of Baggage or Personal Effects",
+        "TAIS13" => "13. Rental vehicle excess",
+        "TAIS14" => "14. Golf equipment and hole-in-one",
     ],
     "ONCOVIDL" => [
         "COV1" => "การเจ็บป่วยด้วยภาวะโคม่าที่มีสาเหตุมาจากโรคติดเชื้อไวรัสโคโรนา 2019 (COVID-19)",
