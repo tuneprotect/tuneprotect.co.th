@@ -17,7 +17,7 @@ class TGISMController  extends ProductController
         $return_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
         session(['return_link' => $return_link]);
 
-        $partner = 'TGISM';
+        $partner = 'TG';
         $this->bodyData['partner'] = $partner;
         session(['partner' => $partner]);
         $this->bodyData['headertext'] = 'Fill in information';
@@ -52,7 +52,7 @@ class TGISMController  extends ProductController
 
      public function Validation(Request $request)
      {
-         $partner = 'TGISM';
+         $partner = 'TG';
          $this->bodyData['partner'] = $partner;
          session(['partner' => $partner]);
 
@@ -94,13 +94,13 @@ class TGISMController  extends ProductController
 
     public function thankyou(Request $request)
     {
-        $partner = 'ONTGISM';
+        $partner = 'TG';
         $this->bodyData['partner'] = $partner;
         session(['partner' => $partner]);
 
         $this->bodyData['doc_no'] = $request->session()->get('doc_no');
         $this->bodyData['selected'] = 'ONTGISM';
-        $this->bodyData['return_link'] = "/en/tg";
+        $this->bodyData['return_link'] = "/en/tgism";
         $this->bodyData['fdKeys'] = config('tune-api.portal_tgism') ;
 
 
