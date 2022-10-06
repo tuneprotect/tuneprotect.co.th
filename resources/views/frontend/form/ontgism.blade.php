@@ -1,4 +1,9 @@
 @include('frontend.component.form-stepper')
+<style>
+header{
+    display:none;
+}
+</style>
 <section id="step1" class="wrapper">
 {{--    @include('frontend.component.form-birthdate-effectivedate')--}}
 
