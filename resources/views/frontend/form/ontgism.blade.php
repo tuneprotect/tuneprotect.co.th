@@ -3,9 +3,11 @@
 header{
     display:none;
 }
+/*
 #tns1-item0 picture img{
     content:url("/storage/Banner/Banner_TG_M.jpg");
 }
+*/
 </style>
 <section id="step1" class="wrapper">
 {{--    @include('frontend.component.form-birthdate-effectivedate')--}}
