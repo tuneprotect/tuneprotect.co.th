@@ -148,12 +148,9 @@
                                                      alt="{{$v->locales[$locale]->title}}">
                                             </picture>
                                         @elseif($selected==='ONTGISM')
-                                            <picture  class="ab">
-                                                <source media="(min-width:768px)"
-                                                        srcset="{{url(str_replace('Banner-baowan-main-th', 'Banner_myFlexi_CI_THv2', $v->pic))}}">
-                                                <img
-                                                    src="{{url(!empty($v->pic_mobile) ? url(str_replace('Banner-baowan-main-th', 'Banner_myFlexi_CI_THv2', $v->pic_mobile)) : url(str_replace('Banner-baowan-main-th', 'Banner_myFlexi_CI_THv2', $v->pic)) )}}"
-                                                    alt="{{$v->locales[$locale]->title}}">
+                                            <picture>
+                                                <source media="(min-width:768px)" srcset="/storage/Banner/Banner_TAI_D.jpg">
+                                                <img src="/storage/Banner/Banner_TAI_D.jpg" alt="Fire insurance">
                                             </picture>
                                         @else
                                             <picture  class="aa">
