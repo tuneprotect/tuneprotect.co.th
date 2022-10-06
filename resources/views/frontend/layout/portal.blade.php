@@ -148,7 +148,7 @@
                                                      alt="{{$v->locales[$locale]->title}}">
                                             </picture>
                                         @elseif($selected==='ONTGISM')
-                                            <picture>
+                                            <picture  class="ab">
                                                 <source media="(min-width:768px)"
                                                         srcset="{{url(str_replace('Banner-baowan-main-th', 'Banner_myFlexi_CI_THv2', $v->pic))}}">
                                                 <img
@@ -156,7 +156,7 @@
                                                     alt="{{$v->locales[$locale]->title}}">
                                             </picture>
                                         @else
-                                            <picture>
+                                            <picture  class="aa">
                                                 <source media="(min-width:768px)" srcset="{{url($v->pic_en)}}">
                                                 <img src="{{url(!empty($v->pic_mobile_en) ? $v->pic_mobile_en : $v->pic_en )}}"
                                                      alt="{{$v->locales[$locale]->title}}">
@@ -164,7 +164,7 @@
                                         @endif
 
                                     @else
-                                            <picture>
+                                            <picture  class="cc">
                                                 <source media="(min-width:768px)" srcset="{{url($v->pic_en)}}">
                                                 <img src="{{url(!empty($v->pic_mobile_en) ? $v->pic_mobile_en : $v->pic_en )}}"
                                                     alt="{{$v->locales[$locale]->title}}">
@@ -198,7 +198,7 @@
                                                  alt="{{$v->locales[$locale]->title}}">
                                         </picture>
                                 @else
-                                    <picture>
+                                    <picture class="bb">
                                         <source media="(min-width:768px)" srcset="{{url($v->pic)}}">
                                         <img src="{{url(!empty($v->pic_mobile) ? $v->pic_mobile : $v->pic )}}"
                                              alt="{{$v->locales[$locale]->title}}">
