@@ -380,6 +380,10 @@ return [
         "TGCVLPCOV1" => "1. Sickness that is in consequence of COVID - 2019 infectious diseases (Coma, Brain Death and Neurologic Failure, Terminal Illness)",
         "TGCVLPCOV2" => "2. Medical Treatment for COVID - 2019 infectious diseases"
     ],
+    "ONTGISM" => [
+        "ONTGISMCOV1" => "1. Sickness that is in consequence of COVID - 2019 infectious diseases (Coma, Brain Death and Neurologic Failure, Terminal Illness)",
+        "ONTGISMCOV2" => "2. Medical Treatment for COVID - 2019 infectious diseases"
+    ],
     "ONCOVIDL" => [
         "COV1" => "การเจ็บป่วยด้วยภาวะโคม่าที่มีสาเหตุมาจากโรคติดเชื้อไวรัสโคโรนา 2019 (COVID-19)",
         "COV2" => "การรักษาพยาบาลจากการติดเชื้อไวรัสโคโรนา (COVID-19)",

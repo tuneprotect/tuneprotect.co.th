@@ -9,7 +9,7 @@
 {{--            <center><span><img src="{{url('/storage/Icon/BIGRewardsLogo.png')}}"></span></center>--}}
 {{--        </div>--}}
         <section id="step1" class="wrapper">
-            <form class="insurance-form" action="/{{$locale}}/tg/Validation" method="post" id="frm_validate">
+            <form class="insurance-form" action="/{{$locale}}/tgism/Validation" method="post" id="frm_validate">
                 <div class="form-head">{{$headertext}}</div>
                 <div class="form-inner">
                     <h3>{{$labeltext}}</h3>
