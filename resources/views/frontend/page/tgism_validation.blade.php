@@ -1,7 +1,11 @@
 @extends('frontend.layout.portal')
 
 @section('page')
-
+<style>
+header{
+    display:none;
+}
+</style>
     <body id="product_page" style="height: 100%;">
     <main>
         <h1 class="product-header"></h1>
