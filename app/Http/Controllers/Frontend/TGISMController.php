@@ -86,7 +86,7 @@ class TGISMController  extends ProductController
 
          }
 
-//         dd($memberId);
+       dd($memberId);
 
          return $this->index();
 
