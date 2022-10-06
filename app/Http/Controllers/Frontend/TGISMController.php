@@ -52,7 +52,7 @@ class TGISMController  extends ProductController
 
      public function Validation(Request $request)
      {
-         $partner = 'ONTGISM';
+         $partner = 'TGISM';
          $this->bodyData['partner'] = $partner;
          session(['partner' => $partner]);
 
@@ -67,7 +67,7 @@ class TGISMController  extends ProductController
                  'memberId' => $memberId
              ])
          ]);
-
+dd($response);
          $apiResult =json_decode($response->getBody()->getContents(), true);
 
          if (!$apiResult["status"]) {
