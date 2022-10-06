@@ -147,7 +147,11 @@
                                                 <img src="{{url(!empty($v->pic_mobile_en) ? "/storage/Banner/Banner_TG_D.jpg" : "/storage/Banner/Banner_TG_M.jpg" )}}"
                                                      alt="{{$v->locales[$locale]->title}}">
                                             </picture>
-                                        
+                                        @elseif($selected==='ONTGISM')
+                                            <picture>
+                                                <source media="(min-width:768px)" srcset="/storage/Banner/Banner_TAI_D.jpg">
+                                                <img src="/storage/Banner/Banner_TAI_M.jpg" alt="Travel Insurance">
+                                            </picture>
                                         @else
                                             <picture>
                                                 <source media="(min-width:768px)" srcset="{{url($v->pic_en)}}">
