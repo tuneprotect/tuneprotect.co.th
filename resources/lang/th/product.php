@@ -381,6 +381,7 @@ return [
         "TGCVLPCOV2" => "2. Medical Treatment for COVID - 2019 infectious diseases"
     ],
     "ONTGISM" => [
+        "ONTGISMCOV1" => "1. Sickness that is in consequence of COVID - 2019 infectious diseases (Coma, Brain Death and Neurologic Failure, Terminal Illness)",
         "TAIS01" => "1. Accidental Death",
         "TAIS02" => "2. ME (Accident, Sickness, Covid-19)",
         "TAIS021" => "   2.1 Room & Board",
