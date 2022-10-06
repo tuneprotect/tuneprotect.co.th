@@ -82,7 +82,7 @@ class TGISMController  extends ProductController
              $this->bodyData['status_api']= true;
              $this->bodyData['massage_key'] = '';
 
-             return parent::index('coronavirus-covid-19-insurance','TGCVLP',$memberId);
+             return parent::index('coronavirus-covid-19-insurance','ONTGISM',$memberId);
 
          }
 
