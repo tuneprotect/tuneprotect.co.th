@@ -82,11 +82,11 @@ class TGController  extends ProductController
              $this->bodyData['status_api']= true;
              $this->bodyData['massage_key'] = '';
 
+             dd($memberId);
              return parent::index('coronavirus-covid-19-insurance','TGCVLP',$memberId);
 
          }
 
-       dd($memberId);
 
          return $this->index();
 
