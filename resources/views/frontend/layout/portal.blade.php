@@ -147,6 +147,14 @@
                                                 <img src="{{url(!empty($v->pic_mobile_en) ? "/storage/Banner/Banner_TG_D.jpg" : "/storage/Banner/Banner_TG_M.jpg" )}}"
                                                      alt="{{$v->locales[$locale]->title}}">
                                             </picture>
+                                        @elseif($selected==='ONTGISM')
+                                            <picture>
+                                                <source media="(min-width:768px)"
+                                                        srcset="{{url(str_replace('Banner-baowan-main-th', 'Banner_myFlexi_CI_THv2', $v->pic))}}">
+                                                <img
+                                                    src="{{url(!empty($v->pic_mobile) ? url(str_replace('Banner-baowan-main-th', 'Banner_myFlexi_CI_THv2', $v->pic_mobile)) : url(str_replace('Banner-baowan-main-th', 'Banner_myFlexi_CI_THv2', $v->pic)) )}}"
+                                                    alt="{{$v->locales[$locale]->title}}">
+                                            </picture>
                                         @else
                                             <picture>
                                                 <source media="(min-width:768px)" srcset="{{url($v->pic_en)}}">
