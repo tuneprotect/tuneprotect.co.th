@@ -752,10 +752,9 @@ document.addEventListener("DOMContentLoaded", async () => {
             const result = block_list.filter(element => {
                 return element.AmphurCode === e.target.value;
             });
-            var element = document.getElementById("msgErrBlock");
-            
-            if(result!=""){   
-                dataBlock=result;            
+            var element = document.getElementById("msgErrBlock");            
+            dataBlock=result; 
+            if(result!=""){              
                 element.classList.remove("d-none");
                 btnStep3.classList.add("d-none");
                 chkBtn1=1;

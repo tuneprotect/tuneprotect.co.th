@@ -56081,9 +56081,9 @@ document.addEventListener("DOMContentLoaded", /*#__PURE__*/_asyncToGenerator( /*
                 return element.AmphurCode === e.target.value;
               });
               var element = document.getElementById("msgErrBlock");
+              dataBlock = result;
 
               if (result != "") {
-                dataBlock = result;
                 element.classList.remove("d-none");
                 btnStep3.classList.add("d-none");
                 chkBtn1 = 1;
