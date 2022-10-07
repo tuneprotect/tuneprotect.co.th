@@ -122,7 +122,7 @@
 
         </div>
         <div class="btn-wrapper">
-            <button id="btnStep1" data-gtm="product-{{strtolower($selected)}}-proceed-step-1" data-step="2" class="btn btn-primary btn-goto"><i id="iconLoad" class="fa fa-spinner fa-spin">@lang('product.next')</button>
+            <button id="btnStep1" data-gtm="product-{{strtolower($selected)}}-proceed-step-1" data-step="2" class="btn btn-primary btn-goto"><i id="iconLoad" class="fa fa-spinner fa-spin"></i>@lang('product.next')</button>
         </div>
 
         <input type="hidden" id="controller" value="{{$controller}}"/>
