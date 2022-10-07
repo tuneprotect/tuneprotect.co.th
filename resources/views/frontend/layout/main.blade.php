@@ -275,12 +275,17 @@
                                         </picture>
                                     @elseif($selected==='ONMHS')
                                         <picture>
+                                            <source media="(min-width:768px)" srcset="{{url(str_replace('Banner_iPass_COVID', 'Migrant-Banner-Th01', $v->pic_en))}}">
+                                            <img src="{{url(!empty($v->pic_mobile_en) ? url(str_replace('Banner_iPass_COVID', 'Migrant-Banner-Th01', $v->pic_mobile_en)) : url(str_replace('Banner_iPass_COVID', 'Migrant-Banner-Th02', $v->pic_en)) )}}"
+                                                alt="{{$v->locales[$locale]->title}}">
+                                        </picture>
+                                        <!--picture>
                                             <source media="(min-width:768px)"
                                                     srcset="/storage/product/myHomeSmart/Banner for Website sale page1.png">
                                             <img
                                                 src="/storage/product/myHomeSmart/Banner for Website sale page1.png"
                                                 alt="{{$v->locales[$locale]->title}}">
-                                        </picture>
+                                        </picture-->
                                     @elseif($selected==='DIABETES')
                                         <picture>
                                             <source media="(min-width:768px)"
