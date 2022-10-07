@@ -55949,8 +55949,8 @@ document.addEventListener("DOMContentLoaded", /*#__PURE__*/_asyncToGenerator( /*
             var result_3y = amount3y.filter(function (element) {
               return element.myhome_id === results[0].id;
             });
-            data_result_amount_3y = result_3y; //console.log("result_3y",result_3y);
-            //data_result_3y = result_3y;
+            data_result_amount_3y = result_3y[0];
+            console.log("data_result_amount_3y", data_result_amount_3y); //data_result_3y = result_3y;
 
             net3 = numberWithCommas(result_3y[0].Net);
             document.getElementById("txtAmount3").value = numberWithCommas(result_3y[0].Total);
@@ -57081,8 +57081,7 @@ document.addEventListener("DOMContentLoaded", /*#__PURE__*/_asyncToGenerator( /*
 
                       /* by dum-soken */
                       coverdays: p_packget == "ONMHS1" ? '365' : '1096',
-                      c_class: '18-59',
-                      //test
+                      c_class: '2-18',
                       flg_ind: 'F',
                       //test
                       prem_rate: p_packget == "ONMHS1" ? '100.000000' : '250.000000',
