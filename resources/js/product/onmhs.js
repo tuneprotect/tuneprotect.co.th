@@ -833,7 +833,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         const results = result.filter(element => {
             return element.Reasons != '';
         });
-        //console.log("response",results);
+        console.log("response",results);
         block_list = results;
         
     }

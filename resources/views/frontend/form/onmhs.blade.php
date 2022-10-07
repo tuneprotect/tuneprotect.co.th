@@ -1,4 +1,10 @@
 @include('frontend.component.form-stepper')
+<style>
+    .step-disable {
+        cursor: not-allowed;
+        pointer-events: none;   
+    }
+</style>
 <section id="step1" class="wrapper">
 
     <form method="post" action="" class="insurance-form">
@@ -146,7 +152,7 @@
         <div class="form-head"> {{$package->locales[$locale]->title}} <span id="form-head"></span></div>
         <div class="form-inner">
             @include('frontend.component.form-profile',['id_card_field' => 'both' ,'id_card_field_title' => __("product.id_card_no") ,'prefix' => '','has_birthdate' => true ])
-            @include('frontend.component.form-address-home',['prefix' => ''])
+            @include('frontend.component.form-onmhs-address-home',['prefix' => ''])
 
             <div class="controls-wrapper full">
                 <div class="controls-wrapper">
@@ -155,7 +161,7 @@
                 </div>
             </div>
 
-            @include('frontend.component.form-address-home',['prefix' => 'loc_'])
+            @include('frontend.component.form-onmhs-address-home',['prefix' => 'loc_'])
 
 {{--            <h3>@lang('product.fire_address_location_data')</h3>--}}
 {{--                <div class="two-col">--}}
@@ -211,7 +217,7 @@
 
 
         <div class="btn-wrapper">
-            <button data-gtm="product-{{strtolower($selected)}}-proceed-step-3" data-step="4" class="btn btn-primary btn-goto">@lang('product.proceed')</button>
+            <button id="btnStep3" data-gtm="product-{{strtolower($selected)}}-proceed-step-3" data-step="4" class="btn btn-primary btn-goto">@lang('product.proceed')</button>
         </div>
 
     </form>
