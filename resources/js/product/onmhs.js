@@ -743,7 +743,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     let chkBtn1=0; 
     let chkBtn2=0; 
     var btn = document.getElementById("step_4");
-                
+    let dataBlock=[];                 
 
     var btnStep3 = document.getElementById("btnStep3");
     $$("select[id=ctrl_province]").forEach($el => {
@@ -754,7 +754,8 @@ document.addEventListener("DOMContentLoaded", async () => {
             });
             var element = document.getElementById("msgErrBlock");
             
-            if(result!=""){               
+            if(result!=""){   
+                dataBlock=result;            
                 element.classList.remove("d-none");
                 btnStep3.classList.add("d-none");
                 chkBtn1=1;
@@ -767,6 +768,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                 btnStep3.classList.add("d-none");
                 btn.classList.add("step-disable");
             }
+            console.log("dataBlock",dataBlock);
         });
     });
     $$("select[name=loc_ctrl_province]").forEach($el => {
@@ -1023,20 +1025,6 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
         */
     }
-    const setDataAmount1y = (id) => {      
-        let data_amount1y = amount1y;
-        let data_amount3y = amount3y;
-        const result_1y = data_amount1y.filter(element => {
-            return element.TAGNAME === package_code && element.FIRE == package_amount;
-          });
-    }
-    const setDataAmount3y = (id) => {      
-        let data_amount1y = amount1y;
-        let data_amount3y = amount3y;
-        const result_1y = data_amount1y.filter(element => {
-            return element.TAGNAME === package_code && element.FIRE == package_amount;
-          });
-    }
     const setDataStep1 = async (packageSelect) => {    
         let building = $('#ctrl_fire_building');
         let text = building.options[building.selectedIndex].text;
@@ -1116,135 +1104,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     setDataStep1(500000);
 
 
-
-
-
-    const apiMyHomeSmart = async (packageSelect) => {
-        try {
-            let select = $('#ctrl_insurer_capital');
-            let cover_amount = select.options[select.selectedIndex].value;
-
-            let res = await fetch(`/appApi/ApiConnect/myHomeSmartPackage`, {
-                method: 'post',
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json',
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').getAttribute('content')
-                },
-            });
-            const response = await res.json();
-            const js = JSON.parse(response);
-            let result = js.data;
-
-            sessionStorage.setItem("amount", cover_amount);
-            MyHomeSmart = JSON.stringify(result);
-            var chk = "";
-            for (let i = 0; i < result.length; i++) {
-                /*
-                if(chk!=result[i].RENT_PERIL_PREM){
-                    drpCompensation.push(result[i].RENT_PERIL_PREM);
-                    drpCompensationText.push(result[i].RENT_PERIL_SUMINS);
-                    chk=result[i].RENT_PERIL_PREM;
-                }
-                */
-                drpCompensation.push(result[i].RENT_PERIL_PREM);
-                drpCompensationText.push(result[i].RENT_PERIL_SUMINS);
-                //RENT_PERIL_PREM //value
-                //RENT_PERIL_SUMINS //text 
-
-                /*
-                if(result[i].TAGNAME.trim() == "FNPGCTDALR1"){
-                    oneYear.push(result[i]);
-                }
-                if(result[i].TAGNAME == "FNPGCTDALR3"){
-                    //console.log("result3",result[i]);
-                    treeYear.push(result[i]);                    
-                }
-                */
-                //default 
-                console.log("code-",code)
-                if (result[i].TAGNAME.trim() == code && result[i].FIRE == cover_amount) {
-                    console.log("data",result[i])
-                    apiMyHomeSmart1y(result[i].id);
-                    apiMyHomeSmart3y(result[i].id);
-                    //ข้อ 1.
-                    
-                    document.getElementById("rate_2").innerHTML = parseNumber(result[i].ITEM1_1_PERIL_SUMINS);
-                    document.getElementById("rate_3").innerHTML = parseNumber(result[i].ITEM1_2_PERIL_SUMINS);
-                    document.getElementById("rate_4").innerHTML = parseNumber(result[i].ITEM1_3_PERIL_SUMINS);
-                    document.getElementById("rate_5").innerHTML = parseNumber(result[i].ITEM1_3_PERIL_SUMINS);
-                    document.getElementById("rate_6").innerHTML = parseNumber(result[i].ITEM1_5_PERIL_SPE_AMOUNT);
-                    document.getElementById("rate_7").innerHTML = parseNumber(result[i].ITEM1_5_PERIL_SUMINS);
-                    document.getElementById("rate_8").innerHTML = parseNumber(result[i].ITEM1_6_PERIL_SUMINS);
-                    document.getElementById("rate_10").innerHTML = parseNumber(result[i].ITEM1_7_PERIL_SUMINS);
-                    document.getElementById("rate_11").innerHTML = parseNumber(result[i].ITEM1_8_PERIL_SUMINS);
-
-                    document.getElementById("rate_2_3").innerHTML = parseNumber(result[i].ITEM1_1_PERIL_SUMINS);
-                    document.getElementById("rate_3_3").innerHTML = parseNumber(result[i].ITEM1_2_PERIL_SUMINS);
-                    document.getElementById("rate_4_3").innerHTML = parseNumber(result[i].ITEM1_3_PERIL_SUMINS);
-                    document.getElementById("rate_5_3").innerHTML = parseNumber(result[i].ITEM1_3_PERIL_SUMINS);
-                    document.getElementById("rate_6_3").innerHTML = parseNumber(result[i].ITEM1_5_PERIL_SPE_AMOUNT);
-                    document.getElementById("rate_7_3").innerHTML = parseNumber(result[i].ITEM1_5_PERIL_SUMINS);
-                    document.getElementById("rate_8_3").innerHTML = parseNumber(result[i].ITEM1_6_PERIL_SUMINS);
-                    document.getElementById("rate_10_3").innerHTML = parseNumber(result[i].ITEM1_7_PERIL_SUMINS);
-                    document.getElementById("rate_11_3").innerHTML = parseNumber(result[i].ITEM1_8_PERIL_SUMINS);
-
-                    //ข้อ 2.
-                    document.getElementById("rate_13").innerHTML = parseNumber(result[i].NATURAL);
-                    document.getElementById("rate_13_3").innerHTML = parseNumber(result[i].NATURAL);
-
-                    //ข้อ 3.
-                    document.getElementById("rate_15").innerHTML = parseNumber(result[i].PA_PERIL_SUMINS);
-                    document.getElementById("rate_15_3").innerHTML = parseNumber(result[i].PA_PERIL_SUMINS);
-
-                    //ข้อ 4.
-                    document.getElementById("rate_17").innerHTML = parseNumber(result[i].GLASS_PERIL_SUMINS);
-                    document.getElementById("rate_17_3").innerHTML = parseNumber(result[i].GLASS_PERIL_SUMINS);
-
-                    //ข้อ 5.
-                    document.getElementById("rate_19").innerHTML = parseNumber(result[i].CASH_PERIL_SUMINS);
-                    document.getElementById("rate_19_3").innerHTML = parseNumber(result[i].CASH_PERIL_SUMINS);
-
-                    //ข้อ 6.
-                    document.getElementById("rate_21").innerHTML = parseNumber(result[i].THEFT_PERIL_SUMINS);
-                    document.getElementById("rate_21_3").innerHTML = parseNumber(result[i].THEFT_PERIL_SUMINS);
-
-                    //ข้อ 7.
-                    document.getElementById("rate_22").innerHTML = parseNumber(result[i].DANGER_PERIL_SPE_AMOUNT);
-                    document.getElementById("rate_23").innerHTML = parseNumber(result[i].DANGER_PERIL_SUMINS);
-                    document.getElementById("rate_22_3").innerHTML = parseNumber(result[i].DANGER_PERIL_SPE_AMOUNT);
-                    document.getElementById("rate_23_3").innerHTML = parseNumber(result[i].DANGER_PERIL_SUMINS);
-
-                    //ข้อ 9.
-                    document.getElementById("drpCompensation3").value = result[i].RENT_PERIL_SUMINS;
-                    document.getElementById("drpCompensation1").value = result[i].RENT_PERIL_SUMINS;
-
-                    //ข้อ 10.    
-
-                    document.getElementById("sp_amount1").innerHTML = parseNumber(result[i].LIABILITY_PERIL_SUMINS);
-                    document.getElementById("sp_amount3").innerHTML = parseNumber(result[i].LIABILITY_PERIL_SUMINS);
-
-                    document.getElementById("txtDeposit1").innerHTML = parseNumber(result[i].LIABILITY_PERIL_PREM);
-                    document.getElementById("txtDeposit3").innerHTML = parseNumber(result[i].LIABILITY_PERIL_PREM);
-
-                    //sp_amount3
-                }
-
-            }
-
-        } catch (err) {
-            console.log("apiMyHomeSmart", err);
-            Swal.fire(
-                {
-                    title: `<i class="icofont-alarm" style="color:red"></i>`,
-                    html: `<strong>${$form.getAttribute('data-error')}</strong><br>${$form.getAttribute('data-error-description')}`,
-                    confirmButtonText: $form.getAttribute('data-error-button'),
-                }
-            )
-        }
-
-        $form.classList.remove('ajax_loader');
-    }
 
     function parseNumber(value) {
         //console.log("cnt",value)
@@ -1775,11 +1634,11 @@ document.addEventListener("DOMContentLoaded", async () => {
                             sum_ins:c_sum,
                             gross_amt: p_packget=="ONMHS1" ? net1 : net3,
                             ann_nprem: p_packget=="ONMHS1" ? net1 : net3,
-                            stamp_amt: p_packget=="ONMHS1" ? stamp1 : stamp1,
+                            stamp_amt: p_packget=="ONMHS1" ? stamp1 : stamp3,
                             vat_amt: p_packget=="ONMHS1" ? vat1 : vat3,
                             total_amt: p_packget=="ONMHS1" ? total1 : total3,
                             ann_days: p_packget=="ONMHS1" ? '365' : '1096',
-                            invoice:'INV0001',//test
+                            //invoice:'INV0001',//test
                             packget_peril: JSON.stringify([{
                                 peril_code : 'TMRT',
                                 peril_sumins: p_packget=="ONMHS1" ? data_result_1y.ITEM1_5_PERIL_SUMINS : data_result_3y.ITEM1_5_PERIL_SUMINS,
@@ -1923,6 +1782,23 @@ document.addEventListener("DOMContentLoaded", async () => {
                               }
                             ]).replaceAll('"',"'"),
                             item_nbr:'1',
+                            block_tambun:'1',
+                            exp_code:'1',
+                            tariff_code:'1',
+                            occupancy:'1',
+                            building_class:'1',
+                            whole_building:'1',
+                            floor_nbr:'1',
+                            dryriser:'1',
+                            external_wall:'1',
+                            upper_floor:'1',
+                            roof_beam:'1',
+                            roof:'1',
+                            column:'1',
+                            internal_area:'1',
+                            nbr_room:'1',
+                            nbr_storey:'1',
+
                             interest_item: JSON.stringify([{
                                 int_code: 'B',
                                 int_sumins: data_result_1y.FIRE_BUILDING

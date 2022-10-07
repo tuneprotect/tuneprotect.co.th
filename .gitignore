@@ -64,3 +64,8 @@ Thumbs.db
 
 public/web.config
 
+bk/.editorconfig
+bk/.env.staging.tuneprotect.co.th
+bk/.env.tuneprotect.co.th
+bk/.env.www.tuneprotect.co.th
+bk/.gitattributes

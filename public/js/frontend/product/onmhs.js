@@ -55639,11 +55639,11 @@ var getSelectedPricePackage = function getSelectedPricePackage(packageCode, pack
   return package_data[packageCode].price;
 };
 
-document.addEventListener("DOMContentLoaded", /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee10() {
-  var package_data, Redeem_Code, msg_error, Keys, myEle, status_api, $form, allField, iti, MyHomeSmart, oneYear, treeYear, drpCompensation, drpCompensationText, dep1, dep3, p_packget, p_price, p_price1, p_price3, P, G, C, T, D, L, R, code, amount, block_list, sumTotal, package_1year, package_3year, package_code_1y, package_code_3y, package_amount, amount1y, amount3y, net1, net3, stamp1, stamp3, vat1, vat3, total1, total3, c_sum, data_result_1y, data_result_3y, data_result_amount_1y, data_result_amount_3y, getDataAmount1y, getDataAmount3y, chkBtn1, chkBtn2, btn, btnStep3, btnStep1, apiMyHomeSmartData, apiBlock, apiAmount1y, apiAmount3y, changeTextAmount, setData, setDataAmount1y, setDataAmount3y, setDataStep1, apiMyHomeSmart, parseNumber, apiMyHomeSmart1y, apiMyHomeSmart3y, numberWithCommas, changeTextPremium, zipcode_data, $address_dup, step1Constraints, fdIDTYPE, step, data, $btnGoto;
-  return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee10$(_context10) {
+document.addEventListener("DOMContentLoaded", /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee9() {
+  var package_data, Redeem_Code, msg_error, Keys, myEle, status_api, $form, allField, iti, MyHomeSmart, oneYear, treeYear, drpCompensation, drpCompensationText, dep1, dep3, p_packget, p_price, p_price1, p_price3, P, G, C, T, D, L, R, code, amount, block_list, sumTotal, package_1year, package_3year, package_code_1y, package_code_3y, package_amount, amount1y, amount3y, net1, net3, stamp1, stamp3, vat1, vat3, total1, total3, c_sum, data_result_1y, data_result_3y, data_result_amount_1y, data_result_amount_3y, getDataAmount1y, getDataAmount3y, chkBtn1, chkBtn2, btn, dataBlock, btnStep3, btnStep1, apiMyHomeSmartData, apiBlock, apiAmount1y, apiAmount3y, changeTextAmount, setData, setDataStep1, parseNumber, apiMyHomeSmart1y, apiMyHomeSmart3y, numberWithCommas, changeTextPremium, zipcode_data, $address_dup, step1Constraints, fdIDTYPE, step, data, $btnGoto;
+  return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee9$(_context9) {
     while (1) {
-      switch (_context10.prev = _context10.next) {
+      switch (_context9.prev = _context9.next) {
         case 0:
           numberWithCommas = function _numberWithCommas(x) {
             var parts = x.toString().split(".");
@@ -55656,11 +55656,11 @@ document.addEventListener("DOMContentLoaded", /*#__PURE__*/_asyncToGenerator( /*
             return value ? parseInt(value).format() : 0;
           };
 
-          _context10.next = 4;
+          _context9.next = 4;
           return Object(_form_productHelper__WEBPACK_IMPORTED_MODULE_1__["getPackageData"])(_helper__WEBPACK_IMPORTED_MODULE_2__["current_package"]);
 
         case 4:
-          package_data = _context10.sent;
+          package_data = _context9.sent;
           Redeem_Code = "";
 
           if (document.getElementById("redeem_code")) {
@@ -56073,6 +56073,7 @@ document.addEventListener("DOMContentLoaded", /*#__PURE__*/_asyncToGenerator( /*
           chkBtn1 = 0;
           chkBtn2 = 0;
           btn = document.getElementById("step_4");
+          dataBlock = [];
           btnStep3 = document.getElementById("btnStep3");
           Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$$"])("select[id=ctrl_province]").forEach(function ($el) {
             $el.addEventListener("change", function (e) {
@@ -56082,6 +56083,7 @@ document.addEventListener("DOMContentLoaded", /*#__PURE__*/_asyncToGenerator( /*
               var element = document.getElementById("msgErrBlock");
 
               if (result != "") {
+                dataBlock = result;
                 element.classList.remove("d-none");
                 btnStep3.classList.add("d-none");
                 chkBtn1 = 1;
@@ -56095,6 +56097,8 @@ document.addEventListener("DOMContentLoaded", /*#__PURE__*/_asyncToGenerator( /*
                 btnStep3.classList.add("d-none");
                 btn.classList.add("step-disable");
               }
+
+              console.log("dataBlock", dataBlock);
             });
           });
           Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$$"])("select[name=loc_ctrl_province]").forEach(function ($el) {
@@ -56437,22 +56441,6 @@ document.addEventListener("DOMContentLoaded", /*#__PURE__*/_asyncToGenerator( /*
 
           };
 
-          setDataAmount1y = function setDataAmount1y(id) {
-            var data_amount1y = amount1y;
-            var data_amount3y = amount3y;
-            var result_1y = data_amount1y.filter(function (element) {
-              return element.TAGNAME === package_code && element.FIRE == package_amount;
-            });
-          };
-
-          setDataAmount3y = function setDataAmount3y(id) {
-            var data_amount1y = amount1y;
-            var data_amount3y = amount3y;
-            var result_1y = data_amount1y.filter(function (element) {
-              return element.TAGNAME === package_code && element.FIRE == package_amount;
-            });
-          };
-
           setDataStep1 = /*#__PURE__*/function () {
             var _ref7 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee6(packageSelect) {
               var building, text, text_value, select, cover_amount, allPack;
@@ -56542,148 +56530,76 @@ document.addEventListener("DOMContentLoaded", /*#__PURE__*/_asyncToGenerator( /*
           apiBlock();
           setDataStep1(500000);
 
-          apiMyHomeSmart = /*#__PURE__*/function () {
+          apiMyHomeSmart1y = /*#__PURE__*/function () {
             var _ref8 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee7(packageSelect) {
-              var select, cover_amount, res, response, js, result, chk, i;
+              var res, response, js, result, i;
               return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee7$(_context7) {
                 while (1) {
                   switch (_context7.prev = _context7.next) {
                     case 0:
                       _context7.prev = 0;
-                      select = Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$"])('#ctrl_insurer_capital');
-                      cover_amount = select.options[select.selectedIndex].value;
-                      _context7.next = 5;
-                      return fetch("/appApi/ApiConnect/myHomeSmartPackage", {
+                      _context7.next = 3;
+                      return fetch("/appApi/ApiConnect/myHomeSmartPackage1y", {
                         method: 'post',
                         headers: {
                           'Accept': 'application/json',
                           'Content-Type': 'application/json',
                           'X-CSRF-TOKEN': Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$"])('meta[name="csrf-token"]').getAttribute('content')
-                        }
+                        } //body: JSON.stringify(data)
+
                       });
 
-                    case 5:
+                    case 3:
                       res = _context7.sent;
-                      _context7.next = 8;
+                      _context7.next = 6;
                       return res.json();
 
-                    case 8:
+                    case 6:
                       response = _context7.sent;
                       js = JSON.parse(response);
                       result = js.data;
-                      sessionStorage.setItem("amount", cover_amount);
-                      MyHomeSmart = JSON.stringify(result);
-                      chk = "";
 
                       for (i = 0; i < result.length; i++) {
-                        /*
-                        if(chk!=result[i].RENT_PERIL_PREM){
-                            drpCompensation.push(result[i].RENT_PERIL_PREM);
-                            drpCompensationText.push(result[i].RENT_PERIL_SUMINS);
-                            chk=result[i].RENT_PERIL_PREM;
+                        //drpOneYear = 
+                        if (result[i].id == packageSelect) {
+                          oneYear = result[i]; //console.log("oneYear", oneYear);
+
+                          document.getElementById("txtAmount1").value = numberWithCommas(result[i].Total);
+                          p_price1 = result[i].Total;
                         }
-                        */
-                        drpCompensation.push(result[i].RENT_PERIL_PREM);
-                        drpCompensationText.push(result[i].RENT_PERIL_SUMINS); //RENT_PERIL_PREM //value
-                        //RENT_PERIL_SUMINS //text 
+                      } //console.log("1y",oneYear)
 
-                        /*
-                        if(result[i].TAGNAME.trim() == "FNPGCTDALR1"){
-                            oneYear.push(result[i]);
-                        }
-                        if(result[i].TAGNAME == "FNPGCTDALR3"){
-                            //console.log("result3",result[i]);
-                            treeYear.push(result[i]);                    
-                        }
-                        */
-                        //default 
 
-                        console.log("code-", code);
-
-                        if (result[i].TAGNAME.trim() == code && result[i].FIRE == cover_amount) {
-                          console.log("data", result[i]);
-                          apiMyHomeSmart1y(result[i].id);
-                          apiMyHomeSmart3y(result[i].id); //ข้อ 1.
-
-                          document.getElementById("rate_2").innerHTML = parseNumber(result[i].ITEM1_1_PERIL_SUMINS);
-                          document.getElementById("rate_3").innerHTML = parseNumber(result[i].ITEM1_2_PERIL_SUMINS);
-                          document.getElementById("rate_4").innerHTML = parseNumber(result[i].ITEM1_3_PERIL_SUMINS);
-                          document.getElementById("rate_5").innerHTML = parseNumber(result[i].ITEM1_3_PERIL_SUMINS);
-                          document.getElementById("rate_6").innerHTML = parseNumber(result[i].ITEM1_5_PERIL_SPE_AMOUNT);
-                          document.getElementById("rate_7").innerHTML = parseNumber(result[i].ITEM1_5_PERIL_SUMINS);
-                          document.getElementById("rate_8").innerHTML = parseNumber(result[i].ITEM1_6_PERIL_SUMINS);
-                          document.getElementById("rate_10").innerHTML = parseNumber(result[i].ITEM1_7_PERIL_SUMINS);
-                          document.getElementById("rate_11").innerHTML = parseNumber(result[i].ITEM1_8_PERIL_SUMINS);
-                          document.getElementById("rate_2_3").innerHTML = parseNumber(result[i].ITEM1_1_PERIL_SUMINS);
-                          document.getElementById("rate_3_3").innerHTML = parseNumber(result[i].ITEM1_2_PERIL_SUMINS);
-                          document.getElementById("rate_4_3").innerHTML = parseNumber(result[i].ITEM1_3_PERIL_SUMINS);
-                          document.getElementById("rate_5_3").innerHTML = parseNumber(result[i].ITEM1_3_PERIL_SUMINS);
-                          document.getElementById("rate_6_3").innerHTML = parseNumber(result[i].ITEM1_5_PERIL_SPE_AMOUNT);
-                          document.getElementById("rate_7_3").innerHTML = parseNumber(result[i].ITEM1_5_PERIL_SUMINS);
-                          document.getElementById("rate_8_3").innerHTML = parseNumber(result[i].ITEM1_6_PERIL_SUMINS);
-                          document.getElementById("rate_10_3").innerHTML = parseNumber(result[i].ITEM1_7_PERIL_SUMINS);
-                          document.getElementById("rate_11_3").innerHTML = parseNumber(result[i].ITEM1_8_PERIL_SUMINS); //ข้อ 2.
-
-                          document.getElementById("rate_13").innerHTML = parseNumber(result[i].NATURAL);
-                          document.getElementById("rate_13_3").innerHTML = parseNumber(result[i].NATURAL); //ข้อ 3.
-
-                          document.getElementById("rate_15").innerHTML = parseNumber(result[i].PA_PERIL_SUMINS);
-                          document.getElementById("rate_15_3").innerHTML = parseNumber(result[i].PA_PERIL_SUMINS); //ข้อ 4.
-
-                          document.getElementById("rate_17").innerHTML = parseNumber(result[i].GLASS_PERIL_SUMINS);
-                          document.getElementById("rate_17_3").innerHTML = parseNumber(result[i].GLASS_PERIL_SUMINS); //ข้อ 5.
-
-                          document.getElementById("rate_19").innerHTML = parseNumber(result[i].CASH_PERIL_SUMINS);
-                          document.getElementById("rate_19_3").innerHTML = parseNumber(result[i].CASH_PERIL_SUMINS); //ข้อ 6.
-
-                          document.getElementById("rate_21").innerHTML = parseNumber(result[i].THEFT_PERIL_SUMINS);
-                          document.getElementById("rate_21_3").innerHTML = parseNumber(result[i].THEFT_PERIL_SUMINS); //ข้อ 7.
-
-                          document.getElementById("rate_22").innerHTML = parseNumber(result[i].DANGER_PERIL_SPE_AMOUNT);
-                          document.getElementById("rate_23").innerHTML = parseNumber(result[i].DANGER_PERIL_SUMINS);
-                          document.getElementById("rate_22_3").innerHTML = parseNumber(result[i].DANGER_PERIL_SPE_AMOUNT);
-                          document.getElementById("rate_23_3").innerHTML = parseNumber(result[i].DANGER_PERIL_SUMINS); //ข้อ 9.
-
-                          document.getElementById("drpCompensation3").value = result[i].RENT_PERIL_SUMINS;
-                          document.getElementById("drpCompensation1").value = result[i].RENT_PERIL_SUMINS; //ข้อ 10.    
-
-                          document.getElementById("sp_amount1").innerHTML = parseNumber(result[i].LIABILITY_PERIL_SUMINS);
-                          document.getElementById("sp_amount3").innerHTML = parseNumber(result[i].LIABILITY_PERIL_SUMINS);
-                          document.getElementById("txtDeposit1").innerHTML = parseNumber(result[i].LIABILITY_PERIL_PREM);
-                          document.getElementById("txtDeposit3").innerHTML = parseNumber(result[i].LIABILITY_PERIL_PREM); //sp_amount3
-                        }
-                      }
-
-                      _context7.next = 21;
+                      _context7.next = 16;
                       break;
 
-                    case 17:
-                      _context7.prev = 17;
+                    case 12:
+                      _context7.prev = 12;
                       _context7.t0 = _context7["catch"](0);
-                      console.log("apiMyHomeSmart", _context7.t0);
+                      console.log("apiMyHomeSmart1y", _context7.t0);
                       sweetalert2__WEBPACK_IMPORTED_MODULE_4___default.a.fire({
                         title: "<i class=\"icofont-alarm\" style=\"color:red\"></i>",
                         html: "<strong>".concat($form.getAttribute('data-error'), "</strong><br>").concat($form.getAttribute('data-error-description')),
                         confirmButtonText: $form.getAttribute('data-error-button')
                       });
 
-                    case 21:
+                    case 16:
                       $form.classList.remove('ajax_loader');
 
-                    case 22:
+                    case 17:
                     case "end":
                       return _context7.stop();
                   }
                 }
-              }, _callee7, null, [[0, 17]]);
+              }, _callee7, null, [[0, 12]]);
             }));
 
-            return function apiMyHomeSmart(_x3) {
+            return function apiMyHomeSmart1y(_x3) {
               return _ref8.apply(this, arguments);
             };
           }();
 
-          apiMyHomeSmart1y = /*#__PURE__*/function () {
+          apiMyHomeSmart3y = /*#__PURE__*/function () {
             var _ref9 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee8(packageSelect) {
               var res, response, js, result, i;
               return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee8$(_context8) {
@@ -56692,7 +56608,7 @@ document.addEventListener("DOMContentLoaded", /*#__PURE__*/_asyncToGenerator( /*
                     case 0:
                       _context8.prev = 0;
                       _context8.next = 3;
-                      return fetch("/appApi/ApiConnect/myHomeSmartPackage1y", {
+                      return fetch("/appApi/ApiConnect/myHomeSmartPackage3y", {
                         method: 'post',
                         headers: {
                           'Accept': 'application/json',
@@ -56713,14 +56629,13 @@ document.addEventListener("DOMContentLoaded", /*#__PURE__*/_asyncToGenerator( /*
                       result = js.data;
 
                       for (i = 0; i < result.length; i++) {
-                        //drpOneYear = 
                         if (result[i].id == packageSelect) {
-                          oneYear = result[i]; //console.log("oneYear", oneYear);
+                          treeYear = result[i]; //treeYear", treeYear);
 
-                          document.getElementById("txtAmount1").value = numberWithCommas(result[i].Total);
-                          p_price1 = result[i].Total;
+                          document.getElementById("txtAmount3").value = numberWithCommas(result[i].Total);
+                          p_price3 = result[i].Total;
                         }
-                      } //console.log("1y",oneYear)
+                      } //console.log("3y",treeYear)
 
 
                       _context8.next = 16;
@@ -56729,7 +56644,7 @@ document.addEventListener("DOMContentLoaded", /*#__PURE__*/_asyncToGenerator( /*
                     case 12:
                       _context8.prev = 12;
                       _context8.t0 = _context8["catch"](0);
-                      console.log("apiMyHomeSmart1y", _context8.t0);
+                      console.log("apiMyHomeSmart3y", _context8.t0);
                       sweetalert2__WEBPACK_IMPORTED_MODULE_4___default.a.fire({
                         title: "<i class=\"icofont-alarm\" style=\"color:red\"></i>",
                         html: "<strong>".concat($form.getAttribute('data-error'), "</strong><br>").concat($form.getAttribute('data-error-description')),
@@ -56747,76 +56662,8 @@ document.addEventListener("DOMContentLoaded", /*#__PURE__*/_asyncToGenerator( /*
               }, _callee8, null, [[0, 12]]);
             }));
 
-            return function apiMyHomeSmart1y(_x4) {
+            return function apiMyHomeSmart3y(_x4) {
               return _ref9.apply(this, arguments);
-            };
-          }();
-
-          apiMyHomeSmart3y = /*#__PURE__*/function () {
-            var _ref10 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee9(packageSelect) {
-              var res, response, js, result, i;
-              return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee9$(_context9) {
-                while (1) {
-                  switch (_context9.prev = _context9.next) {
-                    case 0:
-                      _context9.prev = 0;
-                      _context9.next = 3;
-                      return fetch("/appApi/ApiConnect/myHomeSmartPackage3y", {
-                        method: 'post',
-                        headers: {
-                          'Accept': 'application/json',
-                          'Content-Type': 'application/json',
-                          'X-CSRF-TOKEN': Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$"])('meta[name="csrf-token"]').getAttribute('content')
-                        } //body: JSON.stringify(data)
-
-                      });
-
-                    case 3:
-                      res = _context9.sent;
-                      _context9.next = 6;
-                      return res.json();
-
-                    case 6:
-                      response = _context9.sent;
-                      js = JSON.parse(response);
-                      result = js.data;
-
-                      for (i = 0; i < result.length; i++) {
-                        if (result[i].id == packageSelect) {
-                          treeYear = result[i]; //treeYear", treeYear);
-
-                          document.getElementById("txtAmount3").value = numberWithCommas(result[i].Total);
-                          p_price3 = result[i].Total;
-                        }
-                      } //console.log("3y",treeYear)
-
-
-                      _context9.next = 16;
-                      break;
-
-                    case 12:
-                      _context9.prev = 12;
-                      _context9.t0 = _context9["catch"](0);
-                      console.log("apiMyHomeSmart3y", _context9.t0);
-                      sweetalert2__WEBPACK_IMPORTED_MODULE_4___default.a.fire({
-                        title: "<i class=\"icofont-alarm\" style=\"color:red\"></i>",
-                        html: "<strong>".concat($form.getAttribute('data-error'), "</strong><br>").concat($form.getAttribute('data-error-description')),
-                        confirmButtonText: $form.getAttribute('data-error-button')
-                      });
-
-                    case 16:
-                      $form.classList.remove('ajax_loader');
-
-                    case 17:
-                    case "end":
-                      return _context9.stop();
-                  }
-                }
-              }, _callee9, null, [[0, 12]]);
-            }));
-
-            return function apiMyHomeSmart3y(_x5) {
-              return _ref10.apply(this, arguments);
             };
           }(); //apiMyHomeSmart("500000");
 
@@ -56906,11 +56753,11 @@ document.addEventListener("DOMContentLoaded", /*#__PURE__*/_asyncToGenerator( /*
           }; //changeTextPremium("ONMHS1");
 
 
-          _context10.next = 95;
+          _context9.next = 93;
           return Object(_helper__WEBPACK_IMPORTED_MODULE_2__["getZipcodeData"])();
 
-        case 95:
-          zipcode_data = _context10.sent;
+        case 93:
+          zipcode_data = _context9.sent;
           Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$"])("input[name=loc_fdAddr_PostCode]").addEventListener("change", function (e) {
             var value = e.target.value;
 
@@ -57247,12 +57094,11 @@ document.addEventListener("DOMContentLoaded", /*#__PURE__*/_asyncToGenerator( /*
                       sum_ins: c_sum,
                       gross_amt: p_packget == "ONMHS1" ? net1 : net3,
                       ann_nprem: p_packget == "ONMHS1" ? net1 : net3,
-                      stamp_amt: p_packget == "ONMHS1" ? stamp1 : stamp1,
+                      stamp_amt: p_packget == "ONMHS1" ? stamp1 : stamp3,
                       vat_amt: p_packget == "ONMHS1" ? vat1 : vat3,
                       total_amt: p_packget == "ONMHS1" ? total1 : total3,
                       ann_days: p_packget == "ONMHS1" ? '365' : '1096',
-                      invoice: 'INV0001',
-                      //test
+                      //invoice:'INV0001',//test
                       packget_peril: JSON.stringify([{
                         peril_code: 'TMRT',
                         peril_sumins: p_packget == "ONMHS1" ? data_result_1y.ITEM1_5_PERIL_SUMINS : data_result_3y.ITEM1_5_PERIL_SUMINS,
@@ -57381,6 +57227,22 @@ document.addEventListener("DOMContentLoaded", /*#__PURE__*/_asyncToGenerator( /*
                         peril_spe_amount: '0'
                       }]).replaceAll('"', "'"),
                       item_nbr: '1',
+                      block_tambun: '1',
+                      exp_code: '1',
+                      tariff_code: '1',
+                      occupancy: '1',
+                      building_class: '1',
+                      whole_building: '1',
+                      floor_nbr: '1',
+                      dryriser: '1',
+                      external_wall: '1',
+                      upper_floor: '1',
+                      roof_beam: '1',
+                      roof: '1',
+                      column: '1',
+                      internal_area: '1',
+                      nbr_room: '1',
+                      nbr_storey: '1',
                       interest_item: JSON.stringify([{
                         int_code: 'B',
                         int_sumins: data_result_1y.FIRE_BUILDING
@@ -57546,12 +57408,12 @@ document.addEventListener("DOMContentLoaded", /*#__PURE__*/_asyncToGenerator( /*
             });
           });
 
-        case 106:
+        case 104:
         case "end":
-          return _context10.stop();
+          return _context9.stop();
       }
     }
-  }, _callee10);
+  }, _callee9);
 })));
 
 /***/ }),
