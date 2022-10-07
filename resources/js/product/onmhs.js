@@ -795,9 +795,11 @@ document.addEventListener("DOMContentLoaded", async () => {
     
 
 
-    var btnStep1 = document.getElementById("btnStep1");
-    btnStep1.classList.add("step-disable");
+    
     const apiMyHomeSmartData = async () => {
+        let btnStep1 = document.getElementById("btnStep1");
+        btnStep1.classList.add("step-disable");
+
         let select = $('#ctrl_insurer_capital');
         let cover_amount = select.options[select.selectedIndex].value;
 
