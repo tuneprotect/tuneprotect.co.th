@@ -1780,11 +1780,11 @@ document.addEventListener("DOMContentLoaded", async () => {
                                 peril_spe_amount: '0',
                               }
                             ]).replaceAll('"',"'"),
-                            item_nbr:'1',
-                            block_tambun:'',
+                            item_nbr:'1',//รอ
+                            block_tambun:'',// รอ
                             exp_code:'8001',
                             tariff_code:'1032',
-                            occupancy: p_packget=="ONMHS3" ? 'คอนโด' : 'บ้านอยู่อาศัย',//บ้านอยู่อาศัย
+                            occupancy: 'บ้านอยู่อาศัย',//บ้านอยู่อาศัย
                             building_class:'1',
                             whole_building:'1',
                             floor_nbr:'1',

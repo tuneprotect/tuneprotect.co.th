@@ -201,9 +201,9 @@
                                     @elseif($selected==='ONMHS')
                                         <picture>
                                             <source media="(min-width:768px)"
-                                                    srcset="/storage/product/myHomeSmart/Banner for Website sale page1.png">
+                                                    srcset="/storage/product/myHomeSmart/myHomeSmart En 1366 x 688.jpg">
                                             <img
-                                                src="/storage/product/myHomeSmart/Banner for Website sale page1.png"
+                                                src="/storage/product/myHomeSmart/myHomeSmart En 1366 x 688.jpg"
                                                 alt="{{$v->locales[$locale]->title}}">
                                         </picture>
                                     @elseif($selected==='DIABETES')
