@@ -275,8 +275,8 @@
                                         </picture>
                                     @elseif($selected==='ONMHS')
                                         <picture>
-                                            <source media="(min-width:768px)" srcset="{{url(str_replace('Banner_iPass_COVID', 'Migrant-Banner-Th01', $v->pic_en))}}">
-                                            <img src="{{url(!empty($v->pic_mobile_en) ? url(str_replace('Banner_iPass_COVID', 'Migrant-Banner-Th01', $v->pic_mobile_en)) : url(str_replace('Banner_iPass_COVID', 'Migrant-Banner-Th02', $v->pic_en)) )}}"
+                                            <source media="(min-width:768px)" srcset="{{url(str_replace('Banner_iPass_COVID', 'Banner for Website sale page1', $v->pic_en))}}">
+                                            <img src="{{url(!empty($v->pic_mobile_en) ? url(str_replace('Banner_iPass_COVID', 'Banner for Website sale page1', $v->pic_mobile_en)) : url(str_replace('Banner_iPass_COVID', 'Banner for Website sale page1', $v->pic_en)) )}}"
                                                 alt="{{$v->locales[$locale]->title}}">
                                         </picture>
                                         <!--picture>
