@@ -56101,8 +56101,6 @@ document.addEventListener("DOMContentLoaded", /*#__PURE__*/_asyncToGenerator( /*
                 btnStep3.classList.add("d-none");
                 btn.classList.add("step-disable");
               }
-
-              console.log("dataBlock", dataBlock);
             });
           });
           Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$$"])("select[name=loc_ctrl_province]").forEach(function ($el) {
@@ -57227,10 +57225,11 @@ document.addEventListener("DOMContentLoaded", /*#__PURE__*/_asyncToGenerator( /*
                         peril_spe_amount: '0'
                       }]).replaceAll('"', "'"),
                       item_nbr: '1',
-                      block_tambun: '1',
-                      exp_code: '1',
-                      tariff_code: '1',
-                      occupancy: '1',
+                      block_tambun: '',
+                      exp_code: '8001',
+                      tariff_code: '1032',
+                      occupancy: p_packget == "ONMHS3" ? 'คอนโด' : 'บ้านอยู่อาศัย',
+                      //บ้านอยู่อาศัย
                       building_class: '1',
                       whole_building: '1',
                       floor_nbr: '1',

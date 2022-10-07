@@ -156,22 +156,34 @@
                 <th>
                     <strong> 
                         @if($locale == 'en')
-                            Insurance plan for 1 year
+                            plan 1 year
                         @else
                             แผนความคุ้มครอง 1 ปี
                         @endif
                     </strong>
-                    <a href="#" data-gtm="product-onmhs-top-choose-plan-1" data-step="3" data-package="ONMHS1" data-sub-package="" data-plan="" class="btn btn-block btn-outline btn-goto">เลือกแผนนี้</a>
+                    <a href="#" data-gtm="product-onmhs-top-choose-plan-1" data-step="3" data-package="ONMHS1" data-sub-package="" data-plan="" class="btn btn-block btn-outline btn-goto"> 
+                            @if($locale == 'en')
+                                SELECT
+                            @else
+                                เลือกแผนนี้
+                            @endif
+                    </a>
                 </th>
                 <th>
                     <strong> 
                         @if($locale == 'en')
-                            Insurance plan for 3 year
+                            plan 3 year
                         @else
                             แผนความคุ้มครอง 3 ปี
                         @endif
                     </strong>
-                    <a href="#" data-gtm="product-onmhs-top-choose-plan-2" data-step="3" data-package="ONMHS2" data-sub-package="" data-plan="" class="btn btn-block btn-outline btn-goto">เลือกแผนนี้</a>
+                    <a href="#" data-gtm="product-onmhs-top-choose-plan-2" data-step="3" data-package="ONMHS2" data-sub-package="" data-plan="" class="btn btn-block btn-outline btn-goto"> 
+                        @if($locale == 'en')
+                            SELECT
+                        @else
+                            เลือกแผนนี้
+                        @endif
+                    </a>
                 </th>
             </tr>
             </thead>
@@ -775,7 +787,7 @@
                     <td class="td-onmhs text-center" data-index="1" data-package="ONMHS1">
                         <strong> 
                             @if($locale == 'en')
-                                Insurance plan for 1 year
+                                plan 1 year
                             @else
                                 แผนความคุ้มครอง 1 ปี
                             @endif
@@ -783,12 +795,18 @@
                         <form>
                             <input id="txtAmount1" type="text" readonly="" class="text-amount" />
                         </form>
-                        <a href="#" data-gtm="product-onmhs-top-choose-plan-1" data-step="3" data-package="ONMHS1" data-sub-package="" data-plan="" class="btn btn-block btn-outline btn-goto">เลือกแผนนี้</a>
+                        <a href="#" data-gtm="product-onmhs-top-choose-plan-1" data-step="3" data-package="ONMHS1" data-sub-package="" data-plan="" class="btn btn-block btn-outline btn-goto">
+                            @if($locale == 'en')
+                                SELECT
+                            @else
+                                เลือกแผนนี้
+                            @endif
+                            </a>
                     </td>
                     <td class="hide td-onmhs text-center" data-index="2" data-package="ONMHS2">
                         <strong> 
                             @if($locale == 'en')
-                                Insurance plan for 3 year
+                                plan 3 year
                             @else
                                 แผนความคุ้มครอง 3 ปี
                             @endif
@@ -796,7 +814,12 @@
                         <form>
                             <input id="txtAmount3" type="text" readonly="" class="text-amount" />
                         </form>
-                        <a href="#" data-gtm="product-onmhs-top-choose-plan-2" data-step="3" data-package="ONMHS2" data-sub-package="" data-plan="" class="btn btn-block btn-outline btn-goto">เลือกแผนนี้</a>
+                        <a href="#" data-gtm="product-onmhs-top-choose-plan-2" data-step="3" data-package="ONMHS2" data-sub-package="" data-plan="" class="btn btn-block btn-outline btn-goto"> 
+                            @if($locale == 'en')
+                                SELECT
+                            @else
+                                เลือกแผนนี้
+                            @endif</a>
                     </td>                
                 </tr>
             </tfoot>
@@ -804,11 +827,13 @@
 
         <br><br>
         <p style="text-align: center; color: #E71618">
-            @if($locale == 'en')
-                On-demand customize
-            @else
-                ออกแบบแผนให้ตรงความต้องการของคุณง่ายๆ
-            @endif
+            <b>
+                @if($locale == 'en')
+                    On-demand customize
+                @else
+                    ออกแบบแผนให้ตรงความต้องการของคุณง่ายๆ
+                @endif
+            </b>
         </p>
         <a href="#" data-gtm="product-{{strtolower($selected)}}-more" id="btn-more" data-expand="@lang('product.more')"
            data-collapse="@lang('product.collapse')">
