@@ -816,7 +816,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         MyHomeSmart = result;
     }
     const apiBlock = async()=>{
-
+        console.log("block");
         let res = await fetch(`/appApi/ApiConnect/blockHomePolicy`, {
             method: 'post',
             headers: {

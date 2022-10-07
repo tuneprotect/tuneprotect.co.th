@@ -55639,11 +55639,11 @@ var getSelectedPricePackage = function getSelectedPricePackage(packageCode, pack
   return package_data[packageCode].price;
 };
 
-document.addEventListener("DOMContentLoaded", /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee9() {
-  var package_data, Redeem_Code, msg_error, Keys, myEle, status_api, $form, allField, iti, MyHomeSmart, oneYear, treeYear, drpCompensation, drpCompensationText, dep1, dep3, p_packget, p_price, p_price1, p_price3, P, G, C, T, D, L, R, code, amount, sumTotal, package_1year, package_3year, package_code_1y, package_code_3y, package_amount, amount1y, amount3y, net1, net3, stamp1, stamp3, vat1, vat3, total1, total3, c_sum, data_result_1y, data_result_3y, data_result_amount_1y, data_result_amount_3y, getDataAmount1y, getDataAmount3y, apiMyHomeSmartData, apiAmount1y, apiAmount3y, changeTextAmount, setData, setDataAmount1y, setDataAmount3y, setDataStep1, apiMyHomeSmart, parseNumber, apiMyHomeSmart1y, apiMyHomeSmart3y, numberWithCommas, changeTextPremium, zipcode_data, $address_dup, step1Constraints, fdIDTYPE, step, data, $btnGoto;
-  return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee9$(_context9) {
+document.addEventListener("DOMContentLoaded", /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee10() {
+  var package_data, Redeem_Code, msg_error, Keys, myEle, status_api, $form, allField, iti, MyHomeSmart, oneYear, treeYear, drpCompensation, drpCompensationText, dep1, dep3, p_packget, p_price, p_price1, p_price3, P, G, C, T, D, L, R, code, amount, sumTotal, package_1year, package_3year, package_code_1y, package_code_3y, package_amount, amount1y, amount3y, net1, net3, stamp1, stamp3, vat1, vat3, total1, total3, c_sum, data_result_1y, data_result_3y, data_result_amount_1y, data_result_amount_3y, getDataAmount1y, getDataAmount3y, chkBtn1, chkBtn2, btn, btnStep3, apiMyHomeSmartData, apiBlock, apiAmount1y, apiAmount3y, changeTextAmount, setData, setDataAmount1y, setDataAmount3y, setDataStep1, apiMyHomeSmart, parseNumber, apiMyHomeSmart1y, apiMyHomeSmart3y, numberWithCommas, changeTextPremium, zipcode_data, $address_dup, step1Constraints, fdIDTYPE, step, data, $btnGoto;
+  return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee10$(_context10) {
     while (1) {
-      switch (_context9.prev = _context9.next) {
+      switch (_context10.prev = _context10.next) {
         case 0:
           numberWithCommas = function _numberWithCommas(x) {
             var parts = x.toString().split(".");
@@ -55656,11 +55656,11 @@ document.addEventListener("DOMContentLoaded", /*#__PURE__*/_asyncToGenerator( /*
             return value ? parseInt(value).format() : 0;
           };
 
-          _context9.next = 4;
+          _context10.next = 4;
           return Object(_form_productHelper__WEBPACK_IMPORTED_MODULE_1__["getPackageData"])(_helper__WEBPACK_IMPORTED_MODULE_2__["current_package"]);
 
         case 4:
-          package_data = _context9.sent;
+          package_data = _context10.sent;
           Redeem_Code = "";
 
           if (document.getElementById("redeem_code")) {
@@ -56067,6 +56067,60 @@ document.addEventListener("DOMContentLoaded", /*#__PURE__*/_asyncToGenerator( /*
           });
           /* End Step 2 */
 
+          /* Step 3 */
+
+          chkBtn1 = 0;
+          chkBtn2 = 0;
+          btn = document.getElementById("step_4");
+          btnStep3 = document.getElementById("btnStep3");
+          Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$$"])("select[id=ctrl_province]").forEach(function ($el) {
+            $el.addEventListener("change", function (e) {
+              var result = block_list.filter(function (element) {
+                return element.AmphurCode === e.target.value;
+              });
+              var element = document.getElementById("msgErrBlock");
+
+              if (result != "") {
+                element.classList.remove("d-none");
+                btnStep3.classList.add("d-none");
+                chkBtn1 = 1;
+              } else {
+                element.classList.add("d-none");
+                btnStep3.classList.remove("d-none");
+                chkBtn1 = 0;
+              }
+
+              if (chkBtn1 == 1 || chkBtn2 == 1) {
+                btnStep3.classList.add("d-none");
+                btn.classList.add("step-disable");
+              }
+            });
+          });
+          Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$$"])("select[name=loc_ctrl_province]").forEach(function ($el) {
+            $el.addEventListener("change", function (e) {
+              var result = block_list.filter(function (element) {
+                return element.AmphurCode === e.target.value;
+              });
+              var element = document.getElementById("loc_msgErrBlock");
+
+              if (result != "") {
+                element.classList.remove("d-none");
+                btnStep3.classList.add("d-none");
+                chkBtn2 = 1;
+              } else {
+                element.classList.add("d-none");
+                btnStep3.classList.remove("d-none");
+                chkBtn2 = 0;
+              }
+
+              if (chkBtn1 == 1 || chkBtn2 == 1) {
+                btnStep3.classList.add("d-none");
+                btn.classList.add("step-disable");
+              }
+            });
+          });
+          /* End Step 3 */
+
           apiMyHomeSmartData = /*#__PURE__*/function () {
             var _ref3 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
               var select, cover_amount, res, response, js, result;
@@ -56111,23 +56165,22 @@ document.addEventListener("DOMContentLoaded", /*#__PURE__*/_asyncToGenerator( /*
             };
           }();
 
-          apiAmount1y = /*#__PURE__*/function () {
+          apiBlock = /*#__PURE__*/function () {
             var _ref4 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3() {
-              var res, response, js;
+              var res, response, js, result, results;
               return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
                 while (1) {
                   switch (_context3.prev = _context3.next) {
                     case 0:
-                      _context3.prev = 0;
+                      console.log("block");
                       _context3.next = 3;
-                      return fetch("/appApi/ApiConnect/myHomeSmartPackage1y", {
+                      return fetch("/appApi/ApiConnect/blockHomePolicy", {
                         method: 'post',
                         headers: {
                           'Accept': 'application/json',
                           'Content-Type': 'application/json',
                           'X-CSRF-TOKEN': Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$"])('meta[name="csrf-token"]').getAttribute('content')
-                        } //body: JSON.stringify(data)
-
+                        }
                       });
 
                     case 3:
@@ -56136,39 +56189,30 @@ document.addEventListener("DOMContentLoaded", /*#__PURE__*/_asyncToGenerator( /*
                       return res.json();
 
                     case 6:
-                      response = _context3.sent;
+                      response = _context3.sent; //console.log("response",response);
+
                       js = JSON.parse(response);
-                      amount1y = js.data;
-                      _context3.next = 15;
-                      break;
-
-                    case 11:
-                      _context3.prev = 11;
-                      _context3.t0 = _context3["catch"](0);
-                      console.log("apiMyHomeSmart1y", _context3.t0);
-                      sweetalert2__WEBPACK_IMPORTED_MODULE_4___default.a.fire({
-                        title: "<i class=\"icofont-alarm\" style=\"color:red\"></i>",
-                        html: "<strong>".concat($form.getAttribute('data-error'), "</strong><br>").concat($form.getAttribute('data-error-description')),
-                        confirmButtonText: $form.getAttribute('data-error-button')
+                      result = js.data;
+                      results = result.filter(function (element) {
+                        return element.Reasons != '';
                       });
+                      console.log("response", results);
+                      block_list = results;
 
-                    case 15:
-                      $form.classList.remove('ajax_loader');
-
-                    case 16:
+                    case 12:
                     case "end":
                       return _context3.stop();
                   }
                 }
-              }, _callee3, null, [[0, 11]]);
+              }, _callee3);
             }));
 
-            return function apiAmount1y() {
+            return function apiBlock() {
               return _ref4.apply(this, arguments);
             };
           }();
 
-          apiAmount3y = /*#__PURE__*/function () {
+          apiAmount1y = /*#__PURE__*/function () {
             var _ref5 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee4() {
               var res, response, js;
               return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee4$(_context4) {
@@ -56177,7 +56221,7 @@ document.addEventListener("DOMContentLoaded", /*#__PURE__*/_asyncToGenerator( /*
                     case 0:
                       _context4.prev = 0;
                       _context4.next = 3;
-                      return fetch("/appApi/ApiConnect/myHomeSmartPackage3y", {
+                      return fetch("/appApi/ApiConnect/myHomeSmartPackage1y", {
                         method: 'post',
                         headers: {
                           'Accept': 'application/json',
@@ -56195,14 +56239,14 @@ document.addEventListener("DOMContentLoaded", /*#__PURE__*/_asyncToGenerator( /*
                     case 6:
                       response = _context4.sent;
                       js = JSON.parse(response);
-                      amount3y = js.data;
+                      amount1y = js.data;
                       _context4.next = 15;
                       break;
 
                     case 11:
                       _context4.prev = 11;
                       _context4.t0 = _context4["catch"](0);
-                      console.log("apiAmount3y", _context4.t0);
+                      console.log("apiMyHomeSmart1y", _context4.t0);
                       sweetalert2__WEBPACK_IMPORTED_MODULE_4___default.a.fire({
                         title: "<i class=\"icofont-alarm\" style=\"color:red\"></i>",
                         html: "<strong>".concat($form.getAttribute('data-error'), "</strong><br>").concat($form.getAttribute('data-error-description')),
@@ -56220,8 +56264,65 @@ document.addEventListener("DOMContentLoaded", /*#__PURE__*/_asyncToGenerator( /*
               }, _callee4, null, [[0, 11]]);
             }));
 
-            return function apiAmount3y() {
+            return function apiAmount1y() {
               return _ref5.apply(this, arguments);
+            };
+          }();
+
+          apiAmount3y = /*#__PURE__*/function () {
+            var _ref6 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee5() {
+              var res, response, js;
+              return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee5$(_context5) {
+                while (1) {
+                  switch (_context5.prev = _context5.next) {
+                    case 0:
+                      _context5.prev = 0;
+                      _context5.next = 3;
+                      return fetch("/appApi/ApiConnect/myHomeSmartPackage3y", {
+                        method: 'post',
+                        headers: {
+                          'Accept': 'application/json',
+                          'Content-Type': 'application/json',
+                          'X-CSRF-TOKEN': Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$"])('meta[name="csrf-token"]').getAttribute('content')
+                        } //body: JSON.stringify(data)
+
+                      });
+
+                    case 3:
+                      res = _context5.sent;
+                      _context5.next = 6;
+                      return res.json();
+
+                    case 6:
+                      response = _context5.sent;
+                      js = JSON.parse(response);
+                      amount3y = js.data;
+                      _context5.next = 15;
+                      break;
+
+                    case 11:
+                      _context5.prev = 11;
+                      _context5.t0 = _context5["catch"](0);
+                      console.log("apiAmount3y", _context5.t0);
+                      sweetalert2__WEBPACK_IMPORTED_MODULE_4___default.a.fire({
+                        title: "<i class=\"icofont-alarm\" style=\"color:red\"></i>",
+                        html: "<strong>".concat($form.getAttribute('data-error'), "</strong><br>").concat($form.getAttribute('data-error-description')),
+                        confirmButtonText: $form.getAttribute('data-error-button')
+                      });
+
+                    case 15:
+                      $form.classList.remove('ajax_loader');
+
+                    case 16:
+                    case "end":
+                      return _context5.stop();
+                  }
+                }
+              }, _callee5, null, [[0, 11]]);
+            }));
+
+            return function apiAmount3y() {
+              return _ref6.apply(this, arguments);
             };
           }();
 
@@ -56347,11 +56448,11 @@ document.addEventListener("DOMContentLoaded", /*#__PURE__*/_asyncToGenerator( /*
           };
 
           setDataStep1 = /*#__PURE__*/function () {
-            var _ref6 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee5(packageSelect) {
+            var _ref7 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee6(packageSelect) {
               var building, text, text_value, select, cover_amount, allPack;
-              return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee5$(_context5) {
+              return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee6$(_context6) {
                 while (1) {
-                  switch (_context5.prev = _context5.next) {
+                  switch (_context6.prev = _context6.next) {
                     case 0:
                       building = Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$"])('#ctrl_fire_building');
                       text = building.options[building.selectedIndex].text;
@@ -56418,33 +56519,34 @@ document.addEventListener("DOMContentLoaded", /*#__PURE__*/_asyncToGenerator( /*
 
                     case 17:
                     case "end":
-                      return _context5.stop();
+                      return _context6.stop();
                   }
                 }
-              }, _callee5);
+              }, _callee6);
             }));
 
             return function setDataStep1(_x2) {
-              return _ref6.apply(this, arguments);
+              return _ref7.apply(this, arguments);
             };
           }();
 
           apiAmount1y();
           apiAmount3y();
           apiMyHomeSmartData();
+          apiBlock();
           setDataStep1(500000);
 
           apiMyHomeSmart = /*#__PURE__*/function () {
-            var _ref7 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee6(packageSelect) {
+            var _ref8 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee7(packageSelect) {
               var select, cover_amount, res, response, js, result, chk, i;
-              return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee6$(_context6) {
+              return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee7$(_context7) {
                 while (1) {
-                  switch (_context6.prev = _context6.next) {
+                  switch (_context7.prev = _context7.next) {
                     case 0:
-                      _context6.prev = 0;
+                      _context7.prev = 0;
                       select = Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$"])('#ctrl_insurer_capital');
                       cover_amount = select.options[select.selectedIndex].value;
-                      _context6.next = 5;
+                      _context7.next = 5;
                       return fetch("/appApi/ApiConnect/myHomeSmartPackage", {
                         method: 'post',
                         headers: {
@@ -56455,12 +56557,12 @@ document.addEventListener("DOMContentLoaded", /*#__PURE__*/_asyncToGenerator( /*
                       });
 
                     case 5:
-                      res = _context6.sent;
-                      _context6.next = 8;
+                      res = _context7.sent;
+                      _context7.next = 8;
                       return res.json();
 
                     case 8:
-                      response = _context6.sent;
+                      response = _context7.sent;
                       js = JSON.parse(response);
                       result = js.data;
                       sessionStorage.setItem("amount", cover_amount);
@@ -56546,13 +56648,13 @@ document.addEventListener("DOMContentLoaded", /*#__PURE__*/_asyncToGenerator( /*
                         }
                       }
 
-                      _context6.next = 21;
+                      _context7.next = 21;
                       break;
 
                     case 17:
-                      _context6.prev = 17;
-                      _context6.t0 = _context6["catch"](0);
-                      console.log("apiMyHomeSmart", _context6.t0);
+                      _context7.prev = 17;
+                      _context7.t0 = _context7["catch"](0);
+                      console.log("apiMyHomeSmart", _context7.t0);
                       sweetalert2__WEBPACK_IMPORTED_MODULE_4___default.a.fire({
                         title: "<i class=\"icofont-alarm\" style=\"color:red\"></i>",
                         html: "<strong>".concat($form.getAttribute('data-error'), "</strong><br>").concat($form.getAttribute('data-error-description')),
@@ -56564,87 +56666,18 @@ document.addEventListener("DOMContentLoaded", /*#__PURE__*/_asyncToGenerator( /*
 
                     case 22:
                     case "end":
-                      return _context6.stop();
-                  }
-                }
-              }, _callee6, null, [[0, 17]]);
-            }));
-
-            return function apiMyHomeSmart(_x3) {
-              return _ref7.apply(this, arguments);
-            };
-          }();
-
-          apiMyHomeSmart1y = /*#__PURE__*/function () {
-            var _ref8 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee7(packageSelect) {
-              var res, response, js, result, i;
-              return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee7$(_context7) {
-                while (1) {
-                  switch (_context7.prev = _context7.next) {
-                    case 0:
-                      _context7.prev = 0;
-                      _context7.next = 3;
-                      return fetch("/appApi/ApiConnect/myHomeSmartPackage1y", {
-                        method: 'post',
-                        headers: {
-                          'Accept': 'application/json',
-                          'Content-Type': 'application/json',
-                          'X-CSRF-TOKEN': Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$"])('meta[name="csrf-token"]').getAttribute('content')
-                        } //body: JSON.stringify(data)
-
-                      });
-
-                    case 3:
-                      res = _context7.sent;
-                      _context7.next = 6;
-                      return res.json();
-
-                    case 6:
-                      response = _context7.sent;
-                      js = JSON.parse(response);
-                      result = js.data;
-
-                      for (i = 0; i < result.length; i++) {
-                        //drpOneYear = 
-                        if (result[i].id == packageSelect) {
-                          oneYear = result[i]; //console.log("oneYear", oneYear);
-
-                          document.getElementById("txtAmount1").value = numberWithCommas(result[i].Total);
-                          p_price1 = result[i].Total;
-                        }
-                      } //console.log("1y",oneYear)
-
-
-                      _context7.next = 16;
-                      break;
-
-                    case 12:
-                      _context7.prev = 12;
-                      _context7.t0 = _context7["catch"](0);
-                      console.log("apiMyHomeSmart1y", _context7.t0);
-                      sweetalert2__WEBPACK_IMPORTED_MODULE_4___default.a.fire({
-                        title: "<i class=\"icofont-alarm\" style=\"color:red\"></i>",
-                        html: "<strong>".concat($form.getAttribute('data-error'), "</strong><br>").concat($form.getAttribute('data-error-description')),
-                        confirmButtonText: $form.getAttribute('data-error-button')
-                      });
-
-                    case 16:
-                      $form.classList.remove('ajax_loader');
-
-                    case 17:
-                    case "end":
                       return _context7.stop();
                   }
                 }
-              }, _callee7, null, [[0, 12]]);
+              }, _callee7, null, [[0, 17]]);
             }));
 
-            return function apiMyHomeSmart1y(_x4) {
+            return function apiMyHomeSmart(_x3) {
               return _ref8.apply(this, arguments);
             };
           }();
 
-          apiMyHomeSmart3y = /*#__PURE__*/function () {
+          apiMyHomeSmart1y = /*#__PURE__*/function () {
             var _ref9 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee8(packageSelect) {
               var res, response, js, result, i;
               return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee8$(_context8) {
@@ -56653,7 +56686,7 @@ document.addEventListener("DOMContentLoaded", /*#__PURE__*/_asyncToGenerator( /*
                     case 0:
                       _context8.prev = 0;
                       _context8.next = 3;
-                      return fetch("/appApi/ApiConnect/myHomeSmartPackage3y", {
+                      return fetch("/appApi/ApiConnect/myHomeSmartPackage1y", {
                         method: 'post',
                         headers: {
                           'Accept': 'application/json',
@@ -56674,13 +56707,14 @@ document.addEventListener("DOMContentLoaded", /*#__PURE__*/_asyncToGenerator( /*
                       result = js.data;
 
                       for (i = 0; i < result.length; i++) {
+                        //drpOneYear = 
                         if (result[i].id == packageSelect) {
-                          treeYear = result[i]; //treeYear", treeYear);
+                          oneYear = result[i]; //console.log("oneYear", oneYear);
 
-                          document.getElementById("txtAmount3").value = numberWithCommas(result[i].Total);
-                          p_price3 = result[i].Total;
+                          document.getElementById("txtAmount1").value = numberWithCommas(result[i].Total);
+                          p_price1 = result[i].Total;
                         }
-                      } //console.log("3y",treeYear)
+                      } //console.log("1y",oneYear)
 
 
                       _context8.next = 16;
@@ -56689,7 +56723,7 @@ document.addEventListener("DOMContentLoaded", /*#__PURE__*/_asyncToGenerator( /*
                     case 12:
                       _context8.prev = 12;
                       _context8.t0 = _context8["catch"](0);
-                      console.log("apiMyHomeSmart3y", _context8.t0);
+                      console.log("apiMyHomeSmart1y", _context8.t0);
                       sweetalert2__WEBPACK_IMPORTED_MODULE_4___default.a.fire({
                         title: "<i class=\"icofont-alarm\" style=\"color:red\"></i>",
                         html: "<strong>".concat($form.getAttribute('data-error'), "</strong><br>").concat($form.getAttribute('data-error-description')),
@@ -56707,8 +56741,76 @@ document.addEventListener("DOMContentLoaded", /*#__PURE__*/_asyncToGenerator( /*
               }, _callee8, null, [[0, 12]]);
             }));
 
-            return function apiMyHomeSmart3y(_x5) {
+            return function apiMyHomeSmart1y(_x4) {
               return _ref9.apply(this, arguments);
+            };
+          }();
+
+          apiMyHomeSmart3y = /*#__PURE__*/function () {
+            var _ref10 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee9(packageSelect) {
+              var res, response, js, result, i;
+              return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee9$(_context9) {
+                while (1) {
+                  switch (_context9.prev = _context9.next) {
+                    case 0:
+                      _context9.prev = 0;
+                      _context9.next = 3;
+                      return fetch("/appApi/ApiConnect/myHomeSmartPackage3y", {
+                        method: 'post',
+                        headers: {
+                          'Accept': 'application/json',
+                          'Content-Type': 'application/json',
+                          'X-CSRF-TOKEN': Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$"])('meta[name="csrf-token"]').getAttribute('content')
+                        } //body: JSON.stringify(data)
+
+                      });
+
+                    case 3:
+                      res = _context9.sent;
+                      _context9.next = 6;
+                      return res.json();
+
+                    case 6:
+                      response = _context9.sent;
+                      js = JSON.parse(response);
+                      result = js.data;
+
+                      for (i = 0; i < result.length; i++) {
+                        if (result[i].id == packageSelect) {
+                          treeYear = result[i]; //treeYear", treeYear);
+
+                          document.getElementById("txtAmount3").value = numberWithCommas(result[i].Total);
+                          p_price3 = result[i].Total;
+                        }
+                      } //console.log("3y",treeYear)
+
+
+                      _context9.next = 16;
+                      break;
+
+                    case 12:
+                      _context9.prev = 12;
+                      _context9.t0 = _context9["catch"](0);
+                      console.log("apiMyHomeSmart3y", _context9.t0);
+                      sweetalert2__WEBPACK_IMPORTED_MODULE_4___default.a.fire({
+                        title: "<i class=\"icofont-alarm\" style=\"color:red\"></i>",
+                        html: "<strong>".concat($form.getAttribute('data-error'), "</strong><br>").concat($form.getAttribute('data-error-description')),
+                        confirmButtonText: $form.getAttribute('data-error-button')
+                      });
+
+                    case 16:
+                      $form.classList.remove('ajax_loader');
+
+                    case 17:
+                    case "end":
+                      return _context9.stop();
+                  }
+                }
+              }, _callee9, null, [[0, 12]]);
+            }));
+
+            return function apiMyHomeSmart3y(_x5) {
+              return _ref10.apply(this, arguments);
             };
           }(); //apiMyHomeSmart("500000");
 
@@ -56798,11 +56900,11 @@ document.addEventListener("DOMContentLoaded", /*#__PURE__*/_asyncToGenerator( /*
           }; //changeTextPremium("ONMHS1");
 
 
-          _context9.next = 84;
+          _context10.next = 92;
           return Object(_helper__WEBPACK_IMPORTED_MODULE_2__["getZipcodeData"])();
 
-        case 84:
-          zipcode_data = _context9.sent;
+        case 92:
+          zipcode_data = _context10.sent;
           Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$"])("input[name=loc_fdAddr_PostCode]").addEventListener("change", function (e) {
             var value = e.target.value;
 
@@ -57438,12 +57540,12 @@ document.addEventListener("DOMContentLoaded", /*#__PURE__*/_asyncToGenerator( /*
             });
           });
 
-        case 95:
+        case 103:
         case "end":
-          return _context9.stop();
+          return _context10.stop();
       }
     }
-  }, _callee9);
+  }, _callee10);
 })));
 
 /***/ }),
