@@ -200,8 +200,8 @@
                                         </picture>
                                     @elseif($selected==='ONMHS')
                                         <picture>
-                                            <source media="(min-width:768px)" srcset="{{url(str_replace('TuneFireInsurance-D-EN', 'myHomeSmart_En_mobile', $v->pic_en))}}">
-                                            <img src="{{url(!empty($v->pic_mobile_en) ? url(str_replace('TuneFireInsurance-D-EN', 'myHomeSmart_En_mobile', $v->pic_mobile_en)) : url(str_replace('TuneFireInsurance-D-EN', 'myHomeSmart_En_pc', $v->pic_en)) )}}"
+                                            <source media="(min-width:768px)" srcset="{{url(str_replace('TuneFireInsurance-D-EN', 'myHomeSmart_En_pc', $v->pic_en))}}">
+                                            <img src="{{url(!empty($v->pic_mobile_en) ? url(str_replace('TuneFireInsurance-D-EN', 'myHomeSmart_En_pc', $v->pic_mobile_en)) : url(str_replace('TuneFireInsurance-D-EN', 'myHomeSmart_En_mobile', $v->pic_en)) )}}"
                                                 alt="{{$v->locales[$locale]->title}}">
                                         </picture>
                                     @elseif($selected==='DIABETES')
@@ -273,8 +273,8 @@
                                         </picture>
                                     @elseif($selected==='ONMHS')
                                         <picture>
-                                            <source media="(min-width:768px)" srcset="{{url(str_replace('TuneFireInsurance-D-TH', 'myHomeSmart_Th_mobile', $v->pic_en))}}">
-                                            <img src="{{url(!empty($v->pic_mobile_en) ? url(str_replace('TuneFireInsurance-D-TH', 'myHomeSmart_Th_mobile', $v->pic_mobile_en)) : url(str_replace('TuneFireInsurance-D-TH', 'myHomeSmart_Th_pc', $v->pic_en)) )}}"
+                                            <source media="(min-width:768px)" srcset="{{url(str_replace('TuneFireInsurance-D-TH', 'myHomeSmart_Th_pc', $v->pic_en))}}">
+                                            <img src="{{url(!empty($v->pic_mobile_en) ? url(str_replace('TuneFireInsurance-D-TH', 'myHomeSmart_Th_pc', $v->pic_mobile_en)) : url(str_replace('TuneFireInsurance-D-TH', 'myHomeSmart_Th_mobile', $v->pic_en)) )}}"
                                                 alt="{{$v->locales[$locale]->title}}">
                                         </picture>
                                         <!--picture>
