@@ -749,11 +749,16 @@ document.addEventListener("DOMContentLoaded", async () => {
     $$("select[id=ctrl_province]").forEach($el => {
         $el.addEventListener("change", function (e) {
             
-            const result = block_list.filter(element => {
+            const results = block_list.filter(element => {
                 return element.AmphurCode === e.target.value;
             });
+            dataBlock=results;             
+            console.log("response",results);
+            const result = block_list.filter(element => {
+                return element.AmphurCode === e.target.value && element.Reasons != '';
+            });
             var element = document.getElementById("msgErrBlock");            
-            dataBlock=result; 
+            
             if(result!=""){              
                 element.classList.remove("d-none");
                 btnStep3.classList.add("d-none");
@@ -833,12 +838,8 @@ document.addEventListener("DOMContentLoaded", async () => {
         //console.log("response",response);
         
         const js = JSON.parse(response);
-        let result = js.data;
-        const results = result.filter(element => {
-            return element.Reasons != '';
-        });
-        console.log("response",results);
-        block_list = results;
+        let result = js.data;        
+        block_list = result;
         
     }
     const apiAmount1y = async () => {
