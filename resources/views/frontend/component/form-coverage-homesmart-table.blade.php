@@ -156,7 +156,7 @@
                 <th>
                     <strong> 
                         @if($locale == 'en')
-                            plan 1 year
+                            Plan 1 year
                         @else
                             แผนความคุ้มครอง 1 ปี
                         @endif
@@ -172,7 +172,7 @@
                 <th>
                     <strong> 
                         @if($locale == 'en')
-                            plan 3 year
+                            Plan 3 year
                         @else
                             แผนความคุ้มครอง 3 ปี
                         @endif
@@ -787,7 +787,7 @@
                     <td class="td-onmhs text-center" data-index="1" data-package="ONMHS1">
                         <strong> 
                             @if($locale == 'en')
-                                plan 1 year
+                                Plan 1 year
                             @else
                                 แผนความคุ้มครอง 1 ปี
                             @endif
@@ -806,7 +806,7 @@
                     <td class="hide td-onmhs text-center" data-index="2" data-package="ONMHS2">
                         <strong> 
                             @if($locale == 'en')
-                                plan 3 year
+                                Plan 3 year
                             @else
                                 แผนความคุ้มครอง 3 ปี
                             @endif
