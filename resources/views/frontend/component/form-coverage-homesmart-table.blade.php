@@ -803,6 +803,13 @@
         </table>
 
         <br><br>
+        <p style="text-align: center; color: #E71618">
+            @if($locale == 'en')
+                On-demand customize
+            @else
+                ออกแบบแผนให้ตรงความต้องการของคุณง่ายๆ
+            @endif
+        </p>
         <a href="#" data-gtm="product-{{strtolower($selected)}}-more" id="btn-more" data-expand="@lang('product.more')"
            data-collapse="@lang('product.collapse')">
             @lang('product.more')
