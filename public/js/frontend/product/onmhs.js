@@ -56156,8 +56156,9 @@ document.addEventListener("DOMContentLoaded", /*#__PURE__*/_asyncToGenerator( /*
                       sessionStorage.setItem("amount", cover_amount);
                       MyHomeSmart = result;
                       btnStep1.classList.remove("step-disable");
+                      document.getElementById("iconLoad").classList.add("d-none");
 
-                    case 13:
+                    case 14:
                     case "end":
                       return _context2.stop();
                   }

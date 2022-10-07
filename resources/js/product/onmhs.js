@@ -816,6 +816,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         sessionStorage.setItem("amount", cover_amount);
         MyHomeSmart = result;
         btnStep1.classList.remove("step-disable");
+        document.getElementById("iconLoad").classList.add("d-none");
     }
     const apiBlock = async()=>{
         console.log("block");
