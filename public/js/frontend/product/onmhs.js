@@ -56132,10 +56132,9 @@ document.addEventListener("DOMContentLoaded", /*#__PURE__*/_asyncToGenerator( /*
                 while (1) {
                   switch (_context2.prev = _context2.next) {
                     case 0:
-                      step - disable;
                       select = Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$"])('#ctrl_insurer_capital');
                       cover_amount = select.options[select.selectedIndex].value;
-                      _context2.next = 5;
+                      _context2.next = 4;
                       return fetch("/appApi/ApiConnect/myHomeSmartPackage", {
                         method: 'post',
                         headers: {
@@ -56145,12 +56144,12 @@ document.addEventListener("DOMContentLoaded", /*#__PURE__*/_asyncToGenerator( /*
                         }
                       });
 
-                    case 5:
+                    case 4:
                       res = _context2.sent;
-                      _context2.next = 8;
+                      _context2.next = 7;
                       return res.json();
 
-                    case 8:
+                    case 7:
                       response = _context2.sent;
                       js = JSON.parse(response);
                       result = js.data;
@@ -56158,7 +56157,7 @@ document.addEventListener("DOMContentLoaded", /*#__PURE__*/_asyncToGenerator( /*
                       MyHomeSmart = result;
                       btnStep1.classList.remove("step-disable");
 
-                    case 14:
+                    case 13:
                     case "end":
                       return _context2.stop();
                   }
