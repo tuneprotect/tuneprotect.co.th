@@ -421,7 +421,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     let P = "P", G = "G", C = "C", T = "T", D = "D", L = "L", R = "R";
     let code = `FN${P}${G}${C}${T}${D}A${L}${R}1`;
     let amount = sessionStorage.getItem("amount");
-
+    let block_list = [];
 
     /*
     $$("select[name=ctrl_fire_building]").forEach($el => {

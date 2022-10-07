@@ -55640,7 +55640,7 @@ var getSelectedPricePackage = function getSelectedPricePackage(packageCode, pack
 };
 
 document.addEventListener("DOMContentLoaded", /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee10() {
-  var package_data, Redeem_Code, msg_error, Keys, myEle, status_api, $form, allField, iti, MyHomeSmart, oneYear, treeYear, drpCompensation, drpCompensationText, dep1, dep3, p_packget, p_price, p_price1, p_price3, P, G, C, T, D, L, R, code, amount, sumTotal, package_1year, package_3year, package_code_1y, package_code_3y, package_amount, amount1y, amount3y, net1, net3, stamp1, stamp3, vat1, vat3, total1, total3, c_sum, data_result_1y, data_result_3y, data_result_amount_1y, data_result_amount_3y, getDataAmount1y, getDataAmount3y, chkBtn1, chkBtn2, btn, btnStep3, apiMyHomeSmartData, apiBlock, apiAmount1y, apiAmount3y, changeTextAmount, setData, setDataAmount1y, setDataAmount3y, setDataStep1, apiMyHomeSmart, parseNumber, apiMyHomeSmart1y, apiMyHomeSmart3y, numberWithCommas, changeTextPremium, zipcode_data, $address_dup, step1Constraints, fdIDTYPE, step, data, $btnGoto;
+  var package_data, Redeem_Code, msg_error, Keys, myEle, status_api, $form, allField, iti, MyHomeSmart, oneYear, treeYear, drpCompensation, drpCompensationText, dep1, dep3, p_packget, p_price, p_price1, p_price3, P, G, C, T, D, L, R, code, amount, block_list, sumTotal, package_1year, package_3year, package_code_1y, package_code_3y, package_amount, amount1y, amount3y, net1, net3, stamp1, stamp3, vat1, vat3, total1, total3, c_sum, data_result_1y, data_result_3y, data_result_amount_1y, data_result_amount_3y, getDataAmount1y, getDataAmount3y, chkBtn1, chkBtn2, btn, btnStep3, apiMyHomeSmartData, apiBlock, apiAmount1y, apiAmount3y, changeTextAmount, setData, setDataAmount1y, setDataAmount3y, setDataStep1, apiMyHomeSmart, parseNumber, apiMyHomeSmart1y, apiMyHomeSmart3y, numberWithCommas, changeTextPremium, zipcode_data, $address_dup, step1Constraints, fdIDTYPE, step, data, $btnGoto;
   return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee10$(_context10) {
     while (1) {
       switch (_context10.prev = _context10.next) {
@@ -55753,6 +55753,7 @@ document.addEventListener("DOMContentLoaded", /*#__PURE__*/_asyncToGenerator( /*
           P = "P", G = "G", C = "C", T = "T", D = "D", L = "L", R = "R";
           code = "FN".concat(P).concat(G).concat(C).concat(T).concat(D, "A").concat(L).concat(R, "1");
           amount = sessionStorage.getItem("amount");
+          block_list = [];
           /*
           $$("select[name=ctrl_fire_building]").forEach($el => {
               $el.addEventListener("change", function (e) { 
@@ -56900,10 +56901,10 @@ document.addEventListener("DOMContentLoaded", /*#__PURE__*/_asyncToGenerator( /*
           }; //changeTextPremium("ONMHS1");
 
 
-          _context10.next = 92;
+          _context10.next = 93;
           return Object(_helper__WEBPACK_IMPORTED_MODULE_2__["getZipcodeData"])();
 
-        case 92:
+        case 93:
           zipcode_data = _context10.sent;
           Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$"])("input[name=loc_fdAddr_PostCode]").addEventListener("change", function (e) {
             var value = e.target.value;
@@ -57540,7 +57541,7 @@ document.addEventListener("DOMContentLoaded", /*#__PURE__*/_asyncToGenerator( /*
             });
           });
 
-        case 103:
+        case 104:
         case "end":
           return _context10.stop();
       }
