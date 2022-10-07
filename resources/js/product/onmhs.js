@@ -739,7 +739,58 @@ document.addEventListener("DOMContentLoaded", async () => {
         });
     });
     /* End Step 2 */
+    /* Step 3 */
+    let chkBtn1=0; 
+    let chkBtn2=0; 
+    var btn = document.getElementById("step_4");
+                
 
+    var btnStep3 = document.getElementById("btnStep3");
+    $$("select[id=ctrl_province]").forEach($el => {
+        $el.addEventListener("change", function (e) {
+            
+            const result = block_list.filter(element => {
+                return element.AmphurCode === e.target.value;
+            });
+            var element = document.getElementById("msgErrBlock");
+            
+            if(result!=""){               
+                element.classList.remove("d-none");
+                btnStep3.classList.add("d-none");
+                chkBtn1=1;
+            }else{
+                element.classList.add("d-none");
+                btnStep3.classList.remove("d-none");
+                chkBtn1=0;
+            }
+            if(chkBtn1==1 || chkBtn2==1){
+                btnStep3.classList.add("d-none");
+                btn.classList.add("step-disable");
+            }
+        });
+    });
+    $$("select[name=loc_ctrl_province]").forEach($el => {
+        $el.addEventListener("change", function (e) {
+            const result = block_list.filter(element => {
+                return element.AmphurCode === e.target.value;
+            });
+            var element = document.getElementById("loc_msgErrBlock");
+            if(result!=""){               
+                element.classList.remove("d-none");
+                btnStep3.classList.add("d-none");
+                chkBtn2=1;
+            }else{
+                element.classList.add("d-none");
+                btnStep3.classList.remove("d-none");
+                chkBtn2=0;
+            }
+            if(chkBtn1==1 || chkBtn2==1){
+                btnStep3.classList.add("d-none");
+                btn.classList.add("step-disable");
+            }
+        });
+    });
+    /* End Step 3 */
 
     
 
@@ -763,6 +814,28 @@ document.addEventListener("DOMContentLoaded", async () => {
 
         sessionStorage.setItem("amount", cover_amount);
         MyHomeSmart = result;
+    }
+    const apiBlock = async()=>{
+
+        let res = await fetch(`/appApi/ApiConnect/blockHomePolicy`, {
+            method: 'post',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').getAttribute('content')
+            },
+        });
+        const response = await res.json();
+        //console.log("response",response);
+        
+        const js = JSON.parse(response);
+        let result = js.data;
+        const results = result.filter(element => {
+            return element.Reasons != '';
+        });
+        //console.log("response",results);
+        block_list = results;
+        
     }
     const apiAmount1y = async () => {
         try {
@@ -1036,6 +1109,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     apiAmount1y();
     apiAmount3y();
     apiMyHomeSmartData();
+    apiBlock();
     setDataStep1(500000);
 
 

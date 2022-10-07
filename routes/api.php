@@ -25,6 +25,7 @@ Route::post('/AdminLog/add', [AdminLogController::class, 'add']);
 Route::post('/ApiConnect/myHomeSmartPackage', [ApiConnectController::class, 'myHomeSmartPackage']);
 Route::post('/ApiConnect/myHomeSmartPackage1y', [ApiConnectController::class, 'myHomeSmartPackage1y']);
 Route::post('/ApiConnect/myHomeSmartPackage3y', [ApiConnectController::class, 'myHomeSmartPackage3y']);
+Route::post('/ApiConnect/blockHomePolicy', [ApiConnectController::class, 'blockHomePolicy']);
 
 Route::middleware('auth:api')
     ->any('/{controller}/{func}', function ($controller, $func) {
