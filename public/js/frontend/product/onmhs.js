@@ -55928,7 +55928,7 @@ document.addEventListener("DOMContentLoaded", /*#__PURE__*/_asyncToGenerator( /*
               return element.myhome_id === results[0].id;
             }); //data_result_1y = result_1y;
 
-            data_result_amount_1y = result_1y;
+            data_result_amount_1y = result_1y[0];
             net1 = numberWithCommas(result_1y[0].Net);
             document.getElementById("txtAmount1").value = numberWithCommas(result_1y[0].Total);
           };
@@ -57091,9 +57091,9 @@ document.addEventListener("DOMContentLoaded", /*#__PURE__*/_asyncToGenerator( /*
                       sum_ins: c_sum,
                       gross_amt: p_packget == "ONMHS1" ? net1 : net3,
                       ann_nprem: p_packget == "ONMHS1" ? net1 : net3,
-                      stamp_amt: p_packget == "ONMHS1" ? stamp1 : stamp3,
-                      vat_amt: p_packget == "ONMHS1" ? vat1 : vat3,
-                      total_amt: p_packget == "ONMHS1" ? total1 : total3,
+                      stamp_amt: p_packget == "ONMHS1" ? data_result_amount_1y.Stamp : data_result_amount_3y.Stamp,
+                      vat_amt: p_packget == "ONMHS1" ? data_result_amount_1y.Vat : data_result_amount_3y.Vat,
+                      total_amt: p_packget == "ONMHS1" ? data_result_amount_1y.Total : data_result_amount_3y.Total,
                       ann_days: p_packget == "ONMHS1" ? '365' : '1096',
                       //invoice:'INV0001',//test
                       packget_peril: JSON.stringify([{
