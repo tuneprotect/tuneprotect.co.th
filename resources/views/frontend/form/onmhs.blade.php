@@ -4,6 +4,9 @@
         cursor: not-allowed;
         pointer-events: none;   
     }
+    #btnStep1.step-disable{
+        background-color:#ccc;
+    }
 </style>
 <section id="step1" class="wrapper">
 
@@ -118,7 +121,7 @@
 
         </div>
         <div class="btn-wrapper">
-            <button data-gtm="product-{{strtolower($selected)}}-proceed-step-1" data-step="2" class="btn btn-primary btn-goto">@lang('product.next')</button>
+            <button id="btnStep1" data-gtm="product-{{strtolower($selected)}}-proceed-step-1" data-step="2" class="btn btn-primary btn-goto">@lang('product.next')</button>
         </div>
 
         <input type="hidden" id="controller" value="{{$controller}}"/>

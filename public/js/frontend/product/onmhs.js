@@ -55640,7 +55640,7 @@ var getSelectedPricePackage = function getSelectedPricePackage(packageCode, pack
 };
 
 document.addEventListener("DOMContentLoaded", /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee10() {
-  var package_data, Redeem_Code, msg_error, Keys, myEle, status_api, $form, allField, iti, MyHomeSmart, oneYear, treeYear, drpCompensation, drpCompensationText, dep1, dep3, p_packget, p_price, p_price1, p_price3, P, G, C, T, D, L, R, code, amount, block_list, sumTotal, package_1year, package_3year, package_code_1y, package_code_3y, package_amount, amount1y, amount3y, net1, net3, stamp1, stamp3, vat1, vat3, total1, total3, c_sum, data_result_1y, data_result_3y, data_result_amount_1y, data_result_amount_3y, getDataAmount1y, getDataAmount3y, chkBtn1, chkBtn2, btn, btnStep3, apiMyHomeSmartData, apiBlock, apiAmount1y, apiAmount3y, changeTextAmount, setData, setDataAmount1y, setDataAmount3y, setDataStep1, apiMyHomeSmart, parseNumber, apiMyHomeSmart1y, apiMyHomeSmart3y, numberWithCommas, changeTextPremium, zipcode_data, $address_dup, step1Constraints, fdIDTYPE, step, data, $btnGoto;
+  var package_data, Redeem_Code, msg_error, Keys, myEle, status_api, $form, allField, iti, MyHomeSmart, oneYear, treeYear, drpCompensation, drpCompensationText, dep1, dep3, p_packget, p_price, p_price1, p_price3, P, G, C, T, D, L, R, code, amount, block_list, sumTotal, package_1year, package_3year, package_code_1y, package_code_3y, package_amount, amount1y, amount3y, net1, net3, stamp1, stamp3, vat1, vat3, total1, total3, c_sum, data_result_1y, data_result_3y, data_result_amount_1y, data_result_amount_3y, getDataAmount1y, getDataAmount3y, chkBtn1, chkBtn2, btn, btnStep3, btnStep1, apiMyHomeSmartData, apiBlock, apiAmount1y, apiAmount3y, changeTextAmount, setData, setDataAmount1y, setDataAmount3y, setDataStep1, apiMyHomeSmart, parseNumber, apiMyHomeSmart1y, apiMyHomeSmart3y, numberWithCommas, changeTextPremium, zipcode_data, $address_dup, step1Constraints, fdIDTYPE, step, data, $btnGoto;
   return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee10$(_context10) {
     while (1) {
       switch (_context10.prev = _context10.next) {
@@ -56122,18 +56122,19 @@ document.addEventListener("DOMContentLoaded", /*#__PURE__*/_asyncToGenerator( /*
           });
           /* End Step 3 */
 
+          btnStep1 = document.getElementById("btnStep1");
+          btnStep1.classList.add("step-disable");
+
           apiMyHomeSmartData = /*#__PURE__*/function () {
             var _ref3 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
-              var btnStep1, select, cover_amount, res, response, js, result;
+              var select, cover_amount, res, response, js, result;
               return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
                 while (1) {
                   switch (_context2.prev = _context2.next) {
                     case 0:
-                      btnStep1 = document.getElementById("btnStep1");
-                      btnStep1.classList.add("step-disable");
                       select = Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$"])('#ctrl_insurer_capital');
                       cover_amount = select.options[select.selectedIndex].value;
-                      _context2.next = 6;
+                      _context2.next = 4;
                       return fetch("/appApi/ApiConnect/myHomeSmartPackage", {
                         method: 'post',
                         headers: {
@@ -56143,12 +56144,12 @@ document.addEventListener("DOMContentLoaded", /*#__PURE__*/_asyncToGenerator( /*
                         }
                       });
 
-                    case 6:
+                    case 4:
                       res = _context2.sent;
-                      _context2.next = 9;
+                      _context2.next = 7;
                       return res.json();
 
-                    case 9:
+                    case 7:
                       response = _context2.sent;
                       js = JSON.parse(response);
                       result = js.data;
@@ -56156,7 +56157,7 @@ document.addEventListener("DOMContentLoaded", /*#__PURE__*/_asyncToGenerator( /*
                       MyHomeSmart = result;
                       btnStep1.classList.remove("step-disable");
 
-                    case 15:
+                    case 13:
                     case "end":
                       return _context2.stop();
                   }
@@ -56904,10 +56905,10 @@ document.addEventListener("DOMContentLoaded", /*#__PURE__*/_asyncToGenerator( /*
           }; //changeTextPremium("ONMHS1");
 
 
-          _context10.next = 93;
+          _context10.next = 95;
           return Object(_helper__WEBPACK_IMPORTED_MODULE_2__["getZipcodeData"])();
 
-        case 93:
+        case 95:
           zipcode_data = _context10.sent;
           Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$"])("input[name=loc_fdAddr_PostCode]").addEventListener("change", function (e) {
             var value = e.target.value;
@@ -57544,7 +57545,7 @@ document.addEventListener("DOMContentLoaded", /*#__PURE__*/_asyncToGenerator( /*
             });
           });
 
-        case 104:
+        case 106:
         case "end":
           return _context10.stop();
       }
