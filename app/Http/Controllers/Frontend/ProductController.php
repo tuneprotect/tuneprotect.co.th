@@ -938,6 +938,7 @@ class ProductController extends BaseController
         } elseif (substr($package, 0, 5) === 'ONMHS') {
             $this->thankYouParam = substr($package, 0, 5);
             $link = 'IssuePolicyMyHomeSmart';
+			$this->thankYouParam =  ProjectEnum::MYHOME_SMART_URL;
         } elseif (substr($package, 0, 7) === 'CVISAFE') {
             $this->thankYouParam = 'CVISAFE';
             $link = 'IssuePolicyCovid19';
@@ -1008,8 +1009,11 @@ class ProductController extends BaseController
         if(Str::contains($request->getRequestUri(),ProjectEnum::ISMILE_URL)){
             $thank_you_page = ProjectEnum::STATIC_PAGE_PAYMENT_THANK_YOU_ISMILE;
         }
-
-        return $this->genStatusPage($thank_you_page);
+		 if(Str::contains($request->getRequestUri(),ProjectEnum::MYHOME_SMART_URL)){
+            $thank_you_page = ProjectEnum::STATIC_PAGE_PAYMENT_THANK_YOU_MYHOME_SMART;
+        }
+		
+        return $this->genStatusPage('static.page.payment_thank_you_myhome_smart');
     }
 
     public function result(Request $request)

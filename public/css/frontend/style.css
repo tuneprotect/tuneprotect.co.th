@@ -12968,6 +12968,35 @@ span.flatpickr-weekday {
   color: #999;
 }
 
+/* Tooltip container */
+.myhome-smart-tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+/* Tooltip text */
+.myhome-smart-tooltip .tooltiptext {
+    font-family: "DB SaiKrok X";
+    font-size: 22px;
+    visibility: hidden;
+    width: 400px;
+    background-color: #fff;
+    color: black;
+    padding: 10px;
+    border-radius: 6px;
+    position: absolute;
+    z-index: 1;    
+    box-shadow: 0 0 24px 1px rgb(0 0 0 / 16%);
+    bottom: 100%;
+    left: 50%;
+    margin-left: -60px;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.myhome-smart-tooltip:hover .tooltiptext {
+  visibility: visible;
+}
+
 .rs-tooltip {
   color: #333;
   width: auto;

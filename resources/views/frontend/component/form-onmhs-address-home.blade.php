@@ -77,7 +77,10 @@
         <label for="{{$prefix}}ctrl_province">*@lang("product.province")</label>
     </div>
     <div class="controls-wrapper"></div>
-    <div class="controls-wrapper">      
-        <label class="d-none" id="{{$prefix}}msgErrBlock"><img src="/images/my_homesmart/icon-07.png" style="width: 20px;position: absolute;"><span style="margin-left: 25px;">@lang("product.error.postal_code_remark")</span></label>
-    </div>
+	<div class="myhome-smart-tooltip d-none" id="{{$prefix}}msgErrBlock">
+		<label><img src="/images/my_homesmart/icon-07.png" style="width: 20px;position: absolute;"><span style="margin-left: 25px;">@lang("product.error.postal_code_remark")</span></label>
+		<span class="tooltiptext">
+			@lang("product.error.postal_code_block")
+		</span>
+	</div>
 </div>
