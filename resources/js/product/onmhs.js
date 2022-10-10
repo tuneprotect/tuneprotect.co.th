@@ -1631,7 +1631,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                             ann_prem: p_packget=="ONMHS1" ? net1 : net3,
                             sum_ann_prem: p_packget=="ONMHS1" ? net1 : net3,
                             sum_ins:c_sum,
-                            gross_amt: p_packget=="ONMHS1" ? net1 : net3,
+                            gross_amt: p_packget=="ONMHS1" ? data_result_amount_1y.Net : data_result_amount_3y.Net,
                             ann_nprem: p_packget=="ONMHS1" ? net1 : net3,
                             stamp_amt: p_packget=="ONMHS1" ? data_result_amount_1y.Stamp : data_result_amount_3y.Stamp,
                             vat_amt: p_packget=="ONMHS1" ? data_result_amount_1y.Vat : data_result_amount_3y.Vat,
