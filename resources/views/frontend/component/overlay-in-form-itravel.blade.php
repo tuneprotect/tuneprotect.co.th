@@ -1,11 +1,11 @@
 <style>
 
 
-    @media all and (min-width: 1080px) {
-        .popup-wrapper {
-            min-width: 1080px;
-        }
-    }
+    /*@media all and (min-width: 1080px) {
+    /*    .popup-wrapper {
+    /*        min-width: 1080px;
+    /*    }
+    /*}
 
     /*@media all and (min-width: 768px) {*/
     /*    .overlay-section {*/
@@ -50,29 +50,22 @@
     /*        padding: 0;*/
     /*    }*/
     /*}*/
-
+	.popup-wrapper{
+			width:550px;
+		}
 
 </style>
 <div class="popup-wrapper">
     <a data-gtm="index-question-close" class="close"><i class="icofont-close"></i></a>
     <div class="popup-inner-wrapper">
 
-        <div class="overlay-section" style="margin-top: 0;width: 100%" id="overlayform-section">
-            <form class="insurance-form" id="frm_overlay">
+        <div class="overlay-section" id="overlayform-section">
+            <form class="insurance-form" style="text-align: center;" id="frm_overlay">
                 <div class="form-inner">
-                    <picture>
-                        {{--                            <source media="(min-width:768px)" srcset="https://www.tuneprotect.co.th/storage/Banner/Banner_Overlay.png">--}}
-                        <img src="https://www.tuneprotect.co.th/storage/Banner/Banner_OverlayV2.png" alt="overlay">
+                    <picture>                        
+                        <img src="https://www.tuneprotect.co.th/storage/Banner/BuyiTravel_02.jpg" alt="overlay">
                     </picture>
                 </div>
-                <div class="btn-wrapper hideField" style="">
-                    {{--                        <button data-gtm="contact-form-submit" class="btn btn-primary">คลิกดาวน์โหลดที่นี่</button>--}}
-                    <div class="btn-wrapper">
-                        <a class="btn btn-primary" target="_blank" href="https://www.tuneprotect.co.th/storage/claim-insurance/isafe-extra/claim-form-isafe-extra.pdf">คลิกดาวน์โหลดที่นี่</a>
-                    </div>
-                </div>
-
-
             </form>
         </div>
     </div>

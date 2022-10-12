@@ -23,7 +23,10 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
+    // <<<<<<<<<<<<<< TO DO Start Popup >>>>>>>>>>>>>>>>>>>>>>>>
+
     // //One page
+    // ************************* TO DO Open dialog *************************
     // const $formOverlay = $('#frm_overlay');
     // if ($formOverlay) {
     //     $(".page-overlay .close").addEventListener('click', (e) => {
@@ -42,7 +45,8 @@ document.addEventListener("DOMContentLoaded", function () {
     //     }, true);
     // }
     //
-    // const $frm_overlayClose = $('#frm_overlayClose');
+    // ************************* TO DO Close dialog *************************
+    // const $frm_overlayClose = $('#frm_overlayClose'); 
     // if ($frm_overlayClose) {
     //     $(".page-overlay-close .close").addEventListener('click', (e) => {
     //         e.preventDefault();
@@ -51,4 +55,5 @@ document.addEventListener("DOMContentLoaded", function () {
     //     }, true);
     // }
 
+    // <<<<<<<<<<<<<< End Popup >>>>>>>>>>>>>>>>>>>>>>>>
 });
