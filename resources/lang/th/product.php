@@ -34,7 +34,7 @@ return [
     "effective_date" => "วันที่เริ่มต้นเดินทาง",
     "arrival_date" => "Arrival Date to Thailand",
     "departure_date" => "Departure Date from Thailand",
-    "departure_date" => "วันที่เริ่มต้นเดินทาง",
+    //"departure_date" => "วันที่เริ่มต้นเดินทาง",
     "return_date" => "วันที่เดินทางกลับ",
     "email" => "อีเมล",
     "email_confirm" => "ยืนยันอีเมล",

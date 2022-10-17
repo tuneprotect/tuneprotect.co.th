@@ -74,6 +74,17 @@ header{
 
                     
                 </div>
+                <div class="date-wrapper">
+                    <div class="controls-wrapper">
+                        <select id="ctrl_no_of_insured" name="ctrl_no_of_insured">
+                            @for($i = 1;$i < 10;$i++)
+                                <option value="{{$i}}">{{$i}}</option>
+                            @endfor
+                        </select>
+                        <label for="ctrl_no_of_insured">@lang("product.no_of_insured")</label>
+                    </div>
+                </div>
+
                 <cite></cite>
             </div>
 
