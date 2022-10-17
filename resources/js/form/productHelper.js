@@ -427,12 +427,14 @@ export const showTitleOnly = (sex) => {
         arrHide.push('#li_title_041');
         arrHide.push('#li_title_002');
         arrHide.push('#li_title_003');
+        arrHide.push('#li_title_280');
     }
 
     if (sex === 'F') {
         arrHide.push('#li_title_042');
         arrHide.push('#li_title_184');
         arrHide.push('#li_title_001');
+        arrHide.push('#li_title_283');
     }
 
     arrHide.map(v => {
