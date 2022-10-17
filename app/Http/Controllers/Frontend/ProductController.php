@@ -1011,7 +1011,7 @@ class ProductController extends BaseController
             $thank_you_page = ProjectEnum::STATIC_PAGE_PAYMENT_THANK_YOU_MYHOME_SMART;
         }
 		
-        return $this->genStatusPage('static.page.payment_thank_you_myhome_smart');
+        return $this->genStatusPage($thank_you_page);
     }
 
     public function result(Request $request)
