@@ -133,8 +133,7 @@ class ProductController extends BaseController
     protected function getProductDetail($link = null, $selected = null)
     {	
         $this->bodyData['current_product'] = WebContent::where('type_id', ProjectEnum::WEB_CONTENT_PRODUCT)
-            ->where('friendly_url', $link)
-            ->where('code', $selected)
+            ->where('friendly_url', $link)            
             ->with(['locales', 'productPackage' => function ($q) {
                 $q->with('locales');
             }, 'faq' => function ($q) {
