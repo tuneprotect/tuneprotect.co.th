@@ -220,8 +220,7 @@
                         <br/>
                         The hazards covered include fire, lightning, explosion, collisions of vehicles, water damage (excluding floods) or hazards from aircraft, falling objects from aircraft. 
                     @else
-                        หมวดการประกันภัยนี้ จะให้ความคุ้มครองสำหรับความเสียหายต่อสิ่งปลูกสร้าง (ไม่รวมฐานราก) และทรัพย์สินภายในสิ่งปลูกสร้างสูงสุดไม่เกิน / ต่อปีกรมธรรม์ประกันภัย<br/>
-                        ภัยที่คุ้มครองได้แก่ ไฟไหม้  ฟ้าผ่า ระเบิด ภัยจากการเฉี่ยวและ/หรือการชนของยานพาหนะหรือสัตว์พาหนะ ภัยจากอากาศยาน วัตถุตกจากอากาศยาน และ ภัยเนื่องจากน้ำ (ไม่รวมน้ำท่วม)
+                        ไฟไหม้ ฟ้าผ่า ภัยระเบิด ภัยจากยวดยานพาหนะ ภัยจากอากาศยาน และภัยเนื่องจากนํ้า (ไม่รวมนํ้าท่วม)
                     @endif     
                 </th>
                 <td class="td-onmhs" data-index="1" data-package="ONMHS1">
@@ -285,7 +284,7 @@
                         @if($locale == 'en')
                             1.4) Professional expenses   
                         @else
-                            1.4) ค่าวิชาชีพ
+                            1.4) ค่าวิชาชีพตามความจําเป็น เช่น สถาปนิก พนักงานสํารวจ วิศวกรที่ปรึกษา เป็นต้น
                         @endif
                     </th>
                     <td class="td-onmhs" data-index="1" data-package="ONMHS1">
