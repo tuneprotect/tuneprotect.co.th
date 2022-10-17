@@ -108,7 +108,7 @@
                         @if($i == 1)
                             <strong style="display: block" class="text-center">iSmile TG</strong>
                         @else
-                            <strong style="display: block" class="text-center">@lang('product.plan') {{$i-1}}</strong>
+                            <strong style="display: block" class="text-center">iSmile TG</strong>
                         @endif
 
                         <a href="#"
