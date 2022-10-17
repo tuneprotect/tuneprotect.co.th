@@ -66,6 +66,7 @@ header{
                                data-maxdate="{{date('Y-m-d',strtotime( "+180 days"))}}"
                                data-error="@lang('product.error.travel_departure_date')"
                                disabled
+                               style="background-color: gainsboro;"
                         />
                         <label for="fdDepartureDate">@lang("product.departure_date")</label>
 

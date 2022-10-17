@@ -450,6 +450,20 @@ document.addEventListener("DOMContentLoaded", async () => {
     // Object.keys(nationality_data).map(v => {
     //         nationality_option += `<option value="${v}">${v}</option>`;
     // });
+    /* by dum-soken */
+    $$("input[name=fdArrivalDate]").forEach($el => {
+        $el.addEventListener("change", function (e) {            
+            const str = e.target.value;//document.getElementById("fdArrivalDate").value;           
+            const [day, month, year] = str.split('/');
+            const d = new Date(month+"/"+ day +"/" + year);
+            d.setDate(d.getDate() + 14); // Set now + 30 days as the new date
+            document.getElementById("fdDepartureDate").value=d.toLocaleDateString();
+        });
+    });
+
+   
+
+    /* end by dum-soken */
 
     $('#fdNationality').innerHTML =  `<option value="Australia">Australia</option>`;
 
