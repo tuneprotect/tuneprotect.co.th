@@ -83,6 +83,8 @@ header{
                         </select>
                         <label for="ctrl_no_of_insured">@lang("product.no_of_insured")</label>
                     </div>
+                    <div class="controls-wrapper"></div>
+                    <div class="controls-wrapper"></div>
                 </div>
 
                 <cite></cite>
