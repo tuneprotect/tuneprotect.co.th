@@ -347,7 +347,7 @@ class ProductController extends BaseController
         } elseif (substr($data['fdPackage'], 0, 6) === 'TGCVLP') {
             $obj = new TGCVLPObject();
         } elseif (substr($data['fdPackage'], 0, 7) === 'ONTGISM') {
-            $obj = new TGISMObject();
+            $obj = new TGCVLPObject();
         } elseif (substr($data['fdPackage'], 0, 9) === 'ONCOVIDMW') {
             $obj = new COVIDAObject();
         } elseif (substr($data['fdPackage'], 0, 6) === 'ONTADM') {
