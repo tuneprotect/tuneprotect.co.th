@@ -35,7 +35,7 @@
                 @foreach ($package_detail as $k => $v)
                     <th data-package="{{$k}}">
                         @if($i == 1)
-                            <strong class="package-number">LITE Plan</strong>
+                            <strong class="package-number">iSmile TG</strong>
                         @else
                             <strong class="package-number">@lang('product.plan') {{$i-1}}</strong>
                         @endif
@@ -44,7 +44,7 @@
 {{--                           data-gtm="product-{{strtolower($selected)}}-top-choose-plan-{{$i-1}}"--}}
 {{--                           data-step="3" data-package="{{$k}}" data-sub-package=""--}}
 {{--                           @if($i == 1)--}}
-{{--                                data-plan='LITE Plan'--}}
+{{--                                data-plan='iSmile TG'--}}
 {{--                           @else--}}
 {{--                                data-plan="@lang('product.plan') {{$i-1}}"--}}
 {{--                           @endif--}}
@@ -58,7 +58,7 @@
             </thead>
             <tbody>
             <tr class="orange">
-                <th>Total Premium / person</th>
+                <th>Insurance premium price</th>
 
 
                 <?php $i = 1 ?>
@@ -116,13 +116,13 @@
                                data-step="3" data-package="{{$k}}" data-sub-package=""
 
                            @if($i == 1)
-                                data-plan='LITE Plan'
+                                data-plan='iSmile TG'
                            @else
                                 data-plan="@lang('product.plan') {{$i-1}}"
                            @endif
 
 
-                           class="btn btn-block btn-outline btn-goto">Accept & Continue</a>
+                           class="btn btn-block btn-outline btn-goto">SELECT</a>
 
                     </td>
                     <?php $i++ ?>
