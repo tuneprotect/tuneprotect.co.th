@@ -106,7 +106,7 @@
                 @foreach ($package_detail as $k => $v)
                     <td {{$i > 1 ? 'class=hide' : ""}} data-index="{{$i-1}}" data-package="{{$k}}">
                         @if($i == 1)
-                            <strong style="display: block" class="text-center">LITE @lang('product.plan')</strong>
+                            <strong style="display: block" class="text-center">iSmile TG</strong>
                         @else
                             <strong style="display: block" class="text-center">@lang('product.plan') {{$i-1}}</strong>
                         @endif
