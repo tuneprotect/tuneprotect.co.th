@@ -414,10 +414,10 @@ document.addEventListener("DOMContentLoaded", async () => {
     let dep1 = "1";
     let dep3 = "1";
 
-    let p_packget="";
-    let p_price="";
-    let p_price1="";
-    let p_price3="";
+    let p_packget = "";
+    let p_price = "";
+    let p_price1 = "";
+    let p_price3 = "";
     let P = "P", G = "G", C = "C", T = "T", D = "D", L = "L", R = "R";
     let code = `FN${P}${G}${C}${T}${D}A${L}${R}1`;
     let amount = sessionStorage.getItem("amount");
@@ -445,18 +445,18 @@ document.addEventListener("DOMContentLoaded", async () => {
         });
     });
 */
-    
-    
-    
-    
-    
 
-    
+
+
+
+
+
+
     const sumTotal = async (packageSelect) => {
         //alert(packageSelect)
         try {
 
-            console.log("packageSelect",packageSelect);
+            console.log("packageSelect", packageSelect);
             let js = MyHomeSmart;
             const result = JSON.parse(js);
             for (let i = 0; i < result.length; i++) {
@@ -464,9 +464,9 @@ document.addEventListener("DOMContentLoaded", async () => {
                 if (result[i].TAGNAME.trim() == packageSelect && result[i].FIRE == amount) {
                     apiMyHomeSmart1y(result[i].id);
                     apiMyHomeSmart3y(result[i].id);
-                    
+
                 }
-               
+
             }
         } catch (err) {
             console.log("sumTotal", err);
@@ -493,31 +493,31 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
     */
 
-   
 
 
 
 
-    let package_1year="1";
-    let package_3year="1";
+
+    let package_1year = "1";
+    let package_3year = "1";
     //let P = "P", G = "G", C = "C", T = "T", D = "D", L = "L", R = "R";
     let package_code_1y = `FN${P}${G}${C}${T}${D}A${L}${R}1`;
     let package_code_3y = `FN${P}${G}${C}${T}${D}A${L}${R}1`;
-    let package_amount="500000";
-    let amount1y =[];
-    let amount3y =[];
+    let package_amount = "500000";
+    let amount1y = [];
+    let amount3y = [];
 
-    let net1='';
-    let net3='';
-    let stamp1='';
-    let stamp3='';
+    let net1 = '';
+    let net3 = '';
+    let stamp1 = '';
+    let stamp3 = '';
 
-    let vat1='';
-    let vat3='';
+    let vat1 = '';
+    let vat3 = '';
 
     let total1 = '';
     let total3 = '';
-    let c_sum='';
+    let c_sum = '';
 
     let data_result_1y = [];
     let data_result_3y = [];
@@ -526,28 +526,28 @@ document.addEventListener("DOMContentLoaded", async () => {
     let data_result_amount_3y = [];
     /* Step 1 */
     $$("select[name=ctrl_fire_building]").forEach($el => {
-        $el.addEventListener("change", function (e) { 
-            if(e.target.value !="ONMHS3"){
-                package_code_1y= 'FNPGCTDALR1';
-                package_code_3y= 'FNPGCTDALR1';
-            }else{
-                package_code_1y= 'FNPGCTDAXX';
-                package_code_3y= 'FNPGCTDAXX';
-            }  
+        $el.addEventListener("change", function (e) {
+            if (e.target.value != "ONMHS3") {
+                package_code_1y = 'FNPGCTDALR1';
+                package_code_3y = 'FNPGCTDALR1';
+            } else {
+                package_code_1y = 'FNPGCTDAXX';
+                package_code_3y = 'FNPGCTDAXX';
+            }
             setDataStep1(e.target.value);
         });
     });
     $$("select[name=ctrl_insurer_capital]").forEach($el => {
-        $el.addEventListener("change", function (e) {  
-            package_amount=e.target.value;          
+        $el.addEventListener("change", function (e) {
+            package_amount = e.target.value;
             changeTextAmount();
             setData();
         });
     });
     $$("button[id=btnStep1]").forEach($el => {
-        $el.addEventListener("click", function (e) {   
+        $el.addEventListener("click", function (e) {
             let arr = document.getElementsByClassName("error");
-            if(arr.length==0){
+            if (arr.length == 0) {
                 setData();
                 //console.log("package_code",package_code_1y);
             }
@@ -557,68 +557,68 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     /* Step 2 */
     $$("select[id=drpCompensation1]").forEach($el => {
-        $el.addEventListener("change", function (e) {            
+        $el.addEventListener("change", function (e) {
             var checkBox = document.getElementById("check_rate_9");
-            if (checkBox.checked == true){
+            if (checkBox.checked == true) {
                 package_1year = e.target.value == 10000 ? '1' : e.target.value == 15000 ? '2' : '3';
-            }            
+            }
             getDataAmount1y(package_1year);
         });
     });
     $$("select[id=drpCompensation3]").forEach($el => {
-        $el.addEventListener("change", function (e) {            
+        $el.addEventListener("change", function (e) {
             var checkBox = document.getElementById("check_rate_9");
-            if (checkBox.checked == true){
+            if (checkBox.checked == true) {
                 package_3year = e.target.value == 10000 ? '1' : e.target.value == 15000 ? '2' : '3';
             }
             getDataAmount3y(package_3year);
         });
     });
-    
 
-    const getDataAmount1y = (package_1year) => { 
+
+    const getDataAmount1y = (package_1year) => {
         const result = MyHomeSmart;
-        if(package_1year!=""){
-            package_code_1y = package_code_1y.slice(0, -1)+package_1year;
+        if (package_1year != "") {
+            package_code_1y = package_code_1y.slice(0, -1) + package_1year;
         }
-        console.log("package_code1",package_code_1y);
+        console.log("package_code1", package_code_1y);
         //console.log("package_code1",package_code,package_1year);
         const results = result.filter(element => {
             return element.TAGNAME === package_code_1y && element.FIRE == package_amount;
         });
-        
+
         data_result_1y = results[0];
-        console.log("results1",data_result_1y);
+        console.log("results1", data_result_1y);
         const result_1y = amount1y.filter(element => {
             return element.myhome_id === results[0].id;
         });
         //data_result_1y = result_1y;
         data_result_amount_1y = result_1y[0];
-        net1=numberWithCommas(result_1y[0].Net);
+        net1 = numberWithCommas(result_1y[0].Net);
         document.getElementById("txtAmount1").value = numberWithCommas(result_1y[0].Total);
 
-        
+
     }
-    const getDataAmount3y = (package_3year) => { 
-        const result = MyHomeSmart;        
-        if(package_3year!=""){
-            package_code_3y = package_code_3y.slice(0, -1)+package_3year;
+    const getDataAmount3y = (package_3year) => {
+        const result = MyHomeSmart;
+        if (package_3year != "") {
+            package_code_3y = package_code_3y.slice(0, -1) + package_3year;
         }
         const results = result.filter(element => {
             return element.TAGNAME === package_code_3y && element.FIRE == package_amount;
-          });      
+        });
         //console.log("package_code",package_code);
         data_result_3y = results[0];
-        console.log("results3",data_result_3y);
+        console.log("results3", data_result_3y);
         const result_3y = amount3y.filter(element => {
             return element.myhome_id === results[0].id;
         });
         data_result_amount_3y = result_3y[0];
-        console.log("data_result_amount_3y",data_result_amount_3y);
+        console.log("data_result_amount_3y", data_result_amount_3y);
         //data_result_3y = result_3y;
-        net3=numberWithCommas(result_3y[0].Net);
+        net3 = numberWithCommas(result_3y[0].Net);
         document.getElementById("txtAmount3").value = numberWithCommas(result_3y[0].Total);
-        
+
     }
 
 
@@ -630,9 +630,9 @@ document.addEventListener("DOMContentLoaded", async () => {
             } else {
                 P = "X";
             }
-            package_code_1y = `FN${P}${G}${C}${T}${D}A${L}${R}`+package_1year;
-            package_code_3y = `FN${P}${G}${C}${T}${D}A${L}${R}`+package_3year;
-            
+            package_code_1y = `FN${P}${G}${C}${T}${D}A${L}${R}` + package_1year;
+            package_code_3y = `FN${P}${G}${C}${T}${D}A${L}${R}` + package_3year;
+
             getDataAmount1y(package_1year);
             getDataAmount3y(package_3year);
         });
@@ -645,9 +645,9 @@ document.addEventListener("DOMContentLoaded", async () => {
             } else {
                 G = "X";
             }
-            package_code_1y = `FN${P}${G}${C}${T}${D}A${L}${R}`+package_1year;
-            package_code_3y = `FN${P}${G}${C}${T}${D}A${L}${R}`+package_3year;
-            
+            package_code_1y = `FN${P}${G}${C}${T}${D}A${L}${R}` + package_1year;
+            package_code_3y = `FN${P}${G}${C}${T}${D}A${L}${R}` + package_3year;
+
             getDataAmount1y(package_1year);
             getDataAmount3y(package_3year);
         });
@@ -660,9 +660,9 @@ document.addEventListener("DOMContentLoaded", async () => {
             } else {
                 C = "X";
             }
-            package_code_1y = `FN${P}${G}${C}${T}${D}A${L}${R}`+package_1year;
-            package_code_3y = `FN${P}${G}${C}${T}${D}A${L}${R}`+package_3year;
-            
+            package_code_1y = `FN${P}${G}${C}${T}${D}A${L}${R}` + package_1year;
+            package_code_3y = `FN${P}${G}${C}${T}${D}A${L}${R}` + package_3year;
+
             getDataAmount1y(package_1year);
             getDataAmount3y(package_3year);
         });
@@ -676,9 +676,9 @@ document.addEventListener("DOMContentLoaded", async () => {
             } else {
                 T = "X";
             }
-            package_code_1y = `FN${P}${G}${C}${T}${D}A${L}${R}`+package_1year;
-            package_code_3y = `FN${P}${G}${C}${T}${D}A${L}${R}`+package_3year;
-            
+            package_code_1y = `FN${P}${G}${C}${T}${D}A${L}${R}` + package_1year;
+            package_code_3y = `FN${P}${G}${C}${T}${D}A${L}${R}` + package_3year;
+
             getDataAmount1y(package_1year);
             getDataAmount3y(package_3year);
         });
@@ -686,40 +686,40 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     $$("input[id=check_rate_7]").forEach($el => {
         $el.addEventListener("change", function (e) {
-            
+
             if (e.target.checked) {
                 D = e.target.value;
             } else {
                 D = "X";
             }
-            package_code_1y = `FN${P}${G}${C}${T}${D}A${L}${R}`+package_1year;
-            package_code_3y = `FN${P}${G}${C}${T}${D}A${L}${R}`+package_3year;
-            
+            package_code_1y = `FN${P}${G}${C}${T}${D}A${L}${R}` + package_1year;
+            package_code_3y = `FN${P}${G}${C}${T}${D}A${L}${R}` + package_3year;
+
             getDataAmount1y(package_1year);
             getDataAmount3y(package_3year);
         });
     });
-    
+
     $$("input[id=check_rate_9]").forEach($el => {
         $el.addEventListener("change", function (e) {
             if (e.target.checked) {
-                
+
                 var compen_1 = document.getElementById("drpCompensation1");
                 package_1year = compen_1.value == 10000 ? '1' : compen_1.value == 15000 ? '2' : '3';
 
                 var compen_3 = document.getElementById("drpCompensation3");
                 package_3year = compen_3.value == 10000 ? '1' : compen_3.value == 15000 ? '2' : '3';
-                R='R';
-                package_code_1y = `FN${P}${G}${C}${T}${D}A${L}${R}`+package_1year;
-                package_code_3y = `FN${P}${G}${C}${T}${D}A${L}${R}`+package_3year;
+                R = 'R';
+                package_code_1y = `FN${P}${G}${C}${T}${D}A${L}${R}` + package_1year;
+                package_code_3y = `FN${P}${G}${C}${T}${D}A${L}${R}` + package_3year;
             } else {
-                R='X';
+                R = 'X';
                 package_code_1y = `FN${P}${G}${C}${T}${D}A${L}${R}`;
                 package_code_3y = `FN${P}${G}${C}${T}${D}A${L}${R}`;
-                package_1year="";
-                package_3year="";
+                package_1year = "";
+                package_3year = "";
             }
-            
+
             getDataAmount1y(package_1year);
             getDataAmount3y(package_3year);
         });
@@ -731,44 +731,44 @@ document.addEventListener("DOMContentLoaded", async () => {
             } else {
                 L = "X";
             }
-            package_code_1y = `FN${P}${G}${C}${T}${D}A${L}${R}`+package_1year;
-            package_code_3y = `FN${P}${G}${C}${T}${D}A${L}${R}`+package_3year;
-            
+            package_code_1y = `FN${P}${G}${C}${T}${D}A${L}${R}` + package_1year;
+            package_code_3y = `FN${P}${G}${C}${T}${D}A${L}${R}` + package_3year;
+
             getDataAmount1y(package_1year);
             getDataAmount3y(package_3year);
         });
     });
     /* End Step 2 */
     /* Step 3 */
-    let chkBtn1=0; 
-    let chkBtn2=0; 
+    let chkBtn1 = 0;
+    let chkBtn2 = 0;
     var btn = document.getElementById("step_4");
-    let dataBlock=[];                 
+    let dataBlock = [];
 
     var btnStep3 = document.getElementById("btnStep3");
     $$("select[id=ctrl_province]").forEach($el => {
         $el.addEventListener("change", function (e) {
-            
+
             const results = block_list.filter(element => {
                 return element.AmphurCode === e.target.value;
             });
-            dataBlock=results;             
-            console.log("response",results);
+            dataBlock = results;
+            console.log("response", results);
             const result = block_list.filter(element => {
                 return element.AmphurCode === e.target.value && element.Reasons != '';
             });
-            var element = document.getElementById("msgErrBlock");            
-            
-            if(result!=""){              
+            var element = document.getElementById("msgErrBlock");
+
+            if (result != "") {
                 element.classList.remove("d-none");
                 btnStep3.classList.add("d-none");
-                chkBtn1=1;
-            }else{
+                chkBtn1 = 1;
+            } else {
                 element.classList.add("d-none");
                 btnStep3.classList.remove("d-none");
-                chkBtn1=0;
+                chkBtn1 = 0;
             }
-            if(chkBtn1==1 || chkBtn2==1){
+            if (chkBtn1 == 1 || chkBtn2 == 1) {
                 btnStep3.classList.add("d-none");
                 btn.classList.add("step-disable");
             }
@@ -780,16 +780,16 @@ document.addEventListener("DOMContentLoaded", async () => {
                 return element.AmphurCode === e.target.value;
             });
             var element = document.getElementById("loc_msgErrBlock");
-            if(result!=""){               
+            if (result != "") {
                 element.classList.remove("d-none");
                 btnStep3.classList.add("d-none");
-                chkBtn2=1;
-            }else{
+                chkBtn2 = 1;
+            } else {
                 element.classList.add("d-none");
                 btnStep3.classList.remove("d-none");
-                chkBtn2=0;
+                chkBtn2 = 0;
             }
-            if(chkBtn1==1 || chkBtn2==1){
+            if (chkBtn1 == 1 || chkBtn2 == 1) {
                 btnStep3.classList.add("d-none");
                 btn.classList.add("step-disable");
             }
@@ -797,7 +797,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
     /* End Step 3 */
 
-    
+
 
 
     var btnStep1 = document.getElementById("btnStep1");
@@ -823,7 +823,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         btnStep1.classList.remove("step-disable");
         document.getElementById("iconLoad").classList.add("d-none");
     }
-    const apiBlock = async()=>{
+    const apiBlock = async () => {
         console.log("block");
         let res = await fetch(`/appApi/ApiConnect/blockHomePolicy`, {
             method: 'post',
@@ -835,11 +835,11 @@ document.addEventListener("DOMContentLoaded", async () => {
         });
         const response = await res.json();
         //console.log("response",response);
-        
+
         const js = JSON.parse(response);
-        let result = js.data;        
+        let result = js.data;
         block_list = result;
-        
+
     }
     const apiAmount1y = async () => {
         try {
@@ -918,19 +918,19 @@ document.addEventListener("DOMContentLoaded", async () => {
         document.getElementById("foot-ONMHS2").style.display = "table-cell";
 
     }
-    
 
 
-    const setData = () => {      
+
+    const setData = () => {
         const result = MyHomeSmart;
         //console.log('result',result);
         const results = result.filter(element => {
             return element.TAGNAME === package_code_1y && element.FIRE == package_amount;
-        }); 
-       
+        });
+
         data_result_1y = results[0];
         data_result_3y = results[0];
-        if(results!=""){
+        if (results != "") {
 
             const result_1y = amount1y.filter(element => {
                 return element.myhome_id === data_result_1y.id;
@@ -941,8 +941,8 @@ document.addEventListener("DOMContentLoaded", async () => {
             });
             data_result_amount_3y = result_3y[0];
 
-            console.log('data_result_amount_1y',data_result_amount_1y);
-            console.log('data_result_amount_3y',data_result_amount_3y);
+            console.log('data_result_amount_1y', data_result_amount_1y);
+            console.log('data_result_amount_3y', data_result_amount_3y);
 
             apiMyHomeSmart1y(data_result_1y.id);
             apiMyHomeSmart3y(data_result_1y.id);
@@ -1009,22 +1009,22 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
 
 
-/*
-        for (let i = 0; i < result.length; i++) 
-        {
-            
-            
-           
-              
-
-            if (result[i].TAGNAME.trim() == package_code_1y && result[i].FIRE == package_amount) {
-                
-            }
-            
-        }
-        */
+        /*
+                for (let i = 0; i < result.length; i++) 
+                {
+                    
+                    
+                   
+                      
+        
+                    if (result[i].TAGNAME.trim() == package_code_1y && result[i].FIRE == package_amount) {
+                        
+                    }
+                    
+                }
+                */
     }
-    const setDataStep1 = async (packageSelect) => {    
+    const setDataStep1 = async (packageSelect) => {
         let building = $('#ctrl_fire_building');
         let text = building.options[building.selectedIndex].text;
         let text_value = building.options[building.selectedIndex].value;
@@ -1033,7 +1033,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         let cover_amount = select.options[select.selectedIndex].value;
 
         $('#ctrl_fire_building_text').value = text;
-        
+
         if (text_value == "ONMHS3") {
             document.getElementById("tr-condo-9").classList.add("d-none");
             document.getElementById("tr-condo-9-detail").classList.add("d-none");
@@ -1042,7 +1042,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             document.getElementById("divamount").classList.add("d-none");
             document.getElementById("lbSelectHome").classList.add("d-none");
             document.getElementById("lbSelectCondo").classList.remove("d-none");
-            
+
         } else {
             document.getElementById("tr-condo-9").classList.remove("d-none");
             document.getElementById("tr-condo-9-detail").classList.remove("d-none");
@@ -1053,7 +1053,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             document.getElementById("lbSelectCondo").classList.add("d-none");
             $("#fdAccording").value = numberWithCommas(cover_amount * 0.8);
             $("#fdContent").value = numberWithCommas(cover_amount * 0.2);
-           
+
         }
         document.getElementById("check_rate_3").checked = true;
         document.getElementById("check_rate_4").checked = true;
@@ -1203,7 +1203,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         var re = '\\d(?=(\\d{' + (x || 3) + '})+' + (n > 0 ? '\\.' : '$') + ')';
         return this.toFixed(Math.max(0, ~~n)).replace(new RegExp(re, 'g'), '$&,');
     };
-    
+
     //changeTextAmount("500000");
 
     /*
@@ -1233,8 +1233,8 @@ document.addEventListener("DOMContentLoaded", async () => {
             document.getElementById("divamount").classList.add("d-none");
             document.getElementById("lbSelectHome").classList.add("d-none");
             document.getElementById("lbSelectCondo").classList.remove("d-none");
-            dep1="";
-            dep3="";
+            dep1 = "";
+            dep3 = "";
         } else {
             document.getElementById("tr-condo-9").classList.remove("d-none");
             document.getElementById("tr-condo-9-detail").classList.remove("d-none");
@@ -1245,8 +1245,8 @@ document.addEventListener("DOMContentLoaded", async () => {
             document.getElementById("lbSelectCondo").classList.add("d-none");
             $("#fdAccording").value = parseNumber(cover_amount * 0.8);
             $("#fdContent").value = parseNumber(cover_amount * 0.2);
-            dep1="1";
-            dep3="3";
+            dep1 = "1";
+            dep3 = "3";
         }
         document.getElementById("check_rate_3").checked = true;
         document.getElementById("check_rate_4").checked = true;
@@ -1535,7 +1535,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                         break;
                     case 2:
                         const fdPackage = $btn.getAttribute('data-package');
-                        p_packget=fdPackage;
+                        p_packget = fdPackage;
                         $('#form-head').innerHTML = $btn.getAttribute('data-plan');
 
 
@@ -1567,7 +1567,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
                         status = true;
                         removeError($('#step3'));
-                        p_price = p_packget=="ONMHS1" ? p_price1: p_price3;
+                        p_price = p_packget == "ONMHS1" ? p_price1 : p_price3;
                         let address = ($('#ctrl_province').value).split('*');
                         let address2 = ($('#loc_ctrl_province').value).split('*');
                         let dateResult = checkTaBirthDate();
@@ -1589,7 +1589,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                             // fdRevenue: $('#fdRevenue').checked ? 'Y' : 'N',
                             // fdTaxno: $('#fdTaxno').value,
                             //fdPayAMT: getSelectedPricePackage(data.fdPackage, package_data),
-                            fdPayAMT: p_packget=="ONMHS1" ? data_result_amount_1y.Total : data_result_amount_3y.Total,
+                            fdPayAMT: p_packget == "ONMHS1" ? data_result_amount_1y.Total : data_result_amount_3y.Total,
                             ctrl_accept_insurance_term: $('#ctrl_accept_insurance_term').checked ? true : undefined,
                             ctrl_terms: $('#ctrl_terms').checked ? true : undefined,
 
@@ -1623,193 +1623,222 @@ document.addEventListener("DOMContentLoaded", async () => {
                             loc_fdOwner: $('#ctrl_fire_owner').value,
 
                             /* by dum-soken */
-                            coverdays: p_packget=="ONMHS1" ? '365' : '1096',
-                            c_class:'2-18',
-                            flg_ind:'F',//test
-                            prem_rate: p_packget=="ONMHS1" ? '100.000000' : '250.000000',
-                            sum_pr_prem:'0.00',
-                            ann_prem: p_packget=="ONMHS1" ? net1 : net3,
-                            sum_ann_prem: p_packget=="ONMHS1" ? net1 : net3,
-                            sum_ins:c_sum,
-                            gross_amt: p_packget=="ONMHS1" ? data_result_amount_1y.Net : data_result_amount_3y.Net,
-                            ann_nprem: p_packget=="ONMHS1" ? net1 : net3,
-                            stamp_amt: p_packget=="ONMHS1" ? data_result_amount_1y.Stamp : data_result_amount_3y.Stamp,
-                            vat_amt: p_packget=="ONMHS1" ? data_result_amount_1y.Vat : data_result_amount_3y.Vat,
-                            total_amt: p_packget=="ONMHS1" ? data_result_amount_1y.Total : data_result_amount_3y.Total,
-                            ann_days: p_packget=="ONMHS1" ? '365' : '1096',
+                            coverdays: p_packget == "ONMHS1" ? '365' : '1096',
+                            c_class: '2-18',
+                            flg_ind: 'F',//test
+                            prem_rate: p_packget == "ONMHS1" ? '100.000000' : '250.000000',
+                            sum_pr_prem: '0.00',
+                            ann_prem: p_packget == "ONMHS1" ? net1 : net3,
+                            sum_ann_prem: p_packget == "ONMHS1" ? net1 : net3,
+                            sum_ins: c_sum,
+                            gross_amt: p_packget == "ONMHS1" ? data_result_amount_1y.Net : data_result_amount_3y.Net,
+                            ann_nprem: p_packget == "ONMHS1" ? net1 : net3,
+                            stamp_amt: p_packget == "ONMHS1" ? data_result_amount_1y.Stamp : data_result_amount_3y.Stamp,
+                            vat_amt: p_packget == "ONMHS1" ? data_result_amount_1y.Vat : data_result_amount_3y.Vat,
+                            total_amt: p_packget == "ONMHS1" ? data_result_amount_1y.Total : data_result_amount_3y.Total,
+                            ann_days: p_packget == "ONMHS1" ? '365' : '1096',
                             //invoice:'INV0001',//test
                             packget_peril: JSON.stringify([{
-                                peril_code : 'TMRT',
-                                peril_sumins: p_packget=="ONMHS1" ? data_result_1y.ITEM1_5_PERIL_SUMINS : data_result_3y.ITEM1_5_PERIL_SUMINS,
-                                peril_rate:  p_packget=="ONMHS1" ? data_result_1y.ITEM1_5_PERIL_RATE : data_result_3y.ITEM1_5_PERIL_RATE,
-                                peril_prem:  p_packget=="ONMHS1" ? data_result_1y.ITEM1_5_PERIL_PREM : data_result_3y.ITEM1_5_PERIL_PREM,
+                                peril_code: 'TMRT',
+                                peril_sumins: p_packget == "ONMHS1" ? data_result_1y.ITEM1_5_PERIL_SUMINS : data_result_3y.ITEM1_5_PERIL_SUMINS,
+                                peril_rate: p_packget == "ONMHS1" ? data_result_1y.ITEM1_5_PERIL_RATE : data_result_3y.ITEM1_5_PERIL_RATE,
+                                peril_prem: p_packget == "ONMHS1" ? data_result_1y.ITEM1_5_PERIL_PREM : data_result_3y.ITEM1_5_PERIL_PREM,
                                 peril_damage_per: '0',
                                 peril_damage_all: '0',
-                                peril_spe_covers:  '0',
-                                peril_spe_amount:  p_packget=="ONMHS1" ? data_result_1y.ITEM1_5_PERIL_SPE_AMOUNT : data_result_3y.ITEM1_5_PERIL_SPE_AMOUNT,
-                              },
-                              {
+                                peril_spe_covers: '0',
+                                peril_spe_amount: p_packget == "ONMHS1" ? data_result_1y.ITEM1_5_PERIL_SPE_AMOUNT : data_result_3y.ITEM1_5_PERIL_SPE_AMOUNT,
+                            },
+                            {
                                 peril_code: 'ANTIQ',
-                                peril_sumins: p_packget=="ONMHS1" ? data_result_1y.ITEM1_8_PERIL_SUMINS : data_result_3y.ITEM1_8_PERIL_SUMINS,
-                                peril_rate:  p_packget=="ONMHS1" ? data_result_1y.ITEM1_8_PERIL_RATE : data_result_3y.ITEM1_8_PERIL_RATE,
-                                peril_prem:  p_packget=="ONMHS1" ? data_result_1y.ITEM1_8_PERIL_PREM : data_result_3y.ITEM1_8_PERIL_PREM,
+                                peril_sumins: p_packget == "ONMHS1" ? data_result_1y.ITEM1_8_PERIL_SUMINS : data_result_3y.ITEM1_8_PERIL_SUMINS,
+                                peril_rate: p_packget == "ONMHS1" ? data_result_1y.ITEM1_8_PERIL_RATE : data_result_3y.ITEM1_8_PERIL_RATE,
+                                peril_prem: p_packget == "ONMHS1" ? data_result_1y.ITEM1_8_PERIL_PREM : data_result_3y.ITEM1_8_PERIL_PREM,
                                 peril_damage_per: '0',
                                 peril_damage_all: '0',
                                 peril_spe_covers: '0',
                                 peril_spe_amount: '0',
-                              },
-                              {
+                            },
+                            {
                                 peril_code: 'FFT',
-                                peril_sumins: p_packget=="ONMHS1" ? data_result_1y.ITEM1_1_PERIL_SUMINS : data_result_3y.ITEM1_1_PERIL_SUMINS,
-                                peril_rate:  p_packget=="ONMHS1" ? data_result_1y.ITEM1_1_PERIL_RATE : data_result_3y.ITEM1_1_PERIL_RATE,
-                                peril_prem:  p_packget=="ONMHS1" ? data_result_1y.ITEM1_1_PERIL_PREM : data_result_3y.ITEM1_1_PERIL_PREM,
+                                peril_sumins: p_packget == "ONMHS1" ? data_result_1y.ITEM1_1_PERIL_SUMINS : data_result_3y.ITEM1_1_PERIL_SUMINS,
+                                peril_rate: p_packget == "ONMHS1" ? data_result_1y.ITEM1_1_PERIL_RATE : data_result_3y.ITEM1_1_PERIL_RATE,
+                                peril_prem: p_packget == "ONMHS1" ? data_result_1y.ITEM1_1_PERIL_PREM : data_result_3y.ITEM1_1_PERIL_PREM,
                                 peril_damage_per: '0',
                                 peril_damage_all: '0',
                                 peril_spe_covers: '0',
                                 peril_spe_amount: '0',
-                              },
-                              {
+                            },
+                            {
                                 peril_code: '1.37',
-                                peril_sumins: p_packget=="ONMHS1" ? data_result_1y.ITEM1_2_PERIL_SUMINS : data_result_3y.ITEM1_2_PERIL_SUMINS,
-                                peril_rate:  p_packget=="ONMHS1" ? data_result_1y.ITEM1_2_PERIL_RATE : data_result_3y.ITEM1_2_PERIL_RATE,
-                                peril_prem:  p_packget=="ONMHS1" ? data_result_1y.ITEM1_2_PERIL_PREM : data_result_3y.ITEM1_2_PERIL_PREM,
+                                peril_sumins: p_packget == "ONMHS1" ? data_result_1y.ITEM1_2_PERIL_SUMINS : data_result_3y.ITEM1_2_PERIL_SUMINS,
+                                peril_rate: p_packget == "ONMHS1" ? data_result_1y.ITEM1_2_PERIL_RATE : data_result_3y.ITEM1_2_PERIL_RATE,
+                                peril_prem: p_packget == "ONMHS1" ? data_result_1y.ITEM1_2_PERIL_PREM : data_result_3y.ITEM1_2_PERIL_PREM,
                                 peril_damage_per: '0',
                                 peril_damage_all: '0',
                                 peril_spe_covers: '0',
                                 peril_spe_amount: '0',
-                              },
-                              {
+                            },
+                            {
                                 peril_code: 'WRK',
-                                peril_sumins: p_packget=="ONMHS1" ? data_result_1y.ITEM1_3_PERIL_SUMINS : data_result_3y.ITEM1_3_PERIL_SUMINS,
-                                peril_rate:  p_packget=="ONMHS1" ? data_result_1y.ITEM1_3_PERIL_RATE : data_result_3y.ITEM1_3_PERIL_RATE,
-                                peril_prem:  p_packget=="ONMHS1" ? data_result_1y.ITEM1_3_PERIL_PREM : data_result_3y.ITEM1_3_PERIL_PREM,
+                                peril_sumins: p_packget == "ONMHS1" ? data_result_1y.ITEM1_3_PERIL_SUMINS : data_result_3y.ITEM1_3_PERIL_SUMINS,
+                                peril_rate: p_packget == "ONMHS1" ? data_result_1y.ITEM1_3_PERIL_RATE : data_result_3y.ITEM1_3_PERIL_RATE,
+                                peril_prem: p_packget == "ONMHS1" ? data_result_1y.ITEM1_3_PERIL_PREM : data_result_3y.ITEM1_3_PERIL_PREM,
                                 peril_damage_per: '0',
                                 peril_damage_all: '0',
                                 peril_spe_covers: '0',
                                 peril_spe_amount: '0',
-                              },
-                              {
+                            },
+                            {
                                 peril_code: 'PROF',
-                                peril_sumins: p_packget=="ONMHS1" ? data_result_1y.ITEM1_4_PERIL_SUMINS : data_result_3y.ITEM1_4_PERIL_SUMINS,
-                                peril_rate:  p_packget=="ONMHS1" ? data_result_1y.ITEM1_4_PERIL_RATE : data_result_3y.ITEM1_4_PERIL_RATE,
-                                peril_prem:  p_packget=="ONMHS1" ? data_result_1y.ITEM1_4_PERIL_PREM : data_result_3y.ITEM1_4_PERIL_PREM,
+                                peril_sumins: p_packget == "ONMHS1" ? data_result_1y.ITEM1_4_PERIL_SUMINS : data_result_3y.ITEM1_4_PERIL_SUMINS,
+                                peril_rate: p_packget == "ONMHS1" ? data_result_1y.ITEM1_4_PERIL_RATE : data_result_3y.ITEM1_4_PERIL_RATE,
+                                peril_prem: p_packget == "ONMHS1" ? data_result_1y.ITEM1_4_PERIL_PREM : data_result_3y.ITEM1_4_PERIL_PREM,
                                 peril_damage_per: '0',
                                 peril_damage_all: '0',
                                 peril_spe_covers: '0',
                                 peril_spe_amount: '0',
-                              },
-                              {
+                            },
+                            {
                                 peril_code: '1.12',
-                                peril_sumins: p_packget=="ONMHS1" ? data_result_1y.ITEM1_7_PERIL_SUMINS : data_result_3y.ITEM1_7_PERIL_SUMINS,
-                                peril_rate:  p_packget=="ONMHS1" ? data_result_1y.ITEM1_7_PERIL_RATE : data_result_3y.ITEM1_7_PERIL_RATE,
-                                peril_prem:  p_packget=="ONMHS1" ? data_result_1y.ITEM1_7_PERIL_PREM : data_result_3y.ITEM1_7_PERIL_PREM,
+                                peril_sumins: p_packget == "ONMHS1" ? data_result_1y.ITEM1_7_PERIL_SUMINS : data_result_3y.ITEM1_7_PERIL_SUMINS,
+                                peril_rate: p_packget == "ONMHS1" ? data_result_1y.ITEM1_7_PERIL_RATE : data_result_3y.ITEM1_7_PERIL_RATE,
+                                peril_prem: p_packget == "ONMHS1" ? data_result_1y.ITEM1_7_PERIL_PREM : data_result_3y.ITEM1_7_PERIL_PREM,
                                 peril_damage_per: '0',
                                 peril_damage_all: '0',
                                 peril_spe_covers: '0',
                                 peril_spe_amount: '0',
-                              },
-                              {
+                            },
+                            {
+                                peril_code: '1.14',
+                                peril_sumins: p_packget == "ONMHS1" ? data_result_1y.NATURAL_EXCEEDING_20K_PERIL_SUMINS : data_result_3y.NATURAL_EXCEEDING_20K_PERIL_SUMINS,
+                                peril_rate: p_packget == "ONMHS1" ? data_result_1y.NATURAL_EXCEEDING_20K_PERIL_RATE : data_result_3y.NATURAL_EXCEEDING_20K_PERIL_RATE,
+                                peril_prem: p_packget == "ONMHS1" ? data_result_1y.NATURAL_EXCEEDING_20K_PERIL_PREM : data_result_3y.NATURAL_EXCEEDING_20K_PERIL_PREM,
+                                peril_damage_per: '0',
+                                peril_damage_all: '0',
+                                peril_spe_covers: '0',
+                                peril_spe_amount: '0',
+                            },
+                            {
                                 peril_code: 'PA',
-                                peril_sumins: p_packget=="ONMHS1" ? data_result_1y.PA_PERIL_SUMINS : data_result_3y.PA_PERIL_SUMINS,
-                                peril_rate:  p_packget=="ONMHS1" ? data_result_1y.PA_PERIL_RATE : data_result_3y.PA_PERIL_RATE,
-                                peril_prem:  p_packget=="ONMHS1" ? data_result_1y.PA_PERIL_PREM : data_result_3y.PA_PERIL_PREM,
+                                peril_sumins: p_packget == "ONMHS1" ? data_result_1y.PA_PERIL_SUMINS : data_result_3y.PA_PERIL_SUMINS,
+                                peril_rate: p_packget == "ONMHS1" ? data_result_1y.PA_PERIL_RATE : data_result_3y.PA_PERIL_RATE,
+                                peril_prem: p_packget == "ONMHS1" ? data_result_1y.PA_PERIL_PREM : data_result_3y.PA_PERIL_PREM,
                                 peril_damage_per: '0',
                                 peril_damage_all: '0',
                                 peril_spe_covers: '0',
-                                peril_spe_amount:  p_packget=="ONMHS1" ? data_result_1y.PA_PERIL_SPE_AMOUNT : data_result_3y.PA_PERIL_SPE_AMOUNT,
-                              },
-                              {
+                                peril_spe_amount: p_packget == "ONMHS1" ? data_result_1y.PA_PERIL_SPE_AMOUNT : data_result_3y.PA_PERIL_SPE_AMOUNT,
+                            },
+                            {
                                 peril_code: '0.00',
-                                peril_sumins: p_packget=="ONMHS1" ? data_result_1y.GLASS_PERIL_SUMINS : data_result_3y.GLASS_PERIL_SUMINS,
-                                peril_rate:  p_packget=="ONMHS1" ? data_result_1y.GLASS_PERIL_RATE : data_result_3y.GLASS_PERIL_RATE,
-                                peril_prem:  p_packget=="ONMHS1" ? data_result_1y.GLASS_PERIL_PREM : data_result_3y.GLASS_PERIL_PREM,
+                                peril_sumins: p_packget == "ONMHS1" ? data_result_1y.GLASS_PERIL_SUMINS : data_result_3y.GLASS_PERIL_SUMINS,
+                                peril_rate: p_packget == "ONMHS1" ? data_result_1y.GLASS_PERIL_RATE : data_result_3y.GLASS_PERIL_RATE,
+                                peril_prem: p_packget == "ONMHS1" ? data_result_1y.GLASS_PERIL_PREM : data_result_3y.GLASS_PERIL_PREM,
                                 peril_damage_per: '0',
                                 peril_damage_all: '0',
                                 peril_spe_covers: '0',
                                 peril_spe_amount: '0',
-                              },
-                              {
+                            },
+                            {
                                 peril_code: 'CASH',
-                                peril_sumins: p_packget=="ONMHS1" ? data_result_1y.CASH_PERIL_SUMINS : data_result_3y.CASH_PERIL_SUMINS,
-                                peril_rate:  p_packget=="ONMHS1" ? data_result_1y.CASH_PERIL_RATE : data_result_3y.CASH_PERIL_RATE,
-                                peril_prem:  p_packget=="ONMHS1" ? data_result_1y.CASH_PERIL_PREM : data_result_3y.CASH_PERIL_PREM,
+                                peril_sumins: p_packget == "ONMHS1" ? data_result_1y.CASH_PERIL_SUMINS : data_result_3y.CASH_PERIL_SUMINS,
+                                peril_rate: p_packget == "ONMHS1" ? data_result_1y.CASH_PERIL_RATE : data_result_3y.CASH_PERIL_RATE,
+                                peril_prem: p_packget == "ONMHS1" ? data_result_1y.CASH_PERIL_PREM : data_result_3y.CASH_PERIL_PREM,
                                 peril_damage_per: '0',
                                 peril_damage_all: '0',
                                 peril_spe_covers: '0',
                                 peril_spe_amount: '0',
-                              },
-                              {
+                            },
+                            {
                                 peril_code: '1.38',
-                                peril_sumins: p_packget=="ONMHS1" ? data_result_1y.THEFT_PERIL_SUMINS : data_result_3y.THEFT_PERIL_SUMINS,
-                                peril_rate:  p_packget=="ONMHS1" ? data_result_1y.THEFT_PERIL_RATE : data_result_3y.THEFT_PERIL_RATE,
-                                peril_prem:  p_packget=="ONMHS1" ? data_result_1y.THEFT_PERIL_PREM : data_result_3y.THEFT_PERIL_PREM,
+                                peril_sumins: p_packget == "ONMHS1" ? data_result_1y.THEFT_PERIL_SUMINS : data_result_3y.THEFT_PERIL_SUMINS,
+                                peril_rate: p_packget == "ONMHS1" ? data_result_1y.THEFT_PERIL_RATE : data_result_3y.THEFT_PERIL_RATE,
+                                peril_prem: p_packget == "ONMHS1" ? data_result_1y.THEFT_PERIL_PREM : data_result_3y.THEFT_PERIL_PREM,
                                 peril_damage_per: '0',
                                 peril_damage_all: '0',
                                 peril_spe_covers: '0',
                                 peril_spe_amount: '0',
-                              },
-                              {
+                            },
+                            {
                                 peril_code: '1.40',
-                                peril_sumins: p_packget=="ONMHS1" ? data_result_1y.LIABILITY_PERIL_SUMINS : data_result_3y.LIABILITY_PERIL_SUMINS,
-                                peril_rate:  p_packget=="ONMHS1" ? data_result_1y.LIABILITY_PERIL_RATE : data_result_3y.LIABILITY_PERIL_RATE,
-                                peril_prem:  p_packget=="ONMHS1" ? data_result_1y.LIABILITY_PERIL_PREM : data_result_3y.LIABILITY_PERIL_PREM,
+                                peril_sumins: p_packget == "ONMHS1" ? data_result_1y.LIABILITY_PERIL_SUMINS : data_result_3y.LIABILITY_PERIL_SUMINS,
+                                peril_rate: p_packget == "ONMHS1" ? data_result_1y.LIABILITY_PERIL_RATE : data_result_3y.LIABILITY_PERIL_RATE,
+                                peril_prem: p_packget == "ONMHS1" ? data_result_1y.LIABILITY_PERIL_PREM : data_result_3y.LIABILITY_PERIL_PREM,
                                 peril_damage_per: '0',
                                 peril_damage_all: '0',
                                 peril_spe_covers: '0',
                                 peril_spe_amount: '0',
-                              },
-                              {
+                            },
+                            {
                                 peril_code: 'CMRT',
-                                peril_sumins: p_packget=="ONMHS1" ? data_result_1y.DANGER_PERIL_SUMINS : data_result_3y.DANGER_PERIL_SUMINS,
-                                peril_rate:  p_packget=="ONMHS1" ? data_result_1y.DANGER_PERIL_RATE : data_result_3y.DANGER_PERIL_RATE,
-                                peril_prem:  p_packget=="ONMHS1" ? data_result_1y.DANGER_PERIL_PREM : data_result_3y.DANGER_PERIL_PREM,
+                                peril_sumins: p_packget == "ONMHS1" ? data_result_1y.DANGER_PERIL_SUMINS : data_result_3y.DANGER_PERIL_SUMINS,
+                                peril_rate: p_packget == "ONMHS1" ? data_result_1y.DANGER_PERIL_RATE : data_result_3y.DANGER_PERIL_RATE,
+                                peril_prem: p_packget == "ONMHS1" ? data_result_1y.DANGER_PERIL_PREM : data_result_3y.DANGER_PERIL_PREM,
                                 peril_damage_per: '0',
                                 peril_damage_all: '0',
-                                peril_spe_covers: p_packget=="ONMHS1" ? data_result_1y.DANGER_PERIL_SPE_COVERS : data_result_3y.DANGER_PERIL_SPE_COVERS,
-                                peril_spe_amount: p_packget=="ONMHS1" ? data_result_1y.DANGER_PERIL_SPE_AMOUNT : data_result_3y.DANGER_PERIL_SPE_AMOUNT,
-                              }
-                              ,
-                              {
+                                peril_spe_covers: p_packget == "ONMHS1" ? data_result_1y.DANGER_PERIL_SPE_COVERS : data_result_3y.DANGER_PERIL_SPE_COVERS,
+                                peril_spe_amount: p_packget == "ONMHS1" ? data_result_1y.DANGER_PERIL_SPE_AMOUNT : data_result_3y.DANGER_PERIL_SPE_AMOUNT,
+                            },
+                            {
                                 peril_code: 'INST',
-                                peril_sumins: p_packget=="ONMHS1" ? data_result_1y.RENT_PERIL_SUMINS : data_result_3y.RENT_PERIL_SUMINS,
-                                peril_rate:  p_packget=="ONMHS1" ? data_result_1y.RENT_PERIL_RATE : data_result_3y.RENT_PERIL_RATE,
-                                peril_prem:  p_packget=="ONMHS1" ? data_result_1y.RENT_PERIL_PREM : data_result_3y.RENT_PERIL_PREM,
+                                peril_sumins: p_packget == "ONMHS1" ? data_result_1y.RENT_PERIL_SUMINS : data_result_3y.RENT_PERIL_SUMINS,
+                                peril_rate: p_packget == "ONMHS1" ? data_result_1y.RENT_PERIL_RATE : data_result_3y.RENT_PERIL_RATE,
+                                peril_prem: p_packget == "ONMHS1" ? data_result_1y.RENT_PERIL_PREM : data_result_3y.RENT_PERIL_PREM,
                                 peril_damage_per: '0',
                                 peril_damage_all: '0',
-                                peril_spe_covers: p_packget=="ONMHS1" ? data_result_1y.RENT_PERIL_SPE_COVERS : data_result_3y.RENT_PERIL_SPE_COVERS,
+                                peril_spe_covers: p_packget == "ONMHS1" ? data_result_1y.RENT_PERIL_SPE_COVERS : data_result_3y.RENT_PERIL_SPE_COVERS,
                                 peril_spe_amount: '0',
-                              }
-                            ]).replaceAll('"',"'"),
-                            item_nbr:'1',//รอ
-                            block_tambun:'',// รอ
-                            exp_code:'8001',
-                            tariff_code:'1032',
+                            },
+                            {
+                                peril_code: 'PTBD',
+                                peril_sumins: p_packget == "ONMHS1" ? data_result_1y.ITEM1_6_PERIL_SUMINS : data_result_3y.ITEM1_6_PERIL_SUMINS,
+                                peril_rate: p_packget == "ONMHS1" ? data_result_1y.ITEM1_6_PERIL_RATE : data_result_3y.ITEM1_6_PERIL_RATE,
+                                peril_prem: p_packget == "ONMHS1" ? data_result_1y.ITEM1_6_PERIL_PREM : data_result_3y.ITEM1_6_PERIL_PREM,
+                                peril_damage_per: '0',
+                                peril_damage_all: '0',
+                                peril_spe_covers: p_packget == "ONMHS1" ? data_result_1y.RENT_PERIL_SPE_COVERS : data_result_3y.RENT_PERIL_SPE_COVERS,
+                                peril_spe_amount: '0',
+                            },
+                            {
+                                peril_code: 'FIXIT',
+                                peril_sumins: p_packget == "ONMHS1" ? data_result_1y.ITEM1_8_FIXIT : data_result_3y.ITEM1_8_FIXIT,
+                                peril_rate: p_packget == "ONMHS1" ? data_result_1y.ITEM1_8_FIXIT_PERIL_RATE : data_result_3y.ITEM1_8_FIXIT_PERIL_RATE,
+                                peril_prem: p_packget == "ONMHS1" ? data_result_1y.ITEM1_8_FIXIT_PERIL_PREM : data_result_3y.ITEM1_8_FIXIT_PERIL_PREM,
+                                peril_damage_per: '0',
+                                peril_damage_all: '0',
+                                peril_spe_covers: p_packget == "ONMHS1" ? data_result_1y.RENT_PERIL_SPE_COVERS : data_result_3y.RENT_PERIL_SPE_COVERS,
+                                peril_spe_amount: '0',
+                            }
+                            ]).replaceAll('"', "'"),
+                            item_nbr: '1',//รอ
+                            block_tambun: '',// รอ
+                            exp_code: '8001',
+                            tariff_code: '1032',
                             occupancy: 'บ้านอยู่อาศัย',//บ้านอยู่อาศัย
-                            building_class:'1',
-                            whole_building:'1',
-                            floor_nbr:'1',
-                            dryriser:'1',
-                            external_wall:'1',
-                            upper_floor:'1',
-                            roof_beam:'1',
-                            roof:'1',
-                            column:'1',
-                            internal_area:'1',
-                            nbr_room:'1',
-                            nbr_storey:'1',
+                            building_class: '1',
+                            whole_building: '1',
+                            floor_nbr: '1',
+                            dryriser: '1',
+                            external_wall: '1',
+                            upper_floor: '1',
+                            roof_beam: '1',
+                            roof: '1',
+                            column: '1',
+                            internal_area: '1',
+                            nbr_room: '1',
+                            nbr_storey: '1',
 
                             interest_item: JSON.stringify([{
                                 int_code: 'B',
                                 int_sumins: data_result_1y.FIRE_BUILDING
-                              },
-                              {
+                            },
+                            {
                                 int_code: 'F',
                                 int_sumins: data_result_1y.FIRE_BELONGING
-                              },
-                            ]).replaceAll('"',"'"),
-                            sch_sumins:  p_packget=="ONMHS1" ? data_result_1y.FIRE : data_result_3y.FIRE,
-                            sch_prem: p_packget=="ONMHS1" ? net1 : net3,
-                            risk_rate:  '0.08900000',
+                            },
+                            ]).replaceAll('"', "'"),
+                            sch_sumins: p_packget == "ONMHS1" ? data_result_1y.FIRE : data_result_3y.FIRE,
+                            sch_prem: p_packget == "ONMHS1" ? net1 : net3,
+                            risk_rate: '0.08900000',
                             /* end by dum-soken */
                         }
                         data = {
@@ -1817,7 +1846,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                             fdMarketing_Consent: $('#ctrl_marketing').checked ? true : undefined
                         }
 
-                        console.log("data",data);
+                        console.log("data", data);
                         //=========================================================================================================
                         //address insure
                         let address_insure = "";
@@ -1954,7 +1983,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                         $summary_section.innerHTML = `<h3 class="text-primary">${$summary_section.getAttribute('data-insurance_data')}</h3><br/>
                     <div class="two-col">
                         <div><span>${$summary_section.getAttribute('data-plan')} : </span><strong>${selectedPackage}</strong></div>
-                        <div><span>${$summary_section.getAttribute('data-price')} : </span><strong>${ numberWithCommas(data.fdPayAMT) } ${$summary_section.getAttribute('data-baht')}</strong></div>
+                        <div><span>${$summary_section.getAttribute('data-price')} : </span><strong>${numberWithCommas(data.fdPayAMT)} ${$summary_section.getAttribute('data-baht')}</strong></div>
                         <div class="controls-wrapper full no-lable"><span>${$('#ctrl_fire_building_sum').value} : </span>
                         <strong>${$('#ctrl_fire_building_text').value}</strong>
                         </div>
