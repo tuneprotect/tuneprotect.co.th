@@ -61,10 +61,14 @@ header{
                         <label for="fdArrivalDate">@lang("product.arrival_date")</label>
                     </div>
                     <div class="controls-wrapper">
-                        <input id="fdDepartureDate" name="fdDepartureDate" type="text" placeholder="Arrival Date to Thailand + 14 Day"
-                              
+                        <input id="fdDepartureDate" name="fdDepartureDate" type="date" min="{{date('Y-m-d')}}" class="flatpickr"
+                               data-mindate="{{date('Y-m-d')}}"
+                               data-maxdate="{{date('Y-m-d',strtotime( "+180 days"))}}"
+                               data-error="@lang('product.error.travel_departure_date')"
+                               disabled
                         />
-                        <label for="fdDepartureDate">Departure Date from Thailand</label>
+                        <label for="fdDepartureDate">@lang("product.departure_date")</label>
+
                     </div>
 
                     
