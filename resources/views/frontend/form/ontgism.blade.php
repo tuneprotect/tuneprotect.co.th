@@ -43,6 +43,15 @@ header{
                                         <label for="ctrl_destination">Destination</label>
                         </select>
                     </div>
+                    
+                </div>
+                <div class="date-wrapper">
+                    <div class="controls-wrapper">
+                        <input id="fdFlightTickerNo" name="fdFlightTickerNo" type="text" placeholder="Flight ticket number (217-xxxxxxxxx)"
+                               data-error="Please fill in Flight ticket number"
+                        />
+                        <label for="fdFlightTickerNo">Flight ticket number (217-xxxxxxxxx)</label>
+                    </div>
                     <div class="controls-wrapper">
                         <input id="fdArrivalDate" name="fdArrivalDate" type="date" min="{{date('Y-m-d')}}" class="flatpickr"
                                data-mindate="{{date('Y-m-d')}}"
@@ -52,21 +61,13 @@ header{
                         <label for="fdArrivalDate">@lang("product.arrival_date")</label>
                     </div>
                     <div class="controls-wrapper">
-                        <input id="fdDepartureDate" name="fdDepartureDate" type="text" placeholder="Flight no. (TGxxx)"
-                               
+                        <input id="fdDepartureDate" name="fdDepartureDate" type="text" placeholder="Arrival Date to Thailand + 14 Day"
+                              
                         />
                         <label for="fdDepartureDate">Departure Date from Thailand</label>
                     </div>
-                </div>
-                <div class="date-wrapper">
-                    <div class="controls-wrapper">
-                        <input id="fdFlightTickerNo" name="fdFlightTickerNo" type="text" placeholder="Flight ticket number (217-xxxxxxxxx)"
-                               data-error="Please fill in Flight ticket number"
-                        />
-                        <label for="fdFlightTickerNo">Flight ticket number (217-xxxxxxxxx)</label>
-                    </div>
-                    <div class="controls-wrapper"></div>
-                    <div class="controls-wrapper"></div>
+
+                    
                 </div>
                 <cite></cite>
             </div>

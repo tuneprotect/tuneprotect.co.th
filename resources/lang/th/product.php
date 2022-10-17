@@ -32,7 +32,7 @@ return [
     "document_type" => "ประเภทเอกสาร",
     "edit" => "แก้ไขข้อมูล",
     "effective_date" => "วันที่เริ่มต้นเดินทาง",
-    "arrival_date" => "วันที่เดินทางมาถึงประเทศไทย",
+    "arrival_date" => "Arrival Date to Thailand",
     "departure_date" => "วันที่เริ่มต้นเดินทาง",
     "return_date" => "วันที่เดินทางกลับ",
     "email" => "อีเมล",
