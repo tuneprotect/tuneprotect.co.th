@@ -50067,7 +50067,7 @@ var showBMIValidateError = function showBMIValidateError(message, selector) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! D:\Tune\Web\resources\js\hospital.js */"./resources/js/hospital.js");
+module.exports = __webpack_require__(/*! D:\github\tuneprotect.co.th\resources\js\hospital.js */"./resources/js/hospital.js");
 
 
 /***/ })

@@ -130,11 +130,12 @@ class ProductController extends BaseController
         }
     }
 
-    protected function getProductDetail($link = null, $selected = null)
+    protected function getProductDetail($link = null, $selected = '')
     {
         //echo var_dump($link,$selected);exit();
-        $this->bodyData['current_product'] = WebContent::where('type_id', ProjectEnum::WEB_CONTENT_PRODUCT)
+        $this->bodyData['current_product'] = WebContent::where('type_id', ProjectEnum::WEB_CONTENT_BANNER)
             ->where('friendly_url', $link)
+            ->where('code', $selected)
             ->with(['locales', 'productPackage' => function ($q) {
                 $q->with('locales');
             }, 'faq' => function ($q) {

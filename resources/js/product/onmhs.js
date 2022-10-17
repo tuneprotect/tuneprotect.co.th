@@ -587,7 +587,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             return element.TAGNAME === package_code_1y && element.FIRE == package_amount;
         });
         
-        data_result_1y = results;
+        data_result_1y = results[0];
         console.log("results1",data_result_1y);
         const result_1y = amount1y.filter(element => {
             return element.myhome_id === results[0].id;
@@ -608,7 +608,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             return element.TAGNAME === package_code_3y && element.FIRE == package_amount;
           });      
         //console.log("package_code",package_code);
-        data_result_3y = results;
+        data_result_3y = results[0];
         console.log("results3",data_result_3y);
         const result_3y = amount3y.filter(element => {
             return element.myhome_id === results[0].id;

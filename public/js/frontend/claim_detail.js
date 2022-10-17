@@ -19249,7 +19249,7 @@ var scrollToTargetAdjusted = function scrollToTargetAdjusted($elm) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! D:\Tune\Web\resources\js\claim_detail.js */"./resources/js/claim_detail.js");
+module.exports = __webpack_require__(/*! D:\github\tuneprotect.co.th\resources\js\claim_detail.js */"./resources/js/claim_detail.js");
 
 
 /***/ })

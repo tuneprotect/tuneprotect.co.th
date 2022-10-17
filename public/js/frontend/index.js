@@ -49168,7 +49168,9 @@ document.addEventListener("DOMContentLoaded", function () {
       navPosition: 'bottom',
       controlsText: ['<i class="icofont-rounded-left"></i>', '<i class="icofont-rounded-right"></i>']
     });
-  }); // //One page
+  }); // <<<<<<<<<<<<<< TO DO Start Popup >>>>>>>>>>>>>>>>>>>>>>>>
+  // //One page
+  // ************************* TO DO Open dialog *************************
   // const $formOverlay = $('#frm_overlay');
   // if ($formOverlay) {
   //     $(".page-overlay .close").addEventListener('click', (e) => {
@@ -49186,7 +49188,8 @@ document.addEventListener("DOMContentLoaded", function () {
   //     }, true);
   // }
   //
-  // const $frm_overlayClose = $('#frm_overlayClose');
+  // ************************* TO DO Close dialog *************************
+  // const $frm_overlayClose = $('#frm_overlayClose'); 
   // if ($frm_overlayClose) {
   //     $(".page-overlay-close .close").addEventListener('click', (e) => {
   //         e.preventDefault();
@@ -49194,6 +49197,7 @@ document.addEventListener("DOMContentLoaded", function () {
   //         $('.page-overlay').style.display = 'flex';
   //     }, true);
   // }
+  // <<<<<<<<<<<<<< End Popup >>>>>>>>>>>>>>>>>>>>>>>>
 });
 
 /***/ }),
@@ -49928,7 +49932,7 @@ var showBMIValidateError = function showBMIValidateError(message, selector) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! D:\Tune\Web\resources\js\index.js */"./resources/js/index.js");
+module.exports = __webpack_require__(/*! D:\github\tuneprotect.co.th\resources\js\index.js */"./resources/js/index.js");
 
 
 /***/ })
