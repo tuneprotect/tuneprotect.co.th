@@ -132,10 +132,10 @@
         </table>
 
         <br><br>
-{{--        <a href="#" data-gtm="product-{{strtolower($selected)}}-more" id="btn-more" data-expand="@lang('product.more')"--}}
-{{--           data-collapse="@lang('product.collapse')">--}}
-{{--            @lang('product.more')--}}
-{{--        </a>--}}
+       <a href="#" data-gtm="product-{{strtolower($selected)}}-more" id="btn-more" data-expand="@lang('product.more')"
+          data-collapse="@lang('product.collapse')">
+           @lang('product.more')
+       </a>
 
     </div>
 </section>
