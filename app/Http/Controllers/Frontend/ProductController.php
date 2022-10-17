@@ -87,7 +87,7 @@ class ProductController extends BaseController
 
         
         $this->getProductDetail($link, $selected);
-
+		
         if ($selected) {      
             //dd($selected));      
             return $this->genDetailPage($selected);
@@ -130,10 +130,9 @@ class ProductController extends BaseController
         }
     }
 
-    protected function getProductDetail($link = null, $selected = '')
-    {
-        //echo var_dump($link,$selected);exit();
-        $this->bodyData['current_product'] = WebContent::where('type_id', ProjectEnum::WEB_CONTENT_BANNER)
+    protected function getProductDetail($link = null, $selected = null)
+    {	
+        $this->bodyData['current_product'] = WebContent::where('type_id', ProjectEnum::WEB_CONTENT_PRODUCT)
             ->where('friendly_url', $link)
             ->where('code', $selected)
             ->with(['locales', 'productPackage' => function ($q) {
@@ -143,7 +142,6 @@ class ProductController extends BaseController
             }])
             ->whereRaw(ProjectEnum::isPublish())
             ->first();
-
     }
 
     protected function genListPage()

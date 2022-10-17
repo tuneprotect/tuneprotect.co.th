@@ -45,15 +45,9 @@ class IndexController extends BaseController
         $this->bodyData['main_highlight_product'] = $highlight_product->first();
 
 
-        //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< TO DO Dialog >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-    
-        // First Dialog
         $this->bodyData['overlayComponent'] = 'frontend.component.overlay-form';
-    
-        // Second Dialog
         $this->bodyData['overlayCloseComponent'] = 'frontend.component.overlay-close-form-happytimes';
 
-        //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< TO DO Dialog >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
         $this->bodyData['service'] = WebContent::where('type_id', ProjectEnum::WEB_CONTENT_SERVICE)
             ->with('locales')

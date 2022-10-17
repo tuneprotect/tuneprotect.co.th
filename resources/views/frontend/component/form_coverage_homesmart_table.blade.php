@@ -586,7 +586,10 @@
                             บริการดูแลบ้านโฮมแคร์ Home Care Pack   1 ครั้ง/ปี
                         @endif
                         <br/>
-                        <img src="/storage/fixit.png">
+                         <!-- <img src="/storage/fixit.png"> -->
+                        <div class="two-tone-icon" id="two-tone-icon">
+                            <img src="/storage/fixit.png">
+                        </div>
                     </th>
 
                     <td class="td-onmhs" data-index="1" data-package="ONMHS1">

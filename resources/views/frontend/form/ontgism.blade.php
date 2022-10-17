@@ -43,6 +43,20 @@ header{
                                         <label for="ctrl_destination">Destination</label>
                         </select>
                     </div>
+                    <div class="controls-wrapper">
+                        <input id="fdArrivalDate" name="fdArrivalDate" type="date" min="{{date('Y-m-d')}}" class="flatpickr"
+                               data-mindate="{{date('Y-m-d')}}"
+                               data-maxdate="{{date('Y-m-d',strtotime( "+180 days"))}}"
+                               data-error="@lang('product.error.travel_arrival_date')"
+                        />
+                        <label for="fdArrivalDate">@lang("product.arrival_date")</label>
+                    </div>
+                    <div class="controls-wrapper">
+                        <input id="fdDepartureDate" name="fdDepartureDate" type="text" placeholder="Flight no. (TGxxx)"
+                               
+                        />
+                        <label for="fdDepartureDate">Departure Date from Thailand</label>
+                    </div>
                 </div>
                 <div class="date-wrapper">
                     <div class="controls-wrapper">
