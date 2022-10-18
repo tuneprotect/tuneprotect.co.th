@@ -17,7 +17,7 @@
                                    class="btn btn-block btn-outline btn-choose-plan {{$i == 1 ? 'on' : '' }}">
 
                                     @if($i == 1)
-                                        <strong class="package-number">LITE @lang('product.plan')</strong>
+                                        <strong class="package-number">iSmile TG</strong>
                                     @else
                                         <strong class="package-number">@lang('product.plan') {{$i-1}}</strong>
                                     @endif
