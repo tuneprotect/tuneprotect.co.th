@@ -82,7 +82,7 @@ class TAISMTGController  extends ProductController
              $this->bodyData['status_api']= true;
              $this->bodyData['massage_key'] = '';
 
-             return parent::index('coronavirus-covid-19-insurance','ONMHS',$memberId);
+             return parent::index('coronavirus-covid-19-insurance','ONMHSS',$memberId);
 
          }
 
