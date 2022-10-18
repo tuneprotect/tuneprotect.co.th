@@ -81,7 +81,7 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 46);
+/******/ 	return __webpack_require__(__webpack_require__.s = 47);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -56114,7 +56114,7 @@ var showBMIValidateError = function showBMIValidateError(message, selector) {
 
 /***/ }),
 
-/***/ 46:
+/***/ 47:
 /*!************************************************!*\
   !*** multi ./resources/js/product/diabetes.js ***!
   \************************************************/
