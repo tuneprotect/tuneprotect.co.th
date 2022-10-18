@@ -82,7 +82,7 @@ class TAController  extends ProductController
              $this->bodyData['member_id'] = $memberId;
              $this->bodyData['status_api']= true;
              $this->bodyData['massage_key'] = '';
-             dd($memberId);
+
              return parent::index('coronavirus-covid-19-insurance','TAISMTG',$memberId);
 
          }
