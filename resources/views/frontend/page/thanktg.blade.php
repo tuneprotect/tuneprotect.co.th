@@ -1,5 +1,9 @@
 @extends('frontend.layout.portal')
-
+<style>
+header{
+    display:none;
+}
+</style>
 @section('page')
     <main>
         <article class="wrapper">
