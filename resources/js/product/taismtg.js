@@ -2,10 +2,11 @@ import {
     changeStep,
     formatTelNumber,
     getNationalityData,
+    getCountryData,
     getPackageData,
     getSelectedPrice,
     showTitle,
-    validateAgeInPackage, validatePolicy, validatePolicyPayment, validateQuestionTGISM
+    validateAgeInPackage, validatePolicy, validatePolicyPayment, validateQuestionTG
 } from "../form/productHelper";
 import {
     $,
@@ -358,6 +359,7 @@ const constraints = {
 
 document.addEventListener("DOMContentLoaded", async () => {
     const package_data = await getPackageData(current_package);
+    const country_data = await getCountryData();
     const nationality_data = await getNationalityData();
 
     $('#fdFlightNo').value = "TG";
@@ -379,7 +381,25 @@ document.addEventListener("DOMContentLoaded", async () => {
             status = false;
         }
     }
+    let desination = '';
+    // let $dataSubPackage;
+    let provinceOption = `<option value="">${$('#fdDestFrom').getAttribute('data-please-select')}</option>`;
 
+    country_data
+        .filter(v => v.zone !== "" || v.code === 'THA')
+        .sort((a, b) => (a[locale] > b[locale]) ? 1 : ((b[locale] > a[locale]) ? -1 : 0))
+        .map(v => {
+            if (v.code === 'THA') {
+                desination = v[locale];
+            }
+            else
+            {
+                provinceOption += `<option value="${v.code}">${v[locale]}</option>`;
+            }
+        })
+
+    $('#fdDestFrom').innerHTML = provinceOption;
+    $('#fdDestTo').innerHTML = `<option value="THA">${desination}</option>`;
 
     let step = 1;
     let data = {
