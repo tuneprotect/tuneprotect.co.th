@@ -451,13 +451,25 @@ document.addEventListener("DOMContentLoaded", async () => {
     //         nationality_option += `<option value="${v}">${v}</option>`;
     // });
     /* by dum-soken */
-    $$("input[name=fdArrivalDate]").forEach($el => {
+    $$("input[name=fdFromDate]").forEach($el => {
         $el.addEventListener("change", function (e) {            
             const str = e.target.value;//document.getElementById("fdArrivalDate").value;           
             const [day, month, year] = str.split('/');
-            const d = new Date(month+"/"+ day +"/" + year);
+            const d = new Date(Date.UTC(year, month, day));
             d.setDate(d.getDate() + 14); // Set now + 30 days as the new date
-            document.getElementById("fdDepartureDate").value=d.toLocaleDateString();
+            var date = new Date(d.toISOString());
+            var years = date.getFullYear();
+            var months = date.getMonth()+1;
+            var dt = date.getDate();
+
+            if (dt < 10) {
+                dt = '0' + dt;
+            }
+            if (months < 10) {
+                months = '0' + months;
+            }
+            
+            document.getElementById("fdDepartureDate").value= dt +"/"+months+"/"+ years;
         });
     });
    
