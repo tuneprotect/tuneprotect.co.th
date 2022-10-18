@@ -399,8 +399,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         })
 
     $('#fdDestFrom').innerHTML = provinceOption;
-    $('#fdDestTo').innerHTML = `<option value="THA">${desination}</option>`;
-
+    
     let step = 1;
     let data = {
         fdMember_ID : member_id,
