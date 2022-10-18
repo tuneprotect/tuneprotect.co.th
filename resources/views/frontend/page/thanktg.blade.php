@@ -49,13 +49,24 @@
 
                     <br>
                     <div class="column">
-                        <div class="two-tone-icon">
-                            <span><img src="https://www.tuneprotect.co.th/storage/Icon/Domestic.svg" alt=""></span>
-                            <strong>TA Domestic</strong>
-                        </div>
-                        <div class="btn-wrapper">
-                            <a class="btn btn-gradient" data-gtm="index-product-button-travel-insurance-ONTADM" href="/en/portal/travel-insurance/ONTADM/{{$fdKeys}}">Buy Now</a>
-                        </div>
+                        @if($selected==='TAISMTG')
+                            <div class="two-tone-icon">
+                                <span><img src="https://www.tuneprotect.co.th/storage/Icon/Domestic.svg" alt=""></span>
+                                <strong>TA Domestic</strong>
+                            </div>
+                            <div class="btn-wrapper">
+                                <a class="btn btn-gradient" data-gtm="index-product-button-travel-insurance-ONTADM" href="https://www.tuneprotect.co.th/en/product/travel-insurance/ONTADM">Buy Now</a>
+                            </div>
+                        @else
+                            <div class="two-tone-icon">
+                                <span><img src="https://www.tuneprotect.co.th/storage/Icon/Domestic.svg" alt=""></span>
+                                <strong>TA Domestic</strong>
+                            </div>
+                            <div class="btn-wrapper">
+                                <a class="btn btn-gradient" data-gtm="index-product-button-travel-insurance-ONTADM" href="/en/portal/travel-insurance/ONTADM/{{$fdKeys}}">Buy Now</a>
+                            </div>
+                        @endif  
+                       
                     </div>
                 </div>
             </div>
