@@ -40,16 +40,15 @@
                             <strong class="package-number">@lang('product.plan') {{$i-1}}</strong>
                         @endif
 
-{{--                        <a href="#"--}}
-{{--                           data-gtm="product-{{strtolower($selected)}}-top-choose-plan-{{$i-1}}"--}}
-{{--                           data-step="3" data-package="{{$k}}" data-sub-package=""--}}
-{{--                           @if($i == 1)--}}
-{{--                                data-plan='iSmile TG'--}}
-{{--                           @else--}}
-{{--                                data-plan="@lang('product.plan') {{$i-1}}"--}}
-{{--                           @endif--}}
-
-{{--                           class="btn btn-block btn-outline btn-goto">Accept & Continue</a>--}}
+                       <a href="#"
+                          data-gtm="product-{{strtolower($selected)}}-top-choose-plan-{{$i-1}}"
+                          data-step="3" data-package="{{$k}}" data-sub-package=""
+                          @if($i == 1)
+                               data-plan='iSmile TG'
+                          @else
+                               data-plan="@lang('product.plan') {{$i-1}}"
+                          @endif
+                          class="btn btn-block btn-outline btn-goto">SELECT</a>
 
                     </th>
                     <?php $i++ ?>
