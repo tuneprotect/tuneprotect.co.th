@@ -455,12 +455,12 @@ document.addEventListener("DOMContentLoaded", async () => {
         $el.addEventListener("change", function (e) {            
             const str = e.target.value;//document.getElementById("fdArrivalDate").value;           
             const [day, month, year] = str.split('/');
-            const d = new Date(Date.UTC(year, month, day));
+            const d = new Date(year, month, day);
             d.setDate(d.getDate() + 14); // Set now + 30 days as the new date
-            var date = new Date(d.toISOString());
-            var years = date.getFullYear();
-            var months = date.getMonth();
-            var dt = date.getDate();
+
+            var years = d.getFullYear();
+            var months = d.getMonth();
+            var dt = d.getDate();
 
             if (dt < 10) {
                 dt = '0' + dt;
