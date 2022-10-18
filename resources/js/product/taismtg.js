@@ -459,7 +459,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             d.setDate(d.getDate() + 14); // Set now + 30 days as the new date
             var date = new Date(d.toISOString());
             var years = date.getFullYear();
-            var months = date.getMonth()+1;
+            var months = date.getMonth();
             var dt = date.getDate();
 
             if (dt < 10) {
