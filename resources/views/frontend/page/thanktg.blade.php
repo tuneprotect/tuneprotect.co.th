@@ -14,17 +14,31 @@
                     <br>
 
                 </div>
-
-                <h2>Products you may be interested</h2>
+                @if($selected==='TAISMTG')
+                    <h2>For continuous protection, you can purchase additional travel insurance after the end of this policy.</h2>
+                @else
+                    <h2>Products you may be interested</h2>
+                @endif                                              
+                    
                 <div>
                     <div>
-                        <div class="two-tone-icon">
-                            <span><img src="https://www.tuneprotect.co.th/storage/Icon/Tune iPass.svg" alt=""></span>
-                            <strong>Tune iPass</strong>
-                        </div>
-                        <div class="btn-wrapper">
-                            <a class="btn btn-gradient" data-gtm="index-product-button-travel-insurance-ONTALN" href="/en/portal/travel-insurance/ONTALN/{{$fdKeys}}">Buy Now</a>
-                        </div>
+                        @if($selected==='TAISMTG')
+                            <div class="two-tone-icon">
+                                <span><img src="https://www.tuneprotect.co.th/storage/Icon/Tune iPass.svg" alt=""></span>
+                                <strong>iSmile</strong>
+                            </div>
+                            <div class="btn-wrapper">
+                                <a class="btn btn-gradient" data-gtm="index-product-button-travel-insurance-TAISM" href="https://www.tuneprotect.co.th/en/product/travel-insurance/TAISM">Buy Now</a>
+                            </div>
+                        @else
+                            <div class="two-tone-icon">
+                                <span><img src="https://www.tuneprotect.co.th/storage/Icon/Tune iPass.svg" alt=""></span>
+                                <strong>Tune iPass</strong>
+                            </div>
+                            <div class="btn-wrapper">
+                                <a class="btn btn-gradient" data-gtm="index-product-button-travel-insurance-ONTALN" href="/en/portal/travel-insurance/ONTALN/{{$fdKeys}}">Buy Now</a>
+                            </div>
+                        @endif  
                     </div>
 
                     <br>
