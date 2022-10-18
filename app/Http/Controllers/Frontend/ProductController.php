@@ -536,7 +536,7 @@ class ProductController extends BaseController
         elseif (substr($data['fdPackage'], 0, 8) === 'ONCOVIDL'
             || substr($data['fdPackage'], 0, 6) === 'ONTALN'
             || substr($data['fdPackage'], 0, 6) === 'TGCVLP'
-            //|| substr($data['fdPackage'], 0, 7) === 'ONTGISM'
+            || substr($data['fdPackage'], 0, 7) === 'ONTGISM'
             || substr($data['fdPackage'], 0, 7) === 'TAISMTG'            
             || substr($data['fdPackage'], 0, 5) === 'TAISM')
         {

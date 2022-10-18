@@ -45,7 +45,7 @@ class TAController  extends ProductController
         }
 
         $this->template->setFootJS(mix("/js/frontend/ta.js"));
-        return $this->genView('frontend.page.ta_validation');
+        return $this->genView('frontend.page.taismtg_validation');
 
     }
 
