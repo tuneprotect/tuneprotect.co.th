@@ -53,7 +53,7 @@ class TAController  extends ProductController
      public function Validation(Request $request)
      {
         
-         $partner = 'TA';
+         $partner = 'TG';
          $this->bodyData['partner'] = $partner;
          session(['partner' => $partner]);
 
@@ -102,7 +102,7 @@ class TAController  extends ProductController
         $this->bodyData['doc_no'] = $request->session()->get('doc_no');
         $this->bodyData['selected'] = 'TAISMTG';
         $this->bodyData['return_link'] = "/en/ta";
-        $this->bodyData['fdKeys'] = config('tune-api.portal_tg') ;
+        $this->bodyData['fdKeys'] = config('tune-api.portal_ta') ;
 
 
         $this->template->setFootJS(mix("/js/frontend/main.js"));
