@@ -5,7 +5,7 @@ import {
     getPackageData,
     getSelectedPrice,
     showTitle,
-    validateAgeInPackage, validatePolicy, validatePolicyPayment
+    validateAgeInPackage, validatePolicy, validatePolicyPayment, validateQuestionTGISM
 } from "../form/productHelper";
 import {
     $,
