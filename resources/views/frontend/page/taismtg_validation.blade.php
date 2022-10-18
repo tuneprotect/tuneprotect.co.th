@@ -13,7 +13,7 @@ header{
 {{--            <center><span><img src="{{url('/storage/Icon/BIGRewardsLogo.png')}}"></span></center>--}}
 {{--        </div>--}}
         <section id="step1" class="wrapper">
-            <form class="insurance-form" action="/{{$locale}}/ta/Validation" method="post" id="frm_validate">
+            <form class="insurance-form" action="/{{$locale}}/taismtg/Validation" method="post" id="frm_validate">
                 <div class="form-head">{{$headertext}}</div>
                 <div class="form-inner">
                     <h3>{{$labeltext}}</h3>
