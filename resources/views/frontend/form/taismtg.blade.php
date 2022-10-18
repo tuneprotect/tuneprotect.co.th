@@ -27,11 +27,31 @@ header{
                 <strong data-your-details="@lang('product.your-details')" data-loved-one="@lang('product.loved-one')"></strong>
                 <div class="date-wrapper">
                     <div class="controls-wrapper">
+                        <input id="fdFromDate" name="fdFromDate" type="date" min="{{date('Y-m-d')}}" class="flatpickr"
+                               data-mindate="{{date('Y-m-d')}}"
+                               data-maxdate="{{date('Y-m-d',strtotime( "+180 days"))}}"
+                               data-error="@lang('product.error.travel_start_date')"
+                        />
+                        <label for="fdFromDate">@lang("product.effective_date")</label>
+                    </div>
+                    
+                </div>
+                <div class="date-wrapper">
+                    <div class="controls-wrapper">
                         <input id="fdFlightNo" name="fdFlightNo" type="text" placeholder="Flight no. (TGxxx)"
-                               data-error="Please fill in Flight no."
+                            data-error="Please fill in Flight no."
                         />
                         <label for="fdFlightNo">Flight no. (TGxxx)</label>
                     </div>
+                    <div class="controls-wrapper">
+                        <select id="fdDestFrom" name="fdDestFrom"
+                                data-please-select="@lang('product.please_select')"
+                                data-error="@lang('product.error.country')"
+                        ></select>
+                        <label for="fdDestFrom">@lang("product.departure_country")</label>
+                    </div>
+
+                    
                     <div class="controls-wrapper">
                         <select id="ctrl_destination" name="ctrl_destination">
                                             <option selected="selected" value="">@lang('product.please_select')</option>
@@ -41,22 +61,22 @@ header{
                                         <label for="ctrl_destination">Destination</label>
                         </select>
                     </div>
+                        
+                </div>
+                <div class="date-wrapper">
                     <div class="controls-wrapper">
                         <input id="fdFlightTickerNo" name="fdFlightTickerNo" type="text" placeholder="Flight ticket number (217-xxxxxxxxx)"
                                data-error="Please fill in Flight ticket number"
                         />
                         <label for="fdFlightTickerNo">Flight ticket number (217-xxxxxxxxx)</label>
                     </div>
-                </div>
-                <div class="date-wrapper">
-                    
                     <div class="controls-wrapper">
-                        <input id="fdFromDate" name="fdFromDate" type="date" min="{{date('Y-m-d')}}" class="flatpickr"
+                        <input id="fdArrivalDate" name="fdArrivalDate" type="date" min="{{date('Y-m-d')}}" class="flatpickr"
                                data-mindate="{{date('Y-m-d')}}"
                                data-maxdate="{{date('Y-m-d',strtotime( "+180 days"))}}"
-                               data-error="@lang('product.error.travel_start_date')"
+                               data-error="@lang('product.error.travel_arrival_date')"
                         />
-                        <label for="fdFromDate">@lang("product.effective_date")</label>
+                        <label for="fdArrivalDate">@lang("product.arrival_date")</label>
                     </div>
                     <div class="controls-wrapper">
                         <input id="fdDepartureDate" name="fdDepartureDate" type="date" min="{{date('Y-m-d')}}" class="flatpickr"
@@ -69,6 +89,10 @@ header{
                         <label for="fdDepartureDate">@lang("product.departure_date")</label>
 
                     </div>
+
+                    
+                </div>
+                <div class="date-wrapper">
                     <div class="controls-wrapper">
                         <select id="ctrl_no_of_insured" name="ctrl_no_of_insured">
                             @for($i = 1;$i < 10;$i++)
@@ -77,8 +101,10 @@ header{
                         </select>
                         <label for="ctrl_no_of_insured">@lang("product.no_of_insured")</label>
                     </div>
-                    
+                    <div class="controls-wrapper"></div>
+                    <div class="controls-wrapper"></div>
                 </div>
+
                 <cite></cite>
             </div>
 
