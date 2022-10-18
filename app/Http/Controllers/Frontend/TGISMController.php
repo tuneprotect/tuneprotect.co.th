@@ -25,7 +25,7 @@ class TGISMController  extends ProductController
         $this->bodyData['placeholdertext'] = 'Enter your code';
         $this->bodyData['buttontext'] = 'Check Code';
 
-        $selected = 'TAISMTG';
+        $selected = 'ONTGISM';
         $link = 'coronavirus-covid-19-insurance';
         $this->bodyData['selected'] = $selected;
 
@@ -82,7 +82,6 @@ class TGISMController  extends ProductController
              $this->bodyData['status_api']= true;
              $this->bodyData['massage_key'] = '';
 
-             //return parent::index('coronavirus-covid-19-insurance','ONTGISM',$memberId);
              return parent::index('coronavirus-covid-19-insurance','ONTGISM',$memberId);
 
          }
@@ -100,7 +99,7 @@ class TGISMController  extends ProductController
         session(['partner' => $partner]);
 
         $this->bodyData['doc_no'] = $request->session()->get('doc_no');
-        $this->bodyData['selected'] = 'TAISMTG';
+        $this->bodyData['selected'] = 'ONTGISM';
         $this->bodyData['return_link'] = "/en/tgism";
         $this->bodyData['fdKeys'] = config('tune-api.portal_tgism') ;
 
