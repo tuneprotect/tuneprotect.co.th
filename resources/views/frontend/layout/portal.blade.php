@@ -148,7 +148,12 @@
                                                      alt="{{$v->locales[$locale]->title}}">
                                             </picture>
                                         @elseif($selected==='TAISMTG')
-                                            <picture>
+                                            <picture id="taismtg-main">
+                                                <source media="(min-width:768px)" srcset="/storage/Banner/Banner_TG_D.jpg">
+                                                <img src="{{url(!empty($v->pic_mobile_en) ? "/storage/Banner/Banner_TG_D.jpg" : "/storage/Banner/Banner_TG_M.jpg" )}}"
+                                                     alt="{{$v->locales[$locale]->title}}">
+                                            </picture>
+                                            <picture id="taismtg-page">
                                                 <source media="(min-width:768px)" srcset="/storage/Banner/Banner_TAI_D.jpg">
                                                 <img src="{{url(!empty($v->pic_mobile_en) ? "/storage/Banner/Banner_TAI_D.jpg" : "/storage/Banner/Banner_TAI_M.jpg" )}}"
                                                      alt="{{$v->locales[$locale]->title}}">
@@ -201,6 +206,12 @@
                                             <img src="{{url(!empty($v->pic_mobile_en) ? "/storage/Banner/Banner_LumaCare_D.jpg" : "/storage/Banner/Banner_LumaCare_M.jpg" )}}"
                                                  alt="{{$v->locales[$locale]->title}}">
                                         </picture>
+                                @elseif($selected==='TAISMTG')
+                                    <picture>
+                                        <source media="(min-width:768px)" srcset="/storage/Banner/Banner_TAI_D.jpg">
+                                        <img src="{{url(!empty($v->pic_mobile_en) ? "/storage/Banner/Banner_TAI_D.jpg" : "/storage/Banner/Banner_TAI_M.jpg" )}}"
+                                                alt="{{$v->locales[$locale]->title}}">
+                                    </picture>
                                 @else
                                     <picture>
                                         <source media="(min-width:768px)" srcset="{{url($v->pic)}}">

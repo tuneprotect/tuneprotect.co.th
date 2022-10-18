@@ -460,7 +460,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             document.getElementById("fdDepartureDate").value=d.toLocaleDateString();
         });
     });
-
+alert(1)
    
 
     /* end by dum-soken */

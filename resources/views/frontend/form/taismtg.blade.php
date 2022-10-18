@@ -3,6 +3,9 @@
 header{
     display:none;
 }
+#taismtg-page{
+    display:none;
+}
 /*
 #tns1-item0 picture img{
     content:url("/storage/Banner/Banner_TG_M.jpg");
