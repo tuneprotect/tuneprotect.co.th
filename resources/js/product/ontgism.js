@@ -401,7 +401,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         fdAddr_PostCode: "",
         fdEmail: "",
         fdTelephone: "",
-        fdPackage: "",
+        fdPackage:"TAGISMTG",
         fdBenefit: "",
         fdBenefit_name: "",
         fdRelation: "",
@@ -737,6 +737,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
                         data = {
                             ...data,
+                            fdPackage:"TAGISMTG",
                             fdSex: getRadioSelectedValue('fdSex'),
                             fdTitle: getRadioSelectedValue('fdTitle'),
                             fdName: $('#fdName').value,
