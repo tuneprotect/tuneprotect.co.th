@@ -11,7 +11,7 @@ use App\Enum\ProjectEnum;
 
 class TAController  extends ProductController
 {
-    protected $controller = 'tg';
+    protected $controller = 'ta';
     public function index($link = null, $selected = null)
     {
         $return_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
@@ -52,7 +52,8 @@ class TAController  extends ProductController
 
      public function Validation(Request $request)
      {
-         $partner = 'TG';
+        dd(1);
+         $partner = 'TA';
          $this->bodyData['partner'] = $partner;
          session(['partner' => $partner]);
 
@@ -94,7 +95,7 @@ class TAController  extends ProductController
 
     public function thankyou(Request $request)
     {
-        $partner = 'TG';
+        $partner = 'TA';
         $this->bodyData['partner'] = $partner;
         session(['partner' => $partner]);
 
