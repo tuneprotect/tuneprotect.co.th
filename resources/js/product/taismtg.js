@@ -359,7 +359,7 @@ const constraints = {
 document.addEventListener("DOMContentLoaded", async () => {
     const package_data = await getPackageData(current_package);
     const nationality_data = await getNationalityData();
-    
+
     $('#fdFlightNo').value = "TG";
     $('#fdFlightTickerNo').value = "217-";
 
@@ -401,7 +401,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         fdAddr_PostCode: "",
         fdEmail: "",
         fdTelephone: "",
-        fdPackage:"TAGISMTG",
+        fdPackage:"",
         fdBenefit: "",
         fdBenefit_name: "",
         fdRelation: "",
@@ -737,7 +737,6 @@ document.addEventListener("DOMContentLoaded", async () => {
 
                         data = {
                             ...data,
-                            fdPackage:"TAGISMTG",
                             fdSex: getRadioSelectedValue('fdSex'),
                             fdTitle: getRadioSelectedValue('fdTitle'),
                             fdName: $('#fdName').value,
