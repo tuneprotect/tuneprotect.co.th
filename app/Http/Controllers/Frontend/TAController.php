@@ -52,7 +52,7 @@ class TAController  extends ProductController
 
      public function Validation(Request $request)
      {
-        dd(1);
+        
          $partner = 'TA';
          $this->bodyData['partner'] = $partner;
          session(['partner' => $partner]);
@@ -68,7 +68,7 @@ class TAController  extends ProductController
                  'memberId' => $memberId
              ])
          ]);
-
+         dd($response);
          $apiResult =json_decode($response->getBody()->getContents(), true);
          //dd($apiResult);
          if (!$apiResult["status"]) {
