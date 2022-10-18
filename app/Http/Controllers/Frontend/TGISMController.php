@@ -25,7 +25,7 @@ class TGISMController  extends ProductController
         $this->bodyData['placeholdertext'] = 'Enter your code';
         $this->bodyData['buttontext'] = 'Check Code';
 
-        $selected = 'ONTGISM';
+        $selected = 'TAISMTG';
         $link = 'coronavirus-covid-19-insurance';
         $this->bodyData['selected'] = $selected;
 
@@ -99,7 +99,7 @@ class TGISMController  extends ProductController
         session(['partner' => $partner]);
 
         $this->bodyData['doc_no'] = $request->session()->get('doc_no');
-        $this->bodyData['selected'] = 'ONTGISM';
+        $this->bodyData['selected'] = 'TAISMTG';
         $this->bodyData['return_link'] = "/en/tgism";
         $this->bodyData['fdKeys'] = config('tune-api.portal_tgism') ;
 
