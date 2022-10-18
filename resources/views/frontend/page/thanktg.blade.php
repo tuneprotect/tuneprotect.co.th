@@ -1,10 +1,12 @@
 @extends('frontend.layout.portal')
-<style>
-header{
-    display:none;
-}
-</style>
+
 @section('page')
+
+<style>
+    header{
+        display:none;
+    }
+</style>
     <main>
         <article class="wrapper">
             <div class="inner-wrapper">

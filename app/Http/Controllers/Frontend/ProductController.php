@@ -615,6 +615,10 @@ class ProductController extends BaseController
         {
             session(['nopayment_status' => true]);
         }
+        if($this->controller === 'tgism')
+        {
+            session(['nopayment_status' => true]);
+        }
 
         $data = $request->all();
         if (isset($data['send_data'])) {
