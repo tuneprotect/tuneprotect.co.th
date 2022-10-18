@@ -149,8 +149,8 @@
                                             </picture>
                                         @elseif($selected==='TAISMTG')
                                             <picture>
-                                                <source media="(min-width:768px)" srcset="/storage/Banner/Banner_TG_D.jpg">
-                                                <img src="{{url(!empty($v->pic_mobile_en) ? "/storage/Banner/Banner_TG_D.jpg" : "/storage/Banner/Banner_TG_M.jpg" )}}"
+                                                <source media="(min-width:768px)" srcset="/storage/Banner/Banner_TAI_D.jpg">
+                                                <img src="{{url(!empty($v->pic_mobile_en) ? "/storage/Banner/Banner_TAI_D.jpg" : "/storage/Banner/Banner_TAI_M.jpg" )}}"
                                                      alt="{{$v->locales[$locale]->title}}">
                                             </picture>
                                         @elseif($selected==='ONTGISM')
