@@ -68,9 +68,9 @@ class TAController  extends ProductController
                  'memberId' => $memberId
              ])
          ]);
-         dd($response);
+        
          $apiResult =json_decode($response->getBody()->getContents(), true);
-         //dd($apiResult);
+         dd($apiResult);
          if (!$apiResult["status"]) {
              $this->bodyData['member_id'] = '';
              $this->bodyData['status_api'] = false;
