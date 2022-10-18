@@ -379,7 +379,23 @@ document.addEventListener("DOMContentLoaded", async () => {
             status = false;
         }
     }
+    let provinceOption = `<option value="">${$('#fdDestFrom').getAttribute('data-please-select')}</option>`;
 
+    country_data
+        .filter(v => v.zone !== "" || v.code === 'THA')
+        .sort((a, b) => (a[locale] > b[locale]) ? 1 : ((b[locale] > a[locale]) ? -1 : 0))
+        .map(v => {
+            if (v.code === 'THA') {
+                desination = v[locale];
+            }
+            else
+            {
+                provinceOption += `<option value="${v.code}">${v[locale]}</option>`;
+            }
+        })
+
+    $('#fdDestFrom').innerHTML = provinceOption;
+    $('#fdDestTo').innerHTML = `<option value="THA">${desination}</option>`;
 
     let step = 1;
     let data = {
