@@ -619,6 +619,11 @@ class ProductController extends BaseController
         {
             session(['nopayment_status' => true]);
         }
+       
+        if($this->controller === ProjectEnum::MYHOME_SMART_URL)
+        {
+            $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::STATIC_PAGE_PAYMENT_THANK_YOU_MYHOME_SMART;
+        }
 
         $data = $request->all();
         if (isset($data['send_data'])) {
@@ -626,7 +631,7 @@ class ProductController extends BaseController
 
             if(Str::contains($data['fdPackage'],ProjectEnum::ISMILE_URL)){
                 $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::ISMILE_URL;
-            }
+            }            
 
             $obj = $this->combindObj(array_merge($data, (array)$data["profile"][0]));
             $result = $this->logData($obj);

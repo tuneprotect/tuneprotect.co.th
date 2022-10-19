@@ -69,7 +69,7 @@ class ProjectEnum
 
     const DIABETES_URL = 'DIABETES';
     const ISMILE_URL = 'TAISM';
-	const MYHOME_SMART_URL = 'MYHOME_SMART';
+	const MYHOME_SMART_URL = 'ONMHS';
     const ISSUE_POLICY_DIABETES = 'IssuePolicyDiabetes';
 
     const STATIC_PAGE_BIGLIFE_POINT = 'static.page.biglife_point';
