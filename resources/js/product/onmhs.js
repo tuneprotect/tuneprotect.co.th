@@ -517,7 +517,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     let total1 = '';
     let total3 = '';
-    let c_sum = '';
+    let c_sum = '500,000';
 
     let data_result_1y = [];
     let data_result_3y = [];
@@ -1378,6 +1378,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         fdEmail: "",
         fdTelephone: "",
         fdPackage: "",
+        fdPackage1: "",
         fdBenefit: "",
         fdBenefit_name: "",
         fdRelation: "",
@@ -1575,6 +1576,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                             ...data,
                             fdSex: getRadioSelectedValue('fdSex'),
                             fdTitle: getRadioSelectedValue('fdTitle'),
+                            fdPackage1: p_packget == "ONMHS1" ? package_code_1y : package_code_3y,
                             fdName: $('#fdName').value,
                             fdSurname: $('#fdSurname').value,
                             fdNationalID: $('#fdNationalID').value,
@@ -1810,9 +1812,9 @@ document.addEventListener("DOMContentLoaded", async () => {
                             },
                             {
                                 peril_code: 'FIXIT',
-                                peril_sumins: p_packget == "ONMHS1" ? data_result_1y.ITEM1_8_FIXIT : data_result_3y.ITEM1_8_FIXIT_3Y,
+                                peril_sumins: p_packget == "ONMHS1" ? data_result_1y.ITEM1_8_FIXIT : data_result_3y.ITEM1_8_FIXIT,
                                 peril_rate: p_packget == "ONMHS1" ? data_result_1y.ITEM1_8_FIXIT_PERIL_RATE : data_result_3y.ITEM1_8_FIXIT_PERIL_RATE,
-                                peril_prem: p_packget == "ONMHS1" ? data_result_1y.ITEM1_8_FIXIT_PERIL_PREM : data_result_3y.ITEM1_8_FIXIT_PERIL_PREM_3Y,
+                                peril_prem: p_packget == "ONMHS1" ? data_result_1y.ITEM1_8_FIXIT_PERIL_PREM : data_result_3y.ITEM1_8_FIXIT_PERIL_PREM,
                                 peril_damage_per: '0',
                                 peril_damage_all: '0',
                                 peril_spe_covers: p_packget == "ONMHS1" ? data_result_1y.RENT_PERIL_SPE_COVERS : data_result_3y.RENT_PERIL_SPE_COVERS,
