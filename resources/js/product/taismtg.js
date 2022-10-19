@@ -404,10 +404,14 @@ document.addEventListener("DOMContentLoaded", async () => {
     let data = {
         fdMember_ID : member_id,
         fdAgent : "00AA517T88",
+        rpcNumber: 189,
+        fdDestFrom:"",
         fdKeys : "",
         fdTitle: "",
         fdName: "",
         fdSurname: "",
+        fdDepartureDate:"",
+        fdNoOfTraveller:"",
         fdSex: "",
         fdNationalID: "",
         fdNationality: "",
@@ -767,6 +771,9 @@ document.addEventListener("DOMContentLoaded", async () => {
 
                         data = {
                             ...data,
+                            fdDestFrom :  $('#fdDestFrom').value,
+                            fdDepartureDate: $('#fdDepartureDate').value,
+                            fdNoOfTraveller: $('#ctrl_no_of_insured').value,
                             fdSex: getRadioSelectedValue('fdSex'),
                             fdTitle: getRadioSelectedValue('fdTitle'),
                             fdName: $('#fdName').value,

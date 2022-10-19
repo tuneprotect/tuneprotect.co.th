@@ -904,7 +904,7 @@ class ProductController extends BaseController
             $link = 'IssuePolicyCovidTGCVLP';
         } elseif (substr($package, 0, 7) === 'TAISMTG') {
             $this->thankYouParam = substr($package, 0, 7);
-            $link = 'IssuePolicyCovidTGCVLP';
+            $link = 'IssuePolicyCovidTAISMTG';
         } elseif (substr($package, 0, 9) === 'ONCOVIDMW') {
             $this->thankYouParam = substr($package, 0, 9);
             $link = 'IssuePolicyMigration';
