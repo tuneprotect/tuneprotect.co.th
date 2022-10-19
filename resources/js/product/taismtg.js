@@ -771,7 +771,6 @@ document.addEventListener("DOMContentLoaded", async () => {
 
                         data = {
                             ...data,
-                            fdDestFrom :  $('#fdDestFrom').value,
                             fdDepartureDate: $('#fdDepartureDate').value,
                             fdNoOfTraveller: $('#ctrl_no_of_insured').value,
                             fdSex: getRadioSelectedValue('fdSex'),
@@ -780,6 +779,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                             fdSurname: $('#fdSurname').value,
                             fdNationalID: $('#fdNationalID').value,
                             fdNationality: $("#fdNationality").value,
+                            fdDestFrom :  $("#fdNationality").value,//$('#fdDestFrom').value,
                             fdEmail: $('#fdEmail').value,
                             fdTelephone: formatTelNumber($('#fdTelephone').value, iti.getSelectedCountryData()),
                             fdAddr_Num: $('#fdAddr_Num').value,
