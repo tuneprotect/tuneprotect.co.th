@@ -1719,6 +1719,16 @@ document.addEventListener("DOMContentLoaded", async () => {
                                 peril_spe_amount: '0',
                             },
                             {
+                                peril_code: '1.15',
+                                peril_sumins: p_packget == "ONMHS1" ? data_result_1y.NATURAL20 : data_result_3y.NATURAL20,
+                                peril_rate: p_packget == "ONMHS1" ? data_result_1y.NATURAL_20K_PERIL_RATE : data_result_3y.NATURAL_20K_PERIL_RATE,
+                                peril_prem: p_packget == "ONMHS1" ? data_result_1y.NATURAL_20K_PERIL_PREM : data_result_3y.NATURAL_20K_PERIL_PREM,
+                                peril_damage_per: '0',
+                                peril_damage_all: '0',
+                                peril_spe_covers: '0',
+                                peril_spe_amount: '0',
+                            },
+                            {
                                 peril_code: 'PA',
                                 peril_sumins: p_packget == "ONMHS1" ? data_result_1y.PA_PERIL_SUMINS : data_result_3y.PA_PERIL_SUMINS,
                                 peril_rate: p_packget == "ONMHS1" ? data_result_1y.PA_PERIL_RATE : data_result_3y.PA_PERIL_RATE,
