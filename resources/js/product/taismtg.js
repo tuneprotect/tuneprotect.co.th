@@ -449,7 +449,6 @@ document.addEventListener("DOMContentLoaded", async () => {
         ctrl_province: "",
         ctrl_terms: "",
         fdFromDate: "",
-        fdToDate: "",
         fdFlightNo: "",
         fdFlightTickerNo: "",
         fdDestination:"",
@@ -772,7 +771,6 @@ document.addEventListener("DOMContentLoaded", async () => {
 
                         data = {
                             ...data,
-                            fdToDate : $('#fdDepartureDate').value,
                             fdDepartureDate: $('#fdDepartureDate').value,
                             fdNoOfTraveller: $('#ctrl_no_of_insured').value,
                             fdSex: getRadioSelectedValue('fdSex'),
