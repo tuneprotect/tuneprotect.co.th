@@ -29,7 +29,7 @@
         }
 		
 		.popup-wrapper{
-			width:550px;
+			width:35vw;
 		}
 	
 
