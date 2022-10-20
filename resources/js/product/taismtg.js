@@ -481,7 +481,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             const str = e.target.value;//document.getElementById("fdArrivalDate").value;           
             const [day, month, year] = str.split('/');
             const d = new Date(year, month, day);
-            d.setDate(d.getDate() + 14); // Set now + 30 days as the new date
+            d.setDate(d.getDate() + 13); // Set now + 30 days as the new date
 
             var years = d.getFullYear();
             var months = d.getMonth();
