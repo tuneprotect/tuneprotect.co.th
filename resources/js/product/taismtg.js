@@ -475,6 +475,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     //         nationality_option += `<option value="${v}">${v}</option>`;
     // });
     /* by dum-soken */
+    let ToDate = '';
     $$("input[name=fdFromDate]").forEach($el => {
         $el.addEventListener("change", function (e) {            
             const str = e.target.value;//document.getElementById("fdArrivalDate").value;           
@@ -492,7 +493,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             if (months < 10) {
                 months = '0' + months;
             }
-            
+            ToDate= dt +"/"+months+"/"+ years;
             document.getElementById("fdDepartureDate").value= dt +"/"+months+"/"+ years;
         });
     });
@@ -772,7 +773,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
                         data = {
                             ...data,
-                            fdToDate : $('#fdDepartureDate').value,
+                            fdToDate : ToDate,
                             fdDepartureDate: $('#fdDepartureDate').value,
                             fdNoOfTraveller: $('#ctrl_no_of_insured').value,
                             fdSex: getRadioSelectedValue('fdSex'),
