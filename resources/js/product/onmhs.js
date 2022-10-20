@@ -1572,6 +1572,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                         let address = ($('#ctrl_province').value).split('*');
                         let address2 = ($('#loc_ctrl_province').value).split('*');
                         let dateResult = checkTaBirthDate();
+                        let p_building =  $('#ctrl_fire_building').value;
                         data = {
                             ...data,
                             fdSex: getRadioSelectedValue('fdSex'),
@@ -1830,11 +1831,11 @@ document.addEventListener("DOMContentLoaded", async () => {
                             whole_building: '1',
                             floor_nbr: '1',
                             dryriser: '1',
-                            external_wall: '1',
-                            upper_floor: '1',
-                            roof_beam: '1',
-                            roof: '1',
-                            column: '1',
+                            external_wall: p_building=='ONMHS2' ? 'W*07' : 'W*02',
+                            upper_floor: p_building=='ONMHS2' ? 'F*02' : 'F*03',
+                            roof_beam: p_building=='ONMHS1' ? 'B*04' : p_building=='ONMHS2' ? 'B*02':'B*03',
+                            roof: p_building=='ONMHS3' ? 'R*08' : 'R*02',  
+                            column: 'C*02', 
                             internal_area: '1',
                             nbr_room: '1',
                             nbr_storey: '1',
