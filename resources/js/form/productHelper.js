@@ -58,7 +58,7 @@ export const validateAgeInPackage = (package_data, cal_price) => {
         .filter(k => _.startsWith(k, current_package))
         .some(k => Object.keys(package_data[k].price).some(ageRange => checkAge(birthday, ageRange)))
     
-    //console.log('age_in_range',package_data);
+    console.log('age_in_range',package_data);
     if (!age_in_range) {
         showDateError($('#ctrl_day').getAttribute('data-error-not-qualify'));
         return {status: false};
@@ -591,7 +591,7 @@ export const iTravelCheckBirthDate = (i) => {
     }
 
     const age = calculateAge(birthday)
-
+    console.log('age',age);
     if (age.year < 1 || age.year > 85) {
         showMultipleDateError($(`#data_1_ctrl_day`).getAttribute('data-error-not-qualify'), i);
         return {status: false};
@@ -629,7 +629,7 @@ export const checkTaBirthDateIPass = (i) => {
     }
 
     const age = calculateAge(birthday)
-
+    console.log('age',age);
     if (age.year < 1 || age.year > 75) {
         showMultipleDateError($(`#data_1_ctrl_day`).getAttribute('data-error-not-qualify'), i);
         return {status: false};
