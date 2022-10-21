@@ -553,7 +553,7 @@ export const checkTaBirthDate = (i) => {
     }
 
     const age = calculateAge(birthday)
-
+console.log('age',age);
     if (age.year < 2 || age.year > 75) {
         showMultipleDateError($(`#data_1_ctrl_day`).getAttribute('data-error-not-qualify'), i);
         return {status: false};
