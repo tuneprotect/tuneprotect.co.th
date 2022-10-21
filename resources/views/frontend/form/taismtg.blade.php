@@ -46,7 +46,7 @@ header{
                         <select id="ctrl_destination" name="ctrl_destination">
                                             <option selected="selected" value="">@lang('product.please_select')</option>
                                             <option value="BKK">Thailand (Bangkok)</option>
-                                            <option value="HKT">Thailand (Phuket)</option>
+                                            <option value="PKT">Thailand (Phuket)</option>
                                         </select>
                                         <label for="ctrl_destination">Destination</label>
                         </select>
