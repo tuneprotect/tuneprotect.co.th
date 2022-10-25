@@ -17,7 +17,7 @@
                                    class="btn btn-block btn-outline btn-choose-plan {{$i == 1 ? 'on' : '' }}">
 
                                     @if($i == 1)
-                                        <strong class="package-number">Lite @lang('product.plan')</strong>
+                                        <strong class="package-number">Plan 20K</strong>
                                     @else
                                         <strong class="package-number">@lang('product.plan') {{$i-1}}</strong>
                                     @endif
@@ -35,7 +35,7 @@
                 @foreach ($package_detail as $k => $v)
                     <th data-package="{{$k}}">
                         @if($i == 1)
-                            <strong class="package-number">Lite @lang('product.plan')</strong>
+                            <strong class="package-number">Plan 20K</strong>
                         @else
                             <strong class="package-number">@lang('product.plan') {{$i-1}}</strong>
                         @endif
@@ -44,7 +44,7 @@
                            data-gtm="product-{{strtolower($selected)}}-top-choose-plan-{{$i-1}}"
                            data-step="3" data-package="{{$k}}" data-sub-package=""
                            @if($i == 1)
-                           data-plan='Lite Plan'
+                           data-plan='Plan 20K'
                            @else
                            data-plan="@lang('product.plan') {{$i-1}}"
                            @endif
@@ -105,7 +105,7 @@
                 @foreach ($package_detail as $k => $v)
                     <td {{$i > 1 ? 'class=hide' : ""}} data-index="{{$i-1}}" data-package="{{$k}}">
                         @if($i == 1)
-                            <strong style="display: block" class="text-center">Lite @lang('product.plan')</strong>
+                            <strong style="display: block" class="text-center">Plan 20K</strong>
                         @else
                             <strong style="display: block" class="text-center">@lang('product.plan') {{$i-1}}</strong>
                         @endif
@@ -115,7 +115,7 @@
                            data-step="3" data-package="{{$k}}" data-sub-package=""
 
                            @if($i == 1)
-                           data-plan='Lite Plan'
+                           data-plan='Plan 20K'
                            @else
                            data-plan="@lang('product.plan') {{$i-1}}"
                            @endif
