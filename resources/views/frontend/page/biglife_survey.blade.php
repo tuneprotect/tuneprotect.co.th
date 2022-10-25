@@ -14,13 +14,13 @@
                 <div class="form-inner">
                     <span class="small"><b>@lang("product.biglife.name")</b></span>
                     <div class="controls-wrapper">
-                        <input data-error-required=@lang("product.biglife.name_placeholder")
-                            id="ctrl_name" name="name" placeholder=@lang("product.biglife.name_placeholder") required="required" type="text" />
+                        <input 
+                            id="ctrl_name" name="firstname" placeholder=@lang("product.biglife.name_placeholder") required="required" type="text" />
                         <label for="ctrl_name">@lang("product.biglife.name_placeholder")</label></div>
 
                     <span class="small"><b>@lang("product.biglife.lastname")</b></span>
                     <div class="controls-wrapper">
-                        <input data-error-required=@lang("product.biglife.lastname_placeholder")
+                        <input 
                             id="ctrl_lastname" name="lastname" placeholder=@lang("product.biglife.lastname_placeholder") required="required" type="text" />
                         <label for="ctrl_lastname">@lang("product.biglife.lastname_placeholder")</label></div>
 
