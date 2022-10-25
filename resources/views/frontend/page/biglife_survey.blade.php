@@ -15,7 +15,7 @@
                     <span class="small"><b>@lang("product.biglife.name")</b></span>
                     <div class="controls-wrapper">
                         <input 
-                            id="ctrl_name" name="firstname" placeholder=@lang("product.biglife.name_placeholder") required="required" type="text" />
+                            id="ctrl_name" name="name" placeholder=@lang("product.biglife.name_placeholder") required="required" type="text" />
                         <label for="ctrl_name">@lang("product.biglife.name_placeholder")</label></div>
 
                     <span class="small"><b>@lang("product.biglife.lastname")</b></span>
