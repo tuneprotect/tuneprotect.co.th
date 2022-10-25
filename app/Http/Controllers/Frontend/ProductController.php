@@ -10,7 +10,6 @@ use App\Enum\CIObject;
 use App\Enum\COVIDAObject;
 use App\Enum\COVIDLObject;
 use App\Enum\ONTALNObject;
-use App\Enum\TAIPOCT22Object;
 use App\Enum\VACINAObject;
 use App\Enum\VSAFEAObject;
 use App\Enum\FIMPObject;
@@ -361,7 +360,7 @@ class ProductController extends BaseController
             $obj = new ONTALNObject();
             $obj->fdFlgInbound = "I";
         } elseif (substr($data['fdPackage'], 0, 9) === 'TAIPOCT22') {
-            $obj = new TAIPOCT22Object();
+            $obj = new ONTALNObject();
             $obj->fdFlgInbound = "I";            
         } elseif (substr($data['fdPackage'], 0, 5) === 'TAISM') {
             $obj = new ONTALNObject();
@@ -562,8 +561,8 @@ class ProductController extends BaseController
             {
                 if($data['fdKeys'] === 'BQQWAMUX9JDXNTFFD4WZZLQ3NDEXNTFFT6UCXGSF68UXNEKZ24UYN5TRZ2')
                 {
-                    $package = (array)json_decode(Storage::disk('public')->get('json/ontalnlite.json'));
-                    $obj->fdApiPackage = $package[substr($data['fdPackage'], 0, 7)]->apiPackage;
+                    $package = (array)json_decode(Storage::disk('public')->get('json/taipoct22.json'));
+                    $obj->fdApiPackage = $package[substr($data['fdPackage'], 0, 9)]->apiPackage;
                 }
                 else{
                     $package = (array)json_decode(Storage::disk('public')->get('json/taipoct22.json'));
