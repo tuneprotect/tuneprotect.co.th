@@ -560,9 +560,17 @@ class ProductController extends BaseController
             }
             if( substr($data['fdPackage'], 0, 9) === 'TAIPOCT22')
             {
-                $package = (array)json_decode(Storage::disk('public')->get('json/taipoct22.json'));
-                $obj->fdApiPackage = $package[$data['fdPackage']]->apiPackage;
-            }
+                if($data['fdKeys'] === 'BQQWAMUX9JDXNTFFD4WZZLQ3NDEXNTFFT6UCXGSF68UXNEKZ24UYN5TRZ2')
+                {
+                    $package = (array)json_decode(Storage::disk('public')->get('json/ontalnlite.json'));
+                    $obj->fdApiPackage = $package[substr($data['fdPackage'], 0, 7)]->apiPackage;
+                }
+                else{
+                    $package = (array)json_decode(Storage::disk('public')->get('json/taipoct22.json'));
+                    $obj->fdApiPackage = $package[substr($data['fdPackage'], 0, 9)]->apiPackage;
+                }
+            }           
+            
             if( substr($data['fdPackage'], 0, 8) === 'ONCOVIDL')
             {
                 $package = (array)json_decode(Storage::disk('public')->get('json/oncovidl.json'));
