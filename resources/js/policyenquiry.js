@@ -90,7 +90,7 @@ document.addEventListener("DOMContentLoaded", function () {
                             <br>
                             <h3 class="text-primary">ข้อมูลผู้เอาประกันภัย</h3><br>
                             <div class="two-col">
-                                <div><span>ชื่อ : </span><strong>${v.FNAME}</strong></div>
+                                <div><span>ชื่อ : </span><strong>${v.FNAME} ${v.LNAME}</strong></div>
                                 <div><span>เพศ : </span><strong>${v.GENDER === 'F' ? 'หญิง' : 'ชาย'}</strong></div>
                                 <div><span>บัตรประจำตัวประชาชน : </span><strong>${v.POLM_PASSPORT_NO}</strong></div>
                                 <div><span>วันเกิด : </span><strong>${v.DOB}</strong></div>
