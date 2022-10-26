@@ -22,7 +22,7 @@
                                    class="btn btn-block btn-outline btn-choose-plan {{$i == 1 ? 'on' : '' }}">
 
                                     @if($i == 1)
-                                        <strong class="package-number">Plan 20K</strong>
+                                        <strong class="package-number">@lang('product.plan20k')</strong>
                                     @else
                                         <strong class="package-number">@lang('product.plan') {{$i-1}}</strong>
                                     @endif
@@ -40,7 +40,7 @@
                 @foreach ($package_detail as $k => $v)
                     <th data-package="{{$k}}" class="plan-20k">
                         @if($i == 1)
-                            <strong class="package-number">Plan 20K</strong>
+                            <strong class="package-number">@lang('product.plan20k')</strong>
                         @else
                             <strong class="package-number">@lang('product.plan') {{$i-1}}</strong>
                         @endif

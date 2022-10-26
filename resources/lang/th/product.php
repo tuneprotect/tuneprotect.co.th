@@ -64,6 +64,7 @@ return [
     "passport" => "เลขที่หนังสือเดินทาง",
     "passport_no" => "เลขที่หนังสือเดินทาง",
     "plan" => "แผน",
+    "plan20k" => "Plan 20K",
     "no_plan" => "แผนประกันภัย",
     "please_specify" => "กรุณาระบุ",
     "postal_code" => "รหัสไปรษณีย์",
