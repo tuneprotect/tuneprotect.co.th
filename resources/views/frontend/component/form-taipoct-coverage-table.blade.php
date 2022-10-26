@@ -49,7 +49,7 @@
                            data-gtm="product-{{strtolower($selected)}}-top-choose-plan-{{$i-1}}"
                            data-step="3" data-package="{{$k}}" data-sub-package=""
                            @if($i == 1)
-                           data-plan='Plan 20K'
+                           data-plan="@lang('product.plan20k')"
                            @else
                            data-plan="@lang('product.plan') {{$i-1}}"
                            @endif
@@ -110,7 +110,7 @@
                 @foreach ($package_detail as $k => $v)
                     <td {{$i > 1 ? 'class=hide' : ""}} data-index="{{$i-1}}" data-package="{{$k}}">
                         @if($i == 1)
-                            <strong style="display: block" class="text-center">Plan 20K</strong>
+                            <strong style="display: block" class="text-center">@lang('product.plan20k')</strong>
                         @else
                             <strong style="display: block" class="text-center">@lang('product.plan') {{$i-1}}</strong>
                         @endif
@@ -120,7 +120,7 @@
                            data-step="3" data-package="{{$k}}" data-sub-package=""
 
                            @if($i == 1)
-                           data-plan='Plan 20K'
+                           data-plan="@lang('product.plan20k')"
                            @else
                            data-plan="@lang('product.plan') {{$i-1}}"
                            @endif
