@@ -75,29 +75,29 @@ document.addEventListener("DOMContentLoaded", function () {
                     respData.map(v => {
                         innerHTML = innerHTML + `<u><h3 class="text-primary">${NumOfPol}. ข้อมูลการประกันภัย</h3></u><br>
                             <div class="two-col">
-                                <div><span>เลขกรมธรรม์ : </span><strong>${v.POLICY_NO}</strong></div>
-                                <div><span>วันที่ออกกรมธรรม์ : </span><strong>${v.FDISSUEDATE}</strong></div>
+                                <div><span>เลขกรมธรรม์ : </span><strong>${v.POLM_NBR}</strong></div>
+                                <div><span>วันที่ออกกรมธรรม์ : </span><strong>${v.POLM_POST_DATE}</strong></div>
                                 <div><span>แผนประกันภัย : </span><strong>${v.PLANNAME}</span></strong></div>
-                                <div><span>ราคา : </span><strong>${v.FDPAYAMT} บาท</strong></div>
-                                <div><span>วันที่เริ่มคุ้มครอง : </span><strong>${v.FDFROMDATE}</strong></div>
-                                <div><span>วันที่สิ้นสุดความคุ้มครอง : </span><strong>${v.FDTODATE}</strong></div>
-                                <div><span>เลขอ้างอิง (Ref Code.) : </span><strong>${v.REFCODE}</strong></div>
-                                <div><span>เลขอินวอยซ์ : </span><strong>${v.FDINVOICE}</strong></div>
+                                <div><span>ราคา : </span><strong>${v.POLM_AMOUNT} บาท</strong></div>
+                                <div><span>วันที่เริ่มคุ้มครอง : </span><strong>${v.POLM_TDATE}</strong></div>
+                                <div><span>วันที่สิ้นสุดความคุ้มครอง : </span><strong>${v.POLM_XDATE}</strong></div>
+                                <div><span>เลขอ้างอิง (Ref Code.) : </span><strong>${v.REF_CODE}</strong></div>
+                                <div><span>เลขอินวอยซ์ : </span><strong>${v.INVOICE}</strong></div>
                                 <div><span>สถานะ : </span><strong>${v.ACTIVE}</strong></div>
-                                ${group_p.value == 'tune' ? `<div class="btn-wrapper"><a class="btn btn-primary" target="_blank" href="/${$('html').getAttribute('lang')}/PolicyEnquiry/Unlock/${v.FDNATIONALID}">Unlock</a></div>` : ''}
+                                ${group_p.value == 'tune' ? `<div class="btn-wrapper"><a class="btn btn-primary" target="_blank" href="/${$('html').getAttribute('lang')}/PolicyEnquiry/Unlock/${v.POLM_PASSPORT_NO}">Unlock</a></div>` : ''}
 
                             </div>
                             <br>
                             <h3 class="text-primary">ข้อมูลผู้เอาประกันภัย</h3><br>
                             <div class="two-col">
-                                <div><span>ชื่อ : </span><strong>${v.FDNAME}  ${v.FDSURNAME}</strong></div>
-                                <div><span>เพศ : </span><strong>${v.FDSEX === 'F' ? 'หญิง' : 'ชาย'}</strong></div>
-                                <div><span>บัตรประจำตัวประชาชน : </span><strong>${v.FDNATIONALID}</strong></div>
-                                <div><span>วันเกิด : </span><strong>${v.FDHBD}</strong></div>
-                                <div><span>เบอร์โทรศัพท์มือถือ : </span><strong>${v.FDTELEPHONE}</strong></div>
-                                <div><span>อีเมล : </span><strong>${v.FDEMAIL}</strong></div>
-                                <div class="controls-wrapper full no-lable"><span>ที่อยู่ : </span><strong>${v.FDADDR_NUM}</strong></div>
-                                <div class="controls-wrapper full no-lable"><span>ผู้รับผลประโยชน์ : </span><strong>${v.FDBENEFIT}</strong></div>
+                                <div><span>ชื่อ : </span><strong>${v.FNAME}</strong></div>
+                                <div><span>เพศ : </span><strong>${v.GENDER === 'F' ? 'หญิง' : 'ชาย'}</strong></div>
+                                <div><span>บัตรประจำตัวประชาชน : </span><strong>${v.POLM_PASSPORT_NO}</strong></div>
+                                <div><span>วันเกิด : </span><strong>${v.DOB}</strong></div>
+                                <div><span>เบอร์โทรศัพท์มือถือ : </span><strong>${v.MOBILE}</strong></div>
+                                <div><span>อีเมล : </span><strong>${v.EMAIL}</strong></div>
+                                <div class="controls-wrapper full no-lable"><span>ที่อยู่ : </span><strong>${v.ADDRESS}</strong></div>
+                                <div class="controls-wrapper full no-lable"><span>ผู้รับผลประโยชน์ : </span><strong>${v.BENEFIT_NAME}</strong></div>
                             </div>
                             <br>`;
                         NumOfPol= NumOfPol+1;
