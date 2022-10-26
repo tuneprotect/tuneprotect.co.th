@@ -25,10 +25,10 @@
                 <div class="controls-wrapper">
                     <input id="fdFromDate" name="fdFromDate" type="text" class="flatpickr"
                            data-mindate="{{date('Y-m-d')}}"
-                           data-maxdate="{{date('Y-m-d',strtotime( "+180 days"))}}"
+                           data-maxdate="{{date('Y-m-d',strtotime( "+179 days"))}}"
                            data-setmindatetoequal ="fdToDate"
                            data-setmaxdateto="fdToDate"
-                           data-setmaxdaterange="180"
+                           data-setmaxdaterange="179"
                            data-error="@lang('product.error.travel_start_date')"
                     />
                     <label for="fdFromDate">@lang("product.ipass_arrival_date")</label>
