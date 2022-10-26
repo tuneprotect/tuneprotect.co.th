@@ -292,6 +292,14 @@
                                                 src="/storage/product/myHomeSmart/Banner for Website sale page1.png"
                                                 alt="{{$v->locales[$locale]->title}}">
                                         </picture-->
+                                    @elseif($selected==='TAIPOCT22')
+                                        <picture class="ta-th">
+                                            <source media="(min-width:768px)"
+                                                    srcset="{{url(str_replace('Banner_TA_D_EN', 'Banner_Tune_iPass', $v->pic_en))}}">
+                                            <img
+                                                src="{{url(!empty($v->pic_mobile_en) ? url(str_replace('Banner_TA_D_EN', 'Banner_Tune_iPass', $v->pic_mobile_en)) : url(str_replace('Banner_TA_D_EN', 'Banner_Tune_iPass', $v->pic_en)) )}}"
+                                                alt="{{$v->locales[$locale]->title}}">
+                                        </picture>
                                     @elseif($selected==='DIABETES')
                                         <picture>
                                             <source media="(min-width:768px)"
