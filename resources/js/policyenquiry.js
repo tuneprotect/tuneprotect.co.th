@@ -78,7 +78,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                 <div><span>เลขกรมธรรม์ : </span><strong>${v.POLM_NBR}</strong></div>
                                 <div><span>วันที่ออกกรมธรรม์ : </span><strong>${v.POLM_POST_DATE}</strong></div>
                                 <div><span>แผนประกันภัย : </span><strong>${v.PLANNAME}</span></strong></div>
-                                <div><span>ราคา : </span><strong>${v.POLM_AMOUNT} บาท</strong></div>
+                                <div><span>ราคา : </span><strong>${v.POLM_TOT_PREM} บาท</strong></div>
                                 <div><span>วันที่เริ่มคุ้มครอง : </span><strong>${v.POLM_TDATE}</strong></div>
                                 <div><span>วันที่สิ้นสุดความคุ้มครอง : </span><strong>${v.POLM_XDATE}</strong></div>
                                 <div><span>เลขอ้างอิง (Ref Code.) : </span><strong>${v.REF_CODE}</strong></div>
