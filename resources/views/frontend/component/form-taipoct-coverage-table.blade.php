@@ -1,3 +1,8 @@
+<style>
+    .plan-20k{
+        width:20%;
+    }
+</style>
 <section style="display: none" id="step2" class="product-detail">
     <div class="wrapper">
         <table id="table-detail">
@@ -33,7 +38,7 @@
                 </th>
                 <?php $i = 1 ?>
                 @foreach ($package_detail as $k => $v)
-                    <th data-package="{{$k}}">
+                    <th data-package="{{$k}}" class="plan-20k">
                         @if($i == 1)
                             <strong class="package-number">Plan 20K</strong>
                         @else
