@@ -110,14 +110,6 @@
                                         <img src="{{url(!empty($v->pic_mobile_en) ? url(str_replace('Banner_iPass_COVID', 'Migrant-Banner-En01', $v->pic_mobile_en)) : url(str_replace('Banner_iPass_COVID', 'Migrant-Banner-En02', $v->pic_en)) )}}"
                                              alt="{{$v->locales[$locale]->title}}">
                                     </picture>
-                                @elseif($selected==='TAIPOCT22')
-                                        <picture class="aaa">
-                                            <source media="(min-width:768px)"
-                                                    srcset="{{url(str_replace('Banner_TA_D_EN', 'Banner_Tune_iPass', $v->pic_en))}}">
-                                            <img
-                                                src="{{url(!empty($v->pic_mobile_en) ? url(str_replace('Banner_TA_D_EN', 'Banner_Tune_iPass', $v->pic_mobile_en)) : url(str_replace('Banner_TA_D_EN', 'Banner_Tune_iPass', $v->pic_en)) )}}"
-                                                alt="{{$v->locales[$locale]->title}}">
-                                        </picture>
                                 @elseif($selected==='ONVSAFEA')
                                         <picture>
                                                 <source media="(min-width:768px)" srcset="{{url(str_replace('Banner_Covid_D_EN', 'Banner_VSafe_D_EN2', $v->pic_en))}}">
@@ -126,20 +118,27 @@
                                             </picture>
                                 @elseif(isset($partner))
                                         @if($partner==='LUMA' && ($selected==='ONTALN' || $selected==='TAIPOCT22'))
-                                            <picture>
+                                            <picture  class="cccc">
                                                 <source media="(min-width:768px)" srcset="/storage/Banner/Banner_Luma_D.jpg">
                                                 <img src="{{url(!empty($v->pic_mobile_en) ? "/storage/Banner/Banner_Luma_D.jpg" : "/storage/Banner/Banner_Luma_M.jpg" )}}"
                                                      alt="{{$v->locales[$locale]->title}}">
                                             </picture>
                                         @elseif($selected==='ONTALN')
-                                            <picture>
+                                            <picture class="bbb">
                                                 <source media="(min-width:768px)"
                                                         srcset="{{url(str_replace('Banner_TA_D_EN', 'Banner_Tune_iPass', $v->pic_en))}}">
                                                 <img
                                                     src="{{url(!empty($v->pic_mobile_en) ? url(str_replace('Banner_TA_D_EN', 'Banner_Tune_iPass', $v->pic_mobile_en)) : url(str_replace('Banner_TA_D_EN', 'Banner_Tune_iPass', $v->pic_en)) )}}"
                                                     alt="{{$v->locales[$locale]->title}}">
                                             </picture>
-                                       
+                                        @elseif($selected==='TAIPOCT22')
+                                            <picture class="aaa">
+                                                <source media="(min-width:768px)"
+                                                        srcset="{{url(str_replace('Banner_TA_D_EN', 'Banner_Tune_iPass', $v->pic_en))}}">
+                                                <img
+                                                    src="{{url(!empty($v->pic_mobile_en) ? url(str_replace('Banner_TA_D_EN', 'Banner_Tune_iPass', $v->pic_mobile_en)) : url(str_replace('Banner_TA_D_EN', 'Banner_Tune_iPass', $v->pic_en)) )}}"
+                                                    alt="{{$v->locales[$locale]->title}}">
+                                            </picture>
                                     @elseif($selected==='TAISM')
                                         <picture>
                                             <source media="(min-width:768px)"
