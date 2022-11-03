@@ -36,7 +36,7 @@
                                                     <ul>
                                                         @foreach ($v1->productPackage as $v2)
                                                             <li>
-                                                            @if($v2->code === 'ONVACINA' || $v2->code === 'CVCARE'|| $v2->code === 'ONCOVIDMW' || $v2->code === 'TGCVLP' || $v2->code === 'TAISMTG' || $v2->code === 'TAIPOCT22' || $v2->code === 'ONVSUREA')
+                                                            @if($v2->code === 'ONVACINA' || $v2->code === 'CVCARE'|| $v2->code === 'ONCOVIDMW' || $v2->code === 'TGCVLP' || $v2->code === 'TAISMTG' || $v2->code === 'ONTALN' || $v2->code === 'ONVSUREA')
                                                             @else
                                                                     <a data-gtm="main-nav-product-{{$v1->friendly_url}}-{{$v2->code}}"
                                                                        href="{{route('current',['locale' => $locale,'controller' => 'product','func' => $v1->friendly_url,'params' => $v2->code ])}}">
@@ -221,13 +221,13 @@
                                                     alt="{{$v->locales[$locale]->title}}">
                                             </picture>
                                     @elseif($selected==='TAIPOCT22')
-                                        <picture>
-                                            <source media="(min-width:768px)"
-                                                    srcset="{{url(str_replace('Banner_TA_D_EN', 'Tune iPass - Desktop', $v->pic_en))}}">
-                                            <img
-                                                src="{{url(!empty($v->pic_mobile_en) ? url(str_replace('Banner_TA_D_EN', 'Tune iPass - Mobile', $v->pic_mobile_en)) : url(str_replace('Banner_TA_D_EN', 'Tune iPass - Mobile', $v->pic_en)) )}}"
+										<picture>
+                                            <source media="(min-width:768px)" srcset="{{url(str_replace('Banner_TA_D_EN', 'Tune_iPass_Desktop', $v->pic_en))}}">
+                                            <img src="{{url(!empty($v->pic_mobile_en) ? url(str_replace('Banner_TA_D_EN', 'Tune_iPass_Desktop', $v->pic_mobile_en)) : url(str_replace('Banner_TA_D_EN', 'Tune_iPass_Mobile', $v->pic_en)) )}}"
                                                 alt="{{$v->locales[$locale]->title}}">
                                         </picture>
+										
+                                        
                                     @elseif($selected==='TAISM')
                                             <picture>
                                                 <source media="(min-width:768px)"
