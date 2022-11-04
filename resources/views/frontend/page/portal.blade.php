@@ -8,7 +8,7 @@
                     <h1 class="product-header">iSafe</h1>
                 @else
                     @if(isset($partner))
-                        @if($partner==='LUMA' && ($selected==='ONTALN' || $selected==='TAIPOCT22'))
+                        @if(($partner==='LUMA' || $partner==='Luma') && ($selected==='ONTALN' || $selected==='TAIPOCT22'))
                             <h1 class="product-header">Luma Thailand Pass</h1>
                         @else
                             <h1 class="product-header">{{$current_package->locales[$locale]->title}}</h1>
