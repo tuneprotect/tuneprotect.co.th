@@ -124,7 +124,7 @@
                                                      alt="{{$v->locales[$locale]->title}}">
                                             </picture>
                                         @elseif($selected==='ONTALN')
-                                            <picture>
+                                            <picture class="aaaaa">
                                                 <source media="(min-width:768px)"
                                                         srcset="{{url(str_replace('Banner_TA_D_EN', 'Banner_Tune_iPass', $v->pic_en))}}">
                                                 <img
