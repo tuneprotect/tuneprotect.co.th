@@ -154,6 +154,7 @@
                                 </ul>
                             </li>
                         </ul>
+                    @endif
                 @endif
             </div>
             @include('frontend.component.call_center', ['color' => 'red','gtm' => 'header-call-center'])
