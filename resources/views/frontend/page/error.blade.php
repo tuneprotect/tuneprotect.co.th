@@ -8,7 +8,7 @@
     <main>
         <article class="wrapper">
             <div class="inner-wrapper">
-                @lang("product.errorpage")
+                @lang("product.errorpage.content")
             </div>
         </article>
     </main>
