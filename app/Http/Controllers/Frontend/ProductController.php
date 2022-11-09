@@ -269,11 +269,11 @@ class ProductController extends BaseController
                         {
                             //dd(session('partner'));
                     
-                            if(session('partner')==='LUMA' || session('partner')==='Luma'){
+                            // if(session('partner')==='LUMA' || session('partner')==='Luma'){
                                 
-                            }else{
-                                return $this->genView('frontend.page.error');
-                            }
+                            // }else{
+                            //     return $this->genView('frontend.page.error');
+                            // }
                             
                             
                            
@@ -1075,7 +1075,6 @@ class ProductController extends BaseController
             $data = $v->data;
             if($v->result)
             {
-                dd($data);
                 $request->session()->put('doc_no',  $v->result['message']);
                 $request->session()->put('return_link', $request->input('user_defined_2'));
                 $request->session()->put('partner', $request->input('user_defined_3'));
