@@ -10,11 +10,11 @@
         background: #e32e6d;
         background: linear-gradient(135deg,#e32e6d,#f9ed1a);
         text-align: center;
-        margin-top: 20px;
-        margin-bottom: 20px;
-        padding-top: 20px;
-        padding-bottom: 20px;
-        border-radius: 30px;
+        margin-top: 20px !important;
+        margin-bottom: 20px !important;
+        padding-top: 20px !important;
+        padding-bottom: 20px !important;
+        border-radius: 30px !important;
         border: 0;
         font: inherit;
         vertical-align: baseline;
@@ -23,11 +23,11 @@
    
     
     article .inner-wrapper {
-    background: #fff;
-    text-align: center;
-    border-radius: 30px;
-    padding: 40px 20px;
-}
+        background: #fff;
+        text-align: center;
+        border-radius: 30px;
+        padding: 40px 20px;
+    }
 </style>
 @section('page')
     <main>
