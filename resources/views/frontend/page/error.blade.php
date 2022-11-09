@@ -1,9 +1,5 @@
-@extends('frontend.layout.main')
-<style>
-.slide_wrapper{
-    display:none !important;
-}
-    </style>
+@extends('frontend.layout.portal')
+
 @section('page')
     <main>
         <article class="wrapper">
