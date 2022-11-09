@@ -1,10 +1,10 @@
-
+@extends('frontend.layout.main')
 
 @section('page')
     <main>
         <article class="wrapper">
             <div class="inner-wrapper">
-                <div>Error</div>
+                <div><h1>Error</h1></div>
              </div>
         </article>
     </main>
