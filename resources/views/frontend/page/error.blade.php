@@ -1,31 +1,4 @@
-@extends('frontend.layout.portal')
-
-@section('page')
-<style>
-header{
-    display:none;
-}
-</style>
-    <body id="product_page" style="height: 100%;">
-    <main>
-        <h1 class="product-header"></h1>
-
-        <section id="step1" class="wrapper">
-           
-                @if($partner==='LUMA' || $partner==='Luma')
-                    LUMA
-                @else
-                    No LUMA
-                @endif
-               
-        </section>
-    </main>
-
-
-    </body>
-
-
-@endsection
+@extends('frontend.layout.main')
 <style>
     main{
         margin: 30px 0 !important;
@@ -56,9 +29,7 @@ header{
         padding: 40px 20px;
     }
 </style>
-
-
-<!-- @section('page')
+@section('page')
     <main>
         <article class="wrapper">
             <div class="inner-wrapper">
@@ -70,4 +41,4 @@ header{
         </article>
     </main>
 
-@endsection -->
+@endsection
