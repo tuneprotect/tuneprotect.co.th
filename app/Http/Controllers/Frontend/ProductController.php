@@ -267,7 +267,18 @@ class ProductController extends BaseController
                         }
                         if($selected === 'ONTALN')
                         {
+                            if(isset($partner)){
+                                if($partner==='LUMA' || $partner==='Luma'){
+                                   
+                                }else{
+                                    return $this->genView('frontend.page.error');
+                                }
+                            }else{
+                                return $this->genView('frontend.page.error');
+
+                            }
                             return $this->genView('frontend.page.error');
+                           
                         }
                        
                     }
