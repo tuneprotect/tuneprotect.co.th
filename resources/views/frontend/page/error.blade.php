@@ -1,5 +1,35 @@
 @extends('frontend.layout.main')
-
+<style>
+    .slide_wrapper{
+        display:none !implements;
+    }
+    article{
+        background: #e32e6d;
+        background: linear-gradient(135deg,#e32e6d,#f9ed1a);
+        text-align: center;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        border-radius: 30px;
+        border: 0;
+        font: inherit;
+        vertical-align: baseline;
+    }
+    .wrapper {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 0 20px;
+    }
+   
+    
+    article .inner-wrapper {
+    background: #fff;
+    text-align: center;
+    border-radius: 30px;
+    padding: 40px 20px;
+}
+</style>
 @section('page')
     <main>
         <article class="wrapper">
