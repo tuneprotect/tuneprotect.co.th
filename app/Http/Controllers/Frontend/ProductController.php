@@ -338,7 +338,7 @@ class ProductController extends BaseController
              dd('js error.');
         }
           
-       dd(isset($partner));
+       dd($partner);
         if ($this->controller != 'product') {
             return $this->genView('frontend.page.portal');
         } else {
