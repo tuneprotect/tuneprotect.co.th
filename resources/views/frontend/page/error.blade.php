@@ -1,7 +1,7 @@
 @extends('frontend.layout.main')
 <style>
-    .slide_wrapper{
-        display:none !implements;
+    section{
+        display:none !important;
     }
     article{
         background: #e32e6d;
