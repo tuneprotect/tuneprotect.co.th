@@ -975,7 +975,18 @@ return [
         "19000000" => "19,000,000",
         "20000000" => "20,000,000",
     ],
+    "errorpage" => [
+        "content" => "<div><p><img alt='' src='/storage/Icon/thankyou.jpg'></p>
 
+        <h1>ขอขอบคุณที่ไว้วางใจทำประกันกับ Tune Protect</h1>
+        
+        <p><h2>ขออภัยผลิตภัณฑ์ที่ท่านเลือกไม่มีในบบ</h2></p>        
+        
+        <p></p>
+        
+        <p><a class='btn btn-primary' href='/th'>กลับสู่หน้าหลัก</a></p>
+        </div>",    
+    ],
 ];
 
 
