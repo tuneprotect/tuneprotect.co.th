@@ -265,23 +265,19 @@ class ProductController extends BaseController
                         {
                             if($v->plan->COVCVISAFE4 !== '-'){$v->plan->COVCVISAFE4 = __('product.healt2go_word');}
                         }
-                        // if($selected === 'ONTALN')
-                        // {
-                        //     // dd(isset($partner));
-                        //     // if(isset($partner)){
-
-                        //     //     if($partner==='LUMA' || $partner==='Luma'){
-                                   
-                        //     //     }else{
-                        //     //         return $this->genView('frontend.page.error');
-                        //     //     }
-                        //     // }else{
-                        //     //     return $this->genView('frontend.page.error');
-
-                        //     // }
-                        //     return $this->genView('frontend.page.error');
+                        if($selected === 'ONTALN')
+                        {
+                            // dd(isset($partner));
+                    
+                            if(session('partner')==='LUMA' || session('partner')==='Luma'){
+                                
+                            }else{
+                                return $this->genView('frontend.page.error');
+                            }
+                            
+                            return $this->genView('frontend.page.error');
                            
-                        // }
+                        }
                        
                     }
                     $this->bodyData['package_detail'][$k] = $v;
@@ -292,8 +288,6 @@ class ProductController extends BaseController
         {
 
         }
-
-        dd(session('partner'));
 
         $this->template->setBody('id', 'product_page');
 
