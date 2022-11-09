@@ -293,7 +293,7 @@ class ProductController extends BaseController
 
         }
 
-        //dd( $this->bodyData['package_detail']);
+        dd(session('partner'));
 
         $this->template->setBody('id', 'product_page');
 
@@ -338,7 +338,7 @@ class ProductController extends BaseController
              dd('js error.');
         }
           
-       dd($partner);
+      //dd($this->bodyData['package_detail']);
         if ($this->controller != 'product') {
             return $this->genView('frontend.page.portal');
         } else {
