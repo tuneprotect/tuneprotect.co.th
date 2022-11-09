@@ -267,7 +267,7 @@ class ProductController extends BaseController
                         }
                         if($selected === 'ONTALN')
                         {
-                            // dd(isset($partner));
+                            dd(session('partner'));
                     
                             if(session('partner')==='LUMA' || session('partner')==='Luma'){
                                 
