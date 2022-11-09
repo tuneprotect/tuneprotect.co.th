@@ -267,7 +267,7 @@ class ProductController extends BaseController
                         }
                         if($selected === 'ONTALN')
                         {
-                            return $this->genView('frontend.page.thankyou');
+                            return $this->genView('frontend.page.error');
                         }
                        
                     }
