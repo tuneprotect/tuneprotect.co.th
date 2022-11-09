@@ -265,23 +265,23 @@ class ProductController extends BaseController
                         {
                             if($v->plan->COVCVISAFE4 !== '-'){$v->plan->COVCVISAFE4 = __('product.healt2go_word');}
                         }
-                        if($selected === 'ONTALN')
-                        {
-                            // dd(isset($partner));
-                            // if(isset($partner)){
+                        // if($selected === 'ONTALN')
+                        // {
+                        //     // dd(isset($partner));
+                        //     // if(isset($partner)){
 
-                            //     if($partner==='LUMA' || $partner==='Luma'){
+                        //     //     if($partner==='LUMA' || $partner==='Luma'){
                                    
-                            //     }else{
-                            //         return $this->genView('frontend.page.error');
-                            //     }
-                            // }else{
-                            //     return $this->genView('frontend.page.error');
+                        //     //     }else{
+                        //     //         return $this->genView('frontend.page.error');
+                        //     //     }
+                        //     // }else{
+                        //     //     return $this->genView('frontend.page.error');
 
-                            // }
-                            return $this->genView('frontend.page.error');
+                        //     // }
+                        //     return $this->genView('frontend.page.error');
                            
-                        }
+                        // }
                        
                     }
                     $this->bodyData['package_detail'][$k] = $v;
@@ -338,7 +338,7 @@ class ProductController extends BaseController
              dd('js error.');
         }
           
-      //dd($this->bodyData['package_detail']);
+       dd($this->bodyData['package_detail']);
         if ($this->controller != 'product') {
             return $this->genView('frontend.page.portal');
         } else {
