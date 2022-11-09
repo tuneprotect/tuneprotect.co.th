@@ -1075,6 +1075,7 @@ class ProductController extends BaseController
             $data = $v->data;
             if($v->result)
             {
+                dd($data);
                 $request->session()->put('doc_no',  $v->result['message']);
                 $request->session()->put('return_link', $request->input('user_defined_2'));
                 $request->session()->put('partner', $request->input('user_defined_3'));
