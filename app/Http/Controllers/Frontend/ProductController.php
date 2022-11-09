@@ -265,6 +265,11 @@ class ProductController extends BaseController
                         {
                             if($v->plan->COVCVISAFE4 !== '-'){$v->plan->COVCVISAFE4 = __('product.healt2go_word');}
                         }
+                        if($selected === 'ONTALN')
+                        {
+                            return $this->genView('frontend.page.product_form');
+                        }
+                       
                     }
                     $this->bodyData['package_detail'][$k] = $v;
                 }
