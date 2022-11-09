@@ -275,7 +275,7 @@ class ProductController extends BaseController
                                 return $this->genView('frontend.page.error');
                             }
                             
-                            return $this->genView('frontend.page.error');
+                            
                            
                         }
                        
