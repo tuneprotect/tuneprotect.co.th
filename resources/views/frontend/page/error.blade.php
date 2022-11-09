@@ -1,7 +1,10 @@
 @extends('frontend.layout.main')
 <style>
+    main{
+        margin: 30px 0;
+    }
     section{
-        display:none !important;
+        display: none;
     }
     article{
         background: #e32e6d;
