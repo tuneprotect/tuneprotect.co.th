@@ -269,11 +269,11 @@ class ProductController extends BaseController
                         {
                             //dd(session('partner'));
                     
-                            // if(session('partner')==='LUMA' || session('partner')==='Luma'){
+                            if(session('partner')==='LUMA' || session('partner')==='Luma'){
                                 
-                            // }else{
-                            //     return $this->genView('frontend.page.error');
-                            // }
+                            }else{
+                                return $this->genView('frontend.page.error');
+                            }
                             
                             
                            
