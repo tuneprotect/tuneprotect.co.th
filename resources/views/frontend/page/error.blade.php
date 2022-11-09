@@ -1,10 +1,12 @@
-@extends('frontend.layout.portal')
+@extends('frontend.layout.main')
 
 @section('page')
     <main>
         <article class="wrapper">
             <div class="inner-wrapper">
-                @lang("product.errorpage.content")
+                <div>
+                    @lang("product.errorpage.content")
+                </div>
             </div>
         </article>
     </main>
