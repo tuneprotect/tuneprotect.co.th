@@ -1,10 +1,10 @@
 @extends('frontend.layout.main')
 <style>
     main{
-        margin: 30px 0;
+        margin: 30px 0 !important;
     }
     section{
-        display: none;
+        display: none !important;
     }
     article{
         background: #e32e6d;
@@ -19,11 +19,7 @@
         font: inherit;
         vertical-align: baseline;
     }
-    .wrapper {
-        max-width: 1000px;
-        margin: 0 auto;
-        padding: 0 20px;
-    }
+ 
    
     
     article .inner-wrapper {
