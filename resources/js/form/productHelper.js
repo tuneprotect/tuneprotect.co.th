@@ -81,7 +81,6 @@ export const validateAgeInPackage = (package_data, cal_price) => {
 
 
 const callValidateApi = async (data) => {
-    console.log("callValidateApi",`/${$('html').getAttribute('lang')}/Product/checkDup`)
     const response = await fetch(`/${$('html').getAttribute('lang')}/Product/checkDup`, {
         method: 'post',
         headers: {
