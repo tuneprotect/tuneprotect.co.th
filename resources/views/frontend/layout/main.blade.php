@@ -198,6 +198,12 @@
                                                 src="{{url(!empty($v->pic_mobile_en) ? url(str_replace('Banner-baowan-main-en', 'Banner_myFlexi_CI_ENv2', $v->pic_mobile_en)) : url(str_replace('Banner-baowan-main-en', 'Banner_myFlexi_CI_ENv2', $v->pic_en)) )}}"
                                                 alt="{{$v->locales[$locale]->title}}">
                                         </picture>
+                                    @elseif($selected==='ONFIMP')
+                                        <picture>
+                                            <source media="(min-width:768px)" srcset="{{url(str_replace('Banner-Home-En01', 'myHomeSmart_En_pc', $v->pic_en))}}">
+                                            <img src="{{url(!empty($v->pic_mobile_en) ? url(str_replace('Banner-Home-En01', 'myHomeSmart_En_pc', $v->pic_mobile_en)) : url(str_replace('Banner-Home-En01', 'myHomeSmart_En_mobile', $v->pic_en)) )}}"
+                                                alt="{{$v->locales[$locale]->title}}">
+                                        </picture>
                                     @elseif($selected==='ONMHS')
                                         <picture>
                                             <source media="(min-width:768px)" srcset="{{url(str_replace('Banner-Home-En01', 'myHomeSmart_En_pc', $v->pic_en))}}">
