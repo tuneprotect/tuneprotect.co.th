@@ -81,6 +81,7 @@ export const validateAgeInPackage = (package_data, cal_price) => {
 
 
 const callValidateApi = async (data) => {
+    console.log("callValidateApi",`/${$('html').getAttribute('lang')}/Product/checkDup`)
     const response = await fetch(`/${$('html').getAttribute('lang')}/Product/checkDup`, {
         method: 'post',
         headers: {
@@ -204,7 +205,7 @@ export const validatePolicyPayment = async (pfdNationalID,pfdPackage,pfdFromDate
         $('button[data-step="payment"]').style.display = 'none';
         Swal.fire({
             icon: 'error',
-            text: result.message + ' National ID / Passport. : ' + pfdNationalID
+            text: result.message + ' National ID / Passport : ' + pfdNationalID
         })
         return false;
     } else {
