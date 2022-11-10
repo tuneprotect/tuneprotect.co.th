@@ -229,7 +229,7 @@
 										
                                         
                                     @elseif($selected==='TAISM')
-                                            <picture>
+                                            <picture  class="111">
                                                 <source media="(min-width:768px)"
                                                         srcset="{{url(str_replace('Banner_TA_D_EN', 'Banner_TAI_D', $v->pic_en))}}">
                                                 <img
@@ -238,7 +238,7 @@
                                             </picture>
                                     @else
                                         @if($selected==='ONTAOB')
-                                            <picture>
+                                            <picture  class="www">
                                                 <source media="(min-width:768px)"
                                                         srcset="{{url(str_replace('Banner_TA_D_EN', 'Banner_iTravel_D_EN', $v->pic_en))}}">
                                                 <img
@@ -247,7 +247,7 @@
                                             </picture>
                                         @endif
                                         @if($selected !== 'ONTAOB')
-                                                <picture>
+                                                <picture  class="aaass1">
                                                     <source media="(min-width:768px)" srcset="{{url($v->pic_en)}}">
                                                     <img src="{{url(!empty($v->pic_mobile_en) ? $v->pic_mobile_en : $v->pic_en )}}"
                                                          alt="{{$v->locales[$locale]->title}}">
@@ -255,7 +255,7 @@
                                             @endif
                                     @endif
                                 @else
-                                    <picture>
+                                    <picture  class="ssssaa">
                                         <source media="(min-width:768px)" srcset="{{url($v->pic_en)}}">
                                         <img src="{{url(!empty($v->pic_mobile_en) ? $v->pic_mobile_en : $v->pic_en )}}"
                                              alt="{{$v->locales[$locale]->title}}">
@@ -266,13 +266,13 @@
                             @if(!empty($v->pic))
                                 @if(isset($selected))
                                     @if($selected==='ONVSAFEA')
-                                        <picture>
+                                        <picture  class="ssssaaaww">
                                             <source media="(min-width:768px)" srcset="{{url(str_replace('Banner_Covid_D', 'Banner_VSafe_D2', $v->pic))}}">
                                             <img src="{{url(!empty($v->pic_mobile) ? url(str_replace('Banner_Covid_D', 'Banner_VSafe_D2', $v->pic_mobile)) : url(str_replace('Banner_Covid_D', 'Banner_VSafe_M2', $v->pic)) )}}"
                                                 alt="{{$v->locales[$locale]->title}}">
                                         </picture>
                                     @elseif($selected==='CI')
-                                        <picture>
+                                        <picture  class="aaa5">
                                             <source media="(min-width:768px)"
                                                     srcset="{{url(str_replace('Banner-baowan-main-th', 'Banner_myFlexi_CI_THv2', $v->pic))}}">
                                             <img
@@ -302,14 +302,14 @@
                                         </picture>
                                     @else
                                         @if($selected==='ONTAOB')
-                                            <picture>
+                                            <picture  class="aaa8">
                                                 <source media="(min-width:768px)" srcset="{{url(str_replace('Banner_TA_D', 'Banner_iTravel_D', $v->pic))}}">
                                                 <img src="{{url(!empty($v->pic_mobile) ? url(str_replace('Banner_TA_D', 'Banner_iTravel_D', $v->pic_mobile)) : url(str_replace('Banner_TA_D', 'Banner_iTravel_M', $v->pic)) )}}"
                                                      alt="{{$v->locales[$locale]->title}}">
                                             </picture>
                                         @endif
                                         @if($selected !== 'ONTAOB')
-                                                <picture>
+                                                <picture  class="aaa9">
                                                     <source media="(min-width:768px)" srcset="{{url($v->pic)}}">
                                                     <img src="{{url(!empty($v->pic_mobile) ? $v->pic_mobile : $v->pic )}}"
                                                          alt="{{$v->locales[$locale]->title}}">
@@ -319,7 +319,7 @@
 
                                     @endif
                                 @else
-                                    <picture>
+                                    <picture  class="aaa21">
                                         <source media="(min-width:768px)" srcset="{{url($v->pic)}}">
                                         <img src="{{url(!empty($v->pic_mobile) ? $v->pic_mobile : $v->pic )}}"
                                              alt="{{$v->locales[$locale]->title}}">
