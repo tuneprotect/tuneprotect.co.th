@@ -159,7 +159,7 @@
     </header>
     @if(isset($slideshow))
         <section class="slide_wrapper">
-            <div class="slider">
+            <div class="slider bbb">
                 @foreach ($slideshow as $v )
                     <a {{!empty($v->action_link) ? 'data-gtm="banner-'.$v->id.'"  href='. str_replace('{locale}',$locale,$v->action_link) : '' }}>
                         @if(\Illuminate\Support\Str::startsWith($v->video_link,'<iframe'))
