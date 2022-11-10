@@ -1179,7 +1179,7 @@ class ProductController extends BaseController
     {
         //echo var_dump(1);exit();
         $data = $request->all();
-        echo var_dump($data);exit();
+        //echo var_dump($data);exit();
         $client = new Client();
         $response = $client->request('POST', config('tune-api.url') . 'PersonalValidationCI', [
             'auth' => [config('tune-api.user'), config('tune-api.password')],
