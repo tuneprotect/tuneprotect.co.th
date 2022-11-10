@@ -1179,7 +1179,7 @@ class ProductController extends BaseController
     {
         //echo var_dump(1);exit();
         $data = $request->all();
-
+        echo var_dump($data);exit();
         $client = new Client();
         $response = $client->request('POST', config('tune-api.url') . 'PersonalValidationCI', [
             'auth' => [config('tune-api.user'), config('tune-api.password')],
@@ -1189,7 +1189,7 @@ class ProductController extends BaseController
             'body' => json_encode($data)
         ]);
         $res = (object)json_decode($response->getBody()->getContents(), true);
-        echo var_dump($res);exit();
+        
         $this->apiResult = $res->status ? self::SUCCESS : self::ERROR;
         
         if ($res->status) {
