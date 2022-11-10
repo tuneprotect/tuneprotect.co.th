@@ -183,7 +183,7 @@
                             @if(!empty($v->pic_en))
                                 @if(isset($selected))
                                     @if($selected==='ONVSAFEA')
-                                        <picture>
+                                        <picture class="aaa1">
                                             <source media="(min-width:768px)"
                                                     srcset="{{url(str_replace('Banner_Covid_D_EN', 'Banner_VSafe_D_EN2', $v->pic_en))}}">
                                             <img
@@ -191,7 +191,7 @@
                                                 alt="{{$v->locales[$locale]->title}}">
                                         </picture>
                                     @elseif($selected==='CI')
-                                        <picture>
+                                        <picture class="aaa2">
                                             <source media="(min-width:768px)"
                                                     srcset="{{url(str_replace('Banner-baowan-main-en', 'Banner_myFlexi_CI_ENv2', $v->pic_en))}}">
                                             <img
@@ -199,13 +199,13 @@
                                                 alt="{{$v->locales[$locale]->title}}">
                                         </picture>
                                     @elseif($selected==='ONMHS')
-                                        <picture>
+                                        <picture class="aaa3">
                                             <source media="(min-width:768px)" srcset="{{url(str_replace('Banner-Home-En01', 'myHomeSmart_En_pc', $v->pic_en))}}">
                                             <img src="{{url(!empty($v->pic_mobile_en) ? url(str_replace('Banner-Home-En01', 'myHomeSmart_En_pc', $v->pic_mobile_en)) : url(str_replace('Banner-Home-En01', 'myHomeSmart_En_mobile', $v->pic_en)) )}}"
                                                 alt="{{$v->locales[$locale]->title}}">
                                         </picture>
                                     @elseif($selected==='DIABETES')
-                                        <picture>
+                                        <picture class="aaa4">
                                             <source media="(min-width:768px)"
                                                     srcset="{{url(str_replace('Banner-baowan-main-en', 'Banner-diabetes-detail-en', $v->pic_en))}}">
                                             <img
