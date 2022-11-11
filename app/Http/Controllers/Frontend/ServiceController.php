@@ -32,6 +32,15 @@ class ServiceController extends BaseController
         {
             return redirect('/taxdeduction');
         }
+        if(strtolower($link) == 'pump')
+        {
+            if($locale === 'en')
+            {
+                return redirect() -> to('https://w5.tuneprotect.co.th/pump/');
+            }else {
+                return redirect() -> to('https://w5.tuneprotect.co.th/pump/index_th.html');
+            }           
+        }
 //        if(strtolower($link) == 'bloodtest')
 //        {
 //            return redirect('/bloodtest');
