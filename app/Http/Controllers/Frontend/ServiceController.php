@@ -34,7 +34,7 @@ class ServiceController extends BaseController
         }
         if(strtolower($link) == 'pump')
         {
-            if($locale === 'en')
+            if($this->locale == 'en')
             {
                 return redirect() -> to('https://w5.tuneprotect.co.th/pump/');
             }else {
