@@ -28,9 +28,15 @@
             z-index: 0;
         }
 		
-		.popup-wrapper{
-			width:35vw;
-		}
+        
+		@media (min-width: 1200px) {
+            .popup-wrapper{
+                width:35vw !important;
+            }
+        }
+        .popup-wrapper {
+                width:auto;
+        }
 	
 
     </style>
