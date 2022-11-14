@@ -1,3 +1,4 @@
+<!-- Event snippet for information conversion page -->
 <script>
   gtag('event', 'conversion', {'send_to': 'AW-445121093/PxU1CPO31fIBEMWEoNQB'});
 </script>
