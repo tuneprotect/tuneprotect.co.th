@@ -13,6 +13,12 @@
     @endif
 @endif
 
+<!-- Event snippet for confirm information conversion page -->
+<script>
+  gtag('event', 'conversion', {'send_to': 'AW-445121093/qo9FCK2_1fIBEMWEoNQB'});
+</script>
+
+
 <section style="display: none" id="step4" class="wrapper">
     <form class="insurance-form" method="post"
           action="{{route('current',['locale' => $locale,'controller' => $controller,'func' => "make-payment"],false)}}">
