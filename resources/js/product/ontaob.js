@@ -363,7 +363,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                 title: 'Error!',
                 text: 'Error : Portal keys. User not found.',
                 icon: 'error',
-                confirmButtonText: 'OK'
+                confirmButtonText: 'OK3'
             })
         }
     }
@@ -600,7 +600,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                                 title: 'Error!',
                                 text: 'Please choose package',
                                 icon: 'error',
-                                confirmButtonText: 'OK'
+                                confirmButtonText: 'OK1'
                             })
                             status = false;
                         }
@@ -614,7 +614,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                                     title: 'Error!',
                                     text: 'Error : Portal keys. User not found.',
                                     icon: 'error',
-                                    confirmButtonText: 'OK'
+                                    confirmButtonText: 'OK2'
                                 })
                                 status = false;
                             }
