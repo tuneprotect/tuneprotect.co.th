@@ -636,7 +636,6 @@ document.addEventListener("DOMContentLoaded", async () => {
                             valCheck = validatePolicyPayment($(`#data_${i}_fdNationalID`).value,data.fdPackage,$('#fdFromDate')?.value);
                             if(!valCheck)
                             {
-                                $(`#swal2-content`).innerHTML = $('#swal2-content').textContent
                                 status = false;
                                 return false;
                             }

@@ -194,9 +194,9 @@ export const validatePolicyStep5 = async ($this, fdPackage,fdFromDate) => {
 
 export const validatePolicyPayment = async (pfdNationalID,pfdPackage,pfdFromDate) => {
     let data = {fdNationalID: pfdNationalID,fdPackage: pfdPackage,fdFromDate:pfdFromDate}
-    console.log(data);
-    console.log(pfdPackage);
-    console.log(pfdFromDate);
+    // console.log(data);
+    // console.log(pfdPackage);
+    // console.log(pfdFromDate);
 
     const result = await callValidateApi(data)
 
@@ -206,7 +206,8 @@ export const validatePolicyPayment = async (pfdNationalID,pfdPackage,pfdFromDate
             icon: 'error',
             text: result.message
             //text: result.message + ' National ID / Passport : ' + pfdNationalID
-        })
+        })        
+        $(`#swal2-content`).innerHTML = $('#swal2-content').textContent
         return false;
     } else {
         $('button[data-step="payment"]').style.display = 'inline-flex';
