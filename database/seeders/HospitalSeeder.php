@@ -21,7 +21,7 @@ class HospitalSeeder extends Seeder
             'tel' => '02 310 3000', 'cat_id' => '90',
             'website' => 'http://www.bangkokhospital.com',
             'province' => '00', 'location' => 'https://goo.gl/maps/4kBY1g7KJ5cCzTUK6',
-            'th' => ['title' => 'โรงพยาบาลกรุงเทพ', 'address' => '2 ซอยศูนย์วิจัย 7 ถ.เพชรบุรีตัดใหม่ ห้วยขวาง กรุงเทพมหานคร 10320'],
+            'th' => ['title' => 'โรงพยาบาลกรุงเทพ5555', 'address' => '2 ซอยศูนย์วิจัย 7 ถ.เพชรบุรีตัดใหม่ ห้วยขวาง กรุงเทพมหานคร 10320'],
             'en' => ['title' => 'BANGKOK GENERAL HOSPITAL', 'address' => '2 Soi Soonvijai7 New Petchburi Rd., Huaykwang Bangkok 10320'],
         ];
         $arr[] = [
