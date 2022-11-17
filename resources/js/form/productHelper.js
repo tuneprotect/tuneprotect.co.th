@@ -204,7 +204,7 @@ export const validatePolicyPayment = async (pfdNationalID,pfdPackage,pfdFromDate
         $('button[data-step="payment"]').style.display = 'none';
         Swal.fire({
             icon: 'error',
-            text: result.message
+            text: '<p>111</p>'+result.message
             //text: result.message + ' National ID / Passport : ' + pfdNationalID
         })
         return false;
