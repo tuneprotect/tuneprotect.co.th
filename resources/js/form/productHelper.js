@@ -207,7 +207,8 @@ export const validatePolicyPayment = async (pfdNationalID,pfdPackage,pfdFromDate
             text: result.message
             //text: result.message + ' National ID / Passport : ' + pfdNationalID
         })        
-        $(`#swal2-content`).innerHTML = $('#swal2-content').textContent
+        $('#swal2-content').innerHTML = $('#swal2-content').textContent
+        console.log("testinner");
         return false;
     } else {
         $('button[data-step="payment"]').style.display = 'inline-flex';
