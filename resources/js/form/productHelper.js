@@ -120,6 +120,7 @@ export const validatePolicyLoc = async ($this, fdPackage,fdFromDate) => {
                 icon: 'error',
                 text: result.message
             })
+            console.log("aa");
             return false;
         } else {
             $('button[data-step="4"]').style.display = 'inline-flex';
@@ -152,6 +153,7 @@ export const validatePolicy = async ($this, fdPackage,fdFromDate) => {
                 icon: 'error',
                 text: result.message
             })
+            console.log("bb");
             return false;
         } else {
             $('button[data-step="4"]').style.display = 'inline-flex';
@@ -184,6 +186,7 @@ export const validatePolicyStep5 = async ($this, fdPackage,fdFromDate) => {
                 icon: 'error',
                 text: result.message
             })
+            console.log("cc");
             return false;
         } else {
             $('button[data-step="5"]').style.display = 'inline-flex';
@@ -208,7 +211,6 @@ export const validatePolicyPayment = async (pfdNationalID,pfdPackage,pfdFromDate
             //text: result.message + ' National ID / Passport : ' + pfdNationalID
         })        
         $('#swal2-content').innerHTML = $('#swal2-content').textContent
-        console.log("testinner");
         return false;
     } else {
         $('button[data-step="payment"]').style.display = 'inline-flex';
