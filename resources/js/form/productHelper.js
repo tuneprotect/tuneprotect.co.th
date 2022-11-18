@@ -120,7 +120,6 @@ export const validatePolicyLoc = async ($this, fdPackage,fdFromDate) => {
                 icon: 'error',
                 text: result.message
             })
-            console.log("aa");
             return false;
         } else {
             $('button[data-step="4"]').style.display = 'inline-flex';
@@ -153,7 +152,7 @@ export const validatePolicy = async ($this, fdPackage,fdFromDate) => {
                 icon: 'error',
                 text: result.message
             })
-            console.log("bb");
+            $('#swal2-content').innerHTML = $('#swal2-content').textContent
             return false;
         } else {
             $('button[data-step="4"]').style.display = 'inline-flex';
@@ -186,7 +185,6 @@ export const validatePolicyStep5 = async ($this, fdPackage,fdFromDate) => {
                 icon: 'error',
                 text: result.message
             })
-            console.log("cc");
             return false;
         } else {
             $('button[data-step="5"]').style.display = 'inline-flex';
