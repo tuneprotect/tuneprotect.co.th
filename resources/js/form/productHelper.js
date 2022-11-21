@@ -120,6 +120,7 @@ export const validatePolicyLoc = async ($this, fdPackage,fdFromDate) => {
                 icon: 'error',
                 text: result.message
             })
+            console.log("aaa")
             return false;
         } else {
             $('button[data-step="4"]').style.display = 'inline-flex';
@@ -185,6 +186,7 @@ export const validatePolicyStep5 = async ($this, fdPackage,fdFromDate) => {
                 icon: 'error',
                 text: result.message
             })
+            console.log("bbb")
             return false;
         } else {
             $('button[data-step="5"]').style.display = 'inline-flex';
