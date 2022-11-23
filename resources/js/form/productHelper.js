@@ -109,10 +109,8 @@ export const validatePolicyLoc = async ($this, fdPackage,fdFromDate) => {
     });
 
     if (Object.keys(data).every((k) => !!data[k])) {
-        // console.log("Call Validation");
         const result = await callValidateApi({...data, fdPackage,fdFromDate})
         if (result.status === 'error') {
-            // showFieldError($this, [result.message]);
             $('button[data-step="4"]').style.display = 'none';
             $this.closest('.controls-wrapper').classList.add("error");
 
@@ -121,6 +119,7 @@ export const validatePolicyLoc = async ($this, fdPackage,fdFromDate) => {
                 text: result.message
             })
             $('#swal2-content').innerHTML = $('#swal2-content').textContent
+
             return false;
         } else {
             $('button[data-step="4"]').style.display = 'inline-flex';
@@ -131,7 +130,6 @@ export const validatePolicyLoc = async ($this, fdPackage,fdFromDate) => {
 
 export const validatePolicy = async ($this, fdPackage,fdFromDate) => {
     let field = $this.getAttribute('name');
-    // console.log({field});
     let data = {fdName: null, fdSurname: null, fdNationalID: null}
     Object.keys(data).map((k) => {
         let fieldId = k;
