@@ -13,10 +13,12 @@
     @endif
 @endif
 
+@if($selected == 'TAIPOCT22')
 <!-- Event snippet for confirm information conversion page -->
 <script>
   gtag('event', 'conversion', {'send_to': 'AW-445121093/qo9FCK2_1fIBEMWEoNQB'});
 </script>
+@endif
 
 <section style="display: none" id="step4" class="wrapper">
     <form class="insurance-form" method="post"

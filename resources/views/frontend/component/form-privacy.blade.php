@@ -1,7 +1,9 @@
+@if($selected == 'TAIPOCT22')
 <!-- Event snippet for information conversion page -->
 <script>
   gtag('event', 'conversion', {'send_to': 'AW-445121093/PxU1CPO31fIBEMWEoNQB'});
 </script>
+@endif
 
 <h3 id="receve_channel_title">@lang('product.receive_by_channel')</h3>
 <div class="two-col">
