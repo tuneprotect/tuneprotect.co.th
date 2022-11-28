@@ -97,7 +97,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                 <div><span>เบอร์โทรศัพท์มือถือ : </span><strong>${v.MOBILE}</strong></div>
                                 <div><span>อีเมล : </span><strong>${v.EMAIL}</strong></div>
                                 <div class="controls-wrapper full no-lable"><span>ที่อยู่ : </span><strong>${v.ADDRESS2}</strong></div>
-                                <div class="controls-wrapper full no-lable"><span>ผู้รับผลประโยชน์ : </span><strong>${v.BENEFIT_NAME}</strong></div>
+                                <div class="controls-wrapper full no-lable"><span>ผู้รับผลประโยชน์ : </span><strong>${v.BEN_NAME2}</strong></div>
                             </div>
                             <br>`;
                         NumOfPol= NumOfPol+1;
