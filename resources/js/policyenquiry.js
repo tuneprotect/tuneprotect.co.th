@@ -84,7 +84,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                 <div><span>เลขอ้างอิง (Ref Code.) : </span><strong>${v.REF_CODE}</strong></div>
                                 <div><span>เลขอินวอยซ์ : </span><strong>${v.INVOICE}</strong></div>
                                 <div><span>สถานะ : </span><strong>${v.ACTIVE}</strong></div>
-                                ${group_p.value == 'tune' ? `<div class="btn-wrapper"><a class="btn btn-primary" target="_blank" href="/${$('html').getAttribute('lang')}/PolicyEnquiry/Unlock/${v.PASSPORT_NO}">Unlock</a></div>` : ''}
+                                ${group_p.value == 'tune' ? `<div class="btn-wrapper"><a class="btn btn-primary" target="_blank" href="/${$('html').getAttribute('lang')}/PolicyEnquiry/Unlock/${v.ID_NO}">Unlock</a></div>` : ''}
 
                             </div>
                             <br>
