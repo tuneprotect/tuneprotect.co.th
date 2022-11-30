@@ -1,7 +1,7 @@
 <section style="display: none;" id="step2" class="product-detail">
 
     <div class="wrapper">
-        <table id="table-detail" data-package_name="{{$package->locales[$locale]->title}}">
+        <!-- <table id="table-detail" data-package_name="{{$package->locales[$locale]->title}}">
             <thead>
             <tr>
                 <th>
@@ -168,7 +168,7 @@
                 @endforeach
             </tr>
             </tfoot>
-        </table>
+        </table> -->
 
         <br><br>
         <a href="#" data-gtm="product-{{strtolower($selected)}}-more" id="btn-more-diabetes" data-expand="@lang('product.more')"
