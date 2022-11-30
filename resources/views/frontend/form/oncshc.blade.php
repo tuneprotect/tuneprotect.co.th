@@ -34,8 +34,6 @@
             <div class="form-inner">
                 <h3>@lang('product.your-details')</h3>
                 @include('frontend.component.form-date-input')
-                <br>
-                @include('frontend.component.form-bmi-input')
 
             </div>
             <div class="btn-wrapper">
