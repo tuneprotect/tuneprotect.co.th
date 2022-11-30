@@ -218,6 +218,14 @@
                                                 src="{{url(!empty($v->pic_mobile_en) ? url(str_replace('Banner-baowan-main-en', 'Banner-diabetes-detail-en', $v->pic_mobile_en)) : url(str_replace('Banner-baowan-main-en', 'Banner-diabetes-detail-en', $v->pic_en)) )}}"
                                                 alt="{{$v->locales[$locale]->title}}">
                                         </picture>
+                                    @elseif($selected==='ONCSHC')
+                                        <picture>
+                                            <source media="(min-width:768px)"
+                                                    srcset="{{url(str_replace('Banner-baowan-main-en', 'Banner-chillsure-main-en-mb', $v->pic_en))}}">
+                                            <img
+                                                src="{{url(!empty($v->pic_mobile_en) ? url(str_replace('Banner-baowan-main-en', 'Banner-chillsure-main-en-pc', $v->pic_mobile_en)) : url(str_replace('Banner-baowan-main-en', 'Banner-chillsure-main-en-pc', $v->pic_en)) )}}"
+                                                alt="{{$v->locales[$locale]->title}}">
+                                        </picture>
                                     @elseif($selected==='ONTALN')
                                             <picture class="yyyyyy">
                                                 <source media="(min-width:768px)"
@@ -303,6 +311,14 @@
                                                     srcset="{{url(str_replace('Banner-baowan-main-th', 'Banner-diabetes-detail-th', $v->pic))}}">
                                             <img
                                                 src="{{url(!empty($v->pic_mobile) ? url(str_replace('Banner-baowan-main-th', 'Banner-diabetes-detail-th', $v->pic_mobile)) : url(str_replace('Banner-baowan-main-th', 'Banner-diabetes-detail-th', $v->pic)) )}}"
+                                                alt="{{$v->locales[$locale]->title}}">
+                                        </picture>
+                                    @elseif($selected==='ONCSHC')
+                                        <picture>
+                                            <source media="(min-width:768px)"
+                                                    srcset="{{url(str_replace('Banner-baowan-main-th', 'Banner-chillsure-main-th-mb', $v->pic_en))}}">
+                                            <img
+                                                src="{{url(!empty($v->pic_mobile_en) ? url(str_replace('Banner-baowan-main-th', 'Banner-chillsure-main-th-pc', $v->pic_mobile_en)) : url(str_replace('Banner-baowan-main-th', 'Banner-chillsure-main-th-pc', $v->pic_en)) )}}"
                                                 alt="{{$v->locales[$locale]->title}}">
                                         </picture>
                                     @else
