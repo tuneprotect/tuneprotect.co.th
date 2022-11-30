@@ -51,7 +51,7 @@
             @endif
         </form>
     </section>
-    @include('frontend.component.form-diabetes-table',['package_detail' => $package_detail,'selected' =>$selected ])
+    @include('frontend.component.form-chill-sure-table',['package_detail' => $package_detail,'selected' =>$selected ])
 </div>
 <section style="display: none;" id="step3" class="wrapper">
     <h2>@lang('product.question_title')</h2>
