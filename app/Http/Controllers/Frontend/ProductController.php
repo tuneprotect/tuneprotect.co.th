@@ -543,7 +543,7 @@ class ProductController extends BaseController
             }
             if (substr($data['fdPackage'], 0, 6) === 'ONCSHC')
             {
-                $package = (array)json_decode(Storage::disk('public')->get('json/diabetes.json'));
+                $package = (array)json_decode(Storage::disk('public')->get('json/oncshc.json'));
             }
             if(isset($package[$data['fdPackage']]->apiPackage))
             {
