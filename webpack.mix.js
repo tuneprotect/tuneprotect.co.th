@@ -95,6 +95,7 @@ mix.react('resources/backstage_source/index.js', 'public/js/backstage')
     .js('resources/js/product/onvsafe.js', 'public/js/frontend/product/')
     .js('resources/js/product/diabetes.js', 'public/js/frontend/product/')
     .js('resources/js/product/taism.js', 'public/js/frontend/product/')
+    .js('resources/js/product/oncshc.js', 'public/js/frontend/product/')
     .sass('resources/sass/style.scss', 'public/css/frontend')
     .browserSync('https://staging.tuneprotect.local')
     .version();

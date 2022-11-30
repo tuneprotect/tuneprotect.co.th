@@ -410,6 +410,8 @@ class ProductController extends BaseController
             $obj = new FIMPObject();
         }elseif (substr($data['fdPackage'], 0, 8) === 'DIABETES') {
             $obj = new BAOWANObject();
+        }elseif (substr($data['fdPackage'], 0, 6) === 'ONCSHC') {
+            $obj = new BAOWANObject();
         }
         else {
             $obj = new BaseInsuranceObject();
@@ -477,6 +479,7 @@ class ProductController extends BaseController
             || substr($data['fdPackage'], 0, 9) === 'ONCOVIDMW'
             || substr($data['fdPackage'], 0, 7) === 'ONVSAFE'
             || substr($data['fdPackage'], 0, 8) === 'DIABETES'
+            || substr($data['fdPackage'], 0, 6) === 'ONCSHC'
         ){
 
 
@@ -540,6 +543,10 @@ class ProductController extends BaseController
                 $package = (array)json_decode(Storage::disk('public')->get('json/onvsurea.json'));
             }
             if (substr($data['fdPackage'], 0, 8) === 'DIABETES')
+            {
+                $package = (array)json_decode(Storage::disk('public')->get('json/diabetes.json'));
+            }
+            if (substr($data['fdPackage'], 0, 6) === 'ONCSHC')
             {
                 $package = (array)json_decode(Storage::disk('public')->get('json/diabetes.json'));
             }
