@@ -450,7 +450,6 @@ document.addEventListener("DOMContentLoaded", async () => {
         $btn.addEventListener("click", function (e) {
                 e.preventDefault();
                 const goToStep = parseInt($btn.getAttribute('data-step'));
-                console.log("goToStep",goToStep);
 
                 let status = false;
 
@@ -462,16 +461,14 @@ document.addEventListener("DOMContentLoaded", async () => {
                     switch (parseInt(step)) {
                         case 1:
                             const validateResult = validateAgeInPackage(package_data, false);
-                            const validateBMIResult = validateBMI();
+                           
 
-                            if (validateResult.status && validateBMIResult.status) {
+                            console.log("validateResult",validateResult);
+                            if (validateResult.status) {
                                 status = true;
                                 data = {
                                     ...data,
                                     ...validateResult.data,
-                                    fdBMI_Weight: $('#ctrl_weight').value,
-                                    fdBMI_Height: $("#ctrl_height").value,
-                                    fdBMI_Value: $("#ctrl_bmi_calculator").value
                                 }
 
                                 genPrice();
