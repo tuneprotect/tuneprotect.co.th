@@ -33,8 +33,14 @@
         <div class="form-inner">
             <h3>@lang('product.your-details')</h3>
             @include('frontend.component.form-date-input')
-
+            <div class="controls-wrapper full">
+                <input id="ctrl_accept_insurance_term" name="ctrl_accept_insurance_term" type="checkbox"
+                    data-error-insurance_term="@lang("product.error.insurance_term")"
+                    value="1"/><label
+                    for="ctrl_accept_insurance_term">@lang('product.accept_insurance')</label>
+            </div>
         </div>
+        
         <div class="btn-wrapper">
             <a href="{{url()->current()}}#step2" data-gtm="product-{{strtolower($selected)}}-proceed-step-1" data-step="2" class="btn btn-primary btn-goto">@lang('product.next')</a>
         </div>
