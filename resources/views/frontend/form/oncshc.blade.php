@@ -37,7 +37,7 @@
                 <input id="ctrl_accept_insurance_term" name="ctrl_accept_insurance_term" type="checkbox"
                     data-error-insurance_term="@lang("product.error.insurance_term")"
                     value="1"/><label
-                    for="ctrl_accept_insurance_term">@lang('product.accept_insurance')</label>
+                    for="ctrl_accept_insurance_term">@lang('product.ONCSHC_MSG.oncshc_msg_accept_step1')</label>
             </div>
         </div>
         
