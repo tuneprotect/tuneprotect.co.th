@@ -472,7 +472,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                             const validateResult = validateAgeInPackage(package_data, false);
                             const chkAccept = validateAcceptStep1();
                             if(!chkAccept){
-                                showAcceptError($('#ctrl_weight').getAttribute('data-error-not-qualify'));
+                                showAcceptError($('#ctrl_accept_step1').getAttribute('data-error-insurance_term'));
                             }
                             if (validateResult.status) {
                                 status = true;
