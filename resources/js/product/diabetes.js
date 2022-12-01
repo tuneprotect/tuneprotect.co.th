@@ -451,8 +451,6 @@ document.addEventListener("DOMContentLoaded", async () => {
         $btn.addEventListener("click", function (e) {
                 e.preventDefault();
                 const goToStep = parseInt($btn.getAttribute('data-step'));
-                console.log("goToStep",goToStep);
-
                 let status = false;
 
                 if (step > goToStep) {
