@@ -217,7 +217,7 @@ class ProductController extends BaseController
             $package_detail = json_decode(Storage::disk('public')->get('json/' . $packageJson . '.json'));
             //if($selected === 'ONCSHC') {$this->bodyData['package_detail'] = $package_detail;}
             foreach ($package_detail as $k => $v) {
-                dd($k, $selected);
+                dd(str_starts_with($k, $selected));
                 if (str_starts_with($k, $selected)) {
                     if($this->locale === 'en')
                     {
