@@ -27,33 +27,29 @@
         </div>
     @endif
 </section>
-<div class="step_wrapper">
-    <section id="step1" class="wrapper">
-        <form method="post" action="" class="insurance-form">
-            <div class="form-head">@lang('product.please_specify_ci_title')</div>
-            <div class="form-inner">
-                <h3>@lang('product.your-details')</h3>
-                @include('frontend.component.form-date-input')
+<section id="step1" class="wrapper">
+    <form method="post" action="" class="insurance-form">
+        <div class="form-head">@lang('product.please_specify_ci_title')</div>
+        <div class="form-inner">
+            <h3>@lang('product.your-details')</h3>
+            @include('frontend.component.form-date-input')
 
-            </div>
+        </div>
+        <div class="btn-wrapper">
+            <a href="{{url()->current()}}#step2" data-gtm="product-{{strtolower($selected)}}-proceed-step-1" data-step="2" class="btn btn-primary btn-goto">@lang('product.next')</a>
+        </div>
+        <input type="hidden" id="controller" value="{{$controller}}"/>
+        @if($controller == 'portal')
             <div class="btn-wrapper">
-                <a href="{{url()->current()}}#step2" data-gtm="product-{{strtolower($selected)}}-proceed-step-1" data-step="2" class="btn btn-primary btn-goto">@lang('product.next')</a>
+                <input type="hidden" id="portal_key" value="{{$portal_key}}"/>
+                <input type="hidden" id="status_api" value="{{$status_api}}"/>
+                <input type="hidden" id="nopayment_status" value="{{$nopayment_status}}"/>
             </div>
-            <div class="btn-wrapper">
-                <button id="btnStep1" data-gtm="product-{{strtolower($selected)}}-proceed-step-1" data-step="2" class="btn btn-primary btn-goto"><i id="iconLoad" class="fa fa-spinner fa-spin"></i>@lang('product.next')</button>
-            </div>
-            <input type="hidden" id="controller" value="{{$controller}}"/>
-            @if($controller == 'portal')
-                <div class="btn-wrapper">
-                    <input type="hidden" id="portal_key" value="{{$portal_key}}"/>
-                    <input type="hidden" id="status_api" value="{{$status_api}}"/>
-                    <input type="hidden" id="nopayment_status" value="{{$nopayment_status}}"/>
-                </div>
-            @endif
-        </form>
-    </section>
-    @include('frontend.component.form-chill-sure-table',['package_detail' => $package_detail,'selected' =>$selected ])
-</div>
+        @endif
+    </form>
+</section>
+@include('frontend.component.form-chill-sure-table',['package_detail' => $package_detail,'selected' =>$selected ])
+
 <section style="display: none;" id="step3" class="wrapper">
     <h2>@lang('product.question_title')</h2>
     <div class="question">
