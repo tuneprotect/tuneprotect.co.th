@@ -51,10 +51,6 @@
                                 <strong>@lang('product.plan') {{$v->no}}</strong>
                             @endif
                         @else
-
-                            <span data-recommend>
-                                    <img src="/images/ico_ci/recommended-{{$locale}}.png" alt="recommendth">
-                                </span>
                             <strong class="package-number">@lang('product.plan') {{$i}}</strong>
                         @endif
 
