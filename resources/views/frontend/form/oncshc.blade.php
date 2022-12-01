@@ -39,6 +39,9 @@
             <div class="btn-wrapper">
                 <a href="{{url()->current()}}#step2" data-gtm="product-{{strtolower($selected)}}-proceed-step-1" data-step="2" class="btn btn-primary btn-goto">@lang('product.next')</a>
             </div>
+            <div class="btn-wrapper">
+                <button id="btnStep1" data-gtm="product-{{strtolower($selected)}}-proceed-step-1" data-step="2" class="btn btn-primary btn-goto"><i id="iconLoad" class="fa fa-spinner fa-spin"></i>@lang('product.next')</button>
+            </div>
             <input type="hidden" id="controller" value="{{$controller}}"/>
             @if($controller == 'portal')
                 <div class="btn-wrapper">
