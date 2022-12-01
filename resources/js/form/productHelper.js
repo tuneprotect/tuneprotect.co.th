@@ -57,14 +57,14 @@ export const validateAgeInPackage = (package_data, cal_price) => {
         .filter(k => _.startsWith(k, current_package))
         .some(k => Object.keys(package_data[k].price).some(ageRange => checkAge(birthday, ageRange)))
     
-    console.log('age_in_range',package_data);
+    console.log('age_in_range',age_in_range);
     if (!age_in_range) {
         showDateError($('#ctrl_day').getAttribute('data-error-not-qualify'));
         return {status: false};
     }
 
     const age = calculateAge(birthday)
-
+    console.log('age',age);
     if (cal_price !== false) {
         genPrice(birthday, package_data)
     }
