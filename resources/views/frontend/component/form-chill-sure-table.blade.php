@@ -1,6 +1,6 @@
 <section style="display: none;" id="step2" class="product-detail">
 <style>
-    @media only screen and (max-width: 600px) {
+    @media only screen and (min-width: 600px) {
         .th-one{
             width: 40%;
         }
