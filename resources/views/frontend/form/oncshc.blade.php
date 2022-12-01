@@ -34,10 +34,10 @@
             <h3>@lang('product.your-details')</h3>
             @include('frontend.component.form-date-input')
             <div class="controls-wrapper full">
-                <input id="ctrl_accept_insurance_term" name="ctrl_accept_insurance_term" type="checkbox"
+                <input id="ctrl_accept_step1" name="ctrl_accept_insurance_term" type="checkbox"
                     data-error-insurance_term="@lang("product.error.insurance_term")"
                     value="1"/><label
-                    for="ctrl_accept_insurance_term">@lang('product.ONCSHC_MSG.oncshc_msg_accept_step1')</label>
+                    for="ctrl_accept_step1">@lang('product.ONCSHC_MSG.oncshc_msg_accept_step1')</label>
             </div>
         </div>
         

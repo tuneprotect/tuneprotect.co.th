@@ -258,7 +258,17 @@ document.addEventListener("DOMContentLoaded", async () => {
         fdKeys: Keys,
         channel: channel
     };
-
+    const validateAcceptStep1 = () => {
+        // $$('.bmi-input .controls-wrapper').forEach(el => {
+        //     el.classList.remove('error');
+        // });
+        // $('.bmi-input cite').innerHTML = "";
+        let chkAccept = $('#ctrl_accept_step1').checked ? true : undefined;
+        if(!chkAccept){
+           console.log("error")
+            showDateError($('cite').getAttribute('data-error-not-qualify'));
+        }       
+    }
     const validateBMI = () => {
         $$('.bmi-input .controls-wrapper').forEach(el => {
             el.classList.remove('error');
@@ -457,13 +467,13 @@ document.addEventListener("DOMContentLoaded", async () => {
                     status = true;
                     hideShowConditionBox(goToStep);
                 } else {
-                    // console.log('step' + step);
                     switch (parseInt(step)) {
                         case 1:
                             const validateResult = validateAgeInPackage(package_data, false);
-                           
-
-                            console.log("validateResult",validateResult);
+                            const chkAccept = validateAcceptStep1();
+                            if(!chkAccept){
+                                scrollToTargetAdjusted($('.controls-wrapper.error'));
+                            }
                             if (validateResult.status) {
                                 status = true;
                                 data = {
