@@ -91,3 +91,11 @@ export const showBMIValidateError = (message,selector) => {
     });
     scrollToTargetAdjusted($('.controls-wrapper.error'));
 }
+
+export const showAcceptError = (message) => {
+    $('cite.step1_error').innerHTML = message;
+    // $$('.bmi-input .controls-wrapper').forEach(el => {
+    //     el.classList.add('error');
+    // });
+    scrollToTargetAdjusted($('.controls-wrapper.error'));
+}
