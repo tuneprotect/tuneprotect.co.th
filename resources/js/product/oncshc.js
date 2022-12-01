@@ -259,15 +259,10 @@ document.addEventListener("DOMContentLoaded", async () => {
         channel: channel
     };
     const validateAcceptStep1 = () => {
-        // $$('.bmi-input .controls-wrapper').forEach(el => {
-        //     el.classList.remove('error');
-        // });
-        // $('.bmi-input cite').innerHTML = "";
-        let chkAccept = $('#ctrl_accept_step1').checked ? true : undefined;
-        if(!chkAccept){
-           console.log("error")
-            showDateError($('cite').getAttribute('data-error-not-qualify'));
-        }       
+       
+        $('cite.step1_error').innerHTML = "";
+        let chkAccept = $('#ctrl_accept_step1').checked ? true : false;
+         return chkAccept;
     }
     const validateBMI = () => {
         $$('.bmi-input .controls-wrapper').forEach(el => {
