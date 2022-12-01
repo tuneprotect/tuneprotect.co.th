@@ -472,6 +472,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                             const validateResult = validateAgeInPackage(package_data, false);
                             const chkAccept = validateAcceptStep1();
                             if(!chkAccept){
+                                alert(1)
                                 scrollToTargetAdjusted($('.controls-wrapper.error'));
                             }
                             if (validateResult.status) {
