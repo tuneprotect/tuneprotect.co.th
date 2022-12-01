@@ -3,7 +3,7 @@ import {
     showBMIError,
     showBMIValidateError,
     showDateError,
-    showError,
+    showAcceptError,
     showFieldError,
     validateField
 } from "../validate_form";
