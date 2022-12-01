@@ -22,7 +22,6 @@
                                             <strong>@lang('product.plan') {{$v->no}}</strong>
                                         @endif
                                     @else
-
                                         <strong class="package-number">@lang('product.plan') {{$i}}</strong>
                                     @endif
                                     <span class="show_on_mobile" data-price-{{$k}}></span>
@@ -46,11 +45,6 @@
                 @foreach ($package_detail as $k => $v)
                     <th data-package="{{$k}}">
                         @if(isset($v->no))
-
-                            <span data-recommend>
-                                  <img src="/images/ico_ci/recommended-{{$locale}}.png" alt="recommendth">
-                            </span>
-
                             @if(isset($v->name))
                                 <strong>{{$v->name}} @lang('product.plan') {{$v->no}}</strong>
                             @else
