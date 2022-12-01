@@ -1,10 +1,17 @@
 <section style="display: none;" id="step2" class="product-detail">
-
+<style>
+    @media only screen and (max-width: 600px) {
+        .th-one{
+            width: 40%;
+        }
+    }
+   
+</style>
     <div class="wrapper">
         <table id="table-detail" data-package_name="{{$package->locales[$locale]->title}}">
             <thead>
             <tr>
-                <th>
+                <th class="th-one">
                     <h3>@lang('global.coverage')</h3>
                     <?php $i = 1 ?>
                     <div class="choose-plan-mobile">
