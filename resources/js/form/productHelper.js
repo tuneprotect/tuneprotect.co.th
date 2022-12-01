@@ -53,7 +53,7 @@ export const validateAgeInPackage = (package_data, cal_price) => {
         return {status: false};
     }
 
-    console.log('package_data',package_data[k].price,ageRange);
+    console.log('package_data',current_package);
     const age_in_range = Object.keys(package_data)
         .filter(k => _.startsWith(k, current_package))
         .some(k => Object.keys(package_data[k].price).some(ageRange => checkAge(birthday, ageRange)))
