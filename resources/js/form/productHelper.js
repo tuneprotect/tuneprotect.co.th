@@ -48,6 +48,7 @@ export const validateAgeInPackage = (package_data, cal_price) => {
     }
 
     const birthday = `${yy}-${mm}-${dd}`;
+    console.log('birthday',birthday);
     if (!isValid(parseISO(birthday))) {
         showDateError($('#ctrl_day').getAttribute('data-error-format'));
         return {status: false};
