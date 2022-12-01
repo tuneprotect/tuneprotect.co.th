@@ -92,20 +92,26 @@
                     <?php $i++ ?>
                 @endforeach
             </tr>
-            <?php $arr_sort = ['CHILLSURE01', 'CHILLSURE02', 'CHILLSURE03', 'CHILLSURE04', 'CHILLSURE07','CHILLSURE05', 'CHILLSURE06']; ?>            @foreach ( $arr_sort as $v)
+            @foreach (__('product.'.$selected) as $k => $v)
                 <tr>
-                    <th>{!! __('product.'.$selected.'.'.$v) !!}</th>
                     <?php $i = 1 ?>
+                    <th data-cover-{{$k}}>{!! $v !!}</th>
 
                     @foreach ($package_detail as $k1 => $v1)
                         <td {{$i > 1 ? 'class=hide' : ""}} data-index="{{$i}}" data-package="{{$k1}}">
-                            @if(isset($v1->plan->$v))
-                                @if((is_numeric($v1->plan->$v)))
-                                    <strong>{{number_format( $v1->plan->$v,0)}}</strong>
-                                @elseif( strpos($v1->plan->$v,'__') === 0 )
-                                    <strong>{!!__( str_replace('__','',$v1->plan->$v) )!!}</strong>
+                            @if(isset($v1->plan->$k))
+                                @if((is_numeric($v1->plan->$k)))
+                                    <strong>{{number_format( $v1->plan->$k,0)}}</strong>
+                                @elseif( strpos($v1->plan->$k,'__') === 0 )
+                                    <strong>{!!__( str_replace('__','',$v1->plan->$k) )!!}</strong>
+                                @elseif(str_contains($v1->plan->$k,'healt2go_plan'))
+                                    <strong>{!!__( str_replace('healt2go_plan',__('product.healt2go_plan'),$v1->plan->$k)) !!}</strong>
+                                @elseif(str_contains($v1->plan->$k,'healt2go_desc'))
+                                    <strong>{!!__( str_replace('healt2go_desc',__('product.healt2go_desc'),$v1->plan->$k)) !!}</strong>
+                                @elseif(str_contains($v1->plan->$k,'healt2go_word'))
+                                    <strong>{!!__( str_replace('healt2go_word',__('product.healt2go_word'),$v1->plan->$k)) !!}</strong>
                                 @else
-                                    <strong>{!! $v1->plan->$v !!}</strong>
+                                    <strong>{!! $v1->plan->$k !!}</strong>
                                 @endif
                             @endif
                         </td>
@@ -113,6 +119,7 @@
                     @endforeach
                 </tr>
             @endforeach
+            
 
             </tbody>
 
