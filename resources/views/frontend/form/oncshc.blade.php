@@ -33,8 +33,7 @@
             <div class="form-head">@lang('product.please_specify_ci_title')</div>
             <div class="form-inner">
                 <h3>@lang('product.your-details')</h3>
-                @include('frontend.component.form-date-input')
-
+                @include('frontend.component.form-birthdate-effectivedate')
             </div>
             <div class="btn-wrapper">
                 <a href="{{url()->current()}}#step2" data-gtm="product-{{strtolower($selected)}}-proceed-step-1" data-step="2" class="btn btn-primary btn-goto">@lang('product.next')</a>
