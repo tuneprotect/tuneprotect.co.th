@@ -48,7 +48,6 @@ export const validateAgeInPackage = (package_data, cal_price) => {
     }
 
     const birthday = `${yy}-${mm}-${dd}`;
-    console.log("birthday",birthday);
     if (!isValid(parseISO(birthday))) {
         showDateError($('#ctrl_day').getAttribute('data-error-format'));
         return {status: false};
@@ -58,7 +57,7 @@ export const validateAgeInPackage = (package_data, cal_price) => {
         .filter(k => _.startsWith(k, current_package))
         .some(k => Object.keys(package_data[k].price).some(ageRange => checkAge(birthday, ageRange)))
     
-    //console.log('age_in_range',package_data);
+    console.log('age_in_range',package_data);
     if (!age_in_range) {
         showDateError($('#ctrl_day').getAttribute('data-error-not-qualify'));
         return {status: false};
