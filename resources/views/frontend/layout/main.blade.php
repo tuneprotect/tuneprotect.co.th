@@ -219,7 +219,7 @@
                                                 alt="{{$v->locales[$locale]->title}}">
                                         </picture>
                                     @elseif($selected==='ONCSHC')
-                                        <picture>
+                                        <picture class="8888">
                                             <source media="(min-width:768px)"
                                                     srcset="{{url(str_replace('Banner-baowan-main-en', 'Banner-chillsure-main-en-mb', $v->pic_en))}}">
                                             <img
@@ -314,7 +314,7 @@
                                                 alt="{{$v->locales[$locale]->title}}">
                                         </picture>
                                     @elseif($selected==='ONCSHC')
-                                        <picture>
+                                        <picture class="8889">
                                             <source media="(min-width:768px)"
                                                     srcset="{{url(str_replace('Banner-baowan-main-th', 'Banner-chillsure-main-th-mb', $v->pic_en))}}">
                                             <img
