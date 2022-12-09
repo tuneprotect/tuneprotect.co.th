@@ -1,26 +1,24 @@
-@extends('frontend.layout.main')
 
-@section('page')
     <main>
         <style>
-           #pumpfreepa article {
-    background: #e32e6d;
-    background: linear-gradient(135deg,#e32e6d,#f9ed1a);
-    
-    margin-top: 20px;
-    margin-bottom: 20px;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    border-radius: 30px;
-}
-#pumpfreepa article a{
-    color:black;
-}
-#pumpfreepa article .inner-wrapper {
-    background: #fff;
-    border-radius: 30px;
-    padding: 40px 20px;
-}
+            #pumpfreepa article {
+                background: #e32e6d;
+                background: linear-gradient(135deg,#e32e6d,#f9ed1a);
+                
+                margin-top: 20px;
+                margin-bottom: 20px;
+                padding-top: 20px;
+                padding-bottom: 20px;
+                border-radius: 30px;
+            }
+            #pumpfreepa article a{
+                color:black;
+            }
+            #pumpfreepa article .inner-wrapper {
+                background: #fff;
+                border-radius: 30px;
+                padding: 40px 20px;
+            }
             #pumpfreepa .section{
                 display: grid;
                 grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
@@ -32,10 +30,10 @@
                 display:none !important;
             }
             .wrapper {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 10px 10px;
-}
+                max-width: 900px;
+                margin: 0 auto;
+                padding: 10px 10px;
+            }
         </style>
        
 
@@ -92,4 +90,3 @@
             </section>
         </div>
     </main>
-@endsection
