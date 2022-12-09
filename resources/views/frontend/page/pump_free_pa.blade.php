@@ -29,7 +29,7 @@ article .inner-wrapper {
                 display:none !important;
             }
             .wrapper {
-    max-width: 1000px;
+    max-width: 900px;
     margin: 0 auto;
     padding: 10px 10px;
 }
