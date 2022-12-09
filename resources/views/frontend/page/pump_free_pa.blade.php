@@ -29,17 +29,16 @@ article .inner-wrapper {
             #pumpfreepa .no-package{
                 display:none !important;
             }
+            .wrapper {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 10px 10px;
+}
         </style>
-        <article class="wrapper">
-            <div class="inner-wrapper">
-                <div>
-                    
-                </div>
-            </div>
-        </article>
+       
 
         <div class="-wrapper">
-            <section class="wrapper" id="pumpfreepa">
+            <section id="pumpfreepa">
                 <article class="wrapper">
                     <div class="inner-wrapper">
                         <div class="sub">
