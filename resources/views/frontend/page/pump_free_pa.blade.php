@@ -29,10 +29,10 @@
             }
             #pumpfreepa .section{
                 display: grid;
-                grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
+                grid-template-columns: repeat(auto-fit,minmax(231px,1fr));
                 -moz-column-gap: 20px;
                 column-gap: 20px;
-                max-width: 900px;
+                max-width: 100%;
             }
             #pumpfreepa .no-package{
                 display:none !important;
