@@ -3,6 +3,17 @@
 @section('page')
     <main>
         <style>
+            #pumpfreepa div.sub {
+                position: absolute;
+                left: 0;
+                top: 100%;
+                background: #fff;
+                border-radius: 10px;
+                overflow: hidden;
+                max-height: 0;
+                transition: all .5s cubic-bezier(.4,0,.2,1);
+            }
+
             #pumpfreepa .section{
                 display: grid;
                 grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
@@ -16,7 +27,6 @@
         </style>
         <div class="-wrapper">
             <section class="wrapper" id="pumpfreepa">
-                <h1>Hello</h1>
                 <div class="sub">
                     @foreach ($product_category as $k => $v)
                         <h3 data-index="{{$k}}" {{$k > 0 ?  "class=no-package" : ""}}>{{$v->locales[$locale]->title}} {!! $k > 0 ?  "<i class=icofont-caret-right></i>" : "" !!}</h3>
