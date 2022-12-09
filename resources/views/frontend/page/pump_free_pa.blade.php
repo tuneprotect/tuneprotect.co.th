@@ -1,6 +1,15 @@
-
+@extends('frontend.layout.main')
     <main>
         <style>
+            body header{
+                display: none;
+            }
+            body .sticky-menu{
+                display: none;
+            }
+            body footer{
+                display: none;
+            }
             #pumpfreepa article {
                 background: #e32e6d;
                 background: linear-gradient(135deg,#e32e6d,#f9ed1a);
