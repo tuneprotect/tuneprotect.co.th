@@ -62,8 +62,7 @@ class ServiceController extends BaseController
             }
             if(strtolower($link) == 'pumpfreepa')
             {
-//                $this->bodyData['no_share'] = true;
-                $this->bodyData['pumpfreepaComponent'] = 'frontend.page.pump_free_pa';
+                return redirect('/pumpfreepa');
             }
 
             $this->bodyData['extraComponent'] = 'frontend.component.mso-form';
