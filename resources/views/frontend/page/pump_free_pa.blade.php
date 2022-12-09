@@ -23,7 +23,7 @@ article .inner-wrapper {
                 grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
                 -moz-column-gap: 20px;
                 column-gap: 20px;
-                max-width: 700px;
+                max-width: 900px;
             }
             #pumpfreepa .no-package{
                 display:none !important;
@@ -42,7 +42,6 @@ article .inner-wrapper {
                     <div class="inner-wrapper">
                         <div class="sub">
                             @foreach ($product_category as $k => $v)
-                            <h3 data-index="{{$k}}" {{$k > 0 ?  "class=no-package" : ""}}>{{$v->locales[$locale]->title}} {!! $k > 0 ?  "<i class=icofont-caret-right></i>" : "" !!}</h3>
                             <div class="section {{$k > 0 ?  "no-package" : ""}}" data-index="{{$k}}">
                                 @foreach ($product as $v1)
                                     @if($v->id == $v1->cat_id)
