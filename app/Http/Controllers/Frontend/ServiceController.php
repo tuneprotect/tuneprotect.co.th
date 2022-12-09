@@ -32,6 +32,10 @@ class ServiceController extends BaseController
         {
             return redirect('/taxdeduction');
         }
+        if(strtolower($link) == 'pumfreepa')
+        {
+            return redirect('/pumpfreepa');
+        }
         if(strtolower($link) == 'pump')
         {
             if($this->locale == 'en')
@@ -60,11 +64,7 @@ class ServiceController extends BaseController
 //                $this->bodyData['no_share'] = true;
                 $this->bodyData['bloodTestComponent'] = 'frontend.page.blood_test';
             }
-            if(strtolower($link) == 'service_my_health.content_629')
-            {
-                $this->bodyData['pumpFreePAComponent'] = 'frontend.page.pump_free_pa';
-            }
-
+           
 
             $this->bodyData['extraComponent'] = 'frontend.component.mso-form';
 

@@ -1,5 +1,5 @@
 {
-    "/js/backstage/index.js": "/js/backstage/index.js?id=81c10debfaa8f0fe28e9",
+    "/js/backstage/index.js": "/js/backstage/index.js?id=6f2a0eef5073686e6ba2",
     "/js/frontend/amado.js": "/js/frontend/amado.js?id=c0ebec7bd99ca0fecdb0",
     "/js/frontend/article.js": "/js/frontend/article.js?id=222dd2013384fac54bd1",
     "/js/frontend/biglife.js": "/js/frontend/biglife.js?id=604c62c8f41528d16ecf",
@@ -46,6 +46,7 @@
     "/js/frontend/product/taism.js": "/js/frontend/product/taism.js?id=b518898c3dcebd0ffbad",
     "/js/frontend/product/taismtg.js": "/js/frontend/product/taismtg.js?id=656b4f65e1fb49b86954",
     "/js/frontend/product/tgcvlp.js": "/js/frontend/product/tgcvlp.js?id=32436ea9802b5612d8a9",
+    "/js/frontend/pumpfreepa.js": "/js/frontend/pumpfreepa.js?id=479c2c6a667f7099ce6f",
     "/js/frontend/service.js": "/js/frontend/service.js?id=3b7b39ad880969556dc8",
     "/js/frontend/ta.js": "/js/frontend/ta.js?id=c2d9337933c5c85e2128",
     "/js/frontend/taismtg.js": "/js/frontend/taismtg.js?id=1cfa78d63501a392bd85",
