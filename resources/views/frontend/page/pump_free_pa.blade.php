@@ -9,7 +9,6 @@
                 top: 100%;
                 background: #fff;
                 border-radius: 10px;
-                overflow: hidden;
                 max-height: 0;
                 transition: all .5s cubic-bezier(.4,0,.2,1);
             }
