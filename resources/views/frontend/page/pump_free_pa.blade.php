@@ -2,8 +2,10 @@
 
 @section('page')
     <main>
-        <section class="wrapper" id="pumpfreepa">
-            <h1>Hello</h1>
-        </section>
+        <div class="-wrapper">
+            <section class="wrapper" id="pumpfreepa">
+                <h1>Hello</h1>
+            </section>
+        </div>
     </main>
 @endsection
