@@ -2,6 +2,15 @@
 
 @section('page')
     <main>
+        <style>
+            #pumpfreepa .section{
+            display: grid;
+            grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
+            -moz-column-gap: 20px;
+            column-gap: 20px;
+            max-width: 700px;
+}
+        </style>
         <div class="-wrapper">
             <section class="wrapper" id="pumpfreepa">
                 <h1>Hello</h1>
