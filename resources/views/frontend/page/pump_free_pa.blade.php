@@ -43,26 +43,12 @@ article .inner-wrapper {
                         <div class="sub">
                             @foreach ($product_category as $k => $v)
                             <div class="section {{$k > 0 ?  "no-package" : ""}}" data-index="{{$k}}">
-                            <div>
-                                            <a class="category" data-gtm="main-nav-product-health" href="/th/product/health">
-                                                                                                                                                            <img src="http://staging.webtest2.tuneinsurance.co.th/storage/Banner/Banner-baowan-main-th.jpg" alt="">
-                                                                                                                                                    <strong>ประกันสุขภาพและโรคร้ายแรง</strong>
-                                            </a>
-                                                                                            <ul>
-                                                                                                            <li>
-                                                                                                                        <a data-gtm="main-nav-product-health-CI" href="http://staging.webtest2.tuneinsurance.co.th/th/product/health/CI">
-                                                                    <span>myFlexi CI</span></a>
-                                                                                                                    </li>
-                                                                                                            <li>
-                                                                                                                        <a data-gtm="main-nav-product-health-DIABETES" href="http://staging.webtest2.tuneinsurance.co.th/th/product/health/DIABETES">
-                                                                    <span>เบาหวาน Protect</span></a>
-                                                                                                                    </li>
-                                                                                                            <li>
-                                                                                                                        <a data-gtm="main-nav-product-health-ONCSHC" href="http://staging.webtest2.tuneinsurance.co.th/th/product/health/ONCSHC">
-                                                                    <span>Chill Sure</span></a>
-                                                                                                                    </li>
-                                                                                                    </ul>
-                                                                                    </div>
+                                <div>
+                                    <a class="category" data-gtm="main-nav-product-pumpfreepa" href="#">
+                                        <img src="https://www.tuneprotect.co.th/storage/Banner/pump/pumpfreepa.png" alt="PUMP FREE PA">
+                                        <strong>PUMP FREE PA</strong>
+                                    </a>
+                                </div>
                                 @foreach ($product as $v1)
                                     @if($v->id == $v1->cat_id)
                                         <div>
