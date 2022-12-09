@@ -46,7 +46,7 @@ class IndexController extends BaseController
 
 
         $this->bodyData['overlayComponent'] = 'frontend.component.overlay-form';
-        $this->bodyData['overlayCloseComponent'] = 'frontend.component.overlay-close-form-happytimes';
+        // $this->bodyData['overlayCloseComponent'] = 'frontend.component.overlay-close-form-happytimes';
 
 
         $this->bodyData['service'] = WebContent::where('type_id', ProjectEnum::WEB_CONTENT_SERVICE)
