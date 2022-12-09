@@ -1,67 +1,80 @@
+import {$, $$} from "./helper";
 import Swal from "sweetalert2";
-
-require('./bootstrap');
-require('./main');
-import {tns} from "tiny-slider/src/tiny-slider"
-import ScrollReveal from 'scrollreveal'
-import {$, $$} from "./helper"
 import validate from "validate.js";
 import {showFieldError, validateField} from "./validate_form";
-import {validatePolicy} from "./form/productHelper";
 
-validate.validators.idcard = function (value, options, key, attributes) {
-
-    if (!value) {
-        return "^" + $('#ctrl_card_id').getAttribute('data-error-idcard');
-    }
-
-    if (value.length !== 13) {
-        return "^" + $('#ctrl_card_id').getAttribute('data-error-idcard');
-    }
-
-    for (var i = 0, sum = 0; i < 12; i++) {
-        sum += parseFloat(value.charAt(i)) * (13 - i);
-    }
-    const result = ((11 - sum % 11) % 10 === parseFloat(value.charAt(12)));
-    if (!result) {
-        return "^" + $('#ctrl_card_id').getAttribute('data-error-idcard');
-    }
-};
-
+import {tns} from "tiny-slider/src/tiny-slider"
+import {showTitle} from "./form/productHelper";
 
 document.addEventListener("DOMContentLoaded", function () {
-    const $form = $('#frm_taxdeduction');
-    if ($form) {
-        let contactConstraints = {
-            card_id: {
+    const toggltField = (isShow) => {
+        $$('.hideField').forEach($el => {
+            if (isShow) {
+                $el.style.removeProperty('display');
+            } else {
+                $el.style.display = 'none';
+            }
+        });
+    }
+    toggltField(false);
+
+
+    const $frmBloodCheck = $('#frm_bloodcheck');
+    if ($frmBloodCheck) {
+        let contactConstraints3 = {
+            RefCode: {
                 presence: {
                     allowEmpty: false,
-                    message: "^" + $('#ctrl_card_id').getAttribute('data-error-required')
+                    message: '^' + $('#ctrl_ref_code').getAttribute('data-error-required')
                 },
-                length: {
-                    is: 13,
-                    message: "^" + $('#ctrl_card_id').getAttribute('data-error-idcard')
-                },
-                format: {
-                    pattern: /^[0-9]{13}$/,
-                    message: "^" + $('#ctrl_card_id').getAttribute('data-error-idcard')
-                },
-                idcard: {
-                    message: "^" + $('#ctrl_card_id').getAttribute('data-error-idcard')
-                }
-            },
-            email: {
-                presence: {
-                    allowEmpty: false,
-                    message: "^" + $('#ctrl_email').getAttribute('data-error-email')
-                }
             }
         };
 
-        const apiTaxDeduction = async (data) => {
-            $form.classList.add('ajax_loader');
+        // $$('button[name="action"]', $frmBloodCheck).forEach($el => $el.addEventListener("click", async function (e) {
+        //     e.preventDefault();
+        //     $$('cite', $frmBloodCheck).forEach($el => $el.remove());
+        //     $$('.controls-wrapper', $frmBloodCheck).forEach($el => $el.classList.remove('error'));
+        //     $$('input,select,textarea', $frmBloodCheck).forEach($el => $el.classList.remove('error'));
+        //
+        //     // let data = {
+        //     //     refCode: $('#ctrl_ref_code').value,
+        //     // }
+        //     //
+        //     // const result = validate(data, contactConstraints3);
+        //     //
+        //     // if (result) {
+        //     //     Object.keys(result).map(k => showFieldError($(`#ctrl_${k}`), result[k]));
+        //     //     return false;
+        //     // }
+        //
+        //     // await apiTaxDeduction(data);
+        //
+        //     if($('#ctrl_ref_code').value === '')
+        //     {
+        //         Swal.fire({
+        //             title: 'Warning!',
+        //             text: 'Warning '+ $('#ctrl_ref_code').getAttribute('data-error-required'),
+        //             icon: 'Warning',
+        //             confirmButtonText: 'OK'
+        //         })
+        //         return false;
+        //     }
+        //
+        //     let data = {
+        //         RefCode: $('#ctrl_ref_code').value,
+        //     }
+        //     await checkBloodTestCode(data);
+        //
+        //     return false;
+        // }));
+
+        const checkBloodTestCode = async (data) => {
+
+            // console.log(data);
+
+            $frmBloodCheck.classList.add('ajax_loader');
             try {
-                let res = await fetch($form.getAttribute('action'), {
+                let res = await fetch($frmBloodCheck.getAttribute('action'), {
                     method: 'post',
                     headers: {
                         'Accept': 'application/json',
@@ -70,115 +83,119 @@ document.addEventListener("DOMContentLoaded", function () {
                     },
                     body: JSON.stringify(data)
                 });
-
                 const response = await res.json();
+                if (response.status) {
+                    const $summary_section = $('#summary_section');
+                    $summary_section.innerHTML = ``;
 
-                // console.log(response);
+                    let respData = response.data;
+                    let innerHTML =  ``;
+                    respData.map(v => {
+                        innerHTML = innerHTML + `<br>
+                            <h3 class="text-primary">${$('label[for=policy_info]').innerText}</h3>
+                            <div class="two-col">
+                               <div><span>${$('label[for=policy_name]').innerText} </span><strong>${v.FDNAME}</strong><span> ${$('label[for=policy_sure_name]').innerText} </span><strong>${v.FDSURNAME}</strong></div>
+                               <div><span>${$('label[for=policy_no]').innerText} </span><strong>${v.POLICY_NO}</strong></div>
+                               <div><span>${$('label[for=policy_plan]').innerText} </span><strong>${$('label[for=policy_plan_description]').innerText}</span></strong></div>
+                               <div><span>${$('label[for=policy_from]').innerText} </span><strong>${v.FDFROMDATE}</strong></div>
+                               <div><span>${$('label[for=policy_to]').innerText} </span><strong>${v.FDTODATE}</strong></div>
+                               <div><span>Free Blood Test </span><strong>${$('label[for=policy_privilege]').innerText}</strong></div>
+                            </div>
+                            <br>`;
+                    });
 
-                if (response.status == 'success' && data.action == 'accept') {
-                    Swal.fire(
-                        {
-                            icon: 'success',
-                            title: `${$form.getAttribute('data-success')}`,
-                            html: `${$form.getAttribute('data-success-description')}<br><a href="/" style="display: inline-block;color: #FFFFFF" class="swal2-confirm swal2-styled">${$form.getAttribute('data-success-button')}</a>`,
-                            showConfirmButton: false,
-                        }
-                    )
-                    $('#ctrl_name').value = '';
-                    $('#ctrl_card_id').value = '';
-                    $('#ctrl_tax_id').value = '';
-                    $('#ctrl_mobile').value = '';
-                    $('#ctrl_email').value = '';
+                    const $ddlHospital = $('#ctrl_hospital');
+                    const hospital = $ddlHospital.options[$ddlHospital.selectedIndex].text;
+                    let param = $('#ctrl_ref_code').value + '|' + hospital;
+                    $summary_section.innerHTML = innerHTML;
+                    const $submit_section = $('#submit_section');
+                    $submit_section.innerHTML = `<div class="btn-wrapper"><a id="btnThank" class="btn btn-primary" href="/${$('html').getAttribute('lang')}/BloodTest/UsedBloodTest/${param}">${$('label[for=policy_submit3]').innerText}</a></div>`;
 
-                } else if (response.status == 'success' && data.action == 'decline') {
-                    Swal.fire(
-                        {
-                            icon: 'success',
-                            title: `${$form.getAttribute('data-error')}`,
-                            html: `${$form.getAttribute('data-success-description')}<br><a href="/" style="display: inline-block;color: #FFFFFF" class="swal2-confirm swal2-styled">${$form.getAttribute('data-success-button')}</a>`,
-                            showConfirmButton: false,
-                        }
-                    )
+                    toggltField(true);
 
-                    $('#ctrl_name').value = '';
-                    $('#ctrl_card_id').value = '';
-                    $('#ctrl_tax_id').value = '';
-                    $('#ctrl_mobile').value = '';
-                    $('#ctrl_email').value = '';
-
-                } else if(response.message == 'duplicate')
-                {
-                    Swal.fire(
-                        {
-                            title: `<i class="icofont-alarm" style="color:red"></i>`,
-                            html: `<strong>${$form.getAttribute('data-duplicate')}</strong><br>${$form.getAttribute('data-success-description')}`,
-                            confirmButtonText: $form.getAttribute('data-error-button'),
-                        }
-                    )
                 } else {
                     Swal.fire(
-                        {
-                            title: `<i class="icofont-alarm" style="color:red"></i>`,
-                            html: `<strong>${$form.getAttribute('data-error')}</strong><br>${$form.getAttribute('data-error-description')}`,
-                            confirmButtonText: $form.getAttribute('data-error-button'),
-                        }
+                        $frmBloodCheck.getAttribute('data-error'),
+                        response.message,
+                        'error'
                     )
                 }
             } catch (err) {
-                Swal.fire(
-                    {
-                        title: `<i class="icofont-alarm" style="color:red"></i>`,
-                        html: `<strong>${$form.getAttribute('data-error')}</strong><br>${$form.getAttribute('data-error-description')}`,
-                        confirmButtonText: $form.getAttribute('data-error-button'),
-                    }
-                )
+                Swal.fire({
+                    title: $frmBloodCheck.getAttribute('data-error'),
+                    text: $frmBloodCheck.getAttribute('data-error-description'),
+                    icon: 'error',
+                })
             }
-
-            $form.classList.remove('ajax_loader');
+            $frmBloodCheck.classList.remove('ajax_loader');
         }
 
 
-        $$('button[name="action"]', $form).forEach($el => $el.addEventListener("click", async function (e) {
+        $frmBloodCheck.addEventListener('submit', async (e) => {
             e.preventDefault();
+            $$('cite', $frmBloodCheck).forEach($el => $el.remove());
+            $$('.controls-wrapper', $frmBloodCheck).forEach($el => $el.classList.remove('error'));
+            $$('input,select,textarea', $frmBloodCheck).forEach($el => $el.classList.remove('error'));
 
-            const data = {
-                action: e.target.value,
-                name: $('#ctrl_name').value,
-                card_id: $('#ctrl_card_id').value,
-                tax_id: $('#ctrl_tax_id').value,
-                email: $('#ctrl_email').value,
-                mobile: $('#ctrl_mobile').value,
+            toggltField(false);
+
+            let data = {
+                RefCode: $('#ctrl_ref_code').value,
+                Lang:$('html').getAttribute('lang')
             }
-            // console.log({data})
 
-            $$('cite', $form).forEach($el => $el.remove());
-            $$('.controls-wrapper', $form).forEach($el => $el.classList.remove('error'));
-            $$('input,select,textarea', $form).forEach($el => $el.classList.remove('error'));
+            const result = validate(data, contactConstraints3);
 
-            const result = validate(data, contactConstraints);
             if (result) {
                 Object.keys(result).map(k => showFieldError($(`#ctrl_${k}`), result[k]));
-                console.log('false');
                 return false;
             }
 
-            await apiTaxDeduction(data);
+            await checkBloodTestCode(data);
 
-            return false;
-        }));
-
-        ['change'].forEach(evt => {
-            $$('input,select,textarea', $form).forEach($el => $el.addEventListener(evt, function (e) {
-                e.preventDefault();
-                validateField($el, contactConstraints);
-
-                if (['ctrl_card_id'].includes($el.id)) {
-                    $('#ctrl_tax_id').value = $('#ctrl_card_id').value;
-                }
-
-            }));
         });
 
-    }
+        $$("#ctrl_hospital").forEach($el => {
+            $el.addEventListener("change", function (e) {
 
+                let url = $frmBloodCheck.getAttribute('action2') + $('#ctrl_ref_code').value + '|' + $el.options[$el.selectedIndex].text;
+                let btnThank = document.getElementById('btnThank');
+                btnThank.href = url;
+
+            });
+        });
+
+
+        // $$('button[name="action"]', $frmBloodCheck).forEach($el => $el.addEventListener("click", async function (e) {
+        //     e.preventDefault();
+        //     const $ddlHospital = $('#ctrl_hospital');
+        //     const hospital = $ddlHospital.options[$ddlHospital.selectedIndex].text;
+        //     let param = $('#ctrl_ref_code').value + '|' + hospital;
+        //
+        //     // const $submit_section = $('#submit_section');
+        //     // $submit_section.innerHTML = `<div class="btn-wrapper"><a id="my-link" class="btn btn-primary" href="/${$('html').getAttribute('lang')}/BloodTest/UsedBloodTest/${param}">กดใช้สิทธิ์</a></div>`;
+        //     // let link = document.getElementById('my-link');
+        //     // link.click();
+        //
+        //     // $.post($frmBloodCheck.getAttribute('action2') + param, function(response) {
+        //     //     // handle your response here
+        //     //     console.log(response);
+        //     // })
+        //
+        //     // alert($frmBloodCheck.getAttribute('action2'));
+        //     //
+        //     // let res = await fetch(url, {
+        //     //     method: 'post',
+        //     //     headers: {
+        //     //         'Accept': 'application/json',
+        //     //         'Content-Type': 'application/json',
+        //     //         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').getAttribute('content')
+        //     //     }
+        //     // });
+        //     //
+        //     // return true;
+        //
+        // }));
+
+    }
 });
