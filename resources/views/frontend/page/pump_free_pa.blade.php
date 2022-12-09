@@ -1,6 +1,5 @@
 @extends('frontend.layout.main')
-    <main>
-        <style>
+<style>
             body header{
                 display: none;
             }
@@ -44,8 +43,8 @@
                 padding: 10px 10px;
             }
         </style>
-       
-
+@section('page')
+    <main>
         <div class="-wrapper">
             <section id="pumpfreepa">
                 <article class="wrapper">
@@ -99,3 +98,4 @@
             </section>
         </div>
     </main>
+@endsection
