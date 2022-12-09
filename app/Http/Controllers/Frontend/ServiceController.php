@@ -34,7 +34,7 @@ class ServiceController extends BaseController
         }
         if(strtolower($link) == 'pumpfreepa')
         {
-            return redirect('/pumpfreepa');
+            return redirect('/taxdeduction');
         }
         if(strtolower($link) == 'pump')
         {
