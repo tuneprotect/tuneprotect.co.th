@@ -1,4 +1,4 @@
-@section('page')
+
     <main>
         <style>
             #pumpfreepa article {
@@ -90,4 +90,3 @@
             </section>
         </div>
     </main>
-@endsection
