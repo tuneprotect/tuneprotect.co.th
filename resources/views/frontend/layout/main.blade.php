@@ -70,7 +70,7 @@
                                 <div>
                                     <ul>
                                         @foreach($service_my_health as $k =>$v)
-                                            @if($v->friendly_url === 'tax-deduction')
+                                            @if($v->friendly_url === 'tax-deduction' || $v->friendly_url === 'pumpfreepa')
                                             @else
                                                 <li>
                                                     <a data-gtm="main-nav-news"
