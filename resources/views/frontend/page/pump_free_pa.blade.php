@@ -3,7 +3,16 @@
 @section('page')
     <main>
         <style>
-           
+           article {
+    background: #e32e6d;
+    background: linear-gradient(135deg,#e32e6d,#f9ed1a);
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-radius: 30px;
+}
             #pumpfreepa .section{
                 display: grid;
                 grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
@@ -35,7 +44,7 @@ A brand-new application that connect customer experience and providing insurance
 For iOS <a href="https://apple.co/3CLWdOQ" target="_blank"><u>Click</u></a> and for android click <a href="https://bit.ly/3tfDS9I" target="_blank"><u>Click</u></a></p></div>
             </div>
         </article>
-        
+
         <div class="-wrapper">
             <section class="wrapper" id="pumpfreepa">
                 <div class="sub">
