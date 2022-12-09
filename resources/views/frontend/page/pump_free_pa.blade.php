@@ -3,7 +3,7 @@
 @section('page')
     <main>
         <style>
-           article {
+           #pumpfreepa article {
     background: #e32e6d;
     background: linear-gradient(135deg,#e32e6d,#f9ed1a);
     
@@ -13,7 +13,7 @@
     padding-bottom: 20px;
     border-radius: 30px;
 }
-article .inner-wrapper {
+#pumpfreepa article .inner-wrapper {
     background: #fff;
     border-radius: 30px;
     padding: 40px 20px;
