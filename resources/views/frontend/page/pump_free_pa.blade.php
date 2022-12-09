@@ -3,16 +3,7 @@
 @section('page')
     <main>
         <style>
-            #pumpfreepa div.sub {
-                position: absolute;
-                left: 0;
-                top: 100%;
-                background: #fff;
-                border-radius: 10px;
-                max-height: 0;
-                transition: all .5s cubic-bezier(.4,0,.2,1);
-            }
-
+           
             #pumpfreepa .section{
                 display: grid;
                 grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
@@ -24,6 +15,27 @@
                 display:none !important;
             }
         </style>
+        <article class="wrapper">
+            <div class="inner-wrapper">
+                <div><p><img alt="" src="/storage/Icon/thankyou.jpg"></p>
+
+<h1>Thank you for choosing Tune Protect</h1>
+
+<p>Your coverage starts now</p>
+
+<p>Please check your insurance policy following your specified channel. Your policy number for your<br>
+reference: </p>
+
+<p></p>
+
+<p><a class="btn btn-primary" href="/en">Back to Main Page</a></p>
+
+<p><strong>TuneTOUCH</strong> by Tune Protect. Stepping into the next level of development for our special customers.<br>
+A brand-new application that connect customer experience and providing insurance services at your fingertips.Download APP now in both iOS and android service.<br>
+For iOS <a href="https://apple.co/3CLWdOQ" target="_blank"><u>Click</u></a> and for android click <a href="https://bit.ly/3tfDS9I" target="_blank"><u>Click</u></a></p></div>
+            </div>
+        </article>
+        
         <div class="-wrapper">
             <section class="wrapper" id="pumpfreepa">
                 <div class="sub">
