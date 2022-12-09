@@ -13,6 +13,9 @@
     padding-bottom: 20px;
     border-radius: 30px;
 }
+#pumpfreepa article a{
+    color:black;
+}
 #pumpfreepa article .inner-wrapper {
     background: #fff;
     border-radius: 30px;
