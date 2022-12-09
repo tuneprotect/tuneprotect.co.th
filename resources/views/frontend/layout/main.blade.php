@@ -401,12 +401,15 @@
                         <ul class="collapse">
                             <li><a href="#"><strong>@lang('global.nav_service_my_health')</strong></a></li>
                             @foreach($service_my_health as $k =>$v)
-                                <li>
-                                    <a data-gtm="footer-nav-my-health"
-                                       href="/{{$locale}}/service/{{$v->friendly_url}}">
-                                        <span>{{$v->locales[$locale]->title}}</span>
-                                    </a>
-                                </li>
+                                @if($v->friendly_url === 'pumpfreepa')
+                                @else
+                                    <li>
+                                        <a data-gtm="footer-nav-my-health"
+                                        href="/{{$locale}}/service/{{$v->friendly_url}}">
+                                            <span>{{$v->locales[$locale]->title}}</span>
+                                        </a>
+                                    </li>
+                                @endif
                             @endforeach
                         </ul>
                     </section>

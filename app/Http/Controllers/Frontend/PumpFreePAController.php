@@ -17,7 +17,6 @@ class PumpFreePAController extends BaseController
 {
     public function index()
     {
-        //$this->template->setFootJS(mix("/js/frontend/pumpfreepa.js"));
         return $this->genView('frontend.page.pump_free_pa');
 
     }
