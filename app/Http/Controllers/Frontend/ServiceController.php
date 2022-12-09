@@ -60,11 +60,7 @@ class ServiceController extends BaseController
 //                $this->bodyData['no_share'] = true;
                 $this->bodyData['bloodTestComponent'] = 'frontend.page.blood_test';
             }
-            if(strtolower($link) == 'pumpfreepa')
-            {
-                return redirect('/pumpfreepa');
-            }
-
+        
             $this->bodyData['extraComponent'] = 'frontend.component.mso-form';
 
             if(strtolower($linkTemp) == 'health2goview')
