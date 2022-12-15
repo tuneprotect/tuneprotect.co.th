@@ -90,7 +90,7 @@
                                     </div>
                                     <ul>
                                         @foreach($v->productPackage AS $v1)
-                                            @if($v1->code === 'ONVACINA' || $v1->code === 'CVCARE'|| $v1->code === 'ONCOVIDMW' || $v1->code === 'TGCVLP' || $v1->code === 'TAISMTG' || $v1->code === 'ONTALN' || $v1->code === 'ONVSUREA')
+                                            @if($v1->code === 'ONVACINA' || $v1->code === 'CVCARE'|| $v1->code === 'ONCOVIDMW' || $v1->code === 'TGCVLP' || $v1->code === 'TAISMTG' || $v1->code === 'ONTALN' || $v1->code === 'ONVSUREA' || $v1->code === 'ONTAOBB2B')
                                             @else
                                                 <li>
                                                     <a
