@@ -228,9 +228,9 @@
                                     </picture>
                                 @elseif($selected==='ONTAOBB2B')
                                     <picture>
-                                        <source media="(min-width:768px)" srcset="{{url(str_replace('Banner_TA_D', 'b2b/iTravel_PC_TH', $v->pic_en))}}">
-                                        <img src="{{url(!empty($v->pic_mobile_en) ? url(str_replace('Banner_TA_D', 'b2b/iTravel_PC_TH', $v->pic_mobile_en)) : url(str_replace('Banner_TA_D', 'b2b/iTravel_MB_TH', $v->pic_en)) )}}"
-                                             alt="{{$v->locales[$locale]->title}}">
+                                        <source media="(min-width:768px)" srcset="/storage/Banner/b2b/iTravel_PC_TH.jpg">
+                                        <img src="{{url(!empty($v->pic_mobile_en) ? "/storage/Banner/b2b/iTravel_PC_TH.jpg" : "/storage/Banner/b2b/iTravel_MB_TH.jpg" )}}"
+                                                alt="{{$v->locales[$locale]->title}}">
                                     </picture>
 
                                     <!--picture>
