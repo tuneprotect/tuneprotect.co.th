@@ -300,7 +300,20 @@ class ProductController extends BaseController
             $this->bodyData['review'] = view('frontend.component.review_product',['review' => $review,'locale' => $this->locale])->render();
 
         }
+        if($selected === 'ONTAOBB2B')
+        {
+            //Replace view in body content.
+            $review = WebContent::where('type_id', ProjectEnum::WEB_CONTENT_REVIEW)
+                ->where('custom_input_1','ONTAOBB2B')
+                ->with('locales')
+                ->whereRaw(ProjectEnum::isPublish())
+                ->inRandomOrder()
+                ->take(5)
+                ->get();
 
+            $this->bodyData['review'] = view('frontend.component.review_product',['review' => $review,'locale' => $this->locale])->render();
+
+        }
         if ($isPage) {
             $this->bodyData['category_leadform'] = WebContent::where('type_id', ProjectEnum::WEB_CONTENT_LEADFORM_CATEGORY)
                 ->with('locales')
@@ -372,9 +385,9 @@ class ProductController extends BaseController
         } elseif (substr($data['fdPackage'], 0, 5) === 'TAISM') {
             $obj = new ONTALNObject();
             $obj->fdFlgInbound = "I";
-        } elseif (substr($data['fdPackage'], 0, 6) === 'ONTAOB') {
+        } elseif (substr($data['fdPackage'], 0, 6) === 'ONTAOB' || substr($data['fdPackage'], 0, 9) === 'ONTAOBB2B') {
             $obj = new BaseTAObject();
-            $obj->fdDestFrom = "THA";
+            $obj->fdDestFrom = "THA";       
         } elseif (substr($data['fdPackage'], 0, 4) === 'ONTA') {
             $obj = new BaseTAObject();
             $obj->fdDestFrom = "THA";
@@ -960,6 +973,9 @@ class ProductController extends BaseController
             $link = "IssuePolicyInbound";
         } elseif (substr($package, 0, 6) === 'ONTAOB') {
             $this->thankYouParam = substr($package, 0, 6);
+            $link = "IssuePolicyiTravel";
+        } elseif (substr($package, 0, 9) === 'ONTAOBB2B') {
+            $this->thankYouParam = substr($package, 0, 9);
             $link = "IssuePolicyiTravel";
         } elseif (substr($package, 0, 6) === 'ONTADM' || substr($package, 0, 4) === 'ONTA') {
             $this->thankYouParam = substr($package, 0, 6);
