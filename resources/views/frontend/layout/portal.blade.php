@@ -125,6 +125,18 @@
                                                 src="{{url(!empty($v->pic_mobile_en) ? url(str_replace('Banner_TA_D_EN', 'b2b/iTravel_MB_EN', $v->pic_mobile_en)) : url(str_replace('Banner_TA_D_EN', 'b2b/iTravel_MB_EN', $v->pic_en)) )}}"
                                                 alt="{{$v->locales[$locale]->title}}">
                                         </picture>
+                                @elseif($selected==='ONTADMB2B')
+                                    <picture>
+                                        <source media="(min-width:768px)" srcset="/storage/Banner/b2b/TADomestic-Banner02.jpg">
+                                        <img src="{{url(!empty($v->pic_mobile_en) ? "/storage/Banner/b2b/TADomestic-Banner02.jpg" : "/storage/Banner/b2b/TADomestic-Banner04.jpg" )}}"
+                                                alt="{{$v->locales[$locale]->title}}">
+                                    </picture>
+                                @elseif($selected==='ONTAISMB2B')
+                                    <picture>
+                                        <source media="(min-width:768px)" srcset="/storage/Banner/b2b/iSmile-Banner01.jpg">
+                                        <img src="{{url(!empty($v->pic_mobile_en) ? "/storage/Banner/b2b/iSmile-Banner01.jpg" : "/storage/Banner/b2b/iSmile-Banner02.jpg" )}}"
+                                                alt="{{$v->locales[$locale]->title}}">
+                                    </picture>
                                 @elseif(isset($partner))
                                         @if(($partner==='LUMA' || $partner==='Luma') && ($selected==='ONTALN' || $selected==='TAIPOCT22'))
                                             <picture>
@@ -232,14 +244,18 @@
                                         <img src="{{url(!empty($v->pic_mobile_en) ? "/storage/Banner/b2b/iTravel_PC_TH.jpg" : "/storage/Banner/b2b/iTravel_MB_TH.jpg" )}}"
                                                 alt="{{$v->locales[$locale]->title}}">
                                     </picture>
-
-                                    <!--picture>
-                                        <source media="(min-width:768px)"
-                                                srcset="{{url(str_replace('Banner_TA_D', 'b2b/iTravel_PC_TH', $v->pic_en))}}">
-                                        <img
-                                            src="{{url(!empty($v->pic_mobile_en) ? url(str_replace('Banner_TA_D', 'b2b/iTravel_MB_TH', $v->pic_mobile_en)) : url(str_replace('Banner_TA_D', 'b2b/iTravel_MB_TH', $v->pic_en)) )}}"
-                                            alt="{{$v->locales[$locale]->title}}">
-                                    </picture-->
+                                @elseif($selected==='ONTADMB2B')
+                                    <picture>
+                                        <source media="(min-width:768px)" srcset="/storage/Banner/b2b/TADomestic-Banner01.jpg">
+                                        <img src="{{url(!empty($v->pic_mobile_en) ? "/storage/Banner/b2b/TADomestic-Banner01.jpg" : "/storage/Banner/b2b/TADomestic-Banner03.jpg" )}}"
+                                                alt="{{$v->locales[$locale]->title}}">
+                                    </picture>
+                                @elseif($selected==='ONTAISMB2B')
+                                    <picture>
+                                        <source media="(min-width:768px)" srcset="/storage/Banner/b2b/iSmile-Banner01.jpg">
+                                        <img src="{{url(!empty($v->pic_mobile_en) ? "/storage/Banner/b2b/iSmile-Banner01.jpg" : "/storage/Banner/b2b/iSmile-Banner02.jpg" )}}"
+                                                alt="{{$v->locales[$locale]->title}}">
+                                    </picture>
                                 @else
                                     <picture>
                                         <source media="(min-width:768px)" srcset="{{url($v->pic)}}">

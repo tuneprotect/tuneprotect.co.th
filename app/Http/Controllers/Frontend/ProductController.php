@@ -373,7 +373,7 @@ class ProductController extends BaseController
             $obj = new TGISMObject();            
         } elseif (substr($data['fdPackage'], 0, 9) === 'ONCOVIDMW') {
             $obj = new COVIDAObject();
-        } elseif (substr($data['fdPackage'], 0, 6) === 'ONTADM') {
+        } elseif (substr($data['fdPackage'], 0, 6) === 'ONTADM' || substr($data['fdPackage'], 0, 9) === 'ONTADMB2B') {
             $obj = new BaseTAObject();
             $obj->fdFlgInbound = "D";
         } elseif (substr($data['fdPackage'], 0, 6) === 'ONTALN') {
@@ -382,7 +382,7 @@ class ProductController extends BaseController
         } elseif (substr($data['fdPackage'], 0, 9) === 'TAIPOCT22') {
             $obj = new ONTALNObject();
             $obj->fdFlgInbound = "I";            
-        } elseif (substr($data['fdPackage'], 0, 5) === 'TAISM') {
+        } elseif (substr($data['fdPackage'], 0, 5) === 'TAISM' || substr($data['fdPackage'], 0, 10) === 'ONTAISMB2B') {
             $obj = new ONTALNObject();
             $obj->fdFlgInbound = "I";
         } elseif (substr($data['fdPackage'], 0, 6) === 'ONTAOB' || substr($data['fdPackage'], 0, 9) === 'ONTAOBB2B') {
@@ -569,7 +569,8 @@ class ProductController extends BaseController
             || substr($data['fdPackage'], 0, 6) === 'TGCVLP'
             || substr($data['fdPackage'], 0, 7) === 'ONTGISM'
             || substr($data['fdPackage'], 0, 7) === 'TAISMTG'            
-            || substr($data['fdPackage'], 0, 5) === 'TAISM')
+            || substr($data['fdPackage'], 0, 5) === 'TAISM'
+            || substr($data['fdPackage'], 0, 10) === 'ONTAISMB2B')
         {
             $obj->fdlanguage = 1;
             if( substr($data['fdPackage'], 0, 6) === 'ONTALN')
@@ -968,6 +969,9 @@ class ProductController extends BaseController
         } elseif (substr($package, 0, 5) === 'TAISM') {
             $this->thankYouParam = substr($package, 0, 5);
             $link = "IssuePolicyiSmile";
+        } elseif (substr($package, 0, 10) === 'ONTAISMB2B') {
+            $this->thankYouParam = substr($package, 0, 10);
+            $link = "IssuePolicyiSmile";
         } elseif (substr($package, 0, 6) === 'TAIPAS') {
             $this->thankYouParam = substr($package, 0, 6);
             $link = "IssuePolicyInbound";
@@ -979,6 +983,9 @@ class ProductController extends BaseController
             $link = "IssuePolicyiTravel";
         } elseif (substr($package, 0, 6) === 'ONTADM' || substr($package, 0, 4) === 'ONTA') {
             $this->thankYouParam = substr($package, 0, 6);
+            $link = "IssuePolicy";
+        } elseif (substr($package, 0, 9) === 'ONTADMB2B') {
+            $this->thankYouParam = substr($package, 0, 9);
             $link = "IssuePolicy";
         } elseif (substr($package, 0, 8) === 'ONVACINA') {
             $this->thankYouParam = substr($package, 0, 8);
@@ -1020,8 +1027,10 @@ class ProductController extends BaseController
         } elseif (substr($package, 0, 5) === 'TAISM') {
             $this->thankYouParam =  ProjectEnum::ISMILE_URL;
             $link = "IssuePolicyiSmile";
+        } elseif (substr($package, 0, 10) === 'ONTAISMB2B') {
+            $this->thankYouParam =  ProjectEnum::ISMILE_URL;
+            $link = "IssuePolicyiSmile";
         }
-
         return $link;
     }
 
