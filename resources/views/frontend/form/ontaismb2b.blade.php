@@ -74,7 +74,7 @@
 
 
 </section>
-@include('frontend.component.form-coverage-table-with-name',['package_detail' => $package_detail,'selected' =>$selected ])
+
 <section style="display: none" id="step3" class="wrapper">
     <form class="insurance-form">
         <div class="form-head"><span id="form-head"></span></div>
