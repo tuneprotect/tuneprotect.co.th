@@ -82,7 +82,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                 <div><span>วันที่เริ่มคุ้มครอง : </span><strong>${v.TDATE}</strong></div>
                                 <div><span>วันที่สิ้นสุดความคุ้มครอง : </span><strong>${v.XDATE}</strong></div>
                                 <div><span>เลขอ้างอิง (Ref Code.) : </span><strong>${v.REFER_CODE}</strong></div>
-                                <div><span>เลขอินวอยซ์ : </span><strong>${v.INVOICE}</strong></div>
+                                <div><span>เลขอินวอยซ์ : </span><strong>${v.REFER_NO}</strong></div>
                                 <div><span>สถานะ : </span><strong>${v.ACTIVE}</strong></div>
                                 ${group_p.value == 'tune' ? `<div class="btn-wrapper"><a class="btn btn-primary" target="_blank" href="/${$('html').getAttribute('lang')}/PolicyEnquiry/Unlock/${v.ID_NBR}">Unlock</a></div>` : ''}
 
