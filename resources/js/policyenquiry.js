@@ -80,21 +80,21 @@ document.addEventListener("DOMContentLoaded", function () {
                                 <div><span>แผนประกันภัย : </span><strong>${v.PLANNAME}</span></strong></div>
                                 <div><span>ราคา : </span><strong>${v.GROSS_PREM} บาท</strong></div>
                                 <div><span>วันที่เริ่มคุ้มครอง : </span><strong>${v.TDATE}</strong></div>
-                                <div><span>วันที่สิ้นสุดความคุ้มครอง : </span><strong>${v.XDATE2}</strong></div>
-                                <div><span>เลขอ้างอิง (Ref Code.) : </span><strong>${v.REF_CODE}</strong></div>
+                                <div><span>วันที่สิ้นสุดความคุ้มครอง : </span><strong>${v.XDATE}</strong></div>
+                                <div><span>เลขอ้างอิง (Ref Code.) : </span><strong>${v.REFER_CODE}</strong></div>
                                 <div><span>เลขอินวอยซ์ : </span><strong>${v.INVOICE}</strong></div>
                                 <div><span>สถานะ : </span><strong>${v.ACTIVE}</strong></div>
-                                ${group_p.value == 'tune' ? `<div class="btn-wrapper"><a class="btn btn-primary" target="_blank" href="/${$('html').getAttribute('lang')}/PolicyEnquiry/Unlock/${v.ID_NO}">Unlock</a></div>` : ''}
+                                ${group_p.value == 'tune' ? `<div class="btn-wrapper"><a class="btn btn-primary" target="_blank" href="/${$('html').getAttribute('lang')}/PolicyEnquiry/Unlock/${v.ID_NBR}">Unlock</a></div>` : ''}
 
                             </div>
                             <br>
                             <h3 class="text-primary">ข้อมูลผู้เอาประกันภัย</h3><br>
                             <div class="two-col">
-                                <div><span>ชื่อ : </span><strong>${v.FNAME} ${v.LNAME}</strong></div>
+                                <div><span>ชื่อ : </span><strong>${INSURED}</strong></div>
                                 <div><span>เพศ : </span><strong>${v.GENDER === 'F' ? 'หญิง' : 'ชาย'}</strong></div>
-                                <div><span>บัตรประจำตัวประชาชน : </span><strong>${v.ID_NO}</strong></div>
+                                <div><span>บัตรประจำตัวประชาชน : </span><strong>${v.ID_NBR}</strong></div>
                                 <div><span>วันเกิด : </span><strong>${v.DOB}</strong></div>
-                                <div><span>เบอร์โทรศัพท์มือถือ : </span><strong>${v.MOBILE}</strong></div>
+                                <div><span>เบอร์โทรศัพท์มือถือ : </span><strong>${v.MOBILE_NO}</strong></div>
                                 <div><span>อีเมล : </span><strong>${v.EMAIL}</strong></div>
                                 <div class="controls-wrapper full no-lable"><span>ที่อยู่ : </span><strong>${v.ADDRESS2}</strong></div>
                                 <div class="controls-wrapper full no-lable"><span>ผู้รับผลประโยชน์ : </span><strong>${v.BEN_NAME2}</strong></div>
