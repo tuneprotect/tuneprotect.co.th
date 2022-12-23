@@ -4,13 +4,6 @@
     }
 </style>
 
-@if($selected == 'TAIPOCT22')
-<!-- Event snippet for select plan conversion page -->
-<script>
-  gtag('event', 'conversion', {'send_to': 'AW-445121093/zRzuCK2P5vIBEMWEoNQB'});
-</script>
-@endif
-
 <section style="display: none" id="step2" class="product-detail">
     <div class="wrapper">
         <table id="table-detail">
