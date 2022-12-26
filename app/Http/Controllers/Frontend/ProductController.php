@@ -651,7 +651,6 @@ class ProductController extends BaseController
 
     public function makePayment(Request $request)
     {        
-        //echo var_dump(2);exit();
         if($this->controller === 'product')
         {
             session(['nopayment_status' => false]);
