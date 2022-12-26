@@ -716,7 +716,7 @@ input[type=search]::-webkit-search-results-decoration {
 
 .btn.btn-gradient {
   color: #FFFFFF;
-  background: #e32e6d;
+  background: #E71618;
   /*background: linear-gradient(90deg, #e32e6d 0%, #f7933f 100%);*/
   border-color: transparent;
 }
