@@ -98,6 +98,17 @@
                 </tr>
             </thead>
             <tbody>
+            @if($selected == "ONCSHC")
+                <tr style="font-size: 1.2rem;">
+                    <th>@lang('product.installment')</th>
+                    <?php $i = 1 ?>
+                    @foreach ($package_detail as $k => $v)
+                        <td {{$i > 1 ? 'class=hide' : ""}} data-index="{{$i}}" data-package="{{$k}}"><strong
+                                data-installment-{{$k}}></strong></td>
+                        <?php $i++ ?>
+                    @endforeach
+                </tr>
+            @endif
             <tr class="orange">
                 <th>@lang('product.price_per_year')</th>
                 <?php $i = 1 ?>
