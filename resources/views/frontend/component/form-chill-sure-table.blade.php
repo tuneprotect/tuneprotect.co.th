@@ -10,90 +10,95 @@
     <div class="wrapper">
         <table id="table-detail" data-package_name="{{$package->locales[$locale]->title}}">
             <thead>
-            <tr>
-                <th class="th-one">
-                    <h3>@lang('global.coverage')</h3>
-                    <?php $i = 1 ?>
-                    <div class="choose-plan-mobile">
-                        @foreach ($package_detail as $k => $v)
-                            <div class="wrapper-choose-plan">
-                                <div
-                                    data-package="{{$k}}"
-                                    data-index="{{$i}}"
-                                    data-gtm="product-{{strtolower($selected)}}-mobile-choose-plan-{{$i}}"
-                                    class="btn btn-block btn-outline btn-choose-plan {{$i == 1 ? 'on' : '' }}">
-                                    @if(isset($v->no))
-                                        @if(isset($v->name))
-                                            <strong>{{$v->name}} @lang('product.plan') {{$v->no}}</strong>
-                                        @else
-                                            <strong>@lang('product.plan') {{$v->no}}</strong>
-                                        @endif
-                                    @else
-                                        <strong class="package-number">@lang('product.plan') {{$i}}</strong>
-                                    @endif
-                                    <span class="show_on_mobile" data-price-{{$k}}></span>
-                                    <br>
-                                    <a href="#"
-                                       data-gtm="product-{{strtolower($selected)}}-top-choose-plan-{{$i}}"
-                                       data-step="3" data-package="{{$k}}" data-sub-package=""
-                                       data-plan="@lang('product.plan') {{$i}}"
-                                       class="btn btn-block btn-outline btn-goto">@lang('product.choose_plan')</a>
+                <tr>
+                    <th>
+                        <h3>@lang('product.ci_coverage')</h3>
+                        <?php $i = 1 ?>
+                        <div class="choose-plan-mobile">
 
+                            @foreach ($package_detail as $k => $v)
+                                <div class="wrapper-choose-plan">
+                                    <div
+                                        data-package="{{$k}}"
+                                        data-index="{{$i}}"
+                                        data-gtm="product-{{strtolower($selected)}}-mobile-choose-plan-{{$i}}"
+                                        class="btn btn-block btn-outline btn-choose-plan {{$i == 1 ? 'on' : '' }}">
+                                        @if(isset($v->no))
+                                            @if(isset($v->name))
+                                                <strong>{{$v->name}} @lang('product.plan') {{$v->no}}</strong>
+                                            @else
+                                                <strong>@lang('product.plan') {{$v->no}}</strong>
+                                            @endif
+                                        @else
+
+                                            <span data-recommend>
+                                                    <img src="/images/ico_ci/recommended-{{$locale}}.png" alt="recommendth">
+                                                </span>
+
+                                            <strong class="package-number">@lang('product.plan') {{$i}}</strong>
+                                        @endif
+                                        <span class="show_on_mobile" data-price-{{$k}}></span>
+                                        <br>
+                                        <a href="#"
+                                        data-gtm="product-{{strtolower($selected)}}-top-choose-plan-{{$i}}"
+                                        data-step="3" data-package="{{$k}}" data-sub-package=""
+                                        data-plan="@lang('product.plan') {{$i}}"
+                                        class="btn btn-block btn-outline btn-goto">@lang('product.choose_plan')</a>
+
+                                    </div>
+
+                                    <?php $i++ ?>
                                 </div>
 
-                                <?php $i++ ?>
-                            </div>
+                            @endforeach
 
-                        @endforeach
+                        </div>
+                    </th>
+                    <?php $i = 1 ?>
+                    @foreach ($package_detail as $k => $v)
+                        <th data-package="{{$k}}">
+                            @if(isset($v->no))
 
-                    </div>
-                </th>
-                <?php $i = 1 ?>
-                @foreach ($package_detail as $k => $v)
-                <th data-package="{{$k}}">
-                        @if(isset($v->no))
-
-                            <span data-recommend>
-                                  <img src="/images/ico_ci/recommended-{{$locale}}.png" alt="recommendth">
-                            </span>
-
-                            @if(isset($v->name))
-                                <strong>{{$v->name}} @lang('product.plan') {{$v->no}}</strong>
-                            @else
-                                <strong>@lang('product.plan') {{$v->no}}</strong>
-                            @endif
-                        @else
-
-                            <span data-recommend>
+                                <span data-recommend>
                                     <img src="/images/ico_ci/recommended-{{$locale}}.png" alt="recommendth">
                                 </span>
-                            <strong class="package-number">@lang('product.plan') {{$i}}</strong>
-                        @endif
 
-                        <a href="#"
-                           data-gtm="product-{{strtolower($selected)}}-top-choose-plan-{{$i}}"
-                           @if(isset($v->no))
-                           @if(isset($v->name))
-                           data-step="3" data-package="{{$k}}" data-sub-package=""
-                           data-plan="{{$v->name}} @lang('product.plan') {{$v->no}}"
-                           @else
-                           data-step="3" data-package="{{$k}}" data-sub-package=""
-                           data-plan="@lang('product.plan') {{$v->no}}"
-                           @endif
-                           @else
-                           data-step="3" data-package="{{$k}}" data-sub-package=""
-                           data-plan="@lang('product.plan') {{$i}}"
-                           @endif
+                                @if(isset($v->name))
+                                    <strong>{{$v->name}} @lang('product.plan') {{$v->no}}</strong>
+                                @else
+                                    <strong>@lang('product.plan') {{$v->no}}</strong>
+                                @endif
+                            @else
 
-                           class="btn btn-block btn-outline btn-goto">@lang('product.choose_plan')</a>
-                    </th>
-                   
-                    <?php $i++ ?>
-                @endforeach
-            </tr>
+                                <span data-recommend>
+                                        <img src="/images/ico_ci/recommended-{{$locale}}.png" alt="recommendth">
+                                    </span>
+                                <strong class="package-number">@lang('product.plan') {{$i}}</strong>
+                            @endif
+
+                            <a href="#"
+                            data-gtm="product-{{strtolower($selected)}}-top-choose-plan-{{$i}}"
+                            @if(isset($v->no))
+                            @if(isset($v->name))
+                            data-step="3" data-package="{{$k}}" data-sub-package=""
+                            data-plan="{{$v->name}} @lang('product.plan') {{$v->no}}"
+                            @else
+                            data-step="3" data-package="{{$k}}" data-sub-package=""
+                            data-plan="@lang('product.plan') {{$v->no}}"
+                            @endif
+                            @else
+                            data-step="3" data-package="{{$k}}" data-sub-package=""
+                            data-plan="@lang('product.plan') {{$i}}"
+                            @endif
+
+                            class="btn btn-block btn-outline btn-goto">@lang('product.choose_plan')</a>
+                        </th>
+                        <?php $i++ ?>
+                    @endforeach
+                </tr>
             </thead>
             <tbody>
-            <tr class="orange">
+            <tr >
                 <th>@lang('product.price_per_year')</th>
                 <?php $i = 1 ?>
                 @foreach  ($package_detail as $k => $v)
