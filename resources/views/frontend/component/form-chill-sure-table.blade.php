@@ -50,14 +50,23 @@
                 </th>
                 <?php $i = 1 ?>
                 @foreach ($package_detail as $k => $v)
-                    <th data-package="{{$k}}">
+                <th data-package="{{$k}}">
                         @if(isset($v->no))
+
+                            <span data-recommend>
+                                  <img src="/images/ico_ci/recommended-{{$locale}}.png" alt="recommendth">
+                            </span>
+
                             @if(isset($v->name))
                                 <strong>{{$v->name}} @lang('product.plan') {{$v->no}}</strong>
                             @else
                                 <strong>@lang('product.plan') {{$v->no}}</strong>
                             @endif
                         @else
+
+                            <span data-recommend>
+                                    <img src="/images/ico_ci/recommended-{{$locale}}.png" alt="recommendth">
+                                </span>
                             <strong class="package-number">@lang('product.plan') {{$i}}</strong>
                         @endif
 
@@ -78,6 +87,7 @@
 
                            class="btn btn-block btn-outline btn-goto">@lang('product.choose_plan')</a>
                     </th>
+                   
                     <?php $i++ ?>
                 @endforeach
             </tr>
