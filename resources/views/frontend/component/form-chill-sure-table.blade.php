@@ -1,14 +1,20 @@
-<section style="display: none" id="step2" class="product-detail">
-
+<section style="display: none;" id="step2" class="product-detail">
+<style>
+    @media only screen and (min-width: 600px) {
+        .th-one{
+            width: 40%;
+        }
+    }
+   
+</style>
     <div class="wrapper">
         <table id="table-detail" data-package_name="{{$package->locales[$locale]->title}}">
             <thead>
             <tr>
-                <th>
-                    <h3>@lang('product.ci_coverage')</h3>
+                <th class="th-one">
+                    <h3>@lang('global.coverage')</h3>
                     <?php $i = 1 ?>
                     <div class="choose-plan-mobile">
-
                         @foreach ($package_detail as $k => $v)
                             <div class="wrapper-choose-plan">
                                 <div
@@ -23,11 +29,6 @@
                                             <strong>@lang('product.plan') {{$v->no}}</strong>
                                         @endif
                                     @else
-
-                                        <span data-recommend>
-                                                <img src="/images/ico_ci/recommended-{{$locale}}.png" alt="recommendth">
-                                            </span>
-
                                         <strong class="package-number">@lang('product.plan') {{$i}}</strong>
                                     @endif
                                     <span class="show_on_mobile" data-price-{{$k}}></span>
@@ -51,21 +52,12 @@
                 @foreach ($package_detail as $k => $v)
                     <th data-package="{{$k}}">
                         @if(isset($v->no))
-
-                            <span data-recommend>
-                                  <img src="/images/ico_ci/recommended-{{$locale}}.png" alt="recommendth">
-                            </span>
-
                             @if(isset($v->name))
                                 <strong>{{$v->name}} @lang('product.plan') {{$v->no}}</strong>
                             @else
                                 <strong>@lang('product.plan') {{$v->no}}</strong>
                             @endif
                         @else
-
-                            <span data-recommend>
-                                    <img src="/images/ico_ci/recommended-{{$locale}}.png" alt="recommendth">
-                                </span>
                             <strong class="package-number">@lang('product.plan') {{$i}}</strong>
                         @endif
 
@@ -91,43 +83,35 @@
             </tr>
             </thead>
             <tbody>
-            @if($selected == "CI")
-                <tr style="font-size: 1.2rem;">
-                    <th>@lang('product.installment')</th>
-                    <?php $i = 1 ?>
-                    @foreach ($package_detail as $k => $v)
-                        <td {{$i > 1 ? 'class=hide' : ""}} data-index="{{$i}}" data-package="{{$k}}"><strong
-                                data-installment-{{$k}}></strong></td>
-                        <?php $i++ ?>
-                    @endforeach
-                </tr>
-            @endif
             <tr class="orange">
                 <th>@lang('product.price_per_year')</th>
                 <?php $i = 1 ?>
-                @foreach ($package_detail as $k => $v)
-                    <td {{$i > 1 ? 'class=hide' : ""}} data-index="{{$i}}" data-package="{{$k}}"><strong
-                            data-price-{{$k}}></strong></td>
+                @foreach  ($package_detail as $k => $v)
+                    <td {{$i > 1 ? 'class=hide' : ""}} data-index="{{$i}}" data-package="{{$k}}">
+                        <strong data-price-{{$k}}></strong></td>
                     <?php $i++ ?>
                 @endforeach
             </tr>
-
-            <?php $arr_sort = ['early_stage', 'late_stage', 'diablete', 'hospital_cash', 'nursing_cash', 'pa', 'mso', 'health2go']; ?>
-
-            @foreach ( $arr_sort as $v)
+            @foreach (__('product.'.$selected) as $k => $v)
                 <tr>
-                    <th>{!! __('product.'.$selected.'.'.$v) !!}</th>
                     <?php $i = 1 ?>
+                    <th data-cover-{{$k}}>{!! $v !!}</th>
 
                     @foreach ($package_detail as $k1 => $v1)
                         <td {{$i > 1 ? 'class=hide' : ""}} data-index="{{$i}}" data-package="{{$k1}}">
-                            @if(isset($v1->plan->$v))
-                                @if((is_numeric($v1->plan->$v)))
-                                    <strong>{{number_format( $v1->plan->$v,0)}}</strong>
-                                @elseif( strpos($v1->plan->$v,'__') === 0 )
-                                    <strong>{!!__( str_replace('__','',$v1->plan->$v) )!!}</strong>
+                            @if(isset($v1->plan->$k))
+                                @if((is_numeric($v1->plan->$k)))
+                                    <strong>{{number_format( $v1->plan->$k,0)}}</strong>
+                                @elseif( strpos($v1->plan->$k,'__') === 0 )
+                                    <strong>{!!__( str_replace('__','',$v1->plan->$k) )!!}</strong>
+                                @elseif(str_contains($v1->plan->$k,'healt2go_plan'))
+                                    <strong>{!!__( str_replace('healt2go_plan',__('product.healt2go_plan'),$v1->plan->$k)) !!}</strong>
+                                @elseif(str_contains($v1->plan->$k,'healt2go_desc'))
+                                    <strong>{!!__( str_replace('healt2go_desc',__('product.healt2go_desc'),$v1->plan->$k)) !!}</strong>
+                                @elseif(str_contains($v1->plan->$k,'healt2go_word'))
+                                    <strong>{!!__( str_replace('healt2go_word',__('product.healt2go_word'),$v1->plan->$k)) !!}</strong>
                                 @else
-                                    <strong>{!! $v1->plan->$v !!}</strong>
+                                    <strong>{!! $v1->plan->$k !!}</strong>
                                 @endif
                             @endif
                         </td>
@@ -135,6 +119,7 @@
                     @endforeach
                 </tr>
             @endforeach
+            
 
             </tbody>
 
@@ -186,7 +171,7 @@
         </table>
 
         <br><br>
-        <a href="#" data-gtm="product-{{strtolower($selected)}}-more" id="btn-more" data-expand="@lang('product.more')"
+        <a href="#" data-gtm="product-{{strtolower($selected)}}-more" id="btn-more-diabetes" data-expand="@lang('product.more')"
            data-collapse="@lang('product.collapse')">
             @lang('product.more')
         </a>
