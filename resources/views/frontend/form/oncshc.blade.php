@@ -33,7 +33,10 @@
         <div class="form-inner">
             <h3>@lang('product.your-details')</h3>
             @include('frontend.component.form-date-input-calendar')
-            
+            <div class="controls-wrapper">
+                <input id="ctrl_promotion_code" type="text" />
+                <label for="ctrl_day">@lang('product.day')</label>
+            </div>
             <div class="controls-wrapper full">
                 <input id="ctrl_accept_step1" name="ctrl_accept_insurance_term" type="checkbox"
                     data-error-insurance_term="@lang("product.error.insurance_term")"
