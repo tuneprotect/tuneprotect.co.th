@@ -32,7 +32,7 @@
         <div class="form-head">@lang('product.please_specify_ci_title')</div>
         <div class="form-inner">
             <h3>@lang('product.your-details')</h3>
-            @include('frontend.component.form-date-input')
+            @include('frontend.component.form-date-input-calendar')
             
             <div class="controls-wrapper full">
                 <input id="ctrl_accept_step1" name="ctrl_accept_insurance_term" type="checkbox"
