@@ -5,22 +5,7 @@
             width: 40%;
         }
     }
-    html[lang=en] #table-detail th[data-package].recommendPackage.basePrice {
-        background-image: url(/images/bestvalue-g-en.png);
-    }
-    #table-detail th[data-package].basePrice {
-    content: "";
-    background-size: 100% auto;
-    background-position: top center;
-    background-repeat: no-repeat;
-    margin: 0 auto;
-    width: calc(100% + 40px);
-    height: 63px;
-    display: block;
-    position: relative;
-    top: -31px;
-    left: -20px;
-}
+   
 </style>
     <div class="wrapper">
         <table id="table-detail" data-package_name="{{$package->locales[$locale]->title}}">
@@ -71,7 +56,7 @@
                     </th>
                     <?php $i = 1 ?>
                     @foreach ($package_detail as $k => $v)
-                        <th data-package="{{$k}}" class="aaa {{$i==4 ? 'recommendPackage basePrice' : 'ccc'}}" >
+                        <th data-package="{{$k}}">
                             @if(isset($v->no))
 
                                 <span data-recommend>
