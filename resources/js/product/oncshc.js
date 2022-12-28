@@ -33,6 +33,7 @@ import {format, isValid, parseISO} from "date-fns";
 import intlTelInput from "intl-tel-input";
 
 require('../main');
+require('../product');
 
 validate.validators.idcard = function (value, options, key, attributes) {
     for (var i = 0, sum = 0; i < 12; i++) {
