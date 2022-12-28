@@ -1,9 +1,11 @@
 @extends('base.template')
 <style>
 
-    #onetrust-consent-sdk{
-        display:none !implements;
-    }
+    
+   #onetrust-consent-sdk{
+    display: none;
+   }
+   </style>
 @section('layout')
     <header>
         <meta name="facebook-domain-verification" content="4ojuebt1n4u0c2808tn6hhc3vi6e75" />
