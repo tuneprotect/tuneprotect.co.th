@@ -94,7 +94,7 @@
                 </tr>
             </thead>
             <tbody>
-            <tr >
+            <tr class="orange">
                 <th>@lang('product.price_per_year')</th>
                 <?php $i = 1 ?>
                 @foreach  ($package_detail as $k => $v)
@@ -139,7 +139,7 @@
                 <th>&nbsp;</th>
                 <?php $i = 1 ?>
                 @foreach ($package_detail as $k => $v)
-                    <td {{$i > 1 ? 'class=hide' : ""}} data-index="{{$i}}" data-package="{{$k}}">
+                    <td {{$i == 4 ? "class=recommendPackage" : "class=hide"}} data-index="{{$i}}" data-package="{{$k}}">
                         @if(isset($v->no))
                             @if(isset($v->name))
                                 @if(isset($v->name))
