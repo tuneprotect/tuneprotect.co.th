@@ -1,11 +1,4 @@
-import {
-    showBMIError,
-    showBMIValidateError,
-    showAcceptError,
-    showFieldError,
-    validateField
-} from "../validate_form";
-import validate from "validate.js";
+
 import {
     $,
     $$, 
@@ -25,6 +18,5 @@ import {
     validatePolicyPayment, validatePolicyStep5
 } from "../form/productHelper";
 
-import Swal from "sweetalert2";
 
 
