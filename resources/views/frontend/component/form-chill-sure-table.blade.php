@@ -94,6 +94,15 @@
                             class="btn btn-block btn-outline btn-goto">@lang('product.choose_plan')</a>
                         </th>
                         <?php $i++ ?>
+                        <th data-package="ONCSHC4" class="recommendPackage on basePrice">
+                        
+                            <span data-recommend="">
+                                    <img src="/images/ico_ci/recommended-en.png" alt="recommendth">
+                                </span>
+                            <strong class="package-number">Plan 4</strong>
+                        
+                            <a href="#" data-gtm="product-ci-top-choose-plan-4" data-step="3" data-package="CIDP4" data-sub-package="" data-plan="Plan 4" class="btn btn-block btn-outline btn-goto">Select</a>
+                        </th>
                     @endforeach
                 </tr>
             </thead>
