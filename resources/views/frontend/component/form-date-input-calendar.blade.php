@@ -8,7 +8,9 @@
     <div class="date-wrapper">
         <div class="controls-wrapper"></div>
         <div class="controls-wrapper">
+            
             <input class="flatpickr flatpickr-input active" 
+                    data-id="disableSpecific"
                     type="text" 
                     id="ctrl_dob" 
                     placeholder="@lang('product.day')"
