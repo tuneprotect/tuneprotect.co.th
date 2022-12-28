@@ -63,13 +63,15 @@
 @yield('layout')
 
 
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.css">
+<script src="https://flatpickr.js.org/javascripts/modernizr.js"></script>
+<!-- 1111111 -->
 @if(isset($template[TemplateHelper::FOOT_JS] ))
-
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.css">
-	<script src="https://flatpickr.js.org/javascripts/modernizr.js"></script>
-    
+    @foreach ($template[TemplateHelper::FOOT_JS] as $v)
+        <script src="{{ $v['path'] }}" <?php echo TemplateHelper::genAttribute($v['property']) ?>></script>
+    @endforeach
 @endif
-
+<!-- end 1111111 -->
 
 @if(isset($template[TemplateHelper::FOOT_OTHER] ))
     @foreach ($template[TemplateHelper::FOOT_OTHER] as $v)
