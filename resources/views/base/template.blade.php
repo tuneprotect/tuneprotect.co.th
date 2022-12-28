@@ -62,7 +62,11 @@
 
 @yield('layout')
 
-
+@if(isset($template[TemplateHelper::FOOT_JS] ))
+    @foreach ($template[TemplateHelper::FOOT_JS] as $v)
+        <script src="{{ $v['path'] }}" <?php echo TemplateHelper::genAttribute($v['property']) ?>></script>
+    @endforeach
+@endif
 @if(isset($template[TemplateHelper::FOOT_OTHER] ))
     @foreach ($template[TemplateHelper::FOOT_OTHER] as $v)
         {!! $v !!}
