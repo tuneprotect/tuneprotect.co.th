@@ -32,3 +32,6 @@ import Swal from "sweetalert2";
 import {format, isValid, parseISO} from "date-fns";
 import intlTelInput from "intl-tel-input";
 
+require('../main');
+require('../product');
+
