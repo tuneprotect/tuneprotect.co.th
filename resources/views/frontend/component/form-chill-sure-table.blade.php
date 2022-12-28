@@ -58,24 +58,20 @@
                     @foreach ($package_detail as $k => $v)
                         <th data-package="{{$k}}" class="{{$i==4? 'recommendPackage on basePrice':''}}">
                             @if(isset($v->no))
-
                                 <span data-recommend>
                                     <img src="/images/ico_ci/recommended-{{$locale}}.png" alt="recommendth">
                                 </span>
-
                                 @if(isset($v->name))
                                     <strong>{{$v->name}} @lang('product.plan') {{$v->no}}</strong>
                                 @else
                                     <strong>@lang('product.plan') {{$v->no}}</strong>
                                 @endif
                             @else
-
                                 <span data-recommend>
                                         <img src="/images/ico_ci/recommended-{{$locale}}.png" alt="recommendth">
                                     </span>
                                 <strong class="package-number">@lang('product.plan') {{$i}}</strong>
                             @endif
-
                             <a href="#"
                             data-gtm="product-{{strtolower($selected)}}-top-choose-plan-{{$i}}"
                             @if(isset($v->no))
@@ -94,15 +90,6 @@
                             class="btn btn-block btn-outline btn-goto">@lang('product.choose_plan')</a>
                         </th>
                         <?php $i++ ?>
-                        <th data-package="ONCSHC4" class="recommendPackage on basePrice">
-                        
-                            <span data-recommend="">
-                                    <img src="/images/ico_ci/recommended-en.png" alt="recommendth">
-                                </span>
-                            <strong class="package-number">Plan 4</strong>
-                        
-                            <a href="#" data-gtm="product-ci-top-choose-plan-4" data-step="3" data-package="CIDP4" data-sub-package="" data-plan="Plan 4" class="btn btn-block btn-outline btn-goto">Select</a>
-                        </th>
                     @endforeach
                 </tr>
             </thead>

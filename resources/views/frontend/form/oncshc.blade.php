@@ -33,17 +33,6 @@
         <div class="form-inner">
             <h3>@lang('product.your-details')</h3>
             @include('frontend.component.form-date-input-calendar')
-           
-            <div class="date-wrapper">
-                <div class="controls-wrapper">
-                    <input id="ctrl_promotion_code" type="text" placeholder="@lang('product.ONCSHC_MSG.oncshc_placeholder_promotion')" />
-                    <label for="ctrl_promotion_code">@lang('product.ONCSHC_MSG.oncshc_promotion_code') @lang('product.ONCSHC_MSG.oncshc_if_any')</label>
-                </div>
-                <div class="controls-wrapper"></div>
-                <div class="controls-wrapper"></div>
-            </div>
-            <cite></cite>
-
             <div class="controls-wrapper full">
                 <input id="ctrl_accept_step1" name="ctrl_accept_insurance_term" type="checkbox"
                     data-error-insurance_term="@lang("product.error.insurance_term")"
