@@ -8,13 +8,16 @@
     <div class="date-wrapper">
         <div class="controls-wrapper"></div>
         <div class="controls-wrapper">
-            <input id="ctrl_day" type="tel" placeholder="@lang('product.day')"
-                   data-birthdate="@lang('product.birthdate')"
-                   data-years-old="@lang('product.years_old')"
-                   data-error-format="@lang('product.error.birthdate.format')"
-                   data-error-not-qualify="@lang('product.error.birthdate.not-qualify')"
-            />
-            <label for="ctrl_day">@lang('product.day')</label>
+        <input class="flatpickr flatpickr-input active" 
+                    type="text" 
+                    id="ctrl_dob" 
+                    placeholder="@lang('product.day')"
+                    data-birthdate="@lang('product.birthdate')"
+                    data-years-old="@lang('product.years_old')"
+                    data-error-format="@lang('product.error.birthdate.format')"
+                    data-error-not-qualify="@lang('product.error.birthdate.not-qualify')"
+                    readonly="readonly" />
+            <label for="ctrl_dob">@lang('product.day')</label>
         </div>
         <div class="controls-wrapper"></div>
     </div>
