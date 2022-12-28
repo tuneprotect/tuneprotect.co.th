@@ -19002,37 +19002,43 @@ main[data-package=CI] .slider_budget ins,
 }
 
 main[data-package=CI] .goto-step1,
-[data-package=ONTAOB] .goto-step1 {
+[data-package=ONTAOB] .goto-step1,
+[data-package=ONCSHC] .goto-step1  {
   margin: 25px 0 40px 0;
 }
 
 main[data-package=CI] .choose-plan-mobile,
-[data-package=ONTAOB] .choose-plan-mobile {
+[data-package=ONTAOB] .choose-plan-mobile,
+[data-package=ONCSHC] .choose-plan-mobile {
   display: flex;
   margin: 20px 0;
 }
 
 @media all and (min-width: 768px) {
   main[data-package=CI] .choose-plan-mobile,
-  [data-package=ONTAOB] .choose-plan-mobile {
+  [data-package=ONTAOB] .choose-plan-mobile,
+  [data-package=ONCSHC] .choose-plan-mobile {
     margin: 0;
   }
 }
 
 main[data-package=CI] .choose-plan-mobile .wrapper-choose-plan,
-[data-package=ONTAOB] .choose-plan-mobile .wrapper-choose-plan {
+[data-package=ONTAOB] .choose-plan-mobile .wrapper-choose-plan,
+[data-package=ONCSHC] .choose-plan-mobile .wrapper-choose-plan {
   position: relative;
   flex: 1;
 }
 
 main[data-package=CI] .choose-plan-mobile .wrapper-choose-plan:last-child div.basePrice,
-[data-package=ONTAOB] .choose-plan-mobile .wrapper-choose-plan:last-child div.basePrice {
+[data-package=ONTAOB] .choose-plan-mobile .wrapper-choose-plan:last-child div.basePrice,
+[data-package=ONCSHC] .choose-plan-mobile .wrapper-choose-plan:last-child div.basePrice {
   overflow: visible;
   padding-top: 9vw;
 }
 
 main[data-package=CI] .choose-plan-mobile .wrapper-choose-plan:last-child div.basePrice:before,
-[data-package=ONTAOB] .choose-plan-mobile .wrapper-choose-plan:last-child div.basePrice:before {
+[data-package=ONTAOB] .choose-plan-mobile .wrapper-choose-plan:last-child div.basePrice:before,
+[data-package=ONCSHC] .choose-plan-mobile .wrapper-choose-plan:last-child div.basePrice:before {
   content: "";
   background-color: transparent;
   background-size: 100% auto !important;
@@ -19047,20 +19053,23 @@ main[data-package=CI] .choose-plan-mobile .wrapper-choose-plan:last-child div.ba
 }
 
 main[data-package=CI] .choose-plan-mobile .wrapper-choose-plan div,
-[data-package=ONTAOB] .choose-plan-mobile .wrapper-choose-plan div {
+[data-package=ONTAOB] .choose-plan-mobile .wrapper-choose-plan div,
+[data-package=ONCSHC] .choose-plan-mobile .wrapper-choose-plan div {
   display: block;
   padding-left: 0;
   padding-right: 0;
 }
 
 main[data-package=CI] .choose-plan-mobile .wrapper-choose-plan div.recommendPackage,
-[data-package=ONTAOB] .choose-plan-mobile .wrapper-choose-plan div.recommendPackage {
+[data-package=ONTAOB] .choose-plan-mobile .wrapper-choose-plan div.recommendPackage,
+[data-package=ONCSHC] .choose-plan-mobile .wrapper-choose-plan div.recommendPackage {
   background: #E71618;
   color: #ffffff;
 }
 
 main[data-package=CI] .choose-plan-mobile .wrapper-choose-plan div.recommendPackage span[data-recommend],
-[data-package=ONTAOB] .choose-plan-mobile .wrapper-choose-plan div.recommendPackage span[data-recommend] {
+[data-package=ONTAOB] .choose-plan-mobile .wrapper-choose-plan div.recommendPackage span[data-recommend],
+[data-package=ONCSHC] .choose-plan-mobile .wrapper-choose-plan div.recommendPackage span[data-recommend] {
   position: absolute;
   top: 3px;
   left: 0;
@@ -19068,7 +19077,8 @@ main[data-package=CI] .choose-plan-mobile .wrapper-choose-plan div.recommendPack
 }
 
 main[data-package=CI] .choose-plan-mobile .wrapper-choose-plan div .package-number,
-[data-package=ONTAOB] .choose-plan-mobile .wrapper-choose-plan div .package-number {
+[data-package=ONTAOB] .choose-plan-mobile .wrapper-choose-plan div .package-number,
+[data-package=ONCSHC] .choose-plan-mobile .wrapper-choose-plan div .package-number {
   display: block;
   margin-top: 25px;
 }
