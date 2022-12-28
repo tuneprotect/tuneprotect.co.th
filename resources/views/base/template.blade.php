@@ -52,12 +52,6 @@
             {!! $v !!}
         @endforeach
     @endif
-
-    
-
-
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.css">
-	<script src="https://flatpickr.js.org/javascripts/modernizr.js"></script>
 </head>
 <body <?php echo @TemplateHelper::genAttribute($template[TemplateHelper::BODY]) ?>>
 @if(isset($template[TemplateHelper::OPEN_BODY] ))
@@ -78,18 +72,6 @@
         {!! $v !!}
     @endforeach
 @endif
-
-
-<script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/plugins/confirmDate/confirmDate.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/plugins/weekSelect/weekSelect.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/plugins/rangePlugin.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/plugins/minMaxTimePlugin.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/plugins/monthSelect/index.js"></script>
-<script src="https://flatpickr.js.org/flatpickr.js"></script>
-
-
-<script src="https://flatpickr.js.org/themer.js"></script>
 </body>
 </html>
 
