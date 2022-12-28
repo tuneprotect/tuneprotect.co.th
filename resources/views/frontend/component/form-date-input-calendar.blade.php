@@ -33,7 +33,6 @@
 		<input class="flatpickr flatpickr-input" type="text" placeholder="Select Date.."  data-id="xxx" readonly="readonly">
 		<input class="flatpickr flatpickr-input" type="text" placeholder="Select Date.." data-id="disableSpecific" readonly="readonly">
 	
-<script src="https://flatpickr.js.org/javascripts/application.js"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/plugins/confirmDate/confirmDate.js"></script>
