@@ -53,11 +53,6 @@
         @endforeach
     @endif
 </head>
-<style>
-    #onetrust-banner-sdk{
-        display: none !implements;
-    }
-</style>
 <body <?php echo @TemplateHelper::genAttribute($template[TemplateHelper::BODY]) ?>>
 @if(isset($template[TemplateHelper::OPEN_BODY] ))
     @foreach ($template[TemplateHelper::OPEN_BODY] as $v)
@@ -69,11 +64,10 @@
 
 
 @if(isset($template[TemplateHelper::FOOT_JS] ))
+
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.css">
 	<script src="https://flatpickr.js.org/javascripts/modernizr.js"></script>
-    @foreach ($template[TemplateHelper::FOOT_JS] as $v)
-        <script src="{{ $v['path'] }}" <?php echo TemplateHelper::genAttribute($v['property']) ?>></script>
-    @endforeach
+    
 @endif
 
 
@@ -101,6 +95,11 @@
 <script src="https://flatpickr.js.org/themer.js"></script>
 
 
+<style>
+    #onetrust-banner-sdk{
+        display: none !implements;
+    }
+</style>
 </body>
 </html>
 
