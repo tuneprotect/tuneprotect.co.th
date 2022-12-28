@@ -16,7 +16,7 @@ $direction : up,down,left,right
 @font-face {
   font-family: "DB SaiKrok X";
   src: url(/fonts/DBSaiKrokX-Light.eot?4f0eb913895e94d2ad64df7a882461ea);
-  src: url(/fonts/DBSaiKrokX-Light.eot?4f0eb913895e94d2ad64df7a882461ea) format("embedded-opentype"), url(../fonts/DBSaiKrokX-Light.woff2?b26faa4084f396fed56d0ecfe5c2247f) format("woff2"), url(/fonts/DBSaiKrokX-Light.woff?00bb36636436df29afd851dbb59358c4) format("woff"), url(/fonts/DBSaiKrokX-Light.ttf?54946d930eaa45c1fbcb1f26586d8e45) format("truetype");
+  src: url(/fonts/DBSaiKrokX-Light.eot?4f0eb913895e94d2ad64df7a882461ea) format("embedded-opentype"), url(/fonts/DBSaiKrokX-Light.woff2?b26faa4084f396fed56d0ecfe5c2247f) format("woff2"), url(/fonts/DBSaiKrokX-Light.woff?00bb36636436df29afd851dbb59358c4) format("woff"), url(/fonts/DBSaiKrokX-Light.ttf?54946d930eaa45c1fbcb1f26586d8e45) format("truetype");
   font-weight: 300;
   font-style: normal;
   font-display: swap;
