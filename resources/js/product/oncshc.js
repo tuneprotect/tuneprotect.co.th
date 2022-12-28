@@ -26,7 +26,5 @@ import {
 } from "../form/productHelper";
 
 import Swal from "sweetalert2";
-import {format, parseISO} from "date-fns";
-import intlTelInput from "intl-tel-input";
 
 
