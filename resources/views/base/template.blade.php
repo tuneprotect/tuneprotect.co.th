@@ -3,7 +3,22 @@
 
 <html <?php echo TemplateHelper::genAttribute($template[TemplateHelper::HTML]) ?>>
 <head>
-
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1">
+	<meta http-equiv="x-ua-compatible" content="IE=10">
+	<meta name="generator" content="Hugo 0.79.1">
+	<meta name="description" content="A lightweight and powerful datetimepicker">
+	<link rel="canonical" href="https://flatpickr.js.org/examples/">
+	<meta name="author" content="chmln">
+	<meta property="og:url" content="https://flatpickr.js.org/examples/">
+	<meta property="og:title" content="flatpickr"><meta property="og:image" content="https://flatpickr.js.org/images/logo.png">
+	<meta name="apple-mobile-web-app-title" content="flatpickr">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.css">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/plugins/confirmDate/confirmDate.css">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/plugins/monthSelect/style.css">
+	<script src="https://flatpickr.js.org/javascripts/modernizr.js"></script>
 {{--    TEST--}}
 {{--    <!-- OneTrust Cookies Consent Notice start for tuneprotect.co.th -->--}}
 {{--    <script type="text/javascript" src="https://cdn-apac.onetrust.com/consent/e1a3cf11-6147-44de-b09e-241fa390bac3-test/OtAutoBlock.js" ></script>--}}
@@ -73,24 +88,7 @@
     @endforeach
 @endif
 
-<head lang="en-us">
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1">
-	<meta http-equiv="x-ua-compatible" content="IE=10">
-	<meta name="generator" content="Hugo 0.79.1">
-	<meta name="description" content="A lightweight and powerful datetimepicker">
-	<link rel="canonical" href="https://flatpickr.js.org/examples/">
-	<meta name="author" content="chmln">
-	<meta property="og:url" content="https://flatpickr.js.org/examples/">
-	<meta property="og:title" content="flatpickr"><meta property="og:image" content="https://flatpickr.js.org/images/logo.png">
-	<meta name="apple-mobile-web-app-title" content="flatpickr">
-	<meta name="apple-mobile-web-app-capable" content="yes">
-	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.css">
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/plugins/confirmDate/confirmDate.css">
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/plugins/monthSelect/style.css">
-	<script src="https://flatpickr.js.org/javascripts/modernizr.js"></script>
-</head>
+
 <main class="main">
 
 <article class="article">
