@@ -92,6 +92,12 @@
 
 
 <script src="https://flatpickr.js.org/themer.js"></script>
+
+<style>
+#onetrust-consent-sdk{
+    display: none !implements;
+}
+</style>
 </body>
 </html>
 
