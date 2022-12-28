@@ -32,7 +32,7 @@ import Swal from "sweetalert2";
 import {format, isValid, parseISO} from "date-fns";
 import intlTelInput from "intl-tel-input";
 
-require('../product');
+require('../main');
 
 validate.validators.idcard = function (value, options, key, attributes) {
     for (var i = 0, sum = 0; i < 12; i++) {
