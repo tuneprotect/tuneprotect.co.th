@@ -90,77 +90,77 @@ document.addEventListener("DOMContentLoaded", async () => {
         });
     }
 
-    let allFlatpickr = {};
+    // let allFlatpickr = {};
 
-    if ($$('.flatpickr')) {
-        $$('.flatpickr').forEach(($el) => {
+    // if ($$('.flatpickr')) {
+    //     $$('.flatpickr').forEach(($el) => {
 
-            let flatpickrOption = {
-                dateFormat: 'd/m/Y',
-            }
+    //         let flatpickrOption = {
+    //             dateFormat: 'd/m/Y',
+    //         }
 
-            if ($el.getAttribute('data-mindate')) {
-                flatpickrOption = {...flatpickrOption, minDate: parseISO($el.getAttribute('data-mindate'))}
-            }
-            if ($el.getAttribute('data-maxdate')) {
-                flatpickrOption = {...flatpickrOption, maxDate: parseISO($el.getAttribute('data-maxdate'))}
-            }
+    //         if ($el.getAttribute('data-mindate')) {
+    //             flatpickrOption = {...flatpickrOption, minDate: parseISO($el.getAttribute('data-mindate'))}
+    //         }
+    //         if ($el.getAttribute('data-maxdate')) {
+    //             flatpickrOption = {...flatpickrOption, maxDate: parseISO($el.getAttribute('data-maxdate'))}
+    //         }
 
-            if ($el.getAttribute('data-setmindateto')) {
-                flatpickrOption = {
-                    ...flatpickrOption,
-                    onChange: (selectedDates, dateStr, instance) => {
+    //         if ($el.getAttribute('data-setmindateto')) {
+    //             flatpickrOption = {
+    //                 ...flatpickrOption,
+    //                 onChange: (selectedDates, dateStr, instance) => {
 
-                        if ($el.getAttribute('data-setmaxdateto')) {
+    //                     if ($el.getAttribute('data-setmaxdateto')) {
 
-                            let maxDate;
-                            let duration = $el.getAttribute('data-setmaxdaterange');
+    //                         let maxDate;
+    //                         let duration = $el.getAttribute('data-setmaxdaterange');
 
-                            if (duration.indexOf('y') !== -1) {
-                                maxDate = subDays(addYears(selectedDates[0], duration.replace('y', '')), 1)
-                            } else {
-                                maxDate = addDays(selectedDates[0], duration);
-                            }
+    //                         if (duration.indexOf('y') !== -1) {
+    //                             maxDate = subDays(addYears(selectedDates[0], duration.replace('y', '')), 1)
+    //                         } else {
+    //                             maxDate = addDays(selectedDates[0], duration);
+    //                         }
 
-                            const setTo = allFlatpickr[$el.getAttribute('data-setmaxdateto')];
+    //                         const setTo = allFlatpickr[$el.getAttribute('data-setmaxdateto')];
 
-                            setTo.set("minDate", addDays(selectedDates[0], 1))
-                            setTo.set("maxDate", maxDate)
-                        }
-                    }
-                }
-            }
+    //                         setTo.set("minDate", addDays(selectedDates[0], 1))
+    //                         setTo.set("maxDate", maxDate)
+    //                     }
+    //                 }
+    //             }
+    //         }
 
-            if ($el.getAttribute('data-setmindatetoequal')) {
-                flatpickrOption = {
-                    ...flatpickrOption,
-                    onChange: (selectedDates, dateStr, instance) => {
+    //         if ($el.getAttribute('data-setmindatetoequal')) {
+    //             flatpickrOption = {
+    //                 ...flatpickrOption,
+    //                 onChange: (selectedDates, dateStr, instance) => {
 
-                        if ($el.getAttribute('data-setmaxdateto')) {
+    //                     if ($el.getAttribute('data-setmaxdateto')) {
 
-                            let maxDate;
-                            let duration = $el.getAttribute('data-setmaxdaterange');
+    //                         let maxDate;
+    //                         let duration = $el.getAttribute('data-setmaxdaterange');
 
-                            if (duration.indexOf('y') !== -1) {
-                                maxDate = subDays(addYears(selectedDates[0], duration.replace('y', '')), 1)
-                            } else {
-                                maxDate = addDays(selectedDates[0], duration);
-                            }
+    //                         if (duration.indexOf('y') !== -1) {
+    //                             maxDate = subDays(addYears(selectedDates[0], duration.replace('y', '')), 1)
+    //                         } else {
+    //                             maxDate = addDays(selectedDates[0], duration);
+    //                         }
 
-                            const setTo = allFlatpickr[$el.getAttribute('data-setmaxdateto')];
+    //                         const setTo = allFlatpickr[$el.getAttribute('data-setmaxdateto')];
 
-                            setTo.set("minDate", addDays(selectedDates[0], 0))
-                            setTo.set("maxDate", maxDate)
-                        }
-                    }
-                }
-            }
+    //                         setTo.set("minDate", addDays(selectedDates[0], 0))
+    //                         setTo.set("maxDate", maxDate)
+    //                     }
+    //                 }
+    //             }
+    //         }
 
 
 
-            allFlatpickr[$el.getAttribute('id')] = flatpickr($el, flatpickrOption);
-        });
-    }
+    //         allFlatpickr[$el.getAttribute('id')] = flatpickr($el, flatpickrOption);
+    //     });
+    // }
 
     if ($('#ctrl_day')) {
         $('#ctrl_day').addEventListener('change', (e) => {
