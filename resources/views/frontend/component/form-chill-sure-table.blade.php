@@ -5,7 +5,9 @@
             width: 40%;
         }
     }
-   
+   .onetrust-consent-sdk{
+    display: none;
+   }
 </style>
     <div class="wrapper">
         <table id="table-detail" data-package_name="{{$package->locales[$locale]->title}}">

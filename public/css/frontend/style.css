@@ -52,7 +52,7 @@ $direction : up,down,left,right
 @font-face {
   font-family: "DB SaiKrok X";
   src: url(/fonts/DBSaiKrokX-Bold.eot?56cc13a8ccd686e23ceb3d5f07d465ce);
-  src: url(/fonts/DBSaiKrokX-Bold.eot?56cc13a8ccd686e23ceb3d5f07d465ce) format("embedded-opentype"), url(/fonts/DBSaiKrokX-Bold.woff2?fe4a6844cf42ae1fcc7767e9ec68385f) format("woff2"), url(/fonts/DBSaiKrokX-Bold.woff?997f2a7651490f8174728a4d8d658ca1) format("woff"), url(/fonts/DBSaiKrokX-Bold.ttf?316c68762229579d2098622b4974733b) format("truetype");
+  src: url(/fonts/DBSaiKrokX-Bold.eot?56cc13a8ccd686e23ceb3d5f07d465ce) format("embedded-opentype"), url(/font/DBSaiKrokX-Bold.woff2?fe4a6844cf42ae1fcc7767e9ec68385f) format("woff2"), url(/fonts/DBSaiKrokX-Bold.woff?997f2a7651490f8174728a4d8d658ca1) format("woff"), url(/fonts/DBSaiKrokX-Bold.ttf?316c68762229579d2098622b4974733b) format("truetype");
   font-weight: bold;
   font-style: normal;
   font-display: swap;
