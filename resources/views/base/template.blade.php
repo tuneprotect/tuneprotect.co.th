@@ -72,7 +72,6 @@
         {!! $v !!}
     @endforeach
 @endif
-<input class="flatpickr flatpickr-input" type="text" placeholder="Select Date.." data-id="disableSpecific" readonly="readonly">
 </body>
 </html>
 

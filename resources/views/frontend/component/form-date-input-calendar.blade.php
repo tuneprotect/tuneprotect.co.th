@@ -6,9 +6,11 @@
 <div class="date-input">
     <strong data-your-details="@lang('product.your-details')" data-loved-one="@lang('product.loved-one')"></strong>
     <div class="date-wrapper">
-        <div class="controls-wrapper"></div>
+        <div class="controls-wrapper">            
+            <input class="flatpickr flatpickr-input" type="text" placeholder="Select Date.." data-id="disableSpecific" readonly="readonly">
+        </div>
         <div class="controls-wrapper">
-        <input class="flatpickr flatpickr-input active" 
+            <input class="flatpickr flatpickr-input active" 
                     type="text" 
                     id="ctrl_dob" 
                     placeholder="@lang('product.day')"
