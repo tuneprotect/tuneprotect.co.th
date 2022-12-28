@@ -3,6 +3,10 @@
         display: none !important;
     }
 </style>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.css">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/plugins/confirmDate/confirmDate.css">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/plugins/monthSelect/style.css">
+	<script src="https://flatpickr.js.org/javascripts/modernizr.js"></script>
 <div class="date-input">
     <strong data-your-details="@lang('product.your-details')" data-loved-one="@lang('product.loved-one')"></strong>
     <div class="date-wrapper">
