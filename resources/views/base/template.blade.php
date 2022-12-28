@@ -62,31 +62,16 @@
 
 @yield('layout')
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.css">
-	<script src="https://flatpickr.js.org/javascripts/modernizr.js"></script>
-
+@if(isset($template[TemplateHelper::FOOT_JS] ))
+    @foreach ($template[TemplateHelper::FOOT_JS] as $v)
+        <script src="{{ $v['path'] }}" <?php echo TemplateHelper::genAttribute($v['property']) ?>></script>
+    @endforeach
+@endif
 @if(isset($template[TemplateHelper::FOOT_OTHER] ))
     @foreach ($template[TemplateHelper::FOOT_OTHER] as $v)
         {!! $v !!}
     @endforeach
 @endif
-
-
-		<input class="flatpickr flatpickr-input" type="text" placeholder="Select Date.."  data-id="xxx" readonly="readonly">
-		<input class="flatpickr flatpickr-input" type="text" placeholder="Select Date.." data-id="disableSpecific" readonly="readonly">
-	
-	
-
-<script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/plugins/confirmDate/confirmDate.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/plugins/weekSelect/weekSelect.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/plugins/rangePlugin.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/plugins/minMaxTimePlugin.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/plugins/monthSelect/index.js"></script>
-<script src="https://flatpickr.js.org/flatpickr.js"></script>
-
-
-<script src="https://flatpickr.js.org/themer.js"></script>
 </body>
 </html>
 
