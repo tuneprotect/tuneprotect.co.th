@@ -62,6 +62,11 @@
 
 @yield('layout')
 
+@if(isset($template[TemplateHelper::FOOT_JS] ))
+    @foreach ($template[TemplateHelper::FOOT_JS] as $v)
+        <script src="{{ $v['path'] }}" <?php echo TemplateHelper::genAttribute($v['property']) ?>></script>
+    @endforeach
+@endif
 
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.css">
