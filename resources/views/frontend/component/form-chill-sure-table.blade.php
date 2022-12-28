@@ -56,7 +56,7 @@
                     </th>
                     <?php $i = 1 ?>
                     @foreach ($package_detail as $k => $v)
-                        <th data-package="{{$k}}" class="{{$i==3? 'aa':'bb'}}">
+                        <th data-package="{{$k}}" class="{{$i==4? 'recommendPackage on basePrice':''}}">
                             @if(isset($v->no))
 
                                 <span data-recommend>
