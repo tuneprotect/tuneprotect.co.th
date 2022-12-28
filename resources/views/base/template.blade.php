@@ -52,6 +52,12 @@
             {!! $v !!}
         @endforeach
     @endif
+
+    
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.css">
+	<script src="https://flatpickr.js.org/javascripts/modernizr.js"></script>
 </head>
 <body <?php echo @TemplateHelper::genAttribute($template[TemplateHelper::BODY]) ?>>
 @if(isset($template[TemplateHelper::OPEN_BODY] ))

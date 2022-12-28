@@ -26,10 +26,6 @@
 
 
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.css">
-	<script src="https://flatpickr.js.org/javascripts/modernizr.js"></script>
-
-
 		<input class="flatpickr flatpickr-input" type="text" placeholder="Select Date.."  data-id="xxx" readonly="readonly">
 		<input class="flatpickr flatpickr-input" type="text" placeholder="Select Date.." data-id="disableSpecific" readonly="readonly">
 	
