@@ -62,9 +62,11 @@
 
 @yield('layout')
 
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.css">
+	<script src="https://flatpickr.js.org/javascripts/modernizr.js"></script>
 @if(isset($template[TemplateHelper::FOOT_JS] ))
     @foreach ($template[TemplateHelper::FOOT_JS] as $v)
-        <script src="{{ $v['path'] }}" <?php echo TemplateHelper::genAttribute($v['property']) ?>></script>
+        
     @endforeach
 @endif
 @if(isset($template[TemplateHelper::FOOT_OTHER] ))
@@ -72,8 +74,6 @@
         {!! $v !!}
     @endforeach
 @endif
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.css">
-	<script src="https://flatpickr.js.org/javascripts/modernizr.js"></script>
 
 
 		<input class="flatpickr flatpickr-input" type="text" placeholder="Select Date.."  data-id="xxx" readonly="readonly">
