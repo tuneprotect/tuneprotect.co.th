@@ -25,7 +25,4 @@
 </div>
 
 
-
-		<input class="flatpickr flatpickr-input" type="text" placeholder="Select Date.."  data-id="xxx" readonly="readonly">
-		<input class="flatpickr flatpickr-input" type="text" placeholder="Select Date.." data-id="disableSpecific" readonly="readonly">
 	
