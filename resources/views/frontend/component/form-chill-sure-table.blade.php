@@ -98,7 +98,7 @@
                 <th>@lang('product.price_per_year')</th>
                 <?php $i = 1 ?>
                 @foreach  ($package_detail as $k => $v)
-                    <td {{$i > 1 ? 'class=hide' : ""}} data-index="{{$i}}" data-package="{{$k}}">
+                    <td {{$i == 4 ? "class='recommendPackage on'" : "class=hide"}} data-index="{{$i}}" data-package="{{$k}}">
                         <strong data-price-{{$k}}></strong></td>
                     <?php $i++ ?>
                 @endforeach
@@ -109,7 +109,7 @@
                     <th data-cover-{{$k}}>{!! $v !!}</th>
 
                     @foreach ($package_detail as $k1 => $v1)
-                        <td {{$i > 1 ? 'class=hide' : ""}} data-index="{{$i}}" data-package="{{$k1}}">
+                        <td  {{$i == 4 ? "class='recommendPackage on'" : "class=hide"}} data-index="{{$i}}" data-package="{{$k1}}">
                             @if(isset($v1->plan->$k))
                                 @if((is_numeric($v1->plan->$k)))
                                     <strong>{{number_format( $v1->plan->$k,0)}}</strong>
