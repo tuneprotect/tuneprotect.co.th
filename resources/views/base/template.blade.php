@@ -3,55 +3,23 @@
 
 <html <?php echo TemplateHelper::genAttribute($template[TemplateHelper::HTML]) ?>>
 <head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1">
+	<meta http-equiv="x-ua-compatible" content="IE=10">
+	<meta name="generator" content="Hugo 0.79.1">
+	<meta name="description" content="A lightweight and powerful datetimepicker">
+	<link rel="canonical" href="https://flatpickr.js.org/examples/">
+	<meta name="author" content="chmln">
+	<meta property="og:url" content="https://flatpickr.js.org/examples/">
+	<meta property="og:title" content="flatpickr"><meta property="og:image" content="https://flatpickr.js.org/images/logo.png">
+	<meta name="apple-mobile-web-app-title" content="flatpickr">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.css">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/plugins/confirmDate/confirmDate.css">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/plugins/monthSelect/style.css">
+	<script src="https://flatpickr.js.org/javascripts/modernizr.js"></script>
 
-{{--    TEST--}}
-{{--    <!-- OneTrust Cookies Consent Notice start for tuneprotect.co.th -->--}}
-{{--    <script type="text/javascript" src="https://cdn-apac.onetrust.com/consent/e1a3cf11-6147-44de-b09e-241fa390bac3-test/OtAutoBlock.js" ></script>--}}
-{{--    <script src="https://cdn-apac.onetrust.com/scripttemplates/otSDKStub.js" data-document-language="true" type="text/javascript" charset="UTF-8" data-domain-script="e1a3cf11-6147-44de-b09e-241fa390bac3-test" ></script>--}}
-{{--    <script type="text/javascript">--}}
-{{--        function OptanonWrapper() { }--}}
-{{--    </script>--}}
-{{--    <!-- OneTrust Cookies Consent Notice end for tuneprotect.co.th -->--}}
-
-    <!-- OneTrust Cookies Consent Notice start for tuneprotect.co.th -->
-    <script type="text/javascript" src="https://cdn-apac.onetrust.com/consent/e1a3cf11-6147-44de-b09e-241fa390bac3/OtAutoBlock.js" ></script>
-    <script src="https://cdn-apac.onetrust.com/scripttemplates/otSDKStub.js" data-document-language="true" type="text/javascript" charset="UTF-8" data-domain-script="e1a3cf11-6147-44de-b09e-241fa390bac3" ></script>
-    <script type="text/javascript">
-        function OptanonWrapper() { }
-    </script>
-    <!-- OneTrust Cookies Consent Notice end for tuneprotect.co.th -->
-
-
-    <meta name="facebook-domain-verification" content="pa4vdurvww8ktkzh7xbm2tyrc7iwzv" />
-    @if(isset($template[TemplateHelper::META] ))
-        @foreach ($template[TemplateHelper::META] as $v)
-            <meta <?php echo TemplateHelper::genAttribute($v) ?>/>
-        @endforeach
-    @endif
-    <title>{{ $template[TemplateHelper::TITLE] }}</title>
-    @if(isset($template[TemplateHelper::STYLESHEET] ))
-        @foreach ($template[TemplateHelper::STYLESHEET] as $v)
-            <link rel="stylesheet" type="text/css"
-                  href="{{ $v['path'] }}" <?php echo TemplateHelper::genAttribute($v['property']) ?>/>
-        @endforeach
-    @endif
-    @if(isset($template[TemplateHelper::FAVICON] ))
-        @foreach ($template[TemplateHelper::FAVICON] as $v)
-            <link href="{{ $v['path'] }}" <?php echo TemplateHelper::genAttribute($v['property']) ?>/>
-        @endforeach
-    @endif
-    @if(isset($template[TemplateHelper::HEAD_JS] ))
-        @foreach ($template[TemplateHelper::HEAD_JS] as $v)
-            <script type="text/javascript"
-                    src="{{ $v['path'] }}" <?php echo TemplateHelper::genAttribute($v['property']) ?>></script>
-        @endforeach
-
-    @endif
-    @if(isset($template[TemplateHelper::HEAD_OTHER] ))
-        @foreach ($template[TemplateHelper::HEAD_OTHER] as $v)
-            {!! $v !!}
-        @endforeach
-    @endif
 </head>
 <body <?php echo @TemplateHelper::genAttribute($template[TemplateHelper::BODY]) ?>>
 @if(isset($template[TemplateHelper::OPEN_BODY] ))
@@ -72,6 +40,21 @@
         {!! $v !!}
     @endforeach
 @endif
+
+
+
+<article class="article">
+	<div class="wrapper">
+		<input class="flatpickr flatpickr-input" type="text" placeholder="Select Date.." readonly="readonly">
+	</div>
+</article>
+<script>var base_url='https:\/\/flatpickr.js.org\/';var repo_id='flatpickr\/flatpickr';</script><script src="https://flatpickr.js.org/javascripts/application.js"></script><script src="https://flatpickr.js.org/init.js"></script><script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.js"></script><script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/plugins/confirmDate/confirmDate.js"></script><script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/plugins/weekSelect/weekSelect.js"></script><script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/plugins/rangePlugin.js"></script><script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/plugins/minMaxTimePlugin.js"></script><script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/plugins/monthSelect/index.js"></script><script src="https://flatpickr.js.org/flatpickr.js"></script><div class="flatpickr-calendar animate arrowLeft arrowTop" tabindex="-1" style="top: 409px; left: 397.5px; right: auto;"><div class="flatpickr-months"><span class="flatpickr-prev-month"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 17 17"><g></g><path d="M5.207 8.471l7.146 7.147-0.707 0.707-7.853-7.854 7.854-7.853 0.707 0.707-7.147 7.146z"></path></svg></span><div class="flatpickr-month"><div class="flatpickr-current-month"><select class="flatpickr-monthDropdown-months" aria-label="Month" tabindex="-1"><option class="flatpickr-monthDropdown-month" value="0" tabindex="-1">January</option><option class="flatpickr-monthDropdown-month" value="1" tabindex="-1">February</option><option class="flatpickr-monthDropdown-month" value="2" tabindex="-1">March</option><option class="flatpickr-monthDropdown-month" value="3" tabindex="-1">April</option><option class="flatpickr-monthDropdown-month" value="4" tabindex="-1">May</option><option class="flatpickr-monthDropdown-month" value="5" tabindex="-1">June</option><option class="flatpickr-monthDropdown-month" value="6" tabindex="-1">July</option><option class="flatpickr-monthDropdown-month" value="7" tabindex="-1">August</option><option class="flatpickr-monthDropdown-month" value="8" tabindex="-1">September</option><option class="flatpickr-monthDropdown-month" value="9" tabindex="-1">October</option><option class="flatpickr-monthDropdown-month" value="10" tabindex="-1">November</option><option class="flatpickr-monthDropdown-month" value="11" tabindex="-1">December</option></select><div class="numInputWrapper"><input class="numInput cur-year" type="number" tabindex="-1" aria-label="Year"><span class="arrowUp"></span><span class="arrowDown"></span></div></div></div><span class="flatpickr-next-month"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 17 17"><g></g><path d="M13.207 8.472l-7.854 7.854-0.707-0.707 7.146-7.146-7.146-7.148 0.707-0.707 7.854 7.854z"></path></svg></span></div><div class="flatpickr-innerContainer"><div class="flatpickr-rContainer"><div class="flatpickr-weekdays"><div class="flatpickr-weekdaycontainer">
+      
+      </div></div><div class="flatpickr-days" tabindex="-1"><div class="dayContainer"><span class="flatpickr-day prevMonthDay" aria-label="November 27, 2022" tabindex="-1">27</span><span class="flatpickr-day prevMonthDay" aria-label="November 28, 2022" tabindex="-1">28</span><span class="flatpickr-day prevMonthDay" aria-label="November 29, 2022" tabindex="-1">29</span><span class="flatpickr-day prevMonthDay" aria-label="November 30, 2022" tabindex="-1">30</span><span class="flatpickr-day" aria-label="December 1, 2022" tabindex="-1">1</span><span class="flatpickr-day" aria-label="December 2, 2022" tabindex="-1">2</span><span class="flatpickr-day" aria-label="December 3, 2022" tabindex="-1">3</span><span class="flatpickr-day" aria-label="December 4, 2022" tabindex="-1">4</span><span class="flatpickr-day" aria-label="December 5, 2022" tabindex="-1">5</span><span class="flatpickr-day" aria-label="December 6, 2022" tabindex="-1">6</span><span class="flatpickr-day" aria-label="December 7, 2022" tabindex="-1">7</span><span class="flatpickr-day" aria-label="December 8, 2022" tabindex="-1">8</span><span class="flatpickr-day" aria-label="December 9, 2022" tabindex="-1">9</span><span class="flatpickr-day" aria-label="December 10, 2022" tabindex="-1">10</span><span class="flatpickr-day" aria-label="December 11, 2022" tabindex="-1">11</span><span class="flatpickr-day" aria-label="December 12, 2022" tabindex="-1">12</span><span class="flatpickr-day" aria-label="December 13, 2022" tabindex="-1">13</span><span class="flatpickr-day" aria-label="December 14, 2022" tabindex="-1">14</span><span class="flatpickr-day" aria-label="December 15, 2022" tabindex="-1">15</span><span class="flatpickr-day" aria-label="December 16, 2022" tabindex="-1">16</span><span class="flatpickr-day" aria-label="December 17, 2022" tabindex="-1">17</span><span class="flatpickr-day" aria-label="December 18, 2022" tabindex="-1">18</span><span class="flatpickr-day" aria-label="December 19, 2022" tabindex="-1">19</span><span class="flatpickr-day" aria-label="December 20, 2022" tabindex="-1">20</span><span class="flatpickr-day" aria-label="December 21, 2022" tabindex="-1">21</span><span class="flatpickr-day" aria-label="December 22, 2022" tabindex="-1">22</span><span class="flatpickr-day" aria-label="December 23, 2022" tabindex="-1">23</span><span class="flatpickr-day" aria-label="December 24, 2022" tabindex="-1">24</span><span class="flatpickr-day" aria-label="December 25, 2022" tabindex="-1">25</span><span class="flatpickr-day" aria-label="December 26, 2022" tabindex="-1">26</span><span class="flatpickr-day" aria-label="December 27, 2022" tabindex="-1">27</span><span class="flatpickr-day today" aria-label="December 28, 2022" aria-current="date" tabindex="-1">28</span><span class="flatpickr-day" aria-label="December 29, 2022" tabindex="-1">29</span><span class="flatpickr-day" aria-label="December 30, 2022" tabindex="-1">30</span><span class="flatpickr-day" aria-label="December 31, 2022" tabindex="-1">31</span><span class="flatpickr-day nextMonthDay" aria-label="January 1, 2023" tabindex="-1">1</span><span class="flatpickr-day nextMonthDay" aria-label="January 2, 2023" tabindex="-1">2</span><span class="flatpickr-day nextMonthDay" aria-label="January 3, 2023" tabindex="-1">3</span><span class="flatpickr-day nextMonthDay" aria-label="January 4, 2023" tabindex="-1">4</span><span class="flatpickr-day nextMonthDay" aria-label="January 5, 2023" tabindex="-1">5</span><span class="flatpickr-day nextMonthDay" aria-label="January 6, 2023" tabindex="-1">6</span><span class="flatpickr-day nextMonthDay" aria-label="January 7, 2023" tabindex="-1">7</span></div></div></div></div></div><script src="https://flatpickr.js.org/themer.js"></script><script>var headers=document.getElementsByTagName("h2");var scrollspy=document.getElementById('scrollspy');if(scrollspy){if(headers.length>0){for(var i=0;i<headers.length;i++){var li=document.createElement("li");li.setAttribute("class","anchor");var a=document.createElement("a");a.setAttribute("href","#"+headers[i].id);a.setAttribute("title",headers[i].innerHTML);a.innerHTML=headers[i].innerHTML;li.appendChild(a)
+scrollspy.appendChild(li);}}else{scrollspy.parentElement.removeChild(scrollspy)}
+var headers=document.querySelectorAll("h1, h2, h3, h4, h5, h6");for(var i=0;i<headers.length;i++){var a=document.createElement("a");a.setAttribute("class","headerlink");a.setAttribute("href","#"+headers[i].id);a.setAttribute("title","Permanent link")
+a.innerHTML="#";headers[i].appendChild(a);}}</script>
+
 </body>
 </html>
 
