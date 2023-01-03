@@ -20,7 +20,7 @@ export const showFieldError = ($this, errors) => {
 export const validateField = ($this, constraints) => {
 
     let field = $this.getAttribute('name');
-
+    console.log("field",field);
     if (field) {
 
         if (field.startsWith('data_')) {
