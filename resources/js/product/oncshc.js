@@ -877,10 +877,6 @@ var configs = {
                 dayElem.innerHTML += "<span class='event busy'></span>";
         }
     },
-  
-    rangePlugin: {
-        "plugins": [new rangePlugin({ input: "#secondRangeInput"})]
-    },
 
     minMaxTimePlugin: {
         enableTime: true,
