@@ -38,7 +38,7 @@ export const validateAgeInPackage = (package_data, cal_price) => {
     let yy = $('#ctrl_year').value;
 
     $$('#ctrl_dob').forEach(el => {
-        console.log("step",package_data)
+        console.log("step",$(this).value)
     });
   
     // if(dob!='' || dob!=undefined){
