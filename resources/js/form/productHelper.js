@@ -38,16 +38,19 @@ export const validateAgeInPackage = (package_data, cal_price) => {
     let yy = $('#ctrl_year').value;
 
     $$('#ctrl_dob').forEach(el => {
-        console.log("step",$(this).value)
+        const dob = $('#ctrl_dob').value;
+       if(dob!='' || dob!=undefined){
+            const _dob = dob.split("/");
+            dd = _dob[0];
+            mm = _dob[1];
+            yy = _dob[2];
+        }
+        console.log("step",dd,mm,yy)
+        if (dd === '' || mm === '' || yy === '') {
+            showDateError($('#ctrl_dob').getAttribute('data-error-format'));
+            return {status: false};
+        }
     });
-  
-    // if(dob!='' || dob!=undefined){
-    //     const _dob = dob.split("/");
-    //     dd = _dob[0];
-    //     mm = _dob[1];
-    //     yy = _dob[2];
-    // }
-
     
     if (dd === '' || mm === '' || yy === '') {
         showDateError($('#ctrl_day').getAttribute('data-error-format'));
