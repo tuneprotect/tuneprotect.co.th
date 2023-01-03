@@ -40,9 +40,9 @@ export const validateAgeInPackage = (package_data, cal_price) => {
 
     if(dob!='' || dob!=undefined){
         const _dob = dob.split("/");
-        dd = _dob[0];
-        mm = _dob[1];
-        yy = _dob[2];
+        dd = _dob[1];
+        mm = _dob[2];
+        yy = _dob[3];
     }
 
     console.log("step",dd,mm,yy)
