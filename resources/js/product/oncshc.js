@@ -688,30 +688,18 @@ var configs = {
         dateFormat: "Y-m-d"
     },
 
-    "minDate": {
-        minDate: "2020-01"
-    },
-
     "minDateToday": {
         minDate: "today"
     },
 
-     "maxDateStr": {
-        dateFormat: "d.m.Y",
-        maxDate: "15.12.2017"
-    },
+    
 
     minMaxDateTwoWeeks: {
         minDate: "today",
         maxDate: new Date().setDate(new Date().getDate() + 14)
     },
 
-    disableSpecific: {
-        onReady: function () {
-            this.jumpToDate("2025-01")
-        },
-        disable: ["2025-01-30", "2025-02-21", "2025-03-08", new Date(2025, 4, 9) ]
-    },
+    
 
     disableRange: {
         onReady: function () {
