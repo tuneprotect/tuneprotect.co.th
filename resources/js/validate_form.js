@@ -35,6 +35,7 @@ export const validateField = ($this, constraints) => {
         $$('cite', $parent).forEach($el => $el.remove());
 
         const result = validate({[field]: fieldValue}, constraints)
+        console.log("validate_result",result);
 
         if (result && result[field]) {
             showFieldError($this, result[field]);
