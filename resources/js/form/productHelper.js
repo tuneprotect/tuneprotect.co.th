@@ -34,7 +34,8 @@ export const validateAgeInPackage = (package_data, cal_price) => {
     $('.date-input cite').innerHTML = "";
 
     const dd = $('#ctrl_day').value,
-        mm = $('#ctrl_month').value;
+        mm = $('#ctrl_month').value,
+        dob = $('#ctrl_day').value;
     let yy = $('#ctrl_year').value;
 
     
