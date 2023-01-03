@@ -876,33 +876,6 @@ var configs = {
             else if (Math.random() > 0.85)
                 dayElem.innerHTML += "<span class='event busy'></span>";
         }
-    },
-
-    minMaxTimePlugin: {
-        enableTime: true,
-        minDate: "2025",
-        plugins: [
-            new minMaxTimePlugin({
-                table: {
-                    "2025-01-10": {
-                        minTime: "16:00",
-                        maxTime: "22:00"
-                    }
-                }
-            })
-        ]
-    },
-
-    monthSelectPlugin: {
-        altInput: true,
-        plugins: [
-            new monthSelectPlugin({
-                shorthand: true, //defaults to false
-                dateFormat: "m.y", //defaults to "F Y"
-                altFormat: "F Y", //defaults to "F Y"
-                theme: "dark" // defaults to "light"
-            })
-        ]
     }
 }
 
