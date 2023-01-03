@@ -34,20 +34,19 @@ export const validateAgeInPackage = (package_data, cal_price) => {
     $('.date-input cite').innerHTML = "";
 
     let dd = $('#ctrl_day').value,
-        mm = $('#ctrl_month').value,
-        dob = $('#ctrl_dob').value;
+        mm = $('#ctrl_month').value;
     let yy = $('#ctrl_year').value;
 
     $$('#ctrl_dob').forEach(el => {
         console.log("step",package_data)
     });
   
-    if(dob!='' || dob!=undefined){
-        const _dob = dob.split("/");
-        dd = _dob[0];
-        mm = _dob[1];
-        yy = _dob[2];
-    }
+    // if(dob!='' || dob!=undefined){
+    //     const _dob = dob.split("/");
+    //     dd = _dob[0];
+    //     mm = _dob[1];
+    //     yy = _dob[2];
+    // }
 
     
     if (dd === '' || mm === '' || yy === '') {
