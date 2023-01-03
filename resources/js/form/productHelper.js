@@ -40,7 +40,7 @@ export const validateAgeInPackage = (package_data, cal_price) => {
 
     //let _package = $('main').attr("data-package");
     const _package = document.getElementsByTagName("main")[0];
-    var xxx = _package.attr("data-package")
+    const xxx = _package.attr("data-package")
     if(dob!='' || dob!=undefined){
         const _dob = dob.split("/");
         dd = _dob[0];
