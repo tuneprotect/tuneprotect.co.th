@@ -877,20 +877,7 @@ var configs = {
                 dayElem.innerHTML += "<span class='event busy'></span>";
         }
     },
-
-    
-    weekSelect: {
-        "plugins": [new weekSelect({})],
-        "onChange": [function(){
-            // extract the week number
-            // note: "this" is bound to the flatpickr instance
-            var weekNumber = this.selectedDates[0]
-                ? this.config.getWeek(this.selectedDates[0])
-                : null;
-
-            console.log(weekNumber);
-        }]
-    },
+  
     rangePlugin: {
         "plugins": [new rangePlugin({ input: "#secondRangeInput"})]
     },
