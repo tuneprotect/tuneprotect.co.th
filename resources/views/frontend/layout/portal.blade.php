@@ -127,8 +127,8 @@
                                         </picture>
                                 @elseif($selected==='ONTADMB2B')
                                     <picture>
-                                        <source media="(min-width:768px)" srcset="/storage/Banner/b2b/TADomestic-Banner02.jpg">
-                                        <img src="{{url(!empty($v->pic_mobile_en) ? "/storage/Banner/b2b/TADomestic-Banner02.jpg" : "/storage/Banner/b2b/TADomestic-Banner04.jpg" )}}"
+                                        <source media="(min-width:768px)" srcset="/storage/Banner/b2b/TADomestic_PC_EN.jpg">
+                                        <img src="{{url(!empty($v->pic_mobile_en) ? "/storage/Banner/b2b/TADomestic_PC_EN.jpg" : "/storage/Banner/b2b/TADomestic_MB_EN.jpg" )}}"
                                                 alt="{{$v->locales[$locale]->title}}">
                                     </picture>
                                 @elseif($selected==='ONTAISMB2B')
@@ -246,8 +246,8 @@
                                     </picture>
                                 @elseif($selected==='ONTADMB2B')
                                     <picture>
-                                        <source media="(min-width:768px)" srcset="/storage/Banner/b2b/TADomestic-Banner01.jpg">
-                                        <img src="{{url(!empty($v->pic_mobile_en) ? "/storage/Banner/b2b/TADomestic-Banner01.jpg" : "/storage/Banner/b2b/TADomestic-Banner03.jpg" )}}"
+                                        <source media="(min-width:768px)" srcset="/storage/Banner/b2b/TADomestic_PC_TH.jpg">
+                                        <img src="{{url(!empty($v->pic_mobile_en) ? "/storage/Banner/b2b/TADomestic_PC_TH.jpg" : "/storage/Banner/b2b/TADomestic_MB_TH.jpg" )}}"
                                                 alt="{{$v->locales[$locale]->title}}">
                                     </picture>
                                 @elseif($selected==='ONTAISMB2B')
