@@ -22,7 +22,8 @@
         <div class="controls-wrapper"></div>
         <div class="controls-wrapper"></div>
     </div>
-    <div class="date-wrapper">
+    <cite></cite>
+    <div class="date-wrapper d-none">
         <div class="controls-wrapper">
             <input id="ctrl_day" type="tel" placeholder="@lang('product.day')"
                    data-birthdate="@lang('product.birthdate')"
@@ -55,7 +56,6 @@
             <label for="ctrl_year">@lang('product.year')</label>
         </div>
     </div>
-    <cite></cite>
 </div>
 
 
