@@ -45,13 +45,12 @@ export const validateAgeInPackage = (package_data, cal_price) => {
             mm = _dob[1];
             yy = _dob[2];
         }
-        console.log("step",dd,mm,yy)
         if (dd === '' || mm === '' || yy === '') {
             showDateError($('#ctrl_dob').getAttribute('data-error-format'));
             return {status: false};
         }
     });
-    
+
     if (dd === '' || mm === '' || yy === '') {
         showDateError($('#ctrl_day').getAttribute('data-error-format'));
         return {status: false};

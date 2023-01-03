@@ -40,6 +40,7 @@ validate.validators.idcard = function (value, options, key, attributes) {
         sum += parseFloat(value.charAt(i)) * (13 - i);
     }
     const result = ((11 - sum % 11) % 10 === parseFloat(value.charAt(12)));
+    console.log("idcard",result)
     if (!result) {
         return "^" + $('#fdNationalID').getAttribute('data-error-idcard')
     }
