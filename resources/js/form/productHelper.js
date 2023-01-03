@@ -39,7 +39,8 @@ export const validateAgeInPackage = (package_data, cal_price) => {
     let yy = $('#ctrl_year').value;
 
     //let _package = $('main').attr("data-package");
-    const _package = document.getElementsByTagName("main")[0].attr("data-package");
+    const _package = document.getElementsByTagName("main")[0];
+    var xxx = _package.attr("data-package")
     if(dob!='' || dob!=undefined){
         const _dob = dob.split("/");
         dd = _dob[0];
@@ -47,7 +48,7 @@ export const validateAgeInPackage = (package_data, cal_price) => {
         yy = _dob[2];
     }
 
-    console.log("step",_package)
+    console.log("step",xxx)
     if (dd === '' || mm === '' || yy === '') {
         showDateError($('#ctrl_day').getAttribute('data-error-format'));
         return {status: false};
