@@ -72,16 +72,6 @@
         {!! $v !!}
     @endforeach
 @endif
-
-
-<style>
-#onetrust-consent-sdk{
-    display: none !implements;
-}
-</style>
 </body>
 </html>
 
-
-
-	
