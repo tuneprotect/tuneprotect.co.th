@@ -398,7 +398,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     allField.forEach(field => {
         field.addEventListener("change", function (e) {
             validateField(this, constraints);
-            console.log("change",constraints);
             if (['fdName', 'fdSurname', 'fdNationalID'].includes(field.id)) {                
                 validatePolicyStep5(e.target, data.fdPackage);
             }
