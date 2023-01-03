@@ -878,10 +878,7 @@ var configs = {
         }
     },
 
-    confirmDate: {
-        "enableTime": true,
-        "plugins": [new confirmDatePlugin({})]
-    },
+    
     weekSelect: {
         "plugins": [new weekSelect({})],
         "onChange": [function(){
