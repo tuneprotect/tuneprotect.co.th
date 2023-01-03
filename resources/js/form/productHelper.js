@@ -33,17 +33,19 @@ export const validateAgeInPackage = (package_data, cal_price) => {
     });
     $('.date-input cite').innerHTML = "";
 
-    const dd = $('#ctrl_day').value,
+    let dd = $('#ctrl_day').value,
         mm = $('#ctrl_month').value,
         dob = $('#ctrl_dob').value;
     let yy = $('#ctrl_year').value;
 
     if(dob!='' || dob!=undefined){
-        let _dob = dob.split("/");
+        const _dob = dob.split("/");
         dd = _dob[0];
         mm = _dob[1];
         yy = _dob[2];
     }
+
+    console.log("step",dd,mm,yy)
     if (dd === '' || mm === '' || yy === '') {
         showDateError($('#ctrl_day').getAttribute('data-error-format'));
         return {status: false};
