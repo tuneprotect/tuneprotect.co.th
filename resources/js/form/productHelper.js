@@ -37,6 +37,9 @@ export const validateAgeInPackage = (package_data, cal_price) => {
         mm = $('#ctrl_month').value;
     let yy = $('#ctrl_year').value;
 
+    
+    console.log("step",dd,mm,yy)
+
     if (dd === '' || mm === '' || yy === '') {
         showDateError($('#ctrl_day').getAttribute('data-error-format'));
         return {status: false};

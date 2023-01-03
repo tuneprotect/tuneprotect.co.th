@@ -462,7 +462,6 @@ document.addEventListener("DOMContentLoaded", async () => {
                     status = true;
                     hideShowConditionBox(goToStep);
                 } else {
-                    console.log("step",package_data)
                     switch (parseInt(step)) {
                         case 1:
                             const validateResult = validateAgeInPackage(package_data, false);
