@@ -213,27 +213,15 @@ const zoneCode = {
 }
 
 const getSelectedPrice = (packageCode, package_data) => {
-
     const code = packageCode;
-    const sub_code = $('#sub_code').value ;
-
-    // const code = packageCode.substring(0, 9);
-    // const sub_code = packageCode.substring(9);
-    // console.log("code : "+ code);
-    // console.log("sub_code : "+ sub_code);
-    // console.log("package_data : "+ package_data);
-
+    const sub_code = $('#sub_code').value;
     return package_data[code].price[sub_code].price;
 }
 
 
 const genPrice = (package_data,country_data, subpackage, fdFromDate, fdToDate) => {
-
     let startDate = parseISO(fdFromDate);
     let endDate = parseISO(fdToDate);
-
-    console.log($('#ctrl_travel_type').value);
-
     if ($('#ctrl_travel_type').value === 'annual') {
         // endDate = new Date(startDate.getFullYear() + 1, startDate.getMonth(), startDate.getDate());
     }
@@ -245,20 +233,12 @@ const genPrice = (package_data,country_data, subpackage, fdFromDate, fdToDate) =
                     country_zone = v.zone;
                 }
             });
-        console.log(country_zone);
         subpackage = country_zone;
         $('#ctrl_sub_package').value = subpackage;
     }
 
-    // console.log(package_data);
-    console.log(subpackage);
-    console.log(fdFromDate);
-    console.log(fdToDate);
-
-
 
     const day = differenceInDays(endDate, startDate) + 1;
-    console.log("day : "  + day);
 
     $('#days').value = day;
 
@@ -267,13 +247,8 @@ const genPrice = (package_data,country_data, subpackage, fdFromDate, fdToDate) =
 
     $('#all_pack').value = allPack;
 
-    console.log("packs : " , allPack);
-    console.log("package_data: " , package_data);
-    console.log("current_package: " , current_package);
     if (document.body.clientWidth > 767) {
         $$('#table-detail td[data-package],#table-detail th[data-package],.choose-plan-mobile').forEach($el => {
-            
-            console.log("subpackage1",$el.getAttribute("data-package"))
             if (allPack.includes($el.getAttribute("data-package"))) {
                 $el.style.display = "table-cell";
             } else {
@@ -281,8 +256,6 @@ const genPrice = (package_data,country_data, subpackage, fdFromDate, fdToDate) =
             }
         });
     } else {
-        
-        console.log("subpackage2",subpackage)
         $$('#table-detail thead a[data-package]').forEach($el => {
             if ($el.getAttribute("data-package").startsWith('ONTAOBB2B' + subpackage)) {
                 $el.style.display = "inline-flex";
@@ -335,15 +308,12 @@ const genPrice = (package_data,country_data, subpackage, fdFromDate, fdToDate) =
             }
         })
 
-        // console.log(pack);
-
         $$('[data-sub-package]').forEach($el => {
             $el.setAttribute('data-sub-package', pack)
         });
         $(`strong[data-price-${k}]`).innerHTML = parseInt(package_data[k].price[pack].price).toLocaleString();
         $('#sub_code').value = pack;
 
-        console.log("pack : "  + pack);
     });
 
 
@@ -355,8 +325,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     const package_data = await getPackageData(current_package);
     const countryData = await getCountryData();
     const zipcode_data = await getZipcodeData();
-    console.log("package_data",package_data);
-     console.log("current_package1",current_package);
 
     let Keys = "";
     let myEle = document.getElementById("portal_key");
