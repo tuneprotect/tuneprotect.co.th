@@ -277,7 +277,7 @@ const genPrice = (package_data,country_data, subpackage, fdFromDate, fdToDate) =
                 $el.style.display = "none";
             }
         });
-        console.log("subpackage1",subpackage)
+        console.log("subpackage1",$el.getAttribute("data-package"))
     } else {
         
         console.log("subpackage2",subpackage)
