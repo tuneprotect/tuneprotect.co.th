@@ -277,9 +277,11 @@ const genPrice = (package_data,country_data, subpackage, fdFromDate, fdToDate) =
                 $el.style.display = "none";
             }
         });
+        console.log("subpackage1",subpackage)
     } else {
+        
+        console.log("subpackage2",subpackage)
         $$('#table-detail thead a[data-package]').forEach($el => {
-            console.log("subpackage",subpackage)
             if ($el.getAttribute("data-package").startsWith('ONTAOBB2B' + subpackage)) {
                 $el.style.display = "inline-flex";
             } else {
