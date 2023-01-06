@@ -216,7 +216,6 @@ class ProductController extends BaseController
         if (Storage::disk('public')->exists('json/' . $packageJson . '.json')) {
             $package_detail = json_decode(Storage::disk('public')->get('json/' . $packageJson . '.json'));
             foreach ($package_detail as $k => $v) {
-dd($package_detail,$selected);
                 if (str_starts_with($k, $selected)) {
                     if($this->locale === 'en')
                     {
@@ -277,6 +276,8 @@ dd($package_detail,$selected);
                        
                     }
                     $this->bodyData['package_detail'][$k] = $v;
+                    
+dd($this->bodyData['package_detail'][$k]);
                 }
             }
         }
