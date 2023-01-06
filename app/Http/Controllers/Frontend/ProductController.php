@@ -420,7 +420,7 @@ class ProductController extends BaseController
         }elseif (substr($data['fdPackage'], 0, 8) === 'DIABETES') {
             $obj = new BAOWANObject();
         }elseif (substr($data['fdPackage'], 0, 6) === 'ONCSHC') {
-            $obj = new BAOWANObject();
+            $obj = new ONCSHCObject();
         }
         else {
             $obj = new BaseInsuranceObject();
@@ -1032,6 +1032,7 @@ class ProductController extends BaseController
         } elseif (substr($package, 0, 6) === 'ONCSHC') {
             $this->thankYouParam = substr($package, 0, 6);
             $link = 'IssuePolicyChillSure';
+            $this->thankYouParam =  ProjectEnum::ONCSHC_URL;
         }
         return $link;
     }
