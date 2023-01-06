@@ -386,9 +386,12 @@ class ProductController extends BaseController
         } elseif (substr($data['fdPackage'], 0, 5) === 'TAISM' || substr($data['fdPackage'], 0, 10) === 'ONTAISMB2B') {
             $obj = new ONTALNObject();
             $obj->fdFlgInbound = "I";
-        } elseif (substr($data['fdPackage'], 0, 6) === 'ONTAOB' || substr($data['fdPackage'], 0, 9) === 'ONTAOBB2B') {
+        } elseif (substr($data['fdPackage'], 0, 6) === 'ONTAOB') {
             $obj = new BaseTAObject();
             $obj->fdDestFrom = "THA";       
+        } elseif (substr($data['fdPackage'], 0, 9) === 'ONTAOBB2B') {
+            $obj = new BaseTAObject();
+            $obj->fdDestFrom = "THA";
         } elseif (substr($data['fdPackage'], 0, 4) === 'ONTA') {
             $obj = new BaseTAObject();
             $obj->fdDestFrom = "THA";
