@@ -279,6 +279,7 @@ const genPrice = (package_data,country_data, subpackage, fdFromDate, fdToDate) =
         });
     } else {
         $$('#table-detail thead a[data-package]').forEach($el => {
+            console.log("subpackage",subpackage)
             if ($el.getAttribute("data-package").startsWith('ONTAOBB2B' + subpackage)) {
                 $el.style.display = "inline-flex";
             } else {
