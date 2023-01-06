@@ -355,8 +355,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     const package_data = await getPackageData(current_package);
     const countryData = await getCountryData();
     const zipcode_data = await getZipcodeData();
-
-    // console.log(package_data);
+    console.log("package_data",package_data);
+     console.log("current_package1",current_package);
 
     let Keys = "";
     let myEle = document.getElementById("portal_key");
