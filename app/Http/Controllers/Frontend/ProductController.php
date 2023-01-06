@@ -277,7 +277,7 @@ class ProductController extends BaseController
                     }
                     $this->bodyData['package_detail'][$k] = $v;
                     
-dd($this->bodyData['package_detail'][$k]);
+
                 }
             }
         }
