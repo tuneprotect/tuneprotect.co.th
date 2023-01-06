@@ -286,7 +286,7 @@ class ProductController extends BaseController
         }
 
         $this->template->setBody('id', 'product_page');
-
+        dd($selected);
         if($selected === 'ONTAOB')
         {
             //Replace view in body content.
