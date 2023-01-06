@@ -216,10 +216,8 @@ class ProductController extends BaseController
         if (Storage::disk('public')->exists('json/' . $packageJson . '.json')) {
             $package_detail = json_decode(Storage::disk('public')->get('json/' . $packageJson . '.json'));
             foreach ($package_detail as $k => $v) {
-                if (str_starts_with($k, $selected)) {
-                    
-            
 dd($package_detail);
+                if (str_starts_with($k, $selected)) {
                     if($this->locale === 'en')
                     {
                         if($selected === 'ONVSAFEA')
