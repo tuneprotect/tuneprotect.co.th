@@ -267,7 +267,7 @@ const genPrice = (package_data,country_data, subpackage, fdFromDate, fdToDate) =
 
     $('#all_pack').value = allPack;
 
-    // console.log("packs : "  + allPack);
+    console.log("packs : "  + allPack);
 
     if (document.body.clientWidth > 767) {
         $$('#table-detail td[data-package],#table-detail th[data-package],.choose-plan-mobile').forEach($el => {
