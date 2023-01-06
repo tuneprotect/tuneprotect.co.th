@@ -271,13 +271,14 @@ const genPrice = (package_data,country_data, subpackage, fdFromDate, fdToDate) =
 
     if (document.body.clientWidth > 767) {
         $$('#table-detail td[data-package],#table-detail th[data-package],.choose-plan-mobile').forEach($el => {
+            
+            console.log("subpackage1",$el.getAttribute("data-package"))
             if (allPack.includes($el.getAttribute("data-package"))) {
                 $el.style.display = "table-cell";
             } else {
                 $el.style.display = "none";
             }
         });
-        console.log("subpackage1",$el.getAttribute("data-package"))
     } else {
         
         console.log("subpackage2",subpackage)
