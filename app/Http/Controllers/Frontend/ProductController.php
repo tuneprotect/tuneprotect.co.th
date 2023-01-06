@@ -286,7 +286,7 @@ class ProductController extends BaseController
         }
 
         $this->template->setBody('id', 'product_page');
-        dd($selected);
+
         if($selected === 'ONTAOB')
         {
             //Replace view in body content.
@@ -301,20 +301,7 @@ class ProductController extends BaseController
             $this->bodyData['review'] = view('frontend.component.review_product',['review' => $review,'locale' => $this->locale])->render();
 
         }
-        if($selected === 'ONTAOBB2B')
-        {
-            //Replace view in body content.
-            $review = WebContent::where('type_id', ProjectEnum::WEB_CONTENT_REVIEW)
-                ->where('custom_input_1','ONTAOBB2B')
-                ->with('locales')
-                ->whereRaw(ProjectEnum::isPublish())
-                ->inRandomOrder()
-                ->take(5)
-                ->get();
-
-            $this->bodyData['review'] = view('frontend.component.review_product',['review' => $review,'locale' => $this->locale])->render();
-
-        }
+       
         if ($isPage) {
             $this->bodyData['category_leadform'] = WebContent::where('type_id', ProjectEnum::WEB_CONTENT_LEADFORM_CATEGORY)
                 ->with('locales')
