@@ -4,6 +4,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Enum\BAOWANObject;
+use App\Enum\ONCSHCObject;
 use App\Enum\Base\BaseInsuranceObject;
 use App\Enum\Base\BaseTAObject;
 use App\Enum\CIObject;
@@ -419,7 +420,7 @@ class ProductController extends BaseController
         }elseif (substr($data['fdPackage'], 0, 8) === 'DIABETES') {
             $obj = new BAOWANObject();
         }elseif (substr($data['fdPackage'], 0, 6) === 'ONCSHC') {
-            $obj = new BAOWANObject();
+            $obj = new ONCSHCObject();
         }
         else {
             $obj = new BaseInsuranceObject();
@@ -700,7 +701,9 @@ class ProductController extends BaseController
             if(Str::contains($data['fdPackage'],ProjectEnum::DIABETES_URL)){
                 $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::DIABETES_URL;
             }
-
+            if(Str::contains($data['fdPackage'],ProjectEnum::ONCSHC_URL)){
+                $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::ONCSHC_URL;
+            }
             if(Str::contains($data['fdPackage'],ProjectEnum::MYHOME_SMART_URL)){
                 $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::MYHOME_SMART_URL;
             }
@@ -1029,6 +1032,9 @@ class ProductController extends BaseController
         } elseif (substr($package, 0, 10) === 'ONTAISMB2B') {
             $this->thankYouParam =  ProjectEnum::ISMILE_URL;
             $link = "IssuePolicyiSmile";
+        } elseif (substr($package, 0, 6) === 'ONCSHC') {
+            $this->thankYouParam = substr($package, 0, 6);
+            $link = 'IssuePolicyChillSure';
         }
         return $link;
     }
