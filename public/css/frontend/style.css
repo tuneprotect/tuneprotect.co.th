@@ -17797,7 +17797,8 @@ main form input[type=checkbox]:checked + label:after {
   [data-package=ONTAOB] #table-detail thead tr th:first-child,
   [data-package=ONTALN] #table-detail thead tr th:first-child,
   [data-package=TAIPOCT22] #table-detail thead tr th:first-child,
-  [data-package=TAISM] #table-detail thead tr th:first-child {
+  [data-package=TAISM] #table-detail thead tr th:first-child,
+  [data-package=ONTAOBB2B] #table-detail thead tr th:first-child {
     width: 35%;
   }
 }
@@ -18872,37 +18873,43 @@ main[data-package=CI] form .check_box_disease input[type=checkbox] + label img,
 
 main[data-package=CI] #table-detail,
 [data-package=ONTAOB] #table-detail,
-[data-package=ONCSHC] #table-detail {
+[data-package=ONCSHC] #table-detail,
+[data-package=ONTAOBB2B] #table-detail {
   overflow: visible;
 }
 
 main[data-package=CI] #table-detail thead tr th,
 [data-package=ONTAOB] #table-detail thead tr th,
-[data-package=ONCSHC] #table-detail thead tr th {
+[data-package=ONCSHC] #table-detail thead tr th,
+[data-package=ONTAOBB2B] #table-detail thead tr th {
   vertical-align: bottom;
 }
 
 main[data-package=CI] #table-detail tbody tr:nth-child(n+5),
-[data-package=ONTAOB] #table-detail tbody tr:nth-child(n+5) ,
-[data-package=ONCSHC] #table-detail tbody tr:nth-child(n+5) {
+[data-package=ONTAOB] #table-detail tbody tr:nth-child(n+5),
+[data-package=ONCSHC] #table-detail tbody tr:nth-child(n+5),
+[data-package=ONTAOBB2B] #table-detail tbody tr:nth-child(n+5)  {
   display: table-row;
 }
 
 main[data-package=CI] #table-detail th,
 [data-package=ONTAOB] #table-detail th,
-[data-package=ONCSHC] #table-detail th {
+[data-package=ONCSHC] #table-detail th,
+[data-package=ONTAOBB2B] #table-detail th {
   position: relative;
 }
 
 main[data-package=CI] #table-detail th span,
 [data-package=ONTAOB] #table-detail th span,
-[data-package=ONCSHC] #table-detail th span {
+[data-package=ONCSHC] #table-detail th span,
+[data-package=ONTAOBB2B] #table-detail th span {
   display: block;
 }
 
 main[data-package=CI] #table-detail th span[data-recommend],
 [data-package=ONTAOB] #table-detail th span[data-recommend],
-[data-package=ONCSHC] #table-detail th span[data-recommend] {
+[data-package=ONCSHC] #table-detail th span[data-recommend],
+[data-package=ONTAOBB2B] #table-detail th span[data-recommend] {
   display: block;
   width: calc(100% + 40px);
   margin-left: -16px;
@@ -18911,7 +18918,8 @@ main[data-package=CI] #table-detail th span[data-recommend],
 @media all and (max-width: 600px) {
   main[data-package=CI] #table-detail th span[data-recommend],
   [data-package=ONTAOB] #table-detail th span[data-recommend],
-  [data-package=ONCSHC] #table-detail th span[data-recommend] {
+  [data-package=ONCSHC] #table-detail th span[data-recommend],
+  [data-package=ONTAOBB2B] #table-detail th span[data-recommend] {
     margin-left: 0;
     margin-top: 5px;
     position: static;
@@ -18921,32 +18929,37 @@ main[data-package=CI] #table-detail th span[data-recommend],
 
 main[data-package=CI] #table-detail th .package-number,
 [data-package=ONTAOB] #table-detail th .package-number,
-[data-package=ONCSHC] #table-detail th .package-number {
+[data-package=ONCSHC] #table-detail th .package-number,
+[data-package=ONTAOBB2B] #table-detail th .package-number {
   display: block;
   margin-top: 0;
 }
 
 main[data-package=CI] #table-detail th[data-package],
 [data-package=ONTAOB] #table-detail th[data-package],
-[data-package=ONCSHC] #table-detail th[data-package] {
+[data-package=ONCSHC] #table-detail th[data-package],
+[data-package=ONTAOBB2B] #table-detail th[data-package] {
   vertical-align: bottom;
 }
 
 main[data-package=CI] #table-detail th[data-package] span[data-recommend],
 [data-package=ONTAOB] #table-detail th[data-package] span[data-recommend],
-[data-package=ONCSHC] #table-detail th[data-package] span[data-recommend] {
+[data-package=ONCSHC] #table-detail th[data-package] span[data-recommend],
+[data-package=ONTAOBB2B] #table-detail th[data-package] span[data-recommend] {
   display: none;
 }
 
 main[data-package=CI] #table-detail th[data-package].recommendPackage span[data-recommend],
 [data-package=ONTAOB] #table-detail th[data-package].recommendPackage span[data-recommend],
-[data-package=ONCSHC] #table-detail th[data-package].recommendPackage span[data-recommend] {
+[data-package=ONCSHC] #table-detail th[data-package].recommendPackage span[data-recommend],
+[data-package=ONTAOBB2B] #table-detail th[data-package].recommendPackage span[data-recommend] {
   display: block;
 }
 
 main[data-package=CI] #table-detail th[data-package].basePrice:before,
 [data-package=ONTAOB] #table-detail th[data-package].basePrice:before,
-[data-package=ONCSHC] #table-detail th[data-package].basePrice:before {
+[data-package=ONCSHC] #table-detail th[data-package].basePrice:before,
+[data-package=ONTAOBB2B] #table-detail th[data-package].basePrice:before {
   content: "";
   background-size: 100% auto;
   background-position: top center;
@@ -18965,45 +18978,53 @@ main[data-package=CI] #table-detail td.hovered strong i,
 [data-package=ONTAOB] #table-detail td.recommendPackage strong i,
 [data-package=ONTAOB] #table-detail td.hovered strong i,
 [data-package=ONCSHC] #table-detail td.recommendPackage strong i,
-[data-package=ONCSHC] #table-detail td.hovered strong i {
+[data-package=ONCSHC] #table-detail td.hovered strong i,
+[data-package=ONTAOBB2B] #table-detail td.recommendPackage strong i,
+[data-package=ONTAOBB2B] #table-detail td.hovered strong i {
   color: #fff !important;
 }
 
 main[data-package=CI] #table-detail th:first-child,
 [data-package=ONTAOB] #table-detail th:first-child,
-[data-package=ONCSHC] #table-detail th:first-child {
+[data-package=ONCSHC] #table-detail th:first-child,
+[data-package=ONTAOBB2B] #table-detail th:first-child {
   width: 45%;
 }
 
 @media all and (max-width: 768px) {
   main[data-package=CI] #table-detail th:first-child,
   [data-package=ONTAOB] #table-detail th:first-child,
-  [data-package=ONCSHC] #table-detail th:first-child {
+  [data-package=ONCSHC] #table-detail th:first-child,
+  [data-package=ONTAOBB2B] #table-detail th:first-child {
     width: auto;
   }
 }
 
 main[data-package=CI] .slider_budget,
 [data-package=ONTAOB] .slider_budget,
-[data-package=ONCSHC] .slider_budget {
+[data-package=ONCSHC] .slider_budget,
+[data-package=ONTAOBB2B] .slider_budget {
   margin: 0 14px;
 }
 
 main[data-package=CI] .slider_budget ins,
 [data-package=ONTAOB] .slider_budget ins,
-[data-package=ONCSHC] .slider_budget ins {
+[data-package=ONCSHC] .slider_budget ins,
+[data-package=ONTAOBB2B] .slider_budget ins {
   display: none;
 }
 
 main[data-package=CI] .goto-step1,
 [data-package=ONTAOB] .goto-step1,
-[data-package=ONCSHC] .goto-step1 {
+[data-package=ONCSHC] .goto-step1,
+[data-package=ONTAOBB2B] .goto-step1 {
   margin: 25px 0 40px 0;
 }
 
 main[data-package=CI] .choose-plan-mobile,
 [data-package=ONTAOB] .choose-plan-mobile,
-[data-package=ONCSHC] .choose-plan-mobile {
+[data-package=ONCSHC] .choose-plan-mobile,
+[data-package=ONTAOBB2B] .choose-plan-mobile {
   display: flex;
   margin: 20px 0;
 }
@@ -19011,28 +19032,32 @@ main[data-package=CI] .choose-plan-mobile,
 @media all and (min-width: 768px) {
   main[data-package=CI] .choose-plan-mobile,
   [data-package=ONTAOB] .choose-plan-mobile ,
-  [data-package=ONCSHC] .choose-plan-mobile {
+  [data-package=ONCSHC] .choose-plan-mobile,
+  [data-package=ONTAOBB2B] .choose-plan-mobile {
     margin: 0;
   }
 }
 
 main[data-package=CI] .choose-plan-mobile .wrapper-choose-plan,
 [data-package=ONTAOB] .choose-plan-mobile .wrapper-choose-plan,
-[data-package=ONCSHC] .choose-plan-mobile .wrapper-choose-plan {
+[data-package=ONCSHC] .choose-plan-mobile .wrapper-choose-plan,
+[data-package=ONTAOBB2B] .choose-plan-mobile .wrapper-choose-plan {
   position: relative;
   flex: 1;
 }
 
 main[data-package=CI] .choose-plan-mobile .wrapper-choose-plan:last-child div.basePrice,
 [data-package=ONTAOB] .choose-plan-mobile .wrapper-choose-plan:last-child div.basePrice,
-[data-package=ONCSHC] .choose-plan-mobile .wrapper-choose-plan:last-child div.basePrice {
+[data-package=ONCSHC] .choose-plan-mobile .wrapper-choose-plan:last-child div.basePrice,
+[data-package=ONTAOBB2B] .choose-plan-mobile .wrapper-choose-plan:last-child div.basePrice {
   overflow: visible;
   padding-top: 9vw;
 }
 
 main[data-package=CI] .choose-plan-mobile .wrapper-choose-plan:last-child div.basePrice:before,
 [data-package=ONTAOB] .choose-plan-mobile .wrapper-choose-plan:last-child div.basePrice:before,
-[data-package=ONCSHC] .choose-plan-mobile .wrapper-choose-plan:last-child div.basePrice:before {
+[data-package=ONCSHC] .choose-plan-mobile .wrapper-choose-plan:last-child div.basePrice:before,
+[data-package=ONTAOBB2B] .choose-plan-mobile .wrapper-choose-plan:last-child div.basePrice:before {
   content: "";
   background-color: transparent;
   background-size: 100% auto !important;
@@ -19048,7 +19073,8 @@ main[data-package=CI] .choose-plan-mobile .wrapper-choose-plan:last-child div.ba
 
 main[data-package=CI] .choose-plan-mobile .wrapper-choose-plan div,
 [data-package=ONTAOB] .choose-plan-mobile .wrapper-choose-plan div,
-[data-package=ONCSHC] .choose-plan-mobile .wrapper-choose-plan div {
+[data-package=ONCSHC] .choose-plan-mobile .wrapper-choose-plan div,
+[data-package=ONTAOBB2B] .choose-plan-mobile .wrapper-choose-plan div {
   display: block;
   padding-left: 0;
   padding-right: 0;
@@ -19056,14 +19082,16 @@ main[data-package=CI] .choose-plan-mobile .wrapper-choose-plan div,
 
 main[data-package=CI] .choose-plan-mobile .wrapper-choose-plan div.recommendPackage,
 [data-package=ONTAOB] .choose-plan-mobile .wrapper-choose-plan div.recommendPackage,
-[data-package=ONCSHC] .choose-plan-mobile .wrapper-choose-plan div.recommendPackage {
+[data-package=ONCSHC] .choose-plan-mobile .wrapper-choose-plan div.recommendPackage,
+[data-package=ONTAOBB2B] .choose-plan-mobile .wrapper-choose-plan div.recommendPackage {
   background: #E71618;
   color: #ffffff;
 }
 
 main[data-package=CI] .choose-plan-mobile .wrapper-choose-plan div.recommendPackage span[data-recommend],
 [data-package=ONTAOB] .choose-plan-mobile .wrapper-choose-plan div.recommendPackage span[data-recommend],
-[data-package=ONCSHC] .choose-plan-mobile .wrapper-choose-plan div.recommendPackage span[data-recommend] {
+[data-package=ONCSHC] .choose-plan-mobile .wrapper-choose-plan div.recommendPackage span[data-recommend],
+[data-package=ONTAOBB2B] .choose-plan-mobile .wrapper-choose-plan div.recommendPackage span[data-recommend] {
   position: absolute;
   top: 3px;
   left: 0;
@@ -19072,28 +19100,32 @@ main[data-package=CI] .choose-plan-mobile .wrapper-choose-plan div.recommendPack
 
 main[data-package=CI] .choose-plan-mobile .wrapper-choose-plan div .package-number,
 [data-package=ONTAOB] .choose-plan-mobile .wrapper-choose-plan div .package-number,
-[data-package=ONCSHC] .choose-plan-mobile .wrapper-choose-plan div .package-number {
+[data-package=ONCSHC] .choose-plan-mobile .wrapper-choose-plan div .package-number,
+[data-package=ONTAOBB2B] .choose-plan-mobile .wrapper-choose-plan div .package-number {
   display: block;
   margin-top: 25px;
 }
 
 main[data-package=CI] .choose-plan-mobile .wrapper-choose-plan div span,
 [data-package=ONTAOB] .choose-plan-mobile .wrapper-choose-plan div span,
-[data-package=ONCSHC] .choose-plan-mobile .wrapper-choose-plan div span {
+[data-package=ONCSHC] .choose-plan-mobile .wrapper-choose-plan div span,
+[data-package=ONTAOBB2B] .choose-plan-mobile .wrapper-choose-plan div span {
   display: block;
   line-height: 0.7rem;
 }
 
 main[data-package=CI] .choose-plan-mobile .wrapper-choose-plan div span[data-recommend],
 [data-package=ONTAOB] .choose-plan-mobile .wrapper-choose-plan div span[data-recommend],
-[data-package=ONCSHC] .choose-plan-mobile .wrapper-choose-plan div span[data-recommend] {
+[data-package=ONCSHC] .choose-plan-mobile .wrapper-choose-plan div span[data-recommend],
+[data-package=ONTAOBB2B] .choose-plan-mobile .wrapper-choose-plan div span[data-recommend] {
   font-size: 0.5rem;
   display: none !important;
 }
 
 main[data-package=CI] .choose-plan-mobile .wrapper-choose-plan div a,
 [data-package=ONTAOB] .choose-plan-mobile .wrapper-choose-plan div a,
-[data-package=ONCSHC] .choose-plan-mobile .wrapper-choose-plan div a {
+[data-package=ONCSHC] .choose-plan-mobile .wrapper-choose-plan div a,
+[data-package=ONTAOBB2B] .choose-plan-mobile .wrapper-choose-plan div a {
   font-size: 0.6rem;
   height: 20px;
   max-width: 90%;
@@ -19101,7 +19133,8 @@ main[data-package=CI] .choose-plan-mobile .wrapper-choose-plan div a,
 
 main[data-package=CI] .choose-plan-mobile .wrapper-choose-plan .h_2_g,
 [data-package=ONTAOB] .choose-plan-mobile .wrapper-choose-plan .h_2_g,
-[data-package=ONCSHC] .choose-plan-mobile .wrapper-choose-plan .h_2_g {
+[data-package=ONCSHC] .choose-plan-mobile .wrapper-choose-plan .h_2_g,
+[data-package=ONTAOBB2B] .choose-plan-mobile .wrapper-choose-plan .h_2_g {
   width: 30px;
   height: 37px;
   margin: 0 auto;
