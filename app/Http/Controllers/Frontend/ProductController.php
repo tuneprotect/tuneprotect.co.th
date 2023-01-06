@@ -322,7 +322,6 @@ class ProductController extends BaseController
 
         }
 
-        dd($selected);
         $this->bodyData['privacy'] = WebContent::where('type_id', ProjectEnum::STATIC_PAGE_PRIVACY_POLICY)
             ->with('locales')
             ->first();
@@ -342,7 +341,7 @@ class ProductController extends BaseController
              dd('js error.');
         }
           
-      //dd($this->bodyData['package_detail']);
+      dd($this->bodyData['package_detail']);
         if ($this->controller != 'product') {
             return $this->genView('frontend.page.portal');
         } else {
