@@ -46,7 +46,11 @@
                                                             @else
                                                                     <a data-gtm="main-nav-product-{{$v1->friendly_url}}-{{$v2->code}}"
                                                                        href="{{route('current',['locale' => $locale,'controller' => 'product','func' => $v1->friendly_url,'params' => $v2->code ])}}">
-                                                                        <span>{{$v2->locales[$locale]->title}}</span></a>
+                                                                        <span>{{$v2->locales[$locale]->title}}</span>
+                                                                        @if($v2->code === 'ONCSHC')                                                            
+                                                                            <img src="https://www.tuneprotect.co.th/storage/Icon/new2.gif" width="30%">
+                                                                        @endif
+                                                                    </a>
                                                                 @endif
                                                             </li>
                                                         @endforeach
