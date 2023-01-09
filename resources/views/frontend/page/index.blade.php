@@ -50,7 +50,11 @@
                                             href="{{route('current',['locale' => $locale,'controller' => 'product','func' => $main_highlight_product->friendly_url,'params' => $v->code ])}}">
                                             <div class="two-tone-icon">
                                                 <span><img src="{{url($v->pic)}}" alt=""></span>
-                                                <strong>{{$v->locales[$locale]->title}}</strong>
+                                                <strong>{{$v->locales[$locale]->title}}
+                                                    @if($v->code === 'ONCSHC')                                                            
+                                                        <img src="https://www.tuneprotect.co.th/storage/Icon/new2.gif" style="width:30%;margin-bottom: -5px;" width="30%">
+                                                    @endif
+                                                </strong>
                                             </div>
                                         </a>
                                         <div class="btn-wrapper">
