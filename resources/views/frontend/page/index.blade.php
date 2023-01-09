@@ -52,7 +52,7 @@
                                                 <span><img src="{{url($v->pic)}}" alt=""></span>
                                                 <strong>{{$v->locales[$locale]->title}}
                                                     @if($v->code === 'ONCSHC')                                                            
-                                                        <img src="https://www.tuneprotect.co.th/storage/Icon/new2.gif" style="width:30%;margin-bottom: -5px;" width="30%">
+                                                        <img src="https://www.tuneprotect.co.th/storage/Icon/new2.gif" style="width:40%;margin-bottom: -5px;" />
                                                     @endif
                                                 </strong>
                                             </div>
