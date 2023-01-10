@@ -8,6 +8,7 @@ return [
 
     "highlight_article" => "Highlight Article",
     "highlight_news" => "Highlight News",
+    "highlight_promotion" => "Highlight Promotion",
     "highlight_my_health" => "My Health",
     "more" => "เพิ่มเติม",
     'call_center' => 'Call Center',
@@ -38,6 +39,7 @@ return [
     'nav_article' => 'บทความแนะนำ',
     'nav_contact' => 'ติดต่อเรา',
     'nav_news' => 'ข่าวและกิจกรรม',
+    'nav_promotion' => 'โปรโมชั่น',
     'nav_my_health' => '<span style="font-size:.9rem;color:#e71618">my</span>Health',
     'nav_organize' => 'องค์กร',
     'nav_product' => 'ผลิตภัณฑ์',
