@@ -254,6 +254,10 @@
             "category": "News Category",
             "main": "News"
         },
+        "promotion": {
+            "category": "Promotion Category",
+            "main": "Promotion"
+        },
         "partner": {
             "garage": "Garage",
             "garage_category": "Garage Category",
