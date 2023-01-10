@@ -1068,6 +1068,12 @@ return [
         "nav_promotion"=>"โปรโมชั่น",
         "highlight_promotion"=>"โปรโมชั่นเด่น",
     ],
+    "side_nav"=>[
+        "promotion"=>[
+            "category"=>"Promotion Category",
+            "main"=>"Promotion",
+        ],
+    ],
 ];
 
 
