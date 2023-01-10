@@ -629,7 +629,7 @@ class ProductController extends BaseController
             }
         }
 
-//       dd($obj);
+       dd($package);
 
         $obj->fdController = $this->controller;
         return $obj;
