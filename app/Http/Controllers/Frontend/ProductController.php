@@ -279,6 +279,8 @@ class ProductController extends BaseController
                     $this->bodyData['package_detail'][$k] = $v;
                 }
             }
+dd($package_detail);
+            
         }
         else
         {
@@ -341,7 +343,7 @@ class ProductController extends BaseController
              dd('js error.');
         }
           
-        dd($this->controller);
+        //dd($this->controller);
         if ($this->controller != 'product') {
             return $this->genView('frontend.page.portal');
         } else {
