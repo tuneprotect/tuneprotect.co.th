@@ -17,6 +17,7 @@ class ProjectEnum
     const STATIC_PAGE_HOSPITAL = 'static.page.hospital';
     const STATIC_PAGE_GARAGE = 'static.page.garage';
     const STATIC_META_NEWS = 'static.page.news';
+    const STATIC_META_PROMOTION = 'static.page.promotion';
     const STATIC_PAGE_SERVICE_CENTER = 'static.page.service_center';
     const STATIC_PAGE_PAYMENT_THANK_YOU = 'static.page.payment_thank_you';
     const STATIC_PAGE_PAYMENT_THANK_YOU_DIABETES = 'static.page.payment_thank_you_diabetes';
@@ -56,6 +57,8 @@ class ProjectEnum
     const WEB_CONTENT_SERVICE_CENTER = "partner.service_center";
     const WEB_CONTENT_NEWS = "news.content";
     const WEB_CONTENT_NEWS_CATEGORY = "news.category";
+    const WEB_CONTENT_PROMOTION = "promotion.content";
+    const WEB_CONTENT_PROMOTION_CATEGORY = "promotion.category";
     const WEB_CONTENT_ORGANIZATION = "about.organization";
     const WEB_CONTENT_PROVINCE = "configuration.province";
     const WEB_CONTENT_SERVICE = "static.service";

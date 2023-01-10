@@ -1064,6 +1064,10 @@ return [
         "TAISM16" => "14. Golf equipment and hole-in-one",
         "TAISM17" => "<h6>12. Health2GO Online doctor consultation <em style='color: red'>Free 1 time*</em></h6> <img src='/images/my_health/logo-myhealth.png' style='height:60px'>"
     ],
+    "global"=>[
+        "nav_promotion"=>"โปรโมชั่น",
+        "highlight_promotion"=>"โปรโมชั่นเด่น",
+    ],
 ];
 
 
