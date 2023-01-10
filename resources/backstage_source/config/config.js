@@ -184,6 +184,9 @@ export const WEB_CONTENT = {
     NEWS: "news.content",
     NEWS_CATEGORY: "news.category",
 
+    PROMOTION: "promotion.content",
+    PROMOTION_CATEGORY: "promotion.category",
+
     LEADFORM: "leadform.content",
     LEADFORM_CATEGORY: "leadform.category",
 
