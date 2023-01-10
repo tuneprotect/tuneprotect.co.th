@@ -341,7 +341,7 @@ class ProductController extends BaseController
              dd('js error.');
         }
           
-      //dd($this->bodyData['package_detail']);
+        dd(mix("/js/frontend/product/" . strtolower($this->bodyData['selected']) . ".js"));
         if ($this->controller != 'product') {
             return $this->genView('frontend.page.portal');
         } else {
