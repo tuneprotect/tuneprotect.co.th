@@ -1737,6 +1737,133 @@ let APP_ROUTE = {
             }
         }),
     },
+    promotion: {
+        id: "promotion",
+        name: <Translate id={`side_nav.promotion.main`}/>,
+        url: "/promotion",
+        icon: 'dynamic_feed',
+        show_on_main_menu: true,
+        layout: "MainLayout",
+        parent: "",
+        group: "main_nav"
+    },
+    [WEB_CONTENT.PROMOTION_CATEGORY]: {
+        id: WEB_CONTENT.PROMOTION_CATEGORY,
+        name: <Translate id={`side_nav.promotion.category`}/>,
+        url: "/promotion/category",
+        icon: 'view_carousel',
+        show_on_main_menu: true,
+        component: () => WebContentPage({
+            type_id: WEB_CONTENT.PROMOTION_CATEGORY,
+            config: {
+                isSortable: true,
+            }
+        }),
+        layout: "MainLayout",
+        parent: "promotion",
+        group: "main_nav"
+    },
+    [`${WEB_CONTENT.PROMOTION_CATEGORY}.detail`]: {
+        id: `${WEB_CONTENT.PROMOTION_CATEGORY}.detail`,
+        name: <Translate id={`side_nav.promotion.category`}/>,
+        url: "/promotion/category/detail/:id?",
+        icon: 'pets',
+        show_on_main_menu: false,
+        layout: "MainLayout",
+        parent: "",
+        group: "",
+        component: () => WebContentMainStep({
+            isWebContent: true,
+            type_id: WEB_CONTENT.PROMOTION_CATEGORY,
+            config: {
+                title: {
+                    fieldProp: {
+                        label: <Translate id="global.title"/>,
+                        required: true,
+                    },
+                    validate: Yup.string()
+                        .required(<Translate id="error_message.required"/>)
+                },
+            }
+        }),
+    },
+    [WEB_CONTENT.PROMOTION]: {
+        id: WEB_CONTENT.PROMOTION,
+        name: <Translate id={`side_nav.promotion.main`}/>,
+        url: "/promotion/content",
+        icon: 'view_carousel',
+        show_on_main_menu: true,
+        component: () => WebContentPage({
+            type_id: WEB_CONTENT.PROMOTION,
+            cat_id: WEB_CONTENT.PROMOTION_CATEGORY,
+        }),
+        layout: "MainLayout",
+        parent: "promotion",
+        group: "main_nav"
+    },
+    [`${WEB_CONTENT.PROMOTION}.detail`]: {
+        id: `${WEB_CONTENT.PROMOTION}.detail`,
+        name: <Translate id={`side_nav.promotion.main`}/>,
+        url: "/promotion/content/detail/:id?",
+        icon: 'pets',
+        show_on_main_menu: false,
+        layout: "MainLayout",
+        parent: "",
+        group: "",
+        component: () => WebContentMainStep({
+            isWebContent: true,
+            type_id: WEB_CONTENT.PROMOTION,
+            config: {
+                hasPublishPeriod: true,
+                hasSEO: true,
+                friendly_url: {
+                    prefix: "/promotion/"
+                },
+                pic: {
+                    fieldProp: {
+                        label: <Translate id="global.image"/>,
+                        width: 960,
+                        height: 530,
+                    },
+                    validate: Yup.string()
+                        .required(<Translate id="error_message.required"/>)
+                },
+                action_date: {
+                    fieldProp: {
+                        label: <Translate id="global.action_date"/>,
+                        required: true,
+                    },
+                },
+                title: {
+                    fieldProp: {
+                        label: <Translate id="global.title"/>,
+                        required: true,
+                    },
+                    validate: Yup.string()
+                        .required(<Translate id="error_message.required"/>)
+                },
+                sub_title: {
+                    fieldProp: {
+                        label: <Translate id="global.sub_title"/>,
+                        required: true,
+                        multiline: true
+                    },
+                    validate: Yup.string()
+                        .required(<Translate id="error_message.required"/>)
+                },
+                cat_id: {
+                    type_id: WEB_CONTENT.PROMOTION_CATEGORY,
+                    label: <Translate id="global.category"/>,
+                },
+                content: {
+                    fieldProp: {
+                        editor: true,
+                        label: <Translate id="global.content"/>
+                    }
+                },
+            }
+        }),
+    },
     contact: {
         id: 'contact',
         name: <Translate id={`side_nav.contact`}/>,
