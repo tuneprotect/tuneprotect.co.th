@@ -824,7 +824,6 @@ document.addEventListener("DOMContentLoaded", async () => {
         document.getElementById("iconLoad").classList.add("d-none");
     }
     const apiBlock = async () => {
-        console.log("block");
         let res = await fetch(`/appApi/ApiConnect/blockHomePolicy`, {
             method: 'post',
             headers: {

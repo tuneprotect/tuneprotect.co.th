@@ -2138,6 +2138,7 @@ const static_content = {
         'garage',
         'hospital',
         'news',
+        'promotion',
         'pay_insurance_premiums',
         'payment_error',
         'payment_pending',
