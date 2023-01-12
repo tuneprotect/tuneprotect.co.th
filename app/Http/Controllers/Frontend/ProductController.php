@@ -176,7 +176,6 @@ class ProductController extends BaseController
                 $selected="ONB2BTA";
             }
             $this->bodyData['selected'] = $selected;
-            dd($this->bodyData['current_product']);
             if (isset($this->bodyData['current_product'])) {                
                 foreach ($this->bodyData['current_product']->productPackage as $v) {
                     if ($v->code === $selected) {
