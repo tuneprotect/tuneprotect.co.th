@@ -87,6 +87,10 @@ class ProductController extends BaseController
             return redirect()->route('current', ['locale' => 'en', 'controller' => $this->controller, 'func' => $link, 'params' => $selected]);
         }
 
+        if (in_array($selected, ['ONTAOBB2B'])) {
+            $selected = "ONB2BTA";
+            return redirect()->route('current', ['locale' => $this->locale, 'controller' => $this->controller, 'func' => $link, 'params' => $selected]);
+        }
         
         $this->getProductDetail($link, $selected);
 		
@@ -171,10 +175,7 @@ class ProductController extends BaseController
     {
         
         if ($selected) {
-            //dd($selected);
-            if($selected==="ONTAOBB2B"){
-                $selected="ONB2BTA";
-            }
+            dd($selected);           
             $this->bodyData['selected'] = $selected;
             if (isset($this->bodyData['current_product'])) {                
                 foreach ($this->bodyData['current_product']->productPackage as $v) {
@@ -393,6 +394,9 @@ class ProductController extends BaseController
             $obj = new BaseTAObject();
             $obj->fdDestFrom = "THA";       
         } elseif (substr($data['fdPackage'], 0, 9) === 'ONTAOBB2B') {
+            $obj = new BaseTAObject();
+            $obj->fdDestFrom = "THA";
+        } elseif (substr($data['fdPackage'], 0, 7) === 'ONB2BTA') {
             $obj = new BaseTAObject();
             $obj->fdDestFrom = "THA";
         } elseif (substr($data['fdPackage'], 0, 4) === 'ONTA') {
