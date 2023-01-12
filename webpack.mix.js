@@ -100,6 +100,7 @@ mix.react('resources/backstage_source/index.js', 'public/js/backstage')
     .js('resources/js/product/ontaismb2b.js', 'public/js/frontend/product/')    
     .js('resources/js/product/ontadmb2b.js', 'public/js/frontend/product/')
     .js('resources/js/product/ontaobb2b.js', 'public/js/frontend/product/')
+    .js('resources/js/product/onb2bta.js', 'public/js/frontend/product/')
     .sass('resources/sass/style.scss', 'public/css/frontend')
     .browserSync('https://staging.tuneprotect.local')
     .version();
