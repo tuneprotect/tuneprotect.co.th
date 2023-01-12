@@ -239,7 +239,8 @@ const genPrice = (package_data,country_data, subpackage, fdFromDate, fdToDate) =
 
 
     const day = differenceInDays(endDate, startDate) + 1;
-console.log("days",day,endDate,startDate);
+    if(day===365 || day===366)
+        day = 0;
     $('#days').value = day;
 
     const allPack = Object.keys(package_data)

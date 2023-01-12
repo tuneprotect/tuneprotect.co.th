@@ -55364,6 +55364,10 @@ function _asyncToGenerator(fn) {
   };
 }
 
+function _readOnlyError(name) {
+  throw new TypeError("\"" + name + "\" is read-only");
+}
+
 
 
 
@@ -55583,7 +55587,7 @@ var genPrice = function genPrice(package_data, country_data, subpackage, fdFromD
   }
 
   var day = Object(date_fns__WEBPACK_IMPORTED_MODULE_6__["differenceInDays"])(endDate, startDate) + 1;
-  console.log("days", day, endDate, startDate);
+  if (day === 365 || day === 366) day = (_readOnlyError("day"), 0);
   Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$"])('#days').value = day;
   var allPack = Object.keys(package_data).filter(function (k) {
     return _.startsWith(k, _helper__WEBPACK_IMPORTED_MODULE_2__["current_package"] + subpackage);
