@@ -89,7 +89,7 @@ class ProductController extends BaseController
 
         if (in_array($selected, ['ONTAOBB2B'])) {
             $selected = "ONB2BTA";
-            return redirect()->route('current', ['locale' => $this->locale, 'controller' => $this->controller, 'func' => $link, 'params' => $selected]);
+            //return redirect()->route('current', ['locale' => $this->locale, 'controller' => $this->controller, 'func' => $link, 'params' => $selected]);
         }
         
         $this->getProductDetail($link, $selected);
@@ -175,7 +175,7 @@ class ProductController extends BaseController
     {
         
         if ($selected) {
-            dd($selected);           
+            //dd($selected);           
             $this->bodyData['selected'] = $selected;
             if (isset($this->bodyData['current_product'])) {                
                 foreach ($this->bodyData['current_product']->productPackage as $v) {
