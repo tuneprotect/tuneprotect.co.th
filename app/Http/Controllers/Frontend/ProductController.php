@@ -217,7 +217,7 @@ class ProductController extends BaseController
             }
         }
 //onb2bta
-        
+$packageJson = 'ontaobb2b';
         if (Storage::disk('public')->exists('json/' . $packageJson . '.json')) {
             $package_detail = json_decode(Storage::disk('public')->get('json/' . $packageJson . '.json'));   
             dd($packageJson,$package_detail);         
