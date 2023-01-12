@@ -55646,7 +55646,7 @@ var genPrice = function genPrice(package_data, country_data, subpackage, fdFromD
     Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$$"])('[data-sub-package]').forEach(function ($el) {
       $el.setAttribute('data-sub-package', pack);
     });
-    var price = package_data[k].price[pack].price;
+    var price = package_data[k].price[pack];
     console.log("price", price);
     Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$"])("strong[data-price-".concat(k, "]")).innerHTML = parseInt(package_data[k].price[pack].price).toLocaleString();
     Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$"])('#sub_code').value = pack;
