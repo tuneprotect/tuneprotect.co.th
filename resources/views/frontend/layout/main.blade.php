@@ -64,6 +64,12 @@
                             @endforeach
                         </div>
                     </li>
+                @endif                
+                @if(@$menu_enable[\App\Enum\ProjectEnum::WEB_CONTENT_PROMOTION] > 0)
+                    <li>
+                        <a data-gtm="main-nav-promotion"
+                           href="{{route('current',['locale' => $locale,'controller' => 'promotion'],false)}}">{{__('global.nav_promotion')}}</a>
+                    </li>
                 @endif
                 @if(@$menu_enable[\App\Enum\ProjectEnum::WEB_CONTENT_NEWS] > 0)
                     <li>
@@ -71,13 +77,6 @@
                            href="{{route('current',['locale' => $locale,'controller' => 'news'],false)}}">{{__('global.nav_news')}}</a>
                     </li>
                 @endif
-                @if(@$menu_enable[\App\Enum\ProjectEnum::WEB_CONTENT_PROMOTION] > 0)
-                    <li>
-                        <a data-gtm="main-nav-promotion"
-                           href="{{route('current',['locale' => $locale,'controller' => 'promotion'],false)}}">{{__('global.nav_promotion')}}</a>
-                    </li>
-                @endif
-
                 @if(@$menu_enable[\App\Enum\ProjectEnum::WEB_CONTENT_SERVICE_MY_HEALTH] > 0)
                     <li>
                         <a class="has_sub" href="#">{!! __('global.nav_my_health') !!}
