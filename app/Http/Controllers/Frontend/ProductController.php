@@ -217,10 +217,8 @@ class ProductController extends BaseController
             }
         }
 //onb2bta
-$packageJson = 'onb2bta';
         if (Storage::disk('public')->exists('json/' . $packageJson . '.json')) {
-            $package_detail = json_decode(Storage::disk('public')->get('json/' . $packageJson . '.json'));   
-            dd($packageJson,$package_detail);         
+            $package_detail = json_decode(Storage::disk('public')->get('json/' . $packageJson . '.json'));       
             foreach ($package_detail as $k => $v) {
                 if (str_starts_with($k, $selected)) {
                     if($this->locale === 'en')
