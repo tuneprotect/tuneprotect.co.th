@@ -55583,6 +55583,7 @@ var genPrice = function genPrice(package_data, country_data, subpackage, fdFromD
   }
 
   var day = Object(date_fns__WEBPACK_IMPORTED_MODULE_6__["differenceInDays"])(endDate, startDate) + 1;
+  console.log("days", day, endDate, startDate);
   Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$"])('#days').value = day;
   var allPack = Object.keys(package_data).filter(function (k) {
     return _.startsWith(k, _helper__WEBPACK_IMPORTED_MODULE_2__["current_package"] + subpackage);
@@ -55614,25 +55615,6 @@ var genPrice = function genPrice(package_data, country_data, subpackage, fdFromD
     });
   }
 
-  Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$$"])('#table-detail td[data-h2go]').forEach(function ($el) {
-    if (day >= 5) {
-      if ($el.getAttribute("data-h2go").startsWith('73')) {
-        $el.innerHTML = "<strong><i class='icofont-check-circled'  style='color:green'></i></strong>";
-      }
-
-      if ($el.getAttribute("data-h2go").startsWith('74')) {
-        $el.innerHTML = "<strong><i class='icofont-check-circled'  style='color:green'></i></strong>";
-      }
-    } else {
-      if ($el.getAttribute("data-h2go").startsWith('73')) {
-        $el.innerHTML = "<strong><i class='icofont-close-circled' style='color:red'></i></strong>";
-      }
-
-      if ($el.getAttribute("data-h2go").startsWith('74')) {
-        $el.innerHTML = "<strong><i class='icofont-close-circled' style='color:red'></i></strong>";
-      }
-    }
-  });
   allPack.map(function (k) {
     var pack = Object.keys(package_data[k].price).filter(function (subPackage) {
       var dateRange = package_data[k].price[subPackage].day.split('-');
@@ -55646,8 +55628,6 @@ var genPrice = function genPrice(package_data, country_data, subpackage, fdFromD
     Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$$"])('[data-sub-package]').forEach(function ($el) {
       $el.setAttribute('data-sub-package', pack);
     });
-    var price = package_data[k].price[pack];
-    console.log("price", price);
     Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$"])("strong[data-price-".concat(k, "]")).innerHTML = parseInt(package_data[k].price[pack].price).toLocaleString();
     Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$"])('#sub_code').value = pack;
   });

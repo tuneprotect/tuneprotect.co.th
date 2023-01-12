@@ -239,7 +239,7 @@ const genPrice = (package_data,country_data, subpackage, fdFromDate, fdToDate) =
 
 
     const day = differenceInDays(endDate, startDate) + 1;
-
+console.log("days",day,endDate,startDate);
     $('#days').value = day;
 
     const allPack = Object.keys(package_data)
@@ -273,27 +273,7 @@ const genPrice = (package_data,country_data, subpackage, fdFromDate, fdToDate) =
         });
     }
 
-    $$('#table-detail td[data-h2go]').forEach($el => {
-        if(day>=5)
-        {
-            if ($el.getAttribute("data-h2go").startsWith('73')) {
-                $el.innerHTML = "<strong><i class='icofont-check-circled'  style='color:green'></i></strong>";
-            }
-            if ($el.getAttribute("data-h2go").startsWith('74')) {
-                $el.innerHTML = "<strong><i class='icofont-check-circled'  style='color:green'></i></strong>";
-            }
-        }
-        else
-        {
-            if ($el.getAttribute("data-h2go").startsWith('73')) {
-                $el.innerHTML = "<strong><i class='icofont-close-circled' style='color:red'></i></strong>";
-            }
-            if ($el.getAttribute("data-h2go").startsWith('74')) {
-                $el.innerHTML = "<strong><i class='icofont-close-circled' style='color:red'></i></strong>";
-            }
-        }
-
-    });
+    
 
     allPack.map(k => {
         const pack = Object.keys(package_data[k].price).filter(subPackage => {
@@ -311,8 +291,6 @@ const genPrice = (package_data,country_data, subpackage, fdFromDate, fdToDate) =
         $$('[data-sub-package]').forEach($el => {
             $el.setAttribute('data-sub-package', pack)
         });
-        let price = package_data[k].price[pack];
-        console.log("price",price);
         $(`strong[data-price-${k}]`).innerHTML = parseInt(package_data[k].price[pack].price).toLocaleString();
         $('#sub_code').value = pack;
 
