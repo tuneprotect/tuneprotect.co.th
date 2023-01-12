@@ -20,7 +20,6 @@ export const showFieldError = ($this, errors) => {
 export const validateField = ($this, constraints) => {
 
     let field = $this.getAttribute('name');
-    console.log("field",field);
     if (field) {
 
         if (field.startsWith('data_')) {
@@ -34,8 +33,7 @@ export const validateField = ($this, constraints) => {
         $parent.classList.remove('error')
         $$('cite', $parent).forEach($el => $el.remove());
 
-        const result = validate({[field]: fieldValue}, constraints)
-        console.log("validate_result",result);
+        const result = validate({[field]: fieldValue}, constraints);
 
         if (result && result[field]) {
             showFieldError($this, result[field]);
