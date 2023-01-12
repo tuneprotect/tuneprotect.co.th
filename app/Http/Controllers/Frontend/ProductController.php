@@ -217,9 +217,10 @@ class ProductController extends BaseController
             }
         }
 
-        dd($packageJson);
+        
         if (Storage::disk('public')->exists('json/' . $packageJson . '.json')) {
-            $package_detail = json_decode(Storage::disk('public')->get('json/' . $packageJson . '.json'));            
+            $package_detail = json_decode(Storage::disk('public')->get('json/' . $packageJson . '.json'));   
+            dd($package_detail);         
             foreach ($package_detail as $k => $v) {
                 if (str_starts_with($k, $selected)) {
                     if($this->locale === 'en')
@@ -305,7 +306,7 @@ class ProductController extends BaseController
             $this->bodyData['review'] = view('frontend.component.review_product',['review' => $review,'locale' => $this->locale])->render();
 
         }
-        if($selected === 'ONTAOBB2B')
+        if($selected === 'ONB2BTA')
         {
             //Replace view in body content.
             $review = WebContent::where('type_id', ProjectEnum::WEB_CONTENT_REVIEW)
