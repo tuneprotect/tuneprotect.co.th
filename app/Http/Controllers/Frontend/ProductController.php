@@ -176,6 +176,7 @@ class ProductController extends BaseController
                 $selected="ONB2BTA";
             }
             $this->bodyData['selected'] = $selected;
+            dd($this->bodyData['current_product']);
             if (isset($this->bodyData['current_product'])) {                
                 foreach ($this->bodyData['current_product']->productPackage as $v) {
                     if ($v->code === $selected) {
@@ -216,11 +217,11 @@ class ProductController extends BaseController
                 $packageJson = 'ontalnlite';
             }
         }
-
+//onb2bta
         
         if (Storage::disk('public')->exists('json/' . $packageJson . '.json')) {
             $package_detail = json_decode(Storage::disk('public')->get('json/' . $packageJson . '.json'));   
-            dd($package_detail);         
+            dd($packageJson,$package_detail);         
             foreach ($package_detail as $k => $v) {
                 if (str_starts_with($k, $selected)) {
                     if($this->locale === 'en')
@@ -310,7 +311,7 @@ class ProductController extends BaseController
         {
             //Replace view in body content.
             $review = WebContent::where('type_id', ProjectEnum::WEB_CONTENT_REVIEW)
-                ->where('custom_input_1','ONTAOBB2B')
+                ->where('custom_input_1','ONB2BTA')
                 ->with('locales')
                 ->whereRaw(ProjectEnum::isPublish())
                 ->inRandomOrder()
