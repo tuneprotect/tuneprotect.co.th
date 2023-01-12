@@ -69,23 +69,25 @@
 
             <?php $j = 1 ?>
             @foreach (__('product.'.$selected) as $k => $v)
-                <tr>
+            <tr>
                     <?php $i = 1 ?>
-                    <th>{!! $v !!}</th>
-{{--                        <th>{!! $j !!}</th>--}}
+                    <th data-cover-{{$k}}>{!! $v !!}</th>
+
                     @foreach ($package_detail as $k1 => $v1)
-                        <td {{$i > 1 ? 'class=hide' : ""}} data-index="{{$i}}" data-package="{{$k1}}" data-h2go={{$j.$i}}>
+                        <td {{$i > 1 ? 'class=hide' : ""}} data-index="{{$i-1}}" data-package="{{$k1}}">
                             @if(isset($v1->plan->$k))
                                 @if((is_numeric($v1->plan->$k)))
-                                    <strong>{{number_format($v1->plan->$k,0)}}</strong>
+                                    <strong>{{number_format( $v1->plan->$k,0)}}</strong>
+                                @elseif( strpos($v1->plan->$k,'__') === 0 )
+                                    <strong>{!!__( str_replace('__','',$v1->plan->$k) )!!}</strong>
+                                @elseif(str_contains($v1->plan->$k,'healt2go_plan'))
+                                    <strong>{!!__( str_replace('healt2go_plan',__('product.healt2go_plan'),$v1->plan->$k)) !!}</strong>
+                                @elseif(str_contains($v1->plan->$k,'healt2go_desc'))
+                                    <strong>{!!__( str_replace('healt2go_desc',__('product.healt2go_desc'),$v1->plan->$k)) !!}</strong>
+                                @elseif(str_contains($v1->plan->$k,'healt2go_word'))
+                                    <strong>{!!__( str_replace('healt2go_word',__('product.healt2go_word'),$v1->plan->$k)) !!}</strong>
                                 @else
-{{--                                    @if($j === 7 && ($i === 3 || $i ===4) && $days <= 5)--}}
-{{--                                        <strong><i class='icofont-close-circled' style='color:red'></i></strong>--}}
-{{--                                        <strong>{{$days}}</strong>--}}
-{{--                                    @else--}}
-                                        <strong>{!! str_replace('{itravel_coverage_fix1}',__('product.itravel_coverage_fix1'),$v1->plan->$k) !!}</strong>
-{{--                                    @endif--}}
-
+                                    <strong>{!! $v1->plan->$k !!}</strong>
                                 @endif
                             @endif
                         </td>
