@@ -45,7 +45,7 @@
                                                     <ul>
                                                         @foreach ($v1->productPackage as $v2)
                                                             <li>
-                                                            @if($v2->code === 'ONVACINA' || $v2->code === 'CVCARE'|| $v2->code === 'ONCOVIDMW' || $v2->code === 'TGCVLP' || $v2->code === 'TAISMTG' || $v2->code === 'ONTALN' || $v2->code === 'ONVSUREA' || $v2->code === 'ONTAOBB2B' || $v2->code === 'ONTAISMB2B' || $v2->code === 'ONTADMB2B')
+                                                            @if($v2->code === 'ONVACINA' || $v2->code === 'CVCARE'|| $v2->code === 'ONCOVIDMW' || $v2->code === 'TGCVLP' || $v2->code === 'TAISMTG' || $v2->code === 'ONTALN' || $v2->code === 'ONVSUREA' || $v2->code === 'ONB2BTAD' || $v2->code === 'ONTAISMB2B' || $v2->code === 'ONTADMB2B')
                                                             @else
                                                                     <a data-gtm="main-nav-product-{{$v1->friendly_url}}-{{$v2->code}}"
                                                                        href="{{route('current',['locale' => $locale,'controller' => 'product','func' => $v1->friendly_url,'params' => $v2->code ])}}">
@@ -269,7 +269,7 @@
                                                     src="{{url(!empty($v->pic_mobile_en) ? url(str_replace('Banner_TA_D_EN', 'Banner_TAI_M', $v->pic_mobile_en)) : url(str_replace('Banner_TA_D_EN', 'Banner_TAI_M', $v->pic_en)) )}}"
                                                     alt="{{$v->locales[$locale]->title}}">
                                             </picture>
-                                    @elseif($selected==='ONTAOBB2B')
+                                    @elseif($selected==='ONB2BTAD')
                                         <picture>
                                             <source media="(min-width:768px)"
                                                     srcset="{{url(str_replace('Banner_TA_D_EN', 'b2b/iTravel_PC_EN', $v->pic_en))}}">
@@ -345,7 +345,7 @@
                                             <source media="(min-width:768px)" srcset="{{url(str_replace('Banner-baowan-main-en', 'Banner-chillsure-main-th-pc', $v->pic_en))}}">
                                             <img src="{{url(!empty($v->pic_mobile_en) ? url(str_replace('Banner-baowan-main-en', 'Banner-chillsure-main-th-mb', $v->pic_mobile_en)) : url(str_replace('Banner-baowan-main-en', 'Banner-chillsure-main-th-mb', $v->pic_en)) )}}" alt="{{$v->locales[$locale]->title}}">
                                         </picture>
-                                    @elseif($selected==='ONTAOBB2B')
+                                    @elseif($selected==='ONB2BTAD')
                                         <picture>
                                             <source media="(min-width:768px)"
                                                     srcset="{{url(str_replace('Banner_TA_D', 'b2b/iTravel_PC_TH', $v->pic_en))}}">
