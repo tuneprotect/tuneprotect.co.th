@@ -6,6 +6,22 @@
             <h3>@lang('product.please_specify_travel_info')</h3>
             <div class="two-col">
                 <div class="controls-wrapper">
+                    <select id="ctrl_travel_type" name="ctrl_travel_type">
+                            @foreach(__('product.trip_type') as $k => $v)
+                            <option value="{{$k}}">{{$v}}</option>
+                        @endforeach
+                    </select>
+                    <label for="ctrl_travel_type">@lang("product.travel_type")</label>
+                </div>
+                <div class="controls-wrapper">
+                    <select id="ctrl_no_of_insured" name="ctrl_no_of_insured">
+                        @for($i = 1;$i < 10;$i++)
+                            <option value="{{$i}}">{{$i}}</option>
+                        @endfor
+                    </select>
+                    <label for="ctrl_no_of_insured">@lang("product.no_of_insured")</label>
+                </div>
+                <div class="controls-wrapper">
                     <select id="fdDestFrom" name="fdDestFrom" data-please-select="@lang('product.please_select')"
                             data-error="@lang('product.error.province')"></select>
                     <label for="fdDestFrom">@lang("product.depart_province")</label>
@@ -29,15 +45,7 @@
                            data-mindate="{{date('Y-m-d',strtotime( "+2 days"))}}"
                            data-error="@lang('product.error.travel_end_date')"/>
                     <label for="fdToDate">@lang("product.expiry_date")</label>
-                </div>
-                <div class="controls-wrapper">
-                    <select id="ctrl_no_of_insured" name="ctrl_no_of_insured">
-                        @for($i = 1;$i < 10;$i++)
-                            <option value="{{$i}}">{{$i}}</option>
-                        @endfor
-                    </select>
-                    <label for="ctrl_no_of_insured">@lang("product.no_of_insured")</label>
-                </div>
+                </div>                
             </div>
         </div>
         <div class="btn-wrapper">
