@@ -117,7 +117,7 @@
                                                 <img src="{{url(!empty($v->pic_mobile_en) ? url(str_replace('Banner_Covid_D_EN', 'Banner_VSafe_D_EN2', $v->pic_mobile_en)) : url(str_replace('Banner_Covid_D_EN', 'Banner_VSafe_M_EN2', $v->pic_en)) )}}"
                                                     alt="{{$v->locales[$locale]->title}}">
                                             </picture>
-                                @elseif($selected==='ONTAOBB2B')
+                                @elseif($selected==='ONB2BTAD')
                                         <picture>
                                             <source media="(min-width:768px)"
                                                     srcset="{{url(str_replace('Banner_TA_D_EN', 'b2b/iTravel_PC_EN', $v->pic_en))}}">
@@ -238,7 +238,7 @@
                                         <img src="{{url(!empty($v->pic_mobile_en) ? "/storage/Banner/Banner_TAI_D.jpg" : "/storage/Banner/Banner_TAI_M.jpg" )}}"
                                                 alt="{{$v->locales[$locale]->title}}">
                                     </picture>
-                                @elseif($selected==='ONTAOBB2B')
+                                @elseif($selected==='ONB2BTAD')
                                     <picture>
                                         <source media="(min-width:768px)" srcset="/storage/Banner/b2b/iTravel_PC_TH.jpg">
                                         <img src="{{url(!empty($v->pic_mobile_en) ? "/storage/Banner/b2b/iTravel_PC_TH.jpg" : "/storage/Banner/b2b/iTravel_MB_TH.jpg" )}}"
