@@ -7,7 +7,7 @@
             <div class="two-col">
                 <div class="controls-wrapper">
                     <select id="ctrl_travel_type" name="ctrl_travel_type">
-                            @foreach(__('product.trip_type') as $k => $v)
+                            @foreach(__('product.b2b_trip_type') as $k => $v)
                             <option value="{{$k}}">{{$v}}</option>
                         @endforeach
                     </select>
