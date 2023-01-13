@@ -91,11 +91,7 @@ class ProductController extends BaseController
             $selected = "ONB2BTA";
             //return redirect()->route('current', ['locale' => $this->locale, 'controller' => $this->controller, 'func' => $link, 'params' => $selected]);
         }
-        if (in_array($selected, ['ONTADMB2B'])) {
-            $selected = "ONB2BTAD";
-            //return redirect()->route('current', ['locale' => $this->locale, 'controller' => $this->controller, 'func' => $link, 'params' => $selected]);
-        }
-
+       
         $this->getProductDetail($link, $selected);
 		
         if ($selected) {      
@@ -382,7 +378,7 @@ class ProductController extends BaseController
             $obj = new TGISMObject();            
         } elseif (substr($data['fdPackage'], 0, 9) === 'ONCOVIDMW') {
             $obj = new COVIDAObject();
-        } elseif (substr($data['fdPackage'], 0, 6) === 'ONTADM' || substr($data['fdPackage'], 0, 9) === 'ONTADMB2B' || substr($data['fdPackage'], 0, 8) === 'ONB2BTAD') {
+        } elseif (substr($data['fdPackage'], 0, 6) === 'ONTADM' || substr($data['fdPackage'], 0, 8) === 'ONB2BTAD') {
             $obj = new BaseTAObject();
             $obj->fdFlgInbound = "D";
         } elseif (substr($data['fdPackage'], 0, 6) === 'ONTALN') {
@@ -999,10 +995,7 @@ class ProductController extends BaseController
             $link = "IssuePolicyiTravel";
         } elseif (substr($package, 0, 6) === 'ONTADM' || substr($package, 0, 4) === 'ONTA') {
             $this->thankYouParam = substr($package, 0, 6);
-            $link = "IssuePolicy";
-        } elseif (substr($package, 0, 9) === 'ONTADMB2B') {
-            $this->thankYouParam = substr($package, 0, 9);
-            $link = "IssuePolicy";
+            $link = "IssuePolicy";        
         } elseif (substr($package, 0, 8) === 'ONB2BTAD') {
             $this->thankYouParam = substr($package, 0, 9);
             $link = "IssuePolicy";
