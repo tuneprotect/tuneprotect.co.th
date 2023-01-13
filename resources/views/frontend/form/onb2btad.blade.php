@@ -60,7 +60,9 @@
                 <input type="hidden" id="nopayment_status" value="{{$nopayment_status}}"/>
             </div>
         @endif
-
+        <input type="hidden" id="sub_code"/>
+        <input type="hidden" id="all_pack"/>
+        <input type="hidden" id="days"/>
     </form>
 
     <br/>

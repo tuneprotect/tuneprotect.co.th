@@ -34,11 +34,20 @@ const step1Constraints = {
             message: "^" + $('#fdFromDate').getAttribute('data-error')
         }
     },
-    fdToDate: {
-        presence: {
-            allowEmpty: false,
-            message: "^" + $('#fdToDate').getAttribute('data-error')
-        }
+    // fdToDate: {
+    //     presence: {
+    //         allowEmpty: false,
+    //         message: "^" + $('#fdToDate').getAttribute('data-error')
+    //     }
+    // },
+    fdToDate: function (value, attributes, attributeName, options, constraints) {
+        if (attributes.ctrl_travel_type === 'annual') return null;
+        return {
+            presence: {
+                allowEmpty: false,
+                message: "^" + $('#fdToDate').getAttribute('data-error')
+            }
+        };
     },
     fdDestFrom: {
         presence: {
@@ -204,6 +213,7 @@ const genPrice = (package_data, fdFromDate, fdToDate) => {
 
     let startDate = parseISO(fdFromDate);
     let endDate = parseISO(fdToDate);
+    /*
     const day = differenceInDays(endDate, startDate) + 1;
 
     Object.keys(package_data)
@@ -221,6 +231,65 @@ const genPrice = (package_data, fdFromDate, fdToDate) => {
             $(`strong[data-price-${k}]`).innerHTML = parseInt(package_data[k].price[pack].price).toLocaleString();
 
         })
+    */
+        if ($('#ctrl_travel_type').value === 'annual') {
+            // endDate = new Date(startDate.getFullYear() + 1, startDate.getMonth(), startDate.getDate());
+        }
+        else
+        {
+            let country_zone = '';
+            country_data.map(v => {
+                    if (v.code === $('#fdDestTo').value) {
+                        country_zone = v.zone;
+                    }
+                });
+            console.log(country_zone);
+            subpackage = country_zone;
+            $('#ctrl_sub_package').value = subpackage;
+        }
+    
+        // console.log(package_data);
+        console.log(subpackage);
+        console.log(fdFromDate);
+        console.log(fdToDate);
+    
+    
+    
+        const day = differenceInDays(endDate, startDate) + 1;
+        console.log("day : "  + day);
+    
+        $('#days').value = day;
+    
+        const allPack = Object.keys(package_data)
+            .filter(k => _.startsWith(k, current_package + subpackage))
+    
+        $('#all_pack').value = allPack;
+    
+        
+    
+        allPack.map(k => {
+            const pack = Object.keys(package_data[k].price).filter(subPackage => {
+                const dateRange = (package_data[k].price[subPackage].day).split('-');
+                if(dateRange.length === 1)
+                {
+                    return day >= dateRange[0] && day <= dateRange[0];
+                }
+                else
+                {
+                    return day >= dateRange[0] && day <= dateRange[1];
+                }
+            })
+    
+            // console.log(pack);
+    
+            $$('[data-sub-package]').forEach($el => {
+                $el.setAttribute('data-sub-package', pack)
+            });
+            $(`strong[data-price-${k}]`).innerHTML = parseInt(package_data[k].price[pack].price).toLocaleString();
+            $('#sub_code').value = pack;
+    
+            console.log("pack : "  + pack);
+        });
 }
 
 document.addEventListener("DOMContentLoaded", async () => {
@@ -253,6 +322,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         ctrl_terms: "",
         fdSendType: "",
         ctrl_accept_insurance_term: "",
+        ctrl_travel_type: "",
         profile: []
     };
     let iti = {};
@@ -338,6 +408,91 @@ document.addEventListener("DOMContentLoaded", async () => {
         });
     });
 
+    $('#ctrl_travel_type').addEventListener('change', (e) => {
+
+        let display_sub_package = 'block'
+        let display_fdDestTo = 'block'
+        let display_fdToDate = 'block'
+
+        if (e.target.value === 'annual') {
+            display_sub_package ='block';
+            display_fdDestTo  = "none";
+            display_fdToDate  = "none";
+        }
+        else
+        {
+            display_sub_package = "none";
+            display_fdDestTo  = 'block';
+            display_fdToDate  = 'block';
+        }
+        $$("#ctrl_sub_package,#fdDestTo").forEach(($el) => {
+            $el.closest('.controls-wrapper').style.display = display_sub_package;
+        });
+        $$("#fdDestTo").forEach(($el) => {
+            $el.closest('.controls-wrapper').style.display = display_fdDestTo;
+        });
+        $$("#fdToDate").forEach(($el) => {
+            $el.closest('.controls-wrapper').style.display = display_fdToDate;
+        });
+    });
+
+    //Set start selection
+    let el = document.getElementById('ctrl_travel_type');
+    el.dispatchEvent(new Event('change'));
+
+
+    $('#ctrl_no_of_insured').addEventListener('change', (e) => {
+
+        for (let i = 1; i <= e.target.value; i++) {
+            $(`#form_profile_${i}`).style.display = "block";
+        }
+        for (let i = (parseInt(e.target.value) + 1); i < 10; i++) {
+            $(`#form_profile_${i}`).style.display = "none";
+        }
+    });
+
+    for (let i = 1; i < 10; i++) {
+        $$(`input[name=data_${i}_fdSex]`).forEach($el => {
+            $el.addEventListener("change", function (e) {
+                showMultipleTitle($el.value, i)
+            });
+        });
+
+        $(`input[name=data_${i}_fdAddr_PostCode]`).addEventListener("change", function (e) {
+            const value = e.target.value;
+            if (value.length === 5) {
+                const location_data = zipcode_data[value];
+                if (location_data !== undefined) {
+                    let items = ['<option value="">' + $(`#data_1_ctrl_province`).getAttribute('data-please-select') + '</option>'];
+
+                    //Fix to eng
+                    location_data.map(v => {
+                        items.push(`<option value="${v.district.code}">${v.district.locales['en']}, ${v.province.locales['en']}</option>`);
+                    });
+                    $(`#data_${i}_ctrl_province`).innerHTML = items.join('');
+                }
+            }
+        });
+
+        $(`#data_${i}_ctrl_day`).addEventListener("change", function (e) {
+            if (e.target.value.length === 1) {
+                $(`#data_${i}_ctrl_day`).value = '0' + e.target.value;
+            }
+        });
+
+        iti[i] = intlTelInput($(`#data_${i}_fdTelephone`), {
+            initialCountry: "auto",
+            geoIpLookup: function (success, failure) {
+                fetch("https://ipinfo.io", {
+                    mode: 'no-cors' // 'cors' by default
+                }).then(function (resp) {
+                    let countryCode = (resp && resp.country) ? resp.country : "th";
+                    success(countryCode);
+                });
+            }
+        });
+
+    }
 
     const $btnGoto = $$('.btn-goto');
     $btnGoto.forEach($btn => {
@@ -357,7 +512,8 @@ document.addEventListener("DOMContentLoaded", async () => {
                         data = {
                             ...data,
                             fdDestFrom: $('#fdDestFrom').value,
-                            fdDestTo: $('#fdDestTo').value,
+                            ctrl_travel_type: $('#ctrl_travel_type').value,
+                            fdDestTo: $('#ctrl_travel_type').value === 'annual' ? zoneCode[$('#ctrl_sub_package').value] : $('#fdDestTo').value,
                             fdFromDate: $('#fdFromDate').value,
                             fdToDate: $('#fdToDate').value,
                         }
@@ -369,8 +525,15 @@ document.addEventListener("DOMContentLoaded", async () => {
                         }
 
                         let fromDate = ($('#fdFromDate').value).split('/');
-                        let toDate = ($('#fdToDate').value).split('/');
+                        //let toDate = ($('#fdToDate').value).split('/');
+                        let toDate;
 
+                        if ($('#ctrl_travel_type').value === 'annual') {
+                            const lastDate = subDays(addYears(parseISO(`${fromDate[2]}-${fromDate[1]}-${fromDate[0]}`), 1), 1);
+                            toDate = (format(lastDate, 'dd/MM/yyyy')).split('/');
+                        } else {
+                            toDate = ($('#fdToDate').value).split('/');
+                        }
                         data = {
                             ...data,
                             fdFromDate: `${fromDate[2]}-${fromDate[1]}-${fromDate[0]}`,
@@ -508,11 +671,12 @@ document.addEventListener("DOMContentLoaded", async () => {
                         const $summary_section = $('#summary_section');
 
                         let sb = `<h3 class="text-primary">${$summary_section.getAttribute('data-insurance_data')}</h3><br/>
-                        <div class="two-col">
+                            <div class="two-col">
                             <div><span>${$summary_section.getAttribute('data-plan')} : </span><strong>${selectedPackage}</strong></div>
                             <div><span>${$('#receve_channel_title').innerText} : </span><strong>${data.fdSendType === 'P' ? $('label[for=ctrl_channel_post]').innerText : $('label[for=ctrl_channel_email]').innerText}</strong></div>
-                            <div><span>${$('label[for=fdDestFrom]').innerText} : </span><strong>${$destFrom.options[$destFrom.selectedIndex].text}</strong></div>
-                            <div><span>${$('label[for=fdDestTo]').innerText} : </span><strong>${$destTo.options[$destTo.selectedIndex].text}</strong></div>
+                            ${$('#ctrl_travel_type').value === 'annual'
+                            ? `<div><span>${$('label[for=ctrl_sub_package]').innerText} : </span><strong>${$subPackage.options[$subPackage.selectedIndex].text}</strong></div>`
+                            : `<div><span>${$('label[for=fdDestTo]').innerText} : </span><strong>${$destTo.options[$destTo.selectedIndex].text}</strong></div>`}
                             <div><span>${$('label[for=fdFromDate]').innerText} : </span><strong>${fromDate}</strong></div>
                             <div><span>${$('label[for=fdToDate]').innerText} : </span><strong>${toDate}</strong></div>
                             <div><span>${$summary_section.getAttribute('data-price-perperson')} : </span><strong>${parseFloat(data.fdPayAMT).toLocaleString()} ${$summary_section.getAttribute('data-baht')}</strong></div>
