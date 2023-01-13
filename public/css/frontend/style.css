@@ -17039,11 +17039,11 @@ main form input[type=checkbox]:checked + label:after {
   padding: 30px;
   flex: 1 1 650px;
   border-radius: 20px;
-  /*
+  
   background: #e3306c;
   background: linear-gradient(152deg, #e3306c 0%, #f7e01f 100%);
-  */
-  background: #E71618;
+  
+  /*background: #E71618;*/
 }
 
 .contact-section form h3,
