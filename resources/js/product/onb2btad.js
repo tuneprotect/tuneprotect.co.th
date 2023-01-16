@@ -271,7 +271,7 @@ const genPrice = (package_data, fdFromDate, fdToDate) => {
     $('#all_pack').value = allPack;
 
     allPack.map(k => {
-        const pack = Object.keys(package_data[k].price).filter(subPackage => {
+        let pack = Object.keys(package_data[k].price).filter(subPackage => {
             const dateRange = (package_data[k].price[subPackage].day).split('-');
             if(dateRange.length === 1)
             {
