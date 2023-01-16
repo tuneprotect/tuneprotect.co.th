@@ -260,18 +260,16 @@ const genPrice = (package_data, fdFromDate, fdToDate) => {
     // console.log(fdToDate);
     
     
-    console.log("st",startDate,endDate);
     const day = differenceInDays(endDate, startDate) + 1;
     console.log("day : "  + day);
 
     $('#days').value = day;
 
-    // const allPack = Object.keys(package_data)
-    //     .filter(k => _.startsWith(k, current_package + subpackage))
+    const allPack = Object.keys(package_data)
+        .filter(k => _.startsWith(k, current_package))
 
-    const allPack = JSON.parse("ONB2BTADOT,ONB2BTADRT");
     $('#all_pack').value = allPack;
-    
+
     allPack.map(k => {
         const pack = Object.keys(package_data[k].price).filter(subPackage => {
             const dateRange = (package_data[k].price[subPackage].day).split('-');
