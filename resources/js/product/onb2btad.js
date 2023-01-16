@@ -207,68 +207,17 @@ const profileConstraints = {
 };
 
 const getSelectedPrice = (packageCode, package_data) => {
-
-    console.log("sub_code",package_data);
     const code = packageCode.substring(0, 10);
     const sub_code = packageCode.substring(10);
-    console.log("code",code);
-    console.log("sub_code",sub_code);
     return package_data[code].price["01"].price;
 }
 
 const genPrice = (package_data, fdFromDate, fdToDate) => {
 
     let startDate = parseISO(fdFromDate);
-    let endDate = parseISO(fdToDate);
-    /*
-    const day = differenceInDays(endDate, startDate) + 1;
-
-    */
-    if ($('#ctrl_travel_type').value === 'annual') {
-        // endDate = new Date(startDate.getFullYear() + 1, startDate.getMonth(), startDate.getDate());
-    }
-    else
-    {
-    //     console.log("package_data",package_data);
-    //     Object.keys(package_data)
-    //     .filter(k => _.startsWith(k, current_package))
-    //     .map(k => {
-    //         console.log("day",package_data[k].price);
-    //         const pack = Object.keys(package_data[k].price).filter(subPackage => {
-    //             const dateRange = (package_data[k].price[subPackage].day).split('-');
-    //             return day >= dateRange[0] && day <= dateRange[1];
-    //         })
-    //         console.log("pack",pack);
-    //         $$('[data-sub-package]').forEach($el => {
-    //             $el.setAttribute('data-sub-package', pack)
-    //         });
-
-    //         $(`strong[data-price-${k}]`).innerHTML = parseInt(package_data[k].price[pack].price).toLocaleString();
-
-    //     })
-
-    //     // let country_zone = '';
-        console.log("sss",$('#fdDestTo').value);
-        console.log("package_data",package_data);
-        //console.log("xxx",country_data);
-    //     // country_data.map(v => {
-    //     //         if (v.code === $('#fdDestTo').value) {
-    //     //             country_zone = v.zone;
-    //     //         }
-    //     //     });
-    //     // console.log(country_zone);
-    //     // subpackage = country_zone;
-    //     // $('#ctrl_sub_package').value = subpackage;
-    }
-
-    // // console.log(package_data);
-    // console.log(subpackage);
-    // console.log(fdFromDate);
-    // console.log(fdToDate);
-    
+    let endDate = parseISO(fdToDate);    
     
     const day = differenceInDays(endDate, startDate) + 1;
-    console.log("day : "  + day);
 
     $('#days').value = day;
 
@@ -289,19 +238,9 @@ const genPrice = (package_data, fdFromDate, fdToDate) => {
                 return day >= dateRange[0] && day <= dateRange[1];
             }
         })
-        // pack="";
-        // // console.log(pack);
-
-        // $$('[data-sub-package]').forEach($el => {
-        //     $el.setAttribute('data-sub-package', pack)
-        // });
-
-        console.log("1",package_data[k]);
-        console.log("2",package_data[k].price["01"].price);
+        
         $(`strong[data-price-${k}]`).innerHTML = parseInt(package_data[k].price["01"].price).toLocaleString();
         //$('#sub_code').value = pack;
-
-        console.log("pack : "  + pack);
     });
 }
 
