@@ -266,20 +266,12 @@ const genPrice = (package_data, fdFromDate, fdToDate) => {
 
     $('#days').value = day;
 
-        package_data.map(v => {
-                country_zone = v.zone;
-        });
-        console.log("country_zone",country_zone);
-        subpackage = country_zone;
-        $('#ctrl_sub_package').value = subpackage;
+    // const allPack = Object.keys(package_data)
+    //     .filter(k => _.startsWith(k, current_package + subpackage))
 
-    const allPack = Object.keys(package_data)
-        .filter(k => _.startsWith(k, current_package + subpackage))
-
+    const allPack = JSON.parse("ONB2BTADOT,ONB2BTADRT");
     $('#all_pack').value = allPack;
-
     
-
     allPack.map(k => {
         const pack = Object.keys(package_data[k].price).filter(subPackage => {
             const dateRange = (package_data[k].price[subPackage].day).split('-');
