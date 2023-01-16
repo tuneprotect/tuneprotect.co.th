@@ -271,18 +271,18 @@ const genPrice = (package_data, fdFromDate, fdToDate) => {
     $('#all_pack').value = allPack;
 
     allPack.map(k => {
-        const pack = Object.keys(package_data[k].price).filter(subPackage => {
-            const dateRange = (package_data[k].price[subPackage].day).split('-');
-            if(dateRange.length === 1)
-            {
-                return day >= dateRange[0] && day <= dateRange[0];
-            }
-            else
-            {
-                return day >= dateRange[0] && day <= dateRange[1];
-            }
-        })
-
+        // const pack = Object.keys(package_data[k].price).filter(subPackage => {
+        //     const dateRange = (package_data[k].price[subPackage].day).split('-');
+        //     if(dateRange.length === 1)
+        //     {
+        //         return day >= dateRange[0] && day <= dateRange[0];
+        //     }
+        //     else
+        //     {
+        //         return day >= dateRange[0] && day <= dateRange[1];
+        //     }
+        // })
+        const pack="";
         // console.log(pack);
 
         $$('[data-sub-package]').forEach($el => {
@@ -291,7 +291,6 @@ const genPrice = (package_data, fdFromDate, fdToDate) => {
         $(`strong[data-price-${k}]`).innerHTML = parseInt(package_data[k].price[pack].price).toLocaleString();
         $('#sub_code').value = pack;
 
-        console.log("pack : "  + pack);
     });
 }
 
