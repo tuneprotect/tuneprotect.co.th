@@ -55567,7 +55567,7 @@ var getSelectedPrice = function getSelectedPrice(packageCode, package_data) {
   var sub_code = packageCode.substring(10);
   console.log("code", code);
   console.log("sub_code", sub_code);
-  return package_data[code].price[sub_code].price;
+  return package_data[code].price["01"].price;
 };
 
 var genPrice = function genPrice(package_data, fdFromDate, fdToDate) {
