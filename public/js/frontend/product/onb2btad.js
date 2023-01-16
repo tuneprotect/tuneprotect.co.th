@@ -55637,8 +55637,8 @@ var genPrice = function genPrice(package_data, fdFromDate, fdToDate) {
     // });
 
     console.log("1", package_data[k]);
-    console.log("2", package_data[k].price[pack].price);
-    Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$"])("strong[data-price-".concat(k, "]")).innerHTML = parseInt(package_data[k].price[pack].price).toLocaleString(); //$('#sub_code').value = pack;
+    console.log("2", package_data[k].price["01"].price);
+    Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$"])("strong[data-price-".concat(k, "]")).innerHTML = parseInt(package_data[k].price["01"].price).toLocaleString(); //$('#sub_code').value = pack;
 
     console.log("pack : " + pack);
   });
