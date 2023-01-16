@@ -204,6 +204,8 @@ const profileConstraints = {
 };
 
 const getSelectedPrice = (packageCode, package_data) => {
+
+    console.log("sub_code",packageCode);
     const code = packageCode.substring(0, 7);
     const sub_code = packageCode.substring(7);
     return package_data[code].price[sub_code].price;
