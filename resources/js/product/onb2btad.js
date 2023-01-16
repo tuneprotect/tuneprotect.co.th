@@ -228,7 +228,7 @@ const genPrice = (package_data, fdFromDate, fdToDate) => {
         .map(k => {
             console.log("day",package_data[k].price);
             const pack = Object.keys(package_data[k].price).filter(subPackage => {
-                const dateRange = (package_data[k].price[subPackage].day).split('-');
+                const dateRange = (package_data[k].price[subPackage].day);
                 return day >= dateRange[0] && day <= dateRange[1];
             })
             console.log("pack",pack);
