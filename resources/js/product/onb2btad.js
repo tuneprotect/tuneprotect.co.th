@@ -288,6 +288,9 @@ const genPrice = (package_data, fdFromDate, fdToDate) => {
         // $$('[data-sub-package]').forEach($el => {
         //     $el.setAttribute('data-sub-package', pack)
         // });
+
+        console.log("1",package_data[k]);
+        console.log("2",package_data[k].price[pack].price);
         $(`strong[data-price-${k}]`).innerHTML = parseInt(package_data[k].price[pack].price).toLocaleString();
         //$('#sub_code').value = pack;
 
