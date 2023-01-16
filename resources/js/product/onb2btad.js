@@ -209,89 +209,74 @@ const getSelectedPrice = (packageCode, package_data) => {
     return package_data[code].price[sub_code].price;
 }
 
-const genPrice = (package_data, fdFromDate, fdToDate) => {
+const genPrice = (package_data,country_data, fdFromDate, fdToDate) => {
 
     let startDate = parseISO(fdFromDate);
     let endDate = parseISO(fdToDate);
     /*
     const day = differenceInDays(endDate, startDate) + 1;
 
-    Object.keys(package_data)
-        .filter(k => _.startsWith(k, current_package))
-        .map(k => {
-            const pack = Object.keys(package_data[k].price).filter(subPackage => {
-                const dateRange = (package_data[k].price[subPackage].day).split('-');
-                return day >= dateRange[0] && day <= dateRange[1];
-            })
-
-            $$('[data-sub-package]').forEach($el => {
-                $el.setAttribute('data-sub-package', pack)
-            });
-
-            $(`strong[data-price-${k}]`).innerHTML = parseInt(package_data[k].price[pack].price).toLocaleString();
-
-        })
     */
-        if ($('#ctrl_travel_type').value === 'annual') {
-            // endDate = new Date(startDate.getFullYear() + 1, startDate.getMonth(), startDate.getDate());
-        }
-        else
-        {
-            let country_zone = '';
-            console.log("sss",$('#fdDestTo').value);
-            console.log("xxx",country_data);
-            country_data.map(v => {
-                    if (v.code === $('#fdDestTo').value) {
-                        country_zone = v.zone;
-                    }
-                });
-            console.log(country_zone);
-            subpackage = country_zone;
-            $('#ctrl_sub_package').value = subpackage;
-        }
-    
-        // console.log(package_data);
-        console.log(subpackage);
-        console.log(fdFromDate);
-        console.log(fdToDate);
-    
-    
-    
-        const day = differenceInDays(endDate, startDate) + 1;
-        console.log("day : "  + day);
-    
-        $('#days').value = day;
-    
-        const allPack = Object.keys(package_data)
-            .filter(k => _.startsWith(k, current_package + subpackage))
-    
-        $('#all_pack').value = allPack;
-    
-        
-    
-        allPack.map(k => {
-            const pack = Object.keys(package_data[k].price).filter(subPackage => {
-                const dateRange = (package_data[k].price[subPackage].day).split('-');
-                if(dateRange.length === 1)
-                {
-                    return day >= dateRange[0] && day <= dateRange[0];
+    if ($('#ctrl_travel_type').value === 'annual') {
+        // endDate = new Date(startDate.getFullYear() + 1, startDate.getMonth(), startDate.getDate());
+    }
+    else
+    {
+        let country_zone = '';
+        console.log("sss",$('#fdDestTo').value);
+        console.log("xxx",country_data);
+        country_data.map(v => {
+                if (v.code === $('#fdDestTo').value) {
+                    country_zone = v.zone;
                 }
-                else
-                {
-                    return day >= dateRange[0] && day <= dateRange[1];
-                }
-            })
-    
-            // console.log(pack);
-    
-            $$('[data-sub-package]').forEach($el => {
-                $el.setAttribute('data-sub-package', pack)
             });
-            $(`strong[data-price-${k}]`).innerHTML = parseInt(package_data[k].price[pack].price).toLocaleString();
-            $('#sub_code').value = pack;
+        console.log(country_zone);
+        subpackage = country_zone;
+        $('#ctrl_sub_package').value = subpackage;
+    }
+
+    // console.log(package_data);
+    console.log(subpackage);
+    console.log(fdFromDate);
+    console.log(fdToDate);
     
-            console.log("pack : "  + pack);
+    
+    
+    const day = differenceInDays(endDate, startDate) + 1;
+    console.log("day : "  + day);
+
+    $('#days').value = day;
+
+    const allPack = Object.keys(package_data)
+        .filter(k => _.startsWith(k, current_package + subpackage))
+
+    $('#all_pack').value = allPack;
+
+    
+
+    allPack.map(k => {
+        const pack = Object.keys(package_data[k].price).filter(subPackage => {
+            const dateRange = (package_data[k].price[subPackage].day).split('-');
+            if(dateRange.length === 1)
+            {
+                return day >= dateRange[0] && day <= dateRange[0];
+            }
+            else
+            {
+                return day >= dateRange[0] && day <= dateRange[1];
+            }
+        })
+
+        // console.log(pack);
+
+        $$('[data-sub-package]').forEach($el => {
+            $el.setAttribute('data-sub-package', pack)
         });
+        $(`strong[data-price-${k}]`).innerHTML = parseInt(package_data[k].price[pack].price).toLocaleString();
+        $('#sub_code').value = pack;
+
+        console.log("pack : "  + pack);
+    });
 }
 
 document.addEventListener("DOMContentLoaded", async () => {
