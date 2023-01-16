@@ -239,6 +239,7 @@ const genPrice = (package_data, fdFromDate, fdToDate) => {
         {
             let country_zone = '';
             console.log("sss",$('#fdDestTo').value);
+            console.log("xxx",country_data);
             country_data.map(v => {
                     if (v.code === $('#fdDestTo').value) {
                         country_zone = v.zone;
