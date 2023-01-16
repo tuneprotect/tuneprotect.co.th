@@ -55563,8 +55563,8 @@ var profileConstraints = {
 
 var getSelectedPrice = function getSelectedPrice(packageCode, package_data) {
   console.log("sub_code", packageCode);
-  var code = packageCode.substring(0, 9);
-  var sub_code = packageCode.substring(9);
+  var code = packageCode.substring(0, 10);
+  var sub_code = packageCode.substring(10);
   return package_data[code].price[sub_code].price;
 };
 
