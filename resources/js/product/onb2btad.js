@@ -222,6 +222,7 @@ const genPrice = (package_data, fdFromDate, fdToDate) => {
     }
     else
     {
+        console.log("package_data",package_data);
         Object.keys(package_data)
         .filter(k => _.startsWith(k, current_package))
         .map(k => {
