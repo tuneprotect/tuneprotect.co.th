@@ -594,6 +594,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                             let dateResult = checkTaBirthDate(i);
 
                             let valCheck = false;
+                            console.log("ddd",data.fdPackage)
                             valCheck = validatePolicyPayment($(`#data_${i}_fdNationalID`).value,data.fdPackage,$('#fdFromDate')?.value);
                             if(!valCheck)
                             {
