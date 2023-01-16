@@ -259,7 +259,7 @@ const genPrice = (package_data, fdFromDate, fdToDate) => {
     // console.log(fdToDate);
     
     
-    
+    console.log(package_data);
     const day = differenceInDays(endDate, startDate) + 1;
     console.log("day : "  + day);
 
