@@ -266,6 +266,13 @@ const genPrice = (package_data, fdFromDate, fdToDate) => {
 
     $('#days').value = day;
 
+        package_data.map(v => {
+                country_zone = v.zone;
+        });
+        console.log("country_zone",country_zone);
+        subpackage = country_zone;
+        $('#ctrl_sub_package').value = subpackage;
+
     const allPack = Object.keys(package_data)
         .filter(k => _.startsWith(k, current_package + subpackage))
 
