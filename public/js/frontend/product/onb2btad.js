@@ -55642,7 +55642,7 @@ var genPrice = function genPrice(package_data, fdFromDate, fdToDate) {
 };
 
 document.addEventListener("DOMContentLoaded", /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
-  var package_data, provinceData, zipcode_data, Keys, myEle, status_api, step, data, iti, $dataSubPackage, provinceOption, _loop, i, allField, el, _loop2, _i5, zoneCode, $btnGoto;
+  var package_data, provinceData, zipcode_data, Keys, myEle, status_api, step, data, iti, $dataSubPackage, provinceOption, _loop, i, allField, el, _loop2, _i5, $btnGoto;
 
   return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
     while (1) {
@@ -55851,11 +55851,6 @@ document.addEventListener("DOMContentLoaded", /*#__PURE__*/_asyncToGenerator( /*
             _loop2(_i5);
           }
 
-          zoneCode = {
-            "WW": 'WRW',
-            "AS": 'WRW',
-            "AE": 'ASN'
-          };
           $btnGoto = Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$$"])('.btn-goto');
           $btnGoto.forEach(function ($btn) {
             $btn.addEventListener("click", function (e) {
@@ -55873,7 +55868,7 @@ document.addEventListener("DOMContentLoaded", /*#__PURE__*/_asyncToGenerator( /*
                     data = _objectSpread(_objectSpread({}, data), {}, {
                       fdDestFrom: Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$"])('#fdDestFrom').value,
                       ctrl_travel_type: Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$"])('#ctrl_travel_type').value,
-                      fdDestTo: Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$"])('#ctrl_travel_type').value === 'annual' ? zoneCode[Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$"])('#ctrl_sub_package').value] : Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$"])('#fdDestTo').value,
+                      fdDestTo: Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$"])('#ctrl_travel_type').value === 'annual' ? "" : Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$"])('#fdDestTo').value,
                       fdFromDate: Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$"])('#fdFromDate').value,
                       fdToDate: Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$"])('#fdToDate').value
                     });
@@ -56051,7 +56046,7 @@ document.addEventListener("DOMContentLoaded", /*#__PURE__*/_asyncToGenerator( /*
             });
           });
 
-        case 32:
+        case 31:
         case "end":
           return _context.stop();
       }

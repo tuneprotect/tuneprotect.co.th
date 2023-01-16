@@ -503,11 +503,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         });
 
     }
-    const zoneCode = {
-        "WW": 'WRW',
-        "AS": 'WRW',
-        "AE": 'ASN'
-    }
+    
     const $btnGoto = $$('.btn-goto');
     $btnGoto.forEach($btn => {
         $btn.addEventListener("click", function (e) {
@@ -527,7 +523,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                             ...data,
                             fdDestFrom: $('#fdDestFrom').value,
                             ctrl_travel_type: $('#ctrl_travel_type').value,
-                            fdDestTo: $('#ctrl_travel_type').value === 'annual' ? zoneCode[$('#ctrl_sub_package').value] : $('#fdDestTo').value,
+                            fdDestTo: $('#ctrl_travel_type').value === 'annual' ? "" : $('#fdDestTo').value,
                             fdFromDate: $('#fdFromDate').value,
                             fdToDate: $('#fdToDate').value,
                         }
