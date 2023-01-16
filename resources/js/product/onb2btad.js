@@ -438,7 +438,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             display_fdDestTo  = 'block';
             display_fdToDate  = 'block';
         }
-        $$("#ctrl_sub_package,#fdDestTo").forEach(($el) => {
+        $$("#fdDestTo").forEach(($el) => {
             $el.closest('.controls-wrapper').style.display = display_sub_package;
         });
         $$("#fdDestTo").forEach(($el) => {
@@ -688,7 +688,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                             <div><span>${$summary_section.getAttribute('data-plan')} : </span><strong>${selectedPackage}</strong></div>
                             <div><span>${$('#receve_channel_title').innerText} : </span><strong>${data.fdSendType === 'P' ? $('label[for=ctrl_channel_post]').innerText : $('label[for=ctrl_channel_email]').innerText}</strong></div>
                             ${$('#ctrl_travel_type').value === 'annual'
-                            ? `<div><span>${$('label[for=ctrl_sub_package]').innerText} : </span><strong>${$subPackage.options[$subPackage.selectedIndex].text}</strong></div>`
+                            ? `<div><strong>${$subPackage.options[$subPackage.selectedIndex].text}</strong></div>`
                             : `<div><span>${$('label[for=fdDestTo]').innerText} : </span><strong>${$destTo.options[$destTo.selectedIndex].text}</strong></div>`}
                             <div><span>${$('label[for=fdFromDate]').innerText} : </span><strong>${fromDate}</strong></div>
                             <div><span>${$('label[for=fdToDate]').innerText} : </span><strong>${toDate}</strong></div>
