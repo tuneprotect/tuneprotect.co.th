@@ -11,9 +11,8 @@ import {$, $$, current_package, getRadioSelectedValue, getZipcodeData, locale, s
 import {removeError, showError, showFieldError, validateField} from "../validate_form";
 import Swal from "sweetalert2";
 import validate from "validate.js";
-import {differenceInDays, format, parseISO} from "date-fns";
-import intlTelInput from "intl-tel-input";
 import {addYears, differenceInDays, format, parseISO, subDays} from "date-fns";
+import intlTelInput from "intl-tel-input";
 
 require('../main');
 require('../product');
