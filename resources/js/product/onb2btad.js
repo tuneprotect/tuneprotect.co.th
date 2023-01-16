@@ -222,17 +222,33 @@ const genPrice = (package_data,country_data, fdFromDate, fdToDate) => {
     }
     else
     {
-        let country_zone = '';
-        console.log("sss",$('#fdDestTo').value);
-        console.log("xxx",country_data);
-        country_data.map(v => {
-                if (v.code === $('#fdDestTo').value) {
-                    country_zone = v.zone;
-                }
+        Object.keys(package_data)
+        .filter(k => _.startsWith(k, current_package))
+        .map(k => {
+            const pack = Object.keys(package_data[k].price).filter(subPackage => {
+                const dateRange = (package_data[k].price[subPackage].day).split('-');
+                return day >= dateRange[0] && day <= dateRange[1];
+            })
+
+            $$('[data-sub-package]').forEach($el => {
+                $el.setAttribute('data-sub-package', pack)
             });
-        console.log(country_zone);
-        subpackage = country_zone;
-        $('#ctrl_sub_package').value = subpackage;
+
+            $(`strong[data-price-${k}]`).innerHTML = parseInt(package_data[k].price[pack].price).toLocaleString();
+
+        })
+
+        // let country_zone = '';
+        // console.log("sss",$('#fdDestTo').value);
+        // console.log("xxx",country_data);
+        // country_data.map(v => {
+        //         if (v.code === $('#fdDestTo').value) {
+        //             country_zone = v.zone;
+        //         }
+        //     });
+        // console.log(country_zone);
+        // subpackage = country_zone;
+        // $('#ctrl_sub_package').value = subpackage;
     }
 
     // console.log(package_data);
