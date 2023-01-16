@@ -282,14 +282,14 @@ const genPrice = (package_data, fdFromDate, fdToDate) => {
                 return day >= dateRange[0] && day <= dateRange[1];
             }
         })
-
+        pack="";
         // console.log(pack);
 
         $$('[data-sub-package]').forEach($el => {
             $el.setAttribute('data-sub-package', pack)
         });
         $(`strong[data-price-${k}]`).innerHTML = parseInt(package_data[k].price[pack].price).toLocaleString();
-        //$('#sub_code').value = pack;
+        $('#sub_code').value = pack;
 
         console.log("pack : "  + pack);
     });
@@ -594,7 +594,6 @@ document.addEventListener("DOMContentLoaded", async () => {
                             let dateResult = checkTaBirthDate(i);
 
                             let valCheck = false;
-                            console.log("ddd",data.fdPackage)
                             valCheck = validatePolicyPayment($(`#data_${i}_fdNationalID`).value,data.fdPackage,$('#fdFromDate')?.value);
                             if(!valCheck)
                             {
