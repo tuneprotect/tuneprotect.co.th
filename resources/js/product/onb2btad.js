@@ -222,41 +222,41 @@ const genPrice = (package_data, fdFromDate, fdToDate) => {
     }
     else
     {
-        console.log("package_data",package_data);
-        Object.keys(package_data)
-        .filter(k => _.startsWith(k, current_package))
-        .map(k => {
-            console.log("day",package_data[k].price);
-            const pack = Object.keys(package_data[k].price).filter(subPackage => {
-                const dateRange = (package_data[k].price[subPackage].day);
-                return day >= dateRange[0] && day <= dateRange[1];
-            })
-            console.log("pack",pack);
-            $$('[data-sub-package]').forEach($el => {
-                $el.setAttribute('data-sub-package', pack)
-            });
+    //     console.log("package_data",package_data);
+    //     Object.keys(package_data)
+    //     .filter(k => _.startsWith(k, current_package))
+    //     .map(k => {
+    //         console.log("day",package_data[k].price);
+    //         const pack = Object.keys(package_data[k].price).filter(subPackage => {
+    //             const dateRange = (package_data[k].price[subPackage].day).split('-');
+    //             return day >= dateRange[0] && day <= dateRange[1];
+    //         })
+    //         console.log("pack",pack);
+    //         $$('[data-sub-package]').forEach($el => {
+    //             $el.setAttribute('data-sub-package', pack)
+    //         });
 
-            $(`strong[data-price-${k}]`).innerHTML = parseInt(package_data[k].price[pack].price).toLocaleString();
+    //         $(`strong[data-price-${k}]`).innerHTML = parseInt(package_data[k].price[pack].price).toLocaleString();
 
-        })
+    //     })
 
-        // let country_zone = '';
-        // console.log("sss",$('#fdDestTo').value);
-        // console.log("xxx",country_data);
-        // country_data.map(v => {
-        //         if (v.code === $('#fdDestTo').value) {
-        //             country_zone = v.zone;
-        //         }
-        //     });
-        // console.log(country_zone);
-        // subpackage = country_zone;
-        // $('#ctrl_sub_package').value = subpackage;
+    //     // let country_zone = '';
+    //     // console.log("sss",$('#fdDestTo').value);
+    //     // console.log("xxx",country_data);
+    //     // country_data.map(v => {
+    //     //         if (v.code === $('#fdDestTo').value) {
+    //     //             country_zone = v.zone;
+    //     //         }
+    //     //     });
+    //     // console.log(country_zone);
+    //     // subpackage = country_zone;
+    //     // $('#ctrl_sub_package').value = subpackage;
     }
 
-    // console.log(package_data);
-    console.log(subpackage);
-    console.log(fdFromDate);
-    console.log(fdToDate);
+    // // console.log(package_data);
+    // console.log(subpackage);
+    // console.log(fdFromDate);
+    // console.log(fdToDate);
     
     
     

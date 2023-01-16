@@ -206,24 +206,21 @@ const genPrice = (package_data, fdFromDate, fdToDate) => {
     let endDate = parseISO(fdToDate);
     const day = differenceInDays(endDate, startDate) + 1;
 
-    console.log("package_data",package_data);
     Object.keys(package_data)
-    .filter(k => _.startsWith(k, current_package))
-    .map(k => {
-        console.log("day",package_data[k].price);
-        const pack = Object.keys(package_data[k].price).filter(subPackage => {
-            const dateRange = (package_data[k].price[subPackage].day).split('-');
-            return day >= dateRange[0] && day <= dateRange[1];
+        .filter(k => _.startsWith(k, current_package))
+        .map(k => {
+            const pack = Object.keys(package_data[k].price).filter(subPackage => {
+                const dateRange = (package_data[k].price[subPackage].day).split('-');
+                return day >= dateRange[0] && day <= dateRange[1];
+            })
+
+            $$('[data-sub-package]').forEach($el => {
+                $el.setAttribute('data-sub-package', pack)
+            });
+
+            $(`strong[data-price-${k}]`).innerHTML = parseInt(package_data[k].price[pack].price).toLocaleString();
+
         })
-        console.log("pack",pack);
-        $$('[data-sub-package]').forEach($el => {
-            $el.setAttribute('data-sub-package', pack)
-        });
-
-        $(`strong[data-price-${k}]`).innerHTML = parseInt(package_data[k].price[pack].price).toLocaleString();
-
-    })
-
 }
 
 document.addEventListener("DOMContentLoaded", async () => {
