@@ -55416,11 +55416,14 @@ var step1Constraints = {
       message: "^" + Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$"])('#fdDestFrom').getAttribute('data-error')
     }
   },
-  fdDestTo: {
-    presence: {
-      allowEmpty: false //message: "^" + $('#fdDestTo').getAttribute('data-error')
-
-    }
+  fdDestTo: function fdDestTo(value, attributes, attributeName, options, constraints) {
+    if (attributes.ctrl_travel_type === 'annual') return null;
+    return {
+      presence: {
+        allowEmpty: false,
+        message: "^" + Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$"])('#fdDestTo').getAttribute('data-error')
+      }
+    };
   }
 };
 var step3Constraints = {
