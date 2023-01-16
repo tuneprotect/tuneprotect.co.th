@@ -209,7 +209,7 @@ const getSelectedPrice = (packageCode, package_data) => {
     return package_data[code].price[sub_code].price;
 }
 
-const genPrice = (package_data, fdFromDate, fdToDate) => {
+const genPrice = (package_data, country_data, fdFromDate, fdToDate) => {
 
     let startDate = parseISO(fdFromDate);
     let endDate = parseISO(fdToDate);
@@ -241,8 +241,8 @@ const genPrice = (package_data, fdFromDate, fdToDate) => {
     //     })
 
     //     // let country_zone = '';
-    //     // console.log("sss",$('#fdDestTo').value);
-    //     // console.log("xxx",country_data);
+        console.log("sss",$('#fdDestTo').value);
+        console.log("xxx",country_data);
     //     // country_data.map(v => {
     //     //         if (v.code === $('#fdDestTo').value) {
     //     //             country_zone = v.zone;
