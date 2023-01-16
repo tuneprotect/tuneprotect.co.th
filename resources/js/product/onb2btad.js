@@ -503,7 +503,11 @@ document.addEventListener("DOMContentLoaded", async () => {
         });
 
     }
-
+    const zoneCode = {
+        "WW": 'WRW',
+        "AS": 'WRW',
+        "AE": 'ASN'
+    }
     const $btnGoto = $$('.btn-goto');
     $btnGoto.forEach($btn => {
         $btn.addEventListener("click", function (e) {
