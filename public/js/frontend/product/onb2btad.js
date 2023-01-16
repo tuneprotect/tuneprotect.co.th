@@ -55418,8 +55418,8 @@ var step1Constraints = {
   },
   fdDestTo: {
     presence: {
-      allowEmpty: false,
-      message: "^" + Object(_helper__WEBPACK_IMPORTED_MODULE_2__["$"])('#fdDestTo').getAttribute('data-error')
+      allowEmpty: false //message: "^" + $('#fdDestTo').getAttribute('data-error')
+
     }
   }
 };

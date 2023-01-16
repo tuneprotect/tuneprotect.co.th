@@ -58,7 +58,7 @@ const step1Constraints = {
     fdDestTo: {
         presence: {
             allowEmpty: false,
-            message: "^" + $('#fdDestTo').getAttribute('data-error')
+            //message: "^" + $('#fdDestTo').getAttribute('data-error')
         }
     }
 };
