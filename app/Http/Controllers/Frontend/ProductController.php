@@ -997,7 +997,7 @@ dd($apiResult);
             $this->thankYouParam = substr($package, 0, 6);
             $link = "IssuePolicy";        
         } elseif (substr($package, 0, 8) === 'ONB2BTAD') {
-            $this->thankYouParam = substr($package, 0, 9);
+            $this->thankYouParam = substr($package, 0, 8);
             $link = "IssuePolicy";
         } elseif (substr($package, 0, 8) === 'ONVACINA') {
             $this->thankYouParam = substr($package, 0, 8);
