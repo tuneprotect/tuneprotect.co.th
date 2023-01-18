@@ -788,7 +788,7 @@ class ProductController extends BaseController
             $PolicyArr[] = $apiResult['message'];
             $PolicyData = $apiResult['data'];
             $Status = $apiResult["status"];
-dd($apiResult);
+
             if($apiResult['data'] !== null){
                 foreach ($PolicyData as $k => $v) {
                     if ($k === 'BigPoint') {
@@ -840,7 +840,7 @@ dd($apiResult);
                 'body' => json_encode($data)
             ]);
             $apiResult = (array)json_decode($response->getBody()->getContents(), true);
-//dd($apiResult);
+dd($apiResult);
             if ($apiResult["status"]) {
                 $v->issuepolicy_status =  'S';
             }
