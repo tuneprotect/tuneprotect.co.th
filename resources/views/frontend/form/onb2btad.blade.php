@@ -33,6 +33,7 @@
                 </div>
                 <div class="controls-wrapper">
                     <input id="fdFromDate" name="fdFromDate" type="text" class="flatpickr"
+                           data-mindate="{{date('Y-m-d',strtotime( "+1 days"))}}"
                            data-mindate="{{date('Y-m-d')}}"
                            data-maxdate="{{date('Y-m-d',strtotime( "+60 days"))}}"
                            data-setmindateto="fdToDate" data-setmaxdateto="fdToDate" data-setmaxdaterange="29"
