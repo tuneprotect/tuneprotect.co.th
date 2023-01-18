@@ -639,7 +639,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                             ctrl_accept_insurance_term: $('#ctrl_accept_insurance_term').checked ? true : undefined,
                             profile: profileData,
                             fdDay: $('#days').value,
-                            rpcNumber: 190
+                            rpcNumber: 181
                         }
                         data = {
                             ...data,
