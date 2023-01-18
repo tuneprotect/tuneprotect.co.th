@@ -217,7 +217,7 @@ const genPrice = (package_data, fdFromDate, fdToDate) => {
     let startDate = parseISO(fdFromDate);
     let endDate = parseISO(fdToDate);    
     
-    const day = differenceInDays(endDate, startDate) + 1;
+    const day = differenceInDays(endDate, startDate);
 
     $('#days').value = day;
 
