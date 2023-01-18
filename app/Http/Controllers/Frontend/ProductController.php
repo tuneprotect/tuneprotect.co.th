@@ -987,12 +987,9 @@ dd($apiResult);
         } elseif (substr($package, 0, 6) === 'ONTAOB') {
             $this->thankYouParam = substr($package, 0, 6);
             $link = "IssuePolicyiTravel";
-        } elseif (substr($package, 0, 9) === 'ONTAOBB2B') {
-            $this->thankYouParam = substr($package, 0, 9);
-            $link = "IssuePolicyiTravel";
         } elseif (substr($package, 0, 7) === 'ONB2BTA') {
             $this->thankYouParam = substr($package, 0, 7);
-            $link = "IssuePolicyiTravel";
+            $link = "IssuePolicy";
         } elseif (substr($package, 0, 6) === 'ONTADM' || substr($package, 0, 4) === 'ONTA') {
             $this->thankYouParam = substr($package, 0, 6);
             $link = "IssuePolicy";        
