@@ -788,7 +788,7 @@ class ProductController extends BaseController
             $PolicyArr[] = $apiResult['message'];
             $PolicyData = $apiResult['data'];
             $Status = $apiResult["status"];
-dd($PolicyData);
+dd($apiResult);
             if($apiResult['data'] !== null){
                 foreach ($PolicyData as $k => $v) {
                     if ($k === 'BigPoint') {
