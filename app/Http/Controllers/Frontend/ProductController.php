@@ -840,7 +840,7 @@ class ProductController extends BaseController
                 'body' => json_encode($data)
             ]);
             $apiResult = (array)json_decode($response->getBody()->getContents(), true);
-dd($apiResult);
+            
             if ($apiResult["status"]) {
                 $v->issuepolicy_status =  'S';
             }
@@ -986,15 +986,15 @@ dd($apiResult);
             $link = "IssuePolicyInbound";
         } elseif (substr($package, 0, 6) === 'ONTAOB') {
             $this->thankYouParam = substr($package, 0, 6);
-            $link = "IssuePolicyiTravel";
-        } elseif (substr($package, 0, 7) === 'ONB2BTA') {
-            $this->thankYouParam = substr($package, 0, 7);
-            $link = "IssuePolicy";
-        } elseif (substr($package, 0, 6) === 'ONTADM' || substr($package, 0, 4) === 'ONTA') {
-            $this->thankYouParam = substr($package, 0, 6);
-            $link = "IssuePolicy";        
+            $link = "IssuePolicyiTravel";        
         } elseif (substr($package, 0, 8) === 'ONB2BTAD') {
             $this->thankYouParam = substr($package, 0, 8);
+            $link = "IssuePolicy";
+        } elseif (substr($package, 0, 7) === 'ONB2BTA') {
+            $this->thankYouParam = substr($package, 0, 7);
+            $link = "IssuePolicyiTravel";
+        } elseif (substr($package, 0, 6) === 'ONTADM' || substr($package, 0, 4) === 'ONTA') {
+            $this->thankYouParam = substr($package, 0, 6);
             $link = "IssuePolicy";
         } elseif (substr($package, 0, 8) === 'ONVACINA') {
             $this->thankYouParam = substr($package, 0, 8);
