@@ -1,35 +1,4 @@
 <section style="display: none" id="step2" class="product-detail">
-    @if(strtolower($selected) == 'onvacina' || strtolower($selected) == 'onvsurea')
-        <section id="sectionPackage" class="wrapper">
-            <form method="post" action="" class="insurance-form">
-                @if($locale == 'en')
-                    <div class="form-head">@lang('product.please_specify_birthdate_title')</div>
-                @else
-                    <div class="form-head">เลือกแผนประกันภัย</div>
-                @endif
-
-                <div class="form-inner">
-                    <div class="controls-wrapper">
-                        <select id="ctrl_package" name="ctrl_package">
-                            <option value="1">Silver</option>
-                            <option value="2" selected="selected">Gold</option>
-                            @if(strtolower($selected) == 'onvacina')
-                            <option value="3" selected="selected">Platinum</option>
-                            @endif
-                        </select>
-                        @if($locale == 'en')
-                            <label for="ctrl_package">Package</label>
-                        @else
-                            <label for="ctrl_package">แผนประกันภัย</label>
-                        @endif
-
-
-                    </div>
-                </div>
-            </form>
-        </section>
-    @endif
-
     <div class="wrapper">
         <table id="table-detail">
             <thead>
@@ -59,16 +28,7 @@
                                             @else
                                                 <strong>@lang('product.plan') {{$v->no}}</strong>
                                             @endif
-                                        @endif
-                                    @else
-                                        @if($selected == "CI")
-                                            <span data-recommend>@lang('product.recommend')</span>
-                                        @endif
-                                        <strong class="package-number">@lang('product.plan') {{$i}}</strong>
-                                    @endif
-
-                                    @if($selected == "CI")
-                                        <span class="show_on_mobile" data-price-{{$k}}></span>
+                                        @endif                                  
                                     @endif
                                 </a>
 
@@ -92,12 +52,6 @@
                                     <strong>@lang('product.plan') {{$v->no}}</strong>
                                 @endif
                             @endif
-
-                        @else
-                            @if($selected == "CI")
-                                <span data-recommend>@lang('product.recommend')</span>
-                            @endif
-                            <strong class="package-number">@lang('product.plan') {{$i}}</strong>
                         @endif
 
                         <a href="#"
@@ -127,17 +81,6 @@
             </tr>
             </thead>
             <tbody>
-            @if($selected == "CI")
-                <tr class="pink">
-                    <th>@lang('product.installment')</th>
-                    <?php $i = 1 ?>
-                    @foreach ($package_detail as $k => $v)
-                        <td {{$i > 1 ? 'class=hide' : ""}} data-index="{{$i}}" data-package="{{$k}}"><strong
-                                data-installment-{{$k}}></strong></td>
-                        <?php $i++ ?>
-                    @endforeach
-                </tr>
-            @endif
             <tr class="orange">
                 <th>@lang('product.price_per_year')</th>
                 <?php $i = 1 ?>
