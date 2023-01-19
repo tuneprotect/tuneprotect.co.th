@@ -393,10 +393,10 @@ document.addEventListener("DOMContentLoaded", async () => {
         });
 
         $$("#table-detail").forEach(($el) => {
-            $el.closest('td[data-package="ONB2BTADOT"])').style.display = display_plan1;
+            $el.closest('td[data-package="ONB2BTADOT"]').style.display = display_plan1;
         });
         $$("#table-detail").forEach(($el) => {
-            $el.closest('td[data-package="ONB2BTADRT"])').style.display = display_plan2;
+            $el.closest('td[data-package="ONB2BTADRT"]').style.display = display_plan2;
         });
     });
 
