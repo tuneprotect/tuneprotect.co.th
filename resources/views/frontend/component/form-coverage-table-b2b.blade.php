@@ -90,6 +90,9 @@
                             @if($k=="ONB2BTADRT")
                                 แผนไป-กลับ
                             @endif
+                            @if($k=="ONB2BTADOT")
+                                แผนรายเที่ยว
+                            @endif
                         @endif
                        </strong>
 
