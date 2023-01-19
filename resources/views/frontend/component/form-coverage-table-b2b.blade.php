@@ -50,25 +50,18 @@
                                    data-index="{{$i}}"
                                    data-gtm="product-{{strtolower($selected)}}-mobile-choose-plan-{{$i}}"
                                    class="btn btn-block btn-outline btn-choose-plan {{$i == 1 ? 'on' : '' }}">
-                                    @if(isset($v->no))
-                                        @if($v->no == 0)
-                                            <strong>@lang('product.no_plan')</strong>
+                                    @if($locale == 'en')
+                                        @if($k=="ONB2BTADRT")
+                                            Round Trip
                                         @else
-                                            @if(isset($v->name))
-                                                <strong>{{$v->name}} @lang('product.plan') {{$v->no}} 1</strong>
-                                            @else
-                                                <strong>@lang('product.plan') {{$v->no}} 11</strong>
-                                            @endif
+                                            One Trip
                                         @endif
                                     @else
-                                        @if($selected == "CI")
-                                            <span data-recommend>@lang('product.recommend')</span>
+                                        @if($k=="ONB2BTADRT")
+                                            แผนไป-กลับ
+                                        @else
+                                            แผนรายเที่ยว
                                         @endif
-                                        <strong class="package-number">@lang('product.plan') {{$i}} 2</strong>
-                                    @endif
-
-                                    @if($selected == "CI")
-                                        <span class="show_on_mobile" data-price-{{$k}}></span>
                                     @endif
                                 </a>
 
@@ -183,26 +176,18 @@
                 <?php $i = 1 ?>
                 @foreach ($package_detail as $k => $v)
                     <td {{$i > 1 ? 'class=hide' : ""}} data-index="{{$i}}" data-package="{{$k}}">
-                        @if(isset($v->no))
-                            @if($v->no == 0)
-                                <strong style="display: block" class="text-center">@lang('product.no_plan')</strong>
+                        @if($locale == 'en')
+                            @if($k=="ONB2BTADRT")
+                                Round Trip
                             @else
-                                @if(isset($v->name))
-                                    @if(isset($v->name))
-                                        <strong style="display: block"
-                                                class="text-center">{{$v->name}} @lang('product.plan') {{$v->no}}</strong>
-                                    @else
-                                        <strong style="display: block"
-                                                class="text-center">@lang('product.plan') {{$v->no}}</strong>
-                                    @endif
-                                @else
-                                    <strong style="display: block"
-                                            class="text-center">@lang('product.plan') {{$v->no}}</strong>
-                                @endif
+                                One Trip
                             @endif
-
                         @else
-                            <strong style="display: block" class="text-center">@lang('product.plan') {{$i}}</strong>
+                            @if($k=="ONB2BTADRT")
+                                แผนไป-กลับ
+                            @else
+                                แผนรายเที่ยว
+                            @endif
                         @endif
 
                         <a href="#"
