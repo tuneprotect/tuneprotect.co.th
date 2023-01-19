@@ -89,6 +89,7 @@
                         @else
                             @if($k=="ONB2BTADRT")
                                 แผนไป-กลับ
+                            @endif
                         @endif
                        </strong>
 
