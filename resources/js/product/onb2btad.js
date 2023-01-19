@@ -11,7 +11,7 @@ import {$, $$, current_package, getRadioSelectedValue, getZipcodeData, locale, s
 import {removeError, showError, showFieldError, validateField} from "../validate_form";
 import Swal from "sweetalert2";
 import validate from "validate.js";
-import {addYears, differenceInDays, format, parseISO, subDays} from "date-fns";
+import {addDays, addYears, differenceInDays, format, parseISO, subDays} from "date-fns";
 import intlTelInput from "intl-tel-input";
 
 require('../main');
@@ -484,7 +484,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                         let toDate;
 
                         if ($('#ctrl_travel_type').value === 'annual') {
-                            const lastDate = subDays(addYears(parseISO(`${fromDate[2]}-${fromDate[1]}-${fromDate[0]}`), 1), 1);
+                            const lastDate = subDays(addDays(parseISO(`${fromDate[2]}-${fromDate[1]}-${fromDate[0]}`), 1), 1);
                             toDate = (format(lastDate, 'dd/MM/yyyy')).split('/');
                         } else {
                             toDate = ($('#fdToDate').value).split('/');
