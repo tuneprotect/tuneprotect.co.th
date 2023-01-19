@@ -512,16 +512,8 @@ document.addEventListener("DOMContentLoaded", async () => {
                             return false
                         }
 
-                        let fromDate = ($('#fdFromDate').value).split('/');
-                        let toDate;
-
-                        if ($('#ctrl_travel_type').value === 'annual') {
-                            //const lastDate = subDays(addYears(parseISO(`${fromDate[2]}-${fromDate[1]}-${fromDate[0]}`), 1), 1);
-                            const lastDate = addDays(parseISO(`${fromDate[2]}-${fromDate[1]}-${fromDate[0]}`), 1);
-                            toDate = (format(lastDate, 'dd/MM/yyyy')).split('/');
-                        } else {
-                            toDate = ($('#fdToDate').value).split('/');
-                        }
+                        let fromDate = ($('#fdFromDate').value).split('/');                        
+                        let toDate = ($('#fdToDate').value).split('/');
 
                         data = {
                             ...data,
