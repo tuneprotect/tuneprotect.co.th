@@ -87,7 +87,8 @@
                        @if($locale == 'en')
                             1 {{$k}}
                         @else
-                            2 {{$k}}
+                            @if({{$k}}=="ONB2BTADRT")
+                                แผนไป-กลับ
                         @endif
                        </strong>
 
