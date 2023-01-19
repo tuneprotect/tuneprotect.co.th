@@ -223,7 +223,9 @@ const genPrice = (package_data,country_data, subpackage, fdFromDate, fdToDate) =
     let startDate = parseISO(fdFromDate);
     let endDate = parseISO(fdToDate);
     
-    
+    console.log("fdFromDate",fdFromDate);
+    console.log("fdToDate",fdToDate);
+
     let country_zone = '';
     country_data.map(v => {
             if (v.code === $('#fdDestTo').value) {
@@ -233,6 +235,8 @@ const genPrice = (package_data,country_data, subpackage, fdFromDate, fdToDate) =
     subpackage = country_zone;
 
     let day = differenceInDays(endDate, startDate) + 1;
+    console.log("day",day);
+    
     if(day===365 || day===366){
         day = 0;
     }
