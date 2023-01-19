@@ -1,12 +1,48 @@
-<section style="display: none" id="step2" class="product-detail">   
+<section style="display: none" id="step2" class="product-detail">
+    @if(strtolower($selected) == 'onvacina' || strtolower($selected) == 'onvsurea')
+        <section id="sectionPackage" class="wrapper">
+            <form method="post" action="" class="insurance-form">
+                @if($locale == 'en')
+                    <div class="form-head">@lang('product.please_specify_birthdate_title')</div>
+                @else
+                    <div class="form-head">เลือกแผนประกันภัย</div>
+                @endif
+
+                <div class="form-inner">
+                    <div class="controls-wrapper">
+                        <select id="ctrl_package" name="ctrl_package">
+                            <option value="1">Silver</option>
+                            <option value="2" selected="selected">Gold</option>
+                            @if(strtolower($selected) == 'onvacina')
+                            <option value="3" selected="selected">Platinum</option>
+                            @endif
+                        </select>
+                        @if($locale == 'en')
+                            <label for="ctrl_package">Package</label>
+                        @else
+                            <label for="ctrl_package">แผนประกันภัย</label>
+                        @endif
+
+
+                    </div>
+                </div>
+            </form>
+        </section>
+    @endif
+
     <div class="wrapper">
         <table id="table-detail">
             <thead>
             <tr>
                 <th>
-                    <h3>@lang('global.coverage')</h3>
+                    @if($selected != "CI")
+                        <h3>@lang('global.coverage')</h3>
+                    @else
+                        <h3>@lang('product.ci_coverage')</h3>
+                    @endif
                     <?php $i = 1 ?>
                     <div class="choose-plan-mobile">
+
                         @foreach ($package_detail as $k => $v)
                             <div class="wrapper-choose-plan">
                                 <a href="#"
@@ -23,12 +59,24 @@
                                             @else
                                                 <strong>@lang('product.plan') {{$v->no}}</strong>
                                             @endif
-                                        @endif                                   
+                                        @endif
+                                    @else
+                                        @if($selected == "CI")
+                                            <span data-recommend>@lang('product.recommend')</span>
+                                        @endif
+                                        <strong class="package-number">@lang('product.plan') {{$i}}</strong>
+                                    @endif
+
+                                    @if($selected == "CI")
+                                        <span class="show_on_mobile" data-price-{{$k}}></span>
                                     @endif
                                 </a>
+
                                 <?php $i++ ?>
                             </div>
+
                         @endforeach
+
                     </div>
                 </th>
                 <?php $i = 1 ?>
@@ -39,11 +87,17 @@
                                 <strong>@lang('product.no_plan')</strong>
                             @else
                                 @if(isset($v->name))
-                                    <strong>{{$v->name}} @lang('product.plan') {{$v->no}} 1</strong>
+                                    <strong>{{$v->name}} @lang('product.plan') {{$v->no}}</strong>
                                 @else
-                                    <strong>@lang('product.plan') {{$v->no}} 2</strong>
+                                    <strong>@lang('product.plan') {{$v->no}}</strong>
                                 @endif
                             @endif
+
+                        @else
+                            @if($selected == "CI")
+                                <span data-recommend>@lang('product.recommend')</span>
+                            @endif
+                            <strong class="package-number">@lang('product.plan') {{$i}}</strong>
                         @endif
 
                         <a href="#"
