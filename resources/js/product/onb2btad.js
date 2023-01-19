@@ -245,9 +245,9 @@ const genPrice = (package_data, fdFromDate, fdToDate) => {
 
     if (document.body.clientWidth > 767) {
         $$('#table-detail td[data-package],#table-detail th[data-package],.choose-plan-mobile').forEach($el => {
-            console.log("ff",$el.getAttribute("data-package"),$$('#sub_code').value);
+            console.log("ff",$el.getAttribute("data-package"),$('#sub_code').value);
             //if (allPack.includes($el.getAttribute("data-package"))) {
-            if ($el.getAttribute("data-package")==$$('#sub_code').value) {
+            if ($el.getAttribute("data-package")==$('#sub_code').value) {
                 $el.style.display = "table-cell";
             } else {
                 $el.style.display = "none";
