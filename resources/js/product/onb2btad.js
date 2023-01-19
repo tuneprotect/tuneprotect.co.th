@@ -247,7 +247,7 @@ const genPrice = (package_data, fdFromDate, fdToDate) => {
         $$('#table-detail td[data-package],#table-detail th[data-package],.choose-plan-mobile').forEach($el => {
             //console.log("ff",$el.getAttribute("data-package"));
             //if (allPack.includes($el.getAttribute("data-package"))) {
-            if ($el.getAttribute("data-package")===$$('#sub_code').value) {
+            if ($el.getAttribute("data-package")==$$('#sub_code').value) {
                 $el.style.display = "table-cell";
             } else {
                 $el.style.display = "none";
@@ -383,14 +383,12 @@ document.addEventListener("DOMContentLoaded", async () => {
         if (e.target.value === 'annual') {
             display_sub_package ='block';
             //display_fdDestTo  = "none";
-            display_plan1 = "none";
             display_fdToDate  = "none";
             $('#sub_code').value = "ONB2BTADOT";
         }
         else
         {            
             $('#sub_code').value = "ONB2BTADRT";
-            display_plan2 = "none";
             display_sub_package = "none";
             //display_fdDestTo  = 'block';
             display_fdToDate  = 'block';
@@ -404,13 +402,6 @@ document.addEventListener("DOMContentLoaded", async () => {
         $$("#fdToDate").forEach(($el) => {
             $el.closest('.controls-wrapper').style.display = display_fdToDate;
         });
-
-        // $$("#table-detail").forEach(($el) => {
-        //     $el.closest('td[data-package="ONB2BTADOT"]').style.display = display_plan1;
-        // });
-        // $$("#table-detail").forEach(($el) => {
-        //     $el.closest('td[data-package="ONB2BTADRT"]').style.display = display_plan2;
-        // });
     });
 
     //Set start selection
