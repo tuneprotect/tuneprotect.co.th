@@ -239,9 +239,8 @@ const genPrice = (package_data, fdFromDate, fdToDate) => {
                 return day >= dateRange[0] && day <= dateRange[1];
             }
         })
-        
         $(`strong[data-price-${k}]`).innerHTML = parseInt(package_data[k].price["01"].price).toLocaleString();
-        $('#sub_code').value = pack;
+        
     });
 }
 
@@ -373,12 +372,12 @@ document.addEventListener("DOMContentLoaded", async () => {
         if (e.target.value === 'annual') {
             display_sub_package ='block';
             //display_fdDestTo  = "none";
-
-
+            display_plan1 = "none";
             display_fdToDate  = "none";
         }
         else
-        {
+        {            
+            display_plan2 = "none";
             display_sub_package = "none";
             //display_fdDestTo  = 'block';
             display_fdToDate  = 'block';
@@ -391,6 +390,13 @@ document.addEventListener("DOMContentLoaded", async () => {
         });
         $$("#fdToDate").forEach(($el) => {
             $el.closest('.controls-wrapper').style.display = display_fdToDate;
+        });
+
+        $$("#table-detail").forEach(($el) => {
+            $el.closest('td[data-package="ONB2BTADOT"])').style.display = display_plan1;
+        });
+        $$("#table-detail").forEach(($el) => {
+            $el.closest('td[data-package="ONB2BTADRT"])').style.display = display_plan2;
         });
     });
 
