@@ -28,7 +28,16 @@
                                             @else
                                                 <strong>@lang('product.plan') {{$v->no}}</strong>
                                             @endif
-                                        @endif                                  
+                                        @endif
+                                    @else
+                                        @if($selected == "CI")
+                                            <span data-recommend>@lang('product.recommend')</span>
+                                        @endif
+                                        <strong class="package-number">@lang('product.plan') {{$i}}</strong>
+                                    @endif
+
+                                    @if($selected == "CI")
+                                        <span class="show_on_mobile" data-price-{{$k}}></span>
                                     @endif
                                 </a>
 
@@ -52,6 +61,12 @@
                                     <strong>@lang('product.plan') {{$v->no}}</strong>
                                 @endif
                             @endif
+
+                        @else
+                            @if($selected == "CI")
+                                <span data-recommend>@lang('product.recommend')</span>
+                            @endif
+                            <strong class="package-number">@lang('product.plan') {{$i}}</strong>
                         @endif
 
                         <a href="#"
@@ -81,6 +96,17 @@
             </tr>
             </thead>
             <tbody>
+            @if($selected == "CI")
+                <tr class="pink">
+                    <th>@lang('product.installment')</th>
+                    <?php $i = 1 ?>
+                    @foreach ($package_detail as $k => $v)
+                        <td {{$i > 1 ? 'class=hide' : ""}} data-index="{{$i}}" data-package="{{$k}}"><strong
+                                data-installment-{{$k}}></strong></td>
+                        <?php $i++ ?>
+                    @endforeach
+                </tr>
+            @endif
             <tr class="orange">
                 <th>@lang('product.price_per_year')</th>
                 <?php $i = 1 ?>
