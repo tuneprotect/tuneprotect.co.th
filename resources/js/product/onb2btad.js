@@ -247,7 +247,7 @@ const genPrice = (package_data, fdFromDate, fdToDate) => {
         $$('#table-detail td[data-package],#table-detail th[data-package],.choose-plan-mobile').forEach($el => {
             //console.log("ff",$el.getAttribute("data-package"));
             //if (allPack.includes($el.getAttribute("data-package"))) {
-            if ($el.getAttribute("data-package")==$$('#sub_code').value) {
+            if ($el.getAttribute("data-package").toString()==$$('#sub_code').value.toString()) {
                 $el.style.display = "table-cell";
             } else {
                 $el.style.display = "none";
