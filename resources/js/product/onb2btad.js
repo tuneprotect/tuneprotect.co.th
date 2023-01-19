@@ -210,7 +210,7 @@ const profileConstraints = {
 const getSelectedPrice = (packageCode, package_data) => {
     const code = packageCode.substring(0, 10);
     const sub_code = packageCode.substring(10);
-    $('#sub_code').value = sub_code;
+    $('#sub_code').value = code;
     return package_data[code].price["01"].price;
 }
 
