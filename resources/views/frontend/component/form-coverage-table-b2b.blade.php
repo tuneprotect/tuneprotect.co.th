@@ -85,10 +85,16 @@
                     <th data-package="{{$k}}">
                        <strong class="package-number">
                        @if($locale == 'en')
-                            1 {{$k}}
+                            @if($k=="ONB2BTADRT")
+                                Round Trip
+                            @elseif
+                                One Trip
+                            @endif
                         @else
                             @if($k=="ONB2BTADRT")
                                 แผนไป-กลับ
+                            @elseif
+                                แผนรายเที่ยว
                             @endif
                         @endif
                        </strong>
