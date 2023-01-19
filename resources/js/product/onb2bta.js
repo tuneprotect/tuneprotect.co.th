@@ -19,7 +19,7 @@ import {
 import {removeError, showError, showFieldError, validateField} from "../validate_form";
 import Swal from "sweetalert2";
 import validate from "validate.js";
-import {addYears, differenceInDays, format, isValid, parseISO, subDays} from "date-fns";
+import {addDays, addYears, differenceInDays, format, isValid, parseISO, subDays} from "date-fns";
 import intlTelInput from "intl-tel-input";
 
 require('../main');
@@ -236,7 +236,7 @@ const genPrice = (package_data,country_data, subpackage, fdFromDate, fdToDate) =
 
     let day = differenceInDays(endDate, startDate) + 1;
     console.log("day",day);
-
+    
     if(day===365 || day===366){
         day = 0;
     }
@@ -515,8 +515,8 @@ document.addEventListener("DOMContentLoaded", async () => {
                         let toDate;
 
                         if ($('#ctrl_travel_type').value === 'annual') {
-                            const lastDate = subDays(addDays(parseISO(`${fromDate[2]}-${fromDate[1]}-${fromDate[0]}`), 1), 1);
-                            //const lastDate = addDays(parseISO(`${fromDate[2]}-${fromDate[1]}-${fromDate[0]}`), 1);
+                            //const lastDate = subDays(addDays(parseISO(`${fromDate[2]}-${fromDate[1]}-${fromDate[0]}`), 1), 1);
+                            const lastDate = addDays(parseISO(`${fromDate[2]}-${fromDate[1]}-${fromDate[0]}`), 1);
                             toDate = (format(lastDate, 'dd/MM/yyyy')).split('/');
                         } else {
                             toDate = ($('#fdToDate').value).split('/');
