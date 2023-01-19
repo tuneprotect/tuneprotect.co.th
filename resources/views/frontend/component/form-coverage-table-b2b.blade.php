@@ -55,16 +55,16 @@
                                             <strong>@lang('product.no_plan')</strong>
                                         @else
                                             @if(isset($v->name))
-                                                <strong>{{$v->name}} @lang('product.plan') {{$v->no}}</strong>
+                                                <strong>{{$v->name}} @lang('product.plan') {{$v->no}} 1</strong>
                                             @else
-                                                <strong>@lang('product.plan') {{$v->no}}</strong>
+                                                <strong>@lang('product.plan') {{$v->no}} 11</strong>
                                             @endif
                                         @endif
                                     @else
                                         @if($selected == "CI")
                                             <span data-recommend>@lang('product.recommend')</span>
                                         @endif
-                                        <strong class="package-number">@lang('product.plan') {{$i}}</strong>
+                                        <strong class="package-number">@lang('product.plan') {{$i}} 2</strong>
                                     @endif
 
                                     @if($selected == "CI")
@@ -87,9 +87,9 @@
                                 <strong>@lang('product.no_plan')</strong>
                             @else
                                 @if(isset($v->name))
-                                    <strong>{{$v->name}} @lang('product.plan') {{$v->no}}</strong>
+                                    <strong>{{$v->name}} @lang('product.plan') {{$v->no}} 22</strong>
                                 @else
-                                    <strong>@lang('product.plan') {{$v->no}}</strong>
+                                    <strong>@lang('product.plan') {{$v->no}} 3</strong>
                                 @endif
                             @endif
 
