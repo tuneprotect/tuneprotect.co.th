@@ -1,4 +1,9 @@
 <section style="display: none" id="step2" class="product-detail">
+<style>
+    img{
+        max-width: 50% !important;
+    }
+</style>
     <div class="wrapper">
         <table id="table-detail" data-package_name="{{$package->locales[$locale]->title}}">
                         <thead>
