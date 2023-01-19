@@ -243,16 +243,6 @@ const genPrice = (package_data, fdFromDate, fdToDate) => {
         $(`strong[data-price-${k}]`).innerHTML = parseInt(package_data[k].price["01"].price).toLocaleString();
         $('#sub_code').value = pack;
     });
-
-    if (document.body.clientWidth > 767) {
-        $$('#table-detail td[data-package],#table-detail th[data-package],.choose-plan-mobile').forEach($el => {
-            if (allPack.includes($el.getAttribute("data-package"))) {
-                $el.style.display = "table-cell";
-            } else {
-                $el.style.display = "none";
-            }
-        });
-    }
 }
 
 document.addEventListener("DOMContentLoaded", async () => {
@@ -393,9 +383,6 @@ document.addEventListener("DOMContentLoaded", async () => {
             //display_fdDestTo  = 'block';
             display_fdToDate  = 'block';
         }
-        $$("#table-detail").forEach(($el) => {
-            $el.closest('.controls-wrapper').style.display = display_sub_package;
-        });
         $$("#fdDestTo").forEach(($el) => {
             $el.closest('.controls-wrapper').style.display = display_sub_package;
         });
