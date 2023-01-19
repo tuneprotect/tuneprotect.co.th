@@ -82,23 +82,21 @@
                 <?php $i = 1 ?>
                 @foreach ($package_detail as $k => $v)
                     <th data-package="{{$k}}">
-                        @if(isset($v->no))
-                            @if($v->no == 0)
-                                <strong>@lang('product.no_plan') 55</strong>
-                            @else
-                                @if(isset($v->name))
-                                    <strong>{{$v->name}} @lang('product.plan') {{$v->no}} 22</strong>
-                                @else
-                                    <strong>@lang('product.plan') {{$v->no}} 3</strong>
-                                @endif
+                       <strong class="package-number">
+                       @if($locale == 'en')
+                            @if($k=="ONB2BTADOT")
+                                One Trip
+                            @elseif
+                                Round Trip
                             @endif
-
                         @else
-                            @if($selected == "CI")
-                                <span data-recommend>@lang('product.recommend')</span>
+                            @if($k=="ONB2BTADOT")
+                                แผนรายเที่ยว
+                            @elseif
+                                แผนไป-กลับ
                             @endif
-                            <strong class="package-number">@lang('product.plan') {{$i}} 5</strong>
                         @endif
+                       </strong>
 
                         <a href="#"
                            data-gtm="product-{{strtolower($selected)}}-top-choose-plan-{{$i}}"
