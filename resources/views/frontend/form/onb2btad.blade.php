@@ -69,7 +69,7 @@
     <br/>
     {!! $package->locales[$locale]->remark !!}
 </section>
-@include('frontend.component.form-coverage-table',['package_detail' => $package_detail,'selected' =>$selected ])
+@include('frontend.component.form-coverage-table-b2b',['package_detail' => $package_detail,'selected' =>$selected ])
 <section style="display: none" id="step3" class="wrapper">
     <form class="insurance-form">
         <div class="form-head"> {{$package->locales[$locale]->title}} <span id="form-head"></span></div>
