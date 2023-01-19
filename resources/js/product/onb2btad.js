@@ -206,6 +206,7 @@ const profileConstraints = {
     }
 };
 
+
 const getSelectedPrice = (packageCode, package_data) => {
     const code = packageCode.substring(0, 10);
     const sub_code = packageCode.substring(10);
@@ -242,6 +243,16 @@ const genPrice = (package_data, fdFromDate, fdToDate) => {
         $(`strong[data-price-${k}]`).innerHTML = parseInt(package_data[k].price["01"].price).toLocaleString();
         //$('#sub_code').value = pack;
     });
+
+    if (document.body.clientWidth > 767) {
+        $$('#table-detail td[data-package],#table-detail th[data-package],.choose-plan-mobile').forEach($el => {
+            if (allPack.includes($el.getAttribute("data-package"))) {
+                $el.style.display = "table-cell";
+            } else {
+                $el.style.display = "none";
+            }
+        });
+    }
 }
 
 document.addEventListener("DOMContentLoaded", async () => {
@@ -366,9 +377,14 @@ document.addEventListener("DOMContentLoaded", async () => {
         let display_fdDestTo = 'block'
         let display_fdToDate = 'block'
 
+        let display_plan1 = 'block'
+        let display_plan2 = 'block'
+
         if (e.target.value === 'annual') {
             display_sub_package ='block';
             //display_fdDestTo  = "none";
+
+
             display_fdToDate  = "none";
         }
         else

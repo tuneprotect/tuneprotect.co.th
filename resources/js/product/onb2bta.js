@@ -206,11 +206,6 @@ const profileConstraints = {
     }
 };
 
-const zoneCode = {
-    "WW": 'WRW',
-    "AS": 'WRW',
-    "AE": 'ASN'
-}
 
 const getSelectedPrice = (packageCode, package_data) => {
     const code = packageCode;
