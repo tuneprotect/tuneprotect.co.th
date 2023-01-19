@@ -210,7 +210,6 @@ const profileConstraints = {
 const getSelectedPrice = (packageCode, package_data) => {
     const code = packageCode.substring(0, 10);
     const sub_code = packageCode.substring(10);
-    $('#sub_code').value = code;
     return package_data[code].price["01"].price;
 }
 
@@ -246,8 +245,9 @@ const genPrice = (package_data, fdFromDate, fdToDate) => {
 
     if (document.body.clientWidth > 767) {
         $$('#table-detail td[data-package],#table-detail th[data-package],.choose-plan-mobile').forEach($el => {
-            console.log("ff",$el.getAttribute("data-package"));
-            if (allPack.includes($el.getAttribute("data-package"))) {
+            //console.log("ff",$el.getAttribute("data-package"));
+            //if (allPack.includes($el.getAttribute("data-package"))) {
+            if ($el.getAttribute("data-package")===$$('#sub_code').value) {
                 $el.style.display = "table-cell";
             } else {
                 $el.style.display = "none";
@@ -378,17 +378,18 @@ document.addEventListener("DOMContentLoaded", async () => {
         let display_fdDestTo = 'block'
         let display_fdToDate = 'block'
 
-        let display_plan1 = 'block'
-        let display_plan2 = 'block'
+        $('#sub_code').value = "ONB2BTADRT";
 
         if (e.target.value === 'annual') {
             display_sub_package ='block';
             //display_fdDestTo  = "none";
             display_plan1 = "none";
             display_fdToDate  = "none";
+            $('#sub_code').value = "ONB2BTADOT";
         }
         else
         {            
+            $('#sub_code').value = "ONB2BTADRT";
             display_plan2 = "none";
             display_sub_package = "none";
             //display_fdDestTo  = 'block';
