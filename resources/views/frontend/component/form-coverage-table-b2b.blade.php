@@ -18,7 +18,7 @@
                             @endif
                         </select>
                         @if($locale == 'en')
-                            <label for="ctrl_package">Package</label>
+                            <label for="ctrl_package">Package 555</label>
                         @else
                             <label for="ctrl_package">แผนประกันภัย</label>
                         @endif
@@ -84,7 +84,7 @@
                     <th data-package="{{$k}}">
                         @if(isset($v->no))
                             @if($v->no == 0)
-                                <strong>@lang('product.no_plan')</strong>
+                                <strong>@lang('product.no_plan') 55</strong>
                             @else
                                 @if(isset($v->name))
                                     <strong>{{$v->name}} @lang('product.plan') {{$v->no}} 22</strong>
@@ -97,7 +97,7 @@
                             @if($selected == "CI")
                                 <span data-recommend>@lang('product.recommend')</span>
                             @endif
-                            <strong class="package-number">@lang('product.plan') {{$i}}</strong>
+                            <strong class="package-number">@lang('product.plan') {{$i}} 5</strong>
                         @endif
 
                         <a href="#"
