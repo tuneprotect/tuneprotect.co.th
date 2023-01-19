@@ -84,15 +84,12 @@
                     
                     <th data-package="{{$k}}">
                        <strong class="package-number">
-                        @if($locale == 'en')
-                        
-                        @else
+                      
                             @if($k=="ONB2BTADRT")
                                 แผนไป-กลับ
                             @elseif
                                 แผนรายเที่ยว
                             @endif
-                        @endif
                        </strong>
 
                         <a href="#"
