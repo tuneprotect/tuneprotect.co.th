@@ -24,16 +24,6 @@
             </div>
             <div class="col">
                 <div class="controls-wrapper">
-                    <select id="ctrl_sub_package" name="ctrl_sub_package">
-                        @foreach(__('product.iTravel_zone') as $k => $v)
-                            <option value="{{$k}}">{{$v}}</option>
-                        @endforeach
-                    </select>
-                    <label for="ctrl_sub_package">@lang("product.coverage_period")</label>
-                </div>
-            </div>
-            <div class="col">
-                <div class="controls-wrapper">
                     <select id="fdDestTo" name="fdDestTo"
                             data-please-select="@lang('product.please_select')"
                             data-error="@lang('product.error.country')"></select>

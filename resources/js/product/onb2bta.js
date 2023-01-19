@@ -234,7 +234,6 @@ const genPrice = (package_data,country_data, subpackage, fdFromDate, fdToDate) =
                 }
             });
         subpackage = country_zone;
-        $('#ctrl_sub_package').value = subpackage;
     }
 
 
@@ -363,24 +362,19 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     $('#ctrl_travel_type').addEventListener('change', (e) => {
 
-        let display_sub_package = 'none'
         let display_fdDestTo = 'block'
         let display_fdToDate = 'block'
 
         if (e.target.value === 'annual') {
-            //display_sub_package ='block';
             //display_fdDestTo  = "none";
             display_fdToDate  = "none";
         }
         else
         {
-            //display_sub_package = "none";
             //display_fdDestTo  = 'block';
             display_fdToDate  = 'block';
         }
-        $$("#ctrl_sub_package,#fdDestTo").forEach(($el) => {
-            $el.closest('.controls-wrapper').style.display = display_sub_package;
-        });
+        
         $$("#fdDestTo").forEach(($el) => {
             $el.closest('.controls-wrapper').style.display = display_fdDestTo;
         });
@@ -507,7 +501,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                         data = {
                             ...data,
                             ctrl_travel_type: $('#ctrl_travel_type').value,
-                            fdDestTo: $('#ctrl_travel_type').value === 'annual' ? zoneCode[$('#ctrl_sub_package').value] : $('#fdDestTo').value,
+                            fdDestTo: $('#fdDestTo').value,
                             fdFromDate: $('#fdFromDate').value,
                             fdToDate: $('#fdToDate').value,
                         }
@@ -535,7 +529,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                             fdToDate: `${toDate[2]}-${toDate[1]}-${toDate[0]}`,
                         }
 
-                        genPrice(package_data,countryData, $('#ctrl_sub_package').value, data.fdFromDate, data.fdToDate, $('#ctrl_travel_type').value);
+                        genPrice(package_data,countryData, $('#fdDestTo').value, data.fdFromDate, data.fdToDate, $('#ctrl_travel_type').value);
 
                         break;
                     case 2:
@@ -665,16 +659,13 @@ document.addEventListener("DOMContentLoaded", async () => {
 
                         const $destFrom = $('#fdDestFrom');
                         const $destTo = $('#fdDestTo');
-                        const $subPackage = $('#ctrl_sub_package');
                         const $summary_section = $('#summary_section');
 
                         let sb = `<h3 class="text-primary">${$summary_section.getAttribute('data-insurance_data')}</h3><br/>
                         <div class="two-col">
                             <div><span>${$summary_section.getAttribute('data-plan')} : </span><strong>${selectedPackage}</strong></div>
                             <div><span>${$('#receve_channel_title').innerText} : </span><strong>${data.fdSendType === 'P' ? $('label[for=ctrl_channel_post]').innerText : $('label[for=ctrl_channel_email]').innerText}</strong></div>
-                            ${$('#ctrl_travel_type').value === 'annual'
-                            ? `<div><span>${$('label[for=ctrl_sub_package]').innerText} : </span><strong>${$subPackage.options[$subPackage.selectedIndex].text}</strong></div>`
-                            : `<div><span>${$('label[for=fdDestTo]').innerText} : </span><strong>${$destTo.options[$destTo.selectedIndex].text}</strong></div>`}
+                            <div><span>${$('label[for=fdDestTo]').innerText} : </span><strong>${$destTo.options[$destTo.selectedIndex].text}</strong></div>
                             <div><span>${$('label[for=fdFromDate]').innerText} : </span><strong>${fromDate}</strong></div>
                             <div><span>${$('label[for=fdToDate]').innerText} : </span><strong>${toDate}</strong></div>
                             <div><span>${$summary_section.getAttribute('data-price-perperson')} : </span><strong>${parseFloat(data.fdPayAMT).toLocaleString()} ${$summary_section.getAttribute('data-baht')}</strong></div>
