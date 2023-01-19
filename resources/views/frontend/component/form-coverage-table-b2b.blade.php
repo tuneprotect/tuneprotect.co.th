@@ -183,27 +183,22 @@
                 <?php $i = 1 ?>
                 @foreach ($package_detail as $k => $v)
                     <td {{$i > 1 ? 'class=hide' : ""}} data-index="{{$i}}" data-package="{{$k}}">
-                        @if(isset($v->no))
-                            @if($v->no == 0)
-                                <strong style="display: block" class="text-center">@lang('product.no_plan') 7</strong>
-                            @else
-                                @if(isset($v->name))
-                                    @if(isset($v->name))
-                                        <strong style="display: block"
-                                                class="text-center">{{$v->name}} @lang('product.plan') {{$v->no}} 3</strong>
-                                    @else
-                                        <strong style="display: block"
-                                                class="text-center">@lang('product.plan') {{$v->no}} 4 </strong>
-                                    @endif
+                       
+                            <strong style="display: block" class="text-center">
+                            @if($locale == 'en')
+                                @if($k=="ONB2BTADRT")
+                                    Round Trip
                                 @else
-                                    <strong style="display: block"
-                                            class="text-center">@lang('product.plan') {{$v->no}} 1</strong>
+                                    One Trip
+                                @endif
+                            @else
+                                @if($k=="ONB2BTADRT")
+                                    แผนไป-กลับ
+                                @else
+                                    แผนรายเที่ยว
                                 @endif
                             @endif
-
-                        @else
-                            <strong style="display: block" class="text-center">@lang('product.plan') {{$i}} 2</strong>
-                        @endif
+                            </strong>
 
                         <a href="#"
                            data-gtm="product-{{strtolower($selected)}}-bottom-choose-plan-{{$i}}"
