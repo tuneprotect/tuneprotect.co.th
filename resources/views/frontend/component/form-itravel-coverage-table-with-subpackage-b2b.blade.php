@@ -1,6 +1,6 @@
 <section style="display: none" id="step2" class="product-detail">
 <style>
-    img{
+    #table-detail img{
         max-width: 50% !important;
     }
 </style>
