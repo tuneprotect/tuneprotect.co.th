@@ -42,15 +42,12 @@ const step1Constraints = {
             message: "^" + $('#fdFromDate').getAttribute('data-error')
         }
     },
-    fdToDate: function (value, attributes, attributeName, options, constraints) {
-        if (attributes.ctrl_travel_type === 'annual') return null;
-        return {
-            presence: {
-                allowEmpty: false,
-                message: "^" + $('#fdToDate').getAttribute('data-error')
-            }
-        };
-    },
+    fdToDate: {
+        presence: {
+            allowEmpty: false,
+            message: "^" + $('#fdToDate').getAttribute('data-error')
+        }
+    },    
     fdDestTo: {
         presence: {
             allowEmpty: false,
@@ -222,20 +219,15 @@ const getSelectedPrice = (packageCode, package_data) => {
 const genPrice = (package_data,country_data, subpackage, fdFromDate, fdToDate) => {
     let startDate = parseISO(fdFromDate);
     let endDate = parseISO(fdToDate);
-    if ($('#ctrl_travel_type').value === 'annual') {
-        // endDate = new Date(startDate.getFullYear() + 1, startDate.getMonth(), startDate.getDate());
-    }
-    else
-    {
-        let country_zone = '';
-        country_data.map(v => {
-                if (v.code === $('#fdDestTo').value) {
-                    country_zone = v.zone;
-                }
-            });
-        subpackage = country_zone;
-    }
-
+    
+    
+    let country_zone = '';
+    country_data.map(v => {
+            if (v.code === $('#fdDestTo').value) {
+                country_zone = v.zone;
+            }
+        });
+    subpackage = country_zone;
 
     let day = differenceInDays(endDate, startDate) + 1;
     if(day===365 || day===366){
@@ -521,7 +513,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                             fdToDate: `${toDate[2]}-${toDate[1]}-${toDate[0]}`,
                         }
 
-                        genPrice(package_data,countryData, $('#fdDestTo').value, data.fdFromDate, data.fdToDate, $('#ctrl_travel_type').value);
+                        genPrice(package_data,countryData, $('#fdDestTo').value, data.fdFromDate, data.fdToDate);
 
                         break;
                     case 2:
