@@ -42,12 +42,15 @@ const step1Constraints = {
             message: "^" + $('#fdFromDate').getAttribute('data-error')
         }
     },
-    fdToDate: {
-        presence: {
-            allowEmpty: false,
-            message: "^" + $('#fdToDate').getAttribute('data-error')
-        }
-    },    
+    fdToDate: function (value, attributes, attributeName, options, constraints) {
+        if (attributes.ctrl_travel_type === 'annual') return null;
+        return {
+            presence: {
+                allowEmpty: false,
+                message: "^" + $('#fdToDate').getAttribute('data-error')
+            }
+        };
+    },   
     fdDestTo: {
         presence: {
             allowEmpty: false,
