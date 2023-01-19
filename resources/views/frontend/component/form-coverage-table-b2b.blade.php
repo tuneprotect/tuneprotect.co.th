@@ -84,7 +84,7 @@
                     
                     <th data-package="{{$k}}">
                        <strong class="package-number">
-                       @if($locale == 'en')
+                        @if($locale == 'en')
                             @if($k=="ONB2BTADRT")
                                 Round Trip
                             @elseif
