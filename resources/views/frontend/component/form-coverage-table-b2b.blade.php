@@ -50,18 +50,25 @@
                                    data-index="{{$i}}"
                                    data-gtm="product-{{strtolower($selected)}}-mobile-choose-plan-{{$i}}"
                                    class="btn btn-block btn-outline btn-choose-plan {{$i == 1 ? 'on' : '' }}">
-                                    @if($locale == 'en')
-                                        @if($k=="ONB2BTADRT")
-                                            Round Trip
+                                    @if(isset($v->no))
+                                        @if($v->no == 0)
+                                            <strong>@lang('product.no_plan')</strong>
                                         @else
-                                            One Trip
+                                            @if(isset($v->name))
+                                                <strong>{{$v->name}} @lang('product.plan') {{$v->no}} 1</strong>
+                                            @else
+                                                <strong>@lang('product.plan') {{$v->no}} 11</strong>
+                                            @endif
                                         @endif
                                     @else
-                                        @if($k=="ONB2BTADRT")
-                                            แผนไป-กลับ
-                                        @else
-                                            แผนรายเที่ยว
+                                        @if($selected == "CI")
+                                            <span data-recommend>@lang('product.recommend')</span>
                                         @endif
+                                        <strong class="package-number">@lang('product.plan') {{$i}} 2</strong>
+                                    @endif
+
+                                    @if($selected == "CI")
+                                        <span class="show_on_mobile" data-price-{{$k}}></span>
                                     @endif
                                 </a>
 
@@ -175,19 +182,27 @@
                 <th>&nbsp;</th>
                 <?php $i = 1 ?>
                 @foreach ($package_detail as $k => $v)
-                    <td {{$i > 1 ? 'class=hide' : ""}} data-index="{{$i}}" data-package="{{$k}}" class="text-center">
-                        @if($locale == 'en')
-                            @if($k=="ONB2BTADRT")
-                                Round Trip
+                    <td {{$i > 1 ? 'class=hide' : ""}} data-index="{{$i}}" data-package="{{$k}}">
+                        @if(isset($v->no))
+                            @if($v->no == 0)
+                                <strong style="display: block" class="text-center">@lang('product.no_plan') 7</strong>
                             @else
-                                One Trip
+                                @if(isset($v->name))
+                                    @if(isset($v->name))
+                                        <strong style="display: block"
+                                                class="text-center">{{$v->name}} @lang('product.plan') {{$v->no}} 3</strong>
+                                    @else
+                                        <strong style="display: block"
+                                                class="text-center">@lang('product.plan') {{$v->no}} 4 </strong>
+                                    @endif
+                                @else
+                                    <strong style="display: block"
+                                            class="text-center">@lang('product.plan') {{$v->no}} 1</strong>
+                                @endif
                             @endif
+
                         @else
-                            @if($k=="ONB2BTADRT")
-                                แผนไป-กลับ
-                            @else
-                                แผนรายเที่ยว
-                            @endif
+                            <strong style="display: block" class="text-center">@lang('product.plan') {{$i}} 2</strong>
                         @endif
 
                         <a href="#"
