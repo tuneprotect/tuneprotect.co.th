@@ -363,19 +363,19 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     $('#ctrl_travel_type').addEventListener('change', (e) => {
 
-        let display_sub_package = 'block'
+        let display_sub_package = 'none'
         let display_fdDestTo = 'block'
         let display_fdToDate = 'block'
 
         if (e.target.value === 'annual') {
-            display_sub_package ='block';
-            display_fdDestTo  = "none";
+            //display_sub_package ='block';
+            //display_fdDestTo  = "none";
             display_fdToDate  = "none";
         }
         else
         {
-            display_sub_package = "none";
-            display_fdDestTo  = 'block';
+            //display_sub_package = "none";
+            //display_fdDestTo  = 'block';
             display_fdToDate  = 'block';
         }
         $$("#ctrl_sub_package,#fdDestTo").forEach(($el) => {
