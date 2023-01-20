@@ -262,16 +262,22 @@ const genPrice = (package_data, fdFromDate, fdToDate) => {
             //$('#sub_code').value
             //Price = package_data[Package].price[price key id].price
         })
-        $$('#table-detail thead th[data-package]').forEach($el => {
+        $$('#table-detail th[data-package]').forEach($el => {
             if ($el.getAttribute("data-package").startsWith('ONTALN3')) {
                 $el.style.display = "none";
             }
         });
-        $$('#table-detail thead div.btn-choose-plan').forEach($el => {
+        $$('#table-detail td[data-package]').forEach($el => {
             if ($el.getAttribute("data-package").startsWith('ONTALN3')) {
                 $el.style.display = "none";
             }
         });
+
+        // $$('#table-detail thead div.btn-choose-plan').forEach($el => {
+        //     if ($el.getAttribute("data-package").startsWith('ONTALN3')) {
+        //         $el.style.display = "none";
+        //     }
+        // });
 }
 
 function resolveAfter2Seconds() {
