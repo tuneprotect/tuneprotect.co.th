@@ -254,14 +254,14 @@ const genPrice = (package_data, fdFromDate, fdToDate) => {
     } else {
         $$('#table-detail th[data-package]').forEach($el => {
             if ($el.getAttribute("data-package").startsWith($('#sub_code').value)) {
-                $el.style.display = "";
+                $el.style.display = "block";
             } else {
                 $el.style.display = "none";
             }
         });
         $$('#table-detail td[data-package]').forEach($el => {
             if ($el.getAttribute("data-package").startsWith($('#sub_code').value)) {
-                $el.style.display = "";
+                $el.style.display = "block";
             } else {
                 $el.style.display = "none";
             }
@@ -274,12 +274,10 @@ const genPrice = (package_data, fdFromDate, fdToDate) => {
                 $el.style.display = "none";
             }
         });
-        // $$('#table-detail tbody a.btn-choose-plan').forEach($el => {
-        //     if ($el.getAttribute("data-package").startsWith($('#sub_code').value)) {
+        // $$('#table-detail tbody td').forEach($el => {
+        //     if ($el.getAttribute("data-package").startsWith("ONB2BTADRT")) {
         //         $el.style.display = "block";
-        //     } else {
-        //         $el.style.display = "none";
-        //     }
+        //     } 
         // });
 
 
