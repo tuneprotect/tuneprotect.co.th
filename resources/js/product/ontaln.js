@@ -262,7 +262,7 @@ const genPrice = (package_data, fdFromDate, fdToDate) => {
             //$('#sub_code').value
             //Price = package_data[Package].price[price key id].price
         })
-        $$('#table-detail thead a[data-package]').forEach($el => {
+        $$('#table-detail thead th[data-package]').forEach($el => {
             if ($el.getAttribute("data-package").startsWith('ONTALN3')) {
                 $el.style.display = "none";
             }
