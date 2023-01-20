@@ -308,7 +308,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     let provinceOption = `<option value="">${$('#fdDestFrom').getAttribute('data-please-select')}</option>`;
 
     provinceData.forEach(v => {
-        if(v.code!=24 || v.code!=43 || v.code!=30){ //นราธิวาส ยะลา ปัตตานี
+        if(v.code.toString() != "24" || v.code.toString() !="43" || v.code.toString() !="30"){ //นราธิวาส ยะลา ปัตตานี
             provinceOption += `<option value="${v.code}">${v[locale]}</option>`;
         }
     })
