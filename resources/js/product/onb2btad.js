@@ -273,7 +273,7 @@ const genPrice = (package_data, fdFromDate, fdToDate) => {
 document.addEventListener("DOMContentLoaded", async () => {
 
     const package_data = await getPackageData(current_package);
-    const provinceData = await getProvinceData();
+    const provinceData = await getProvinceCutData();
     const zipcode_data = await getZipcodeData();
 
     let Keys = "";
@@ -308,7 +308,9 @@ document.addEventListener("DOMContentLoaded", async () => {
     let provinceOption = `<option value="">${$('#fdDestFrom').getAttribute('data-please-select')}</option>`;
 
     provinceData.forEach(v => {
-        provinceOption += `<option value="${v.code}">${v[locale]}</option>`;
+        if(v.code!="24" || v.code!="43" || v.code!="30"){ //นราธิวาส ยะลา ปัตตานี
+            provinceOption += `<option value="${v.code}">${v[locale]}</option>`;
+        }
     })
 
     $$('#fdDestFrom,#fdDestTo').forEach($el => {
