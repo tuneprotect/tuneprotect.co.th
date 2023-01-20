@@ -269,12 +269,21 @@ const genPrice = (package_data, fdFromDate, fdToDate) => {
 
         $$('#table-detail thead a.btn-choose-plan').forEach($el => {
             if ($el.getAttribute("data-package").startsWith($('#sub_code').value)) {
-                $el.style.display = "";
+                $el.style.display = "block";
             } else {
                 $el.style.display = "none";
             }
         });
+        // $$('#table-detail tbody a.btn-choose-plan').forEach($el => {
+        //     if ($el.getAttribute("data-package").startsWith($('#sub_code').value)) {
+        //         $el.style.display = "block";
+        //     } else {
+        //         $el.style.display = "none";
+        //     }
+        // });
 
+
+        
         // $$('#table-detail thead a[data-package]').forEach($el => {
         //     if ($el.getAttribute("data-package").startsWith($('#sub_code').value)) {
         //         $el.style.display = "inline-flex";
