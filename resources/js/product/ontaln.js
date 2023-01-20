@@ -267,6 +267,11 @@ const genPrice = (package_data, fdFromDate, fdToDate) => {
                 $el.style.display = "none";
             }
         });
+        $$('#table-detail thead div.btn-choose-plan').forEach($el => {
+            if ($el.getAttribute("data-package").startsWith('ONTALN3')) {
+                $el.style.display = "none";
+            }
+        });
 }
 
 function resolveAfter2Seconds() {
