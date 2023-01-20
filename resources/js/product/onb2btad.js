@@ -273,7 +273,7 @@ const genPrice = (package_data, fdFromDate, fdToDate) => {
 document.addEventListener("DOMContentLoaded", async () => {
 
     const package_data = await getPackageData(current_package);
-    const provinceData = await getProvinceCutData();
+    const provinceData = await getProvinceData();
     const zipcode_data = await getZipcodeData();
 
     let Keys = "";
