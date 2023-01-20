@@ -85,6 +85,7 @@
 <section style="display: none" id="step3" class="wrapper">
     <form class="insurance-form">
         <div class="form-head"> {{$package->locales[$locale]->title}}  
+            <span id="form-head" style="display:none"></span>
             <span>
                 @if($locale == 'en')
                     @if($k=="ONB2BTADRT")
