@@ -309,7 +309,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     provinceData.forEach(v => {
         if(v.code.toString() === "24" || v.code.toString() === "43" || v.code.toString() === "30"){ //นราธิวาส ยะลา ปัตตานี
-            provinceOption += `<option value="xxx">xxx</option>`;
+           
         }else{
             provinceOption += `<option value="${v.code}">${v[locale]}</option>`;
         }
