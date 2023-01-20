@@ -20,7 +20,7 @@
                                                 data-gtm="product-{{strtolower($selected)}}-mobile-choose-plan-{{$v->no}}"
                                                 class="btn btn-block btn-outline btn-choose-plan {{$i == 1 ? 'on' : '' }}">
 
-                                                @if($v->no > 1)
+                                                @if($v->no == 1)
                                                     <span><img src="/storage/product/iTravel/icon_visa_approved.png"></span>
                                                 @endif
 
