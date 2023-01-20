@@ -72,7 +72,25 @@
 @include('frontend.component.form-coverage-table-b2b',['package_detail' => $package_detail,'selected' =>$selected ])
 <section style="display: none" id="step3" class="wrapper">
     <form class="insurance-form">
-        <div class="form-head"> {{$package->locales[$locale]->title}} <span id="form-head"></span></div>
+        <div class="form-head"> {{$package->locales[$locale]->title}} <span id="form-head" style="display:none"></span>
+            <span>
+                @if($locale == 'en')
+                    @if($k=="ONB2BTADRT")
+                        Round Trip
+                    @else
+                        One Trip
+                    @endif
+                @else
+                    @if($k=="ONB2BTADRT")
+                        แผนไป-กลับ
+                    @else
+                        แผนรายเที่ยว
+                    @endif
+                @endif
+                
+                (กรุณากรอกเป็นภาษาอังกฤษเท่านั้น)
+            </span>
+        </div>
         <div id="multipleform">
             @for($i = 1;$i < 10;$i++)
                 <div class="form-inner" id="form_profile_{{$i}}" {{$i > 1 ? 'style=display:none;' : ''}}>
