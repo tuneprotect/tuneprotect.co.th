@@ -47,7 +47,7 @@
                             <?php $i = 1 ?>
                             @foreach ($package_detail as $k => $v)
                                 <th data-package="{{$k}}">
-                                    @if($v->no > 1)
+                                    @if($v->no < 1)
                                         <span><img src="/storage/product/iTravel/icon_visa_approved.png"></span>
                                     @endif
                                     <strong class="package-number">@lang('product.plan') {{$v->no}}</strong>
