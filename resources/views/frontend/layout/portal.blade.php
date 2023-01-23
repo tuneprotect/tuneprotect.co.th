@@ -39,13 +39,12 @@
             </header>
         @else
             <header>
-            <a class="nav-icon"><span>
-                @if($partner==='RABBIT')
+                @if($partner==='RABBIT' && $portal_key == 'ATWZGEE23EMTGLE33DURNHJRJ4MXNGSZ7TUWN692A4JCX')
                     1 
                 @else
                     2
                 @endif
-            </span></a>
+            <a class="nav-icon"><span></span></a>
             <div class="logo">
                 <a data-gtm="logo"><img
                         src="{{url('images/favicon/favicon.png')}}"
