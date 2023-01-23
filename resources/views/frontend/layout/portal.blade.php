@@ -40,7 +40,7 @@
         @else
             <header>
             <a class="nav-icon"><span>
-                @if($partner==='RABBIT')
+                @if($partner==='RABBIT'  && $selected==='ONTAOB')
                     1 
                 @else
                     2
