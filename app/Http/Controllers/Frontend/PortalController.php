@@ -212,7 +212,7 @@ class PortalController extends ProductController
         $this->bodyData['return_link'] = $request->session()->get('return_link');
         $this->bodyData['point'] = '';
         $this->bodyData['selected'] = $request->session()->get('selected');
-
+dd($request->session()->get('selected'));
         if (session('partner')) {
             if(session('partner') ==='THAIAIRWAY')
             {
