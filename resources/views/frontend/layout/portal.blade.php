@@ -44,6 +44,7 @@
                     1
                 @else
                     2
+                @endif
             </span></a>
             <div class="logo">
                 <a data-gtm="logo"><img
