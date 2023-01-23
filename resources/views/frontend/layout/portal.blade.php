@@ -139,7 +139,7 @@
                                                 alt="{{$v->locales[$locale]->title}}">
                                     </picture>
                                 
-                                @elseif($partner==='ONTAOB')
+                                @elseif($selected==='ONTAOB')
                                     <picture>
                                         <source media="(min-width:768px)" srcset="{{url($v->pic_en)}}">
                                         <img src="{{url(!empty($v->pic_mobile_en) ? $v->pic_mobile_en : $v->pic_en )}}"
