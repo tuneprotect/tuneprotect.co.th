@@ -39,7 +39,7 @@
             </header>
         @else
             <header>
-                @if($partner==='RABBIT' && $portal_key == 'ATWZGEE23EMTGLE33DURNHJRJ4MXNGSZ7TUWN692A4JCX')
+                @if($partner==='RABBIT' && $selected==='ONTAOB')
                     1 
                 @else
                     2
