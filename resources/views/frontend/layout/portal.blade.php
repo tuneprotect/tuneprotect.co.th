@@ -41,7 +41,7 @@
             <header>
             <a class="nav-icon"><span>
                 @if($partner==='RABBIT')
-                    1 {doc_no} {!! @str_replace('{point}',$point,@str_replace('{link}',$return_link,  @str_replace('{doc_no}'," ".$doc_no,$content->locales[$locale]->content)))   !!}
+                    1 
                 @else
                     2
                 @endif
