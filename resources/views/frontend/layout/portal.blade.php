@@ -39,7 +39,12 @@
             </header>
         @else
             <header>
-            <a class="nav-icon {{doc_no}}"><span></span></a>
+            <a class="nav-icon"><span>
+                @if($selected==='ONTAOB')
+                    1
+                @else
+                    2
+            </span></a>
             <div class="logo">
                 <a data-gtm="logo"><img
                         src="{{url('images/favicon/favicon.png')}}"
