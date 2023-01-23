@@ -39,7 +39,7 @@
             </header>
         @else
             <header>
-            <a class="nav-icon"><span></span></a>
+            <a class="nav-icon aa"><span></span></a>
             <div class="logo">
                 <a data-gtm="logo"><img
                         src="{{url('images/favicon/favicon.png')}}"
