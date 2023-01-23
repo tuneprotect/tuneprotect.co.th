@@ -52,6 +52,11 @@
             {!! $v !!}
         @endforeach
     @endif
+    @if(isset($partner))
+        @if($partner==='RABBIT')
+            <script>alert(1)</script>
+        @endif
+    @endif
 </head>
 <body <?php echo @TemplateHelper::genAttribute($template[TemplateHelper::BODY]) ?>>
 @if(isset($template[TemplateHelper::OPEN_BODY] ))
