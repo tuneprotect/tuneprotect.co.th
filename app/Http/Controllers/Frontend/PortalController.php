@@ -227,7 +227,7 @@ class PortalController extends ProductController
 
 
 
-dd($this->bodyData['selected']);
+dd($request);
 
         if (session('partner')) {
             if(session('partner') ==='THAIAIRWAY')
