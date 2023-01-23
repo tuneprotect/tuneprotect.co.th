@@ -40,7 +40,7 @@
         @else
             <header>
                 @if($partner==='RABBIT')
-                    1 {{$selected}}
+                    1 {{$partner}}
                 @else
                     2
                 @endif
