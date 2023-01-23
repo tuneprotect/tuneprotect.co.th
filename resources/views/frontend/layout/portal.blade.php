@@ -39,7 +39,7 @@
             </header>
         @else
             <header>
-                @if($partner==='rabbit' && $selected==='ONTAOB' && $page==='thankyou')
+                @if($partner==='rabbit' && $selected==='ONTAOB')
                    <!-- Event snippet for Payment Completed conversion page -->
                     <script>
                     gtag('event', 'conversion', {
