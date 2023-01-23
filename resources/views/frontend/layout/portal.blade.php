@@ -40,7 +40,8 @@
         @else
             <header>
                 @if($partner==='RABBIT')
-                    1 {{$partner}}
+                    1 {{$partner}}-{{$doc_no}}-{{$return_link}}-{{$point}}-{{$selected}}
+
                 @else
                     2
                 @endif
