@@ -53,7 +53,7 @@
         @endforeach
     @endif
     @if(isset($partner))
-        @if($partner==='RABBIT' && $selected==='ONTAOB')
+        @if($partner==='rabbit' && $selected==='ONTAOB')
             <!-- Google tag (gtag.js) -->
             <script async src="https://www.googletagmanager.com/gtag/js?id=AW-10813138401"></script>
             <script>

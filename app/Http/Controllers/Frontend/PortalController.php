@@ -211,14 +211,14 @@ class PortalController extends ProductController
         $this->bodyData['doc_no'] = $request->session()->get('doc_no');
         $this->bodyData['return_link'] = $request->session()->get('return_link');
         $this->bodyData['point'] = '';
-
-        if($request->session()->get('partner')==='RABBIT'){
+        //$this->bodyData['page'] = '';
+        if($request->session()->get('partner')==='rabbit'){
 
             $mystring = $request->session()->get('return_link');
             $findme   = 'ONTAOB';
             $pos = strpos($mystring, $findme);
             $this->bodyData['selected'] = $pos==true ? $findme : $request->session()->get('selected');
-
+            //$this->bodyData['page'] = 'thankyou';
         }else{
             $this->bodyData['selected'] = $request->session()->get('selected');
         }
