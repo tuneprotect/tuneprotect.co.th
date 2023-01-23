@@ -39,8 +39,8 @@
             </header>
         @else
             <header>
-                @if($partner==='RABBIT' && $selected==='ONTAOB')
-                    1 
+                @if($partner==='RABBIT')
+                    1 {{$selected}}
                 @else
                     2
                 @endif
