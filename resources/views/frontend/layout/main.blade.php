@@ -305,9 +305,7 @@
                             @endif
                         @else
                             @if(!empty($v->pic))
-                                1
                                 @if(isset($selected))
-                                    2
                                     @if($selected==='ONVSAFEA')
                                         <picture>
                                             <source media="(min-width:768px)" srcset="{{url(str_replace('Banner_Covid_D', 'Banner_VSafe_D2', $v->pic))}}">
@@ -356,8 +354,9 @@
                                                 alt="{{$v->locales[$locale]->title}}">
                                         </picture>
                                     @else
+                                        1
                                         @if($selected==='ONTAOB')
-                                            <picture>
+                                            <picture class="1">
                                                 <source media="(min-width:768px)" srcset="{{url(str_replace('Banner_TA_D', 'Banner_iTravel_D', $v->pic))}}">
                                                 <img src="{{url(!empty($v->pic_mobile) ? url(str_replace('Banner_TA_D', 'Banner_iTravel_D', $v->pic_mobile)) : url(str_replace('Banner_TA_D', 'Banner_iTravel_M', $v->pic)) )}}"
                                                      alt="{{$v->locales[$locale]->title}}">
