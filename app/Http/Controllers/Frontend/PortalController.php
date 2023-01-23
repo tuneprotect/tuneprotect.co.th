@@ -224,11 +224,6 @@ class PortalController extends ProductController
         }
        
 
-
-
-
-dd($request);
-
         if (session('partner')) {
             if(session('partner') ==='THAIAIRWAY')
             {
