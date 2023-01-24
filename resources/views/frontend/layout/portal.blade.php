@@ -136,8 +136,8 @@
                                         </picture>
                                 @elseif($selected==='ONTADM')
                                     <picture>
-                                        <source media="(min-width:768px)" srcset="/storage/Banner/Banner_TA_D.jpg">
-                                        <img src="{{url(!empty($v->pic_mobile_en) ? "/storage/Banner/Banner_TA_D.jpg" : "/storage/Banner/Banner_TA_M.jpg" )}}"
+                                        <source media="(min-width:768px)" srcset="/storage/Banner/Banner_TA_D_EN.jpg">
+                                        <img src="{{url(!empty($v->pic_mobile_en) ? "/storage/Banner/Banner_TA_D_EN.jpg" : "/storage/Banner/Banner_TA_M_EN.jpg" )}}"
                                                 alt="{{$v->locales[$locale]->title}}">
                                     </picture>
                                 @elseif($selected==='ONCOVIDMW')
