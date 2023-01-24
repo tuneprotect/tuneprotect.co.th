@@ -82,9 +82,9 @@
                     @endif
                 @else
                     @if($k=="annual")
-                        แผนไป-กลับ
-                    @else
                         แผนรายเที่ยว
+                    @else
+                        แผนไป-กลับ
                     @endif
                 @endif
             </span>

@@ -169,86 +169,86 @@
                                                 alt="{{$v->locales[$locale]->title}}">
                                     </picture>
                                 @elseif(isset($partner))
-                                        @if(($partner==='LUMA' || $partner==='Luma') && ($selected==='ONTALN' || $selected==='TAIPOCT22'))
-                                            <picture>
-                                                <source media="(min-width:768px)" srcset="/storage/Banner/Banner_Luma_D.jpg">
-                                                <img src="{{url(!empty($v->pic_mobile_en) ? "/storage/Banner/Banner_Luma_D.jpg" : "/storage/Banner/Banner_Luma_M.jpg" )}}"
-                                                     alt="{{$v->locales[$locale]->title}}">
-                                            </picture>
-                                        @elseif($selected==='TAIPOCT22')
-                                            <picture>
-                                                <source media="(min-width:768px)" srcset="/storage/Banner/Tune_iPass_Desktop.jpg">
-                                                <img src="{{url(!empty($v->pic_mobile_en) ? "/storage/Banner/Tune_iPass_Desktop.jpg" : "/storage/Banner/Tune_iPass_Mobile.jpg" )}}"
-                                                     alt="{{$v->locales[$locale]->title}}">
-                                            </picture>
-                                        @elseif($partner==='rabbit' && $selected==='ONTAOB')
-                                            <picture>
-                                                <source media="(min-width:768px)" srcset="/storage/Banner/Banner_TA_Rabbit_D_EN.jpg">
-                                                <img src="{{url(!empty($v->pic_mobile_en) ? "/storage/Banner/Banner_TA_Rabbit_D_EN.jpg" : "/storage/Banner/Banner_TA_Rabbit_MB_EN.jpg" )}}"
-                                                     alt="{{$v->locales[$locale]->title}}">
-                                            </picture>
-                                        @elseif($selected==='ONTALN')
-                                            <picture>
-                                                <source media="(min-width:768px)"
-                                                        srcset="{{url(str_replace('Banner_TA_D_EN', 'Banner_Tune_iPass', $v->pic_en))}}">
-                                                <img
-                                                    src="{{url(!empty($v->pic_mobile_en) ? url(str_replace('Banner_TA_D_EN', 'Banner_Tune_iPass', $v->pic_mobile_en)) : url(str_replace('Banner_TA_D_EN', 'Banner_Tune_iPass', $v->pic_en)) )}}"
+                                    @if(($partner==='LUMA' || $partner==='Luma') && ($selected==='ONTALN' || $selected==='TAIPOCT22'))
+                                        <picture>
+                                            <source media="(min-width:768px)" srcset="/storage/Banner/Banner_Luma_D.jpg">
+                                            <img src="{{url(!empty($v->pic_mobile_en) ? "/storage/Banner/Banner_Luma_D.jpg" : "/storage/Banner/Banner_Luma_M.jpg" )}}"
                                                     alt="{{$v->locales[$locale]->title}}">
-                                            </picture>
-                                       
-                                    @elseif($selected==='TAISM')
+                                        </picture>
+                                    @elseif($selected==='TAIPOCT22')
+                                        <picture>
+                                            <source media="(min-width:768px)" srcset="/storage/Banner/Tune_iPass_Desktop.jpg">
+                                            <img src="{{url(!empty($v->pic_mobile_en) ? "/storage/Banner/Tune_iPass_Desktop.jpg" : "/storage/Banner/Tune_iPass_Mobile.jpg" )}}"
+                                                    alt="{{$v->locales[$locale]->title}}">
+                                        </picture>
+                                    @elseif($partner==='rabbit' && $selected==='ONTAOB')
+                                        <picture>
+                                            <source media="(min-width:768px)" srcset="/storage/Banner/Banner_TA_Rabbit_D_EN.jpg">
+                                            <img src="{{url(!empty($v->pic_mobile_en) ? "/storage/Banner/Banner_TA_Rabbit_D_EN.jpg" : "/storage/Banner/Banner_TA_Rabbit_MB_EN.jpg" )}}"
+                                                    alt="{{$v->locales[$locale]->title}}">
+                                        </picture>
+                                    @elseif($selected==='ONTALN')
                                         <picture>
                                             <source media="(min-width:768px)"
-                                                    srcset="{{url(str_replace('Banner_TA_D_EN', 'Banner_TAI_D', $v->pic_en))}}">
+                                                    srcset="{{url(str_replace('Banner_TA_D_EN', 'Banner_Tune_iPass', $v->pic_en))}}">
                                             <img
-                                                src="{{url(!empty($v->pic_mobile_en) ? url(str_replace('Banner_TA_D_EN', 'Banner_TAI_M', $v->pic_mobile_en)) : url(str_replace('Banner_TA_D_EN', 'Banner_TAI_M', $v->pic_en)) )}}"
+                                                src="{{url(!empty($v->pic_mobile_en) ? url(str_replace('Banner_TA_D_EN', 'Banner_Tune_iPass', $v->pic_mobile_en)) : url(str_replace('Banner_TA_D_EN', 'Banner_Tune_iPass', $v->pic_en)) )}}"
                                                 alt="{{$v->locales[$locale]->title}}">
                                         </picture>
-                                        @elseif($selected==='CVCARE')
-                                            <picture>
-                                                <source media="(min-width:768px)" srcset="/storage/Banner/Banner_LumaCare_D.jpg">
-                                                <img src="{{url(!empty($v->pic_mobile_en) ? "/storage/Banner/Banner_LumaCare_D.jpg" : "/storage/Banner/Banner_LumaCare_M.jpg" )}}"
-                                                     alt="{{$v->locales[$locale]->title}}">
-                                            </picture>
-                                        @elseif($selected==='TGCVLP')
-                                            <picture>
-                                                <source media="(min-width:768px)" srcset="/storage/Banner/Banner_TG_D.jpg">
-                                                <img src="{{url(!empty($v->pic_mobile_en) ? "/storage/Banner/Banner_TG_D.jpg" : "/storage/Banner/Banner_TG_M.jpg" )}}"
-                                                     alt="{{$v->locales[$locale]->title}}">
-                                            </picture>
-                                        @elseif($selected==='TAISMTG')
-                                            <picture id="taismtg-main">
-                                                <source media="(min-width:768px)" srcset="/storage/Banner/Banner_TG_D.jpg">
-                                                <img src="{{url(!empty($v->pic_mobile_en) ? "/storage/Banner/Banner_TG_D.jpg" : "/storage/Banner/Banner_TG_M.jpg" )}}"
-                                                     alt="{{$v->locales[$locale]->title}}">
-                                            </picture>
-                                            <picture id="taismtg-page">
-                                                <source media="(min-width:768px)" srcset="/storage/Banner/Banner_TAI_D.jpg">
-                                                <img src="{{url(!empty($v->pic_mobile_en) ? "/storage/Banner/Banner_TAI_D.jpg" : "/storage/Banner/Banner_TAI_M.jpg" )}}"
-                                                     alt="{{$v->locales[$locale]->title}}">
-                                            </picture>
-                                        @elseif($selected==='ONTGISM')
-                                            <picture>
-                                                <source media="(min-width:768px)" srcset="/storage/Banner/Banner_TG_D.jpg">
-                                                <img src="{{url(!empty($v->pic_mobile_en) ? "/storage/Banner/Banner_TG_D.jpg" : "/storage/Banner/Banner_TG_M.jpg" )}}"
-                                                     alt="{{$v->locales[$locale]->title}}">
-                                            </picture>
-                                        @else
-                                            <picture>
-                                                <source media="(min-width:768px)" srcset="{{url($v->pic_en)}}">
-                                                <img src="{{url(!empty($v->pic_mobile_en) ? $v->pic_mobile_en : $v->pic_en )}}"
-                                                     alt="{{$v->locales[$locale]->title}}">
-                                            </picture>
-                                        @endif
-
-                                    @else
-                                            <picture>
-                                                <source media="(min-width:768px)" srcset="{{url($v->pic_en)}}">
-                                                <img src="{{url(!empty($v->pic_mobile_en) ? $v->pic_mobile_en : $v->pic_en )}}"
+                                       
+                                @elseif($selected==='TAISM')
+                                    <picture>
+                                        <source media="(min-width:768px)"
+                                                srcset="{{url(str_replace('Banner_TA_D_EN', 'Banner_TAI_D', $v->pic_en))}}">
+                                        <img
+                                            src="{{url(!empty($v->pic_mobile_en) ? url(str_replace('Banner_TA_D_EN', 'Banner_TAI_M', $v->pic_mobile_en)) : url(str_replace('Banner_TA_D_EN', 'Banner_TAI_M', $v->pic_en)) )}}"
+                                            alt="{{$v->locales[$locale]->title}}">
+                                    </picture>
+                                    @elseif($selected==='CVCARE')
+                                        <picture>
+                                            <source media="(min-width:768px)" srcset="/storage/Banner/Banner_LumaCare_D.jpg">
+                                            <img src="{{url(!empty($v->pic_mobile_en) ? "/storage/Banner/Banner_LumaCare_D.jpg" : "/storage/Banner/Banner_LumaCare_M.jpg" )}}"
                                                     alt="{{$v->locales[$locale]->title}}">
-                                            </picture>
+                                        </picture>
+                                    @elseif($selected==='TGCVLP')
+                                        <picture>
+                                            <source media="(min-width:768px)" srcset="/storage/Banner/Banner_TG_D.jpg">
+                                            <img src="{{url(!empty($v->pic_mobile_en) ? "/storage/Banner/Banner_TG_D.jpg" : "/storage/Banner/Banner_TG_M.jpg" )}}"
+                                                    alt="{{$v->locales[$locale]->title}}">
+                                        </picture>
+                                    @elseif($selected==='TAISMTG')
+                                        <picture id="taismtg-main">
+                                            <source media="(min-width:768px)" srcset="/storage/Banner/Banner_TG_D.jpg">
+                                            <img src="{{url(!empty($v->pic_mobile_en) ? "/storage/Banner/Banner_TG_D.jpg" : "/storage/Banner/Banner_TG_M.jpg" )}}"
+                                                    alt="{{$v->locales[$locale]->title}}">
+                                        </picture>
+                                        <picture id="taismtg-page">
+                                            <source media="(min-width:768px)" srcset="/storage/Banner/Banner_TAI_D.jpg">
+                                            <img src="{{url(!empty($v->pic_mobile_en) ? "/storage/Banner/Banner_TAI_D.jpg" : "/storage/Banner/Banner_TAI_M.jpg" )}}"
+                                                    alt="{{$v->locales[$locale]->title}}">
+                                        </picture>
+                                    @elseif($selected==='ONTGISM')
+                                        <picture>
+                                            <source media="(min-width:768px)" srcset="/storage/Banner/Banner_TG_D.jpg">
+                                            <img src="{{url(!empty($v->pic_mobile_en) ? "/storage/Banner/Banner_TG_D.jpg" : "/storage/Banner/Banner_TG_M.jpg" )}}"
+                                                    alt="{{$v->locales[$locale]->title}}">
+                                        </picture>
+                                    @else
+                                        <picture>
+                                            <source media="(min-width:768px)" srcset="{{url($v->pic_en)}}">
+                                            <img src="{{url(!empty($v->pic_mobile_en) ? $v->pic_mobile_en : $v->pic_en )}}"
+                                                    alt="{{$v->locales[$locale]->title}}">
+                                        </picture>
                                     @endif
+
+                                @else
+                                        <picture>
+                                            <source media="(min-width:768px)" srcset="{{url($v->pic_en)}}">
+                                            <img src="{{url(!empty($v->pic_mobile_en) ? $v->pic_mobile_en : $v->pic_en )}}"
+                                                alt="{{$v->locales[$locale]->title}}">
+                                        </picture>
                                 @endif
+                            @endif
                         @else
                             @if(!empty($v->pic))                                
                                 @if($selected==='ONVACINA' || $selected === 'ONVSUREA')
