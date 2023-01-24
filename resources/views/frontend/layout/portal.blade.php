@@ -127,10 +127,11 @@
 
                             </div>
                         @elseif($locale == 'en')
+                            @if(!empty($v->pic_en))   
+                                
                             
                                 
-                            555 {{$selected}}
-                            @if(!empty($v->pic_en))                                
+                                555 {{$selected}}                             
                                 @if($selected==='ONVACINA' || $selected === 'ONVSUREA')
                                         <picture>
                                             <source media="(min-width:768px)" srcset="{{url(str_replace('Banner_Covid_D_EN', 'Banner_VSURE_D_EN', $v->pic_en))}}">
