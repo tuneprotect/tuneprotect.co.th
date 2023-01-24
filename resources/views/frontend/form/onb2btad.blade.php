@@ -75,13 +75,13 @@
         <div class="form-head"> {{$package->locales[$locale]->title}} <span id="form-head" style="display:none"></span>
             <span>
                 @if($locale == 'en')
-                    @if($k=="ONB2BTADRT")
+                    @if($k=="ONB2BTAD")
                         Round Trip
                     @else
                         One Trip
                     @endif
                 @else
-                    @if($k=="ONB2BTADRT")
+                    @if($k=="ONB2BTAD")
                         แผนไป-กลับ
                     @else
                         แผนรายเที่ยว
