@@ -242,6 +242,22 @@ const genPrice = (package_data, fdFromDate, fdToDate) => {
         $(`strong[data-price-${k}]`).innerHTML = parseInt(package_data[k].price["01"].price).toLocaleString();
         
     });
+    let lang = $('#lang').value
+    let pack_code = $('#sub_code').value
+    if(lang==="th"){
+        if(pack_code === "ONB2BTADRT"){
+            $('#txtHead').innerHTML = "แผนไป-กลับ";
+        }else{
+            $('#txtHead').innerHTML = "แผนรายเที่ยว";
+        }
+    }else{
+        if(pack_code === "ONB2BTADRT"){
+            $('#txtHead').innerHTML = "Round Trip";
+        }else{
+            $('#txtHead').innerHTML = "One Trip";
+        }
+    }
+
 
     if (document.body.clientWidth > 767) {
         $$('#table-detail td[data-package],#table-detail th[data-package],.choose-plan-mobile').forEach($el => {
