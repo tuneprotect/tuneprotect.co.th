@@ -64,6 +64,7 @@
         <input type="hidden" id="sub_code"/>
         <input type="hidden" id="all_pack"/>
         <input type="hidden" id="days"/>
+        <input type="hidden" id="lang" value="{{$locale}}" />
     </form>
 
     <br/>
@@ -73,7 +74,7 @@
 <section style="display: none" id="step3" class="wrapper">
     <form class="insurance-form">
         <div class="form-head"> {{$package->locales[$locale]->title}} <span id="form-head" style="display:none"></span>
-            <span>
+            <span id="txtHead">
                 @if($locale == 'en')
                     @if($k==="annual")
                         Round Trip
