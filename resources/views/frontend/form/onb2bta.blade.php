@@ -34,10 +34,10 @@
                 <div class="controls-wrapper">
                     <input id="fdFromDate" name="fdFromDate" type="text" class="flatpickr"
                            data-mindate="{{date('Y-m-d')}}"
-                           data-maxdate="{{date('Y-m-d',strtotime( "+8 months"))}}"
+                           data-maxdate="{{date('Y-m-d',strtotime( "+3 months"))}}"
                            data-setmindatetoequal ="fdToDate"
                            data-setmaxdateto="fdToDate"
-                           data-setmaxdaterange="179"
+                           data-setmaxdaterange="89"
                            data-error="@lang('product.error.travel_start_date')"
                     />
                     <label for="fdFromDate">@lang("product.departure_date")</label>
@@ -100,8 +100,6 @@
                         แผนรายเที่ยว
                     @endif
                 @endif
-                
-                (กรุณากรอกเป็นภาษาอังกฤษเท่านั้น)
             </span>
         </div>
         <div id="multipleform">

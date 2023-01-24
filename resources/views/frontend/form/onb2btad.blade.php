@@ -87,8 +87,6 @@
                         แผนรายเที่ยว
                     @endif
                 @endif
-                
-                (กรุณากรอกเป็นภาษาอังกฤษเท่านั้น)
             </span>
         </div>
         <div id="multipleform">
