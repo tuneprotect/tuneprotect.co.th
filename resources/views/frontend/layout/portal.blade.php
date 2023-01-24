@@ -183,7 +183,7 @@
                                     </picture>
                                 @elseif(isset($partner))
                                           
-                                    {{$selected}}     
+                                    44 {{$selected}}     
                                     @if(($partner==='LUMA' || $partner==='Luma') && ($selected==='ONTALN' || $selected==='TAIPOCT22'))
                                         <picture>
                                             <source media="(min-width:768px)" srcset="/storage/Banner/Banner_Luma_D.jpg">
