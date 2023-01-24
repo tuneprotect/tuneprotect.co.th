@@ -127,17 +127,21 @@
 
                             </div>
                         @elseif($locale == 'en')
-                            @if(!empty($v->pic_en))   
-                                
-                            
-                                
-                                555 {{$selected}}                             
+                            @if(!empty($v->pic_en))                               
                                 @if($selected==='ONVACINA' || $selected === 'ONVSUREA')
                                         <picture>
                                             <source media="(min-width:768px)" srcset="{{url(str_replace('Banner_Covid_D_EN', 'Banner_VSURE_D_EN', $v->pic_en))}}">
                                                 <img src="{{url(!empty($v->pic_mobile_en) ? url(str_replace('Banner_Covid_D_EN', 'Banner_VSURE_D_EN', $v->pic_mobile_en)) : url(str_replace('Banner_Covid_D_EN', 'Banner_VSURE_M_EN', $v->pic_en)) )}}"
                                                     alt="{{$v->locales[$locale]->title}}">
                                         </picture>
+                                @elseif($selected==='TAISM')
+                                    <picture>
+                                        <source media="(min-width:768px)"
+                                                srcset="{{url(str_replace('Banner_TA_D_EN', 'Banner_TAI_D', $v->pic_en))}}">
+                                        <img
+                                            src="{{url(!empty($v->pic_mobile_en) ? url(str_replace('Banner_TA_D_EN', 'Banner_TAI_M', $v->pic_mobile_en)) : url(str_replace('Banner_TA_D_EN', 'Banner_TAI_M', $v->pic_en)) )}}"
+                                            alt="{{$v->locales[$locale]->title}}">
+                                    </picture>
                                 @elseif($selected==='ONTADM')
                                     <picture>
                                         <source media="(min-width:768px)" srcset="/storage/Banner/Banner_TA_D_EN.jpg">
@@ -205,14 +209,7 @@
                                                 alt="{{$v->locales[$locale]->title}}">
                                         </picture>
                                     @endif   
-                                @elseif($selected=='TAISM')
-                                    <picture>
-                                        <source media="(min-width:768px)"
-                                                srcset="{{url(str_replace('Banner_TA_D_EN', 'Banner_TAI_D', $v->pic_en))}}">
-                                        <img
-                                            src="{{url(!empty($v->pic_mobile_en) ? url(str_replace('Banner_TA_D_EN', 'Banner_TAI_M', $v->pic_mobile_en)) : url(str_replace('Banner_TA_D_EN', 'Banner_TAI_M', $v->pic_en)) )}}"
-                                            alt="{{$v->locales[$locale]->title}}">
-                                    </picture>
+                               
                                 @elseif($selected==='CVCARE')
                                     <picture>
                                         <source media="(min-width:768px)" srcset="/storage/Banner/Banner_LumaCare_D.jpg">
