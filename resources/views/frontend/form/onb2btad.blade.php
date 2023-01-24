@@ -74,6 +74,8 @@
     <form class="insurance-form">
         <div class="form-head"> {{$package->locales[$locale]->title}} <span id="form-head" style="display:none"></span>
             <span>
+                
+            {{$k}}
                 @if($locale == 'en')
                     @if($k==="annual")
                         Round Trip
