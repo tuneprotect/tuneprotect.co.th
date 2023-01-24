@@ -175,7 +175,7 @@
                                                 <img src="{{url(!empty($v->pic_mobile_en) ? "/storage/Banner/Banner_Luma_D.jpg" : "/storage/Banner/Banner_Luma_M.jpg" )}}"
                                                      alt="{{$v->locales[$locale]->title}}">
                                             </picture>
-                                        @elseif($partner==='rabbit')
+                                        @elseif($partner==='rabbit' && $selected==='ONTAOB')
                                             <picture>
                                                 <source media="(min-width:768px)" srcset="/storage/Banner/Banner_TA_Rabbit_D_EN.jpg">
                                                 <img src="{{url(!empty($v->pic_mobile_en) ? "/storage/Banner/Banner_TA_Rabbit_D_EN.jpg" : "/storage/Banner/Banner_TA_Rabbit_MB_EN.jpg" )}}"
@@ -294,7 +294,7 @@
                                                 alt="{{$v->locales[$locale]->title}}">
                                     </picture>
                                 @elseif(isset($partner))
-                                    @if($partner==='rabbit')
+                                    @if($partner==='rabbit' && $selected==='ONTAOB')
                                         <picture>
                                             <source media="(min-width:768px)" srcset="/storage/Banner/Banner_TA_Rabbit_D_TH.jpg">
                                             <img src="{{url(!empty($v->pic_mobile_en) ? "/storage/Banner/Banner_TA_Rabbit_D_TH.jpg" : "/storage/Banner/Banner_TA_Rabbit_MB_TH.jpg" )}}"
