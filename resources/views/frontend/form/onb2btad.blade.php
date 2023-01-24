@@ -75,7 +75,7 @@
         <div class="form-head"> {{$package->locales[$locale]->title}} <span id="form-head" style="display:none"></span>
             <span>
                 
-            {{$k}}
+            {{$package_detail}}
                 @if($locale == 'en')
                     @if($k==="annual")
                         Round Trip
