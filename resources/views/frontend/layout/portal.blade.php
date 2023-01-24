@@ -127,8 +127,7 @@
 
                             </div>
                         @elseif($locale == 'en')
-                            @if(!empty($v->pic_en))       
-                                {{$selected}}                        
+                            @if(!empty($v->pic_en))                    
                                 @if($selected==='ONVACINA' || $selected === 'ONVSUREA')
                                         <picture>
                                             <source media="(min-width:768px)" srcset="{{url(str_replace('Banner_Covid_D_EN', 'Banner_VSURE_D_EN', $v->pic_en))}}">
@@ -183,6 +182,8 @@
                                                 alt="{{$v->locales[$locale]->title}}">
                                     </picture>
                                 @elseif(isset($partner))
+                                          
+                                    {{$selected}}     
                                     @if(($partner==='LUMA' || $partner==='Luma') && ($selected==='ONTALN' || $selected==='TAIPOCT22'))
                                         <picture>
                                             <source media="(min-width:768px)" srcset="/storage/Banner/Banner_Luma_D.jpg">
