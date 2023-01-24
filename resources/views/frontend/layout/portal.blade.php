@@ -261,6 +261,12 @@
                                         <img src="{{url(!empty($v->pic_mobile) ? url(str_replace('Banner_Covid_D', 'Banner_VSure_Protect_D', $v->pic_mobile)) : url(str_replace('Banner_Covid_D', 'Banner_VSure_Protect_M', $v->pic)) )}}"
                                              alt="{{$v->locales[$locale]->title}}">
                                     </picture>
+                                @elseif($selected==='ONTADM')
+                                    <picture>
+                                        <source media="(min-width:768px)" srcset="/storage/Banner/Banner_TG_D.jpg">
+                                        <img src="{{url(!empty($v->pic_mobile_en) ? "/storage/Banner/Banner_TG_D.jpg" : "/storage/Banner/Banner_TG_M.jpg" )}}"
+                                                alt="{{$v->locales[$locale]->title}}">
+                                    </picture>
                                 @elseif($selected==='ONCOVIDMW')
                                     <picture>
                                         <source media="(min-width:768px)" srcset="{{url(str_replace('Banner_iPass_COVID', 'Migrant-Banner-Th01', $v->pic_en))}}">
