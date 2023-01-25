@@ -73,7 +73,7 @@
         <input type="hidden" id="sub_code"/>
         <input type="hidden" id="all_pack"/>
         <input type="hidden" id="days"/>
-
+        <input type="hidden" id="lang" value="{{$locale}}" />
     </form>
 
     <br/>
@@ -86,20 +86,11 @@
     <form class="insurance-form">
         <div class="form-head"> {{$package->locales[$locale]->title}}  
             <span id="form-head" style="display:none"></span>
+            <span id="txtHead"></span>
             <span>
-                @if($locale == 'en')
-                    @if($k=="ONB2BTADRT")
-                        Round Trip
-                    @else
-                        One Trip
-                    @endif
+                @if($locale == 'en')                   
                     (English Only)
                 @else
-                    @if($k=="ONB2BTADRT")
-                        แผนไป-กลับ
-                    @else
-                        แผนเที่ยวเดียว
-                    @endif
                     (กรุณากรอกเป็นภาษาอังกฤษเท่านั้น)
                 @endif
             </span>

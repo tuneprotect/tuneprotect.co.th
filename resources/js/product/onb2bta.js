@@ -242,6 +242,22 @@ const genPrice = (package_data,country_data, subpackage, fdFromDate, fdToDate) =
 
     $('#all_pack').value = allPack;
 
+    let lang = $('#lang').value
+    let pack_code = $('#ctrl_travel_type').value
+    if(lang==="th"){
+        if(pack_code === "trip"){
+            $('#txtHead').innerHTML = "แผนไป-กลับ";
+        }else{
+            $('#txtHead').innerHTML = "แผนเที่ยวเดียว";
+        }
+    }else{
+        if(pack_code === "trip"){
+            $('#txtHead').innerHTML = "Round Trip";
+        }else{
+            $('#txtHead').innerHTML = "One Trip";
+        }
+    }
+
     if (document.body.clientWidth > 767) {
         $$('#table-detail td[data-package],#table-detail th[data-package],.choose-plan-mobile').forEach($el => {
             if (allPack.includes($el.getAttribute("data-package"))) {
