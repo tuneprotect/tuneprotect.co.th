@@ -109,7 +109,7 @@ class RabbitController  extends ProductController
 
         $this->template->setFootJS(mix("/js/frontend/main.js"));
         $this->template->setBody('id', 'thankyou_page');
-        return $this->genView('frontend.page.thankyou_rabbit.blade');
+        return $this->genView('frontend.page.thankyou_rabbit');
 
     }
 
