@@ -32,7 +32,7 @@
                                             @if($k=="ONB2BTADRT")
                                                 แผนไป-กลับ
                                             @else
-                                                แผนรายเที่ยว
+                                                แผนเที่ยวเดียว
                                             @endif
                                         @endif
 
@@ -61,7 +61,7 @@
                             @if($k=="ONB2BTADRT")
                                 แผนไป-กลับ
                             @else
-                                แผนรายเที่ยว
+                                แผนเที่ยวเดียว
                             @endif
                         @endif
                        </strong>
@@ -162,7 +162,7 @@
                                 @if($k=="ONB2BTADRT")
                                     แผนไป-กลับ
                                 @else
-                                    แผนรายเที่ยว
+                                    แผนเที่ยวเดียว
                                 @endif
                             @endif
                             </strong>

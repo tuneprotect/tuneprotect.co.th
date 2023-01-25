@@ -248,7 +248,7 @@ const genPrice = (package_data, fdFromDate, fdToDate) => {
         if(pack_code === "ONB2BTADRT"){
             $('#txtHead').innerHTML = "แผนไป-กลับ";
         }else{
-            $('#txtHead').innerHTML = "แผนรายเที่ยว";
+            $('#txtHead').innerHTML = "แผนเที่ยวเดียว";
         }
     }else{
         if(pack_code === "ONB2BTADRT"){

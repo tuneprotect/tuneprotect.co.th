@@ -74,21 +74,7 @@
 <section style="display: none" id="step3" class="wrapper">
     <form class="insurance-form">
         <div class="form-head"> {{$package->locales[$locale]->title}} <span id="form-head" style="display:none"></span>
-            <span id="txtHead">
-                @if($locale == 'en')
-                    @if($k==="annual")
-                        Round Trip
-                    @else
-                        One Trip
-                    @endif
-                @else
-                    @if($k==="annual")
-                        แผนรายเที่ยว
-                    @else
-                        แผนไป-กลับ
-                    @endif
-                @endif
-            </span>
+            <span id="txtHead"></span>
         </div>
         <div id="multipleform">
             @for($i = 1;$i < 10;$i++)
