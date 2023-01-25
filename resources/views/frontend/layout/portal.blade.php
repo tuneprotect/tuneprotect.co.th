@@ -38,7 +38,8 @@
                 </div>
             </header>
         @else
-            <header>                
+            <header>
+                
             <a class="nav-icon"><span></span></a>
             <div class="logo">
                 <a data-gtm="logo"><img
