@@ -93,12 +93,14 @@
                     @else
                         One Trip
                     @endif
+                    (English Only)
                 @else
                     @if($k=="ONB2BTADRT")
                         แผนไป-กลับ
                     @else
                         แผนเที่ยวเดียว
                     @endif
+                    (กรุณากรอกเป็นภาษาอังกฤษเท่านั้น)
                 @endif
             </span>
         </div>
