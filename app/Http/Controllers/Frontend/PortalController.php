@@ -217,11 +217,7 @@ class PortalController extends ProductController
             $mystring = $request->session()->get('return_link');
             $findme   = 'ONTAOB';
             $pos = strpos($mystring, $findme);
-
-            if($pos){
-                return (new RabbitController)->thankyou($request);
-            }
-            //$this->bodyData['selected'] = $pos==true ? $findme : $request->session()->get('selected');
+            $this->bodyData['selected'] = $pos==true ? "thank" : $request->session()->get('selected');
             //$this->bodyData['page'] = 'thankyou';
         }else{
             $this->bodyData['selected'] = $request->session()->get('selected');
