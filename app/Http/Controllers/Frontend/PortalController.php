@@ -198,8 +198,8 @@ class PortalController extends ProductController
         $this->bodyData['doc_no'] = $request->session()->get('doc_no');
         $this->bodyData['return_link'] = $request->session()->get('return_link');
         $this->bodyData['point'] = '';
-        $this->bodyData['total_amount'] = $request->session()->get('fdPayAMT');
-        $this->bodyData['portal_key'] = $request->session()->get('fdKeys');
+        $this->bodyData['totalAmount'] = $request->session()->get('fdPayAMT');
+        $this->bodyData['portalKey'] = $request->session()->get('fdKeys');
         //$this->bodyData['page'] = '';
         if ($request->session()->get('partner') === 'rabbit') {
 

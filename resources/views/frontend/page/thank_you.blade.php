@@ -18,7 +18,7 @@
     @endif
 
     
-    @if($portal_key === 'JGVM66EX9GRM6LA3D8ARBLUX6EUXNTARD8UXN4U228UVN4RR22')
+    @if($portalKey === 'JGVM66EX9GRM6LA3D8ARBLUX6EUXNTARD8UXN4U228UVN4RR22')
     <script>
         var __atw = __atw || [];
         __atw.push({
@@ -26,7 +26,7 @@
             "param": {
                 "result_id": "2",
                 "identifier": '{{$doc_no}}', // Lead ID
-                "value": '{{$total_amount}}', // Total Amount
+                "value": '{{$totalAmount}}', // Total Amount
                 "currency": 'THB' // In this case : THB
             }
         });
