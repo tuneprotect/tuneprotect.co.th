@@ -1,4 +1,7 @@
+<!-- step 1 -->
 @include('frontend.component.form-stepper')
+<!-- step 1 -->
+
 <section id="step1" class="wrapper">
     <form method="post" action="" class="insurance-form">
         <div class="form-head">@lang('product.please_specify_birthdate_title')</div>
@@ -90,7 +93,11 @@
     <br/>
     {!! $package->locales[$locale]->remark !!}
 </section>
+
+<!-- step 2 -->
 @include('frontend.component.form-itravel-coverage-table-with-subpackage',['package_detail' => $package_detail,'selected' =>$selected ])
+<!-- step 2 -->
+
 <section style="display: none" id="step3" class="wrapper">
     <form class="insurance-form">
         <div class="form-head"> {{$package->locales[$locale]->title}} <span id="form-head"></span></div>
@@ -110,7 +117,9 @@
             @endfor
         </div>
         <div class="form-inner">
+            <!-- step 3 -->
             @include('frontend.component.form-privacy')
+            <!-- step 3 -->
         </div>
         <div class="btn-wrapper">
             <button data-gtm="product-{{strtolower($selected)}}-proceed-step-3" data-step="4"
@@ -118,5 +127,7 @@
         </div>
     </form>
 </section>
+<!-- step 4 -->
 @include('frontend.component.form-summary-itravel')
+<!-- step 4 -->
 

@@ -39,42 +39,42 @@ class ProductController extends BaseController
     protected $use_effective = 'N';
     public function index($link = null, $selected = null)
     {
-//MA
-//        if (in_array($selected, ['ONVSAFEA','ONVSAFE','ONVS22JAN'])) {
-//            return redirect('https://www.tuneprotect.co.th/ma_vsafe.html');
-//        }
-//        if (in_array($selected, ['CVCARE'])) {
-//            return redirect('https://www.tuneprotect.co.th/ma_lumacare.html');
-//        }
+        //MA
+        //        if (in_array($selected, ['ONVSAFEA','ONVSAFE','ONVS22JAN'])) {
+        //            return redirect('https://www.tuneprotect.co.th/ma_vsafe.html');
+        //        }
+        //        if (in_array($selected, ['CVCARE'])) {
+        //            return redirect('https://www.tuneprotect.co.th/ma_lumacare.html');
+        //        }
 
-//        if (in_array($selected, ['ONCOVIDL'])) {
-//            return redirect('https://www.tuneprotect.co.th/maintenance.html');
-//        }
-//        if (in_array($selected, ['CVISAFE','CVIS22JAN','ONCOVIDA'])) {
-//            return redirect('https://www.tuneprotect.co.th/ma_isafe.html');
-//        }
-//        if (in_array($selected, ['ONVACINA','ONVSUREA'])) {
-//            return redirect('https://www.tuneprotect.co.th/ma_vsure.html');
-//        }
+        //        if (in_array($selected, ['ONCOVIDL'])) {
+        //            return redirect('https://www.tuneprotect.co.th/maintenance.html');
+        //        }
+        //        if (in_array($selected, ['CVISAFE','CVIS22JAN','ONCOVIDA'])) {
+        //            return redirect('https://www.tuneprotect.co.th/ma_isafe.html');
+        //        }
+        //        if (in_array($selected, ['ONVACINA','ONVSUREA'])) {
+        //            return redirect('https://www.tuneprotect.co.th/ma_vsure.html');
+        //        }
 
-//
-//        if (in_array($selected, ['ONTALN'])) {
-//            return redirect('https://www.tuneprotect.co.th/maintenance.html');
-//        }
+        //
+        //        if (in_array($selected, ['ONTALN'])) {
+        //            return redirect('https://www.tuneprotect.co.th/maintenance.html');
+        //        }
 
 
         $this->bodyData['controller'] = $this->controller;
         $this->bodyData['use_effective'] = $this->use_effective;
-		
+
         if (empty($link)) {
             return redirect("/" . $this->locale);
         }
 
-        if (in_array($selected, ['CVISAFE','ONCOVIDA'])) {
+        if (in_array($selected, ['CVISAFE', 'ONCOVIDA'])) {
             $selected = "CVIS22JAN";
             return redirect()->route('current', ['locale' => $this->locale, 'controller' => $this->controller, 'func' => $link, 'params' => $selected]);
         }
-        if (in_array($selected, ['ONVSAFEA','ONVS22JAN'])) {
+        if (in_array($selected, ['ONVSAFEA', 'ONVS22JAN'])) {
             $selected = "ONVSAFE";
             return redirect()->route('current', ['locale' => $this->locale, 'controller' => $this->controller, 'func' => $link, 'params' => $selected]);
         }
@@ -83,7 +83,7 @@ class ProductController extends BaseController
             return redirect()->route('current', ['locale' => $this->locale, 'controller' => $this->controller, 'func' => $link, 'params' => $selected]);
         }
 
-        if (in_array($selected, ['TAIPOCT22', 'ONTALN', 'ONCOVIDL', 'ONTA','TGCVLP','TAISM','ONTGISM','TAISMTG','ONTAISMB2B']) && $this->locale === 'th') {
+        if (in_array($selected, ['TAIPOCT22', 'ONTALN', 'ONCOVIDL', 'ONTA', 'TGCVLP', 'TAISM', 'ONTGISM', 'TAISMTG', 'ONTAISMB2B']) && $this->locale === 'th') {
             return redirect()->route('current', ['locale' => 'en', 'controller' => $this->controller, 'func' => $link, 'params' => $selected]);
         }
 
@@ -91,10 +91,10 @@ class ProductController extends BaseController
             $selected = "ONB2BTA";
             //return redirect()->route('current', ['locale' => $this->locale, 'controller' => $this->controller, 'func' => $link, 'params' => $selected]);
         }
-       
+
         $this->getProductDetail($link, $selected);
-		
-        if ($selected) {      
+
+        if ($selected) {
             //dd($selected));      
             return $this->genDetailPage($selected);
         } else {
@@ -102,7 +102,6 @@ class ProductController extends BaseController
             $this->bodyData['faq'] = $this->setFaq(ProjectEnum::WEB_CONTENT_FAQ, $this->bodyData['current_product']->id);
             return $this->genListPage();
         }
-
     }
 
     public function form($link = null, $selected = null)
@@ -113,7 +112,7 @@ class ProductController extends BaseController
             return redirect("/" . $this->locale);
         }
 
-        if (in_array($selected, ['ONTALN','TAIPOCT22','ONCOVIDL', 'ONTA','TGCVLP','TAISM','ONTAISMB2B','ONTGISM','TAISMTG']) && $this->locale === 'th') {
+        if (in_array($selected, ['ONTALN', 'TAIPOCT22', 'ONCOVIDL', 'ONTA', 'TGCVLP', 'TAISM', 'ONTAISMB2B', 'ONTGISM', 'TAISMTG']) && $this->locale === 'th') {
             return redirect()->route('current', ['locale' => 'en', 'controller' => $this->controller, 'func' => $link, 'params' => $selected]);
         }
 
@@ -122,8 +121,7 @@ class ProductController extends BaseController
 
             $this->bodyData['overview_link'] = "/{$this->locale}/product/{$link}/{$selected}";
 
-            if($selected === 'CI')
-            {
+            if ($selected === 'CI') {
                 $this->bodyData['faq'] = $this->setFaq(ProjectEnum::WEB_CONTENT_FAQ, @$this->bodyData['current_package']->id);
                 $this->bodyData['category_leadform'] = WebContent::where('type_id', ProjectEnum::WEB_CONTENT_LEADFORM_CATEGORY)
                     ->with('locales')
@@ -137,9 +135,9 @@ class ProductController extends BaseController
     }
 
     protected function getProductDetail($link = null, $selected = null)
-    {	
+    {
         $this->bodyData['current_product'] = WebContent::where('type_id', ProjectEnum::WEB_CONTENT_PRODUCT)
-            ->where('friendly_url', $link)            
+            ->where('friendly_url', $link)
             ->with(['locales', 'productPackage' => function ($q) {
                 $q->with('locales');
             }, 'faq' => function ($q) {
@@ -173,11 +171,10 @@ class ProductController extends BaseController
 
     protected function genDetailPage($selected, $isPage = true)
     {
-        
+
         if ($selected) {
-            //dd($selected);           
             $this->bodyData['selected'] = $selected;
-            if (isset($this->bodyData['current_product'])) {                
+            if (isset($this->bodyData['current_product'])) {
                 foreach ($this->bodyData['current_product']->productPackage as $v) {
                     if ($v->code === $selected) {
                         $this->setStaticPageHeader($v);
@@ -199,131 +196,124 @@ class ProductController extends BaseController
 
         $packageJson = strtolower($this->bodyData['selected']);
         $this->bodyData['channel'] = "";
-        if($packageJson === 'ci' && $this->controller === 'portal')
-        {
+        if ($packageJson === 'ci' && $this->controller === 'portal') {
             $this->bodyData['channel'] = "broker";
             $packageJson = "ci_broker";
         }
         //Srikrung
-        
-        if(isset($this->bodyData['portal_key']))
-        {
-            if($this->bodyData['portal_key'] === 'QAVM2LRWBGCXXGSFBQFR6LKW24JXXUJRX8MBNGFRGUSXXTARPQJRX')
-            {
+
+        if (isset($this->bodyData['portal_key'])) {
+            if ($this->bodyData['portal_key'] === 'QAVM2LRWBGCXXGSFBQFR6LKW24JXXUJRX8MBNGFRGUSXXTARPQJRX') {
                 $packageJson = 'oncovida_old';
             }
-            if($this->bodyData['portal_key'] === 'BQQWAMUX9JDXNTFFD4WZZLQ3NDEXNTFFT6UCXGSF68UXNEKZ24UYN5TRZ2')
-            {
+            if ($this->bodyData['portal_key'] === 'BQQWAMUX9JDXNTFFD4WZZLQ3NDEXNTFFT6UCXGSF68UXNEKZ24UYN5TRZ2') {
                 $packageJson = 'ontalnlite';
             }
         }
-//onb2bta
+        //onb2bta
         if (Storage::disk('public')->exists('json/' . $packageJson . '.json')) {
             $package_detail = json_decode(Storage::disk('public')->get('json/' . $packageJson . '.json'));
             foreach ($package_detail as $k => $v) {
                 if (str_starts_with($k, $selected)) {
-                    if($this->locale === 'en')
-                    {
-                        if($selected === 'ONVSAFEA')
-                        {
-                            if($v->plan->VSAFEA3 !== '-'){$v->plan->VSAFEA3 = __('product.healt2go_plan');}
-                            if($v->plan->VSAFEB2 !== '-'){$v->plan->VSAFEB2 = __('product.healt2go_word');}
+                    if ($this->locale === 'en') {
+                        if ($selected === 'ONVSAFEA') {
+                            if ($v->plan->VSAFEA3 !== '-') {
+                                $v->plan->VSAFEA3 = __('product.healt2go_plan');
+                            }
+                            if ($v->plan->VSAFEB2 !== '-') {
+                                $v->plan->VSAFEB2 = __('product.healt2go_word');
+                            }
                         }
-                        if($selected === 'ONVACINA')
-                        {
-                            if($v->plan->VACINA3 !== '-'){$v->plan->VACINA3 = __('product.healt2go_plan');}
+                        if ($selected === 'ONVACINA') {
+                            if ($v->plan->VACINA3 !== '-') {
+                                $v->plan->VACINA3 = __('product.healt2go_plan');
+                            }
                         }
-                        if($selected === 'ONPACA')
-                        {
-                            if($v->plan->PADRCA10 !== '-'){$v->plan->PADRCA10 = __('product.healt2go_word');}
+                        if ($selected === 'ONPACA') {
+                            if ($v->plan->PADRCA10 !== '-') {
+                                $v->plan->PADRCA10 = __('product.healt2go_word');
+                            }
                         }
-                        if($selected === 'ONPAKD')
-                        {
-                            if($v->plan->PADRKD07 !== '-'){$v->plan->PADRKD07 = __('product.healt2go_word');}
+                        if ($selected === 'ONPAKD') {
+                            if ($v->plan->PADRKD07 !== '-') {
+                                $v->plan->PADRKD07 = __('product.healt2go_word');
+                            }
                         }
-                        if($selected === 'ONPASN')
-                        {
-                            if($v->plan->PADRSN07 !== '-'){$v->plan->PADRSN07 = __('product.healt2go_word');}
+                        if ($selected === 'ONPASN') {
+                            if ($v->plan->PADRSN07 !== '-') {
+                                $v->plan->PADRSN07 = __('product.healt2go_word');
+                            }
                         }
-                        if($selected === 'ONCOVIDA')
-                        {
-                            if($v->plan->COVIDB3 !== '-'){$v->plan->COVIDB3 = __('product.healt2go_word');}
+                        if ($selected === 'ONCOVIDA') {
+                            if ($v->plan->COVIDB3 !== '-') {
+                                $v->plan->COVIDB3 = __('product.healt2go_word');
+                            }
                         }
-                        if($selected === 'ONPACAA')
-                        {
-                            if($v->plan->PACAA09 !== '-'){$v->plan->PACAA09 = __('product.healt2go_word');}
+                        if ($selected === 'ONPACAA') {
+                            if ($v->plan->PACAA09 !== '-') {
+                                $v->plan->PACAA09 = __('product.healt2go_word');
+                            }
                         }
-                        if($selected === 'ONPAKDA')
-                        {
-                            if($v->plan->PAKDA06 !== '-'){$v->plan->PAKDA06 = __('product.healt2go_word');}
+                        if ($selected === 'ONPAKDA') {
+                            if ($v->plan->PAKDA06 !== '-') {
+                                $v->plan->PAKDA06 = __('product.healt2go_word');
+                            }
                         }
-                        if($selected === 'ONPASNA')
-                        {
-                            if($v->plan->PASNA07 !== '-'){$v->plan->PASNA07 = __('product.healt2go_word');}
+                        if ($selected === 'ONPASNA') {
+                            if ($v->plan->PASNA07 !== '-') {
+                                $v->plan->PASNA07 = __('product.healt2go_word');
+                            }
                         }
-                        if($selected === 'CVISAFE')
-                        {
-                            if($v->plan->COVCVISAFE4 !== '-'){$v->plan->COVCVISAFE4 = __('product.healt2go_word');}
+                        if ($selected === 'CVISAFE') {
+                            if ($v->plan->COVCVISAFE4 !== '-') {
+                                $v->plan->COVCVISAFE4 = __('product.healt2go_word');
+                            }
                         }
-                        if($selected === 'ONTALN')
-                        {
+                        if ($selected === 'ONTALN') {
                             //dd(session('partner'));
-                    
-                            if(session('partner')==='LUMA' || session('partner')==='Luma'){
-                                
-                            }else{
+
+                            if (session('partner') === 'LUMA' || session('partner') === 'Luma') {
+                            } else {
                                 return $this->genView('frontend.page.error');
                             }
-                            
-                            
-                           
                         }
-                       
                     }
                     $this->bodyData['package_detail'][$k] = $v;
                 }
-            }            
-        }
-        else
-        {
-
+            }
+        } else {
         }
 
         $this->template->setBody('id', 'product_page');
 
-        if($selected === 'ONTAOB')
-        {
+        if ($selected === 'ONTAOB') {
             //Replace view in body content.
             $review = WebContent::where('type_id', ProjectEnum::WEB_CONTENT_REVIEW)
-                ->where('custom_input_1','ONTAOB')
+                ->where('custom_input_1', 'ONTAOB')
                 ->with('locales')
                 ->whereRaw(ProjectEnum::isPublish())
                 ->inRandomOrder()
                 ->take(5)
                 ->get();
 
-            $this->bodyData['review'] = view('frontend.component.review_product',['review' => $review,'locale' => $this->locale])->render();
-
+            $this->bodyData['review'] = view('frontend.component.review_product', ['review' => $review, 'locale' => $this->locale])->render();
         }
-        if($selected === 'ONB2BTA')
-        {
+        if ($selected === 'ONB2BTA') {
             //Replace view in body content.
             $review = WebContent::where('type_id', ProjectEnum::WEB_CONTENT_REVIEW)
-                ->where('custom_input_1','ONB2BTA')
+                ->where('custom_input_1', 'ONB2BTA')
                 ->with('locales')
                 ->whereRaw(ProjectEnum::isPublish())
                 ->inRandomOrder()
                 ->take(5)
                 ->get();
 
-            $this->bodyData['review'] = view('frontend.component.review_product',['review' => $review,'locale' => $this->locale])->render();
-
+            $this->bodyData['review'] = view('frontend.component.review_product', ['review' => $review, 'locale' => $this->locale])->render();
         }
         if ($isPage) {
             $this->bodyData['category_leadform'] = WebContent::where('type_id', ProjectEnum::WEB_CONTENT_LEADFORM_CATEGORY)
                 ->with('locales')
                 ->get();
-
         }
 
         $this->bodyData['privacy'] = WebContent::where('type_id', ProjectEnum::STATIC_PAGE_PRIVACY_POLICY)
@@ -338,18 +328,18 @@ class ProductController extends BaseController
             $this->bodyData['faq'] = $this->setFaq('faq.content', $this->bodyData['current_package']->id);
         }
 
-        
-        try {            
+
+        try {
             $this->template->setFootJS(mix("/js/frontend/product/" . strtolower($this->bodyData['selected']) . ".js"));
         } catch (\Exception $exception) {
-             dd('js error.');
+            dd('js error.');
         }
-          
+
         //dd($this->controller);
         if ($this->controller != 'product') {
             return $this->genView('frontend.page.portal');
         } else {
-            
+
             if (!$isPage) {
                 return $this->genView('frontend.page.product_form');
             }
@@ -375,7 +365,7 @@ class ProductController extends BaseController
         } elseif (substr($data['fdPackage'], 0, 7) === 'TAISMTG') {
             $obj = new TAISMTGObject();
         } elseif (substr($data['fdPackage'], 0, 7) === 'ONTGISM') {
-            $obj = new TGISMObject();            
+            $obj = new TGISMObject();
         } elseif (substr($data['fdPackage'], 0, 9) === 'ONCOVIDMW') {
             $obj = new COVIDAObject();
         } elseif (substr($data['fdPackage'], 0, 6) === 'ONTADM' || substr($data['fdPackage'], 0, 8) === 'ONB2BTAD') {
@@ -386,13 +376,13 @@ class ProductController extends BaseController
             $obj->fdFlgInbound = "I";
         } elseif (substr($data['fdPackage'], 0, 9) === 'TAIPOCT22') {
             $obj = new ONTALNObject();
-            $obj->fdFlgInbound = "I";            
+            $obj->fdFlgInbound = "I";
         } elseif (substr($data['fdPackage'], 0, 5) === 'TAISM' || substr($data['fdPackage'], 0, 10) === 'ONTAISMB2B') {
             $obj = new ONTALNObject();
             $obj->fdFlgInbound = "I";
         } elseif (substr($data['fdPackage'], 0, 6) === 'ONTAOB') {
             $obj = new BaseTAObject();
-            $obj->fdDestFrom = "THA";       
+            $obj->fdDestFrom = "THA";
         } elseif (substr($data['fdPackage'], 0, 9) === 'ONTAOBB2B') {
             $obj = new BaseTAObject();
             $obj->fdDestFrom = "THA";
@@ -407,7 +397,7 @@ class ProductController extends BaseController
         } elseif (substr($data['fdPackage'], 0, 8) === 'ONVSUREA') {
             $obj = new VACINAObject();
         } elseif (substr($data['fdPackage'], 0, 8) === 'ONVSAFEA') {
-           $obj = new VSAFEAObject();
+            $obj = new VSAFEAObject();
         } elseif (substr($data['fdPackage'], 0, 7) === 'ONVSAFE') {
             $obj = new VSAFEAObject();
         } elseif (substr($data['fdPackage'], 0, 9) === 'ONVS22JAN') {
@@ -422,17 +412,15 @@ class ProductController extends BaseController
                 $this->ipp_interest_type = "C";
             }
             $data['fdPackage'] .= str_replace(['F', ','], "", $data['ctrl_disease']);
-
-        }elseif (substr($data['fdPackage'], 0, 6) === 'ONFIMP') {
+        } elseif (substr($data['fdPackage'], 0, 6) === 'ONFIMP') {
             $obj = new FIMPObject();
-        }elseif (substr($data['fdPackage'], 0, 5) === 'ONMHS') {
+        } elseif (substr($data['fdPackage'], 0, 5) === 'ONMHS') {
             $obj = new FIMPObject();
-        }elseif (substr($data['fdPackage'], 0, 8) === 'DIABETES') {
+        } elseif (substr($data['fdPackage'], 0, 8) === 'DIABETES') {
             $obj = new BAOWANObject();
-        }elseif (substr($data['fdPackage'], 0, 6) === 'ONCSHC') {
+        } elseif (substr($data['fdPackage'], 0, 6) === 'ONCSHC') {
             $obj = new BAOWANObject();
-        }
-        else {
+        } else {
             $obj = new BaseInsuranceObject();
         }
 
@@ -476,18 +464,18 @@ class ProductController extends BaseController
                             $dt->add(new \DateInterval("P{$day}D"));
                         }
                         $obj->$k = $dt->format('d/m/Y');
-
                     } elseif (!empty($data[$k])) {
                         $obj->$k = date('d/m/Y', strtotime($data[$k]));
                     }
                     break;
-                default :
+                default:
                     $obj->$k = isset($data[$k]) ? $data[$k] : $obj->$k;
                     break;
             }
         }
 
-        if (substr($data['fdPackage'], 0, 8) === 'ONCOVIDA'
+        if (
+            substr($data['fdPackage'], 0, 8) === 'ONCOVIDA'
             || substr($data['fdPackage'], 0, 8) === 'ONVACINA'
             || substr($data['fdPackage'], 0, 8) === 'ONVSUREA'
             || substr($data['fdPackage'], 0, 8) === 'ONVSAFEA'
@@ -499,7 +487,7 @@ class ProductController extends BaseController
             || substr($data['fdPackage'], 0, 7) === 'ONVSAFE'
             || substr($data['fdPackage'], 0, 8) === 'DIABETES'
             || substr($data['fdPackage'], 0, 6) === 'ONCSHC'
-        ){
+        ) {
 
 
             if (isset($data['fdQuestion2_1']) && ($key = array_search('other', $data['fdQuestion2_1'])) !== false) {
@@ -513,130 +501,104 @@ class ProductController extends BaseController
                 $obj->fdQuestion2_1 = implode(',', $data['fdQuestion2_1']);
             }
 
-            if (substr($data['fdPackage'], 0, 8) === 'ONCOVIDA')
-            {
+            if (substr($data['fdPackage'], 0, 8) === 'ONCOVIDA') {
                 $package = (array)json_decode(Storage::disk('public')->get('json/oncovida.json'));
-                if($data['fdKeys'] === 'QAVM2LRWBGCXXGSFBQFR6LKW24JXXUJRX8MBNGFRGUSXXTARPQJRX')
-                {
+                if ($data['fdKeys'] === 'QAVM2LRWBGCXXGSFBQFR6LKW24JXXUJRX8MBNGFRGUSXXTARPQJRX') {
                     $package = (array)json_decode(Storage::disk('public')->get('json/oncovida_old.json'));
                 }
             }
-            if (substr($data['fdPackage'], 0, 8) === 'ONVACINA')
-            {
+            if (substr($data['fdPackage'], 0, 8) === 'ONVACINA') {
                 $package = (array)json_decode(Storage::disk('public')->get('json/onvacina.json'));
             }
-             if (substr($data['fdPackage'], 0, 8) === 'ONVSUREA')
-            {
+            if (substr($data['fdPackage'], 0, 8) === 'ONVSUREA') {
                 $package = (array)json_decode(Storage::disk('public')->get('json/onvsurea.json'));
             }
-            if (substr($data['fdPackage'], 0, 8) === 'ONVSAFEA')
-            {
+            if (substr($data['fdPackage'], 0, 8) === 'ONVSAFEA') {
                 $package = (array)json_decode(Storage::disk('public')->get('json/onvsafea.json'));
             }
-            if (substr($data['fdPackage'], 0, 9) === 'ONVS22JAN')
-            {
+            if (substr($data['fdPackage'], 0, 9) === 'ONVS22JAN') {
                 $package = (array)json_decode(Storage::disk('public')->get('json/onvs22jan.json'));
             }
-            if (substr($data['fdPackage'], 0, 7) === 'ONVSAFE')
-            {
+            if (substr($data['fdPackage'], 0, 7) === 'ONVSAFE') {
                 $package = (array)json_decode(Storage::disk('public')->get('json/onvsafe.json'));
             }
-            if(substr($data['fdPackage'], 0, 7) === 'CVISAFE')
-            {
+            if (substr($data['fdPackage'], 0, 7) === 'CVISAFE') {
                 $package = (array)json_decode(Storage::disk('public')->get('json/cvisafe.json'));
             }
-             if(substr($data['fdPackage'], 0, 9) === 'CVIS22JAN')
-            {
+            if (substr($data['fdPackage'], 0, 9) === 'CVIS22JAN') {
                 $package = (array)json_decode(Storage::disk('public')->get('json/cvis22jan.json'));
             }
-            if(substr($data['fdPackage'], 0, 6) === 'CVCARE')
-            {
+            if (substr($data['fdPackage'], 0, 6) === 'CVCARE') {
                 $package = (array)json_decode(Storage::disk('public')->get('json/cvcare.json'));
             }
-            if(substr($data['fdPackage'], 0, 9) === 'ONCOVIDMW')
-            {
+            if (substr($data['fdPackage'], 0, 9) === 'ONCOVIDMW') {
                 $package = (array)json_decode(Storage::disk('public')->get('json/oncovidmw.json'));
             }
-            if (substr($data['fdPackage'], 0, 8) === 'ONVSUREA')
-            {
+            if (substr($data['fdPackage'], 0, 8) === 'ONVSUREA') {
                 $package = (array)json_decode(Storage::disk('public')->get('json/onvsurea.json'));
             }
-            if (substr($data['fdPackage'], 0, 8) === 'DIABETES')
-            {
+            if (substr($data['fdPackage'], 0, 8) === 'DIABETES') {
                 $package = (array)json_decode(Storage::disk('public')->get('json/diabetes.json'));
             }
-            if (substr($data['fdPackage'], 0, 6) === 'ONCSHC')
-            {
+            if (substr($data['fdPackage'], 0, 6) === 'ONCSHC') {
                 $package = (array)json_decode(Storage::disk('public')->get('json/oncshc.json'));
             }
-            if(isset($package[$data['fdPackage']]->apiPackage))
-            {
+            if (isset($package[$data['fdPackage']]->apiPackage)) {
                 $obj->fdApiPackage = $package[$data['fdPackage']]->apiPackage;
             }
-        }
-        elseif (substr($data['fdPackage'], 0, 8) === 'ONCOVIDL'
+        } elseif (
+            substr($data['fdPackage'], 0, 8) === 'ONCOVIDL'
             || substr($data['fdPackage'], 0, 6) === 'ONTALN'
             || substr($data['fdPackage'], 0, 9) === 'TAIPOCT22'
             || substr($data['fdPackage'], 0, 6) === 'TGCVLP'
             || substr($data['fdPackage'], 0, 7) === 'ONTGISM'
-            || substr($data['fdPackage'], 0, 7) === 'TAISMTG'            
+            || substr($data['fdPackage'], 0, 7) === 'TAISMTG'
             || substr($data['fdPackage'], 0, 5) === 'TAISM'
-            || substr($data['fdPackage'], 0, 10) === 'ONTAISMB2B')
-        {
+            || substr($data['fdPackage'], 0, 10) === 'ONTAISMB2B'
+        ) {
             $obj->fdlanguage = 1;
-            if( substr($data['fdPackage'], 0, 6) === 'ONTALN')
-            {
-                if($data['fdKeys'] === 'BQQWAMUX9JDXNTFFD4WZZLQ3NDEXNTFFT6UCXGSF68UXNEKZ24UYN5TRZ2')
-                {
+            if (substr($data['fdPackage'], 0, 6) === 'ONTALN') {
+                if ($data['fdKeys'] === 'BQQWAMUX9JDXNTFFD4WZZLQ3NDEXNTFFT6UCXGSF68UXNEKZ24UYN5TRZ2') {
                     $package = (array)json_decode(Storage::disk('public')->get('json/ontalnlite.json'));
                     $obj->fdApiPackage = $package[substr($data['fdPackage'], 0, 7)]->apiPackage;
-                }
-                else{
+                } else {
                     $package = (array)json_decode(Storage::disk('public')->get('json/ontaln.json'));
                     $obj->fdApiPackage = $package[substr($data['fdPackage'], 0, 7)]->apiPackage;
                 }
             }
-            if( substr($data['fdPackage'], 0, 9) === 'TAIPOCT22')
-            {
-                if($data['fdKeys'] === 'BQQWAMUX9JDXNTFFD4WZZLQ3NDEXNTFFT6UCXGSF68UXNEKZ24UYN5TRZ2')
-                {
+            if (substr($data['fdPackage'], 0, 9) === 'TAIPOCT22') {
+                if ($data['fdKeys'] === 'BQQWAMUX9JDXNTFFD4WZZLQ3NDEXNTFFT6UCXGSF68UXNEKZ24UYN5TRZ2') {
+                    $package = (array)json_decode(Storage::disk('public')->get('json/taipoct22.json'));
+                    $obj->fdApiPackage = $package[substr($data['fdPackage'], 0, 9)]->apiPackage;
+                } else {
                     $package = (array)json_decode(Storage::disk('public')->get('json/taipoct22.json'));
                     $obj->fdApiPackage = $package[substr($data['fdPackage'], 0, 9)]->apiPackage;
                 }
-                else{
-                    $package = (array)json_decode(Storage::disk('public')->get('json/taipoct22.json'));
-                    $obj->fdApiPackage = $package[substr($data['fdPackage'], 0, 9)]->apiPackage;
-                }
-            }           
-            
-            if( substr($data['fdPackage'], 0, 8) === 'ONCOVIDL')
-            {
+            }
+
+            if (substr($data['fdPackage'], 0, 8) === 'ONCOVIDL') {
                 $package = (array)json_decode(Storage::disk('public')->get('json/oncovidl.json'));
                 $obj->fdApiPackage = $package[$data['fdPackage']]->apiPackage;
             }
-            if( substr($data['fdPackage'], 0, 6) === 'TGCVLP')
-            {
+            if (substr($data['fdPackage'], 0, 6) === 'TGCVLP') {
                 $package = (array)json_decode(Storage::disk('public')->get('json/tgcvlp.json'));
                 $obj->fdApiPackage = $package[$data['fdPackage']]->apiPackage;
             }
-            if( substr($data['fdPackage'], 0, 7) === 'ONTGISM')
-            {
+            if (substr($data['fdPackage'], 0, 7) === 'ONTGISM') {
                 $package = (array)json_decode(Storage::disk('public')->get('json/ontgism.json'));
                 $obj->fdApiPackage = $package[$data['fdPackage']]->apiPackage;
             }
-            
-            if( substr($data['fdPackage'], 0, 7) === 'TAISMTG')
-            {
+
+            if (substr($data['fdPackage'], 0, 7) === 'TAISMTG') {
                 $package = (array)json_decode(Storage::disk('public')->get('json/taismtg.json'));
                 $obj->fdApiPackage = $package[$data['fdPackage']]->apiPackage;
             }
-            if(isset($package[$data['fdPackage']]->apiPackage))
-            {
+            if (isset($package[$data['fdPackage']]->apiPackage)) {
                 $obj->fdApiPackage = $package[$data['fdPackage']]->apiPackage;
             }
         }
 
-//       dd($obj);
+        //       dd($obj);
 
         $obj->fdController = $this->controller;
         return $obj;
@@ -661,17 +623,14 @@ class ProductController extends BaseController
     }
 
     public function makePayment(Request $request)
-    {        
-        if($this->controller === 'product')
-        {
+    {
+        if ($this->controller === 'product') {
             session(['nopayment_status' => false]);
         }
-        if($this->controller === 'tg')
-        {
+        if ($this->controller === 'tg') {
             session(['nopayment_status' => true]);
         }
-        if($this->controller === 'tgism')
-        {
+        if ($this->controller === 'tgism') {
             session(['nopayment_status' => true]);
         }
 
@@ -679,7 +638,7 @@ class ProductController extends BaseController
         if (isset($data['send_data'])) {
             $data = (array)json_decode($data['send_data']);
 
-            if(Str::contains($data['fdPackage'],ProjectEnum::ISMILE_URL)){
+            if (Str::contains($data['fdPackage'], ProjectEnum::ISMILE_URL)) {
                 $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::ISMILE_URL;
             }
 
@@ -705,13 +664,12 @@ class ProductController extends BaseController
             }
 
             return $this->sendTo2C2P($result, $price, $log_id);
-
         } else {
 
-            if(Str::contains($data['fdPackage'],ProjectEnum::DIABETES_URL)){
+            if (Str::contains($data['fdPackage'], ProjectEnum::DIABETES_URL)) {
                 $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::DIABETES_URL;
             }
-            if(Str::contains($data['fdPackage'],ProjectEnum::MYHOME_SMART_URL)){
+            if (Str::contains($data['fdPackage'], ProjectEnum::MYHOME_SMART_URL)) {
                 $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::MYHOME_SMART_URL;
             }
 
@@ -724,8 +682,6 @@ class ProductController extends BaseController
 
             return $this->sendTo2C2P($result);
         }
-
-
     }
 
     protected function noPayment($obj, $price = null, $log_id = null)
@@ -741,7 +697,6 @@ class ProductController extends BaseController
             $func = 'error';
         }
         return redirect()->route('current', ['locale' => $this->locale, 'controller' => $this->controller, 'func' => $func, 'params' => $this->thankYouParam]);
-
     }
 
     protected function sendToApiIssueNoPayment($fdInvoice, $fdPaymentCh, $fdCard_No)
@@ -776,8 +731,7 @@ class ProductController extends BaseController
 
             if ($apiResult["status"]) {
                 $v->issuepolicy_status =  'S';
-            }
-            else{
+            } else {
                 $v->issuepolicy_status =  'E';
             }
 
@@ -789,7 +743,7 @@ class ProductController extends BaseController
             $PolicyData = $apiResult['data'];
             $Status = $apiResult["status"];
 
-            if($apiResult['data'] !== null){
+            if ($apiResult['data'] !== null) {
                 foreach ($PolicyData as $k => $v) {
                     if ($k === 'BigPoint') {
                         if (is_numeric($v)) {
@@ -798,7 +752,6 @@ class ProductController extends BaseController
                     }
                 }
             }
-
         }
 
         $arrResult[] = $PolicyArr;
@@ -806,7 +759,6 @@ class ProductController extends BaseController
         $arrResult[] = $Status;
 
         return $arrResult;
-
     }
 
     protected function sendToApiIssue($fdInvoice, $fdPaymentCh, $fdCard_No)
@@ -830,7 +782,7 @@ class ProductController extends BaseController
 
             $client = new Client();
 
-			//echo var_dump(json_encode($data));
+            //echo var_dump(json_encode($data));
             //dd(json_encode($data));
             $response = $client->request('POST', config('tune-api.url') . $this->getApiIssueLink($data['fdPackage']), [
                 'auth' => [config('tune-api.user'), config('tune-api.password')],
@@ -840,11 +792,10 @@ class ProductController extends BaseController
                 'body' => json_encode($data)
             ]);
             $apiResult = (array)json_decode($response->getBody()->getContents(), true);
-            
+
             if ($apiResult["status"]) {
                 $v->issuepolicy_status =  'S';
-            }
-            else{
+            } else {
                 $v->issuepolicy_status =  'E';
             }
 
@@ -864,7 +815,6 @@ class ProductController extends BaseController
                     }
                 }
             }
-
         }
 
         $arrResult[] = $PolicyArr;
@@ -872,27 +822,21 @@ class ProductController extends BaseController
         $arrResult[] = $Status;
 
         return $arrResult;
-
     }
 
     protected function sendTo2C2P($obj, $price = null, $log_id = null)
     {
         $invalidkey = false;
-        if(strtolower($this->controller) === "portal")
-        {
+        if (strtolower($this->controller) === "portal") {
             $data = $obj->data;
-            if(!$data["fdKeys"])
-            {
+            if (!$data["fdKeys"]) {
                 $invalidkey = true;
-            }
-            else{
-                if($data["fdKeys"] === "")
-                {
+            } else {
+                if ($data["fdKeys"] === "") {
                     $invalidkey = true;
                 }
             }
-            if($invalidkey === true)
-            {
+            if ($invalidkey === true) {
                 session(['error' => "Invalid link, Can not find key please check link again."]);
                 $func = 'error';
                 return redirect()->route('current', ['locale' => $this->locale, 'controller' => $this->controller, 'func' => $func, 'params' => $this->thankYouParam]);
@@ -910,23 +854,22 @@ class ProductController extends BaseController
         $arr_post['customer_email'] = $obj->data["fdEmail"];
         $arr_post['user_defined_1'] = ($log_id ? implode(',', $log_id) : $obj->log_id);
 
-//        dd(strlen($arr_post['user_defined_1']));
+        //        dd(strlen($arr_post['user_defined_1']));
 
-        if(strlen($arr_post['user_defined_1'])>150)
-        {
+        if (strlen($arr_post['user_defined_1']) > 150) {
             $arr_post['user_defined_1'] = substr($arr_post['user_defined_1'], 0, 150);
         }
 
-//        dd(strlen($arr_post['user_defined_1']));
+        //        dd(strlen($arr_post['user_defined_1']));
 
         $arr_post['user_defined_2'] = preg_replace('/\?.*/', '', session('return_link'));
         $arr_post['user_defined_3'] = session('partner');
-        $arr_post['user_defined_4'] = $this->thankYouParam;        
+        $arr_post['user_defined_4'] = $this->thankYouParam;
         $arr_post['result_url_1'] = url("{$this->locale}/{$this->controller}/result");
         $arr_post['payment_option'] = $this->payment;
         $arr_post['ipp_interest_type'] = $this->ipp_interest_type;
         $arr_post['default_lang'] = $this->locale;
-//        $arr_post['ipp_period_filter'] = 10;
+        //        $arr_post['ipp_period_filter'] = 10;
 
         $params = join($arr_post);
         $arr_post['hash_value'] = hash_hmac('sha256', $params, config('payment.secret'), false);    //Compute hash value
@@ -934,11 +877,10 @@ class ProductController extends BaseController
         $this->bodyData['arr_post'] = $arr_post;
 
 
-        if(strtolower($this->controller) === "portal")
-        {
-                $this->bodyData['partner'] =session('partner');
-                $this->bodyData['selected'] =session('selected');
-                return $this->genView('frontend.page.payment_portal');
+        if (strtolower($this->controller) === "portal") {
+            $this->bodyData['partner'] = session('partner');
+            $this->bodyData['selected'] = session('selected');
+            return $this->genView('frontend.page.payment_portal');
         }
         return $this->genView('frontend.page.payment');
     }
@@ -949,9 +891,11 @@ class ProductController extends BaseController
         if (str_starts_with($package, 'ONPA')) {
             $this->thankYouParam = 'ONPA';
             $link = 'IssuePolicyPAChoice';
-        } elseif (substr($package, 0, 8) === 'ONCOVIDA'
+        } elseif (
+            substr($package, 0, 8) === 'ONCOVIDA'
             || substr($package, 0, 8) === 'ONCOVIDL'
-            || substr($package, 0, 8) === 'ONISAFEX') {
+            || substr($package, 0, 8) === 'ONISAFEX'
+        ) {
             $this->thankYouParam = substr($package, 0, 8);
             $link = 'IssuePolicyCovid19';
         } elseif (substr($package, 0, 6) === 'TGCVLP') {
@@ -986,7 +930,7 @@ class ProductController extends BaseController
             $link = "IssuePolicyInbound";
         } elseif (substr($package, 0, 6) === 'ONTAOB') {
             $this->thankYouParam = substr($package, 0, 6);
-            $link = "IssuePolicyiTravel";        
+            $link = "IssuePolicyiTravel";
         } elseif (substr($package, 0, 8) === 'ONB2BTAD') {
             $this->thankYouParam = substr($package, 0, 8);
             $link = "IssuePolicy";
@@ -1023,14 +967,14 @@ class ProductController extends BaseController
         } elseif (substr($package, 0, 5) === 'ONMHS') {
             $this->thankYouParam = substr($package, 0, 5);
             $link = 'IssuePolicyMyHomeSmart';
-			$this->thankYouParam =  ProjectEnum::MYHOME_SMART_URL;
+            $this->thankYouParam =  ProjectEnum::MYHOME_SMART_URL;
         } elseif (substr($package, 0, 7) === 'CVISAFE') {
             $this->thankYouParam = 'CVISAFE';
             $link = 'IssuePolicyCovid19';
         } elseif (substr($package, 0, 9) === 'CVIS22JAN') {
             $this->thankYouParam = 'CVIS22JAN';
             $link = 'IssuePolicyCovid19';
-        }elseif (substr($package, 0, 8) === ProjectEnum::DIABETES_URL) {
+        } elseif (substr($package, 0, 8) === ProjectEnum::DIABETES_URL) {
             $this->thankYouParam =  ProjectEnum::DIABETES_URL;
             $link = ProjectEnum::ISSUE_POLICY_DIABETES;
         } elseif (substr($package, 0, 5) === 'TAISM') {
@@ -1064,25 +1008,25 @@ class ProductController extends BaseController
 
     public function error(Request $request)
     {
-        $this->bodyData['doc_no'] =$request->session()->get('error');
+        $this->bodyData['doc_no'] = $request->session()->get('error');
         return $this->genStatusPage(ProjectEnum::STATIC_PAGE_PAYMENT_ERROR);
     }
 
     public function cancel(Request $request)
     {
-        $this->bodyData['doc_no'] =$request->session()->get('error');
+        $this->bodyData['doc_no'] = $request->session()->get('error');
         return redirect('/' . $this->locale);
     }
 
     public function pending(Request $request)
     {
-        $this->bodyData['doc_no'] =$request->session()->get('error');
+        $this->bodyData['doc_no'] = $request->session()->get('error');
         return $this->genStatusPage(ProjectEnum::STATIC_PAGE_PAYMENT_PENDING);
     }
 
     public function reject(Request $request)
     {
-        $this->bodyData['doc_no'] =$request->session()->get('error');
+        $this->bodyData['doc_no'] = $request->session()->get('error');
         return $this->genStatusPage(ProjectEnum::STATIC_PAGE_PAYMENT_REJECT);
     }
 
@@ -1094,16 +1038,16 @@ class ProductController extends BaseController
         //$this->thankYouParam = $request->session()->get('thankyou_param');
 
         $thank_you_page = ProjectEnum::STATIC_PAGE_PAYMENT_THANK_YOU;
-        if(Str::contains($request->getRequestUri(),ProjectEnum::DIABETES_URL)){
+        if (Str::contains($request->getRequestUri(), ProjectEnum::DIABETES_URL)) {
             $thank_you_page = ProjectEnum::STATIC_PAGE_PAYMENT_THANK_YOU_DIABETES;
         }
-        if(Str::contains($request->getRequestUri(),ProjectEnum::ISMILE_URL)){
+        if (Str::contains($request->getRequestUri(), ProjectEnum::ISMILE_URL)) {
             $thank_you_page = ProjectEnum::STATIC_PAGE_PAYMENT_THANK_YOU_ISMILE;
         }
-		 if(Str::contains($request->getRequestUri(),ProjectEnum::MYHOME_SMART_URL)){
+        if (Str::contains($request->getRequestUri(), ProjectEnum::MYHOME_SMART_URL)) {
             $thank_you_page = ProjectEnum::STATIC_PAGE_PAYMENT_THANK_YOU_MYHOME_SMART;
         }
-		
+
         return $this->genStatusPage($thank_you_page);
     }
 
@@ -1113,13 +1057,17 @@ class ProductController extends BaseController
         $oBuyLog = BuyLog::where('fdInvoice', str_replace(config('project.invoice_prefix'), "", $request->input('order_id')))->get();
         foreach ($oBuyLog as $v) {
             $data = $v->data;
-            if($v->result)
-            {
+            $payAmount = $data['fdPayAMT'];
+            $portalKey = $data['fdKeys'];
+            if ($v->result) {
                 $request->session()->put('doc_no',  $v->result['message']);
                 $request->session()->put('return_link', $request->input('user_defined_2'));
                 $request->session()->put('partner', $request->input('user_defined_3'));
                 $request->session()->put('thankyou_param', $request->input('user_defined_4'));
+                $request->session()->put('payAmount', $payAmount);
+                $request->session()->put('portalKey', $portalKey);
                 $this->thankYouParam = $request->input('user_defined_4');
+
                 $func = 'thankyou';
                 return redirect()->route('current', ['locale' => $this->locale, 'controller' => $this->controller, 'func' => $func, 'params' => $this->thankYouParam]);
             }
@@ -1139,6 +1087,8 @@ class ProductController extends BaseController
                     $request->session()->put('return_link', $request->input('user_defined_2'));
                     $request->session()->put('partner', $request->input('user_defined_3'));
                     $request->session()->put('thankyou_param', $request->input('user_defined_4'));
+                    $request->session()->put('payAmount', $payAmount);
+                    $request->session()->put('portalKey', $portalKey);
                     $this->thankYouParam = $request->input('user_defined_4');
                     $func = 'thankyou';
                 } else {
@@ -1184,7 +1134,7 @@ class ProductController extends BaseController
         $arr_post['payment_option'] = "CC,FULL";
         $arr_post['ipp_interest_type'] = 'A';
         $arr_post['default_lang'] = $this->locale;
-//        $arr_post['ipp_period_filter'] = '10';
+        //        $arr_post['ipp_period_filter'] = '10';
 
 
         $params = join($arr_post);
@@ -1211,8 +1161,6 @@ class ProductController extends BaseController
         $result = $this->logData($obj);
 
         dd($result);
-
-
     }
 
     public function checkDup(Request $request)
@@ -1229,9 +1177,9 @@ class ProductController extends BaseController
             'body' => json_encode($data)
         ]);
         $res = (object)json_decode($response->getBody()->getContents(), true);
-        
+
         $this->apiResult = $res->status ? self::SUCCESS : self::ERROR;
-        
+
         if ($res->status) {
             $this->apiStatus = self::SUCCESS;
             $this->apiStatusText = self::SUCCESS;
@@ -1249,39 +1197,33 @@ class ProductController extends BaseController
     }
     public function testDebug()
     {
-//        $document = BuyLog::whereYear("created_at", date("Y"))
-//            ->whereMonth("created_at", date("m"))
-//            ->whereDay("created_at", date("d"))
-//            ->orderBy("RefCode", "DESC")
-//            ->first();
-//        dd($document->RefCode);
+        //        $document = BuyLog::whereYear("created_at", date("Y"))
+        //            ->whereMonth("created_at", date("m"))
+        //            ->whereDay("created_at", date("d"))
+        //            ->orderBy("RefCode", "DESC")
+        //            ->first();
+        //        dd($document->RefCode);
 
-//        $document = BuyLog::orderBy("id", "DESC")
-//            ->first();
-//        if (empty($document)) {
-//            $max = 1;
-//        } else {
-//            $max = $document->id + 1;
-//        }
+        //        $document = BuyLog::orderBy("id", "DESC")
+        //            ->first();
+        //        if (empty($document)) {
+        //            $max = 1;
+        //        } else {
+        //            $max = $document->id + 1;
+        //        }
 
         $str_max = '';
         $max = 111;
-//        dd(str_pad($max, 5, 0, STR_PAD_LEFT));
+        //        dd(str_pad($max, 5, 0, STR_PAD_LEFT));
 
-        if(strlen($max)>5)
-        {
-            $str_max= substr($max, 0, 5);
-        }
-        else{
+        if (strlen($max) > 5) {
+            $str_max = substr($max, 0, 5);
+        } else {
             $str_max = str_pad($max, 5, 0, STR_PAD_LEFT);
         }
 
-//        dd($str_max);
+        //        dd($str_max);
 
-        dd(strval(date('Ymd').$str_max));
-
+        dd(strval(date('Ymd') . $str_max));
     }
-
-
 }
-
