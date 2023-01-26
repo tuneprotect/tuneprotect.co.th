@@ -18,7 +18,7 @@
     @endif
 
     
-    @if($portalKey === 'JGVM66EX9GRM6LA3D8ARBLUX6EUXNTARD8UXN4U228UVN4RR22')
+    @if($portal_key === 'JGVM66EX9GRM6LA3D8ARBLUX6EUXNTARD8UXN4U228UVN4RR22')
     <script>
         var __atw = __atw || [];
         __atw.push({
