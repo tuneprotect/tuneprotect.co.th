@@ -78,7 +78,7 @@
     @endif
 
     <!-- Tracking code for interspace -->
-    @if($portal_key === 'JGVM66EX9GRM6LA3D8ARBLUX6EUXNTARD8UXN4U228UVN4RR22')
+    @if($selected==='ONTAOB' && $portal_key === 'JGVM66EX9GRM6LA3D8ARBLUX6EUXNTARD8UXN4U228UVN4RR22')
     <script>
         var timestamp = new Date().getTime();
         (function(d) {
