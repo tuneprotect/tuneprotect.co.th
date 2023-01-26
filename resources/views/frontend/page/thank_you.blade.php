@@ -26,7 +26,7 @@
             "param": {
                 "result_id": "2",
                 "identifier": '{{$doc_no}}', // Lead ID
-                "value": '{{$totalAmount}}', // Total Amount
+                "value": '{{$payAmount}}', // Total Amount
                 "currency": 'THB' // In this case : THB
             }
         });

@@ -1057,14 +1057,17 @@ class ProductController extends BaseController
         $oBuyLog = BuyLog::where('fdInvoice', str_replace(config('project.invoice_prefix'), "", $request->input('order_id')))->get();
         foreach ($oBuyLog as $v) {
             $data = $v->data;
+            $payAmount = $data['fdPayAMT'];
+            $portalKey = $data['fdKeys'];
             if ($v->result) {
                 $request->session()->put('doc_no',  $v->result['message']);
                 $request->session()->put('return_link', $request->input('user_defined_2'));
                 $request->session()->put('partner', $request->input('user_defined_3'));
                 $request->session()->put('thankyou_param', $request->input('user_defined_4'));
-                $request->session()->put('fdPayAMT', $data['fdPayAMT']);
-                $request->session()->put('fdKeys', $data['fdKeys']);
+                $request->session()->put('payAmount', $payAmount);
+                $request->session()->put('portalKey', $portalKey);
                 $this->thankYouParam = $request->input('user_defined_4');
+
                 $func = 'thankyou';
                 return redirect()->route('current', ['locale' => $this->locale, 'controller' => $this->controller, 'func' => $func, 'params' => $this->thankYouParam]);
             }
@@ -1084,6 +1087,8 @@ class ProductController extends BaseController
                     $request->session()->put('return_link', $request->input('user_defined_2'));
                     $request->session()->put('partner', $request->input('user_defined_3'));
                     $request->session()->put('thankyou_param', $request->input('user_defined_4'));
+                    $request->session()->put('payAmount', $payAmount);
+                    $request->session()->put('portalKey', $portalKey);
                     $this->thankYouParam = $request->input('user_defined_4');
                     $func = 'thankyou';
                 } else {
