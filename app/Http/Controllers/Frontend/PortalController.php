@@ -194,7 +194,6 @@ class PortalController extends ProductController
 
     public function thankyou(Request $request)
     {
-        dd($request);
         $this->bodyData['partner'] = $request->session()->get('partner');
         $this->bodyData['doc_no'] = $request->session()->get('doc_no');
         $this->bodyData['return_link'] = $request->session()->get('return_link');
