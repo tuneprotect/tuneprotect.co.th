@@ -1058,11 +1058,12 @@ class ProductController extends BaseController
         foreach ($oBuyLog as $v) {
             $data = $v->data;
             if ($v->result) {
-                dd($request, $data);
                 $request->session()->put('doc_no',  $v->result['message']);
                 $request->session()->put('return_link', $request->input('user_defined_2'));
                 $request->session()->put('partner', $request->input('user_defined_3'));
                 $request->session()->put('thankyou_param', $request->input('user_defined_4'));
+                $request->session()->put('fdPayAMT', $data['fdPayAMT']);
+                $request->session()->put('fdKeys', $data['fdKeys']);
                 $this->thankYouParam = $request->input('user_defined_4');
                 $func = 'thankyou';
                 return redirect()->route('current', ['locale' => $this->locale, 'controller' => $this->controller, 'func' => $func, 'params' => $this->thankYouParam]);

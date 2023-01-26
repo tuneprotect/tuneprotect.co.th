@@ -2,6 +2,7 @@
 
 
 namespace App\Http\Controllers\Frontend;
+
 use GuzzleHttp\Client;
 use Illuminate\Http\Request;
 use App\Enum\ProjectEnum;
@@ -13,7 +14,7 @@ class PortalController extends ProductController
 {
     protected $controller = 'portal';
     protected $use_effective = 'N';
-    public function index($link = null, $selected = null,$portal_key = null,$redeem_code =null)
+    public function index($link = null, $selected = null, $portal_key = null, $redeem_code = null)
     {
         $return_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
         session(['return_link' => $return_link]);
@@ -21,7 +22,7 @@ class PortalController extends ProductController
         if (in_array($selected, ['CVISAFE'])) {
             $selected = "CVIS22JAN";
         }
-        if (in_array($selected, ['ONVSAFEA','ONVS22JAN'])) {
+        if (in_array($selected, ['ONVSAFEA', 'ONVS22JAN'])) {
             $selected = "ONVSAFE";
         }
         if (in_array($selected, ['ONVACINA'])) {
@@ -37,18 +38,14 @@ class PortalController extends ProductController
                 $apiErrorMsg = '';
                 if ($apiErrorCode === 'E0001') {
                     $apiErrorMsg = __('product.error.promocode_invalid');
-                }
-                elseif ($apiErrorCode === 'E0002') {
+                } elseif ($apiErrorCode === 'E0002') {
                     $apiErrorMsg = __('product.error.promocode_inused') . ' ' . $apiData["data"];
-                }
-                elseif ($apiErrorCode === 'E0000') {
+                } elseif ($apiErrorCode === 'E0000') {
                     $apiErrorMsg = __('product.error.promocode_invalid') . ' ' . $apiData["message"];;
                 }
 
-                $massage_error= $apiErrorMsg;
-            }
-            else
-            {
+                $massage_error = $apiErrorMsg;
+            } else {
                 $massage_error = '';
             }
         }
@@ -67,16 +64,13 @@ class PortalController extends ProductController
         if (!$apiResult["status"]) {
             $status_api = false;
             $massage_key = "Error : " . $apiResult["message"];
-        }
-        else
-        {
+        } else {
             $status_api = true;
             $massage_key = "Portal Key : " . $portal_key;
             $partner = $apiResult["partner"];
             $agentCode = $apiResult["agent_code"];
             $this->use_effective = $apiResult["user_effective"];
-            if($apiResult["user_nopayment"] == 'Y')
-            {
+            if ($apiResult["user_nopayment"] == 'Y') {
                 $nopayment_status = true;
             }
         }
@@ -94,18 +88,17 @@ class PortalController extends ProductController
         session(['nopayment_status' => $nopayment_status]);
         session(['partner' => $partner]);
 
-        return parent::index($link,$selected);
-
+        return parent::index($link, $selected);
     }
 
     //https://www.tuneprotect.co.th/th/portal/list/pa-choice-insurance-broker/AUAWAMUX9JDXNGFFD4WZZLQ3NDEXNGFF6EJXNHSF28UZG4ERZ6JLGTGRA2
-    public function list($link = null,$portal_key = null)
+    public function list($link = null, $portal_key = null)
     {
         $this->bodyData['portal_key'] = $portal_key;
         return parent::index($link);
     }
 
-    public function form($link = null, $selected = null,$portal_key = null)
+    public function form($link = null, $selected = null, $portal_key = null)
     {
         $return_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
         session(['return_link' => $return_link]);
@@ -123,19 +116,15 @@ class PortalController extends ProductController
         if (!$apiResult["status"]) {
             $status_api = false;
             $massage_key = "Error : " . $apiResult["message"];
-        }
-        else
-        {
+        } else {
             $status_api = true;
             $massage_key = "Portal Key : " . $portal_key;
             $partner = $apiResult["partner"];
             $agentCode = $apiResult["agent_code"];
             $use_effective = $apiResult["user_effective"];
-            if($apiResult["user_nopayment"] == 'Y')
-            {
+            if ($apiResult["user_nopayment"] == 'Y') {
                 $nopayment_status = true;
             }
-
         }
 
         $this->bodyData['partner'] = $partner;
@@ -149,14 +138,12 @@ class PortalController extends ProductController
         session(['partner' => $partner]);
 
         $this->bodyData['brochure_ci'] = __('product.ci_brochure_broker_th');
-        if($this->locale == 'en')
-        {
+        if ($this->locale == 'en') {
 
             $this->bodyData['brochure_ci'] = __('product.ci_brochure_broker_en');
         }
 
-        return parent::form($link,$selected);
-
+        return parent::form($link, $selected);
     }
 
     protected function sendToApiPortalLogin($portal_key)
@@ -207,58 +194,57 @@ class PortalController extends ProductController
 
     public function thankyou(Request $request)
     {
+        dd($request);
         $this->bodyData['partner'] = $request->session()->get('partner');
         $this->bodyData['doc_no'] = $request->session()->get('doc_no');
         $this->bodyData['return_link'] = $request->session()->get('return_link');
         $this->bodyData['point'] = '';
+        $this->bodyData['total_amount'] = $request->session()->get('fdPayAMT');
+        $this->bodyData['portal_key'] = $request->session()->get('fdKeys');
         //$this->bodyData['page'] = '';
-        if($request->session()->get('partner')==='rabbit'){
+        if ($request->session()->get('partner') === 'rabbit') {
 
             $mystring = $request->session()->get('return_link');
             $findme   = 'ONTAOB';
             $pos = strpos($mystring, $findme);
-            $this->bodyData['selected'] = $pos==true ? "thank" : $request->session()->get('selected');
+            $this->bodyData['selected'] = $pos == true ? "thank" : $request->session()->get('selected');
             //$this->bodyData['page'] = 'thankyou';
-        }else{
+        } else {
             $this->bodyData['selected'] = $request->session()->get('selected');
         }
-       
+
 
         if (session('partner')) {
-            if(session('partner') ==='THAIAIRWAY')
-            {
+            if (session('partner') === 'THAIAIRWAY') {
                 return (new TGController)->thankyou($request);
             }
-
         }
 
         $thank_you_page = ProjectEnum::STATIC_PAGE_PAYMENT_THANK_YOU;
-        if(Str::contains($request->getRequestUri(),ProjectEnum::DIABETES_URL)){
+        if (Str::contains($request->getRequestUri(), ProjectEnum::DIABETES_URL)) {
             $thank_you_page = ProjectEnum::STATIC_PAGE_PAYMENT_THANK_YOU_DIABETES;
         }
-        if(Str::contains($request->getRequestUri(),ProjectEnum::ISMILE_URL)){
+        if (Str::contains($request->getRequestUri(), ProjectEnum::ISMILE_URL)) {
             $thank_you_page = ProjectEnum::STATIC_PAGE_PAYMENT_THANK_YOU_ISMILE;
         }
 
         return $this->genStatusPage_Portal($thank_you_page);
-
     }
 
     public function error(Request $request)
     {
-        $this->bodyData['partner'] =$request->session()->get('partner');
-        $this->bodyData['selected'] =$request->session()->get('selected');
-        $this->bodyData['doc_no'] =$request->session()->get('error');
+        $this->bodyData['partner'] = $request->session()->get('partner');
+        $this->bodyData['selected'] = $request->session()->get('selected');
+        $this->bodyData['doc_no'] = $request->session()->get('error');
         return $this->genStatusPage_Portal(ProjectEnum::STATIC_PAGE_PAYMENT_ERROR);
     }
 
     public function cancel(Request $request)
     {
-        $this->bodyData['partner'] =$request->session()->get('partner');
-        $this->bodyData['selected'] =$request->session()->get('selected');
-        $this->bodyData['doc_no'] =$request->session()->get('error');
-        if($request->session()->get('return_link'))
-        {
+        $this->bodyData['partner'] = $request->session()->get('partner');
+        $this->bodyData['selected'] = $request->session()->get('selected');
+        $this->bodyData['doc_no'] = $request->session()->get('error');
+        if ($request->session()->get('return_link')) {
             return redirect($request->session()->get('return_link'));
         }
         return redirect('/' . $this->locale);
@@ -266,18 +252,17 @@ class PortalController extends ProductController
 
     public function pending(Request $request)
     {
-        $this->bodyData['partner'] =$request->session()->get('partner');
-        $this->bodyData['selected'] =$request->session()->get('selected');
-        $this->bodyData['doc_no'] =$request->session()->get('error');
+        $this->bodyData['partner'] = $request->session()->get('partner');
+        $this->bodyData['selected'] = $request->session()->get('selected');
+        $this->bodyData['doc_no'] = $request->session()->get('error');
         return $this->genStatusPage_Portal(ProjectEnum::STATIC_PAGE_PAYMENT_PENDING);
     }
 
     public function reject(Request $request)
     {
-        $this->bodyData['partner'] =$request->session()->get('partner');
-        $this->bodyData['selected'] =$request->session()->get('selected');
-        $this->bodyData['doc_no'] =$request->session()->get('error');
+        $this->bodyData['partner'] = $request->session()->get('partner');
+        $this->bodyData['selected'] = $request->session()->get('selected');
+        $this->bodyData['doc_no'] = $request->session()->get('error');
         return $this->genStatusPage_Portal(ProjectEnum::STATIC_PAGE_PAYMENT_REJECT);
     }
 }
-
