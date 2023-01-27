@@ -79,7 +79,14 @@
     <br/>
     {!! $package->locales[$locale]->remark !!}
 </section>
-
+<style>
+    #step3 #spHead{
+        display: block;
+    }
+    #step4 #spHead{
+        display: none;
+    }
+</style>
 
 @include('frontend.component.form-itravel-coverage-table-with-subpackage-b2b',['package_detail' => $package_detail,'selected' =>$selected ])
 <section style="display: none" id="step3" class="wrapper">
@@ -87,7 +94,7 @@
         <div class="form-head"> {{$package->locales[$locale]->title}}  
             <span id="form-head" style="display:none"></span>
             <span id="txtHead"></span>
-            <span>
+            <span id="spHead">
                 @if($locale == 'en')                   
                     (English Only)
                 @else
