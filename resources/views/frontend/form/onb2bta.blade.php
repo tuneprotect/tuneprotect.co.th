@@ -80,9 +80,6 @@
     {!! $package->locales[$locale]->remark !!}
 </section>
 <style>
-    #step3 #spHead{
-        display: block;
-    }
     #step4 #spHead{
         display: none;
     }
