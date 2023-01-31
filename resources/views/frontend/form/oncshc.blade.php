@@ -67,7 +67,7 @@
                     <div class="controls-wrapper">
                         <ul class="check-wrapper">
                             <li>
-                                <input id="ctrl_channel_answer_no1_1" name="fdSendAnswer1" type="radio" checked
+                                <input id="ctrl_channel_answer_no1_1" name="fdSendAnswer1" type="radio" 
                                     value="N"/><label
                                     for="ctrl_channel_answer_no1_1">@lang('product.chillsure.answer_no1_1')</label>
                             </li>
@@ -84,7 +84,7 @@
                     <div class="controls-wrapper">
                         <ul class="check-wrapper">
                             <li>
-                                <input id="ctrl_channel_answer_no2_1" name="fdSendAnswer2" type="radio" checked
+                                <input id="ctrl_channel_answer_no2_1" name="fdSendAnswer2" type="radio" 
                                     value="N"/><label
                                     for="ctrl_channel_answer_no2_1">@lang('product.chillsure.answer_no2_1')</label>
                             </li>
@@ -101,7 +101,7 @@
                     <div class="controls-wrapper">
                         <ul class="check-wrapper">
                             <li>
-                                <input id="ctrl_channel_answer_no3_1" name="fdSendAnswer3" type="radio" checked
+                                <input id="ctrl_channel_answer_no3_1" name="fdSendAnswer3" type="radio" 
                                     value="N"/><label
                                     for="ctrl_channel_answer_no3_1">@lang('product.chillsure.answer_no3_1')</label>
                             </li>

@@ -450,6 +450,16 @@ document.addEventListener("DOMContentLoaded", async () => {
             }
         });
     }
+    $('input[type=radio][name=fdSendAnswer2]').change(function() {
+        if (this.value == 'Y') {
+           alert(1)
+        }
+    });
+    $('input[type=radio][name=fdSendAnswer3]').change(function() {
+        if (this.value == 'Y') {
+            alert(1)
+        }
+    });
 
     const $btnGoto = $$('.btn-goto');
     $btnGoto.forEach($btn => {
