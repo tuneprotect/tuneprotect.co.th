@@ -58,16 +58,14 @@
 @include('frontend.component.form-chill-sure-table',['package_detail' => $package_detail,'selected' =>$selected ])
 
 <section style="display: none;" id="step3" class="wrapper">
-    <h2>@lang('product.question_title')</h2>
+    <h2>@lang('product.chillsure.question_title')</h2>
     <div class="question">
-        <p>@lang('product.question_diabetes_1')</p>
-        <p>@lang('product.question_diabetes_2')</p>
-        <p>@lang('product.question_diabetes_3')</p>
-        <div class="bmi_wrapper">
-            <p>@lang('product.question_diabetes_4')</p>
-            <div id="bmi_result">25</div>
-            <p>@lang('product.question_diabetes_4_1')</p>
-        </div>
+        <p>@lang('product.chillsure.question_no1')</p>
+
+        <p>@lang('product.chillsure.question_no2')</p>
+        
+        <p>@lang('product.chillsure.question_no3')</p>
+       
         <br>
         <div>@lang('product.question_p_5')</div>
     </div>
