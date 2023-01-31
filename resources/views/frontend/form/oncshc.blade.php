@@ -118,24 +118,7 @@
             <div>@lang('product.question_p_5')</div>
         </main>
     </div>
-    <div class="btn-wrapper text-center check_q-wrapper">
-        <div class="check_q">
-            <a id="btn-q-n" class="btn btn-outline red">@lang('product.proceed_q_n')</a>
-        </div>
-        <div class="check_q">
-            <input id="fdQuestion1" name="fdQuestion1" type="checkbox"
-                   data-error-insurance_term="@lang('product.proceed_q_y')" value="1"
-                   data-gtm="product-{{strtolower($selected)}}-proceed-step-3" data-step="4">
-            <label for="fdQuestion1">
-                <a data-gtm="product-{{strtolower($selected)}}-proceed-step-3" data-step="4"
-                   class="btn btn-outline green  btn-goto" id="btn-fdQuestion1">@lang('product.proceed_q_y')</a></label>
-        </div>
-
-    </div>
-    <div class="controls-wrapper">
-        @lang('product.question_p_4')
-    </div>
-
+    
     <div class="page-overlay" style="display: none">
         <div class="popup-wrapper">
             <a data-gtm="index-question-close" class="close"><i class="icofont-close"></i></a>
