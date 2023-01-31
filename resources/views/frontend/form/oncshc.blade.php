@@ -61,9 +61,24 @@
     <h2>@lang('product.chillsure.question_title')</h2>
     <div class="question">
         <p>@lang('product.chillsure.question_no1')</p>
-
+        <div class="two-col">
+            <div class="controls-wrapper">
+                <ul class="check-wrapper">
+                    <li>
+                        <input id="ctrl_channel_email" name="fdSendType" type="radio" checked
+                            value="E"/><label
+                            for="ctrl_channel_email">@lang('global.email')</label>
+                    </li>
+                    <li>
+                        <input id="ctrl_channel_post" name="fdSendType" type="radio"
+                            value="P"/><label
+                            for="ctrl_channel_post">@lang('product.post')</label>
+                    </li>
+                </ul>
+            </div>
+        </div>
         <p>@lang('product.chillsure.question_no2')</p>
-        
+
         <p>@lang('product.chillsure.question_no3')</p>
        
         <br>
