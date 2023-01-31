@@ -144,11 +144,17 @@
                         <i style="font-size: 2.5rem" class="icofont-alarm"></i>
                     </div>
                     <br>
-                    @lang('product.error.bmi.question-not-qualify')
-
+                    @lang('product.question_block')
+                    <br>
+                    <br>
+                    <div style="text-align: center">
+                        <a class="btn btn-primary" href="{{$overview_link}}#leadform-section"
+                           data-gtm="ci-goto-leadform">@lang('product.leave_us_your_lead')</a>
+                    </div>
                 </div>
             </div>
         </div>
+
     </div>
 </section>
 <section style="display: none;" id="step4" class="wrapper">
