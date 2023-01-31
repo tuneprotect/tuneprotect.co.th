@@ -132,7 +132,7 @@
         </div>
 
     </div>
-    <div class="controls-wrapper">
+    <div class="controls-wrapper"  style="display: none">
         @lang('product.question_p_4')
     </div>
 
