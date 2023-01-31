@@ -67,21 +67,52 @@
                     <div class="controls-wrapper">
                         <ul class="check-wrapper">
                             <li>
-                                <input id="ctrl_channel_email" name="fdSendType" type="radio" checked
-                                    value="E"/><label
-                                    for="ctrl_channel_email">@lang('global.email')</label>
+                                <input id="ctrl_channel_answer_no1_1" name="fdSendType" type="radio" checked
+                                    value="N"/><label
+                                    for="ctrl_channel_answer_no1_1">@lang('product.chillsure.answer_no1_1')</label>
                             </li>
                             <li>
-                                <input id="ctrl_channel_post" name="fdSendType" type="radio"
-                                    value="P"/><label
-                                    for="ctrl_channel_post">@lang('product.post')</label>
+                                <input id="ctrl_channel_answer_no1_2" name="fdSendType" type="radio"
+                                    value="Y"/><label
+                                    for="ctrl_channel_answer_no1_2">@lang('product.chillsure.answer_no1_2')</label>
                             </li>
                         </ul>
                     </div>
                 </div>
                 <p>@lang('product.chillsure.question_no2')</p>
-
+                <div class="two-col">
+                    <div class="controls-wrapper">
+                        <ul class="check-wrapper">
+                            <li>
+                                <input id="ctrl_channel_answer_no2_1" name="fdSendType" type="radio" checked
+                                    value="N"/><label
+                                    for="ctrl_channel_answer_no2_1">@lang('product.chillsure.answer_no2_1')</label>
+                            </li>
+                            <li>
+                                <input id="ctrl_channel_answer_no2_2" name="fdSendType" type="radio"
+                                    value="Y"/><label
+                                    for="ctrl_channel_answer_no2_2">@lang('product.chillsure.answer_no2_2')</label>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
                 <p>@lang('product.chillsure.question_no3')</p>
+                <div class="two-col">
+                    <div class="controls-wrapper">
+                        <ul class="check-wrapper">
+                            <li>
+                                <input id="ctrl_channel_answer_no3_1" name="fdSendType" type="radio" checked
+                                    value="N"/><label
+                                    for="ctrl_channel_answer_no3_1">@lang('product.chillsure.answer_no3_1')</label>
+                            </li>
+                            <li>
+                                <input id="ctrl_channel_answer_no3_2" name="fdSendType" type="radio"
+                                    value="Y"/><label
+                                    for="ctrl_channel_answer_no3_2">@lang('product.chillsure.answer_no3_2')</label>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
             </form>
             <br>
             <div>@lang('product.question_p_5')</div>
