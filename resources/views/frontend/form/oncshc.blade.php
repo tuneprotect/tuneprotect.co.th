@@ -115,7 +115,6 @@
                 </div>
             </form>
             <br>
-            <div>@lang('product.question_p_5')</div>
         </main>
     </div>
     <div class="btn-wrapper text-center check_q-wrapper" style="display: none">
