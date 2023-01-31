@@ -450,16 +450,29 @@ document.addEventListener("DOMContentLoaded", async () => {
             }
         });
     }
-    $('input[type=radio][name=fdSendAnswer2]').change(function() {
-        if (this.value == 'Y') {
-           alert(1)
-        }
+
+    const $fdSendAnswer2 = $('input[type=radio][name=fdSendAnswer2]');
+    const Answer2 = $fdSendAnswer2.querySelectorAll('input');
+    Answer2.forEach(field => {
+        field.addEventListener("change", function (e) {
+
+            if (this.value == 'Y') {
+                alert(1)
+            }
+        });
     });
-    $('input[type=radio][name=fdSendAnswer3]').change(function() {
-        if (this.value == 'Y') {
-            alert(1)
-        }
-    });
+
+
+    // $('input[type=radio][name=fdSendAnswer2]').change(function() {
+    //     if (this.value == 'Y') {
+    //        alert(1)
+    //     }
+    // });
+    // $('input[type=radio][name=fdSendAnswer3]').change(function() {
+    //     if (this.value == 'Y') {
+    //         alert(1)
+    //     }
+    // });
 
     const $btnGoto = $$('.btn-goto');
     $btnGoto.forEach($btn => {
