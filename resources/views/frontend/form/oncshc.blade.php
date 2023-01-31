@@ -67,12 +67,12 @@
                     <div class="controls-wrapper">
                         <ul class="check-wrapper">
                             <li>
-                                <input id="ctrl_channel_answer_no1_1" name="fdSendType" type="radio" checked
+                                <input id="ctrl_channel_answer_no1_1" name="fdSendAnswer1" type="radio" checked
                                     value="N"/><label
                                     for="ctrl_channel_answer_no1_1">@lang('product.chillsure.answer_no1_1')</label>
                             </li>
                             <li>
-                                <input id="ctrl_channel_answer_no1_2" name="fdSendType" type="radio"
+                                <input id="ctrl_channel_answer_no1_2" name="fdSendAnswer1" type="radio"
                                     value="Y"/><label
                                     for="ctrl_channel_answer_no1_2">@lang('product.chillsure.answer_no1_2')</label>
                             </li>
@@ -84,12 +84,12 @@
                     <div class="controls-wrapper">
                         <ul class="check-wrapper">
                             <li>
-                                <input id="ctrl_channel_answer_no2_1" name="fdSendType" type="radio" checked
+                                <input id="ctrl_channel_answer_no2_1" name="fdSendAnswer2" type="radio" checked
                                     value="N"/><label
                                     for="ctrl_channel_answer_no2_1">@lang('product.chillsure.answer_no2_1')</label>
                             </li>
                             <li>
-                                <input id="ctrl_channel_answer_no2_2" name="fdSendType" type="radio"
+                                <input id="ctrl_channel_answer_no2_2" name="fdSendAnswer2" type="radio"
                                     value="Y"/><label
                                     for="ctrl_channel_answer_no2_2">@lang('product.chillsure.answer_no2_2')</label>
                             </li>
@@ -101,12 +101,12 @@
                     <div class="controls-wrapper">
                         <ul class="check-wrapper">
                             <li>
-                                <input id="ctrl_channel_answer_no3_1" name="fdSendType" type="radio" checked
+                                <input id="ctrl_channel_answer_no3_1" name="fdSendAnswer3" type="radio" checked
                                     value="N"/><label
                                     for="ctrl_channel_answer_no3_1">@lang('product.chillsure.answer_no3_1')</label>
                             </li>
                             <li>
-                                <input id="ctrl_channel_answer_no3_2" name="fdSendType" type="radio"
+                                <input id="ctrl_channel_answer_no3_2" name="fdSendAnswer3" type="radio"
                                     value="Y"/><label
                                     for="ctrl_channel_answer_no3_2">@lang('product.chillsure.answer_no3_2')</label>
                             </li>
