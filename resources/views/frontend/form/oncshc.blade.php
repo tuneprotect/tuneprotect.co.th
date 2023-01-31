@@ -148,7 +148,7 @@
                     <br>
                     <br>
                     <div style="text-align: center">
-                        <a class="btn btn-primary" href="#leadform-section"
+                        <a class="btn btn-primary" href="javascript:void(0)" onclick='location.reload();'
                            data-gtm="ci-goto-leadform">@lang('product.leave_us_your_lead')</a>
                     </div>
                 </div>
