@@ -451,15 +451,37 @@ document.addEventListener("DOMContentLoaded", async () => {
         });
     }
     //let ans3 = getRadioSelectedValue(`fdSendAnswer3`);
-    $$("input[name=fdSendAnswer3]").forEach($el => {
+    let ans2 = 0;
+    let ans3 = 0;
+    $$("input[name=fdSendAnswer2]").forEach($el => {
         $el.addEventListener("change", function (e) {
-            if (getRadioSelectedValue('fdSendAnswer3') === 'Y') {
-                alert(1)
-            } else {
-                alert(2)
+            if (getRadioSelectedValue('fdSendAnswer2') === 'Y') {
+                $('.check_q-wrapper').style.display = 'block';
+                ans2=0;
+            }else{
+                ans2=1;
+                if(ans2===1 && ans3===1){
+alert("go")
+                }
             }
         });
     });
+
+    $$("input[name=fdSendAnswer3]").forEach($el => {
+        $el.addEventListener("change", function (e) {
+            if (getRadioSelectedValue('fdSendAnswer3') === 'Y') {
+                $('.check_q-wrapper').style.display = 'block';
+                ans3=0;
+            }else{
+                ans3=1;
+                if(ans2===1 && ans3===1){
+                    alert("go")
+                }
+            }
+        });
+    });
+    
+
 
     // $('input[type=radio][name=fdSendAnswer2]').change(function() {
     //     if (this.value == 'Y') {
