@@ -457,6 +457,9 @@ document.addEventListener("DOMContentLoaded", async () => {
     $$("input[name=fdSendAnswer1]").forEach($el => {
         $el.addEventListener("change", function (e) {
             ans1 = 1;
+            if(ans2===1 && ans3===1 && ans1==1){
+                document.getElementById("btn-fdQuestion1").click();
+            }
         });
     });
     $$("input[name=fdSendAnswer2]").forEach($el => {
