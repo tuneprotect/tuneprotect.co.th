@@ -18681,24 +18681,29 @@ main[data-package=CI] .ci-cost .ci-cost-table ul li .col-price {
   color: red;
 }
 
-main[data-package=CI] .check_q-wrapper {
+main[data-package=CI] .check_q-wrapper, 
+[data-package=ONCSHC] .check_q-wrapper
+{
   display: flex;
   justify-content: space-between;
   margin: 20px auto;
   max-width: 500px;
 }
 
-main[data-package=CI] .check_q-wrapper .check_q {
+main[data-package=CI] .check_q-wrapper .check_q, 
+[data-package=ONCSHC] .check_q-wrapper .check_q{
   position: relative;
   margin: 0 10px;
   flex: 1;
 }
 
-main[data-package=CI] .check_q-wrapper .check_q a {
+main[data-package=CI] .check_q-wrapper .check_q a, 
+[data-package=ONCSHC] .check_q-wrapper .check_q a{
   width: 100%;
 }
 
-main[data-package=CI] .check_q-wrapper .check_q input {
+main[data-package=CI] .check_q-wrapper .check_q input, 
+[data-package=ONCSHC] .check_q-wrapper .check_q input{
   display: none;
 }
 
