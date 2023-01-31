@@ -18711,7 +18711,8 @@ main[data-package=CI] .question p {
   margin: 20px 0;
 }
 
-main[data-package=CI] .popup-inner-wrapper {
+main[data-package=CI] .popup-inner-wrapper, 
+[data-package=ONCSHC] .popup-inner-wrapper {
   padding: 50px 20px;
   text-align: center;
 }
