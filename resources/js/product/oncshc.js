@@ -456,12 +456,12 @@ document.addEventListener("DOMContentLoaded", async () => {
     $$("input[name=fdSendAnswer2]").forEach($el => {
         $el.addEventListener("change", function (e) {
             if (getRadioSelectedValue('fdSendAnswer2') === 'Y') {
-                $('.check_q-wrapper').style.display = 'block';
+                document.getElementById("btn-q-n").click();
                 ans2=0;
             }else{
                 ans2=1;
                 if(ans2===1 && ans3===1){
-alert("go")
+                    document.getElementById("btn-fdQuestion1").click();
                 }
             }
         });
@@ -470,12 +470,13 @@ alert("go")
     $$("input[name=fdSendAnswer3]").forEach($el => {
         $el.addEventListener("change", function (e) {
             if (getRadioSelectedValue('fdSendAnswer3') === 'Y') {
-                $('.check_q-wrapper').style.display = 'block';
+                document.getElementById("btn-q-n").click();
                 ans3=0;
             }else{
                 ans3=1;
                 if(ans2===1 && ans3===1){
-                    alert("go")
+                    document.getElementById("btn-fdQuestion1").click();
+                    
                 }
             }
         });
