@@ -118,7 +118,7 @@
             <div>@lang('product.question_p_5')</div>
         </main>
     </div>
-    <div class="btn-wrapper text-center check_q-wrapper">
+    <div class="btn-wrapper text-center check_q-wrapper" style="display: none">
         <div class="check_q">
             <a id="btn-q-n" class="btn btn-outline red">@lang('product.proceed_q_n')</a>
         </div>
