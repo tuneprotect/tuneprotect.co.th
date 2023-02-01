@@ -44,15 +44,12 @@
             <div class="inner-wrapper">
                 <div>
                     <p><img alt="" src="/storage/Icon/thankyou.jpg" /></p>
-                    <h1>Thank you for choosing Tune Protect</h1>
-                    <p>Your coverage starts now</p>
-                    <p>Please check your insurance policy following your specified channel. Your policy number for your<br />
-                        reference:{{$doc_no}}</p>
-                    <p><a class="btn btn-primary" href={{$return_link}}>Back to Main Page</a></p>
-                    <br>
-                    <p><strong>TuneTOUCH</strong> by Tune Protect. Stepping into the next level of development for our special customers.
-A brand-new application that connect customer experience and providing insurance services at your fingertips.Download APP now in both iOS and android service.
-For iOS <a href="https://apple.co/3CLWdOQ" target="_blank">Click</a> and for android click <a href="https://bit.ly/3tfDS9I" target="_blank">Click</a> </p>
+                    <h1>@lang('thankyou_page.thankyou_title')</h1>
+                    <p>@lang('thankyou_page.thankyou_text1')</p>
+                    <p>@lang('thankyou_page.thankyou_text2'){{$doc_no}}</p>
+                    <p><a class="btn btn-primary" href={{$return_link}}>@lang('thankyou_page.thankyou_button')</a></p>
+
+                    @lang('thankyou_page.thankyou_remark')
                 </div>
                
                 <div>

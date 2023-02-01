@@ -1082,6 +1082,15 @@ return [
         "question_no2" =>"2. ท่านมีดัชนีมวลกาย (BMI) ของท่าน ตามข้อมูลที่ได้กรอกไว้ เกิน 30 หรือไม่?",
         "question_no3" =>"3. ท่านหรือบุคคลในครอบครัวของท่าน เป็นหรือเคยมีอาการ หรือเคยได้รับการรักษา หรือขณะนี้รับการรักษาอยู่ หรือเคยได้รับการบอกเล่าจากแพทย์ ด้วยโรคหัวใจ โรคเบาหวาน โรคปอด โรคความดันโลหิตสูง โรคมะเร็ง เนื้องอก/ซีสต์/ต่อมน้ำเหลืองโต โรคไต โรคตับหรือทางเดินน้ำดี (รวมทั้งไวรัสตับอักเสบ B/C) โรคเลือด วัณโรค โรคหลอดเลือดสมอง โรคพิษสุราเรื้อรัง โรคแผลในกระเพาะอาหารหรือโรคระบบทางเดินอาหารอื่นๆ โรคเอดส์ (AIDS) หรือพิการทางร่างกาย หรือภาวะบกพร่องทางสติปัญญา ในระหว่าง 3 ปีที่ผ่านมาหรือไม่?",
     ],
+    "thankyou_page" => [
+        "thankyou_title" =>"Thank you for choosing Tune Protect",
+        "thankyou_text1" =>" Your coverage starts now",
+        "thankyou_text2" =>" Please check your insurance policy following your specified channel. Your policy number for your <br/>reference:  ",
+        "thankyou_button" =>"Back to Main Page",
+        "thankyou_remark" =>"<p><strong>TuneTOUCH</strong> by Tune Protect. Stepping into the next level of development for our special customers.<br>
+        A brand-new application that connect customer experience and providing insurance services at your fingertips.Download APP now in both iOS and android service.<br>
+        For iOS <a href='https://apple.co/3CLWdOQ' target='_blank'><u>Click</u></a> and for android click <a href='https://bit.ly/3tfDS9I' target='_blank'><u>Click</u></a></p>",
+     ],
 ];
 
 
