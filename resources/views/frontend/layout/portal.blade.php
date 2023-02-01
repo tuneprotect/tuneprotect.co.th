@@ -37,12 +37,8 @@
     </div>
 </header>
 @else
-<header>    
-    <noscript>
-        <img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=682962723368236&ev=PageView&noscript=1" />
-    </noscript>
-    <!-- End Facebook Pixel Code -->
-    @endif
+<header>
+  
 
     <!-- Tracking code for interspace -->
     @if($selected==='ONTAOB' && !empty($portal_key) && $portal_key === 'JGVM66EX9GRM6LA3D8ARBLUX6EUXNTARD8UXN4U228UVN4RR22')
