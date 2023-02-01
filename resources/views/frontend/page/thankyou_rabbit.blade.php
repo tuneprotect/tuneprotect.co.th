@@ -44,12 +44,12 @@
             <div class="inner-wrapper">
                 <div>
                     <p><img alt="" src="/storage/Icon/thankyou.jpg" /></p>
-                    <h1>@lang('thankyou_page.thankyou_title')</h1>
-                    <p>@lang('thankyou_page.thankyou_text1')</p>
-                    <p>@lang('thankyou_page.thankyou_text2'){{$doc_no}}</p>
-                    <p><a class="btn btn-primary" href={{$return_link}}>@lang('thankyou_page.thankyou_button')</a></p>
+                    <h1>@lang('product.thankyou_page.thankyou_title')</h1>
+                    <p>@lang('product.thankyou_page.thankyou_text1')</p>
+                    <p>@lang('product.thankyou_page.thankyou_text2'){{$doc_no}}</p>
+                    <p><a class="btn btn-primary" href={{$return_link}}>@lang('product.thankyou_page.thankyou_button')</a></p>
 
-                    @lang('thankyou_page.thankyou_remark')
+                    @lang('product.thankyou_page.thankyou_remark')
                 </div>
                
                 <div>
