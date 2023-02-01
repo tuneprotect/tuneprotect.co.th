@@ -13,23 +13,24 @@ class BiglifeController  extends BaseController
     protected $controller = 'biglife';
     public function index()
     {
+            return $this->genView('frontend.page.thankyou');
 
-            $this->bodyData['headertext'] = __('product.biglife.headertext');
-            $this->bodyData['labeltext'] = __('product.biglife.labeltext');
-            $this->bodyData['placeholdertext'] = __('product.biglife.placeholdertext');
-            $this->bodyData['buttontext'] = __('product.biglife.buttontext');
+        //     $this->bodyData['headertext'] = __('product.biglife.headertext');
+        //     $this->bodyData['labeltext'] = __('product.biglife.labeltext');
+        //     $this->bodyData['placeholdertext'] = __('product.biglife.placeholdertext');
+        //     $this->bodyData['buttontext'] = __('product.biglife.buttontext');
 
 
 
-        $content = WebContent::where('type_id', ProjectEnum::STATIC_PAGE_BIGLIFE_POINT)
-            ->with('locales')
-            ->whereRaw(ProjectEnum::isPublish())
-            ->first();
+        // $content = WebContent::where('type_id', ProjectEnum::STATIC_PAGE_BIGLIFE_POINT)
+        //     ->with('locales')
+        //     ->whereRaw(ProjectEnum::isPublish())
+        //     ->first();
 
-        $this->template->setFootJS(mix("/js/frontend/biglife.js"));
-        $this->bodyData['content'] = $content;
-        $this->setStaticPageHeader($content);
-        return $this->genView('frontend.page.biglife');
+        // $this->template->setFootJS(mix("/js/frontend/biglife.js"));
+        // $this->bodyData['content'] = $content;
+        // $this->setStaticPageHeader($content);
+        // return $this->genView('frontend.page.biglife');
 
     }
 
