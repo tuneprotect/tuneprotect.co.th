@@ -1091,6 +1091,7 @@ return [
         A brand-new application that connect customer experience and providing insurance services at your fingertips.Download APP now in both iOS and android service.<br>
         For iOS <a href='https://apple.co/3CLWdOQ' target='_blank'><u>Click</u></a> and for android click <a href='https://bit.ly/3tfDS9I' target='_blank'><u>Click</u></a></p>",
      ],
+     'chillsure_coverage' => 'รายละเอียดของความคุ้มครอง',
 ];
 
 
