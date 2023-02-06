@@ -36,20 +36,13 @@ require('../main');
 require('../product');
 
 validate.validators.idcard = function (value, options, key, attributes) {
-    if (!value) {
-        return "^" + $('#fdNationalID').getAttribute('data-error-idcard');
-    }
-
-    if (value.length !== 13) {
-        return "^" + $('#fdNationalID').getAttribute('data-error-idcard');
-    }
-
     for (var i = 0, sum = 0; i < 12; i++) {
         sum += parseFloat(value.charAt(i)) * (13 - i);
     }
     const result = ((11 - sum % 11) % 10 === parseFloat(value.charAt(12)));
+    console.log("idcard",result)
     if (!result) {
-        return "^" + $('#fdNationalID').getAttribute('data-error-idcard');
+        return "^" + $('#fdNationalID').getAttribute('data-error-idcard')
     }
 };
 
@@ -200,6 +193,7 @@ const constraints = {
 };
 
 document.addEventListener("DOMContentLoaded", async () => {
+
     //=====================================================================
     // AddOn Portal
     let Keys = "";
@@ -399,33 +393,13 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
     });
 
-    // const $form = $('#step3');
-    // const allField = $form.querySelectorAll('input,select,textarea');
-    // allField.forEach(field => {
-    //     field.addEventListener("change", function (e) {
-    //         validateField(this, constraints);
-    //         if (['fdNationalID', 'loc_fdAddr_Home'].includes(field.id)) {
-    //             console.log(e.target, data.fdPackage, $('#fdFromDate')?.value);
-    //             validatePolicyLoc(e.target, data.fdPackage, $('#fdFromDate')?.value);
-    //         }
-
-    //         if (['fdName', 'fdSurname', 'fdNationalID'].includes(field.id)) {
-    //             validatePolicy(e.target, data.fdPackage);
-    //         }
-
-    //     });
-    // });
     const $form = $('#step4');
     const allField = $form.querySelectorAll('input,select,textarea');
     allField.forEach(field => {
         field.addEventListener("change", function (e) {
             validateField(this, constraints);
-            if (['fdName', 'fdSurname', 'fdNationalID'].includes(field.id)) {        
-                const foo = validatePolicyStep5(e.target, data.fdPackage).then(value => console.log("ssss",value));
-                console.log("result",foo);
-                if(foo){
-                    console.log("yes");
-                }
+            if (['fdName', 'fdSurname', 'fdNationalID'].includes(field.id)) {                
+                validatePolicyStep5(e.target, data.fdPackage);
             }
         });
     });
