@@ -151,7 +151,6 @@ export const validatePolicy = async ($this, fdPackage,fdFromDate) => {
 
     if (Object.keys(data).every((k) => !!data[k])) {
         const result = await callValidateApi({...data, fdPackage,fdFromDate})
-        console.log("result : ",result);
         if (result.status === 'error') {
             // showFieldError($this, [result.message]);
             $('button[data-step="4"]').style.display = 'none';
@@ -182,8 +181,10 @@ export const validatePolicyStep5 = async ($this, fdPackage,fdFromDate) => {
         data = {...data, [k]: $(`#${fieldId}`).value}
     });
 
-    if (Object.keys(data).every((k) => !!data[k])) {        
+    if (Object.keys(data).every((k) => !!data[k])) {   
+        console.log("result data : ", data);     
         const result = await callValidateApi({...data, fdPackage,fdFromDate})        
+        console.log("result : ",result);
         if (result.status === 'error') {
             // showFieldError($this, [result.message]);
             $('button[data-step="5"]').style.display = 'none';
