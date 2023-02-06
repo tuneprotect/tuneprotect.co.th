@@ -181,15 +181,12 @@ export const validatePolicyStep5 = async ($this, fdPackage,fdFromDate) => {
         }
         data = {...data, [k]: $(`#${fieldId}`).value}
     });
-    console.log("result data : ", data); 
 
     if (Object.keys(data).every((k) => !!data[k])) {
         const result = await callValidateApi({...data, fdPackage,fdFromDate})
-        console.log("result : ",result);
         if (result.status === 'error') {
             $('button[data-step="5"]').style.display = 'none';
             $this.closest('.controls-wrapper').classList.add("error");
-
             Swal.fire({
                 icon: 'error',
                 text: result.message
@@ -202,26 +199,6 @@ export const validatePolicyStep5 = async ($this, fdPackage,fdFromDate) => {
             return true;
         }
     }
-
-    // if (Object.keys(data).every((k) => !!data[k])) {              
-    //     const result = await callValidateApi({...data, fdPackage,fdFromDate})        
-    //     console.log("result : ",result);
-    //     if (result.status === 'error') {
-    //         // showFieldError($this, [result.message]);
-    //         $('button[data-step="5"]').style.display = 'none';
-    //         $this.closest('.controls-wrapper').classList.add("error");
-
-    //         Swal.fire({
-    //             icon: 'error',
-    //             text: result.message
-    //         })
-    //         $('#swal2-content').innerHTML = $('#swal2-content').textContent
-    //         return false;
-    //     } else {
-    //         $('button[data-step="5"]').style.display = 'inline-flex';
-    //         return true;
-    //     }
-    // }
 }
 
 export const validatePolicyPayment = async (pfdNationalID,pfdPackage,pfdFromDate) => {

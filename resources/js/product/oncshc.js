@@ -421,7 +421,8 @@ document.addEventListener("DOMContentLoaded", async () => {
         field.addEventListener("change", function (e) {
             validateField(this, constraints);
             if (['fdName', 'fdSurname', 'fdNationalID'].includes(field.id)) {        
-                validatePolicyStep5(e.target, data.fdPackage);
+                const result = validatePolicyStep5(e.target, data.fdPackage);
+                console.log("result",result);
             }
         });
     });
