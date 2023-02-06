@@ -421,7 +421,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         field.addEventListener("change", function (e) {
             validateField(this, constraints);
             if (['fdName', 'fdSurname', 'fdNationalID'].includes(field.id)) {        
-                const { foo } = validatePolicyStep5(e.target, data.fdPackage);
+                const foo = validatePolicyStep5(e.target, data.fdPackage).then(value => console.log("ssss",value));
                 console.log("result",foo);
                 if(foo){
                     console.log("yes");
