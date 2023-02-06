@@ -193,7 +193,6 @@ const constraints = {
 };
 
 document.addEventListener("DOMContentLoaded", async () => {
-
     //=====================================================================
     // AddOn Portal
     let Keys = "";
@@ -393,6 +392,22 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
     });
 
+    // const $form = $('#step3');
+    // const allField = $form.querySelectorAll('input,select,textarea');
+    // allField.forEach(field => {
+    //     field.addEventListener("change", function (e) {
+    //         validateField(this, constraints);
+    //         if (['fdNationalID', 'loc_fdAddr_Home'].includes(field.id)) {
+    //             console.log(e.target, data.fdPackage, $('#fdFromDate')?.value);
+    //             validatePolicyLoc(e.target, data.fdPackage, $('#fdFromDate')?.value);
+    //         }
+
+    //         if (['fdName', 'fdSurname', 'fdNationalID'].includes(field.id)) {
+    //             validatePolicy(e.target, data.fdPackage);
+    //         }
+
+    //     });
+    // });
     const $form = $('#step4');
     const allField = $form.querySelectorAll('input,select,textarea');
     allField.forEach(field => {
