@@ -422,7 +422,10 @@ document.addEventListener("DOMContentLoaded", async () => {
             validateField(this, constraints);
             if (['fdName', 'fdSurname', 'fdNationalID'].includes(field.id)) {        
                 const result = validatePolicyStep5(e.target, data.fdPackage);
-                console.log("result",result.PromiseResult);
+                console.log("result",result);
+                if(result){
+                    console.log("yes");
+                }
             }
         });
     });
