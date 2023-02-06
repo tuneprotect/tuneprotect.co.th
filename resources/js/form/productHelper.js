@@ -170,6 +170,8 @@ export const validatePolicy = async ($this, fdPackage,fdFromDate) => {
 }
 
 export const validatePolicyStep5 = async ($this, fdPackage,fdFromDate) => {
+
+    console.log("result data : ", $this);  
     let field = $this.getAttribute('name');
     let data = {fdName: null, fdSurname: null, fdNationalID: null}
     Object.keys(data).map((k) => {
@@ -181,8 +183,7 @@ export const validatePolicyStep5 = async ($this, fdPackage,fdFromDate) => {
         data = {...data, [k]: $(`#${fieldId}`).value}
     });
 
-    if (Object.keys(data).every((k) => !!data[k])) {   
-        console.log("result data : ", data);     
+    if (Object.keys(data).every((k) => !!data[k])) {              
         const result = await callValidateApi({...data, fdPackage,fdFromDate})        
         console.log("result : ",result);
         if (result.status === 'error') {
