@@ -208,12 +208,23 @@ export const validatePolicyStep5 = async ($this, fdPackage,fdFromDate) => {
             return false;
         } else {
             if(fdPackage=="ONCSHC"){
-
-                const result = await callValidateApi({...data, fdPackage,fdFromDate})   
+                const result = await CheckRegisterForChillSure({...data, fdPackage,fdFromDate}) 
+                console.log("CheckRegisterForChillSure",result)
+                if (result.status === 'error') {
+                    $('button[data-step="5"]').style.display = 'none';
+                    $this.closest('.controls-wrapper').classList.add("error");
+        
+                    Swal.fire({
+                        icon: 'error',
+                        text: result.message
+                    })
+                    $('#swal2-content').innerHTML = $('#swal2-content').textContent
+                    return false;
+                } else {                    
+                    $('button[data-step="5"]').style.display = 'inline-flex';
+                    return true;
+                }
             } 
-
-
-
             $('button[data-step="5"]').style.display = 'inline-flex';
             return true;
         }
