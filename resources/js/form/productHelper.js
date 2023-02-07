@@ -102,7 +102,19 @@ const callValidateApi = async (data) => {
 
     return await response.json();
 }
+const CheckRegisterForChillSure = async (data) => {
+    const response = await fetch(`/${$('html').getAttribute('lang')}/Product/CheckRegisterForChillSure`, {
+        method: 'post',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').getAttribute('content')
+        },
+        body: JSON.stringify({...data, CheckType: null})
+    })
 
+    return await response.json();
+}
 
 export const validatePolicyLoc = async ($this, fdPackage,fdFromDate) => {
     let field = $this.getAttribute('name');
@@ -195,6 +207,13 @@ export const validatePolicyStep5 = async ($this, fdPackage,fdFromDate) => {
             $('#swal2-content').innerHTML = $('#swal2-content').textContent
             return false;
         } else {
+            if(fdPackage=="ONCSHC"){
+
+                const result = await callValidateApi({...data, fdPackage,fdFromDate})   
+            } 
+
+
+
             $('button[data-step="5"]').style.display = 'inline-flex';
             return true;
         }
@@ -684,3 +703,6 @@ export const formatInputFieldOnlyEnglish = () => {
         message: message
     }
 }
+
+
+

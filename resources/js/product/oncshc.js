@@ -36,13 +36,20 @@ require('../main');
 require('../product');
 
 validate.validators.idcard = function (value, options, key, attributes) {
+    if (!value) {
+        return "^" + $('#fdNationalID').getAttribute('data-error-idcard');
+    }
+
+    if (value.length !== 13) {
+        return "^" + $('#fdNationalID').getAttribute('data-error-idcard');
+    }
+
     for (var i = 0, sum = 0; i < 12; i++) {
         sum += parseFloat(value.charAt(i)) * (13 - i);
     }
     const result = ((11 - sum % 11) % 10 === parseFloat(value.charAt(12)));
-    console.log("idcard",result)
     if (!result) {
-        return "^" + $('#fdNationalID').getAttribute('data-error-idcard')
+        return "^" + $('#fdNationalID').getAttribute('data-error-idcard');
     }
 };
 
@@ -257,6 +264,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         ctrl_height: "",
         ctrl_bmi_calculator: "",
         fdKeys: Keys,
+        fdProductCode:"ONCSHC",
         channel: channel
     };
     const validateAcceptStep1 = () => {

@@ -419,7 +419,8 @@ class ProductController extends BaseController
         } elseif (substr($data['fdPackage'], 0, 8) === 'DIABETES') {
             $obj = new BAOWANObject();
         } elseif (substr($data['fdPackage'], 0, 6) === 'ONCSHC') {
-            $obj = new BAOWANObject();
+            //$obj = new BAOWANObject();
+            $obj = new ONCSHCObject();
         } else {
             $obj = new BaseInsuranceObject();
         }
@@ -1191,9 +1192,30 @@ class ProductController extends BaseController
         return $this->send();
     }
 
-    public function myHomeSmart()
+    public function CheckRegisterForChillSure(Request $request)
     {
-        dd(1);
+        $data = $request->all();
+        $client = new Client();
+        $response = $client->request('POST', config('tune-api.url') . 'CheckIDCardForRegister', [
+            'auth' => [config('tune-api.user'), config('tune-api.password')],
+            'headers' => [
+                'Content-Type' => 'application/json'
+            ],
+            'body' => json_encode($data)
+        ]);
+        $res = (object)json_decode($response->getBody()->getContents(), true);
+
+        $this->apiResult = $res->status ? self::SUCCESS : self::ERROR;
+
+        if ($res->status) {
+            $this->apiStatus = self::SUCCESS;
+            $this->apiStatusText = self::SUCCESS;
+        } else {
+            $this->apiStatus = self::ERROR;
+            $this->apiStatusText = __('product.error.' . $res->message);
+        }
+
+        return $this->send();
     }
     public function testDebug()
     {
