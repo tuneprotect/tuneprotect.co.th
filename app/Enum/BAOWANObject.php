@@ -9,5 +9,6 @@ class BAOWANObject extends BaseInsuranceObject {
     public $fdBMI_Height;
     public $fdBMI_Value;
     public $fdQuestion1;
+    public $fdProductCode;
     public $thankyou_param;
 }
