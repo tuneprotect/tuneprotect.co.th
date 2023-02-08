@@ -192,6 +192,7 @@ export const validatePolicyStep5 = async ($this, fdPackage,fdFromDate) => {
         }
         data = {...data, [k]: $(`#${fieldId}`).value}
     });
+    console.log("fdNationalID",fdPackage.fdNationalID);
     let fdNationalID = fdPackage.fdNationalID;
     let fdProductCode = fdPackage.fdProductCode;
     fdPackage = fdPackage.fdPackage;
