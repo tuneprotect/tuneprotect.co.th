@@ -51,15 +51,17 @@
                                    data-gtm="product-{{strtolower($selected)}}-mobile-choose-plan-{{$i}}"
                                    class="btn btn-block btn-outline btn-choose-plan {{$i == 1 ? 'on' : '' }}">
                                     @if(isset($v->no))
+                                        <strong>
                                         @if($v->no == 0)
-                                            <strong>@lang('product.no_plan')</strong>
-                                        @else
-                                            @if(isset($v->name))
-                                                <strong>{{$v->name}} @lang('product.plan') {{$v->no}}</strong>
-                                            @else
-                                                <strong>@lang('product.plan') {{$v->no}}</strong>
-                                            @endif
+                                            @lang('product.no_plan')
+                                        @elseif($v->no == 1)
+                                            Silver
+                                        @elseif($v->no == 2)
+                                            Gold
+                                        @elseif($v->no == 3)
+                                            Platinum
                                         @endif
+                                        </strong>
                                     @else
                                         @if($selected == "CI")
                                             <span data-recommend>@lang('product.recommend')</span>
@@ -83,16 +85,17 @@
                 @foreach ($package_detail as $k => $v)
                     <th data-package="{{$k}}">
                         @if(isset($v->no))
+                            <strong>
                             @if($v->no == 0)
-                                <strong>@lang('product.no_plan')</strong>
-                            @else
-                                @if(isset($v->name))
-                                    <strong>{{$v->name}} @lang('product.plan') {{$v->no}}</strong>
-                                @else
-                                    <strong>@lang('product.plan') {{$v->no}}</strong>
-                                @endif
+                                @lang('product.no_plan')
+                            @elseif($v->no == 1)
+                                Silver
+                            @elseif($v->no == 2)
+                                Gold
+                            @elseif($v->no == 3)
+                                Platinum
                             @endif
-
+                            </strong>
                         @else
                             @if($selected == "CI")
                                 <span data-recommend>@lang('product.recommend')</span>
