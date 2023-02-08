@@ -17798,7 +17798,7 @@ main form input[type=checkbox]:checked + label:after {
 
 @media all and (min-width: 992px) {
   main[data-package=ONPACA] #table-detail thead tr th:first-child,
-  [data-package=ONPUMPPA] #table-detail thead tr th:first-child,
+  [data-package=PUMPPA] #table-detail thead tr th:first-child,
   [data-package=ONPACAA] #table-detail thead tr th:first-child,
   [data-package=ONTAOB] #table-detail thead tr th:first-child,
   [data-package=ONTAOB] #table-detail thead tr th:first-child,
