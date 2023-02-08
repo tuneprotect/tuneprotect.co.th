@@ -183,7 +183,7 @@ export const validatePolicy = async ($this, fdPackage,fdFromDate) => {
 
 export const validatePolicyStep5 = async ($this, fdPackage,fdFromDate) => {
     let field = $this.getAttribute('name');
-    let data = {fdName: null, fdSurname: null, fdNationalID: null}
+    let data = {fdName: null, fdSurname: null, fdNationalID: null,fdProductCode: null}
     Object.keys(data).map((k) => {
         let fieldId = k;
         if (field.startsWith('data_')) {
