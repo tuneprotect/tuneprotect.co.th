@@ -234,6 +234,11 @@ class ProductController extends BaseController
                                 $v->plan->PADRCA10 = __('product.healt2go_word');
                             }
                         }
+                        if ($selected === 'PUMPPA') {
+                            if ($v->plan->PADRCA10 !== '-') {
+                                $v->plan->PADRCA10 = __('product.healt2go_word');
+                            }
+                        }
                         if ($selected === 'ONPAKD') {
                             if ($v->plan->PADRKD07 !== '-') {
                                 $v->plan->PADRKD07 = __('product.healt2go_word');
