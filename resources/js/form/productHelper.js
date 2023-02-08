@@ -192,7 +192,7 @@ export const validatePolicyStep5 = async ($this, fdPackage,fdFromDate) => {
         }
         data = {...data, [k]: $(`#${fieldId}`).value}
     });
-    console.log("fdPackage : ",$this)
+    console.log("fdPackage : ",data)
     if (Object.keys(data).every((k) => !!data[k])) {        
         const result = await callValidateApi({...data, fdPackage,fdFromDate})        
         if (result.status === 'error') {
