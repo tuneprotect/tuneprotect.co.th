@@ -1194,6 +1194,7 @@ class ProductController extends BaseController
 
     public function CheckRegisterForChillSure(Request $request)
     {
+        dd($request->all());
         $data = $request->all();
         $client = new Client();
         $response = $client->request('POST', config('tune-api.url') . 'CheckIDCardForRegister', [
@@ -1206,7 +1207,7 @@ class ProductController extends BaseController
         $res = (object)json_decode($response->getBody()->getContents(), true);
 
         $this->apiResult = $res->status ? self::SUCCESS : self::ERROR;
-dd($this->apiResult);
+
         if ($res->status) {
             $this->apiStatus = self::SUCCESS;
             $this->apiStatusText = self::SUCCESS;
