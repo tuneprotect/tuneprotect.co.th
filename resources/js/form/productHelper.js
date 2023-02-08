@@ -192,7 +192,9 @@ export const validatePolicyStep5 = async ($this, fdPackage,fdFromDate) => {
         }
         data = {...data, [k]: $(`#${fieldId}`).value}
     });
-    console.log("fdPackage : ",fdPackage)
+    console.log("fdPackage : ",fdPackage.fdProductCode)
+    let fdProductCode = fdPackage.fdProductCode;
+    fdPackage = fdPackage.fdPackage;
     if (Object.keys(data).every((k) => !!data[k])) {        
         const result = await callValidateApi({...data, fdPackage,fdFromDate})        
         if (result.status === 'error') {
@@ -208,7 +210,7 @@ export const validatePolicyStep5 = async ($this, fdPackage,fdFromDate) => {
             return false;
         } else {
             if(fdPackage.substring(0, 6)=="ONCSHC"){
-                const result = await CheckRegisterForChillSure({...data, fdPackage,fdFromDate}) 
+                const result = await CheckRegisterForChillSure({...data, fdProductCode,fdFromDate}) 
                 console.log("CheckRegisterForChillSure",result)
                 if (result.status === 'error') {
                     $('button[data-step="5"]').style.display = 'none';
