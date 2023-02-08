@@ -110,7 +110,7 @@ const CheckRegisterForChillSure = async (data) => {
             'Content-Type': 'application/json',
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').getAttribute('content')
         },
-        body: JSON.stringify({...data, CheckType: null})
+        body: JSON.stringify({...data})
     })
 
     return await response.json();
@@ -192,6 +192,7 @@ export const validatePolicyStep5 = async ($this, fdPackage,fdFromDate) => {
         }
         data = {...data, [k]: $(`#${fieldId}`).value}
     });
+    let fdNationalID = fdPackage.fdNationalID;
     let fdProductCode = fdPackage.fdProductCode;
     fdPackage = fdPackage.fdPackage;
     if (Object.keys(data).every((k) => !!data[k])) {        
