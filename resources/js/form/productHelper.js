@@ -207,7 +207,7 @@ export const validatePolicyStep5 = async ($this, fdPackage,fdFromDate) => {
             $('#swal2-content').innerHTML = $('#swal2-content').textContent
             return false;
         } else {
-            if(fdPackage=="ONCSHC"){
+            if(fdPackage.substring(0, 6)=="ONCSHC"){
                 const result = await CheckRegisterForChillSure({...data, fdPackage,fdFromDate}) 
                 console.log("CheckRegisterForChillSure",result)
                 if (result.status === 'error') {
