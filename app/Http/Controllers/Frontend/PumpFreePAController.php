@@ -20,4 +20,9 @@ class PumpFreePAController extends BaseController
         return $this->genView('frontend.page.pump_free_pa');
 
     }
+    public function Silver()
+    {
+        return $this->genView('frontend.page.pump_free_pa_silver');
+
+    }
 }
