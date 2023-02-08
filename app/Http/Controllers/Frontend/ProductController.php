@@ -1206,7 +1206,7 @@ class ProductController extends BaseController
         $res = (object)json_decode($response->getBody()->getContents(), true);
 
         $this->apiResult = $res->status ? self::SUCCESS : self::ERROR;
-
+dd($this->apiResult);
         if ($res->status) {
             $this->apiStatus = self::SUCCESS;
             $this->apiStatusText = self::SUCCESS;
