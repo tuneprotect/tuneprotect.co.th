@@ -100,7 +100,15 @@
                             @if($selected == "CI")
                                 <span data-recommend>@lang('product.recommend')</span>
                             @endif
-                            <strong class="package-number">@lang('product.plan') {{$i}}</strong>
+                            <strong class="package-number">                            
+                                @if($i == 1)
+                                    Silver
+                                @elseif($i == 2)
+                                    Gold
+                                @elseif($i == 3)
+                                    Platinum
+                                @endif
+                            </strong>
                         @endif
 
                         <a href="#"
@@ -206,7 +214,15 @@
                             @endif
 
                         @else
-                            <strong style="display: block" class="text-center">@lang('product.plan') {{$i}}</strong>
+                            <strong style="display: block" class="text-center">
+                                @if($i == 1)
+                                    Silver
+                                @elseif($i == 2)
+                                    Gold
+                                @elseif($i == 3)
+                                    Platinum
+                                @endif
+                            </strong>
                         @endif
 
                         <a href="#"
