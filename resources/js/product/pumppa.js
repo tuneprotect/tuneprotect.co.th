@@ -186,7 +186,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     var pathArray = window.location.pathname.split('/');
     var newPathname = pathArray[pathArray.length];
-console.log("newPathname",newPathname);
+console.log("newPathname",pathArray.length);
 
 
     // for (i = 0; i < pathArray.length; i++) {
