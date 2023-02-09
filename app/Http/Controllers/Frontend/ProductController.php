@@ -290,7 +290,11 @@ class ProductController extends BaseController
         }
 
         $this->template->setBody('id', 'product_page');
+        if ($selected === 'Silver') {
 
+
+        }
+dd($selected);
         if ($selected === 'ONTAOB') {
             //Replace view in body content.
             $review = WebContent::where('type_id', ProjectEnum::WEB_CONTENT_REVIEW)
