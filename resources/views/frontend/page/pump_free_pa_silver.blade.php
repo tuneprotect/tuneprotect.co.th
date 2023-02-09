@@ -1,4 +1,4 @@
-
+@include('frontend.component.form-stepper')
 <section id="step1" class="wrapper">
     @include('frontend.component.form-birthdate')
     <br/>
