@@ -8,50 +8,7 @@
     <div class="wrapper">
         <table id="table-detail">
             <thead>
-            <tr>
-                <th>
-                    <h3>@lang('global.coverage')</h3>
-                    <?php $i = 1 ?>
-                    <div class="choose-plan-mobile">
-
-                        @foreach ($package_detail as $k => $v)
-                            <div class="wrapper-choose-plan">
-                                <a href="#"
-                                   data-package="{{$k}}"
-                                   data-index="{{$i}}"
-                                   data-gtm="product-{{strtolower($selected)}}-mobile-choose-plan-{{$i}}"
-                                   class="btn btn-block btn-outline btn-choose-plan {{$i == 1 ? 'on' : '' }}">
-                                    @if(isset($v->no))
-                                        <strong>
-                                        @if($v->no == 0)
-                                            @lang('product.no_plan')
-                                        @elseif($v->no == 1)
-                                            Silver
-                                        @elseif($v->no == 2)
-                                            Gold
-                                        @elseif($v->no == 3)
-                                            Platinum
-                                        @endif
-                                        </strong>
-                                    @else
-                                        @if($selected == "CI")
-                                            <span data-recommend>@lang('product.recommend')</span>
-                                        @endif
-                                        <strong class="package-number">@lang('product.plan') {{$i}}</strong>
-                                    @endif
-
-                                    @if($selected == "CI")
-                                        <span class="show_on_mobile" data-price-{{$k}}></span>
-                                    @endif
-                                </a>
-
-                                <?php $i++ ?>
-                            </div>
-
-                        @endforeach
-
-                    </div>
-                </th>
+            <tr>                
                 <?php $i = 1 ?>
                 @foreach ($package_detail as $k => $v)
                     <th data-package="{{$k}}" class="{{$k}}">
@@ -125,7 +82,7 @@
                     <th data-cover-{{$k}}>{!! $v !!}</th>
 
                     @foreach ($package_detail as $k1 => $v1)
-                        <td {{$i > 1 ? 'class=hide' : ""}} data-index="{{$i}}" data-package="{{$k1}}">
+                        <td class="{{$k}} {{$i > 1 ? 'hide' : ''}}" data-index="{{$i}}" data-package="{{$k1}}">
                             @if(isset($v1->plan->$k))
                                 @if((is_numeric($v1->plan->$k)))
                                     <strong>{{number_format( $v1->plan->$k,0)}}</strong>
@@ -154,7 +111,7 @@
                 <th>&nbsp;</th>
                 <?php $i = 1 ?>
                 @foreach ($package_detail as $k => $v)
-                    <td {{$i > 1 ? 'class=hide' : ""}} data-index="{{$i}}" data-package="{{$k}}">
+                    <td  class="{{$k}} {{$i > 1 ? 'hide' : ''}}" data-index="{{$i}}" data-package="{{$k}}">
                         @if(isset($v->no))
                             @if($v->no == 0)
                                 <strong style="display: block" class="text-center">@lang('product.no_plan')</strong>
