@@ -185,20 +185,24 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     var pathArray = window.location.pathname.split('/');
     var tier = pathArray[pathArray.length-1];
-    if(tier=="Silver"){
-        $$('.PUMPPA1').forEach($el => {
-            $el.style.display = "block";            
-        });
-    } else if(tier=="Gold"){
-        $$('.PUMPPA2').forEach($el => {
-            $el.style.display = "block";            
-        });
-    } else if(tier=="Platinum"){
-        $$('.PUMPPA3').forEach($el => {
-            $el.style.display = "block";            
-        });
+    if (document.body.clientWidth > 767) {
+        
     }else{
+        if(tier=="Silver"){
+            $$('.PUMPPA1').forEach($el => {
+                $el.style.display = "block";            
+            });
+        } else if(tier=="Gold"){
+            $$('.PUMPPA2').forEach($el => {
+                $el.style.display = "block";            
+            });
+        } else if(tier=="Platinum"){
+            $$('.PUMPPA3').forEach($el => {
+                $el.style.display = "block";            
+            });
+        }else{
 
+        }
     }
     // for (i = 0; i < pathArray.length; i++) {
     //   newPathname += "/";
