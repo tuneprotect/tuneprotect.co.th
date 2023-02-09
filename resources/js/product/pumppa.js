@@ -185,8 +185,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     let tier = window.location.pathname;
 
     var pathArray = window.location.pathname.split('/');
-    var newPathname = pathArray[pathArray.length];
-console.log("newPathname",pathArray.length);
+    var newPathname = pathArray[pathArray.length-1];
+console.log("newPathname",newPathname);
 
 
     // for (i = 0; i < pathArray.length; i++) {
