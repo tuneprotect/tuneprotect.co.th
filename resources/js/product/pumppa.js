@@ -182,13 +182,18 @@ const constraints = {
 document.addEventListener("DOMContentLoaded", async () => {
 
     const package_data = await getPackageData(current_package);
-    let tier = window.location.pathname;
 
     var pathArray = window.location.pathname.split('/');
-    var newPathname = pathArray[pathArray.length-1];
-console.log("newPathname",newPathname);
+    var tier = pathArray[pathArray.length-1];
+    if(tier=="Silver"){
+        $$('.PUMPPA1').style.display = "block";
+    } else if(tier=="Gold"){
+        $$('.PUMPPA2').style.display = "block";
+    } else if(tier=="Platinum"){
+        $$('.PUMPPA3').style.display = "block";
+    }else{
 
-
+    }
     // for (i = 0; i < pathArray.length; i++) {
     //   newPathname += "/";
     //   newPathname += pathArray[pathArray.length];
