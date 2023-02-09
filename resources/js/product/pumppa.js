@@ -209,7 +209,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             });
         }else{
             //window.open(window.location.hostname);
-            window.location.href = window.location.href;
+            window.location.href = window.location.origin;
         }
     // for (i = 0; i < pathArray.length; i++) {
     //   newPathname += "/";
