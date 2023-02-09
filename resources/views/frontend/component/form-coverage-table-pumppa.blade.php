@@ -82,7 +82,7 @@
                     <th data-cover-{{$k}}>{!! $v !!}</th>
 
                     @foreach ($package_detail as $k1 => $v1)
-                        <td class="{{$k}} {{$i > 1 ? 'hide' : ''}}" data-index="{{$i}}" data-package="{{$k1}}">
+                        <td class="{{$k1}} {{$i > 1 ? 'hide' : ''}}" data-index="{{$i}}" data-package="{{$k1}}">
                             @if(isset($v1->plan->$k))
                                 @if((is_numeric($v1->plan->$k)))
                                     <strong>{{number_format( $v1->plan->$k,0)}}</strong>
