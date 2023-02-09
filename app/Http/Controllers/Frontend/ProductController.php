@@ -234,11 +234,6 @@ class ProductController extends BaseController
                                 $v->plan->PADRCA10 = __('product.healt2go_word');
                             }
                         }
-                        if ($selected === 'PUMPPA') {
-                            if ($v->plan->PADRCA10 !== '-') {
-                                $v->plan->PADRCA10 = __('product.healt2go_word');
-                            }
-                        }
                         if ($selected === 'ONPAKD') {
                             if ($v->plan->PADRKD07 !== '-') {
                                 $v->plan->PADRKD07 = __('product.healt2go_word');
@@ -290,7 +285,7 @@ class ProductController extends BaseController
         }
 
         $this->template->setBody('id', 'product_page');
-        
+
         if ($selected === 'ONTAOB') {
             //Replace view in body content.
             $review = WebContent::where('type_id', ProjectEnum::WEB_CONTENT_REVIEW)
