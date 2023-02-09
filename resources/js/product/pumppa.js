@@ -185,8 +185,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     var pathArray = window.location.pathname.split('/');
     var tier = pathArray[pathArray.length-1];
-    if (document.body.clientWidth > 767) {
-        
+       
         if(tier=="Silver"){
             $$('.PUMPPA2').forEach($el => {
                 $el.style.display = "none";            
@@ -211,7 +210,6 @@ document.addEventListener("DOMContentLoaded", async () => {
         }else{
 
         }
-    }
     // for (i = 0; i < pathArray.length; i++) {
     //   newPathname += "/";
     //   newPathname += pathArray[pathArray.length];
