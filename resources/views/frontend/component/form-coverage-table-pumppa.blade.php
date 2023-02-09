@@ -1,4 +1,10 @@
 <section style="display: none" id="step2" class="product-detail">  
+<style>
+.PUMPPA1,.PUMPPA2,.PUMPPA3{
+    display: none;
+}
+
+</style>
     <div class="wrapper">
         <table id="table-detail">
             <thead>
