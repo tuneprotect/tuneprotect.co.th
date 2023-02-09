@@ -113,7 +113,7 @@
                 <th>@lang('product.price_per_year')</th>
                 <?php $i = 1 ?>
                 @foreach ($package_detail as $k => $v)
-                    <td class="{{$k}} {{$i > 1 ? 'hide' : ''}}" data-index="{{$i}}" data-package="{{$k}}"><strong
+                    <td class="{{$k}} {{$i > 1 ? 'hide' : $k}}" data-index="{{$i}}" data-package="{{$k}}"><strong
                             data-price-{{$k}}></strong></td>
                     <?php $i++ ?>
                 @endforeach
