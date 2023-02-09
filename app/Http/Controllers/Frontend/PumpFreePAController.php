@@ -27,8 +27,8 @@ class PumpFreePAController extends BaseController
         session(['return_link' => $return_link]);
         $selected = "PUMPPA1";
         //dd(strtolower($selected));
-        return $this->genDetailPage($selected);
-        //return $this->genView('frontend.page.pump_free_pa_silver')->genDetailPage($selected);
+        //return $this->genDetailPage($selected);
+        return $this->genView('frontend.page.pump_free_pa_silver')->genDetailPage($selected);
     }
     public function Gold()
     {
