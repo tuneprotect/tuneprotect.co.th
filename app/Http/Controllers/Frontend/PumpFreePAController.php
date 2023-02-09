@@ -26,6 +26,7 @@ class PumpFreePAController extends BaseController
         $return_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
         session(['return_link' => $return_link]);
         $selected = "Silver";
+        $xxx = "pumppa01";
         dd(strtolower($selected));
         return $this->genView('frontend.page.pump_free_pa_silver');
     }
