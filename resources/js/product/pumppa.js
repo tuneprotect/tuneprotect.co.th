@@ -182,6 +182,18 @@ const constraints = {
 document.addEventListener("DOMContentLoaded", async () => {
 
     const package_data = await getPackageData(current_package);
+    let tier = window.location.pathname;
+
+    var pathArray = window.location.pathname.split('/');
+    var newPathname = pathArray[pathArray.length];
+console.log("newPathname",newPathname);
+
+
+    // for (i = 0; i < pathArray.length; i++) {
+    //   newPathname += "/";
+    //   newPathname += pathArray[pathArray.length];
+    // }
+
 
     let Keys = "";
     let myEle = document.getElementById("portal_key");
