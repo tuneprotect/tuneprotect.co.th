@@ -208,7 +208,8 @@ document.addEventListener("DOMContentLoaded", async () => {
                 $el.style.display = "none";            
             });
         }else{
-            window.location.href = window.location.hostname;
+            //window.open(window.location.hostname);
+            window.location.href = window.location.href;
         }
     // for (i = 0; i < pathArray.length; i++) {
     //   newPathname += "/";
