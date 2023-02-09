@@ -1,6 +1,8 @@
 <section style="display: none" id="step2" class="product-detail">  
 <style>
-
+/* .PUMPPA1,.PUMPPA2,.PUMPPA3{
+    display: none;
+} */
 
 </style>
     <div class="wrapper">
@@ -123,7 +125,7 @@
                     <th data-cover-{{$k}}>{!! $v !!}</th>
 
                     @foreach ($package_detail as $k1 => $v1)
-                        <td class="{{$k1}} {{$i > 1 ? 'hide' : ''}}" data-index="{{$i}}" data-package="{{$k1}}">
+                        <td class="{{$i > 1 ? 'hide' : '{{$k1}} '}}" data-index="{{$i}}" data-package="{{$k1}}">
                             @if(isset($v1->plan->$k))
                                 @if((is_numeric($v1->plan->$k)))
                                     <strong>{{number_format( $v1->plan->$k,0)}}</strong>

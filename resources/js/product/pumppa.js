@@ -188,16 +188,25 @@ document.addEventListener("DOMContentLoaded", async () => {
     if (document.body.clientWidth > 767) {
         
         if(tier=="Silver"){
-            $$('.PUMPPA1').forEach($el => {
-                $el.style.display = "block";            
+            $$('.PUMPPA2').forEach($el => {
+                $el.style.display = "none";            
+            });
+            $$('.PUMPPA3').forEach($el => {
+                $el.style.display = "none";            
             });
         } else if(tier=="Gold"){
-            $$('.PUMPPA2').forEach($el => {
-                $el.style.display = "block";            
+            $$('.PUMPPA1').forEach($el => {
+                $el.style.display = "none";            
+            });
+            $$('.PUMPPA3').forEach($el => {
+                $el.style.display = "none";            
             });
         } else if(tier=="Platinum"){
-            $$('.PUMPPA3').forEach($el => {
-                $el.style.display = "block";            
+            $$('.PUMPPA2').forEach($el => {
+                $el.style.display = "none";            
+            });
+            $$('.PUMPPA1').forEach($el => {
+                $el.style.display = "none";            
             });
         }else{
 
