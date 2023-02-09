@@ -22,18 +22,17 @@
                                    data-gtm="product-{{strtolower($selected)}}-mobile-choose-plan-{{$i}}"
                                    class="btn btn-block btn-outline btn-choose-plan {{$i == 1 ? 'on' : '' }}">
                                     
-                                   <strong class="package-number">
-                                        @if($v->no == 0)
+                                    <strong class="package-number">
+                                        @if($i == 0)
                                             @lang('product.no_plan')
-                                        @elseif($v->no == 1)
+                                        @elseif($i == 1)
                                             Silver
-                                        @elseif($v->no == 2)
+                                        @elseif($i == 2)
                                             Gold
-                                        @elseif($v->no == 3)
+                                        @elseif($i == 3)
                                             Platinum
                                         @endif
                                     </strong>
-                                   
                                 </a>
 
                                 <?php $i++ ?>
