@@ -23,6 +23,13 @@ class PumpFreePAController extends BaseController
     public function Silver()
     {
         return $this->genView('frontend.page.pump_free_pa_silver');
-
+    }
+    public function Gold()
+    {
+        return $this->genView('frontend.page.pump_free_pa_gold');
+    }
+    public function Platinum()
+    {
+        return $this->genView('frontend.page.platinum');
     }
 }
