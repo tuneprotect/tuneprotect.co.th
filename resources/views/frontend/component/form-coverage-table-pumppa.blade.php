@@ -1,45 +1,10 @@
-<section style="display: none" id="step2" class="product-detail">
-    @if(strtolower($selected) == 'onvacina' || strtolower($selected) == 'onvsurea')
-        <section id="sectionPackage" class="wrapper">
-            <form method="post" action="" class="insurance-form">
-                @if($locale == 'en')
-                    <div class="form-head">@lang('product.please_specify_birthdate_title')</div>
-                @else
-                    <div class="form-head">เลือกแผนประกันภัย</div>
-                @endif
-
-                <div class="form-inner">
-                    <div class="controls-wrapper">
-                        <select id="ctrl_package" name="ctrl_package">
-                            <option value="1">Silver</option>
-                            <option value="2" selected="selected">Gold</option>
-                            @if(strtolower($selected) == 'onvacina')
-                            <option value="3" selected="selected">Platinum</option>
-                            @endif
-                        </select>
-                        @if($locale == 'en')
-                            <label for="ctrl_package">Package</label>
-                        @else
-                            <label for="ctrl_package">แผนประกันภัย</label>
-                        @endif
-
-
-                    </div>
-                </div>
-            </form>
-        </section>
-    @endif
-
+<section style="display: none" id="step2" class="product-detail">  
     <div class="wrapper">
         <table id="table-detail">
             <thead>
             <tr>
                 <th>
-                    @if($selected != "CI")
-                        <h3>@lang('global.coverage')</h3>
-                    @else
-                        <h3>@lang('product.ci_coverage')</h3>
-                    @endif
+                    <h3>@lang('global.coverage')</h3>
                     <?php $i = 1 ?>
                     <div class="choose-plan-mobile">
 
@@ -83,7 +48,7 @@
                 </th>
                 <?php $i = 1 ?>
                 @foreach ($package_detail as $k => $v)
-                    <th data-package="{{$k}}">
+                    <th data-package="{{$k}}" class="{{$k}}">
                         @if(isset($v->no))
                             <strong>
                             @if($v->no == 0)
@@ -138,17 +103,6 @@
             </tr>
             </thead>
             <tbody>
-            @if($selected == "CI")
-                <tr class="pink">
-                    <th>@lang('product.installment')</th>
-                    <?php $i = 1 ?>
-                    @foreach ($package_detail as $k => $v)
-                        <td {{$i > 1 ? 'class=hide' : ""}} data-index="{{$i}}" data-package="{{$k}}"><strong
-                                data-installment-{{$k}}></strong></td>
-                        <?php $i++ ?>
-                    @endforeach
-                </tr>
-            @endif
             <tr class="orange">
                 <th>@lang('product.price_per_year')</th>
                 <?php $i = 1 ?>
