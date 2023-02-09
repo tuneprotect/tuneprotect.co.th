@@ -186,11 +186,17 @@ document.addEventListener("DOMContentLoaded", async () => {
     var pathArray = window.location.pathname.split('/');
     var tier = pathArray[pathArray.length-1];
     if(tier=="Silver"){
-        $$('.PUMPPA1').style.display = "block";
+        $$('.PUMPPA1').forEach($el => {
+            $el.style.display = "block";            
+        });
     } else if(tier=="Gold"){
-        $$('.PUMPPA2').style.display = "block";
+        $$('.PUMPPA2').forEach($el => {
+            $el.style.display = "block";            
+        });
     } else if(tier=="Platinum"){
-        $$('.PUMPPA3').style.display = "block";
+        $$('.PUMPPA3').forEach($el => {
+            $el.style.display = "block";            
+        });
     }else{
 
     }
