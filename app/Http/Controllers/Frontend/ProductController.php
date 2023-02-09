@@ -352,6 +352,8 @@ class ProductController extends BaseController
     {
         if (substr($data['fdPackage'], 0, 4) === 'ONPA') {
             $obj = new PAObject();
+        } elseif (substr($data['fdPackage'], 0, 6) === 'PUMPPA') {
+            $obj = new PAObject();
         } elseif (substr($data['fdPackage'], 0, 6) === 'CVISAFE') {
             $obj = new COVIDAObject();
         } elseif (substr($data['fdPackage'], 0, 9) === 'CVIS22JAN') {
@@ -899,6 +901,9 @@ class ProductController extends BaseController
         ) {
             $this->thankYouParam = substr($package, 0, 8);
             $link = 'IssuePolicyCovid19';
+        } elseif (substr($package, 0, 6) === 'PUMPPA') {
+            $this->thankYouParam = substr($package, 0, 6);
+            $link = "IssuePolicyPAChoice";
         } elseif (substr($package, 0, 6) === 'TGCVLP') {
             $this->thankYouParam = substr($package, 0, 6);
             $link = 'IssuePolicyCovidTGCVLP';
