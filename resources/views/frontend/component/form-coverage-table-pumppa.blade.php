@@ -20,7 +20,7 @@
                                    data-package="{{$k}}"
                                    data-index="{{$i}}"
                                    data-gtm="product-{{strtolower($selected)}}-mobile-choose-plan-{{$i}}"
-                                   class="btn btn-block btn-outline btn-choose-plan {{$i == 1 ? 'on' : '' }}">
+                                   class="btn btn-block btn-outline btn-choose-plan on">
                                     
                                     <strong class="package-number">
                                         @if($i == 0)
@@ -144,7 +144,7 @@
                 <th>&nbsp;</th>
                 <?php $i = 1 ?>
                 @foreach ($package_detail as $k => $v)
-                    <td  class="{{$k}} {{$i > 1 ? 'hide' : ''}}" data-index="{{$i}}" data-package="{{$k}}">
+                    <td  class="{{$k}}" data-index="{{$i}}" data-package="{{$k}}">
                         @if(isset($v->no))
                             @if($v->no == 0)
                                 <strong style="display: block" class="text-center">@lang('product.no_plan')</strong>
@@ -176,7 +176,7 @@
                         @endif
 
                         <a href="#"
-                           data-gtm="product-{{strtolower($selected)}}-bottom-choose-plan-{{$i}}"
+                           data-gtm="product-pumppa-bottom-choose-plan-{{$i}}"
                            @if(isset($v->no))
                                 @if($v->no == 0)
                                        data-step="3" data-package="{{$k}}" data-sub-package="" data-plan=""
