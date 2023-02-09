@@ -186,21 +186,21 @@ document.addEventListener("DOMContentLoaded", async () => {
     var pathArray = window.location.pathname.split('/');
     var tier = pathArray[pathArray.length-1];
        
-        if(tier=="Silver"){
+        if(tier=="Bronze"){
             $$('.PUMPPA2').forEach($el => {
                 $el.style.display = "none";            
             });
             $$('.PUMPPA3').forEach($el => {
                 $el.style.display = "none";            
             });
-        } else if(tier=="Gold"){
+        } else if(tier=="Silver"){
             $$('.PUMPPA1').forEach($el => {
                 $el.style.display = "none";            
             });
             $$('.PUMPPA3').forEach($el => {
                 $el.style.display = "none";            
             });
-        } else if(tier=="Platinum"){
+        } else if(tier=="Gold"){
             $$('.PUMPPA2').forEach($el => {
                 $el.style.display = "none";            
             });
@@ -208,7 +208,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                 $el.style.display = "none";            
             });
         }else{
-
+            window.location.href = window.location.hostname;
         }
     // for (i = 0; i < pathArray.length; i++) {
     //   newPathname += "/";
