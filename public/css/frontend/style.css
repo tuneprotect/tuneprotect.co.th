@@ -17804,6 +17804,7 @@ main form input[type=checkbox]:checked + label:after {
   [data-package=ONTAOB] #table-detail thead tr th:first-child,
   [data-package=ONTALN] #table-detail thead tr th:first-child,
   [data-package=TAIPOCT22] #table-detail thead tr th:first-child,
+  [data-package=TAIPCRN] #table-detail thead tr th:first-child,
   [data-package=TAISM] #table-detail thead tr th:first-child,
   [data-package=ONTAOBB2B] #table-detail thead tr th:first-child,
   [data-package=ONB2BTA] #table-detail thead tr th:first-child  {

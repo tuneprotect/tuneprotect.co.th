@@ -83,7 +83,7 @@ class ProductController extends BaseController
             return redirect()->route('current', ['locale' => $this->locale, 'controller' => $this->controller, 'func' => $link, 'params' => $selected]);
         }
 
-        if (in_array($selected, ['TAIPOCT22', 'ONTALN', 'ONCOVIDL', 'ONTA', 'TGCVLP', 'TAISM', 'ONTGISM', 'TAISMTG', 'ONTAISMB2B']) && $this->locale === 'th') {
+        if (in_array($selected, ['TAIPCRN', 'TAIPOCT22', 'ONTALN', 'ONCOVIDL', 'ONTA', 'TGCVLP', 'TAISM', 'ONTGISM', 'TAISMTG', 'ONTAISMB2B']) && $this->locale === 'th') {
             return redirect()->route('current', ['locale' => 'en', 'controller' => $this->controller, 'func' => $link, 'params' => $selected]);
         }
 
@@ -112,7 +112,7 @@ class ProductController extends BaseController
             return redirect("/" . $this->locale);
         }
 
-        if (in_array($selected, ['ONTALN', 'TAIPOCT22', 'ONCOVIDL', 'ONTA', 'TGCVLP', 'TAISM', 'ONTAISMB2B', 'ONTGISM', 'TAISMTG']) && $this->locale === 'th') {
+        if (in_array($selected, ['ONTALN','TAIPCRN', 'TAIPOCT22', 'ONCOVIDL', 'ONTA', 'TGCVLP', 'TAISM', 'ONTAISMB2B', 'ONTGISM', 'TAISMTG']) && $this->locale === 'th') {
             return redirect()->route('current', ['locale' => 'en', 'controller' => $this->controller, 'func' => $link, 'params' => $selected]);
         }
 
@@ -376,7 +376,10 @@ class ProductController extends BaseController
         } elseif (substr($data['fdPackage'], 0, 6) === 'ONTALN') {
             $obj = new ONTALNObject();
             $obj->fdFlgInbound = "I";
-        } elseif (substr($data['fdPackage'], 0, 9) === 'TAIPOCT22') {
+        } elseif (substr($data['fdPackage'], 0, 9) === 'TAIPOCT22') {//TAIPCRN
+            $obj = new ONTALNObject();
+            $obj->fdFlgInbound = "I";
+        } elseif (substr($data['fdPackage'], 0, 7) === 'TAIPCRN') {
             $obj = new ONTALNObject();
             $obj->fdFlgInbound = "I";
         } elseif (substr($data['fdPackage'], 0, 5) === 'TAISM' || substr($data['fdPackage'], 0, 10) === 'ONTAISMB2B') {
@@ -553,6 +556,7 @@ class ProductController extends BaseController
             substr($data['fdPackage'], 0, 8) === 'ONCOVIDL'
             || substr($data['fdPackage'], 0, 6) === 'ONTALN'
             || substr($data['fdPackage'], 0, 9) === 'TAIPOCT22'
+            || substr($data['fdPackage'], 0, 7) === 'TAIPCRN'
             || substr($data['fdPackage'], 0, 6) === 'TGCVLP'
             || substr($data['fdPackage'], 0, 7) === 'ONTGISM'
             || substr($data['fdPackage'], 0, 7) === 'TAISMTG'
@@ -578,6 +582,16 @@ class ProductController extends BaseController
                     $obj->fdApiPackage = $package[substr($data['fdPackage'], 0, 9)]->apiPackage;
                 }
             }
+            if (substr($data['fdPackage'], 0, 7) === 'TAIPCRN') {
+                if ($data['fdKeys'] === 'BQQWAMUX9JDXNTFFD4WZZLQ3NDEXNTFFT6UCXGSF68UXNEKZ24UYN5TRZ2') {
+                    $package = (array)json_decode(Storage::disk('public')->get('json/taipcrn.json'));
+                    $obj->fdApiPackage = $package[substr($data['fdPackage'], 0, 7)]->apiPackage;
+                } else {
+                    $package = (array)json_decode(Storage::disk('public')->get('json/taipcrn.json'));
+                    $obj->fdApiPackage = $package[substr($data['fdPackage'], 0, 7)]->apiPackage;
+                }
+            }
+            
 
             if (substr($data['fdPackage'], 0, 8) === 'ONCOVIDL') {
                 $package = (array)json_decode(Storage::disk('public')->get('json/oncovidl.json'));
@@ -924,6 +938,9 @@ class ProductController extends BaseController
             $link = "IssuePolicyInbound";
         } elseif (substr($package, 0, 9) === 'TAIPOCT22') {
             $this->thankYouParam = substr($package, 0, 9);
+            $link = "IssuePolicyInbound";
+        } elseif (substr($package, 0, 7) === 'TAIPCRN') {
+            $this->thankYouParam = substr($package, 0, 7);
             $link = "IssuePolicyInbound";
         } elseif (substr($package, 0, 5) === 'TAISM') {
             $this->thankYouParam = substr($package, 0, 5);
