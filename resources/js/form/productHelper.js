@@ -103,6 +103,7 @@ const callValidateApi = async (data) => {
     return await response.json();
 }
 const CheckRegisterForChillSure = async (data) => {
+    console.log("data-data",data)
     const response = await fetch(`/${$('html').getAttribute('lang')}/Product/CheckRegisterForChillSure`, {
         method: 'post',
         headers: {
@@ -210,8 +211,6 @@ export const validatePolicyStep5 = async ($this, fdPackage,fdFromDate) => {
             return false;
         } else {
             if(fdProductCode=="ONCSHC"){
-                
-                console.log("CheckRegisterForChillSure",fdNationalID, fdProductCode)
                 const result = await CheckRegisterForChillSure({fdNationalID, fdProductCode}) 
                 if (result.status === 'error') {
                     $('button[data-step="5"]').style.display = 'none';
