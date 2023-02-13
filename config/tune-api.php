@@ -7,5 +7,5 @@ return [
     'portal_tg' => env('PORTAL_TAG_KEY', '3TAMA4RRZ4MVQ2Y226UBNGFRGUSXNHHRPTUVNHA'),
     'portal_tgism' => env('PORTAL_TAG_KEY', '3TAMA4RRZ4MVQ2Y226UBNGFRGUSXNHHRPTUVNHA'),
     'portal_ta' => env('PORTAL_TAG_KEY', '3TAMA4RRZ4MVQ2Y226UBNGFRGUSXNHHRPTUVNHA'),
-    'url_chillsure' => env('TUNE_API_URL', 'https://webtest1.tuneinsurance.co.th/tunepolicy/api/ChillSure/'),
+    'url_chillsure' => env('TUNE_API_URL_CHILLSURE', 'https://webtest1.tuneinsurance.co.th/tunepolicy/api/ChillSure/'),
 ];
