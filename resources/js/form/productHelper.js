@@ -112,14 +112,11 @@ const CheckRegisterForChillSure = async (data) => {
         },
         body: JSON.stringify({...data})
     })
-
-    console.log("data-response",response)
     return await response.json();
 }
 
 export const validatePolicyLoc = async ($this, fdPackage,fdFromDate) => {
     let field = $this.getAttribute('name');
-    // console.log({field});
     let data = {fdNationalID: null, loc_fdAddr_Home:null}
     Object.keys(data).map((k) => {
         let fieldId = k;
@@ -165,7 +162,6 @@ export const validatePolicy = async ($this, fdPackage,fdFromDate) => {
     if (Object.keys(data).every((k) => !!data[k])) {
         const result = await callValidateApi({...data, fdPackage,fdFromDate})
         if (result.status === 'error') {
-            // showFieldError($this, [result.message]);
             $('button[data-step="4"]').style.display = 'none';
             $this.closest('.controls-wrapper').classList.add("error");
 
@@ -193,7 +189,6 @@ export const validatePolicyStep5 = async ($this, fdPackage,fdFromDate) => {
         }
         data = {...data, [k]: $(`#${fieldId}`).value}
     });
-    console.log("fdNationalID",fdPackage.fdNationalID);
     let fdNationalID = fdPackage.fdNationalID;
     let fdProductCode = fdPackage.fdProductCode;
     fdPackage = fdPackage.fdPackage;
@@ -235,12 +230,8 @@ export const validatePolicyStep5 = async ($this, fdPackage,fdFromDate) => {
 
 export const validatePolicyPayment = async (pfdNationalID,pfdPackage,pfdFromDate) => {
     let data = {fdNationalID: pfdNationalID,fdPackage: pfdPackage,fdFromDate:pfdFromDate}
-    console.log("data",data);
-    console.log("pfdPackage",pfdPackage);
-    console.log("pfdFromDate",pfdFromDate);
 
     const result = await callValidateApi(data)
-    console.log("result",result);
     if (result.status === 'error') {
         $('button[data-step="payment"]').style.display = 'none';
         Swal.fire({
@@ -258,9 +249,6 @@ export const validatePolicyPayment = async (pfdNationalID,pfdPackage,pfdFromDate
 
 
 export const validateQuestion = async ($this) => {
-
-    // console.log($this);
-
     let message = "ข้อมูลการสมัครไม่ตรงกับเงื่อนไขเกณฑ์การพิจารณารับประกัน จึงไม่สามารถทำรายการต่อได้";
     if (locale === 'en') {
         message= "The application information does not meet the criteria for underwriting insurance, therefore unable to continue the transaction.";
@@ -300,15 +288,10 @@ export const validateQuestionTG = async ($this) => {
 
 
 export const validateQuestion3 = async ($this) => {
-
-    // console.log($this);
-
     let message = "ข้อมูลการสมัครไม่ตรงกับเงื่อนไขเกณฑ์การพิจารณารับประกัน จึงไม่สามารถทำรายการต่อได้";
     if (locale === 'en') {
         message= "The application information does not meet the criteria for underwriting insurance, therefore unable to continue the transaction.";
     }
-    // console.log($this.value);
-    // console.log($this.id);
     if ($this.value === 'Y' && ($this.id === 'ctrl_question_1_Y'||$this.id === 'ctrl_question_2_Y' ||$this.id === 'ctrl_question_5_Y' )) {
         $('button[data-step="4"]').style.display = 'none';
         $this.closest('.controls-wrapper').classList.add("error");
@@ -335,9 +318,6 @@ export const genPrice = (birthday, package_data) => {
 }
 
 export const checkAge = (birthday, ageRange) => {
-
-    // console.log(ageRange);
-
     const range = ageRange.split('-');
     const age = calculateAge(birthday)
 
@@ -345,12 +325,8 @@ export const checkAge = (birthday, ageRange) => {
         const monthRange = range[0].split(',');
         if(monthRange.length == 2)
         {
-            console.log('DOB : month ' + monthRange[1]);
-            console.log('DOB : year ' + monthRange[0] +' - '+  range[1]);
-
             if(age.year >= monthRange[0] && age.year <= range[1])
             {
-                console.log('year pass');
                 if(age.year == monthRange[0])
                 {
                     if(age.month >= monthRange[1])
@@ -400,7 +376,6 @@ export const checkAge = (birthday, ageRange) => {
 
 
     } else if (age.year >= range[0] && age.year <= range[1]) {
-        // console.log('Normal case');
         return true;
     }
     return false;
@@ -416,9 +391,6 @@ export const showTitle = (sex, age) => {
     $$('.title-wrapper').forEach(el => {
         el.style.display = 'block';
     });
-
-    // console.log(age);
-
     let arrHide = [];
 
     if (age >= 15) {
