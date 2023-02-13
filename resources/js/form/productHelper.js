@@ -210,8 +210,9 @@ export const validatePolicyStep5 = async ($this, fdPackage,fdFromDate) => {
             return false;
         } else {
             if(fdProductCode=="ONCSHC"){
+                
+                console.log("CheckRegisterForChillSure",fdNationalID, fdProductCode)
                 const result = await CheckRegisterForChillSure({fdNationalID, fdProductCode}) 
-                console.log("CheckRegisterForChillSure",result)
                 if (result.status === 'error') {
                     $('button[data-step="5"]').style.display = 'none';
                     $this.closest('.controls-wrapper').classList.add("error");
