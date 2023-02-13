@@ -89,7 +89,7 @@ class PortalController extends ProductController
         session(['nopayment_status' => $nopayment_status]);
         session(['partner' => $partner]);
 
-        //echo var_dump($agentCode, );exit();
+        echo var_dump($agentCode, $massage_key);exit();
         return parent::index($link, $selected);
     }
 
