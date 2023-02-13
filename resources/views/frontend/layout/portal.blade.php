@@ -164,7 +164,7 @@
         <source media="(min-width:768px)" srcset="/storage/Banner/Tune_iPass_Desktop.jpg">
         <img src="{{url(!empty($v->pic_mobile_en) ? "/storage/Banner/Tune_iPass_Desktop.jpg" : "/storage/Banner/Tune_iPass_Mobile.jpg" )}}" alt="{{$v->locales[$locale]->title}}">
     </picture>
-    @elseif($agentCode==='00DM004D00' && $selected==='TAIPOCT22')
+    @elseif(($agentCode==='00DM004D00') && ($selected==='TAIPOCT22'))
         <picture class="aa">
             <source media="(min-width:768px)" srcset="https://www.tuneprotect.co.th/storage/Banner/Tune iPass/dtacbanner.jpg">
             <img src="{{url(!empty($v->pic_mobile_en) ? "https://www.tuneprotect.co.th/storage/Banner/Tune iPass/dtacbanner.jpg" : "/storage/Banner/Banner_Luma_M.jpg" )}}" alt="{{$v->locales[$locale]->title}}">
