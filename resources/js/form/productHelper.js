@@ -103,7 +103,6 @@ const callValidateApi = async (data) => {
     return await response.json();
 }
 const CheckRegisterForChillSure = async (data) => {
-    console.log("data-data",data)
     const response = await fetch(`/${$('html').getAttribute('lang')}/Product/CheckRegisterForChillSure`, {
         method: 'post',
         headers: {
@@ -114,6 +113,7 @@ const CheckRegisterForChillSure = async (data) => {
         body: JSON.stringify({...data})
     })
 
+    console.log("data-response",response.json())
     return await response.json();
 }
 
