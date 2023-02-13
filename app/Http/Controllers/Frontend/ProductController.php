@@ -1214,7 +1214,7 @@ class ProductController extends BaseController
     {
         $data = $request->all();
         $client = new Client();
-        $response = $client->request('POST', config('tune-api.url') . 'CheckIDCardForRegister', [
+        $response = $client->request('POST', config('tune-api.url_chillsure') . 'CheckIDCardForRegister', [
             'auth' => [config('tune-api.user'), config('tune-api.password')],
             'headers' => [
                 'Content-Type' => 'application/json'
