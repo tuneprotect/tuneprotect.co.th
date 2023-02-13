@@ -32,6 +32,7 @@ class PortalController extends ProductController
         $massage_error = '';
         if (!empty($redeem_code)) {
             $apiResult = $this->sendToApiPromoCodeValidation($redeem_code);
+
             if (!$apiResult["status"]) {
                 $apiData = $apiResult['data'];
                 $apiErrorCode = $apiData["error_code"];
@@ -88,6 +89,7 @@ class PortalController extends ProductController
         session(['nopayment_status' => $nopayment_status]);
         session(['partner' => $partner]);
 
+        echo var_dump($agentCode);exit();
         return parent::index($link, $selected);
     }
 
