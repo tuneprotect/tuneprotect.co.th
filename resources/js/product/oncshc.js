@@ -464,9 +464,14 @@ document.addEventListener("DOMContentLoaded", async () => {
     let ans3 = 0;
     $$("input[name=fdSendAnswer1]").forEach($el => {
         $el.addEventListener("change", function (e) {
-            ans1 = 1;
-            if(ans2===1 && ans3===1 && ans1==1){
-                document.getElementById("btn-fdQuestion1").click();
+            if (getRadioSelectedValue('fdSendAnswer1') === 'Y') {
+                document.getElementById("btn-q-n").click();
+                ans1 = 0;
+            }else{
+                ans1 = 1;
+                if(ans2===1 && ans3===1 && ans1==1){
+                    document.getElementById("btn-fdQuestion1").click();
+                }
             }
         });
     });

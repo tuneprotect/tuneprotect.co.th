@@ -95,7 +95,7 @@
     @endif
 
 </section>
-@include('frontend.component.form-taipoct-coverage-table',['package_detail' => $package_detail,'selected' =>$selected ])
+@include('frontend.component.form-taipcrn-coverage-table',['package_detail' => $package_detail,'selected' =>$selected ])
 <section style="display: none" id="step3" class="wrapper">
     <form class="insurance-form">
         @if(isset($partner))
