@@ -110,15 +110,15 @@
 
     </div>
     @elseif($locale == 'en')
-        @if(isset($agentCode))
+        @if(isset($agentCode)){
             @if($agentCode==='00BD056L107' && $selected==='TAIPOCT22')
                 <picture class="aa">
                     <source media="(min-width:768px)" srcset="https://www.tuneprotect.co.th/storage/Banner/Tune iPass/dtacbanner.jpg">
                     <img src="{{url(!empty($v->pic_mobile_en) ? "https://www.tuneprotect.co.th/storage/Banner/Tune iPass/dtacbanner.jpg" : "/storage/Banner/Banner_Luma_M.jpg" )}}" alt="{{$v->locales[$locale]->title}}">
                 </picture>
             @endif
-        @endif
-
+        @endif }
+        
 
 
 
