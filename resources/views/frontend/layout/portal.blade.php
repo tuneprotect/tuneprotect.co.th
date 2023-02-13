@@ -109,19 +109,7 @@
         </div>
 
     </div>
-    @elseif($locale == 'en')
-        @if(isset($agentCode)){
-            @if($agentCode==='00BD056L107' && $selected==='TAIPOCT22')
-                <picture class="aa">
-                    <source media="(min-width:768px)" srcset="https://www.tuneprotect.co.th/storage/Banner/Tune iPass/dtacbanner.jpg">
-                    <img src="{{url(!empty($v->pic_mobile_en) ? "https://www.tuneprotect.co.th/storage/Banner/Tune iPass/dtacbanner.jpg" : "/storage/Banner/Banner_Luma_M.jpg" )}}" alt="{{$v->locales[$locale]->title}}">
-                </picture>
-            @endif
-        @endif }
-        
-
-
-
+    @elseif($locale == 'en')        
     @if(!empty($v->pic_en))
     @if($selected==='ONVACINA' || $selected === 'ONVSUREA')
     <picture>
@@ -164,7 +152,11 @@
         <source media="(min-width:768px)" srcset="/storage/Banner/b2b/iSmile-Banner01.jpg">
         <img src="{{url(!empty($v->pic_mobile_en) ? "/storage/Banner/b2b/iSmile-Banner01.jpg" : "/storage/Banner/b2b/iSmile-Banner02.jpg" )}}" alt="{{$v->locales[$locale]->title}}">
     </picture>
-   
+    @elseif($agentCode==='00BD056L107' && $selected==='TAIPOCT22')
+        <picture class="aa">
+            <source media="(min-width:768px)" srcset="https://www.tuneprotect.co.th/storage/Banner/Tune iPass/dtacbanner.jpg">
+            <img src="{{url(!empty($v->pic_mobile_en) ? "https://www.tuneprotect.co.th/storage/Banner/Tune iPass/dtacbanner.jpg" : "/storage/Banner/Banner_Luma_M.jpg" )}}" alt="{{$v->locales[$locale]->title}}">
+        </picture>
     @elseif(isset($partner))
     @if(($partner==='LUMA' || $partner==='Luma') && ($selected==='ONTALN' || $selected==='TAIPOCT22'))
     <picture class="bbb">
@@ -172,7 +164,7 @@
         <img src="{{url(!empty($v->pic_mobile_en) ? "/storage/Banner/Banner_Luma_D.jpg" : "/storage/Banner/Banner_Luma_M.jpg" )}}" alt="{{$v->locales[$locale]->title}}">
     </picture>
     @elseif($selected==='TAIPOCT22')
-    <picture>
+    <picture class="ccc">
         <source media="(min-width:768px)" srcset="/storage/Banner/Tune_iPass_Desktop.jpg">
         <img src="{{url(!empty($v->pic_mobile_en) ? "/storage/Banner/Tune_iPass_Desktop.jpg" : "/storage/Banner/Tune_iPass_Mobile.jpg" )}}" alt="{{$v->locales[$locale]->title}}">
     </picture>
