@@ -159,10 +159,10 @@
         <source media="(min-width:768px)" srcset="/storage/Banner/Banner_Luma_D.jpg">
         <img src="{{url(!empty($v->pic_mobile_en) ? "/storage/Banner/Banner_Luma_D.jpg" : "/storage/Banner/Banner_Luma_M.jpg" )}}" alt="{{$v->locales[$locale]->title}}">
     </picture>    
-    @elseif(($agentCode==='00DM004D00') && ($selected==='TAIPOCT22'))
+    @elseif($agentCode==='00DM004D00' && $selected==='TAIPOCT22')
         <picture class="aa">
-            <source media="(min-width:768px)" srcset="https://www.tuneprotect.co.th/storage/Banner/Tune iPass/dtacbanner.jpg">
-            <img src="{{url(!empty($v->pic_mobile_en) ? "https://www.tuneprotect.co.th/storage/Banner/Tune iPass/dtacbanner.jpg" : "/storage/Banner/Banner_Luma_M.jpg" )}}" alt="{{$v->locales[$locale]->title}}">
+            <source media="(min-width:768px)" srcset="https://www.tuneprotect.co.th/storage/Banner/Tune%20iPass/dtacbanner.jpg">
+            <img src="{{url(!empty($v->pic_mobile_en) ? "https://www.tuneprotect.co.th/storage/Banner/Tune%20iPass/dtacbanner.jpg" : "/storage/Banner/Banner_Luma_M.jpg" )}}" alt="{{$v->locales[$locale]->title}}">
         </picture>
     @elseif($selected==='TAIPOCT22')
     <picture class="ccc">
