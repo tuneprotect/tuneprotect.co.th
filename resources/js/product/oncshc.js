@@ -406,7 +406,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     allField.forEach(field => {
         field.addEventListener("change", function (e) {
             validateField(this, constraints);
-            if (['fdName', 'fdSurname', 'fdNationalID'].includes(field.id)) {                
+            if (['fdName', 'fdSurname', 'fdNationalID'].includes(field.id)) {  
+                data.fdNationalID = $('#fdNationalID').value;              
                 validatePolicyStep5(e.target, data);
             }
         });
