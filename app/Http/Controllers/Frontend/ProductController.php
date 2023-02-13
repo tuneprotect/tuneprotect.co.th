@@ -1214,7 +1214,7 @@ class ProductController extends BaseController
     {
         $data = $request->all();
         $client = new Client();
-        $response = $client->request('POST', config('tune-api.url_chillsure') . 'CheckIDCardForRegister', [
+        $response = $client->request('POST', config('tune-api.url') . 'CheckIDCardForRegister', [
             'auth' => [config('tune-api.user'), config('tune-api.password')],
             'headers' => [
                 'Content-Type' => 'application/json'
@@ -1222,7 +1222,7 @@ class ProductController extends BaseController
             'body' => json_encode($data)
         ]);
         $res = (object)json_decode($response->getBody()->getContents(), true);
-echo var_dump($res);exit();
+
         $this->apiResult = $res->status ? self::SUCCESS : self::ERROR;
 
         if ($res->status) {
