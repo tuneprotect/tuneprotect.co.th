@@ -113,7 +113,7 @@ const CheckRegisterForChillSure = async (data) => {
         body: JSON.stringify({...data})
     })
 
-    console.log("data-response",response.json())
+    console.log("data-response",response)
     return await response.json();
 }
 
