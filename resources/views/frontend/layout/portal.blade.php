@@ -10,7 +10,7 @@
 {{-- <meta name="csrf-token" content="{{ csrf_token() }}" />--}}
 
 <meta name="csrf-token" content="{{ csrf_token() }}" />
-@if(($partner==='LUMA' && ($selected==='ONTALN' || $selected ==='TAIPOCT22' || $selected ==='TAIPCRN')) || $selected==='TGCVLP' || $selected==='TAISMTG' || $selected==='TAIPCRN')
+@if(($partner==='LUMA' && ($selected==='ONTALN' || $selected ==='TAIPOCT22' || $selected ==='TAIPCRN')) || $selected==='TGCVLP' || $selected==='TAISMTG')
 @elseif($partner==='LUMA' && $selected==='CVCARE')
 <header>
     <nav>
