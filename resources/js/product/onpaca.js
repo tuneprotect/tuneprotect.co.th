@@ -1,4 +1,5 @@
-import {showFieldError, validateField} from "../validate_form";
+import {showFieldError, 
+    showAcceptError, validateField} from "../validate_form";
 import validate from "validate.js";
 import {$, $$, current_package, fadeIn, fadeOut, getRadioSelectedValue, locale, scrollToTargetAdjusted} from "../helper"
 import Swal from 'sweetalert2'
