@@ -278,8 +278,8 @@
     </picture>
     @elseif($selected==='ONPACA' || $selected==='ONPAKD' || $selected==='ONPASN')
     <picture>
-        <source media="(min-width:768px)" srcset="/storage/Banner/Banner-PAChoice-THa.jpg">
-        <img src="{{url(!empty($v->pic_mobile_en) ? "/storage/Banner/Banner-PAChoice-THa.jpg" : "/storage/Banner/Banner-PAChoice-THa.jpg" )}}" alt="{{$v->locales[$locale]->title}}">
+        <source media="(min-width:768px)" srcset="/storage/Banner/Banner-PAChoice-Ena.jpg">
+        <img src="{{url(!empty($v->pic_mobile_en) ? "/storage/Banner/Banner-PAChoice-Ena.jpg" : "/storage/Banner/Banner-PAChoice-Ena.jpg" )}}" alt="{{$v->locales[$locale]->title}}">
     </picture>
     
     @elseif($partner==='rabbit' && $selected==='ONTAOB')
