@@ -639,15 +639,12 @@ class ProductController extends BaseController
     {
         if ($this->controller === 'product') {
             session(['nopayment_status' => false]);
-            session(['b2bpayment_status' => false]);
         }
         if ($this->controller === 'tg') {
             session(['nopayment_status' => true]);
-            session(['b2bpayment_status' => false]);
         }
         if ($this->controller === 'tgism') {
             session(['nopayment_status' => true]);
-            session(['b2bpayment_status' => false]);
         }
 
         $data = $request->all();
@@ -674,14 +671,10 @@ class ProductController extends BaseController
                     $price += $obj->fdPayAMT;
                 }
             }
-            // if (session('b2bpayment_status')) {
-            //     return $this->sendTo2C2P($result, $price, $log_id);
-            // }
+
             if (session('nopayment_status')) {
                 return $this->noPayment($result, $price, $log_id);
             }
-
-            
 
             return $this->sendTo2C2P($result, $price, $log_id);
         } else {
@@ -696,14 +689,9 @@ class ProductController extends BaseController
             $obj = $this->combindObj($data);
             $result = $this->logData($obj);
 
-            // if (session('b2bpayment_status')) {
-            //     return $this->sendB2BTo2C2P($result);
-            // }
             if (session('nopayment_status')) {
                 return $this->noPayment($result);
             }
-
-            
 
             return $this->sendTo2C2P($result);
         }
@@ -807,6 +795,8 @@ class ProductController extends BaseController
 
             $client = new Client();
 
+            //echo var_dump(json_encode($data));
+            //dd(json_encode($data));
             $response = $client->request('POST', config('tune-api.url') . $this->getApiIssueLink($data['fdPackage']), [
                 'auth' => [config('tune-api.user'), config('tune-api.password')],
                 'headers' => [
@@ -1194,7 +1184,9 @@ class ProductController extends BaseController
 
     public function checkDup(Request $request)
     {
+        //echo var_dump(1);exit();
         $data = $request->all();
+        //echo var_dump($data);exit();
         $client = new Client();
         $response = $client->request('POST', config('tune-api.url') . 'PersonalValidationCI', [
             'auth' => [config('tune-api.user'), config('tune-api.password')],
@@ -1273,66 +1265,5 @@ class ProductController extends BaseController
         //        dd($str_max);
 
         dd(strval(date('Ymd') . $str_max));
-    }
-    protected function sendB2BTo2C2P($obj, $price = null, $log_id = null)
-    {
-        dd($obj);
-        $invalidkey = false;
-        if (strtolower($this->controller) === "portal") {
-            $data = $obj->data;
-            if (!$data["fdKeys"]) {
-                $invalidkey = true;
-            } else {
-                if ($data["fdKeys"] === "") {
-                    $invalidkey = true;
-                }
-            }
-            if ($invalidkey === true) {
-                session(['error' => "Invalid link, Can not find key please check link again."]);
-                $func = 'error';
-                return redirect()->route('current', ['locale' => $this->locale, 'controller' => $this->controller, 'func' => $func, 'params' => $this->thankYouParam]);
-            }
-        }
-
-        $arr_post['version'] = '8.5';
-        $arr_post['merchant_id'] = config('payment.mid');
-        $arr_post['payment_description'] = "Buy Insurance";
-        $arr_post['order_id'] = config('project.invoice_prefix') . $obj->fdInvoice;
-        $arr_post['currency'] = "764";
-
-        $arr_post['amount'] = str_pad(($price ? $price : $obj->data["fdPayAMT"]) * 100, 12, '0', STR_PAD_LEFT);
-
-        $arr_post['customer_email'] = $obj->data["fdEmail"];
-        $arr_post['user_defined_1'] = ($log_id ? implode(',', $log_id) : $obj->log_id);
-
-        //        dd(strlen($arr_post['user_defined_1']));
-
-        if (strlen($arr_post['user_defined_1']) > 150) {
-            $arr_post['user_defined_1'] = substr($arr_post['user_defined_1'], 0, 150);
-        }
-
-        //        dd(strlen($arr_post['user_defined_1']));
-
-        $arr_post['user_defined_2'] = preg_replace('/\?.*/', '', session('return_link'));
-        $arr_post['user_defined_3'] = session('partner');
-        $arr_post['user_defined_4'] = $this->thankYouParam;
-        $arr_post['result_url_1'] = url("{$this->locale}/{$this->controller}/result");
-        $arr_post['payment_option'] = $this->payment;
-        $arr_post['ipp_interest_type'] = $this->ipp_interest_type;
-        $arr_post['default_lang'] = $this->locale;
-        //        $arr_post['ipp_period_filter'] = 10;
-
-        $params = join($arr_post);
-        $arr_post['hash_value'] = hash_hmac('sha256', $params, config('payment.secret'), false);    //Compute hash value
-
-        $this->bodyData['arr_post'] = $arr_post;
-
-
-        if (strtolower($this->controller) === "portal") {
-            $this->bodyData['partner'] = session('partner');
-            $this->bodyData['selected'] = session('selected');
-            return $this->genView('frontend.page.payment_portal');
-        }
-        return $this->genView('frontend.page.payment');
     }
 }
