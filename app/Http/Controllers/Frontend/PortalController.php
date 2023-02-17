@@ -71,6 +71,9 @@ class PortalController extends ProductController
             $massage_key = "Portal Key : " . $portal_key;
             $partner = $apiResult["partner"];
             $agentCode = $apiResult["agent_code"];
+
+            echo var_dump(1);
+            exit();
             $this->use_effective = $apiResult["user_effective"];
             if ($apiResult["user_nopayment"] == 'Y') {
                 $nopayment_status = true;
