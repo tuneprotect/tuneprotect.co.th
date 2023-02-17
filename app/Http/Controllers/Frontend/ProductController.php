@@ -674,14 +674,14 @@ class ProductController extends BaseController
                     $price += $obj->fdPayAMT;
                 }
             }
-            echo var_dump(session('b2bpayment_status'));exit();
+            if (session('b2bpayment_status')) {
+                return $this->sendB2BTo2C2P($result, $price, $log_id);
+            }
             if (session('nopayment_status')) {
                 return $this->noPayment($result, $price, $log_id);
             }
 
-            if (session('b2bpayment_status')) {
-                return $this->sendB2BTo2C2P($result, $price, $log_id);
-            }
+            
 
             return $this->sendTo2C2P($result, $price, $log_id);
         } else {
@@ -695,14 +695,15 @@ class ProductController extends BaseController
 
             $obj = $this->combindObj($data);
             $result = $this->logData($obj);
-            echo var_dump(session('b2bpayment_status'));exit();
-            if (session('nopayment_status')) {
-                return $this->noPayment($result);
-            }
 
             if (session('b2bpayment_status')) {
                 return $this->sendB2BTo2C2P($result);
             }
+            if (session('nopayment_status')) {
+                return $this->noPayment($result);
+            }
+
+            
 
             return $this->sendTo2C2P($result);
         }
@@ -806,8 +807,6 @@ class ProductController extends BaseController
 
             $client = new Client();
 
-            //echo var_dump(json_encode($data));
-            //dd(json_encode($data));
             $response = $client->request('POST', config('tune-api.url') . $this->getApiIssueLink($data['fdPackage']), [
                 'auth' => [config('tune-api.user'), config('tune-api.password')],
                 'headers' => [
@@ -1195,9 +1194,7 @@ class ProductController extends BaseController
 
     public function checkDup(Request $request)
     {
-        //echo var_dump(1);exit();
         $data = $request->all();
-        //echo var_dump($data);exit();
         $client = new Client();
         $response = $client->request('POST', config('tune-api.url') . 'PersonalValidationCI', [
             'auth' => [config('tune-api.user'), config('tune-api.password')],
