@@ -674,9 +674,9 @@ class ProductController extends BaseController
                     $price += $obj->fdPayAMT;
                 }
             }
-            if (session('b2bpayment_status')) {
-                return $this->sendTo2C2P($result, $price, $log_id);
-            }
+            // if (session('b2bpayment_status')) {
+            //     return $this->sendTo2C2P($result, $price, $log_id);
+            // }
             if (session('nopayment_status')) {
                 return $this->noPayment($result, $price, $log_id);
             }
@@ -696,9 +696,9 @@ class ProductController extends BaseController
             $obj = $this->combindObj($data);
             $result = $this->logData($obj);
 
-            if (session('b2bpayment_status')) {
-                return $this->sendB2BTo2C2P($result);
-            }
+            // if (session('b2bpayment_status')) {
+            //     return $this->sendB2BTo2C2P($result);
+            // }
             if (session('nopayment_status')) {
                 return $this->noPayment($result);
             }
