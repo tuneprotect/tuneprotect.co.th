@@ -61,6 +61,7 @@ class PortalController extends ProductController
         $partner = '';
         $agentCode = '';
         $nopayment_status = false;
+        $b2bpayment_status = false;
         $apiResult = $this->sendToApiPortalLogin($portal_key);
         if (!$apiResult["status"]) {
             $status_api = false;
@@ -74,6 +75,9 @@ class PortalController extends ProductController
             if ($apiResult["user_nopayment"] == 'Y') {
                 $nopayment_status = true;
             }
+            if($agentCode=="11AB001T88"){
+                $b2bpayment_status = true;
+            }
         }
 
 
@@ -82,12 +86,14 @@ class PortalController extends ProductController
         $this->bodyData['status_api'] = $status_api;
         $this->bodyData['massage_key'] = $massage_key;
         $this->bodyData['nopayment_status'] = $nopayment_status;
+        $this->bodyData['b2bpayment_status'] = $b2bpayment_status;
 
         $this->bodyData['controller'] = $this->controller;
         $this->bodyData['use_effective'] = $this->use_effective;
 
         session(['nopayment_status' => $nopayment_status]);
         session(['partner' => $partner]);
+        session(['b2bpayment_status' => $b2bpayment_status]);
 
         //echo var_dump($agentCode, $selected);exit();
         return parent::index($link, $selected);
