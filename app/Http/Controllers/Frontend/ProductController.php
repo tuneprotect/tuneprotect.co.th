@@ -674,7 +674,7 @@ class ProductController extends BaseController
                     $price += $obj->fdPayAMT;
                 }
             }
-
+            echo var_dump(session('b2bpayment_status'));exit();
             if (session('nopayment_status')) {
                 return $this->noPayment($result, $price, $log_id);
             }
@@ -695,7 +695,7 @@ class ProductController extends BaseController
 
             $obj = $this->combindObj($data);
             $result = $this->logData($obj);
-
+            echo var_dump(session('b2bpayment_status'));exit();
             if (session('nopayment_status')) {
                 return $this->noPayment($result);
             }
