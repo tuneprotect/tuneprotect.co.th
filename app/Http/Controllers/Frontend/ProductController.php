@@ -675,7 +675,7 @@ class ProductController extends BaseController
                 }
             }
             if (session('b2bpayment_status')) {
-                return $this->sendB2BTo2C2P($result, $price, $log_id);
+                return $this->sendTo2C2P($result, $price, $log_id);
             }
             if (session('nopayment_status')) {
                 return $this->noPayment($result, $price, $log_id);
@@ -1084,6 +1084,8 @@ class ProductController extends BaseController
     {
         $result = null;
         $oBuyLog = BuyLog::where('fdInvoice', str_replace(config('project.invoice_prefix'), "", $request->input('order_id')))->get();
+        
+        //dd($oBuyLog);
         foreach ($oBuyLog as $v) {
             $data = $v->data;
             $payAmount = $data['fdPayAMT'];
