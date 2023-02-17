@@ -72,7 +72,7 @@ class PortalController extends ProductController
             $partner = $apiResult["partner"];
             $agentCode = $apiResult["agent_code"];
 
-            echo var_dump(1);
+            echo var_dump($agentCode);
             exit();
             $this->use_effective = $apiResult["user_effective"];
             if ($apiResult["user_nopayment"] == 'Y') {
