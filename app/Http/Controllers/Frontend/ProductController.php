@@ -675,7 +675,7 @@ class ProductController extends BaseController
                 }
             }
             if (session('b2bpayment_status')) {
-                return $this->sendTo2C2P($result, $price, $log_id);
+                return $this->sendB2BTo2C2P($result, $price, $log_id);
             }
             if (session('nopayment_status')) {
                 return $this->noPayment($result, $price, $log_id);
@@ -1276,7 +1276,6 @@ class ProductController extends BaseController
     }
     protected function sendB2BTo2C2P($obj, $price = null, $log_id = null)
     {
-        dd($obj);
         $invalidkey = false;
         if (strtolower($this->controller) === "portal") {
             $data = $obj->data;
