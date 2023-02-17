@@ -1276,6 +1276,7 @@ class ProductController extends BaseController
     }
     protected function sendB2BTo2C2P($obj, $price = null, $log_id = null)
     {
+        dd($obj);
         $invalidkey = false;
         if (strtolower($this->controller) === "portal") {
             $data = $obj->data;
