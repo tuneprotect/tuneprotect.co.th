@@ -81,7 +81,12 @@
                     </div>
                 </div>
                 <p>@lang('product.chillsure.question_no2')</p>
-                <div class="two-col">
+                <div class="bmi_wrapper">
+                    <p>@lang('product.question_diabetes_4')</p>
+                    <div id="bmi_result">25</div>
+                    <p>@lang('product.question_diabetes_4_1')</p>
+                </div>
+                <!--div class="two-col">
                     <div class="controls-wrapper">
                         <ul class="check-wrapper">
                             <li>
@@ -96,7 +101,7 @@
                             </li>
                         </ul>
                     </div>
-                </div>
+                </div-->
                 <p>@lang('product.chillsure.question_no3')</p>
                 <div class="two-col">
                     <div class="controls-wrapper">
