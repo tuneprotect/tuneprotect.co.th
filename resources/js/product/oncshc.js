@@ -461,7 +461,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
     //let ans3 = getRadioSelectedValue(`fdSendAnswer3`);
     let ans1 = 0;
-    let ans2 = 0;
+    let ans2 = 1;
     let ans3 = 0;
     $$("input[name=fdSendAnswer1]").forEach($el => {
         $el.addEventListener("change", function (e) {
@@ -476,6 +476,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             }
         });
     });
+    /*
     $$("input[name=fdSendAnswer2]").forEach($el => {
         $el.addEventListener("change", function (e) {
             if (getRadioSelectedValue('fdSendAnswer2') === 'Y') {
@@ -489,7 +490,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             }
         });
     });
-
+*/
     $$("input[name=fdSendAnswer3]").forEach($el => {
         $el.addEventListener("change", function (e) {
             if (getRadioSelectedValue('fdSendAnswer3') === 'Y') {
