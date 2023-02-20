@@ -323,7 +323,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             }
 
             bmi_calculated = (weight / (round_height * round_height)).toFixed(1);
-            if (parseFloat(bmi_calculated) >= 35.1 ) {
+            if (parseFloat(bmi_calculated) > 30 ) {
                 showBMIError($('#ctrl_weight').getAttribute('data-error-not-qualify'));
                 bmi_valid = false;
             } else {
