@@ -19740,27 +19740,33 @@ main[data-package=DIABETES] .popup-inner-wrapper {
 }
 
 @media all and (min-width: 768px) {
-  main[data-package=DIABETES] form .bmi-input .bmi-wrapper {
+  main[data-package=DIABETES] form .bmi-input .bmi-wrapper,
+  [data-package=ONCSHC] form .bmi-input .bmi-wrapper {
     display: flex;
   }
 }
 
-main[data-package=DIABETES] form .bmi-input .bmi-wrapper > div {
+main[data-package=DIABETES] form .bmi-input .bmi-wrapper > div,
+[data-package=ONCSHC] form .bmi-input .bmi-wrapper > div {
   flex: 1;
 }
 
 @media all and (min-width: 768px) {
-  main[data-package=DIABETES] form .bmi-input .bmi-wrapper > div {
+  main[data-package=DIABETES] form .bmi-input .bmi-wrapper > div,
+  [data-package=ONCSHC] form .bmi-input .bmi-wrapper > div {
     margin-right: 20px;
   }
 
-  main[data-package=DIABETES] form .bmi-input .bmi-wrapper > div:last-child {
+  main[data-package=DIABETES] form .bmi-input .bmi-wrapper > div:last-child,
+  [data-package=ONCSHC] form .bmi-input .bmi-wrapper > div:last-child {
     margin-right: 0;
   }
 }
 
 main[data-package=DIABETES] form .bmi-input .error_height,
-main[data-package=DIABETES] form .bmi-input .error_weight {
+main[data-package=DIABETES] form .bmi-input .error_weight,
+[data-package=ONCSHC] form .bmi-input .error_height,
+[data-package=ONCSHC] form .bmi-input .error_weight {
   position: absolute;
   font-size: 0.6rem;
   pointer-events: none;
