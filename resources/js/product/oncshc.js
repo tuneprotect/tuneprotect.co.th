@@ -534,16 +534,21 @@ document.addEventListener("DOMContentLoaded", async () => {
                         case 1:
                             const validateResult = validateAgeInPackage(package_data, false);
                             const chkAccept = validateAcceptStep1();
+                            const validateBMIResult = validateBMI();
+
                             if(!chkAccept){
                                 showAcceptError($('#ctrl_accept_step1').getAttribute('data-error-insurance_term'));
                                 status = false;
                                 break;
                             }
-                            if (validateResult.status) {
+                            if (validateResult.status && validateBMIResult.status) {
                                 status = true;
                                 data = {
                                     ...data,
                                     ...validateResult.data,
+                                    fdBMI_Weight: $('#ctrl_weight').value,
+                                    fdBMI_Height: $("#ctrl_height").value,
+                                    fdBMI_Value: $("#ctrl_bmi_calculator").value
                                 }
 
                                 genPrice();
