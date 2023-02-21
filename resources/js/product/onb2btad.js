@@ -55,14 +55,11 @@ const step1Constraints = {
             message: "^" + $('#fdDestFrom').getAttribute('data-error')
         }
     },
-    fdDestTo: function (value, attributes, attributeName, options, constraints) {
-        if (attributes.ctrl_travel_type === 'annual') return null;
-        return {
-            presence: {
-                allowEmpty: false,
-                message: "^" + $('#fdDestTo').getAttribute('data-error')
-            }
-        };
+    fdDestTo:{
+        presence: {
+            allowEmpty: false,
+            message: "^" + $('#fdDestTo').getAttribute('data-error')
+        }
     }
 };
 
