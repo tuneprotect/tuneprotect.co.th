@@ -230,13 +230,11 @@ const genPrice = (package_data,country_data, subpackage, fdFromDate, fdToDate) =
     subpackage = country_zone;
     
     let day = differenceInDays(endDate, startDate) + 1;
-    console.log("day",day);
+    
     
     if(day===365 || day===366){
         day = 0;
-    }
-    $('#days').value = day;
-
+    }   
     const allPack = Object.keys(package_data)
         .filter(k => _.startsWith(k, current_package + subpackage))
 
@@ -261,7 +259,9 @@ const genPrice = (package_data,country_data, subpackage, fdFromDate, fdToDate) =
             planname = subpackage ==="AS" ? "Tune Outbound Easy Asia Plan 2 ":"Tune Outbound Easy Worldwide Plan 2 ";
         }
     }
-
+    day = pack_code === "annual" ? "0" : day
+    $('#days').value = day;
+    console.log("day",day);
     if (document.body.clientWidth > 767) {
         $$('#table-detail td[data-package],#table-detail th[data-package],.choose-plan-mobile').forEach($el => {
             if (allPack.includes($el.getAttribute("data-package"))) {
