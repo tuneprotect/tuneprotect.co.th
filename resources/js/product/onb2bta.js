@@ -241,9 +241,9 @@ const genPrice = (package_data,country_data, subpackage, fdFromDate, fdToDate) =
         .filter(k => _.startsWith(k, current_package + subpackage))
 
     $('#all_pack').value = allPack;
-    const planname = "";
-    const plannumber = "";
-    const planlocation="";
+    let planname = "";
+    let plannumber = "";
+    let planlocation="";
     let lang = $('#lang').value
     let pack_code = $('#ctrl_travel_type').value
     if(lang==="th"){
