@@ -228,7 +228,7 @@ const genPrice = (package_data,country_data, subpackage, fdFromDate, fdToDate) =
             }
         });
     subpackage = country_zone;
-    console.log("subpackage",subpackage);
+    
     let day = differenceInDays(endDate, startDate) + 1;
     console.log("day",day);
     
@@ -242,26 +242,23 @@ const genPrice = (package_data,country_data, subpackage, fdFromDate, fdToDate) =
 
     $('#all_pack').value = allPack;
     let planname = "";
-    let plannumber = "";
-    let planlocation="";
     let lang = $('#lang').value
     let pack_code = $('#ctrl_travel_type').value
     if(lang==="th"){
         if(pack_code === "trip"){
             $('#txtHead').innerHTML = "แผนไป-กลับ"; 
-            plannumber = "แผน 1";
+            planname = subpackage ==="AS" ? "ทูน เอาท์บาวด์ อีซี่ เอเชีย แผน 1 ":"ทูน เอาท์บาวด์ อีซี่ ทั่วโลก แผน 1 ";
         }else{
             $('#txtHead').innerHTML = "แผนเที่ยวเดียว";
-            plannumber = "แผน 2";
+            planname = subpackage ==="AS" ? "ทูน เอาท์บาวด์ อีซี่ เอเชีย แผน 2 ":"ทูน เอาท์บาวด์ อีซี่ ทั่วโลก แผน 2 ";
         }
-        planname =  "ทูน เอาท์บาวด์ อีซี่ ";
     }else{
         if(pack_code === "trip"){
             $('#txtHead').innerHTML = "Round Trip";
-            plannumber = "Plan 1";
+            planname = subpackage ==="AS" ? "Tune Outbound Easy Asia Plan 1 ":"Tune Outbound Easy Worldwide Plan 1 ";
         }else{
             $('#txtHead').innerHTML = "One Trip";
-            plannumber = "Plan 2";
+            planname = subpackage ==="AS" ? "Tune Outbound Easy Asia Plan 2 ":"Tune Outbound Easy Worldwide Plan 2 ";
         }
     }
 
@@ -314,7 +311,7 @@ const genPrice = (package_data,country_data, subpackage, fdFromDate, fdToDate) =
 
         // planlocation = lang==="th" ? "เอเชีย":"Asia";
 
-        // $('#hdftitle').value = pack;
+        $('#hdftitle').value = planname;
     });
 
 
@@ -672,9 +669,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                         }
 
 
-                        const selectedPackage = $('#step3 .form-head').innerHTML;
-
-                        const title = locale === 'th' ? "ทูน เอาท์บาวด์ อีซี่ ":"Tune Outbound Easy ";
+                        const selectedPackage = $('#hdftitle').value;//$('#step3 .form-head').innerHTML;
 
                         fromDate = format(parseISO(data.fdFromDate), 'dd/MM/') + (locale === 'th' ? (parseInt(format(parseISO(data.fdFromDate), 'yyyy')) + 543) : format(parseISO(data.fdFromDate), 'yyyy'))
                         toDate = format(parseISO(data.fdToDate), 'dd/MM/') + (locale === 'th' ? (parseInt(format(parseISO(data.fdToDate), 'yyyy')) + 543) : format(parseISO(data.fdToDate), 'yyyy'))
