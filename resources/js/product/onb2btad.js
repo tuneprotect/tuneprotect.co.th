@@ -55,14 +55,11 @@ const step1Constraints = {
             message: "^" + $('#fdDestFrom').getAttribute('data-error')
         }
     },
-    fdDestTo: function (value, attributes, attributeName, options, constraints) {
-        //if (attributes.ctrl_travel_type === 'annual') return null;
-        return {
-            presence: {
-                allowEmpty: false,
-                message: "^" + $('#fdDestTo').getAttribute('data-error')
-            }
-        };
+    fdDestTo:{
+        presence: {
+            allowEmpty: false,
+            message: "^" + $('#fdDestTo').getAttribute('data-error')
+        }
     }
 };
 
@@ -551,7 +548,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                             ...data,
                             fdDestFrom: $('#fdDestFrom').value,
                             ctrl_travel_type: $('#ctrl_travel_type').value,
-                            fdDestTo: $('#ctrl_travel_type').value === 'annual' ? "" : $('#fdDestTo').value,
+                            fdDestTo: $('#fdDestTo').value,
                             fdFromDate: $('#fdFromDate').value,
                             fdToDate: $('#fdToDate').value,
                         }
