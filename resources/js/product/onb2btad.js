@@ -244,17 +244,22 @@ const genPrice = (package_data, fdFromDate, fdToDate) => {
     });
     let lang = $('#lang').value
     let pack_code = $('#sub_code').value
+    let planname = "";
     if(lang==="th"){
         if(pack_code === "ONB2BTADRT"){
             $('#txtHead').innerHTML = "แผนไป-กลับ";
+            planname = "ทูน โดเมสติก อีซี่ แผนไป-กลับ";
         }else{
             $('#txtHead').innerHTML = "แผนเที่ยวเดียว";
+            planname = "ทูน โดเมสติก อีซี่ แผนเที่ยวเดียว";
         }
     }else{
         if(pack_code === "ONB2BTADRT"){
             $('#txtHead').innerHTML = "Round Trip";
+            planname = "Tune Domestic Easy Round Trip";
         }else{
             $('#txtHead').innerHTML = "One Trip";
+            planname = "Tune Domestic Easy One Trip";
         }
     }
 
@@ -313,6 +318,7 @@ const genPrice = (package_data, fdFromDate, fdToDate) => {
         //         $el.style.display = "none";
         //     }
         // });
+        $('#hdftitle').value = planname;
     }
 }
 

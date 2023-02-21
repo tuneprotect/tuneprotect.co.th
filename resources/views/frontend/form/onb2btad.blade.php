@@ -72,6 +72,7 @@
 </section>
 @include('frontend.component.form-coverage-table-b2b',['package_detail' => $package_detail,'selected' =>$selected ])
 <section style="display: none" id="step3" class="wrapper">
+    <input type="hidden" id="hdftitle" />
     <form class="insurance-form">
         <div class="form-head"> {{$package->locales[$locale]->title}} <span id="form-head" style="display:none"></span>
             <span id="txtHead"></span>
