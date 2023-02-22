@@ -697,7 +697,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                         }
 
 
-                        const selectedPackage = $('#step3 .form-head').innerHTML;
+                        const selectedPackage = $('#step3 .form-head').innerHTML.replace("แผน","แบบ");
 
                         fromDate = format(parseISO(data.fdFromDate), 'dd/MM/') + (locale === 'th' ? (parseInt(format(parseISO(data.fdFromDate), 'yyyy')) + 543) : format(parseISO(data.fdFromDate), 'yyyy'))
                         toDate = format(parseISO(data.fdToDate), 'dd/MM/') + (locale === 'th' ? (parseInt(format(parseISO(data.fdToDate), 'yyyy')) + 543) : format(parseISO(data.fdToDate), 'yyyy'))
