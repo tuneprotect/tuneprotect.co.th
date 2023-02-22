@@ -697,7 +697,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                         }
 
 
-                        const selectedPackage = $('#step3 .form-head').innerHTML.replace("แผน","แบบ");
+                        const selectedPackage = $('#step3 .form-head').innerHTML;
 
                         fromDate = format(parseISO(data.fdFromDate), 'dd/MM/') + (locale === 'th' ? (parseInt(format(parseISO(data.fdFromDate), 'yyyy')) + 543) : format(parseISO(data.fdFromDate), 'yyyy'))
                         toDate = format(parseISO(data.fdToDate), 'dd/MM/') + (locale === 'th' ? (parseInt(format(parseISO(data.fdToDate), 'yyyy')) + 543) : format(parseISO(data.fdToDate), 'yyyy'))
@@ -708,7 +708,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
                         let sb = `<h3 class="text-primary">${$summary_section.getAttribute('data-insurance_data')}</h3><br/>
                             <div class="two-col">
-                            <div><span>${$summary_section.getAttribute('data-plan')} : </span><strong>${selectedPackage}</strong></div>
+                            <div><span>${$summary_section.getAttribute('data-plan')} : </span><strong>${selectedPackage.replace("แผน","แบบ")} 1</strong></div>
                             <div><span>${$('#receve_channel_title').innerText} : </span><strong>${data.fdSendType === 'P' ? $('label[for=ctrl_channel_post]').innerText : $('label[for=ctrl_channel_email]').innerText}</strong></div>
                             <div><span>${$('label[for=fdDestFrom]').innerText} : </span><strong>${$destFrom.options[$destFrom.selectedIndex].text}</strong></div><div><span>${$('label[for=fdDestTo]').innerText} : </span><strong>${$destTo.options[$destTo.selectedIndex].text}</strong></div>
                             <div><span>${$('label[for=fdFromDate]').innerText} : </span><strong>${fromDate}</strong></div>
