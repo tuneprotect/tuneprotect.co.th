@@ -244,11 +244,11 @@ const genPrice = (package_data, fdFromDate, fdToDate) => {
     let planname = "";
     if(lang==="th"){
         if(pack_code === "ONB2BTADRT"){
-            $('#txtHead').innerHTML = "แผนไป-กลับ";
-            planname = "ทูน โดเมสติก อีซี่ แผนไป-กลับ";
+            $('#txtHead').innerHTML = "แบบไป-กลับ";
+            planname = "ทูน โดเมสติก อีซี่ แบบไป-กลับ";
         }else{
-            $('#txtHead').innerHTML = "แผนเที่ยวเดียว";
-            planname = "ทูน โดเมสติก อีซี่ แผนเที่ยวเดียว";
+            $('#txtHead').innerHTML = "แบบเที่ยวเดียว";
+            planname = "ทูน โดเมสติก อีซี่ แบบเที่ยวเดียว";
         }
     }else{
         if(pack_code === "ONB2BTADRT"){
@@ -260,7 +260,7 @@ const genPrice = (package_data, fdFromDate, fdToDate) => {
         }
     }
 
-
+    $('#hdftitle').value = planname;
     if (document.body.clientWidth > 767) {
         $$('#table-detail td[data-package],#table-detail th[data-package],.choose-plan-mobile').forEach($el => {
             if ($el.getAttribute("data-package")==$('#sub_code').value) {
@@ -315,7 +315,7 @@ const genPrice = (package_data, fdFromDate, fdToDate) => {
         //         $el.style.display = "none";
         //     }
         // });
-        $('#hdftitle').value = planname;
+        
     }
 }
 
@@ -708,7 +708,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
                         let sb = `<h3 class="text-primary">${$summary_section.getAttribute('data-insurance_data')}</h3><br/>
                             <div class="two-col">
-                            <div><span>${$summary_section.getAttribute('data-plan')} : </span><strong>${selectedPackage.replace("แผน","แบบ")} 1</strong></div>
+                            <div><span>${$summary_section.getAttribute('data-plan')} : </span><strong>${selectedPackage}</strong></div>
                             <div><span>${$('#receve_channel_title').innerText} : </span><strong>${data.fdSendType === 'P' ? $('label[for=ctrl_channel_post]').innerText : $('label[for=ctrl_channel_email]').innerText}</strong></div>
                             <div><span>${$('label[for=fdDestFrom]').innerText} : </span><strong>${$destFrom.options[$destFrom.selectedIndex].text}</strong></div><div><span>${$('label[for=fdDestTo]').innerText} : </span><strong>${$destTo.options[$destTo.selectedIndex].text}</strong></div>
                             <div><span>${$('label[for=fdFromDate]').innerText} : </span><strong>${fromDate}</strong></div>
