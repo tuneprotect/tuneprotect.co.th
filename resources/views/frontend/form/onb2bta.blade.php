@@ -34,7 +34,7 @@
                 <div class="controls-wrapper">
                     <input id="fdFromDate" name="fdFromDate" type="text" class="flatpickr"
                            data-mindate="{{date('Y-m-d')}}"
-                           data-maxdate="{{date('Y-m-d',strtotime( "+3 months"))}}"
+                           data-maxdate="{{date('Y-m-d',strtotime( "+8 months"))}}"
                            data-setmindatetoequal ="fdToDate"
                            data-setmaxdateto="fdToDate"
                            data-setmaxdaterange="89"
