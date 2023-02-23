@@ -252,7 +252,7 @@ const genPrice = (package_data,country_data, subpackage, fdFromDate, fdToDate) =
             $('#txtHead').innerHTML = "Round Trip";
             planname = subpackage ==="AS" ? "Tune Outbound Easy Asia Plan 1 ":"Tune Outbound Easy Worldwide Plan 1 ";
         }else{
-            $('#txtHead').innerHTML = "One Trip";
+            $('#txtHead').innerHTML = "One Way Trip";
             planname = subpackage ==="AS" ? "Tune Outbound Easy Asia Plan 2 ":"Tune Outbound Easy Worldwide Plan 2 ";
         }
     }

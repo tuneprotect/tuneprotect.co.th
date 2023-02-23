@@ -255,8 +255,8 @@ const genPrice = (package_data, fdFromDate, fdToDate) => {
             $('#txtHead').innerHTML = "Round Trip";
             planname = "Tune Domestic Easy Round Trip";
         }else{
-            $('#txtHead').innerHTML = "One Trip";
-            planname = "Tune Domestic Easy One Trip";
+            $('#txtHead').innerHTML = "One Way Trip";
+            planname = "Tune Domestic Easy One Way Trip";
         }
     }
 
