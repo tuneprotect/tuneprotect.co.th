@@ -286,9 +286,9 @@
                                         @if($selected==='ONTAOB')
                                             <picture>
                                                 <source media="(min-width:768px)"
-                                                        srcset="{{url(str_replace('Banner_TA_D_EN', 'Banner_iTravel_D_EN', $v->pic_en))}}">
+                                                        srcset="{{url(str_replace('Banner_TA_D_EN', 'Banner_iTravel_D_EN20230223', $v->pic_en))}}">
                                                 <img
-                                                    src="{{url(!empty($v->pic_mobile_en) ? url(str_replace('Banner_TA_D_EN', 'Banner_iTravel_D_EN', $v->pic_mobile_en)) : url(str_replace('Banner_TA_D_EN', 'Banner_iTravel_M_EN', $v->pic_en)) )}}"
+                                                    src="{{url(!empty($v->pic_mobile_en) ? url(str_replace('Banner_TA_D_EN', 'Banner_iTravel_D_EN20230223', $v->pic_mobile_en)) : url(str_replace('Banner_TA_D_EN', 'Banner_iTravel_M_EN20230223', $v->pic_en)) )}}"
                                                     alt="{{$v->locales[$locale]->title}}">
                                             </picture>
                                         @endif
