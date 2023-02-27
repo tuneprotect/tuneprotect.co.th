@@ -219,7 +219,7 @@ const genPrice = (package_data,country_data, subpackage, fdFromDate, fdToDate) =
     let endDate = parseISO(fdToDate);
     
     console.log("fdFromDate",fdFromDate);
-    console.log("package_data",$('#form-head').text());
+    console.log("package_data",fdToDate);
 
     let country_zone = '';
     country_data.map(v => {
