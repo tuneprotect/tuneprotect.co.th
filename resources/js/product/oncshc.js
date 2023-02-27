@@ -408,8 +408,8 @@ document.addEventListener("DOMContentLoaded", async () => {
             validateField(this, constraints);
             if (['fdName', 'fdSurname', 'fdNationalID'].includes(field.id)) {  
                 data.fdNationalID = $('#fdNationalID').value;              
-                var result = validatePolicyStep5(e.target, data);
-                console.log("result",result)
+                validatePolicyStep5(e.target, data);
+                //console.log("result",result)
             }
         });
     });
@@ -638,7 +638,12 @@ document.addEventListener("DOMContentLoaded", async () => {
                                 status = false;
                                 return false;
                             }
-
+                            let idcard = $('#hdfidcard').value;
+                            if(idcard==="false")
+                            {
+                                status = false;
+                                return false;
+                            }
                             let address = ($('#ctrl_province').value).split('*');
                             let today = new Date();
                             let dd = String(today.getDate()).padStart(2, '0');
