@@ -216,9 +216,11 @@ export const validatePolicyStep5 = async ($this, fdPackage,fdFromDate) => {
                         text: result.message
                     })
                     $('#swal2-content').innerHTML = $('#swal2-content').textContent
+                    $('#hdfidcard').value = "false";
                     return false;
                 } else {                    
                     $('button[data-step="5"]').style.display = 'inline-flex';
+                    $('#hdfidcard').value = "true";
                     return true;
                 }
             } 

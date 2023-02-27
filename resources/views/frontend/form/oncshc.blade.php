@@ -176,7 +176,7 @@
             <button data-gtm="product-{{strtolower($selected)}}-proceed-step-4" data-step="5"
                     class="btn btn-primary btn-goto">@lang('product.proceed')</button>
         </div>
-
+        <input type="hidden" id="hdfidcard" />
     </form>
 </section>
 <section style="display: none;" id="step5" class="wrapper">
