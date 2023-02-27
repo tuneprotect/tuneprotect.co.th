@@ -408,7 +408,8 @@ document.addEventListener("DOMContentLoaded", async () => {
             validateField(this, constraints);
             if (['fdName', 'fdSurname', 'fdNationalID'].includes(field.id)) {  
                 data.fdNationalID = $('#fdNationalID').value;              
-                validatePolicyStep5(e.target, data);
+                var result = validatePolicyStep5(e.target, data);
+                console.log("result",result)
             }
         });
     });
