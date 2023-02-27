@@ -219,7 +219,7 @@ const genPrice = (package_data,country_data, subpackage, fdFromDate, fdToDate) =
     let endDate = parseISO(fdToDate);
     
     console.log("fdFromDate",fdFromDate);
-    console.log("fdToDate",fdToDate);
+    console.log("package_data",package_data);
 
     let country_zone = '';
     country_data.map(v => {
@@ -237,6 +237,7 @@ const genPrice = (package_data,country_data, subpackage, fdFromDate, fdToDate) =
 
     $('#all_pack').value = allPack;
     let planname = "";
+    let plannumber = "";
     let lang = $('#lang').value
     let pack_code = $('#ctrl_travel_type').value
     if(lang==="th"){
