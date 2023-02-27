@@ -28,7 +28,7 @@
                            data-maxdate="{{date('Y-m-d',strtotime( "+179 days"))}}"
                            data-setmindatetoequal ="fdToDate"
                            data-setmaxdateto="fdToDate"
-                           data-setmaxdaterange="179"
+                           data-setmaxdaterange="45"
                            data-error="@lang('product.error.travel_start_date')"
                     />
                     <label for="fdFromDate">@lang("product.ipass_arrival_date")</label>
