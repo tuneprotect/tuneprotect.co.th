@@ -236,26 +236,24 @@ const genPrice = (package_data,country_data, subpackage, fdFromDate, fdToDate) =
         .filter(k => _.startsWith(k, current_package + subpackage))
 
     $('#all_pack').value = allPack;
-    let planname = "";
-    let plannumber = $('#form-head').textContent;
-    console.log("plannumber",plannumber);
+    let planname = "";    
     let lang = $('#lang').value
     let pack_code = $('#ctrl_travel_type').value
     if(lang==="th"){
         if(pack_code === "trip"){
             $('#txtHead').innerHTML = "แผนไป-กลับ"; 
-            planname = subpackage ==="AS" ? "ทูน เอาท์บาวด์ อีซี่ เอเชีย แผน 1 ":"ทูน เอาท์บาวด์ อีซี่ ทั่วโลก แผน 1 ";
+            planname = subpackage ==="AS" ? "ทูน เอาท์บาวด์ อีซี่ เอเชีย ":"ทูน เอาท์บาวด์ อีซี่ ทั่วโลก ";
         }else{
             $('#txtHead').innerHTML = "แผนเที่ยวเดียว";
-            planname = subpackage ==="AS" ? "ทูน เอาท์บาวด์ อีซี่ เอเชีย แผน 2 ":"ทูน เอาท์บาวด์ อีซี่ ทั่วโลก แผน 2 ";
+            planname = subpackage ==="AS" ? "ทูน เอาท์บาวด์ อีซี่ เอเชีย ":"ทูน เอาท์บาวด์ อีซี่ ทั่วโลก ";
         }
     }else{
         if(pack_code === "trip"){
             $('#txtHead').innerHTML = "Round Trip";
-            planname = subpackage ==="AS" ? "Tune Outbound Easy Asia Plan 1 ":"Tune Outbound Easy Worldwide Plan 1 ";
+            planname = subpackage ==="AS" ? "Tune Outbound Easy Asia ":"Tune Outbound Easy Worldwide ";
         }else{
             $('#txtHead').innerHTML = "One Way Trip";
-            planname = subpackage ==="AS" ? "Tune Outbound Easy Asia Plan 2 ":"Tune Outbound Easy Worldwide Plan 2 ";
+            planname = subpackage ==="AS" ? "Tune Outbound Easy Asia ":"Tune Outbound Easy Worldwide ";
         }
     }
     day = pack_code === "annual" ? "0" : day
@@ -554,6 +552,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
                         const fdPackage = $btn.getAttribute('data-package');
                         $('#form-head').innerHTML = $btn.getAttribute('data-plan');
+                        $('#hdftitle').value = $('#hdftitle').value + $btn.getAttribute('data-plan');
                         if (fdPackage) {
                             data = {
                                 ...data,
