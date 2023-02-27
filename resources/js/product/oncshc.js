@@ -43,7 +43,9 @@ validate.validators.idcard = function (value, options, key, attributes) {
     if (value.length !== 13) {
         return "^" + $('#fdNationalID').getAttribute('data-error-idcard');
     }
-
+    if ($("#hdfidcard").value === "false") {
+        return "^" + $('#fdNationalID').getAttribute('data-error-idcard');
+    }
     for (var i = 0, sum = 0; i < 12; i++) {
         sum += parseFloat(value.charAt(i)) * (13 - i);
     }
