@@ -237,7 +237,8 @@ const genPrice = (package_data,country_data, subpackage, fdFromDate, fdToDate) =
 
     $('#all_pack').value = allPack;
     let planname = "";
-    let plannumber = "";
+    let plannumber = $('#form-head').textContent;
+    console.log("plannumber",plannumber);
     let lang = $('#lang').value
     let pack_code = $('#ctrl_travel_type').value
     if(lang==="th"){
