@@ -426,6 +426,9 @@ class ProductController extends BaseController
         } elseif (substr($data['fdPackage'], 0, 6) === 'ONCSHC') {
             $obj = new BAOWANObject();
             //$obj = new ONCSHCObject();
+        } elseif (substr($data['fdPackage'], 0, 5) === 'ONCSH') {
+            $obj = new BAOWANObject();
+            //$obj = new ONCSHCObject();
         } else {
             $obj = new BaseInsuranceObject();
         }
