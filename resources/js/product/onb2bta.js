@@ -242,10 +242,10 @@ const genPrice = (package_data,country_data, subpackage, fdFromDate, fdToDate) =
     if(lang==="th"){
         if(pack_code === "trip"){
             $('#txtHead').innerHTML = "แผนไป-กลับ"; 
-            planname = subpackage ==="AS" ? "ทูน เอาท์บาวด์ อีซี่ เอเชีย ":"ทูน เอาท์บาวด์ อีซี่ ทั่วโลก ";
+            planname = subpackage ==="AS" ? "ทูน เอาท์บาวด์ อีซี่ เอเชีย แผนไป-กลับ":"ทูน เอาท์บาวด์ อีซี่ ทั่วโลก แผนไป-กลับ";
         }else{
             $('#txtHead').innerHTML = "แผนเที่ยวเดียว";
-            planname = subpackage ==="AS" ? "ทูน เอาท์บาวด์ อีซี่ เอเชีย ":"ทูน เอาท์บาวด์ อีซี่ ทั่วโลก ";
+            planname = subpackage ==="AS" ? "ทูน เอาท์บาวด์ อีซี่ เอเชีย แผนเที่ยวเดียว":"ทูน เอาท์บาวด์ อีซี่ ทั่วโลก แผนเที่ยวเดียว";
         }
     }else{
         if(pack_code === "trip"){
