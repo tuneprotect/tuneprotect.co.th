@@ -651,6 +651,9 @@ class ProductController extends BaseController
         }
 
         $data = $request->all();
+
+        dd($data);
+
         if (isset($data['send_data'])) {
             $data = (array)json_decode($data['send_data']);
 
