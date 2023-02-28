@@ -250,10 +250,10 @@ const genPrice = (package_data,country_data, subpackage, fdFromDate, fdToDate) =
     }else{
         if(pack_code === "trip"){
             $('#txtHead').innerHTML = "Round Trip";
-            planname = subpackage ==="AS" ? "Tune Outbound Easy Asia ":"Tune Outbound Easy Worldwide ";
+            planname = subpackage ==="AS" ? "Tune Outbound Easy Asia Round Trip ":"Tune Outbound Easy Worldwide Round Trip ";
         }else{
             $('#txtHead').innerHTML = "One Way Trip";
-            planname = subpackage ==="AS" ? "Tune Outbound Easy Asia ":"Tune Outbound Easy Worldwide ";
+            planname = subpackage ==="AS" ? "Tune Outbound Easy Asia One Way Trip ":"Tune Outbound Easy Worldwide One Way Trip ";
         }
     }
     day = pack_code === "annual" ? "0" : day
