@@ -1313,7 +1313,7 @@ class ProductController extends BaseController
             $arr_post['user_defined_1'] = substr($arr_post['user_defined_1'], 0, 150);
         }
 
-        //        dd(strlen($arr_post['user_defined_1']));
+        dd($arr_post['merchant_id']);
 
         $arr_post['user_defined_2'] = preg_replace('/\?.*/', '', session('return_link'));
         $arr_post['user_defined_3'] = session('partner');
