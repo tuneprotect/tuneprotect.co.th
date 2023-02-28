@@ -552,7 +552,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
                         const fdPackage = $btn.getAttribute('data-package');
                         $('#form-head').innerHTML = $btn.getAttribute('data-plan');
-                        $('#hdftitle').value = $('#hdftitle').value + $btn.getAttribute('data-plan');
+                        //$('#hdftitle').value = $('#hdftitle').value + $btn.getAttribute('data-plan');
                         if (fdPackage) {
                             data = {
                                 ...data,
@@ -667,7 +667,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                         }
 
 
-                        const selectedPackage = $('#hdftitle').value;//$('#step3 .form-head').innerHTML;
+                        const selectedPackage = $('#hdftitle').value + $('#form-head').innerHTML;//$('#step3 .form-head').innerHTML;
 
                         fromDate = format(parseISO(data.fdFromDate), 'dd/MM/') + (locale === 'th' ? (parseInt(format(parseISO(data.fdFromDate), 'yyyy')) + 543) : format(parseISO(data.fdFromDate), 'yyyy'))
                         toDate = format(parseISO(data.fdToDate), 'dd/MM/') + (locale === 'th' ? (parseInt(format(parseISO(data.fdToDate), 'yyyy')) + 543) : format(parseISO(data.fdToDate), 'yyyy'))
