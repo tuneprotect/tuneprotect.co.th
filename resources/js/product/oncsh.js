@@ -1,8 +1,5 @@
-require('../main');
-require('../product');
-
 
 document.addEventListener("DOMContentLoaded", async () => {
-alert(1)
+    window.location.href = window.location.origin +'/product/health/ONCSHC';
 
 });
