@@ -675,7 +675,7 @@ class ProductController extends BaseController
                 }
             }
             if (session('b2bpayment_status')) {
-                return $this->sendTo2C2P($result, $price, $log_id);
+                return $this->sendB2BTo2C2P($result, $price, $log_id);
             }
             if (session('nopayment_status')) {
                 return $this->noPayment($result, $price, $log_id);
