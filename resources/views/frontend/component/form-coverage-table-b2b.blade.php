@@ -26,7 +26,7 @@
                                             @if($k=="ONB2BTADRT")
                                                 Round Trip
                                             @else
-                                                One Trip
+                                                One Way Trip
                                             @endif
                                         @else
                                             @if($k=="ONB2BTADRT")
@@ -55,7 +55,7 @@
                             @if($k=="ONB2BTADRT")
                                 Round Trip
                             @else
-                                One Trip
+                                One Way Trip
                             @endif
                         @else
                             @if($k=="ONB2BTADRT")
@@ -156,7 +156,7 @@
                                 @if($k=="ONB2BTADRT")
                                     Round Trip
                                 @else
-                                    One Trip
+                                    One Way Trip
                                 @endif
                             @else
                                 @if($k=="ONB2BTADRT")
