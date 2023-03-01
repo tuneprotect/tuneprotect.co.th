@@ -98,7 +98,7 @@
                                     </div>
                                     <ul>
                                         @foreach($v->productPackage AS $v1)
-                                            @if($v1->code === 'ONVACINA' || $v1->code === 'CVCARE'|| $v1->code === 'ONCOVIDMW' || $v1->code === 'TGCVLP' || $v1->code === 'TAISMTG' || $v1->code === 'ONTALN' || $v1->code === 'ONVSUREA' || $v1->code === 'ONTAOBB2B' || $v1->code === 'ONB2BTA' || $v1->code === 'ONB2BTAD' || $v1->code === 'ONTAISMB2B' || $v1->code === 'ONCSH')
+                                            @if($v1->code === 'ONVACINA' || $v1->code === 'CVCARE'|| $v1->code === 'ONCOVIDMW' || $v1->code === 'TGCVLP' || $v1->code === 'TAISMTG' || $v1->code === 'ONTALN' || $v1->code === 'ONVSUREA' || $v1->code === 'ONTAOBB2B' || $v1->code === 'ONB2BTA' || $v1->code === 'ONB2BTAD' || $v1->code === 'ONTAISMB2B' || $v1->code === 'ONCSH' || $v1->code === 'TAIPCRN') 
                                             @else
                                                 <li>
                                                     <a
@@ -157,9 +157,9 @@
                                 <ul>
                                     @foreach($last_highlight_product->productPackage AS $v)
                                         @if($v->code === 'TAIPCRN')
-                                        
-                                        @else                                    
-                                            <li>
+
+                                        @else                                 
+                                            <li class="ssss">
                                                 <a
                                                     data-gtm="index-product-image-{{$last_highlight_product->friendly_url}}-{{$v->code}}"
                                                     href="{{route('current',['locale' => $locale,'controller' => 'product','func' => $last_highlight_product->friendly_url,'params' => $v->code ])}}">
