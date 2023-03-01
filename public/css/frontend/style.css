@@ -18456,7 +18456,7 @@ main[data-package=CI] .service_flexi .service_flexi_box .inner {
     width: 100%;
   }
   header nav ul.main div.sub #imgnew {
-    width: 10%;
+    width: 10% !important;
     display: block;
   }
 }

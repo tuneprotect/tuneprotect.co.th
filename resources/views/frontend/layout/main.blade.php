@@ -51,7 +51,7 @@
                                                                        href="{{route('current',['locale' => $locale,'controller' => 'product','func' => $v1->friendly_url,'params' => $v2->code ])}}">
                                                                         <span>{{$v2->locales[$locale]->title}}
                                                                             @if($v2->code === 'ONCSHC')                                                            
-                                                                                <img id="imgnew" src="https://www.tuneprotect.co.th/storage/Icon/new2.gif" style="width:10%;" />
+                                                                                <img id="imgnew" src="https://www.tuneprotect.co.th/storage/Icon/new2.gif" style="width:30%;margin-bottom: -5px;" />
                                                                             @endif
                                                                         </span>
                                                                     </a>
