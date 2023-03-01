@@ -44,25 +44,29 @@
                             </div>
                             <ul>
                                 @foreach($main_highlight_product->productPackage AS $v)
-                                    <li>
-                                        <a
-                                            data-gtm="index-product-image-{{$main_highlight_product->friendly_url}}-{{$v->code}}"
-                                            href="{{route('current',['locale' => $locale,'controller' => 'product','func' => $main_highlight_product->friendly_url,'params' => $v->code ])}}">
-                                            <div class="two-tone-icon">
-                                                <span><img src="{{url($v->pic)}}" alt=""></span>
-                                                <strong>{{$v->locales[$locale]->title}}
-                                                    @if($v->code === 'ONCSHC')                                                            
-                                                        <img src="https://www.tuneprotect.co.th/storage/Icon/new2.gif" style="width:40%;margin-bottom: -5px;" />
-                                                    @endif
-                                                </strong>
+                                    @if($v->code === 'ONCSH')
+
+                                    @else
+                                        <li>
+                                            <a
+                                                data-gtm="index-product-image-{{$main_highlight_product->friendly_url}}-{{$v->code}}"
+                                                href="{{route('current',['locale' => $locale,'controller' => 'product','func' => $main_highlight_product->friendly_url,'params' => $v->code ])}}">
+                                                <div class="two-tone-icon">
+                                                    <span><img src="{{url($v->pic)}}" alt=""></span>
+                                                    <strong>{{$v->locales[$locale]->title}}
+                                                        @if($v->code === 'ONCSHC')                                                            
+                                                            <img src="https://www.tuneprotect.co.th/storage/Icon/new2.gif" style="width:40%;margin-bottom: -5px;" />
+                                                        @endif
+                                                    </strong>
+                                                </div>
+                                            </a>
+                                            <div class="btn-wrapper">
+                                                <a class="btn btn-gradient"
+                                                data-gtm="index-product-button-{{$main_highlight_product->friendly_url}}-{{$v->code}}"
+                                                href="{{route('current',['locale' => $locale,'controller' => 'product','func' => $main_highlight_product->friendly_url,'params' => $v->code ])}}">@lang('global.choose_product')</a>
                                             </div>
-                                        </a>
-                                        <div class="btn-wrapper">
-                                            <a class="btn btn-gradient"
-                                               data-gtm="index-product-button-{{$main_highlight_product->friendly_url}}-{{$v->code}}"
-                                               href="{{route('current',['locale' => $locale,'controller' => 'product','func' => $main_highlight_product->friendly_url,'params' => $v->code ])}}">@lang('global.choose_product')</a>
-                                        </div>
-                                    </li>
+                                        </li>
+                                    @endif
                                 @endforeach
                             </ul>
                         </div>
