@@ -91,7 +91,11 @@ class ProductController extends BaseController
             $selected = "ONB2BTA";
             //return redirect()->route('current', ['locale' => $this->locale, 'controller' => $this->controller, 'func' => $link, 'params' => $selected]);
         }
-       
+        if (in_array($selected, ['ONCSH'])) {
+            $selected = "ONCSHC";
+            return $this->genView('frontend.page.redirect_chillsure');
+            //return redirect()->route('current', ['locale' => $this->locale, 'controller' => $this->controller, 'func' => $link, 'params' => $selected]);
+        }
         $this->getProductDetail($link, $selected);
 
         if ($selected) {
