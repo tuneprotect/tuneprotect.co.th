@@ -156,21 +156,25 @@
                                 </div>
                                 <ul>
                                     @foreach($last_highlight_product->productPackage AS $v)
-                                        <li>
-                                            <a
-                                                data-gtm="index-product-image-{{$last_highlight_product->friendly_url}}-{{$v->code}}"
-                                                href="{{route('current',['locale' => $locale,'controller' => 'product','func' => $last_highlight_product->friendly_url,'params' => $v->code ])}}">
-                                                <div class="two-tone-icon">
-                                                    <span><img src="{{url($v->pic)}}" alt=""></span>
-                                                    <strong>{{$v->locales[$locale]->title}}</strong>
+                                        @if($v->code === 'TAIPCRN')
+                                        
+                                        @else                                    
+                                            <li>
+                                                <a
+                                                    data-gtm="index-product-image-{{$last_highlight_product->friendly_url}}-{{$v->code}}"
+                                                    href="{{route('current',['locale' => $locale,'controller' => 'product','func' => $last_highlight_product->friendly_url,'params' => $v->code ])}}">
+                                                    <div class="two-tone-icon">
+                                                        <span><img src="{{url($v->pic)}}" alt=""></span>
+                                                        <strong>{{$v->locales[$locale]->title}}</strong>
+                                                    </div>
+                                                </a>
+                                                <div class="btn-wrapper">
+                                                    <a class="btn btn-gradient"
+                                                    data-gtm="index-product-button-{{$last_highlight_product->friendly_url}}-{{$v->code}}"
+                                                    href="{{route('current',['locale' => $locale,'controller' => 'product','func' => $last_highlight_product->friendly_url,'params' => $v->code ])}}">@lang('global.choose_product')</a>
                                                 </div>
-                                            </a>
-                                            <div class="btn-wrapper">
-                                                <a class="btn btn-gradient"
-                                                   data-gtm="index-product-button-{{$last_highlight_product->friendly_url}}-{{$v->code}}"
-                                                   href="{{route('current',['locale' => $locale,'controller' => 'product','func' => $last_highlight_product->friendly_url,'params' => $v->code ])}}">@lang('global.choose_product')</a>
-                                            </div>
-                                        </li>
+                                            </li>
+                                        @endif
                                     @endforeach
                                 </ul>
                             </div>
