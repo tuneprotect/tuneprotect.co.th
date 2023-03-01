@@ -14657,7 +14657,10 @@ header nav {
     color: #606060;
     font-size: 0.8rem;
   }
-
+  header nav ul.main div.sub a span{
+    display: flex;
+    align-items: center;
+  }
   header nav ul.main div.sub a.category {
     color: #E71618;
     font-size: 1rem;
@@ -18451,6 +18454,10 @@ main[data-package=CI] .service_flexi .service_flexi_box .inner {
   main[data-package=CI] .service_flexi .service_flexi_box .inner {
     margin: 10px 0;
     width: 100%;
+  }
+  header nav ul.main div.sub #imgnew {
+    width: 10%;
+    display: block;
   }
 }
 
