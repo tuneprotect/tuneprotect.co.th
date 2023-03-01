@@ -121,6 +121,14 @@
         <source media="(min-width:768px)" srcset="{{url(str_replace('Banner_TA_D_EN', 'Banner_TAI_D', $v->pic_en))}}">
         <img src="{{url(!empty($v->pic_mobile_en) ? url(str_replace('Banner_TA_D_EN', 'Banner_TAI_M', $v->pic_mobile_en)) : url(str_replace('Banner_TA_D_EN', 'Banner_TAI_M', $v->pic_en)) )}}" alt="{{$v->locales[$locale]->title}}">
     </picture>
+    @elseif($selected==='ONCSHC')
+        <picture>
+            <source media="(min-width:768px)"
+                    srcset="{{url(str_replace('Banner-baowan-main-en', 'Banner-chillsure-main-en-pc', $v->pic_en))}}">
+            <img
+                src="{{url(!empty($v->pic_mobile_en) ? url(str_replace('Banner-baowan-main-en', 'Banner-chillsure-main-en-mb', $v->pic_mobile_en)) : url(str_replace('Banner-baowan-main-en', 'Banner-chillsure-main-en-mb', $v->pic_en)) )}}"
+                alt="{{$v->locales[$locale]->title}}">
+        </picture>
     @elseif($selected==='ONTADM')
     <picture>
         <source media="(min-width:768px)" srcset="/storage/Banner/Banner_TA_D_EN.jpg">
@@ -256,6 +264,11 @@
         <source media="(min-width:768px)" srcset="/storage/Banner/Banner_LumaCare_D.jpg">
         <img src="{{url(!empty($v->pic_mobile_en) ? "/storage/Banner/Banner_LumaCare_D.jpg" : "/storage/Banner/Banner_LumaCare_M.jpg" )}}" alt="{{$v->locales[$locale]->title}}">
     </picture>
+    @elseif($selected==='ONCSHC')
+        <picture>
+            <source media="(min-width:768px)" srcset="{{url(str_replace('Banner-baowan-main-en', 'Banner-chillsure-main-th-pc', $v->pic_en))}}">
+            <img src="{{url(!empty($v->pic_mobile_en) ? url(str_replace('Banner-baowan-main-en', 'Banner-chillsure-main-th-mb', $v->pic_mobile_en)) : url(str_replace('Banner-baowan-main-en', 'Banner-chillsure-main-th-mb', $v->pic_en)) )}}" alt="{{$v->locales[$locale]->title}}">
+        </picture>    
     @elseif($selected==='TAISMTG')
     <picture>
         <source media="(min-width:768px)" srcset="/storage/Banner/Banner_TAI_D.jpg">
