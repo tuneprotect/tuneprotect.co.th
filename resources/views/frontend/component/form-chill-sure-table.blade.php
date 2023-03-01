@@ -21,7 +21,7 @@
                                         data-package="{{$k}}"
                                         data-index="{{$i}}"
                                         data-gtm="product-{{strtolower($selected)}}-mobile-choose-plan-{{$i}}"
-                                        class="btn btn-block btn-outline btn-choose-plan {{$i == 1 ? 'on' : '' }}">
+                                        class="btn btn-block btn-outline btn-choose-plan {{$i == 4 ? 'on' : '' }}">
                                         @if(isset($v->no))
                                             @if(isset($v->name))
                                                 <strong>{{$v->name}} @lang('product.plan') {{$v->no}}</strong>
