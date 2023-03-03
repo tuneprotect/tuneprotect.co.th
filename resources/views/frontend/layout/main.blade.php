@@ -245,6 +245,14 @@
                                                 src="{{url(!empty($v->pic_mobile_en) ? url(str_replace('Banner-baowan-main-en', 'Banner-chillsure-main-en-mb', $v->pic_mobile_en)) : url(str_replace('Banner-baowan-main-en', 'Banner-chillsure-main-en-mb', $v->pic_en)) )}}"
                                                 alt="{{$v->locales[$locale]->title}}">
                                         </picture>
+                                    @elseif($selected==='PUMPPA')
+                                        <picture class="qqq">
+                                            <source media="(min-width:768px)"
+                                                    srcset="{{url(str_replace('Banner-baowan-main-en', 'Banner-chillsure-main-en-pc', $v->pic_en))}}">
+                                            <img
+                                                src="{{url(!empty($v->pic_mobile_en) ? url(str_replace('Banner-baowan-main-en', 'Banner-chillsure-main-en-mb', $v->pic_mobile_en)) : url(str_replace('Banner-baowan-main-en', 'Banner-chillsure-main-en-mb', $v->pic_en)) )}}"
+                                                alt="{{$v->locales[$locale]->title}}">
+                                        </picture>
                                     @elseif($selected==='ONCSH')
                                         <picture></picture>
                                     @elseif($selected==='ONTALN')
