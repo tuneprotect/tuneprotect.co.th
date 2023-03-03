@@ -405,6 +405,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                             let address = ($('#ctrl_province').value).split('*');
                             data = {
                                 ...data,
+                                fdProductCode:"PUMPPA",
                                 fdTitle: getRadioSelectedValue('fdTitle'),
                                 fdName: $('#fdName').value,
                                 fdSurname: $('#fdSurname').value,
