@@ -3,6 +3,13 @@
     @include('frontend.component.form-birthdate')
     <br/>
     {!! $package->locales[$locale]->remark !!}
+    <div class="controls-wrapper full">
+        <input id="ctrl_accept_step1" name="ctrl_accept_insurance_term" type="checkbox"
+            data-error-insurance_term="@lang("product.error.insurance_term")"
+            value="1"/>
+        <label for="ctrl_accept_step1">@lang('product.ONCSHC_MSG.oncshc_msg_accept_step1')</label>
+        <cite class="step1_error"></cite>
+    </div>
 </section>
 @include('frontend.component.form-coverage-table-pumppa',['package_detail' => $package_detail,'selected' =>$selected ])
 
