@@ -246,7 +246,7 @@
                                                 alt="{{$v->locales[$locale]->title}}">
                                         </picture>
                                     @elseif($selected==='PUMPPA')
-                                        <picture class="qqq">
+                                        <picture>
                                             <source media="(min-width:768px)"
                                                     srcset="{{url(str_replace('banner-Choice-Eng final', 'PUMP PA', $v->pic_en))}}">
                                             <img
@@ -359,6 +359,14 @@
                                         <picture>
                                             <source media="(min-width:768px)" srcset="{{url(str_replace('Banner-baowan-main-en', 'Banner-chillsure-main-th-pc', $v->pic_en))}}">
                                             <img src="{{url(!empty($v->pic_mobile_en) ? url(str_replace('Banner-baowan-main-en', 'Banner-chillsure-main-th-mb', $v->pic_mobile_en)) : url(str_replace('Banner-baowan-main-en', 'Banner-chillsure-main-th-mb', $v->pic_en)) )}}" alt="{{$v->locales[$locale]->title}}">
+                                        </picture>
+                                    @elseif($selected==='PUMPPA')
+                                        <picture>
+                                            <source media="(min-width:768px)"
+                                                    srcset="{{url(str_replace('banner-Choice-Eng final', 'PUMP PA', $v->pic_en))}}">
+                                            <img
+                                                src="{{url(!empty($v->pic_mobile_en) ? url(str_replace('banner-Choice-Eng final', 'PUMP PA', $v->pic_mobile_en)) : url(str_replace('banner-Choice-Eng final', 'PUMP PA', $v->pic_en)) )}}"
+                                                alt="{{$v->locales[$locale]->title}}">
                                         </picture>
                                     @elseif($selected==='ONCSH')
                                         <picture></picture>
