@@ -11,4 +11,5 @@ class PAObject extends BaseInsuranceObject
     public $fdRevenue;
     public $fdTaxno;
     public $fdOccupCode;
+    public $fdProductCode;
 }
