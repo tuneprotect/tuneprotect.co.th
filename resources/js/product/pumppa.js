@@ -196,11 +196,13 @@ document.addEventListener("DOMContentLoaded", async () => {
             if(locale === 'th'){
                 $('#txtpumppa1').innerHTML = "คุ้มครองกรณีเสียชีวิตสูงสุด 1 หมื่นบาท";
                 $('#txtpumppa2').innerHTML = "คุ้มครองอุบัติเหตุจากรถจักรยานยนต์ 1 พันบาท*";
+                $('#form-head').innerHTML=" ซิลเวอร์";
             }else{
                 $('#txtpumppa1').innerHTML = "Coverage in case of Loss of Life up to 10,000 THB*";
                 $('#txtpumppa2').innerHTML = "Covers accidental arising from Motorcycle 1,000 THB*";
+                $('#form-head').innerHTML=" Silver";
             }
-            $('#form-head').innerHTML="Silver";
+            
         } else if(tier=="Gold"){
             $$('.PUMPPA1').forEach($el => {
                 $el.style.display = "none";            
@@ -211,11 +213,12 @@ document.addEventListener("DOMContentLoaded", async () => {
             if(locale === 'th'){
                 $('#txtpumppa1').innerHTML = "คุ้มครองกรณีเสียชีวิตสูงสุด 3 หมื่นบาท";
                 $('#txtpumppa2').innerHTML = "คุ้มครองอุบัติเหตุจากรถจักรยานยนต์ 3 พันบาท*";
+                $('#form-head').innerHTML=" โกลด์";
             }else{
                 $('#txtpumppa1').innerHTML = "Coverage in case of Loss of Life up to 30,000 THB*";
                 $('#txtpumppa2').innerHTML = "Covers accidental arising from Motorcycle 3,000 THB*";
+                $('#form-head').innerHTML=" Gold";
             }
-            $('#form-head').innerHTML="Gold";
         } else if(tier=="Platinum"){
             $$('.PUMPPA2').forEach($el => {
                 $el.style.display = "none";            
@@ -226,11 +229,12 @@ document.addEventListener("DOMContentLoaded", async () => {
             if(locale === 'th'){
                 $('#txtpumppa1').innerHTML = "คุ้มครองกรณีเสียชีวิตสูงสุด 5 หมื่นบาท";
                 $('#txtpumppa2').innerHTML = "คุ้มครองอุบัติเหตุจากรถจักรยานยนต์ 5 พันบาท*";
+                $('#form-head').innerHTML=" แพลตตินั่ม";
             }else{
                 $('#txtpumppa1').innerHTML = "Coverage in case of Loss of Life up to 50,000 THB*";
                 $('#txtpumppa2').innerHTML = "Covers accidental arising from Motorcycle 5,000 THB*";
+                $('#form-head').innerHTML=" Platinum";
             }
-            $('#form-head').innerHTML="Platinum";
         }else{
             //window.open(window.location.hostname);
             window.location.href = window.location.origin;
