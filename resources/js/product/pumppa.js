@@ -200,6 +200,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                 $('#txtpumppa1').innerHTML = "Coverage in case of Loss of Life up to 10,000 THB*";
                 $('#txtpumppa2').innerHTML = "Covers accidental arising from Motorcycle 1,000 THB*";
             }
+            $('#form-head').innerHTML="Silver";
         } else if(tier=="Gold"){
             $$('.PUMPPA1').forEach($el => {
                 $el.style.display = "none";            
@@ -214,6 +215,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                 $('#txtpumppa1').innerHTML = "Coverage in case of Loss of Life up to 30,000 THB*";
                 $('#txtpumppa2').innerHTML = "Covers accidental arising from Motorcycle 3,000 THB*";
             }
+            $('#form-head').innerHTML="Gold";
         } else if(tier=="Platinum"){
             $$('.PUMPPA2').forEach($el => {
                 $el.style.display = "none";            
@@ -228,6 +230,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                 $('#txtpumppa1').innerHTML = "Coverage in case of Loss of Life up to 50,000 THB*";
                 $('#txtpumppa2').innerHTML = "Covers accidental arising from Motorcycle 5,000 THB*";
             }
+            $('#form-head').innerHTML="Platinum";
         }else{
             //window.open(window.location.hostname);
             window.location.href = window.location.origin;
@@ -348,7 +351,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                             break;
                         case 2:
                             const fdPackage = $btn.getAttribute('data-package');
-                            $('#form-head').innerHTML = $btn.getAttribute('data-plan');
+                            //$('#form-head').innerHTML = $btn.getAttribute('data-plan');
 
 
                             if (fdPackage) {
