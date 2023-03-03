@@ -289,7 +289,8 @@ document.addEventListener("DOMContentLoaded", async () => {
         ctrl_province: "",
         ctrl_terms: "",
         ctrl_accept_insurance_term: "",
-        ctrl_document_type: ""
+        ctrl_document_type: "",
+        fdProductCode:"PUMPPA"
     };
     const validateAcceptStep1 = () => {
        
