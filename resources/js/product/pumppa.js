@@ -1,4 +1,4 @@
-import {showFieldError, validateField} from "../validate_form";
+import {showFieldError, validateField,showAcceptError} from "../validate_form";
 import validate from "validate.js";
 import {$, $$, current_package, fadeIn, fadeOut, getRadioSelectedValue, locale, scrollToTargetAdjusted} from "../helper"
 import Swal from 'sweetalert2'
@@ -284,7 +284,12 @@ document.addEventListener("DOMContentLoaded", async () => {
         ctrl_accept_insurance_term: "",
         ctrl_document_type: ""
     };
-
+    const validateAcceptStep1 = () => {
+       
+        $('cite.step1_error').innerHTML = "";
+        let chkAccept = $('#ctrl_accept_step1').checked ? true : false;
+         return chkAccept;
+    }
     $$("input[name=fdSex]").forEach($el => {
         $el.addEventListener("change", function (e) {
             showTitle($el.value, data.fdAge)
@@ -329,6 +334,13 @@ document.addEventListener("DOMContentLoaded", async () => {
                     switch (parseInt(step)) {
                         case 1:
                             const validateResult = validateAgeInPackage(package_data);
+                            const chkAccept = validateAcceptStep1();
+                            if(!chkAccept){
+                                showAcceptError($('#ctrl_accept_step1').getAttribute('data-error-insurance_term'));
+                                status = false;
+                                break;
+                            }
+
                             status = validateResult.status;
                             if (validateResult.status) {
                                 data = {...data, ...validateResult.data}
