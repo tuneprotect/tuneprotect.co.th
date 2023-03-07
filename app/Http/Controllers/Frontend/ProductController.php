@@ -1302,13 +1302,13 @@ class ProductController extends BaseController
                 return redirect()->route('current', ['locale' => $this->locale, 'controller' => $this->controller, 'func' => $func, 'params' => $this->thankYouParam]);
             }
         }
-
+        dd(config('payment.b2b_mid'));
         $arr_post['version'] = '8.5';
         $arr_post['merchant_id'] = config('payment.b2b_mid');//"764764000012359";
         $arr_post['payment_description'] = "Buy Insurance";
         $arr_post['order_id'] = config('project.invoice_prefix') . $obj->fdInvoice;
         $arr_post['currency'] = "764";
-dd($arr_post['merchant_id']);
+
         $arr_post['amount'] = str_pad(($price ? $price : $obj->data["fdPayAMT"]) * 100, 12, '0', STR_PAD_LEFT);
 
         $arr_post['customer_email'] = $obj->data["fdEmail"];
