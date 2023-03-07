@@ -1304,7 +1304,7 @@ class ProductController extends BaseController
         }
 
         $arr_post['version'] = '8.5';
-        $arr_post['merchant_id'] = "764764000012359";
+        $arr_post['merchant_id'] = "764764000012359"; //uat = "764764000012359";
         $arr_post['payment_description'] = "Buy Insurance";
         $arr_post['order_id'] = config('project.invoice_prefix') . $obj->fdInvoice;
         $arr_post['currency'] = "764";
@@ -1332,7 +1332,7 @@ class ProductController extends BaseController
         //        $arr_post['ipp_period_filter'] = 10;
 
         $params = join($arr_post);
-        $arr_post['hash_value'] = hash_hmac('sha256', $params, '34085B9AB99ADC7C6BBDB594F81EFCE05EBC75EF1421280070889CD68A2BD0C9', false);    //Compute hash value
+        $arr_post['hash_value'] = hash_hmac('sha256', $params, 'E5A702D8A034DBEDF700F31557C4C837D3EEE505301AB4F92C7F9B1DC2035FA3', false);    //uat=34085B9AB99ADC7C6BBDB594F81EFCE05EBC75EF1421280070889CD68A2BD0C9
 
         $this->bodyData['arr_post'] = $arr_post;
 
