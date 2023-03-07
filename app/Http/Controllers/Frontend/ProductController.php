@@ -1330,9 +1330,10 @@ class ProductController extends BaseController
         $arr_post['ipp_interest_type'] = $this->ipp_interest_type;
         $arr_post['default_lang'] = $this->locale;
         //        $arr_post['ipp_period_filter'] = 10;
-
+//prd = 'E5A702D8A034DBEDF700F31557C4C837D3EEE505301AB4F92C7F9B1DC2035FA3'
+//uat = '34085B9AB99ADC7C6BBDB594F81EFCE05EBC75EF1421280070889CD68A2BD0C9'
         $params = join($arr_post);
-        $arr_post['hash_value'] = hash_hmac('sha256', $params, 'E5A702D8A034DBEDF700F31557C4C837D3EEE505301AB4F92C7F9B1DC2035FA3', false);    //uat=34085B9AB99ADC7C6BBDB594F81EFCE05EBC75EF1421280070889CD68A2BD0C9
+        $arr_post['hash_value'] = hash_hmac('sha256', $params, '34085B9AB99ADC7C6BBDB594F81EFCE05EBC75EF1421280070889CD68A2BD0C9', false);
 
         $this->bodyData['arr_post'] = $arr_post;
 
