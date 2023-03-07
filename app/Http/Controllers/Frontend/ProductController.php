@@ -1304,11 +1304,11 @@ class ProductController extends BaseController
         }
 
         $arr_post['version'] = '8.5';
-        $arr_post['merchant_id'] = "764764000012359";
+        $arr_post['merchant_id'] = config('payment.b2b_mid');//"764764000012359";
         $arr_post['payment_description'] = "Buy Insurance";
         $arr_post['order_id'] = config('project.invoice_prefix') . $obj->fdInvoice;
         $arr_post['currency'] = "764";
-
+dd($arr_post['merchant_id']);
         $arr_post['amount'] = str_pad(($price ? $price : $obj->data["fdPayAMT"]) * 100, 12, '0', STR_PAD_LEFT);
 
         $arr_post['customer_email'] = $obj->data["fdEmail"];
@@ -1332,7 +1332,7 @@ class ProductController extends BaseController
         //        $arr_post['ipp_period_filter'] = 10;
 
         $params = join($arr_post);
-        $arr_post['hash_value'] = hash_hmac('sha256', $params, '34085B9AB99ADC7C6BBDB594F81EFCE05EBC75EF1421280070889CD68A2BD0C9', false);    //Compute hash value
+        $arr_post['hash_value'] = hash_hmac('sha256', $params, config('payment.b2b_secret'), false);    //Compute hash value '34085B9AB99ADC7C6BBDB594F81EFCE05EBC75EF1421280070889CD68A2BD0C9'
 
         $this->bodyData['arr_post'] = $arr_post;
 
