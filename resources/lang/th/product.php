@@ -52,6 +52,11 @@ return [
     "insurance_plan" => "แผนประกันภัย",
     "profile_data" => "ข้อมูลผู้เอาประกันภัย",
 
+    "pumppasilver" => "Silver",
+    "pumppagold" => "Gold",
+    "pumppaplatinum" => "Platinum",
+
+
     "last_name" => "นามสกุล",
     "leave_us_your_lead" => "ติดต่อเรา",
     "male" => "ชาย",

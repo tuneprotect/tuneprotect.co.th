@@ -25,12 +25,12 @@
                                     <strong class="package-number">
                                         @if($i == 0)
                                             @lang('product.no_plan')
-                                        @elseif($i == 1)
-                                            Silver
+                                        @elseif($i == 1)                                            
+                                            @lang('product.pumppasilver')
                                         @elseif($i == 2)
-                                            Gold
+                                            @lang('product.pumppagold')
                                         @elseif($i == 3)
-                                            Platinum
+                                            @lang('product.pumppaplatinum')
                                         @endif
                                     </strong>
                                 </a>
@@ -49,27 +49,27 @@
                             <strong>
                             @if($v->no == 0)
                                 @lang('product.no_plan')
-                            @elseif($v->no == 1)
-                                Silver
-                            @elseif($v->no == 2)
-                                Gold
-                            @elseif($v->no == 3)
-                                Platinum
+                            @elseif($i == 1)                                            
+                                @lang('product.pumppasilver')
+                            @elseif($i == 2)
+                                @lang('product.pumppagold')
+                            @elseif($i == 3)
+                                @lang('product.pumppaplatinum')
                             @endif
                             </strong>
                         @else
                             @if($selected == "CI")
                                 <span data-recommend>@lang('product.recommend')</span>
                             @endif
-                            <strong class="package-number">                            
-                                @if($i == 1)
-                                    Silver
-                                @elseif($i == 2)
-                                    Gold
-                                @elseif($i == 3)
-                                    Platinum
-                                @endif
-                            </strong>
+                                <strong class="package-number">                            
+                                    @if($i == 1)                                            
+                                        @lang('product.pumppasilver')
+                                    @elseif($i == 2)
+                                        @lang('product.pumppagold')
+                                    @elseif($i == 3)
+                                        @lang('product.pumppaplatinum')
+                                    @endif
+                                </strong>
                         @endif
 
                         <a href="#"
@@ -165,13 +165,13 @@
 
                         @else
                             <strong style="display: block" class="text-center">
-                                @if($i == 1)
-                                    Silver
-                                @elseif($i == 2)
-                                    Gold
-                                @elseif($i == 3)
-                                    Platinum
-                                @endif
+                            @if($i == 1)                                            
+                                @lang('product.pumppasilver')
+                            @elseif($i == 2)
+                                @lang('product.pumppagold')
+                            @elseif($i == 3)
+                                @lang('product.pumppaplatinum')
+                            @endif
                             </strong>
                         @endif
 
