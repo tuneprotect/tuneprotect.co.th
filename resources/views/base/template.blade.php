@@ -82,7 +82,17 @@
                 src="https://www.facebook.com/tr?id=682962723368236&ev=PageView&noscript=1"/>
             </noscript>
             <!-- End Facebook Pixel Code -->
+        @elseif(($partner==='Rabbit' || $partner==='rabbit' || $partner==='RABBIT') && $agentCode==='00BD114L266' && $selected==='ONCSHC')
+            <!-- Google tag (gtag.js) -->
+            <script async src="https://www.googletagmanager.com/gtag/js?id=AW-10813138401"></script>
+            <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
 
+                gtag('config', 'AW-10813138401');
+            </script>
+    
         @endif
     @endif
 </head>
