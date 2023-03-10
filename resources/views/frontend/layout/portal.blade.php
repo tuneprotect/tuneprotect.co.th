@@ -134,7 +134,9 @@
   integrity="sha256-dWvV84T6BhzO4vG6gWhsWVKVoa4lVmLnpBOZh/CAHU4="
   crossorigin="anonymous"></script>
                 <script>
-                    $("#brochure_rabbit_en").attr("src","https://www.tuneprotect.co.th/storage/product/brochure/ChillSure/Tune-Brochure-En_Rabbit Care.pdf");
+                    $().ready(function () {
+                        $("#brochure_rabbit_en").attr("src","https://www.tuneprotect.co.th/storage/product/brochure/ChillSure/Tune-Brochure-En_Rabbit Care.pdf");
+                    });
                 </script>
             @else
                 <picture>
