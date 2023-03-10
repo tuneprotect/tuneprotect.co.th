@@ -8,15 +8,6 @@
    .ins-preview-wrapper-26 .ins-content-wrapper-26 .inline-resolution.ins-element-link.ins-notification-content.ins-notification-content-26{
     height: fit-content;
    }
-   main[data-package=ONCSHC] iframe {
-        height: 376px !important;
-    }
-    @media all and (max-width: 768px) {
-        main[data-package=ONCSHC] iframe {
-            height: 181px !important;
-            width: 100% !important;
-        }
-    }
    </style>
 @section('layout')
     <header>

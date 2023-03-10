@@ -5,15 +5,7 @@
     #taismtg-main {
         display: none;
     }
-    main[data-package=ONCSHC] iframe {
-        height: 376px !important;
-    }
-    @media all and (max-width: 768px) {
-        main[data-package=ONCSHC] iframe {
-            height: 181px !important;
-            width: 100% !important;
-        }
-    }
+  
 </style>
 {{-- <script src = "https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>--}}
 {{-- <meta name="csrf-token" content="{{ csrf_token() }}" />--}}
