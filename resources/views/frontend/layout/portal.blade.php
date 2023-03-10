@@ -132,7 +132,7 @@
     </picture>
     @elseif($selected==='ONCSHC')
         @if(isset($partner))
-            @if($partner==='Rabbit' || $partner==='rabbit' || $partner==='RABBIT')
+            @if(($partner==='Rabbit' || $partner==='rabbit' || $partner==='RABBIT') && $agentCode==='00BD114L266')
                 <picture class="bbb">
                     <source media="(min-width:768px)" srcset="https://www.tuneprotect.co.th/storage/Banner/rabbit/Tune-Chillsure-03.webp">
                     <img src="{{url(!empty($v->pic_mobile_en) ? "https://www.tuneprotect.co.th/storage/Banner/rabbit/Tune-Chillsure-03.webp" : "https://www.tuneprotect.co.th/storage/Banner/rabbit/Tune-Chillsure-04.webp" )}}" alt="{{$v->locales[$locale]->title}}">
@@ -285,7 +285,7 @@
     </picture>
     @elseif($selected==='ONCSHC')           
         @if(isset($partner))
-            @if($partner==='Rabbit' || $partner==='rabbit' || $partner==='RABBIT')
+            @if(($partner==='Rabbit' || $partner==='rabbit' || $partner==='RABBIT') && $agentCode==='00BD114L266')
                 <picture class="bbb">
                     <source media="(min-width:768px)" srcset="https://www.tuneprotect.co.th/storage/Banner/rabbit/Tune-Chillsure-01.webp">
                     <img src="{{url(!empty($v->pic_mobile_en) ? "https://www.tuneprotect.co.th/storage/Banner/rabbit/Tune-Chillsure-01.webp" : "https://www.tuneprotect.co.th/storage/Banner/rabbit/Tune-Chillsure-02.webp" )}}" alt="{{$v->locales[$locale]->title}}">
