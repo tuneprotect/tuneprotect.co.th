@@ -264,16 +264,17 @@
         <source media="(min-width:768px)" srcset="/storage/Banner/Banner_LumaCare_D.jpg">
         <img src="{{url(!empty($v->pic_mobile_en) ? "/storage/Banner/Banner_LumaCare_D.jpg" : "/storage/Banner/Banner_LumaCare_M.jpg" )}}" alt="{{$v->locales[$locale]->title}}">
     </picture>
-    @elseif($selected==='ONCSHC')    
-        <picture  class="aaa">
-            <source media="(min-width:768px)" srcset="{{url(str_replace('Banner-baowan-main-en', 'Banner-chillsure-main-th-pc', $v->pic_en))}}">
-            <img src="{{url(!empty($v->pic_mobile_en) ? url(str_replace('Banner-baowan-main-en', 'Banner-chillsure-main-th-mb', $v->pic_mobile_en)) : url(str_replace('Banner-baowan-main-en', 'Banner-chillsure-main-th-mb', $v->pic_en)) )}}" alt="{{$v->locales[$locale]->title}}">
-        </picture>
+    @elseif($selected==='ONCSHC')           
         @if(isset($partner))
             @if($partner==='Rabbit' || $partner==='rabbit' || $partner==='RABBIT')
                 <picture class="bbb">
                     <source media="(min-width:768px)" srcset="/storage/Banner/Banner_Luma_D.jpg">
                     <img src="{{url(!empty($v->pic_mobile_en) ? "/storage/Banner/Banner_Luma_D.jpg" : "/storage/Banner/Banner_Luma_M.jpg" )}}" alt="{{$v->locales[$locale]->title}}">
+                </picture>
+            @elseif
+                <picture  class="aaa">
+                    <source media="(min-width:768px)" srcset="{{url(str_replace('Banner-baowan-main-en', 'Banner-chillsure-main-th-pc', $v->pic_en))}}">
+                    <img src="{{url(!empty($v->pic_mobile_en) ? url(str_replace('Banner-baowan-main-en', 'Banner-chillsure-main-th-mb', $v->pic_mobile_en)) : url(str_replace('Banner-baowan-main-en', 'Banner-chillsure-main-th-mb', $v->pic_en)) )}}" alt="{{$v->locales[$locale]->title}}">
                 </picture>
             @endif   
         @endif    
