@@ -130,7 +130,7 @@
                     <img src="{{url(!empty($v->pic_mobile_en) ? "https://www.tuneprotect.co.th/storage/Banner/rabbit/Tune-Chillsure-03.webp" : "https://www.tuneprotect.co.th/storage/Banner/rabbit/Tune-Chillsure-04.webp" )}}" alt="{{$v->locales[$locale]->title}}">
                 </picture>
                 <script>
-                    $("#brochure_rabbit_en").attr("src","https://www.tuneprotect.co.th/storage/product/brochure/ChillSure/Tune-Brochure-En_Rabbit Care.pdf");
+                    document.getElementById("brochure_rabbit_en").src ="https://www.tuneprotect.co.th/storage/product/brochure/ChillSure/Tune-Brochure-En_Rabbit Care.pdf";
                 </script>
             @else
                 <picture>
@@ -286,7 +286,7 @@
                     <img src="{{url(!empty($v->pic_mobile_en) ? "https://www.tuneprotect.co.th/storage/Banner/rabbit/Tune-Chillsure-01.webp" : "https://www.tuneprotect.co.th/storage/Banner/rabbit/Tune-Chillsure-02.webp" )}}" alt="{{$v->locales[$locale]->title}}">
                 </picture>
                 <script>
-                    $("#brochure_rabbit_th").attr("src","https://www.tuneprotect.co.th/storage/product/brochure/ChillSure/Tune-Brochure-Th_Rabbit Care.pdf");
+                    document.getElementById("brochure_rabbit_th").src ="https://www.tuneprotect.co.th/storage/product/brochure/ChillSure/Tune-Brochure-Th_Rabbit Care.pdf";
                 </script>
             @else
                 <picture  class="aaa">
