@@ -129,6 +129,9 @@
                     <source media="(min-width:768px)" srcset="https://www.tuneprotect.co.th/storage/Banner/rabbit/Tune-Chillsure-03.webp">
                     <img src="{{url(!empty($v->pic_mobile_en) ? "https://www.tuneprotect.co.th/storage/Banner/rabbit/Tune-Chillsure-03.webp" : "https://www.tuneprotect.co.th/storage/Banner/rabbit/Tune-Chillsure-04.webp" )}}" alt="{{$v->locales[$locale]->title}}">
                 </picture>
+                <script>
+                    $("#brochure_rabbit_en").attr("src","https://www.tuneprotect.co.th/storage/product/brochure/ChillSure/Tune-Brochure-En_Rabbit Care.pdf");
+                </script>
             @else
                 <picture>
                     <source media="(min-width:768px)"
@@ -282,6 +285,9 @@
                     <source media="(min-width:768px)" srcset="https://www.tuneprotect.co.th/storage/Banner/rabbit/Tune-Chillsure-01.webp">
                     <img src="{{url(!empty($v->pic_mobile_en) ? "https://www.tuneprotect.co.th/storage/Banner/rabbit/Tune-Chillsure-01.webp" : "https://www.tuneprotect.co.th/storage/Banner/rabbit/Tune-Chillsure-02.webp" )}}" alt="{{$v->locales[$locale]->title}}">
                 </picture>
+                <script>
+                    $("#brochure_rabbit_th").attr("src","https://www.tuneprotect.co.th/storage/product/brochure/ChillSure/Tune-Brochure-Th_Rabbit Care.pdf");
+                </script>
             @else
                 <picture  class="aaa">
                     <source media="(min-width:768px)" srcset="{{url(str_replace('Banner-baowan-main-en', 'Banner-chillsure-main-th-pc', $v->pic_en))}}">
