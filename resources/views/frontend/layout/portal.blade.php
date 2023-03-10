@@ -6,12 +6,12 @@
         display: none;
     }
     main[data-package=ONCSHC] iframe {
-        height: 376px;
+        height: 376px !important;
     }
     @media all and (max-width: 768px) {
         main[data-package=ONCSHC] iframe {
-            height: 181px;
-            width: 100%;
+            height: 181px !important;
+            width: 100% !important;
         }
     }
 </style>
