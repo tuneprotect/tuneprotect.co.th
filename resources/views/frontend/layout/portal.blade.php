@@ -129,8 +129,12 @@
                     <source media="(min-width:768px)" srcset="https://www.tuneprotect.co.th/storage/Banner/rabbit/Tune-Chillsure-03.webp">
                     <img src="{{url(!empty($v->pic_mobile_en) ? "https://www.tuneprotect.co.th/storage/Banner/rabbit/Tune-Chillsure-03.webp" : "https://www.tuneprotect.co.th/storage/Banner/rabbit/Tune-Chillsure-04.webp" )}}" alt="{{$v->locales[$locale]->title}}">
                 </picture>
+                <script
+  src="https://code.jquery.com/jquery-3.6.4.slim.js"
+  integrity="sha256-dWvV84T6BhzO4vG6gWhsWVKVoa4lVmLnpBOZh/CAHU4="
+  crossorigin="anonymous"></script>
                 <script>
-                    document.getElementById("brochure_rabbit_en").src = "https://www.tuneprotect.co.th/storage/product/brochure/ChillSure/Tune-Brochure-En_Rabbit Care.pdf";
+                    $("#brochure_rabbit_en").attr("src","https://www.tuneprotect.co.th/storage/product/brochure/ChillSure/Tune-Brochure-En_Rabbit Care.pdf");
                 </script>
             @else
                 <picture>
