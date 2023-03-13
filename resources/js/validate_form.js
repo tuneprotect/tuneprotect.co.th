@@ -41,10 +41,13 @@ export const validateField = ($this, constraints) => {
     }
 }
 export const validateAcceptStep1 = () => {
-       
+    let chk = $('cite.step1_error').length;
+    if(chk==0){
+        return false;
+    }
     $('cite.step1_error').innerHTML = "";
     let chkAccept = $('#ctrl_accept_step1').checked ? true : false;
-     return chkAccept;
+    return chkAccept;
 }
 
 export const removeErrorMessage = ($this) => {
