@@ -48,6 +48,13 @@
                     <label for="fdToDate">@lang("product.expiry_date")</label>
                 </div>                
             </div>
+            <div class="controls-wrapper full">
+                <input id="ctrl_accept_step1" name="ctrl_accept_insurance_term" type="checkbox"
+                    data-error-insurance_term="@lang("product.error.insurance_term")"
+                    value="1"/>
+                <label for="ctrl_accept_step1">@lang('product.msg_accept_step1')</label>
+                <span id="step1_error"><cite class="step1_error"></cite></span>
+            </div>
         </div>
         <div class="btn-wrapper">
             <button data-gtm="product-{{strtolower($selected)}}-proceed-step-1" data-step="2" class="btn btn-primary btn-goto">@lang('product.next')</button>
