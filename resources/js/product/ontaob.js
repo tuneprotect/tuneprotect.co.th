@@ -16,7 +16,7 @@ import {
     scrollToTargetAdjusted
 } from "../helper";
 
-import {removeError, showError, showFieldError, validateField,validateAcceptStep1} from "../validate_form";
+import {removeError, showError, showFieldError, validateField,validateAcceptStep1,showAcceptError} from "../validate_form";
 import Swal from "sweetalert2";
 import validate from "validate.js";
 import {addYears, differenceInDays, format, isValid, parseISO, subDays} from "date-fns";
