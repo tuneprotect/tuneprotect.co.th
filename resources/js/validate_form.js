@@ -41,6 +41,8 @@ export const validateField = ($this, constraints) => {
     }
 }
 export const validateAcceptStep1 = () => {
+    $('#step1_error').innerHTML = '<cite class="step1_error"></cite>';
+    //$('cite.step1_error').innerHTML = "";
     let chkAccept = $('#ctrl_accept_step1').checked ? true : false;
     return chkAccept;
 }
