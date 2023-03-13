@@ -96,6 +96,6 @@ export const showBMIValidateError = (message,selector) => {
 }
 
 export const showAcceptError = (message) => {
-    $('cite.step1_error').innerHTML = message;
+    $('span.step1_error').innerHTML = message;
     scrollToTargetAdjusted($('.controls-wrapper.error'));
 }
