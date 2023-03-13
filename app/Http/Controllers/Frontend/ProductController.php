@@ -1286,6 +1286,8 @@ class ProductController extends BaseController
     protected function sendB2BTo2C2P($obj, $price = null, $log_id = null)
     {
         //dd($obj);
+        dd(config('payment.b2b_secret'));
+
         $invalidkey = false;
         if (strtolower($this->controller) === "portal") {
             $data = $obj->data;
@@ -1304,7 +1306,7 @@ class ProductController extends BaseController
         }
 
         $arr_post['version'] = '8.5';
-        $arr_post['merchant_id'] = "764764000012359"; //uat = "764764000012359";
+        $arr_post['merchant_id'] = config('payment.b2b_mid');//"764764000012359"; //uat = "764764000012359";
         $arr_post['payment_description'] = "Buy Insurance";
         $arr_post['order_id'] = config('project.invoice_prefix') . $obj->fdInvoice;
         $arr_post['currency'] = "764";
@@ -1313,8 +1315,6 @@ class ProductController extends BaseController
 
         $arr_post['customer_email'] = $obj->data["fdEmail"];
         $arr_post['user_defined_1'] = ($log_id ? implode(',', $log_id) : $obj->log_id);
-
-        //        dd(strlen($arr_post['user_defined_1']));
 
         if (strlen($arr_post['user_defined_1']) > 150) {
             $arr_post['user_defined_1'] = substr($arr_post['user_defined_1'], 0, 150);
@@ -1329,11 +1329,11 @@ class ProductController extends BaseController
         $arr_post['payment_option'] = $this->payment;
         $arr_post['ipp_interest_type'] = $this->ipp_interest_type;
         $arr_post['default_lang'] = $this->locale;
-        //        $arr_post['ipp_period_filter'] = 10;
-//prd = 'E5A702D8A034DBEDF700F31557C4C837D3EEE505301AB4F92C7F9B1DC2035FA3'
-//uat = '34085B9AB99ADC7C6BBDB594F81EFCE05EBC75EF1421280070889CD68A2BD0C9'
+        //$arr_post['ipp_period_filter'] = 10;
+        //prd = 'E5A702D8A034DBEDF700F31557C4C837D3EEE505301AB4F92C7F9B1DC2035FA3'
+        //uat = '34085B9AB99ADC7C6BBDB594F81EFCE05EBC75EF1421280070889CD68A2BD0C9'
         $params = join($arr_post);
-        $arr_post['hash_value'] = hash_hmac('sha256', $params, '34085B9AB99ADC7C6BBDB594F81EFCE05EBC75EF1421280070889CD68A2BD0C9', false);
+        $arr_post['hash_value'] = hash_hmac('sha256', $params, config('payment.b2b_secret'), false);
 
         $this->bodyData['arr_post'] = $arr_post;
 
