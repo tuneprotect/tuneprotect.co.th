@@ -40,6 +40,12 @@ export const validateField = ($this, constraints) => {
         }
     }
 }
+export const validateAcceptStep1 = () => {
+       
+    $('cite.step1_error').innerHTML = "";
+    let chkAccept = $('#ctrl_accept_step1').checked ? true : false;
+     return chkAccept;
+}
 
 export const removeErrorMessage = ($this) => {
     const $cite = $this.getElementsByTagName('cite');

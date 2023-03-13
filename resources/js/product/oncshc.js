@@ -5,7 +5,8 @@ import {
     showDateError,
     showAcceptError,
     showFieldError,
-    validateField
+    validateField,
+    validateAcceptStep1
 } from "../validate_form";
 import validate from "validate.js";
 import {
@@ -269,12 +270,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         fdProductCode:"ONCSHC",
         channel: channel
     };
-    const validateAcceptStep1 = () => {
-       
-        $('cite.step1_error').innerHTML = "";
-        let chkAccept = $('#ctrl_accept_step1').checked ? true : false;
-         return chkAccept;
-    }
+  
     const validateBMI = () => {
         $$('.bmi-input .controls-wrapper').forEach(el => {
             el.classList.remove('error');
