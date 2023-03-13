@@ -8,7 +8,7 @@ import {
 } from "../form/productHelper";
 import {$, $$, current_package, getRadioSelectedValue, getZipcodeData, locale, scrollToTargetAdjusted} from "../helper";
 
-import {removeError, showError, showFieldError, validateField} from "../validate_form";
+import {removeError, showError, showFieldError, validateField,validateAcceptStep1,showAcceptError} from "../validate_form";
 import Swal from "sweetalert2";
 import validate from "validate.js";
 import {differenceInDays, format, parseISO} from "date-fns";
@@ -353,6 +353,12 @@ document.addEventListener("DOMContentLoaded", async () => {
             } else {
                 switch (parseInt(step)) {
                     case 1:
+                        const chkAccept = validateAcceptStep1();
+                        if(!chkAccept){
+                            showAcceptError($('#ctrl_accept_step1').getAttribute('data-error-insurance_term'));
+                            status = false;
+                            break;
+                        }
                         status = true;
                         data = {
                             ...data,
