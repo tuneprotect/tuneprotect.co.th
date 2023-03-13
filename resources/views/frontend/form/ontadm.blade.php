@@ -44,7 +44,7 @@
                     data-error-insurance_term="@lang("product.error.insurance_term")"
                     value="1"/>
                 <label for="ctrl_accept_step1">@lang('product.msg_accept_step1')</label>
-                <span class="step1_error"><cite class="step1_error"></cite></span>
+                <cite class="step1_error"></cite>
             </div>
         </div>
         <div class="btn-wrapper">
