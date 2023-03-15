@@ -1083,7 +1083,9 @@ class ProductController extends BaseController
         if (Str::contains($request->getRequestUri(), ProjectEnum::MYHOME_SMART_URL)) {
             $thank_you_page = ProjectEnum::STATIC_PAGE_PAYMENT_THANK_YOU_MYHOME_SMART;
         }
-
+        if (Str::contains($request->getRequestUri(), ProjectEnum::ONCSHC_URL)) {
+            $thank_you_page = ProjectEnum::STATIC_PAGE_PAYMENT_THANK_YOU_CHILL_SURE;
+        }
         return $this->genStatusPage($thank_you_page);
     }
 
