@@ -699,7 +699,9 @@ class ProductController extends BaseController
             if (Str::contains($data['fdPackage'], ProjectEnum::MYHOME_SMART_URL)) {
                 $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::MYHOME_SMART_URL;
             }
-
+            if (Str::contains($data['fdPackage'], ProjectEnum::ONCSHC_URL)) {
+                $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::ONCSHC_URL;
+            }
             $obj = $this->combindObj($data);
             $result = $this->logData($obj);
 
@@ -1019,10 +1021,10 @@ class ProductController extends BaseController
         } elseif (substr($package, 0, 10) === 'ONTAISMB2B') {
             $this->thankYouParam =  ProjectEnum::ISMILE_URL;
             $link = "IssuePolicyiSmile";
-        } elseif (substr($package, 0, 6) === 'ONCSHC') {
-            $this->thankYouParam = substr($package, 0, 6);
+        } elseif (substr($package, 0, 6) === ProjectEnum::ONCSHC_URL) {
+            $this->thankYouParam = ProjectEnum::ONCSHC_URL;
             $link = 'IssuePolicyChillSure';
-            $this->thankYouParam =  ProjectEnum::ONCSHC_URL;
+            //$this->thankYouParam =  ProjectEnum::ONCSHC_URL;
         }
         return $link;
     }
