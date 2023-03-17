@@ -204,6 +204,12 @@ const constraints = {
 
 document.addEventListener("DOMContentLoaded", async () => {
 
+
+    $('#step_1').addEventListener('click', (e) => {
+        $('#h-cont').style.display = "block";
+    });
+
+
     //=====================================================================
     // AddOn Portal
     let Keys = "";
