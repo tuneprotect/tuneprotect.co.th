@@ -205,11 +205,7 @@ const constraints = {
 document.addEventListener("DOMContentLoaded", async () => {
 
 
-    $('#step_1').addEventListener("click", function (e) {
-        e.defaultPrevented;
-        alert(1)
-        $('#h-cont').style.display = 'block';
-    });
+   
     //=====================================================================
     // AddOn Portal
     let Keys = "";
@@ -754,6 +750,11 @@ document.addEventListener("DOMContentLoaded", async () => {
             }
         );
     })
+    $('#step_1').addEventListener("click", function (e) {
+        e.defaultPrevented;
+        alert(1)
+        $('#h-cont').style.display = 'block';
+    });
 });
 flatpickr.defaultConfig.animate = window.navigator.userAgent.indexOf('MSIE') === -1;
 flatpickr(".flatpickr");
