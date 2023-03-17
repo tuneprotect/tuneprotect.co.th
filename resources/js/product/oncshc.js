@@ -752,7 +752,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     })
     $('#step_1').addEventListener("click", function (e) {
         e.defaultPrevented;
-        alert(1)
         $('#h-cont').style.display = 'block';
     });
 });
