@@ -1098,7 +1098,7 @@ class ProductController extends BaseController
         $oBuyLog = BuyLog::where('fdInvoice', str_replace(config('project.invoice_prefix'), "", $request->input('order_id')))->get();
         
         //dd($oBuyLog);
-        echo var_dump($oBuyLog);exit();
+        //echo var_dump($oBuyLog);exit();
         foreach ($oBuyLog as $v) {
             $data = $v->data;
             $payAmount = $data['fdPayAMT'];
