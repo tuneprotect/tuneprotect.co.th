@@ -1073,7 +1073,7 @@ class ProductController extends BaseController
         $this->bodyData['doc_no'] = $request->session()->get('doc_no');
         $this->bodyData['payAmount'] = $request->session()->get('payAmount');
         $this->bodyData['return_link'] = '/' . $this->locale;
-        $this->bodyData['point'] = '10';
+        $this->bodyData['point'] = '';
         //$this->thankYouParam = $request->session()->get('thankyou_param');
 
         $thank_you_page = ProjectEnum::STATIC_PAGE_PAYMENT_THANK_YOU;
@@ -1097,12 +1097,11 @@ class ProductController extends BaseController
         $result = null;
         $oBuyLog = BuyLog::where('fdInvoice', str_replace(config('project.invoice_prefix'), "", $request->input('order_id')))->get();
         
-        //dd($oBuyLog);
+        dd($oBuyLog);
         foreach ($oBuyLog as $v) {
             $data = $v->data;
             $payAmount = $data['fdPayAMT'];
             $portalKey = $data['fdKeys'];
-            session(['payAmount' => $payAmount]);
             if ($v->result) {
                 $request->session()->put('doc_no',  $v->result['message']);
                 $request->session()->put('return_link', $request->input('user_defined_2'));
