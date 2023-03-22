@@ -1107,7 +1107,7 @@ class ProductController extends BaseController
             $payAmount = $data['fdPayAMT'];
             $portalKey = $data['fdKeys'];
             $agent_code = $data['fdAgent'];
-            echo var_dump($agent_code); exit();
+            
             if ($v->result) {
                 $request->session()->put('doc_no',  $v->result['message']);
                 $request->session()->put('return_link', $request->input('user_defined_2'));
@@ -1164,6 +1164,7 @@ class ProductController extends BaseController
                 $func = 'error';
                 $request->session()->put('error', $request->input('channel_response_desc'));
         }
+        echo var_dump($agent_code); exit();
         return redirect()->route('current', ['locale' => $this->locale, 'controller' => $this->controller, 'func' => $func, 'params' => $this->thankYouParam]);
     }
 
