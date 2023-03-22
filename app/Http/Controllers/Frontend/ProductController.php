@@ -1076,7 +1076,7 @@ class ProductController extends BaseController
         $this->bodyData['point'] = '';
         $this->bodyData['agent_code'] = $request->session()->get('agent_code');
 
-        echo var_dump($request->session()->get('agent_code')); exit();
+        //echo var_dump($request->session()->get('agent_code')); exit();
         //$this->thankYouParam = $request->session()->get('thankyou_param');
 
         $thank_you_page = ProjectEnum::STATIC_PAGE_PAYMENT_THANK_YOU;
@@ -1164,7 +1164,7 @@ class ProductController extends BaseController
                 $func = 'error';
                 $request->session()->put('error', $request->input('channel_response_desc'));
         }
-        echo var_dump($agent_code); exit();
+        echo var_dump($request->session()->get('agent_code')); exit();
         return redirect()->route('current', ['locale' => $this->locale, 'controller' => $this->controller, 'func' => $func, 'params' => $this->thankYouParam]);
     }
 
