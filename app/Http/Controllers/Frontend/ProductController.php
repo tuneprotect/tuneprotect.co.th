@@ -1071,7 +1071,7 @@ class ProductController extends BaseController
     public function thankyou(Request $request)
     {
         $this->bodyData['doc_no'] = $request->session()->get('doc_no');
-        $this->bodyData['payAmount'] = '20';//$request->session()->get('payAmount');
+        $this->bodyData['payAmount'] = $request->session()->get('payAmount');
         $this->bodyData['return_link'] = '/' . $this->locale;
         $this->bodyData['point'] = '10';
         //$this->thankYouParam = $request->session()->get('thankyou_param');
