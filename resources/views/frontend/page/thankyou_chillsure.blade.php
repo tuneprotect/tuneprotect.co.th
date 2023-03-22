@@ -1,7 +1,8 @@
 @extends('frontend.layout.portal')
 
 @section('page')
-   
+    @if(isset($agent_code))        
+        @if($agent_code === '00AA599T88')
             <script>
                 var __atw = __atw || [];
                 __atw.push({
@@ -22,6 +23,8 @@
                     e.parentNode.insertBefore(s, e);
                 })(document);
             </script>
+        @endif
+    @endif
 
     <main>
         <article class="wrapper">
