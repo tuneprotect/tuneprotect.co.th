@@ -1075,7 +1075,7 @@ class ProductController extends BaseController
         $this->bodyData['return_link'] = '/' . $this->locale;
         $this->bodyData['point'] = '';
         $this->bodyData['agent_code'] = $request->session()->get('agent_code');
-
+        echo var_dump($request->session()->get('agent_code')); exit();
         //echo var_dump($request->session()->get('agent_code')); exit();
         //$this->thankYouParam = $request->session()->get('thankyou_param');
 
@@ -1099,7 +1099,7 @@ class ProductController extends BaseController
     {
         $result = null;
         $oBuyLog = BuyLog::where('fdInvoice', str_replace(config('project.invoice_prefix'), "", $request->input('order_id')))->get();
-        $agent_code="";
+        //$agent_code="";
         //dd($oBuyLog);
         //echo var_dump($oBuyLog);exit();
         foreach ($oBuyLog as $v) {
@@ -1164,7 +1164,7 @@ class ProductController extends BaseController
                 $func = 'error';
                 $request->session()->put('error', $request->input('channel_response_desc'));
         }
-        echo var_dump($request->session()->get('agent_code')); exit();
+       
         return redirect()->route('current', ['locale' => $this->locale, 'controller' => $this->controller, 'func' => $func, 'params' => $this->thankYouParam]);
     }
 
