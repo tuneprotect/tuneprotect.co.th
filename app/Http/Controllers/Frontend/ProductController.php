@@ -1070,6 +1070,7 @@ class ProductController extends BaseController
 
     public function thankyou(Request $request)
     {
+        echo var_dump($request);exit();
         $this->bodyData['doc_no'] = $request->session()->get('doc_no');
         $this->bodyData['return_link'] = '/' . $this->locale;
         $this->bodyData['point'] = '';
