@@ -243,7 +243,7 @@ class PortalController extends ProductController
             $thank_you_page = ProjectEnum::STATIC_PAGE_PAYMENT_THANK_YOU_ISMILE;
         }
         if (Str::contains($request->getRequestUri(), ProjectEnum::ONCSHC_URL)) {
-            $thank_you_page = ProjectEnum::PAGE_PAYMENT_THANK_YOU_CHILL_SURE;
+            $thank_you_page = ProjectEnum::STATIC_PAGE_PAYMENT_THANK_YOU_CHILL_SURE;
         }
         return $this->genStatusPage_Portal($thank_you_page);
     }
