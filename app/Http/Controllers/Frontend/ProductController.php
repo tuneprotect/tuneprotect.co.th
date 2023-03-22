@@ -1071,7 +1071,7 @@ class ProductController extends BaseController
     public function thankyou(Request $request)
     {
         $this->bodyData['doc_no'] = $request->session()->get('doc_no');
-        $this->bodyData['payAmount'] = $request->session()->get('payAmount');
+        $this->bodyData['payAmount'] = session('payAmount');
         $this->bodyData['return_link'] = '/' . $this->locale;
         $this->bodyData['point'] = '';
         //$this->thankYouParam = $request->session()->get('thankyou_param');
@@ -1102,8 +1102,7 @@ class ProductController extends BaseController
             $data = $v->data;
             $payAmount = $data['fdPayAMT'];
             $portalKey = $data['fdKeys'];
-            echo var_dump($payAmount);exit();
-            
+            session(['payAmount' => $payAmount]);
             if ($v->result) {
                 $request->session()->put('doc_no',  $v->result['message']);
                 $request->session()->put('return_link', $request->input('user_defined_2'));
