@@ -1074,6 +1074,7 @@ class ProductController extends BaseController
         $this->bodyData['payAmount'] = $request->session()->get('payAmount');
         $this->bodyData['return_link'] = '/' . $this->locale;
         $this->bodyData['point'] = '';
+        $this->bodyData['agent_code'] = $request->session()->get('agent_code');
         //$this->thankYouParam = $request->session()->get('thankyou_param');
 
         $thank_you_page = ProjectEnum::STATIC_PAGE_PAYMENT_THANK_YOU;
@@ -1104,7 +1105,7 @@ class ProductController extends BaseController
             $payAmount = $data['fdPayAMT'];
             $portalKey = $data['fdKeys'];
             $agent_code = $data['fdAgent'];
-            echo var_dump($agent_code);exit();
+            
             if ($v->result) {
                 $request->session()->put('doc_no',  $v->result['message']);
                 $request->session()->put('return_link', $request->input('user_defined_2'));
