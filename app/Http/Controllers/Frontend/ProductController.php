@@ -1099,7 +1099,7 @@ class ProductController extends BaseController
     {
         $result = null;
         $oBuyLog = BuyLog::where('fdInvoice', str_replace(config('project.invoice_prefix'), "", $request->input('order_id')))->get();
-        
+        $agent_code="";
         //dd($oBuyLog);
         //echo var_dump($oBuyLog);exit();
         foreach ($oBuyLog as $v) {
