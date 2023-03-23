@@ -212,7 +212,7 @@ class PortalController extends ProductController
         $this->bodyData['doc_no'] = $request->session()->get('doc_no');
         $this->bodyData['return_link'] = $request->session()->get('return_link');
         $this->bodyData['point'] = '';
-        $this->bodyData['agentCode'] = $request->session()->get('agentCode');
+        $this->bodyData['agentCode'] = '33';//$request->session()->get('agentCode');
         $this->bodyData['payAmount'] = $request->session()->get('payAmount');
         $this->bodyData['portalKey'] = $request->session()->get('portalKey');
         //$this->bodyData['page'] = '';
