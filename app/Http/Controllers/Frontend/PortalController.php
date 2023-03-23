@@ -7,7 +7,6 @@ use GuzzleHttp\Client;
 use Illuminate\Http\Request;
 use App\Enum\ProjectEnum;
 use Illuminate\Support\Str;
-
 // use App\Http\Requests\MemberidRequest;
 
 class PortalController extends ProductController
@@ -93,7 +92,7 @@ class PortalController extends ProductController
         session(['nopayment_status' => $nopayment_status]);
         session(['partner' => $partner]);
         session(['b2bpayment_status' => $b2bpayment_status]);
-
+        
         return parent::index($link, $selected);
     }
 
@@ -155,7 +154,6 @@ class PortalController extends ProductController
 
             $this->bodyData['brochure_ci'] = __('product.ci_brochure_broker_en');
         }
-        session()->put('agentCode', $agentCode);
         return parent::form($link, $selected);
     }
 
