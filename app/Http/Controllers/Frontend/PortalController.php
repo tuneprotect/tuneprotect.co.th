@@ -79,7 +79,7 @@ class PortalController extends ProductController
                 $b2bpayment_status = true;
             }
         }
-echo var_dump($agentCode);exit();
+
         $this->bodyData['partner'] = $partner;
         $this->bodyData['agentCode'] = $agentCode;
         $this->bodyData['status_api'] = $status_api;
@@ -93,7 +93,7 @@ echo var_dump($agentCode);exit();
         session(['nopayment_status' => $nopayment_status]);
         session(['partner' => $partner]);
         session(['b2bpayment_status' => $b2bpayment_status]);
-
+        echo var_dump($this->bodyData['agentCode']);exit();
         return parent::index($link, $selected);
     }
 
