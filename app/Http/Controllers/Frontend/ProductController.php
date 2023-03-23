@@ -1074,7 +1074,7 @@ class ProductController extends BaseController
         $this->bodyData['payAmount'] = $request->session()->get('payAmount');
         $this->bodyData['return_link'] = '/' . $this->locale;
         $this->bodyData['point'] = '';
-        $this->bodyData['agentCode'] ='55';
+        $this->bodyData['agentCode'] = session('agentCode');
         //$this->bodyData['agent_code'] = $request->session()->get('agent_code');
         //echo var_dump($request->session()->get('agent_code')); exit();
         //echo var_dump($request->session()->get('agent_code')); exit();
@@ -1166,7 +1166,7 @@ class ProductController extends BaseController
                 $request->session()->put('error', $request->input('channel_response_desc'));
         }
        
-        echo var_dump(session('agentCode'));exit();
+        //echo var_dump(session('agentCode'));exit();
         return redirect()->route('current', ['locale' => $this->locale, 'controller' => $this->controller, 'func' => $func, 'params' => $this->thankYouParam]);
     }
 
