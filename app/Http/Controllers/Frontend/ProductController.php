@@ -1074,11 +1074,7 @@ class ProductController extends BaseController
         $this->bodyData['payAmount'] = $request->session()->get('payAmount');
         $this->bodyData['return_link'] = '/' . $this->locale;
         $this->bodyData['point'] = '';
-        //$this->bodyData['agent_code'] ='';
-        //$this->bodyData['agent_code'] = $request->session()->get('agent_code');
-        //echo var_dump($request->session()->get('agent_code')); exit();
-        //echo var_dump($request->session()->get('agent_code')); exit();
-        //$this->thankYouParam = $request->session()->get('thankyou_param');
+        $this->bodyData['agent_code'] = $request->session()->get('agent_code');
 
         $thank_you_page = ProjectEnum::STATIC_PAGE_PAYMENT_THANK_YOU;
         if (Str::contains($request->getRequestUri(), ProjectEnum::DIABETES_URL)) {
@@ -1107,7 +1103,7 @@ class ProductController extends BaseController
             $data = $v->data;
             $payAmount = $data['fdPayAMT'];
             $portalKey = $data['fdKeys'];
-            //$agent_code = $data['fdAgent'];
+            $agent_code = $data['fdAgent'];
             
             if ($v->result) {
                 $request->session()->put('doc_no',  $v->result['message']);
@@ -1116,7 +1112,7 @@ class ProductController extends BaseController
                 $request->session()->put('thankyou_param', $request->input('user_defined_4'));
                 $request->session()->put('payAmount', $payAmount);
                 $request->session()->put('portalKey', $portalKey);
-                //$request->session()->put('agent_code', $agent_code);
+                $request->session()->put('agent_code', $agent_code);
                 $this->thankYouParam = $request->input('user_defined_4');
 
                 $func = 'thankyou';
@@ -1140,6 +1136,7 @@ class ProductController extends BaseController
                     $request->session()->put('thankyou_param', $request->input('user_defined_4'));
                     $request->session()->put('payAmount', $payAmount);
                     $request->session()->put('portalKey', $portalKey);
+                    $request->session()->put('agent_code', $agent_code);
                     $this->thankYouParam = $request->input('user_defined_4');
                     $func = 'thankyou';
                 } else {
