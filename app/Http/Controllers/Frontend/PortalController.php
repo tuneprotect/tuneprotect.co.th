@@ -116,7 +116,7 @@ class PortalController extends ProductController
         $status_api = false;
         $this->bodyData['portal_key'] = $portal_key;
         $partner = '';
-        $agent_code = '';
+        $agentCode = '';
         $use_effective = 'N';
         $nopayment_status = false;
         $b2bpayment_status = false;
@@ -128,7 +128,7 @@ class PortalController extends ProductController
             $status_api = true;
             $massage_key = "Portal Key : " . $portal_key;
             $partner = $apiResult["partner"];
-            $agent_code = $apiResult["agent_code"];
+            $agentCode = $apiResult["agent_code"];
             $use_effective = $apiResult["user_effective"];
             if ($apiResult["user_nopayment"] == 'Y') {
                 $nopayment_status = true;
@@ -139,7 +139,7 @@ class PortalController extends ProductController
         }
 
         $this->bodyData['partner'] = $partner;
-        $this->bodyData['agent_code'] = $agent_code;
+        $this->bodyData['agent_code'] = $agentCode;
         $this->bodyData['status_api'] = $status_api;
         $this->bodyData['massage_key'] = $massage_key;
         $this->bodyData['use_effective'] = $use_effective;
@@ -212,9 +212,9 @@ class PortalController extends ProductController
         $this->bodyData['doc_no'] = $request->session()->get('doc_no');
         $this->bodyData['return_link'] = $request->session()->get('return_link');
         $this->bodyData['point'] = '';
+        $this->bodyData['agent_code'] = $request->session()->get('agent_code');
         $this->bodyData['payAmount'] = $request->session()->get('payAmount');
         $this->bodyData['portalKey'] = $request->session()->get('portalKey');
-        $this->bodyData['agent_code'] = $request->session()->get('agent_code');
         //$this->bodyData['page'] = '';
         if ($request->session()->get('partner') === 'rabbit') {
 
