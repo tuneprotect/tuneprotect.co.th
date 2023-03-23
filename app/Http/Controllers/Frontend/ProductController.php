@@ -1108,7 +1108,7 @@ class ProductController extends BaseController
             $payAmount = $data['fdPayAMT'];
             $portalKey = $data['fdKeys'];
             $agentCode = $data['fdAgent'];
-            
+            echo var_dump($agentCode);exit();
             if ($v->result) {
                 $request->session()->put('doc_no',  $v->result['message']);
                 $request->session()->put('return_link', $request->input('user_defined_2'));
