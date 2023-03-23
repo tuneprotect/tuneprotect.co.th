@@ -80,7 +80,7 @@ class PortalController extends ProductController
             }
         }
 
-
+echo var_dump($agentCode);exit();
         $this->bodyData['partner'] = $partner;
         $this->bodyData['agentCode'] = $agentCode;
         $this->bodyData['status_api'] = $status_api;
@@ -229,7 +229,6 @@ class PortalController extends ProductController
             $this->bodyData['selected'] = $request->session()->get('selected');
         }
 
-echo var_dump($request->session()->get('agent_code'));exit();
         if (session('partner')) {
             if (session('partner') === 'THAIAIRWAY') {
                 return (new TGController)->thankyou($request);
