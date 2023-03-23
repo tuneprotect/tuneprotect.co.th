@@ -1073,7 +1073,12 @@ class ProductController extends BaseController
         $this->bodyData['doc_no'] = $request->session()->get('doc_no');
         $this->bodyData['payAmount'] = $request->session()->get('payAmount');
         $this->bodyData['return_link'] = '/' . $this->locale;
-        $this->bodyData['point'] = '33';
+        $this->bodyData['point'] = '';
+        $this->bodyData['agent_code'] ='';
+        //$this->bodyData['agent_code'] = $request->session()->get('agent_code');
+        //echo var_dump($request->session()->get('agent_code')); exit();
+        //echo var_dump($request->session()->get('agent_code')); exit();
+        //$this->thankYouParam = $request->session()->get('thankyou_param');
 
         $thank_you_page = ProjectEnum::STATIC_PAGE_PAYMENT_THANK_YOU;
         if (Str::contains($request->getRequestUri(), ProjectEnum::DIABETES_URL)) {
@@ -1095,11 +1100,15 @@ class ProductController extends BaseController
     {
         $result = null;
         $oBuyLog = BuyLog::where('fdInvoice', str_replace(config('project.invoice_prefix'), "", $request->input('order_id')))->get();
-        
+        //$agent_code="";
+        //dd($oBuyLog);
+        //echo var_dump($oBuyLog);exit();
         foreach ($oBuyLog as $v) {
             $data = $v->data;
             $payAmount = $data['fdPayAMT'];
             $portalKey = $data['fdKeys'];
+            //$agent_code = $data['fdAgent'];
+            
             if ($v->result) {
                 $request->session()->put('doc_no',  $v->result['message']);
                 $request->session()->put('return_link', $request->input('user_defined_2'));
@@ -1107,6 +1116,7 @@ class ProductController extends BaseController
                 $request->session()->put('thankyou_param', $request->input('user_defined_4'));
                 $request->session()->put('payAmount', $payAmount);
                 $request->session()->put('portalKey', $portalKey);
+                //$request->session()->put('agent_code', $agent_code);
                 $this->thankYouParam = $request->input('user_defined_4');
 
                 $func = 'thankyou';
@@ -1118,7 +1128,7 @@ class ProductController extends BaseController
             $v->issuepolicy_status =  'W';
             $v->save();
         }
-        
+
         switch ($request->input('payment_status')) {
             case '000':
                 $result = $this->sendToApiIssue($request->input('order_id'), $request->input('payment_channel'), $request->input('masked_pan'));
@@ -1154,7 +1164,7 @@ class ProductController extends BaseController
                 $func = 'error';
                 $request->session()->put('error', $request->input('channel_response_desc'));
         }
-        echo var_dump($request->input('payment_status'));exit();
+       
         return redirect()->route('current', ['locale' => $this->locale, 'controller' => $this->controller, 'func' => $func, 'params' => $this->thankYouParam]);
     }
 
