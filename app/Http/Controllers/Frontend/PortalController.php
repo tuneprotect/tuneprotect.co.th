@@ -155,7 +155,7 @@ class PortalController extends ProductController
 
             $this->bodyData['brochure_ci'] = __('product.ci_brochure_broker_en');
         }
-
+        session()->put('agentCode', $agentCode);
         return parent::form($link, $selected);
     }
 
