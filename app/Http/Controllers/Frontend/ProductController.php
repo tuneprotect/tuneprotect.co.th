@@ -1108,7 +1108,6 @@ class ProductController extends BaseController
             $payAmount = $data['fdPayAMT'];
             $portalKey = $data['fdKeys'];
             $agentCode = $data['fdAgent'];
-            echo var_dump($agentCode);exit();
             if ($v->result) {
                 $request->session()->put('doc_no',  $v->result['message']);
                 $request->session()->put('return_link', $request->input('user_defined_2'));
@@ -1128,7 +1127,7 @@ class ProductController extends BaseController
             $v->issuepolicy_status =  'W';
             $v->save();
         }
-        echo var_dump($request->session()->get('agentCode'));exit();
+        //echo var_dump($request->session()->get('agentCode'));exit();
         switch ($request->input('payment_status')) {
             case '000':
                 $result = $this->sendToApiIssue($request->input('order_id'), $request->input('payment_channel'), $request->input('masked_pan'));
@@ -1166,6 +1165,7 @@ class ProductController extends BaseController
                 $request->session()->put('error', $request->input('channel_response_desc'));
         }
        
+        echo var_dump($agentCode);exit();
         return redirect()->route('current', ['locale' => $this->locale, 'controller' => $this->controller, 'func' => $func, 'params' => $this->thankYouParam]);
     }
 
