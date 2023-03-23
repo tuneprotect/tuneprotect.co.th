@@ -1074,11 +1074,6 @@ class ProductController extends BaseController
         $this->bodyData['payAmount'] = $request->session()->get('payAmount');
         $this->bodyData['return_link'] = '/' . $this->locale;
         $this->bodyData['point'] = '33';
-        $this->bodyData['agentCode'] = '55';
-        //$this->bodyData['agent_code'] = $request->session()->get('agent_code');
-        //echo var_dump($request->session()->get('agent_code')); exit();
-        //echo var_dump($request->session()->get('agent_code')); exit();
-        //$this->thankYouParam = $request->session()->get('thankyou_param');
 
         $thank_you_page = ProjectEnum::STATIC_PAGE_PAYMENT_THANK_YOU;
         if (Str::contains($request->getRequestUri(), ProjectEnum::DIABETES_URL)) {
@@ -1116,7 +1111,6 @@ class ProductController extends BaseController
                 $request->session()->put('thankyou_param', $request->input('user_defined_4'));
                 $request->session()->put('payAmount', $payAmount);
                 $request->session()->put('portalKey', $portalKey);
-                $request->session()->put('agentCode', $agentCode);
                 $this->thankYouParam = $request->input('user_defined_4');
 
                 $func = 'thankyou';
@@ -1140,7 +1134,6 @@ class ProductController extends BaseController
                     $request->session()->put('thankyou_param', $request->input('user_defined_4'));
                     $request->session()->put('payAmount', $payAmount);
                     $request->session()->put('portalKey', $portalKey);
-                    //$request->session()->put('agent_code', $agent_code);
                     $this->thankYouParam = $request->input('user_defined_4');
                     $func = 'thankyou';
                 } else {
@@ -1165,8 +1158,6 @@ class ProductController extends BaseController
                 $func = 'error';
                 $request->session()->put('error', $request->input('channel_response_desc'));
         }
-       
-        //echo var_dump(session('agentCode'));exit();
         return redirect()->route('current', ['locale' => $this->locale, 'controller' => $this->controller, 'func' => $func, 'params' => $this->thankYouParam]);
     }
 
