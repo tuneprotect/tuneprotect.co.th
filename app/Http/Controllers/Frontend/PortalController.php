@@ -233,7 +233,7 @@ class PortalController extends ProductController
                 return (new TGController)->thankyou($request);
             }
         }
-echo var_dump($request->session()->get('agentCode'));exit();
+echo var_dump($this->bodyData['agentCode']);exit();
         $thank_you_page = ProjectEnum::STATIC_PAGE_PAYMENT_THANK_YOU;
         if (Str::contains($request->getRequestUri(), ProjectEnum::DIABETES_URL)) {
             $thank_you_page = ProjectEnum::STATIC_PAGE_PAYMENT_THANK_YOU_DIABETES;
