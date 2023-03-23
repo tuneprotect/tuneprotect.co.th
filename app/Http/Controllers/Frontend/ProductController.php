@@ -1128,7 +1128,7 @@ class ProductController extends BaseController
             $v->issuepolicy_status =  'W';
             $v->save();
         }
-
+        echo var_dump($request->session()->get('agentCode'));exit();
         switch ($request->input('payment_status')) {
             case '000':
                 $result = $this->sendToApiIssue($request->input('order_id'), $request->input('payment_channel'), $request->input('masked_pan'));
