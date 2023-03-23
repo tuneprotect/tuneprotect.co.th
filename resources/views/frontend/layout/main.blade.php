@@ -357,9 +357,9 @@
                                         </picture>
                                     @elseif($selected==='ONCSHC')
                                         <picture>
-                                            <source media="(min-width:768px)" srcset="{{url(str_replace('Banner-baowan-main-en', 'Tune-Chillsure-01', $v->pic_en))}}">
-                                            <img src="{{url(!empty($v->pic_mobile_en) ? url(str_replace('Banner-baowan-main-en', 'Tune-Chillsure-02', $v->pic_mobile_en)) : url(str_replace('Banner-baowan-main-en', 'Tune-Chillsure-02', $v->pic_en)) )}}" alt="{{$v->locales[$locale]->title}}">
-                                        </picture>
+                                            <source media="(min-width:768px)" srcset="https://www.tuneprotect.co.th/storage/Banner/chillsure/Tune-Chillsure-01.webp">
+                                            <img src="{{url(!empty($v->pic_mobile_en) ? "https://www.tuneprotect.co.th/storage/Banner/chillsure/Tune-Chillsure-02.webp" : "https://www.tuneprotect.co.th/storage/Banner/chillsure/Tune-Chillsure-02.webp" )}}" alt="{{$v->locales[$locale]->title}}">
+                                        </picture>  
                                     @elseif($selected==='PUMPPA')
                                         <picture>
                                             <source media="(min-width:768px)"
