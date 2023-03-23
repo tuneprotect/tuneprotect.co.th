@@ -94,7 +94,7 @@ class PortalController extends ProductController
         session(['partner' => $partner]);
         session(['b2bpayment_status' => $b2bpayment_status]);
 
-        session(['agent_code' =>$agentCode]);
+        session(['agentCode' =>$agentCode]);
         return parent::index($link, $selected);
     }
 
@@ -208,11 +208,12 @@ class PortalController extends ProductController
 
     public function thankyou(Request $request)
     {
+        echo var_dump($request);exit();
         $this->bodyData['partner'] = $request->session()->get('partner');
         $this->bodyData['doc_no'] = $request->session()->get('doc_no');
         $this->bodyData['return_link'] = $request->session()->get('return_link');
         $this->bodyData['point'] = '';
-        $this->bodyData['agentCode'] = session('agent_code');
+        $this->bodyData['agentCode'] = $request->session()->get('agentCode');
         $this->bodyData['payAmount'] = $request->session()->get('payAmount');
         $this->bodyData['portalKey'] = $request->session()->get('portalKey');
         //$this->bodyData['page'] = '';
