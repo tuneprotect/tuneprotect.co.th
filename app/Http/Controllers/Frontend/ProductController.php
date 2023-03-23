@@ -1095,15 +1095,11 @@ class ProductController extends BaseController
     {
         $result = null;
         $oBuyLog = BuyLog::where('fdInvoice', str_replace(config('project.invoice_prefix'), "", $request->input('order_id')))->get();
-        //$agentCode="";
-        //dd($oBuyLog);
-        //echo var_dump($oBuyLog);exit();
+        
         foreach ($oBuyLog as $v) {
             $data = $v->data;
             $payAmount = $data['fdPayAMT'];
             $portalKey = $data['fdKeys'];
-            $agentCode = $data['fdAgent'];
-            session(['agentCode' => $agentCode]);
             if ($v->result) {
                 $request->session()->put('doc_no',  $v->result['message']);
                 $request->session()->put('return_link', $request->input('user_defined_2'));
@@ -1158,6 +1154,7 @@ class ProductController extends BaseController
                 $func = 'error';
                 $request->session()->put('error', $request->input('channel_response_desc'));
         }
+        echo var_dump($request->input('payment_status'));exit();
         return redirect()->route('current', ['locale' => $this->locale, 'controller' => $this->controller, 'func' => $func, 'params' => $this->thankYouParam]);
     }
 
