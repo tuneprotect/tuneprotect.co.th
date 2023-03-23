@@ -138,7 +138,7 @@ class PortalController extends ProductController
         }
 
         $this->bodyData['partner'] = $partner;
-        $this->bodyData['agent_code'] = $agentCode;
+        $this->bodyData['agentCode'] = $agentCode;
         $this->bodyData['status_api'] = $status_api;
         $this->bodyData['massage_key'] = $massage_key;
         $this->bodyData['use_effective'] = $use_effective;
@@ -211,7 +211,7 @@ class PortalController extends ProductController
         $this->bodyData['doc_no'] = $request->session()->get('doc_no');
         $this->bodyData['return_link'] = $request->session()->get('return_link');
         $this->bodyData['point'] = '';
-        $this->bodyData['agent_code'] = $request->session()->get('agent_code');
+        $this->bodyData['agentCode'] = $request->session()->get('agentCode');
         $this->bodyData['payAmount'] = $request->session()->get('payAmount');
         $this->bodyData['portalKey'] = $request->session()->get('portalKey');
         //$this->bodyData['page'] = '';
