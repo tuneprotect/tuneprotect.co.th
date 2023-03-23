@@ -93,7 +93,8 @@ class PortalController extends ProductController
         session(['nopayment_status' => $nopayment_status]);
         session(['partner' => $partner]);
         session(['b2bpayment_status' => $b2bpayment_status]);
-        echo var_dump($this->bodyData['agentCode']);exit();
+
+        session(['agentCode' =>$agentCode]);
         return parent::index($link, $selected);
     }
 
@@ -211,7 +212,7 @@ class PortalController extends ProductController
         $this->bodyData['doc_no'] = $request->session()->get('doc_no');
         $this->bodyData['return_link'] = $request->session()->get('return_link');
         $this->bodyData['point'] = '';
-        $this->bodyData['agentCode'] = $request->session()->get('agentCode');
+        $this->bodyData['agentCode'] = session('agentCode');
         $this->bodyData['payAmount'] = $request->session()->get('payAmount');
         $this->bodyData['portalKey'] = $request->session()->get('portalKey');
         //$this->bodyData['page'] = '';
@@ -233,7 +234,7 @@ class PortalController extends ProductController
                 return (new TGController)->thankyou($request);
             }
         }
-//echo var_dump($this->bodyData['agentCode']);exit();
+        
         $thank_you_page = ProjectEnum::STATIC_PAGE_PAYMENT_THANK_YOU;
         if (Str::contains($request->getRequestUri(), ProjectEnum::DIABETES_URL)) {
             $thank_you_page = ProjectEnum::STATIC_PAGE_PAYMENT_THANK_YOU_DIABETES;
