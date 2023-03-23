@@ -80,7 +80,6 @@ class PortalController extends ProductController
             }
         }
 
-echo var_dump($agentCode);exit();
         $this->bodyData['partner'] = $partner;
         $this->bodyData['agentCode'] = $agentCode;
         $this->bodyData['status_api'] = $status_api;

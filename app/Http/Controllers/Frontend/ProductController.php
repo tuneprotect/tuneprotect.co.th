@@ -1112,7 +1112,7 @@ class ProductController extends BaseController
                 $request->session()->put('thankyou_param', $request->input('user_defined_4'));
                 $request->session()->put('payAmount', $payAmount);
                 $request->session()->put('portalKey', $portalKey);
-                $request->session()->put('agent_code', $agent_code);
+                $request->session()->put('agentCode', $agent_code);
                 $this->thankYouParam = $request->input('user_defined_4');
 
                 $func = 'thankyou';
@@ -1136,7 +1136,7 @@ class ProductController extends BaseController
                     $request->session()->put('thankyou_param', $request->input('user_defined_4'));
                     $request->session()->put('payAmount', $payAmount);
                     $request->session()->put('portalKey', $portalKey);
-                    $request->session()->put('agent_code', $agent_code);
+                    $request->session()->put('agentCode', $agent_code);
                     $this->thankYouParam = $request->input('user_defined_4');
                     $func = 'thankyou';
                 } else {
