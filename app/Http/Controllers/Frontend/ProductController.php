@@ -1073,8 +1073,8 @@ class ProductController extends BaseController
         $this->bodyData['doc_no'] = $request->session()->get('doc_no');
         $this->bodyData['payAmount'] = $request->session()->get('payAmount');
         $this->bodyData['return_link'] = '/' . $this->locale;
-        $this->bodyData['point'] = '';
-        $this->bodyData['agentCode'] = session('agentCode');
+        $this->bodyData['point'] = '33';
+        $this->bodyData['agentCode'] = '55';
         //$this->bodyData['agent_code'] = $request->session()->get('agent_code');
         //echo var_dump($request->session()->get('agent_code')); exit();
         //echo var_dump($request->session()->get('agent_code')); exit();
