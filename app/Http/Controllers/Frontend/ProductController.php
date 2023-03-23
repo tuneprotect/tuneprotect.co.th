@@ -1165,7 +1165,7 @@ class ProductController extends BaseController
                 $request->session()->put('error', $request->input('channel_response_desc'));
         }
        
-        echo var_dump($agentCode+"aaa");exit();
+        echo var_dump($agentCode);exit();
         return redirect()->route('current', ['locale' => $this->locale, 'controller' => $this->controller, 'func' => $func, 'params' => $this->thankYouParam]);
     }
 
