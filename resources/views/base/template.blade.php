@@ -135,16 +135,14 @@
     @endforeach
 @endif
 </body>
-@if($selected==='ONCSHC')
     <script>
     var timestamp = new Date().getTime();(function (d) {
-        var s = d.createElement('script’);
+        var s = d.createElement('script');
         s.src = 'https://script.accesstrade.in.th/lp.js?cb=' + timestamp;
         s.async = true;var e = d.getElementsByTagName('script')[0];
         e.parentNode.insertBefore(s, e);
     })(document);
     </script>
 
-@endif
 </html>
 
