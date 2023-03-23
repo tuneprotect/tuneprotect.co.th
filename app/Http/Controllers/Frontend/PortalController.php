@@ -79,7 +79,7 @@ class PortalController extends ProductController
                 $b2bpayment_status = true;
             }
         }
-
+echo var_dump($this->bodyData['agentCode']);exit();
         $this->bodyData['partner'] = $partner;
         $this->bodyData['agentCode'] = $agentCode;
         $this->bodyData['status_api'] = $status_api;
