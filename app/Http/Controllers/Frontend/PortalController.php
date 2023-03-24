@@ -282,18 +282,18 @@ class PortalController extends ProductController
         return $this->genStatusPage_Portal(ProjectEnum::STATIC_PAGE_PAYMENT_REJECT);
     }
 
-    // protected function sendToApiBigLifeValidateSurvey($memberId)
-    // {
-    //     $client = new Client();
-    //     $response = $client->request('POST', config('tune-api.url') . 'BigLifeValidateSurvey', [
-    //         'auth' => [config('tune-api.user'), config('tune-api.password')],
-    //         'headers' => [
-    //             'Content-Type' => 'application/json'
-    //         ],
-    //         'body' => json_encode([
-    //             'memberId' => $memberId
-    //         ])
-    //     ]);
-    //     return json_decode($response->getBody()->getContents(), true);
-    // }
+    protected function sendToApiBigLifeValidateSurvey($memberId)
+    {
+        $client = new Client();
+        $response = $client->request('POST', config('tune-api.url') . 'BigLifeValidateSurvey', [
+            'auth' => [config('tune-api.user'), config('tune-api.password')],
+            'headers' => [
+                'Content-Type' => 'application/json'
+            ],
+            'body' => json_encode([
+                'memberId' => $memberId
+            ])
+        ]);
+        return json_decode($response->getBody()->getContents(), true);
+    }
 }

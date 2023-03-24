@@ -376,6 +376,33 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
 
 
+    const chkMemberID = async () => {
+        var myHeaders = new Headers();
+        myHeaders.append("Authorization", "Bearer VFBUV0VCU0lURTpUUFRXRUJTSVRFQDEyMw==");
+        myHeaders.append("Content-Type", "application/json");
+        
+        var raw = JSON.stringify({
+          "memberId": "9999990020582197"
+        });
+        
+        var requestOptions = {
+          method: 'POST',
+          headers: myHeaders,
+          body: raw,
+          redirect: 'follow'
+        };
+        
+        let res = await fetch("https://localhost:59217/api/WEBSITE/BigLifeValidateSurvey", requestOptions)
+          .then(response => response.text())
+          .then(result => console.log(result))
+          .catch(error => console.log('error', error));
+
+        console.log("res",res);
+    }
+
+
+
+
     const $btnGoto = $$('.btn-goto');
     $btnGoto.forEach($btn => {
         $btn.addEventListener("click", function (e) {
@@ -391,7 +418,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                 switch (parseInt(step)) {
                     case 1:
                         let fdNationalID = 1111;
-                        const chkMemberAA = CheckRegisterForChillSure({fdNationalID});
+                        const chkMemberAA = chkMemberID();
                         //alert(2)
                         console.log("aaaa",chkMemberAA);
                         const chkAccept = validateAcceptStep1();
