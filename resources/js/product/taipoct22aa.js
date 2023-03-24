@@ -391,7 +391,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                 switch (parseInt(step)) {
                     case 1:
                         let fdNationalID = 1111;
-                        const chkMemberAA = sendToApiBigLifeValidateSurvey({fdNationalID});
+                        const chkMemberAA = CheckRegisterForChillSure({fdNationalID});
                         //alert(2)
                         console.log("aaaa",chkMemberAA);
                         const chkAccept = validateAcceptStep1();

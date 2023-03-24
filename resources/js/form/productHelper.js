@@ -114,31 +114,6 @@ const CheckRegisterForChillSure = async (data) => {
     })
     return await response.json();
 }
-export const sendToApiBigLifeValidateSurvey = async (data) => {
-//alert(1);return;
-    //$client = new Client();
-    //     $response = $client->request('POST', config('tune-api.url') . 'BigLifeValidateSurvey', [
-    //         'auth' => [config('tune-api.user'), config('tune-api.password')],
-    //         'headers' => [
-    //             'Content-Type' => 'application/json'
-    //         ],
-    //         'body' => json_encode([
-    //             'memberId' => $memberId
-    //         ])
-    //     ]);
-    //     return json_decode($response->getBody()->getContents(), true);
-
-    const response = await fetch(`https://localhost:59217/api/WEBSITE/BigLifeValidateSurvey`, {
-        method: 'post',
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json',
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').getAttribute('content')
-        },
-        body: JSON.stringify({...data})
-    })
-    return await response.json();
-}
 
 export const validatePolicyLoc = async ($this, fdPackage,fdFromDate) => {
     let field = $this.getAttribute('name');

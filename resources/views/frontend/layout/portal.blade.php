@@ -202,10 +202,10 @@
         <img src="{{url(!empty($v->pic_mobile_en) ? "/storage/Banner/Tune_iPass_Desktop.jpg" : "/storage/Banner/Tune_iPass_Mobile.jpg" )}}" alt="{{$v->locales[$locale]->title}}">
     </picture>    
     @elseif($selected==='TAIPOCT22AA')
-    <picture class="ccc">
-        <source media="(min-width:768px)" srcset="/storage/Banner/Tune_iPass_Desktop.jpg">
-        <img src="{{url(!empty($v->pic_mobile_en) ? "/storage/Banner/Tune_iPass_Desktop.jpg" : "/storage/Banner/Tune_iPass_Mobile.jpg" )}}" alt="{{$v->locales[$locale]->title}}">
-    </picture>  
+        <picture>
+            <source media="(min-width:768px)" srcset="https://www.tuneprotect.co.th/storage/Banner/airasia/Banner-ipass01  240366.webp">
+            <img src="{{url(!empty($v->pic_mobile_en) ? "https://www.tuneprotect.co.th/storage/Banner/airasia/Banner-ipass02 240366" : "https://www.tuneprotect.co.th/storage/Banner/airasia/Banner-ipass02 240366" )}}" alt="{{$v->locales[$locale]->title}}">
+        </picture>
     @elseif($partner==='rabbit' && $selected==='ONTAOB')
     <picture>
         <source media="(min-width:768px)" srcset="/storage/Banner/Banner_TA_Rabbit_D_EN.jpg">
