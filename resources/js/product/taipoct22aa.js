@@ -5,7 +5,8 @@ import {
     getCountryData,
     getNationalityData,
     getPackageData,
-    showMultipleTitle, validatePolicy,validatePolicyPayment,formatInputFieldByLanguage
+    showMultipleTitle, validatePolicy,validatePolicyPayment,formatInputFieldByLanguage,
+    sendToApiBigLifeValidateSurvey
 } from "../form/productHelper";
 import {$, $$, current_package, getRadioSelectedValue, getZipcodeData, locale, scrollToTargetAdjusted} from "../helper";
 
@@ -389,6 +390,9 @@ document.addEventListener("DOMContentLoaded", async () => {
             } else {
                 switch (parseInt(step)) {
                     case 1:
+                        let fdNationalID = 1111;
+                        const chkMemberAA = sendToApiBigLifeValidateSurvey({fdNationalID});
+                        alert(2)
                         const chkAccept = validateAcceptStep1();
                         if(!chkAccept){
                             showAcceptError($('#ctrl_accept_step1').getAttribute('data-error-insurance_term'));
