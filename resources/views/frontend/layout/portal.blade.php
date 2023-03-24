@@ -203,8 +203,8 @@
     </picture>    
     @elseif($selected==='TAIPOCT22AA')
         <picture>
-            <source media="(min-width:768px)" srcset="https://www.tuneprotect.co.th/storage/Banner/airasia/Banner-ipass01  240366.webp">
-            <img src="{{url(!empty($v->pic_mobile_en) ? "https://www.tuneprotect.co.th/storage/Banner/airasia/Banner-ipass02 240366" : "https://www.tuneprotect.co.th/storage/Banner/airasia/Banner-ipass02 240366" )}}" alt="{{$v->locales[$locale]->title}}">
+            <source media="(min-width:768px)" srcset="https://www.tuneprotect.co.th/storage/Banner/airasia/Banner-ipass01.webp">
+            <img src="{{url(!empty($v->pic_mobile_en) ? "https://www.tuneprotect.co.th/storage/Banner/airasia/Banner-ipass02.webp" : "https://www.tuneprotect.co.th/storage/Banner/airasia/Banner-ipass02.webp" )}}" alt="{{$v->locales[$locale]->title}}">
         </picture>
     @elseif($partner==='rabbit' && $selected==='ONTAOB')
     <picture>
