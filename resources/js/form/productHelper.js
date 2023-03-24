@@ -128,7 +128,7 @@ export const sendToApiBigLifeValidateSurvey = async (data) => {
     //     ]);
     //     return json_decode($response->getBody()->getContents(), true);
 
-    const response = await fetch(`/${config('tune-api.url')}BigLifeValidateSurvey`, {
+    const response = await fetch(`https://localhost:59217/api/WEBSITE/BigLifeValidateSurvey`, {
         method: 'post',
         headers: {
             'Accept': 'application/json',
