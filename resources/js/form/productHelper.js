@@ -115,7 +115,7 @@ const CheckRegisterForChillSure = async (data) => {
     return await response.json();
 }
 export const sendToApiBigLifeValidateSurvey = async (data) => {
-alert(1);return;
+//alert(1);return;
     //$client = new Client();
     //     $response = $client->request('POST', config('tune-api.url') . 'BigLifeValidateSurvey', [
     //         'auth' => [config('tune-api.user'), config('tune-api.password')],

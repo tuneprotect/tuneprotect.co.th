@@ -392,7 +392,8 @@ document.addEventListener("DOMContentLoaded", async () => {
                     case 1:
                         let fdNationalID = 1111;
                         const chkMemberAA = sendToApiBigLifeValidateSurvey({fdNationalID});
-                        alert(2)
+                        //alert(2)
+                        console.log("aaaa",chkMemberAA);
                         const chkAccept = validateAcceptStep1();
                         if(!chkAccept){
                             showAcceptError($('#ctrl_accept_step1').getAttribute('data-error-insurance_term'));
