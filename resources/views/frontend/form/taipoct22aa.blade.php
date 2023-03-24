@@ -32,9 +32,7 @@
                 </div>
 
                 <div class="controls-wrapper">
-                    <input id="fdToDate" name="fdToDate" type="text" class="flatpickr"
-                           data-mindate="{{date('Y-m-d')}}"
-                           data-error="@lang('product.error.travel_end_date')"/>
+                    <select id="fdDestTo" name="fdDestTo" disabled></select>
                     <label for="fdDestTo">@lang("product.destination_country")</label>
                 </div>
                 <div class="controls-wrapper">
