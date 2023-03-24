@@ -32,8 +32,8 @@
                 </div>
 
                 <div class="controls-wrapper">
-                    <select id="fdDestTo" name="fdDestTo" disabled></select>
-                    <label for="fdDestTo">@lang("product.destination_country")</label>
+                    <input id="fdAgentCode" name="fdAgentCode" type="text" />
+                    <label for="fdAgentCode">@lang("product.agent_code")</label>
                 </div>
                 <div class="controls-wrapper">
                     <select id="ctrl_no_of_insured" name="ctrl_no_of_insured">
@@ -42,6 +42,10 @@
                         @endfor
                     </select>
                     <label for="ctrl_no_of_insured">@lang("product.no_of_insured")</label>
+                </div>
+                <div class="controls-wrapper">
+                    <select id="fdDestTo" name="fdDestTo" disabled></select>
+                    <label for="fdDestTo">@lang("product.destination_country")</label>
                 </div>
             </div>
             <div>
