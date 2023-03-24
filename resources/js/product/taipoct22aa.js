@@ -378,13 +378,13 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     const chkMemberID = async () => {
         var myHeaders = new Headers();
-        myHeaders.append("Authorization", "Bearer VFBUV0VCU0lURTpUUFRXRUJTSVRFQDEyMw==");
+        myHeaders.append("Authorization", "Bearer VFBUV0VCU0lURTpnU01vTENiTjZHUmdFSXo3");
         myHeaders.append("Content-Type", "application/json");
         
         var raw = JSON.stringify({
-          "memberId": "9999990020582197"
+          "memberId": $('#fdAgentCode').value
         });
-        
+        alert($('#fdAgentCode').value)
         var requestOptions = {
           method: 'POST',
           headers: myHeaders,
@@ -392,7 +392,7 @@ document.addEventListener("DOMContentLoaded", async () => {
           redirect: 'follow'
         };
         
-        let res = await fetch("https://localhost:59217/api/WEBSITE/BigLifeValidateSurvey", requestOptions)
+        let res = await fetch("http://10.8.9.2:8002/api/WEBSITE/BigLifeValidateSurvey", requestOptions)
           .then(response => response.text())
           .then(result => console.log(result))
           .catch(error => console.log('error', error));
