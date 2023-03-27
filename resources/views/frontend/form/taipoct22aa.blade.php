@@ -44,8 +44,8 @@
                     <label for="ctrl_no_of_insured">@lang("product.no_of_insured")</label>
                 </div>
                 <div class="controls-wrapper">
-                    <input id="fdAgentCode" name="fdAgentCode" type="text" />
-                    <label for="fdAgentCode">@lang("product.agent_code")</label>
+                    <input id="fdMemberID" name="fdMemberID" type="text" />
+                    <label for="fdMemberID">@lang("product.member_id")</label>
                 </div>
             </div>
             <div>
