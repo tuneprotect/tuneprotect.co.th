@@ -456,7 +456,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                 switch (parseInt(step)) {
                     case 1:
                         let fdNationalID = 1111;
-                        const chkMemberAA = apiBlock();
+                        const chkMemberAA = chkMemberID();
                         
                         console.log("aaaa",chkMemberAA);
                         return;
