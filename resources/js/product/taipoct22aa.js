@@ -393,36 +393,39 @@ document.addEventListener("DOMContentLoaded", async () => {
         };
         
         let res = await fetch("http://www.tuneinsurance.co.th:8002/api/WEBSITE/AirAsiaValidateMember", requestOptions)
-         
+          .then(response => response.text())
+          .then(result => console.log("ssss",result))
+          .catch(error => console.log('error', error));
 
         const response = await res.json();
         const js = JSON.parse(response);
         let result = js.data;
 
-        console.log("res",result);
+        //console.log("res",res);
     }
 
-//     const chkMemberID = async () => {
-//             var raw = JSON.stringify({
-//           "memberId": $('#fdMemberID').value
-//         });
+    const chkAirAsiaMemberID = async () => {
+        var myHeaders = new Headers();
+        myHeaders.append("Authorization", "Bearer VFBUV0VCU0lURTpnU01vTENiTjZHUmdFSXo3");
+        myHeaders.append("Content-Type", "application/json");
+        myHeaders.append("X-CSRF-TOKEN", $('meta[name="csrf-token"]').getAttribute('content'));
 
-//         let res = await fetch(`/appApi/ApiConnect/chkAirAsiaMemberID`, {
-//             method: 'post',
-//             headers: {
-//                 'Accept': 'application/json',
-//                 'Content-Type': 'application/json',
-//                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').getAttribute('content')
-//             },
-//             body: raw,
-//         });
-//         const response = await res.json();
-//         console.log("response",response);
-// return;
-//         const js = JSON.parse(response);
-//         let result = js.data;
+        var raw = JSON.stringify({
+          "memberId": $('#fdMemberID').value
+        });
 
-//     }
+        let res = await fetch(`http://www.tuneinsurance.co.th:8002/api/WEBSITE/AirAsiaValidateMember`, {
+            method: 'POST',
+            headers: myHeaders,
+            body: raw,
+            redirect: 'follow',
+            body: raw,
+        });
+        const response = await res.json();
+        const js = JSON.parse(response);
+        let result = js.data;
+console.log("aaaa",result)
+    }
 
 
     // const apiBlock = async () => {
@@ -458,8 +461,8 @@ document.addEventListener("DOMContentLoaded", async () => {
                 switch (parseInt(step)) {
                     case 1:
                         let fdNationalID = 1111;
-                        const chkMemberAA = chkMemberID();
-
+                        const chkMemberAA = chkAirAsiaMemberID();
+return;
 
                         // if(!chkMemberAA.status){
                         //     showAcceptError($('#ctrl_accept_step1').getAttribute('data-error-insurance_term'));
