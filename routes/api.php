@@ -26,6 +26,8 @@ Route::post('/ApiConnect/myHomeSmartPackage', [ApiConnectController::class, 'myH
 Route::post('/ApiConnect/myHomeSmartPackage1y', [ApiConnectController::class, 'myHomeSmartPackage1y']);
 Route::post('/ApiConnect/myHomeSmartPackage3y', [ApiConnectController::class, 'myHomeSmartPackage3y']);
 Route::post('/ApiConnect/blockHomePolicy', [ApiConnectController::class, 'blockHomePolicy']);
+Route::post('/ApiConnect/chkAirAsiaMemberID', [ApiConnectController::class, 'chkAirAsiaMemberID']);
+
 
 Route::middleware('auth:api')
     ->any('/{controller}/{func}', function ($controller, $func) {
