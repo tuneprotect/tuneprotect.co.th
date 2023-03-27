@@ -283,6 +283,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         ctrl_accept_insurance_term: "",
         profile: []
     };
+    let chkMemberAA = {};
     let iti = {};
     let desination = '';
     // let $dataSubPackage;
@@ -419,8 +420,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             headers: myHeaders,
             body: raw,
         });
-        //const response = await res.json();
-        return res;
+        chkMemberAA = await res.json();
     }
 
 
@@ -457,7 +457,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                 switch (parseInt(step)) {
                     case 1:
                         let fdNationalID = 1111;
-                        const chkMemberAA = chkAirAsiaMemberID();
+                        chkAirAsiaMemberID();
                         console.log("aaaa",chkMemberAA)
 
                         // if(!chkMemberAA.status){
