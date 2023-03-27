@@ -239,8 +239,8 @@
                                         </picture>
                                     @elseif($selected==='ONCSHC')
                                         <picture>
-                                            <source media="(min-width:768px)" srcset="https://www.tuneprotect.co.th/storage/Banner/chillsure/Tune-Chillsure-03.webp">
-                                            <img src="{{url(!empty($v->pic_mobile_en) ? "https://www.tuneprotect.co.th/storage/Banner/chillsure/Tune-Chillsure-04.webp" : "https://www.tuneprotect.co.th/storage/Banner/chillsure/Tune-Chillsure-04.webp" )}}" alt="{{$v->locales[$locale]->title}}">
+                                            <source media="(min-width:768px)" srcset="https://www.tuneprotect.co.th/storage/Banner/Banner-chillsure-main-en-pc.jpg">
+                                            <img src="{{url(!empty($v->pic_mobile_en) ? "https://www.tuneprotect.co.th/storage/Banner/Banner-chillsure-main-en-mb.jpg" : "https://www.tuneprotect.co.th/storage/Banner/Banner-chillsure-main-en-mb.jpg" )}}" alt="{{$v->locales[$locale]->title}}">
                                         </picture>  
                                     @elseif($selected==='PUMPPA')
                                         <picture>
@@ -358,8 +358,8 @@
                                         </picture>
                                     @elseif($selected==='ONCSHC')
                                         <picture>
-                                            <source media="(min-width:768px)" srcset="https://www.tuneprotect.co.th/storage/Banner/chillsure/Tune-Chillsure-01.webp">
-                                            <img src="{{url(!empty($v->pic_mobile_en) ? "https://www.tuneprotect.co.th/storage/Banner/chillsure/Tune-Chillsure-02.webp" : "https://www.tuneprotect.co.th/storage/Banner/chillsure/Tune-Chillsure-02.webp" )}}" alt="{{$v->locales[$locale]->title}}">
+                                            <source media="(min-width:768px)" srcset="https://www.tuneprotect.co.th/storage/Banner/Banner-chillsure-main-th-pc.jpg">
+                                            <img src="{{url(!empty($v->pic_mobile_en) ? "https://www.tuneprotect.co.th/storage/Banner/Banner-chillsure-main-th-mb.jpg" : "https://www.tuneprotect.co.th/storage/Banner/Banner-chillsure-main-th-mb.jpg" )}}" alt="{{$v->locales[$locale]->title}}">
                                         </picture>  
                                     @elseif($selected==='PUMPPA')
                                         <picture>
