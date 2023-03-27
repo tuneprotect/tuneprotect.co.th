@@ -391,15 +391,16 @@ document.addEventListener("DOMContentLoaded", async () => {
           body: raw,
           redirect: 'follow'
         };
-        let js="";
+        
         let res = await fetch("http://www.tuneinsurance.co.th:8002/api/WEBSITE/AirAsiaValidateMember", requestOptions)
           .then(response => response.text())
-          .then(result => 
-            js = result
-            )
+          .then(result => console.log("ssss",result))
           .catch(error => console.log('error', error));
-        const response = JSON.parse(response);
-        let result = response.data;
+
+        const response = await res.json();
+        const js = JSON.parse(response);
+        let result = js.data;
+
         console.log("res",result);
     }
 
