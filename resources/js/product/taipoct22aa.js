@@ -421,7 +421,23 @@ return;
         let result = js.data;
 
     }
+    const apiBlock = async () => {
+        let res = await fetch(`/appApi/ApiConnect/blockHomePolicy`, {
+            method: 'post',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').getAttribute('content')
+            },
+        });
+        const response = await res.json();
+        //console.log("response",response);
 
+        const js = JSON.parse(response);
+        let result = js.data;
+        block_list = result;
+
+    }
 
     const $btnGoto = $$('.btn-goto');
     $btnGoto.forEach($btn => {
@@ -438,7 +454,7 @@ return;
                 switch (parseInt(step)) {
                     case 1:
                         let fdNationalID = 1111;
-                        const chkMemberAA = chkMemberID();
+                        const chkMemberAA = apiBlock();
                         
                         console.log("aaaa",chkMemberAA);
                         return;
