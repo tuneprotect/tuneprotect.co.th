@@ -138,8 +138,8 @@
                 </script>
             @else
                 <picture>
-                    <source media="(min-width:768px)" srcset="https://www.tuneprotect.co.th/storage/Banner/Banner-chillsure-main-en-pc.jpg">
-                    <img src="{{url(!empty($v->pic_mobile_en) ? "https://www.tuneprotect.co.th/storage/Banner/Banner-chillsure-main-en-mb.jpg" : "https://www.tuneprotect.co.th/storage/Banner/Banner-chillsure-main-en-mb.jpg" )}}" alt="{{$v->locales[$locale]->title}}">
+                    <source media="(min-width:768px)" srcset="https://www.tuneprotect.co.th/storage/Banner/chillsure/Tune-Chillsure02.webp">
+                    <img src="{{url(!empty($v->pic_mobile_en) ? "https://www.tuneprotect.co.th/storage/Banner/chillsure/Tune-Chillsure04.webp" : "https://www.tuneprotect.co.th/storage/Banner/chillsure/Tune-Chillsure04.webp" )}}" alt="{{$v->locales[$locale]->title}}">
                 </picture>
                 
             @endif   
@@ -290,7 +290,7 @@
             @if(($partner==='Rabbit' || $partner==='rabbit' || $partner==='RABBIT') && $agentCode==='00BD114L266')
                 <picture class="bbb">
                     <source media="(min-width:768px)" srcset="https://www.tuneprotect.co.th/storage/Banner/rabbit/Tune-Chillsure-01.webp">
-                    <img src="{{url(!empty($v->pic_mobile_en) ? "https://www.tuneprotect.co.th/storage/Banner/rabbit/Tune-Chillsure-02.webp" : "https://www.tuneprotect.co.th/storage/Banner/rabbit/Tune-Chillsure-02.webp" )}}" alt="{{$v->locales[$locale]->title}}">
+                    <img src="{{url(!empty($v->pic_mobile_en) ? "https://www.tuneprotect.co.th/storage/Banner/rabbit/Tune-Chillsure-01.webp" : "https://www.tuneprotect.co.th/storage/Banner/rabbit/Tune-Chillsure-02.webp" )}}" alt="{{$v->locales[$locale]->title}}">
                 </picture>
                 <script
   src="https://code.jquery.com/jquery-3.6.4.slim.js" integrity="sha256-dWvV84T6BhzO4vG6gWhsWVKVoa4lVmLnpBOZh/CAHU4=" crossorigin="anonymous"></script>
@@ -301,8 +301,8 @@
                 </script>
             @else
                 <picture>
-                    <source media="(min-width:768px)" srcset="https://www.tuneprotect.co.th/storage/Banner/Banner-chillsure-main-th-pc.jpg">
-                    <img src="{{url(!empty($v->pic_mobile_en) ? "https://www.tuneprotect.co.th/storage/Banner/Banner-chillsure-main-th-mb.jpg" : "https://www.tuneprotect.co.th/storage/Banner/Banner-chillsure-main-th-mb.jpg" )}}" alt="{{$v->locales[$locale]->title}}">
+                    <source media="(min-width:768px)" srcset="https://www.tuneprotect.co.th/storage/Banner/chillsure/Tune-Chillsure01.webp">
+                    <img src="{{url(!empty($v->pic_mobile_en) ? "https://www.tuneprotect.co.th/storage/Banner/chillsure/Tune-Chillsure03.webp" : "https://www.tuneprotect.co.th/storage/Banner/chillsure/Tune-Chillsure03.webp" )}}" alt="{{$v->locales[$locale]->title}}">
                 </picture>               
             @endif   
         @endif    

@@ -283,7 +283,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         ctrl_accept_insurance_term: "",
         profile: []
     };
-    let chkMemberAA = {};
+    let chkMemberAA;
     let iti = {};
     let desination = '';
     // let $dataSubPackage;
@@ -405,7 +405,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         //console.log("res",res);
     }
 
-    const chkAirAsiaMemberID = async () => {
+    const chkAirAsiaMemberID = () => {
         var myHeaders = new Headers();
         myHeaders.append("Authorization", "Bearer VFBUV0VCU0lURTpnU01vTENiTjZHUmdFSXo3");
         myHeaders.append("Content-Type", "application/json");
@@ -415,12 +415,12 @@ document.addEventListener("DOMContentLoaded", async () => {
           "memberId": $('#fdMemberID').value
         });
 
-        let res = await fetch(`http://www.tuneinsurance.co.th:8002/api/WEBSITE/AirAsiaValidateMember`, {
+        let res = fetch(`http://www.tuneinsurance.co.th:8002/api/WEBSITE/AirAsiaValidateMember`, {
             method: 'POST',
             headers: myHeaders,
             body: raw,
         });
-        chkMemberAA = await res.json();
+        chkMemberAA = res.json();
     }
 
 
