@@ -459,7 +459,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                     case 1:
                         let fdNationalID = 1111;
                         const chkMemberAA = chkAirAsiaMemberID();
-                        console.log(chkMemberAA.status)
+                        console.log(chkMemberAA)
 
                         // if(!chkMemberAA.status){
                         //     showAcceptError($('#ctrl_accept_step1').getAttribute('data-error-insurance_term'));
