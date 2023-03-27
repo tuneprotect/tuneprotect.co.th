@@ -418,13 +418,10 @@ document.addEventListener("DOMContentLoaded", async () => {
             method: 'POST',
             headers: myHeaders,
             body: raw,
-            redirect: 'follow',
-            body: raw,
         });
         const response = await res.json();
         const js = JSON.parse(response);
         let result = js.data;
-console.log("aaaa",result)
     }
 
 
@@ -462,7 +459,7 @@ console.log("aaaa",result)
                     case 1:
                         let fdNationalID = 1111;
                         const chkMemberAA = chkAirAsiaMemberID();
-return;
+                        console.log(chkMemberAA.status)
 
                         // if(!chkMemberAA.status){
                         //     showAcceptError($('#ctrl_accept_step1').getAttribute('data-error-insurance_term'));
