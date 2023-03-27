@@ -73,12 +73,11 @@ class ApiConnectController extends BaseApiController
       
     }
     public function chkAirAsiaMemberID($memberID){
-        echo var_dump($memberID);exit();
         header('Content-Type: application/json'); // Specify the type of data
         $ch = curl_init('http://10.8.9.2:8002/api/WEBSITE/AirAsiaValidateMember'); // Initialise cURL
         //$post = json_encode($post); // Encode the data array into a JSON string
         $post = [
-            'memberId' => $memberID,
+            'memberId' => '9999990026455651',
         ];
         
         $authorization = "Authorization: Bearer VFBUV0VCU0lURTpnU01vTENiTjZHUmdFSXo3"; // Prepare the authorisation token
