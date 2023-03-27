@@ -422,6 +422,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         const response = await res.json();
         const js = JSON.parse(response);
         let result = js.data;
+        return result;
     }
 
 
