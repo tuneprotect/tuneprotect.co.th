@@ -392,7 +392,7 @@ document.addEventListener("DOMContentLoaded", async () => {
           redirect: 'follow'
         };
         
-        let res = await fetch("http://10.8.9.2:8002/api/WEBSITE/BigLifeValidateSurvey", requestOptions)
+        let res = await fetch("https://localhost:59217/api/WEBSITE/AirAsiaValidateMember", requestOptions)
           .then(response => response.text())
           .then(result => console.log(result))
           .catch(error => console.log('error', error));
