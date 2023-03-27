@@ -376,68 +376,70 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
 
 
-    // const chkMemberID = async () => {
-    //     var myHeaders = new Headers();
-    //     myHeaders.append("Authorization", "Bearer VFBUV0VCU0lURTpnU01vTENiTjZHUmdFSXo3");
-    //     myHeaders.append("Content-Type", "application/json");
-        
-    //     var raw = JSON.stringify({
-    //       "memberId": $('#fdMemberID').value
-    //     });
-        
-    //     var requestOptions = {
-    //       method: 'POST',
-    //       headers: myHeaders,
-    //       body: raw,
-    //       redirect: 'follow'
-    //     };
-        
-    //     let res = await fetch("http://www.tuneinsurance.co.th:8002/api/WEBSITE/AirAsiaValidateMember", requestOptions)
-    //       .then(response => response.text())
-    //       .then(result => console.log(result))
-    //       .catch(error => console.log('error', error));
-
-    //     console.log("res",res);
-    // }
-
     const chkMemberID = async () => {
-            var raw = JSON.stringify({
+        var myHeaders = new Headers();
+        myHeaders.append("Authorization", "Bearer VFBUV0VCU0lURTpnU01vTENiTjZHUmdFSXo3");
+        myHeaders.append("Content-Type", "application/json");
+        
+        var raw = JSON.stringify({
           "memberId": $('#fdMemberID').value
         });
+        
+        var requestOptions = {
+          method: 'POST',
+          headers: myHeaders,
+          body: raw,
+          redirect: 'follow'
+        };
+        
+        let res = await fetch("http://www.tuneinsurance.co.th:8002/api/WEBSITE/AirAsiaValidateMember", requestOptions)
+          .then(response => response.text())
+          .then(result => console.log("ssss",result))
+          .catch(error => console.log('error', error));
 
-        let res = await fetch(`/appApi/ApiConnect/chkAirAsiaMemberID`, {
-            method: 'post',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').getAttribute('content')
-            },
-            body: raw,
-        });
-        const response = await res.json();
-        console.log("response",response);
-return;
-        const js = JSON.parse(response);
-        let result = js.data;
-
+        //console.log("res",res);
     }
-    const apiBlock = async () => {
-        let res = await fetch(`/appApi/ApiConnect/blockHomePolicy`, {
-            method: 'post',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').getAttribute('content')
-            },
-        });
-        const response = await res.json();
-        //console.log("response",response);
 
-        const js = JSON.parse(response);
-        let result = js.data;
-        block_list = result;
+//     const chkMemberID = async () => {
+//             var raw = JSON.stringify({
+//           "memberId": $('#fdMemberID').value
+//         });
 
-    }
+//         let res = await fetch(`/appApi/ApiConnect/chkAirAsiaMemberID`, {
+//             method: 'post',
+//             headers: {
+//                 'Accept': 'application/json',
+//                 'Content-Type': 'application/json',
+//                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').getAttribute('content')
+//             },
+//             body: raw,
+//         });
+//         const response = await res.json();
+//         console.log("response",response);
+// return;
+//         const js = JSON.parse(response);
+//         let result = js.data;
+
+//     }
+
+
+    // const apiBlock = async () => {
+    //     let res = await fetch(`/appApi/ApiConnect/blockHomePolicy`, {
+    //         method: 'post',
+    //         headers: {
+    //             'Accept': 'application/json',
+    //             'Content-Type': 'application/json',
+    //             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').getAttribute('content')
+    //         },
+    //     });
+    //     const response = await res.json();
+    //     //console.log("response",response);
+
+    //     const js = JSON.parse(response);
+    //     let result = js.data;
+    //     block_list = result;
+
+    // }
 
     const $btnGoto = $$('.btn-goto');
     $btnGoto.forEach($btn => {
