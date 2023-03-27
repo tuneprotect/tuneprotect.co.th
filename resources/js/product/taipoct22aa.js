@@ -457,9 +457,11 @@ document.addEventListener("DOMContentLoaded", async () => {
                     case 1:
                         let fdNationalID = 1111;
                         const chkMemberAA = chkMemberID();
-                        
-                        console.log("aaaa",chkMemberAA);
-                        return;
+                        if(!chkMemberAA.status){
+                            showAcceptError($('#ctrl_accept_step1').getAttribute('data-error-insurance_term'));
+                            status = false;
+                            break;
+                        }
                         const chkAccept = validateAcceptStep1();
                         if(!chkAccept){
                             showAcceptError($('#ctrl_accept_step1').getAttribute('data-error-insurance_term'));
