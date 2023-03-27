@@ -283,7 +283,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         ctrl_accept_insurance_term: "",
         profile: []
     };
-    var chkMemberAA = {};
+    let chkMemberAA = {};
     let iti = {};
     let desination = '';
     // let $dataSubPackage;
@@ -377,35 +377,35 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
 
 
-    // const chkMemberID = async () => {
-    //     var myHeaders = new Headers();
-    //     myHeaders.append("Authorization", "Bearer VFBUV0VCU0lURTpnU01vTENiTjZHUmdFSXo3");
-    //     myHeaders.append("Content-Type", "application/json");
+    const chkMemberID = async () => {
+        var myHeaders = new Headers();
+        myHeaders.append("Authorization", "Bearer VFBUV0VCU0lURTpnU01vTENiTjZHUmdFSXo3");
+        myHeaders.append("Content-Type", "application/json");
         
-    //     var raw = JSON.stringify({
-    //       "memberId": $('#fdMemberID').value
-    //     });
+        var raw = JSON.stringify({
+          "memberId": $('#fdMemberID').value
+        });
         
-    //     var requestOptions = {
-    //       method: 'POST',
-    //       headers: myHeaders,
-    //       body: raw,
-    //       redirect: 'follow'
-    //     };
+        var requestOptions = {
+          method: 'POST',
+          headers: myHeaders,
+          body: raw,
+          redirect: 'follow'
+        };
         
-    //     let res = await fetch("http://www.tuneinsurance.co.th:8002/api/WEBSITE/AirAsiaValidateMember", requestOptions)
-    //       .then(response => response.text())
-    //       .then(result => console.log("ssss",result))
-    //       .catch(error => console.log('error', error));
+        let res = await fetch("http://www.tuneinsurance.co.th:8002/api/WEBSITE/AirAsiaValidateMember", requestOptions)
+          .then(response => response.text())
+          .then(result => console.log("ssss",result))
+          .catch(error => console.log('error', error));
 
-    //     const response = await res.json();
-    //     const js = JSON.parse(response);
-    //     let result = js.data;
+        const response = await res.json();
+        const js = JSON.parse(response);
+        let result = js.data;
 
-    //     //console.log("res",res);
-    // }
+        //console.log("res",res);
+    }
 
-    const chkAirAsiaMemberID = () => {
+    const chkAirAsiaMemberID = async () => {
         var myHeaders = new Headers();
         myHeaders.append("Authorization", "Bearer VFBUV0VCU0lURTpnU01vTENiTjZHUmdFSXo3");
         myHeaders.append("Content-Type", "application/json");
@@ -415,12 +415,12 @@ document.addEventListener("DOMContentLoaded", async () => {
           "memberId": $('#fdMemberID').value
         });
 
-        let res = fetch(`http://www.tuneinsurance.co.th:8002/api/WEBSITE/AirAsiaValidateMember`, {
+        let res = await fetch(`http://www.tuneinsurance.co.th:8002/api/WEBSITE/AirAsiaValidateMember`, {
             method: 'POST',
             headers: myHeaders,
             body: raw,
         });
-        chkMemberAA = res.json();
+        chkMemberAA = await res.json();
     }
 
 
@@ -458,7 +458,10 @@ document.addEventListener("DOMContentLoaded", async () => {
                     case 1:
                         let fdNationalID = 1111;
                         chkAirAsiaMemberID();
-                        console.log("aaaa",chkMemberAA)
+                        setTimeout(function() {
+                            
+                            console.log("aaaa",chkMemberAA)
+                          }, 3000);
 
                         // if(!chkMemberAA.status){
                         //     showAcceptError($('#ctrl_accept_step1').getAttribute('data-error-insurance_term'));
