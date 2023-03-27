@@ -419,8 +419,8 @@ document.addEventListener("DOMContentLoaded", async () => {
             headers: myHeaders,
             body: raw,
         });
-        const response = await res.json();
-        return response;
+        //const response = await res.json();
+        return res;
     }
 
 
@@ -458,7 +458,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                     case 1:
                         let fdNationalID = 1111;
                         const chkMemberAA = chkAirAsiaMemberID();
-                        console.log(chkMemberAA)
+                        console.log("aaaa",chkMemberAA)
 
                         // if(!chkMemberAA.status){
                         //     showAcceptError($('#ctrl_accept_step1').getAttribute('data-error-insurance_term'));
