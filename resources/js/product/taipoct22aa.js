@@ -391,13 +391,16 @@ document.addEventListener("DOMContentLoaded", async () => {
           body: raw,
           redirect: 'follow'
         };
-        
+        const js="";
         let res = await fetch("http://www.tuneinsurance.co.th:8002/api/WEBSITE/AirAsiaValidateMember", requestOptions)
           .then(response => response.text())
-          .then(result => console.log("ssss",result))
+          .then(result => 
+            js = result
+            )
           .catch(error => console.log('error', error));
-
-        //console.log("res",res);
+        const response = JSON.parse(response);
+        let result = response.data;
+        console.log("res",result);
     }
 
 //     const chkMemberID = async () => {
@@ -457,11 +460,13 @@ document.addEventListener("DOMContentLoaded", async () => {
                     case 1:
                         let fdNationalID = 1111;
                         const chkMemberAA = chkMemberID();
-                        if(!chkMemberAA.status){
-                            showAcceptError($('#ctrl_accept_step1').getAttribute('data-error-insurance_term'));
-                            status = false;
-                            break;
-                        }
+
+
+                        // if(!chkMemberAA.status){
+                        //     showAcceptError($('#ctrl_accept_step1').getAttribute('data-error-insurance_term'));
+                        //     status = false;
+                        //     break;
+                        // }
                         const chkAccept = validateAcceptStep1();
                         if(!chkAccept){
                             showAcceptError($('#ctrl_accept_step1').getAttribute('data-error-insurance_term'));
