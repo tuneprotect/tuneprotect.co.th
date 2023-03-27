@@ -283,7 +283,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         ctrl_accept_insurance_term: "",
         profile: []
     };
-    let chkMemberAA;
+    var chkMemberAA = {};
     let iti = {};
     let desination = '';
     // let $dataSubPackage;
@@ -377,33 +377,33 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
 
 
-    const chkMemberID = async () => {
-        var myHeaders = new Headers();
-        myHeaders.append("Authorization", "Bearer VFBUV0VCU0lURTpnU01vTENiTjZHUmdFSXo3");
-        myHeaders.append("Content-Type", "application/json");
+    // const chkMemberID = async () => {
+    //     var myHeaders = new Headers();
+    //     myHeaders.append("Authorization", "Bearer VFBUV0VCU0lURTpnU01vTENiTjZHUmdFSXo3");
+    //     myHeaders.append("Content-Type", "application/json");
         
-        var raw = JSON.stringify({
-          "memberId": $('#fdMemberID').value
-        });
+    //     var raw = JSON.stringify({
+    //       "memberId": $('#fdMemberID').value
+    //     });
         
-        var requestOptions = {
-          method: 'POST',
-          headers: myHeaders,
-          body: raw,
-          redirect: 'follow'
-        };
+    //     var requestOptions = {
+    //       method: 'POST',
+    //       headers: myHeaders,
+    //       body: raw,
+    //       redirect: 'follow'
+    //     };
         
-        let res = await fetch("http://www.tuneinsurance.co.th:8002/api/WEBSITE/AirAsiaValidateMember", requestOptions)
-          .then(response => response.text())
-          .then(result => console.log("ssss",result))
-          .catch(error => console.log('error', error));
+    //     let res = await fetch("http://www.tuneinsurance.co.th:8002/api/WEBSITE/AirAsiaValidateMember", requestOptions)
+    //       .then(response => response.text())
+    //       .then(result => console.log("ssss",result))
+    //       .catch(error => console.log('error', error));
 
-        const response = await res.json();
-        const js = JSON.parse(response);
-        let result = js.data;
+    //     const response = await res.json();
+    //     const js = JSON.parse(response);
+    //     let result = js.data;
 
-        //console.log("res",res);
-    }
+    //     //console.log("res",res);
+    // }
 
     const chkAirAsiaMemberID = () => {
         var myHeaders = new Headers();
