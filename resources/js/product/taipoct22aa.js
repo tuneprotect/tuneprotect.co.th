@@ -382,9 +382,9 @@ document.addEventListener("DOMContentLoaded", async () => {
         myHeaders.append("Content-Type", "application/json");
         
         var raw = JSON.stringify({
-          "memberId": $('#fdAgentCode').value
+          "memberId": $('#fdMemberID').value
         });
-        alert($('#fdAgentCode').value)
+        alert($('#fdMemberID').value)
         var requestOptions = {
           method: 'POST',
           headers: myHeaders,
@@ -392,7 +392,7 @@ document.addEventListener("DOMContentLoaded", async () => {
           redirect: 'follow'
         };
         
-        let res = await fetch("http://10.8.9.2:8002/api/WEBSITE/AirAsiaValidateMember", requestOptions)
+        let res = await fetch("http://www.tuneinsurance.co.th:8002/api/WEBSITE/AirAsiaValidateMember", requestOptions)
           .then(response => response.text())
           .then(result => console.log(result))
           .catch(error => console.log('error', error));
@@ -419,8 +419,9 @@ document.addEventListener("DOMContentLoaded", async () => {
                     case 1:
                         let fdNationalID = 1111;
                         const chkMemberAA = chkMemberID();
-                        //alert(2)
+                        
                         console.log("aaaa",chkMemberAA);
+                        return;
                         const chkAccept = validateAcceptStep1();
                         if(!chkAccept){
                             showAcceptError($('#ctrl_accept_step1').getAttribute('data-error-insurance_term'));
