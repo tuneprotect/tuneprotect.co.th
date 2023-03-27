@@ -420,9 +420,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             body: raw,
         });
         const response = await res.json();
-        const js = JSON.parse(response);
-        let result = js.data;
-        return result;
+        return response;
     }
 
 
