@@ -456,14 +456,20 @@ document.addEventListener("DOMContentLoaded", async () => {
             } else {
                 switch (parseInt(step)) {
                     case 1:
+                        let member_status = false;
                         let fdNationalID = 1111;
                         chkAirAsiaMemberID();
                         setTimeout(function() {
                             
                             console.log("aaaa",chkMemberAA)
                             console.log("bbb",chkMemberAA.status)
+                            member_status= chkMemberAA.status;
                           }, 3000);
-
+                        if(member_status){
+                            alert(3)
+                            status = false;
+                            break;
+                        }
                         if(chkMemberAA.status!=true){
                             alert(1)
                             showAcceptError($('#ctrl_accept_step1').getAttribute('data-error-insurance_term'));
