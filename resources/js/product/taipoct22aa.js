@@ -409,12 +409,18 @@ document.addEventListener("DOMContentLoaded", async () => {
                         let fdNationalID = 1111;
                        
                         if(member_status!="true"){
+                            let massage2 = $('#ctrl_massage2').value;
+                            let massage3 = $('#ctrl_massage3').value;
+                            let massage4 = $('#ctrl_massage4').value;
+            
                             Swal.fire({
-                                title: "title",
-                                text: "text",
-                                icon: 'error',
-                                confirmButtonText: "massage3.value"
+                                title: massage2,
+                                text: massage4,
+                                icon: 'warning',
+                                confirmButtonText: massage3
                             })
+                            
+                           
                             status = false;
                             break;
                         }

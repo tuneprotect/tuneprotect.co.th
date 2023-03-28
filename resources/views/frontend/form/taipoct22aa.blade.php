@@ -76,6 +76,10 @@
                 <input type="hidden" id="partner" value="{{$partner}}"/>
             </div>
         @endif
+        
+        <input type="hidden" id="ctrl_massage2" value="@lang("product.biglife.message2")"/>
+        <input type="hidden" id="ctrl_massage3" value="@lang("product.biglife.message3")"/>
+        <input type="hidden" id="ctrl_massage4" value="@lang("product.biglife.message4")"/>
 
         <input type="hidden" id="sub_code"/>
         <input type="hidden" id="days"/>
