@@ -461,6 +461,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                         setTimeout(function() {
                             
                             console.log("aaaa",chkMemberAA)
+                            console.log("bbb",chkMemberAA.status)
                           }, 3000);
 
                         if(!chkMemberAA.status){
