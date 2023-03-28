@@ -409,6 +409,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                         let fdNationalID = 1111;
                        
                         if(member_status!="true"){
+                            alert(1)
                             Swal.fire({
                                 title: "title",
                                 text: "text",
