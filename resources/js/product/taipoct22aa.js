@@ -464,7 +464,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                             console.log("bbb",chkMemberAA.status)
                           }, 3000);
 
-                        if(!chkMemberAA.status){
+                        if(chkMemberAA.status!=true){
                             alert(1)
                             showAcceptError($('#ctrl_accept_step1').getAttribute('data-error-insurance_term'));
                             status = false;
