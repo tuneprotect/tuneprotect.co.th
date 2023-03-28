@@ -390,7 +390,8 @@ document.addEventListener("DOMContentLoaded", async () => {
         chkMemberAA = await res.json();
         $('#hdfmemberstatus').value = chkMemberAA.status;
     }
-
+    
+    const $form2 = $('#step1');
     const $btnGoto = $$('.btn-goto');
     $btnGoto.forEach($btn => {
         $btn.addEventListener("click", function (e) {
@@ -405,17 +406,17 @@ document.addEventListener("DOMContentLoaded", async () => {
             } else {
                 switch (parseInt(step)) {
                     case 1:
+                        $form2.classList.add('ajax_loader');
                         let member_status = $("#hdfmemberstatus").value;
                         let fdNationalID = 1111;
                        
                         if(member_status!="true"){
-                            alert(1)
-                            Swal.fire({
-                                title: "title",
-                                text: "text",
-                                icon: 'warning',
-                                confirmButtonText: "massage3.value"
-                            })
+                            Swal.fire(
+                                $form2.getAttribute('data-error'),
+                                response.message,
+                                'error'
+                            )
+                            
                             status = false;
                             break;
                         }
