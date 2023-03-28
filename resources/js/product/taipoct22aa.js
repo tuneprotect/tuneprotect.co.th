@@ -265,13 +265,6 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
     }
 
-    
-    if(Keys == 'BQQWAMUX9JDXNTFFD4WZZLQ3NDEXNTFFT6UCXGSF68UXNEKZ24UYN5TRZ2')
-    {
-        //package_data = await getPackageData('ontalnlite');
-        package_data = await getPackageData('ontalnlite');
-    }
-
     let step = 1;
     let data = {
         fdKeys : Keys,
@@ -379,34 +372,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
 
 
-    const chkMemberID = async () => {
-        var myHeaders = new Headers();
-        myHeaders.append("Authorization", "Bearer VFBUV0VCU0lURTpnU01vTENiTjZHUmdFSXo3");
-        myHeaders.append("Content-Type", "application/json");
-        
-        var raw = JSON.stringify({
-          "memberId": $('#fdMemberID').value
-        });
-        
-        var requestOptions = {
-          method: 'POST',
-          headers: myHeaders,
-          body: raw,
-          redirect: 'follow'
-        };
-        
-        let res = await fetch("http://www.tuneinsurance.co.th:8002/api/WEBSITE/AirAsiaValidateMember", requestOptions)
-          .then(response => response.text())
-          .then(result => console.log("ssss",result))
-          .catch(error => console.log('error', error));
-
-        const response = await res.json();
-        const js = JSON.parse(response);
-        let result = js.data;
-
-        //console.log("res",res);
-    }
-
     const chkAirAsiaMemberID = async () => {
         var myHeaders = new Headers();
         myHeaders.append("Authorization", "Bearer VFBUV0VCU0lURTpnU01vTENiTjZHUmdFSXo3");
@@ -440,23 +405,16 @@ document.addEventListener("DOMContentLoaded", async () => {
             } else {
                 switch (parseInt(step)) {
                     case 1:
-                        let member_status = false;
+                        let member_status = $("#hdfmemberstatus").value;
                         let fdNationalID = 1111;
-                        chkAirAsiaMemberID();
-                        setTimeout(function() {
-                            
-                            console.log("aaaa",chkMemberAA)
-                            console.log("bbb",chkMemberAA.status)
-                            member_status= chkMemberAA.status;
-                          }, 3000);
-                        if(member_status){
-                            alert(3)
-                            status = false;
-                            break;
-                        }
-                        if(chkMemberAA.status!=true){
-                            alert(1)
-                            showAcceptError($('#ctrl_accept_step1').getAttribute('data-error-insurance_term'));
+                       
+                        if(member_status!="true"){
+                            Swal.fire({
+                                title: "title",
+                                text: "text",
+                                icon: 'warning',
+                                confirmButtonText: "massage3.value"
+                            })
                             status = false;
                             break;
                         }
