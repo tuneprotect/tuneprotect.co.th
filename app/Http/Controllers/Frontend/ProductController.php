@@ -595,7 +595,7 @@ class ProductController extends BaseController
             }
             if (substr($data['fdPackage'], 0, 11) === 'TAIPOCT22AA') {
                 $package = (array)json_decode(Storage::disk('public')->get('json/taipoct22aa.json'));
-                $obj->fdApiPackage = $package[substr($data['fdPackage'], 0, 9)]->apiPackage;
+                $obj->fdApiPackage = $package[substr($data['fdPackage'], 0, 11)]->apiPackage;
                 
             }
             if (substr($data['fdPackage'], 0, 7) === 'TAIPCRN') {
