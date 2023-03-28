@@ -421,9 +421,22 @@ document.addEventListener("DOMContentLoaded", async () => {
             body: raw,
         });
         chkMemberAA = await res.json();
+        $('#hdfmemberstatus').value = chkMemberAA.status;
     }
 
+    const allFields =  document.getElementById("fdMemberID");;
+    allFields.forEach(field => {
+        field.addEventListener("change", function (e) {
+            alert(23)
+            // validateField(this, profileConstraints);
+            // for (let i = 1; i <=  $('#ctrl_no_of_insured').value; i++) {
+            //     if ([`data_${i}_fdName`, `data_${i}_fdSurname`, `data_${i}_fdNationalID`].includes(field.id)) {
+            //         validatePolicy(e.target, data.fdPackage,$('#fdFromDate')?.value);
+            //     }
+            // }
 
+        });
+    });
     // const apiBlock = async () => {
     //     let res = await fetch(`/appApi/ApiConnect/blockHomePolicy`, {
     //         method: 'post',
