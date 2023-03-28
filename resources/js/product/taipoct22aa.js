@@ -319,7 +319,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
     });
     $('#fdMemberID').addEventListener('change', (e) => {
-        alert(e.target.value);
+        chkAirAsiaMemberID();
     });
     for (let i = 1; i < 10; i++) {
         $$(`input[name=data_${i}_fdSex]`).forEach($el => {
