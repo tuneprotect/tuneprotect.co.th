@@ -274,7 +274,8 @@ document.addEventListener("DOMContentLoaded", async () => {
         ctrl_terms: "",
         fdSendType: "",
         ctrl_accept_insurance_term: "",
-        profile: []
+        profile: [],
+        fdProductCode:"TAIPOCT22AA"
     };
     let chkMemberAA = {};
     let iti = {};
@@ -437,7 +438,8 @@ document.addEventListener("DOMContentLoaded", async () => {
                             fdDestFrom: $('#fdDestFrom').value,
                             fdDestTo: $('#fdDestTo').value,
                             fdFromDate: $('#fdFromDate').value,
-                            fdToDate: $('#fdToDate').value
+                            fdToDate: $('#fdToDate').value,
+                            fdMember_ID:$('#fdMemberID').value
                         }
                         result = validate(data, step1Constraints);
                         removeError($('#step1'));
