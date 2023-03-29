@@ -5,8 +5,7 @@ import {
     getCountryData,
     getNationalityData,
     getPackageData,
-    showMultipleTitle, validatePolicy,validatePolicyPayment,formatInputFieldByLanguage,
-    sendToApiBigLifeValidateSurvey
+    showMultipleTitle, validatePolicy,validatePolicyPayment,formatInputFieldByLanguage
 } from "../form/productHelper";
 import {$, $$, current_package, getRadioSelectedValue, getZipcodeData, locale, scrollToTargetAdjusted} from "../helper";
 
@@ -265,6 +264,13 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
     }
 
+    
+    if(Keys == 'BQQWAMUX9JDXNTFFD4WZZLQ3NDEXNTFFT6UCXGSF68UXNEKZ24UYN5TRZ2')
+    {
+        //package_data = await getPackageData('ontalnlite');
+        package_data = await getPackageData('ontalnlite');
+    }
+
     let step = 1;
     let data = {
         fdKeys : Keys,
@@ -274,10 +280,8 @@ document.addEventListener("DOMContentLoaded", async () => {
         ctrl_terms: "",
         fdSendType: "",
         ctrl_accept_insurance_term: "",
-        profile: [],
-        fdProductCode:"TAIPOCT22AA"
+        profile: []
     };
-    let chkMemberAA = {};
     let iti = {};
     let desination = '';
     // let $dataSubPackage;
@@ -312,9 +316,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             $(`#form_profile_${i}`).style.display = "none";
         }
     });
-    $('#fdMemberID').addEventListener('change', (e) => {
-        chkAirAsiaMemberID();
-    });
+
     for (let i = 1; i < 10; i++) {
         $$(`input[name=data_${i}_fdSex]`).forEach($el => {
             $el.addEventListener("change", function (e) {
@@ -373,25 +375,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
 
 
-    const chkAirAsiaMemberID = async () => {
-        var myHeaders = new Headers();
-        myHeaders.append("Authorization", "Bearer VFBUV0VCU0lURTpnU01vTENiTjZHUmdFSXo3");
-        myHeaders.append("Content-Type", "application/json");
-        myHeaders.append("X-CSRF-TOKEN", $('meta[name="csrf-token"]').getAttribute('content'));
-
-        var raw = JSON.stringify({
-          "memberId": $('#fdMemberID').value
-        });
-
-        let res = await fetch(`http://www.tuneinsurance.co.th:8002/api/WEBSITE/AirAsiaValidateMember`, {
-            method: 'POST',
-            headers: myHeaders,
-            body: raw,
-        });
-        chkMemberAA = await res.json();
-        $('#hdfmemberstatus').value = chkMemberAA.status;
-    }
-
     const $btnGoto = $$('.btn-goto');
     $btnGoto.forEach($btn => {
         $btn.addEventListener("click", function (e) {
@@ -406,26 +389,6 @@ document.addEventListener("DOMContentLoaded", async () => {
             } else {
                 switch (parseInt(step)) {
                     case 1:
-                        let member_status = $("#hdfmemberstatus").value;
-                        let fdNationalID = 1111;
-                       
-                        if(member_status!="true"){
-                            let massage1 = $('#ctrl_massage1').value;
-                            let massage2 = $('#ctrl_massage2').value;
-                            let massage3 = $('#ctrl_massage3').value;
-                            //let massage4 = $('#ctrl_massage4').value;
-            
-                            Swal.fire({
-                                title: massage2,
-                                text: massage1,
-                                icon: 'warning',
-                                confirmButtonText: massage3
-                            })
-                            
-                           
-                            status = false;
-                            break;
-                        }
                         const chkAccept = validateAcceptStep1();
                         if(!chkAccept){
                             showAcceptError($('#ctrl_accept_step1').getAttribute('data-error-insurance_term'));
