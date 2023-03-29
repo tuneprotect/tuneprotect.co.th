@@ -10,4 +10,5 @@ class ONTALNObject extends BaseTAObject
 {
     public $fdNationality;
     public $fdApiPackage;
+    public $fdMemberID;
 }
