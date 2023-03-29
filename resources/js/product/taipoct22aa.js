@@ -273,6 +273,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     let step = 1;
     let data = {
+        fdMember_ID : "1234",
         fdKeys : Keys,
         fdPayAMT: "",
         fdFromDate: "",
