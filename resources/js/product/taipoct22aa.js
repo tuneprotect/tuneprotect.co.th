@@ -401,8 +401,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                             fdDestFrom: $('#fdDestFrom').value,
                             fdDestTo: $('#fdDestTo').value,
                             fdFromDate: $('#fdFromDate').value,
-                            fdToDate: $('#fdToDate').value,
-                            fdMember_ID:$('#fdMemberID').value
+                            fdToDate: $('#fdToDate').value
                         }
                         result = validate(data, step1Constraints);
                         removeError($('#step1'));
