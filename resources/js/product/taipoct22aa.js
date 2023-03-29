@@ -282,6 +282,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         ctrl_accept_insurance_term: "",
         profile: []
     };
+    let chkMemberAA = {};
     let iti = {};
     let desination = '';
     // let $dataSubPackage;
@@ -320,7 +321,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     $('#fdMemberID').addEventListener('change', (e) => {
         chkAirAsiaMemberID();
     });
-    
+
     for (let i = 1; i < 10; i++) {
         $$(`input[name=data_${i}_fdSex]`).forEach($el => {
             $el.addEventListener("change", function (e) {
