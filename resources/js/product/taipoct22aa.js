@@ -273,7 +273,6 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     let step = 1;
     let data = {
-        fdMember_ID : "1234",
         fdKeys : Keys,
         fdPayAMT: "",
         fdFromDate: "",
@@ -438,7 +437,8 @@ document.addEventListener("DOMContentLoaded", async () => {
                             fdDestFrom: $('#fdDestFrom').value,
                             fdDestTo: $('#fdDestTo').value,
                             fdFromDate: $('#fdFromDate').value,
-                            fdToDate: $('#fdToDate').value
+                            fdToDate: $('#fdToDate').value,                            
+                            fdMemberID : $('#fdMemberID').value
                         }
                         result = validate(data, step1Constraints);
                         removeError($('#step1'));
