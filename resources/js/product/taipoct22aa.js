@@ -317,6 +317,10 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
     });
 
+    $('#fdMemberID').addEventListener('change', (e) => {
+        chkAirAsiaMemberID();
+    });
+    
     for (let i = 1; i < 10; i++) {
         $$(`input[name=data_${i}_fdSex]`).forEach($el => {
             $el.addEventListener("change", function (e) {
@@ -374,7 +378,24 @@ document.addEventListener("DOMContentLoaded", async () => {
         });
     });
 
+    const chkAirAsiaMemberID = async () => {
+        var myHeaders = new Headers();
+        myHeaders.append("Authorization", "Bearer VFBUV0VCU0lURTpnU01vTENiTjZHUmdFSXo3");
+        myHeaders.append("Content-Type", "application/json");
+        myHeaders.append("X-CSRF-TOKEN", $('meta[name="csrf-token"]').getAttribute('content'));
 
+        var raw = JSON.stringify({
+          "memberId": $('#fdMemberID').value
+        });
+
+        let res = await fetch(`http://www.tuneinsurance.co.th:8002/api/WEBSITE/AirAsiaValidateMember`, {
+            method: 'POST',
+            headers: myHeaders,
+            body: raw,
+        });
+        chkMemberAA = await res.json();
+        $('#hdfmemberstatus').value = chkMemberAA.status;
+    }
     const $btnGoto = $$('.btn-goto');
     $btnGoto.forEach($btn => {
         $btn.addEventListener("click", function (e) {
