@@ -1,6 +1,6 @@
 import {
     changeStep,
-    checkTaBirthDate,
+    B2BTADCheckBirthDate,
     formatTelNumber,
     getPackageData,
     getProvinceData,
@@ -630,7 +630,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
                         for (let i = 1; i <= $('#ctrl_no_of_insured').value; i++) {
                             let address = ($(`#data_${i}_ctrl_province`).value).split('*');
-                            let dateResult = checkTaBirthDate(i);
+                            let dateResult = B2BTADCheckBirthDate(i);
 
                             let valCheck = false;
                             valCheck = validatePolicyPayment($(`#data_${i}_fdNationalID`).value,data.fdPackage,$('#fdFromDate')?.value);
