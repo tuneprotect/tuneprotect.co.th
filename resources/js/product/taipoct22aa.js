@@ -412,6 +412,10 @@ document.addEventListener("DOMContentLoaded", async () => {
                 switch (parseInt(step)) {
                     case 1:
                         let member_status = $("#hdfmemberstatus").value;
+                        if(member_status==""){
+                            chkAirAsiaMemberID();
+                            member_status = $("#hdfmemberstatus").value;
+                        }
                         if(member_status!="true"){
                             let massage1 = $('#ctrl_massage1').value;
                             let massage2 = $('#ctrl_massage2').value;
