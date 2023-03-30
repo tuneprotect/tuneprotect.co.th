@@ -296,11 +296,8 @@
                                     @else
                                         @if($selected==='ONTAOB')
                                             <picture>
-                                                <source media="(min-width:768px)"
-                                                        srcset="{{url(str_replace('Banner_TA_D_EN', 'Banner_iTravel_D_EN20230223', $v->pic_en))}}">
-                                                <img
-                                                    src="{{url(!empty($v->pic_mobile_en) ? url(str_replace('Banner_TA_D_EN', 'Banner_iTravel_D_EN20230223', $v->pic_mobile_en)) : url(str_replace('Banner_TA_D_EN', 'Banner_iTravel_M_EN20230223', $v->pic_en)) )}}"
-                                                    alt="{{$v->locales[$locale]->title}}">
+                                                <source media="(min-width:768px)" srcset="https://www.tuneprotect.co.th/storage/Banner/iTravel/Banner_iTravel_20230330_pc_en.webp">
+                                                <img src="{{url(!empty($v->pic_mobile_en) ? "https://www.tuneprotect.co.th/storage/Banner/iTravel/Banner_iTravel_20230330_mb_en.webp" : "https://www.tuneprotect.co.th/storage/Banner/iTravel/Banner_iTravel_20230330_mb_en.webp" )}}" alt="{{$v->locales[$locale]->title}}">
                                             </picture>
                                         @endif
                                         @if($selected !== 'ONTAOB')
@@ -382,9 +379,8 @@
                                     @else
                                         @if($selected==='ONTAOB')
                                             <picture>
-                                                <source media="(min-width:768px)" srcset="{{url(str_replace('Banner_TA_D', 'Banner_iTravel_D20230223', $v->pic))}}">
-                                                <img src="{{url(!empty($v->pic_mobile) ? url(str_replace('Banner_TA_D', 'Banner_iTravel_D20230223', $v->pic_mobile)) : url(str_replace('Banner_TA_D', 'Banner_iTravel_M20230223', $v->pic)) )}}"
-                                                     alt="{{$v->locales[$locale]->title}}">
+                                                <source media="(min-width:768px)" srcset="https://www.tuneprotect.co.th/storage/Banner/iTravel/Banner_iTravel_20230330_pc_th.webp">
+                                                <img src="{{url(!empty($v->pic_mobile_en) ? "https://www.tuneprotect.co.th/storage/Banner/iTravel/Banner_iTravel_20230330_mb_th.webp" : "https://www.tuneprotect.co.th/storage/Banner/iTravel/Banner_iTravel_20230330_mb_th.webp" )}}" alt="{{$v->locales[$locale]->title}}">
                                             </picture>
                                         @endif
                                         @if($selected !== 'ONTAOB')
