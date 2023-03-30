@@ -412,10 +412,13 @@ document.addEventListener("DOMContentLoaded", async () => {
                 switch (parseInt(step)) {
                     case 1:
                         let member_status = $("#hdfmemberstatus").value;
-                        if(member_status==""){
-                            chkAirAsiaMemberID();
-                            member_status = $("#hdfmemberstatus").value;
+                        const chkAccept = validateAcceptStep1();
+                        if(!chkAccept){
+                            showAcceptError($('#ctrl_accept_step1').getAttribute('data-error-insurance_term'));
+                            status = false;
+                            break;
                         }
+
                         if(member_status!="true"){
                             let massage1 = $('#ctrl_massage1').value;
                             let massage2 = $('#ctrl_massage2').value;
@@ -426,12 +429,6 @@ document.addEventListener("DOMContentLoaded", async () => {
                                 icon: 'warning',
                                 confirmButtonText: massage3
                             });
-                            status = false;
-                            break;
-                        }
-                        const chkAccept = validateAcceptStep1();
-                        if(!chkAccept){
-                            showAcceptError($('#ctrl_accept_step1').getAttribute('data-error-insurance_term'));
                             status = false;
                             break;
                         }
