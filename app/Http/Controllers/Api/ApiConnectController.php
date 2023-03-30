@@ -58,7 +58,7 @@ class ApiConnectController extends BaseApiController
     }
     public function blockHomePolicy(){
         header('Content-Type: application/json'); // Specify the type of data
-        $ch = curl_init('https://localhost:59217/api/WEBSITE/blockHomePolicy'); // Initialise cURL
+        $ch = curl_init('http://10.8.9.2:8002/api/WEBSITE/blockHomePolicy'); // Initialise cURL
         //$post = json_encode($post); // Encode the data array into a JSON string
         //$authorization = "Authorization: Bearer VFBUV0VCU0lURTpnU01vTENiTjZHUmdFSXo3"; // Prepare the authorisation token
         $authorization = "Authorization: Bearer VFBUV0VCU0lURTpUUFRXRUJTSVRFQDEyMw=="; // Prepare the authorisation token
