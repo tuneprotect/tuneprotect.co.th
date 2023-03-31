@@ -379,23 +379,51 @@ document.addEventListener("DOMContentLoaded", async () => {
         });
     });
 
+    // const chkAirAsiaMemberID = async () => {
+    //     var myHeaders = new Headers();
+    //     myHeaders.append("Authorization", "Bearer VFBUV0VCU0lURTpnU01vTENiTjZHUmdFSXo3");
+    //     myHeaders.append("Content-Type", "application/json");
+    //     myHeaders.append("X-CSRF-TOKEN", $('meta[name="csrf-token"]').getAttribute('content'));
+
+    //     var raw = JSON.stringify({
+    //       "memberId": $('#fdMemberID').value
+    //     });
+
+    //     let res = await fetch(`http://10.8.9.2:8002/api/WEBSITE/AirAsiaValidateMember`, {
+    //         method: 'POST',
+    //         headers: myHeaders,
+    //         body: raw,
+    //     });
+    //     chkMemberAA = await res.json();
+    //     $('#hdfmemberstatus').value = chkMemberAA.status;
+    // }
+
     const chkAirAsiaMemberID = async () => {
-        var myHeaders = new Headers();
-        myHeaders.append("Authorization", "Bearer VFBUV0VCU0lURTpnU01vTENiTjZHUmdFSXo3");
-        myHeaders.append("Content-Type", "application/json");
-        myHeaders.append("X-CSRF-TOKEN", $('meta[name="csrf-token"]').getAttribute('content'));
+        var data =  [{
+            'memberId' : '9999990005235411',
+        }];
+        try {
+            let res = await fetch(`/appApi/ApiConnect/chkAirAsiaMemberID`, {
+                method: 'post',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').getAttribute('content')
+                },
 
-        var raw = JSON.stringify({
-          "memberId": $('#fdMemberID').value
-        });
+                body: JSON.stringify(data)
+            });
+            const response = await res.json();
+            const js = JSON.parse(response);
+            var xxx = js.data;
+            console.log("chkAirAsiaMemberID", xxx);
 
-        let res = await fetch(`http://10.8.9.2:8002/tunepolicy/api/WEBSITE/AirAsiaValidateMember`, {
-            method: 'POST',
-            headers: myHeaders,
-            body: raw,
-        });
-        chkMemberAA = await res.json();
-        $('#hdfmemberstatus').value = chkMemberAA.status;
+        } catch (err) {
+            console.log("err", err);
+            
+        }
+
+        //$form.classList.remove('ajax_loader');
     }
     const $btnGoto = $$('.btn-goto');
     $btnGoto.forEach($btn => {
