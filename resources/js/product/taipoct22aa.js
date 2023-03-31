@@ -400,7 +400,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     const chkAirAsiaMemberID = async () => {        
         var raw = {
-          "memberId": $('#fdMemberID').value
+          memberId : $('#fdMemberID').value
         };
         try {
             let res = await fetch(`/appApi/ApiConnect/chkAirAsiaMemberID`, {
@@ -410,7 +410,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                     'Content-Type': 'application/json',
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').getAttribute('content')
                 },
-                body: raw,
+                body: JSON.stringify(raw),
             });
             const response = await res.json();
             const js = JSON.parse(response);
