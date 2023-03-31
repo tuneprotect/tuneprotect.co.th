@@ -24,6 +24,8 @@ class ProjectEnum
     const STATIC_PAGE_PAYMENT_THANK_YOU_ISMILE = 'static.page.payment_thank_you_ismile';
 	const STATIC_PAGE_PAYMENT_THANK_YOU_MYHOME_SMART = 'static.page.payment_thank_you_myhome_smart';
     const STATIC_PAGE_PAYMENT_THANK_YOU_CHILL_SURE = 'static.page.payment_thank_you_chill_sure';
+    const STATIC_PAGE_PAYMENT_THANK_YOU_ITRAVEL= 'static.page.payment_thank_you_itravel';
+
     const STATIC_PAGE_PAYMENT_ERROR = 'static.page.payment_error';
     const STATIC_PAGE_PAYMENT_CANCEL = 'static.page.payment_cancel';
     const STATIC_PAGE_PAYMENT_PENDING = 'static.page.payment_pending';
@@ -75,6 +77,7 @@ class ProjectEnum
     const ISMILE_URL = 'TAISM';
 	const MYHOME_SMART_URL = 'ONMHS';
     const ONCSHC_URL = 'ONCSHC';
+    const ONTAOB_URL = 'ONTAOB';
     
     const ISSUE_POLICY_DIABETES = 'IssuePolicyDiabetes';
 
