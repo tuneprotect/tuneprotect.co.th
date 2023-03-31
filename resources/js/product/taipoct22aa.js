@@ -403,7 +403,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             'memberId' : '9999990005235411',
         }];
         try {
-            let res = await fetch(`/appApi/ApiConnect/chkAirAsiaMemberID`, {
+            let res = await fetch(`/appApi/ApiConnect/myHomeSmartPackage3y`, {
                 method: 'post',
                 headers: {
                     'Accept': 'application/json',
@@ -411,7 +411,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').getAttribute('content')
                 },
 
-                body: JSON.stringify(data)
+                //body: JSON.stringify(data)
             });
             const response = await res.json();
             const js = JSON.parse(response);
