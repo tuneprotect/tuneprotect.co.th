@@ -399,9 +399,9 @@ document.addEventListener("DOMContentLoaded", async () => {
     // }
 
     const chkAirAsiaMemberID = async () => {        
-        var raw = JSON.stringify({
+        var raw = [{
           "memberId": $('#fdMemberID').value
-        });
+        }];
         try {
             let res = await fetch(`/appApi/ApiConnect/chkAirAsiaMemberID`, {
                 method: 'post',
