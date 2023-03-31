@@ -413,8 +413,11 @@ document.addEventListener("DOMContentLoaded", async () => {
                 },
                 body: JSON.stringify(MemberID),
             });
-            chkMemberAA = await res.json();
-            $('#hdfmemberstatus').value = chkMemberAA.status;
+            const response = await res.json();
+            const js = JSON.parse(response);
+            var xxx = js.data;
+            console.log("chkAirAsiaMemberID", xxx);
+
         } catch (err) {
             console.log("err", err);
             
