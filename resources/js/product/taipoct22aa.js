@@ -399,6 +399,9 @@ document.addEventListener("DOMContentLoaded", async () => {
     // }
 
     const chkAirAsiaMemberID = async () => {        
+        var raw = JSON.stringify({
+          "memberId": $('#fdMemberID').value
+        });
         try {
             let res = await fetch(`/appApi/ApiConnect/chkAirAsiaMemberID`, {
                 method: 'post',
@@ -407,8 +410,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                     'Content-Type': 'application/json',
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').getAttribute('content')
                 },
-
-                //body: '9999990005235411'
+                body: raw,
             });
             const response = await res.json();
             const js = JSON.parse(response);
