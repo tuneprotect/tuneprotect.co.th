@@ -370,6 +370,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     let step = 1;
     let data = {
+        fdAgent : "00AA599T88",//"00DM004D00",
         fdKeys: Keys,
         fdPayAMT: "",
         fdFromDate: "",
