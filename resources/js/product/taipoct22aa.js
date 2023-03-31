@@ -408,7 +408,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').getAttribute('content')
                 },
 
-                body: '9999990005235411'
+                //body: '9999990005235411'
             });
             const response = await res.json();
             const js = JSON.parse(response);
