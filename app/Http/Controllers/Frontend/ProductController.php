@@ -981,7 +981,7 @@ class ProductController extends BaseController
         } elseif (substr($package, 0, 6) === 'TAIPAS') {
             $this->thankYouParam = substr($package, 0, 6);
             $link = "IssuePolicyInbound";
-        } elseif (substr($package, 0, 6) === 'ONTAOB') {
+        } elseif (substr($package, 0, 6) === ProjectEnum::ONTAOB_URL) {
             $this->thankYouParam = ProjectEnum::ONTAOB_URL;
             //$this->thankYouParam = substr($package, 0, 6);
             $link = "IssuePolicyiTravel";
@@ -1091,7 +1091,7 @@ class ProductController extends BaseController
         $this->bodyData['return_link'] = '/' . $this->locale;
         $this->bodyData['point'] = '';
         $this->bodyData['agentCode'] = $request->session()->get('agentCode');
-
+dd($request->session()->get('agentCode'));
         $thank_you_page = ProjectEnum::STATIC_PAGE_PAYMENT_THANK_YOU;
         if (Str::contains($request->getRequestUri(), ProjectEnum::DIABETES_URL)) {
             $thank_you_page = ProjectEnum::STATIC_PAGE_PAYMENT_THANK_YOU_DIABETES;
