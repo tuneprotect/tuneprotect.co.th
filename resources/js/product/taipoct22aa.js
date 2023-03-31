@@ -400,7 +400,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     const chkAirAsiaMemberID = async () => {        
         try {
-            let res = await fetch(`/appApi/ApiConnect/myHomeSmartPackage3y`, {
+            let res = await fetch(`/appApi/ApiConnect/chkAirAsiaMemberID`, {
                 method: 'post',
                 headers: {
                     'Accept': 'application/json',
