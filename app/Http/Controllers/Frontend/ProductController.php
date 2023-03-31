@@ -711,6 +711,9 @@ class ProductController extends BaseController
             if (Str::contains($data['fdPackage'], ProjectEnum::ONCSHC_URL)) {
                 $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::ONCSHC_URL;
             }
+            if (Str::contains($data['fdPackage'], ProjectEnum::ONTAOB_URL)) {
+                $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::ONTAOB_URL;
+            }
             $obj = $this->combindObj($data);
             $result = $this->logData($obj);
 
@@ -979,7 +982,8 @@ class ProductController extends BaseController
             $this->thankYouParam = substr($package, 0, 6);
             $link = "IssuePolicyInbound";
         } elseif (substr($package, 0, 6) === 'ONTAOB') {
-            $this->thankYouParam = substr($package, 0, 6);
+            $this->thankYouParam = ProjectEnum::ONTAOB_URL;
+            //$this->thankYouParam = substr($package, 0, 6);
             $link = "IssuePolicyiTravel";
         } elseif (substr($package, 0, 8) === 'ONB2BTAD') {
             $this->thankYouParam = substr($package, 0, 8);
