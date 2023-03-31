@@ -389,7 +389,7 @@ document.addEventListener("DOMContentLoaded", async () => {
           "memberId": $('#fdMemberID').value
         });
 
-        let res = await fetch(`https://10.8.9.2:8002/api/WEBSITE/AirAsiaValidateMember`, {
+        let res = await fetch(`https://10.8.9.2:8002/tunepolicy/api/WEBSITE/AirAsiaValidateMember`, {
             method: 'POST',
             headers: myHeaders,
             body: raw,
