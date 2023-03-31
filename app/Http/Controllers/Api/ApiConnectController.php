@@ -74,12 +74,12 @@ class ApiConnectController extends BaseApiController
       
     }
     public function chkAirAsiaMemberID(Request $request){
+
         $memberId = $request->get('memberId');
         header('Content-Type: application/json'); // Specify the type of data
-        $ch = curl_init('http://10.8.9.2:8002/api/WEBSITE/myHomeSmartPackage3y'); // Initialise cURL
+        $ch = curl_init('http://10.8.9.2:8002/api/WEBSITE/AirAsiaValidateMember'); // Initialise cURL
         //$post = json_encode($post); // Encode the data array into a JSON string
         //$_arr = json_decode($content, true);
-         
         $post = [
             'memberId' => $memberId,
         ];
@@ -93,6 +93,6 @@ class ApiConnectController extends BaseApiController
         curl_close($ch); // Close the cURL connection
         //dd($result);
         return json_encode($result); // Return the received data
-      
+
     }
 }

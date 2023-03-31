@@ -400,7 +400,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     const chkAirAsiaMemberID = async () => {        
         
-        const ccc = {
+        const MemberID = {
             memberId : $('#fdMemberID').value
           }
         try {
@@ -411,13 +411,10 @@ document.addEventListener("DOMContentLoaded", async () => {
                     'Content-Type': 'application/json',
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').getAttribute('content')
                 },
-                body: JSON.stringify(ccc),
+                body: JSON.stringify(MemberID),
             });
-            const response = await res.json();
-            const js = JSON.parse(response);
-            var xxx = js.data;
-            console.log("chkAirAsiaMemberID", xxx);
-
+            chkMemberAA = await res.json();
+            $('#hdfmemberstatus').value = chkMemberAA.status;
         } catch (err) {
             console.log("err", err);
             
