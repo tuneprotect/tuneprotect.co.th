@@ -72,16 +72,16 @@ class ApiConnectController extends BaseApiController
         return json_encode($result); // Return the received data
       
     }
-    public function chkAirAsiaMemberID($request){
+    public function chkAirAsiaMemberID(){
         header('Content-Type: application/json'); // Specify the type of data
         $ch = curl_init('http://10.8.9.2:8002/api/WEBSITE/myHomeSmartPackage3y'); // Initialise cURL
         //$post = json_encode($post); // Encode the data array into a JSON string
         //$_arr = json_decode($content, true);
-
+         
         // $post = [
         //     'memberId' => '9999990005235411',
         // ];
-        echo var_dump(json_encode($request));exit();
+        echo var_dump($_POST["memberId"]);exit();
         $authorization = "Authorization: Bearer VFBUV0VCU0lURTpnU01vTENiTjZHUmdFSXo3"; // Prepare the authorisation token
         curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json' , $authorization )); // Inject the token into the header
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
