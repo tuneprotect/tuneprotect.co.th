@@ -74,7 +74,7 @@ class ApiConnectController extends BaseApiController
       
     }
     public function chkAirAsiaMemberID(Request $request){
-        $memberId = $request->get('memberid');
+        $memberId = $request->get('memberId');
 
         echo var_dump($memberId);exit();
 
