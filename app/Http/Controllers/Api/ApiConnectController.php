@@ -4,6 +4,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Api\Base\BaseApiController;
+use Illuminate\Http\Request;
 
 class ApiConnectController extends BaseApiController
 {
@@ -72,7 +73,13 @@ class ApiConnectController extends BaseApiController
         return json_encode($result); // Return the received data
       
     }
-    public function chkAirAsiaMemberID(){
+    public function chkAirAsiaMemberID(Request $request){
+        $memberId = $request->get('memberid');
+
+        echo var_dump($memberId);exit();
+
+
+
         header('Content-Type: application/json'); // Specify the type of data
         $ch = curl_init('http://10.8.9.2:8002/api/WEBSITE/myHomeSmartPackage3y'); // Initialise cURL
         //$post = json_encode($post); // Encode the data array into a JSON string
@@ -81,7 +88,6 @@ class ApiConnectController extends BaseApiController
         // $post = [
         //     'memberId' => '9999990005235411',
         // ];
-        echo var_dump($_POST["memberId"]);exit();
         $authorization = "Authorization: Bearer VFBUV0VCU0lURTpnU01vTENiTjZHUmdFSXo3"; // Prepare the authorisation token
         curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json' , $authorization )); // Inject the token into the header
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
