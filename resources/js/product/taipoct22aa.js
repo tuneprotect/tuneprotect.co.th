@@ -398,10 +398,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     //     $('#hdfmemberstatus').value = chkMemberAA.status;
     // }
 
-    const chkAirAsiaMemberID = async () => {
-        var data =  [{
-            'memberId' : '9999990005235411',
-        }];
+    const chkAirAsiaMemberID = async () => {        
         try {
             let res = await fetch(`/appApi/ApiConnect/myHomeSmartPackage3y`, {
                 method: 'post',
@@ -411,7 +408,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').getAttribute('content')
                 },
 
-                //body: JSON.stringify(data)
+                body: '9999990005235411'
             });
             const response = await res.json();
             const js = JSON.parse(response);

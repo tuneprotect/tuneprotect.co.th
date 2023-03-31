@@ -80,7 +80,7 @@ class ApiConnectController extends BaseApiController
         // $post = [
         //     'memberId' => '9999990005235411',
         // ];
-        
+     echo var_dump($post);
         $authorization = "Authorization: Bearer VFBUV0VCU0lURTpnU01vTENiTjZHUmdFSXo3"; // Prepare the authorisation token
         curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json' , $authorization )); // Inject the token into the header
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
