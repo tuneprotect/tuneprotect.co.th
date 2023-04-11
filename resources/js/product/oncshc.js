@@ -1,36 +1,35 @@
 import {
-    removeError,
     showBMIError,
     showBMIValidateError,
-    showDateError,
     showAcceptError,
     showFieldError,
     validateField,
-    validateAcceptStep1
+    validateAcceptStep1,
 } from "../validate_form";
 import validate from "validate.js";
 import {
     $,
-    $$, calculateAge,
+    $$,
     current_package,
-    getCheckedCheckboxesFor,
     getRadioSelectedValue,
     locale,
-    scrollToTargetAdjusted
+    scrollToTargetAdjusted,
 } from "../helper";
 import {
-    changeStep, checkAge,
+    changeStep,
+    checkAge,
     formatInputFieldByLanguage,
     formatTelNumber,
     getPackageData,
     getSelectedPrice,
     showTitle,
     validateAgeInPackage,
-    validatePolicy, validatePolicyPayment, validatePolicyStep5
+    validatePolicyPayment,
+    validatePolicyStep5,
 } from "../form/productHelper";
 
 import Swal from "sweetalert2";
-import {format, isValid, parseISO} from "date-fns";
+import { format, parseISO } from "date-fns";
 import intlTelInput from "intl-tel-input";
 
 require('../main');
@@ -103,7 +102,7 @@ const constraints = {
                 idcard: {
                     message: "^" + $('#fdNationalID').getAttribute('data-error-idcard')
                 }
-            }
+            };
         } else {
             return {
                 presence: {
@@ -270,7 +269,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         ctrl_bmi_calculator: "",
         fdKeys: Keys,
         fdProductCode:"ONCSHC",
-        fdAgent : "00AA599T88",//"00DM004D00",
+        fdAgent : "00DM004D00",//"00DM004D00",
         channel: channel
     };
   
