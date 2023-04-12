@@ -11,7 +11,7 @@
 {{-- <meta name="csrf-token" content="{{ csrf_token() }}" />--}}
 
 <meta name="csrf-token" content="{{ csrf_token() }}" />
-@if(($partner==='LUMA' && ($selected==='ONTALN' || $selected ==='TAIPOCT22' || $selected ==='TAIPOCT22AA' || $selected ==='TAIPCRN')) || $selected==='TGCVLP' || $selected==='TAISMTG')
+@if(($partner==='LUMA' && ($selected==='ONTALN' || $selected==='ONTASK' || $selected ==='TAIPOCT22' || $selected ==='TAIPOCT22AA' || $selected ==='TAIPCRN')) || $selected==='TGCVLP' || $selected==='TAISMTG')
 @elseif($partner==='LUMA' && $selected==='CVCARE')
 <header>
     <nav>
@@ -184,7 +184,7 @@
     </picture>
     
     @elseif(isset($partner))
-    @if(($partner==='LUMA' || $partner==='Luma') && ($selected==='ONTALN' || $selected==='TAIPOCT22' || $selected==='TAIPOCT22AA'))
+    @if(($partner==='LUMA' || $partner==='Luma') && ($selected==='ONTALN' || $selected==='ONTASK' || $selected==='TAIPOCT22' || $selected==='TAIPOCT22AA'))
     <picture class="bbb">
         <source media="(min-width:768px)" srcset="/storage/Banner/Banner_Luma_D.jpg">
         <img src="{{url(!empty($v->pic_mobile_en) ? "/storage/Banner/Banner_Luma_D.jpg" : "/storage/Banner/Banner_Luma_M.jpg" )}}" alt="{{$v->locales[$locale]->title}}">
@@ -210,6 +210,11 @@
         <img src="{{url(!empty($v->pic_mobile_en) ? "/storage/Banner/Banner_TA_Rabbit_D_EN.jpg" : "/storage/Banner/Banner_TA_Rabbit_MB_EN.jpg" )}}" alt="{{$v->locales[$locale]->title}}">
     </picture>
     @elseif($selected==='ONTALN')
+    <picture>
+        <source media="(min-width:768px)" srcset="{{url(str_replace('Banner_TA_D_EN', 'Banner_Tune_iPass', $v->pic_en))}}">
+        <img src="{{url(!empty($v->pic_mobile_en) ? url(str_replace('Banner_TA_D_EN', 'Banner_Tune_iPass', $v->pic_mobile_en)) : url(str_replace('Banner_TA_D_EN', 'Banner_Tune_iPass', $v->pic_en)) )}}" alt="{{$v->locales[$locale]->title}}">
+    </picture>
+    @elseif($selected==='ONTASK')
     <picture>
         <source media="(min-width:768px)" srcset="{{url(str_replace('Banner_TA_D_EN', 'Banner_Tune_iPass', $v->pic_en))}}">
         <img src="{{url(!empty($v->pic_mobile_en) ? url(str_replace('Banner_TA_D_EN', 'Banner_Tune_iPass', $v->pic_mobile_en)) : url(str_replace('Banner_TA_D_EN', 'Banner_Tune_iPass', $v->pic_en)) )}}" alt="{{$v->locales[$locale]->title}}">

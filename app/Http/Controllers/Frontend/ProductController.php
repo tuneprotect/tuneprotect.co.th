@@ -83,7 +83,7 @@ class ProductController extends BaseController
             return redirect()->route('current', ['locale' => $this->locale, 'controller' => $this->controller, 'func' => $link, 'params' => $selected]);
         }
 
-        if (in_array($selected, ['TAIPCRN', 'TAIPOCT22', 'TAIPOCT22AA', 'ONTALN', 'ONCOVIDL', 'ONTA', 'TGCVLP', 'TAISM', 'ONTGISM', 'TAISMTG', 'ONTAISMB2B']) && $this->locale === 'th') {
+        if (in_array($selected, ['TAIPCRN', 'TAIPOCT22', 'TAIPOCT22AA', 'ONTALN', 'ONTASK','ONCOVIDL', 'ONTA', 'TGCVLP', 'TAISM', 'ONTGISM', 'TAISMTG', 'ONTAISMB2B']) && $this->locale === 'th') {
             return redirect()->route('current', ['locale' => 'en', 'controller' => $this->controller, 'func' => $link, 'params' => $selected]);
         }
 
@@ -116,7 +116,7 @@ class ProductController extends BaseController
             return redirect("/" . $this->locale);
         }
 
-        if (in_array($selected, ['ONTALN','TAIPCRN', 'TAIPOCT22', 'TAIPOCT22AA', 'ONCOVIDL', 'ONTA', 'TGCVLP', 'TAISM', 'ONTAISMB2B', 'ONTGISM', 'TAISMTG']) && $this->locale === 'th') {
+        if (in_array($selected, ['ONTALN','ONTASK','TAIPCRN', 'TAIPOCT22', 'TAIPOCT22AA', 'ONCOVIDL', 'ONTA', 'TGCVLP', 'TAISM', 'ONTAISMB2B', 'ONTGISM', 'TAISMTG']) && $this->locale === 'th') {
             return redirect()->route('current', ['locale' => 'en', 'controller' => $this->controller, 'func' => $link, 'params' => $selected]);
         }
 
@@ -281,6 +281,14 @@ class ProductController extends BaseController
                                 return $this->genView('frontend.page.error');
                             }
                         }
+                        if ($selected === 'ONTASK') {
+                            //dd(session('partner'));
+
+                            if (session('partner') === 'LUMA' || session('partner') === 'Luma') {
+                            } else {
+                                return $this->genView('frontend.page.error');
+                            }
+                        }
                     }
                     $this->bodyData['package_detail'][$k] = $v;
                 }
@@ -378,6 +386,9 @@ class ProductController extends BaseController
             $obj = new BaseTAObject();
             $obj->fdFlgInbound = "D";
         } elseif (substr($data['fdPackage'], 0, 6) === 'ONTALN') {
+            $obj = new ONTALNObject();
+            $obj->fdFlgInbound = "I";
+        } elseif (substr($data['fdPackage'], 0, 6) === 'ONTASK') {
             $obj = new ONTALNObject();
             $obj->fdFlgInbound = "I";
         } elseif (substr($data['fdPackage'], 0, 9) === 'TAIPOCT22') {//TAIPCRN
@@ -565,6 +576,7 @@ class ProductController extends BaseController
         } elseif (
             substr($data['fdPackage'], 0, 8) === 'ONCOVIDL'
             || substr($data['fdPackage'], 0, 6) === 'ONTALN'
+            || substr($data['fdPackage'], 0, 6) === 'ONTASK'
             || substr($data['fdPackage'], 0, 9) === 'TAIPOCT22'
             || substr($data['fdPackage'], 0, 11) === 'TAIPOCT22AA'
             || substr($data['fdPackage'], 0, 7) === 'TAIPCRN'
@@ -583,6 +595,10 @@ class ProductController extends BaseController
                     $package = (array)json_decode(Storage::disk('public')->get('json/ontaln.json'));
                     $obj->fdApiPackage = $package[substr($data['fdPackage'], 0, 7)]->apiPackage;
                 }
+            }
+            if (substr($data['fdPackage'], 0, 6) === 'ONTASK') {
+                $package = (array)json_decode(Storage::disk('public')->get('json/ontask.json'));
+                $obj->fdApiPackage = $package[substr($data['fdPackage'], 0, 6)]->apiPackage;
             }
             if (substr($data['fdPackage'], 0, 9) === 'TAIPOCT22') {
                 if ($data['fdKeys'] === 'BQQWAMUX9JDXNTFFD4WZZLQ3NDEXNTFFT6UCXGSF68UXNEKZ24UYN5TRZ2') {
@@ -960,7 +976,8 @@ class ProductController extends BaseController
         } elseif (substr($package, 0, 8) === 'MWASEP22') {
             $this->thankYouParam = substr($package, 0, 8);
             $link = 'IssuePolicyMigration';
-        } elseif (substr($package, 0, 6) === 'ONTALN') {
+        } elseif (substr($package, 0, 6) === 'ONTALN' 
+               || substr($package, 0, 6) === 'ONTASK') {
             $this->thankYouParam = substr($package, 0, 6);
             $link = "IssuePolicyInbound";
         } elseif (substr($package, 0, 9) === 'TAIPOCT22') {

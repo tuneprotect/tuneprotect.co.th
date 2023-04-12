@@ -4,7 +4,7 @@
             <h1>{{$product->locales[$locale]->title}}</h1>
             <div class="item-wrapper">
                 @foreach ($product->productPackage as $v)
-                    @if($v->code === 'ONVACINA' || $v->code === 'CVCARE' || $v->code === 'ONCOVIDMW' || $v->code === 'TGCVLP' || $v->code === 'ONTALN' || $v->code === 'TAISMTG' || $v->code === 'ONVSUREA' || $v->code === 'ONTAOBB2B' || $v->code === 'ONB2BTA' || $v->code === 'ONB2BTAD' || $v->code === 'ONTAISMB2B' || $v->code === 'ONCSH' || $v->code === 'TAIPCRN' || $v->code === 'TAIPOCT22AA')
+                    @if($v->code === 'ONVACINA' || $v->code === 'CVCARE' || $v->code === 'ONCOVIDMW' || $v->code === 'TGCVLP' || $v->code === 'ONTALN' || $v->code === 'ONTASK' || $v->code === 'TAISMTG' || $v->code === 'ONVSUREA' || $v->code === 'ONTAOBB2B' || $v->code === 'ONB2BTA' || $v->code === 'ONB2BTAD' || $v->code === 'ONTAISMB2B' || $v->code === 'ONCSH' || $v->code === 'TAIPCRN' || $v->code === 'TAIPOCT22AA')
                     @else
                         <div class="item">
                             <div class="two-tone-icon">

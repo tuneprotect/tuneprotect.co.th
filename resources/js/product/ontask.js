@@ -1,25 +1,18 @@
 import {
     changeStep,
-    iTravelCheckBirthDate,
+    checkTaBirthDateIPass,
     formatTelNumber,
     getCountryData,
+    getNationalityData,
     getPackageData,
-    showMultipleTitle, validatePolicy, formatInputFieldOnlyEnglish, validatePolicyPayment
+    showMultipleTitle, validatePolicy,validatePolicyPayment,formatInputFieldByLanguage
 } from "../form/productHelper";
-import {
-    $,
-    $$,
-    current_package,
-    getRadioSelectedValue,
-    getZipcodeData,
-    locale,
-    scrollToTargetAdjusted
-} from "../helper";
+import {$, $$, current_package, getRadioSelectedValue, getZipcodeData, locale, scrollToTargetAdjusted} from "../helper";
 
-import { removeError, showError, showFieldError, validateField, validateAcceptStep1, showAcceptError } from "../validate_form";
+import {removeError, showError, showFieldError, validateField} from "../validate_form";
 import Swal from "sweetalert2";
 import validate from "validate.js";
-import { addYears, differenceInDays, format, parseISO, subDays } from "date-fns";
+import {addDays, addYears, differenceInDays, format, parseISO, subDays} from "date-fns";
 import intlTelInput from "intl-tel-input";
 
 require('../main');
@@ -42,22 +35,18 @@ const step1Constraints = {
             message: "^" + $('#fdFromDate').getAttribute('data-error')
         }
     },
-    fdToDate: function (value, attributes, attributeName, options, constraints) {
-        if (attributes.ctrl_travel_type === 'annual') return null;
-        return {
-            presence: {
-                allowEmpty: false,
-                message: "^" + $('#fdToDate').getAttribute('data-error')
-            }
-        };
-    },
-    fdDestTo: {
+    fdToDate: {
         presence: {
             allowEmpty: false,
-            message: "^" + $('#fdDestTo').getAttribute('data-error')
+            message: "^" + $('#fdToDate').getAttribute('data-error')
+        }
+    },
+    fdDestFrom: {
+        presence: {
+            allowEmpty: false,
+            message: "^" + $('#fdDestFrom').getAttribute('data-error')
         }
     }
-
 };
 
 const step3Constraints = {
@@ -93,14 +82,12 @@ const profileConstraints = {
             allowEmpty: false,
             message: "^" + $('#data_1_fdName').getAttribute('data-error-name')
         }
-        ,format: formatInputFieldOnlyEnglish()
     },
     fdSurname: {
         presence: {
             allowEmpty: false,
             message: "^" + $('#data_1_fdSurname').getAttribute('data-error-last_name')
         }
-        ,format: formatInputFieldOnlyEnglish()
     },
     fdHBD: {
         presence: {
@@ -108,34 +95,16 @@ const profileConstraints = {
             message: "^" + $('#data_1_ctrl_day').getAttribute('data-error-format')
         }
     },
-    fdNationalID: function (value, attributes, attributeName, options, constraints) {
-        if (attributes.ctrl_document_type === 'บัตรประจำตัวประชาชน') {
-
-            return {
-                presence: {
-                    allowEmpty: false,
-                    message: "^" + $('#data_1_fdNationalID').getAttribute('data-error-idcard')
-                },
-                length: {
-                    is: 13,
-                    message: "^" + $('#data_1_fdNationalID').getAttribute('data-error-idcard')
-                },
-                format: {
-                    pattern: /^[0-9]{13}$/,
-                    message: "^" + $('#data_1_fdNationalID').getAttribute('data-error-idcard')
-                },
-                idcard: {
-                    message: "^" + $('#data_1_fdNationalID').getAttribute('data-error-idcard')
-                }
-            };
-        } else {
-            return {
-                presence: {
-                    allowEmpty: false,
-                    message: "^" + $('#data_1_fdNationalID').getAttribute('data-error-passport')
-                }
-                ,format: formatInputFieldOnlyEnglish()
-            }
+    fdNationalID: {
+        presence: {
+            allowEmpty: false,
+            message: "^" + $('#data_1_fdNationalID').getAttribute('data-error-passport')
+        }
+    },
+    fdNationality: {
+        presence: {
+            allowEmpty: false,
+            message: "^" + $('#data_1_fdNationality').getAttribute('data-error-nationality')
         }
     },
     fdEmail: {
@@ -146,7 +115,7 @@ const profileConstraints = {
         email: {
             allowEmpty: false,
             message: "^" + $('#data_1_fdEmail').getAttribute('data-error-email-format')
-        }
+        },
     },
     fdTelephone: {
         presence: {
@@ -162,15 +131,24 @@ const profileConstraints = {
         presence: {
             allowEmpty: false,
             message: "^" + $('#data_1_fdAddr_Num').getAttribute('data-error-address')
-        }
-        ,format: formatInputFieldOnlyEnglish()
+        },
+        format: formatInputFieldByLanguage()
+        // format: {
+        //     pattern: /^[a-zA-Z0-9 !@#$&()\\`.+\-,/\"\n\r"]*$/,
+        //     flags: "i",
+        //     message: "^" + $('[data-error-eng-only]').getAttribute('data-error-eng-only')
+        // }
     },
     fdAddr_District: {
         presence: {
             allowEmpty: false,
             message: "^" + $('#data_1_fdAddr_District').getAttribute('data-error-district')
+        },
+        format: {
+            pattern: /^[a-zA-Z0-9 !@#$&()\\`.+\-,/\"]*$/,
+            flags: "i",
+            message: "^" + $('[data-error-eng-only]').getAttribute('data-error-eng-only')
         }
-        ,format: formatInputFieldOnlyEnglish()
     },
     ctrl_province: {
         presence: {
@@ -191,8 +169,12 @@ const profileConstraints = {
             presence: {
                 allowEmpty: false,
                 message: "^" + $('#data_1_fdBenefit_name').getAttribute('data-error-beneficiary')
+            },
+            format: {
+                pattern: /^[a-zA-Z0-9 !@#$&()\\-`.+,/\"]*$/,
+                flags: "i",
+                message: "^" + $('[data-error-eng-only]').getAttribute('data-error-eng-only')
             }
-            ,format: formatInputFieldOnlyEnglish()
         };
     },
     fdRelation: function (value, attributes, attributeName, options, constraints) {
@@ -206,159 +188,120 @@ const profileConstraints = {
     }
 };
 
-const zoneCode = {
-    "WW": 'WRW',
-    "AS": 'WRW',
-    "AE": 'ASN'
-}
+// const getSelectedPrice = (packageCode, package_data) => {
+//     // const code = packageCode.substring(0, 7);
+//     // const sub_code = packageCode.substring(7);
+//     // console.log(packageCode);
+//     // console.log(package_data);
+//     // console.log('code : ' + code);
+//     // console.log('sub_code : ' + sub_code);
+//     // console.log('price : ' + package_data[code].price[sub_code].price);
+//     // return package_data[code].price[sub_code].price;
+//
+//     //fdPackage
+//     //$('#sub_code').value
+//     //Price = package_data[Package].price[price key id].price
+//
+//     return package_data[packageCode].price[$('#sub_code').value].price;
+// }
 
-const getSelectedPrice = (packageCode, package_data) => {
+// const genPrice = (package_data, sub_package) => {
+//
+//     Object.keys(package_data)
+//         .filter(k => _.startsWith(k, current_package))
+//         .map(k => {
+//             const pack = Object.keys(package_data[k].price).filter(k => k === sub_package)
+//
+//             $$('[data-sub-package]').forEach($el => {
+//                 $el.setAttribute('data-sub-package', pack)
+//             });
+//
+//             $(`strong[data-price-${k}]`).innerHTML = parseInt(package_data[k].price[pack].price).toLocaleString();
+//
+//         })
+// }
 
-    const code = packageCode;
-    const sub_code = $('#sub_code').value ;
-
-    // const code = packageCode.substring(0, 9);
-    // const sub_code = packageCode.substring(9);
-    // console.log("code : "+ code);
-    // console.log("sub_code : "+ sub_code);
-    // console.log("package_data : "+ package_data);
-
-    return package_data[code].price[sub_code].price;
-}
-
-
-const genPrice = (package_data,country_data, subpackage, fdFromDate, fdToDate) => {
+const genPrice = (package_data, fdFromDate, fdToDate) => {
 
     let startDate = parseISO(fdFromDate);
     let endDate = parseISO(fdToDate);
 
-    console.log($('#ctrl_travel_type').value);
-
-    if ($('#ctrl_travel_type').value === 'annual') {
-        // endDate = new Date(startDate.getFullYear() + 1, startDate.getMonth(), startDate.getDate());
-    }
-    else
-    {
-        let country_zone = '';
-        country_data.map(v => {
-                if (v.code === $('#fdDestTo').value) {
-                    country_zone = v.zone;
-                }
-            });
-        console.log(country_zone);
-        subpackage = country_zone;
-        $('#ctrl_sub_package').value = subpackage;
-    }
-
     // console.log(package_data);
-    console.log(subpackage);
-    console.log(fdFromDate);
-    console.log(fdToDate);
-
-
+    // console.log(fdFromDate);
+    // console.log(fdToDate);
 
     const day = differenceInDays(endDate, startDate) + 1;
     console.log("day : "  + day);
 
     $('#days').value = day;
 
-    const allPack = Object.keys(package_data)
-        .filter(k => _.startsWith(k, current_package + subpackage))
+    Object.keys(package_data)
+        .filter(k => _.startsWith(k, current_package))
+        .map(k => {
+            const pack = Object.keys(package_data[k].price).filter(subPackage => {
+                const dateRange = (package_data[k].price[subPackage].day).split('-');
+                if(dateRange.length === 1)
+                {
+                    return day >= dateRange[0] && day <= dateRange[0];
+                }
+                else
+                {
+                    return day >= dateRange[0] && day <= dateRange[1];
+                }
+            })
+            $$('[data-sub-package]').forEach($el => {
+                $el.setAttribute('data-sub-package', pack)
+            });
+            $(`strong[data-price-${k}]`).innerHTML = parseInt(package_data[k].price[pack].price).toLocaleString();
+            $('#sub_code').value = pack;
 
-    $('#all_pack').value = allPack;
+            // console.log('k : ' + k );
+            // console.log('sub_code pack : ' + pack );
 
-    // console.log("packs : "  + allPack);
-
-    if (document.body.clientWidth > 767) {
-        $$('#table-detail td[data-package],#table-detail th[data-package],.choose-plan-mobile').forEach($el => {
-            if (allPack.includes($el.getAttribute("data-package"))) {
-                $el.style.display = "table-cell";
-            } else {
-                $el.style.display = "none";
-            }
-        });
-    } else {
-        $$('#table-detail thead a[data-package]').forEach($el => {
-            if ($el.getAttribute("data-package").startsWith('ONTAOB' + subpackage)) {
-                $el.style.display = "inline-flex";
-            } else {
-                $el.style.display = "none";
-            }
-        });
-
-        $$('#table-detail thead div.btn-choose-plan').forEach($el => {
-            if ($el.getAttribute("data-package").startsWith('ONTAOB' + subpackage)) {
-                $el.style.display = "inline-flex";
-            } else {
-                $el.style.display = "none";
-            }
-        });
-    }
-
-    $$('#table-detail td[data-h2go]').forEach($el => {
-        if(day>=5)
-        {
-            if ($el.getAttribute("data-h2go").startsWith('73')) {
-                $el.innerHTML = "<strong><i class='icofont-check-circled'  style='color:green'></i></strong>";
-            }
-            if ($el.getAttribute("data-h2go").startsWith('74')) {
-                $el.innerHTML = "<strong><i class='icofont-check-circled'  style='color:green'></i></strong>";
-            }
-        }
-        else
-        {
-            if ($el.getAttribute("data-h2go").startsWith('73')) {
-                $el.innerHTML = "<strong><i class='icofont-close-circled' style='color:red'></i></strong>";
-            }
-            if ($el.getAttribute("data-h2go").startsWith('74')) {
-                $el.innerHTML = "<strong><i class='icofont-close-circled' style='color:red'></i></strong>";
-            }
-        }
-
-    });
-
-    allPack.map(k => {
-        const pack = Object.keys(package_data[k].price).filter(subPackage => {
-            const dateRange = (package_data[k].price[subPackage].day).split('-');
-            if(dateRange.length === 1)
-            {
-                return day >= dateRange[0] && day <= dateRange[0];
-            }
-            else
-            {
-                return day >= dateRange[0] && day <= dateRange[1];
-            }
+            //fdPackage
+            //$('#sub_code').value
+            //Price = package_data[Package].price[price key id].price
         })
-
-        // console.log(pack);
-
-        $$('[data-sub-package]').forEach($el => {
-            $el.setAttribute('data-sub-package', pack)
+        $$('#table-detail th[data-package]').forEach($el => {
+            if ($el.getAttribute("data-package").startsWith('ONTASK3')) {
+                $el.style.display = "none";
+            }
         });
-        $(`strong[data-price-${k}]`).innerHTML = parseInt(package_data[k].price[pack].price).toLocaleString();
-        $('#sub_code').value = pack;
+        $$('#table-detail td[data-package]').forEach($el => {
+            if ($el.getAttribute("data-package").startsWith('ONTASK3')) {
+                $el.style.display = "none";
+            }
+        });
 
-        console.log("pack : "  + pack);
+        $$('#table-detail thead a.btn-choose-plan').forEach($el => {
+            if ($el.getAttribute("data-package").startsWith('ONTASK3')) {
+                $el.style.display = "none";
+            }
+        });
+}
+
+function resolveAfter2Seconds() {
+    return new Promise(resolve => {
+        setTimeout(() => {
+            resolve('resolved');
+        }, 2000);
     });
-
-
-
 }
 
 document.addEventListener("DOMContentLoaded", async () => {
 
-    const package_data = await getPackageData(current_package);
-    const countryData = await getCountryData();
+    let package_data = await getPackageData(current_package);
+    const country_data = await getCountryData();
+    const nationality_data = await getNationalityData();
     const zipcode_data = await getZipcodeData();
-
-    // console.log(package_data);
 
     let Keys = "";
     let myEle = document.getElementById("portal_key");
-    if (myEle) {
-        Keys = myEle.value;
+    if(myEle){
+        Keys= myEle.value;
         let status_api = document.getElementById("status_api");
-        if (!status_api.value) {
+        if(!status_api.value)
+        {
             Swal.fire({
                 title: 'Error!',
                 text: 'Error : Portal keys. User not found.',
@@ -366,82 +309,81 @@ document.addEventListener("DOMContentLoaded", async () => {
                 confirmButtonText: 'OK'
             })
         }
+        if($('#partner').value == 'LUMA')
+        {
+            let element = document.getElementById("btnBrochure");
+            element.parentNode.removeChild(element);
+        }
+        if($('#partner').value == 'partnership')
+        {
+            $('#btnBrochure').addEventListener('click', (e) => {
+                // alert( "Handler for .click() called." );
+
+            });
+        }
     }
+
+    console.log(package_data);
 
     let step = 1;
     let data = {
-        fdAgent : "00DM004D00",//"00DM004D00",
-        fdKeys: Keys,
+        fdKeys : Keys,
         fdPayAMT: "",
         fdFromDate: "",
         fdToDate: "",
-        fdDestTo: "",
         ctrl_terms: "",
         fdSendType: "",
         ctrl_accept_insurance_term: "",
-        ctrl_travel_type: "",
         profile: []
     };
     let iti = {};
+    let desination = '';
     // let $dataSubPackage;
+    let provinceOption = `<option value="">${$('#fdDestFrom').getAttribute('data-please-select')}</option>`;
 
-    let sb = "";
-    let sb1 = `<option value="">${$('#fdDestTo').getAttribute('data-please-select')}</option>`;
-    let sbSCHENGEN = '';
-    countryData.sort((a, b) => (a[locale] > b[locale]) ? 1 : ((b[locale] > a[locale]) ? -1 : 0))
+    country_data
+        .filter(v => v.zone !== "" || v.code === 'THA')
+        .sort((a, b) => (a[locale] > b[locale]) ? 1 : ((b[locale] > a[locale]) ? -1 : 0))
         .map(v => {
-            if (v.code === 'THA' || v.code === 'WRW' || v.code === 'ASN'
-                || v.code === 'AFG' || v.code === 'AZE' || v.code === 'CUB'|| v.code === 'IRN'|| v.code === 'IRQ'
-                || v.code === 'ISR' || v.code === 'KGZ' || v.code === 'LBN'|| v.code === 'LBY'|| v.code === 'NPL'
-                || v.code === 'NIC' || v.code === 'PRK' || v.code === 'PAK'|| v.code === 'PSE'|| v.code === 'SYR'
-                || v.code === 'TJK' || v.code === 'TKM' || v.code === 'UZB') {
-            }
-            else if(v.code === 'SCG'){
-                sbSCHENGEN = `<option value="${v.code}">${v[locale]}</option>`;
+            if (v.code === 'THA') {
+                desination = v[locale];
             }
             else
             {
-                sb += `<option value="${v.code}">${v[locale]}</option>`;
+                provinceOption += `<option value="${v.code}">${v[locale]}</option>`;
             }
-        });
+        })
 
-    $('#fdDestTo').innerHTML = sb1 + sbSCHENGEN + sb;
+    $('#fdDestFrom').innerHTML = provinceOption;
+    $('#fdDestTo').innerHTML = `<option value="THA">${desination}</option>`;
 
-    $('#ctrl_travel_type').addEventListener('change', (e) => {
+    let nationality_option = `<option value="">${$('#data_1_fdNationality').getAttribute('data-please-select')}</option>`;
+    Object.keys(nationality_data).map(v => {
+            nationality_option += `<option value="${v}">${v}</option>`;
+    });
 
-        let display_sub_package = 'block'
-        let display_fdDestTo = 'block'
-        let display_fdToDate = 'block'
-
-        if (e.target.value === 'annual') {
-            display_sub_package ='block';
-            display_fdDestTo  = "none";
-            display_fdToDate  = "none";
-        }
-        else
-        {
-            display_sub_package = "none";
-            display_fdDestTo  = 'block';
-            display_fdToDate  = 'block';
-        }
-        $$("#ctrl_sub_package,#fdDestTo").forEach(($el) => {
-            $el.closest('.controls-wrapper').style.display = display_sub_package;
-        });
-        $$("#fdDestTo").forEach(($el) => {
-            $el.closest('.controls-wrapper').style.display = display_fdDestTo;
-        });
-        $$("#fdToDate").forEach(($el) => {
-            $el.closest('.controls-wrapper').style.display = display_fdToDate;
-        });
-    })
-
-    //Set start selection
-    let el = document.getElementById('ctrl_travel_type');
-    el.dispatchEvent(new Event('change'));
-
+    // $('#ctrl_sub_package').addEventListener('change', (e) => {
+    //     let nationality_option = `<option value="">${$('#data_1_fdNationality').getAttribute('data-please-select')}</option>`;
+    //     // console.log($('#ctrl_sub_package').value);
+    //     if($('#ctrl_sub_package').value == '01' || $('#ctrl_sub_package').value == '05' ){
+    //         //30 and 60 Only
+    //         Object.keys(nationality_data).map(v => {
+    //             nationality_option += `<option value="${v}">${v}</option>`;
+    //         });
+    //     }
+    //     else {
+    //         Object.keys(nationality_data).map(v => {
+    //             if (v !== "Thailand") {
+    //                 nationality_option += `<option value="${v}">${v}</option>`;
+    //             }
+    //         });
+    //     }
+    //     for (let i = 1; i < 10; i++) {
+    //         $(`#data_${i}_fdNationality`).innerHTML = nationality_option;
+    //     }
+    // });
 
     $('#ctrl_no_of_insured').addEventListener('change', (e) => {
-
         for (let i = 1; i <= e.target.value; i++) {
             $(`#form_profile_${i}`).style.display = "block";
         }
@@ -464,9 +406,8 @@ document.addEventListener("DOMContentLoaded", async () => {
                 if (location_data !== undefined) {
                     let items = ['<option value="">' + $(`#data_1_ctrl_province`).getAttribute('data-please-select') + '</option>'];
 
-                    //Fix to eng
                     location_data.map(v => {
-                        items.push(`<option value="${v.district.code}">${v.district.locales['en']}, ${v.province.locales['en']}</option>`);
+                        items.push(`<option value="${v.district.code}">${v.district.locales[locale]}, ${v.province.locales[locale]}</option>`);
                     });
                     $(`#data_${i}_ctrl_province`).innerHTML = items.join('');
                 }
@@ -478,6 +419,8 @@ document.addEventListener("DOMContentLoaded", async () => {
                 $(`#data_${i}_ctrl_day`).value = '0' + e.target.value;
             }
         });
+
+        $(`#data_${i}_fdNationality`).innerHTML = nationality_option;
 
         iti[i] = intlTelInput($(`#data_${i}_fdTelephone`), {
             initialCountry: "auto",
@@ -493,7 +436,6 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     }
 
-
     const allField = $('#step3').querySelectorAll('input,select,textarea');
     allField.forEach(field => {
         field.addEventListener("change", function (e) {
@@ -506,33 +448,6 @@ document.addEventListener("DOMContentLoaded", async () => {
 
         });
     });
-
-    const office = $$(".officer");
-    office.forEach($el => {
-        $el.addEventListener('click', (e) => {
-            e.preventDefault();
-            $('.page-overlay').style.display = 'flex';
-            $('#table-scroll').innerHTML = $('#table-detail').innerHTML;
-
-            $$('#table-scroll td[data-package],#table-detail th[data-package]').forEach($el => {
-                if ($el.getAttribute("data-package").startsWith(data.fdPackage)) {
-                    $el.style.display = "inline-flex";
-                } else {
-                    $el.style.display = "none";
-                }
-            });
-
-            let tb = document.getElementById("table-scroll");
-            tb.getElementsByTagName("thead")[0].style.display = "none";
-            tb.getElementsByTagName("tfoot")[0].style.display = "none";
-
-        }, true);
-    });
-    const close = $(".page-overlay .close");
-    close.addEventListener('click', (e) => {
-        e.preventDefault();
-        $('.page-overlay').style.display = 'none';
-    }, true);
 
 
     const $btnGoto = $$('.btn-goto');
@@ -549,74 +464,50 @@ document.addEventListener("DOMContentLoaded", async () => {
             } else {
                 switch (parseInt(step)) {
                     case 1:
-                        const chkAccept = validateAcceptStep1();
-                        if(!chkAccept){
-                            showAcceptError($('#ctrl_accept_step1').getAttribute('data-error-insurance_term'));
-                            status = false;
-                            break;
-                        }
                         status = true;
                         data = {
                             ...data,
-                            ctrl_travel_type: $('#ctrl_travel_type').value,
-                            fdDestTo: $('#ctrl_travel_type').value === 'annual' ? zoneCode[$('#ctrl_sub_package').value] : $('#fdDestTo').value,
+                            fdDestFrom: $('#fdDestFrom').value,
+                            fdDestTo: $('#fdDestTo').value,
                             fdFromDate: $('#fdFromDate').value,
-                            fdToDate: $('#fdToDate').value,
+                            fdToDate: $('#fdToDate').value
                         }
                         result = validate(data, step1Constraints);
                         removeError($('#step1'));
                         if (result) {
                             showError($('#step1'), result);
-                            return false
-                        }
-
-                        let fromDate = ($('#fdFromDate').value).split('/');
-                        let toDate;
-
-                        if ($('#ctrl_travel_type').value === 'annual') {
-                            const lastDate = subDays(addYears(parseISO(`${fromDate[2]}-${fromDate[1]}-${fromDate[0]}`), 1), 1);
-                            toDate = (format(lastDate, 'dd/MM/yyyy')).split('/');
+                            status = false;
                         } else {
-                            toDate = ($('#fdToDate').value).split('/');
-                        }
+                            // let fromDate = ($('#fdFromDate').value).split('/');
+                            // const duration = package_data[Object.keys(package_data)[0]].price[$("#ctrl_sub_package").value].duration;
+                            // let fdFromDate = `${fromDate[2]}-${fromDate[1]}-${fromDate[0]}`;
+                            // let fdToDate = '';
+                            // if (duration.indexOf('d') !== -1) {
+                            //     fdToDate = format(subDays(addDays(parseISO(fdFromDate), duration.replace('d', '')), 1), 'yyyy-MM-dd');
+                            // } else if (duration.indexOf('y') !== -1) {
+                            //     fdToDate = format(subDays(addYears(parseISO(fdFromDate), duration.replace('y', '')), 1), 'yyyy-MM-dd');
+                            // }
 
-                        data = {
-                            ...data,
-                            fdFromDate: `${fromDate[2]}-${fromDate[1]}-${fromDate[0]}`,
-                            fdToDate: `${toDate[2]}-${toDate[1]}-${toDate[0]}`,
-                        }
-
-                        genPrice(package_data,countryData, $('#ctrl_sub_package').value, data.fdFromDate, data.fdToDate, $('#ctrl_travel_type').value);
-
-                        break;
-                    case 2:
-                        // const fdPackage = $btn.getAttribute('data-package') + $btn.getAttribute('data-sub-package');
-                        // $dataSubPackage = fdPackage;
-
-                        const fdPackage = $btn.getAttribute('data-package');
-                        $('#form-head').innerHTML = $btn.getAttribute('data-plan');
-                        if (fdPackage) {
+                            let fromDate = ($('#fdFromDate').value).split('/');
+                            let toDate = ($('#fdToDate').value).split('/');
                             data = {
                                 ...data,
-                                fdPackage
+                                fdFromDate: `${fromDate[2]}-${fromDate[1]}-${fromDate[0]}`,
+                                fdToDate: `${toDate[2]}-${toDate[1]}-${toDate[0]}`,
                             }
 
-                            status = true;
-                        } else {
-                            Swal.fire({
-                                title: 'Error!',
-                                text: 'Please choose package',
-                                icon: 'error',
-                                confirmButtonText: 'OK'
-                            })
-                            status = false;
+                            // genPrice(package_data, $('#ctrl_sub_package').value);
+                            genPrice(package_data, data.fdFromDate, data.fdToDate);
+
                         }
+
 
                         //Case web portal
                         let myEle = document.getElementById("portal_key");
-                        if (myEle) {
+                        if(myEle){
                             let status_api = document.getElementById("status_api");
-                            if (!status_api.value) {
+                            if(!status_api.value)
+                            {
                                 Swal.fire({
                                     title: 'Error!',
                                     text: 'Error : Portal keys. User not found.',
@@ -628,16 +519,44 @@ document.addEventListener("DOMContentLoaded", async () => {
                         }
 
                         break;
+                    case 2:
+                        for (let i = 1; i <= $('#ctrl_no_of_insured').value; i++) {
+                            $(`#data_${i}_fdNationalID`).value = "";
+                        }
+
+                        // const fdPackage = $btn.getAttribute('data-package') + $btn.getAttribute('data-sub-package');
+                        // $dataSubPackage =fdPackage;
+                        // console.log($btn.getAttribute('data-plan'));
+
+                        const fdPackage = $btn.getAttribute('data-package');
+                        // $dataSubPackage =fdPackage;
+
+                        // console.log(fdPackage);
+
+                        $('#form-head').innerHTML = $btn.getAttribute('data-plan');
+                        if (fdPackage) {
+                            data = {
+                                ...data,
+                                fdPackage
+                            }
+                            status = true;
+                        } else {
+                            Swal.fire({
+                                title: 'Error!',
+                                text: 'Please choose package',
+                                icon: 'error',
+                                confirmButtonText: 'OK'
+                            })
+                            status = false;
+                        }
+                        break;
                     case 3:
                         let profileData = []
-
                         status = true;
-
                         removeError($('#step3'));
-
                         for (let i = 1; i <= $('#ctrl_no_of_insured').value; i++) {
                             let address = ($(`#data_${i}_ctrl_province`).value).split('*');
-                            let dateResult = iTravelCheckBirthDate(i);
+                            let dateResult = checkTaBirthDateIPass(i);
 
                             let valCheck = false;
                             valCheck = validatePolicyPayment($(`#data_${i}_fdNationalID`).value,data.fdPackage,$('#fdFromDate')?.value);
@@ -653,6 +572,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                                 fdName: $(`#data_${i}_fdName`).value,
                                 fdSurname: $(`#data_${i}_fdSurname`).value,
                                 fdNationalID: $(`#data_${i}_fdNationalID`).value,
+                                fdNationality: $(`#data_${i}_fdNationality`).value,
                                 fdHBD: dateResult?.data?.fdHBD || "",
                                 fdAge: dateResult?.data?.fdAge || "",
                                 fdEmail: $(`#data_${i}_fdEmail`).value,
@@ -668,6 +588,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                                 fdRelation: $(`#data_${i}_fdRelation`).value,
                             };
 
+                            // console.log(currentProfile);
                             profileData.push(currentProfile);
 
                             result = validate(currentProfile, profileConstraints);
@@ -683,20 +604,25 @@ document.addEventListener("DOMContentLoaded", async () => {
                             }
                         }
 
+                        // console.log('data.fdPackage : ' + data.fdPackage);
+                        // console.log('sub_code : ' + $('#sub_code').value);
+
                         data = {
                             ...data,
-                            fdPayAMT: getSelectedPrice(data.fdPackage, package_data, data.fdFromDate, data.fdToDate),
+                            fdPayAMT: package_data[data.fdPackage].price[$('#sub_code').value].price,
                             fdSendType: getRadioSelectedValue('fdSendType'),
                             ctrl_terms: $('#ctrl_terms').checked ? true : undefined,
                             ctrl_accept_insurance_term: $('#ctrl_accept_insurance_term').checked ? true : undefined,
-                            profile: profileData,
                             fdDay: $('#days').value,
-                            rpcNumber: 190
+                            profile: profileData
                         }
                         data = {
                             ...data,
                             fdMarketing_Consent: $('#ctrl_marketing').checked ? true : undefined
                         }
+                        // fdPayAMT: getSelectedPrice(data.fdPackage, package_data),
+
+                        console.log('fdPayAMT : ' + data.fdPayAMT);
                         result = validate(data, step3Constraints);
 
                         if (result) {
@@ -711,23 +637,25 @@ document.addEventListener("DOMContentLoaded", async () => {
 
                         const selectedPackage = $('#step3 .form-head').innerHTML;
 
-                        fromDate = format(parseISO(data.fdFromDate), 'dd/MM/') + (locale === 'th' ? (parseInt(format(parseISO(data.fdFromDate), 'yyyy')) + 543) : format(parseISO(data.fdFromDate), 'yyyy'))
-                        toDate = format(parseISO(data.fdToDate), 'dd/MM/') + (locale === 'th' ? (parseInt(format(parseISO(data.fdToDate), 'yyyy')) + 543) : format(parseISO(data.fdToDate), 'yyyy'))
+                        let fromDate = format(parseISO(data.fdFromDate), 'dd/MM/') + (locale === 'th' ? (parseInt(format(parseISO(data.fdFromDate), 'yyyy')) + 543) : format(parseISO(data.fdFromDate), 'yyyy'))
+                        let toDate = format(parseISO(data.fdToDate), 'dd/MM/') + (locale === 'th' ? (parseInt(format(parseISO(data.fdToDate), 'yyyy')) + 543) : format(parseISO(data.fdToDate), 'yyyy'))
 
                         const $destFrom = $('#fdDestFrom');
                         const $destTo = $('#fdDestTo');
-                        const $subPackage = $('#ctrl_sub_package');
+                        // const $ctrl_sub_package = $('#ctrl_sub_package');
+
                         const $summary_section = $('#summary_section');
+
 
                         let sb = `<h3 class="text-primary">${$summary_section.getAttribute('data-insurance_data')}</h3><br/>
                         <div class="two-col">
                             <div><span>${$summary_section.getAttribute('data-plan')} : </span><strong>${selectedPackage}</strong></div>
                             <div><span>${$('#receve_channel_title').innerText} : </span><strong>${data.fdSendType === 'P' ? $('label[for=ctrl_channel_post]').innerText : $('label[for=ctrl_channel_email]').innerText}</strong></div>
-                            ${$('#ctrl_travel_type').value === 'annual'
-                            ? `<div><span>${$('label[for=ctrl_sub_package]').innerText} : </span><strong>${$subPackage.options[$subPackage.selectedIndex].text}</strong></div>`
-                            : `<div><span>${$('label[for=fdDestTo]').innerText} : </span><strong>${$destTo.options[$destTo.selectedIndex].text}</strong></div>`}
+                            <div><span>${$('label[for=fdDestFrom]').innerText} : </span><strong>${$destFrom.options[$destFrom.selectedIndex].text}</strong></div>
+                            <div><span>${$('label[for=fdDestTo]').innerText} : </span><strong>${$destTo.options[$destTo.selectedIndex].text}</strong></div>
                             <div><span>${$('label[for=fdFromDate]').innerText} : </span><strong>${fromDate}</strong></div>
                             <div><span>${$('label[for=fdToDate]').innerText} : </span><strong>${toDate}</strong></div>
+                            <div><span>${$summary_section.getAttribute('data-day-wording')} : </span><strong>${data.fdDay} ${$summary_section.getAttribute('data-day')} </strong></div>
                             <div><span>${$summary_section.getAttribute('data-price-perperson')} : </span><strong>${parseFloat(data.fdPayAMT).toLocaleString()} ${$summary_section.getAttribute('data-baht')}</strong></div>
                             <div><span>${$summary_section.getAttribute('data-total-price')} : </span><strong>${parseFloat(data.fdPayAMT * data.profile.length).toLocaleString()} ${$summary_section.getAttribute('data-baht')}</strong></div>
 
@@ -748,12 +676,12 @@ document.addEventListener("DOMContentLoaded", async () => {
                             <div><span>${$('label[for=data_1_fdEmail]').innerText} : </span><strong>${v.fdEmail}</strong></div>
                             <div class="controls-wrapper full no-lable"><span>${$('label[for=data_1_fdAddr_Num]').innerText} : </span><strong>${v.fdAddr_Num} ${v.fdAddr_District} ${province} ${v.fdAddr_PostCode}</strong></div>
                             <div class="controls-wrapper full no-lable"><span>${$('#beneficiary_header').innerText} : </span><strong>${v.fdBenefit === 'other' ? v.fdBenefit_name + ' (' + v.fdRelation + ')' : v.fdBenefit} </strong></div>
-                        </div>`;
+                        </div><br/>`;
                         });
 
                         sb += `<input type="hidden" name="send_data" value='${JSON.stringify(data)}'>`;
 
-                        $summary_section.innerHTML = sb;
+                        $('#summary_section').innerHTML = sb;
                         status = true;
 
                         break;
@@ -767,3 +695,4 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     })
 });
+
