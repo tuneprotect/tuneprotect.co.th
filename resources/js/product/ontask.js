@@ -1,18 +1,17 @@
 import {
     changeStep,
-    checkTaBirthDateIPass,
+    checkTaBirthDate,
     formatTelNumber,
-    getCountryData,
-    getNationalityData,
     getPackageData,
-    showMultipleTitle, validatePolicy,validatePolicyPayment,formatInputFieldByLanguage
+    getProvinceData,
+    showMultipleTitle, validatePolicy, validatePolicyPayment
 } from "../form/productHelper";
 import {$, $$, current_package, getRadioSelectedValue, getZipcodeData, locale, scrollToTargetAdjusted} from "../helper";
 
-import {removeError, showError, showFieldError, validateField} from "../validate_form";
+import {removeError, showError, showFieldError, validateField,validateAcceptStep1,showAcceptError} from "../validate_form";
 import Swal from "sweetalert2";
 import validate from "validate.js";
-import {addDays, addYears, differenceInDays, format, parseISO, subDays} from "date-fns";
+import {differenceInDays, format, parseISO} from "date-fns";
 import intlTelInput from "intl-tel-input";
 
 require('../main');
@@ -45,6 +44,12 @@ const step1Constraints = {
         presence: {
             allowEmpty: false,
             message: "^" + $('#fdDestFrom').getAttribute('data-error')
+        }
+    },
+    fdDestTo: {
+        presence: {
+            allowEmpty: false,
+            message: "^" + $('#fdDestTo').getAttribute('data-error')
         }
     }
 };
@@ -95,16 +100,33 @@ const profileConstraints = {
             message: "^" + $('#data_1_ctrl_day').getAttribute('data-error-format')
         }
     },
-    fdNationalID: {
-        presence: {
-            allowEmpty: false,
-            message: "^" + $('#data_1_fdNationalID').getAttribute('data-error-passport')
-        }
-    },
-    fdNationality: {
-        presence: {
-            allowEmpty: false,
-            message: "^" + $('#data_1_fdNationality').getAttribute('data-error-nationality')
+    fdNationalID: function (value, attributes, attributeName, options, constraints) {
+        if (attributes.ctrl_document_type === 'บัตรประจำตัวประชาชน') {
+
+            return {
+                presence: {
+                    allowEmpty: false,
+                    message: "^" + $('#data_1_fdNationalID').getAttribute('data-error-idcard')
+                },
+                length: {
+                    is: 13,
+                    message: "^" + $('#data_1_fdNationalID').getAttribute('data-error-idcard')
+                },
+                format: {
+                    pattern: /^[0-9]{13}$/,
+                    message: "^" + $('#data_1_fdNationalID').getAttribute('data-error-idcard')
+                },
+                idcard: {
+                    message: "^" + $('#data_1_fdNationalID').getAttribute('data-error-idcard')
+                }
+            }
+        } else {
+            return {
+                presence: {
+                    allowEmpty: false,
+                    message: "^" + $('#data_1_fdNationalID').getAttribute('data-error-passport')
+                }
+            }
         }
     },
     fdEmail: {
@@ -131,23 +153,12 @@ const profileConstraints = {
         presence: {
             allowEmpty: false,
             message: "^" + $('#data_1_fdAddr_Num').getAttribute('data-error-address')
-        },
-        format: formatInputFieldByLanguage()
-        // format: {
-        //     pattern: /^[a-zA-Z0-9 !@#$&()\\`.+\-,/\"\n\r"]*$/,
-        //     flags: "i",
-        //     message: "^" + $('[data-error-eng-only]').getAttribute('data-error-eng-only')
-        // }
+        }
     },
     fdAddr_District: {
         presence: {
             allowEmpty: false,
             message: "^" + $('#data_1_fdAddr_District').getAttribute('data-error-district')
-        },
-        format: {
-            pattern: /^[a-zA-Z0-9 !@#$&()\\`.+\-,/\"]*$/,
-            flags: "i",
-            message: "^" + $('[data-error-eng-only]').getAttribute('data-error-eng-only')
         }
     },
     ctrl_province: {
@@ -169,11 +180,6 @@ const profileConstraints = {
             presence: {
                 allowEmpty: false,
                 message: "^" + $('#data_1_fdBenefit_name').getAttribute('data-error-beneficiary')
-            },
-            format: {
-                pattern: /^[a-zA-Z0-9 !@#$&()\\-`.+,/\"]*$/,
-                flags: "i",
-                message: "^" + $('[data-error-eng-only]').getAttribute('data-error-eng-only')
             }
         };
     },
@@ -188,120 +194,47 @@ const profileConstraints = {
     }
 };
 
-// const getSelectedPrice = (packageCode, package_data) => {
-//     // const code = packageCode.substring(0, 7);
-//     // const sub_code = packageCode.substring(7);
-//     // console.log(packageCode);
-//     // console.log(package_data);
-//     // console.log('code : ' + code);
-//     // console.log('sub_code : ' + sub_code);
-//     // console.log('price : ' + package_data[code].price[sub_code].price);
-//     // return package_data[code].price[sub_code].price;
-//
-//     //fdPackage
-//     //$('#sub_code').value
-//     //Price = package_data[Package].price[price key id].price
-//
-//     return package_data[packageCode].price[$('#sub_code').value].price;
-// }
-
-// const genPrice = (package_data, sub_package) => {
-//
-//     Object.keys(package_data)
-//         .filter(k => _.startsWith(k, current_package))
-//         .map(k => {
-//             const pack = Object.keys(package_data[k].price).filter(k => k === sub_package)
-//
-//             $$('[data-sub-package]').forEach($el => {
-//                 $el.setAttribute('data-sub-package', pack)
-//             });
-//
-//             $(`strong[data-price-${k}]`).innerHTML = parseInt(package_data[k].price[pack].price).toLocaleString();
-//
-//         })
-// }
+const getSelectedPrice = (packageCode, package_data) => {
+    const code = packageCode.substring(0, 7);
+    const sub_code = packageCode.substring(7);
+    return package_data[code].price[sub_code].price;
+}
 
 const genPrice = (package_data, fdFromDate, fdToDate) => {
 
     let startDate = parseISO(fdFromDate);
     let endDate = parseISO(fdToDate);
-
-    // console.log(package_data);
-    // console.log(fdFromDate);
-    // console.log(fdToDate);
-
     const day = differenceInDays(endDate, startDate) + 1;
-    console.log("day : "  + day);
-
-    $('#days').value = day;
 
     Object.keys(package_data)
         .filter(k => _.startsWith(k, current_package))
         .map(k => {
             const pack = Object.keys(package_data[k].price).filter(subPackage => {
                 const dateRange = (package_data[k].price[subPackage].day).split('-');
-                if(dateRange.length === 1)
-                {
-                    return day >= dateRange[0] && day <= dateRange[0];
-                }
-                else
-                {
-                    return day >= dateRange[0] && day <= dateRange[1];
-                }
+                return day >= dateRange[0] && day <= dateRange[1];
             })
+
             $$('[data-sub-package]').forEach($el => {
                 $el.setAttribute('data-sub-package', pack)
             });
+
             $(`strong[data-price-${k}]`).innerHTML = parseInt(package_data[k].price[pack].price).toLocaleString();
-            $('#sub_code').value = pack;
 
-            // console.log('k : ' + k );
-            // console.log('sub_code pack : ' + pack );
-
-            //fdPackage
-            //$('#sub_code').value
-            //Price = package_data[Package].price[price key id].price
         })
-        $$('#table-detail th[data-package]').forEach($el => {
-            if ($el.getAttribute("data-package").startsWith('ONTASK3')) {
-                $el.style.display = "none";
-            }
-        });
-        $$('#table-detail td[data-package]').forEach($el => {
-            if ($el.getAttribute("data-package").startsWith('ONTASK3')) {
-                $el.style.display = "none";
-            }
-        });
-
-        $$('#table-detail thead a.btn-choose-plan').forEach($el => {
-            if ($el.getAttribute("data-package").startsWith('ONTASK3')) {
-                $el.style.display = "none";
-            }
-        });
-}
-
-function resolveAfter2Seconds() {
-    return new Promise(resolve => {
-        setTimeout(() => {
-            resolve('resolved');
-        }, 2000);
-    });
 }
 
 document.addEventListener("DOMContentLoaded", async () => {
 
-    let package_data = await getPackageData(current_package);
-    const country_data = await getCountryData();
-    const nationality_data = await getNationalityData();
+    const package_data = await getPackageData(current_package);
+    const provinceData = await getProvinceData();
     const zipcode_data = await getZipcodeData();
 
     let Keys = "";
     let myEle = document.getElementById("portal_key");
-    if(myEle){
-        Keys= myEle.value;
+    if (myEle) {
+        Keys = myEle.value;
         let status_api = document.getElementById("status_api");
-        if(!status_api.value)
-        {
+        if (!status_api.value) {
             Swal.fire({
                 title: 'Error!',
                 text: 'Error : Portal keys. User not found.',
@@ -309,25 +242,11 @@ document.addEventListener("DOMContentLoaded", async () => {
                 confirmButtonText: 'OK'
             })
         }
-        if($('#partner').value == 'LUMA')
-        {
-            let element = document.getElementById("btnBrochure");
-            element.parentNode.removeChild(element);
-        }
-        if($('#partner').value == 'partnership')
-        {
-            $('#btnBrochure').addEventListener('click', (e) => {
-                // alert( "Handler for .click() called." );
-
-            });
-        }
     }
-
-    console.log(package_data);
 
     let step = 1;
     let data = {
-        fdKeys : Keys,
+        fdKeys: Keys,
         fdPayAMT: "",
         fdFromDate: "",
         fdToDate: "",
@@ -337,60 +256,29 @@ document.addEventListener("DOMContentLoaded", async () => {
         profile: []
     };
     let iti = {};
-    let desination = '';
-    // let $dataSubPackage;
+    let $dataSubPackage;
     let provinceOption = `<option value="">${$('#fdDestFrom').getAttribute('data-please-select')}</option>`;
 
-    country_data
-        .filter(v => v.zone !== "" || v.code === 'THA')
-        .sort((a, b) => (a[locale] > b[locale]) ? 1 : ((b[locale] > a[locale]) ? -1 : 0))
-        .map(v => {
-            if (v.code === 'THA') {
-                desination = v[locale];
-            }
-            else
-            {
-                provinceOption += `<option value="${v.code}">${v[locale]}</option>`;
-            }
-        })
+    provinceData.forEach(v => {
+        provinceOption += `<option value="${v.code}">${v[locale]}</option>`;
+    })
 
-    $('#fdDestFrom').innerHTML = provinceOption;
-    $('#fdDestTo').innerHTML = `<option value="THA">${desination}</option>`;
-
-    let nationality_option = `<option value="">${$('#data_1_fdNationality').getAttribute('data-please-select')}</option>`;
-    Object.keys(nationality_data).map(v => {
-            nationality_option += `<option value="${v}">${v}</option>`;
-    });
-
-    // $('#ctrl_sub_package').addEventListener('change', (e) => {
-    //     let nationality_option = `<option value="">${$('#data_1_fdNationality').getAttribute('data-please-select')}</option>`;
-    //     // console.log($('#ctrl_sub_package').value);
-    //     if($('#ctrl_sub_package').value == '01' || $('#ctrl_sub_package').value == '05' ){
-    //         //30 and 60 Only
-    //         Object.keys(nationality_data).map(v => {
-    //             nationality_option += `<option value="${v}">${v}</option>`;
-    //         });
-    //     }
-    //     else {
-    //         Object.keys(nationality_data).map(v => {
-    //             if (v !== "Thailand") {
-    //                 nationality_option += `<option value="${v}">${v}</option>`;
-    //             }
-    //         });
-    //     }
-    //     for (let i = 1; i < 10; i++) {
-    //         $(`#data_${i}_fdNationality`).innerHTML = nationality_option;
-    //     }
-    // });
+    $$('#fdDestFrom,#fdDestTo').forEach($el => {
+        $el.innerHTML = provinceOption;
+    })
 
     $('#ctrl_no_of_insured').addEventListener('change', (e) => {
+
         for (let i = 1; i <= e.target.value; i++) {
             $(`#form_profile_${i}`).style.display = "block";
         }
         for (let i = (parseInt(e.target.value) + 1); i < 10; i++) {
             $(`#form_profile_${i}`).style.display = "none";
         }
+
+
     });
+
 
     for (let i = 1; i < 10; i++) {
         $$(`input[name=data_${i}_fdSex]`).forEach($el => {
@@ -420,8 +308,6 @@ document.addEventListener("DOMContentLoaded", async () => {
             }
         });
 
-        $(`#data_${i}_fdNationality`).innerHTML = nationality_option;
-
         iti[i] = intlTelInput($(`#data_${i}_fdTelephone`), {
             initialCountry: "auto",
             geoIpLookup: function (success, failure) {
@@ -440,11 +326,14 @@ document.addEventListener("DOMContentLoaded", async () => {
     allField.forEach(field => {
         field.addEventListener("change", function (e) {
             validateField(this, profileConstraints);
+
             for (let i = 1; i <=  $('#ctrl_no_of_insured').value; i++) {
                 if ([`data_${i}_fdName`, `data_${i}_fdSurname`, `data_${i}_fdNationalID`].includes(field.id)) {
-                    validatePolicy(e.target, data.fdPackage,$('#fdFromDate')?.value);
+                    validatePolicy(e.target, $dataSubPackage,$('#fdFromDate')?.value);
                 }
             }
+
+
 
         });
     });
@@ -464,75 +353,42 @@ document.addEventListener("DOMContentLoaded", async () => {
             } else {
                 switch (parseInt(step)) {
                     case 1:
+                        const chkAccept = validateAcceptStep1();
+                        if(!chkAccept){
+                            showAcceptError($('#ctrl_accept_step1').getAttribute('data-error-insurance_term'));
+                            status = false;
+                            break;
+                        }
                         status = true;
                         data = {
                             ...data,
                             fdDestFrom: $('#fdDestFrom').value,
                             fdDestTo: $('#fdDestTo').value,
                             fdFromDate: $('#fdFromDate').value,
-                            fdToDate: $('#fdToDate').value
+                            fdToDate: $('#fdToDate').value,
                         }
                         result = validate(data, step1Constraints);
                         removeError($('#step1'));
                         if (result) {
                             showError($('#step1'), result);
-                            status = false;
-                        } else {
-                            // let fromDate = ($('#fdFromDate').value).split('/');
-                            // const duration = package_data[Object.keys(package_data)[0]].price[$("#ctrl_sub_package").value].duration;
-                            // let fdFromDate = `${fromDate[2]}-${fromDate[1]}-${fromDate[0]}`;
-                            // let fdToDate = '';
-                            // if (duration.indexOf('d') !== -1) {
-                            //     fdToDate = format(subDays(addDays(parseISO(fdFromDate), duration.replace('d', '')), 1), 'yyyy-MM-dd');
-                            // } else if (duration.indexOf('y') !== -1) {
-                            //     fdToDate = format(subDays(addYears(parseISO(fdFromDate), duration.replace('y', '')), 1), 'yyyy-MM-dd');
-                            // }
-
-                            let fromDate = ($('#fdFromDate').value).split('/');
-                            let toDate = ($('#fdToDate').value).split('/');
-                            data = {
-                                ...data,
-                                fdFromDate: `${fromDate[2]}-${fromDate[1]}-${fromDate[0]}`,
-                                fdToDate: `${toDate[2]}-${toDate[1]}-${toDate[0]}`,
-                            }
-
-                            // genPrice(package_data, $('#ctrl_sub_package').value);
-                            genPrice(package_data, data.fdFromDate, data.fdToDate);
-
+                            return false;
                         }
 
+                        let fromDate = ($('#fdFromDate').value).split('/');
+                        let toDate = ($('#fdToDate').value).split('/');
 
-                        //Case web portal
-                        let myEle = document.getElementById("portal_key");
-                        if(myEle){
-                            let status_api = document.getElementById("status_api");
-                            if(!status_api.value)
-                            {
-                                Swal.fire({
-                                    title: 'Error!',
-                                    text: 'Error : Portal keys. User not found.',
-                                    icon: 'error',
-                                    confirmButtonText: 'OK'
-                                })
-                                status = false;
-                            }
+                        data = {
+                            ...data,
+                            fdFromDate: `${fromDate[2]}-${fromDate[1]}-${fromDate[0]}`,
+                            fdToDate: `${toDate[2]}-${toDate[1]}-${toDate[0]}`,
                         }
+
+                        genPrice(package_data, data.fdFromDate, data.fdToDate);
 
                         break;
                     case 2:
-                        for (let i = 1; i <= $('#ctrl_no_of_insured').value; i++) {
-                            $(`#data_${i}_fdNationalID`).value = "";
-                        }
-
-                        // const fdPackage = $btn.getAttribute('data-package') + $btn.getAttribute('data-sub-package');
-                        // $dataSubPackage =fdPackage;
-                        // console.log($btn.getAttribute('data-plan'));
-
-                        const fdPackage = $btn.getAttribute('data-package');
-                        // $dataSubPackage =fdPackage;
-
-                        // console.log(fdPackage);
-
+                        const fdPackage = $btn.getAttribute('data-package') + $btn.getAttribute('data-sub-package');
+                        $dataSubPackage = fdPackage;
                         $('#form-head').innerHTML = $btn.getAttribute('data-plan');
                         if (fdPackage) {
                             data = {
@@ -549,14 +405,33 @@ document.addEventListener("DOMContentLoaded", async () => {
                             })
                             status = false;
                         }
+
+                        //Case web portal
+                        let myEle = document.getElementById("portal_key");
+                        if (myEle) {
+                            let status_api = document.getElementById("status_api");
+                            if (!status_api.value) {
+                                Swal.fire({
+                                    title: 'Error!',
+                                    text: 'Error : Portal keys. User not found.',
+                                    icon: 'error',
+                                    confirmButtonText: 'OK'
+                                })
+                                status = false;
+                            }
+                        }
+
                         break;
                     case 3:
                         let profileData = []
+
                         status = true;
+
                         removeError($('#step3'));
+
                         for (let i = 1; i <= $('#ctrl_no_of_insured').value; i++) {
                             let address = ($(`#data_${i}_ctrl_province`).value).split('*');
-                            let dateResult = checkTaBirthDateIPass(i);
+                            let dateResult = checkTaBirthDate(i);
 
                             let valCheck = false;
                             valCheck = validatePolicyPayment($(`#data_${i}_fdNationalID`).value,data.fdPackage,$('#fdFromDate')?.value);
@@ -571,8 +446,8 @@ document.addEventListener("DOMContentLoaded", async () => {
                                 fdTitle: getRadioSelectedValue(`data_${i}_fdTitle`),
                                 fdName: $(`#data_${i}_fdName`).value,
                                 fdSurname: $(`#data_${i}_fdSurname`).value,
+                                ctrl_document_type: $(`#data_${i}_ctrl_document_type`).value,
                                 fdNationalID: $(`#data_${i}_fdNationalID`).value,
-                                fdNationality: $(`#data_${i}_fdNationality`).value,
                                 fdHBD: dateResult?.data?.fdHBD || "",
                                 fdAge: dateResult?.data?.fdAge || "",
                                 fdEmail: $(`#data_${i}_fdEmail`).value,
@@ -588,7 +463,6 @@ document.addEventListener("DOMContentLoaded", async () => {
                                 fdRelation: $(`#data_${i}_fdRelation`).value,
                             };
 
-                            // console.log(currentProfile);
                             profileData.push(currentProfile);
 
                             result = validate(currentProfile, profileConstraints);
@@ -604,25 +478,20 @@ document.addEventListener("DOMContentLoaded", async () => {
                             }
                         }
 
-                        // console.log('data.fdPackage : ' + data.fdPackage);
-                        // console.log('sub_code : ' + $('#sub_code').value);
-
                         data = {
                             ...data,
-                            fdPayAMT: package_data[data.fdPackage].price[$('#sub_code').value].price,
+                            fdPayAMT: getSelectedPrice(data.fdPackage, package_data),
                             fdSendType: getRadioSelectedValue('fdSendType'),
                             ctrl_terms: $('#ctrl_terms').checked ? true : undefined,
                             ctrl_accept_insurance_term: $('#ctrl_accept_insurance_term').checked ? true : undefined,
-                            fdDay: $('#days').value,
                             profile: profileData
                         }
+
                         data = {
                             ...data,
                             fdMarketing_Consent: $('#ctrl_marketing').checked ? true : undefined
                         }
-                        // fdPayAMT: getSelectedPrice(data.fdPackage, package_data),
 
-                        console.log('fdPayAMT : ' + data.fdPayAMT);
                         result = validate(data, step3Constraints);
 
                         if (result) {
@@ -637,15 +506,12 @@ document.addEventListener("DOMContentLoaded", async () => {
 
                         const selectedPackage = $('#step3 .form-head').innerHTML;
 
-                        let fromDate = format(parseISO(data.fdFromDate), 'dd/MM/') + (locale === 'th' ? (parseInt(format(parseISO(data.fdFromDate), 'yyyy')) + 543) : format(parseISO(data.fdFromDate), 'yyyy'))
-                        let toDate = format(parseISO(data.fdToDate), 'dd/MM/') + (locale === 'th' ? (parseInt(format(parseISO(data.fdToDate), 'yyyy')) + 543) : format(parseISO(data.fdToDate), 'yyyy'))
+                        fromDate = format(parseISO(data.fdFromDate), 'dd/MM/') + (locale === 'th' ? (parseInt(format(parseISO(data.fdFromDate), 'yyyy')) + 543) : format(parseISO(data.fdFromDate), 'yyyy'))
+                        toDate = format(parseISO(data.fdToDate), 'dd/MM/') + (locale === 'th' ? (parseInt(format(parseISO(data.fdToDate), 'yyyy')) + 543) : format(parseISO(data.fdToDate), 'yyyy'))
 
                         const $destFrom = $('#fdDestFrom');
                         const $destTo = $('#fdDestTo');
-                        // const $ctrl_sub_package = $('#ctrl_sub_package');
-
                         const $summary_section = $('#summary_section');
-
 
                         let sb = `<h3 class="text-primary">${$summary_section.getAttribute('data-insurance_data')}</h3><br/>
                         <div class="two-col">
@@ -655,7 +521,6 @@ document.addEventListener("DOMContentLoaded", async () => {
                             <div><span>${$('label[for=fdDestTo]').innerText} : </span><strong>${$destTo.options[$destTo.selectedIndex].text}</strong></div>
                             <div><span>${$('label[for=fdFromDate]').innerText} : </span><strong>${fromDate}</strong></div>
                             <div><span>${$('label[for=fdToDate]').innerText} : </span><strong>${toDate}</strong></div>
-                            <div><span>${$summary_section.getAttribute('data-day-wording')} : </span><strong>${data.fdDay} ${$summary_section.getAttribute('data-day')} </strong></div>
                             <div><span>${$summary_section.getAttribute('data-price-perperson')} : </span><strong>${parseFloat(data.fdPayAMT).toLocaleString()} ${$summary_section.getAttribute('data-baht')}</strong></div>
                             <div><span>${$summary_section.getAttribute('data-total-price')} : </span><strong>${parseFloat(data.fdPayAMT * data.profile.length).toLocaleString()} ${$summary_section.getAttribute('data-baht')}</strong></div>
 
@@ -681,7 +546,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
                         sb += `<input type="hidden" name="send_data" value='${JSON.stringify(data)}'>`;
 
-                        $('#summary_section').innerHTML = sb;
+                        $summary_section.innerHTML = sb;
                         status = true;
 
                         break;
@@ -695,4 +560,3 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     })
 });
-
