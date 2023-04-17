@@ -3,15 +3,15 @@ import {
     B2BTADCheckBirthDate,
     formatTelNumber,
     getPackageData,
-    getProvinceData,
+    getProvinceDataWithOutPrefix,
     showMultipleTitle, validatePolicy, validatePolicyPayment
 } from "../form/productHelper";
-import {$, $$, current_package, getRadioSelectedValue, getZipcodeData, locale, scrollToTargetAdjusted} from "../helper";
+import { $, $$, current_package, getRadioSelectedValue, getZipcodeData, locale, scrollToTargetAdjusted } from "../helper";
 
-import {removeError, showError, showFieldError, validateField,validateAcceptStep1,showAcceptError} from "../validate_form";
+import { removeError, showError, showFieldError, validateField, validateAcceptStep1, showAcceptError } from "../validate_form";
 import Swal from "sweetalert2";
 import validate from "validate.js";
-import {addDays, addYears, differenceInDays, format, parseISO, subDays} from "date-fns";
+import { addDays, differenceInDays, format, parseISO } from "date-fns";
 import intlTelInput from "intl-tel-input";
 
 require('../main');
@@ -128,7 +128,7 @@ const profileConstraints = {
                 idcard: {
                     message: "^" + $('#data_1_fdNationalID').getAttribute('data-error-idcard')
                 }
-            }
+            };
         } else {
             return {
                 presence: {
@@ -322,7 +322,7 @@ const genPrice = (package_data, fdFromDate, fdToDate) => {
 document.addEventListener("DOMContentLoaded", async () => {
 
     const package_data = await getPackageData(current_package);
-    const provinceData = await getProvinceData();
+    const provinceData = await getProvinceDataWithOutPrefix();
     const zipcode_data = await getZipcodeData();
 
     let Keys = "";

@@ -1,6 +1,6 @@
-import {$, $$, calculateAge, current_package, fadeIn, fadeOut, locale, scrollToTargetAdjusted} from "../helper";
-import {isValid, parseISO} from "date-fns";
-import {showDateError, showFieldError} from "../validate_form";
+import { $, $$, calculateAge, current_package, fadeIn, fadeOut, locale, scrollToTargetAdjusted } from "../helper";
+import { isValid, parseISO } from "date-fns";
+import { showDateError } from "../validate_form";
 import Swal from "sweetalert2";
 
 export const getPackageData = async (currentPackage,channel) => {
@@ -20,6 +20,11 @@ export const getNationalityDataTH = async () => {
 
 export const getProvinceData = async () => {
     let res = await fetch(`/storage/json/province.json`);
+    return await res.json();
+}
+
+export const getProvinceDataWithOutPrefix = async () => {
+    let res = await fetch(`/storage/json/provincenotprefix.json`);
     return await res.json();
 }
 
@@ -747,13 +752,13 @@ export const formatInputFieldByLanguage = () => {
             pattern: /^[a-zA-Z0-9 \-_!@#$&()\\-`.+,/\"\n\r]*$/,
             flags: "i",
             message: "^Only English Allowed"
-        }
+        };
     } else {
         return {
             pattern: /^[ก-๙0-9 \-_!@#$&()\\-`.+,/\"\n\r]*$/,
             flags: "i",
             message: "^กรุณาใส่ภาษาไทยเท่านั้น"
-        }
+        };
     }
 
 }
@@ -767,7 +772,7 @@ export const formatInputFieldOnlyEnglish = () => {
         pattern: /^[a-zA-Z0-9 \-_!@#$&()\\-`.+,/\"\n\r]*$/,
         flags: "i",
         message: message
-    }
+    };
 }
 
 
