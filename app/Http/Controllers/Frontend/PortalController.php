@@ -75,7 +75,19 @@ class PortalController extends ProductController
             if ($apiResult["user_nopayment"] == 'Y') {
                 $nopayment_status = true;
             }
-            if($agentCode=="11AB001T88"){
+            if($agentCode=="11AB001T88" ||
+               $agentCode=="11AB002T88" ||
+               $agentCode=="11AB003T88" ||
+               $agentCode=="11AB004T88" ||
+               $agentCode=="11AB005T88" ||
+               $agentCode=="11AB006T88" ||
+               $agentCode=="11AB007T88" ||
+               $agentCode=="11AB008T88" ||
+               $agentCode=="11AB009T88" ||
+               $agentCode=="16AB001T88" ||
+               $agentCode=="11AB011T88" ||
+               $agentCode=="11AB012T88" )
+            {
                 $b2bpayment_status = true;
             }
         }
@@ -132,7 +144,19 @@ class PortalController extends ProductController
             if ($apiResult["user_nopayment"] == 'Y') {
                 $nopayment_status = true;
             }
-            if($agentCode=="11AB001T88"){
+            if($agentCode=="11AB001T88" ||
+               $agentCode=="11AB002T88" ||
+               $agentCode=="11AB003T88" ||
+               $agentCode=="11AB004T88" ||
+               $agentCode=="11AB005T88" ||
+               $agentCode=="11AB006T88" ||
+               $agentCode=="11AB007T88" ||
+               $agentCode=="11AB008T88" ||
+               $agentCode=="11AB009T88" ||
+               $agentCode=="16AB001T88" ||
+               $agentCode=="11AB011T88" ||
+               $agentCode=="11AB012T88" )
+            {
                 $b2bpayment_status = true;
             }
         }
