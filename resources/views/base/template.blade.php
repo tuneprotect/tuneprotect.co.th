@@ -23,6 +23,8 @@
 
 
     <meta name="facebook-domain-verification" content="pa4vdurvww8ktkzh7xbm2tyrc7iwzv" />
+    <meta name='facebook-domain-verification' content='4ojuebt1n4u0c2808tn6hhc3vi6e75' />
+    
     @if(isset($template[TemplateHelper::META] ))
         @foreach ($template[TemplateHelper::META] as $v)
             <meta <?php echo TemplateHelper::genAttribute($v) ?>/>
