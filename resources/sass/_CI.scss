@@ -524,10 +524,6 @@ main[data-package="CI"] {
                     margin: 10px 0;
                     width: 100%;
                 }
-                header nav ul.main div.sub #imgnew {
-                    width: 10% !important;
-                    display: block;
-                }
 
                 img {
                     width: 100%;
@@ -1209,6 +1205,11 @@ main[data-package="CI"],[data-package="ONTAOB"] {
                 @media all and (max-width: $md) {
                     margin: 10px 0;
                     width: 100%;
+                }
+
+                header nav ul.main div.sub #imgnew {
+                    width: 10% !important;
+                    display: block;
                 }
 
                 img {
