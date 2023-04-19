@@ -1205,11 +1205,6 @@ main[data-package="CI"],[data-package="ONTAOB"] {
                 @media all and (max-width: $md) {
                     margin: 10px 0;
                     width: 100%;
-
-                    header nav ul.main div.sub #imgnew {
-                        width: 10% !important;
-                        display: block;
-                    }
                 }
 
                 img {
@@ -1458,4 +1453,15 @@ main[data-package="CI"],[data-package="ONTAOB"] {
         text-align: center;
     }
 
+}
+
+@media all and (max-width: 768px) {
+    main[data-package=CI] .service_flexi .service_flexi_box .inner {
+        margin: 10px 0;
+        width: 100%;
+    }
+    header nav ul.main div.sub #imgnew {
+        width: 10% !important;
+        display: block;
+    }
 }
