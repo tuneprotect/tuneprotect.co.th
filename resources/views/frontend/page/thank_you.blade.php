@@ -15,7 +15,7 @@
                 <img src='https://pubads.g.doubleclick.net/activity;xsp=4899901;qty=1;cost=[revenue];ord=[order id]?' width=1 height=1 border=0>
             </noscript>
         @endif
-        @if($portalKey === 'JGVM66EX9GRM6LA3D8ARBLUX6EUXNTARD8UXN4U228UVN4RR22')
+        @if($portalKey === 'JQXWAMUX9JDXNGDRD8QU6TKWBJ5Q7GDR26UBNGFRBTWRXHDF3UMNX')
             <script>
                 var __atw = __atw || [];
                 __atw.push({
