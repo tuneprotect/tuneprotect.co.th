@@ -83,7 +83,7 @@ class ProductController extends BaseController
             return redirect()->route('current', ['locale' => $this->locale, 'controller' => $this->controller, 'func' => $link, 'params' => $selected]);
         }
 
-        if (in_array($selected, ['TAIPCRN', 'TAIPOCT22', 'TAIPOCT22AA', 'ONTALN','ONCOVIDL', 'ONTA', 'TGCVLP', 'TAISM', 'ONTGISM', 'TAISMTG', 'ONTAISMB2B']) && $this->locale === 'th') {
+        if (in_array($selected, ['TAIPCRN', 'TAIPOCT22', 'TAIPOCT22AA', 'ONTALN','ONCOVIDL', 'ONTA', 'TGCVLP', 'TAISM', 'TAISMC', 'ONTGISM', 'TAISMTG', 'ONTAISMB2B']) && $this->locale === 'th') {
             return redirect()->route('current', ['locale' => 'en', 'controller' => $this->controller, 'func' => $link, 'params' => $selected]);
         }
 
@@ -116,7 +116,7 @@ class ProductController extends BaseController
             return redirect("/" . $this->locale);
         }
 
-        if (in_array($selected, ['ONTALN','TAIPCRN', 'TAIPOCT22', 'TAIPOCT22AA', 'ONCOVIDL', 'ONTA', 'TGCVLP', 'TAISM', 'ONTAISMB2B', 'ONTGISM', 'TAISMTG']) && $this->locale === 'th') {
+        if (in_array($selected, ['ONTALN','TAIPCRN', 'TAIPOCT22', 'TAIPOCT22AA', 'ONCOVIDL', 'ONTA', 'TGCVLP', 'TAISM', 'TAISMC', 'ONTAISMB2B', 'ONTGISM', 'TAISMTG']) && $this->locale === 'th') {
             return redirect()->route('current', ['locale' => 'en', 'controller' => $this->controller, 'func' => $link, 'params' => $selected]);
         }
 
@@ -395,6 +395,9 @@ class ProductController extends BaseController
         } elseif (substr($data['fdPackage'], 0, 5) === 'TAISM' || substr($data['fdPackage'], 0, 10) === 'ONTAISMB2B') {
             $obj = new ONTALNObject();
             $obj->fdFlgInbound = "I";
+        } elseif (substr($data['fdPackage'], 0, 6) === 'TAISMC') {
+            $obj = new ONTALNObject();
+            $obj->fdFlgInbound = "I";
         } elseif (substr($data['fdPackage'], 0, 6) === 'ONTAOB') {
             $obj = new BaseTAObject();
             $obj->fdDestFrom = "THA";
@@ -575,6 +578,7 @@ class ProductController extends BaseController
             || substr($data['fdPackage'], 0, 7) === 'ONTGISM'
             || substr($data['fdPackage'], 0, 7) === 'TAISMTG'
             || substr($data['fdPackage'], 0, 5) === 'TAISM'
+            || substr($data['fdPackage'], 0, 6) === 'TAISMC'
             || substr($data['fdPackage'], 0, 10) === 'ONTAISMB2B'
         ) {
             $obj->fdlanguage = 1;
@@ -978,6 +982,9 @@ class ProductController extends BaseController
         } elseif (substr($package, 0, 5) === 'TAISM') {
             $this->thankYouParam = substr($package, 0, 5);
             $link = "IssuePolicyiSmile";
+        } elseif (substr($package, 0, 6) === 'TAISMC') {
+            $this->thankYouParam = substr($package, 0, 5);
+            $link = "IssuePolicyiSmile";
         } elseif (substr($package, 0, 10) === 'ONTAISMB2B') {
             $this->thankYouParam = substr($package, 0, 10);
             $link = "IssuePolicyiSmile";
@@ -1038,6 +1045,9 @@ class ProductController extends BaseController
             $this->thankYouParam =  ProjectEnum::DIABETES_URL;
             $link = ProjectEnum::ISSUE_POLICY_DIABETES;
         } elseif (substr($package, 0, 5) === 'TAISM') {
+            $this->thankYouParam =  ProjectEnum::ISMILE_URL;
+            $link = "IssuePolicyiSmile";
+        } elseif (substr($package, 0, 6) === 'TAISMC') {
             $this->thankYouParam =  ProjectEnum::ISMILE_URL;
             $link = "IssuePolicyiSmile";
         } elseif (substr($package, 0, 10) === 'ONTAISMB2B') {

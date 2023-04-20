@@ -642,6 +642,25 @@ return [
         "TAISM16" => "14. Golf equipment and hole-in-one",
         "TAISM17" => "<h6>12. Health2GO Online doctor consultation <em style='color: red'>Free 1 time*</em></h6> <img src='/images/my_health/logo-myhealth.png' style='height:60px'>"
     ],
+    "TAISMC" => [
+        "TAISMC01" => "1. Accidental Death",
+        "TAISMC02" => "1.1 Extreme sports; diving, parachute,",
+        "TAISMC03" => "2. ME (Accident, Sickness, Covid-19)",
+        "TAISMC04" => "2.1 Room & Board",
+        "TAISMC05" => "3. Emergency Evac Repat",
+        "TAISMC06" => "4. Repat of Mortal Remains",
+        "TAISMC07" => "5. Expenses of Visiting Patients",
+        "TAISMC08" => "6. Loss or Damage of Travel Documents",
+        "TAISMC09" => "7. Public Liability (DD 1,000 Baht)",
+        "TAISMC10" => "8. Trip Cancellation",
+        "TAISMC11" => "9. Trip Curtailment",
+        "TAISMC12" => "10. Travel Delay(Flat payment 4,000 Baht every 6 consecutive hours delay)",
+        "TAISMC13" => "11. Baggage Delay(Flat payment 4,000 Baht every 6 consecutive hours delay)",
+        "TAISMC14" => "12. Loss or Damage of Baggage or Personal Effects(Deductible 600 Baht)",
+        "TAISMC15" => "13. Rental vehicle excess",
+        "TAISMC16" => "14. Golf equipment and hole-in-one",
+        "TAISMC17" => "<h6>12. Health2GO Online doctor consultation <em style='color: red'>Free 1 time*</em></h6> <img src='/images/my_health/logo-myhealth.png' style='height:60px'>"
+    ],
     "cover_fire" => [
         "COV2" => "ทุกภัยรวมกันแล้วไม่เกิน 10,000 บาท/ปี",
         "COV3" => "300 บาท/วัน (ไม่เกิน 30 วัน)",
