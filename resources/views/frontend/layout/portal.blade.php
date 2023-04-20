@@ -5,7 +5,6 @@
     #taismtg-main {
         display: none;
     }
-  
 </style>
 {{-- <script src = "https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>--}}
 {{-- <meta name="csrf-token" content="{{ csrf_token() }}" />--}}
@@ -40,10 +39,10 @@
 </header>
 @else
 <header>
-  
+
 
     <!-- Tracking code for interspace -->
-    @if($selected==='ONTAOB' && !empty($portal_key) && $portal_key === 'JQXWAMUX9JDXNGDRD8QU6TKWBJ5Q7GDR26UBNGFRBTWRXHDF3UMNX')
+    @if(($selected === 'ONTAOB' || $selected === 'ONCSHC') && !empty($portal_key) && $portal_key === 'JQXWAMUX9JDXNGDRD8QU6TKWBJ5Q7GDR26UBNGFRBTWRXHDF3UMNX')
     <script>
         var timestamp = new Date().getTime();
         (function(d) {
@@ -111,7 +110,7 @@
         </div>
 
     </div>
-    @elseif($locale == 'en')        
+    @elseif($locale == 'en')
     @if(!empty($v->pic_en))
     @if($selected==='ONVACINA' || $selected === 'ONVSUREA')
     <picture>
@@ -129,28 +128,27 @@
         <img src="{{url(!empty($v->pic_mobile_en) ? url(str_replace('Banner_TA_D_EN', 'Banner_TAI_M', $v->pic_mobile_en)) : url(str_replace('Banner_TA_D_EN', 'Banner_TAI_M', $v->pic_en)) )}}" alt="{{$v->locales[$locale]->title}}">
     </picture>
     @elseif($selected==='ONCSHC')
-        @if(isset($partner))
-            @if(($partner==='Rabbit' || $partner==='rabbit' || $partner==='RABBIT') && $agentCode==='00BD114L266')
-                <picture class="bbb">
-                    <source media="(min-width:768px)" srcset="https://www.tuneprotect.co.th/storage/Banner/rabbit/Tune-Chillsure-03.webp">
-                    <img src="{{url(!empty($v->pic_mobile_en) ? "https://www.tuneprotect.co.th/storage/Banner/rabbit/Tune-Chillsure-03.webp" : "https://www.tuneprotect.co.th/storage/Banner/rabbit/Tune-Chillsure-04.webp" )}}" alt="{{$v->locales[$locale]->title}}">
-                </picture>
-                <script
-  src="https://code.jquery.com/jquery-3.6.4.slim.js" integrity="sha256-dWvV84T6BhzO4vG6gWhsWVKVoa4lVmLnpBOZh/CAHU4=" crossorigin="anonymous"></script>
-                <script>
-                    $().ready(function () {
-                        $("#brochure_rabbit_en").attr("href","https://www.tuneprotect.co.th/storage/product/brochure/ChillSure/Tune-Brochure-En_Rabbit Care.pdf");
-                    });
-                </script>
-            @else
-                <picture>
-                    <source media="(min-width:768px)" srcset="https://www.tuneprotect.co.th/storage/Banner/chillsure/Tune-Chillsure02.webp">
-                    <img src="{{url(!empty($v->pic_mobile_en) ? "https://www.tuneprotect.co.th/storage/Banner/chillsure/Tune-Chillsure04.webp" : "https://www.tuneprotect.co.th/storage/Banner/chillsure/Tune-Chillsure04.webp" )}}" alt="{{$v->locales[$locale]->title}}">
-                </picture>
-                
-            @endif   
-        @endif    
-       
+    @if(isset($partner))
+    @if(($partner==='Rabbit' || $partner==='rabbit' || $partner==='RABBIT') && $agentCode==='00BD114L266')
+    <picture class="bbb">
+        <source media="(min-width:768px)" srcset="https://www.tuneprotect.co.th/storage/Banner/rabbit/Tune-Chillsure-03.webp">
+        <img src="{{url(!empty($v->pic_mobile_en) ? "https://www.tuneprotect.co.th/storage/Banner/rabbit/Tune-Chillsure-03.webp" : "https://www.tuneprotect.co.th/storage/Banner/rabbit/Tune-Chillsure-04.webp" )}}" alt="{{$v->locales[$locale]->title}}">
+    </picture>
+    <script src="https://code.jquery.com/jquery-3.6.4.slim.js" integrity="sha256-dWvV84T6BhzO4vG6gWhsWVKVoa4lVmLnpBOZh/CAHU4=" crossorigin="anonymous"></script>
+    <script>
+        $().ready(function() {
+            $("#brochure_rabbit_en").attr("href", "https://www.tuneprotect.co.th/storage/product/brochure/ChillSure/Tune-Brochure-En_Rabbit Care.pdf");
+        });
+    </script>
+    @else
+    <picture>
+        <source media="(min-width:768px)" srcset="https://www.tuneprotect.co.th/storage/Banner/chillsure/Tune-Chillsure02.webp">
+        <img src="{{url(!empty($v->pic_mobile_en) ? "https://www.tuneprotect.co.th/storage/Banner/chillsure/Tune-Chillsure04.webp" : "https://www.tuneprotect.co.th/storage/Banner/chillsure/Tune-Chillsure04.webp" )}}" alt="{{$v->locales[$locale]->title}}">
+    </picture>
+
+    @endif
+    @endif
+
     @elseif($selected==='ONTADM')
     <picture>
         <source media="(min-width:768px)" srcset="/storage/Banner/Banner_TA_D_EN.jpg">
@@ -177,7 +175,7 @@
         <img src="{{url(!empty($v->pic_mobile_en) ? "/storage/Banner/Banner-PAChoice-Ena.jpg" : "/storage/Banner/Banner-PAChoice-Ena.jpg" )}}" alt="{{$v->locales[$locale]->title}}">
     </picture>
 
-    
+
     @elseif($selected==='ONB2BTAD')
     <picture>
         <source media="(min-width:768px)" srcset="/storage/Banner/b2b/TADomestic_PC_EN.jpg">
@@ -188,28 +186,28 @@
         <source media="(min-width:768px)" srcset="/storage/Banner/b2b/iSmile-Banner01.jpg">
         <img src="{{url(!empty($v->pic_mobile_en) ? "/storage/Banner/b2b/iSmile-Banner01.jpg" : "/storage/Banner/b2b/iSmile-Banner02.jpg" )}}" alt="{{$v->locales[$locale]->title}}">
     </picture>
-    
+
     @elseif(isset($partner))
     @if(($partner==='LUMA' || $partner==='Luma') && ($selected==='ONTALN' || $selected==='TAIPOCT22' || $selected==='TAIPOCT22AA'))
     <picture class="bbb">
         <source media="(min-width:768px)" srcset="/storage/Banner/Banner_Luma_D.jpg">
         <img src="{{url(!empty($v->pic_mobile_en) ? "/storage/Banner/Banner_Luma_D.jpg" : "/storage/Banner/Banner_Luma_M.jpg" )}}" alt="{{$v->locales[$locale]->title}}">
-    </picture>    
+    </picture>
     @elseif($agentCode==='00DM004D00' && $selected==='TAIPOCT22')
-        <picture class="aa">
-            <source media="(min-width:768px)" srcset="https://www.tuneprotect.co.th/storage/Banner/Tune%20iPass/dtacbanner.jpg">
-            <img src="{{url(!empty($v->pic_mobile_en) ? "https://www.tuneprotect.co.th/storage/Banner/Tune%20iPass/dtacbanner.jpg" : "https://www.tuneprotect.co.th/storage/Banner/Tune%20iPass/dtacbanner.jpg" )}}" alt="{{$v->locales[$locale]->title}}">
-        </picture>
+    <picture class="aa">
+        <source media="(min-width:768px)" srcset="https://www.tuneprotect.co.th/storage/Banner/Tune%20iPass/dtacbanner.jpg">
+        <img src="{{url(!empty($v->pic_mobile_en) ? "https://www.tuneprotect.co.th/storage/Banner/Tune%20iPass/dtacbanner.jpg" : "https://www.tuneprotect.co.th/storage/Banner/Tune%20iPass/dtacbanner.jpg" )}}" alt="{{$v->locales[$locale]->title}}">
+    </picture>
     @elseif($selected==='TAIPOCT22')
     <picture class="ccc">
         <source media="(min-width:768px)" srcset="/storage/Banner/Tune_iPass_Desktop.jpg">
         <img src="{{url(!empty($v->pic_mobile_en) ? "/storage/Banner/Tune_iPass_Desktop.jpg" : "/storage/Banner/Tune_iPass_Mobile.jpg" )}}" alt="{{$v->locales[$locale]->title}}">
-    </picture>    
+    </picture>
     @elseif($selected==='TAIPOCT22AA')
-        <picture>
-            <source media="(min-width:768px)" srcset="https://www.tuneprotect.co.th/storage/Banner/airasia/Banner-ipass02.webp">
-            <img src="{{url(!empty($v->pic_mobile_en) ? "https://www.tuneprotect.co.th/storage/Banner/airasia/Banner-ipass01.webp" : "https://www.tuneprotect.co.th/storage/Banner/airasia/Banner-ipass01.webp" )}}" alt="{{$v->locales[$locale]->title}}">
-        </picture>
+    <picture>
+        <source media="(min-width:768px)" srcset="https://www.tuneprotect.co.th/storage/Banner/airasia/Banner-ipass02.webp">
+        <img src="{{url(!empty($v->pic_mobile_en) ? "https://www.tuneprotect.co.th/storage/Banner/airasia/Banner-ipass01.webp" : "https://www.tuneprotect.co.th/storage/Banner/airasia/Banner-ipass01.webp" )}}" alt="{{$v->locales[$locale]->title}}">
+    </picture>
     @elseif($partner==='rabbit' && $selected==='ONTAOB')
     <picture>
         <source media="(min-width:768px)" srcset="/storage/Banner/Banner_TA_Rabbit_D_EN.jpg">
@@ -291,27 +289,26 @@
         <source media="(min-width:768px)" srcset="/storage/Banner/Banner_LumaCare_D.jpg">
         <img src="{{url(!empty($v->pic_mobile_en) ? "/storage/Banner/Banner_LumaCare_D.jpg" : "/storage/Banner/Banner_LumaCare_M.jpg" )}}" alt="{{$v->locales[$locale]->title}}">
     </picture>
-    @elseif($selected==='ONCSHC')           
-        @if(isset($partner))
-            @if(($partner==='Rabbit' || $partner==='rabbit' || $partner==='RABBIT') && $agentCode==='00BD114L266')
-                <picture class="bbb">
-                    <source media="(min-width:768px)" srcset="https://www.tuneprotect.co.th/storage/Banner/rabbit/Tune-Chillsure-01.webp">
-                    <img src="{{url(!empty($v->pic_mobile_en) ? "https://www.tuneprotect.co.th/storage/Banner/rabbit/Tune-Chillsure-01.webp" : "https://www.tuneprotect.co.th/storage/Banner/rabbit/Tune-Chillsure-02.webp" )}}" alt="{{$v->locales[$locale]->title}}">
-                </picture>
-                <script
-  src="https://code.jquery.com/jquery-3.6.4.slim.js" integrity="sha256-dWvV84T6BhzO4vG6gWhsWVKVoa4lVmLnpBOZh/CAHU4=" crossorigin="anonymous"></script>
-                <script>
-                    $().ready(function () {
-                        $("#brochure_rabbit_th").attr("href","https://www.tuneprotect.co.th/storage/product/brochure/ChillSure/Tune-Brochure-Th_Rabbit Care.pdf");
-                    });
-                </script>
-            @else
-                <picture>
-                    <source media="(min-width:768px)" srcset="https://www.tuneprotect.co.th/storage/Banner/chillsure/Tune-Chillsure01.webp">
-                    <img src="{{url(!empty($v->pic_mobile_en) ? "https://www.tuneprotect.co.th/storage/Banner/chillsure/Tune-Chillsure03.webp" : "https://www.tuneprotect.co.th/storage/Banner/chillsure/Tune-Chillsure03.webp" )}}" alt="{{$v->locales[$locale]->title}}">
-                </picture>               
-            @endif   
-        @endif    
+    @elseif($selected==='ONCSHC')
+    @if(isset($partner))
+    @if(($partner==='Rabbit' || $partner==='rabbit' || $partner==='RABBIT') && $agentCode==='00BD114L266')
+    <picture class="bbb">
+        <source media="(min-width:768px)" srcset="https://www.tuneprotect.co.th/storage/Banner/rabbit/Tune-Chillsure-01.webp">
+        <img src="{{url(!empty($v->pic_mobile_en) ? "https://www.tuneprotect.co.th/storage/Banner/rabbit/Tune-Chillsure-01.webp" : "https://www.tuneprotect.co.th/storage/Banner/rabbit/Tune-Chillsure-02.webp" )}}" alt="{{$v->locales[$locale]->title}}">
+    </picture>
+    <script src="https://code.jquery.com/jquery-3.6.4.slim.js" integrity="sha256-dWvV84T6BhzO4vG6gWhsWVKVoa4lVmLnpBOZh/CAHU4=" crossorigin="anonymous"></script>
+    <script>
+        $().ready(function() {
+            $("#brochure_rabbit_th").attr("href", "https://www.tuneprotect.co.th/storage/product/brochure/ChillSure/Tune-Brochure-Th_Rabbit Care.pdf");
+        });
+    </script>
+    @else
+    <picture>
+        <source media="(min-width:768px)" srcset="https://www.tuneprotect.co.th/storage/Banner/chillsure/Tune-Chillsure01.webp">
+        <img src="{{url(!empty($v->pic_mobile_en) ? "https://www.tuneprotect.co.th/storage/Banner/chillsure/Tune-Chillsure03.webp" : "https://www.tuneprotect.co.th/storage/Banner/chillsure/Tune-Chillsure03.webp" )}}" alt="{{$v->locales[$locale]->title}}">
+    </picture>
+    @endif
+    @endif
     @elseif($selected==='TAISMTG')
     <picture>
         <source media="(min-width:768px)" srcset="/storage/Banner/Banner_TAI_D.jpg">
@@ -337,7 +334,7 @@
         <source media="(min-width:768px)" srcset="/storage/Banner/Banner-PAChoice-THa.jpg">
         <img src="{{url(!empty($v->pic_mobile_en) ? "/storage/Banner/Banner-PAChoice-THa.jpg" : "/storage/Banner/Banner-PAChoice-THa.jpg" )}}" alt="{{$v->locales[$locale]->title}}">
     </picture>
-    
+
     @elseif($partner==='rabbit' && $selected==='ONTAOB')
     <picture>
         <source media="(min-width:768px)" srcset="/storage/Banner/Banner_TA_Rabbit_D_TH.jpg">
