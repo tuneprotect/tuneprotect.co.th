@@ -75,25 +75,10 @@ class PortalController extends ProductController
             if ($apiResult["user_nopayment"] == 'Y') {
                 $nopayment_status = true;
             }
-            if (in_array($agentCode, explode(',', config('payment.b2b_secret')))) {
+            
+            if (in_array($agentCode, explode(',', config('payment.b2b_agent_group')))) {
                 $b2bpayment_status = true;
             }
-            // if (
-            //     $agentCode == "11AB001T88" ||
-            //     $agentCode == "11AB002T88" ||
-            //     $agentCode == "11AB003T88" ||
-            //     $agentCode == "11AB004T88" ||
-            //     $agentCode == "11AB005T88" ||
-            //     $agentCode == "11AB006T88" ||
-            //     $agentCode == "11AB007T88" ||
-            //     $agentCode == "11AB008T88" ||
-            //     $agentCode == "11AB009T88" ||
-            //     $agentCode == "16AB001T88" ||
-            //     $agentCode == "11AB011T88" ||
-            //     $agentCode == "11AB012T88"
-            // ) {
-            //     $b2bpayment_status = true;
-            // }
         }
 
         $this->bodyData['partner'] = $partner;
@@ -148,8 +133,8 @@ class PortalController extends ProductController
             if ($apiResult["user_nopayment"] == 'Y') {
                 $nopayment_status = true;
             }
-
-            if (in_array($agentCode, explode(',', config('payment.b2b_secret')))) {
+            dd(explode(',', config('payment.b2b_agent_group')));
+            if (in_array($agentCode, explode(',', config('payment.b2b_agent_group')))) {
                 $b2bpayment_status = true;
             }
         }
