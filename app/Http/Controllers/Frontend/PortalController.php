@@ -86,7 +86,8 @@ class PortalController extends ProductController
                $agentCode=="11AB009T88" ||
                $agentCode=="16AB001T88" ||
                $agentCode=="11AB011T88" ||
-               $agentCode=="11AB012T88" )
+               $agentCode=="11AB012T88" ||
+               $agentCode=="11AB013T88" )
             {
                 $b2bpayment_status = true;
             }
@@ -155,7 +156,8 @@ class PortalController extends ProductController
                $agentCode=="11AB009T88" ||
                $agentCode=="16AB001T88" ||
                $agentCode=="11AB011T88" ||
-               $agentCode=="11AB012T88" )
+               $agentCode=="11AB012T88" ||
+               $agentCode=="11AB013T88" )
             {
                 $b2bpayment_status = true;
             }
