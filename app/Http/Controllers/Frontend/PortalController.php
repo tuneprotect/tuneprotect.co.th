@@ -133,7 +133,7 @@ class PortalController extends ProductController
             if ($apiResult["user_nopayment"] == 'Y') {
                 $nopayment_status = true;
             }
-            dd(explode(',', config('payment.b2b_agent_group')));
+            
             if (in_array($agentCode, explode(',', config('payment.b2b_agent_group')))) {
                 $b2bpayment_status = true;
             }
