@@ -243,7 +243,7 @@ const genPrice = (package_data, fdFromDate, fdToDate) => {
     let pack_code = $('#sub_code').value
     let planname = "";
     if(lang==="th"){
-        if(pack_code === "ONB2BTADRT"){
+        if(pack_code === "ONB2BTADRT_1"){
             $('#txtHead').innerHTML = "แบบไป-กลับ";
             planname = "ทูน โดเมสติก อีซี่ แบบไป-กลับ";
         }else{
@@ -251,7 +251,7 @@ const genPrice = (package_data, fdFromDate, fdToDate) => {
             planname = "ทูน โดเมสติก อีซี่ แบบเที่ยวเดียว";
         }
     }else{
-        if(pack_code === "ONB2BTADRT"){
+        if(pack_code === "ONB2BTADRT_1"){
             $('#txtHead').innerHTML = "Round Trip";
             planname = "Tune Domestic Easy Round Trip";
         }else{
@@ -445,17 +445,17 @@ document.addEventListener("DOMContentLoaded", async () => {
         let display_fdDestTo = 'block'
         let display_fdToDate = 'block'
 
-        $('#sub_code').value = "ONB2BTADRT";
+        $('#sub_code').value = "ONB2BTADRT_1";
 
         if (e.target.value === 'annual') {
             display_sub_package ='block';
             //display_fdDestTo  = "none";
             display_fdToDate  = "none";
-            $('#sub_code').value = "ONB2BTADOT";
+            $('#sub_code').value = "ONB2BTADOT_1";
         }
         else
         {            
-            $('#sub_code').value = "ONB2BTADRT";
+            $('#sub_code').value = "ONB2BTADRT_1";
             display_sub_package = "none";
             //display_fdDestTo  = 'block';
             display_fdToDate  = 'block';

@@ -23,13 +23,13 @@
                                    class="btn btn-block btn-outline btn-choose-plan {{$i == 1 ? 'on' : '' }}">
                                     <strong class="package-number">
                                         @if($locale == 'en')
-                                            @if($k=="ONB2BTADRT")
+                                            @if($k=="ONB2BTADRT_1")
                                                 Round Trip
                                             @else
                                                 One Way Trip
                                             @endif
                                         @else
-                                            @if($k=="ONB2BTADRT")
+                                            @if($k=="ONB2BTADRT_1")
                                                 แผนไป-กลับ
                                             @else
                                                 แผนเที่ยวเดียว
@@ -52,13 +52,13 @@
                     <th data-package="{{$k}}">
                        <strong class="package-number">
                         @if($locale == 'en')
-                            @if($k=="ONB2BTADRT")
+                            @if($k=="ONB2BTADRT_1")
                                 Round Trip
                             @else
                                 One Way Trip
                             @endif
                         @else
-                            @if($k=="ONB2BTADRT")
+                            @if($k=="ONB2BTADRT_1")
                                 แผนไป-กลับ
                             @else
                                 แผนเที่ยวเดียว
@@ -153,13 +153,13 @@
                        
                             <strong style="display: block" class="text-center">
                             @if($locale == 'en')
-                                @if($k=="ONB2BTADRT")
+                                @if($k=="ONB2BTADRT_1")
                                     Round Trip
                                 @else
                                     One Way Trip
                                 @endif
                             @else
-                                @if($k=="ONB2BTADRT")
+                                @if($k=="ONB2BTADRT_1")
                                     แผนไป-กลับ
                                 @else
                                     แผนเที่ยวเดียว
