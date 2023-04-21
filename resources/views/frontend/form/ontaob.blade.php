@@ -46,7 +46,7 @@
             <div class="two-col">
                 <div class="controls-wrapper">
                     <input id="fdFromDate" name="fdFromDate" type="text" class="flatpickr"
-                           data-mindate="{{date('Y-m-d',strtotime( "+1 days"))}}"
+                           data-mindate="{{date('Y-m-d',strtotime( "+0 days"))}}"
                            data-maxdate="{{date('Y-m-d',strtotime( "+8 months"))}}"
                            data-setmindatetoequal ="fdToDate"
                            data-setmaxdateto="fdToDate"
@@ -57,7 +57,7 @@
                 </div>
                 <div class="controls-wrapper">
                     <input id="fdToDate" name="fdToDate" type="text" class="flatpickr"
-                           data-mindate="{{date('Y-m-d',strtotime( "+1 days"))}}"
+                           data-mindate="{{date('Y-m-d',strtotime( "+0 days"))}}"
                            data-error="@lang('product.error.travel_end_date')"/>
                     <label for="fdToDate">@lang("product.return_date")</label>
                 </div>
