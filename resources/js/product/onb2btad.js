@@ -205,8 +205,8 @@ const profileConstraints = {
 
 
 const getSelectedPrice = (packageCode, package_data) => {
-    const code = packageCode.substring(0, 10);
-    const sub_code = packageCode.substring(10);
+    const code = packageCode.substring(0, 12);
+    const sub_code = packageCode.substring(12);
     return package_data[code].price["01"].price;
 }
 
