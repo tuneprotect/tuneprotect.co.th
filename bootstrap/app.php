@@ -50,10 +50,14 @@ $app->singleton(
 |-----------------------------------------------
 */
 
-if(isset($_SERVER['HTTP_HOST']) && !empty($_SERVER['HTTP_HOST'])){
+if (isset($_SERVER['HTTP_HOST']) && !empty($_SERVER['HTTP_HOST'])) {
     $domain = $_SERVER['HTTP_HOST'];
     if (isset($domain)) {
-        $dotenv = Dotenv\Dotenv::createImmutable(base_path(), '.env.'.$domain);
+        $dotenv = Dotenv\Dotenv::createImmutable(base_path(), '.env.' . $domain);
+        if ($domain === 'staging.webtest2.tuneinsurance.co.th') {
+            $dotenv = Dotenv\Dotenv::createImmutable(base_path(), '.env.staging.tuneprotect.co.th');
+        }
+
         try {
             $dotenv->load();
         } catch (InvalidPathException $e) {
