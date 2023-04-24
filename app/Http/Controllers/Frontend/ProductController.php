@@ -983,7 +983,7 @@ class ProductController extends BaseController
             $this->thankYouParam = substr($package, 0, 5);
             $link = "IssuePolicyiSmile";
         } elseif (substr($package, 0, 6) === 'TAISMC') {
-            $this->thankYouParam = substr($package, 0, 5);
+            $this->thankYouParam = substr($package, 0, 6);
             $link = "IssuePolicyiSmile";
         } elseif (substr($package, 0, 10) === 'ONTAISMB2B') {
             $this->thankYouParam = substr($package, 0, 10);
