@@ -45,7 +45,7 @@
                                                     <ul>
                                                         @foreach ($v1->productPackage as $v2)
                                                             <li>
-                                                            @if($v2->code === 'ONVACINA' || $v2->code === 'CVCARE'|| $v2->code === 'ONCOVIDMW' || $v2->code === 'TGCVLP' || $v2->code === 'TAISMTG' || $v2->code === 'ONTALN' || $v2->code === 'ONVSUREA' || $v2->code === 'ONB2BTA' || $v2->code === 'ONTAISMB2B' || $v2->code === 'ONB2BTAD' || $v2->code === 'PUMPPA' || $v2->code === 'TAIPCRN' || $v2->code === 'ONCSH' || $v2->code === 'TAIPOCT22AA')
+                                                            @if($v2->code === 'ONVACINA' || $v2->code === 'CVCARE'|| $v2->code === 'ONCOVIDMW' || $v2->code === 'TGCVLP' || $v2->code === 'TAISMTG' || $v2->code === 'ONTALN' || $v2->code === 'ONVSUREA' || $v2->code === 'ONB2BTA' || $v2->code === 'ONTAISMB2B' || $v2->code === 'ONB2BTAD' || $v2->code === 'PUMPPA' || $v2->code === 'TAIPCRN' || $v2->code === 'ONCSH' || $v2->code === 'TAIPOCT22AA' || $v2->code === 'TAISMC')
                                                             @else
                                                                     <a data-gtm="main-nav-product-{{$v1->friendly_url}}-{{$v2->code}}"
                                                                        href="{{route('current',['locale' => $locale,'controller' => 'product','func' => $v1->friendly_url,'params' => $v2->code ])}}">
