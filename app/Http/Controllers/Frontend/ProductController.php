@@ -677,6 +677,12 @@ class ProductController extends BaseController
             if (Str::contains($data['fdPackage'], ProjectEnum::ISMILE_URL)) {
                 $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::ISMILE_URL;
             }
+            if (Str::contains($data['fdPackage'], ProjectEnum::ONCSHC_URL)) {
+                $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::ONCSHC_URL;
+            }
+            if (Str::contains($data['fdPackage'], ProjectEnum::ONTAOB_URL)) {
+                $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::ONTAOB_URL;
+            }
 
             $obj = $this->combindObj(array_merge($data, (array)$data["profile"][0]));
             $result = $this->logData($obj);
@@ -917,8 +923,7 @@ class ProductController extends BaseController
         $arr_post['payment_option'] = $this->payment;
         $arr_post['ipp_interest_type'] = $this->ipp_interest_type;
         $arr_post['default_lang'] = $this->locale;
-        //        $arr_post['ipp_period_filter'] = 10;
-
+        //        $arr_post['ipp_period_filter'] = 10;        
         $params = join($arr_post);
         $arr_post['hash_value'] = hash_hmac('sha256', $params, config('payment.secret'), false);    //Compute hash value
 
