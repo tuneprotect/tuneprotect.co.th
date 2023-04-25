@@ -14,12 +14,26 @@
             <noscript>
                 <img src='https://pubads.g.doubleclick.net/activity;xsp=4899901;qty=1;cost=[revenue];ord=[order id]?' width=1 height=1 border=0>
             </noscript>
-        @endif
+        @endif        
+    @endif
+
+    @if(isset($portalKey))
+        
+        {{$mcn = ""}}
+        @switch(session()->get('thankyou_param'))
+            @case("ONCSHC")
+                @php $mcn = '024d7f84fff11dd7e8d9c510137a2381'; @endphp
+                @break
+            @case("ONTAOB")
+                @php $mcn = '4b0a59ddf11c58e7446c9df0da541a84'; @endphp
+                @break
+        @endswitch
+
         @if($portalKey === 'JQXWAMUX9JDXNGDRD8QU6TKWBJ5Q7GDR26UBNGFRBTWRXHDF3UMNX')
             <script>
                 var __atw = __atw || [];
                 __atw.push({
-                    "mcn": "4b0a59ddf11c58e7446c9df0da541a84",
+                    "mcn": '{{$mcn}}',
                     "param": {
                         "result_id": "2",
                         "identifier": '{{$doc_no}}', // Lead ID
