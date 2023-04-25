@@ -395,7 +395,7 @@ class ProductController extends BaseController
         } elseif (substr($data['fdPackage'], 0, 5) === 'TAISM' || substr($data['fdPackage'], 0, 10) === 'ONTAISMB2B') {
             $obj = new ONTALNObject();
             $obj->fdFlgInbound = "I";
-        } elseif (substr($data['fdPackage'], 0, 5) === 'TAISMC') {
+        } elseif (substr($data['fdPackage'], 0, 6) === 'TAISMC') {
             $obj = new ONTALNObject();
             $obj->fdFlgInbound = "I";
         } elseif (substr($data['fdPackage'], 0, 6) === 'ONTAOB') {
@@ -578,7 +578,7 @@ class ProductController extends BaseController
             || substr($data['fdPackage'], 0, 7) === 'ONTGISM'
             || substr($data['fdPackage'], 0, 7) === 'TAISMTG'
             || substr($data['fdPackage'], 0, 5) === 'TAISM'
-            || substr($data['fdPackage'], 0, 5) === 'TAISMC'
+            || substr($data['fdPackage'], 0, 6) === 'TAISMC'
             || substr($data['fdPackage'], 0, 10) === 'ONTAISMB2B'
         ) {
             $obj->fdlanguage = 1;
@@ -979,7 +979,7 @@ class ProductController extends BaseController
         } elseif (substr($package, 0, 5) === 'TAISM') {
             $this->thankYouParam = substr($package, 0, 5);
             $link = "IssuePolicyiSmile";
-        } elseif (substr($package, 0, 5) === 'TAISMC') {
+        } elseif (substr($package, 0, 6) === 'TAISMC') {
             $this->thankYouParam = substr($package, 0, 6);
             $link = "IssuePolicyiSmile";
         } elseif (substr($package, 0, 10) === 'ONTAISMB2B') {
@@ -1044,7 +1044,7 @@ class ProductController extends BaseController
         } elseif (substr($package, 0, 5) === 'TAISM') {
             $this->thankYouParam =  ProjectEnum::ISMILE_URL;
             $link = "IssuePolicyiSmile";
-        } elseif (substr($package, 0, 5) === 'TAISMC') {
+        } elseif (substr($package, 0, 6) === 'TAISMC') {
             $this->thankYouParam =  ProjectEnum::ISMILE_URL;
             $link = "IssuePolicyiSmile";
         } elseif (substr($package, 0, 10) === 'ONTAISMB2B') {
