@@ -96,6 +96,11 @@ class ProductController extends BaseController
             return $this->genView('frontend.page.redirect_chillsure');
             //return redirect()->route('current', ['locale' => $this->locale, 'controller' => $this->controller, 'func' => $link, 'params' => $selected]);
         }
+        if (in_array($selected, ['ONCSHAA'])) {
+            $selected = "ONCSHCAA";
+            return $this->genView('frontend.page.redirect_chillsure');
+            //return redirect()->route('current', ['locale' => $this->locale, 'controller' => $this->controller, 'func' => $link, 'params' => $selected]);
+        }
         $this->getProductDetail($link, $selected);
 
         if ($selected) {
@@ -439,6 +444,8 @@ class ProductController extends BaseController
         } elseif (substr($data['fdPackage'], 0, 6) === 'ONCSHC') {
             $obj = new BAOWANObject();
             //$obj = new ONCSHCObject();
+        } elseif (substr($data['fdPackage'], 0, 8) === 'ONCSHCAA') {
+            $obj = new BAOWANObject();
         } elseif (substr($data['fdPackage'], 0, 5) === 'ONCSH') {
             $obj = new BAOWANObject();
             //$obj = new ONCSHCObject();
@@ -509,6 +516,7 @@ class ProductController extends BaseController
             || substr($data['fdPackage'], 0, 7) === 'ONVSAFE'
             || substr($data['fdPackage'], 0, 8) === 'DIABETES'
             || substr($data['fdPackage'], 0, 6) === 'ONCSHC'
+            || substr($data['fdPackage'], 0, 8) === 'ONCSHCAA'
         ) {
 
 
@@ -564,6 +572,9 @@ class ProductController extends BaseController
             }
             if (substr($data['fdPackage'], 0, 6) === 'ONCSHC') {
                 $package = (array)json_decode(Storage::disk('public')->get('json/oncshc.json'));
+            }
+            if (substr($data['fdPackage'], 0, 6) === 'ONCSHCAA') {
+                $package = (array)json_decode(Storage::disk('public')->get('json/oncshcaa.json'));
             }
             if (isset($package[$data['fdPackage']]->apiPackage)) {
                 $obj->fdApiPackage = $package[$data['fdPackage']]->apiPackage;
@@ -720,6 +731,9 @@ class ProductController extends BaseController
             }
             if (Str::contains($data['fdPackage'], ProjectEnum::ONCSHC_URL)) {
                 $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::ONCSHC_URL;
+            }
+            if (Str::contains($data['fdPackage'], ProjectEnum::ONCSHCAA_URL)) {
+                $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::ONCSHCAA_URL;
             }
             if (Str::contains($data['fdPackage'], ProjectEnum::ONTAOB_URL)) {
                 $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::ONTAOB_URL;
@@ -1059,6 +1073,10 @@ class ProductController extends BaseController
             $this->thankYouParam = ProjectEnum::ONCSHC_URL;
             $link = 'IssuePolicyChillSure';
             //$this->thankYouParam =  ProjectEnum::ONCSHC_URL;
+        } elseif (substr($package, 0, 8) === ProjectEnum::ONCSHCAA_URL) {
+            $this->thankYouParam = ProjectEnum::ONCSHCAA_URL;
+            $link = 'IssuePolicyChillSure';
+            //$this->thankYouParam =  ProjectEnum::ONCSHC_URL;
         }
         return $link;
     }
@@ -1121,6 +1139,9 @@ class ProductController extends BaseController
             $thank_you_page = ProjectEnum::STATIC_PAGE_PAYMENT_THANK_YOU_MYHOME_SMART;
         }
         if (Str::contains($request->getRequestUri(), ProjectEnum::ONCSHC_URL)) {
+            $thank_you_page = ProjectEnum::STATIC_PAGE_PAYMENT_THANK_YOU_CHILL_SURE;
+        }
+        if (Str::contains($request->getRequestUri(), ProjectEnum::ONCSHCAA_URL)) {
             $thank_you_page = ProjectEnum::STATIC_PAGE_PAYMENT_THANK_YOU_CHILL_SURE;
         }
         if (Str::contains($request->getRequestUri(), ProjectEnum::ONTAOB_URL)) {

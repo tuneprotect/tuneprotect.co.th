@@ -42,7 +42,7 @@
 
 
     <!-- Tracking code for interspace -->
-    @if(($selected === 'ONTAOB' || $selected === 'ONCSHC') && !empty($portal_key) && $portal_key === 'JQXWAMUX9JDXNGDRD8QU6TKWBJ5Q7GDR26UBNGFRBTWRXHDF3UMNX')
+    @if(($selected === 'ONTAOB' || $selected === 'ONCSHC' || $selected === 'ONCSHCAA') && !empty($portal_key) && $portal_key === 'JQXWAMUX9JDXNGDRD8QU6TKWBJ5Q7GDR26UBNGFRBTWRXHDF3UMNX')
     <script>
         var timestamp = new Date().getTime();
         (function(d) {
@@ -127,7 +127,7 @@
         <source media="(min-width:768px)" srcset="{{url(str_replace('Banner_TA_D_EN', 'Banner_TAI_D', $v->pic_en))}}">
         <img src="{{url(!empty($v->pic_mobile_en) ? url(str_replace('Banner_TA_D_EN', 'Banner_TAI_M', $v->pic_mobile_en)) : url(str_replace('Banner_TA_D_EN', 'Banner_TAI_M', $v->pic_en)) )}}" alt="{{$v->locales[$locale]->title}}">
     </picture>
-    @elseif($selected==='ONCSHC')
+    @elseif($selected==='ONCSHC' || $selected==='ONCSHCAA')
     @if(isset($partner))
     @if(($partner==='Rabbit' || $partner==='rabbit' || $partner==='RABBIT') && $agentCode==='00BD114L266')
     <picture class="bbb">
@@ -289,7 +289,7 @@
         <source media="(min-width:768px)" srcset="/storage/Banner/Banner_LumaCare_D.jpg">
         <img src="{{url(!empty($v->pic_mobile_en) ? "/storage/Banner/Banner_LumaCare_D.jpg" : "/storage/Banner/Banner_LumaCare_M.jpg" )}}" alt="{{$v->locales[$locale]->title}}">
     </picture>
-    @elseif($selected==='ONCSHC')
+    @elseif($selected==='ONCSHC' || $selected==='ONCSHCAA')
     @if(isset($partner))
     @if(($partner==='Rabbit' || $partner==='rabbit' || $partner==='RABBIT') && $agentCode==='00BD114L266')
     <picture class="bbb">

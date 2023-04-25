@@ -77,6 +77,7 @@ class ProjectEnum
     const ISMILE_URL = 'TAISM';
 	const MYHOME_SMART_URL = 'ONMHS';
     const ONCSHC_URL = 'ONCSHC';
+    const ONCSHCAA_URL = 'ONCSHCAA';
     const ONTAOB_URL = 'ONTAOB';
     
     const ISSUE_POLICY_DIABETES = 'IssuePolicyDiabetes';

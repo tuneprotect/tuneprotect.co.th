@@ -45,7 +45,7 @@
                                                     <ul>
                                                         @foreach ($v1->productPackage as $v2)
                                                             <li>
-                                                            @if($v2->code === 'ONVACINA' || $v2->code === 'CVCARE'|| $v2->code === 'ONCOVIDMW' || $v2->code === 'TGCVLP' || $v2->code === 'TAISMTG' || $v2->code === 'ONTALN' || $v2->code === 'ONVSUREA' || $v2->code === 'ONB2BTA' || $v2->code === 'ONTAISMB2B' || $v2->code === 'ONB2BTAD' || $v2->code === 'PUMPPA' || $v2->code === 'TAIPCRN' || $v2->code === 'ONCSH' || $v2->code === 'TAIPOCT22AA' || $v2->code === 'TAISMC')
+                                                            @if($v2->code === 'ONVACINA' || $v2->code === 'CVCARE'|| $v2->code === 'ONCOVIDMW' || $v2->code === 'TGCVLP' || $v2->code === 'TAISMTG' || $v2->code === 'ONTALN' || $v2->code === 'ONVSUREA' || $v2->code === 'ONB2BTA' || $v2->code === 'ONTAISMB2B' || $v2->code === 'ONB2BTAD' || $v2->code === 'PUMPPA' || $v2->code === 'TAIPCRN' || $v2->code === 'ONCSH' || $v2->code === 'TAIPOCT22AA' || $v2->code === 'TAISMC' || $v2->code === 'ONCSHCAA')
                                                             @else
                                                                     <a data-gtm="main-nav-product-{{$v1->friendly_url}}-{{$v2->code}}"
                                                                        href="{{route('current',['locale' => $locale,'controller' => 'product','func' => $v1->friendly_url,'params' => $v2->code ])}}">
@@ -241,7 +241,12 @@
                                         <picture>
                                             <source media="(min-width:768px)" srcset="https://www.tuneprotect.co.th/storage/Banner/chillsure/Tune-Chillsure02.webp">
                                             <img src="{{url(!empty($v->pic_mobile_en) ? "https://www.tuneprotect.co.th/storage/Banner/chillsure/Tune-Chillsure04.webp" : "https://www.tuneprotect.co.th/storage/Banner/chillsure/Tune-Chillsure04.webp" )}}" alt="{{$v->locales[$locale]->title}}">
-                                        </picture>  
+                                        </picture>
+                                    @elseif($selected==='ONCSHCAA')
+                                        <picture>
+                                            <source media="(min-width:768px)" srcset="https://www.tuneprotect.co.th/storage/Banner/chillsure/Tune-Chillsure02.webp">
+                                            <img src="{{url(!empty($v->pic_mobile_en) ? "https://www.tuneprotect.co.th/storage/Banner/chillsure/Tune-Chillsure04.webp" : "https://www.tuneprotect.co.th/storage/Banner/chillsure/Tune-Chillsure04.webp" )}}" alt="{{$v->locales[$locale]->title}}">
+                                        </picture> 
                                     @elseif($selected==='PUMPPA')
                                         <picture>
                                             <source media="(min-width:768px)"
@@ -362,6 +367,11 @@
                                                 alt="{{$v->locales[$locale]->title}}">
                                         </picture>
                                     @elseif($selected==='ONCSHC')
+                                        <picture>
+                                            <source media="(min-width:768px)" srcset="https://www.tuneprotect.co.th/storage/Banner/chillsure/Tune-Chillsure01.webp">
+                                            <img src="{{url(!empty($v->pic_mobile_en) ? "https://www.tuneprotect.co.th/storage/Banner/chillsure/Tune-Chillsure03.webp" : "https://www.tuneprotect.co.th/storage/Banner/chillsure/Tune-Chillsure03.webp" )}}" alt="{{$v->locales[$locale]->title}}">
+                                        </picture>
+                                    @elseif($selected==='ONCSHCAA')
                                         <picture>
                                             <source media="(min-width:768px)" srcset="https://www.tuneprotect.co.th/storage/Banner/chillsure/Tune-Chillsure01.webp">
                                             <img src="{{url(!empty($v->pic_mobile_en) ? "https://www.tuneprotect.co.th/storage/Banner/chillsure/Tune-Chillsure03.webp" : "https://www.tuneprotect.co.th/storage/Banner/chillsure/Tune-Chillsure03.webp" )}}" alt="{{$v->locales[$locale]->title}}">
