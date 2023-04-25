@@ -610,8 +610,6 @@ class ProductController extends BaseController
                 $package = (array)json_decode(Storage::disk('public')->get('json/taipcrn.json'));
                 $obj->fdApiPackage = $package[substr($data['fdPackage'], 0, 7)]->apiPackage;
             }
-            
-
             if (substr($data['fdPackage'], 0, 8) === 'ONCOVIDL') {
                 $package = (array)json_decode(Storage::disk('public')->get('json/oncovidl.json'));
                 $obj->fdApiPackage = $package[$data['fdPackage']]->apiPackage;
@@ -624,9 +622,12 @@ class ProductController extends BaseController
                 $package = (array)json_decode(Storage::disk('public')->get('json/ontgism.json'));
                 $obj->fdApiPackage = $package[$data['fdPackage']]->apiPackage;
             }
-
             if (substr($data['fdPackage'], 0, 7) === 'TAISMTG') {
                 $package = (array)json_decode(Storage::disk('public')->get('json/taismtg.json'));
+                $obj->fdApiPackage = $package[$data['fdPackage']]->apiPackage;
+            }
+            if (substr($data['fdPackage'], 0, 6) === 'TAISMC') {
+                $package = (array)json_decode(Storage::disk('public')->get('json/taismc.json'));
                 $obj->fdApiPackage = $package[$data['fdPackage']]->apiPackage;
             }
             if (isset($package[$data['fdPackage']]->apiPackage)) {
