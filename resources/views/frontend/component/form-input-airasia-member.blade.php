@@ -6,7 +6,7 @@
             <input type="hidden" id="hdfMemberStatus" />
             <input id="fdMemberID" type="text" name="fdMemberID" placeholder="@lang('product.member_id')" />
             <label for="fdMemberID">@lang("product.member_id")</label>
-            <cite>@lang("product.airasia_member_error")</cite>
+            <cite class="error_weight">@lang("product.airasia_member_error")</cite>
         </div>
         <div class="controls-wrapper"></div>
         <div class="controls-wrapper"></div>
