@@ -372,8 +372,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             const response = await res.json();
             const js = JSON.parse(response);
             $('#hdfmemberstatus').value = js.status;
-            dd(js.status);
-
+            console.log(js.status);
         } catch (err) {
             console.log("err", err);
             
