@@ -371,8 +371,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             });
             const response = await res.json();
             const js = JSON.parse(response);
-            //$('#hdfmemberstatus').value = js.status;
-            console.log("statusAPI :"+ js.status);
+
             return {status: js.status};
 
         } catch (err) {
@@ -572,7 +571,8 @@ document.addEventListener("DOMContentLoaded", async () => {
                             const chkAccept = validateAcceptStep1();
                             const validateBMIResult = validateBMI();
                             const validateAirAsiaMemberResult = validateAirAsiaMember();
-                            console.log('status: ' +validateAirAsiaMemberResult);
+
+                            console.log("status: "+validateAirAsiaMemberResult.status);
 
                             if(!chkAccept){
                                 showAcceptError($('#ctrl_accept_step1').getAttribute('data-error-insurance_term'));
