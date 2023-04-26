@@ -410,6 +410,10 @@ document.addEventListener("DOMContentLoaded", async () => {
         });
     })
 
+    $('#fdMemberID').addEventListener('change', (e) => {
+        validateAirAsiaMember();
+    });
+
     $$("input[name=fdSex]").forEach($el => {
         $el.addEventListener("change", function (e) {
             showTitle($el.value, data.fdAge)
