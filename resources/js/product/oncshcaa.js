@@ -386,7 +386,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     const validateAirAsiaMember = () => { 
         let memberStatus = (String($('#hdfMemberStatus').value).toLowerCase() === 'true');
         if(!memberStatus){
-            showValidateAirAsiaMemberError($('#fdMemberID').getAttribute('data-error-airasia-member-not-qualify'),'error_weight');
+            showValidateAirAsiaMemberError($('#ctrl_weight').getAttribute('data-error-airasia-member-not-qualify'),'error_weight');
         }      
         return {status: memberStatus}
     }
