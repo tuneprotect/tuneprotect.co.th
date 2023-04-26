@@ -632,7 +632,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                             break;
                         case 2:
 
-                            const fdPackage = $btn.getAttribute('data-package');
+                            const fdPackage = $btn.getAttribute('data-package').replace("AA", "");
 
                             $("#table-detail").setAttribute('data-package_plan', $btn.getAttribute('data-plan'));
 
