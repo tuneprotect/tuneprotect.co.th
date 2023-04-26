@@ -516,7 +516,7 @@ class ProductController extends BaseController
             || substr($data['fdPackage'], 0, 7) === 'ONVSAFE'
             || substr($data['fdPackage'], 0, 8) === 'DIABETES'
             || substr($data['fdPackage'], 0, 6) === 'ONCSHC'
-            //|| substr($data['fdPackage'], 0, 8) === 'ONCSHCAA'
+            || substr($data['fdPackage'], 0, 8) === 'ONCSHCAA'
         ) {
 
 
@@ -573,9 +573,9 @@ class ProductController extends BaseController
             if (substr($data['fdPackage'], 0, 6) === 'ONCSHC') {
                 $package = (array)json_decode(Storage::disk('public')->get('json/oncshc.json'));
             }
-            //if (substr($data['fdPackage'], 0, 8) === 'ONCSHCAA') {
-            //    $package = (array)json_decode(Storage::disk('public')->get('json/oncshcaa.json'));
-            //}
+            if (substr($data['fdPackage'], 0, 8) === 'ONCSHCAA') {
+                $package = (array)json_decode(Storage::disk('public')->get('json/oncshcaa.json'));
+            }
             if (isset($package[$data['fdPackage']]->apiPackage)) {
                 $obj->fdApiPackage = $package[$data['fdPackage']]->apiPackage;
             }

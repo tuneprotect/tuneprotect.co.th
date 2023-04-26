@@ -57,7 +57,7 @@
         @endif
     </form>
 </section>
-@include('frontend.component.form-chill-sure-table',['package_detail' => $package_detail,'selected' =>$selected ])
+@include('frontend.component.form-chill-sure-table',['package_detail' => $package_detail,'selected' =>substr($selected, 0, 6) ])
 
 <section style="display: none;" id="step3" class="wrapper">
     <h2>@lang('product.chillsure.question_title')</h2>
