@@ -1,6 +1,7 @@
 import {
     showBMIError,
     showBMIValidateError,
+    showValidateAirAsiaMemberError,
     showAcceptError,
     showFieldError,
     validateField,
@@ -382,8 +383,12 @@ document.addEventListener("DOMContentLoaded", async () => {
         return {status: member_status};
     }
 
-    const validateAirAsiaMember = () => {        
-        return {status: (String($('#hdfMemberStatus').value).toLowerCase() === 'true')}
+    const validateAirAsiaMember = () => { 
+        let memberStatus = (String($('#hdfMemberStatus').value).toLowerCase() === 'true');
+        if(!memberStatus){
+            showValidateAirAsiaMemberError($('#fdMemberID').getAttribute('data-error-airasia-member-not-qualify'),'error_weight');
+        }      
+        return {status: memberStatus}
     }
 
     const genPrice = () => {

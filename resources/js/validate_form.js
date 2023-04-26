@@ -97,6 +97,14 @@ export const showBMIValidateError = (message,selector) => {
     scrollToTargetAdjusted($('.controls-wrapper.error'));
 }
 
+export const showValidateAirAsiaMemberError = (message,selector) => {
+    $('.airasia-member-input cite.' + selector).innerHTML = message;
+    $$('.airasia-member-input .controls-wrapper').forEach(el => {
+        el.classList.add('error');
+    });
+    scrollToTargetAdjusted($('.controls-wrapper.error'));
+}
+
 export const showAcceptError = (message) => {
     $('cite.step1_error').innerHTML = message;
     scrollToTargetAdjusted($('.controls-wrapper.error'));
