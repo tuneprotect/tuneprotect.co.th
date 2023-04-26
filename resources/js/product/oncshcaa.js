@@ -371,7 +371,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             });
             const response = await res.json();
             const js = JSON.parse(response);
-            member_status = js.status;
+            member_status = String(js.status).toLowerCase() === 'true';
 
         } catch (err) {
             console.log("err", err);
