@@ -33,6 +33,7 @@
         <div class="form-inner">
             <h3>@lang('product.your-details')</h3>
             @include('frontend.component.form-date-input-calendar')
+            @include('frontend.component.form-input-airasia-member')
             @include('frontend.component.form-bmi-input')
             <div class="controls-wrapper full">
                 <input id="ctrl_accept_step1" name="ctrl_accept_insurance_term" type="checkbox"
