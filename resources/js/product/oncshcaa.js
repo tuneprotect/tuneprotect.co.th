@@ -355,7 +355,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
 
     const validateAirAsiaMember = async () => {        
-        
+        let member_status = false;
         const MemberID = {
             memberId : $('#fdMemberID').value
         }
@@ -371,8 +371,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             });
             const response = await res.json();
             const js = JSON.parse(response);
-
-            return {status: js.status};
+            member_status = js.status;
 
         } catch (err) {
             console.log("err", err);
@@ -380,7 +379,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             return {status: false};
         }
 
-        
+        return {status: member_status};
     }
 
     const genPrice = () => {
