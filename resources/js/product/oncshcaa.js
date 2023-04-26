@@ -359,7 +359,6 @@ document.addEventListener("DOMContentLoaded", async () => {
         const MemberID = {
             memberId : $('#fdMemberID').value
         }
-        console.log(MemberID);
         try {
             let res = await fetch(`/appApi/ApiConnect/chkAirAsiaMemberID`, {
                 method: 'post',
@@ -373,13 +372,15 @@ document.addEventListener("DOMContentLoaded", async () => {
             const response = await res.json();
             const js = JSON.parse(response);
             //$('#hdfmemberstatus').value = js.status;
-            console.log(js.status);
+
+            
+
         } catch (err) {
             console.log("err", err);
             
         }
 
-        //$form.classList.remove('ajax_loader');
+        return {status: js.status};
     }
 
     const genPrice = () => {
@@ -570,8 +571,8 @@ document.addEventListener("DOMContentLoaded", async () => {
                             const chkAccept = validateAcceptStep1();
                             const validateBMIResult = validateBMI();
                             const validateAirAsiaMemberResult = validateAirAsiaMember();
-                            console.log(validateAirAsiaMemberResult);
-                            
+                            console.log('status: ' +validateAirAsiaMemberResult);
+
                             if(!chkAccept){
                                 showAcceptError($('#ctrl_accept_step1').getAttribute('data-error-insurance_term'));
                                 status = false;
