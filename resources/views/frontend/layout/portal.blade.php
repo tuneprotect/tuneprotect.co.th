@@ -127,7 +127,7 @@
         <source media="(min-width:768px)" srcset="{{url(str_replace('Banner_TA_D_EN', 'Banner_TAI_D', $v->pic_en))}}">
         <img src="{{url(!empty($v->pic_mobile_en) ? url(str_replace('Banner_TA_D_EN', 'Banner_TAI_M', $v->pic_mobile_en)) : url(str_replace('Banner_TA_D_EN', 'Banner_TAI_M', $v->pic_en)) )}}" alt="{{$v->locales[$locale]->title}}">
     </picture>
-    @elseif($selected==='ONCSHC' || $selected==='ONCSHCAA')
+    @elseif($selected==='ONCSHC')
     @if(isset($partner))
     @if(($partner==='Rabbit' || $partner==='rabbit' || $partner==='RABBIT') && $agentCode==='00BD114L266')
     <picture class="bbb">
@@ -148,6 +148,12 @@
 
     @endif
     @endif
+
+    @elseif($selected==='ONCSHCAA')
+    <picture>
+        <source media="(min-width:768px)" srcset="https://www.tuneprotect.co.th/storage/Banner/chillsure/banner-chillsure-airasia-mobile-en.webp">
+        <img src="{{url(!empty($v->pic_mobile_en) ? "https://www.tuneprotect.co.th/storage/Banner/chillsure/banner-chillsure-airasia-desktop-en.webp" : "https://www.tuneprotect.co.th/storage/Banner/chillsure/banner-chillsure-airasia-mobile-en.webp" )}}" alt="{{$v->locales[$locale]->title}}">
+    </picture>
 
     @elseif($selected==='ONTADM')
     <picture>
@@ -289,7 +295,7 @@
         <source media="(min-width:768px)" srcset="/storage/Banner/Banner_LumaCare_D.jpg">
         <img src="{{url(!empty($v->pic_mobile_en) ? "/storage/Banner/Banner_LumaCare_D.jpg" : "/storage/Banner/Banner_LumaCare_M.jpg" )}}" alt="{{$v->locales[$locale]->title}}">
     </picture>
-    @elseif($selected==='ONCSHC' || $selected==='ONCSHCAA')
+    @elseif($selected==='ONCSHC')
     @if(isset($partner))
     @if(($partner==='Rabbit' || $partner==='rabbit' || $partner==='RABBIT') && $agentCode==='00BD114L266')
     <picture class="bbb">
@@ -309,6 +315,11 @@
     </picture>
     @endif
     @endif
+    @elseif($selected==='ONCSHCAA')
+    <picture>
+        <source media="(min-width:768px)" srcset="https://www.tuneprotect.co.th/storage/Banner/chillsure/banner-chillsure-airasia-desktop-th.webp">
+        <img src="{{url(!empty($v->pic_mobile_en) ? "https://www.tuneprotect.co.th/storage/Banner/chillsure/banner-chillsure-airasia-desktop-th.webp" : "https://www.tuneprotect.co.th/storage/Banner/chillsure/banner-chillsure-airasia-mobile-th.webp" )}}" alt="{{$v->locales[$locale]->title}}">
+    </picture>
     @elseif($selected==='TAISMTG')
     <picture>
         <source media="(min-width:768px)" srcset="/storage/Banner/Banner_TAI_D.jpg">
