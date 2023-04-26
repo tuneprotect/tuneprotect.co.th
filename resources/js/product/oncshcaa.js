@@ -354,7 +354,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         return {status: true};
     }
 
-    const validateAirAsiaMember = async () => {        
+    const validateAirAsiaMemberAPI = async () => {        
         let member_status = false;
         const MemberID = {
             memberId : $('#fdMemberID').value
@@ -371,7 +371,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             });
             const response = await res.json();
             const js = JSON.parse(response);
-            member_status = String(js.status).toLowerCase() === 'true';
+            $('#hdfMemberStatus').value = js.status;
 
         } catch (err) {
             console.log("err", err);
@@ -380,6 +380,10 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
 
         return {status: member_status};
+    }
+
+    const validateAirAsiaMember = () => {        
+        return {status: (String($('#hdfMemberStatus').value).toLowerCase() === 'true')}
     }
 
     const genPrice = () => {
@@ -412,7 +416,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     })
 
     $('#fdMemberID').addEventListener('change', (e) => {
-        validateAirAsiaMember();
+        validateAirAsiaMemberAPI();
     });
 
     $$("input[name=fdSex]").forEach($el => {
@@ -571,7 +575,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                             const validateBMIResult = validateBMI();
                             const validateAirAsiaMemberResult = validateAirAsiaMember();
 
-                            console.log("status: "+validateAirAsiaMemberResult.status);
+                            console.log("status: "+ validateAirAsiaMemberResult.status);
 
                             if(!chkAccept){
                                 showAcceptError($('#ctrl_accept_step1').getAttribute('data-error-insurance_term'));
