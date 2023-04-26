@@ -354,6 +354,34 @@ document.addEventListener("DOMContentLoaded", async () => {
         return {status: true};
     }
 
+    const validateAirAsiaMember = async () => {        
+        
+        const MemberID = {
+            memberId : $('#fdMemberID').value
+          }
+        try {
+            let res = await fetch(`/appApi/ApiConnect/chkAirAsiaMemberID`, {
+                method: 'post',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').getAttribute('content')
+                },
+                body: JSON.stringify(MemberID),
+            });
+            const response = await res.json();
+            const js = JSON.parse(response);
+            $('#hdfmemberstatus').value = js.status;
+            dd(js.status);
+
+        } catch (err) {
+            console.log("err", err);
+            
+        }
+
+        //$form.classList.remove('ajax_loader');
+    }
+
     const genPrice = () => {
         let pricelist;
         if (data.fdHBD) {
@@ -537,20 +565,22 @@ document.addEventListener("DOMContentLoaded", async () => {
                             const validateResult = validateAgeInPackage(package_data, false);
                             const chkAccept = validateAcceptStep1();
                             const validateBMIResult = validateBMI();
+                            const validateAirAsiaMemberResult = validateAirAsiaMember();
 
                             if(!chkAccept){
                                 showAcceptError($('#ctrl_accept_step1').getAttribute('data-error-insurance_term'));
                                 status = false;
                                 break;
                             }
-                            if (validateResult.status && validateBMIResult.status) {
+                            if (validateResult.status && validateBMIResult.status && validateAirAsiaMemberResult.status) {
                                 status = true;
                                 data = {
                                     ...data,
                                     ...validateResult.data,
                                     fdBMI_Weight: $('#ctrl_weight').value,
                                     fdBMI_Height: $("#ctrl_height").value,
-                                    fdBMI_Value: $("#ctrl_bmi_calculator").value
+                                    fdBMI_Value: $("#ctrl_bmi_calculator").value,
+                                    fdMemberID : $('#fdMemberID').value
                                 }
 
                                 genPrice();
