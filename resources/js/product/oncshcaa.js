@@ -373,14 +373,15 @@ document.addEventListener("DOMContentLoaded", async () => {
             const js = JSON.parse(response);
             //$('#hdfmemberstatus').value = js.status;
 
-            
+            return {status: js.status};
 
         } catch (err) {
             console.log("err", err);
             
+            return {status: false};
         }
 
-        return {status: js.status};
+        
     }
 
     const genPrice = () => {
