@@ -45,7 +45,8 @@
 </section>
 
 <script>
-    $('.btn-disable').click(function(){
-        $(this).prop('disabled', true);
+    var clickBtn = document.getElementsByClassName('btn-disable')[0];
+    clickBtn.addEventListener('click', function(event) {
+        clickBtn.disabled = true;
     });
 </script>
