@@ -52,5 +52,6 @@
     clickBtn.addEventListener('click', function(event) {
         btnSubmit.click();
         clickBtn.disabled = true;
+        clickBtn.style.backgroundColor = "#ccc";
     });
 </script>
