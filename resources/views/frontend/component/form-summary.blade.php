@@ -38,16 +38,19 @@
             @csrf
             <button data-gtm="product-{{strtolower($selected)}}-back-step-4" data-step="3"
                     class="btn btn-secondary btn-goto">@lang('product.edit')</button>
+            <button data-gtm="product-{{strtolower($selected)}}-make-payment" data-step="payment" type="button"
+                    class="btn btn-primary btn-disable-fake">@lang('product.proceed')</button>
             <button data-gtm="product-{{strtolower($selected)}}-make-payment" data-step="payment" type="submit"
-                    class="btn btn-primary btn-disable">@lang('product.proceed')</button>
+                    class="btn btn-primary btn-disable" style="display: none;">@lang('product.proceed')</button>
         </div>
     </form>
 </section>
 
 <script>
-    var clickBtn = document.getElementsByClassName('btn-disable')[0];
+    var clickBtn = document.getElementsByClassName('btn-disable-fake')[0];
+    var btnSubmit = document.getElementsByClassName('btn-disable')[0];
     clickBtn.addEventListener('click', function(event) {
-        //clickBtn.disabled = true;
-        alert(1);
+        btnSubmit.click();
+        clickBtn.disabled = true;
     });
 </script>
