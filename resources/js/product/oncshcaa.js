@@ -268,6 +268,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         ctrl_weight: "",
         ctrl_height: "",
         ctrl_bmi_calculator: "",
+        fdMember_ID: "",
         fdKeys: Keys,
         fdProductCode:"ONCSHCAA",
         fdAgent : "00DM004D00",//"00DM004D00",
