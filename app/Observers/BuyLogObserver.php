@@ -69,10 +69,10 @@ class BuyLogObserver
         }
         $data['RefCode'] = config('project.invoice_prefix') . $buyLog->RefCode;
 
-        if(!empty($data['fdMember_ID']))
-        {
-            $data['RefCode'] = $data['fdMember_ID'];
-        }
+        //if(!empty($data['fdMember_ID']))
+        //{
+        //    $data['RefCode'] = $data['fdMember_ID'];
+        //}
 
         $buyLog->data = $data;
 
