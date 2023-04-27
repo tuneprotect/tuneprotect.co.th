@@ -268,7 +268,6 @@ document.addEventListener("DOMContentLoaded", async () => {
         ctrl_weight: "",
         ctrl_height: "",
         ctrl_bmi_calculator: "",
-        fdMember_ID: "",
         fdKeys: Keys,
         fdProductCode:"ONCSHCAA",
         fdAgent : "00DM004D00",//"00DM004D00",
@@ -594,7 +593,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                                     fdBMI_Weight: $('#ctrl_weight').value,
                                     fdBMI_Height: $("#ctrl_height").value,
                                     fdBMI_Value: $("#ctrl_bmi_calculator").value,
-                                    fdMemberID : $('#fdMemberID').value
+                                    fdMember_ID : $('#fdMemberID').value
                                 }
 
                                 genPrice();
