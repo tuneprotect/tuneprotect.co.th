@@ -38,7 +38,7 @@
             @csrf
             <button data-gtm="product-{{strtolower($selected)}}-back-step-4" data-step="3"
                     class="btn btn-secondary btn-goto">@lang('product.edit')</button>
-            <button id="submit-payment" data-gtm="product-{{strtolower($selected)}}-make-payment" data-step="payment" type="submit"
+            <button data-gtm="product-{{strtolower($selected)}}-make-payment" data-step="payment" type="submit"
                     class="btn btn-primary btn-disable">@lang('product.proceed')</button>
         </div>
     </form>
@@ -47,6 +47,7 @@
 <script>
     var clickBtn = document.getElementsByClassName('btn-disable')[0];
     clickBtn.addEventListener('click', function(event) {
-        clickBtn.disabled = true;
+        //clickBtn.disabled = true;
+        alert(1);
     });
 </script>
