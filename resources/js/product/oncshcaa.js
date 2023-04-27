@@ -594,7 +594,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                                     fdBMI_Weight: $('#ctrl_weight').value,
                                     fdBMI_Height: $("#ctrl_height").value,
                                     fdBMI_Value: $("#ctrl_bmi_calculator").value,
-                                    fdMember_ID : $('#fdMemberID').value
+                                    fdMemberID : $('#fdMemberID').value
                                 }
 
                                 genPrice();
