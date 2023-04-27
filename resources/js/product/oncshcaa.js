@@ -714,7 +714,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                                 fdRelation: $('#fdRelation').value,
                                 fdRevenue: 'N',
                                 fdTaxno: '',
-                                fdPayAMT: getSelectedPrice(data.fdHBD, data.fdPackage, package_data),
+                                fdPayAMT: getSelectedPrice(data.fdHBD, data.fdPackage.replace("ONCSHC","ONCSHCAA"), package_data),
                                 ctrl_terms: $('#ctrl_terms').checked ? true : undefined,
                                 ctrl_accept_insurance_term: $('#ctrl_accept_insurance_term').checked ? true : undefined,
                                 ctrl_document_type: $('#ctrl_document_type').value,
