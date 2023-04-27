@@ -389,6 +389,7 @@ export const checkAge = (birthday, ageRange) => {
 }
 
 export const getSelectedPrice = (birthday, packageCode, package_data) => {
+    console.log(birthday, packageCode, package_data, package_data[packageCode]);
     const pack = Object.keys(package_data[packageCode].price).filter(ageRange => checkAge(birthday, ageRange))
     return package_data[packageCode].price[pack];
 }
