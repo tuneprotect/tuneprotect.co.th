@@ -98,7 +98,7 @@ export const showBMIValidateError = (message,selector) => {
 }
 
 export const showValidateAirAsiaMemberError = (message,selector) => {
-    $('.airasia-member-input cite.' + selector).innerHTML = message;
+    $('.airasia-member-input cite.bmi_error' + selector).innerHTML = message;
     $$('.airasia-member-input .controls-wrapper').forEach(el => {
         el.classList.add('error');
     });

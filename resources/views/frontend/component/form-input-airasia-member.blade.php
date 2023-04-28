@@ -5,9 +5,10 @@
         <div class="controls-wrapper">
             <input type="hidden" id="hdfMemberStatus" />
             <input id="fdMemberID" type="text" name="fdMemberID" placeholder="@lang('product.member_id')" 
-                   data-error-airasia-member-not-qualify="@lang('product.airasia_member_error')"/>
+                   data-error-airasia-member-not-qualify="@lang('product.airasia_member_error')"
+            />
             <label for="fdMemberID">@lang("product.member_id")</label>
-            <cite class="error_weight"></cite>
+            <cite class="bmi_error"></cite>
         </div>
         <div class="controls-wrapper"></div>
         <div class="controls-wrapper"></div>
