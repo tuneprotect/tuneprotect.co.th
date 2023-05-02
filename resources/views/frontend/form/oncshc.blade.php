@@ -196,8 +196,10 @@
             @csrf
             <button data-gtm="product-{{strtolower($selected)}}-back-step-5" data-step="4"
                     class="btn btn-secondary btn-goto">@lang('product.edit')</button>
+            <button data-gtm="product-{{strtolower($selected)}}-make-payment" data-step="payment" type="button"
+                    class="btn btn-primary btn-disable-fake">@lang('product.proceed')</button>
             <button data-gtm="product-{{strtolower($selected)}}-make-payment" data-step="payment" type="submit"
-                    class="btn btn-primary">@lang('product.proceed')</button>
+                    class="btn btn-primary btn-disable" style="display: none;">@lang('product.proceed')</button>
         </div>
     </form>
 </section>
@@ -212,4 +214,12 @@
         s.async = true;var e = d.getElementsByTagName('script')[0];
         e.parentNode.insertBefore(s, e);
     })(document);
+
+    var clickBtn = document.getElementsByClassName('btn-disable-fake')[0];
+    var btnSubmit = document.getElementsByClassName('btn-disable')[0];
+    clickBtn.addEventListener('click', function(event) {
+        btnSubmit.click();
+        clickBtn.disabled = true;
+        clickBtn.style.backgroundColor = "#ccc";
+    });
 </script>
