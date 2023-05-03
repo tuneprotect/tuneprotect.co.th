@@ -746,6 +746,9 @@ class ProductController extends BaseController
             if (Str::contains($data['fdPackage'], ProjectEnum::ONTAOB_URL)) {
                 $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::ONTAOB_URL;
             }
+            if (Str::contains($data['fdPackage'], ProjectEnum::ONPACA_URL)) {
+                $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::ONPACA_URL;
+            }
             $obj = $this->combindObj($data);
             $result = $this->logData($obj);
 

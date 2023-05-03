@@ -25,7 +25,7 @@ class ProjectEnum
 	const STATIC_PAGE_PAYMENT_THANK_YOU_MYHOME_SMART = 'static.page.payment_thank_you_myhome_smart';
     const STATIC_PAGE_PAYMENT_THANK_YOU_CHILL_SURE = 'static.page.payment_thank_you_chill_sure';
     const STATIC_PAGE_PAYMENT_THANK_YOU_ITRAVEL= 'static.page.payment_thank_you_itravel';
-    const STATIC_PAGE_PAYMENT_THANK_YOU_PA_CHOICE= 'static.page.payment_thank_you_pa_choice';
+    const STATIC_PAGE_PAYMENT_THANK_YOU_PA_CHOICE = 'static.page.payment_thank_you_pa_choice';
 
     const STATIC_PAGE_PAYMENT_ERROR = 'static.page.payment_error';
     const STATIC_PAGE_PAYMENT_CANCEL = 'static.page.payment_cancel';
