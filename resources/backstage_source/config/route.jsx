@@ -2148,6 +2148,7 @@ const static_content = {
         'payment_thank_you_ismile',
         'payment_thank_you_chill_sure',
         'payment_thank_you_itravel',
+        'payment_thank_you_pa_choice',
         'privacy',
         'service_center',
         'terms',

@@ -699,6 +699,9 @@ class ProductController extends BaseController
             if (Str::contains($data['fdPackage'], ProjectEnum::ONTAOB_URL)) {
                 $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::ONTAOB_URL;
             }
+            if (Str::contains($data['fdPackage'], ProjectEnum::ONPACA_URL)) {
+                $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::ONPACA_URL;
+            }
 
             $obj = $this->combindObj(array_merge($data, (array)$data["profile"][0]));
             $result = $this->logData($obj);
@@ -1151,6 +1154,9 @@ class ProductController extends BaseController
         }
         if (Str::contains($request->getRequestUri(), ProjectEnum::ONTAOB_URL)) {
             $thank_you_page = ProjectEnum::STATIC_PAGE_PAYMENT_THANK_YOU_ITRAVEL;
+        }
+        if (Str::contains($request->getRequestUri(), ProjectEnum::ONPACA_URL)) {
+            $thank_you_page = ProjectEnum::STATIC_PAGE_PAYMENT_THANK_YOU_PA_CHOICE;
         }
         return $this->genStatusPage($thank_you_page);
     }
