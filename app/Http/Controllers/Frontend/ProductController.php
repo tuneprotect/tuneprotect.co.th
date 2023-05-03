@@ -361,6 +361,7 @@ class ProductController extends BaseController
     {
         if (substr($data['fdPackage'], 0, 4) === 'ONPA') {
             $obj = new PAObject();
+            $obj->fdPaymentType = 1;
         } elseif (substr($data['fdPackage'], 0, 6) === 'PUMPPA') {
             $obj = new PAObject();
         } elseif (substr($data['fdPackage'], 0, 6) === 'CVISAFE') {
@@ -449,9 +450,6 @@ class ProductController extends BaseController
         } elseif (substr($data['fdPackage'], 0, 5) === 'ONCSH') {
             $obj = new BAOWANObject();
             //$obj = new ONCSHCObject();
-        }elseif (substr($data['fdPackage'], 0, 5) === 'ONPAC') {
-            $obj = new BaseInsuranceObject();
-            $obj->fdPaymentType = 1;
         } else {
             $obj = new BaseInsuranceObject();
         }
@@ -643,6 +641,10 @@ class ProductController extends BaseController
             if (isset($package[$data['fdPackage']]->apiPackage)) {
                 $obj->fdApiPackage = $package[$data['fdPackage']]->apiPackage;
             }
+        }
+
+        if (session('nopayment_status')) {
+            $obj->fdPaymentType = null;
         }
 
         //       dd($obj);
