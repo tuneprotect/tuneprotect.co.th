@@ -497,6 +497,13 @@ class ProductController extends BaseController
                         $obj->$k = date('d/m/Y', strtotime($data[$k]));
                     }
                     break;
+                case "fdPaymentType":
+                    if (!empty($data[$k])) {
+                        if (substr($data['fdPackage'], 0, 5) === 'ONPAC') {
+                            $obj->$k = 1;
+                        }
+                    }
+                    break;
                 default:
                     $obj->$k = isset($data[$k]) ? $data[$k] : $obj->$k;
                     break;
@@ -680,6 +687,8 @@ class ProductController extends BaseController
             session(['nopayment_status' => true]);
             session(['b2bpayment_status' => false]);
         }
+
+        dd($request);
 
         $data = $request->all();
         if (isset($data['send_data'])) {
