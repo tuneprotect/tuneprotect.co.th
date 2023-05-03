@@ -731,6 +731,9 @@ class ProductController extends BaseController
             return $this->sendTo2C2P($result, $price, $log_id);
         } else {
 
+            if (Str::contains($data['fdPackage'], ProjectEnum::ISMILE_URL)) {
+                $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::ISMILE_URL;
+            }
             if (Str::contains($data['fdPackage'], ProjectEnum::DIABETES_URL)) {
                 $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::DIABETES_URL;
             }
