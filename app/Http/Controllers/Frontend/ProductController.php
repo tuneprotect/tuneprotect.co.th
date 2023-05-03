@@ -449,6 +449,9 @@ class ProductController extends BaseController
         } elseif (substr($data['fdPackage'], 0, 5) === 'ONCSH') {
             $obj = new BAOWANObject();
             //$obj = new ONCSHCObject();
+        }elseif (substr($data['fdPackage'], 0, 5) === 'ONPAC') {
+            $obj = new BaseInsuranceObject();
+            $obj->fdPaymentType = 1;
         } else {
             $obj = new BaseInsuranceObject();
         }
@@ -495,13 +498,6 @@ class ProductController extends BaseController
                         $obj->$k = $dt->format('d/m/Y');
                     } elseif (!empty($data[$k])) {
                         $obj->$k = date('d/m/Y', strtotime($data[$k]));
-                    }
-                    break;
-                case "fdPaymentType":
-                    if (!empty($data[$k])) {
-                        if (substr($data['fdPackage'], 0, 5) === 'ONPAC') {
-                            $obj->$k = 1;
-                        }
                     }
                     break;
                 default:
