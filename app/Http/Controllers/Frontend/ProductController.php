@@ -693,6 +693,9 @@ class ProductController extends BaseController
             if (Str::contains($data['fdPackage'], ProjectEnum::ISMILE_URL)) {
                 $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::ISMILE_URL;
             }
+            if (Str::contains($data['fdPackage'], ProjectEnum::MYHOME_SMART_URL)) {
+                $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::MYHOME_SMART_URL;
+            }
             if (Str::contains($data['fdPackage'], ProjectEnum::ONCSHC_URL)) {
                 $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::ONCSHC_URL;
             }
