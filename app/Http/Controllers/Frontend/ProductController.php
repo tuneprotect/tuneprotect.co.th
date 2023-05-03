@@ -688,8 +688,6 @@ class ProductController extends BaseController
             session(['b2bpayment_status' => false]);
         }
 
-        dd($request);
-
         $data = $request->all();
         if (isset($data['send_data'])) {
             $data = (array)json_decode($data['send_data']);
