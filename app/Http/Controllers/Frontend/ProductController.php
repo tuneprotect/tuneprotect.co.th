@@ -1186,7 +1186,6 @@ class ProductController extends BaseController
             $payAmount = $data['fdPayAMT'];
             $portalKey = $data['fdKeys'];
             $agent_code = $data['fdAgent'];
-            $package = $data['fdPackage'];
             
             if ($v->result) {
                 $request->session()->put('doc_no',  $v->result['message']);
@@ -1196,7 +1195,6 @@ class ProductController extends BaseController
                 $request->session()->put('payAmount', $payAmount);
                 $request->session()->put('portalKey', $portalKey);
                 $request->session()->put('agentCode', $agent_code);
-                $request->session()->put('package', $package);
                 $this->thankYouParam = $request->input('user_defined_4');
 
                 $func = 'thankyou';
@@ -1221,7 +1219,6 @@ class ProductController extends BaseController
                     $request->session()->put('payAmount', $payAmount);
                     $request->session()->put('portalKey', $portalKey);
                     $request->session()->put('agentCode', $agent_code);
-                    $request->session()->put('package', $package);
                     $this->thankYouParam = $request->input('user_defined_4');
                     $func = 'thankyou';
                 } else {
@@ -1236,7 +1233,6 @@ class ProductController extends BaseController
             case '002':
                 $func = 'reject';
                 $request->session()->put('error', $request->input('channel_response_desc'));
-                $request->session()->put('package', $package);
                 break;
             case '003':
                 $func = 'cancel';
