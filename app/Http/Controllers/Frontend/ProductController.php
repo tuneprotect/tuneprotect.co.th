@@ -1118,9 +1118,9 @@ class ProductController extends BaseController
 
     public function error(Request $request)
     {
-        if (substr($request->session()->get('package'), 0, 6) === ProjectEnum::ONCSHC_URL) {
+        if (true) {
             $this->bodyData['doc_no'] = $request->session()->get('error');
-            return $this->genStatusPage(ProjectEnum::STATIC_PAGE_PAYMENT_CHILL_SURE_ERROR);
+            return $this->genStatusPage(ProjectEnum::STATIC_PAGE_PAYMENT_ERROR_CHILL_SURE);
         }
 
         //$this->bodyData['doc_no'] = $request->session()->get('error');
@@ -1141,9 +1141,9 @@ class ProductController extends BaseController
 
     public function reject(Request $request)
     {
-        if (substr($request->session()->get('package'), 0, 6) === ProjectEnum::ONCSHC_URL) {
+        if (true) {
             $this->bodyData['doc_no'] = $request->session()->get('error');
-            return $this->genStatusPage(ProjectEnum::STATIC_PAGE_PAYMENT_CHILL_SURE_REJECT);
+            return $this->genStatusPage(ProjectEnum::STATIC_PAGE_PAYMENT_REJECT_CHILL_SURE);
         }
 
         $this->bodyData['doc_no'] = $request->session()->get('error');
