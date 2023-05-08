@@ -1121,10 +1121,10 @@ class ProductController extends BaseController
         if (substr($request->session()->get('package'), 0, 6) === ProjectEnum::ONCSHC_URL) {
             $this->bodyData['doc_no'] = $request->session()->get('error');
             return $this->genStatusPage(ProjectEnum::STATIC_PAGE_PAYMENT_ERROR_CHILL_SURE);
+        } else {
+            $this->bodyData['doc_no'] = $request->session()->get('error');
+            return $this->genStatusPage(ProjectEnum::STATIC_PAGE_PAYMENT_ERROR);
         }
-
-        //$this->bodyData['doc_no'] = $request->session()->get('error');
-        //return $this->genStatusPage(ProjectEnum::STATIC_PAGE_PAYMENT_ERROR);
     }
 
     public function cancel(Request $request)
