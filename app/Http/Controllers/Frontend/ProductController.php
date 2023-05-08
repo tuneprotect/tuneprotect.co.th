@@ -1118,28 +1118,29 @@ class ProductController extends BaseController
 
     public function error(Request $request)
     {
-        dd($request);
         $this->bodyData['doc_no'] = $request->session()->get('error');
         return $this->genStatusPage(ProjectEnum::STATIC_PAGE_PAYMENT_ERROR);
     }
 
     public function cancel(Request $request)
     {
-        dd($request);
         $this->bodyData['doc_no'] = $request->session()->get('error');
         return redirect('/' . $this->locale);
     }
 
     public function pending(Request $request)
     {
-        dd($request);
         $this->bodyData['doc_no'] = $request->session()->get('error');
         return $this->genStatusPage(ProjectEnum::STATIC_PAGE_PAYMENT_PENDING);
     }
 
     public function reject(Request $request)
     {
-        dd($request);
+        if (substr($request->session()->get('package'), 0, 6) === ProjectEnum::ONCSHC_URL) {
+            $this->bodyData['doc_no'] = $request->session()->get('error');
+            return $this->genStatusPage(ProjectEnum::STATIC_PAGE_PAYMENT_CHILL_SURE_REJECT);
+        }
+        
         $this->bodyData['doc_no'] = $request->session()->get('error');
         return $this->genStatusPage(ProjectEnum::STATIC_PAGE_PAYMENT_REJECT);
     }
