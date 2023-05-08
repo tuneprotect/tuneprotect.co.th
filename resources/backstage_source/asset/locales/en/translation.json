@@ -307,9 +307,15 @@
                 "payment_pending": "Payment Pending",
                 "payment_reject": "Payment Reject",
                 "payment_thank_you": "Payment Thank you",
+                "payment_thank_you_chill_sure": "Payment Thank you Chill Sure",
+                "payment_thank_you_myflexi_ci": "Payment Thank you MyFlexi CI",
                 "payment_thank_you_diabetes": "Payment Thank you Diabetes",
                 "payment_thank_you_ismile": "Payment Thank you ismile",
+<<<<<<< Updated upstream
                 "payment_thank_you_chill_sure": "Payment Thank you Chill Sure",
+=======
+                "payment_thank_you_myhome_smart": "Payment Thank you My Home Smart",
+>>>>>>> Stashed changes
                 "payment_thank_you_itravel": "Payment Thank you iTravel",
                 "privacy": "Privacy Policy",
                 "service_center": "Service Center",

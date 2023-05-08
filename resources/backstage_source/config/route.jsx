@@ -2144,9 +2144,20 @@ const static_content = {
         'payment_pending',
         'payment_reject',
         'payment_thank_you',
+
+        'payment_thank_you_chill_sure',
+        'payment_chill_sure_error',
+        'payment_chill_sure_pending',
+        'payment_chill_sure_reject',
+
+        'payment_thank_you_myflexi_ci',
         'payment_thank_you_diabetes',
         'payment_thank_you_ismile',
+<<<<<<< Updated upstream
         'payment_thank_you_chill_sure',
+=======
+        'payment_thank_you_myhome_smart',
+>>>>>>> Stashed changes
         'payment_thank_you_itravel',
         'privacy',
         'service_center',
