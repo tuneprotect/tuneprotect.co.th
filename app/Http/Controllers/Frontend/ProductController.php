@@ -1118,7 +1118,6 @@ class ProductController extends BaseController
 
     public function error(Request $request)
     {
-        dd($request);
         if (substr($request->session()->get('package'), 0, 6) === ProjectEnum::ONCSHC_URL) {
             $this->bodyData['doc_no'] = $request->session()->get('error');
             return $this->genStatusPage(ProjectEnum::STATIC_PAGE_PAYMENT_ERROR_CHILL_SURE);
@@ -1251,6 +1250,7 @@ class ProductController extends BaseController
             default:
                 $func = 'error';
                 $request->session()->put('error', $request->input('channel_response_desc'));
+                $request->session()->put('package', $package);
         }
        
         return redirect()->route('current', ['locale' => $this->locale, 'controller' => $this->controller, 'func' => $func, 'params' => $this->thankYouParam]);
