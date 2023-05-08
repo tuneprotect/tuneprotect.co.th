@@ -1123,8 +1123,8 @@ class ProductController extends BaseController
             return $this->genStatusPage(ProjectEnum::STATIC_PAGE_PAYMENT_CHILL_SURE_ERROR);
         }
 
-        $this->bodyData['doc_no'] = $request->session()->get('error');
-        return $this->genStatusPage(ProjectEnum::STATIC_PAGE_PAYMENT_ERROR);
+        //$this->bodyData['doc_no'] = $request->session()->get('error');
+        //return $this->genStatusPage(ProjectEnum::STATIC_PAGE_PAYMENT_ERROR);
     }
 
     public function cancel(Request $request)
