@@ -36,15 +36,6 @@ class ProjectEnum
     const STATIC_PAGE_PAYMENT_CHILL_SURE_PENDING = 'static.page.payment_chill_sure_pending';
     const STATIC_PAGE_PAYMENT_CHILL_SURE_REJECT = 'static.page.payment_chill_sure_reject';
 
-    //Health
-    const STATIC_PAGE_PAYMENT_THANK_YOU_CHILL_SURE = 'static.page.payment_thank_you_chill_sure';
-    const STATIC_PAGE_PAYMENT_THANK_YOU_MYFLEXI_CI = 'static.page.payment_thank_you_myflexi_ci';
-    const STATIC_PAGE_PAYMENT_THANK_YOU_DIABETES = 'static.page.payment_thank_you_diabetes';
-
-    const STATIC_PAGE_PAYMENT_CHILL_SURE_ERROR = 'static.page.payment_chill_sure_error';
-    const STATIC_PAGE_PAYMENT_CHILL_SURE_CANCEL = 'static.page.payment_chill_sure_cancel';
-    const STATIC_PAGE_PAYMENT_CHILL_SURE_PENDING = 'static.page.payment_chill_sure_pending';
-    const STATIC_PAGE_PAYMENT_CHILL_SURE_REJECT = 'static.page.payment_chill_sure_reject';
 
     const STATIC_PAGE_PAYMENT_ERROR = 'static.page.payment_error';
     const STATIC_PAGE_PAYMENT_CANCEL = 'static.page.payment_cancel';

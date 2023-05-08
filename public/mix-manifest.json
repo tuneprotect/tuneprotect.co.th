@@ -1,13 +1,5 @@
 {
-<<<<<<< HEAD
     "/js/backstage/index.js": "/js/backstage/index.js?id=9b99af38352f1d35565e",
-=======
-<<<<<<< Updated upstream
-    "/js/backstage/index.js": "/js/backstage/index.js?id=68360eb0af1cd585d153",
-=======
-    "/js/backstage/index.js": "/js/backstage/index.js?id=4fe506e8f5405bb1b55b",
->>>>>>> Stashed changes
->>>>>>> release/20230508
     "/js/frontend/amado.js": "/js/frontend/amado.js?id=06397880aec465a4fe54",
     "/js/frontend/article.js": "/js/frontend/article.js?id=6db426c3ab6ecf479dfc",
     "/js/frontend/biglife.js": "/js/frontend/biglife.js?id=2852d53e440f1adfbfbb",
