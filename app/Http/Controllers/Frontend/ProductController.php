@@ -1118,7 +1118,6 @@ class ProductController extends BaseController
 
     public function error(Request $request)
     {
-        dd($request);
         if (substr($request->session()->get('package'), 0, 6) === ProjectEnum::ONCSHC_URL) {
             $this->bodyData['doc_no'] = $request->session()->get('error');
             return $this->genStatusPage(ProjectEnum::STATIC_PAGE_PAYMENT_ERROR_CHILL_SURE);
@@ -1142,11 +1141,6 @@ class ProductController extends BaseController
 
     public function reject(Request $request)
     {
-        if (true) {
-            $this->bodyData['doc_no'] = $request->session()->get('error');
-            return $this->genStatusPage(ProjectEnum::STATIC_PAGE_PAYMENT_REJECT_CHILL_SURE);
-        }
-
         $this->bodyData['doc_no'] = $request->session()->get('error');
         return $this->genStatusPage(ProjectEnum::STATIC_PAGE_PAYMENT_REJECT);
     }
@@ -1206,6 +1200,7 @@ class ProductController extends BaseController
                 $request->session()->put('payAmount', $payAmount);
                 $request->session()->put('portalKey', $portalKey);
                 $request->session()->put('agentCode', $agent_code);
+                $request->session()->put('package', $package);
                 $this->thankYouParam = $request->input('user_defined_4');
 
                 $func = 'thankyou';
@@ -1230,6 +1225,7 @@ class ProductController extends BaseController
                     $request->session()->put('payAmount', $payAmount);
                     $request->session()->put('portalKey', $portalKey);
                     $request->session()->put('agentCode', $agent_code);
+                    $request->session()->put('package', $package);
                     $this->thankYouParam = $request->input('user_defined_4');
                     $func = 'thankyou';
                 } else {
