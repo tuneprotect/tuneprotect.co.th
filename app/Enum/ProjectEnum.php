@@ -20,17 +20,27 @@ class ProjectEnum
     const STATIC_META_PROMOTION = 'static.page.promotion';
     const STATIC_PAGE_SERVICE_CENTER = 'static.page.service_center';
     const STATIC_PAGE_PAYMENT_THANK_YOU = 'static.page.payment_thank_you';
-    const STATIC_PAGE_PAYMENT_THANK_YOU_DIABETES = 'static.page.payment_thank_you_diabetes';
+
     const STATIC_PAGE_PAYMENT_THANK_YOU_ISMILE = 'static.page.payment_thank_you_ismile';
 	const STATIC_PAGE_PAYMENT_THANK_YOU_MYHOME_SMART = 'static.page.payment_thank_you_myhome_smart';
-    const STATIC_PAGE_PAYMENT_THANK_YOU_CHILL_SURE = 'static.page.payment_thank_you_chill_sure';
     const STATIC_PAGE_PAYMENT_THANK_YOU_ITRAVEL= 'static.page.payment_thank_you_itravel';
     const STATIC_PAGE_PAYMENT_THANK_YOU_PA_CHOICE = 'static.page.payment_thank_you_pa_choice';
+
+    //Health
+    const STATIC_PAGE_PAYMENT_THANK_YOU_CHILL_SURE = 'static.page.payment_thank_you_chill_sure';
+    const STATIC_PAGE_PAYMENT_THANK_YOU_MYFLEXI_CI = 'static.page.payment_thank_you_myflexi_ci';
+    const STATIC_PAGE_PAYMENT_THANK_YOU_DIABETES = 'static.page.payment_thank_you_diabetes';
+
+    const STATIC_PAGE_PAYMENT_CHILL_SURE_ERROR = 'static.page.payment_chill_sure_error';
+    const STATIC_PAGE_PAYMENT_CHILL_SURE_CANCEL = 'static.page.payment_chill_sure_cancel';
+    const STATIC_PAGE_PAYMENT_CHILL_SURE_PENDING = 'static.page.payment_chill_sure_pending';
+    const STATIC_PAGE_PAYMENT_CHILL_SURE_REJECT = 'static.page.payment_chill_sure_reject';
 
     const STATIC_PAGE_PAYMENT_ERROR = 'static.page.payment_error';
     const STATIC_PAGE_PAYMENT_CANCEL = 'static.page.payment_cancel';
     const STATIC_PAGE_PAYMENT_PENDING = 'static.page.payment_pending';
     const STATIC_PAGE_PAYMENT_REJECT = 'static.page.payment_reject';
+
     const STATIC_PAGE_PRIVACY_POLICY = 'static.page.privacy';
     const STATIC_PAGE_TERMS = 'static.page.terms';
     const STATIC_PAGE_MY_HEALTH = 'static.page.my_health';
@@ -74,10 +84,13 @@ class ProjectEnum
     const WEB_CONTENT_LEADFORM_CATEGORY = "leadform.category";
     const CACHE_MENU_ENABLE = 'menu_enable';
 
+    //Health
+    const ONCSHC_URL = 'ONCSHC';
+    const MYFLEXI_CI_URL = 'CI';
     const DIABETES_URL = 'DIABETES';
+
     const ISMILE_URL = 'TAISM';
 	const MYHOME_SMART_URL = 'ONMHS';
-    const ONCSHC_URL = 'ONCSHC';
     const ONCSHCAA_URL = 'ONCSHCAA';
     const ONTAOB_URL = 'ONTAOB';
     const ONPACA_URL = 'ONPACA';
