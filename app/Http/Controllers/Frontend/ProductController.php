@@ -690,14 +690,15 @@ class ProductController extends BaseController
         if (isset($data['send_data'])) {
             $data = (array)json_decode($data['send_data']);
 
+            //Health
+            if (Str::contains($data['fdPackage'], ProjectEnum::ONCSHC_URL)) {
+                $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::ONCSHC_URL;
+            }
             if (Str::contains($data['fdPackage'], ProjectEnum::ISMILE_URL)) {
                 $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::ISMILE_URL;
             }
             if (Str::contains($data['fdPackage'], ProjectEnum::MYHOME_SMART_URL)) {
                 $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::MYHOME_SMART_URL;
-            }
-            if (Str::contains($data['fdPackage'], ProjectEnum::ONCSHC_URL)) {
-                $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::ONCSHC_URL;
             }
             if (Str::contains($data['fdPackage'], ProjectEnum::ONTAOB_URL)) {
                 $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::ONTAOB_URL;
@@ -734,6 +735,11 @@ class ProductController extends BaseController
             return $this->sendTo2C2P($result, $price, $log_id);
         } else {
 
+            //Health
+            if (Str::contains($data['fdPackage'], ProjectEnum::ONCSHC_URL)) {
+                $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::ONCSHC_URL;
+            }
+
             if (Str::contains($data['fdPackage'], ProjectEnum::ISMILE_URL)) {
                 $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::ISMILE_URL;
             }
@@ -742,9 +748,6 @@ class ProductController extends BaseController
             }
             if (Str::contains($data['fdPackage'], ProjectEnum::MYHOME_SMART_URL)) {
                 $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::MYHOME_SMART_URL;
-            }
-            if (Str::contains($data['fdPackage'], ProjectEnum::ONCSHC_URL)) {
-                $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::ONCSHC_URL;
             }
             if (Str::contains($data['fdPackage'], ProjectEnum::ONCSHCAA_URL)) {
                 $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::ONCSHCAA_URL;
@@ -1133,6 +1136,7 @@ class ProductController extends BaseController
 
     public function reject(Request $request)
     {
+        dd($request);
         $this->bodyData['doc_no'] = $request->session()->get('error');
         return $this->genStatusPage(ProjectEnum::STATIC_PAGE_PAYMENT_REJECT);
     }
@@ -1182,6 +1186,7 @@ class ProductController extends BaseController
             $payAmount = $data['fdPayAMT'];
             $portalKey = $data['fdKeys'];
             $agent_code = $data['fdAgent'];
+            $package = $data['fdPackage'];
             
             if ($v->result) {
                 $request->session()->put('doc_no',  $v->result['message']);
@@ -1191,6 +1196,7 @@ class ProductController extends BaseController
                 $request->session()->put('payAmount', $payAmount);
                 $request->session()->put('portalKey', $portalKey);
                 $request->session()->put('agentCode', $agent_code);
+                $request->session()->put('package', $package);
                 $this->thankYouParam = $request->input('user_defined_4');
 
                 $func = 'thankyou';
@@ -1215,6 +1221,7 @@ class ProductController extends BaseController
                     $request->session()->put('payAmount', $payAmount);
                     $request->session()->put('portalKey', $portalKey);
                     $request->session()->put('agentCode', $agent_code);
+                    $request->session()->put('package', $package);
                     $this->thankYouParam = $request->input('user_defined_4');
                     $func = 'thankyou';
                 } else {
@@ -1229,6 +1236,7 @@ class ProductController extends BaseController
             case '002':
                 $func = 'reject';
                 $request->session()->put('error', $request->input('channel_response_desc'));
+                $request->session()->put('package', $package);
                 break;
             case '003':
                 $func = 'cancel';

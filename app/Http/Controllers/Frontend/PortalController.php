@@ -238,14 +238,17 @@ class PortalController extends ProductController
         }
 
         $thank_you_page = ProjectEnum::STATIC_PAGE_PAYMENT_THANK_YOU;
+
+        //Health
+        if (Str::contains($request->getRequestUri(), ProjectEnum::ONCSHC_URL)) {
+            $thank_you_page = ProjectEnum::STATIC_PAGE_PAYMENT_THANK_YOU_CHILL_SURE;
+        }
+
         if (Str::contains($request->getRequestUri(), ProjectEnum::DIABETES_URL)) {
             $thank_you_page = ProjectEnum::STATIC_PAGE_PAYMENT_THANK_YOU_DIABETES;
         }
         if (Str::contains($request->getRequestUri(), ProjectEnum::ISMILE_URL)) {
             $thank_you_page = ProjectEnum::STATIC_PAGE_PAYMENT_THANK_YOU_ISMILE;
-        }
-        if (Str::contains($request->getRequestUri(), ProjectEnum::ONCSHC_URL)) {
-            $thank_you_page = ProjectEnum::STATIC_PAGE_PAYMENT_THANK_YOU_CHILL_SURE;
         }
         if (Str::contains($request->getRequestUri(), ProjectEnum::ONTAOB_URL)) {
             $thank_you_page = ProjectEnum::STATIC_PAGE_PAYMENT_THANK_YOU_ITRAVEL;
