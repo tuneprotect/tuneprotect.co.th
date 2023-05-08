@@ -690,14 +690,33 @@ class ProductController extends BaseController
         if (isset($data['send_data'])) {
             $data = (array)json_decode($data['send_data']);
 
+            //Healht
+            if (Str::contains($data['fdPackage'], ProjectEnum::ONCSHC_URL)) {
+                $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::ONCSHC_URL;
+            }
+            if (Str::contains($data['fdPackage'], ProjectEnum::MYFLEXI_CI_URL)) {
+                $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::MYFLEXI_CI_URL;
+            }
+            if (Str::contains($data['fdPackage'], ProjectEnum::DIABETES_URL)) {
+                $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::DIABETES_URL;
+            }
+
             if (Str::contains($data['fdPackage'], ProjectEnum::ISMILE_URL)) {
                 $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::ISMILE_URL;
             }
+<<<<<<< HEAD
             if (Str::contains($data['fdPackage'], ProjectEnum::MYHOME_SMART_URL)) {
                 $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::MYHOME_SMART_URL;
             }
+=======
+<<<<<<< Updated upstream
+>>>>>>> release/20230508
             if (Str::contains($data['fdPackage'], ProjectEnum::ONCSHC_URL)) {
                 $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::ONCSHC_URL;
+=======
+            if (Str::contains($data['fdPackage'], ProjectEnum::MYHOME_SMART_URL)) {
+                $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::MYHOME_SMART_URL;
+>>>>>>> Stashed changes
             }
             if (Str::contains($data['fdPackage'], ProjectEnum::ONTAOB_URL)) {
                 $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::ONTAOB_URL;
@@ -734,17 +753,31 @@ class ProductController extends BaseController
             return $this->sendTo2C2P($result, $price, $log_id);
         } else {
 
+<<<<<<< HEAD
             if (Str::contains($data['fdPackage'], ProjectEnum::ISMILE_URL)) {
                 $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::ISMILE_URL;
             }
+=======
+<<<<<<< Updated upstream
+=======
+            //Health
+            if (Str::contains($data['fdPackage'], ProjectEnum::ONCSHC_URL)) {
+                $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::ONCSHC_URL;
+            }
+            if (Str::contains($data['fdPackage'], ProjectEnum::MYFLEXI_CI_URL)) {
+                $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::MYFLEXI_CI_URL;
+            }
+>>>>>>> Stashed changes
+>>>>>>> release/20230508
             if (Str::contains($data['fdPackage'], ProjectEnum::DIABETES_URL)) {
                 $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::DIABETES_URL;
             }
+
+            if (Str::contains($data['fdPackage'], ProjectEnum::ISMILE_URL)) {
+                $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::ISMILE_URL;
+            }
             if (Str::contains($data['fdPackage'], ProjectEnum::MYHOME_SMART_URL)) {
                 $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::MYHOME_SMART_URL;
-            }
-            if (Str::contains($data['fdPackage'], ProjectEnum::ONCSHC_URL)) {
-                $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::ONCSHC_URL;
             }
             if (Str::contains($data['fdPackage'], ProjectEnum::ONCSHCAA_URL)) {
                 $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::ONCSHCAA_URL;
@@ -1114,7 +1147,7 @@ class ProductController extends BaseController
     }
 
     public function error(Request $request)
-    {
+    {  
         $this->bodyData['doc_no'] = $request->session()->get('error');
         return $this->genStatusPage(ProjectEnum::STATIC_PAGE_PAYMENT_ERROR);
     }
@@ -1133,6 +1166,7 @@ class ProductController extends BaseController
 
     public function reject(Request $request)
     {
+        dd($request);
         $this->bodyData['doc_no'] = $request->session()->get('error');
         return $this->genStatusPage(ProjectEnum::STATIC_PAGE_PAYMENT_REJECT);
     }
