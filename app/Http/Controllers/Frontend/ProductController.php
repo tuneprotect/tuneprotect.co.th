@@ -1189,6 +1189,7 @@ class ProductController extends BaseController
             $payAmount = $data['fdPayAMT'];
             $portalKey = $data['fdKeys'];
             $agent_code = $data['fdAgent'];
+            $package = $data['fdPackage'];
             
             if ($v->result) {
                 $request->session()->put('doc_no',  $v->result['message']);
@@ -1241,6 +1242,7 @@ class ProductController extends BaseController
                 $func = 'cancel';
                 $request->session()->put('return_link', $request->input('user_defined_2'));
                 $request->session()->put('error', $request->input('channel_response_desc'));
+                $request->session()->put('package', $package);
                 break;
             default:
                 $func = 'error';
