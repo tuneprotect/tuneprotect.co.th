@@ -1828,8 +1828,8 @@ main {
                         border: 1px solid $primary-color;
 
                         h3 {
-                            width: 107%;
-                            margin-left: -30px;
+                            width: 100%;
+                            margin-left: -20px;
                             padding-left: 30px;
                             background: #fff;
                             @include project_transition();
@@ -1851,8 +1851,8 @@ main {
 
                         .detail-faq {
                             max-height: 99em;
-                            width: 107%;
-                            margin: 0 0 0 -30px !important;
+                            width: 104%;
+                            margin: 0 0 0 -20px !important;
                             padding: 5px 30px 0 30px;
                             background: #fff;
                             @include project_transition();
