@@ -1118,13 +1118,17 @@ class ProductController extends BaseController
 
     public function error(Request $request)
     {
+        $this->bodyData['doc_no'] = $request->session()->get('error');
+        $error_page = ProjectEnum::STATIC_PAGE_PAYMENT_PENDING;
+
         if (substr($request->session()->get('package'), 0, 6) === ProjectEnum::ONCSHC_URL) {
-            $this->bodyData['doc_no'] = $request->session()->get('error');
-            return $this->genStatusPage(ProjectEnum::STATIC_PAGE_PAYMENT_ERROR_CHILL_SURE);
-        } else {
-            $this->bodyData['doc_no'] = $request->session()->get('error');
-            return $this->genStatusPage(ProjectEnum::STATIC_PAGE_PAYMENT_ERROR);
+            $error_page = ProjectEnum::STATIC_PAGE_PAYMENT_ERROR_CHILL_SURE;
+        } 
+        if (substr($request->session()->get('package'), 0, 2) === ProjectEnum::MYFLEXI_CI_URL) {
+            $error_page = ProjectEnum::STATIC_PAGE_PAYMENT_ERROR_MYFLEXI_CI;
         }
+
+        return $this->genStatusPage($error_page);
     }
 
     public function cancel(Request $request)
@@ -1135,24 +1139,32 @@ class ProductController extends BaseController
 
     public function pending(Request $request)
     {
+        $this->bodyData['doc_no'] = $request->session()->get('error');
+        $pending_page = ProjectEnum::STATIC_PAGE_PAYMENT_PENDING;
+
         if (substr($request->session()->get('package'), 0, 6) === ProjectEnum::ONCSHC_URL) {
-            $this->bodyData['doc_no'] = $request->session()->get('error');
-            return $this->genStatusPage(ProjectEnum::STATIC_PAGE_PAYMENT_PENDING_CHILL_SURE);
-        } else {
-            $this->bodyData['doc_no'] = $request->session()->get('error');
-            return $this->genStatusPage(ProjectEnum::STATIC_PAGE_PAYMENT_PENDING);
+            $pending_page = ProjectEnum::STATIC_PAGE_PAYMENT_PENDING_CHILL_SURE;
+        } 
+        if (substr($request->session()->get('package'), 0, 2) === ProjectEnum::MYFLEXI_CI_URL) {
+            $pending_page = ProjectEnum::STATIC_PAGE_PAYMENT_PENDING_MYFLEXI_CI;
         }
+
+        return $this->genStatusPage($pending_page);
     }
 
     public function reject(Request $request)
     {
+        $this->bodyData['doc_no'] = $request->session()->get('error');
+        $reject_page = ProjectEnum::STATIC_PAGE_PAYMENT_REJECT;
+
         if (substr($request->session()->get('package'), 0, 6) === ProjectEnum::ONCSHC_URL) {
-            $this->bodyData['doc_no'] = $request->session()->get('error');
-            return $this->genStatusPage(ProjectEnum::STATIC_PAGE_PAYMENT_REJECT_CHILL_SURE);
-        } else {
-            $this->bodyData['doc_no'] = $request->session()->get('error');
-            return $this->genStatusPage(ProjectEnum::STATIC_PAGE_PAYMENT_REJECT);
+            $reject_page = ProjectEnum::STATIC_PAGE_PAYMENT_REJECT_CHILL_SURE;
+        } 
+        if (substr($request->session()->get('package'), 0, 2) === ProjectEnum::MYFLEXI_CI_URL) {
+            $reject_page = ProjectEnum::STATIC_PAGE_PAYMENT_REJECT_MYFLEXI_CI;
         }
+
+        return $this->genStatusPage($reject_page);
     }
 
     public function thankyou(Request $request)
@@ -1167,14 +1179,19 @@ class ProductController extends BaseController
         if (Str::contains($request->getRequestUri(), ProjectEnum::DIABETES_URL)) {
             $thank_you_page = ProjectEnum::STATIC_PAGE_PAYMENT_THANK_YOU_DIABETES;
         }
+        //Health
+        if (Str::contains($request->getRequestUri(), ProjectEnum::ONCSHC_URL)) {
+            $thank_you_page = ProjectEnum::STATIC_PAGE_PAYMENT_THANK_YOU_CHILL_SURE;
+        }
+        if (Str::contains($request->getRequestUri(), ProjectEnum::MYFLEXI_CI_URL)) {
+            $thank_you_page = ProjectEnum::STATIC_PAGE_PAYMENT_THANK_YOU_MYFLEXI_CI;
+        }
+        
         if (Str::contains($request->getRequestUri(), ProjectEnum::ISMILE_URL)) {
             $thank_you_page = ProjectEnum::STATIC_PAGE_PAYMENT_THANK_YOU_ISMILE;
         }
         if (Str::contains($request->getRequestUri(), ProjectEnum::MYHOME_SMART_URL)) {
             $thank_you_page = ProjectEnum::STATIC_PAGE_PAYMENT_THANK_YOU_MYHOME_SMART;
-        }
-        if (Str::contains($request->getRequestUri(), ProjectEnum::ONCSHC_URL)) {
-            $thank_you_page = ProjectEnum::STATIC_PAGE_PAYMENT_THANK_YOU_CHILL_SURE;
         }
         if (Str::contains($request->getRequestUri(), ProjectEnum::ONCSHCAA_URL)) {
             $thank_you_page = ProjectEnum::STATIC_PAGE_PAYMENT_THANK_YOU_CHILL_SURE;

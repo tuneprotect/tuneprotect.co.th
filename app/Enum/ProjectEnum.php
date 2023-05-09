@@ -35,6 +35,9 @@ class ProjectEnum
 
     //My Flexi CI
     const STATIC_PAGE_PAYMENT_THANK_YOU_MYFLEXI_CI = 'static.page.payment_thank_you_myflexi_ci';
+    const STATIC_PAGE_PAYMENT_ERROR_MYFLEXI_CI = 'static.page.payment_error_myflexi_ci';
+    const STATIC_PAGE_PAYMENT_PENDING_MYFLEXI_CI = 'static.page.payment_pending_myflexi_ci';
+    const STATIC_PAGE_PAYMENT_REJECT_MYFLEXI_CI = 'static.page.payment_reject_myflexi_ci';
 
     //Diabetes
     const STATIC_PAGE_PAYMENT_THANK_YOU_DIABETES = 'static.page.payment_thank_you_diabetes';

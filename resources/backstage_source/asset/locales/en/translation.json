@@ -312,6 +312,11 @@
                 "payment_error_chill_sure": "Payment Error Chill Sure",
                 "payment_pending_chill_sure": "Payment Pending Chill Sure",
 
+                "payment_thank_you_myflexi_ci": "Payment Thank you MyFlexi CI",
+                "payment_reject_myflexi_ci": "Payment Reject MyFlexi CI",
+                "payment_error_myflexi_ci": "Payment Error MyFlexi CI",
+                "payment_pending_myflexi_ci": "Payment Pending MyFlexi CI",
+
                 "payment_thank_you": "Payment Thank you",
                 "payment_thank_you_diabetes": "Payment Thank you Diabetes",
                 "payment_thank_you_ismile": "Payment Thank you ismile",

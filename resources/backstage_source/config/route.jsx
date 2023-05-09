@@ -2150,6 +2150,11 @@ const static_content = {
         'payment_error_chill_sure',
         'payment_pending_chill_sure',
 
+        'payment_thank_you_myflexi_ci',
+        'payment_reject_myflexi_ci',
+        'payment_error_myflexi_ci',
+        'payment_pending_myflexi_ci',
+
         'payment_thank_you_diabetes',
         'payment_thank_you_ismile',
         'payment_thank_you_myhome_smart',
