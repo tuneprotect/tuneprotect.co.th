@@ -644,10 +644,8 @@ class ProductController extends BaseController
         }
 
         if (session('nopayment_status')) {
-            $obj->fdPaymentType = null;
+            $obj->fdPaymentType = 5;
         }
-
-        //       dd($obj);
 
         $obj->fdController = $this->controller;
         return $obj;
