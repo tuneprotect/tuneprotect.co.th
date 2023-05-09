@@ -238,7 +238,7 @@ class PortalController extends ProductController
         }
 
         $thank_you_page = ProjectEnum::STATIC_PAGE_PAYMENT_THANK_YOU;
-        
+
         //Health
         if (Str::contains($request->getRequestUri(), ProjectEnum::ONCSHC_URL)) {
             $thank_you_page = ProjectEnum::STATIC_PAGE_PAYMENT_THANK_YOU_CHILL_SURE;
@@ -249,6 +249,7 @@ class PortalController extends ProductController
         if (Str::contains($request->getRequestUri(), ProjectEnum::DIABETES_URL)) {
             $thank_you_page = ProjectEnum::STATIC_PAGE_PAYMENT_THANK_YOU_DIABETES;
         }
+
         if (Str::contains($request->getRequestUri(), ProjectEnum::ISMILE_URL)) {
             $thank_you_page = ProjectEnum::STATIC_PAGE_PAYMENT_THANK_YOU_ISMILE;
         }
@@ -274,6 +275,9 @@ class PortalController extends ProductController
         }
         if (substr($request->session()->get('package'), 0, 2) === ProjectEnum::MYFLEXI_CI_URL) {
             $error_page = ProjectEnum::STATIC_PAGE_PAYMENT_ERROR_MYFLEXI_CI;
+        }
+        if (substr($request->session()->get('package'), 0, 8) === ProjectEnum::DIABETES_URL) {
+            $error_page = ProjectEnum::STATIC_PAGE_PAYMENT_ERROR_DIABETES;
         }
 
         return $this->genStatusPage($error_page);
@@ -303,6 +307,9 @@ class PortalController extends ProductController
         if (substr($request->session()->get('package'), 0, 2) === ProjectEnum::MYFLEXI_CI_URL) {
             $pending_page = ProjectEnum::STATIC_PAGE_PAYMENT_PENDING_MYFLEXI_CI;
         }
+        if (substr($request->session()->get('package'), 0, 8) === ProjectEnum::DIABETES_URL) {
+            $pending_page = ProjectEnum::STATIC_PAGE_PAYMENT_PENDING_DIABETES;
+        }
 
         return $this->genStatusPage($pending_page);
     }
@@ -319,6 +326,9 @@ class PortalController extends ProductController
         }
         if (substr($request->session()->get('package'), 0, 2) === ProjectEnum::MYFLEXI_CI_URL) {
             $reject_page = ProjectEnum::STATIC_PAGE_PAYMENT_REJECT_MYFLEXI_CI;
+        }
+        if (substr($request->session()->get('package'), 0, 8) === ProjectEnum::DIABETES_URL) {
+            $reject_page = ProjectEnum::STATIC_PAGE_PAYMENT_REJECT_DIABETES;
         }
 
         return $this->genStatusPage($pending_page);

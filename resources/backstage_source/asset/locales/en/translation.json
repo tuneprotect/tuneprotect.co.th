@@ -317,8 +317,12 @@
                 "payment_error_myflexi_ci": "Payment Error MyFlexi CI",
                 "payment_pending_myflexi_ci": "Payment Pending MyFlexi CI",
 
-                "payment_thank_you": "Payment Thank you",
                 "payment_thank_you_diabetes": "Payment Thank you Diabetes",
+                "payment_reject_diabetes": "Payment Reject Diabetes",
+                "payment_error_diabetes": "Payment Error Diabetes",
+                "payment_pending_diabetes": "Payment Pending Diabetes",
+
+                "payment_thank_you": "Payment Thank you",
                 "payment_thank_you_ismile": "Payment Thank you ismile",
                 "payment_thank_you_myhome_smart": "Payment Thank you My Home Smart",
                 

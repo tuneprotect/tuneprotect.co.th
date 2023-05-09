@@ -2156,6 +2156,10 @@ const static_content = {
         'payment_pending_myflexi_ci',
 
         'payment_thank_you_diabetes',
+        'payment_reject_diabetes',
+        'payment_error_diabetes',
+        'payment_pending_diabetes',
+
         'payment_thank_you_ismile',
         'payment_thank_you_myhome_smart',
         'payment_thank_you_itravel',

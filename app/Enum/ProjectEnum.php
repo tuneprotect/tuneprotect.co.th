@@ -41,6 +41,9 @@ class ProjectEnum
 
     //Diabetes
     const STATIC_PAGE_PAYMENT_THANK_YOU_DIABETES = 'static.page.payment_thank_you_diabetes';
+    const STATIC_PAGE_PAYMENT_ERROR_DIABETES = 'static.page.payment_error_diabetes';
+    const STATIC_PAGE_PAYMENT_PENDING_DIABETES = 'static.page.payment_pending_diabetes';
+    const STATIC_PAGE_PAYMENT_REJECT_DIABETES = 'static.page.payment_reject_diabetes';
 
     const STATIC_PAGE_PAYMENT_ERROR = 'static.page.payment_error';
     const STATIC_PAGE_PAYMENT_CANCEL = 'static.page.payment_cancel';
