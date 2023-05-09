@@ -361,6 +361,7 @@ class ProductController extends BaseController
     {
         if (substr($data['fdPackage'], 0, 4) === 'ONPA') {
             $obj = new PAObject();
+            $obj->fdPaymentType = 1;
         } elseif (substr($data['fdPackage'], 0, 6) === 'PUMPPA') {
             $obj = new PAObject();
         } elseif (substr($data['fdPackage'], 0, 6) === 'CVISAFE') {
@@ -642,7 +643,9 @@ class ProductController extends BaseController
             }
         }
 
-        //       dd($obj);
+        if (session('nopayment_status')) {
+            $obj->fdPaymentType = 5;
+        }
 
         $obj->fdController = $this->controller;
         return $obj;
