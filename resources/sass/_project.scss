@@ -1853,7 +1853,7 @@ main {
                             max-height: 99em;
                             width: 104%;
                             margin: 0 0 0 -20px !important;
-                            padding: 5px 20px 0 30px;
+                            padding: 5px 20px 0 20px;
                             background: #fff;
                             @include project_transition();
                             @media all and (max-width: $md) {
