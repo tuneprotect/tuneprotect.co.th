@@ -26,16 +26,18 @@ class ProjectEnum
     const STATIC_PAGE_PAYMENT_THANK_YOU_ITRAVEL= 'static.page.payment_thank_you_itravel';
     const STATIC_PAGE_PAYMENT_THANK_YOU_PA_CHOICE = 'static.page.payment_thank_you_pa_choice';
 
-    //Health
+    //====================================Health====================================//
+    //Chill Sure
     const STATIC_PAGE_PAYMENT_THANK_YOU_CHILL_SURE = 'static.page.payment_thank_you_chill_sure';
-    const STATIC_PAGE_PAYMENT_THANK_YOU_MYFLEXI_CI = 'static.page.payment_thank_you_myflexi_ci';
-    const STATIC_PAGE_PAYMENT_THANK_YOU_DIABETES = 'static.page.payment_thank_you_diabetes';
-
     const STATIC_PAGE_PAYMENT_ERROR_CHILL_SURE = 'static.page.payment_error_chill_sure';
-    const STATIC_PAGE_PAYMENT_CANCEL_CHILL_SURE = 'static.page.payment_cancel_chill_sure';
     const STATIC_PAGE_PAYMENT_PENDING_CHILL_SURE = 'static.page.payment_pending_chill_sure';
     const STATIC_PAGE_PAYMENT_REJECT_CHILL_SURE = 'static.page.payment_reject_chill_sure';
 
+    //My Flexi CI
+    const STATIC_PAGE_PAYMENT_THANK_YOU_MYFLEXI_CI = 'static.page.payment_thank_you_myflexi_ci';
+
+    //Diabetes
+    const STATIC_PAGE_PAYMENT_THANK_YOU_DIABETES = 'static.page.payment_thank_you_diabetes';
 
     const STATIC_PAGE_PAYMENT_ERROR = 'static.page.payment_error';
     const STATIC_PAGE_PAYMENT_CANCEL = 'static.page.payment_cancel';

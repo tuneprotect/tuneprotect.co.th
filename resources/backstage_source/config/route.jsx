@@ -2148,6 +2148,7 @@ const static_content = {
         'payment_thank_you_chill_sure',
         'payment_reject_chill_sure',
         'payment_error_chill_sure',
+        'payment_pending_chill_sure',
 
         'payment_thank_you_diabetes',
         'payment_thank_you_ismile',

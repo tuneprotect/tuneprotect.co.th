@@ -1135,14 +1135,24 @@ class ProductController extends BaseController
 
     public function pending(Request $request)
     {
-        $this->bodyData['doc_no'] = $request->session()->get('error');
-        return $this->genStatusPage(ProjectEnum::STATIC_PAGE_PAYMENT_PENDING);
+        if (substr($request->session()->get('package'), 0, 6) === ProjectEnum::ONCSHC_URL) {
+            $this->bodyData['doc_no'] = $request->session()->get('error');
+            return $this->genStatusPage(ProjectEnum::STATIC_PAGE_PAYMENT_PENDING_CHILL_SURE);
+        } else {
+            $this->bodyData['doc_no'] = $request->session()->get('error');
+            return $this->genStatusPage(ProjectEnum::STATIC_PAGE_PAYMENT_PENDING);
+        }
     }
 
     public function reject(Request $request)
     {
-        $this->bodyData['doc_no'] = $request->session()->get('error');
-        return $this->genStatusPage(ProjectEnum::STATIC_PAGE_PAYMENT_REJECT);
+        if (substr($request->session()->get('package'), 0, 6) === ProjectEnum::ONCSHC_URL) {
+            $this->bodyData['doc_no'] = $request->session()->get('error');
+            return $this->genStatusPage(ProjectEnum::STATIC_PAGE_PAYMENT_REJECT_CHILL_SURE);
+        } else {
+            $this->bodyData['doc_no'] = $request->session()->get('error');
+            return $this->genStatusPage(ProjectEnum::STATIC_PAGE_PAYMENT_REJECT);
+        }
     }
 
     public function thankyou(Request $request)
