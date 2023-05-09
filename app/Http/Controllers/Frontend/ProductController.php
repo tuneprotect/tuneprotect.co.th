@@ -694,6 +694,10 @@ class ProductController extends BaseController
             if (Str::contains($data['fdPackage'], ProjectEnum::ONCSHC_URL)) {
                 $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::ONCSHC_URL;
             }
+            if (Str::contains($data['fdPackage'], ProjectEnum::MYFLEXI_CI_URL)) {
+                $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::MYFLEXI_CI_URL;
+            }
+            
             if (Str::contains($data['fdPackage'], ProjectEnum::ISMILE_URL)) {
                 $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::ISMILE_URL;
             }
@@ -730,14 +734,16 @@ class ProductController extends BaseController
                 return $this->noPayment($result, $price, $log_id);
             }
 
-            
-
             return $this->sendTo2C2P($result, $price, $log_id);
+
         } else {
 
             //Health
             if (Str::contains($data['fdPackage'], ProjectEnum::ONCSHC_URL)) {
                 $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::ONCSHC_URL;
+            }
+            if (Str::contains($data['fdPackage'], ProjectEnum::MYFLEXI_CI_URL)) {
+                $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::MYFLEXI_CI_URL;
             }
 
             if (Str::contains($data['fdPackage'], ProjectEnum::ISMILE_URL)) {
@@ -1186,7 +1192,7 @@ class ProductController extends BaseController
         if (Str::contains($request->getRequestUri(), ProjectEnum::MYFLEXI_CI_URL)) {
             $thank_you_page = ProjectEnum::STATIC_PAGE_PAYMENT_THANK_YOU_MYFLEXI_CI;
         }
-        
+
         if (Str::contains($request->getRequestUri(), ProjectEnum::ISMILE_URL)) {
             $thank_you_page = ProjectEnum::STATIC_PAGE_PAYMENT_THANK_YOU_ISMILE;
         }

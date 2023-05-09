@@ -238,7 +238,7 @@ class PortalController extends ProductController
         }
 
         $thank_you_page = ProjectEnum::STATIC_PAGE_PAYMENT_THANK_YOU;
-
+        
         //Health
         if (Str::contains($request->getRequestUri(), ProjectEnum::ONCSHC_URL)) {
             $thank_you_page = ProjectEnum::STATIC_PAGE_PAYMENT_THANK_YOU_CHILL_SURE;
