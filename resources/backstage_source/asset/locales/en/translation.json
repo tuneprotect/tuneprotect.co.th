@@ -327,13 +327,13 @@
                 "payment_error_pa_choice_care": "Payment Error PA Choice Care",
                 "payment_pending_pa_choice_care": "Payment Pending PA Choice Care",
 
-                "payment_thank_you_pa_choice_kids": "Payment Thank you PA Choice Kids",
-                "payment_reject_pa_choice_kids": "Payment Reject PA Choice Kids",
-                "payment_error_pa_choice_kids": "Payment Error PA Choice Kids",
-                "payment_pending_pa_choice_kids": "Payment Pending PA Choice Kids",
+                "payment_thank_you_pa_choice_kide": "Payment Thank you PA Choice Kide",
+                "payment_reject_pa_choice_kide": "Payment Reject PA Choice Kide",
+                "payment_error_pa_choice_kide": "Payment Error PA Choice Kide",
+                "payment_pending_pa_choice_kide": "Payment Pending PA Choice Kide",
 
                 "payment_thank_you_pa_choice_senior": "Payment Thank you PA Choice Senior",
-                "payment_reject_pa_choice_seniors": "Payment Reject PA Choice Senior",
+                "payment_reject_pa_choice_senior": "Payment Reject PA Choice Senior",
                 "payment_error_pa_choice_senior": "Payment Error PA Choice Senior",
                 "payment_pending_pa_choice_senior": "Payment Pending PA Choice Senior",
 
