@@ -250,6 +250,17 @@ class PortalController extends ProductController
             $thank_you_page = ProjectEnum::STATIC_PAGE_PAYMENT_THANK_YOU_DIABETES;
         }
 
+        //PA Choice
+        if (Str::contains($request->getRequestUri(), ProjectEnum::ONPACA_URL)) {
+            $thank_you_page = ProjectEnum::STATIC_PAGE_PAYMENT_THANK_YOU_PA_CHOICE_CARE;
+        }
+        if (Str::contains($request->getRequestUri(), ProjectEnum::ONPAKD_URL)) {
+            $thank_you_page = ProjectEnum::STATIC_PAGE_PAYMENT_THANK_YOU_PA_CHOICE_KIDE;
+        }
+        if (Str::contains($request->getRequestUri(), ProjectEnum::ONPASN_URL)) {
+            $thank_you_page = ProjectEnum::STATIC_PAGE_PAYMENT_THANK_YOU_PA_CHOICE_SENIOR;
+        }
+
         if (Str::contains($request->getRequestUri(), ProjectEnum::ISMILE_URL)) {
             $thank_you_page = ProjectEnum::STATIC_PAGE_PAYMENT_THANK_YOU_ISMILE;
         }
@@ -270,6 +281,7 @@ class PortalController extends ProductController
         $this->bodyData['doc_no'] = $request->session()->get('error');
         $error_page = ProjectEnum::STATIC_PAGE_PAYMENT_ERROR;
 
+        //Health
         if (substr($request->session()->get('package'), 0, 6) === ProjectEnum::ONCSHC_URL) {
             $error_page = ProjectEnum::STATIC_PAGE_PAYMENT_ERROR_CHILL_SURE;
         }
@@ -278,6 +290,17 @@ class PortalController extends ProductController
         }
         if (substr($request->session()->get('package'), 0, 8) === ProjectEnum::DIABETES_URL) {
             $error_page = ProjectEnum::STATIC_PAGE_PAYMENT_ERROR_DIABETES;
+        }
+
+        //PA Choice
+        if (substr($request->session()->get('package'), 0, 6) === ProjectEnum::ONPACA_URL) {
+            $error_page = ProjectEnum::STATIC_PAGE_PAYMENT_ERROR_PA_CHOICE_CARE;
+        }
+        if (substr($request->session()->get('package'), 0, 6) === ProjectEnum::ONPAKD_URL) {
+            $error_page = ProjectEnum::STATIC_PAGE_PAYMENT_ERROR_PA_CHOICE_KIDE;
+        }
+        if (substr($request->session()->get('package'), 0, 6) === ProjectEnum::ONPASN_URL) {
+            $error_page = ProjectEnum::STATIC_PAGE_PAYMENT_ERROR_PA_CHOICE_SENIOR;
         }
 
         return $this->genStatusPage($error_page);
@@ -301,6 +324,7 @@ class PortalController extends ProductController
         $this->bodyData['doc_no'] = $request->session()->get('error');
         $pending_page = ProjectEnum::STATIC_PAGE_PAYMENT_PENDING;
 
+        //Health
         if (substr($request->session()->get('package'), 0, 6) === ProjectEnum::ONCSHC_URL) {
             $pending_page = ProjectEnum::STATIC_PAGE_PAYMENT_PENDING_CHILL_SURE;
         }
@@ -309,6 +333,17 @@ class PortalController extends ProductController
         }
         if (substr($request->session()->get('package'), 0, 8) === ProjectEnum::DIABETES_URL) {
             $pending_page = ProjectEnum::STATIC_PAGE_PAYMENT_PENDING_DIABETES;
+        }
+
+        //PA Choice
+        if (substr($request->session()->get('package'), 0, 6) === ProjectEnum::ONPACA_URL) {
+            $error_page = ProjectEnum::STATIC_PAGE_PAYMENT_PENDING_PA_CHOICE_CARE;
+        }
+        if (substr($request->session()->get('package'), 0, 6) === ProjectEnum::ONPAKD_URL) {
+            $error_page = ProjectEnum::STATIC_PAGE_PAYMENT_PENDING_PA_CHOICE_KIDE;
+        }
+        if (substr($request->session()->get('package'), 0, 6) === ProjectEnum::ONPASN_URL) {
+            $error_page = ProjectEnum::STATIC_PAGE_PAYMENT_PENDING_PA_CHOICE_SENIOR;
         }
 
         return $this->genStatusPage($pending_page);
@@ -321,6 +356,7 @@ class PortalController extends ProductController
         $this->bodyData['doc_no'] = $request->session()->get('error');
         $pending_page = ProjectEnum::STATIC_PAGE_PAYMENT_REJECT;
 
+        //Health
         if (substr($request->session()->get('package'), 0, 6) === ProjectEnum::ONCSHC_URL) {
             $pending_page = ProjectEnum::STATIC_PAGE_PAYMENT_REJECT_CHILL_SURE;
         }
@@ -329,6 +365,17 @@ class PortalController extends ProductController
         }
         if (substr($request->session()->get('package'), 0, 8) === ProjectEnum::DIABETES_URL) {
             $reject_page = ProjectEnum::STATIC_PAGE_PAYMENT_REJECT_DIABETES;
+        }
+
+        //PA Choice
+        if (substr($request->session()->get('package'), 0, 6) === ProjectEnum::ONPACA_URL) {
+            $error_page = ProjectEnum::STATIC_PAGE_PAYMENT_REJECT_PA_CHOICE_CARE;
+        }
+        if (substr($request->session()->get('package'), 0, 6) === ProjectEnum::ONPAKD_URL) {
+            $error_page = ProjectEnum::STATIC_PAGE_PAYMENT_REJECT_PA_CHOICE_KIDE;
+        }
+        if (substr($request->session()->get('package'), 0, 6) === ProjectEnum::ONPASN_URL) {
+            $error_page = ProjectEnum::STATIC_PAGE_PAYMENT_REJECT_PA_CHOICE_SENIOR;
         }
 
         return $this->genStatusPage($pending_page);

@@ -2160,6 +2160,21 @@ const static_content = {
         'payment_error_diabetes',
         'payment_pending_diabetes',
 
+        'payment_thank_you_pa_choice_care',
+        'payment_reject_pa_choice_care',
+        'payment_error_pa_choice_care',
+        'payment_pending_pa_choice_care',
+
+        'payment_thank_you_pa_choice_kide',
+        'payment_reject_pa_choice_kide',
+        'payment_error_pa_choice_kide',
+        'payment_pending_pa_choice_kide',
+
+        'payment_thank_you_pa_choice_senior',
+        'payment_reject_pa_choice_senior',
+        'payment_error_pa_choice_senior',
+        'payment_pending_pa_choice_senior',
+
         'payment_thank_you_ismile',
         'payment_thank_you_myhome_smart',
         'payment_thank_you_itravel',

@@ -45,6 +45,25 @@ class ProjectEnum
     const STATIC_PAGE_PAYMENT_PENDING_DIABETES = 'static.page.payment_pending_diabetes';
     const STATIC_PAGE_PAYMENT_REJECT_DIABETES = 'static.page.payment_reject_diabetes';
 
+    //====================================PA Choice====================================//
+    //PA Choice Care
+    const STATIC_PAGE_PAYMENT_THANK_YOU_PA_CHOICE_CARE = 'static.page.payment_thank_you_pa_choice_care';
+    const STATIC_PAGE_PAYMENT_ERROR_PA_CHOICE_CARE = 'static.page.payment_error_pa_choice_care';
+    const STATIC_PAGE_PAYMENT_PENDING_PA_CHOICE_CARE = 'static.page.payment_pending_pa_choice_care';
+    const STATIC_PAGE_PAYMENT_REJECT_PA_CHOICE_CARE = 'static.page.payment_reject_pa_choice_care';
+
+    //PA Choice Kide
+    const STATIC_PAGE_PAYMENT_THANK_YOU_PA_CHOICE_KIDE = 'static.page.payment_thank_you_pa_choice_kide';
+    const STATIC_PAGE_PAYMENT_ERROR_PA_CHOICE_KIDE = 'static.page.payment_error_pa_choice_kide';
+    const STATIC_PAGE_PAYMENT_PENDING_PA_CHOICE_KIDE = 'static.page.payment_pending_pa_choice_kide';
+    const STATIC_PAGE_PAYMENT_REJECT_PA_CHOICE_KIDE = 'static.page.payment_reject_pa_choice_kide';
+
+    //PA Choice Senior
+    const STATIC_PAGE_PAYMENT_THANK_YOU_PA_CHOICE_SENIOR = 'static.page.payment_thank_you_pa_choice_senior';
+    const STATIC_PAGE_PAYMENT_ERROR_PA_CHOICE_SENIOR = 'static.page.payment_error_pa_choice_senior';
+    const STATIC_PAGE_PAYMENT_PENDING_PA_CHOICE_SENIOR = 'static.page.payment_pending_pa_choice_senior';
+    const STATIC_PAGE_PAYMENT_REJECT_PA_CHOICE_SENIOR = 'static.page.payment_reject_pa_choice_senior';
+
     const STATIC_PAGE_PAYMENT_ERROR = 'static.page.payment_error';
     const STATIC_PAGE_PAYMENT_CANCEL = 'static.page.payment_cancel';
     const STATIC_PAGE_PAYMENT_PENDING = 'static.page.payment_pending';
@@ -98,11 +117,15 @@ class ProjectEnum
     const MYFLEXI_CI_URL = 'CI';
     const DIABETES_URL = 'DIABETES';
 
+    //PA Choice
+    const ONPACA_URL = 'ONPACA';
+    const ONPAKD_URL = 'ONPAKD';
+    const ONPASN_URL = 'ONPASN';
+
     const ISMILE_URL = 'TAISM';
 	const MYHOME_SMART_URL = 'ONMHS';
     const ONCSHCAA_URL = 'ONCSHCAA';
     const ONTAOB_URL = 'ONTAOB';
-    const ONPACA_URL = 'ONPACA';
     
     const ISSUE_POLICY_DIABETES = 'IssuePolicyDiabetes';
 
