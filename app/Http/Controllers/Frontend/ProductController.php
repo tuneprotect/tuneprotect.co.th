@@ -1378,12 +1378,6 @@ class ProductController extends BaseController
         if (Str::contains($request->getRequestUri(), ProjectEnum::ONCSHCAA_URL)) {
             $thank_you_page = ProjectEnum::STATIC_PAGE_PAYMENT_THANK_YOU_CHILL_SURE;
         }
-        if (Str::contains($request->getRequestUri(), ProjectEnum::ONTAOB_URL)) {
-            $thank_you_page = ProjectEnum::STATIC_PAGE_PAYMENT_THANK_YOU_ITRAVEL;
-        }
-        if (Str::contains($request->getRequestUri(), ProjectEnum::ONPACA_URL)) {
-            $thank_you_page = ProjectEnum::STATIC_PAGE_PAYMENT_THANK_YOU_PA_CHOICE;
-        }
 
         return $this->genStatusPage($thank_you_page);
     }

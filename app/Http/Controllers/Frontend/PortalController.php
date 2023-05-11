@@ -278,13 +278,6 @@ class PortalController extends ProductController
             $thank_you_page = ProjectEnum::STATIC_PAGE_PAYMENT_THANK_YOU_TA_OUTBOUND;
         }
 
-        if (Str::contains($request->getRequestUri(), ProjectEnum::ONTAOB_URL)) {
-            $thank_you_page = ProjectEnum::STATIC_PAGE_PAYMENT_THANK_YOU_ITRAVEL;
-        }
-        if (Str::contains($request->getRequestUri(), ProjectEnum::ONPACA_URL)) {
-            $thank_you_page = ProjectEnum::STATIC_PAGE_PAYMENT_THANK_YOU_PA_CHOICE;
-        }
-
         return $this->genStatusPage_Portal($thank_you_page);
     }
 
