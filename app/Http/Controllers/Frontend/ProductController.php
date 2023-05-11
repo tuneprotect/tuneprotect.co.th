@@ -710,9 +710,24 @@ class ProductController extends BaseController
                 $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::ONPASN_URL;
             }
 
-            if (Str::contains($data['fdPackage'], ProjectEnum::ISMILE_URL)) {
-                $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::ISMILE_URL;
+            ////iTravel
+            if (Str::contains($data['fdPackage'], ProjectEnum::ONTASK_URL)) {
+                $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::ONTASK_URL;
             }
+            if (Str::contains($data['fdPackage'], ProjectEnum::TAISM_URL)) {
+                $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::TAISM_URL;
+            }
+            if (Str::contains($data['fdPackage'], ProjectEnum::TAIPOCT22_URL)) {
+                $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::TAIPOCT22_URL;
+            }
+            if (Str::contains($data['fdPackage'], ProjectEnum::ONTADM_URL)) {
+                $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::ONTADM_URL;
+            }
+            if (Str::contains($data['fdPackage'], ProjectEnum::ONTAOB_URL)) {
+                $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::ONTAOB_URL;
+            }
+
+
             if (Str::contains($data['fdPackage'], ProjectEnum::MYHOME_SMART_URL)) {
                 $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::MYHOME_SMART_URL;
             }
@@ -772,9 +787,24 @@ class ProductController extends BaseController
                 $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::ONPASN_URL;
             }
 
-            if (Str::contains($data['fdPackage'], ProjectEnum::ISMILE_URL)) {
-                $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::ISMILE_URL;
+            ////iTravel
+            if (Str::contains($data['fdPackage'], ProjectEnum::ONTASK_URL)) {
+                $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::ONTASK_URL;
             }
+            if (Str::contains($data['fdPackage'], ProjectEnum::TAISM_URL)) {
+                $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::TAISM_URL;
+            }
+            if (Str::contains($data['fdPackage'], ProjectEnum::TAIPOCT22_URL)) {
+                $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::TAIPOCT22_URL;
+            }
+            if (Str::contains($data['fdPackage'], ProjectEnum::ONTADM_URL)) {
+                $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::ONTADM_URL;
+            }
+            if (Str::contains($data['fdPackage'], ProjectEnum::ONTAOB_URL)) {
+                $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::ONTAOB_URL;
+            }
+
+
             if (Str::contains($data['fdPackage'], ProjectEnum::MYHOME_SMART_URL)) {
                 $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::MYHOME_SMART_URL;
             }
@@ -1172,6 +1202,23 @@ class ProductController extends BaseController
             $error_page = ProjectEnum::STATIC_PAGE_PAYMENT_ERROR_PA_CHOICE_SENIOR;
         }
 
+        //iTravel
+        if (Str::contains($request->getRequestUri(), ProjectEnum::ONTASK_URL)) {
+            $error_page = ProjectEnum::STATIC_PAGE_PAYMENT_ERROR_ITRAVEL_PLUS_SKIING;
+        }
+        if (Str::contains($request->getRequestUri(), ProjectEnum::TAISM_URL)) {
+            $error_page = ProjectEnum::STATIC_PAGE_PAYMENT_ERROR_ISMILE;
+        }
+        if (Str::contains($request->getRequestUri(), ProjectEnum::TAIPOCT22_URL)) {
+            $error_page = ProjectEnum::STATIC_PAGE_PAYMENT_ERROR_TUNE_IPASS;
+        }
+        if (Str::contains($request->getRequestUri(), ProjectEnum::ONTADM_URL)) {
+            $error_page = ProjectEnum::STATIC_PAGE_PAYMENT_ERROR_TA_DOMESTIC;
+        }
+        if (Str::contains($request->getRequestUri(), ProjectEnum::ONTAOB_URL)) {
+            $error_page = ProjectEnum::STATIC_PAGE_PAYMENT_ERROR_TA_OUTBOUND;
+        }
+
         return $this->genStatusPage($error_page);
     }
 
@@ -1208,12 +1255,28 @@ class ProductController extends BaseController
             $pending_page = ProjectEnum::STATIC_PAGE_PAYMENT_PENDING_PA_CHOICE_SENIOR;
         }
 
+        //iTravel
+        if (Str::contains($request->getRequestUri(), ProjectEnum::ONTASK_URL)) {
+            $pending_page = ProjectEnum::STATIC_PAGE_PAYMENT_PENDING_ITRAVEL_PLUS_SKIING;
+        }
+        if (Str::contains($request->getRequestUri(), ProjectEnum::TAISM_URL)) {
+            $pending_page = ProjectEnum::STATIC_PAGE_PAYMENT_PENDING_ISMILE;
+        }
+        if (Str::contains($request->getRequestUri(), ProjectEnum::TAIPOCT22_URL)) {
+            $pending_page = ProjectEnum::STATIC_PAGE_PAYMENT_PENDING_TUNE_IPASS;
+        }
+        if (Str::contains($request->getRequestUri(), ProjectEnum::ONTADM_URL)) {
+            $pending_page = ProjectEnum::STATIC_PAGE_PAYMENT_PENDING_TA_DOMESTIC;
+        }
+        if (Str::contains($request->getRequestUri(), ProjectEnum::ONTAOB_URL)) {
+            $pending_page = ProjectEnum::STATIC_PAGE_PAYMENT_PENDING_TA_OUTBOUND;
+        }
+
         return $this->genStatusPage($pending_page);
     }
 
     public function reject(Request $request)
     {
-        dd($request);
         $this->bodyData['doc_no'] = $request->session()->get('error');
         $reject_page = ProjectEnum::STATIC_PAGE_PAYMENT_REJECT;
 
@@ -1237,6 +1300,23 @@ class ProductController extends BaseController
         }
         if (Str::contains($request->getRequestUri(), ProjectEnum::ONPASN_URL)) {
             $reject_page = ProjectEnum::STATIC_PAGE_PAYMENT_REJECT_PA_CHOICE_SENIOR;
+        }
+
+        //iTravel
+        if (Str::contains($request->getRequestUri(), ProjectEnum::ONTASK_URL)) {
+            $reject_page = ProjectEnum::STATIC_PAGE_PAYMENT_REJECT_ITRAVEL_PLUS_SKIING;
+        }
+        if (Str::contains($request->getRequestUri(), ProjectEnum::TAISM_URL)) {
+            $reject_page = ProjectEnum::STATIC_PAGE_PAYMENT_REJECT_ISMILE;
+        }
+        if (Str::contains($request->getRequestUri(), ProjectEnum::TAIPOCT22_URL)) {
+            $reject_page = ProjectEnum::STATIC_PAGE_PAYMENT_REJECT_TUNE_IPASS;
+        }
+        if (Str::contains($request->getRequestUri(), ProjectEnum::ONTADM_URL)) {
+            $reject_page = ProjectEnum::STATIC_PAGE_PAYMENT_REJECT_TA_DOMESTIC;
+        }
+        if (Str::contains($request->getRequestUri(), ProjectEnum::ONTAOB_URL)) {
+            $reject_page = ProjectEnum::STATIC_PAGE_PAYMENT_REJECT_TA_OUTBOUND;
         }
 
         return $this->genStatusPage($reject_page);
@@ -1274,9 +1354,24 @@ class ProductController extends BaseController
             $thank_you_page = ProjectEnum::STATIC_PAGE_PAYMENT_THANK_YOU_PA_CHOICE_SENIOR;
         }
 
-        if (Str::contains($request->getRequestUri(), ProjectEnum::ISMILE_URL)) {
+        //iTravel
+        if (Str::contains($request->getRequestUri(), ProjectEnum::ONTASK_URL)) {
+            $thank_you_page = ProjectEnum::STATIC_PAGE_PAYMENT_THANK_YOU_ITRAVEL_PLUS_SKIING;
+        }
+        if (Str::contains($request->getRequestUri(), ProjectEnum::TAISM_URL)) {
             $thank_you_page = ProjectEnum::STATIC_PAGE_PAYMENT_THANK_YOU_ISMILE;
         }
+        if (Str::contains($request->getRequestUri(), ProjectEnum::TAIPOCT22_URL)) {
+            $thank_you_page = ProjectEnum::STATIC_PAGE_PAYMENT_THANK_YOU_TUNE_IPASS;
+        }
+        if (Str::contains($request->getRequestUri(), ProjectEnum::ONTADM_URL)) {
+            $thank_you_page = ProjectEnum::STATIC_PAGE_PAYMENT_THANK_YOU_TA_DOMESTIC;
+        }
+        if (Str::contains($request->getRequestUri(), ProjectEnum::ONTAOB_URL)) {
+            $thank_you_page = ProjectEnum::STATIC_PAGE_PAYMENT_THANK_YOU_TA_OUTBOUND;
+        }
+
+    
         if (Str::contains($request->getRequestUri(), ProjectEnum::MYHOME_SMART_URL)) {
             $thank_you_page = ProjectEnum::STATIC_PAGE_PAYMENT_THANK_YOU_MYHOME_SMART;
         }
@@ -1289,6 +1384,7 @@ class ProductController extends BaseController
         if (Str::contains($request->getRequestUri(), ProjectEnum::ONPACA_URL)) {
             $thank_you_page = ProjectEnum::STATIC_PAGE_PAYMENT_THANK_YOU_PA_CHOICE;
         }
+
         return $this->genStatusPage($thank_you_page);
     }
 

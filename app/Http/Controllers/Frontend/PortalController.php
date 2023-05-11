@@ -261,9 +261,23 @@ class PortalController extends ProductController
             $thank_you_page = ProjectEnum::STATIC_PAGE_PAYMENT_THANK_YOU_PA_CHOICE_SENIOR;
         }
 
-        if (Str::contains($request->getRequestUri(), ProjectEnum::ISMILE_URL)) {
+        //iTravel
+        if (Str::contains($request->getRequestUri(), ProjectEnum::ONTASK_URL)) {
+            $thank_you_page = ProjectEnum::STATIC_PAGE_PAYMENT_THANK_YOU_ITRAVEL_PLUS_SKIING;
+        }
+        if (Str::contains($request->getRequestUri(), ProjectEnum::TAISM_URL)) {
             $thank_you_page = ProjectEnum::STATIC_PAGE_PAYMENT_THANK_YOU_ISMILE;
         }
+        if (Str::contains($request->getRequestUri(), ProjectEnum::TAIPOCT22_URL)) {
+            $thank_you_page = ProjectEnum::STATIC_PAGE_PAYMENT_THANK_YOU_TUNE_IPASS;
+        }
+        if (Str::contains($request->getRequestUri(), ProjectEnum::ONTADM_URL)) {
+            $thank_you_page = ProjectEnum::STATIC_PAGE_PAYMENT_THANK_YOU_TA_DOMESTIC;
+        }
+        if (Str::contains($request->getRequestUri(), ProjectEnum::ONTAOB_URL)) {
+            $thank_you_page = ProjectEnum::STATIC_PAGE_PAYMENT_THANK_YOU_TA_OUTBOUND;
+        }
+
         if (Str::contains($request->getRequestUri(), ProjectEnum::ONTAOB_URL)) {
             $thank_you_page = ProjectEnum::STATIC_PAGE_PAYMENT_THANK_YOU_ITRAVEL;
         }
@@ -301,6 +315,23 @@ class PortalController extends ProductController
         }
         if (Str::contains($request->getRequestUri(), ProjectEnum::ONPASN_URL)) {
             $error_page = ProjectEnum::STATIC_PAGE_PAYMENT_ERROR_PA_CHOICE_SENIOR;
+        }
+
+        //iTravel
+        if (Str::contains($request->getRequestUri(), ProjectEnum::ONTASK_URL)) {
+            $error_page = ProjectEnum::STATIC_PAGE_PAYMENT_ERROR_ITRAVEL_PLUS_SKIING;
+        }
+        if (Str::contains($request->getRequestUri(), ProjectEnum::TAISM_URL)) {
+            $error_page = ProjectEnum::STATIC_PAGE_PAYMENT_ERROR_ISMILE;
+        }
+        if (Str::contains($request->getRequestUri(), ProjectEnum::TAIPOCT22_URL)) {
+            $error_page = ProjectEnum::STATIC_PAGE_PAYMENT_ERROR_TUNE_IPASS;
+        }
+        if (Str::contains($request->getRequestUri(), ProjectEnum::ONTADM_URL)) {
+            $error_page = ProjectEnum::STATIC_PAGE_PAYMENT_ERROR_TA_DOMESTIC;
+        }
+        if (Str::contains($request->getRequestUri(), ProjectEnum::ONTAOB_URL)) {
+            $error_page = ProjectEnum::STATIC_PAGE_PAYMENT_ERROR_TA_OUTBOUND;
         }
 
         return $this->genStatusPage($error_page);
@@ -346,6 +377,23 @@ class PortalController extends ProductController
             $pending_page = ProjectEnum::STATIC_PAGE_PAYMENT_PENDING_PA_CHOICE_SENIOR;
         }
 
+        //iTravel
+        if (Str::contains($request->getRequestUri(), ProjectEnum::ONTASK_URL)) {
+            $pending_page = ProjectEnum::STATIC_PAGE_PAYMENT_PENDING_ITRAVEL_PLUS_SKIING;
+        }
+        if (Str::contains($request->getRequestUri(), ProjectEnum::TAISM_URL)) {
+            $pending_page = ProjectEnum::STATIC_PAGE_PAYMENT_PENDING_ISMILE;
+        }
+        if (Str::contains($request->getRequestUri(), ProjectEnum::TAIPOCT22_URL)) {
+            $pending_page = ProjectEnum::STATIC_PAGE_PAYMENT_PENDING_TUNE_IPASS;
+        }
+        if (Str::contains($request->getRequestUri(), ProjectEnum::ONTADM_URL)) {
+            $pending_page = ProjectEnum::STATIC_PAGE_PAYMENT_PENDING_TA_DOMESTIC;
+        }
+        if (Str::contains($request->getRequestUri(), ProjectEnum::ONTAOB_URL)) {
+            $pending_page = ProjectEnum::STATIC_PAGE_PAYMENT_PENDING_TA_OUTBOUND;
+        }
+
         return $this->genStatusPage($pending_page);
     }
 
@@ -354,11 +402,11 @@ class PortalController extends ProductController
         $this->bodyData['partner'] = $request->session()->get('partner');
         $this->bodyData['selected'] = $request->session()->get('selected');
         $this->bodyData['doc_no'] = $request->session()->get('error');
-        $pending_page = ProjectEnum::STATIC_PAGE_PAYMENT_REJECT;
+        $reject_page = ProjectEnum::STATIC_PAGE_PAYMENT_REJECT;
 
         //Health
         if (Str::contains($request->getRequestUri(), ProjectEnum::ONCSHC_URL)) {
-            $pending_page = ProjectEnum::STATIC_PAGE_PAYMENT_REJECT_CHILL_SURE;
+            $reject_page = ProjectEnum::STATIC_PAGE_PAYMENT_REJECT_CHILL_SURE;
         }
         if (Str::contains($request->getRequestUri(), ProjectEnum::MYFLEXI_CI_URL)) {
             $reject_page = ProjectEnum::STATIC_PAGE_PAYMENT_REJECT_MYFLEXI_CI;
@@ -376,6 +424,23 @@ class PortalController extends ProductController
         }
         if (Str::contains($request->getRequestUri(), ProjectEnum::ONPASN_URL)) {
             $reject_page = ProjectEnum::STATIC_PAGE_PAYMENT_REJECT_PA_CHOICE_SENIOR;
+        }
+
+        //iTravel
+        if (Str::contains($request->getRequestUri(), ProjectEnum::ONTASK_URL)) {
+            $reject_page = ProjectEnum::STATIC_PAGE_PAYMENT_REJECT_ITRAVEL_PLUS_SKIING;
+        }
+        if (Str::contains($request->getRequestUri(), ProjectEnum::TAISM_URL)) {
+            $reject_page = ProjectEnum::STATIC_PAGE_PAYMENT_REJECT_ISMILE;
+        }
+        if (Str::contains($request->getRequestUri(), ProjectEnum::TAIPOCT22_URL)) {
+            $reject_page = ProjectEnum::STATIC_PAGE_PAYMENT_REJECT_TUNE_IPASS;
+        }
+        if (Str::contains($request->getRequestUri(), ProjectEnum::ONTADM_URL)) {
+            $reject_page = ProjectEnum::STATIC_PAGE_PAYMENT_REJECT_TA_DOMESTIC;
+        }
+        if (Str::contains($request->getRequestUri(), ProjectEnum::ONTAOB_URL)) {
+            $reject_page = ProjectEnum::STATIC_PAGE_PAYMENT_REJECT_TA_OUTBOUND;
         }
 
         return $this->genStatusPage($reject_page);

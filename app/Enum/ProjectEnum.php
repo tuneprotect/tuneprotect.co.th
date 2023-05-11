@@ -21,7 +21,6 @@ class ProjectEnum
     const STATIC_PAGE_SERVICE_CENTER = 'static.page.service_center';
     const STATIC_PAGE_PAYMENT_THANK_YOU = 'static.page.payment_thank_you';
 
-    const STATIC_PAGE_PAYMENT_THANK_YOU_ISMILE = 'static.page.payment_thank_you_ismile';
 	const STATIC_PAGE_PAYMENT_THANK_YOU_MYHOME_SMART = 'static.page.payment_thank_you_myhome_smart';
     const STATIC_PAGE_PAYMENT_THANK_YOU_ITRAVEL= 'static.page.payment_thank_you_itravel';
     const STATIC_PAGE_PAYMENT_THANK_YOU_PA_CHOICE = 'static.page.payment_thank_you_pa_choice';
@@ -63,6 +62,37 @@ class ProjectEnum
     const STATIC_PAGE_PAYMENT_ERROR_PA_CHOICE_SENIOR = 'static.page.payment_error_pa_choice_senior';
     const STATIC_PAGE_PAYMENT_PENDING_PA_CHOICE_SENIOR = 'static.page.payment_pending_pa_choice_senior';
     const STATIC_PAGE_PAYMENT_REJECT_PA_CHOICE_SENIOR = 'static.page.payment_reject_pa_choice_senior';
+
+    //====================================Travel Insurance====================================//
+    //iTravel Plus skiing
+    const STATIC_PAGE_PAYMENT_THANK_YOU_ITRAVEL_PLUS_SKIING = 'static.page.payment_thank_you_itravel_plus_skiing';
+    const STATIC_PAGE_PAYMENT_ERROR_ITRAVEL_PLUS_SKIING = 'static.page.payment_error_itravel_plus_skiing';
+    const STATIC_PAGE_PAYMENT_PENDING_ITRAVEL_PLUS_SKIING = 'static.page.payment_pending_itravel_plus_skiing';
+    const STATIC_PAGE_PAYMENT_REJECT_ITRAVEL_PLUS_SKIING = 'static.page.payment_reject_itravel_plus_skiing';
+
+    //iSmile
+    const STATIC_PAGE_PAYMENT_THANK_YOU_ISMILE = 'static.page.payment_thank_you_ismile';
+    const STATIC_PAGE_PAYMENT_ERROR_ISMILE = 'static.page.payment_error_ismile';
+    const STATIC_PAGE_PAYMENT_PENDING_ISMILE = 'static.page.payment_pending_ismile';
+    const STATIC_PAGE_PAYMENT_REJECT_ISMILE = 'static.page.payment_reject_ismile';
+
+    //Tune iPass
+    const STATIC_PAGE_PAYMENT_THANK_YOU_TUNE_IPASS = 'static.page.payment_thank_you_tune_ipass';
+    const STATIC_PAGE_PAYMENT_ERROR_TUNE_IPASS = 'static.page.payment_error_tune_ipass';
+    const STATIC_PAGE_PAYMENT_PENDING_TUNE_IPASS = 'static.page.payment_pending_tune_ipass';
+    const STATIC_PAGE_PAYMENT_REJECT_TUNE_IPASS = 'static.page.payment_reject_tune_ipass';
+
+    //TA Domestic
+    const STATIC_PAGE_PAYMENT_THANK_YOU_TA_DOMESTIC = 'static.page.payment_thank_you_ta_domestic';
+    const STATIC_PAGE_PAYMENT_ERROR_TA_DOMESTIC = 'static.page.payment_error_ta_domestic';
+    const STATIC_PAGE_PAYMENT_PENDING_TA_DOMESTIC = 'static.page.payment_pending_ta_domestic';
+    const STATIC_PAGE_PAYMENT_REJECT_TA_DOMESTIC = 'static.page.payment_reject_ta_domestic';
+
+    //TA Outbound
+    const STATIC_PAGE_PAYMENT_THANK_YOU_TA_OUTBOUND = 'static.page.payment_thank_you_ta_outbound';
+    const STATIC_PAGE_PAYMENT_ERROR_TA_OUTBOUND = 'static.page.payment_error_ta_outbound';
+    const STATIC_PAGE_PAYMENT_PENDING_TA_OUTBOUND = 'static.page.payment_pending_ta_outbound';
+    const STATIC_PAGE_PAYMENT_REJECT_TA_OUTBOUND = 'static.page.payment_reject_ta_outbound';
 
     const STATIC_PAGE_PAYMENT_ERROR = 'static.page.payment_error';
     const STATIC_PAGE_PAYMENT_CANCEL = 'static.page.payment_cancel';
@@ -122,10 +152,16 @@ class ProjectEnum
     const ONPAKD_URL = 'ONPAKD';
     const ONPASN_URL = 'ONPASN';
 
+    //Travel
+    const ONTASK_URL = 'ONTASK';
+    const TAISM_URL = 'TAISM';
+    const TAIPOCT22_URL = 'TAIPOCT22';
+    const ONTADM_URL = 'ONTADM';
+    const ONTAOB_URL = 'ONTAOB';
+
     const ISMILE_URL = 'TAISM';
 	const MYHOME_SMART_URL = 'ONMHS';
     const ONCSHCAA_URL = 'ONCSHCAA';
-    const ONTAOB_URL = 'ONTAOB';
     
     const ISSUE_POLICY_DIABETES = 'IssuePolicyDiabetes';
 
