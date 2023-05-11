@@ -602,14 +602,17 @@ document.addEventListener("DOMContentLoaded", async () => {
                                 showTitle('', data.fdAge)
                                 status = true;
 
-                                gtag("event",  "view_item",  {
-                                    "items": [{
-                                      "item_id": fdPackage,
-                                      "item_name": fdDataPlan,
-                                      "price": getSelectedPrice(data.fdHBD, fdPackage, package_data),
-                                    }],
-                                    "currency": "THB"
-                                  });
+                                dataLayer.push({
+                                    "event":  "view_item",
+                                    "ecommerce":  {
+                                     "items": [{
+                                       "item_id": fdPackage,
+                                       "item_name": fdDataPlan,
+                                       "price": getSelectedPrice(data.fdHBD, fdPackage, package_data),
+                                     }],
+                                     "currency": "THB"
+                                   }
+                                });
                                 
                             } else {
                                 Swal.fire({
