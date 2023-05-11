@@ -1,6 +1,21 @@
 @extends('frontend.layout.main')
 
 @section('page')
+    <script>
+        gtag("event",  "purchase",  {
+            "transaction_id": "67da2d0e-0ab9-4f16-b8d1-93da962c45e1",
+            "link": "{{link}}",
+            "currency": "THB",
+            "value": "{{payAmount}}",
+            "items": [{
+                "policy_no": "{{doc_no}}",
+                "agent_code": "{{agentCode}}",
+                "price": "{{payAmount}}",
+                "point": "{{point}}"
+            }]
+        });
+    </script>
+
 <main>
     <article class="wrapper">
         <div class="inner-wrapper">
