@@ -2175,10 +2175,10 @@ const static_content = {
         'payment_error_pa_choice_senior',
         'payment_pending_pa_choice_senior',
 
-        'payment_thank_you_itravel_plus_skiing',
-        'payment_reject_itravel_plus_skiing',
-        'payment_error_itravel_plus_skiing',
-        'payment_pending_itravel_plus_skiing',
+        'payment_thank_you_ta_plus_skiing',
+        'payment_reject_ta_plus_skiing',
+        'payment_error_ta_plus_skiing',
+        'payment_pending_ta_plus_skiing',
 
         'payment_thank_you_ismile',
         'payment_reject_ismile',
@@ -2195,10 +2195,10 @@ const static_content = {
         'payment_error_ta_domestic',
         'payment_pending_ta_domestic',
 
-        'payment_thank_you_itravel_outbound',
-        'payment_reject_itravel_outbound',
-        'payment_error_itravel_outbound',
-        'payment_pending_itravel_outbound',
+        'payment_thank_you_ta_outbound',
+        'payment_reject_ta_outbound',
+        'payment_error_ta_outbound',
+        'payment_pending_ta_outbound',
 
         'payment_thank_you_myhome_smart',
         'payment_thank_you_itravel',

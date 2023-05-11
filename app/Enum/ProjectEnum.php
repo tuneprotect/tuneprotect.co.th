@@ -65,10 +65,10 @@ class ProjectEnum
 
     //====================================Travel Insurance====================================//
     //iTravel Plus skiing
-    const STATIC_PAGE_PAYMENT_THANK_YOU_ITRAVEL_PLUS_SKIING = 'static.page.payment_thank_you_itravel_plus_skiing';
-    const STATIC_PAGE_PAYMENT_ERROR_ITRAVEL_PLUS_SKIING = 'static.page.payment_error_itravel_plus_skiing';
-    const STATIC_PAGE_PAYMENT_PENDING_ITRAVEL_PLUS_SKIING = 'static.page.payment_pending_itravel_plus_skiing';
-    const STATIC_PAGE_PAYMENT_REJECT_ITRAVEL_PLUS_SKIING = 'static.page.payment_reject_itravel_plus_skiing';
+    const STATIC_PAGE_PAYMENT_THANK_YOU_TA_PLUS_SKIING = 'static.page.payment_thank_you_ta_plus_skiing';
+    const STATIC_PAGE_PAYMENT_ERROR_TA_PLUS_SKIING = 'static.page.payment_error_ta_plus_skiing';
+    const STATIC_PAGE_PAYMENT_PENDING_TA_PLUS_SKIING = 'static.page.payment_pending_ta_plus_skiing';
+    const STATIC_PAGE_PAYMENT_REJECT_TA_PLUS_SKIING = 'static.page.payment_reject_ta_plus_skiing';
 
     //iSmile
     const STATIC_PAGE_PAYMENT_THANK_YOU_ISMILE = 'static.page.payment_thank_you_ismile';

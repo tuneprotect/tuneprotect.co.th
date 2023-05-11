@@ -710,7 +710,7 @@ class ProductController extends BaseController
                 $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::ONPASN_URL;
             }
 
-            ////iTravel
+            //iTravel
             if (Str::contains($data['fdPackage'], ProjectEnum::ONTASK_URL)) {
                 $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::ONTASK_URL;
             }
@@ -787,7 +787,7 @@ class ProductController extends BaseController
                 $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::ONPASN_URL;
             }
 
-            ////iTravel
+            //iTravel
             if (Str::contains($data['fdPackage'], ProjectEnum::ONTASK_URL)) {
                 $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::ONTASK_URL;
             }
@@ -1204,7 +1204,7 @@ class ProductController extends BaseController
 
         //iTravel
         if (Str::contains($request->getRequestUri(), ProjectEnum::ONTASK_URL)) {
-            $error_page = ProjectEnum::STATIC_PAGE_PAYMENT_ERROR_ITRAVEL_PLUS_SKIING;
+            $error_page = ProjectEnum::STATIC_PAGE_PAYMENT_ERROR_TA_PLUS_SKIING;
         }
         if (Str::contains($request->getRequestUri(), ProjectEnum::TAISM_URL)) {
             $error_page = ProjectEnum::STATIC_PAGE_PAYMENT_ERROR_ISMILE;
@@ -1257,7 +1257,7 @@ class ProductController extends BaseController
 
         //iTravel
         if (Str::contains($request->getRequestUri(), ProjectEnum::ONTASK_URL)) {
-            $pending_page = ProjectEnum::STATIC_PAGE_PAYMENT_PENDING_ITRAVEL_PLUS_SKIING;
+            $pending_page = ProjectEnum::STATIC_PAGE_PAYMENT_PENDING_TA_PLUS_SKIING;
         }
         if (Str::contains($request->getRequestUri(), ProjectEnum::TAISM_URL)) {
             $pending_page = ProjectEnum::STATIC_PAGE_PAYMENT_PENDING_ISMILE;
@@ -1304,7 +1304,7 @@ class ProductController extends BaseController
 
         //iTravel
         if (Str::contains($request->getRequestUri(), ProjectEnum::ONTASK_URL)) {
-            $reject_page = ProjectEnum::STATIC_PAGE_PAYMENT_REJECT_ITRAVEL_PLUS_SKIING;
+            $reject_page = ProjectEnum::STATIC_PAGE_PAYMENT_REJECT_TA_PLUS_SKIING;
         }
         if (Str::contains($request->getRequestUri(), ProjectEnum::TAISM_URL)) {
             $reject_page = ProjectEnum::STATIC_PAGE_PAYMENT_REJECT_ISMILE;
@@ -1356,7 +1356,7 @@ class ProductController extends BaseController
 
         //iTravel
         if (Str::contains($request->getRequestUri(), ProjectEnum::ONTASK_URL)) {
-            $thank_you_page = ProjectEnum::STATIC_PAGE_PAYMENT_THANK_YOU_ITRAVEL_PLUS_SKIING;
+            $thank_you_page = ProjectEnum::STATIC_PAGE_PAYMENT_THANK_YOU_TA_PLUS_SKIING;
         }
         if (Str::contains($request->getRequestUri(), ProjectEnum::TAISM_URL)) {
             $thank_you_page = ProjectEnum::STATIC_PAGE_PAYMENT_THANK_YOU_ISMILE;

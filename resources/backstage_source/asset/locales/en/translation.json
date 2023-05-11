@@ -337,10 +337,10 @@
                 "payment_error_pa_choice_senior": "Payment Error PA Choice Senior",
                 "payment_pending_pa_choice_senior": "Payment Pending PA Choice Senior",
 
-                "payment_thank_you_itravel_plus_skiing": "Payment Thank you iTravel Plus skiing",
-                "payment_reject_itravel_plus_skiing": "Payment Reject iTravel Plus skiing",
-                "payment_error_itravel_plus_skiing": "Payment Error iTravel Plus skiing",
-                "payment_pending_itravel_plus_skiing": "Payment Pending iTravel Plus skiing",
+                "payment_thank_you_ta_plus_skiing": "Payment Thank you TA Plus skiing",
+                "payment_reject_ta_plus_skiing": "Payment Reject TA Plus skiing",
+                "payment_error_ta_plus_skiing": "Payment Error TA Plus skiing",
+                "payment_pending_ta_plus_skiing": "Payment Pending TA Plus skiing",
 
                 "payment_thank_you_ismile": "Payment Thank you iSmile",
                 "payment_reject_ismile": "Payment Reject iSmile",
@@ -357,10 +357,10 @@
                 "payment_error_ta_domestic": "Payment Error TA Domestic",
                 "payment_pending_ta_domestic": "Payment Pending TA Domestic",
 
-                "payment_thank_you_itravel_outbound": "Payment Thank you TA Outbound",
-                "payment_reject_itravel_outbound": "Payment Reject TA Outbound",
-                "payment_error_itravel_outbound": "Payment Error TA Outbound",
-                "payment_pending_itravel_outbound": "Payment Pending TA Outbound",
+                "payment_thank_you_ta_outbound": "Payment Thank you TA Outbound",
+                "payment_reject_ta_outbound": "Payment Reject TA Outbound",
+                "payment_error_ta_outbound": "Payment Error TA Outbound",
+                "payment_pending_ta_outbound": "Payment Pending TA Outbound",
 
                 "payment_thank_you": "Payment Thank you",
                 "payment_thank_you_myhome_smart": "Payment Thank you My Home Smart",
