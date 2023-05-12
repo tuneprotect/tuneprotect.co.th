@@ -365,8 +365,6 @@ document.addEventListener("DOMContentLoaded", async () => {
 
                     $(`strong[data-price-${k}]`).innerHTML = price;
                     $(`span[data-price-${k}]`).innerHTML = price;
-
-                    console.log(price);
                 });
         }
         // hideRow();
@@ -376,12 +374,9 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     const genItemList = () => {
 
+        let index = 0;
         const itemList = [];
-        const itme = {
-            item_id: "",
-            item_name: "",
-            price: "",
-        };
+
         if (data.fdHBD) {
             Object.keys(package_data)
                 .filter(k => _.startsWith(k, current_package))
@@ -389,8 +384,14 @@ document.addEventListener("DOMContentLoaded", async () => {
                     const pack = Object.keys(package_data[k].price).filter(ageRange => checkAge(data.fdHBD, ageRange))
                     const price = parseInt(package_data[k].price[pack]).toLocaleString();
                     const apiPackage = package_data[k].apiPackage;
-                    const plan = Object.keys(package_data);
+                    const plan = Object.keys(package_data)[index];
 
+                    const itme = {
+                        item_id: "",
+                        item_name: "",
+                        price: "",
+                    };
+                    
                     //$(`strong[data-price-${k}]`).innerHTML = price;
                     //$(`span[data-price-${k}]`).innerHTML = price;
                     itme.item_id = plan;
@@ -398,10 +399,11 @@ document.addEventListener("DOMContentLoaded", async () => {
                     itme.price = price;
 
                     itemList.push(itme);
+                    index++;
                 });
         }
 
-        console.log(Object.keys(package_data)[0]);
+        console.log();
         console.log(itemList);
         
         // dataLayer.push({
