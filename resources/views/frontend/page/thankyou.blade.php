@@ -2,6 +2,8 @@
 
 @section('page')
     <script>
+
+        //google analytic [purchase]
         dataLayer.push({
             "event":  "purchase",
             "ecommerce":  {
