@@ -1394,7 +1394,6 @@ class ProductController extends BaseController
             $payAmount = $data['fdPayAMT'];
             $portalKey = $data['fdKeys'];
             $agent_code = $data['fdAgent'];
-            $product_code = $data['fdProductCode'];
             $package = $data['fdPackage'];
             
             if ($v->result) {
@@ -1406,7 +1405,6 @@ class ProductController extends BaseController
                 $request->session()->put('portalKey', $portalKey);
                 $request->session()->put('agentCode', $agent_code);
                 $request->session()->put('package', $package);
-                $request->session()->put('product_code', $product_code);
                 $this->thankYouParam = $request->input('user_defined_4');
 
                 $func = 'thankyou';
@@ -1432,7 +1430,6 @@ class ProductController extends BaseController
                     $request->session()->put('portalKey', $portalKey);
                     $request->session()->put('agentCode', $agent_code);
                     $request->session()->put('package', $package);
-                    $request->session()->put('product_code', $product_code);
                     $this->thankYouParam = $request->input('user_defined_4');
                     $func = 'thankyou';
                 } else {

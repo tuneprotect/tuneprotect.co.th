@@ -20,7 +20,6 @@
             "currency": "THB",
             "items": [{
                 "item_id": "{{$package}}",
-                "item_name": "{{$product_code}}",
                 "price": "{{$payAmount}}"
             }]
         }
