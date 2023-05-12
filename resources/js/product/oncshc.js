@@ -365,6 +365,8 @@ document.addEventListener("DOMContentLoaded", async () => {
 
                     $(`strong[data-price-${k}]`).innerHTML = price;
                     $(`span[data-price-${k}]`).innerHTML = price;
+
+                    console.log(price);
                 });
         }
         // hideRow();
@@ -399,7 +401,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                 });
         }
 
-        console.log(Object.keys(package_data));
+        console.log(Object.keys(package_data)[0]);
         console.log(itemList);
         
         // dataLayer.push({
