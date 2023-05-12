@@ -44,9 +44,7 @@
                             </div>
                             <ul>
                                 @foreach($main_highlight_product->productPackage AS $v)
-                                    @if($v->code === 'ONCSH')
-
-                                    @else
+                                    @if($v1->code === 'ONCSHC' || $v1->code === 'CI'|| $v1->code === 'DIABETES' || $v1->code === 'ONPACA' || $v1->code === 'ONPAKD' || $v1->code === 'ONPASN' || $v1->code === 'ONTASK' || $v1->code === 'TAISM' || $v1->code === 'TAIPOCT22' || $v1->code === 'ONTADM' || $v1->code === 'ONTAOB' || $v1->code === 'ONFIMP' || $v1->code === 'ONMHS')
                                         <li>
                                             <a
                                                 data-gtm="index-product-image-{{$main_highlight_product->friendly_url}}-{{$v->code}}"
@@ -98,8 +96,7 @@
                                     </div>
                                     <ul>
                                         @foreach($v->productPackage AS $v1)
-                                            @if($v1->code === 'ONVACINA' || $v1->code === 'CVCARE'|| $v1->code === 'ONCOVIDMW' || $v1->code === 'TGCVLP' || $v1->code === 'TAISMTG' || $v1->code === 'ONTALN' || $v1->code === 'ONVSUREA' || $v1->code === 'ONTAOBB2B' || $v1->code === 'ONB2BTA' || $v1->code === 'ONB2BTAD' || $v1->code === 'ONTAISMB2B' || $v1->code === 'ONCSH' || $v1->code === 'TAIPCRN' || $v1->code === 'TAIPOCT22AA' || $v1->code === 'PUMPPA') 
-                                            @else
+                                            @if($v1->code === 'ONCSHC' || $v1->code === 'CI'|| $v1->code === 'DIABETES' || $v1->code === 'ONPACA' || $v1->code === 'ONPAKD' || $v1->code === 'ONPASN' || $v1->code === 'ONTASK' || $v1->code === 'TAISM' || $v1->code === 'TAIPOCT22' || $v1->code === 'ONTADM' || $v1->code === 'ONTAOB' || $v1->code === 'ONFIMP' || $v1->code === 'ONMHS')    
                                                 <li>
                                                     <a
                                                         data-gtm="index-product-image-{{$v->friendly_url}}-{{$v1->code}}"
