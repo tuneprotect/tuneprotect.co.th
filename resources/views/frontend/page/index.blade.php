@@ -155,22 +155,24 @@
                                     <p>{{$last_highlight_product->locales[$locale]->sub_title}}</p>
                                 </div>
                                 <ul>
-                                    @foreach($last_highlight_product->productPackage AS $v)                                
-                                        <li>
-                                            <a
-                                                data-gtm="index-product-image-{{$last_highlight_product->friendly_url}}-{{$v->code}}"
-                                                href="{{route('current',['locale' => $locale,'controller' => 'product','func' => $last_highlight_product->friendly_url,'params' => $v->code ])}}">
-                                                <div class="two-tone-icon">
-                                                    <span><img src="{{url($v->pic)}}" alt=""></span>
-                                                    <strong>{{$v->locales[$locale]->title}}</strong>
+                                    @foreach($last_highlight_product->productPackage AS $v)
+                                        @if($v1->code === 'ONCSHC' || $v1->code === 'CI'|| $v1->code === 'DIABETES' || $v1->code === 'ONPACA' || $v1->code === 'ONPAKD' || $v1->code === 'ONPASN' || $v1->code === 'ONTASK' || $v1->code === 'TAISM' || $v1->code === 'TAIPOCT22' || $v1->code === 'ONTADM' || $v1->code === 'ONTAOB' || $v1->code === 'ONFIMP' || $v1->code === 'ONMHS')                             
+                                            <li>
+                                                <a
+                                                    data-gtm="index-product-image-{{$last_highlight_product->friendly_url}}-{{$v->code}}"
+                                                    href="{{route('current',['locale' => $locale,'controller' => 'product','func' => $last_highlight_product->friendly_url,'params' => $v->code ])}}">
+                                                    <div class="two-tone-icon">
+                                                        <span><img src="{{url($v->pic)}}" alt=""></span>
+                                                        <strong>{{$v->locales[$locale]->title}}</strong>
+                                                    </div>
+                                                </a>
+                                                <div class="btn-wrapper">
+                                                    <a class="btn btn-gradient"
+                                                    data-gtm="index-product-button-{{$last_highlight_product->friendly_url}}-{{$v->code}}"
+                                                    href="{{route('current',['locale' => $locale,'controller' => 'product','func' => $last_highlight_product->friendly_url,'params' => $v->code ])}}">@lang('global.choose_product')</a>
                                                 </div>
-                                            </a>
-                                            <div class="btn-wrapper">
-                                                <a class="btn btn-gradient"
-                                                data-gtm="index-product-button-{{$last_highlight_product->friendly_url}}-{{$v->code}}"
-                                                href="{{route('current',['locale' => $locale,'controller' => 'product','func' => $last_highlight_product->friendly_url,'params' => $v->code ])}}">@lang('global.choose_product')</a>
-                                            </div>
-                                        </li>
+                                            </li>
+                                        @endif
                                     @endforeach
                                 </ul>
                             </div>
