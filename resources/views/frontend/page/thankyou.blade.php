@@ -1,23 +1,6 @@
 @extends('frontend.layout.main')
 
 @section('page')
-    <script>
-
-        //google analytic [purchase]
-        dataLayer.push({
-            "event":  "purchase",
-            "ecommerce":  {
-                "link": "{{$return_link}}",
-                "value": "{{$payAmount}}",
-                "currency": "THB",
-                "items": [{
-                    "item_id": "{{$doc_no}}",
-                    "price": "{{$payAmount}}",
-                    "point": "{{$point}}"
-                }]
-            }
-        });
-    </script>
 
 <main>
     <article class="wrapper">
@@ -26,5 +9,22 @@
         </div>
     </article>
 </main>
+
+<script>
+    //google analytic [purchase]
+    dataLayer.push({
+        "event":  "purchase",
+        "ecommerce":  {
+            "transaction_id": "{{$doc_no}}",
+            "value": "{{$payAmount}}",
+            "currency": "THB",
+            "items": [{
+                "item_id": "{{$package}}",
+                "item_name": "{{$product_code}}",
+                "price": "{{$payAmount}}"
+            }]
+        }
+    });
+</script>
 
 @endsection
