@@ -177,6 +177,7 @@ class ProjectEnum
     
     
     const ONCSHCAA_URL = 'ONCSHCAA';
+    const ONCSHCSC_URL = 'ONCSHCSC';
     const ISMILE_URL = 'TAISM';
     const ISSUE_POLICY_DIABETES = 'IssuePolicyDiabetes';
 
