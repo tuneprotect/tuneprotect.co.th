@@ -372,6 +372,46 @@ document.addEventListener("DOMContentLoaded", async () => {
         return pricelist;
     }
 
+    const genItemList = () => {
+
+        const itemList = [];
+        const itme = {
+            item_id: "",
+            item_name: "",
+            price: "",
+        };
+        if (data.fdHBD) {
+            Object.keys(package_data)
+                .filter(k => _.startsWith(k, current_package))
+                .map(k => {
+                    const pack = Object.keys(package_data[k].price).filter(ageRange => checkAge(data.fdHBD, ageRange))
+                    const price = parseInt(package_data[k].price[pack]).toLocaleString();
+
+                    //$(`strong[data-price-${k}]`).innerHTML = price;
+                    //$(`span[data-price-${k}]`).innerHTML = price;
+                    itme.item_id = pack;
+                    itme.item_name = pack;
+                    itme.price = price;
+
+                    itemList.push(itme);
+                });
+        }
+
+        dd(itemList);
+        
+        // dataLayer.push({
+        //     "event":  "view_item",
+        //     "ecommerce":  {
+        //      "items": [{
+        //        "item_id": fdPackage,
+        //        "item_name": fdDataPlan,
+        //        "price": getSelectedPrice(data.fdHBD, fdPackage, package_data),
+        //      }],
+        //      "currency": "THB"
+        //    }
+        // });
+    }
+
     $$('#ctrl_weight,#ctrl_height').forEach($el => {
         $el.addEventListener($el.tagName.toLowerCase() === 'input' ? "keyup" : "change", event => {
             genBMI();
@@ -593,6 +633,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                             const fdDataPlan = $btn.getAttribute('data-plan');
 
                             $("#table-detail").setAttribute('data-package_plan', $btn.getAttribute('data-plan'));
+                            genItemList();
 
                             if (fdPackage) {
                                 data = {
@@ -602,17 +643,20 @@ document.addEventListener("DOMContentLoaded", async () => {
                                 showTitle('', data.fdAge)
                                 status = true;
 
+                                const selectPrice = getSelectedPrice(data.fdHBD, fdPackage, package_data);
+
                                 dataLayer.push({
-                                    "event":  "view_item",
+                                    "event":  "add_to_cart",
                                     "ecommerce":  {
+                                     "currency": "THB",
+                                     "value": selectPrice,
                                      "items": [{
                                        "item_id": fdPackage,
                                        "item_name": fdDataPlan,
-                                       "price": getSelectedPrice(data.fdHBD, fdPackage, package_data),
-                                     }],
-                                     "currency": "THB"
+                                       "price": selectPrice,
+                                     }]
                                    }
-                                });
+                                 });
                                 
                             } else {
                                 Swal.fire({
