@@ -1466,10 +1466,12 @@ class ProductController extends BaseController
             case '001':
                 $func = 'pending';
                 $request->session()->put('error', $request->input('channel_response_desc'));
+                $request->session()->put('package', $package);
                 break;
             case '002':
                 $func = 'reject';
                 $request->session()->put('error', $request->input('channel_response_desc'));
+                $request->session()->put('package', $package);
                 break;
             case '003':
                 $func = 'cancel';
