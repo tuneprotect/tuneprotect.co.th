@@ -397,7 +397,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                 });
         }
 
-        dd(itemList);
+        console.log(itemList);
         
         // dataLayer.push({
         //     "event":  "view_item",
