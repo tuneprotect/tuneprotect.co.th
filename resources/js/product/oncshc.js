@@ -397,6 +397,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                 });
         }
 
+        console.log(package_data);
         console.log(itemList);
         
         // dataLayer.push({
