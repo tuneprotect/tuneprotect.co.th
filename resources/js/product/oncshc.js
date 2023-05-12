@@ -386,11 +386,13 @@ document.addEventListener("DOMContentLoaded", async () => {
                 .map(k => {
                     const pack = Object.keys(package_data[k].price).filter(ageRange => checkAge(data.fdHBD, ageRange))
                     const price = parseInt(package_data[k].price[pack]).toLocaleString();
+                    const apiPackage = package_data[k].apiPackage;
+                    const plan = Object.keys(package_data[k]);
 
                     //$(`strong[data-price-${k}]`).innerHTML = price;
                     //$(`span[data-price-${k}]`).innerHTML = price;
-                    itme.item_id = pack;
-                    itme.item_name = pack;
+                    itme.item_id = plan;
+                    itme.item_name = apiPackage;
                     itme.price = price;
 
                     itemList.push(itme);
@@ -595,6 +597,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                                 }
 
                                 genPrice();
+                                genItemList();
                                 let $btnMore_Diabetes = $('#btn-more-diabetes');
                                 $$('#table-detail tbody tr:nth-child(n+7)').forEach(row => {
                                     row.style.display = 'none';
@@ -634,8 +637,6 @@ document.addEventListener("DOMContentLoaded", async () => {
                             const fdDataPlan = $btn.getAttribute('data-plan');
 
                             $("#table-detail").setAttribute('data-package_plan', $btn.getAttribute('data-plan'));
-                            genItemList();
-
                             if (fdPackage) {
                                 data = {
                                     ...data,
