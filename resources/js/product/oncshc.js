@@ -391,9 +391,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                         item_name: "",
                         price: "",
                     };
-                    
-                    //$(`strong[data-price-${k}]`).innerHTML = price;
-                    //$(`span[data-price-${k}]`).innerHTML = price;
+
                     itme.item_id = plan;
                     itme.item_name = apiPackage;
                     itme.price = price;
@@ -402,21 +400,14 @@ document.addEventListener("DOMContentLoaded", async () => {
                     index++;
                 });
         }
-
-        console.log();
-        console.log(itemList);
         
-        // dataLayer.push({
-        //     "event":  "view_item",
-        //     "ecommerce":  {
-        //      "items": [{
-        //        "item_id": fdPackage,
-        //        "item_name": fdDataPlan,
-        //        "price": getSelectedPrice(data.fdHBD, fdPackage, package_data),
-        //      }],
-        //      "currency": "THB"
-        //    }
-        // });
+        dataLayer.push({
+            "event":  "view_item",
+            "ecommerce":  {
+             "items": itemList,
+             "currency": "THB"
+           }
+        });
     }
 
     $$('#ctrl_weight,#ctrl_height').forEach($el => {
