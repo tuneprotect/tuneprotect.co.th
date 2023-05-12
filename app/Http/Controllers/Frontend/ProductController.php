@@ -727,15 +727,12 @@ class ProductController extends BaseController
                 $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::ONTAOB_URL;
             }
 
-
+            //myHome
             if (Str::contains($data['fdPackage'], ProjectEnum::MYHOME_SMART_URL)) {
                 $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::MYHOME_SMART_URL;
             }
-            if (Str::contains($data['fdPackage'], ProjectEnum::ONTAOB_URL)) {
-                $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::ONTAOB_URL;
-            }
-            if (Str::contains($data['fdPackage'], ProjectEnum::ONPACA_URL)) {
-                $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::ONPACA_URL;
+            if (Str::contains($data['fdPackage'], ProjectEnum::MYHOME_PLUS_URL)) {
+                $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::MYHOME_PLUS_URL;
             }
 
             $obj = $this->combindObj(array_merge($data, (array)$data["profile"][0]));
@@ -804,19 +801,19 @@ class ProductController extends BaseController
                 $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::ONTAOB_URL;
             }
 
-
+            //myHome
             if (Str::contains($data['fdPackage'], ProjectEnum::MYHOME_SMART_URL)) {
                 $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::MYHOME_SMART_URL;
             }
+            if (Str::contains($data['fdPackage'], ProjectEnum::MYHOME_PLUS_URL)) {
+                $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::MYHOME_PLUS_URL;
+            }
+
+
             if (Str::contains($data['fdPackage'], ProjectEnum::ONCSHCAA_URL)) {
                 $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::ONCSHCAA_URL;
             }
-            if (Str::contains($data['fdPackage'], ProjectEnum::ONTAOB_URL)) {
-                $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::ONTAOB_URL;
-            }
-            if (Str::contains($data['fdPackage'], ProjectEnum::ONPACA_URL)) {
-                $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::ONPACA_URL;
-            }
+
             $obj = $this->combindObj($data);
             $result = $this->logData($obj);
 
@@ -1219,6 +1216,14 @@ class ProductController extends BaseController
             $error_page = ProjectEnum::STATIC_PAGE_PAYMENT_ERROR_TA_OUTBOUND;
         }
 
+        //myHome
+        if (Str::contains($request->getRequestUri(), ProjectEnum::MYHOME_SMART_URL)) {
+            $error_page = ProjectEnum::STATIC_PAGE_PAYMENT_ERROR_MYHOME_SMART;
+        }
+        if (Str::contains($request->getRequestUri(), ProjectEnum::MYHOME_PLUS_URL)) {
+            $error_page = ProjectEnum::STATIC_PAGE_PAYMENT_ERROR_MYHOME_PLUS;
+        }
+
         return $this->genStatusPage($error_page);
     }
 
@@ -1272,6 +1277,14 @@ class ProductController extends BaseController
             $pending_page = ProjectEnum::STATIC_PAGE_PAYMENT_PENDING_TA_OUTBOUND;
         }
 
+        //myHome
+        if (Str::contains($request->getRequestUri(), ProjectEnum::MYHOME_SMART_URL)) {
+            $error_page = ProjectEnum::STATIC_PAGE_PAYMENT_PENDING_MYHOME_SMART;
+        }
+        if (Str::contains($request->getRequestUri(), ProjectEnum::MYHOME_PLUS_URL)) {
+            $error_page = ProjectEnum::STATIC_PAGE_PAYMENT_PENDING_MYHOME_PLUS;
+        }
+
         return $this->genStatusPage($pending_page);
     }
 
@@ -1317,6 +1330,14 @@ class ProductController extends BaseController
         }
         if (Str::contains($request->getRequestUri(), ProjectEnum::ONTAOB_URL)) {
             $reject_page = ProjectEnum::STATIC_PAGE_PAYMENT_REJECT_TA_OUTBOUND;
+        }
+
+        //myHome
+        if (Str::contains($request->getRequestUri(), ProjectEnum::MYHOME_SMART_URL)) {
+            $error_page = ProjectEnum::STATIC_PAGE_PAYMENT_REJECT_MYHOME_SMART;
+        }
+        if (Str::contains($request->getRequestUri(), ProjectEnum::MYHOME_PLUS_URL)) {
+            $error_page = ProjectEnum::STATIC_PAGE_PAYMENT_REJECT_MYHOME_PLUS;
         }
 
         return $this->genStatusPage($reject_page);
@@ -1372,10 +1393,14 @@ class ProductController extends BaseController
             $thank_you_page = ProjectEnum::STATIC_PAGE_PAYMENT_THANK_YOU_TA_OUTBOUND;
         }
 
-    
+        //myHome
         if (Str::contains($request->getRequestUri(), ProjectEnum::MYHOME_SMART_URL)) {
             $thank_you_page = ProjectEnum::STATIC_PAGE_PAYMENT_THANK_YOU_MYHOME_SMART;
         }
+        if (Str::contains($request->getRequestUri(), ProjectEnum::MYHOME_PLUS_URL)) {
+            $thank_you_page = ProjectEnum::STATIC_PAGE_PAYMENT_THANK_YOU_MYHOME_PLUS;
+        }
+
         if (Str::contains($request->getRequestUri(), ProjectEnum::ONCSHCAA_URL)) {
             $thank_you_page = ProjectEnum::STATIC_PAGE_PAYMENT_THANK_YOU_CHILL_SURE;
         }

@@ -2201,6 +2201,8 @@ const static_content = {
         'payment_pending_ta_outbound',
 
         'payment_thank_you_myhome_smart',
+        'payment_thank_you_myhome_plus',
+
         'payment_thank_you_itravel',
         'payment_thank_you_pa_choice',
         'privacy',

@@ -362,9 +362,10 @@
                 "payment_error_ta_outbound": "Payment Error TA Outbound",
                 "payment_pending_ta_outbound": "Payment Pending TA Outbound",
 
-                "payment_thank_you": "Payment Thank you",
                 "payment_thank_you_myhome_smart": "Payment Thank you My Home Smart",
+                "payment_thank_you_myhome_plus": "Payment Thank you My Home Plus",
                 
+                "payment_thank_you": "Payment Thank you",
                 "payment_thank_you_itravel": "Payment Thank you iTravel",
                 "payment_thank_you_pa_choice": "Payment Thank you PA Choice",
                 "privacy": "Privacy Policy",

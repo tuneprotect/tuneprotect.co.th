@@ -21,7 +21,6 @@ class ProjectEnum
     const STATIC_PAGE_SERVICE_CENTER = 'static.page.service_center';
     const STATIC_PAGE_PAYMENT_THANK_YOU = 'static.page.payment_thank_you';
 
-	const STATIC_PAGE_PAYMENT_THANK_YOU_MYHOME_SMART = 'static.page.payment_thank_you_myhome_smart';
     const STATIC_PAGE_PAYMENT_THANK_YOU_ITRAVEL= 'static.page.payment_thank_you_itravel';
     const STATIC_PAGE_PAYMENT_THANK_YOU_PA_CHOICE = 'static.page.payment_thank_you_pa_choice';
 
@@ -94,6 +93,19 @@ class ProjectEnum
     const STATIC_PAGE_PAYMENT_PENDING_TA_OUTBOUND = 'static.page.payment_pending_ta_outbound';
     const STATIC_PAGE_PAYMENT_REJECT_TA_OUTBOUND = 'static.page.payment_reject_ta_outbound';
 
+    //====================================My Home====================================//
+    //My Home Smart
+    const STATIC_PAGE_PAYMENT_THANK_YOU_MYHOME_SMART = 'static.page.payment_thank_you_myhome_smart';
+    const STATIC_PAGE_PAYMENT_ERROR_MYHOME_SMART = 'static.page.payment_error_myhome_smart';
+    const STATIC_PAGE_PAYMENT_PENDING_MYHOME_SMART = 'static.page.payment_pending_myhome_smart';
+    const STATIC_PAGE_PAYMENT_REJECT_MYHOME_SMART = 'static.page.payment_reject_myhome_smart';
+
+    //My Home Plus
+    const STATIC_PAGE_PAYMENT_THANK_YOU_MYHOME_PLUS = 'static.page.payment_thank_you_myhome_plus';
+    const STATIC_PAGE_PAYMENT_ERROR_MYHOME_PLUS = 'static.page.payment_error_myhome_plus';
+    const STATIC_PAGE_PAYMENT_PENDING_MYHOME_PLUS = 'static.page.payment_pending_myhome_plus';
+    const STATIC_PAGE_PAYMENT_REJECT_MYHOME_PLUS = 'static.page.payment_reject_myhome_plus';
+
     const STATIC_PAGE_PAYMENT_ERROR = 'static.page.payment_error';
     const STATIC_PAGE_PAYMENT_CANCEL = 'static.page.payment_cancel';
     const STATIC_PAGE_PAYMENT_PENDING = 'static.page.payment_pending';
@@ -159,10 +171,13 @@ class ProjectEnum
     const ONTADM_URL = 'ONTADM';
     const ONTAOB_URL = 'ONTAOB';
 
-    const ISMILE_URL = 'TAISM';
+    //myHome
 	const MYHOME_SMART_URL = 'ONMHS';
-    const ONCSHCAA_URL = 'ONCSHCAA';
+    const MYHOME_PLUS_URL = 'ONFIMP';
     
+    
+    const ONCSHCAA_URL = 'ONCSHCAA';
+    const ISMILE_URL = 'TAISM';
     const ISSUE_POLICY_DIABETES = 'IssuePolicyDiabetes';
 
     const STATIC_PAGE_BIGLIFE_POINT = 'static.page.biglife_point';
