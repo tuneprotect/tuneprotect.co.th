@@ -1329,6 +1329,7 @@ class ProductController extends BaseController
         $this->bodyData['return_link'] = '/' . $this->locale;
         $this->bodyData['point'] = '';
         $this->bodyData['agentCode'] = $request->session()->get('agentCode');
+        $this->bodyData['package'] = $request->session()->get('package');
 
         $thank_you_page = ProjectEnum::STATIC_PAGE_PAYMENT_THANK_YOU;
 

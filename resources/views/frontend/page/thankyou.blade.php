@@ -2,6 +2,24 @@
 
 @section('page')
 
+<script>
+    //google analytic [purchase]
+	setTimeout(() => {
+		dataLayer.push({
+			"event":  "purchase",
+			"ecommerce":  {
+				"transaction_id": '{{$doc_no}}',
+				"value": '{{$payAmount}}',
+				"currency": "THB",
+				"items": [{
+					"item_id": '{{$package}}',
+					"price": '{{$payAmount}}'
+				}]
+			}
+		});
+	}, 1000);
+</script>
+
 <main>
     <article class="wrapper">
         <div class="inner-wrapper">
@@ -9,21 +27,5 @@
         </div>
     </article>
 </main>
-
-<script>
-    //google analytic [purchase]
-    dataLayer.push({
-        "event":  "purchase",
-        "ecommerce":  {
-            "transaction_id": "{{$doc_no}}",
-            "value": "{{$payAmount}}",
-            "currency": "THB",
-            "items": [{
-                "item_id": "{{$package}}",
-                "price": "{{$payAmount}}"
-            }]
-        }
-    });
-</script>
 
 @endsection
