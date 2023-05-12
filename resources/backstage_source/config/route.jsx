@@ -2201,7 +2201,14 @@ const static_content = {
         'payment_pending_ta_outbound',
 
         'payment_thank_you_myhome_smart',
+        'payment_reject_myhome_smart',
+        'payment_error_myhome_smart',
+        'payment_pending_myhome_smart',
+
         'payment_thank_you_myhome_plus',
+        'payment_reject_myhome_plus',
+        'payment_error_myhome_plus',
+        'payment_pending_myhome_plus',
 
         'payment_thank_you_itravel',
         'payment_thank_you_pa_choice',

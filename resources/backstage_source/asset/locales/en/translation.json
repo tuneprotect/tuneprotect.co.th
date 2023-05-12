@@ -363,7 +363,14 @@
                 "payment_pending_ta_outbound": "Payment Pending TA Outbound",
 
                 "payment_thank_you_myhome_smart": "Payment Thank you My Home Smart",
+                "payment_reject_myhome_smart": "Payment Reject My Home Smart",
+                "payment_error_myhome_smart": "Payment Error My Home Smart",
+                "payment_pending_myhome_smart": "Payment Pending My Home Smart",
+
                 "payment_thank_you_myhome_plus": "Payment Thank you My Home Plus",
+                "payment_reject_myhome_plus": "Payment Reject My Home Plus",
+                "payment_error_myhome_plus": "Payment Error My Home Plus",
+                "payment_pending_myhome_plus": "Payment Pending My Home Plus",
                 
                 "payment_thank_you": "Payment Thank you",
                 "payment_thank_you_itravel": "Payment Thank you iTravel",
