@@ -44,7 +44,7 @@
                             </div>
                             <ul>
                                 @foreach($main_highlight_product->productPackage AS $v)
-                                    @if($v1->code === 'ONCSHC' || $v1->code === 'CI'|| $v1->code === 'DIABETES' || $v1->code === 'ONPACA' || $v1->code === 'ONPAKD' || $v1->code === 'ONPASN' || $v1->code === 'ONTASK' || $v1->code === 'TAISM' || $v1->code === 'TAIPOCT22' || $v1->code === 'ONTADM' || $v1->code === 'ONTAOB' || $v1->code === 'ONFIMP' || $v1->code === 'ONMHS')
+                                    @if($v->code === 'ONCSHC' || $v->code === 'CI'|| $v->code === 'DIABETES' || $v->code === 'ONPACA' || $v->code === 'ONPAKD' || $v->code === 'ONPASN' || $v->code === 'ONTASK' || $v->code === 'TAISM' || $v->code === 'TAIPOCT22' || $v->code === 'ONTADM' || $v->code === 'ONTAOB' || $v->code === 'ONFIMP' || $v->code === 'ONMHS')
                                         <li>
                                             <a
                                                 data-gtm="index-product-image-{{$main_highlight_product->friendly_url}}-{{$v->code}}"
@@ -95,8 +95,8 @@
                                         <p>{{$v->locales[$locale]->sub_title}}</p>
                                     </div>
                                     <ul>
-                                        @foreach($v->productPackage AS $v1)
-                                            @if($v1->code === 'ONCSHC' || $v1->code === 'CI'|| $v1->code === 'DIABETES' || $v1->code === 'ONPACA' || $v1->code === 'ONPAKD' || $v1->code === 'ONPASN' || $v1->code === 'ONTASK' || $v1->code === 'TAISM' || $v1->code === 'TAIPOCT22' || $v1->code === 'ONTADM' || $v1->code === 'ONTAOB' || $v1->code === 'ONFIMP' || $v1->code === 'ONMHS')    
+                                        @foreach($v->productPackage AS $v)
+                                            @if($v->code === 'ONCSHC' || $v->code === 'CI'|| $v->code === 'DIABETES' || $v->code === 'ONPACA' || $v->code === 'ONPAKD' || $v->code === 'ONPASN' || $v->code === 'ONTASK' || $v->code === 'TAISM' || $v->code === 'TAIPOCT22' || $v->code === 'ONTADM' || $v->code === 'ONTAOB' || $v->code === 'ONFIMP' || $v->code === 'ONMHS')    
                                                 <li>
                                                     <a
                                                         data-gtm="index-product-image-{{$v->friendly_url}}-{{$v1->code}}"
@@ -153,7 +153,7 @@
                                 </div>
                                 <ul>
                                     @foreach($last_highlight_product->productPackage AS $v)
-                                        @if($v1->code === 'ONCSHC' || $v1->code === 'CI'|| $v1->code === 'DIABETES' || $v1->code === 'ONPACA' || $v1->code === 'ONPAKD' || $v1->code === 'ONPASN' || $v1->code === 'ONTASK' || $v1->code === 'TAISM' || $v1->code === 'TAIPOCT22' || $v1->code === 'ONTADM' || $v1->code === 'ONTAOB' || $v1->code === 'ONFIMP' || $v1->code === 'ONMHS')                             
+                                        @if($v->code === 'ONCSHC' || $v->code === 'CI'|| $v->code === 'DIABETES' || $v->code === 'ONPACA' || $v->code === 'ONPAKD' || $v->code === 'ONPASN' || $v->code === 'ONTASK' || $v->code === 'TAISM' || $v->code === 'TAIPOCT22' || $v->code === 'ONTADM' || $v->code === 'ONTAOB' || $v->code === 'ONFIMP' || $v->code === 'ONMHS')                             
                                             <li>
                                                 <a
                                                     data-gtm="index-product-image-{{$last_highlight_product->friendly_url}}-{{$v->code}}"
