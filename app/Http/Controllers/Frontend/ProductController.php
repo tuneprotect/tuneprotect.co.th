@@ -1279,10 +1279,10 @@ class ProductController extends BaseController
 
         //myHome
         if (Str::contains($request->getRequestUri(), ProjectEnum::MYHOME_SMART_URL)) {
-            $error_page = ProjectEnum::STATIC_PAGE_PAYMENT_PENDING_MYHOME_SMART;
+            $pending_page = ProjectEnum::STATIC_PAGE_PAYMENT_PENDING_MYHOME_SMART;
         }
         if (Str::contains($request->getRequestUri(), ProjectEnum::MYHOME_PLUS_URL)) {
-            $error_page = ProjectEnum::STATIC_PAGE_PAYMENT_PENDING_MYHOME_PLUS;
+            $pending_page = ProjectEnum::STATIC_PAGE_PAYMENT_PENDING_MYHOME_PLUS;
         }
 
         return $this->genStatusPage($pending_page);
@@ -1295,7 +1295,7 @@ class ProductController extends BaseController
 
         //Health
         if (Str::contains($request->getRequestUri(), ProjectEnum::ONCSHC_URL)) {
-            $pending_page = ProjectEnum::STATIC_PAGE_PAYMENT_REJECT_CHILL_SURE;
+            $reject_page = ProjectEnum::STATIC_PAGE_PAYMENT_REJECT_CHILL_SURE;
         }
         if (Str::contains($request->getRequestUri(), ProjectEnum::MYFLEXI_CI_URL)) {
             $reject_page = ProjectEnum::STATIC_PAGE_PAYMENT_REJECT_MYFLEXI_CI;
@@ -1334,10 +1334,10 @@ class ProductController extends BaseController
 
         //myHome
         if (Str::contains($request->getRequestUri(), ProjectEnum::MYHOME_SMART_URL)) {
-            $error_page = ProjectEnum::STATIC_PAGE_PAYMENT_REJECT_MYHOME_SMART;
+            $reject_page = ProjectEnum::STATIC_PAGE_PAYMENT_REJECT_MYHOME_SMART;
         }
         if (Str::contains($request->getRequestUri(), ProjectEnum::MYHOME_PLUS_URL)) {
-            $error_page = ProjectEnum::STATIC_PAGE_PAYMENT_REJECT_MYHOME_PLUS;
+            $reject_page = ProjectEnum::STATIC_PAGE_PAYMENT_REJECT_MYHOME_PLUS;
         }
 
         return $this->genStatusPage($reject_page);
