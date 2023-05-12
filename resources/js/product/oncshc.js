@@ -387,7 +387,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                     const pack = Object.keys(package_data[k].price).filter(ageRange => checkAge(data.fdHBD, ageRange))
                     const price = parseInt(package_data[k].price[pack]).toLocaleString();
                     const apiPackage = package_data[k].apiPackage;
-                    const plan = Object.keys(package_data[0]);
+                    const plan = Object.keys(package_data);
 
                     //$(`strong[data-price-${k}]`).innerHTML = price;
                     //$(`span[data-price-${k}]`).innerHTML = price;
@@ -399,7 +399,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                 });
         }
 
-        console.log(package_data);
+        console.log(Object.keys(package_data));
         console.log(itemList);
         
         // dataLayer.push({
