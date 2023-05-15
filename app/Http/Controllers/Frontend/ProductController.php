@@ -523,6 +523,7 @@ class ProductController extends BaseController
             || substr($data['fdPackage'], 0, 8) === 'DIABETES'
             || substr($data['fdPackage'], 0, 6) === 'ONCSHC'
             || substr($data['fdPackage'], 0, 8) === 'ONCSHCAA'
+            || substr($data['fdPackage'], 0, 8) === 'ONCSHCSC'
         ) {
 
 
@@ -581,6 +582,9 @@ class ProductController extends BaseController
             }
             if (substr($data['fdPackage'], 0, 8) === 'ONCSHCAA') {
                 $package = (array)json_decode(Storage::disk('public')->get('json/oncshcaa.json'));
+            }
+            if (substr($data['fdPackage'], 0, 8) === 'ONCSHCSC') {
+                $package = (array)json_decode(Storage::disk('public')->get('json/oncshcsc.json'));
             }
             if (isset($package[$data['fdPackage']]->apiPackage)) {
                 $obj->fdApiPackage = $package[$data['fdPackage']]->apiPackage;
@@ -740,6 +744,11 @@ class ProductController extends BaseController
                 $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::MYHOME_PLUS_URL;
             }
 
+            //Susco
+            if (Str::contains($data['fdPackage'], ProjectEnum::ONCSHCSC_URL)) {
+                $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::ONCSHCSC_URL;
+            }
+
             $obj = $this->combindObj(array_merge($data, (array)$data["profile"][0]));
             $result = $this->logData($obj);
             $log_id[] = $result->log_id;
@@ -817,6 +826,11 @@ class ProductController extends BaseController
 
             if (Str::contains($data['fdPackage'], ProjectEnum::ONCSHCAA_URL)) {
                 $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::ONCSHCAA_URL;
+            }
+
+            //Susco
+            if (Str::contains($data['fdPackage'], ProjectEnum::ONCSHCSC_URL)) {
+                $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::ONCSHCSC_URL;
             }
 
             $obj = $this->combindObj($data);
@@ -1157,7 +1171,9 @@ class ProductController extends BaseController
         } elseif (substr($package, 0, 8) === ProjectEnum::ONCSHCAA_URL) {
             $this->thankYouParam = ProjectEnum::ONCSHCAA_URL;
             $link = 'IssuePolicyChillSure';
-            //$this->thankYouParam =  ProjectEnum::ONCSHC_URL;
+        } elseif (substr($package, 0, 8) === ProjectEnum::ONCSHCSC_URL) {
+            $this->thankYouParam = ProjectEnum::ONCSHCSC_URL;
+            $link = 'IssuePolicyChillSure';
         }
         return $link;
     }
