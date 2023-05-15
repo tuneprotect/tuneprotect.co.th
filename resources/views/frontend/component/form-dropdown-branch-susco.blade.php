@@ -4,7 +4,7 @@
     <div class="date-wrapper">
         <div class="controls-wrapper">
             <input type="hidden" id="hdfMemberStatus" />
-            <select id="{{$prefix}}ctrl_province" name="{{$prefix}}ctrl_province"
+            <select id="ddl_branch_susco" name="ddl_branch_susco"
                 data-please-select="@lang("global.default_select_option")">
                 <option value="" disabled selected>@lang('product.select_branch')</option>
             </select>

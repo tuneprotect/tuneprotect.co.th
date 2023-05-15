@@ -411,12 +411,13 @@ document.addEventListener("DOMContentLoaded", async () => {
         });
     }
 
-    const validateBranch = () => { 
-        let memberStatus = (String($('#hdfMemberStatus').value).toLowerCase() === 'true');
-        if(!memberStatus){
-            showValidateBranchError($('#fdMemberID').getAttribute('data-please-select'),'bmi_error');
+    const validateBranch = () => {
+        let statusFlag = true;
+        if($('#ddl_branch_susco').find(":selected").val() == ""){
+            showValidateBranchError($('#ddl_branch_susco').getAttribute('data-please-select'),'bmi_error');
+            statusFlag = false;
         }      
-        return {status: memberStatus}
+        return {status: statusFlag}
     }
 
     $$('#ctrl_weight,#ctrl_height').forEach($el => {
@@ -591,7 +592,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                                 status = false;
                                 break;
                             }
-                            if (validateResult.status && validateBMIResult.status) {
+                            if (validateResult.status && validateBMIResult.status && validateBranchResult.status) {
                                 status = true;
                                 data = {
                                     ...data,
