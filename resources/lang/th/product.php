@@ -1186,7 +1186,7 @@ return [
     "member_id" => "รหัสสมาชิกแอร์เอเชีย",
     "airasia_member_title" => "กรุณากรอกรหัสสมาชิกของแอร์เอเซีย (เพื่อรับ airasia points)",
     "airasia_member_error" => "โปรดกรอกรหัสสมาชิกแอร์เอเชียให้ถูกต้อง",
-    "branch_susco_title" => "โปรดเลือกสาขาที่ใช้บรบิการ",
+    "branch_susco_title" => "โปรดเลือกสาขาที่ใช้บริการ",
     "select_branch" => "เลือกสาขา",
 ];
 
