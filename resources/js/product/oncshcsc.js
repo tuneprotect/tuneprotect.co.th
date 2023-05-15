@@ -413,8 +413,8 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     const validateBranch = () => {
         let statusFlag = true;
-        if($('#ddl_branch_susco').find(":selected").val() == ""){
-            showValidateBranchError($('#ddl_branch_susco').getAttribute('data-please-select'),'bmi_error');
+        if(true){
+            showValidateBranchError($('#ddl_branch_susco').getAttribute('data-please-select'),'branch_error');
             statusFlag = false;
         }      
         return {status: statusFlag}
