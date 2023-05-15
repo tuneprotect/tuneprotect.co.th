@@ -272,6 +272,17 @@ document.addEventListener("DOMContentLoaded", async () => {
         fdAgent : "00DM004D00",//"00DM004D00",
         channel: channel
     };
+
+    //===================Branch====================//
+    const location_data = await getZipcodeData();
+    if (location_data !== undefined) {
+        let items = ['<option value="">' + $(`#ddl_branch_susco`).getAttribute('data-please-select') + '</option>'];
+
+        location_data.map(v => {
+            items.push(`<option value="${v.district.code}">${v.district.locales[locale]}, ${v.province.locales[locale]}</option>`);
+        });
+        $(`#ddl_branch_susco`).innerHTML = items.join('');
+    }
   
     const validateBMI = () => {
         $$('.bmi-input .controls-wrapper').forEach(el => {
@@ -453,6 +464,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         });
     });
 
+    
     const hideShowConditionBox = (goToStep) => {
         if (goToStep === 1) {
             $('#h-cont').style.display = "none";

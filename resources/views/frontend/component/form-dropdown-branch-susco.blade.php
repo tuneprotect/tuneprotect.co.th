@@ -5,7 +5,6 @@
         <div class="controls-wrapper">
             <select id="ddl_branch_susco" name="ddl_branch_susco"
                 data-please-select="@lang("global.default_select_option")">
-                <option value="" disabled selected>@lang('product.select_branch')</option>
             </select>
             <cite class="branch_error"></cite>
         </div>
