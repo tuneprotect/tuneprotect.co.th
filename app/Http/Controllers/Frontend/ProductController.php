@@ -101,11 +101,7 @@ class ProductController extends BaseController
             return $this->genView('frontend.page.redirect_chillsure');
             //return redirect()->route('current', ['locale' => $this->locale, 'controller' => $this->controller, 'func' => $link, 'params' => $selected]);
         }
-        if (in_array($selected, ['ONCSHCSC'])) {
-            $selected = "ONCSHCSC";
-            return $this->genView('frontend.page.redirect_chillsure');
-            //return redirect()->route('current', ['locale' => $this->locale, 'controller' => $this->controller, 'func' => $link, 'params' => $selected]);
-        }
+        
         $this->getProductDetail($link, $selected);
 
         if ($selected) {
