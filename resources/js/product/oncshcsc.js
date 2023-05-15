@@ -411,6 +411,14 @@ document.addEventListener("DOMContentLoaded", async () => {
         });
     }
 
+    const validateBranch = () => { 
+        let memberStatus = (String($('#hdfMemberStatus').value).toLowerCase() === 'true');
+        if(!memberStatus){
+            showValidateBranchError($('#fdMemberID').getAttribute('data-please-select'),'bmi_error');
+        }      
+        return {status: memberStatus}
+    }
+
     $$('#ctrl_weight,#ctrl_height').forEach($el => {
         $el.addEventListener($el.tagName.toLowerCase() === 'input' ? "keyup" : "change", event => {
             genBMI();
@@ -576,6 +584,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                             const validateResult = validateAgeInPackage(package_data, false);
                             const chkAccept = validateAcceptStep1();
                             const validateBMIResult = validateBMI();
+                            const validateBranchResult = validateBranch();
 
                             if(!chkAccept){
                                 showAcceptError($('#ctrl_accept_step1').getAttribute('data-error-insurance_term'));

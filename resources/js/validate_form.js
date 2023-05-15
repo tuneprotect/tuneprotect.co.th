@@ -105,6 +105,14 @@ export const showValidateAirAsiaMemberError = (message,selector) => {
     scrollToTargetAdjusted($('.controls-wrapper.error'));
 }
 
+export const showValidateBranchError = (message,selector) => {
+    $('.branch-select cite.' + selector).innerHTML = message;
+    $$('.branch-select .controls-wrapper').forEach(el => {
+        el.classList.add('error');
+    });
+    scrollToTargetAdjusted($('.controls-wrapper.error'));
+}
+
 export const showAcceptError = (message) => {
     $('cite.step1_error').innerHTML = message;
     scrollToTargetAdjusted($('.controls-wrapper.error'));
