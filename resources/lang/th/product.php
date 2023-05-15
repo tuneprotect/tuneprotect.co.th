@@ -1183,9 +1183,11 @@ return [
         "TAIPCRN11" => "ข้อ 10. การล่าช้าในการเดินทาง (จ่าย 4,000 บาท ทุกๆ 6 ชั่วโมงและสูงสุดตามทุนประกันภัย)"
     ],
     "agent_code" => "Agent Code",
-    "member_id" => "Member ID.",
-    "airasia_member_title" => "xxx",
-    "airasia_member_error" => "xxx",
+    "member_id" => "รหัสสมาชิกแอร์เอเชีย",
+    "airasia_member_title" => "กรุณากรอกรหัสสมาชิกของแอร์เอเซีย (เพื่อรับ airasia points)",
+    "airasia_member_error" => "โปรดกรอกรหัสสมาชิกแอร์เอเชียให้ถูกต้อง",
+    "branch_susco_title" => "โปรดเลือกสาขาที่ใช้บรบิการ",
+    "select_branch" => "เลือกสาขา",
 ];
 
 
