@@ -1,6 +1,7 @@
 import {
     showBMIError,
     showBMIValidateError,
+    showValidateBranchError,
     showAcceptError,
     showFieldError,
     validateField,
@@ -414,7 +415,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     const validateBranch = () => {
         let statusFlag = true;
         if(true){
-            showValidateBranchError($('#ddl_branch_susco').getAttribute('data-please-select'),'branch_error');
+            showValidateBranchError($('#ddl_branch_susco').getAttribute('data-please-select'), 'branch_error');
             statusFlag = false;
         }      
         return {status: statusFlag}
