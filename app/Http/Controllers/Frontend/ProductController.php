@@ -101,6 +101,11 @@ class ProductController extends BaseController
             return $this->genView('frontend.page.redirect_chillsure');
             //return redirect()->route('current', ['locale' => $this->locale, 'controller' => $this->controller, 'func' => $link, 'params' => $selected]);
         }
+        if (in_array($selected, ['ONCSHCSC'])) {
+            $selected = "ONCSHCSC";
+            return $this->genView('frontend.page.redirect_chillsure');
+            //return redirect()->route('current', ['locale' => $this->locale, 'controller' => $this->controller, 'func' => $link, 'params' => $selected]);
+        }
         $this->getProductDetail($link, $selected);
 
         if ($selected) {
@@ -361,7 +366,7 @@ class ProductController extends BaseController
     {
         if (substr($data['fdPackage'], 0, 4) === 'ONPA') {
             $obj = new PAObject();
-            $obj->fdPaymentType = 1;
+            $obj->fdPaymentType = 2;
         } elseif (substr($data['fdPackage'], 0, 6) === 'PUMPPA') {
             $obj = new PAObject();
         } elseif (substr($data['fdPackage'], 0, 6) === 'CVISAFE') {
@@ -644,7 +649,7 @@ class ProductController extends BaseController
         }
 
         if (session('nopayment_status')) {
-            $obj->fdPaymentType = 5;
+            $obj->fdPaymentType = 2;
         }
 
         $obj->fdController = $this->controller;
