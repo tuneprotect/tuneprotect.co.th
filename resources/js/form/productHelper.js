@@ -95,7 +95,6 @@ export const validateAgeInPackage = (package_data, cal_price) => {
 
 
 const callValidateApi = async (data) => {
-    console.log(data);
     const response = await fetch(`/${$('html').getAttribute('lang')}/Product/checkDup`, {
         method: 'post',
         headers: {
@@ -184,7 +183,7 @@ export const validatePolicy = async ($this, fdPackage,fdFromDate) => {
     }
 }
 
-export const validatePolicyStep5 = async ($this, fdPackage, fdFromDate) => {
+export const validatePolicyStep5 = async ($this, fdPackage) => {
     let field = $this.getAttribute('name');
     let data = {fdName: null, fdSurname: null, fdNationalID: null}
     Object.keys(data).map((k) => {
@@ -200,7 +199,7 @@ export const validatePolicyStep5 = async ($this, fdPackage, fdFromDate) => {
     //fdPackage = fdPackage.fdPackage;
     console.log('api '+ fdPackage);
     if (Object.keys(data).every((k) => !!data[k])) {        
-        const result = await callValidateApi({...data, fdPackage, fdFromDate})        
+        const result = await callValidateApi({...data, fdPackage})        
         if (result.status === 'error') {
             $('button[data-step="5"]').style.display = 'none';
             $this.closest('.controls-wrapper').classList.add("error");
