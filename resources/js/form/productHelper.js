@@ -185,7 +185,7 @@ export const validatePolicy = async ($this, fdPackage,fdFromDate) => {
 
 export const validatePolicyStep5 = async ($this, fdPackage,fdFromDate) => {
     let field = $this.getAttribute('name');
-    let data = {fdName: null, fdSurname: null, fdNationalID: null}
+    let data = {fdName: null, fdSurname: null, fdPackage: fdPackage, fdNationalID: null}
     Object.keys(data).map((k) => {
         let fieldId = k;
         if (field.startsWith('data_')) {
@@ -239,9 +239,6 @@ export const validatePolicyPayment = async (pfdNationalID,pfdPackage,pfdFromDate
     let data = {fdNationalID: pfdNationalID,fdPackage: pfdPackage,fdFromDate:pfdFromDate}
 
     const result = await callValidateApi(data)
-
-    console.log(data + ' status '+ result);
-
     if (result.status === 'error') {
         $('button[data-step="payment"]').style.display = 'none';
         Swal.fire({
