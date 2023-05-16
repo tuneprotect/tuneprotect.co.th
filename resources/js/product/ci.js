@@ -670,6 +670,9 @@ if ($('#title_wrapper')) {
 
                                 let valCheck = false;
                                 valCheck = validatePolicyPayment($('#fdNationalID').value,data.fdPackage,$('#fdFromDate')?.value);
+                                
+                                console.log('check'+ valCheck);
+
                                 if(!valCheck)
                                 {
                                     status = false;
