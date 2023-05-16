@@ -95,7 +95,6 @@ export const validateAgeInPackage = (package_data, cal_price) => {
 
 
 const callValidateApi = async (data) => {
-    console.log('api '+data);
     const response = await fetch(`/${$('html').getAttribute('lang')}/Product/checkDup`, {
         method: 'post',
         headers: {
@@ -134,7 +133,7 @@ export const validatePolicyLoc = async ($this, fdPackage,fdFromDate) => {
     });
 
     if (Object.keys(data).every((k) => !!data[k])) {
-        const result = await callValidateApi({...data, fdPackage: fdPackage, fdFromDate:fdFromDate})
+        const result = await callValidateApi({...data, fdPackage,fdFromDate})
         if (result.status === 'error') {
             $('button[data-step="4"]').style.display = 'none';
             $this.closest('.controls-wrapper').classList.add("error");
@@ -153,7 +152,7 @@ export const validatePolicyLoc = async ($this, fdPackage,fdFromDate) => {
     }
 }
 
-export const validatePolicy = async ($this, fdPackage, fdFromDate) => {
+export const validatePolicy = async ($this, fdPackage,fdFromDate) => {
     let field = $this.getAttribute('name');
     let data = {fdName: null, fdSurname: null, fdNationalID: null}
     Object.keys(data).map((k) => {
@@ -166,7 +165,7 @@ export const validatePolicy = async ($this, fdPackage, fdFromDate) => {
     });
 
     if (Object.keys(data).every((k) => !!data[k])) {
-        const result = await callValidateApi({...data, fdPackage: fdPackage, fdFromDate:fdFromDate})
+        const result = await callValidateApi({...data, fdPackage,fdFromDate})
         if (result.status === 'error') {
             $('button[data-step="4"]').style.display = 'none';
             $this.closest('.controls-wrapper').classList.add("error");
@@ -198,9 +197,8 @@ export const validatePolicyStep5 = async ($this, fdPackage,fdFromDate) => {
     let fdNationalID = fdPackage.fdNationalID;
     let fdProductCode = fdPackage.fdProductCode;
     fdPackage = fdPackage.fdPackage;
-
     if (Object.keys(data).every((k) => !!data[k])) {        
-        const result = await callValidateApi({...data, fdPackage: fdPackage, fdFromDate:fdFromDate})        
+        const result = await callValidateApi({...data, fdPackage,fdFromDate})        
         if (result.status === 'error') {
             $('button[data-step="5"]').style.display = 'none';
             $this.closest('.controls-wrapper').classList.add("error");
