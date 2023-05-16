@@ -95,6 +95,7 @@ export const validateAgeInPackage = (package_data, cal_price) => {
 
 
 const callValidateApi = async (data) => {
+    console.log(data);
     const response = await fetch(`/${$('html').getAttribute('lang')}/Product/checkDup`, {
         method: 'post',
         headers: {
@@ -196,9 +197,8 @@ export const validatePolicyStep5 = async ($this, fdPackage, fdFromDate) => {
     });
     let fdNationalID = fdPackage.fdNationalID;
     let fdProductCode = fdPackage.fdProductCode;
-    fdPackage = fdPackage.fdPackage;
-    console.log('api '+fdPackage);
-    console.log('api2 '+{...data, fdPackage, fdFromDate});
+    //fdPackage = fdPackage.fdPackage;
+    console.log('api '+ fdPackage);
     if (Object.keys(data).every((k) => !!data[k])) {        
         const result = await callValidateApi({...data, fdPackage, fdFromDate})        
         if (result.status === 'error') {
