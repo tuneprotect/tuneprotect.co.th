@@ -198,10 +198,8 @@ export const validatePolicyStep5 = async ($this, fdPackage,fdFromDate) => {
     let fdProductCode = fdPackage.fdProductCode;
     fdPackage = fdPackage.fdPackage;
 
-    Object.assign(data, {fdPackage: fdPackage});
-
     if (Object.keys(data).every((k) => !!data[k])) {        
-        const result = await callValidateApi({...data, fdPackage,fdFromDate})        
+        const result = await callValidateApi({...data, fdPackage: fdPackage,fdFromDate})        
         if (result.status === 'error') {
             $('button[data-step="5"]').style.display = 'none';
             $this.closest('.controls-wrapper').classList.add("error");
