@@ -239,6 +239,9 @@ export const validatePolicyPayment = async (pfdNationalID,pfdPackage,pfdFromDate
     let data = {fdNationalID: pfdNationalID,fdPackage: pfdPackage,fdFromDate:pfdFromDate}
 
     const result = await callValidateApi(data)
+
+    console.log(data + ' status '+ result);
+
     if (result.status === 'error') {
         $('button[data-step="payment"]').style.display = 'none';
         Swal.fire({
