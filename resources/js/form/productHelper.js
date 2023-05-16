@@ -198,7 +198,7 @@ export const validatePolicyStep5 = async ($this, fdPackage, fdFromDate) => {
     let fdProductCode = fdPackage.fdProductCode;
     fdPackage = fdPackage.fdPackage;
 
-    Object.assign(data, {fdPackage: fdPackage});
+    //Object.assign(data, {fdPackage: fdPackage});
     
     if (Object.keys(data).every((k) => !!data[k])) {        
         const result = await callValidateApi({...data, fdPackage, fdFromDate})        
