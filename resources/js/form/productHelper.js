@@ -102,7 +102,7 @@ const callValidateApi = async (data) => {
             'Content-Type': 'application/json',
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').getAttribute('content')
         },
-        body: JSON.stringify({...data, CheckType: null})
+        body: JSON.stringify({...data, fdPackage: data.fdPackage, CheckType: null})
     })
 
     return await response.json();
@@ -199,7 +199,7 @@ export const validatePolicyStep5 = async ($this, fdPackage,fdFromDate) => {
     fdPackage = fdPackage.fdPackage;
 
     if (Object.keys(data).every((k) => !!data[k])) {        
-        const result = await callValidateApi({...data, fdPackage: fdPackage,fdFromDate})        
+        const result = await callValidateApi({...data, fdPackage,fdFromDate})        
         if (result.status === 'error') {
             $('button[data-step="5"]').style.display = 'none';
             $this.closest('.controls-wrapper').classList.add("error");
