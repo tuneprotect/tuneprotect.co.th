@@ -394,6 +394,10 @@ export const getSelectedPrice = (birthday, packageCode, package_data) => {
     return package_data[packageCode].price[pack];
 }
 
+export const getSelectedApiPackage = (packageCode, package_data) => {
+    return Object.keys(package_data[packageCode].apiPackage);
+}
+
 export const showTitle = (sex, age) => {
 
     $$('.title-wrapper').forEach(el => {

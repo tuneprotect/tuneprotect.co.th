@@ -451,7 +451,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             validateField(this, constraints);
             if (['fdName', 'fdSurname', 'fdNationalID'].includes(field.id)) {  
                 data.fdNationalID = $('#fdNationalID').value;              
-                validatePolicyStep5(e.target, data.fdPackage);
+                validatePolicyStep5(e.target, getSelectedApiPackage(data.fdPackage, package_data));
                 //console.log("result",result)
             }
         });
@@ -698,7 +698,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                             break;
                         case 4:
                             let valCheck = false;
-                            valCheck = validatePolicyPayment($('#fdNationalID').value,data.fdPackage,$('#fdFromDate')?.value);
+                            valCheck = validatePolicyPayment($('#fdNationalID').value, getSelectedApiPackage(data.fdPackage, package_data), $('#fdFromDate')?.value);
                             if(!valCheck)
                             {
                                 status = false;
