@@ -253,6 +253,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         fdEmail: "",
         fdTelephone: "",
         fdPackage: "",
+        health2go: "",
         fdBenefit: "",
         fdBenefit_name: "",
         fdRelation: "",
@@ -635,13 +636,15 @@ document.addEventListener("DOMContentLoaded", async () => {
                         case 2:
 
                             const fdPackage = $btn.getAttribute('data-package').replace("AA", "");
+                            const health2go = $btn.getAttribute('health-flag');
 
                             $("#table-detail").setAttribute('data-package_plan', $btn.getAttribute('data-plan'));
 
                             if (fdPackage) {
                                 data = {
                                     ...data,
-                                    fdPackage
+                                    fdPackage,
+                                    health2go
                                 }
                                 showTitle('', data.fdAge)
                                 status = true;
