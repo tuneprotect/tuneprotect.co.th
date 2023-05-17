@@ -451,7 +451,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             validateField(this, constraints);
             if (['fdName', 'fdSurname', 'fdNationalID'].includes(field.id)) {  
                 data.fdNationalID = $('#fdNationalID').value;              
-                validatePolicyStep5(e.target, data);
+                validatePolicyStep5(e.target, data.fdPackage);
                 //console.log("result",result)
             }
         });
