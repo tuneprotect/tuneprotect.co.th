@@ -261,6 +261,8 @@ document.addEventListener("DOMContentLoaded", async () => {
         fdSendType: "",
         fdPayAMT: "",
         fdQuestion1: "",
+        fdQuestion2: "",
+        fdQuestion3: "",
         ctrl_province: "",
         ctrl_terms: "",
         ctrl_accept_insurance_term: "",
@@ -686,6 +688,8 @@ document.addEventListener("DOMContentLoaded", async () => {
                                 data = {
                                     ...data,
                                     fdQuestion1: 'N',
+                                    fdQuestion2: 'N',
+                                    fdQuestion3: 'N',
                                 }
                             }
                             break;
