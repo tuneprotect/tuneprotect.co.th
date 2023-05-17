@@ -6,8 +6,7 @@ namespace App\Enum;
 
 use App\Enum\Base\BaseInsuranceObject;
 
-class ONCSHCObject extends BaseInsuranceObject
-{
+class ONCSHCObject extends BaseInsuranceObject{
     public $fdBMI_Weight;
     public $fdBMI_Height;
     public $fdBMI_Value;
