@@ -68,7 +68,7 @@ class CiDataHelper
                 $new_data[$new_code_start]['plan']["hospital_cash"] = $v["hospital_cash"];
                 $new_data[$new_code_start]['plan']["nursing_cash"] = $v["nursing_cash"];
                 $new_data[$new_code_start]['plan']["pa"] = $v["pa"];
-                $new_data[$new_code_start]['plan']["health2go"] = $v["health2go"] === true ? "<i class='icofont-check-circled'  style='color:green'></i>" : "<i class='icofont-close-circled' style='color:red'></i>";
+                $new_data[$new_code_start]['plan']["health2go"] = $v["health2go"] === true ? "<i class='icofont-check-circled' health-date='Y' style='color:green'></i>" : "<i class='icofont-close-circled' health-date='N' style='color:red'></i>";
                 $new_data[$new_code_start]['plan']["mso"] = $v["mso"] === true ? "<i class='icofont-check-circled'  style='color:green'></i>" : "<i class='icofont-close-circled' style='color:red'></i>";
 
                 $new_data[$new_code_start]['price'][$v['age_range']]['F' . $new_code_end] = $v['gross_premium'];

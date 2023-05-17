@@ -253,6 +253,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         fdEmail: "",
         fdTelephone: "",
         fdPackage: "",
+        health2go: "",
         fdBenefit: "",
         fdBenefit_name: "",
         fdRelation: "",

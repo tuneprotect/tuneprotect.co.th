@@ -11,6 +11,7 @@ class BAOWANObject extends BaseInsuranceObject {
     public $fdQuestion1;
     public $fdQuestion2;
     public $fdQuestion3;
+    public $health2go;
     public $fdProductCode;
     public $thankyou_param;
 }
