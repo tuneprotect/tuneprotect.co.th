@@ -656,7 +656,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
                             const fdPackage = $btn.getAttribute('data-package');
                             const fdDataPlan = $btn.getAttribute('data-plan');
-                            const health2go = $btn.getAttribute('health-flag');
+                            const health2go = $btn.getAttribute('data-health');
 
                             $("#table-detail").setAttribute('data-package_plan', $btn.getAttribute('data-plan'));
                             if (fdPackage) {
