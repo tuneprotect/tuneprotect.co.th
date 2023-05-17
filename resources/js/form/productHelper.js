@@ -395,7 +395,8 @@ export const getSelectedPrice = (birthday, packageCode, package_data) => {
 }
 
 export const getSelectedApiPackage = (packageCode, package_data) => {
-    return Object.keys(package_data[packageCode].apiPackage);
+    const pack = Object.keys(package_data[packageCode].apiPackage);
+    return package_data[packageCode].apiPackage[pack];
 }
 
 export const showTitle = (sex, age) => {
