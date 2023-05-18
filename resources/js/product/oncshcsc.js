@@ -284,6 +284,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     //===================Branch====================//
     const location_data = await getSuscoBranch();
+    console.log(location_data);
     if (location_data !== undefined) {
         let items = ['<option value="">' + $(`#ddl_branch_susco`).getAttribute('data-please-select') + '</option>'];
         location_data.data.forEach(v => {
