@@ -1,3 +1,5 @@
+@extends('frontend.layout.mainview')
+
 @section('page')
 
 <!-- OneTrust Web Form start -->
