@@ -434,7 +434,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     const validateBranch = () => {
         $$('.branch-select .controls-wrapper').forEach(el => {
-            el.classList.remove('branch_error');
+            el.classList.remove('error');
         });
         $('.branch-select cite.branch_error').innerHTML = "";
 
