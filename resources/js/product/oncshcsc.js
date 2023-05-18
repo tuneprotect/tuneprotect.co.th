@@ -430,7 +430,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     const validateBranch = () => {
         let statusFlag = true;
-        if(true){
+        if($('#ddl_branch_susco').value){
             showValidateBranchError($('#ddl_branch_susco').getAttribute('data-please-select'), 'branch_error');
             statusFlag = false;
         }      
@@ -616,7 +616,8 @@ document.addEventListener("DOMContentLoaded", async () => {
                                     ...validateResult.data,
                                     fdBMI_Weight: $('#ctrl_weight').value,
                                     fdBMI_Height: $("#ctrl_height").value,
-                                    fdBMI_Value: $("#ctrl_bmi_calculator").value
+                                    fdBMI_Value: $("#ctrl_bmi_calculator").value,
+                                    fdBranch: $('#ddl_branch_susco').value
                                 }
 
                                 genPrice();
