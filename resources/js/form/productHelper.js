@@ -119,6 +119,18 @@ const CheckRegisterForChillSure = async (data) => {
     })
     return await response.json();
 }
+const callSuscoBranch = async () => {
+    const response = await fetch(`/${$('html').getAttribute('lang')}/Product/getSuscoBranch`, {
+        method: 'post',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').getAttribute('content')
+        }
+    })
+
+    return await response.json();
+}
 
 export const validatePolicyLoc = async ($this, fdPackage,fdFromDate) => {
     let field = $this.getAttribute('name');
@@ -181,6 +193,10 @@ export const validatePolicy = async ($this, fdPackage,fdFromDate) => {
             return true;
         }
     }
+}
+
+export const getSuscoBranch = async ($this) => {
+    return callSuscoBranch();
 }
 
 export const validatePolicyStep5 = async ($this, fdPackage) => {

@@ -104,11 +104,6 @@ export const getZipcodeData = async () => {
     return await res.json();
 }
 
-export const getSuscoBranchData = async () => {
-    let res = await fetch('/storage/json/branchsc.json');
-    return await res.json();
-}
-
 export const getRadioSelectedValue = (name) => {
     const radios = document.getElementsByName(name);
     for (let i = 0, length = radios.length; i < length; i++) {
