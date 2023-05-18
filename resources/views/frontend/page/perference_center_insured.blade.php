@@ -1,4 +1,4 @@
-@extends('frontend.layout.blank')
+@extends('frontend.layout.mainview')
 
 @section('page')
 
