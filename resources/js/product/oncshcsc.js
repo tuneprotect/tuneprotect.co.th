@@ -280,15 +280,14 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     //===================Branch====================//
     const location_data = await getSuscoBranchData();
-    if (value.length === 5) {
-        if (location_data !== undefined) {
-            let items = ['<option value="">' + $(`#ddl_branch_susco`).getAttribute('data-please-select') + '</option>'];
-            location_data.map(v => {
-                items.push(`<option value="${v.datas.BranchCode}" data-flag="${v.datas.IsHeadQuarter}">${v.datas.BranchName}</option>`);
-            });
-            $(`#ddl_branch_susco`).innerHTML = items.join('');
-        }
+    if (location_data !== undefined) {
+        let items = ['<option value="">' + $(`#ddl_branch_susco`).getAttribute('data-please-select') + '</option>'];
+        location_data.map(v => {
+            items.push(`<option value="${v.datas.BranchCode}" data-flag="${v.datas.IsHeadQuarter}">${v.datas.BranchName}</option>`);
+        });
+        $(`#ddl_branch_susco`).innerHTML = items.join('');
     }
+    
 
   
     const validateBMI = () => {
