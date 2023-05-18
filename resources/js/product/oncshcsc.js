@@ -280,9 +280,9 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     //===================Branch====================//
     const location_data = await getZipcodeData();
+    console.log(location_data);
     if (location_data !== undefined) {
         let items = ['<option value="">' + $(`#ddl_branch_susco`).getAttribute('data-please-select') + '</option>'];
-
         location_data.map(v => {
             items.push(`<option value="${v.district.code}">${v.district.locales[locale]}, ${v.province.locales[locale]}</option>`);
         });
