@@ -281,10 +281,9 @@ document.addEventListener("DOMContentLoaded", async () => {
     //===================Branch====================//
     const location_data = await getSuscoBranchData();
     if (location_data !== undefined) {
-        console.log(location_data);
         let items = ['<option value="">' + $(`#ddl_branch_susco`).getAttribute('data-please-select') + '</option>'];
-        location_data.map(v => {
-            items.push(`<option value="${v.datas.BranchCode}" data-flag="${v.datas.IsHeadQuarter}">${v.datas.BranchName}</option>`);
+        location_data.forEach(v => {
+            items.push(`<option value="${v.BranchCode}" data-flag="${v.IsHeadQuarter}">${v.BranchName}</option>`);
         });
         $(`#ddl_branch_susco`).innerHTML = items.join('');
     }
