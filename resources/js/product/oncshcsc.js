@@ -287,7 +287,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     console.log(location_data);
     if (location_data !== undefined) {
         let items = ['<option value="">' + $(`#ddl_branch_susco`).getAttribute('data-please-select') + '</option>'];
-        location_data.data.forEach(v => {
+        location_data.result.forEach(v => {
             items.push(`<option value="${v.Id}">${v.Description}</option>`);
         });
         $(`#ddl_branch_susco`).innerHTML = items.join('');
