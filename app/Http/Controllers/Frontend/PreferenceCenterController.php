@@ -9,12 +9,12 @@ class PreferenceCenterController extends BaseController
 {
     public function insured()
     {
-        return $this->genView('frontend.page.perference_center_insured');
+        return $this->genView('frontend.page.perference_center_insured.blade');
     }
 
     public function agent()
     {
-        return $this->genView('frontend.page.perference_center');
+        return $this->genView('frontend.page.perference_center.blade');
     }
 
 
