@@ -694,6 +694,13 @@ class ProductController extends BaseController
             if (Str::contains($data['fdPackage'], ProjectEnum::ONCSHC_URL)) {
                 $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::ONCSHC_URL;
             }
+            if (Str::contains($data['fdPackage'], ProjectEnum::MYFLEXI_CI_URL)) {
+                $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::MYFLEXI_CI_URL;
+            }
+            if (Str::contains($data['fdPackage'], ProjectEnum::DIABETES_URL)) {
+                $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::DIABETES_URL;
+            }
+
             if (Str::contains($data['fdPackage'], ProjectEnum::ISMILE_URL)) {
                 $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::ISMILE_URL;
             }
@@ -730,21 +737,23 @@ class ProductController extends BaseController
                 return $this->noPayment($result, $price, $log_id);
             }
 
-            
-
             return $this->sendTo2C2P($result, $price, $log_id);
+
         } else {
 
             //Health
             if (Str::contains($data['fdPackage'], ProjectEnum::ONCSHC_URL)) {
                 $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::ONCSHC_URL;
             }
-
-            if (Str::contains($data['fdPackage'], ProjectEnum::ISMILE_URL)) {
-                $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::ISMILE_URL;
+            if (Str::contains($data['fdPackage'], ProjectEnum::MYFLEXI_CI_URL)) {
+                $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::MYFLEXI_CI_URL;
             }
             if (Str::contains($data['fdPackage'], ProjectEnum::DIABETES_URL)) {
                 $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::DIABETES_URL;
+            }
+
+            if (Str::contains($data['fdPackage'], ProjectEnum::ISMILE_URL)) {
+                $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::ISMILE_URL;
             }
             if (Str::contains($data['fdPackage'], ProjectEnum::MYHOME_SMART_URL)) {
                 $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::MYHOME_SMART_URL;
@@ -1119,7 +1128,19 @@ class ProductController extends BaseController
     public function error(Request $request)
     {
         $this->bodyData['doc_no'] = $request->session()->get('error');
-        return $this->genStatusPage(ProjectEnum::STATIC_PAGE_PAYMENT_ERROR);
+        $error_page = ProjectEnum::STATIC_PAGE_PAYMENT_PENDING;
+
+        if (substr($request->session()->get('package'), 0, 6) === ProjectEnum::ONCSHC_URL) {
+            $error_page = ProjectEnum::STATIC_PAGE_PAYMENT_ERROR_CHILL_SURE;
+        } 
+        if (substr($request->session()->get('package'), 0, 2) === ProjectEnum::MYFLEXI_CI_URL) {
+            $error_page = ProjectEnum::STATIC_PAGE_PAYMENT_ERROR_MYFLEXI_CI;
+        }
+        if (substr($request->session()->get('package'), 0, 8) === ProjectEnum::DIABETES_URL) {
+            $error_page = ProjectEnum::STATIC_PAGE_PAYMENT_ERROR_DIABETES;
+        }
+
+        return $this->genStatusPage($error_page);
     }
 
     public function cancel(Request $request)
@@ -1131,14 +1152,37 @@ class ProductController extends BaseController
     public function pending(Request $request)
     {
         $this->bodyData['doc_no'] = $request->session()->get('error');
-        return $this->genStatusPage(ProjectEnum::STATIC_PAGE_PAYMENT_PENDING);
+        $pending_page = ProjectEnum::STATIC_PAGE_PAYMENT_PENDING;
+
+        if (substr($request->session()->get('package'), 0, 6) === ProjectEnum::ONCSHC_URL) {
+            $pending_page = ProjectEnum::STATIC_PAGE_PAYMENT_PENDING_CHILL_SURE;
+        } 
+        if (substr($request->session()->get('package'), 0, 2) === ProjectEnum::MYFLEXI_CI_URL) {
+            $pending_page = ProjectEnum::STATIC_PAGE_PAYMENT_PENDING_MYFLEXI_CI;
+        }
+        if (substr($request->session()->get('package'), 0, 8) === ProjectEnum::DIABETES_URL) {
+            $pending_page = ProjectEnum::STATIC_PAGE_PAYMENT_PENDING_DIABETES;
+        }
+
+        return $this->genStatusPage($pending_page);
     }
 
     public function reject(Request $request)
     {
-        dd($request);
         $this->bodyData['doc_no'] = $request->session()->get('error');
-        return $this->genStatusPage(ProjectEnum::STATIC_PAGE_PAYMENT_REJECT);
+        $reject_page = ProjectEnum::STATIC_PAGE_PAYMENT_REJECT;
+
+        if (substr($request->session()->get('package'), 0, 6) === ProjectEnum::ONCSHC_URL) {
+            $reject_page = ProjectEnum::STATIC_PAGE_PAYMENT_REJECT_CHILL_SURE;
+        } 
+        if (substr($request->session()->get('package'), 0, 2) === ProjectEnum::MYFLEXI_CI_URL) {
+            $reject_page = ProjectEnum::STATIC_PAGE_PAYMENT_REJECT_MYFLEXI_CI;
+        }
+        if (substr($request->session()->get('package'), 0, 8) === ProjectEnum::DIABETES_URL) {
+            $reject_page = ProjectEnum::STATIC_PAGE_PAYMENT_REJECT_DIABETES;
+        }
+
+        return $this->genStatusPage($reject_page);
     }
 
     public function thankyou(Request $request)
@@ -1150,17 +1194,23 @@ class ProductController extends BaseController
         $this->bodyData['agentCode'] = $request->session()->get('agentCode');
 
         $thank_you_page = ProjectEnum::STATIC_PAGE_PAYMENT_THANK_YOU;
+
+        //Health
+        if (Str::contains($request->getRequestUri(), ProjectEnum::ONCSHC_URL)) {
+            $thank_you_page = ProjectEnum::STATIC_PAGE_PAYMENT_THANK_YOU_CHILL_SURE;
+        }
+        if (Str::contains($request->getRequestUri(), ProjectEnum::MYFLEXI_CI_URL)) {
+            $thank_you_page = ProjectEnum::STATIC_PAGE_PAYMENT_THANK_YOU_MYFLEXI_CI;
+        }
         if (Str::contains($request->getRequestUri(), ProjectEnum::DIABETES_URL)) {
             $thank_you_page = ProjectEnum::STATIC_PAGE_PAYMENT_THANK_YOU_DIABETES;
         }
+
         if (Str::contains($request->getRequestUri(), ProjectEnum::ISMILE_URL)) {
             $thank_you_page = ProjectEnum::STATIC_PAGE_PAYMENT_THANK_YOU_ISMILE;
         }
         if (Str::contains($request->getRequestUri(), ProjectEnum::MYHOME_SMART_URL)) {
             $thank_you_page = ProjectEnum::STATIC_PAGE_PAYMENT_THANK_YOU_MYHOME_SMART;
-        }
-        if (Str::contains($request->getRequestUri(), ProjectEnum::ONCSHC_URL)) {
-            $thank_you_page = ProjectEnum::STATIC_PAGE_PAYMENT_THANK_YOU_CHILL_SURE;
         }
         if (Str::contains($request->getRequestUri(), ProjectEnum::ONCSHCAA_URL)) {
             $thank_you_page = ProjectEnum::STATIC_PAGE_PAYMENT_THANK_YOU_CHILL_SURE;
@@ -1186,6 +1236,7 @@ class ProductController extends BaseController
             $payAmount = $data['fdPayAMT'];
             $portalKey = $data['fdKeys'];
             $agent_code = $data['fdAgent'];
+            $package = $data['fdPackage'];
             
             if ($v->result) {
                 $request->session()->put('doc_no',  $v->result['message']);
@@ -1195,6 +1246,7 @@ class ProductController extends BaseController
                 $request->session()->put('payAmount', $payAmount);
                 $request->session()->put('portalKey', $portalKey);
                 $request->session()->put('agentCode', $agent_code);
+                $request->session()->put('package', $package);
                 $this->thankYouParam = $request->input('user_defined_4');
 
                 $func = 'thankyou';
@@ -1219,6 +1271,7 @@ class ProductController extends BaseController
                     $request->session()->put('payAmount', $payAmount);
                     $request->session()->put('portalKey', $portalKey);
                     $request->session()->put('agentCode', $agent_code);
+                    $request->session()->put('package', $package);
                     $this->thankYouParam = $request->input('user_defined_4');
                     $func = 'thankyou';
                 } else {
@@ -1238,10 +1291,12 @@ class ProductController extends BaseController
                 $func = 'cancel';
                 $request->session()->put('return_link', $request->input('user_defined_2'));
                 $request->session()->put('error', $request->input('channel_response_desc'));
+                $request->session()->put('package', $package);
                 break;
             default:
                 $func = 'error';
                 $request->session()->put('error', $request->input('channel_response_desc'));
+                $request->session()->put('package', $package);
         }
        
         return redirect()->route('current', ['locale' => $this->locale, 'controller' => $this->controller, 'func' => $func, 'params' => $this->thankYouParam]);

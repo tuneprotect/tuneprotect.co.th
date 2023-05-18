@@ -243,10 +243,13 @@ class PortalController extends ProductController
         if (Str::contains($request->getRequestUri(), ProjectEnum::ONCSHC_URL)) {
             $thank_you_page = ProjectEnum::STATIC_PAGE_PAYMENT_THANK_YOU_CHILL_SURE;
         }
-
+        if (Str::contains($request->getRequestUri(), ProjectEnum::MYFLEXI_CI_URL)) {
+            $thank_you_page = ProjectEnum::STATIC_PAGE_PAYMENT_THANK_YOU_MYFLEXI_CI;
+        }
         if (Str::contains($request->getRequestUri(), ProjectEnum::DIABETES_URL)) {
             $thank_you_page = ProjectEnum::STATIC_PAGE_PAYMENT_THANK_YOU_DIABETES;
         }
+
         if (Str::contains($request->getRequestUri(), ProjectEnum::ISMILE_URL)) {
             $thank_you_page = ProjectEnum::STATIC_PAGE_PAYMENT_THANK_YOU_ISMILE;
         }
@@ -265,7 +268,19 @@ class PortalController extends ProductController
         $this->bodyData['partner'] = $request->session()->get('partner');
         $this->bodyData['selected'] = $request->session()->get('selected');
         $this->bodyData['doc_no'] = $request->session()->get('error');
-        return $this->genStatusPage_Portal(ProjectEnum::STATIC_PAGE_PAYMENT_ERROR);
+        $error_page = ProjectEnum::STATIC_PAGE_PAYMENT_ERROR;
+
+        if (substr($request->session()->get('package'), 0, 6) === ProjectEnum::ONCSHC_URL) {
+            $error_page = ProjectEnum::STATIC_PAGE_PAYMENT_ERROR_CHILL_SURE;
+        }
+        if (substr($request->session()->get('package'), 0, 2) === ProjectEnum::MYFLEXI_CI_URL) {
+            $error_page = ProjectEnum::STATIC_PAGE_PAYMENT_ERROR_MYFLEXI_CI;
+        }
+        if (substr($request->session()->get('package'), 0, 8) === ProjectEnum::DIABETES_URL) {
+            $error_page = ProjectEnum::STATIC_PAGE_PAYMENT_ERROR_DIABETES;
+        }
+
+        return $this->genStatusPage($error_page);
     }
 
     public function cancel(Request $request)
@@ -284,7 +299,19 @@ class PortalController extends ProductController
         $this->bodyData['partner'] = $request->session()->get('partner');
         $this->bodyData['selected'] = $request->session()->get('selected');
         $this->bodyData['doc_no'] = $request->session()->get('error');
-        return $this->genStatusPage_Portal(ProjectEnum::STATIC_PAGE_PAYMENT_PENDING);
+        $pending_page = ProjectEnum::STATIC_PAGE_PAYMENT_PENDING;
+
+        if (substr($request->session()->get('package'), 0, 6) === ProjectEnum::ONCSHC_URL) {
+            $pending_page = ProjectEnum::STATIC_PAGE_PAYMENT_PENDING_CHILL_SURE;
+        }
+        if (substr($request->session()->get('package'), 0, 2) === ProjectEnum::MYFLEXI_CI_URL) {
+            $pending_page = ProjectEnum::STATIC_PAGE_PAYMENT_PENDING_MYFLEXI_CI;
+        }
+        if (substr($request->session()->get('package'), 0, 8) === ProjectEnum::DIABETES_URL) {
+            $pending_page = ProjectEnum::STATIC_PAGE_PAYMENT_PENDING_DIABETES;
+        }
+
+        return $this->genStatusPage($pending_page);
     }
 
     public function reject(Request $request)
@@ -292,7 +319,19 @@ class PortalController extends ProductController
         $this->bodyData['partner'] = $request->session()->get('partner');
         $this->bodyData['selected'] = $request->session()->get('selected');
         $this->bodyData['doc_no'] = $request->session()->get('error');
-        return $this->genStatusPage_Portal(ProjectEnum::STATIC_PAGE_PAYMENT_REJECT);
+        $pending_page = ProjectEnum::STATIC_PAGE_PAYMENT_REJECT;
+
+        if (substr($request->session()->get('package'), 0, 6) === ProjectEnum::ONCSHC_URL) {
+            $pending_page = ProjectEnum::STATIC_PAGE_PAYMENT_REJECT_CHILL_SURE;
+        }
+        if (substr($request->session()->get('package'), 0, 2) === ProjectEnum::MYFLEXI_CI_URL) {
+            $reject_page = ProjectEnum::STATIC_PAGE_PAYMENT_REJECT_MYFLEXI_CI;
+        }
+        if (substr($request->session()->get('package'), 0, 8) === ProjectEnum::DIABETES_URL) {
+            $reject_page = ProjectEnum::STATIC_PAGE_PAYMENT_REJECT_DIABETES;
+        }
+
+        return $this->genStatusPage($pending_page);
     }
 
     protected function sendToApiBigLifeValidateSurvey($memberId)

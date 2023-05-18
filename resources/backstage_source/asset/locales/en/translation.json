@@ -309,9 +309,20 @@
 
                 "payment_thank_you_chill_sure": "Payment Thank you Chill Sure",
                 "payment_reject_chill_sure": "Payment Reject Chill Sure",
+                "payment_error_chill_sure": "Payment Error Chill Sure",
+                "payment_pending_chill_sure": "Payment Pending Chill Sure",
+
+                "payment_thank_you_myflexi_ci": "Payment Thank you MyFlexi CI",
+                "payment_reject_myflexi_ci": "Payment Reject MyFlexi CI",
+                "payment_error_myflexi_ci": "Payment Error MyFlexi CI",
+                "payment_pending_myflexi_ci": "Payment Pending MyFlexi CI",
+
+                "payment_thank_you_diabetes": "Payment Thank you Diabetes",
+                "payment_reject_diabetes": "Payment Reject Diabetes",
+                "payment_error_diabetes": "Payment Error Diabetes",
+                "payment_pending_diabetes": "Payment Pending Diabetes",
 
                 "payment_thank_you": "Payment Thank you",
-                "payment_thank_you_diabetes": "Payment Thank you Diabetes",
                 "payment_thank_you_ismile": "Payment Thank you ismile",
                 "payment_thank_you_myhome_smart": "Payment Thank you My Home Smart",
                 
