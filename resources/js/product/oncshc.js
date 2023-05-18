@@ -372,6 +372,45 @@ document.addEventListener("DOMContentLoaded", async () => {
         return pricelist;
     }
 
+    const genItemList = () => {
+
+        let index = 0;
+        const itemList = [];
+
+        if (data.fdHBD) {
+            Object.keys(package_data)
+                .filter(k => _.startsWith(k, current_package))
+                .map(k => {
+                    const pack = Object.keys(package_data[k].price).filter(ageRange => checkAge(data.fdHBD, ageRange))
+                    const price = parseInt(package_data[k].price[pack]).toLocaleString();
+                    const apiPackage = package_data[k].apiPackage;
+                    const plan = Object.keys(package_data)[index];
+
+                    const itme = {
+                        item_id: "",
+                        item_name: "",
+                        price: "",
+                    };
+
+                    itme.item_id = plan;
+                    itme.item_name = apiPackage;
+                    itme.price = price;
+
+                    itemList.push(itme);
+                    index++;
+                });
+        }
+        
+        //google analytic [view_item]
+        dataLayer.push({
+            "event":  "view_item",
+            "ecommerce":  {
+             "items": itemList,
+             "currency": "THB"
+           }
+        });
+    }
+
     $$('#ctrl_weight,#ctrl_height').forEach($el => {
         $el.addEventListener($el.tagName.toLowerCase() === 'input' ? "keyup" : "change", event => {
             genBMI();
@@ -554,6 +593,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                                 }
 
                                 genPrice();
+                                genItemList();
                                 let $btnMore_Diabetes = $('#btn-more-diabetes');
                                 $$('#table-detail tbody tr:nth-child(n+7)').forEach(row => {
                                     row.style.display = 'none';
@@ -590,9 +630,9 @@ document.addEventListener("DOMContentLoaded", async () => {
                         case 2:
 
                             const fdPackage = $btn.getAttribute('data-package');
+                            const fdDataPlan = $btn.getAttribute('data-plan');
 
                             $("#table-detail").setAttribute('data-package_plan', $btn.getAttribute('data-plan'));
-
                             if (fdPackage) {
                                 data = {
                                     ...data,
@@ -600,6 +640,23 @@ document.addEventListener("DOMContentLoaded", async () => {
                                 }
                                 showTitle('', data.fdAge)
                                 status = true;
+
+                                const selectPrice = getSelectedPrice(data.fdHBD, fdPackage, package_data);
+
+                                //google analytic [add_to_cart]
+                                dataLayer.push({
+                                    "event":  "add_to_cart",
+                                    "ecommerce":  {
+                                     "currency": "THB",
+                                     "value": selectPrice,
+                                     "items": [{
+                                       "item_id": fdPackage,
+                                       "item_name": fdDataPlan,
+                                       "price": selectPrice,
+                                     }]
+                                   }
+                                 });
+                                
                             } else {
                                 Swal.fire({
                                     title: 'Error!',
@@ -691,6 +748,20 @@ document.addEventListener("DOMContentLoaded", async () => {
                             $form.querySelectorAll('.controls-wrapper').forEach(($el) => {
                                 $el.classList.remove('error')
                             });
+
+                            //google analytic [begin_checkout]
+                            dataLayer.push({
+                                "event":  "begin_checkout",
+                                "ecommerce":  {
+                                 "value": data.fdPayAMT,
+                                 "currency": "THB",
+                                 "items": [{
+                                   "item_id": data.fdPackage,
+                                   "item_name": fdDataPlan,
+                                   "price": data.fdPayAMT,
+                                 }]
+                               }
+                             });
 
                             if (result) {
                                 Object.keys(result).map(k => {

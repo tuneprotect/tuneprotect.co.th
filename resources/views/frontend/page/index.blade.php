@@ -44,9 +44,7 @@
                             </div>
                             <ul>
                                 @foreach($main_highlight_product->productPackage AS $v)
-                                    @if($v->code === 'ONCSH')
-
-                                    @else
+                                    @if($v->code === 'ONCSHC' || $v->code === 'CI'|| $v->code === 'DIABETES' || $v->code === 'ONPACA' || $v->code === 'ONPAKD' || $v->code === 'ONPASN' || $v->code === 'ONTASK' || $v->code === 'TAISM' || $v->code === 'TAIPOCT22' || $v->code === 'ONTADM' || $v->code === 'ONTAOB' || $v->code === 'ONFIMP' || $v->code === 'ONMHS')
                                         <li>
                                             <a
                                                 data-gtm="index-product-image-{{$main_highlight_product->friendly_url}}-{{$v->code}}"
@@ -97,22 +95,21 @@
                                         <p>{{$v->locales[$locale]->sub_title}}</p>
                                     </div>
                                     <ul>
-                                        @foreach($v->productPackage AS $v1)
-                                            @if($v1->code === 'ONVACINA' || $v1->code === 'CVCARE'|| $v1->code === 'ONCOVIDMW' || $v1->code === 'TGCVLP' || $v1->code === 'TAISMTG' || $v1->code === 'ONTALN' || $v1->code === 'ONVSUREA' || $v1->code === 'ONTAOBB2B' || $v1->code === 'ONB2BTA' || $v1->code === 'ONB2BTAD' || $v1->code === 'ONTAISMB2B' || $v1->code === 'ONCSH' || $v1->code === 'TAIPCRN' || $v1->code === 'TAIPOCT22AA' || $v1->code === 'PUMPPA') 
-                                            @else
+                                        @foreach($v->productPackage AS $v)
+                                            @if($v->code === 'ONCSHC' || $v->code === 'CI'|| $v->code === 'DIABETES' || $v->code === 'ONPACA' || $v->code === 'ONPAKD' || $v->code === 'ONPASN' || $v->code === 'ONTASK' || $v->code === 'TAISM' || $v->code === 'TAIPOCT22' || $v->code === 'ONTADM' || $v->code === 'ONTAOB' || $v->code === 'ONFIMP' || $v->code === 'ONMHS')    
                                                 <li>
                                                     <a
-                                                        data-gtm="index-product-image-{{$v->friendly_url}}-{{$v1->code}}"
-                                                        href="{{route('current',['locale' => $locale,'controller' => 'product','func' => $v->friendly_url,'params' => $v1->code ])}}">
+                                                        data-gtm="index-product-image-{{$v->friendly_url}}-{{$v->code}}"
+                                                        href="{{route('current',['locale' => $locale,'controller' => 'product','func' => $v->friendly_url,'params' => $v->code ])}}">
                                                         <div class="two-tone-icon">
-                                                            <span><img src="{{url($v1->pic)}}" alt=""></span>
-                                                            <strong>{{$v1->locales[$locale]->title}}</strong>
+                                                            <span><img src="{{url($v->pic)}}" alt=""></span>
+                                                            <strong>{{$v->locales[$locale]->title}}</strong>
                                                         </div>
                                                     </a>
                                                     <div class="btn-wrapper">
                                                         <a class="btn btn-gradient"
-                                                           data-gtm="index-product-button-{{$v->friendly_url}}-{{$v1->code}}"
-                                                           href="{{route('current',['locale' => $locale,'controller' => 'product','func' => $v->friendly_url,'params' => $v1->code ])}}">@lang('global.choose_product')</a>
+                                                           data-gtm="index-product-button-{{$v->friendly_url}}-{{$v->code}}"
+                                                           href="{{route('current',['locale' => $locale,'controller' => 'product','func' => $v->friendly_url,'params' => $v->code ])}}">@lang('global.choose_product')</a>
                                                     </div>
                                                 </li>
                                             @endif
@@ -155,22 +152,24 @@
                                     <p>{{$last_highlight_product->locales[$locale]->sub_title}}</p>
                                 </div>
                                 <ul>
-                                    @foreach($last_highlight_product->productPackage AS $v)                                
-                                        <li>
-                                            <a
-                                                data-gtm="index-product-image-{{$last_highlight_product->friendly_url}}-{{$v->code}}"
-                                                href="{{route('current',['locale' => $locale,'controller' => 'product','func' => $last_highlight_product->friendly_url,'params' => $v->code ])}}">
-                                                <div class="two-tone-icon">
-                                                    <span><img src="{{url($v->pic)}}" alt=""></span>
-                                                    <strong>{{$v->locales[$locale]->title}}</strong>
+                                    @foreach($last_highlight_product->productPackage AS $v)
+                                        @if($v->code === 'ONCSHC' || $v->code === 'CI'|| $v->code === 'DIABETES' || $v->code === 'ONPACA' || $v->code === 'ONPAKD' || $v->code === 'ONPASN' || $v->code === 'ONTASK' || $v->code === 'TAISM' || $v->code === 'TAIPOCT22' || $v->code === 'ONTADM' || $v->code === 'ONTAOB' || $v->code === 'ONFIMP' || $v->code === 'ONMHS')                             
+                                            <li>
+                                                <a
+                                                    data-gtm="index-product-image-{{$last_highlight_product->friendly_url}}-{{$v->code}}"
+                                                    href="{{route('current',['locale' => $locale,'controller' => 'product','func' => $last_highlight_product->friendly_url,'params' => $v->code ])}}">
+                                                    <div class="two-tone-icon">
+                                                        <span><img src="{{url($v->pic)}}" alt=""></span>
+                                                        <strong>{{$v->locales[$locale]->title}}</strong>
+                                                    </div>
+                                                </a>
+                                                <div class="btn-wrapper">
+                                                    <a class="btn btn-gradient"
+                                                    data-gtm="index-product-button-{{$last_highlight_product->friendly_url}}-{{$v->code}}"
+                                                    href="{{route('current',['locale' => $locale,'controller' => 'product','func' => $last_highlight_product->friendly_url,'params' => $v->code ])}}">@lang('global.choose_product')</a>
                                                 </div>
-                                            </a>
-                                            <div class="btn-wrapper">
-                                                <a class="btn btn-gradient"
-                                                data-gtm="index-product-button-{{$last_highlight_product->friendly_url}}-{{$v->code}}"
-                                                href="{{route('current',['locale' => $locale,'controller' => 'product','func' => $last_highlight_product->friendly_url,'params' => $v->code ])}}">@lang('global.choose_product')</a>
-                                            </div>
-                                        </li>
+                                            </li>
+                                        @endif
                                     @endforeach
                                 </ul>
                             </div>

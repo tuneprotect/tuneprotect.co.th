@@ -1828,9 +1828,9 @@ main {
                         border: 1px solid $primary-color;
 
                         h3 {
-                            width: 107%;
-                            margin-left: -30px;
-                            padding-left: 30px;
+                            width: 100%;
+                            margin-left: -20px;
+                            padding-left: 20px;
                             background: #fff;
                             @include project_transition();
 
@@ -1845,22 +1845,22 @@ main {
                                 width: 110%;
                             }
                             @media all and (max-width: $sm) {
-                                width: 122%;
+                                width: 114%;
                             }
                         }
 
                         .detail-faq {
                             max-height: 99em;
-                            width: 107%;
-                            margin: 0 0 0 -30px !important;
-                            padding: 5px 30px 0 30px;
+                            width: 104%;
+                            margin: 0 0 0 -20px !important;
+                            padding: 5px 20px 0 20px;
                             background: #fff;
                             @include project_transition();
                             @media all and (max-width: $md) {
                                 width: 110%;
                             }
                             @media all and (max-width: $sm) {
-                                width: 122%;
+                                width: 114%;
                             }
                         }
                     }

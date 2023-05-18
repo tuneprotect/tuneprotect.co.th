@@ -644,10 +644,8 @@ class ProductController extends BaseController
         }
 
         if (session('nopayment_status')) {
-            $obj->fdPaymentType = null;
+            $obj->fdPaymentType = 5;
         }
-
-        //       dd($obj);
 
         $obj->fdController = $this->controller;
         return $obj;
@@ -701,17 +699,40 @@ class ProductController extends BaseController
                 $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::DIABETES_URL;
             }
 
-            if (Str::contains($data['fdPackage'], ProjectEnum::ISMILE_URL)) {
-                $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::ISMILE_URL;
+            //PA Choice
+            if (Str::contains($data['fdPackage'], ProjectEnum::ONPACA_URL)) {
+                $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::ONPACA_URL;
             }
-            if (Str::contains($data['fdPackage'], ProjectEnum::MYHOME_SMART_URL)) {
-                $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::MYHOME_SMART_URL;
+            if (Str::contains($data['fdPackage'], ProjectEnum::ONPAKD_URL)) {
+                $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::ONPAKD_URL;
+            }
+            if (Str::contains($data['fdPackage'], ProjectEnum::ONPASN_URL)) {
+                $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::ONPASN_URL;
+            }
+
+            //iTravel
+            if (Str::contains($data['fdPackage'], ProjectEnum::ONTASK_URL)) {
+                $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::ONTASK_URL;
+            }
+            if (Str::contains($data['fdPackage'], ProjectEnum::TAISM_URL)) {
+                $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::TAISM_URL;
+            }
+            if (Str::contains($data['fdPackage'], ProjectEnum::TAIPOCT22_URL)) {
+                $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::TAIPOCT22_URL;
+            }
+            if (Str::contains($data['fdPackage'], ProjectEnum::ONTADM_URL)) {
+                $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::ONTADM_URL;
             }
             if (Str::contains($data['fdPackage'], ProjectEnum::ONTAOB_URL)) {
                 $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::ONTAOB_URL;
             }
-            if (Str::contains($data['fdPackage'], ProjectEnum::ONPACA_URL)) {
-                $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::ONPACA_URL;
+
+            //myHome
+            if (Str::contains($data['fdPackage'], ProjectEnum::MYHOME_SMART_URL)) {
+                $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::MYHOME_SMART_URL;
+            }
+            if (Str::contains($data['fdPackage'], ProjectEnum::MYHOME_PLUS_URL)) {
+                $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::MYHOME_PLUS_URL;
             }
 
             $obj = $this->combindObj(array_merge($data, (array)$data["profile"][0]));
@@ -752,21 +773,47 @@ class ProductController extends BaseController
                 $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::DIABETES_URL;
             }
 
-            if (Str::contains($data['fdPackage'], ProjectEnum::ISMILE_URL)) {
-                $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::ISMILE_URL;
+            //PA Choice
+            if (Str::contains($data['fdPackage'], ProjectEnum::ONPACA_URL)) {
+                $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::ONPACA_URL;
             }
-            if (Str::contains($data['fdPackage'], ProjectEnum::MYHOME_SMART_URL)) {
-                $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::MYHOME_SMART_URL;
+            if (Str::contains($data['fdPackage'], ProjectEnum::ONPAKD_URL)) {
+                $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::ONPAKD_URL;
             }
-            if (Str::contains($data['fdPackage'], ProjectEnum::ONCSHCAA_URL)) {
-                $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::ONCSHCAA_URL;
+            if (Str::contains($data['fdPackage'], ProjectEnum::ONPASN_URL)) {
+                $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::ONPASN_URL;
+            }
+
+            //iTravel
+            if (Str::contains($data['fdPackage'], ProjectEnum::ONTASK_URL)) {
+                $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::ONTASK_URL;
+            }
+            if (Str::contains($data['fdPackage'], ProjectEnum::TAISM_URL)) {
+                $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::TAISM_URL;
+            }
+            if (Str::contains($data['fdPackage'], ProjectEnum::TAIPOCT22_URL)) {
+                $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::TAIPOCT22_URL;
+            }
+            if (Str::contains($data['fdPackage'], ProjectEnum::ONTADM_URL)) {
+                $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::ONTADM_URL;
             }
             if (Str::contains($data['fdPackage'], ProjectEnum::ONTAOB_URL)) {
                 $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::ONTAOB_URL;
             }
-            if (Str::contains($data['fdPackage'], ProjectEnum::ONPACA_URL)) {
-                $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::ONPACA_URL;
+
+            //myHome
+            if (Str::contains($data['fdPackage'], ProjectEnum::MYHOME_SMART_URL)) {
+                $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::MYHOME_SMART_URL;
             }
+            if (Str::contains($data['fdPackage'], ProjectEnum::MYHOME_PLUS_URL)) {
+                $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::MYHOME_PLUS_URL;
+            }
+
+
+            if (Str::contains($data['fdPackage'], ProjectEnum::ONCSHCAA_URL)) {
+                $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::ONCSHCAA_URL;
+            }
+
             $obj = $this->combindObj($data);
             $result = $this->logData($obj);
 
@@ -1130,14 +1177,51 @@ class ProductController extends BaseController
         $this->bodyData['doc_no'] = $request->session()->get('error');
         $error_page = ProjectEnum::STATIC_PAGE_PAYMENT_PENDING;
 
-        if (substr($request->session()->get('package'), 0, 6) === ProjectEnum::ONCSHC_URL) {
+        //Health
+        if (Str::contains($request->getRequestUri(), ProjectEnum::ONCSHC_URL)) {
             $error_page = ProjectEnum::STATIC_PAGE_PAYMENT_ERROR_CHILL_SURE;
-        } 
-        if (substr($request->session()->get('package'), 0, 2) === ProjectEnum::MYFLEXI_CI_URL) {
+        }
+        if (Str::contains($request->getRequestUri(), ProjectEnum::MYFLEXI_CI_URL)) {
             $error_page = ProjectEnum::STATIC_PAGE_PAYMENT_ERROR_MYFLEXI_CI;
         }
-        if (substr($request->session()->get('package'), 0, 8) === ProjectEnum::DIABETES_URL) {
+        if (Str::contains($request->getRequestUri(), ProjectEnum::DIABETES_URL)) {
             $error_page = ProjectEnum::STATIC_PAGE_PAYMENT_ERROR_DIABETES;
+        }
+
+        //PA Choice
+        if (Str::contains($request->getRequestUri(), ProjectEnum::ONPACA_URL)) {
+            $error_page = ProjectEnum::STATIC_PAGE_PAYMENT_ERROR_PA_CHOICE_CARE;
+        }
+        if (Str::contains($request->getRequestUri(), ProjectEnum::ONPAKD_URL)) {
+            $error_page = ProjectEnum::STATIC_PAGE_PAYMENT_ERROR_PA_CHOICE_KIDE;
+        }
+        if (Str::contains($request->getRequestUri(), ProjectEnum::ONPASN_URL)) {
+            $error_page = ProjectEnum::STATIC_PAGE_PAYMENT_ERROR_PA_CHOICE_SENIOR;
+        }
+
+        //iTravel
+        if (Str::contains($request->getRequestUri(), ProjectEnum::ONTASK_URL)) {
+            $error_page = ProjectEnum::STATIC_PAGE_PAYMENT_ERROR_TA_PLUS_SKIING;
+        }
+        if (Str::contains($request->getRequestUri(), ProjectEnum::TAISM_URL)) {
+            $error_page = ProjectEnum::STATIC_PAGE_PAYMENT_ERROR_ISMILE;
+        }
+        if (Str::contains($request->getRequestUri(), ProjectEnum::TAIPOCT22_URL)) {
+            $error_page = ProjectEnum::STATIC_PAGE_PAYMENT_ERROR_TUNE_IPASS;
+        }
+        if (Str::contains($request->getRequestUri(), ProjectEnum::ONTADM_URL)) {
+            $error_page = ProjectEnum::STATIC_PAGE_PAYMENT_ERROR_TA_DOMESTIC;
+        }
+        if (Str::contains($request->getRequestUri(), ProjectEnum::ONTAOB_URL)) {
+            $error_page = ProjectEnum::STATIC_PAGE_PAYMENT_ERROR_TA_OUTBOUND;
+        }
+
+        //myHome
+        if (Str::contains($request->getRequestUri(), ProjectEnum::MYHOME_SMART_URL)) {
+            $error_page = ProjectEnum::STATIC_PAGE_PAYMENT_ERROR_MYHOME_SMART;
+        }
+        if (Str::contains($request->getRequestUri(), ProjectEnum::MYHOME_PLUS_URL)) {
+            $error_page = ProjectEnum::STATIC_PAGE_PAYMENT_ERROR_MYHOME_PLUS;
         }
 
         return $this->genStatusPage($error_page);
@@ -1154,14 +1238,51 @@ class ProductController extends BaseController
         $this->bodyData['doc_no'] = $request->session()->get('error');
         $pending_page = ProjectEnum::STATIC_PAGE_PAYMENT_PENDING;
 
-        if (substr($request->session()->get('package'), 0, 6) === ProjectEnum::ONCSHC_URL) {
+        //Health
+        if (Str::contains($request->getRequestUri(), ProjectEnum::ONCSHC_URL)) {
             $pending_page = ProjectEnum::STATIC_PAGE_PAYMENT_PENDING_CHILL_SURE;
-        } 
-        if (substr($request->session()->get('package'), 0, 2) === ProjectEnum::MYFLEXI_CI_URL) {
+        }
+        if (Str::contains($request->getRequestUri(), ProjectEnum::MYFLEXI_CI_URL)) {
             $pending_page = ProjectEnum::STATIC_PAGE_PAYMENT_PENDING_MYFLEXI_CI;
         }
-        if (substr($request->session()->get('package'), 0, 8) === ProjectEnum::DIABETES_URL) {
+        if (Str::contains($request->getRequestUri(), ProjectEnum::DIABETES_URL)) {
             $pending_page = ProjectEnum::STATIC_PAGE_PAYMENT_PENDING_DIABETES;
+        }
+
+        //PA Choice
+        if (Str::contains($request->getRequestUri(), ProjectEnum::ONPACA_URL)) {
+            $pending_page = ProjectEnum::STATIC_PAGE_PAYMENT_PENDING_PA_CHOICE_CARE;
+        }
+        if (Str::contains($request->getRequestUri(), ProjectEnum::ONPAKD_URL)) {
+            $pending_page = ProjectEnum::STATIC_PAGE_PAYMENT_PENDING_PA_CHOICE_KIDE;
+        }
+        if (Str::contains($request->getRequestUri(), ProjectEnum::ONPASN_URL)) {
+            $pending_page = ProjectEnum::STATIC_PAGE_PAYMENT_PENDING_PA_CHOICE_SENIOR;
+        }
+
+        //iTravel
+        if (Str::contains($request->getRequestUri(), ProjectEnum::ONTASK_URL)) {
+            $pending_page = ProjectEnum::STATIC_PAGE_PAYMENT_PENDING_TA_PLUS_SKIING;
+        }
+        if (Str::contains($request->getRequestUri(), ProjectEnum::TAISM_URL)) {
+            $pending_page = ProjectEnum::STATIC_PAGE_PAYMENT_PENDING_ISMILE;
+        }
+        if (Str::contains($request->getRequestUri(), ProjectEnum::TAIPOCT22_URL)) {
+            $pending_page = ProjectEnum::STATIC_PAGE_PAYMENT_PENDING_TUNE_IPASS;
+        }
+        if (Str::contains($request->getRequestUri(), ProjectEnum::ONTADM_URL)) {
+            $pending_page = ProjectEnum::STATIC_PAGE_PAYMENT_PENDING_TA_DOMESTIC;
+        }
+        if (Str::contains($request->getRequestUri(), ProjectEnum::ONTAOB_URL)) {
+            $pending_page = ProjectEnum::STATIC_PAGE_PAYMENT_PENDING_TA_OUTBOUND;
+        }
+
+        //myHome
+        if (Str::contains($request->getRequestUri(), ProjectEnum::MYHOME_SMART_URL)) {
+            $pending_page = ProjectEnum::STATIC_PAGE_PAYMENT_PENDING_MYHOME_SMART;
+        }
+        if (Str::contains($request->getRequestUri(), ProjectEnum::MYHOME_PLUS_URL)) {
+            $pending_page = ProjectEnum::STATIC_PAGE_PAYMENT_PENDING_MYHOME_PLUS;
         }
 
         return $this->genStatusPage($pending_page);
@@ -1172,14 +1293,51 @@ class ProductController extends BaseController
         $this->bodyData['doc_no'] = $request->session()->get('error');
         $reject_page = ProjectEnum::STATIC_PAGE_PAYMENT_REJECT;
 
-        if (substr($request->session()->get('package'), 0, 6) === ProjectEnum::ONCSHC_URL) {
+        //Health
+        if (Str::contains($request->getRequestUri(), ProjectEnum::ONCSHC_URL)) {
             $reject_page = ProjectEnum::STATIC_PAGE_PAYMENT_REJECT_CHILL_SURE;
-        } 
-        if (substr($request->session()->get('package'), 0, 2) === ProjectEnum::MYFLEXI_CI_URL) {
+        }
+        if (Str::contains($request->getRequestUri(), ProjectEnum::MYFLEXI_CI_URL)) {
             $reject_page = ProjectEnum::STATIC_PAGE_PAYMENT_REJECT_MYFLEXI_CI;
         }
-        if (substr($request->session()->get('package'), 0, 8) === ProjectEnum::DIABETES_URL) {
+        if (Str::contains($request->getRequestUri(), ProjectEnum::DIABETES_URL)) {
             $reject_page = ProjectEnum::STATIC_PAGE_PAYMENT_REJECT_DIABETES;
+        }
+
+        //PA Choice
+        if (Str::contains($request->getRequestUri(), ProjectEnum::ONPACA_URL)) {
+            $reject_page = ProjectEnum::STATIC_PAGE_PAYMENT_REJECT_PA_CHOICE_CARE;
+        }
+        if (Str::contains($request->getRequestUri(), ProjectEnum::ONPAKD_URL)) {
+            $reject_page = ProjectEnum::STATIC_PAGE_PAYMENT_REJECT_PA_CHOICE_KIDE;
+        }
+        if (Str::contains($request->getRequestUri(), ProjectEnum::ONPASN_URL)) {
+            $reject_page = ProjectEnum::STATIC_PAGE_PAYMENT_REJECT_PA_CHOICE_SENIOR;
+        }
+
+        //iTravel
+        if (Str::contains($request->getRequestUri(), ProjectEnum::ONTASK_URL)) {
+            $reject_page = ProjectEnum::STATIC_PAGE_PAYMENT_REJECT_TA_PLUS_SKIING;
+        }
+        if (Str::contains($request->getRequestUri(), ProjectEnum::TAISM_URL)) {
+            $reject_page = ProjectEnum::STATIC_PAGE_PAYMENT_REJECT_ISMILE;
+        }
+        if (Str::contains($request->getRequestUri(), ProjectEnum::TAIPOCT22_URL)) {
+            $reject_page = ProjectEnum::STATIC_PAGE_PAYMENT_REJECT_TUNE_IPASS;
+        }
+        if (Str::contains($request->getRequestUri(), ProjectEnum::ONTADM_URL)) {
+            $reject_page = ProjectEnum::STATIC_PAGE_PAYMENT_REJECT_TA_DOMESTIC;
+        }
+        if (Str::contains($request->getRequestUri(), ProjectEnum::ONTAOB_URL)) {
+            $reject_page = ProjectEnum::STATIC_PAGE_PAYMENT_REJECT_TA_OUTBOUND;
+        }
+
+        //myHome
+        if (Str::contains($request->getRequestUri(), ProjectEnum::MYHOME_SMART_URL)) {
+            $reject_page = ProjectEnum::STATIC_PAGE_PAYMENT_REJECT_MYHOME_SMART;
+        }
+        if (Str::contains($request->getRequestUri(), ProjectEnum::MYHOME_PLUS_URL)) {
+            $reject_page = ProjectEnum::STATIC_PAGE_PAYMENT_REJECT_MYHOME_PLUS;
         }
 
         return $this->genStatusPage($reject_page);
@@ -1192,6 +1350,7 @@ class ProductController extends BaseController
         $this->bodyData['return_link'] = '/' . $this->locale;
         $this->bodyData['point'] = '';
         $this->bodyData['agentCode'] = $request->session()->get('agentCode');
+        $this->bodyData['package'] = $request->session()->get('package');
 
         $thank_you_page = ProjectEnum::STATIC_PAGE_PAYMENT_THANK_YOU;
 
@@ -1206,21 +1365,46 @@ class ProductController extends BaseController
             $thank_you_page = ProjectEnum::STATIC_PAGE_PAYMENT_THANK_YOU_DIABETES;
         }
 
-        if (Str::contains($request->getRequestUri(), ProjectEnum::ISMILE_URL)) {
+        //PA Choice
+        if (Str::contains($request->getRequestUri(), ProjectEnum::ONPACA_URL)) {
+            $thank_you_page = ProjectEnum::STATIC_PAGE_PAYMENT_THANK_YOU_PA_CHOICE_CARE;
+        }
+        if (Str::contains($request->getRequestUri(), ProjectEnum::ONPAKD_URL)) {
+            $thank_you_page = ProjectEnum::STATIC_PAGE_PAYMENT_THANK_YOU_PA_CHOICE_KIDE;
+        }
+        if (Str::contains($request->getRequestUri(), ProjectEnum::ONPASN_URL)) {
+            $thank_you_page = ProjectEnum::STATIC_PAGE_PAYMENT_THANK_YOU_PA_CHOICE_SENIOR;
+        }
+
+        //iTravel
+        if (Str::contains($request->getRequestUri(), ProjectEnum::ONTASK_URL)) {
+            $thank_you_page = ProjectEnum::STATIC_PAGE_PAYMENT_THANK_YOU_TA_PLUS_SKIING;
+        }
+        if (Str::contains($request->getRequestUri(), ProjectEnum::TAISM_URL)) {
             $thank_you_page = ProjectEnum::STATIC_PAGE_PAYMENT_THANK_YOU_ISMILE;
         }
+        if (Str::contains($request->getRequestUri(), ProjectEnum::TAIPOCT22_URL)) {
+            $thank_you_page = ProjectEnum::STATIC_PAGE_PAYMENT_THANK_YOU_TUNE_IPASS;
+        }
+        if (Str::contains($request->getRequestUri(), ProjectEnum::ONTADM_URL)) {
+            $thank_you_page = ProjectEnum::STATIC_PAGE_PAYMENT_THANK_YOU_TA_DOMESTIC;
+        }
+        if (Str::contains($request->getRequestUri(), ProjectEnum::ONTAOB_URL)) {
+            $thank_you_page = ProjectEnum::STATIC_PAGE_PAYMENT_THANK_YOU_TA_OUTBOUND;
+        }
+
+        //myHome
         if (Str::contains($request->getRequestUri(), ProjectEnum::MYHOME_SMART_URL)) {
             $thank_you_page = ProjectEnum::STATIC_PAGE_PAYMENT_THANK_YOU_MYHOME_SMART;
         }
+        if (Str::contains($request->getRequestUri(), ProjectEnum::MYHOME_PLUS_URL)) {
+            $thank_you_page = ProjectEnum::STATIC_PAGE_PAYMENT_THANK_YOU_MYHOME_PLUS;
+        }
+
         if (Str::contains($request->getRequestUri(), ProjectEnum::ONCSHCAA_URL)) {
             $thank_you_page = ProjectEnum::STATIC_PAGE_PAYMENT_THANK_YOU_CHILL_SURE;
         }
-        if (Str::contains($request->getRequestUri(), ProjectEnum::ONTAOB_URL)) {
-            $thank_you_page = ProjectEnum::STATIC_PAGE_PAYMENT_THANK_YOU_ITRAVEL;
-        }
-        if (Str::contains($request->getRequestUri(), ProjectEnum::ONPACA_URL)) {
-            $thank_you_page = ProjectEnum::STATIC_PAGE_PAYMENT_THANK_YOU_PA_CHOICE;
-        }
+
         return $this->genStatusPage($thank_you_page);
     }
 
@@ -1282,10 +1466,12 @@ class ProductController extends BaseController
             case '001':
                 $func = 'pending';
                 $request->session()->put('error', $request->input('channel_response_desc'));
+                $request->session()->put('package', $package);
                 break;
             case '002':
                 $func = 'reject';
                 $request->session()->put('error', $request->input('channel_response_desc'));
+                $request->session()->put('package', $package);
                 break;
             case '003':
                 $func = 'cancel';
