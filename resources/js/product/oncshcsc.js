@@ -278,6 +278,10 @@ document.addEventListener("DOMContentLoaded", async () => {
         channel: channel
     };
 
+    $('#ddl_branch_susco').addEventListener('change', (e) => {
+        validateBranch();
+    })
+
     //===================Branch====================//
     const location_data = await getSuscoBranchData();
     if (location_data !== undefined) {
@@ -429,6 +433,9 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
 
     const validateBranch = () => {
+        $$('.branch-select .controls-wrapper').forEach(el => {
+            el.classList.remove('error');
+        });
         let statusFlag = true;
         if($('#ddl_branch_susco').value == ''){
             showValidateBranchError($('#ddl_branch_susco').getAttribute('data-please-select'), 'branch_error');
