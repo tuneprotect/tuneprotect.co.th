@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Api\Base\BaseApiController;
 use Illuminate\Http\Request;
+use GuzzleHttp\Client;
 
 class ApiConnectController extends BaseApiController
 {
@@ -94,5 +95,27 @@ class ApiConnectController extends BaseApiController
         //dd($result);
         return json_encode($result); // Return the received data
 
+    }
+    public function getSuscoBranch()
+    {
+        $client = new Client();
+        $response = $client->request('POST', config('tune-api.url') . 'suscoBranch', [
+            'auth' => [config('tune-api.user'), config('tune-api.password')],
+            'headers' => [
+                'Content-Type' => 'application/json'
+            ]
+        ]);
+        $res = (object)json_decode($response->getBody()->getContents(), true);
+        $this->apiResult = $res->data;
+
+        if ($res->status) {
+            $this->apiStatus = self::SUCCESS;
+            $this->apiStatusText = self::SUCCESS;
+        } else {
+            $this->apiStatus = self::ERROR;
+            $this->apiStatusText = __('product.error.' . $res->message);
+        }
+
+        return $this->send();
     }
 }

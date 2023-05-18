@@ -120,7 +120,7 @@ const CheckRegisterForChillSure = async (data) => {
     return await response.json();
 }
 const callSuscoBranch = async () => {
-    const response = await fetch(`/${$('html').getAttribute('lang')}/Product/getSuscoBranch`, {
+    const response = await fetch(`/${$('html').getAttribute('lang')}/ApiConnect/getSuscoBranch`, {
         method: 'post',
         headers: {
             'Accept': 'application/json',
