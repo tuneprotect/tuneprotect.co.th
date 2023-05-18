@@ -280,14 +280,19 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     //===================Branch====================//
     const location_data = await getZipcodeData();
-    console.log(location_data);
-    if (location_data !== undefined) {
-        let items = ['<option value="">' + $(`#ddl_branch_susco`).getAttribute('data-please-select') + '</option>'];
-        location_data.map(v => {
-            items.push(`<option value="${v.district.code}">${v.district.locales[locale]}, ${v.province.locales[locale]}</option>`);
-        });
-        $(`#ddl_branch_susco`).innerHTML = items.join('');
-    }
+    $(`#ddl_branch_susco`).addEventListener("change", function (e) {
+        const value = e.target.value;
+        if (value.length === 5) {
+            if (location_data !== undefined) {
+                let items = ['<option value="">' + $(`#ddl_branch_susco`).getAttribute('data-please-select') + '</option>'];
+                location_data.map(v => {
+                    items.push(`<option value="${v.district.code}">${v.district.locales[locale]}, ${v.province.locales[locale]}</option>`);
+                });
+                $(`#ddl_branch_susco`).innerHTML = items.join('');
+            }
+        }
+    });
+
   
     const validateBMI = () => {
         $$('.bmi-input .controls-wrapper').forEach(el => {
