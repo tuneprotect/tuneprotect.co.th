@@ -1576,31 +1576,6 @@ class ProductController extends BaseController
         return $this->send();
     }
 
-    // public function getSuscoBranch()
-    // {
-    //     $client = new Client();
-    //     $response = $client->request('POST', config('tune-api.url') . 'suscoBranch', [
-    //         'auth' => [config('tune-api.user'), config('tune-api.password')],
-    //         'headers' => [
-    //             'Content-Type' => 'application/json'
-    //         ]
-    //     ]);
-    //     $res = (object)json_decode($response->getBody()->getContents(), true);
-
-    //     //$this->apiResult = $res->status ? self::SUCCESS : self::ERROR;
-    //     $this->apiResult = $res->data;
-
-    //     if ($res->status) {
-    //         $this->apiStatus = self::SUCCESS;
-    //         $this->apiStatusText = self::SUCCESS;
-    //     } else {
-    //         $this->apiStatus = self::ERROR;
-    //         $this->apiStatusText = __('product.error.' . $res->message);
-    //     }
-
-    //     return $this->send();
-    // }
-
     public function CheckRegisterForChillSure(Request $request)
     {
         $data = $request->all();
@@ -1626,37 +1601,7 @@ class ProductController extends BaseController
 
         return $this->send();
     }
-    public function testDebug()
-    {
-        //        $document = BuyLog::whereYear("created_at", date("Y"))
-        //            ->whereMonth("created_at", date("m"))
-        //            ->whereDay("created_at", date("d"))
-        //            ->orderBy("RefCode", "DESC")
-        //            ->first();
-        //        dd($document->RefCode);
 
-        //        $document = BuyLog::orderBy("id", "DESC")
-        //            ->first();
-        //        if (empty($document)) {
-        //            $max = 1;
-        //        } else {
-        //            $max = $document->id + 1;
-        //        }
-
-        $str_max = '';
-        $max = 111;
-        //        dd(str_pad($max, 5, 0, STR_PAD_LEFT));
-
-        if (strlen($max) > 5) {
-            $str_max = substr($max, 0, 5);
-        } else {
-            $str_max = str_pad($max, 5, 0, STR_PAD_LEFT);
-        }
-
-        //        dd($str_max);
-
-        dd(strval(date('Ymd') . $str_max));
-    }
     protected function sendB2BTo2C2P($obj, $price = null, $log_id = null)
     {
         //dd($obj);
