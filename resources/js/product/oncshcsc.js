@@ -280,7 +280,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     //===================Branch====================//
     const location_data = await getZipcodeData();
-    $(`#ddl_branch_susco`).addEventListener("change", function (e) {
+    $('#ddl_branch_susco').addEventListener("change", function (e) {
         const value = e.target.value;
         if (value.length === 5) {
             if (location_data !== undefined) {
