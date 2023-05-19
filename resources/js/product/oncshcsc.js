@@ -490,7 +490,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
 
     $("#ddl_branch_susco").addEventListener("change", function (e) {
-        data.fdAgent = this.options[this.selectedIndex].getAttribute("data-agent");
+        console.log(this.options[this.selectedIndex].getAttribute("data-agent"));
     });
 
     const hideShowConditionBox = (goToStep) => {
