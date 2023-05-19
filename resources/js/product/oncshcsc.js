@@ -489,6 +489,10 @@ document.addEventListener("DOMContentLoaded", async () => {
         });
     });
 
+    $("#ddl_branch_susco").addEventListener("change", function (e) {
+        data.fdAgent = this.options[this.selectedIndex].getAttribute("data-agent");
+    });
+
     const hideShowConditionBox = (goToStep) => {
         if (goToStep === 1) {
             $('#h-cont').style.display = "none";
@@ -613,7 +617,6 @@ document.addEventListener("DOMContentLoaded", async () => {
                             const chkAccept = validateAcceptStep1();
                             const validateBMIResult = validateBMI();
                             const validateBranchResult = validateBranch();
-                            const agentCode = $('#ddl_branch_susco').getAttribute('data-agent');
 
                             if(!chkAccept){
                                 showAcceptError($('#ctrl_accept_step1').getAttribute('data-error-insurance_term'));
@@ -628,7 +631,6 @@ document.addEventListener("DOMContentLoaded", async () => {
                                     fdBMI_Weight: $('#ctrl_weight').value,
                                     fdBMI_Height: $("#ctrl_height").value,
                                     fdBMI_Value: $("#ctrl_bmi_calculator").value,
-                                    fdAgent: agentCode,
                                     fdBranch: $('#ddl_branch_susco').value
                                 }
 
