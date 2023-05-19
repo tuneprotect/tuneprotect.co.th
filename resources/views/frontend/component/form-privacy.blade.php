@@ -9,7 +9,7 @@
             </li>
             <li>
                 <input id="ctrl_channel_post" name="fdSendType" type="radio"
-                       value="P"/><label
+                       value="B"/><label
                     for="ctrl_channel_post">@lang('product.post')</label>
             </li>
         </ul>

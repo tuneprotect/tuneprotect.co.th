@@ -286,9 +286,9 @@ document.addEventListener("DOMContentLoaded", async () => {
     const location_data = await getSuscoBranch();
     console.log(location_data);
     if (location_data !== undefined) {
-        let items = ['<option value="">' + $(`#ddl_branch_susco`).getAttribute('data-please-select') + '</option>'];
+        let items = ['<option value="" data-agent="">' + $(`#ddl_branch_susco`).getAttribute('data-please-select') + '</option>'];
         location_data.result.forEach(v => {
-            items.push(`<option value="${v.Id}">${v.Description}</option>`);
+            items.push(`<option value="${v.Id}" data-agent="${v.AgentCode}">${v.Description}</option>`);
         });
         $(`#ddl_branch_susco`).innerHTML = items.join('');
     }
@@ -613,6 +613,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                             const chkAccept = validateAcceptStep1();
                             const validateBMIResult = validateBMI();
                             const validateBranchResult = validateBranch();
+                            const agentCode = $('#ddl_branch_susco').getAttribute('data-agent');
 
                             if(!chkAccept){
                                 showAcceptError($('#ctrl_accept_step1').getAttribute('data-error-insurance_term'));
@@ -627,6 +628,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                                     fdBMI_Weight: $('#ctrl_weight').value,
                                     fdBMI_Height: $("#ctrl_height").value,
                                     fdBMI_Value: $("#ctrl_bmi_calculator").value,
+                                    fdAgent: agentCode,
                                     fdBranch: $('#ddl_branch_susco').value
                                 }
 
