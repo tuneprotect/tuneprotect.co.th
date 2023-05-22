@@ -11,7 +11,7 @@ class ONCSHCSCObject extends BaseInsuranceObject
     public $fdBMI_Weight;
     public $fdBMI_Height;
     public $fdBMI_Value;
-    public $fdBranch_Value;
+    public $fdBranchID;
     public $fdQuestion1;
     public $fdProductCode;
     public $thankyou_param;
