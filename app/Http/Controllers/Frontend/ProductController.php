@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Enum\BAOWANObject;
 use App\Enum\ONCSHCObject;
+use App\Enum\ONCSHCSCObject;
 use App\Enum\Base\BaseInsuranceObject;
 use App\Enum\Base\BaseTAObject;
 use App\Enum\CIObject;
@@ -451,7 +452,7 @@ class ProductController extends BaseController
         } elseif (substr($data['fdPackage'], 0, 8) === 'ONCSHCAA') {
             $obj = new BAOWANObject();
         } elseif (substr($data['fdPackage'], 0, 8) === 'ONCSHCSC') {
-            $obj = new BAOWANObject();
+            $obj = new ONCSHCSCObject();
         } else {
             $obj = new BaseInsuranceObject();
         }

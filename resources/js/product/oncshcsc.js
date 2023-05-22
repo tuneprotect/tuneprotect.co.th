@@ -631,7 +631,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                                     fdBMI_Weight: $('#ctrl_weight').value,
                                     fdBMI_Height: $("#ctrl_height").value,
                                     fdBMI_Value: $("#ctrl_bmi_calculator").value,
-                                    fdBranchID: $('#ddl_branch_susco').value
+                                    fdBranch_Value: $('#ddl_branch_susco').value
                                 }
 
                                 genPrice();
