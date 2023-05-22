@@ -1830,7 +1830,7 @@ main {
                         h3 {
                             width: 100%;
                             margin-left: -20px;
-                            padding-left: 30px;
+                            padding-left: 20px;
                             background: #fff;
                             @include project_transition();
 
@@ -1853,7 +1853,7 @@ main {
                             max-height: 99em;
                             width: 104%;
                             margin: 0 0 0 -20px !important;
-                            padding: 5px 30px 0 30px;
+                            padding: 5px 20px 0 20px;
                             background: #fff;
                             @include project_transition();
                             @media all and (max-width: $md) {
