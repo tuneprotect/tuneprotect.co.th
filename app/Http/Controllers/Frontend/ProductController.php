@@ -101,6 +101,10 @@ class ProductController extends BaseController
             return $this->genView('frontend.page.redirect_chillsure');
             //return redirect()->route('current', ['locale' => $this->locale, 'controller' => $this->controller, 'func' => $link, 'params' => $selected]);
         }
+        if (in_array($selected, ['ONCSHSC'])) {
+            $selected = "ONCSHCSC";
+            return $this->genView('frontend.page.redirect_chillsure');//return redirect()->route('current', ['locale' => $this->locale, 'controller' => $this->controller, 'func' => $link, 'params' => $selected]);
+        }
         
         $this->getProductDetail($link, $selected);
 
@@ -1166,7 +1170,7 @@ class ProductController extends BaseController
             $link = 'IssuePolicyChillSure';
         } elseif (substr($package, 0, 8) === ProjectEnum::ONCSHCSC_URL) {
             $this->thankYouParam = ProjectEnum::ONCSHCSC_URL;
-            $link = 'IssuePolicyChillSure';
+            $link = 'IssuePolicyChillSureSusco';
         }
         return $link;
     }
@@ -1416,6 +1420,9 @@ class ProductController extends BaseController
         }
 
         if (Str::contains($request->getRequestUri(), ProjectEnum::ONCSHCAA_URL)) {
+            $thank_you_page = ProjectEnum::STATIC_PAGE_PAYMENT_THANK_YOU_CHILL_SURE;
+        }
+        if (Str::contains($request->getRequestUri(), ProjectEnum::ONCSHCSC_URL)) {
             $thank_you_page = ProjectEnum::STATIC_PAGE_PAYMENT_THANK_YOU_CHILL_SURE;
         }
 
