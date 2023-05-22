@@ -1052,125 +1052,159 @@ class ProductController extends BaseController
         if (str_starts_with($package, 'ONPA')) {
             $this->thankYouParam = 'ONPA';
             $link = 'IssuePolicyPAChoice';
-        } elseif (
-            substr($package, 0, 8) === 'ONCOVIDA'
+        } elseif (substr($package, 0, 8) === 'ONCOVIDA'
             || substr($package, 0, 8) === 'ONCOVIDL'
             || substr($package, 0, 8) === 'ONISAFEX'
         ) {
             $this->thankYouParam = substr($package, 0, 8);
             $link = 'IssuePolicyCovid19';
-        } elseif (substr($package, 0, 6) === 'PUMPPA') {
+        } 
+        if (substr($package, 0, 6) === 'PUMPPA') {
             $this->thankYouParam = substr($package, 0, 6);
             $link = "IssuePolicyPAChoice";
-        } elseif (substr($package, 0, 6) === 'TGCVLP') {
+        } 
+        if (substr($package, 0, 6) === 'TGCVLP') {
             $this->thankYouParam = substr($package, 0, 6);
             $link = 'IssuePolicyCovidTGCVLP';
-        } elseif (substr($package, 0, 7) === 'ONTGISM') {
+        } 
+        if (substr($package, 0, 7) === 'ONTGISM') {
             $this->thankYouParam = substr($package, 0, 7);
             $link = 'IssuePolicyCovidTGCVLP';
-        } elseif (substr($package, 0, 7) === 'TAISMTG') {
+        } 
+        if (substr($package, 0, 7) === 'TAISMTG') {
             $this->thankYouParam = substr($package, 0, 7);
             $link = 'IssuePolicyCovidTAISMTG';
-        } elseif (substr($package, 0, 9) === 'ONCOVIDMW') {
+        } 
+        if (substr($package, 0, 9) === 'ONCOVIDMW') {
             $this->thankYouParam = substr($package, 0, 9);
             $link = 'IssuePolicyMigration';
-        } elseif (substr($package, 0, 8) === 'MWASEP22') {
+        } 
+        if (substr($package, 0, 8) === 'MWASEP22') {
             $this->thankYouParam = substr($package, 0, 8);
             $link = 'IssuePolicyMigration';
-        } elseif (substr($package, 0, 6) === 'ONTALN') {
+        } 
+        if (substr($package, 0, 6) === 'ONTALN') {
             $this->thankYouParam = substr($package, 0, 6);
             $link = "IssuePolicyInbound";
-        } elseif (substr($package, 0, 9) === 'TAIPOCT22') {
+        } 
+        if (substr($package, 0, 9) === 'TAIPOCT22') {
             $this->thankYouParam = substr($package, 0, 9);
             $link = "IssuePolicyInbound";
-        } elseif (substr($package, 0, 11) === 'TAIPOCT22AA') {
+        } 
+        if (substr($package, 0, 11) === 'TAIPOCT22AA') {
             $this->thankYouParam = substr($package, 0, 11);
             $link = "IssuePolicyInbound";
-        } elseif (substr($package, 0, 7) === 'TAIPCRN') {
+        } 
+        if (substr($package, 0, 7) === 'TAIPCRN') {
             $this->thankYouParam = substr($package, 0, 7);
             $link = "IssuePolicyInbound";
-        } elseif (substr($package, 0, 5) === 'TAISM') {
+        } 
+        if (substr($package, 0, 5) === 'TAISM') {
             $this->thankYouParam = substr($package, 0, 5);
             $link = "IssuePolicyiSmile";
-        } elseif (substr($package, 0, 6) === 'TAISMC') {
+        } 
+        if (substr($package, 0, 6) === 'TAISMC') {
             $this->thankYouParam = substr($package, 0, 6);
             $link = "IssuePolicyiSmile";
-        } elseif (substr($package, 0, 10) === 'ONTAISMB2B') {
+        } 
+        if (substr($package, 0, 10) === 'ONTAISMB2B') {
             $this->thankYouParam = substr($package, 0, 10);
             $link = "IssuePolicyiSmile";
-        } elseif (substr($package, 0, 6) === 'TAIPAS') {
+        } 
+        if (substr($package, 0, 6) === 'TAIPAS') {
             $this->thankYouParam = substr($package, 0, 6);
             $link = "IssuePolicyInbound";
-        } elseif (substr($package, 0, 6) === ProjectEnum::ONTAOB_URL) {
+        } 
+        if (substr($package, 0, 6) === ProjectEnum::ONTAOB_URL) {
             $this->thankYouParam = ProjectEnum::ONTAOB_URL;
-            //$this->thankYouParam = substr($package, 0, 6);
             $link = "IssuePolicyiTravel";
-        } elseif (substr($package, 0, 8) === 'ONB2BTAD') {
+        } 
+        if (substr($package, 0, 8) === 'ONB2BTAD') {
             $this->thankYouParam = substr($package, 0, 8);
             $link = "IssuePolicy";
-        } elseif (substr($package, 0, 7) === 'ONB2BTA') {
+        } 
+        if (substr($package, 0, 7) === 'ONB2BTA') {
             $this->thankYouParam = substr($package, 0, 7);
             $link = "IssuePolicyiTravel";
-        } elseif (substr($package, 0, 6) === 'ONTADM' || substr($package, 0, 4) === 'ONTA') {
+        } 
+        if (substr($package, 0, 6) === 'ONTADM' || substr($package, 0, 4) === 'ONTA') {
             $this->thankYouParam = substr($package, 0, 6);
             $link = "IssuePolicy";
-        } elseif (substr($package, 0, 6) === 'ONTASK') {
+        } 
+        if (substr($package, 0, 6) === 'ONTASK') {
             $this->thankYouParam = substr($package, 0, 6);
             $link = "IssuePolicy";
-        } elseif (substr($package, 0, 8) === 'ONVACINA') {
+        } 
+        if (substr($package, 0, 8) === 'ONVACINA') {
             $this->thankYouParam = substr($package, 0, 8);
             $link = 'IssuePolicyVacin';
-        } elseif (substr($package, 0, 8) === 'ONVSUREA') {
+        } 
+        if (substr($package, 0, 8) === 'ONVSUREA') {
             $this->thankYouParam = substr($package, 0, 8);
             $link = 'IssuePolicyVacin';
-        } elseif (substr($package, 0, 8) === 'ONVSAFEA' || substr($package, 0, 8) === 'ONVSAFEC') {
+        } 
+        if (substr($package, 0, 8) === 'ONVSAFEA' || substr($package, 0, 8) === 'ONVSAFEC') {
             $this->thankYouParam = substr($package, 0, 8);
             $link = 'IssuePolicyVsafe';
-        } elseif (substr($package, 0, 9) === 'ONVS22JAN') {
+        } 
+        if (substr($package, 0, 9) === 'ONVS22JAN') {
             $this->thankYouParam = substr($package, 0, 9);
             $link = 'IssuePolicyVsafe';
-        } elseif (substr($package, 0, 7) === 'ONVSAFE') {
+        } 
+        if (substr($package, 0, 7) === 'ONVSAFE') {
             $this->thankYouParam = substr($package, 0, 7);
             $link = 'IssuePolicyVsafe';
-        } elseif (substr($package, 0, 6) === 'CVCARE') {
+        } 
+        if (substr($package, 0, 6) === 'CVCARE') {
             $this->thankYouParam = substr($package, 0, 6);
             $link = 'IssuePolicyVsafe';
-        } elseif (substr($package, 0, 2) === 'CI') {
+        } 
+        if (substr($package, 0, 2) === 'CI') {
             $this->thankYouParam = substr($package, 0, 2);
             $link = 'IssuePolicyCI';
-        } elseif (substr($package, 0, 6) === 'ONFIMP') {
+        } 
+        if (substr($package, 0, 6) === 'ONFIMP') {
             $this->thankYouParam = substr($package, 0, 6);
             $link = 'IssuePolicyMyHomePlus';
-        } elseif (substr($package, 0, 5) === 'ONMHS') {
+        } 
+        if (substr($package, 0, 5) === 'ONMHS') {
             $this->thankYouParam = substr($package, 0, 5);
             $link = 'IssuePolicyMyHomeSmart';
             $this->thankYouParam =  ProjectEnum::MYHOME_SMART_URL;
-        } elseif (substr($package, 0, 7) === 'CVISAFE') {
+        } 
+        if (substr($package, 0, 7) === 'CVISAFE') {
             $this->thankYouParam = 'CVISAFE';
             $link = 'IssuePolicyCovid19';
-        } elseif (substr($package, 0, 9) === 'CVIS22JAN') {
+        } 
+        if (substr($package, 0, 9) === 'CVIS22JAN') {
             $this->thankYouParam = 'CVIS22JAN';
             $link = 'IssuePolicyCovid19';
-        } elseif (substr($package, 0, 8) === ProjectEnum::DIABETES_URL) {
+        } 
+        if (substr($package, 0, 8) === ProjectEnum::DIABETES_URL) {
             $this->thankYouParam =  ProjectEnum::DIABETES_URL;
             $link = ProjectEnum::ISSUE_POLICY_DIABETES;
-        } elseif (substr($package, 0, 5) === 'TAISM') {
+        } 
+        if (substr($package, 0, 5) === 'TAISM') {
             $this->thankYouParam =  ProjectEnum::ISMILE_URL;
             $link = "IssuePolicyiSmile";
-        } elseif (substr($package, 0, 6) === 'TAISMC') {
+        } 
+        if (substr($package, 0, 6) === 'TAISMC') {
             $this->thankYouParam =  ProjectEnum::ISMILE_URL;
             $link = "IssuePolicyiSmile";
-        } elseif (substr($package, 0, 10) === 'ONTAISMB2B') {
+        } 
+        if (substr($package, 0, 10) === 'ONTAISMB2B') {
             $this->thankYouParam =  ProjectEnum::ISMILE_URL;
             $link = "IssuePolicyiSmile";
-        } elseif (substr($package, 0, 6) === ProjectEnum::ONCSHC_URL) {
+        } 
+        if (substr($package, 0, 6) === ProjectEnum::ONCSHC_URL) {
             $this->thankYouParam = ProjectEnum::ONCSHC_URL;
             $link = 'IssuePolicyChillSure';
-            //$this->thankYouParam =  ProjectEnum::ONCSHC_URL;
-        } elseif (substr($package, 0, 8) === ProjectEnum::ONCSHCAA_URL) {
+        } 
+        if (substr($package, 0, 8) === ProjectEnum::ONCSHCAA_URL) {
             $this->thankYouParam = ProjectEnum::ONCSHCAA_URL;
             $link = 'IssuePolicyChillSure';
-        } elseif (substr($package, 0, 8) === ProjectEnum::ONCSHCSC_URL) {
+        } 
+        if (substr($package, 0, 8) === ProjectEnum::ONCSHCSC_URL) {
             $this->thankYouParam = ProjectEnum::ONCSHCSC_URL;
             $link = 'IssuePolicyChillSureSusco';
         }
