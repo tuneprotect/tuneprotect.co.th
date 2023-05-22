@@ -62,7 +62,7 @@ const constraints = {
     fdTitle: {
         presence: {
             allowEmpty: false,
-            message: ""
+            message: "^" + $('#title_wrapper').getAttribute('data-error-title')
         }
     },
     fdName: {
