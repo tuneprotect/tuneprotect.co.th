@@ -46,7 +46,7 @@ class BaseInsuranceObject
     public $fdInvoice;
     public $fdDestFrom;    
     public $fdDestTo;
-    public $fdPaymentType = 3;
+    public $fdPaymentType = 2;
     public $fdPaymentCh;
     public $fdInstallment = 1;
     public $fdMember_ID;
