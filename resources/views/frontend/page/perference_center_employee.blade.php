@@ -18,11 +18,10 @@
 </style>
 <div class="ot-form-wrapper">
 <iframe
-    src="https://privacyportal-apac.onetrust.com/ui/#/preferences/multipage/login/b2813f62-e49d-4965-b8d0-85865d6ceaf8">
+    src="https://privacyportal-apac.onetrust.com/ui/#/preferences/multipage/login/8fe20210-20da-4c58-8c11-8b4b7dfa3ce4">
 </iframe>
 </div>
 <!-- OneTrust Web Form end -->
-
 
 
 @endsection

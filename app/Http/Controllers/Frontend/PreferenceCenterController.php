@@ -17,5 +17,8 @@ class PreferenceCenterController extends BaseController
         return $this->genView('frontend.page.perference_center_agent');
     }
 
-
+    public function employee()
+    {
+        return $this->genView('frontend.page.perference_center_employee');
+    }
 }
