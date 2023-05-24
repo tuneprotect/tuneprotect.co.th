@@ -1184,15 +1184,17 @@ class ProductController extends BaseController
         } elseif (substr($package, 0, 6) === ProjectEnum::ONCSHC_URL) {
             $this->thankYouParam = ProjectEnum::ONCSHC_URL;
             $link = 'IssuePolicyChillSure';
-        } elseif (substr($package, 0, 8) === ProjectEnum::ONCSHCAA_URL) {
-            $this->thankYouParam = ProjectEnum::ONCSHCAA_URL;
-            $link = 'IssuePolicyChillSure';
-        } elseif (substr($package, 0, 8) === ProjectEnum::ONCSHCSC_URL) {
-            $this->thankYouParam = ProjectEnum::ONCSHCSC_URL;
-            $link = 'IssuePolicyChillSureSusco';
-        }  elseif (substr($package, 0, 8) === ProjectEnum::ONCSHCGV_URL) {
-            $this->thankYouParam = ProjectEnum::ONCSHCGV_URL;
-            $link = 'IssuePolicyChillSureGiftVoucher';
+
+            if (substr($package, 0, 8) === ProjectEnum::ONCSHCAA_URL) {
+                $this->thankYouParam = ProjectEnum::ONCSHCAA_URL;
+                $link = 'IssuePolicyChillSure';
+            } elseif (substr($package, 0, 8) === ProjectEnum::ONCSHCSC_URL) {
+                $this->thankYouParam = ProjectEnum::ONCSHCSC_URL;
+                $link = 'IssuePolicyChillSureSusco';
+            }  elseif (substr($package, 0, 8) === ProjectEnum::ONCSHCGV_URL) {
+                $this->thankYouParam = ProjectEnum::ONCSHCGV_URL;
+                $link = 'IssuePolicyChillSureGiftVoucher';
+            }
         }
         return $link;
     }
