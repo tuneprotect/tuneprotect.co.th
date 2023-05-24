@@ -163,8 +163,8 @@
 
     @elseif($selected==='ONCSHCGV')
     <picture>
-        <source media="(min-width:768px)" srcset="https://www.tuneprotect.co.th/storage/Banner/rabbit/Tune-Chillsure-03.webp">
-        <img src="{{url(!empty($v->pic_mobile_en) ? "https://www.tuneprotect.co.th/storage/Banner/rabbit/Tune-Chillsure-03.webp" : "https://www.tuneprotect.co.th/storage/Banner/rabbit/Tune-Chillsure-04.webp" )}}" alt="{{$v->locales[$locale]->title}}">
+        <source media="(min-width:768px)" srcset="https://www.tuneprotect.co.th/storage/Banner/chillsure/GiftVoucher/Banner_Website_ChillSure_GiftVoucher_EN.webp">
+        <img src="{{url(!empty($v->pic_mobile_en) ? "https://www.tuneprotect.co.th/storage/Banner/chillsure/GiftVoucher/Banner_Website_ChillSure_GiftVoucher_EN.webp" : "https://www.tuneprotect.co.th/storage/Banner/chillsure/GiftVoucher/Banner_Website_ChillSure_GiftVoucher_EN.webp" )}}" alt="{{$v->locales[$locale]->title}}">
     </picture>
 
     @elseif($selected==='ONTADM')
@@ -339,8 +339,8 @@
     </picture>
     @elseif($selected==='ONCSHCGV')
     <picture>
-        <source media="(min-width:768px)" srcset="https://www.tuneprotect.co.th/storage/Banner/rabbit/Tune-Chillsure-01.webp">
-        <img src="{{url(!empty($v->pic_mobile_en) ? "https://www.tuneprotect.co.th/storage/Banner/rabbit/Tune-Chillsure-01.webp" : "https://www.tuneprotect.co.th/storage/Banner/rabbit/Tune-Chillsure-02.webp" )}}" alt="{{$v->locales[$locale]->title}}">
+        <source media="(min-width:768px)" srcset="https://www.tuneprotect.co.th/storage/Banner/chillsure/GiftVoucher/Banner_Website_ChillSure_GiftVoucher_TH.webp">
+        <img src="{{url(!empty($v->pic_mobile_en) ? "https://www.tuneprotect.co.th/storage/Banner/chillsure/GiftVoucher/Banner_Website_ChillSure_GiftVoucher_TH.webp" : "https://www.tuneprotect.co.th/storage/Banner/chillsure/GiftVoucher/Banner_Website_ChillSure_GiftVoucher_TH.webp" )}}" alt="{{$v->locales[$locale]->title}}">
     </picture>
     @elseif($selected==='TAISMTG')
     <picture>
