@@ -1192,7 +1192,7 @@ class ProductController extends BaseController
             $link = 'IssuePolicyChillSureSusco';
         }  elseif (substr($package, 0, 8) === ProjectEnum::ONCSHCGV_URL) {
             $this->thankYouParam = ProjectEnum::ONCSHCGV_URL;
-            $link = 'IssuePolicyChillSure';
+            $link = 'IssuePolicyChillSureGiftVoucher';
         }
         return $link;
     }
