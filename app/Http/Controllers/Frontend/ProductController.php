@@ -106,6 +106,10 @@ class ProductController extends BaseController
             $selected = "ONCSHCSC";
             return $this->genView('frontend.page.redirect_chillsure');//return redirect()->route('current', ['locale' => $this->locale, 'controller' => $this->controller, 'func' => $link, 'params' => $selected]);
         }
+        if (in_array($selected, ['ONCSHGV'])) {
+            $selected = "ONCSHCGV";
+            return $this->genView('frontend.page.redirect_chillsure');//return redirect()->route('current', ['locale' => $this->locale, 'controller' => $this->controller, 'func' => $link, 'params' => $selected]);
+        }
         
         $this->getProductDetail($link, $selected);
 
@@ -453,6 +457,8 @@ class ProductController extends BaseController
             $obj = new BAOWANObject();
         } elseif (substr($data['fdPackage'], 0, 8) === 'ONCSHCSC') {
             $obj = new BAOWANObject();
+        } elseif (substr($data['fdPackage'], 0, 8) === 'ONCSHCGV') {
+            $obj = new BAOWANObject();
         } else {
             $obj = new BaseInsuranceObject();
         }
@@ -522,6 +528,7 @@ class ProductController extends BaseController
             || substr($data['fdPackage'], 0, 6) === 'ONCSHC'
             || substr($data['fdPackage'], 0, 8) === 'ONCSHCAA'
             || substr($data['fdPackage'], 0, 8) === 'ONCSHCSC'
+            || substr($data['fdPackage'], 0, 8) === 'ONCSHCGV'
         ) {
 
 
@@ -583,6 +590,9 @@ class ProductController extends BaseController
             }
             if (substr($data['fdPackage'], 0, 8) === 'ONCSHCSC') {
                 $package = (array)json_decode(Storage::disk('public')->get('json/oncshcsc.json'));
+            }
+            if (substr($data['fdPackage'], 0, 8) === 'ONCSHCGV') {
+                $package = (array)json_decode(Storage::disk('public')->get('json/oncshcgv.json'));
             }
             if (isset($package[$data['fdPackage']]->apiPackage)) {
                 $obj->fdApiPackage = $package[$data['fdPackage']]->apiPackage;
@@ -748,6 +758,11 @@ class ProductController extends BaseController
                 $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::ONCSHCSC_URL;
             }
 
+            //Chillsure GV
+            if (Str::contains($data['fdPackage'], ProjectEnum::ONCSHCGV_URL)) {
+                $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::ONCSHCGV_URL;
+            }
+
             $obj = $this->combindObj(array_merge($data, (array)$data["profile"][0]));
             $result = $this->logData($obj);
             $log_id[] = $result->log_id;
@@ -822,14 +837,19 @@ class ProductController extends BaseController
                 $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::MYHOME_PLUS_URL;
             }
 
-
+            //ChillSure AirAsia
             if (Str::contains($data['fdPackage'], ProjectEnum::ONCSHCAA_URL)) {
                 $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::ONCSHCAA_URL;
             }
 
-            //Susco
+            //ChillSure Susco
             if (Str::contains($data['fdPackage'], ProjectEnum::ONCSHCSC_URL)) {
                 $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::ONCSHCSC_URL;
+            }
+
+            //ChillSure GV
+            if (Str::contains($data['fdPackage'], ProjectEnum::ONCSHCGV_URL)) {
+                $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::ONCSHCGV_URL;
             }
 
             $obj = $this->combindObj($data);
@@ -1170,6 +1190,9 @@ class ProductController extends BaseController
         } elseif (substr($package, 0, 8) === ProjectEnum::ONCSHCSC_URL) {
             $this->thankYouParam = ProjectEnum::ONCSHCSC_URL;
             $link = 'IssuePolicyChillSureSusco';
+        }  elseif (substr($package, 0, 8) === ProjectEnum::ONCSHCGV_URL) {
+            $this->thankYouParam = ProjectEnum::ONCSHCGV_URL;
+            $link = 'IssuePolicyChillSure';
         }
         return $link;
     }

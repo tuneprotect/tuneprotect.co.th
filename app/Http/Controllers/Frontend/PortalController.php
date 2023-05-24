@@ -286,6 +286,11 @@ class PortalController extends ProductController
             $thank_you_page = ProjectEnum::STATIC_PAGE_PAYMENT_THANK_YOU_MYHOME_PLUS;
         }
 
+        //ChillSure GV
+        if (Str::contains($request->getRequestUri(), ProjectEnum::ONCSHCGV_URL)) {
+            $thank_you_page = ProjectEnum::STATIC_PAGE_PAYMENT_THANK_YOU_CHILL_SURE_GV;
+        }
+
         return $this->genStatusPage_Portal($thank_you_page);
     }
 

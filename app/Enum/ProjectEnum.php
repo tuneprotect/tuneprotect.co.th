@@ -106,6 +106,13 @@ class ProjectEnum
     const STATIC_PAGE_PAYMENT_PENDING_MYHOME_PLUS = 'static.page.payment_pending_myhome_plus';
     const STATIC_PAGE_PAYMENT_REJECT_MYHOME_PLUS = 'static.page.payment_reject_myhome_plus';
 
+    //====================================Portal====================================//
+    //Chill Sure
+    const STATIC_PAGE_PAYMENT_THANK_YOU_CHILL_SURE_GV = 'static.page.payment_thank_you_chill_sure_gv';
+    const STATIC_PAGE_PAYMENT_ERROR_CHILL_SURE_GV = 'static.page.payment_error_chill_sure_gv';
+    const STATIC_PAGE_PAYMENT_PENDING_CHILL_SURE_GV = 'static.page.payment_pending_chill_sure_gv';
+    const STATIC_PAGE_PAYMENT_REJECT_CHILL_SURE_GV = 'static.page.payment_reject_chill_sure_gv';
+
     const STATIC_PAGE_PAYMENT_ERROR = 'static.page.payment_error';
     const STATIC_PAGE_PAYMENT_CANCEL = 'static.page.payment_cancel';
     const STATIC_PAGE_PAYMENT_PENDING = 'static.page.payment_pending';
@@ -178,6 +185,8 @@ class ProjectEnum
     
     const ONCSHCAA_URL = 'ONCSHCAA';
     const ONCSHCSC_URL = 'ONCSHCSC';
+    const ONCSHCGV_URL = 'ONCSHCGV';
+
     const ISMILE_URL = 'TAISM';
     const ISSUE_POLICY_DIABETES = 'IssuePolicyDiabetes';
 
