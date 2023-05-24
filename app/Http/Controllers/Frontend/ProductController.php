@@ -1161,6 +1161,12 @@ class ProductController extends BaseController
         } elseif (substr($package, 0, 2) === 'CI') {
             $this->thankYouParam = substr($package, 0, 2);
             $link = 'IssuePolicyCI';
+
+            if (substr($package, 0, 4) === 'CIGC') {
+                $this->thankYouParam = substr($package, 0, 4);
+                $link = 'IssuePolicyCIGiftCard';
+            }
+
         } elseif (substr($package, 0, 6) === 'ONFIMP') {
             $this->thankYouParam = substr($package, 0, 6);
             $link = 'IssuePolicyMyHomePlus';
