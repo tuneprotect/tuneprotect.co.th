@@ -88,7 +88,7 @@ html[lang="th"] {
 
 
 
-main[data-package="CI"] {
+main[data-package="CI"],[data-package="CIGC"] {
     form {
         .check_box_disease {
             display: flex;
@@ -772,7 +772,7 @@ main[data-package="CI"] {
     }
 
 }
-main[data-package="CI"]{
+main[data-package="CI"],[data-package="CIGC"]{
     .product-detail {
         #btn-more {
             display: none;
@@ -807,7 +807,7 @@ header {
     }
 }
 
-main[data-package="CI"],[data-package="ONTAOB"] {
+main[data-package="CI"],[data-package="CIGC"],[data-package="ONTAOB"] {
     form {
         .check_box_disease {
             display: flex;
