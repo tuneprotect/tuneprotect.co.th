@@ -91,7 +91,7 @@
             </tr>
             </thead>
             <tbody>
-            @if($selected == "CI")
+            @if($selected == "CI" || $selected == "CIGC")
                 <tr style="font-size: 1.2rem;">
                     <th>@lang('product.installment')</th>
                     <?php $i = 1 ?>
