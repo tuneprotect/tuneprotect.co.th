@@ -412,7 +412,7 @@ if ($('#title_wrapper')) {
                         const installment = Math.ceil(parseInt(price) / 12);
                         $(`strong[data-price-${k}]`).innerHTML = parseInt(price).toLocaleString();
                         $(`span[data-price-${k}]`).innerHTML = parseInt(price).toLocaleString();
-                        $(`strong[data-installment-${k}]`).innerHTML = installment.toLocaleString();
+                        //$(`strong[data-installment-${k}]`).innerHTML = installment.toLocaleString();
                         return {package: k, price}
                     });
 
