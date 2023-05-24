@@ -1,5 +1,5 @@
 
-@if($selected == 'CI')
+@if($selected == 'CI' || $selected == 'CIGC')
     <h3 data-type data-own_insurance="@lang('product.insurer_list_type.own_insurance')"
         data-other_insurance="@lang('product.insurer_list_type.other_insurance')"></h3>
 @elseif($selected === 'ONTAOB' || $selected === 'ONTAOBB2B')
