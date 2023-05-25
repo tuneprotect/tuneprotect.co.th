@@ -218,11 +218,8 @@
                                         </picture>
                                     @elseif($selected==='CIGC')
                                         <picture>
-                                            <source media="(min-width:768px)"
-                                                    srcset="{{url(str_replace('Banner-baowan-main-en', 'Banner_myFlexi_CI_ENv2', $v->pic_en))}}">
-                                            <img
-                                                src="{{url(!empty($v->pic_mobile_en) ? url(str_replace('Banner-baowan-main-en', 'Banner_myFlexi_CI_ENv2', $v->pic_mobile_en)) : url(str_replace('Banner-baowan-main-en', 'Banner_myFlexi_CI_ENv2', $v->pic_en)) )}}"
-                                                alt="{{$v->locales[$locale]->title}}">
+                                            <source media="(min-width:768px)" srcset="https://www.tuneprotect.co.th/storage/Banner/MyFlexiCI/MyFlexiCIGC/Banner_Website_CIGC_EN.webp">
+                                            <img src="{{url(!empty($v->pic_mobile_en) ? "https://www.tuneprotect.co.th/storage/Banner/MyFlexiCI/MyFlexiCIGC/Banner_Website_CIGC_EN.webp" : "https://www.tuneprotect.co.th/storage/Banner/MyFlexiCI/MyFlexiCIGC/Banner_Website_CIGC_EN.webp" )}}" alt="{{$v->locales[$locale]->title}}">
                                         </picture>
                                     @elseif($selected==='ONFIMP')
                                         <picture>
@@ -365,11 +362,8 @@
                                         </picture>
                                     @elseif($selected==='CIGC')
                                         <picture>
-                                            <source media="(min-width:768px)"
-                                                    srcset="{{url(str_replace('Banner-baowan-main-th', 'Banner_myFlexi_CI_THv2', $v->pic))}}">
-                                            <img
-                                                src="{{url(!empty($v->pic_mobile) ? url(str_replace('Banner-baowan-main-th', 'Banner_myFlexi_CI_THv2', $v->pic_mobile)) : url(str_replace('Banner-baowan-main-th', 'Banner_myFlexi_CI_THv2', $v->pic)) )}}"
-                                                alt="{{$v->locales[$locale]->title}}">
+                                            <source media="(min-width:768px)" srcset="https://www.tuneprotect.co.th/storage/Banner/MyFlexiCI/MyFlexiCIGC/Banner_Website_CIGC_TH.webp">
+                                            <img src="{{url(!empty($v->pic_mobile_en) ? "https://www.tuneprotect.co.th/storage/Banner/MyFlexiCI/MyFlexiCIGC/Banner_Website_CIGC_TH.webp" : "https://www.tuneprotect.co.th/storage/Banner/MyFlexiCI/MyFlexiCIGC/Banner_Website_CIGC_TH.webp" )}}" alt="{{$v->locales[$locale]->title}}">
                                         </picture>
                                     @elseif($selected==='ONFIMP')
                                         <picture>
