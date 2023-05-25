@@ -767,6 +767,10 @@ class ProductController extends BaseController
             if (Str::contains($data['fdPackage'], ProjectEnum::ONCSHCGV_URL)) {
                 $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::ONCSHCGV_URL;
             }
+            //CI GC
+            if (Str::contains($data['fdPackage'], ProjectEnum::MYFLEXI_CIGC_URL)) {
+                $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::MYFLEXI_CIGC_URL;
+            }
 
             $obj = $this->combindObj(array_merge($data, (array)$data["profile"][0]));
             $result = $this->logData($obj);
@@ -855,6 +859,10 @@ class ProductController extends BaseController
             //ChillSure GV
             if (Str::contains($data['fdPackage'], ProjectEnum::ONCSHCGV_URL)) {
                 $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::ONCSHCGV_URL;
+            }
+            //CI GC
+            if (Str::contains($data['fdPackage'], ProjectEnum::MYFLEXI_CIGC_URL)) {
+                $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::MYFLEXI_CIGC_URL;
             }
 
             $obj = $this->combindObj($data);
