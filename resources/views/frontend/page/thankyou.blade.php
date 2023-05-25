@@ -2,7 +2,7 @@
 
 @section('page')
 
-<script>
+<!-- <script>
     //google analytic [purchase]
     setTimeout(() => {
         dataLayer.push({
@@ -18,7 +18,7 @@
             }
         });
     }, 1000);
-</script>
+</script> -->
 
 <main>
     <article class="wrapper">
