@@ -279,7 +279,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     };
 
     //===================Branch====================//
-    if ($("#controller")?.value !== 'portal') {
+    if ($("#controller")?.value != 'portal') {
 
         $('#ddl_branch_susco').addEventListener('change', (e) => {
             validateBranch();
@@ -295,6 +295,10 @@ document.addEventListener("DOMContentLoaded", async () => {
             });
             $(`#ddl_branch_susco`).innerHTML = items.join('');
         }
+
+        $("#ddl_branch_susco").addEventListener("change", function (e) {
+            data.fdAgent = this.options[this.selectedIndex].getAttribute("data-agent");
+        });
 
     }
 
@@ -492,10 +496,6 @@ document.addEventListener("DOMContentLoaded", async () => {
         });
     });
 
-    $("#ddl_branch_susco").addEventListener("change", function (e) {
-        data.fdAgent = this.options[this.selectedIndex].getAttribute("data-agent");
-    });
-
     const hideShowConditionBox = (goToStep) => {
         if (goToStep === 1) {
             $('#h-cont').style.display = "none";
@@ -632,7 +632,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                                 status = false;
                                 break;
                             }
-                            if (validateResult.status && validateBMIResult.status && $("#controller")?.value !== 'portal' ? validateBranchResult.status : true) {
+                            if (validateResult.status && validateBMIResult.status && $("#controller")?.value != 'portal' ? validateBranchResult.status : true) {
                                 status = true;
                                 data = {
                                     ...data,
