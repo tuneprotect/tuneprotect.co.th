@@ -620,7 +620,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                             const chkAccept = validateAcceptStep1();
                             const validateBMIResult = validateBMI();
                             const ddlBranchID = 0;
-                            const validateBranchResult = null;
+                            let validateBranchResult = null;
 
                             if ($("#controller")?.value != 'portal') {
                                 $('#ddl_branch_susco').value;
