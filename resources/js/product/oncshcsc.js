@@ -279,7 +279,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     };
 
     //===================Branch====================//
-    if ($("#controller")?.value != 'portal') {
+    if ($("#controller").value != 'portal') {
 
         $('#ddl_branch_susco').addEventListener('change', (e) => {
             validateBranch();
@@ -632,7 +632,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                                 status = false;
                                 break;
                             }
-                            if (validateResult.status && validateBMIResult.status && $("#controller")?.value != 'portal' ? validateBranchResult.status : true) {
+                            if (validateResult.status && validateBMIResult.status && $("#controller").value != 'portal' ? validateBranchResult.status : true) {
                                 status = true;
                                 data = {
                                     ...data,
