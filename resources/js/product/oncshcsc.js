@@ -620,9 +620,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                             const chkAccept = validateAcceptStep1();
                             const validateBMIResult = validateBMI();
                             const ddlBranchID = 0;
-                            const validateBranchResult = any;
-
-                            validateBranchResult.status = true;
+                            const validateBranchResult = null;
 
                             if ($("#controller")?.value != 'portal') {
                                 $('#ddl_branch_susco').value;
@@ -634,7 +632,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                                 status = false;
                                 break;
                             }
-                            if (validateResult.status && validateBMIResult.status && validateBranchResult.status) {
+                            if (validateResult.status && validateBMIResult.status && $("#controller")?.value != 'portal' ? validateBranchResult.status : true) {
                                 status = true;
                                 data = {
                                     ...data,
