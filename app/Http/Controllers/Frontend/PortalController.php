@@ -95,6 +95,10 @@ class PortalController extends ProductController
         session(['partner' => $partner]);
         session(['b2bpayment_status' => $b2bpayment_status]);
 
+        if ($selected == 'ONTAOBT') {
+			$selected = 'ONTAOB';
+		}
+        
         return parent::index($link, $selected);
     }
 
