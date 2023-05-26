@@ -619,11 +619,11 @@ document.addEventListener("DOMContentLoaded", async () => {
                             const validateResult = validateAgeInPackage(package_data, false);
                             const chkAccept = validateAcceptStep1();
                             const validateBMIResult = validateBMI();
-                            const ddlBranchID = 0;
+                            let ddlBranchID = 0;
                             let validateBranchResult = null;
 
                             if ($("#controller")?.value != 'portal') {
-                                $('#ddl_branch_susco').value;
+                                ddlBranchID = $('#ddl_branch_susco').value;
                                 validateBranchResult = validateBranch();
                             }
 
