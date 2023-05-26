@@ -217,7 +217,7 @@ class ProductController extends BaseController
 
         $packageJson = strtolower($this->bodyData['selected']);
         $this->bodyData['channel'] = "";
-        if ($packageJson === 'ci' || $packageJson === 'cigc' && $this->controller === 'portal') {
+        if ($packageJson === 'ci' && $this->controller === 'portal') {
             $this->bodyData['channel'] = "broker";
             $packageJson = "ci_broker";
         }
