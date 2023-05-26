@@ -34,7 +34,11 @@
             <h3>@lang('product.your-details')</h3>
             @include('frontend.component.form-date-input-calendar')
             @include('frontend.component.form-bmi-input')
-            @include('frontend.component.form-dropdown-branch-susco')
+            
+            @if($controller == 'portal')
+                @include('frontend.component.form-dropdown-branch-susco')
+            @endif
+           
             <div class="controls-wrapper full">
                 <input id="ctrl_accept_step1" name="ctrl_accept_insurance_term" type="checkbox"
                     data-error-insurance_term="@lang("product.error.insurance_term")"

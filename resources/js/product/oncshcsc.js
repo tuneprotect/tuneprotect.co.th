@@ -274,27 +274,30 @@ document.addEventListener("DOMContentLoaded", async () => {
         ctrl_bmi_calculator: "",
         fdKeys: Keys,
         fdProductCode:"ONCSHCSC",
-        fdAgent : "00DM004D00",//"00DM004D00",
+        fdAgent : "00AA606T88",//"00DM004D00",
         channel: channel
     };
 
-    $('#ddl_branch_susco').addEventListener('change', (e) => {
-        validateBranch();
-    })
-
     //===================Branch====================//
-    const location_data = await getSuscoBranch();
-    console.log(location_data);
-    if (location_data !== undefined) {
-        let items = ['<option value="" data-agent="">' + $(`#ddl_branch_susco`).getAttribute('data-please-select') + '</option>'];
-        location_data.result.forEach(v => {
-            items.push(`<option value="${v.Id}" data-agent="${v.AgentCode}">${v.Description}</option>`);
-        });
-        $(`#ddl_branch_susco`).innerHTML = items.join('');
-    }
-    
+    if ($("#controller")?.value != 'portal') {
 
-  
+        $('#ddl_branch_susco').addEventListener('change', (e) => {
+            validateBranch();
+        })
+    
+        
+        const location_data = await getSuscoBranch();
+        console.log(location_data);
+        if (location_data !== undefined) {
+            let items = ['<option value="" data-agent="">' + $(`#ddl_branch_susco`).getAttribute('data-please-select') + '</option>'];
+            location_data.result.forEach(v => {
+                items.push(`<option value="${v.Id}" data-agent="${v.AgentCode}">${v.Description}</option>`);
+            });
+            $(`#ddl_branch_susco`).innerHTML = items.join('');
+        }
+
+    }
+
     const validateBMI = () => {
         $$('.bmi-input .controls-wrapper').forEach(el => {
             el.classList.remove('error');
@@ -616,7 +619,15 @@ document.addEventListener("DOMContentLoaded", async () => {
                             const validateResult = validateAgeInPackage(package_data, false);
                             const chkAccept = validateAcceptStep1();
                             const validateBMIResult = validateBMI();
-                            const validateBranchResult = validateBranch();
+                            const ddlBranchID = 0;
+                            const validateBranchResult = any;
+
+                            validateBranchResult.status = true;
+
+                            if ($("#controller")?.value != 'portal') {
+                                $('#ddl_branch_susco').value;
+                                validateBranchResult = validateBranch();
+                            }
 
                             if(!chkAccept){
                                 showAcceptError($('#ctrl_accept_step1').getAttribute('data-error-insurance_term'));
@@ -631,7 +642,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                                     fdBMI_Weight: $('#ctrl_weight').value,
                                     fdBMI_Height: $("#ctrl_height").value,
                                     fdBMI_Value: $("#ctrl_bmi_calculator").value,
-                                    fdBranchID: $('#ddl_branch_susco').value
+                                    fdBranchID: ddlBranchID
                                 }
 
                                 genPrice();

@@ -50,7 +50,7 @@
                 <br>
 
                 <strong data-your-details="@lang('product.your-details')" data-loved-one="@lang('product.loved-one')"></strong>
-                    @include('frontend.component.form-date-input')
+                @include('frontend.component.form-date-input')
                 @if($controller == 'portal')
                         <div class="slider-wrapper" data-not-qualify="@lang('product.error.birthdate.not-qualify')"style="display: none">
                             <h3>@lang("product.budget")</h3>
