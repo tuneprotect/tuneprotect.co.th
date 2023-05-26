@@ -772,6 +772,11 @@ class ProductController extends BaseController
                 $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::MYFLEXI_CIGC_URL;
             }
 
+            //iTravel Tour
+            if (Str::contains($data['fdPackage'], ProjectEnum::ONTAOBT_URL)) {
+                $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::ONTAOBT_URL;
+            }
+
             $obj = $this->combindObj(array_merge($data, (array)$data["profile"][0]));
             $result = $this->logData($obj);
             $log_id[] = $result->log_id;
@@ -863,6 +868,11 @@ class ProductController extends BaseController
             //CI GC
             if (Str::contains($data['fdPackage'], ProjectEnum::MYFLEXI_CIGC_URL)) {
                 $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::MYFLEXI_CIGC_URL;
+            }
+
+            //iTravel Tour
+            if (Str::contains($data['fdPackage'], ProjectEnum::ONTAOBT_URL)) {
+                $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::ONTAOBT_URL;
             }
 
             $obj = $this->combindObj($data);
@@ -1285,6 +1295,11 @@ class ProductController extends BaseController
             $error_page = ProjectEnum::STATIC_PAGE_PAYMENT_ERROR_MYHOME_PLUS;
         }
 
+        //iTravel Tour
+        if (Str::contains($request->getRequestUri(), ProjectEnum::ONTAOBT_URL)) {
+            $error_page = ProjectEnum::STATIC_PAGE_PAYMENT_ERROR_TA_OUTBOUND_TOUR;
+        }
+
         return $this->genStatusPage($error_page);
     }
 
@@ -1346,6 +1361,11 @@ class ProductController extends BaseController
             $pending_page = ProjectEnum::STATIC_PAGE_PAYMENT_PENDING_MYHOME_PLUS;
         }
 
+        //iTravel Tour
+        if (Str::contains($request->getRequestUri(), ProjectEnum::ONTAOBT_URL)) {
+            $pending_page = ProjectEnum::STATIC_PAGE_PAYMENT_PENDING_TA_OUTBOUND_TOUR;
+        }
+
         return $this->genStatusPage($pending_page);
     }
 
@@ -1399,6 +1419,11 @@ class ProductController extends BaseController
         }
         if (Str::contains($request->getRequestUri(), ProjectEnum::MYHOME_PLUS_URL)) {
             $reject_page = ProjectEnum::STATIC_PAGE_PAYMENT_REJECT_MYHOME_PLUS;
+        }
+
+        //iTravel Tour
+        if (Str::contains($request->getRequestUri(), ProjectEnum::ONTAOBT_URL)) {
+            $reject_page = ProjectEnum::STATIC_PAGE_PAYMENT_REJECT_TA_OUTBOUND_TOUR;
         }
 
         return $this->genStatusPage($reject_page);
@@ -1467,6 +1492,11 @@ class ProductController extends BaseController
         }
         if (Str::contains($request->getRequestUri(), ProjectEnum::ONCSHCSC_URL)) {
             $thank_you_page = ProjectEnum::STATIC_PAGE_PAYMENT_THANK_YOU_CHILL_SURE;
+        }
+
+        //iTravel Tour
+        if (Str::contains($request->getRequestUri(), ProjectEnum::ONTAOBT_URL)) {
+            $thank_you_page = ProjectEnum::STATIC_PAGE_PAYMENT_THANK_YOU_TA_OUTBOUND_TOUR;
         }
 
         return $this->genStatusPage($thank_you_page);

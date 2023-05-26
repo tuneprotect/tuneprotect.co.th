@@ -371,6 +371,11 @@
                 "payment_reject_myhome_plus": "Payment Reject My Home Plus",
                 "payment_error_myhome_plus": "Payment Error My Home Plus",
                 "payment_pending_myhome_plus": "Payment Pending My Home Plus",
+
+                "payment_thank_you_ta_outbound_tour": "Payment Thank you TA Outbound Tour",
+                "payment_reject_ta_outbound_tour": "Payment Reject TA Outbound Tour",
+                "payment_error_ta_outbound_tour": "Payment Error TA Outbound Tour",
+                "payment_pending_ta_outbound_tour": "Payment Pending TA Outbound Tour",
                 
                 "payment_thank_you": "Payment Thank you",
                 "payment_thank_you_itravel": "Payment Thank you iTravel",

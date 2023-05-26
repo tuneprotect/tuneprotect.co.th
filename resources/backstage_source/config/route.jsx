@@ -2210,6 +2210,11 @@ const static_content = {
         'payment_error_myhome_plus',
         'payment_pending_myhome_plus',
 
+        'payment_thank_you_ta_outbound_tour',
+        'payment_reject_ta_outbound_tour',
+        'payment_error_ta_outbound_tour',
+        'payment_pending_ta_outbound_tour',
+
         'payment_thank_you_itravel',
         'payment_thank_you_pa_choice',
         'privacy',

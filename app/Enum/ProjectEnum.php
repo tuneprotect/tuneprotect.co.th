@@ -93,6 +93,14 @@ class ProjectEnum
     const STATIC_PAGE_PAYMENT_PENDING_TA_OUTBOUND = 'static.page.payment_pending_ta_outbound';
     const STATIC_PAGE_PAYMENT_REJECT_TA_OUTBOUND = 'static.page.payment_reject_ta_outbound';
 
+    //TA Outbound Tour
+    const STATIC_PAGE_PAYMENT_THANK_YOU_TA_OUTBOUND_TOUR = 'static.page.payment_thank_you_ta_outbound_tour';
+    const STATIC_PAGE_PAYMENT_ERROR_TA_OUTBOUND_TOUR = 'static.page.payment_error_ta_outbound_tour';
+    const STATIC_PAGE_PAYMENT_PENDING_TA_OUTBOUND_TOUR = 'static.page.payment_pending_ta_outbound_tour';
+    const STATIC_PAGE_PAYMENT_REJECT_TA_OUTBOUND_TOUR = 'static.page.payment_reject_ta_outbound_tour';
+
+    
+
     //====================================My Home====================================//
     //My Home Smart
     const STATIC_PAGE_PAYMENT_THANK_YOU_MYHOME_SMART = 'static.page.payment_thank_you_myhome_smart';
@@ -195,6 +203,9 @@ class ProjectEnum
 
     //CI Gift Card
     const MYFLEXI_CIGC_URL = 'CIGC';
+
+    //Travel Tour
+    const ONTAOBT_URL = 'ONTAOBT';
 
     const ISMILE_URL = 'TAISM';
     const ISSUE_POLICY_DIABETES = 'IssuePolicyDiabetes';

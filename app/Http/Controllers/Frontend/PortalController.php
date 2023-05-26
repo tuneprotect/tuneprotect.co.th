@@ -295,6 +295,11 @@ class PortalController extends ProductController
             $thank_you_page = ProjectEnum::STATIC_PAGE_PAYMENT_THANK_YOU_MYFLEXI_CIGC;
         }
 
+        //iTravel Tour
+        if (Str::contains($request->getRequestUri(), ProjectEnum::ONTAOBT_URL)) {
+            $thank_you_page = ProjectEnum::STATIC_PAGE_PAYMENT_THANK_YOU_TA_OUTBOUND_TOUR;
+        }
+
         return $this->genStatusPage_Portal($thank_you_page);
     }
 
@@ -350,6 +355,11 @@ class PortalController extends ProductController
         }
         if (Str::contains($request->getRequestUri(), ProjectEnum::MYHOME_PLUS_URL)) {
             $error_page = ProjectEnum::STATIC_PAGE_PAYMENT_ERROR_MYHOME_PLUS;
+        }
+
+        //iTravel Tour
+        if (Str::contains($request->getRequestUri(), ProjectEnum::ONTAOBT_URL)) {
+            $error_page = ProjectEnum::STATIC_PAGE_PAYMENT_ERROR_TA_OUTBOUND_TOUR;
         }
 
         return $this->genStatusPage($error_page);
@@ -420,6 +430,11 @@ class PortalController extends ProductController
             $pending_page = ProjectEnum::STATIC_PAGE_PAYMENT_PENDING_MYHOME_PLUS;
         }
 
+        //iTravel Tour
+        if (Str::contains($request->getRequestUri(), ProjectEnum::ONTAOBT_URL)) {
+            $pending_page = ProjectEnum::STATIC_PAGE_PAYMENT_PENDING_TA_OUTBOUND_TOUR;
+        }
+
         return $this->genStatusPage($pending_page);
     }
 
@@ -475,6 +490,11 @@ class PortalController extends ProductController
         }
         if (Str::contains($request->getRequestUri(), ProjectEnum::MYHOME_PLUS_URL)) {
             $reject_page = ProjectEnum::STATIC_PAGE_PAYMENT_REJECT_MYHOME_PLUS;
+        }
+
+        //iTravel Tour
+        if (Str::contains($request->getRequestUri(), ProjectEnum::ONTAOBT_URL)) {
+            $reject_page = ProjectEnum::STATIC_PAGE_PAYMENT_REJECT_TA_OUTBOUND_TOUR;
         }
 
         return $this->genStatusPage($reject_page);
