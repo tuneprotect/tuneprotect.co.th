@@ -35,7 +35,7 @@
             @include('frontend.component.form-date-input-calendar')
             @include('frontend.component.form-bmi-input')
             
-            @if($controller == 'portal')
+            @if($controller != 'portal')
                 @include('frontend.component.form-dropdown-branch-susco')
             @endif
            
