@@ -205,7 +205,7 @@ class ProjectEnum
     const MYFLEXI_CIGC_URL = 'CIGC';
 
     //Travel Tour
-    const ONTAOBT_URL = 'ONTAOBT';
+    const ONTATO_URL = 'ONTATO';
 
     const ISMILE_URL = 'TAISM';
     const ISSUE_POLICY_DIABETES = 'IssuePolicyDiabetes';

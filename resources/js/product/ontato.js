@@ -279,7 +279,7 @@ const genPrice = (package_data,country_data, subpackage, fdFromDate, fdToDate) =
         });
     } else {
         $$('#table-detail thead a[data-package]').forEach($el => {
-            if ($el.getAttribute("data-package").startsWith('ONTAOB' + subpackage)) {
+            if ($el.getAttribute("data-package").startsWith('ONTATO' + subpackage)) {
                 $el.style.display = "inline-flex";
             } else {
                 $el.style.display = "none";
@@ -287,7 +287,7 @@ const genPrice = (package_data,country_data, subpackage, fdFromDate, fdToDate) =
         });
 
         $$('#table-detail thead div.btn-choose-plan').forEach($el => {
-            if ($el.getAttribute("data-package").startsWith('ONTAOB' + subpackage)) {
+            if ($el.getAttribute("data-package").startsWith('ONTATO' + subpackage)) {
                 $el.style.display = "inline-flex";
             } else {
                 $el.style.display = "none";

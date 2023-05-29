@@ -95,10 +95,6 @@ class PortalController extends ProductController
         session(['partner' => $partner]);
         session(['b2bpayment_status' => $b2bpayment_status]);
 
-        if ($selected == 'ONTAOBT') {
-			$selected = 'ONTAOB';
-		}
-        
         return parent::index($link, $selected);
     }
 
@@ -300,7 +296,7 @@ class PortalController extends ProductController
         }
 
         //iTravel Tour
-        if (Str::contains($request->getRequestUri(), ProjectEnum::ONTAOBT_URL)) {
+        if (Str::contains($request->getRequestUri(), ProjectEnum::ONTATO_URL)) {
             $thank_you_page = ProjectEnum::STATIC_PAGE_PAYMENT_THANK_YOU_TA_OUTBOUND_TOUR;
         }
 
@@ -362,7 +358,7 @@ class PortalController extends ProductController
         }
 
         //iTravel Tour
-        if (Str::contains($request->getRequestUri(), ProjectEnum::ONTAOBT_URL)) {
+        if (Str::contains($request->getRequestUri(), ProjectEnum::ONTATO_URL)) {
             $error_page = ProjectEnum::STATIC_PAGE_PAYMENT_ERROR_TA_OUTBOUND_TOUR;
         }
 
@@ -435,7 +431,7 @@ class PortalController extends ProductController
         }
 
         //iTravel Tour
-        if (Str::contains($request->getRequestUri(), ProjectEnum::ONTAOBT_URL)) {
+        if (Str::contains($request->getRequestUri(), ProjectEnum::ONTATO_URL)) {
             $pending_page = ProjectEnum::STATIC_PAGE_PAYMENT_PENDING_TA_OUTBOUND_TOUR;
         }
 
@@ -497,7 +493,7 @@ class PortalController extends ProductController
         }
 
         //iTravel Tour
-        if (Str::contains($request->getRequestUri(), ProjectEnum::ONTAOBT_URL)) {
+        if (Str::contains($request->getRequestUri(), ProjectEnum::ONTATO_URL)) {
             $reject_page = ProjectEnum::STATIC_PAGE_PAYMENT_REJECT_TA_OUTBOUND_TOUR;
         }
 

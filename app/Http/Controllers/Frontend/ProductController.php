@@ -773,8 +773,8 @@ class ProductController extends BaseController
             }
 
             //iTravel Tour
-            if (Str::contains($data['fdPackage'], ProjectEnum::ONTAOBT_URL)) {
-                $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::ONTAOBT_URL;
+            if (Str::contains($data['fdPackage'], ProjectEnum::ONTATO_URL)) {
+                $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::ONTATO_URL;
             }
 
             $obj = $this->combindObj(array_merge($data, (array)$data["profile"][0]));
@@ -871,8 +871,8 @@ class ProductController extends BaseController
             }
 
             //iTravel Tour
-            if (Str::contains($data['fdPackage'], ProjectEnum::ONTAOBT_URL)) {
-                $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::ONTAOBT_URL;
+            if (Str::contains($data['fdPackage'], ProjectEnum::ONTATO_URL)) {
+                $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::ONTATO_URL;
             }
 
             $obj = $this->combindObj($data);
@@ -1296,7 +1296,7 @@ class ProductController extends BaseController
         }
 
         //iTravel Tour
-        if (Str::contains($request->getRequestUri(), ProjectEnum::ONTAOBT_URL)) {
+        if (Str::contains($request->getRequestUri(), ProjectEnum::ONTATO_URL)) {
             $error_page = ProjectEnum::STATIC_PAGE_PAYMENT_ERROR_TA_OUTBOUND_TOUR;
         }
 
@@ -1362,7 +1362,7 @@ class ProductController extends BaseController
         }
 
         //iTravel Tour
-        if (Str::contains($request->getRequestUri(), ProjectEnum::ONTAOBT_URL)) {
+        if (Str::contains($request->getRequestUri(), ProjectEnum::ONTATO_URL)) {
             $pending_page = ProjectEnum::STATIC_PAGE_PAYMENT_PENDING_TA_OUTBOUND_TOUR;
         }
 
@@ -1422,7 +1422,7 @@ class ProductController extends BaseController
         }
 
         //iTravel Tour
-        if (Str::contains($request->getRequestUri(), ProjectEnum::ONTAOBT_URL)) {
+        if (Str::contains($request->getRequestUri(), ProjectEnum::ONTATO_URL)) {
             $reject_page = ProjectEnum::STATIC_PAGE_PAYMENT_REJECT_TA_OUTBOUND_TOUR;
         }
 
@@ -1495,7 +1495,7 @@ class ProductController extends BaseController
         }
 
         //iTravel Tour
-        if (Str::contains($request->getRequestUri(), ProjectEnum::ONTAOBT_URL)) {
+        if (Str::contains($request->getRequestUri(), ProjectEnum::ONTATO_URL)) {
             $thank_you_page = ProjectEnum::STATIC_PAGE_PAYMENT_THANK_YOU_TA_OUTBOUND_TOUR;
         }
 
