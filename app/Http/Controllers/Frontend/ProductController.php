@@ -1149,6 +1149,9 @@ class ProductController extends BaseController
         } elseif (substr($package, 0, 6) === ProjectEnum::ONTAOB_URL) {
             $this->thankYouParam = ProjectEnum::ONTAOB_URL;
             $link = "IssuePolicyiTravel";
+        } elseif (substr($package, 0, 6) === ProjectEnum::ONTATO_URL) {
+            $this->thankYouParam = ProjectEnum::ONTATO_URL;
+            $link = "IssuePolicyiTravel";
         } elseif (substr($package, 0, 8) === 'ONB2BTAD') {
             $this->thankYouParam = substr($package, 0, 8);
             $link = "IssuePolicy";
