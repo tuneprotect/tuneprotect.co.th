@@ -253,8 +253,8 @@
                                         </picture>
                                     @elseif($selected==='ONCSHCSC')
                                         <picture>
-                                            <source media="(min-width:768px)" srcset="https://www.tuneprotect.co.th/storage/Banner/chillsure/Tune-Chillsure02.webp">
-                                            <img src="{{url(!empty($v->pic_mobile_en) ? "https://www.tuneprotect.co.th/storage/Banner/chillsure/Tune-Chillsure04.webp" : "https://www.tuneprotect.co.th/storage/Banner/chillsure/Tune-Chillsure04.webp" )}}" alt="{{$v->locales[$locale]->title}}">
+                                            <source media="(min-width:768px)" srcset="https://www.tuneprotect.co.th/storage/Banner/chillsure/susco/Tune-Chillsure-EN-NonDirect.webp">
+                                            <img src="{{url(!empty($v->pic_mobile_en) ? "https://www.tuneprotect.co.th/storage/Banner/chillsure/susco/Tune-Chillsure-EN-NonDirect.webp" : "https://www.tuneprotect.co.th/storage/Banner/chillsure/susco/Tune-Chillsure-EN-NonDirect.webp" )}}" alt="{{$v->locales[$locale]->title}}">
                                         </picture>
                                     @elseif($selected==='ONCSHCGV')
                                         <picture>
@@ -397,8 +397,8 @@
                                         </picture> 
                                     @elseif($selected==='ONCSHCSC')
                                         <picture>
-                                            <source media="(min-width:768px)" srcset="https://www.tuneprotect.co.th/storage/Banner/chillsure/Tune-Chillsure01.webp">
-                                            <img src="{{url(!empty($v->pic_mobile_en) ? "https://www.tuneprotect.co.th/storage/Banner/chillsure/Tune-Chillsure03.webp" : "https://www.tuneprotect.co.th/storage/Banner/chillsure/Tune-Chillsure03.webp" )}}" alt="{{$v->locales[$locale]->title}}">
+                                            <source media="(min-width:768px)" srcset="https://www.tuneprotect.co.th/storage/Banner/chillsure/susco/Tune-Chillsure-TH-NonDirect.webp">
+                                            <img src="{{url(!empty($v->pic_mobile_en) ? "https://www.tuneprotect.co.th/storage/Banner/chillsure/susco/Tune-Chillsure-TH-NonDirect.webp" : "https://www.tuneprotect.co.th/storage/Banner/chillsure/susco/Tune-Chillsure-TH-NonDirect.webp" )}}" alt="{{$v->locales[$locale]->title}}">
                                         </picture>
                                     @elseif($selected==='ONCSHCGV')
                                         <picture>

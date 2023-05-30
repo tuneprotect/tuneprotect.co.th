@@ -418,6 +418,9 @@ class ProductController extends BaseController
         } elseif (substr($data['fdPackage'], 0, 6) === 'ONTAOB') {
             $obj = new BaseTAObject();
             $obj->fdDestFrom = "THA";
+        } elseif (substr($data['fdPackage'], 0, 6) === 'ONTATO') {
+            $obj = new BaseTAObject();
+            $obj->fdDestFrom = "THA";
         } elseif (substr($data['fdPackage'], 0, 9) === 'ONTAOBB2B') {
             $obj = new BaseTAObject();
             $obj->fdDestFrom = "THA";
