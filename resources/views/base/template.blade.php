@@ -58,7 +58,7 @@ use App\Helper\TemplateHelper; ?>
     @if(isset($partner))
 
     @if($partner==='rabbit' && $selected==='ONTAOB')
-        @if(isset($portal_key))
+        @if(!isset($portal_key))
             <!-- Event snippet for Payment Completed conversion page -->
             <script>
                 gtag('event', 'conversion', {
