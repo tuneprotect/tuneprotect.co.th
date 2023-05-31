@@ -701,7 +701,11 @@ document.addEventListener("DOMContentLoaded", async () => {
                             fdMarketing_Consent: $('#ctrl_marketing').checked ? true : undefined
                         }
 
-                        data.fdPackage.replace('ON', ''),
+                        data.fdPackage = data.fdPackage.replace('ON', '');
+
+                        if (data.fdDay < 5) {
+                            data.fdPackage = data.fdPackage + "NH";
+                        }
 
                         result = validate(data, step3Constraints);
 
