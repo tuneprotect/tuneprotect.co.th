@@ -593,7 +593,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                         // const fdPackage = $btn.getAttribute('data-package') + $btn.getAttribute('data-sub-package');
                         // $dataSubPackage = fdPackage;
 
-                        const fdPackage = $btn.getAttribute('data-package').replace('ON', '');
+                        const fdPackage = $btn.getAttribute('data-package');
                         const health2go = $btn.getAttribute('data-health');
 
                         $('#form-head').innerHTML = $btn.getAttribute('data-plan');
@@ -700,6 +700,9 @@ document.addEventListener("DOMContentLoaded", async () => {
                             ...data,
                             fdMarketing_Consent: $('#ctrl_marketing').checked ? true : undefined
                         }
+
+                        data.fdPackage.replace('ON', ''),
+
                         result = validate(data, step3Constraints);
 
                         if (result) {
