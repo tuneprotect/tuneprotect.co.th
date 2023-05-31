@@ -593,12 +593,15 @@ document.addEventListener("DOMContentLoaded", async () => {
                         // const fdPackage = $btn.getAttribute('data-package') + $btn.getAttribute('data-sub-package');
                         // $dataSubPackage = fdPackage;
 
-                        const fdPackage = $btn.getAttribute('data-package');
+                        const fdPackage = $btn.getAttribute('data-package').replace('ON', '');
+                        const health2go = $btn.getAttribute('data-health');
+
                         $('#form-head').innerHTML = $btn.getAttribute('data-plan');
                         if (fdPackage) {
                             data = {
                                 ...data,
-                                fdPackage
+                                fdPackage,
+                                health2go
                             }
 
                             status = true;
@@ -691,7 +694,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                             ctrl_accept_insurance_term: $('#ctrl_accept_insurance_term').checked ? true : undefined,
                             profile: profileData,
                             fdDay: $('#days').value,
-                            rpcNumber: 190
+                            rpcNumber: 181
                         }
                         data = {
                             ...data,

@@ -13,5 +13,6 @@ class BaseTAObject extends BaseInsuranceObject
     public $fdFlightTo;
     public $fdFlgInbound;
     public $fdDay;
+    public $health2go;
 
 }
