@@ -27,6 +27,7 @@ Route::post('/ApiConnect/myHomeSmartPackage1y', [ApiConnectController::class, 'm
 Route::post('/ApiConnect/myHomeSmartPackage3y', [ApiConnectController::class, 'myHomeSmartPackage3y']);
 Route::post('/ApiConnect/blockHomePolicy', [ApiConnectController::class, 'blockHomePolicy']);
 Route::post('/ApiConnect/chkAirAsiaMemberID', [ApiConnectController::class, 'chkAirAsiaMemberID']);
+Route::post('/ApiConnect/getSuscoBranch', [ApiConnectController::class, 'getSuscoBranch']);
 
 
 Route::middleware('auth:api')

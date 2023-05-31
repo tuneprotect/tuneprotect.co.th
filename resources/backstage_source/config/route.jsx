@@ -2144,10 +2144,79 @@ const static_content = {
         'payment_pending',
         'payment_reject',
         'payment_thank_you',
-        'payment_thank_you_diabetes',
-        'payment_thank_you_ismile',
+
         'payment_thank_you_chill_sure',
+        'payment_reject_chill_sure',
+        'payment_error_chill_sure',
+        'payment_pending_chill_sure',
+
+        'payment_thank_you_myflexi_ci',
+        'payment_reject_myflexi_ci',
+        'payment_error_myflexi_ci',
+        'payment_pending_myflexi_ci',
+
+        'payment_thank_you_diabetes',
+        'payment_reject_diabetes',
+        'payment_error_diabetes',
+        'payment_pending_diabetes',
+
+        'payment_thank_you_pa_choice_care',
+        'payment_reject_pa_choice_care',
+        'payment_error_pa_choice_care',
+        'payment_pending_pa_choice_care',
+
+        'payment_thank_you_pa_choice_kide',
+        'payment_reject_pa_choice_kide',
+        'payment_error_pa_choice_kide',
+        'payment_pending_pa_choice_kide',
+
+        'payment_thank_you_pa_choice_senior',
+        'payment_reject_pa_choice_senior',
+        'payment_error_pa_choice_senior',
+        'payment_pending_pa_choice_senior',
+
+        'payment_thank_you_ta_plus_skiing',
+        'payment_reject_ta_plus_skiing',
+        'payment_error_ta_plus_skiing',
+        'payment_pending_ta_plus_skiing',
+
+        'payment_thank_you_ismile',
+        'payment_reject_ismile',
+        'payment_error_ismile',
+        'payment_pending_ismile',
+
+        'payment_thank_you_tune_ipass',
+        'payment_reject_tune_ipass',
+        'payment_error_tune_ipass',
+        'payment_pending_tune_ipass',
+
+        'payment_thank_you_ta_domestic',
+        'payment_reject_ta_domestic',
+        'payment_error_ta_domestic',
+        'payment_pending_ta_domestic',
+
+        'payment_thank_you_ta_outbound',
+        'payment_reject_ta_outbound',
+        'payment_error_ta_outbound',
+        'payment_pending_ta_outbound',
+
+        'payment_thank_you_myhome_smart',
+        'payment_reject_myhome_smart',
+        'payment_error_myhome_smart',
+        'payment_pending_myhome_smart',
+
+        'payment_thank_you_myhome_plus',
+        'payment_reject_myhome_plus',
+        'payment_error_myhome_plus',
+        'payment_pending_myhome_plus',
+
+        'payment_thank_you_ta_outbound_tour',
+        'payment_reject_ta_outbound_tour',
+        'payment_error_ta_outbound_tour',
+        'payment_pending_ta_outbound_tour',
+
         'payment_thank_you_itravel',
+        'payment_thank_you_pa_choice',
         'privacy',
         'service_center',
         'terms',

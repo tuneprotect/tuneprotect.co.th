@@ -119,6 +119,18 @@ const CheckRegisterForChillSure = async (data) => {
     })
     return await response.json();
 }
+const callSuscoBranch = async () => {
+    const response = await fetch(`/appApi/ApiConnect/getSuscoBranch`, {
+        method: 'post',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').getAttribute('content')
+        }
+    })
+
+    return await response.json();
+}
 
 export const validatePolicyLoc = async ($this, fdPackage,fdFromDate) => {
     let field = $this.getAttribute('name');
@@ -183,7 +195,11 @@ export const validatePolicy = async ($this, fdPackage,fdFromDate) => {
     }
 }
 
-export const validatePolicyStep5 = async ($this, fdPackage,fdFromDate) => {
+export const getSuscoBranch = async ($this) => {
+    return callSuscoBranch();
+}
+
+export const validatePolicyStep5 = async ($this, fdPackage) => {
     let field = $this.getAttribute('name');
     let data = {fdName: null, fdSurname: null, fdNationalID: null}
     Object.keys(data).map((k) => {
@@ -196,9 +212,10 @@ export const validatePolicyStep5 = async ($this, fdPackage,fdFromDate) => {
     });
     let fdNationalID = fdPackage.fdNationalID;
     let fdProductCode = fdPackage.fdProductCode;
-    fdPackage = fdPackage.fdPackage;
+    //fdPackage = fdPackage.fdPackage;
+    console.log('api '+ fdPackage);
     if (Object.keys(data).every((k) => !!data[k])) {        
-        const result = await callValidateApi({...data, fdPackage,fdFromDate})        
+        const result = await callValidateApi({...data, fdPackage})        
         if (result.status === 'error') {
             $('button[data-step="5"]').style.display = 'none';
             $this.closest('.controls-wrapper').classList.add("error");
@@ -391,6 +408,10 @@ export const checkAge = (birthday, ageRange) => {
 export const getSelectedPrice = (birthday, packageCode, package_data) => {
     const pack = Object.keys(package_data[packageCode].price).filter(ageRange => checkAge(birthday, ageRange))
     return package_data[packageCode].price[pack];
+}
+
+export const getSelectedApiPackage = (packageCode, package_data) => {
+    return package_data[packageCode].apiPackage;
 }
 
 export const showTitle = (sex, age) => {

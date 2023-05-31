@@ -4,7 +4,7 @@
         <li id="step_1" data-gtm="product-{{strtolower($selected)}}-stepper-1" class="btn-goto on" data-step="1"><a
                 href="#">
                 <strong>
-                    @if($selected == 'CI')
+                    @if($selected == 'CI' || $selected == 'CIGC')
                         @lang('product.please_ci_step_1_info')
                     @else
                         @lang('product.please_specify_travel_info')

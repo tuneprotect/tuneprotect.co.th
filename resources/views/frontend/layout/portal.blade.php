@@ -38,9 +38,9 @@
     </div>
 </header>
 @else
+
+
 <header>
-
-
     <!-- Tracking code for interspace -->
     @if(($selected === 'ONTAOB' || $selected === 'ONCSHC' || $selected === 'ONCSHCAA') && !empty($portal_key) && $portal_key === 'JQXWAMUX9JDXNGDRD8QU6TKWBJ5Q7GDR26UBNGFRBTWRXHDF3UMNX')
     <script>
@@ -155,6 +155,18 @@
         <img src="{{url(!empty($v->pic_mobile_en) ? "https://www.tuneprotect.co.th/storage/Banner/chillsure/banner-chillsure-airasia-desktop-en.webp" : "https://www.tuneprotect.co.th/storage/Banner/chillsure/banner-chillsure-airasia-mobile-en.webp" )}}" alt="{{$v->locales[$locale]->title}}">
     </picture>
 
+    @elseif($selected==='ONCSHCSC')
+    <picture>
+        <source media="(min-width:768px)" srcset="https://www.tuneprotect.co.th/storage/Banner/chillsure/susco/Tune-Chillsure-EN-NonDirect.webp">
+        <img src="{{url(!empty($v->pic_mobile_en) ? "https://www.tuneprotect.co.th/storage/Banner/chillsure/susco/Tune-Chillsure-EN-NonDirect.webp" : "https://www.tuneprotect.co.th/storage/Banner/chillsure/susco/Tune-Chillsure-EN-NonDirect.webp" )}}" alt="{{$v->locales[$locale]->title}}">
+    </picture>
+
+    @elseif($selected==='ONCSHCGV')
+    <picture>
+        <source media="(min-width:768px)" srcset="https://www.tuneprotect.co.th/storage/Banner/chillsure/GiftVoucher/Banner_Website_ChillSure_GiftVoucher_EN.webp">
+        <img src="{{url(!empty($v->pic_mobile_en) ? "https://www.tuneprotect.co.th/storage/Banner/chillsure/GiftVoucher/Banner_Website_ChillSure_GiftVoucher_EN.webp" : "https://www.tuneprotect.co.th/storage/Banner/chillsure/GiftVoucher/Banner_Website_ChillSure_GiftVoucher_EN.webp" )}}" alt="{{$v->locales[$locale]->title}}">
+    </picture>
+
     @elseif($selected==='ONTADM')
     <picture>
         <source media="(min-width:768px)" srcset="/storage/Banner/Banner_TA_D_EN.jpg">
@@ -218,6 +230,11 @@
     <picture>
         <source media="(min-width:768px)" srcset="/storage/Banner/Banner_TA_Rabbit_D_EN.jpg">
         <img src="{{url(!empty($v->pic_mobile_en) ? "/storage/Banner/Banner_TA_Rabbit_D_EN.jpg" : "/storage/Banner/Banner_TA_Rabbit_MB_EN.jpg" )}}" alt="{{$v->locales[$locale]->title}}">
+    </picture>
+    @elseif($selected==='ONTATO')
+    <picture>
+        <source media="(min-width:768px)" srcset="{{url($v->pic)}}">
+        <img src="{{url(!empty($v->pic_mobile) ? $v->pic_mobile : $v->pic )}}" alt="{{$v->locales[$locale]->title}}">
     </picture>
     @elseif($selected==='ONTALN')
     <picture>
@@ -320,6 +337,16 @@
         <source media="(min-width:768px)" srcset="https://www.tuneprotect.co.th/storage/Banner/chillsure/banner-chillsure-airasia-desktop-th.webp">
         <img src="{{url(!empty($v->pic_mobile_en) ? "https://www.tuneprotect.co.th/storage/Banner/chillsure/banner-chillsure-airasia-desktop-th.webp" : "https://www.tuneprotect.co.th/storage/Banner/chillsure/banner-chillsure-airasia-mobile-th.webp" )}}" alt="{{$v->locales[$locale]->title}}">
     </picture>
+    @elseif($selected==='ONCSHCSC')
+    <picture>
+        <source media="(min-width:768px)" srcset="https://www.tuneprotect.co.th/storage/Banner/chillsure/susco/Tune-Chillsure-TH-NonDirect.webp">
+        <img src="{{url(!empty($v->pic_mobile_en) ? "https://www.tuneprotect.co.th/storage/Banner/chillsure/susco/Tune-Chillsure-TH-NonDirect.webp" : "https://www.tuneprotect.co.th/storage/Banner/chillsure/susco/Tune-Chillsure-TH-NonDirect.webp" )}}" alt="{{$v->locales[$locale]->title}}">
+    </picture>
+    @elseif($selected==='ONCSHCGV')
+    <picture>
+        <source media="(min-width:768px)" srcset="https://www.tuneprotect.co.th/storage/Banner/chillsure/GiftVoucher/Banner_Website_ChillSure_GiftVoucher_TH.webp">
+        <img src="{{url(!empty($v->pic_mobile_en) ? "https://www.tuneprotect.co.th/storage/Banner/chillsure/GiftVoucher/Banner_Website_ChillSure_GiftVoucher_TH.webp" : "https://www.tuneprotect.co.th/storage/Banner/chillsure/GiftVoucher/Banner_Website_ChillSure_GiftVoucher_TH.webp" )}}" alt="{{$v->locales[$locale]->title}}">
+    </picture>
     @elseif($selected==='TAISMTG')
     <picture>
         <source media="(min-width:768px)" srcset="/storage/Banner/Banner_TAI_D.jpg">
@@ -357,6 +384,12 @@
         <img src="{{url(!empty($v->pic_mobile) ? $v->pic_mobile : $v->pic )}}" alt="{{$v->locales[$locale]->title}}">
     </picture>
     @endif
+
+    @elseif($selected==='ONTATO')
+    <picture>
+        <source media="(min-width:768px)" srcset="{{url($v->pic)}}">
+        <img src="{{url(!empty($v->pic_mobile) ? $v->pic_mobile : $v->pic )}}" alt="{{$v->locales[$locale]->title}}">
+    </picture>
 
     @endif
     @endif

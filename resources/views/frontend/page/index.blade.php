@@ -71,7 +71,7 @@
                     </div>
                     <div class="two-col">
                         @foreach ($highlight_product as $k => $v)
-                            <div class="reveal">
+                            <div class="reveal" style="transform: unset !important;">
                                 @if($v->productSlideshow)
                                     <div class="product_slide_wrapper">
                                         <div id="product_slide_{{$k}}" class="product_slider">

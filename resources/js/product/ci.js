@@ -497,7 +497,8 @@ if ($('#title_wrapper')) {
             field.addEventListener("change", function (e) {
                 validateField(this, constraints);
                 if (['fdName', 'fdSurname', 'fdNationalID'].includes(field.id)) {
-                    validatePolicyStep5(e.target, data.fdPackage + data.ctrl_disease.join('').replace("F", ""));
+                    //validatePolicyStep5(e.target, data.fdPackage, data.fdPackage + data.ctrl_disease.join('').replace("F", ""));
+                    validatePolicyStep5(e.target, data.fdPackage);
                 }
             });
         });
@@ -796,10 +797,10 @@ if ($('#title_wrapper')) {
             );
         })
 
-        $('#step_1').addEventListener("click", function (e) {
-            e.defaultPrevented;
-            $('#h-cont').style.display = 'block';
-        });
+        // $('#step_1').addEventListener("click", function (e) {
+        //     e.defaultPrevented;
+        //     $('#h-cont').style.display = 'block';
+        // });
     });
 
 

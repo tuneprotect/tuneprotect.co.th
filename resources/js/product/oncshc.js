@@ -14,6 +14,7 @@ import {
     getRadioSelectedValue,
     locale,
     scrollToTargetAdjusted,
+    getZipcodeData,
 } from "../helper";
 import {
     changeStep,
@@ -26,6 +27,7 @@ import {
     validateAgeInPackage,
     validatePolicyPayment,
     validatePolicyStep5,
+    getSelectedApiPackage,
 } from "../form/productHelper";
 
 import Swal from "sweetalert2";
@@ -252,6 +254,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         fdEmail: "",
         fdTelephone: "",
         fdPackage: "",
+        health2go: "",
         fdBenefit: "",
         fdBenefit_name: "",
         fdRelation: "",
@@ -260,6 +263,8 @@ document.addEventListener("DOMContentLoaded", async () => {
         fdSendType: "",
         fdPayAMT: "",
         fdQuestion1: "",
+        fdQuestion2: "",
+        fdQuestion3: "",
         ctrl_province: "",
         ctrl_terms: "",
         ctrl_accept_insurance_term: "",
@@ -272,7 +277,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         fdAgent : "00DM004D00",//"00DM004D00",
         channel: channel
     };
-  
+ 
     const validateBMI = () => {
         $$('.bmi-input .controls-wrapper').forEach(el => {
             el.classList.remove('error');
@@ -372,6 +377,45 @@ document.addEventListener("DOMContentLoaded", async () => {
         return pricelist;
     }
 
+    const genItemList = () => {
+
+        let index = 0;
+        const itemList = [];
+
+        if (data.fdHBD) {
+            Object.keys(package_data)
+                .filter(k => _.startsWith(k, current_package))
+                .map(k => {
+                    const pack = Object.keys(package_data[k].price).filter(ageRange => checkAge(data.fdHBD, ageRange))
+                    const price = parseInt(package_data[k].price[pack]).toLocaleString();
+                    const apiPackage = package_data[k].apiPackage;
+                    const plan = Object.keys(package_data)[index];
+
+                    const itme = {
+                        item_id: "",
+                        item_name: "",
+                        price: "",
+                    };
+
+                    itme.item_id = plan;
+                    itme.item_name = apiPackage;
+                    itme.price = price;
+
+                    itemList.push(itme);
+                    index++;
+                });
+        }
+        
+        //google analytic [view_item]
+        dataLayer.push({
+            "event":  "view_item",
+            "ecommerce":  {
+             "items": itemList,
+             "currency": "THB"
+           }
+        });
+    }
+
     $$('#ctrl_weight,#ctrl_height').forEach($el => {
         $el.addEventListener($el.tagName.toLowerCase() === 'input' ? "keyup" : "change", event => {
             genBMI();
@@ -408,12 +452,13 @@ document.addEventListener("DOMContentLoaded", async () => {
             validateField(this, constraints);
             if (['fdName', 'fdSurname', 'fdNationalID'].includes(field.id)) {  
                 data.fdNationalID = $('#fdNationalID').value;              
-                validatePolicyStep5(e.target, data);
+                validatePolicyStep5(e.target, getSelectedApiPackage(data.fdPackage, package_data));
                 //console.log("result",result)
             }
         });
     });
 
+    
     const hideShowConditionBox = (goToStep) => {
         if (goToStep === 1) {
             $('#h-cont').style.display = "none";
@@ -554,6 +599,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                                 }
 
                                 genPrice();
+                                genItemList();
                                 let $btnMore_Diabetes = $('#btn-more-diabetes');
                                 $$('#table-detail tbody tr:nth-child(n+7)').forEach(row => {
                                     row.style.display = 'none';
@@ -590,16 +636,35 @@ document.addEventListener("DOMContentLoaded", async () => {
                         case 2:
 
                             const fdPackage = $btn.getAttribute('data-package');
+                            const fdDataPlan = $btn.getAttribute('data-plan');
+                            const health2go = $btn.getAttribute('data-health');
 
                             $("#table-detail").setAttribute('data-package_plan', $btn.getAttribute('data-plan'));
-
                             if (fdPackage) {
                                 data = {
                                     ...data,
-                                    fdPackage
+                                    fdPackage,
+                                    health2go
                                 }
                                 showTitle('', data.fdAge)
                                 status = true;
+
+                                const selectPrice = getSelectedPrice(data.fdHBD, fdPackage, package_data);
+
+                                //google analytic [add_to_cart]
+                                dataLayer.push({
+                                    "event":  "add_to_cart",
+                                    "ecommerce":  {
+                                     "currency": "THB",
+                                     "value": selectPrice,
+                                     "items": [{
+                                       "item_id": fdPackage,
+                                       "item_name": fdDataPlan,
+                                       "price": selectPrice,
+                                     }]
+                                   }
+                                 });
+                                
                             } else {
                                 Swal.fire({
                                     title: 'Error!',
@@ -627,12 +692,14 @@ document.addEventListener("DOMContentLoaded", async () => {
                                 data = {
                                     ...data,
                                     fdQuestion1: 'N',
+                                    fdQuestion2: 'N',
+                                    fdQuestion3: 'N',
                                 }
                             }
                             break;
                         case 4:
                             let valCheck = false;
-                            valCheck = validatePolicyPayment($('#fdNationalID').value,data.fdPackage,$('#fdFromDate')?.value);
+                            valCheck = validatePolicyPayment($('#fdNationalID').value, getSelectedApiPackage(data.fdPackage, package_data), $('#fdFromDate')?.value);
                             if(!valCheck)
                             {
                                 status = false;
@@ -691,6 +758,20 @@ document.addEventListener("DOMContentLoaded", async () => {
                             $form.querySelectorAll('.controls-wrapper').forEach(($el) => {
                                 $el.classList.remove('error')
                             });
+
+                            //google analytic [begin_checkout]
+                            dataLayer.push({
+                                "event":  "begin_checkout",
+                                "ecommerce":  {
+                                 "value": data.fdPayAMT,
+                                 "currency": "THB",
+                                 "items": [{
+                                   "item_id": data.fdPackage,
+                                   "item_name": fdDataPlan,
+                                   "price": data.fdPayAMT,
+                                 }]
+                               }
+                             });
 
                             if (result) {
                                 Object.keys(result).map(k => {

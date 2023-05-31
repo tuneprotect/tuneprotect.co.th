@@ -253,6 +253,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         fdEmail: "",
         fdTelephone: "",
         fdPackage: "",
+        health2go: "",
         fdBenefit: "",
         fdBenefit_name: "",
         fdRelation: "",
@@ -261,6 +262,8 @@ document.addEventListener("DOMContentLoaded", async () => {
         fdSendType: "",
         fdPayAMT: "",
         fdQuestion1: "",
+        fdQuestion2: "",
+        fdQuestion3: "",
         ctrl_province: "",
         ctrl_terms: "",
         ctrl_accept_insurance_term: "",
@@ -633,13 +636,15 @@ document.addEventListener("DOMContentLoaded", async () => {
                         case 2:
 
                             const fdPackage = $btn.getAttribute('data-package').replace("AA", "");
+                            const health2go = $btn.getAttribute('data-health');
 
                             $("#table-detail").setAttribute('data-package_plan', $btn.getAttribute('data-plan'));
 
                             if (fdPackage) {
                                 data = {
                                     ...data,
-                                    fdPackage
+                                    fdPackage,
+                                    health2go
                                 }
                                 showTitle('', data.fdAge)
                                 status = true;
@@ -670,6 +675,8 @@ document.addEventListener("DOMContentLoaded", async () => {
                                 data = {
                                     ...data,
                                     fdQuestion1: 'N',
+                                    fdQuestion2: 'N',
+                                    fdQuestion3: 'N',
                                 }
                             }
                             break;

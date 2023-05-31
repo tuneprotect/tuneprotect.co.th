@@ -1,6 +1,10 @@
 @extends('base.template')
 <style>
 
+    
+   /* #onetrust-consent-sdk{
+    display: none;
+   } */
    .ins-preview-wrapper-26 .ins-content-wrapper-26 .inline-resolution.ins-element-link.ins-notification-content.ins-notification-content-26{
     height: fit-content;
    }
@@ -41,16 +45,16 @@
                                                     <ul>
                                                         @foreach ($v1->productPackage as $v2)
                                                             <li>
-                                                                @if($v2->code === 'ONCSHC' || $v2->code === 'CI'|| $v2->code === 'DIABETES' || $v2->code === 'ONPACA' || $v2->code === 'ONPAKD' || $v2->code === 'ONPASN' || $v2->code === 'TAISM' || $v2->code === 'TAIPOCT22' || $v2->code === 'ONTADM' || $v2->code === 'ONTAOB' || $v2->code === 'ONFIMP' || $v2->code === 'ONMHS')
-                                                                    <a data-gtm="main-nav-product-{{$v1->friendly_url}}-{{$v2->code}}"
-                                                                       href="{{route('current',['locale' => $locale,'controller' => 'product','func' => $v1->friendly_url,'params' => $v2->code ])}}">
-                                                                        <span>{{$v2->locales[$locale]->title}}
-                                                                            @if($v2->code === 'ONCSHC')                                                            
-                                                                                <img id="imgnew" src="https://www.tuneprotect.co.th/storage/Icon/new2.gif" style="width:30%;margin-bottom: -5px;" />
-                                                                            @endif
-                                                                        </span>
-                                                                    </a>
-                                                                @endif
+                                                            @if($v2->code === 'ONCSHC' || $v2->code === 'CI'|| $v2->code === 'DIABETES' || $v2->code === 'ONPACA' || $v2->code === 'ONPAKD' || $v2->code === 'ONPASN' || $v2->code === 'TAISM' || $v2->code === 'TAIPOCT22' || $v2->code === 'ONTADM' || $v2->code === 'ONTAOB' || $v2->code === 'ONFIMP' || $v2->code === 'ONMHS')
+                                                                <a data-gtm="main-nav-product-{{$v1->friendly_url}}-{{$v2->code}}"
+                                                                    href="{{route('current',['locale' => $locale,'controller' => 'product','func' => $v1->friendly_url,'params' => $v2->code ])}}">
+                                                                    <span>{{$v2->locales[$locale]->title}}
+                                                                        @if($v2->code === 'ONCSHC')                                                            
+                                                                            <img id="imgnew" src="https://www.tuneprotect.co.th/storage/Icon/new2.gif" style="width:30%;margin-bottom: -5px;" />
+                                                                        @endif
+                                                                    </span>
+                                                                </a>
+                                                            @endif
                                                             </li>
                                                         @endforeach
                                                     </ul>
@@ -212,6 +216,11 @@
                                                 src="{{url(!empty($v->pic_mobile_en) ? url(str_replace('Banner-baowan-main-en', 'Banner_myFlexi_CI_ENv2', $v->pic_mobile_en)) : url(str_replace('Banner-baowan-main-en', 'Banner_myFlexi_CI_ENv2', $v->pic_en)) )}}"
                                                 alt="{{$v->locales[$locale]->title}}">
                                         </picture>
+                                    @elseif($selected==='CIGC')
+                                        <picture>
+                                            <source media="(min-width:768px)" srcset="https://www.tuneprotect.co.th/storage/Banner/MyFlexiCI/MyFlexiCIGC/Banner_Website_CIGC_EN.webp">
+                                            <img src="{{url(!empty($v->pic_mobile_en) ? "https://www.tuneprotect.co.th/storage/Banner/MyFlexiCI/MyFlexiCIGC/Banner_Website_CIGC_EN.webp" : "https://www.tuneprotect.co.th/storage/Banner/MyFlexiCI/MyFlexiCIGC/Banner_Website_CIGC_EN.webp" )}}" alt="{{$v->locales[$locale]->title}}">
+                                        </picture>
                                     @elseif($selected==='ONFIMP')
                                         <picture>
                                             <source media="(min-width:768px)" srcset="{{url(str_replace('Banner-Home-En01', 'TuneFireInsurance-D-EN', $v->pic_en))}}">
@@ -241,7 +250,17 @@
                                         <picture>
                                             <source media="(min-width:768px)" srcset="https://www.tuneprotect.co.th/storage/Banner/chillsure/banner-chillsure-airasia-desktop-en.webp">
                                             <img src="{{url(!empty($v->pic_mobile_en) ? "https://www.tuneprotect.co.th/storage/Banner/chillsure/banner-chillsure-airasia-mobile-en.webp" : "https://www.tuneprotect.co.th/storage/Banner/chillsure/banner-chillsure-airasia-mobile-en.webp" )}}" alt="{{$v->locales[$locale]->title}}">
-                                        </picture> 
+                                        </picture>
+                                    @elseif($selected==='ONCSHCSC')
+                                        <picture>
+                                            <source media="(min-width:768px)" srcset="https://www.tuneprotect.co.th/storage/Banner/chillsure/susco/Tune-Chillsure-EN-NonDirect.webp">
+                                            <img src="{{url(!empty($v->pic_mobile_en) ? "https://www.tuneprotect.co.th/storage/Banner/chillsure/susco/Tune-Chillsure-EN-NonDirect.webp" : "https://www.tuneprotect.co.th/storage/Banner/chillsure/susco/Tune-Chillsure-EN-NonDirect.webp" )}}" alt="{{$v->locales[$locale]->title}}">
+                                        </picture>
+                                    @elseif($selected==='ONCSHCGV')
+                                        <picture>
+                                            <source media="(min-width:768px)" srcset="https://www.tuneprotect.co.th/storage/Banner/chillsure/GiftVoucher/Banner_Website_ChillSure_GiftVoucher_EN.webp">
+                                            <img src="{{url(!empty($v->pic_mobile_en) ? "https://www.tuneprotect.co.th/storage/Banner/chillsure/GiftVoucher/Banner_Website_ChillSure_GiftVoucher_EN.webp" : "https://www.tuneprotect.co.th/storage/Banner/chillsure/GiftVoucher/Banner_Website_ChillSure_GiftVoucher_EN.webp" )}}" alt="{{$v->locales[$locale]->title}}">
+                                        </picture>
                                     @elseif($selected==='PUMPPA')
                                         <picture>
                                             <source media="(min-width:768px)"
@@ -341,6 +360,11 @@
                                                 src="{{url(!empty($v->pic_mobile) ? url(str_replace('Banner-baowan-main-th', 'Banner_myFlexi_CI_THv2', $v->pic_mobile)) : url(str_replace('Banner-baowan-main-th', 'Banner_myFlexi_CI_THv2', $v->pic)) )}}"
                                                 alt="{{$v->locales[$locale]->title}}">
                                         </picture>
+                                    @elseif($selected==='CIGC')
+                                        <picture>
+                                            <source media="(min-width:768px)" srcset="https://www.tuneprotect.co.th/storage/Banner/MyFlexiCI/MyFlexiCIGC/Banner_Website_CIGC_TH.webp">
+                                            <img src="{{url(!empty($v->pic_mobile_en) ? "https://www.tuneprotect.co.th/storage/Banner/MyFlexiCI/MyFlexiCIGC/Banner_Website_CIGC_TH.webp" : "https://www.tuneprotect.co.th/storage/Banner/MyFlexiCI/MyFlexiCIGC/Banner_Website_CIGC_TH.webp" )}}" alt="{{$v->locales[$locale]->title}}">
+                                        </picture>
                                     @elseif($selected==='ONFIMP')
                                         <picture>
                                             <source media="(min-width:768px)" srcset="{{url(str_replace('Banner-Home-En01', 'TuneFireInsurance-D', $v->pic_en))}}">
@@ -370,7 +394,17 @@
                                         <picture>
                                             <source media="(min-width:768px)" srcset="https://www.tuneprotect.co.th/storage/Banner/chillsure/banner-chillsure-airasia-desktop-th.webp">
                                             <img src="{{url(!empty($v->pic_mobile_en) ? "https://www.tuneprotect.co.th/storage/Banner/chillsure/banner-chillsure-airasia-mobile-th.webp" : "https://www.tuneprotect.co.th/storage/Banner/chillsure/banner-chillsure-airasia-mobile-th.webp" )}}" alt="{{$v->locales[$locale]->title}}">
-                                        </picture>  
+                                        </picture> 
+                                    @elseif($selected==='ONCSHCSC')
+                                        <picture>
+                                            <source media="(min-width:768px)" srcset="https://www.tuneprotect.co.th/storage/Banner/chillsure/susco/Tune-Chillsure-TH-NonDirect.webp">
+                                            <img src="{{url(!empty($v->pic_mobile_en) ? "https://www.tuneprotect.co.th/storage/Banner/chillsure/susco/Tune-Chillsure-TH-NonDirect.webp" : "https://www.tuneprotect.co.th/storage/Banner/chillsure/susco/Tune-Chillsure-TH-NonDirect.webp" )}}" alt="{{$v->locales[$locale]->title}}">
+                                        </picture>
+                                    @elseif($selected==='ONCSHCGV')
+                                        <picture>
+                                            <source media="(min-width:768px)" srcset="https://www.tuneprotect.co.th/storage/Banner/chillsure/GiftVoucher/Banner_Website_ChillSure_GiftVoucher_TH.webp">
+                                            <img src="{{url(!empty($v->pic_mobile_en) ? "https://www.tuneprotect.co.th/storage/Banner/chillsure/GiftVoucher/Banner_Website_ChillSure_GiftVoucher_TH.webp" : "https://www.tuneprotect.co.th/storage/Banner/chillsure/GiftVoucher/Banner_Website_ChillSure_GiftVoucher_TH.webp" )}}" alt="{{$v->locales[$locale]->title}}">
+                                        </picture>
                                     @elseif($selected==='PUMPPA')
                                         <picture>
                                             <source media="(min-width:768px)"
