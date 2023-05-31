@@ -291,7 +291,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         if (location_data !== undefined) {
             let items = ['<option value="" data-agent="">' + $(`#ddl_branch_susco`).getAttribute('data-please-select') + '</option>'];
             location_data.result.forEach(v => {
-                items.push(`<option value="${v.Id}" data-agent="${v.AgentCode}">${v.Description}</option>`);
+                items.push(`<option value="${v.Id}" data-agent="${v.AgentCode}">${locale === 'en' ? v.DescriptionEn : v.DescriptionTh}</option>`);
             });
             $(`#ddl_branch_susco`).innerHTML = items.join('');
         }
