@@ -60,9 +60,9 @@ use App\Helper\TemplateHelper; ?>
             @endforeach
         @endif
 
-        @if(isset($controller)) //Check has controller value
+        @if(isset($controller))
 
-            @if($controller === 'product') //Check direct ?
+            @if($controller === 'product')
             
                 <!-- Google Tag Manager -->
                 <script>
@@ -115,9 +115,9 @@ use App\Helper\TemplateHelper; ?>
                     fbq('track', 'PageView');
                 </script>
 
-            @else //Portal
+            @else
 
-                @if(isset($partner)) //Check has partner ?
+                @if(isset($partner))
                     @if($partner==='rabbit' && $selected==='ONTAOB')
                         @if(!isset($portal_key))
                             <!-- Event snippet for Payment Completed conversion page -->
