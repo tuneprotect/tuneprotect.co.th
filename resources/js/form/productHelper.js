@@ -212,7 +212,7 @@ export const validatePolicyStep5 = async ($this, datas) => {
     });
     let fdNationalID = datas.fdNationalID;
     let fdProductCode = datas.fdProductCode;
-    fdPackage = datas.fdPackage;
+    let fdPackage = datas.fdPackage;
     console.log('api '+ fdPackage);
     if (Object.keys(data).every((k) => !!data[k])) {        
         const result = await callValidateApi({...data, fdPackage})        
