@@ -94,6 +94,7 @@ class PortalController extends ProductController
         session(['nopayment_status' => $nopayment_status]);
         session(['partner' => $partner]);
         session(['b2bpayment_status' => $b2bpayment_status]);
+        session(['controller' => $this->controller]);
 
         return parent::index($link, $selected);
     }

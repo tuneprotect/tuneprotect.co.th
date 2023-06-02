@@ -291,7 +291,6 @@ class ProductController extends BaseController
                             }
                         }
                         if ($selected === 'ONTALN') {
-                            //dd(session('partner'));
 
                             if (session('partner') === 'LUMA' || session('partner') === 'Luma') {
                             } else {
@@ -1443,6 +1442,7 @@ class ProductController extends BaseController
         $this->bodyData['point'] = '';
         $this->bodyData['agentCode'] = $request->session()->get('agentCode');
         $this->bodyData['package'] = $request->session()->get('package');
+        $this->bodyData['controller'] = $this->controller;
 
         $thank_you_page = ProjectEnum::STATIC_PAGE_PAYMENT_THANK_YOU;
 

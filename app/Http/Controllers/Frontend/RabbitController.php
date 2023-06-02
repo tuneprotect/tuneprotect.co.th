@@ -100,6 +100,7 @@ class RabbitController  extends ProductController
 
         $this->bodyData['doc_no'] = $request->session()->get('doc_no');
         $this->bodyData['selected'] = 'ONTAOB';
+        $this->bodyData['controller'] = $partner;
         $this->bodyData['return_link'] = $request->session()->get('return_link');
 
 

@@ -199,7 +199,7 @@ export const getSuscoBranch = async ($this) => {
     return callSuscoBranch();
 }
 
-export const validatePolicyStep5 = async ($this, fdPackage) => {
+export const validatePolicyStep5 = async ($this, datas) => {
     let field = $this.getAttribute('name');
     let data = {fdName: null, fdSurname: null, fdNationalID: null}
     Object.keys(data).map((k) => {
@@ -210,9 +210,9 @@ export const validatePolicyStep5 = async ($this, fdPackage) => {
         }
         data = {...data, [k]: $(`#${fieldId}`).value}
     });
-    let fdNationalID = fdPackage.fdNationalID;
-    let fdProductCode = fdPackage.fdProductCode;
-    //fdPackage = fdPackage.fdPackage;
+    let fdNationalID = datas.fdNationalID;
+    let fdProductCode = datas.fdProductCode;
+    let fdPackage = datas.fdPackage;
     console.log('api '+ fdPackage);
     if (Object.keys(data).every((k) => !!data[k])) {        
         const result = await callValidateApi({...data, fdPackage})        
