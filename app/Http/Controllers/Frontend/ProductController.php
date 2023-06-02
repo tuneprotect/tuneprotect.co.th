@@ -993,7 +993,7 @@ class ProductController extends BaseController
                     'headers' => [
                         'Content-Type' => 'application/json'
                     ],
-                    'timeout' => 10,
+                    'timeout' => 2,
                     'body' => json_encode($data)
                 ]);
 
