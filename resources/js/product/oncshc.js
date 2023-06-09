@@ -393,12 +393,10 @@ document.addEventListener("DOMContentLoaded", async () => {
 
                     const itme = {
                         item_id: "",
-                        item_name: "",
                         price: "",
                     };
 
                     itme.item_id = plan;
-                    itme.item_name = apiPackage;
                     itme.price = price;
 
                     itemList.push(itme);
@@ -407,12 +405,16 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
         
         //google analytic [view_item]
-        dataLayer.push({
-            "event":  "view_item",
-            "ecommerce":  {
-             "items": itemList,
-             "currency": "THB"
-           }
+        // dataLayer.push({
+        //     "event":  "view_item",
+        //     "ecommerce":  {
+        //      "items": itemList,
+        //      "currency": "THB"
+        //    }
+        // });
+        gtag("event",  "add_to_cart",  {
+            "currency": "THB",
+            "items": itemList
         });
     }
 
