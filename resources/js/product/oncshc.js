@@ -654,18 +654,27 @@ document.addEventListener("DOMContentLoaded", async () => {
                                 const selectPrice = getSelectedPrice(data.fdHBD, fdPackage, package_data);
 
                                 //google analytic [add_to_cart]
-                                dataLayer.push({
-                                    "event":  "add_to_cart",
-                                    "ecommerce":  {
-                                     "currency": "THB",
-                                     "value": selectPrice,
-                                     "items": [{
-                                       "item_id": fdPackage,
-                                       "item_name": fdDataPlan,
-                                       "price": selectPrice,
-                                     }]
-                                   }
-                                 });
+                                // dataLayer.push({
+                                //     "event":  "add_to_cart",
+                                //     "ecommerce":  {
+                                //      "currency": "THB",
+                                //      "value": selectPrice,
+                                //      "items": [{
+                                //        "item_id": fdPackage,
+                                //        "item_name": fdDataPlan,
+                                //        "price": selectPrice,
+                                //      }]
+                                //    }
+                                //  });
+                                gtag("event",  "add_to_cart",  {
+                                    "currency": "THB",
+                                    "value": selectPrice,
+                                    "items": [{
+                                      "item_id": fdPackage,
+                                      "item_name": fdDataPlan,
+                                      "price": selectPrice,
+                                    }]
+                                });
                                 
                             } else {
                                 Swal.fire({
@@ -762,18 +771,27 @@ document.addEventListener("DOMContentLoaded", async () => {
                             });
 
                             //google analytic [begin_checkout]
-                            dataLayer.push({
-                                "event":  "begin_checkout",
-                                "ecommerce":  {
-                                 "value": data.fdPayAMT,
-                                 "currency": "THB",
-                                 "items": [{
-                                   "item_id": data.fdPackage,
-                                   "item_name": fdDataPlan,
-                                   "price": data.fdPayAMT,
-                                 }]
-                               }
-                             });
+                            // dataLayer.push({
+                            //     "event":  "begin_checkout",
+                            //     "ecommerce":  {
+                            //      "value": data.fdPayAMT,
+                            //      "currency": "THB",
+                            //      "items": [{
+                            //        "item_id": data.fdPackage,
+                            //        "item_name": fdDataPlan,
+                            //        "price": data.fdPayAMT,
+                            //      }]
+                            //    }
+                            //  });
+                            gtag("event",  "begin_checkout",  {
+                                "value": data.fdPayAMT,
+                                "currency": "THB",
+                                "items": [{
+                                  "item_id": data.fdPackage,
+                                  "item_name": fdDataPlan,
+                                  "price": data.fdPayAMT,
+                                }]
+                            });
 
                             if (result) {
                                 Object.keys(result).map(k => {
