@@ -407,6 +407,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     $('#fdDestTo').innerHTML = sb1 + sbSCHENGEN + sb;
 
+    $("#ctrl_travel_type").setAttribute('disabled', '');
     $('#ctrl_travel_type').addEventListener('change', (e) => {
 
         let display_sub_package = 'block'
