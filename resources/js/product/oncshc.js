@@ -412,7 +412,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         //      "currency": "THB"
         //    }
         // });
-        gtag("event",  "add_to_cart",  {
+        gtag("event",  "view_item",  {
             "currency": "THB",
             "items": itemList
         });

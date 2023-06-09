@@ -6,9 +6,9 @@
         @case("ONCSHC")
             <script>
                 gtag("event",  "purchase",  {
-                    "transaction_id": '{{doc_no}}',
+                    "transaction_id": '{{$doc_no}}',
                     "currency": "THB",
-                    "value": '{{payAmount}}'
+                    "value": '{{$payAmount}}'
                 });
             </script>
         @break
