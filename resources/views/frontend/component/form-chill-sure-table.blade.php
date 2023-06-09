@@ -43,7 +43,8 @@
                                         data-step="3" data-package="{{$k}}" data-sub-package=""
                                         data-plan="@lang('product.plan') {{$i}}"
                                         data-health="{{$v->health2go}}"
-                                        class="btn btn-block btn-outline btn-goto">@lang('product.choose_plan')</a>
+                                        class="btn btn-block btn-outline btn-goto" 
+                                        style="z-index: 9999;">@lang('product.choose_plan')</a>
 
                                     </div>
 
