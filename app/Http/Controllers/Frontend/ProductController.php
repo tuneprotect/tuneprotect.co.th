@@ -667,10 +667,6 @@ class ProductController extends BaseController
             }
         }
 
-        //if (session('nopayment_status')) {
-        //    $obj->fdPaymentType = 2;
-        //}
-
         $obj->fdController = $this->controller;
         return $obj;
     }
@@ -991,21 +987,27 @@ class ProductController extends BaseController
 
             $client = new Client();
 
-            $response = $client->request('POST', config('tune-api.url') . $this->getApiIssueLink($data['fdPackage']), [
-                'auth' => [config('tune-api.user'), config('tune-api.password')],
-                'headers' => [
-                    'Content-Type' => 'application/json'
-                ],
-                'body' => json_encode($data)
-            ]);
-            $apiResult = (array)json_decode($response->getBody()->getContents(), true);
+            try {
+                $response = $client->request('POST', config('tune-api.url') . $this->getApiIssueLink($data['fdPackage']), [
+                    'auth' => [config('tune-api.user'), config('tune-api.password')],
+                    'headers' => [
+                        'Content-Type' => 'application/json'
+                    ],
+                    'timeout' => 120,
+                    'body' => json_encode($data)
+                ]);
 
-            if ($apiResult["status"]) {
-                $v->issuepolicy_status =  'S';
-            } else {
-                $v->issuepolicy_status =  'E';
+                $apiResult = (array)json_decode($response->getBody()->getContents(), true);
+
+                if ($apiResult["status"]) {
+                    $v->issuepolicy_status =  'S';
+                } else {
+                    $v->issuepolicy_status =  'E';
+                }
+
+            } catch (\Exception $ex) {
+                $apiResult = $ex->getMessage();
             }
-
 
             $v->result = $apiResult;
             $v->save();

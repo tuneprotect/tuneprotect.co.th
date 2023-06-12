@@ -393,12 +393,10 @@ document.addEventListener("DOMContentLoaded", async () => {
 
                     const itme = {
                         item_id: "",
-                        item_name: "",
                         price: "",
                     };
 
                     itme.item_id = plan;
-                    itme.item_name = apiPackage;
                     itme.price = price;
 
                     itemList.push(itme);
@@ -414,6 +412,10 @@ document.addEventListener("DOMContentLoaded", async () => {
         //      "currency": "THB"
         //    }
         // });
+        gtag("event",  "view_item",  {
+            "currency": "THB",
+            "items": itemList
+        });
     }
 
     $$('#ctrl_weight,#ctrl_height').forEach($el => {
@@ -522,7 +524,21 @@ document.addEventListener("DOMContentLoaded", async () => {
             }
         });
     });
-
+    /*
+    $$("input[name=fdSendAnswer2]").forEach($el => {
+        $el.addEventListener("change", function (e) {
+            if (getRadioSelectedValue('fdSendAnswer2') === 'Y') {
+                document.getElementById("btn-q-n").click();
+                ans2=0;
+            }else{
+                ans2=1;
+                if(ans2===1 && ans3===1 && ans1==1){
+                    document.getElementById("btn-fdQuestion1").click();
+                }
+            }
+        });
+    });
+*/
     $$("input[name=fdSendAnswer3]").forEach($el => {
         $el.addEventListener("change", function (e) {
             if (getRadioSelectedValue('fdSendAnswer3') === 'Y') {
@@ -537,6 +553,19 @@ document.addEventListener("DOMContentLoaded", async () => {
             }
         });
     });
+    
+
+
+    // $('input[type=radio][name=fdSendAnswer2]').change(function() {
+    //     if (this.value == 'Y') {
+    //        alert(1)
+    //     }
+    // });
+    // $('input[type=radio][name=fdSendAnswer3]').change(function() {
+    //     if (this.value == 'Y') {
+    //         alert(1)
+    //     }
+    // });
 
     const $btnGoto = $$('.btn-goto');
     $btnGoto.forEach($btn => {
@@ -637,6 +666,15 @@ document.addEventListener("DOMContentLoaded", async () => {
                                 //      }]
                                 //    }
                                 //  });
+                                gtag("event",  "add_to_cart",  {
+                                    "currency": "THB",
+                                    "value": selectPrice,
+                                    "items": [{
+                                      "item_id": fdPackage,
+                                      "item_name": fdDataPlan,
+                                      "price": selectPrice,
+                                    }]
+                                });
                                 
                             } else {
                                 Swal.fire({
@@ -745,6 +783,15 @@ document.addEventListener("DOMContentLoaded", async () => {
                             //      }]
                             //    }
                             //  });
+                            gtag("event",  "begin_checkout",  {
+                                "value": data.fdPayAMT,
+                                "currency": "THB",
+                                "items": [{
+                                  "item_id": data.fdPackage,
+                                  "item_name": fdDataPlan,
+                                  "price": data.fdPayAMT,
+                                }]
+                            });
 
                             if (result) {
                                 Object.keys(result).map(k => {

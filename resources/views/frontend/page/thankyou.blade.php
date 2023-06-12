@@ -2,6 +2,20 @@
 
 @section('page')
 
+    @if(isset($doc_no))
+        @switch(session()->get('thankyou_param'))
+            @case("ONCSHC")
+                <script>
+                    gtag("event",  "purchase",  {
+                        "transaction_id": '{{$doc_no}}',
+                        "currency": "THB",
+                        "value": '{{$payAmount}}'
+                    });
+                </script>
+            @break
+        @endswitch
+    @endif                
+
 <main>
     <article class="wrapper">
         <div class="inner-wrapper">
