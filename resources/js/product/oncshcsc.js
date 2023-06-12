@@ -287,7 +287,14 @@ document.addEventListener("DOMContentLoaded", async () => {
     
         
         const location_data = await getSuscoBranch();
-        console.log(location_data);
+        //console.log(location_data);
+
+        if (locale === 'en') 
+            location_data.sort((a,b) => (a.DescriptionEn > b.DescriptionEn) ? 1 : ((b.DescriptionEn > a.DescriptionEn) ? -1 : 0))
+        else 
+            location_data.sort((a,b) => (a.DescriptionTh > b.DescriptionTh) ? 1 : ((b.DescriptionTh > a.DescriptionTh) ? -1 : 0))
+        
+
         if (location_data !== undefined) {
             let items = ['<option value="" data-agent="">' + $(`#ddl_branch_susco`).getAttribute('data-please-select') + '</option>'];
             location_data.result.forEach(v => {
