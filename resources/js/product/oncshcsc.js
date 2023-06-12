@@ -295,6 +295,9 @@ document.addEventListener("DOMContentLoaded", async () => {
             location_data.sort((a,b) => (a.DescriptionTh > b.DescriptionTh) ? 1 : ((b.DescriptionTh > a.DescriptionTh) ? -1 : 0))
         
 
+        console.log(location_data);
+
+
         if (location_data !== undefined) {
             let items = ['<option value="" data-agent="">' + $(`#ddl_branch_susco`).getAttribute('data-please-select') + '</option>'];
             location_data.result.forEach(v => {
