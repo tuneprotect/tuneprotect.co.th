@@ -404,14 +404,6 @@ document.addEventListener("DOMContentLoaded", async () => {
                 });
         }
         
-        //google analytic [view_item]
-        // dataLayer.push({
-        //     "event":  "view_item",
-        //     "ecommerce":  {
-        //      "items": itemList,
-        //      "currency": "THB"
-        //    }
-        // });
         gtag("event",  "view_item",  {
             "currency": "THB",
             "items": itemList
@@ -653,19 +645,6 @@ document.addEventListener("DOMContentLoaded", async () => {
 
                                 const selectPrice = getSelectedPrice(data.fdHBD, fdPackage, package_data);
 
-                                //google analytic [add_to_cart]
-                                // dataLayer.push({
-                                //     "event":  "add_to_cart",
-                                //     "ecommerce":  {
-                                //      "currency": "THB",
-                                //      "value": selectPrice,
-                                //      "items": [{
-                                //        "item_id": fdPackage,
-                                //        "item_name": fdDataPlan,
-                                //        "price": selectPrice,
-                                //      }]
-                                //    }
-                                //  });
                                 gtag("event",  "add_to_cart",  {
                                     "currency": "THB",
                                     "value": selectPrice,
@@ -770,19 +749,6 @@ document.addEventListener("DOMContentLoaded", async () => {
                                 $el.classList.remove('error')
                             });
 
-                            //google analytic [begin_checkout]
-                            // dataLayer.push({
-                            //     "event":  "begin_checkout",
-                            //     "ecommerce":  {
-                            //      "value": data.fdPayAMT,
-                            //      "currency": "THB",
-                            //      "items": [{
-                            //        "item_id": data.fdPackage,
-                            //        "item_name": fdDataPlan,
-                            //        "price": data.fdPayAMT,
-                            //      }]
-                            //    }
-                            //  });
                             gtag("event",  "begin_checkout",  {
                                 "value": data.fdPayAMT,
                                 "currency": "THB",
