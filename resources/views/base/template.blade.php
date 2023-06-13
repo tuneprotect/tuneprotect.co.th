@@ -62,7 +62,7 @@ use App\Helper\TemplateHelper; ?>
 
         @if(isset($controller))
 
-            @if($controller === 'product')
+            @if($controller === 'product' || $controller === 'portal')
             
                 <!-- Google Tag Manager -->
                 <script>
