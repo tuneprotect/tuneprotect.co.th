@@ -110,12 +110,18 @@ class ProductController extends BaseController
         }
     }
 
-    public function form($link = null, $selected = null)
+    public function form($link = null, $selected = null, $portal_key = null)
     {
         $this->bodyData['controller'] = $this->controller;
 
         if (empty($link)) {
             return redirect("/" . $this->locale);
+        }
+
+        $product_agent_code = $selected . '/' . $portal_key;
+        $apiResult = $this->sendToApiPortalLogin($portal_key);
+        if ($apiResult["status"]) {
+            return redirect()->route('current', ['locale' => $this->locale, 'controller' => 'portal', 'func' => $link, 'params' => $product_agent_code]);
         }
 
         if (in_array($selected, ['ONTALN','TAIPCRN', 'TAIPOCT22', 'TAIPOCT22AA', 'ONCOVIDL', 'ONTA', 'TGCVLP', 'TAISM', 'TAISMC', 'ONTAISMB2B', 'ONTGISM', 'TAISMTG']) && $this->locale === 'th') {
