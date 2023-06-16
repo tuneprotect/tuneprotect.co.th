@@ -108,8 +108,8 @@
                                                     </a>
                                                     <div class="btn-wrapper">
                                                         <a class="btn btn-gradient"
-                                                           data-gtm="index-product-button-{{$v->friendly_url}}-{{$v->code}}"
-                                                           href="{{route('current',['locale' => $locale,'controller' => 'product','func' => $v->friendly_url,'params' => $v->code ])}}">@lang('global.choose_product')</a>
+                                                           data-gtm="index-product-button-{{$productPackage->friendly_url}}-{{$v->code}}"
+                                                           href="{{route('current',['locale' => $locale,'controller' => 'product','func' => $productPackage->friendly_url,'params' => $v->code ])}}">@lang('global.choose_product')</a>
                                                     </div>
                                                 </li>
                                             @endif
