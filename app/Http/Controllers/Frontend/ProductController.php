@@ -138,16 +138,16 @@ class ProductController extends BaseController
         }
     }
 
-    protected function sendToApiPromoCodeValidation($redeem_code)
+    protected function sendToApiPortalLogin($portal_key)
     {
         $client = new Client();
-        $response = $client->request('POST', config('tune-api.url') . 'PromoCodeValidation', [
+        $response = $client->request('POST', config('tune-api.url') . 'loginPortal', [
             'auth' => [config('tune-api.user'), config('tune-api.password')],
             'headers' => [
                 'Content-Type' => 'application/json'
             ],
             'body' => json_encode([
-                'Code' => $redeem_code
+                'KeyValue' => $portal_key
             ])
         ]);
         return json_decode($response->getBody()->getContents(), true);
