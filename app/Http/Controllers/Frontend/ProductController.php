@@ -44,7 +44,7 @@ class ProductController extends BaseController
     {
         $apiResult = $this->sendToApiPortalLogin($portal_key);
         if ($apiResult["status"]) {
-            return redirect()->route('current', ['locale' => $this->locale, 'controller' => 'portal', 'func' => $link, 'params' => $selected, 'agencode' => $portal_key]);
+            return redirect()->route('current', ['locale' => $this->locale, 'controller' => 'portal', 'func' => $link, 'params' => $selected + '/' + $portal_key]);
         }
 
         //dd($apiResult);
