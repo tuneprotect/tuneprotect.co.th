@@ -252,8 +252,8 @@
     </picture>
     @elseif($selected==='ONTATO')
     <picture>
-        <source media="(min-width:768px)" srcset="{{url($v->pic)}}">
-        <img src="{{url(!empty($v->pic_mobile) ? $v->pic_mobile : $v->pic )}}" alt="{{$v->locales[$locale]->title}}">
+        <source media="(min-width:768px)" srcset="https://www.tuneprotect.co.th/storage/Banner/iTravel/iTravelTour/Banner-iTravel-Tour-PC-TH.webp">
+        <img src="{{url(!empty($v->pic_mobile) ? "https://www.tuneprotect.co.th/storage/Banner/iTravel/iTravelTour/Banner-iTravel-Tour-PC-TH.webp" : "https://www.tuneprotect.co.th/storage/Banner/iTravel/iTravelTour/Banner-iTravel-Tour-PC-TH.webp" )}}" )}}" alt="{{$v->locales[$locale]->title}}">
     </picture>
     @elseif($selected==='ONTALN')
     <picture>
@@ -426,8 +426,8 @@
 
     @elseif($selected==='ONTATO')
     <picture>
-        <source media="(min-width:768px)" srcset="{{url($v->pic)}}">
-        <img src="{{url(!empty($v->pic_mobile) ? $v->pic_mobile : $v->pic )}}" alt="{{$v->locales[$locale]->title}}">
+        <source media="(min-width:768px)" srcset="https://www.tuneprotect.co.th/storage/Banner/iTravel/iTravelTour/Banner-iTravel-Tour-PC-TH.webp">
+        <img src="{{url(!empty($v->pic_mobile) ? "https://www.tuneprotect.co.th/storage/Banner/iTravel/iTravelTour/Banner-iTravel-Tour-PC-TH.webp" : "https://www.tuneprotect.co.th/storage/Banner/iTravel/iTravelTour/Banner-iTravel-Tour-PC-TH.webp" )}}" )}}" alt="{{$v->locales[$locale]->title}}">
     </picture>
 
     @endif
