@@ -40,11 +40,13 @@ class ProductController extends BaseController
     protected $payment = 'CC,FULL';
     protected $ipp_interest_type = "";
     protected $use_effective = 'N';
+    protected $product_agent_code = '';
     public function index($link = null, $selected = null, $portal_key = null)
     {
+        $product_agent_code = $selected + '/' + $portal_key;
         $apiResult = $this->sendToApiPortalLogin($portal_key);
         if ($apiResult["status"]) {
-            return redirect()->route('current', ['locale' => $this->locale, 'controller' => 'portal', 'func' => $link, 'params' => $selected + '/' + $portal_key]);
+            return redirect()->route('current', ['locale' => $this->locale, 'controller' => 'portal', 'func' => $link, 'params' => $product_agent_code]);
         }
 
         //dd($apiResult);
