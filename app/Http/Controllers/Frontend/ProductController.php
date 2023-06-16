@@ -42,17 +42,12 @@ class ProductController extends BaseController
     protected $use_effective = 'N';
     public function index($link = null, $selected = null, $portal_key = null)
     {
-        $massage_key = $portal_key;
-        $status_api = false;
-        $this->bodyData['portal_key'] = $portal_key;
-        $partner = '';
-        $agentCode = '';
-        $nopayment_status = false;
-        $b2bpayment_status = false;
         $apiResult = $this->sendToApiPortalLogin($portal_key);
         if ($apiResult["status"]) {
-            return redirect()->route('current', ['locale' => $this->locale, 'controller' => 'portal', 'func' => $link, 'params' => $selected, 'agencode' => $portal_key]);
+            //return redirect()->route('current', ['locale' => $this->locale, 'controller' => 'portal', 'func' => $link, 'params' => $selected, 'agencode' => $portal_key]);
         }
+
+        dd($apiResult);
 
         $this->bodyData['controller'] = $this->controller;
         $this->bodyData['use_effective'] = $this->use_effective;
