@@ -9,7 +9,11 @@
                     gtag("event",  "purchase",  {
                         "transaction_id": '{{$doc_no}}',
                         "currency": "THB",
-                        "value": '{{$payAmount}}'
+                        "value": '{{$payAmount}}',
+                        "items": [{
+                             "doc_no": '{{$doc_no}}',
+                             "price": '{{$payAmount}}',
+                         }]
                     });
                 </script>
             @break
