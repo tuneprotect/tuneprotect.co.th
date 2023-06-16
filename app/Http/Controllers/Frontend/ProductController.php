@@ -46,7 +46,8 @@ class ProductController extends BaseController
         $product_agent_code = $selected . '/' . $portal_key;
         $apiResult = $this->sendToApiPortalLogin($portal_key);
         if ($apiResult["status"]) {
-            return redirect()->route('current', ['locale' => $this->locale, 'controller' => 'portal', 'func' => $link, 'params' => $product_agent_code]);
+            $controller = 'portal';
+            return redirect()->route('current', ['locale' => $this->locale, 'controller' => $controller, 'func' => $link, 'params' => $product_agent_code]);
         }
 
         //dd($apiResult);
@@ -112,8 +113,7 @@ class ProductController extends BaseController
 
     public function form($link = null, $selected = null, $portal_key = null)
     {
-        $this->bodyData['controller'] = $this->controller;
-
+        
         if (empty($link)) {
             return redirect("/" . $this->locale);
         }
@@ -121,8 +121,11 @@ class ProductController extends BaseController
         $product_agent_code = $selected . '/' . $portal_key;
         $apiResult = $this->sendToApiPortalLogin($portal_key);
         if ($apiResult["status"]) {
-            return redirect()->route('current', ['locale' => $this->locale, 'controller' => 'portal/form', 'func' => $link, 'params' => $product_agent_code]);
+            $controller = 'portal';
+            //return redirect()->route('current', ['locale' => $this->locale, 'controller' => $controller, 'func' => $link, 'params' => $product_agent_code]);
         }
+
+        $this->bodyData['controller'] = $this->controller;
 
         if (in_array($selected, ['ONTALN','TAIPCRN', 'TAIPOCT22', 'TAIPOCT22AA', 'ONCOVIDL', 'ONTA', 'TGCVLP', 'TAISM', 'TAISMC', 'ONTAISMB2B', 'ONTGISM', 'TAISMTG']) && $this->locale === 'th') {
             return redirect()->route('current', ['locale' => 'en', 'controller' => $this->controller, 'func' => $link, 'params' => $selected]);
@@ -131,7 +134,7 @@ class ProductController extends BaseController
         $this->getProductDetail($link, $selected);
         if ($selected) {
 
-            $this->bodyData['overview_link'] = "/{$this->locale}/product/{$link}/{$selected}";
+            $this->bodyData['overview_link'] = "/{$this->locale}/{$controller}/{$link}/{$selected}/{$portal_key}";
 
             if ($selected === 'CI' || $selected === 'CIGC') {
                 $this->bodyData['faq'] = $this->setFaq(ProjectEnum::WEB_CONTENT_FAQ, @$this->bodyData['current_package']->id);
@@ -142,7 +145,7 @@ class ProductController extends BaseController
 
             return $this->genDetailPage($selected, false);
         } else {
-            return redirect("/" . $this->locale . '/product/' . $link);
+            return redirect("/" . $this->locale . "/". $controller. "/" . $link);
         }
     }
 
