@@ -40,31 +40,19 @@ class ProductController extends BaseController
     protected $payment = 'CC,FULL';
     protected $ipp_interest_type = "";
     protected $use_effective = 'N';
-    public function index($link = null, $selected = null)
+    public function index($link = null, $selected = null, $portal_key = null)
     {
-        //MA
-        //        if (in_array($selected, ['ONVSAFEA','ONVSAFE','ONVS22JAN'])) {
-        //            return redirect('https://www.tuneprotect.co.th/ma_vsafe.html');
-        //        }
-        //        if (in_array($selected, ['CVCARE'])) {
-        //            return redirect('https://www.tuneprotect.co.th/ma_lumacare.html');
-        //        }
-
-        //        if (in_array($selected, ['ONCOVIDL'])) {
-        //            return redirect('https://www.tuneprotect.co.th/maintenance.html');
-        //        }
-        //        if (in_array($selected, ['CVISAFE','CVIS22JAN','ONCOVIDA'])) {
-        //            return redirect('https://www.tuneprotect.co.th/ma_isafe.html');
-        //        }
-        //        if (in_array($selected, ['ONVACINA','ONVSUREA'])) {
-        //            return redirect('https://www.tuneprotect.co.th/ma_vsure.html');
-        //        }
-
-        //
-        //        if (in_array($selected, ['ONTALN'])) {
-        //            return redirect('https://www.tuneprotect.co.th/maintenance.html');
-        //        }
-
+        $massage_key = $portal_key;
+        $status_api = false;
+        $this->bodyData['portal_key'] = $portal_key;
+        $partner = '';
+        $agentCode = '';
+        $nopayment_status = false;
+        $b2bpayment_status = false;
+        $apiResult = $this->sendToApiPortalLogin($portal_key);
+        if ($apiResult["status"]) {
+            return redirect()->route('current', ['locale' => $this->locale, 'controller' => 'portal', 'func' => $link, 'params' => $selected, 'agencode' => $portal_key]);
+        }
 
         $this->bodyData['controller'] = $this->controller;
         $this->bodyData['use_effective'] = $this->use_effective;
