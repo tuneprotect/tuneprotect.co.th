@@ -138,6 +138,21 @@ class ProductController extends BaseController
         }
     }
 
+    protected function sendToApiPromoCodeValidation($redeem_code)
+    {
+        $client = new Client();
+        $response = $client->request('POST', config('tune-api.url') . 'PromoCodeValidation', [
+            'auth' => [config('tune-api.user'), config('tune-api.password')],
+            'headers' => [
+                'Content-Type' => 'application/json'
+            ],
+            'body' => json_encode([
+                'Code' => $redeem_code
+            ])
+        ]);
+        return json_decode($response->getBody()->getContents(), true);
+    }
+
     protected function getProductDetail($link = null, $selected = null)
     {
         $this->bodyData['current_product'] = WebContent::where('type_id', ProjectEnum::WEB_CONTENT_PRODUCT)
