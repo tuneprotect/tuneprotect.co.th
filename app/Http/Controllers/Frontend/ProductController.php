@@ -1097,7 +1097,14 @@ class ProductController extends BaseController
     {
         $link = "";
         if (str_starts_with($package, 'ONPA')) {
-            $this->thankYouParam = 'ONPA';
+            if (substr($package, 0, 6) === ProjectEnum::ONPACA_URL) {
+                $this->thankYouParam = ProjectEnum::ONPACA_URL;
+            } elseif (substr($package, 0, 6) === ProjectEnum::ONPAKD_URL) {
+                $this->thankYouParam = ProjectEnum::ONPAKD_URL;
+            }  elseif (substr($package, 0, 8) === ProjectEnum::ONPASN_URL) {
+                $this->thankYouParam = ProjectEnum::ONPASN_URL;
+            }
+            //$this->thankYouParam = 'ONPA';
             $link = 'IssuePolicyPAChoice';
         } elseif (substr($package, 0, 8) === 'ONCOVIDA'
             || substr($package, 0, 8) === 'ONCOVIDL'
