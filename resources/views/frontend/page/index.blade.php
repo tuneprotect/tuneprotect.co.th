@@ -99,8 +99,8 @@
                                             @if($v->code === 'ONCSHC' || $v->code === 'CI'|| $v->code === 'DIABETES' || $v->code === 'ONPACA' || $v->code === 'ONPAKD' || $v->code === 'ONPASN' || $v->code === 'TAISM' || $v->code === 'TAIPOCT22' || $v->code === 'ONTADM' || $v->code === 'ONTAOB' || $v->code === 'ONFIMP' || $v->code === 'ONMHS')    
                                                 <li>
                                                     <a
-                                                        data-gtm="index-product-image-{{$v->friendly_url}}-{{$v->code}}"
-                                                        href="{{route('current',['locale' => $locale,'controller' => 'product','func' => $v->friendly_url,'params' => $v->code ])}}">
+                                                        data-gtm="index-product-image-{{$highlight_product->friendly_url}}-{{$v->code}}"
+                                                        href="{{route('current',['locale' => $locale,'controller' => 'product','func' => $highlight_product->friendly_url,'params' => $v->code ])}}">
                                                         <div class="two-tone-icon">
                                                             <span><img src="{{url($v->pic)}}" alt=""></span>
                                                             <strong>{{$v->locales[$locale]->title}}</strong>
@@ -108,8 +108,8 @@
                                                     </a>
                                                     <div class="btn-wrapper">
                                                         <a class="btn btn-gradient"
-                                                           data-gtm="index-product-button-{{$productPackage->friendly_url}}-{{$v->code}}"
-                                                           href="{{route('current',['locale' => $locale,'controller' => 'product','func' => $productPackage->friendly_url,'params' => $v->code ])}}">@lang('global.choose_product')</a>
+                                                           data-gtm="index-product-button-{{$highlight_product->friendly_url}}-{{$v->code}}"
+                                                           href="{{route('current',['locale' => $locale,'controller' => 'product','func' => $highlight_product->friendly_url,'params' => $v->code ])}}">@lang('global.choose_product')</a>
                                                     </div>
                                                 </li>
                                             @endif
