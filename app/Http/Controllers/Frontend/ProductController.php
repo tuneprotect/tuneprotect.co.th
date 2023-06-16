@@ -43,7 +43,7 @@ class ProductController extends BaseController
     protected $product_agent_code = '';
     public function index($link = null, $selected = null, $portal_key = null)
     {
-        $product_agent_code = $selected + '/' + $portal_key;
+        $product_agent_code = $selected . '/' . $portal_key;
         $apiResult = $this->sendToApiPortalLogin($portal_key);
         if ($apiResult["status"]) {
             return redirect()->route('current', ['locale' => $this->locale, 'controller' => 'portal', 'func' => $link, 'params' => $product_agent_code]);
