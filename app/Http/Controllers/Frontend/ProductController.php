@@ -118,11 +118,11 @@ class ProductController extends BaseController
             return redirect("/" . $this->locale);
         }
 
-        $product_agent_code = $selected . '/' . $portal_key;
+        //$product_agent_code = $selected . '/' . $portal_key;
         $apiResult = $this->sendToApiPortalLogin($portal_key);
         if ($apiResult["status"]) {
-            $controller = 'portal';
-            //return redirect()->route('current', ['locale' => $this->locale, 'controller' => $controller, 'func' => $link, 'params' => $product_agent_code]);
+            $this->controller = 'portal';
+            return redirect()->route('current', ["/{$this->locale}/portal/form/{$link}/{$selected}/{$portal_key}"]);
         }
 
         $this->bodyData['controller'] = $this->controller;
@@ -134,7 +134,7 @@ class ProductController extends BaseController
         $this->getProductDetail($link, $selected);
         if ($selected) {
 
-            $this->bodyData['overview_link'] = "/{$this->locale}/{$controller}/{$link}/{$selected}/{$portal_key}";
+            $this->bodyData['overview_link'] = "/{$this->locale}/{$this->controller}/{$link}/{$selected}/{$portal_key}";
 
             if ($selected === 'CI' || $selected === 'CIGC') {
                 $this->bodyData['faq'] = $this->setFaq(ProjectEnum::WEB_CONTENT_FAQ, @$this->bodyData['current_package']->id);
@@ -145,7 +145,7 @@ class ProductController extends BaseController
 
             return $this->genDetailPage($selected, false);
         } else {
-            return redirect("/" . $this->locale . "/". $controller. "/" . $link);
+            return redirect("/" . $this->locale . "/". $this->controller. "/" . $link);
         }
     }
 
