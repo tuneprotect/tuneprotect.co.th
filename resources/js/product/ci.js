@@ -427,6 +427,39 @@ if ($('#title_wrapper')) {
             return pricelist;
         }
 
+        const genItemList = () => {
+
+            let index = 0;
+            const itemList = [];
+        
+            if (data.fdHBD) {
+                Object.keys(package_data)
+                    .filter(k => _.startsWith(k, current_package))
+                    .map(k => {
+                        const pack = Object.keys(package_data[k].price).filter(ageRange => checkAge(data.fdHBD, ageRange))
+                        const price = parseInt(package_data[k].price[pack]).toLocaleString();
+                        const apiPackage = package_data[k].apiPackage;
+                        const plan = Object.keys(package_data)[index];
+        
+                        const itme = {
+                            item_id: "",
+                            price: "",
+                        };
+        
+                        itme.item_id = plan;
+                        itme.price = price;
+        
+                        itemList.push(itme);
+                        index++;
+                    });
+            }
+            
+            gtag("event",  "view_item",  {
+                "currency": "THB",
+                "items": itemList
+            });
+        }
+
         const basePrice = (package_data) => {
             let last = Object.keys(package_data).pop();
 
@@ -576,6 +609,7 @@ if ($('#title_wrapper')) {
                                     }
 
                                     genPrice();
+                                    genItemList();
                                     hideShowDiseaseBox(goToStep);
                                 } else {
                                     scrollToTargetAdjusted($('.controls-wrapper.error'));

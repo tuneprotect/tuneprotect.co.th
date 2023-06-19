@@ -393,10 +393,12 @@ document.addEventListener("DOMContentLoaded", async () => {
 
                     const itme = {
                         item_id: "",
+                        item_name: "",
                         price: "",
                     };
 
-                    itme.item_id = plan;
+                    itme.item_id = apiPackage;
+                    itme.item_name = plan;
                     itme.price = price;
 
                     itemList.push(itme);
