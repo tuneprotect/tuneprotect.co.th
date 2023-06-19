@@ -764,14 +764,12 @@ if ($('#title_wrapper')) {
                                     fdMarketing_Consent: $('#ctrl_marketing').checked ? true : undefined
                                 }
 
-                                console.log(data.fdPackage, packageName, data.fdPayAMT);
+                                console.log(data.fdPackage, data.fdPayAMT);
 
                                 gtag("event",  "begin_checkout",  {
-                                    "value": data.fdPayAMT,
                                     "currency": "THB",
                                     "items": [{
                                       "item_id": data.fdPackage,
-                                      "item_name": fdDataPlan,
                                       "price": data.fdPayAMT,
                                     }]
                                 });
