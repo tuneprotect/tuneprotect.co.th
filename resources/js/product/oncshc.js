@@ -648,7 +648,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
                                 const selectPrice = getSelectedPrice(data.fdHBD, fdPackage, package_data);
 
-                                console.log(fdPackage, fdDataPlan);
+                                console.log(fdPackage, packageName);
 
                                 gtag("event",  "add_to_cart",  {
                                     "currency": "THB",
