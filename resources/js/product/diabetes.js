@@ -556,6 +556,8 @@ document.addEventListener("DOMContentLoaded", async () => {
                                 }
                                 showTitle('', data.fdAge)
                                 status = true;
+
+                                const selectPrice = getSelectedPrice(data.fdHBD, fdPackage, package_data);
                                 
                                 gtag("event",  "add_to_cart",  {
                                     "currency": "THB",
