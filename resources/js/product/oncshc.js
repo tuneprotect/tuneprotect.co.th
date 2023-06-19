@@ -405,6 +405,8 @@ document.addEventListener("DOMContentLoaded", async () => {
                     index++;
                 });
         }
+
+        console.log(itemList);
         
         gtag("event",  "view_item",  {
             "currency": "THB",
