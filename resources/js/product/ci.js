@@ -597,7 +597,6 @@ if ($('#title_wrapper')) {
                     } else {
                         switch (parseInt(step)) {
                             case 1:
-                                console.log(1);
                                 const validateResult = validateAgeInPackage(package_data, false);
                                 status = validateResult.status;
                                 if (validateResult.status) {
@@ -648,7 +647,6 @@ if ($('#title_wrapper')) {
 
                                 break;
                             case 2:
-                                console.log(2);
                                 const fdPackage = $btn.getAttribute('data-package');
 
                                 $("#table-detail").setAttribute('data-package_plan', $btn.getAttribute('data-plan'));
@@ -658,6 +656,20 @@ if ($('#title_wrapper')) {
                                         ...data,
                                         fdPackage
                                     }
+
+                                    const selectPrice = getSelectedPrice(data.fdHBD, fdPackage, package_data);
+
+                                    console.log(fdPackage, selectPrice);
+
+                                    gtag("event",  "add_to_cart",  {
+                                        "currency": "THB",
+                                        "value": selectPrice,
+                                        "items": [{
+                                          "item_id": fdPackage,
+                                          "price": selectPrice,
+                                        }]
+                                    });
+
                                     showTitle('', data.fdAge)
                                     status = true;
                                     hideShowDiseaseBox(goToStep);
@@ -674,7 +686,6 @@ if ($('#title_wrapper')) {
 
                                 break;
                             case 3:
-                                console.log(3);
                                 //=====================================================================
                                 //For sale view only.
                                 var myEle = document.getElementById("portal_key");
@@ -687,7 +698,7 @@ if ($('#title_wrapper')) {
                                 //=====================================================================
 
 
-                                console.log(e.target.tagName)
+                                //console.log(e.target.tagName)
                                 status = false;
                                 if (e.target.id === 'btn-fdQuestion1') {
                                     status = true;
@@ -700,7 +711,7 @@ if ($('#title_wrapper')) {
 
 
                                 hideShowDiseaseBox(goToStep);
-                                console.log(status)
+                                //console.log(status)
                                 break;
                             case 4:
                                 console.log(4);
