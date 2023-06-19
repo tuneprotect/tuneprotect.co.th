@@ -202,7 +202,6 @@ if ($('#title_wrapper')) {
 
     document.addEventListener("DOMContentLoaded", async () => {
 
-        //console.log(1);
         //=====================================================================
         // AddOn Portal
         let Keys = "";
@@ -659,8 +658,6 @@ if ($('#title_wrapper')) {
 
                                     const selectPrice = getSelectedPrice(data.fdHBD, fdPackage, package_data);
 
-                                    //console.log(fdPackage, selectPrice);
-
                                     gtag("event",  "add_to_cart",  {
                                         "currency": "THB",
                                         "value": selectPrice,
@@ -697,8 +694,6 @@ if ($('#title_wrapper')) {
                                 }
                                 //=====================================================================
 
-
-                                //console.log(e.target.tagName)
                                 status = false;
                                 if (e.target.id === 'btn-fdQuestion1') {
                                     status = true;
@@ -711,10 +706,8 @@ if ($('#title_wrapper')) {
 
 
                                 hideShowDiseaseBox(goToStep);
-                                //console.log(status)
                                 break;
                             case 4:
-                                //console.log(4);
 
                                 let valCheck = false;
                                 valCheck = validatePolicyPayment($('#fdNationalID').value,data.fdPackage,$('#fdFromDate')?.value);
@@ -764,8 +757,6 @@ if ($('#title_wrapper')) {
                                     fdMarketing_Consent: $('#ctrl_marketing').checked ? true : undefined
                                 }
 
-                                console.log(data.fdPackage, data.fdPayAMT);
-
                                 gtag("event",  "begin_checkout",  {
                                     "currency": "THB",
                                     "items": [{
@@ -774,7 +765,6 @@ if ($('#title_wrapper')) {
                                     }]
                                 });
 
-                                //console.log({data});
                                 const result = validate(data, constraints);
 
                                 const $cite = $form.getElementsByTagName('cite');
