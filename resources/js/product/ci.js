@@ -431,24 +431,26 @@ if ($('#title_wrapper')) {
 
             let index = 0;
             const itemList = [];
-        
+    
             if (data.fdHBD) {
                 Object.keys(package_data)
                     .filter(k => _.startsWith(k, current_package))
                     .map(k => {
                         const pack = Object.keys(package_data[k].price).filter(ageRange => checkAge(data.fdHBD, ageRange))
                         const price = parseInt(package_data[k].price[pack]).toLocaleString();
-                        const apiPackage = package_data[k].apiPackage;
-                        const plan = Object.keys(package_data)[index];
-        
+                        const packageName = package_data[k].apiPackage;
+                        const planCode = Object.keys(package_data)[index];
+    
                         const itme = {
                             item_id: "",
+                            item_name: "",
                             price: "",
                         };
-        
-                        itme.item_id = plan;
+    
+                        itme.item_id = planCode;
+                        itme.item_name = packageName;
                         itme.price = price;
-        
+    
                         itemList.push(itme);
                         index++;
                     });

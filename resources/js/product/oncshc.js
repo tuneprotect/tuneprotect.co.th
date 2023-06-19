@@ -405,8 +405,6 @@ document.addEventListener("DOMContentLoaded", async () => {
                     index++;
                 });
         }
-
-        console.log(itemList);
         
         gtag("event",  "view_item",  {
             "currency": "THB",
@@ -648,6 +646,8 @@ document.addEventListener("DOMContentLoaded", async () => {
                                 status = true;
 
                                 const selectPrice = getSelectedPrice(data.fdHBD, fdPackage, package_data);
+
+                                console.log(fdPackage, fdDataPlan);
 
                                 gtag("event",  "add_to_cart",  {
                                     "currency": "THB",
