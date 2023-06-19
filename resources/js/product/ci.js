@@ -202,7 +202,7 @@ if ($('#title_wrapper')) {
 
     document.addEventListener("DOMContentLoaded", async () => {
 
-        console.log(1);
+        //console.log(1);
         //=====================================================================
         // AddOn Portal
         let Keys = "";
@@ -659,7 +659,7 @@ if ($('#title_wrapper')) {
 
                                     const selectPrice = getSelectedPrice(data.fdHBD, fdPackage, package_data);
 
-                                    console.log(fdPackage, selectPrice);
+                                    //console.log(fdPackage, selectPrice);
 
                                     gtag("event",  "add_to_cart",  {
                                         "currency": "THB",
@@ -714,7 +714,7 @@ if ($('#title_wrapper')) {
                                 //console.log(status)
                                 break;
                             case 4:
-                                console.log(4);
+                                //console.log(4);
 
                                 let valCheck = false;
                                 valCheck = validatePolicyPayment($('#fdNationalID').value,data.fdPackage,$('#fdFromDate')?.value);
@@ -764,7 +764,19 @@ if ($('#title_wrapper')) {
                                     fdMarketing_Consent: $('#ctrl_marketing').checked ? true : undefined
                                 }
 
-                                console.log({data});
+                                console.log(data.fdPackage, packageName, data.fdPayAMT);
+
+                                gtag("event",  "begin_checkout",  {
+                                    "value": data.fdPayAMT,
+                                    "currency": "THB",
+                                    "items": [{
+                                      "item_id": data.fdPackage,
+                                      "item_name": fdDataPlan,
+                                      "price": data.fdPayAMT,
+                                    }]
+                                });
+
+                                //console.log({data});
                                 const result = validate(data, constraints);
 
                                 const $cite = $form.getElementsByTagName('cite');

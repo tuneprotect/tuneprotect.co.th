@@ -759,7 +759,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                                 "currency": "THB",
                                 "items": [{
                                   "item_id": data.fdPackage,
-                                  "item_name": fdDataPlan,
+                                  "item_name": packageName,
                                   "price": data.fdPayAMT,
                                 }]
                             });
