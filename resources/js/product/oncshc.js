@@ -634,6 +634,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                             const fdPackage = $btn.getAttribute('data-package');
                             const fdDataPlan = $btn.getAttribute('data-plan');
                             const health2go = $btn.getAttribute('data-health');
+                            const packageName = $btn.getAttribute('data-packageName');
 
                             $("#table-detail").setAttribute('data-package_plan', $btn.getAttribute('data-plan'));
                             if (fdPackage) {
@@ -654,7 +655,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                                     "value": selectPrice,
                                     "items": [{
                                       "item_id": fdPackage,
-                                      "item_name": fdDataPlan,
+                                      "item_name": packageName,
                                       "price": selectPrice,
                                     }]
                                 });
