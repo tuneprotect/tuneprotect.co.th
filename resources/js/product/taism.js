@@ -463,7 +463,8 @@ document.addEventListener("DOMContentLoaded", async () => {
                             fdToDate: $('#fdToDate').value
                         }
                         result = validate(data, step1Constraints);
-                        genItemList(package_data);
+                        genItemList(package_data, data.fdFromDate, data.fdToDate);
+                        
                         removeError($('#step1'));
                         if (result) {
                             showError($('#step1'), result);
