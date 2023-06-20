@@ -434,7 +434,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                                 fdPackage
                             }
 
-                            const selectPrice = package_data[data.fdPackage].price[$('#sub_code').value].price;
+                            const selectPrice = genPrice(package_data, data.fdFromDate, data.fdToDate);
 
                             gtag("event",  "add_to_cart",  {
                                 "currency": "THB",
