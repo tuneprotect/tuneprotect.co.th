@@ -221,16 +221,18 @@ const genPrice = (package_data, fdFromDate, fdToDate) => {
 
 }
 
-const genItemList = (package_data) => {
+const genItemList = (package_data, fdFromDate, fdToDate) => {
 
     let index = 0;
     const itemList = [];
 
-    if (data.fdHBD) {
+    if (fdFromDate && fdToDate) {
         Object.keys(package_data)
             .filter(k => _.startsWith(k, current_package))
             .map(k => {
-                const pack = Object.keys(package_data[k].price).filter(ageRange => checkAge(data.fdHBD, ageRange))
+                const pack = Object.keys(package_data[k].price).filter(subPackage => {
+                    const dateRange = (package_data[k].price[subPackage].day).split('-');    
+                });
                 const price = parseInt(package_data[k].price[pack]).toLocaleString();
                 const packageName = package_data[k].apiPackage;
                 const planCode = Object.keys(package_data)[index];
@@ -464,7 +466,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
                             // genPrice(package_data, $('#ctrl_sub_package').value);
                             genPrice(package_data, data.fdFromDate, data.fdToDate);
-                            genItemList(package_data);
+                            genItemList(package_data, data.fdFromDate, data.fdToDate);
 
                         }
 
@@ -500,6 +502,8 @@ document.addEventListener("DOMContentLoaded", async () => {
                                 ...data,
                                 fdPackage
                             }
+
+                            const selectPrice = package_data[data.fdPackage].price[$('#sub_code').value].price;
 
                             gtag("event",  "add_to_cart",  {
                                 "currency": "THB",
