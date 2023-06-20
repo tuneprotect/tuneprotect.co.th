@@ -188,39 +188,6 @@ const profileConstraints = {
     }
 };
 
-// const getSelectedPrice = (packageCode, package_data) => {
-//     // const code = packageCode.substring(0, 7);
-//     // const sub_code = packageCode.substring(7);
-//     // console.log(packageCode);
-//     // console.log(package_data);
-//     // console.log('code : ' + code);
-//     // console.log('sub_code : ' + sub_code);
-//     // console.log('price : ' + package_data[code].price[sub_code].price);
-//     // return package_data[code].price[sub_code].price;
-//
-//     //fdPackage
-//     //$('#sub_code').value
-//     //Price = package_data[Package].price[price key id].price
-//
-//     return package_data[packageCode].price[$('#sub_code').value].price;
-// }
-
-// const genPrice = (package_data, sub_package) => {
-//
-//     Object.keys(package_data)
-//         .filter(k => _.startsWith(k, current_package))
-//         .map(k => {
-//             const pack = Object.keys(package_data[k].price).filter(k => k === sub_package)
-//
-//             $$('[data-sub-package]').forEach($el => {
-//                 $el.setAttribute('data-sub-package', pack)
-//             });
-//
-//             $(`strong[data-price-${k}]`).innerHTML = parseInt(package_data[k].price[pack].price).toLocaleString();
-//
-//         })
-// }
-
 const genPrice = (package_data, fdFromDate, fdToDate) => {
 
     let startDate = parseISO(fdFromDate);
@@ -263,6 +230,41 @@ const genPrice = (package_data, fdFromDate, fdToDate) => {
             //Price = package_data[Package].price[price key id].price
         })
 
+}
+
+const genItemList = () => {
+
+    let index = 0;
+    const itemList = [];
+
+    if (data.fdHBD) {
+        Object.keys(package_data)
+            .filter(k => _.startsWith(k, current_package))
+            .map(k => {
+                const pack = Object.keys(package_data[k].price).filter(ageRange => checkAge(data.fdHBD, ageRange))
+                const price = parseInt(package_data[k].price[pack]).toLocaleString();
+                const packageName = package_data[k].apiPackage;
+                const planCode = Object.keys(package_data)[index];
+
+                const itme = {
+                    item_id: "",
+                    item_name: "",
+                    price: "",
+                };
+
+                itme.item_id = planCode;
+                itme.item_name = packageName;
+                itme.price = price;
+
+                itemList.push(itme);
+                index++;
+            });
+    }
+    
+    gtag("event",  "view_item",  {
+        "currency": "THB",
+        "items": itemList
+    });
 }
 
 function resolveAfter2Seconds() {
@@ -351,27 +353,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     Object.keys(nationality_data).map(v => {
             nationality_option += `<option value="${v}">${v}</option>`;
     });
-
-    // $('#ctrl_sub_package').addEventListener('change', (e) => {
-    //     let nationality_option = `<option value="">${$('#data_1_fdNationality').getAttribute('data-please-select')}</option>`;
-    //     // console.log($('#ctrl_sub_package').value);
-    //     if($('#ctrl_sub_package').value == '01' || $('#ctrl_sub_package').value == '05' ){
-    //         //30 and 60 Only
-    //         Object.keys(nationality_data).map(v => {
-    //             nationality_option += `<option value="${v}">${v}</option>`;
-    //         });
-    //     }
-    //     else {
-    //         Object.keys(nationality_data).map(v => {
-    //             if (v !== "Thailand") {
-    //                 nationality_option += `<option value="${v}">${v}</option>`;
-    //             }
-    //         });
-    //     }
-    //     for (let i = 1; i < 10; i++) {
-    //         $(`#data_${i}_fdNationality`).innerHTML = nationality_option;
-    //     }
-    // });
 
     $('#ctrl_no_of_insured').addEventListener('change', (e) => {
         for (let i = 1; i <= e.target.value; i++) {
@@ -469,6 +450,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                             fdToDate: $('#fdToDate').value
                         }
                         result = validate(data, step1Constraints);
+                        genItemList();
                         removeError($('#step1'));
                         if (result) {
                             showError($('#step1'), result);
@@ -535,6 +517,18 @@ document.addEventListener("DOMContentLoaded", async () => {
                                 ...data,
                                 fdPackage
                             }
+
+                            const selectPrice = getSelectedPrice(data.fdHBD, fdPackage, package_data);
+
+                            gtag("event",  "add_to_cart",  {
+                                "currency": "THB",
+                                "value": selectPrice,
+                                "items": [{
+                                  "item_id": fdPackage,
+                                  "price": selectPrice,
+                                }]
+                            });
+
                             status = true;
                         } else {
                             Swal.fire({
@@ -600,9 +594,6 @@ document.addEventListener("DOMContentLoaded", async () => {
                             }
                         }
 
-                        // console.log('data.fdPackage : ' + data.fdPackage);
-                        // console.log('sub_code : ' + $('#sub_code').value);
-
                         data = {
                             ...data,
                             fdPayAMT: package_data[data.fdPackage].price[$('#sub_code').value].price,
@@ -618,7 +609,15 @@ document.addEventListener("DOMContentLoaded", async () => {
                         }
                         // fdPayAMT: getSelectedPrice(data.fdPackage, package_data),
 
-                        console.log('fdPayAMT : ' + data.fdPayAMT);
+                        gtag("event",  "begin_checkout",  {
+                            "currency": "THB",
+                            "items": [{
+                              "item_id": data.fdPackage,
+                              "price": data.fdPayAMT,
+                            }]
+                        });
+
+                        //console.log('fdPayAMT : ' + data.fdPayAMT);
                         result = validate(data, step3Constraints);
 
                         if (result) {
