@@ -221,7 +221,7 @@ const genPrice = (package_data, fdFromDate, fdToDate) => {
 
 }
 
-const genItemList = () => {
+const genItemList = (package_data) => {
 
     let index = 0;
     const itemList = [];
@@ -464,7 +464,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
                             // genPrice(package_data, $('#ctrl_sub_package').value);
                             genPrice(package_data, data.fdFromDate, data.fdToDate);
-                            genItemList();
+                            genItemList(package_data);
 
                         }
 

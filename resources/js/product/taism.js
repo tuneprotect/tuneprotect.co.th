@@ -232,7 +232,7 @@ const genPrice = (package_data, fdFromDate, fdToDate) => {
 
 }
 
-const genItemList = () => {
+const genItemList = (package_data) => {
 
     let index = 0;
     const itemList = [];
@@ -450,7 +450,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                             fdToDate: $('#fdToDate').value
                         }
                         result = validate(data, step1Constraints);
-                        genItemList();
+                        genItemList(package_data);
                         removeError($('#step1'));
                         if (result) {
                             showError($('#step1'), result);
