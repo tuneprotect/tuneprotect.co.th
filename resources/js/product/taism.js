@@ -235,25 +235,14 @@ const genPrice = (package_data, fdFromDate, fdToDate) => {
 const genItemList = (package_data, fdFromDate, fdToDate) => {
 
     let index = 0;
-    let startDate = parseISO(fdFromDate);
-    let endDate = parseISO(fdToDate);
-
     const itemList = [];
 
-    if (data.fdHBD) {
+    if (fdFromDate && fdToDate) {
         Object.keys(package_data)
             .filter(k => _.startsWith(k, current_package))
             .map(k => {
                 const pack = Object.keys(package_data[k].price).filter(subPackage => {
-                    const dateRange = (package_data[k].price[subPackage].day).split('-');
-                    if(dateRange.length === 1)
-                    {
-                        return day >= dateRange[0] && day <= dateRange[0];
-                    }
-                    else
-                    {
-                        return day >= dateRange[0] && day <= dateRange[1];
-                    }
+                    const dateRange = (package_data[k].price[subPackage].day).split('-');    
                 });
                 const price = parseInt(package_data[k].price[pack]).toLocaleString();
                 const packageName = package_data[k].apiPackage;
@@ -464,7 +453,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                         }
                         result = validate(data, step1Constraints);
                         genItemList(package_data, data.fdFromDate, data.fdToDate);
-                        
+
                         removeError($('#step1'));
                         if (result) {
                             showError($('#step1'), result);
