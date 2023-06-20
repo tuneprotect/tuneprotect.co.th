@@ -634,7 +634,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                             const fdPackage = $btn.getAttribute('data-package');
                             const fdDataPlan = $btn.getAttribute('data-plan');
                             const health2go = $btn.getAttribute('data-health');
-                            const packageName = $btn.getAttribute('data-packageName');
+                            //const packageName = $btn.getAttribute('data-packageName');
 
                             $("#table-detail").setAttribute('data-package_plan', $btn.getAttribute('data-plan'));
                             if (fdPackage) {
@@ -652,10 +652,8 @@ document.addEventListener("DOMContentLoaded", async () => {
 
                                 gtag("event",  "add_to_cart",  {
                                     "currency": "THB",
-                                    "value": selectPrice,
                                     "items": [{
                                       "item_id": fdPackage,
-                                      "item_name": packageName,
                                       "price": selectPrice,
                                     }]
                                 });
@@ -759,7 +757,6 @@ document.addEventListener("DOMContentLoaded", async () => {
                                 "currency": "THB",
                                 "items": [{
                                   "item_id": data.fdPackage,
-                                  "item_name": packageName,
                                   "price": data.fdPayAMT,
                                 }]
                             });
