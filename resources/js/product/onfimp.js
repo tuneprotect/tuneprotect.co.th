@@ -213,57 +213,7 @@ const constraints = {
             allowEmpty: false,
             message: "^" + $('#loc_fdAddr_PostCode').getAttribute('data-error-postal_code')
         }
-    },
-    // ,
-    // fdAddress2_Home: {
-    //     presence: {
-    //         allowEmpty: false,
-    //         message: "^" + $('#fdAddress2_Home').getAttribute('data-error-home')
-    //     }
-    // }
-    // ,fdAddress2_Village: {
-    //     presence: {
-    //         allowEmpty: false,
-    //         message: "^" + $('#fdAddress2_Village').getAttribute('data-error-village')
-    //     }
-    // },
-    // fdAddress2_Alley: {
-    //     presence: {
-    //         allowEmpty: false,
-    //         message: "^" + $('#fdAddress2_Alley').getAttribute('data-error-alley')
-    //     }
-    // },
-    // fdAddress2_Road: {
-    //     presence: {
-    //         allowEmpty: false,
-    //         message: "^" + $('#fdAddress2_Road').getAttribute('data-error-road')
-    //     }
-    // },
-    // fdAddress2_District: {
-    //     presence: {
-    //         allowEmpty: false,
-    //         message: "^" + $('#fdAddress2_District').getAttribute('data-error-district')
-    //     }
-    // },
-    // fdAddress2_PostCode: {
-    //     presence: {
-    //         allowEmpty: false,
-    //         message: "^" + $('#fdAddress2_PostCode').getAttribute('data-error-postal_code')
-    //     }
-    // },
-    // fdAddress2_ctrl_province: {
-    //     presence: {
-    //         allowEmpty: false,
-    //         message: "^" + $('#fdAddress2_ctrl_province').getAttribute('data-error-province')
-    //     }
-    // }
-    // ,
-    // fdHBD: {
-    //     presence: {
-    //         allowEmpty: false,
-    //         message: "^" + $('#ctrl_day').getAttribute('data-error-format')
-    //     }
-    // }
+    }
 };
 
 const checkTaBirthDate = () => {
@@ -322,6 +272,42 @@ const getSelectedPricePackage = (packageCode, package_data) => {
     return package_data[packageCode].price;
 }
 
+const genItemList = (package_data) => {
+
+    let index = 0;
+    const itemList = [];
+
+    if (package_data) {
+        Object.keys(package_data)
+            .filter(k => _.startsWith(k, current_package))
+            .map(k => {
+                const pack = Object.keys(package_data[k].price).filter(subPackage => {
+                    const dateRange = (package_data[k].price[subPackage].day).split('-');    
+                });
+                const price = parseInt(package_data[k].price[pack]).toLocaleString();
+                const packageName = package_data[k].apiPackage;
+                const planCode = Object.keys(package_data)[index];
+
+                const itme = {
+                    item_id: "",
+                    item_name: "",
+                    price: "",
+                };
+
+                itme.item_id = planCode;
+                itme.item_name = packageName;
+                itme.price = price;
+
+                itemList.push(itme);
+                index++;
+            });
+    }
+    
+    gtag("event",  "view_item",  {
+        "currency": "THB",
+        "items": itemList
+    });
+}
 
 document.addEventListener("DOMContentLoaded", async () => {
     const package_data = await getPackageData(current_package);
@@ -601,6 +587,8 @@ document.addEventListener("DOMContentLoaded", async () => {
                             fdFromDate: $('#fdFromDate')?.value
                         }
                         let result1 = validate(data, step1Constraints);
+
+                        genItemList(package_data);
                         // removeError($('#step1'));
                         if (result1) {
                             showError($('#step1'), result1);
@@ -662,6 +650,18 @@ document.addEventListener("DOMContentLoaded", async () => {
                                 fdPackage
                             }
                             showTitleOnly('')
+
+                            const selectPrice = getSelectedPricePackage(data.fdPackage, package_data);
+
+                            gtag("event",  "add_to_cart",  {
+                                "currency": "THB",
+                                "value": selectPrice,
+                                "items": [{
+                                  "item_id": fdPackage,
+                                  "price": selectPrice,
+                                }]
+                            });
+
                             status = true;
                         } else {
                             Swal.fire({
@@ -744,7 +744,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                             fdMarketing_Consent: $('#ctrl_marketing').checked ? true : undefined
                         }
 
-                        console.log(data);
+                        //console.log(data);
                         //=========================================================================================================
                         //address insure
                         let address_insure = "";
@@ -855,7 +855,13 @@ document.addEventListener("DOMContentLoaded", async () => {
                             loc_fdAddr_Num: loc_fdAddr_Num
                         }
 
-                        // console.log(data);
+                        gtag("event",  "begin_checkout",  {
+                            "currency": "THB",
+                            "items": [{
+                              "item_id": data.fdPackage,
+                              "price": data.fdPayAMT,
+                            }]
+                        });
 
                         //=========================================================================================================
 

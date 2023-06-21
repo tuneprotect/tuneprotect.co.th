@@ -11,6 +11,7 @@ class IndexController extends BaseController
 {
     public function index()
     {
+        //return redirect()->away('/insurance');
         $this->template->setBody('id', 'index_page');
         $this->template->setFootJS(mix("/js/frontend/index.js"));
 

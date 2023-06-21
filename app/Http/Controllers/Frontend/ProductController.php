@@ -40,31 +40,17 @@ class ProductController extends BaseController
     protected $payment = 'CC,FULL';
     protected $ipp_interest_type = "";
     protected $use_effective = 'N';
-    public function index($link = null, $selected = null)
+    protected $product_agent_code = '';
+    public function index($link = null, $selected = null, $portal_key = null)
     {
-        //MA
-        //        if (in_array($selected, ['ONVSAFEA','ONVSAFE','ONVS22JAN'])) {
-        //            return redirect('https://www.tuneprotect.co.th/ma_vsafe.html');
-        //        }
-        //        if (in_array($selected, ['CVCARE'])) {
-        //            return redirect('https://www.tuneprotect.co.th/ma_lumacare.html');
-        //        }
+        $product_agent_code = $selected . '/' . $portal_key;
+        $apiResult = $this->sendToApiPortalLogin($portal_key);
+        if ($apiResult["status"]) {
+            $controller = 'portal';
+            return redirect()->route('current', ['locale' => $this->locale, 'controller' => $controller, 'func' => $link, 'params' => $product_agent_code]);
+        }
 
-        //        if (in_array($selected, ['ONCOVIDL'])) {
-        //            return redirect('https://www.tuneprotect.co.th/maintenance.html');
-        //        }
-        //        if (in_array($selected, ['CVISAFE','CVIS22JAN','ONCOVIDA'])) {
-        //            return redirect('https://www.tuneprotect.co.th/ma_isafe.html');
-        //        }
-        //        if (in_array($selected, ['ONVACINA','ONVSUREA'])) {
-        //            return redirect('https://www.tuneprotect.co.th/ma_vsure.html');
-        //        }
-
-        //
-        //        if (in_array($selected, ['ONTALN'])) {
-        //            return redirect('https://www.tuneprotect.co.th/maintenance.html');
-        //        }
-
+        //dd($apiResult);
 
         $this->bodyData['controller'] = $this->controller;
         $this->bodyData['use_effective'] = $this->use_effective;
@@ -125,13 +111,21 @@ class ProductController extends BaseController
         }
     }
 
-    public function form($link = null, $selected = null)
+    public function form($link = null, $selected = null, $portal_key = null)
     {
-        $this->bodyData['controller'] = $this->controller;
-
+        
         if (empty($link)) {
             return redirect("/" . $this->locale);
         }
+
+        //$product_agent_code = $selected . '/' . $portal_key;
+        $apiResult = $this->sendToApiPortalLogin($portal_key);
+        if ($apiResult["status"]) {
+            $this->controller = 'portal';
+            return redirect()->route('current', ["/{$this->locale}/portal/form/{$link}/{$selected}/{$portal_key}"]);
+        }
+
+        $this->bodyData['controller'] = $this->controller;
 
         if (in_array($selected, ['ONTALN','TAIPCRN', 'TAIPOCT22', 'TAIPOCT22AA', 'ONCOVIDL', 'ONTA', 'TGCVLP', 'TAISM', 'TAISMC', 'ONTAISMB2B', 'ONTGISM', 'TAISMTG']) && $this->locale === 'th') {
             return redirect()->route('current', ['locale' => 'en', 'controller' => $this->controller, 'func' => $link, 'params' => $selected]);
@@ -140,7 +134,7 @@ class ProductController extends BaseController
         $this->getProductDetail($link, $selected);
         if ($selected) {
 
-            $this->bodyData['overview_link'] = "/{$this->locale}/product/{$link}/{$selected}";
+            $this->bodyData['overview_link'] = "/{$this->locale}/{$this->controller}/{$link}/{$selected}/{$portal_key}";
 
             if ($selected === 'CI' || $selected === 'CIGC') {
                 $this->bodyData['faq'] = $this->setFaq(ProjectEnum::WEB_CONTENT_FAQ, @$this->bodyData['current_package']->id);
@@ -151,8 +145,23 @@ class ProductController extends BaseController
 
             return $this->genDetailPage($selected, false);
         } else {
-            return redirect("/" . $this->locale . '/product/' . $link);
+            return redirect("/" . $this->locale . "/". $this->controller. "/" . $link);
         }
+    }
+
+    protected function sendToApiPortalLogin($portal_key)
+    {
+        $client = new Client();
+        $response = $client->request('POST', config('tune-api.url') . 'loginPortal', [
+            'auth' => [config('tune-api.user'), config('tune-api.password')],
+            'headers' => [
+                'Content-Type' => 'application/json'
+            ],
+            'body' => json_encode([
+                'KeyValue' => $portal_key
+            ])
+        ]);
+        return json_decode($response->getBody()->getContents(), true);
     }
 
     protected function getProductDetail($link = null, $selected = null)
@@ -1101,7 +1110,7 @@ class ProductController extends BaseController
                 $this->thankYouParam = ProjectEnum::ONPACA_URL;
             } elseif (substr($package, 0, 6) === ProjectEnum::ONPAKD_URL) {
                 $this->thankYouParam = ProjectEnum::ONPAKD_URL;
-            }  elseif (substr($package, 0, 8) === ProjectEnum::ONPASN_URL) {
+            }  elseif (substr($package, 0, 6) === ProjectEnum::ONPASN_URL) {
                 $this->thankYouParam = ProjectEnum::ONPASN_URL;
             }
             //$this->thankYouParam = 'ONPA';

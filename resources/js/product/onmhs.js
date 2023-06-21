@@ -213,57 +213,7 @@ const constraints = {
             allowEmpty: false,
             message: "^" + $('#loc_fdAddr_PostCode').getAttribute('data-error-postal_code')
         }
-    },
-    // ,
-    // fdAddress2_Home: {
-    //     presence: {
-    //         allowEmpty: false,
-    //         message: "^" + $('#fdAddress2_Home').getAttribute('data-error-home')
-    //     }
-    // }
-    // ,fdAddress2_Village: {
-    //     presence: {
-    //         allowEmpty: false,
-    //         message: "^" + $('#fdAddress2_Village').getAttribute('data-error-village')
-    //     }
-    // },
-    // fdAddress2_Alley: {
-    //     presence: {
-    //         allowEmpty: false,
-    //         message: "^" + $('#fdAddress2_Alley').getAttribute('data-error-alley')
-    //     }
-    // },
-    // fdAddress2_Road: {
-    //     presence: {
-    //         allowEmpty: false,
-    //         message: "^" + $('#fdAddress2_Road').getAttribute('data-error-road')
-    //     }
-    // },
-    // fdAddress2_District: {
-    //     presence: {
-    //         allowEmpty: false,
-    //         message: "^" + $('#fdAddress2_District').getAttribute('data-error-district')
-    //     }
-    // },
-    // fdAddress2_PostCode: {
-    //     presence: {
-    //         allowEmpty: false,
-    //         message: "^" + $('#fdAddress2_PostCode').getAttribute('data-error-postal_code')
-    //     }
-    // },
-    // fdAddress2_ctrl_province: {
-    //     presence: {
-    //         allowEmpty: false,
-    //         message: "^" + $('#fdAddress2_ctrl_province').getAttribute('data-error-province')
-    //     }
-    // }
-    // ,
-    // fdHBD: {
-    //     presence: {
-    //         allowEmpty: false,
-    //         message: "^" + $('#ctrl_day').getAttribute('data-error-format')
-    //     }
-    // }
+    }
 };
 
 const checkTaBirthDate = () => {
@@ -322,6 +272,42 @@ const getSelectedPricePackage = (packageCode, package_data) => {
     return package_data[packageCode].price;
 }
 
+const genItemList = (package_data) => {
+
+    let index = 0;
+    const itemList = [];
+
+    if (package_data) {
+        Object.keys(package_data)
+            .filter(k => _.startsWith(k, current_package))
+            .map(k => {
+                const pack = Object.keys(package_data[k].price).filter(subPackage => {
+                    const dateRange = (package_data[k].price[subPackage].day).split('-');    
+                });
+                const price = parseInt(package_data[k].price[pack]).toLocaleString();
+                const packageName = package_data[k].apiPackage;
+                const planCode = Object.keys(package_data)[index];
+
+                const itme = {
+                    item_id: "",
+                    item_name: "",
+                    price: "",
+                };
+
+                itme.item_id = planCode;
+                itme.item_name = packageName;
+                itme.price = price;
+
+                itemList.push(itme);
+                index++;
+            });
+    }
+    
+    gtag("event",  "view_item",  {
+        "currency": "THB",
+        "items": itemList
+    });
+}
 
 document.addEventListener("DOMContentLoaded", async () => {
     const package_data = await getPackageData(current_package);
@@ -423,34 +409,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     let amount = sessionStorage.getItem("amount");
     let block_list = [];
 
-    /*
-    $$("select[name=ctrl_fire_building]").forEach($el => {
-        $el.addEventListener("change", function (e) { 
-            if(e.target.value !="ONMHS3"){
-                code= `FN${P}${G}${C}${T}${D}A${L}${R}1`;
-            }else{
-                code= `FN${P}${G}${C}${T}${D}AXX`;
-            }  
-            changeTextPremium(e.target.value);
-            //alert(e.target.value);
-            sumTotal(code);
-        });
-    });
-    /*
-    $$("select[name=ctrl_insurer_capital]").forEach($el => {
-        $el.addEventListener("change", function (e) {            
-            changeTextAmount(e.target.value);
-            apiMyHomeSmart(e.target.value);
-            //alert(e.target.value);
-        });
-    });
-*/
-
-
-
-
-
-
 
     const sumTotal = async (packageSelect) => {
         //alert(packageSelect)
@@ -481,22 +439,6 @@ document.addEventListener("DOMContentLoaded", async () => {
 
         $form.classList.remove('ajax_loader');
     }
-    //sessionStorage.setItem("itemCode",code);
-
-    /* dum-soken 20220914
-    const changeTextAmount = (packageSelect) => {
-        let select = $('#ctrl_insurer_capital');
-        let cover_amount = select.options[select.selectedIndex].value;
-        $("#fdAccording").value = parseInt(cover_amount*0.8);;
-        $("#fdContent").value = parseInt(cover_amount*0.2);;
-        
-    }
-    */
-
-
-
-
-
 
     let package_1year = "1";
     let package_3year = "1";
@@ -1006,22 +948,6 @@ document.addEventListener("DOMContentLoaded", async () => {
             document.getElementById("txtDeposit1").innerHTML = numberWithCommas(data_result_1y.LIABILITY_PERIL_PREM);
             document.getElementById("txtDeposit3").innerHTML = numberWithCommas(data_result_1y.LIABILITY_PERIL_PREM);
         }
-
-
-        /*
-                for (let i = 0; i < result.length; i++) 
-                {
-                    
-                    
-                   
-                      
-        
-                    if (result[i].TAGNAME.trim() == package_code_1y && result[i].FIRE == package_amount) {
-                        
-                    }
-                    
-                }
-                */
     }
     const setDataStep1 = async (packageSelect) => {
         let building = $('#ctrl_fire_building');
@@ -1486,7 +1412,8 @@ document.addEventListener("DOMContentLoaded", async () => {
                             fdFromDate: $('#fdFromDate')?.value
                         }
                         let result1 = validate(data, step1Constraints);
-                        // removeError($('#step1'));
+                        genItemList(package_data);
+
                         if (result1) {
                             showError($('#step1'), result1);
                             status = false;
@@ -1545,6 +1472,18 @@ document.addEventListener("DOMContentLoaded", async () => {
                                 fdPackage
                             }
                             showTitleOnly('')
+
+                            const selectPrice = p_packget == "ONMHS1" ? data_result_amount_1y.Total : data_result_amount_3y.Total;
+
+                            gtag("event",  "add_to_cart",  {
+                                "currency": "THB",
+                                "value": selectPrice,
+                                "items": [{
+                                  "item_id": fdPackage,
+                                  "price": selectPrice,
+                                }]
+                            });
+
                             status = true;
                         } else {
                             Swal.fire({
@@ -1858,7 +1797,14 @@ document.addEventListener("DOMContentLoaded", async () => {
                             fdMarketing_Consent: $('#ctrl_marketing').checked ? true : undefined
                         }
 
-                        console.log("data", data);
+                        gtag("event",  "begin_checkout",  {
+                            "currency": "THB",
+                            "items": [{
+                              "item_id": data.fdPackage,
+                              "price": data.fdPayAMT,
+                            }]
+                        });
+                        
                         //=========================================================================================================
                         //address insure
                         let address_insure = "";

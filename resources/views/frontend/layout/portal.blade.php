@@ -111,326 +111,316 @@
 
     </div>
     @elseif($locale == 'en')
-    @if(!empty($v->pic_en))
-    @if($selected==='ONVACINA' || $selected === 'ONVSUREA')
-    <picture>
-        <source media="(min-width:768px)" srcset="{{url(str_replace('Banner_Covid_D_EN', 'Banner_VSURE_D_EN', $v->pic_en))}}">
-        <img src="{{url(!empty($v->pic_mobile_en) ? url(str_replace('Banner_Covid_D_EN', 'Banner_VSURE_D_EN', $v->pic_mobile_en)) : url(str_replace('Banner_Covid_D_EN', 'Banner_VSURE_M_EN', $v->pic_en)) )}}" alt="{{$v->locales[$locale]->title}}">
-    </picture>
-    @elseif($selected==='TAISM')
-    <picture>
-        <source media="(min-width:768px)" srcset="{{url(str_replace('Banner_TA_D_EN', 'Banner_TAI_D', $v->pic_en))}}">
-        <img src="{{url(!empty($v->pic_mobile_en) ? url(str_replace('Banner_TA_D_EN', 'Banner_TAI_M', $v->pic_mobile_en)) : url(str_replace('Banner_TA_D_EN', 'Banner_TAI_M', $v->pic_en)) )}}" alt="{{$v->locales[$locale]->title}}">
-    </picture>
-    @elseif($selected==='TAISMC')
-    <picture>
-        <source media="(min-width:768px)" srcset="{{url(str_replace('Banner_TA_D_EN', 'Banner_TAI_D', $v->pic_en))}}">
-        <img src="{{url(!empty($v->pic_mobile_en) ? url(str_replace('Banner_TA_D_EN', 'Banner_TAI_M', $v->pic_mobile_en)) : url(str_replace('Banner_TA_D_EN', 'Banner_TAI_M', $v->pic_en)) )}}" alt="{{$v->locales[$locale]->title}}">
-    </picture>
-    @elseif($selected==='ONCSHC')
-        @if(isset($partner))
-            <!-- Rabbit -->
-            @if(($partner==='Rabbit' || $partner==='rabbit' || $partner==='RABBIT') && $agentCode==='00BD114L266')
-                <picture class="bbb">
-                    <source media="(min-width:768px)" srcset="https://www.tuneprotect.co.th/storage/Banner/chillsure/rabbit/Chillsure-Rabbit-Broker-PC-TH.webp">
-                    <img src="{{url(!empty($v->pic_mobile_en) ? "https://www.tuneprotect.co.th/storage/Banner/chillsure/rabbit/Chillsure-Rabbit-Broker-MB-TH.webp" : "https://www.tuneprotect.co.th/storage/Banner/chillsure/rabbit/Chillsure-Rabbit-Broker-MB-TH.webp" )}}" alt="{{$v->locales[$locale]->title}}">
-                </picture>
-                <script src="https://code.jquery.com/jquery-3.6.4.slim.js" integrity="sha256-dWvV84T6BhzO4vG6gWhsWVKVoa4lVmLnpBOZh/CAHU4=" crossorigin="anonymous"></script>
-                <script>
-                    $().ready(function() {
-                        $("#brochure_rabbit_en").attr("href", "https://www.tuneprotect.co.th/storage/product/brochure/ChillSure/Tune-Brochure-En_Rabbit Care.pdf");
-                    });
-                </script>
-            <!-- BoltTech -->
-            @elseif($agentCode==='00BD073L130')
-                <picture>
-                    <source media="(min-width:768px)" srcset="https://www.tuneprotect.co.th/storage/Banner/chillsure/bolttec/Chillsure-Bolttech-Broker-PC-TH.webp">
-                    <img src="{{url(!empty($v->pic_mobile_en) ? "https://www.tuneprotect.co.th/storage/Banner/chillsure/bolttec/Chillsure-Bolttech-Broker-MB-TH.webp" : "https://www.tuneprotect.co.th/storage/Banner/chillsure/bolttec/Chillsure-Bolttech-Broker-MB-TH.webp" )}}" alt="{{$v->locales[$locale]->title}}">
-                </picture>
-            <!-- Luma -->
-            @elseif($agentCode==='00BD056L107')
-                <picture>
-                    <source media="(min-width:768px)" srcset="https://www.tuneprotect.co.th/storage/Banner/chillsure/luma/Chillsure-Luma-Broker-PC-TH.webp">
-                    <img src="{{url(!empty($v->pic_mobile_en) ? "https://www.tuneprotect.co.th/storage/Banner/chillsure/luma/Chillsure-Luma-Broker-MB-TH.webp" : "https://www.tuneprotect.co.th/storage/Banner/chillsure/luma/Chillsure-Luma-Broker-MB-TH.webp" )}}" alt="{{$v->locales[$locale]->title}}">
-                </picture>
-            <!-- Hugs -->
-            @elseif($agentCode==='00BD115L272')
-                <picture>
-                    <source media="(min-width:768px)" srcset="https://www.tuneprotect.co.th/storage/Banner/chillsure/hugs/Chillsure-Hugs-Broker-PC-TH.webp">
-                    <img src="{{url(!empty($v->pic_mobile_en) ? "https://www.tuneprotect.co.th/storage/Banner/chillsure/hugs/Chillsure-Hugs-Broker-MB-TH.webp" : "https://www.tuneprotect.co.th/storage/Banner/chillsure/hugs/Chillsure-Hugs-Broker-MB-TH.webp" )}}" alt="{{$v->locales[$locale]->title}}">
-                </picture>
+        @if(!empty($v->pic_en))
+            @if($selected==='ONVACINA' || $selected === 'ONVSUREA')
+            <picture>
+                <source media="(min-width:768px)" srcset="{{url(str_replace('Banner_Covid_D_EN', 'Banner_VSURE_D_EN', $v->pic_en))}}">
+                <img src="{{url(!empty($v->pic_mobile_en) ? url(str_replace('Banner_Covid_D_EN', 'Banner_VSURE_D_EN', $v->pic_mobile_en)) : url(str_replace('Banner_Covid_D_EN', 'Banner_VSURE_M_EN', $v->pic_en)) )}}" alt="{{$v->locales[$locale]->title}}">
+            </picture>
+            @elseif($selected==='TAISM')
+            <picture>
+                <source media="(min-width:768px)" srcset="{{url(str_replace('Banner_TA_D_EN', 'Banner_TAI_D', $v->pic_en))}}">
+                <img src="{{url(!empty($v->pic_mobile_en) ? url(str_replace('Banner_TA_D_EN', 'Banner_TAI_M', $v->pic_mobile_en)) : url(str_replace('Banner_TA_D_EN', 'Banner_TAI_M', $v->pic_en)) )}}" alt="{{$v->locales[$locale]->title}}">
+            </picture>
+            @elseif($selected==='TAISMC')
+            <picture>
+                <source media="(min-width:768px)" srcset="{{url(str_replace('Banner_TA_D_EN', 'Banner_TAI_D', $v->pic_en))}}">
+                <img src="{{url(!empty($v->pic_mobile_en) ? url(str_replace('Banner_TA_D_EN', 'Banner_TAI_M', $v->pic_mobile_en)) : url(str_replace('Banner_TA_D_EN', 'Banner_TAI_M', $v->pic_en)) )}}" alt="{{$v->locales[$locale]->title}}">
+            </picture>
+            @elseif($selected==='ONCSHC')
+                @if(isset($partner))
+                    <!-- Rabbit -->
+                    @if(($partner==='Rabbit' || $partner==='rabbit' || $partner==='RABBIT') && $agentCode==='00BD114L266')
+                        <picture class="bbb">
+                            <source media="(min-width:768px)" srcset="https://www.tuneprotect.co.th/storage/Banner/chillsure/rabbit/Chillsure-Rabbit-Broker-PC-TH.webp">
+                            <img src="{{url(!empty($v->pic_mobile_en) ? "https://www.tuneprotect.co.th/storage/Banner/chillsure/rabbit/Chillsure-Rabbit-Broker-MB-TH.webp" : "https://www.tuneprotect.co.th/storage/Banner/chillsure/rabbit/Chillsure-Rabbit-Broker-MB-TH.webp" )}}" alt="{{$v->locales[$locale]->title}}">
+                        </picture>
+                        <script src="https://code.jquery.com/jquery-3.6.4.slim.js" integrity="sha256-dWvV84T6BhzO4vG6gWhsWVKVoa4lVmLnpBOZh/CAHU4=" crossorigin="anonymous"></script>
+                        <script>
+                            $().ready(function() {
+                                $("#brochure_rabbit_en").attr("href", "https://www.tuneprotect.co.th/storage/product/brochure/ChillSure/Tune-Brochure-En_Rabbit Care.pdf");
+                            });
+                        </script>
+                    <!-- BoltTech -->
+                    @elseif($agentCode==='00BD073L130')
+                        <picture>
+                            <source media="(min-width:768px)" srcset="https://www.tuneprotect.co.th/storage/Banner/chillsure/bolttec/Chillsure-Bolttech-Broker-PC-TH.webp">
+                            <img src="{{url(!empty($v->pic_mobile_en) ? "https://www.tuneprotect.co.th/storage/Banner/chillsure/bolttec/Chillsure-Bolttech-Broker-MB-TH.webp" : "https://www.tuneprotect.co.th/storage/Banner/chillsure/bolttec/Chillsure-Bolttech-Broker-MB-TH.webp" )}}" alt="{{$v->locales[$locale]->title}}">
+                        </picture>
+                    <!-- Luma -->
+                    @elseif($agentCode==='00BD056L107')
+                        <picture>
+                            <source media="(min-width:768px)" srcset="https://www.tuneprotect.co.th/storage/Banner/chillsure/luma/Chillsure-Luma-Broker-PC-TH.webp">
+                            <img src="{{url(!empty($v->pic_mobile_en) ? "https://www.tuneprotect.co.th/storage/Banner/chillsure/luma/Chillsure-Luma-Broker-MB-TH.webp" : "https://www.tuneprotect.co.th/storage/Banner/chillsure/luma/Chillsure-Luma-Broker-MB-TH.webp" )}}" alt="{{$v->locales[$locale]->title}}">
+                        </picture>
+                    <!-- Hugs -->
+                    @elseif($agentCode==='00BD115L272')
+                        <picture>
+                            <source media="(min-width:768px)" srcset="https://www.tuneprotect.co.th/storage/Banner/chillsure/hugs/Chillsure-Hugs-Broker-PC-TH.webp">
+                            <img src="{{url(!empty($v->pic_mobile_en) ? "https://www.tuneprotect.co.th/storage/Banner/chillsure/hugs/Chillsure-Hugs-Broker-MB-TH.webp" : "https://www.tuneprotect.co.th/storage/Banner/chillsure/hugs/Chillsure-Hugs-Broker-MB-TH.webp" )}}" alt="{{$v->locales[$locale]->title}}">
+                        </picture>
+                    @else
+                        <picture>
+                            <source media="(min-width:768px)" srcset="https://www.tuneprotect.co.th/storage/Banner/chillsure/Tune-Chillsure02.webp">
+                            <img src="{{url(!empty($v->pic_mobile_en) ? "https://www.tuneprotect.co.th/storage/Banner/chillsure/Tune-Chillsure04.webp" : "https://www.tuneprotect.co.th/storage/Banner/chillsure/Tune-Chillsure04.webp" )}}" alt="{{$v->locales[$locale]->title}}">
+                        </picture>
+
+                    @endif
+                @endif
+
+            @elseif($selected==='ONCSHCAA')
+            <picture>
+                <source media="(min-width:768px)" srcset="https://www.tuneprotect.co.th/storage/Banner/chillsure/banner-chillsure-airasia-desktop-en.webp">
+                <img src="{{url(!empty($v->pic_mobile_en) ? "https://www.tuneprotect.co.th/storage/Banner/chillsure/banner-chillsure-airasia-desktop-en.webp" : "https://www.tuneprotect.co.th/storage/Banner/chillsure/banner-chillsure-airasia-mobile-en.webp" )}}" alt="{{$v->locales[$locale]->title}}">
+            </picture>
+
+            @elseif($selected==='ONCSHCSC')
+            <picture>
+                <source media="(min-width:768px)" srcset="https://www.tuneprotect.co.th/storage/Banner/chillsure/susco/Tune-Chillsure-EN-NonDirect.webp">
+                <img src="{{url(!empty($v->pic_mobile_en) ? "https://www.tuneprotect.co.th/storage/Banner/chillsure/susco/Tune-Chillsure-EN-NonDirect.webp" : "https://www.tuneprotect.co.th/storage/Banner/chillsure/susco/Tune-Chillsure-EN-NonDirect.webp" )}}" alt="{{$v->locales[$locale]->title}}">
+            </picture>
+
+            @elseif($selected==='ONCSHCGV')
+            <picture>
+                <source media="(min-width:768px)" srcset="https://www.tuneprotect.co.th/storage/Banner/chillsure/GiftVoucher/Banner_Website_ChillSure_GiftVoucher_EN.webp">
+                <img src="{{url(!empty($v->pic_mobile_en) ? "https://www.tuneprotect.co.th/storage/Banner/chillsure/GiftVoucher/Banner_Website_ChillSure_GiftVoucher_EN.webp" : "https://www.tuneprotect.co.th/storage/Banner/chillsure/GiftVoucher/Banner_Website_ChillSure_GiftVoucher_EN.webp" )}}" alt="{{$v->locales[$locale]->title}}">
+            </picture>
+
+            @elseif($selected==='ONTADM')
+            <picture>
+                <source media="(min-width:768px)" srcset="/storage/Banner/Banner_TA_D_EN.jpg">
+                <img src="{{url(!empty($v->pic_mobile_en) ? "/storage/Banner/Banner_TA_D_EN.jpg" : "/storage/Banner/Banner_TA_M_EN.jpg" )}}" alt="{{$v->locales[$locale]->title}}">
+            </picture>
+            @elseif($selected==='ONCOVIDMW')
+            <picture>
+                <source media="(min-width:768px)" srcset="{{url(str_replace('Banner_iPass_COVID', 'Migrant-Banner-En01', $v->pic_en))}}">
+                <img src="{{url(!empty($v->pic_mobile_en) ? url(str_replace('Banner_iPass_COVID', 'Migrant-Banner-En01', $v->pic_mobile_en)) : url(str_replace('Banner_iPass_COVID', 'Migrant-Banner-En02', $v->pic_en)) )}}" alt="{{$v->locales[$locale]->title}}">
+            </picture>
+            @elseif($selected==='ONVSAFEA')
+            <picture>
+                <source media="(min-width:768px)" srcset="{{url(str_replace('Banner_Covid_D_EN', 'Banner_VSafe_D_EN2', $v->pic_en))}}">
+                <img src="{{url(!empty($v->pic_mobile_en) ? url(str_replace('Banner_Covid_D_EN', 'Banner_VSafe_D_EN2', $v->pic_mobile_en)) : url(str_replace('Banner_Covid_D_EN', 'Banner_VSafe_M_EN2', $v->pic_en)) )}}" alt="{{$v->locales[$locale]->title}}">
+            </picture>
+            @elseif($selected==='ONB2BTA')
+            <picture>
+                <source media="(min-width:768px)" srcset="{{url(str_replace('Banner_TA_D_EN', 'b2b/iTravel_PC_EN', $v->pic_en))}}">
+                <img src="{{url(!empty($v->pic_mobile_en) ? url(str_replace('Banner_TA_D_EN', 'b2b/iTravel_MB_EN', $v->pic_mobile_en)) : url(str_replace('Banner_TA_D_EN', 'b2b/iTravel_MB_EN', $v->pic_en)) )}}" alt="{{$v->locales[$locale]->title}}">
+            </picture>
+            @elseif($selected==='ONPACA' || $selected==='ONPAKD' || $selected==='ONPASN')
+            <picture>
+                <source media="(min-width:768px)" srcset="/storage/Banner/Banner-PAChoice-Ena.jpg">
+                <img src="{{url(!empty($v->pic_mobile_en) ? "/storage/Banner/Banner-PAChoice-Ena.jpg" : "/storage/Banner/Banner-PAChoice-Ena.jpg" )}}" alt="{{$v->locales[$locale]->title}}">
+            </picture>
+            @elseif($selected==='ONB2BTAD')
+            <picture>
+                <source media="(min-width:768px)" srcset="/storage/Banner/b2b/TADomestic_PC_EN.jpg">
+                <img src="{{url(!empty($v->pic_mobile_en) ? "/storage/Banner/b2b/TADomestic_PC_EN.jpg" : "/storage/Banner/b2b/TADomestic_MB_EN.jpg" )}}" alt="{{$v->locales[$locale]->title}}">
+            </picture>
+            @elseif($selected==='ONTAISMB2B')
+            <picture>
+                <source media="(min-width:768px)" srcset="/storage/Banner/b2b/iSmile-Banner01.jpg">
+                <img src="{{url(!empty($v->pic_mobile_en) ? "/storage/Banner/b2b/iSmile-Banner01.jpg" : "/storage/Banner/b2b/iSmile-Banner02.jpg" )}}" alt="{{$v->locales[$locale]->title}}">
+            </picture>
+            @elseif(isset($partner))
+                @if(($partner==='LUMA' || $partner==='Luma') && ($selected==='ONTALN' || $selected==='TAIPOCT22' || $selected==='TAIPOCT22AA'))
+                    <picture class="bbb">
+                        <source media="(min-width:768px)" srcset="/storage/Banner/Banner_Luma_D.jpg">
+                        <img src="{{url(!empty($v->pic_mobile_en) ? "/storage/Banner/Banner_Luma_D.jpg" : "/storage/Banner/Banner_Luma_M.jpg" )}}" alt="{{$v->locales[$locale]->title}}">
+                    </picture>
+                    @elseif($agentCode==='00DM004D00' && $selected==='TAIPOCT22')
+                    <picture class="aa">
+                        <source media="(min-width:768px)" srcset="https://www.tuneprotect.co.th/storage/Banner/Tune%20iPass/dtacbanner.jpg">
+                        <img src="{{url(!empty($v->pic_mobile_en) ? "https://www.tuneprotect.co.th/storage/Banner/Tune%20iPass/dtacbanner.jpg" : "https://www.tuneprotect.co.th/storage/Banner/Tune%20iPass/dtacbanner.jpg" )}}" alt="{{$v->locales[$locale]->title}}">
+                    </picture>
+                    @elseif($selected==='TAIPOCT22')
+                    <picture class="ccc">
+                        <source media="(min-width:768px)" srcset="/storage/Banner/Tune_iPass_Desktop.jpg">
+                        <img src="{{url(!empty($v->pic_mobile_en) ? "/storage/Banner/Tune_iPass_Desktop.jpg" : "/storage/Banner/Tune_iPass_Mobile.jpg" )}}" alt="{{$v->locales[$locale]->title}}">
+                    </picture>
+                    @elseif($selected==='TAIPOCT22AA')
+                    <picture>
+                        <source media="(min-width:768px)" srcset="https://www.tuneprotect.co.th/storage/Banner/airasia/Banner-ipass02.webp">
+                        <img src="{{url(!empty($v->pic_mobile_en) ? "https://www.tuneprotect.co.th/storage/Banner/airasia/Banner-ipass01.webp" : "https://www.tuneprotect.co.th/storage/Banner/airasia/Banner-ipass01.webp" )}}" alt="{{$v->locales[$locale]->title}}">
+                    </picture>
+                    @elseif($partner==='rabbit' && $selected==='ONTAOB')
+                    <picture>
+                        <source media="(min-width:768px)" srcset="/storage/Banner/Banner_TA_Rabbit_D_EN.jpg">
+                        <img src="{{url(!empty($v->pic_mobile_en) ? "/storage/Banner/Banner_TA_Rabbit_D_EN.jpg" : "/storage/Banner/Banner_TA_Rabbit_MB_EN.jpg" )}}" alt="{{$v->locales[$locale]->title}}">
+                    </picture>
+                    @elseif($selected==='ONTATO')
+                    <picture>
+                        <source media="(min-width:768px)" srcset="https://www.tuneprotect.co.th/storage/Banner/iTravel/iTravelTour/Banner-iTravel-Tour-PC-TH.webp">
+                        <img src="{{url(!empty($v->pic_mobile) ? "https://www.tuneprotect.co.th/storage/Banner/iTravel/iTravelTour/Banner-iTravel-Tour-PC-TH.webp" : "https://www.tuneprotect.co.th/storage/Banner/iTravel/iTravelTour/Banner-iTravel-Tour-PC-TH.webp" )}}" )}}" alt="{{$v->locales[$locale]->title}}">
+                    </picture>
+                    @elseif($selected==='ONTALN')
+                    <picture>
+                        <source media="(min-width:768px)" srcset="{{url(str_replace('Banner_TA_D_EN', 'Banner_Tune_iPass', $v->pic_en))}}">
+                        <img src="{{url(!empty($v->pic_mobile_en) ? url(str_replace('Banner_TA_D_EN', 'Banner_Tune_iPass', $v->pic_mobile_en)) : url(str_replace('Banner_TA_D_EN', 'Banner_Tune_iPass', $v->pic_en)) )}}" alt="{{$v->locales[$locale]->title}}">
+                    </picture>
+                    @elseif($selected==='CVCARE')
+                    <picture>
+                        <source media="(min-width:768px)" srcset="/storage/Banner/Banner_LumaCare_D.jpg">
+                        <img src="{{url(!empty($v->pic_mobile_en) ? "/storage/Banner/Banner_LumaCare_D.jpg" : "/storage/Banner/Banner_LumaCare_M.jpg" )}}" alt="{{$v->locales[$locale]->title}}">
+                    </picture>
+                    @elseif($selected==='TGCVLP')
+                    <picture>
+                        <source media="(min-width:768px)" srcset="/storage/Banner/Banner_TG_D.jpg">
+                        <img src="{{url(!empty($v->pic_mobile_en) ? "/storage/Banner/Banner_TG_D.jpg" : "/storage/Banner/Banner_TG_M.jpg" )}}" alt="{{$v->locales[$locale]->title}}">
+                    </picture>
+                    @elseif($selected==='TAISMTG')
+                    <picture id="taismtg-main">
+                        <source media="(min-width:768px)" srcset="/storage/Banner/Banner_TG_D.jpg">
+                        <img src="{{url(!empty($v->pic_mobile_en) ? "/storage/Banner/Banner_TG_D.jpg" : "/storage/Banner/Banner_TG_M.jpg" )}}" alt="{{$v->locales[$locale]->title}}">
+                    </picture>
+                    <picture id="taismtg-page">
+                        <source media="(min-width:768px)" srcset="/storage/Banner/Banner_TAI_D.jpg">
+                        <img src="{{url(!empty($v->pic_mobile_en) ? "/storage/Banner/Banner_TAI_D.jpg" : "/storage/Banner/Banner_TAI_M.jpg" )}}" alt="{{$v->locales[$locale]->title}}">
+                    </picture>
+                    @elseif($selected==='ONTGISM')
+                    <picture>
+                        <source media="(min-width:768px)" srcset="/storage/Banner/Banner_TG_D.jpg">
+                        <img src="{{url(!empty($v->pic_mobile_en) ? "/storage/Banner/Banner_TG_D.jpg" : "/storage/Banner/Banner_TG_M.jpg" )}}" alt="{{$v->locales[$locale]->title}}">
+                    </picture>
+                    @else
+                    <picture>
+                        <source media="(min-width:768px)" srcset="{{url($v->pic_en)}}">
+                        <img src="{{url(!empty($v->pic_mobile_en) ? $v->pic_mobile_en : $v->pic_en )}}" alt="{{$v->locales[$locale]->title}}">
+                    </picture>
+                @endif
             @else
                 <picture>
-                    <source media="(min-width:768px)" srcset="https://www.tuneprotect.co.th/storage/Banner/chillsure/Tune-Chillsure02.webp">
-                    <img src="{{url(!empty($v->pic_mobile_en) ? "https://www.tuneprotect.co.th/storage/Banner/chillsure/Tune-Chillsure04.webp" : "https://www.tuneprotect.co.th/storage/Banner/chillsure/Tune-Chillsure04.webp" )}}" alt="{{$v->locales[$locale]->title}}">
+                    <source media="(min-width:768px)" srcset="{{url($v->pic_en)}}">
+                    <img src="{{url(!empty($v->pic_mobile_en) ? $v->pic_mobile_en : $v->pic_en )}}" alt="{{$v->locales[$locale]->title}}">
                 </picture>
-
             @endif
         @endif
-
-    @elseif($selected==='ONCSHCAA')
-    <picture>
-        <source media="(min-width:768px)" srcset="https://www.tuneprotect.co.th/storage/Banner/chillsure/banner-chillsure-airasia-desktop-en.webp">
-        <img src="{{url(!empty($v->pic_mobile_en) ? "https://www.tuneprotect.co.th/storage/Banner/chillsure/banner-chillsure-airasia-desktop-en.webp" : "https://www.tuneprotect.co.th/storage/Banner/chillsure/banner-chillsure-airasia-mobile-en.webp" )}}" alt="{{$v->locales[$locale]->title}}">
-    </picture>
-
-    @elseif($selected==='ONCSHCSC')
-    <picture>
-        <source media="(min-width:768px)" srcset="https://www.tuneprotect.co.th/storage/Banner/chillsure/susco/Tune-Chillsure-EN-NonDirect.webp">
-        <img src="{{url(!empty($v->pic_mobile_en) ? "https://www.tuneprotect.co.th/storage/Banner/chillsure/susco/Tune-Chillsure-EN-NonDirect.webp" : "https://www.tuneprotect.co.th/storage/Banner/chillsure/susco/Tune-Chillsure-EN-NonDirect.webp" )}}" alt="{{$v->locales[$locale]->title}}">
-    </picture>
-
-    @elseif($selected==='ONCSHCGV')
-    <picture>
-        <source media="(min-width:768px)" srcset="https://www.tuneprotect.co.th/storage/Banner/chillsure/GiftVoucher/Banner_Website_ChillSure_GiftVoucher_EN.webp">
-        <img src="{{url(!empty($v->pic_mobile_en) ? "https://www.tuneprotect.co.th/storage/Banner/chillsure/GiftVoucher/Banner_Website_ChillSure_GiftVoucher_EN.webp" : "https://www.tuneprotect.co.th/storage/Banner/chillsure/GiftVoucher/Banner_Website_ChillSure_GiftVoucher_EN.webp" )}}" alt="{{$v->locales[$locale]->title}}">
-    </picture>
-
-    @elseif($selected==='ONTADM')
-    <picture>
-        <source media="(min-width:768px)" srcset="/storage/Banner/Banner_TA_D_EN.jpg">
-        <img src="{{url(!empty($v->pic_mobile_en) ? "/storage/Banner/Banner_TA_D_EN.jpg" : "/storage/Banner/Banner_TA_M_EN.jpg" )}}" alt="{{$v->locales[$locale]->title}}">
-    </picture>
-    @elseif($selected==='ONCOVIDMW')
-    <picture>
-        <source media="(min-width:768px)" srcset="{{url(str_replace('Banner_iPass_COVID', 'Migrant-Banner-En01', $v->pic_en))}}">
-        <img src="{{url(!empty($v->pic_mobile_en) ? url(str_replace('Banner_iPass_COVID', 'Migrant-Banner-En01', $v->pic_mobile_en)) : url(str_replace('Banner_iPass_COVID', 'Migrant-Banner-En02', $v->pic_en)) )}}" alt="{{$v->locales[$locale]->title}}">
-    </picture>
-    @elseif($selected==='ONVSAFEA')
-    <picture>
-        <source media="(min-width:768px)" srcset="{{url(str_replace('Banner_Covid_D_EN', 'Banner_VSafe_D_EN2', $v->pic_en))}}">
-        <img src="{{url(!empty($v->pic_mobile_en) ? url(str_replace('Banner_Covid_D_EN', 'Banner_VSafe_D_EN2', $v->pic_mobile_en)) : url(str_replace('Banner_Covid_D_EN', 'Banner_VSafe_M_EN2', $v->pic_en)) )}}" alt="{{$v->locales[$locale]->title}}">
-    </picture>
-    @elseif($selected==='ONB2BTA')
-    <picture>
-        <source media="(min-width:768px)" srcset="{{url(str_replace('Banner_TA_D_EN', 'b2b/iTravel_PC_EN', $v->pic_en))}}">
-        <img src="{{url(!empty($v->pic_mobile_en) ? url(str_replace('Banner_TA_D_EN', 'b2b/iTravel_MB_EN', $v->pic_mobile_en)) : url(str_replace('Banner_TA_D_EN', 'b2b/iTravel_MB_EN', $v->pic_en)) )}}" alt="{{$v->locales[$locale]->title}}">
-    </picture>
-    @elseif($selected==='ONPACA' || $selected==='ONPAKD' || $selected==='ONPASN')
-    <picture>
-        <source media="(min-width:768px)" srcset="/storage/Banner/Banner-PAChoice-Ena.jpg">
-        <img src="{{url(!empty($v->pic_mobile_en) ? "/storage/Banner/Banner-PAChoice-Ena.jpg" : "/storage/Banner/Banner-PAChoice-Ena.jpg" )}}" alt="{{$v->locales[$locale]->title}}">
-    </picture>
-
-
-    @elseif($selected==='ONB2BTAD')
-    <picture>
-        <source media="(min-width:768px)" srcset="/storage/Banner/b2b/TADomestic_PC_EN.jpg">
-        <img src="{{url(!empty($v->pic_mobile_en) ? "/storage/Banner/b2b/TADomestic_PC_EN.jpg" : "/storage/Banner/b2b/TADomestic_MB_EN.jpg" )}}" alt="{{$v->locales[$locale]->title}}">
-    </picture>
-    @elseif($selected==='ONTAISMB2B')
-    <picture>
-        <source media="(min-width:768px)" srcset="/storage/Banner/b2b/iSmile-Banner01.jpg">
-        <img src="{{url(!empty($v->pic_mobile_en) ? "/storage/Banner/b2b/iSmile-Banner01.jpg" : "/storage/Banner/b2b/iSmile-Banner02.jpg" )}}" alt="{{$v->locales[$locale]->title}}">
-    </picture>
-
-    @elseif(isset($partner))
-    @if(($partner==='LUMA' || $partner==='Luma') && ($selected==='ONTALN' || $selected==='TAIPOCT22' || $selected==='TAIPOCT22AA'))
-    <picture class="bbb">
-        <source media="(min-width:768px)" srcset="/storage/Banner/Banner_Luma_D.jpg">
-        <img src="{{url(!empty($v->pic_mobile_en) ? "/storage/Banner/Banner_Luma_D.jpg" : "/storage/Banner/Banner_Luma_M.jpg" )}}" alt="{{$v->locales[$locale]->title}}">
-    </picture>
-    @elseif($agentCode==='00DM004D00' && $selected==='TAIPOCT22')
-    <picture class="aa">
-        <source media="(min-width:768px)" srcset="https://www.tuneprotect.co.th/storage/Banner/Tune%20iPass/dtacbanner.jpg">
-        <img src="{{url(!empty($v->pic_mobile_en) ? "https://www.tuneprotect.co.th/storage/Banner/Tune%20iPass/dtacbanner.jpg" : "https://www.tuneprotect.co.th/storage/Banner/Tune%20iPass/dtacbanner.jpg" )}}" alt="{{$v->locales[$locale]->title}}">
-    </picture>
-    @elseif($selected==='TAIPOCT22')
-    <picture class="ccc">
-        <source media="(min-width:768px)" srcset="/storage/Banner/Tune_iPass_Desktop.jpg">
-        <img src="{{url(!empty($v->pic_mobile_en) ? "/storage/Banner/Tune_iPass_Desktop.jpg" : "/storage/Banner/Tune_iPass_Mobile.jpg" )}}" alt="{{$v->locales[$locale]->title}}">
-    </picture>
-    @elseif($selected==='TAIPOCT22AA')
-    <picture>
-        <source media="(min-width:768px)" srcset="https://www.tuneprotect.co.th/storage/Banner/airasia/Banner-ipass02.webp">
-        <img src="{{url(!empty($v->pic_mobile_en) ? "https://www.tuneprotect.co.th/storage/Banner/airasia/Banner-ipass01.webp" : "https://www.tuneprotect.co.th/storage/Banner/airasia/Banner-ipass01.webp" )}}" alt="{{$v->locales[$locale]->title}}">
-    </picture>
-    @elseif($partner==='rabbit' && $selected==='ONTAOB')
-    <picture>
-        <source media="(min-width:768px)" srcset="/storage/Banner/Banner_TA_Rabbit_D_EN.jpg">
-        <img src="{{url(!empty($v->pic_mobile_en) ? "/storage/Banner/Banner_TA_Rabbit_D_EN.jpg" : "/storage/Banner/Banner_TA_Rabbit_MB_EN.jpg" )}}" alt="{{$v->locales[$locale]->title}}">
-    </picture>
-    @elseif($selected==='ONTATO')
-    <picture>
-        <source media="(min-width:768px)" srcset="https://www.tuneprotect.co.th/storage/Banner/iTravel/iTravelTour/Banner-iTravel-Tour-PC-TH.webp">
-        <img src="{{url(!empty($v->pic_mobile) ? "https://www.tuneprotect.co.th/storage/Banner/iTravel/iTravelTour/Banner-iTravel-Tour-PC-TH.webp" : "https://www.tuneprotect.co.th/storage/Banner/iTravel/iTravelTour/Banner-iTravel-Tour-PC-TH.webp" )}}" )}}" alt="{{$v->locales[$locale]->title}}">
-    </picture>
-    @elseif($selected==='ONTALN')
-    <picture>
-        <source media="(min-width:768px)" srcset="{{url(str_replace('Banner_TA_D_EN', 'Banner_Tune_iPass', $v->pic_en))}}">
-        <img src="{{url(!empty($v->pic_mobile_en) ? url(str_replace('Banner_TA_D_EN', 'Banner_Tune_iPass', $v->pic_mobile_en)) : url(str_replace('Banner_TA_D_EN', 'Banner_Tune_iPass', $v->pic_en)) )}}" alt="{{$v->locales[$locale]->title}}">
-    </picture>
     @else
-    <picture>
-        <source media="(min-width:768px)" srcset="{{url($v->pic_en)}}">
-        <img src="{{url(!empty($v->pic_mobile_en) ? $v->pic_mobile_en : $v->pic_en )}}" alt="{{$v->locales[$locale]->title}}">
-    </picture>
-    @endif
+        @if(!empty($v->pic))
+            @if($selected==='ONVACINA' || $selected === 'ONVSUREA')
+            <picture>
+                <source media="(min-width:768px)" srcset="{{url(str_replace('Banner_Covid_D', 'Banner_VSure_Protect_D', $v->pic))}}">
+                <img src="{{url(!empty($v->pic_mobile) ? url(str_replace('Banner_Covid_D', 'Banner_VSure_Protect_D', $v->pic_mobile)) : url(str_replace('Banner_Covid_D', 'Banner_VSure_Protect_M', $v->pic)) )}}" alt="{{$v->locales[$locale]->title}}">
+            </picture>
+            @elseif($selected==='ONTADM')
+            <picture>
+                <source media="(min-width:768px)" srcset="/storage/Banner/Banner_TA_D.jpg">
+                <img src="{{url(!empty($v->pic_mobile_en) ? "/storage/Banner/Banner_TA_D.jpg" : "/storage/Banner/Banner_TA_M.jpg" )}}" alt="{{$v->locales[$locale]->title}}">
+            </picture>
+            @elseif($selected==='ONCOVIDMW')
+            <picture>
+                <source media="(min-width:768px)" srcset="{{url(str_replace('Banner_iPass_COVID', 'Migrant-Banner-Th01', $v->pic_en))}}">
+                <img src="{{url(!empty($v->pic_mobile_en) ? url(str_replace('Banner_iPass_COVID', 'Migrant-Banner-Th01', $v->pic_mobile_en)) : url(str_replace('Banner_iPass_COVID', 'Migrant-Banner-Th02', $v->pic_en)) )}}" alt="{{$v->locales[$locale]->title}}">
+            </picture>
+            @elseif($selected==='ONVSAFEA')
+            <picture>
+                <source media="(min-width:768px)" srcset="{{url(str_replace('Banner_Covid_D', 'Banner_VSafe_D2', $v->pic))}}">
+                <img src="{{url(!empty($v->pic_mobile) ? url(str_replace('Banner_Covid_D', 'Banner_VSafe_D2', $v->pic_mobile)) : url(str_replace('Banner_Covid_D', 'Banner_VSafe_M2', $v->pic)) )}}" alt="{{$v->locales[$locale]->title}}">
+            </picture>
+            @elseif($selected==='CVCARE')
+            <picture>
+                <source media="(min-width:768px)" srcset="/storage/Banner/Banner_LumaCare_D.jpg">
+                <img src="{{url(!empty($v->pic_mobile_en) ? "/storage/Banner/Banner_LumaCare_D.jpg" : "/storage/Banner/Banner_LumaCare_M.jpg" )}}" alt="{{$v->locales[$locale]->title}}">
+            </picture>
+            @elseif($selected==='ONCSHC')
+                @if(isset($partner))
+                    <!-- Rabbit -->
+                    @if(($partner==='Rabbit' || $partner==='rabbit' || $partner==='RABBIT') && $agentCode==='00BD114L266')
+                        <picture class="bbb">
+                            <source media="(min-width:768px)" srcset="https://www.tuneprotect.co.th/storage/Banner/chillsure/rabbit/Chillsure-Rabbit-Broker-PC-TH.webp">
+                            <img src="{{url(!empty($v->pic_mobile_en) ? "https://www.tuneprotect.co.th/storage/Banner/chillsure/rabbit/Chillsure-Rabbit-Broker-MB-TH.webp" : "https://www.tuneprotect.co.th/storage/Banner/chillsure/rabbit/Chillsure-Rabbit-Broker-MB-TH.webp" )}}" alt="{{$v->locales[$locale]->title}}">
+                        </picture>
+                        <script src="https://code.jquery.com/jquery-3.6.4.slim.js" integrity="sha256-dWvV84T6BhzO4vG6gWhsWVKVoa4lVmLnpBOZh/CAHU4=" crossorigin="anonymous"></script>
+                        <script>
+                            $().ready(function() {
+                                $("#brochure_rabbit_en").attr("href", "https://www.tuneprotect.co.th/storage/product/brochure/ChillSure/Tune-Brochure-En_Rabbit Care.pdf");
+                            });
+                        </script>
+                    <!-- BoltTech -->
+                    @elseif($agentCode==='00BD073L130')
+                        <picture>
+                            <source media="(min-width:768px)" srcset="https://www.tuneprotect.co.th/storage/Banner/chillsure/bolttec/Chillsure-Bolttech-Broker-PC-TH.webp">
+                            <img src="{{url(!empty($v->pic_mobile_en) ? "https://www.tuneprotect.co.th/storage/Banner/chillsure/bolttec/Chillsure-Bolttech-Broker-MB-TH.webp" : "https://www.tuneprotect.co.th/storage/Banner/chillsure/bolttec/Chillsure-Bolttech-Broker-MB-TH.webp" )}}" alt="{{$v->locales[$locale]->title}}">
+                        </picture>
+                    <!-- Luma -->
+                    @elseif($agentCode==='00BD056L107')
+                        <picture>
+                            <source media="(min-width:768px)" srcset="https://www.tuneprotect.co.th/storage/Banner/chillsure/luma/Chillsure-Luma-Broker-PC-TH.webp">
+                            <img src="{{url(!empty($v->pic_mobile_en) ? "https://www.tuneprotect.co.th/storage/Banner/chillsure/luma/Chillsure-Luma-Broker-MB-TH.webp" : "https://www.tuneprotect.co.th/storage/Banner/chillsure/luma/Chillsure-Luma-Broker-MB-TH.webp" )}}" alt="{{$v->locales[$locale]->title}}">
+                        </picture>
+                    <!-- Hugs -->
+                    @elseif($agentCode==='00BD115L272')
+                        <picture>
+                            <source media="(min-width:768px)" srcset="https://www.tuneprotect.co.th/storage/Banner/chillsure/hugs/Chillsure-Hugs-Broker-PC-TH.webp">
+                            <img src="{{url(!empty($v->pic_mobile_en) ? "https://www.tuneprotect.co.th/storage/Banner/chillsure/hugs/Chillsure-Hugs-Broker-MB-TH.webp" : "https://www.tuneprotect.co.th/storage/Banner/chillsure/hugs/Chillsure-Hugs-Broker-MB-TH.webp" )}}" alt="{{$v->locales[$locale]->title}}">
+                        </picture>
+                    @else
+                        <picture>
+                            <source media="(min-width:768px)" srcset="https://www.tuneprotect.co.th/storage/Banner/chillsure/Tune-Chillsure02.webp">
+                            <img src="{{url(!empty($v->pic_mobile_en) ? "https://www.tuneprotect.co.th/storage/Banner/chillsure/Tune-Chillsure04.webp" : "https://www.tuneprotect.co.th/storage/Banner/chillsure/Tune-Chillsure04.webp" )}}" alt="{{$v->locales[$locale]->title}}">
+                        </picture>
 
-    @elseif($selected==='CVCARE')
-    <picture>
-        <source media="(min-width:768px)" srcset="/storage/Banner/Banner_LumaCare_D.jpg">
-        <img src="{{url(!empty($v->pic_mobile_en) ? "/storage/Banner/Banner_LumaCare_D.jpg" : "/storage/Banner/Banner_LumaCare_M.jpg" )}}" alt="{{$v->locales[$locale]->title}}">
-    </picture>
-    @elseif($selected==='TGCVLP')
-    <picture>
-        <source media="(min-width:768px)" srcset="/storage/Banner/Banner_TG_D.jpg">
-        <img src="{{url(!empty($v->pic_mobile_en) ? "/storage/Banner/Banner_TG_D.jpg" : "/storage/Banner/Banner_TG_M.jpg" )}}" alt="{{$v->locales[$locale]->title}}">
-    </picture>
-    @elseif($selected==='TAISMTG')
-    <picture id="taismtg-main">
-        <source media="(min-width:768px)" srcset="/storage/Banner/Banner_TG_D.jpg">
-        <img src="{{url(!empty($v->pic_mobile_en) ? "/storage/Banner/Banner_TG_D.jpg" : "/storage/Banner/Banner_TG_M.jpg" )}}" alt="{{$v->locales[$locale]->title}}">
-    </picture>
-    <picture id="taismtg-page">
-        <source media="(min-width:768px)" srcset="/storage/Banner/Banner_TAI_D.jpg">
-        <img src="{{url(!empty($v->pic_mobile_en) ? "/storage/Banner/Banner_TAI_D.jpg" : "/storage/Banner/Banner_TAI_M.jpg" )}}" alt="{{$v->locales[$locale]->title}}">
-    </picture>
-    @elseif($selected==='ONTGISM')
-    <picture>
-        <source media="(min-width:768px)" srcset="/storage/Banner/Banner_TG_D.jpg">
-        <img src="{{url(!empty($v->pic_mobile_en) ? "/storage/Banner/Banner_TG_D.jpg" : "/storage/Banner/Banner_TG_M.jpg" )}}" alt="{{$v->locales[$locale]->title}}">
-    </picture>
-    @else
-    <picture>
-        <source media="(min-width:768px)" srcset="{{url($v->pic_en)}}">
-        <img src="{{url(!empty($v->pic_mobile_en) ? $v->pic_mobile_en : $v->pic_en )}}" alt="{{$v->locales[$locale]->title}}">
-    </picture>
-    @endif
+                    @endif
+                @endif
+            @elseif($selected==='ONCSHCAA')
+            <picture>
+                <source media="(min-width:768px)" srcset="https://www.tuneprotect.co.th/storage/Banner/chillsure/banner-chillsure-airasia-desktop-th.webp">
+                <img src="{{url(!empty($v->pic_mobile_en) ? "https://www.tuneprotect.co.th/storage/Banner/chillsure/banner-chillsure-airasia-desktop-th.webp" : "https://www.tuneprotect.co.th/storage/Banner/chillsure/banner-chillsure-airasia-mobile-th.webp" )}}" alt="{{$v->locales[$locale]->title}}">
+            </picture>
+            @elseif($selected==='ONCSHCSC')
+            <picture>
+                <source media="(min-width:768px)" srcset="https://www.tuneprotect.co.th/storage/Banner/chillsure/susco/Tune-Chillsure-TH-NonDirect.webp">
+                <img src="{{url(!empty($v->pic_mobile_en) ? "https://www.tuneprotect.co.th/storage/Banner/chillsure/susco/Tune-Chillsure-TH-NonDirect.webp" : "https://www.tuneprotect.co.th/storage/Banner/chillsure/susco/Tune-Chillsure-TH-NonDirect.webp" )}}" alt="{{$v->locales[$locale]->title}}">
+            </picture>
+            @elseif($selected==='ONCSHCGV')
+            <picture>
+                <source media="(min-width:768px)" srcset="https://www.tuneprotect.co.th/storage/Banner/chillsure/GiftVoucher/Banner_Website_ChillSure_GiftVoucher_TH.webp">
+                <img src="{{url(!empty($v->pic_mobile_en) ? "https://www.tuneprotect.co.th/storage/Banner/chillsure/GiftVoucher/Banner_Website_ChillSure_GiftVoucher_TH.webp" : "https://www.tuneprotect.co.th/storage/Banner/chillsure/GiftVoucher/Banner_Website_ChillSure_GiftVoucher_TH.webp" )}}" alt="{{$v->locales[$locale]->title}}">
+            </picture>
+            @elseif($selected==='TAISMTG')
+            <picture>
+                <source media="(min-width:768px)" srcset="/storage/Banner/Banner_TAI_D.jpg">
+                <img src="{{url(!empty($v->pic_mobile_en) ? "/storage/Banner/Banner_TAI_D.jpg" : "/storage/Banner/Banner_TAI_M.jpg" )}}" alt="{{$v->locales[$locale]->title}}">
+            </picture>
+            @elseif($selected==='ONB2BTA')
+            <picture>
+                <source media="(min-width:768px)" srcset="/storage/Banner/b2b/iTravel_PC_TH.jpg">
+                <img src="{{url(!empty($v->pic_mobile_en) ? "/storage/Banner/b2b/iTravel_PC_TH.jpg" : "/storage/Banner/b2b/iTravel_MB_TH.jpg" )}}" alt="{{$v->locales[$locale]->title}}">
+            </picture>
+            @elseif($selected==='ONB2BTAD')
+            <picture>
+                <source media="(min-width:768px)" srcset="/storage/Banner/b2b/TADomestic_PC_TH.jpg">
+                <img src="{{url(!empty($v->pic_mobile_en) ? "/storage/Banner/b2b/TADomestic_PC_TH.jpg" : "/storage/Banner/b2b/TADomestic_MB_TH.jpg" )}}" alt="{{$v->locales[$locale]->title}}">
+            </picture>
+            @elseif($selected==='ONTAISMB2B')
+            <picture>
+                <source media="(min-width:768px)" srcset="/storage/Banner/b2b/iSmile-Banner01.jpg">
+                <img src="{{url(!empty($v->pic_mobile_en) ? "/storage/Banner/b2b/iSmile-Banner01.jpg" : "/storage/Banner/b2b/iSmile-Banner02.jpg" )}}" alt="{{$v->locales[$locale]->title}}">
+            </picture>
+            @elseif($selected==='ONPACA' || $selected==='ONPAKD' || $selected==='ONPASN')
+            <picture>
+                <source media="(min-width:768px)" srcset="/storage/Banner/Banner-PAChoice-THa.jpg">
+                <img src="{{url(!empty($v->pic_mobile_en) ? "/storage/Banner/Banner-PAChoice-THa.jpg" : "/storage/Banner/Banner-PAChoice-THa.jpg" )}}" alt="{{$v->locales[$locale]->title}}">
+            </picture>
 
-    @else
-    <picture>
-        <source media="(min-width:768px)" srcset="{{url($v->pic_en)}}">
-        <img src="{{url(!empty($v->pic_mobile_en) ? $v->pic_mobile_en : $v->pic_en )}}" alt="{{$v->locales[$locale]->title}}">
-    </picture>
-    @endif
-    @else
-    @if(!empty($v->pic))
-    @if($selected==='ONVACINA' || $selected === 'ONVSUREA')
-    <picture>
-        <source media="(min-width:768px)" srcset="{{url(str_replace('Banner_Covid_D', 'Banner_VSure_Protect_D', $v->pic))}}">
-        <img src="{{url(!empty($v->pic_mobile) ? url(str_replace('Banner_Covid_D', 'Banner_VSure_Protect_D', $v->pic_mobile)) : url(str_replace('Banner_Covid_D', 'Banner_VSure_Protect_M', $v->pic)) )}}" alt="{{$v->locales[$locale]->title}}">
-    </picture>
-    @elseif($selected==='ONTADM')
-    <picture>
-        <source media="(min-width:768px)" srcset="/storage/Banner/Banner_TA_D.jpg">
-        <img src="{{url(!empty($v->pic_mobile_en) ? "/storage/Banner/Banner_TA_D.jpg" : "/storage/Banner/Banner_TA_M.jpg" )}}" alt="{{$v->locales[$locale]->title}}">
-    </picture>
-    @elseif($selected==='ONCOVIDMW')
-    <picture>
-        <source media="(min-width:768px)" srcset="{{url(str_replace('Banner_iPass_COVID', 'Migrant-Banner-Th01', $v->pic_en))}}">
-        <img src="{{url(!empty($v->pic_mobile_en) ? url(str_replace('Banner_iPass_COVID', 'Migrant-Banner-Th01', $v->pic_mobile_en)) : url(str_replace('Banner_iPass_COVID', 'Migrant-Banner-Th02', $v->pic_en)) )}}" alt="{{$v->locales[$locale]->title}}">
-    </picture>
-    @elseif($selected==='ONVSAFEA')
-    <picture>
-        <source media="(min-width:768px)" srcset="{{url(str_replace('Banner_Covid_D', 'Banner_VSafe_D2', $v->pic))}}">
-        <img src="{{url(!empty($v->pic_mobile) ? url(str_replace('Banner_Covid_D', 'Banner_VSafe_D2', $v->pic_mobile)) : url(str_replace('Banner_Covid_D', 'Banner_VSafe_M2', $v->pic)) )}}" alt="{{$v->locales[$locale]->title}}">
-    </picture>
-    @elseif($selected==='CVCARE')
-    <picture>
-        <source media="(min-width:768px)" srcset="/storage/Banner/Banner_LumaCare_D.jpg">
-        <img src="{{url(!empty($v->pic_mobile_en) ? "/storage/Banner/Banner_LumaCare_D.jpg" : "/storage/Banner/Banner_LumaCare_M.jpg" )}}" alt="{{$v->locales[$locale]->title}}">
-    </picture>
-    @elseif($selected==='ONCSHC')
-        @if(isset($partner))
-            <!-- Rabbit -->
-            @if(($partner==='Rabbit' || $partner==='rabbit' || $partner==='RABBIT') && $agentCode==='00BD114L266')
-                <picture class="bbb">
-                    <source media="(min-width:768px)" srcset="https://www.tuneprotect.co.th/storage/Banner/chillsure/rabbit/Chillsure-Rabbit-Broker-PC-TH.webp">
-                    <img src="{{url(!empty($v->pic_mobile_en) ? "https://www.tuneprotect.co.th/storage/Banner/chillsure/rabbit/Chillsure-Rabbit-Broker-MB-TH.webp" : "https://www.tuneprotect.co.th/storage/Banner/chillsure/rabbit/Chillsure-Rabbit-Broker-MB-TH.webp" )}}" alt="{{$v->locales[$locale]->title}}">
-                </picture>
-                <script src="https://code.jquery.com/jquery-3.6.4.slim.js" integrity="sha256-dWvV84T6BhzO4vG6gWhsWVKVoa4lVmLnpBOZh/CAHU4=" crossorigin="anonymous"></script>
-                <script>
-                    $().ready(function() {
-                        $("#brochure_rabbit_en").attr("href", "https://www.tuneprotect.co.th/storage/product/brochure/ChillSure/Tune-Brochure-En_Rabbit Care.pdf");
-                    });
-                </script>
-            <!-- BoltTech -->
-            @elseif($agentCode==='00BD073L130')
-                <picture>
-                    <source media="(min-width:768px)" srcset="https://www.tuneprotect.co.th/storage/Banner/chillsure/bolttec/Chillsure-Bolttech-Broker-PC-TH.webp">
-                    <img src="{{url(!empty($v->pic_mobile_en) ? "https://www.tuneprotect.co.th/storage/Banner/chillsure/bolttec/Chillsure-Bolttech-Broker-MB-TH.webp" : "https://www.tuneprotect.co.th/storage/Banner/chillsure/bolttec/Chillsure-Bolttech-Broker-MB-TH.webp" )}}" alt="{{$v->locales[$locale]->title}}">
-                </picture>
-            <!-- Luma -->
-            @elseif($agentCode==='00BD056L107')
-                <picture>
-                    <source media="(min-width:768px)" srcset="https://www.tuneprotect.co.th/storage/Banner/chillsure/luma/Chillsure-Luma-Broker-PC-TH.webp">
-                    <img src="{{url(!empty($v->pic_mobile_en) ? "https://www.tuneprotect.co.th/storage/Banner/chillsure/luma/Chillsure-Luma-Broker-MB-TH.webp" : "https://www.tuneprotect.co.th/storage/Banner/chillsure/luma/Chillsure-Luma-Broker-MB-TH.webp" )}}" alt="{{$v->locales[$locale]->title}}">
-                </picture>
-            <!-- Hugs -->
-            @elseif($agentCode==='00BD115L272')
-                <picture>
-                    <source media="(min-width:768px)" srcset="https://www.tuneprotect.co.th/storage/Banner/chillsure/hugs/Chillsure-Hugs-Broker-PC-TH.webp">
-                    <img src="{{url(!empty($v->pic_mobile_en) ? "https://www.tuneprotect.co.th/storage/Banner/chillsure/hugs/Chillsure-Hugs-Broker-MB-TH.webp" : "https://www.tuneprotect.co.th/storage/Banner/chillsure/hugs/Chillsure-Hugs-Broker-MB-TH.webp" )}}" alt="{{$v->locales[$locale]->title}}">
-                </picture>
+            @elseif($partner==='rabbit' && $selected==='ONTAOB')
+            <picture>
+                <source media="(min-width:768px)" srcset="/storage/Banner/Banner_TA_Rabbit_D_TH.jpg">
+                <img src="{{url(!empty($v->pic_mobile_en) ? "/storage/Banner/Banner_TA_Rabbit_D_TH.jpg" : "/storage/Banner/Banner_TA_Rabbit_MB_TH.jpg" )}}" alt="{{$v->locales[$locale]->title}}">
+            </picture>
+
+            @elseif($selected==='ONTATO')
+            <picture>
+                <source media="(min-width:768px)" srcset="https://www.tuneprotect.co.th/storage/Banner/iTravel/iTravelTour/Banner-iTravel-Tour-PC-TH.webp">
+                <img src="{{url(!empty($v->pic_mobile) ? "https://www.tuneprotect.co.th/storage/Banner/iTravel/iTravelTour/Banner-iTravel-Tour-PC-TH.webp" : "https://www.tuneprotect.co.th/storage/Banner/iTravel/iTravelTour/Banner-iTravel-Tour-PC-TH.webp" )}}" )}}" alt="{{$v->locales[$locale]->title}}">
+            </picture>
+
             @else
-                <picture>
-                    <source media="(min-width:768px)" srcset="https://www.tuneprotect.co.th/storage/Banner/chillsure/Tune-Chillsure02.webp">
-                    <img src="{{url(!empty($v->pic_mobile_en) ? "https://www.tuneprotect.co.th/storage/Banner/chillsure/Tune-Chillsure04.webp" : "https://www.tuneprotect.co.th/storage/Banner/chillsure/Tune-Chillsure04.webp" )}}" alt="{{$v->locales[$locale]->title}}">
-                </picture>
-
+            <picture>
+                <source media="(min-width:768px)" srcset="{{url($v->pic)}}">
+                <img src="{{url(!empty($v->pic_mobile) ? $v->pic_mobile : $v->pic )}}" alt="{{$v->locales[$locale]->title}}">
+            </picture>
             @endif
         @endif
-    @elseif($selected==='ONCSHCAA')
-    <picture>
-        <source media="(min-width:768px)" srcset="https://www.tuneprotect.co.th/storage/Banner/chillsure/banner-chillsure-airasia-desktop-th.webp">
-        <img src="{{url(!empty($v->pic_mobile_en) ? "https://www.tuneprotect.co.th/storage/Banner/chillsure/banner-chillsure-airasia-desktop-th.webp" : "https://www.tuneprotect.co.th/storage/Banner/chillsure/banner-chillsure-airasia-mobile-th.webp" )}}" alt="{{$v->locales[$locale]->title}}">
-    </picture>
-    @elseif($selected==='ONCSHCSC')
-    <picture>
-        <source media="(min-width:768px)" srcset="https://www.tuneprotect.co.th/storage/Banner/chillsure/susco/Tune-Chillsure-TH-NonDirect.webp">
-        <img src="{{url(!empty($v->pic_mobile_en) ? "https://www.tuneprotect.co.th/storage/Banner/chillsure/susco/Tune-Chillsure-TH-NonDirect.webp" : "https://www.tuneprotect.co.th/storage/Banner/chillsure/susco/Tune-Chillsure-TH-NonDirect.webp" )}}" alt="{{$v->locales[$locale]->title}}">
-    </picture>
-    @elseif($selected==='ONCSHCGV')
-    <picture>
-        <source media="(min-width:768px)" srcset="https://www.tuneprotect.co.th/storage/Banner/chillsure/GiftVoucher/Banner_Website_ChillSure_GiftVoucher_TH.webp">
-        <img src="{{url(!empty($v->pic_mobile_en) ? "https://www.tuneprotect.co.th/storage/Banner/chillsure/GiftVoucher/Banner_Website_ChillSure_GiftVoucher_TH.webp" : "https://www.tuneprotect.co.th/storage/Banner/chillsure/GiftVoucher/Banner_Website_ChillSure_GiftVoucher_TH.webp" )}}" alt="{{$v->locales[$locale]->title}}">
-    </picture>
-    @elseif($selected==='TAISMTG')
-    <picture>
-        <source media="(min-width:768px)" srcset="/storage/Banner/Banner_TAI_D.jpg">
-        <img src="{{url(!empty($v->pic_mobile_en) ? "/storage/Banner/Banner_TAI_D.jpg" : "/storage/Banner/Banner_TAI_M.jpg" )}}" alt="{{$v->locales[$locale]->title}}">
-    </picture>
-    @elseif($selected==='ONB2BTA')
-    <picture>
-        <source media="(min-width:768px)" srcset="/storage/Banner/b2b/iTravel_PC_TH.jpg">
-        <img src="{{url(!empty($v->pic_mobile_en) ? "/storage/Banner/b2b/iTravel_PC_TH.jpg" : "/storage/Banner/b2b/iTravel_MB_TH.jpg" )}}" alt="{{$v->locales[$locale]->title}}">
-    </picture>
-    @elseif($selected==='ONB2BTAD')
-    <picture>
-        <source media="(min-width:768px)" srcset="/storage/Banner/b2b/TADomestic_PC_TH.jpg">
-        <img src="{{url(!empty($v->pic_mobile_en) ? "/storage/Banner/b2b/TADomestic_PC_TH.jpg" : "/storage/Banner/b2b/TADomestic_MB_TH.jpg" )}}" alt="{{$v->locales[$locale]->title}}">
-    </picture>
-    @elseif($selected==='ONTAISMB2B')
-    <picture>
-        <source media="(min-width:768px)" srcset="/storage/Banner/b2b/iSmile-Banner01.jpg">
-        <img src="{{url(!empty($v->pic_mobile_en) ? "/storage/Banner/b2b/iSmile-Banner01.jpg" : "/storage/Banner/b2b/iSmile-Banner02.jpg" )}}" alt="{{$v->locales[$locale]->title}}">
-    </picture>
-    @elseif($selected==='ONPACA' || $selected==='ONPAKD' || $selected==='ONPASN')
-    <picture>
-        <source media="(min-width:768px)" srcset="/storage/Banner/Banner-PAChoice-THa.jpg">
-        <img src="{{url(!empty($v->pic_mobile_en) ? "/storage/Banner/Banner-PAChoice-THa.jpg" : "/storage/Banner/Banner-PAChoice-THa.jpg" )}}" alt="{{$v->locales[$locale]->title}}">
-    </picture>
-
-    @elseif($partner==='rabbit' && $selected==='ONTAOB')
-    <picture>
-        <source media="(min-width:768px)" srcset="/storage/Banner/Banner_TA_Rabbit_D_TH.jpg">
-        <img src="{{url(!empty($v->pic_mobile_en) ? "/storage/Banner/Banner_TA_Rabbit_D_TH.jpg" : "/storage/Banner/Banner_TA_Rabbit_MB_TH.jpg" )}}" alt="{{$v->locales[$locale]->title}}">
-    </picture>
-    @else
-    <picture>
-        <source media="(min-width:768px)" srcset="{{url($v->pic)}}">
-        <img src="{{url(!empty($v->pic_mobile) ? $v->pic_mobile : $v->pic )}}" alt="{{$v->locales[$locale]->title}}">
-    </picture>
-    @endif
-
-    @elseif($selected==='ONTATO')
-    <picture>
-        <source media="(min-width:768px)" srcset="https://www.tuneprotect.co.th/storage/Banner/iTravel/iTravelTour/Banner-iTravel-Tour-PC-TH.webp">
-        <img src="{{url(!empty($v->pic_mobile) ? "https://www.tuneprotect.co.th/storage/Banner/iTravel/iTravelTour/Banner-iTravel-Tour-PC-TH.webp" : "https://www.tuneprotect.co.th/storage/Banner/iTravel/iTravelTour/Banner-iTravel-Tour-PC-TH.webp" )}}" )}}" alt="{{$v->locales[$locale]->title}}">
-    </picture>
-
-    @endif
     @endif
     </a>
     @endforeach

@@ -223,6 +223,43 @@ const genPrice = (package_data, fdFromDate, fdToDate) => {
         })
 }
 
+const genItemList = (package_data, fdFromDate, fdToDate) => {
+
+    let index = 0;
+    const itemList = [];
+
+    if (fdFromDate && fdToDate) {
+        Object.keys(package_data)
+            .filter(k => _.startsWith(k, current_package))
+            .map(k => {
+                const pack = Object.keys(package_data[k].price).filter(subPackage => {
+                    const dateRange = (package_data[k].price[subPackage].day).split('-');    
+                });
+                const price = parseInt(package_data[k].price[pack]).toLocaleString();
+                const packageName = package_data[k].apiPackage;
+                const planCode = Object.keys(package_data)[index];
+
+                const itme = {
+                    item_id: "",
+                    item_name: "",
+                    price: "",
+                };
+
+                itme.item_id = planCode;
+                itme.item_name = packageName;
+                itme.price = price;
+
+                itemList.push(itme);
+                index++;
+            });
+    }
+    
+    gtag("event",  "view_item",  {
+        "currency": "THB",
+        "items": itemList
+    });
+}
+
 document.addEventListener("DOMContentLoaded", async () => {
 
     const package_data = await getPackageData(current_package);
@@ -384,6 +421,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                         }
 
                         genPrice(package_data, data.fdFromDate, data.fdToDate);
+                        genItemList(package_data, data.fdFromDate, data.fdToDate);
 
                         break;
                     case 2:
@@ -395,6 +433,18 @@ document.addEventListener("DOMContentLoaded", async () => {
                                 ...data,
                                 fdPackage
                             }
+
+                            const selectPrice = genPrice(package_data, data.fdFromDate, data.fdToDate);
+
+                            gtag("event",  "add_to_cart",  {
+                                "currency": "THB",
+                                "value": selectPrice,
+                                "items": [{
+                                  "item_id": fdPackage,
+                                  "price": selectPrice,
+                                }]
+                            });
+
                             status = true;
                         } else {
                             Swal.fire({
@@ -493,6 +543,14 @@ document.addEventListener("DOMContentLoaded", async () => {
                         }
 
                         result = validate(data, step3Constraints);
+
+                        gtag("event",  "begin_checkout",  {
+                            "currency": "THB",
+                            "items": [{
+                              "item_id": data.fdPackage,
+                              "price": data.fdPayAMT,
+                            }]
+                        });
 
                         if (result) {
                             showError($('#step3'), result);

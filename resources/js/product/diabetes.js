@@ -193,7 +193,7 @@ const constraints = {
 
 document.addEventListener("DOMContentLoaded", async () => {
 
-    console.log(1);
+    //console.log(1);
     //=====================================================================
     // AddOn Portal
     let Keys = "";
@@ -359,6 +359,41 @@ document.addEventListener("DOMContentLoaded", async () => {
         return pricelist;
     }
 
+    const genItemList = () => {
+
+        let index = 0;
+        const itemList = [];
+
+        if (data.fdHBD) {
+            Object.keys(package_data)
+                .filter(k => _.startsWith(k, current_package))
+                .map(k => {
+                    const pack = Object.keys(package_data[k].price).filter(ageRange => checkAge(data.fdHBD, ageRange))
+                    const price = parseInt(package_data[k].price[pack]).toLocaleString();
+                    const packageName = package_data[k].apiPackage;
+                    const planCode = Object.keys(package_data)[index];
+
+                    const itme = {
+                        item_id: "",
+                        item_name: "",
+                        price: "",
+                    };
+
+                    itme.item_id = planCode;
+                    itme.item_name = packageName;
+                    itme.price = price;
+
+                    itemList.push(itme);
+                    index++;
+                });
+        }
+        
+        gtag("event",  "view_item",  {
+            "currency": "THB",
+            "items": itemList
+        });
+    }
+
     $$('#ctrl_weight,#ctrl_height').forEach($el => {
         $el.addEventListener($el.tagName.toLowerCase() === 'input' ? "keyup" : "change", event => {
             genBMI();
@@ -474,6 +509,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                                 }
 
                                 genPrice();
+                                genItemList();
                                 let $btnMore_Diabetes = $('#btn-more-diabetes');
                                 $$('#table-detail tbody tr:nth-child(n+7)').forEach(row => {
                                     row.style.display = 'none';
@@ -520,6 +556,18 @@ document.addEventListener("DOMContentLoaded", async () => {
                                 }
                                 showTitle('', data.fdAge)
                                 status = true;
+
+                                const selectPrice = getSelectedPrice(data.fdHBD, fdPackage, package_data);
+                                
+                                gtag("event",  "add_to_cart",  {
+                                    "currency": "THB",
+                                    "value": selectPrice,
+                                    "items": [{
+                                      "item_id": fdPackage,
+                                      "price": selectPrice,
+                                    }]
+                                });
+
                             } else {
                                 Swal.fire({
                                     title: 'Error!',
@@ -597,6 +645,15 @@ document.addEventListener("DOMContentLoaded", async () => {
                                 ...data,
                                 fdMarketing_Consent: $('#ctrl_marketing').checked ? true : undefined
                             }
+
+                            gtag("event",  "begin_checkout",  {
+                                "currency": "THB",
+                                "items": [{
+                                  "item_id": data.fdPackage,
+                                  "price": data.fdPayAMT,
+                                }]
+                            });
+
                             const result = validate(data, constraints);
                             const $cite = $form.getElementsByTagName('cite');
                             for (let i = 0, len = $cite.length; i !== len; ++i) {

@@ -17,6 +17,32 @@
                     });
                 </script>
             @break
+            @case("CI")
+                <script>
+                    gtag("event",  "purchase",  {
+                        "transaction_id": '{{$doc_no}}',
+                        "currency": "THB",
+                        "value": '{{$payAmount}}',
+                        "items": [{
+                             "doc_no": '{{$doc_no}}',
+                             "price": '{{$payAmount}}',
+                         }]
+                    });
+                </script>
+            @break
+            @case("DIABETES")
+                <script>
+                    gtag("event",  "purchase",  {
+                        "transaction_id": '{{$doc_no}}',
+                        "currency": "THB",
+                        "value": '{{$payAmount}}',
+                        "items": [{
+                             "doc_no": '{{$doc_no}}',
+                             "price": '{{$payAmount}}',
+                         }]
+                    });
+                </script>
+            @break
         @endswitch
     @endif                
 

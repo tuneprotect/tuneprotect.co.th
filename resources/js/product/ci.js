@@ -202,7 +202,6 @@ if ($('#title_wrapper')) {
 
     document.addEventListener("DOMContentLoaded", async () => {
 
-        console.log(1);
         //=====================================================================
         // AddOn Portal
         let Keys = "";
@@ -427,6 +426,41 @@ if ($('#title_wrapper')) {
             return pricelist;
         }
 
+        const genItemList = () => {
+
+            let index = 0;
+            const itemList = [];
+    
+            if (data.fdHBD) {
+                Object.keys(package_data)
+                    .filter(k => _.startsWith(k, current_package))
+                    .map(k => {
+                        const pack = Object.keys(package_data[k].price).filter(ageRange => checkAge(data.fdHBD, ageRange))
+                        const price = parseInt(package_data[k].price[pack]).toLocaleString();
+                        const packageName = package_data[k].apiPackage;
+                        const planCode = Object.keys(package_data)[index];
+    
+                        const itme = {
+                            item_id: "",
+                            item_name: "",
+                            price: "",
+                        };
+    
+                        itme.item_id = planCode;
+                        itme.item_name = packageName;
+                        itme.price = price;
+    
+                        itemList.push(itme);
+                        index++;
+                    });
+            }
+            
+            gtag("event",  "view_item",  {
+                "currency": "THB",
+                "items": itemList
+            });
+        }
+
         const basePrice = (package_data) => {
             let last = Object.keys(package_data).pop();
 
@@ -562,7 +596,6 @@ if ($('#title_wrapper')) {
                     } else {
                         switch (parseInt(step)) {
                             case 1:
-                                console.log(1);
                                 const validateResult = validateAgeInPackage(package_data, false);
                                 status = validateResult.status;
                                 if (validateResult.status) {
@@ -576,6 +609,7 @@ if ($('#title_wrapper')) {
                                     }
 
                                     genPrice();
+                                    genItemList();
                                     hideShowDiseaseBox(goToStep);
                                 } else {
                                     scrollToTargetAdjusted($('.controls-wrapper.error'));
@@ -612,7 +646,6 @@ if ($('#title_wrapper')) {
 
                                 break;
                             case 2:
-                                console.log(2);
                                 const fdPackage = $btn.getAttribute('data-package');
 
                                 $("#table-detail").setAttribute('data-package_plan', $btn.getAttribute('data-plan'));
@@ -622,6 +655,18 @@ if ($('#title_wrapper')) {
                                         ...data,
                                         fdPackage
                                     }
+
+                                    const selectPrice = getSelectedPrice(data.fdHBD, fdPackage, package_data);
+
+                                    gtag("event",  "add_to_cart",  {
+                                        "currency": "THB",
+                                        "value": selectPrice,
+                                        "items": [{
+                                          "item_id": fdPackage,
+                                          "price": selectPrice,
+                                        }]
+                                    });
+
                                     showTitle('', data.fdAge)
                                     status = true;
                                     hideShowDiseaseBox(goToStep);
@@ -638,7 +683,6 @@ if ($('#title_wrapper')) {
 
                                 break;
                             case 3:
-                                console.log(3);
                                 //=====================================================================
                                 //For sale view only.
                                 var myEle = document.getElementById("portal_key");
@@ -650,8 +694,6 @@ if ($('#title_wrapper')) {
                                 }
                                 //=====================================================================
 
-
-                                console.log(e.target.tagName)
                                 status = false;
                                 if (e.target.id === 'btn-fdQuestion1') {
                                     status = true;
@@ -664,10 +706,8 @@ if ($('#title_wrapper')) {
 
 
                                 hideShowDiseaseBox(goToStep);
-                                console.log(status)
                                 break;
                             case 4:
-                                console.log(4);
 
                                 let valCheck = false;
                                 valCheck = validatePolicyPayment($('#fdNationalID').value,data.fdPackage,$('#fdFromDate')?.value);
@@ -717,7 +757,14 @@ if ($('#title_wrapper')) {
                                     fdMarketing_Consent: $('#ctrl_marketing').checked ? true : undefined
                                 }
 
-                                console.log({data});
+                                gtag("event",  "begin_checkout",  {
+                                    "currency": "THB",
+                                    "items": [{
+                                      "item_id": data.fdPackage,
+                                      "price": data.fdPayAMT,
+                                    }]
+                                });
+
                                 const result = validate(data, constraints);
 
                                 const $cite = $form.getElementsByTagName('cite');
