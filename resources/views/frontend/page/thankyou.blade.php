@@ -3,7 +3,19 @@
 @section('page')
 
     @if(isset($doc_no))
-        @switch(session()->get('thankyou_param'))
+        <script>
+            gtag("event",  "purchase",  {
+                "transaction_id": '{{$doc_no}}',
+                "currency": "THB",
+                "value": '{{$payAmount}}',
+                "items": [{
+                    "doc_no": '{{$doc_no}}',
+                    "price": '{{$payAmount}}',
+                }]
+            });
+        </script>
+
+        <!-- @switch(session()->get('thankyou_param'))
             @case("ONCSHC")
                 <script>
                     gtag("event",  "purchase",  {
@@ -17,7 +29,7 @@
                     });
                 </script>
             @break
-        @endswitch
+        @endswitch -->
     @endif                
 
 <main>
