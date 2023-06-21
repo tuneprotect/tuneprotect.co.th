@@ -1110,7 +1110,7 @@ class ProductController extends BaseController
                 $this->thankYouParam = ProjectEnum::ONPACA_URL;
             } elseif (substr($package, 0, 6) === ProjectEnum::ONPAKD_URL) {
                 $this->thankYouParam = ProjectEnum::ONPAKD_URL;
-            }  elseif (substr($package, 0, 8) === ProjectEnum::ONPASN_URL) {
+            }  elseif (substr($package, 0, 6) === ProjectEnum::ONPASN_URL) {
                 $this->thankYouParam = ProjectEnum::ONPASN_URL;
             }
             //$this->thankYouParam = 'ONPA';
