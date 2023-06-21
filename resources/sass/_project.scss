@@ -3191,6 +3191,8 @@ main {
             color: #ffffff;
             font-size: 40px;
             z-index: 10;
+            cursor: pointer;
+            
             @media all and (min-width: $md) {
                 width: 60px;
                 height: 60px;
@@ -3205,6 +3207,8 @@ main {
 
             border-radius: 20px;
             overflow: hidden;
+            padding: 40px 20px;
+            text-align: center;
 
             @media all and (min-width: $md) {
                 display: flex;
@@ -3303,6 +3307,8 @@ main {
 
             border-radius: 20px;
             overflow: hidden;
+            padding: 40px 20px;
+            text-align: center;
 
             @media all and (min-width: $md) {
                 display: flex;

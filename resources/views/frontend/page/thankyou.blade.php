@@ -2,7 +2,7 @@
 
 @section('page')
 
-    @if(isset($doc_no))
+    @if(isset($doc_no) || session()->get('thankyou_param'))
         <script>
             gtag("event",  "purchase",  {
                 "transaction_id": '{{$doc_no}}',
