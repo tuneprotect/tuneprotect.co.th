@@ -35,7 +35,7 @@
             @include('frontend.component.form-date-input-calendar')
             @include('frontend.component.form-bmi-input')
             <div class="controls-wrapper full">
-                <input id="ctrl_accept_step1" name="ctrl_accept_accept_step1" type="checkbox"
+                <input id="ctrl_accept_step1" name="ctrl_accept_step1" type="checkbox"
                     data-error-accept_step1="@lang("product.error.insurance_term")"
                     value="1"/>
                 <label for="ctrl_accept_step1">@lang('product.ONCSHC_MSG.oncshc_msg_accept_step1')</label>
