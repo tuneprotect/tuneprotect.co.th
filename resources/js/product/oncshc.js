@@ -192,7 +192,7 @@ const constraints = {
     ctrl_accept_insurance_term: {
         presence: {
             allowEmpty: false,
-            message: "^" + $('#ctrl_accept_insurance_terms').getAttribute('data-error-insurance_term')
+            message: "^" + $('#ctrl_accept_insurance_terms').getAttribute('data-error-insurance_terms')
         }
     },
     ctrl_terms: {
