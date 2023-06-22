@@ -24,7 +24,7 @@
 
 <div class="controls-wrapper full">
     <input id="ctrl_accept_insurance_term" name="ctrl_accept_insurance_term" type="checkbox" value="1"
-           data-error-insurance_term="@lang("product.error.insurance_term")"/>
+           data-error-insurance_term="@lang("product.error.insurance_term")" />
     <label for="ctrl_accept_insurance_term">@lang('product.accept_insurance')</label>
 </div>
 <p class="small">
