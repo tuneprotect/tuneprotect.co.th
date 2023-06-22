@@ -24,7 +24,7 @@
 
 <div class="controls-wrapper full">
     <input id="ctrl_accept_insurance_term" name="ctrl_accept_insurance_term" type="checkbox" value="1"
-           data-error-insurance_term="@lang("product.error.insurance_term")" />
+        data-error-insurance_term="@lang("product.error.insurance_term")" />
     <label for="ctrl_accept_insurance_term">@lang('product.accept_insurance')</label>
 </div>
 <p class="small">
@@ -36,7 +36,7 @@
 </div>
 <div class="controls-wrapper full">
     <input id="ctrl_terms" name="ctrl_terms" type="checkbox" value="1"
-           data-error-terms="@lang("product.error.terms")" />
+        data-error-terms="@lang("product.error.terms")" />
     <label for="ctrl_terms">@lang('product.accept_terms')</label>
 </div>
 
@@ -45,6 +45,6 @@
 </p>
 <div class="controls-wrapper full">
     <input id="ctrl_marketing" name="ctrl_marketing" type="checkbox" value="1"
-           data-error-terms="@lang("product.error.terms")" />
+        data-error-terms="@lang("product.error.terms")" />
     <label for="ctrl_marketing">@lang('product.accept_marketing')</label>
 </div>
