@@ -23,9 +23,9 @@
 </div>
 
 <div class="controls-wrapper full">
-    <input id="ctrl_accept_insurance_term" name="ctrl_accept_insurance_term" type="checkbox" value="1"
-        data-error-insurance_term="@lang("product.error.insurance_term")" />
-    <label for="ctrl_accept_insurance_term">@lang('product.accept_insurance')</label>
+    <input id="ctrl_accept_insurance_terms" name="ctrl_accept_insurance_terms" type="checkbox" value="1"
+        data-error-insurance_terms="@lang("product.error.insurance_term")" />
+    <label for="ctrl_accept_insurance_terms">@lang('product.accept_insurance')</label>
 </div>
 <p class="small">
     {!! nl2br(__('product.privacy_description')) !!}

@@ -732,7 +732,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                                 fdRevenue: 'N',
                                 fdTaxno: '',
                                 fdPayAMT: getSelectedPrice(data.fdHBD, data.fdPackage, package_data),
-                                ctrl_accept_insurance_term: $('#ctrl_accept_insurance_term').checked ? true : undefined,
+                                ctrl_accept_insurance_term: $('#ctrl_accept_insurance_terms').checked ? true : undefined,
                                 ctrl_terms: $('#ctrl_terms').checked ? true : undefined,
                                 ctrl_document_type: $('#ctrl_document_type').value,
                                 ctrl_province: $('#ctrl_province').value
