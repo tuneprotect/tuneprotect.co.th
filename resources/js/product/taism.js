@@ -439,7 +439,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                     case 1:
                         const chkAccept = validateAcceptStep1();
                         if(!chkAccept){
-                            showAcceptError($('#ctrl_accept_step1').getAttribute('data-error-accept_step1'));
+                            showAcceptError($('#ctrl_accept_step1').getAttribute('data-error-accept-step1'));
                             status = false;
                             break;
                         }

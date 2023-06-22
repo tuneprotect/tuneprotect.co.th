@@ -316,7 +316,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                             const validateResult = validateAgeInPackage(package_data);
                             const chkAccept = validateAcceptStep1();
                             if(!chkAccept){
-                                showAcceptError($('#ctrl_accept_step1').getAttribute('data-error-ctrl_accept_step1'));
+                                showAcceptError($('#ctrl_accept_step1').getAttribute('data-error-accept-step1'));
                                 status = false;
                                 break;
                             }
