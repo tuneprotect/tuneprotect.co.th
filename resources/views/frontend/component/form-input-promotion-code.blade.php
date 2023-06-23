@@ -7,7 +7,7 @@
             data-error-promotion-code-invalid="@lang('product.PromotionCode.promotion_code_invalid')"
         />
         <label for="fdPromotionCode">@lang("product.PromotionCode.promotion_code")</label>
-        <cite class="cite_error"></cite>
+        <span class="cite_error"></span>
     </div>
     <div class="controls-wrapper"></div>
 </div>

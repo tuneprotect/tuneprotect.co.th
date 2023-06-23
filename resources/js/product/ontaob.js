@@ -388,8 +388,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     const countryData = await getCountryData();
     const zipcode_data = await getZipcodeData();
 
-    // console.log(package_data);
-
     let Keys = "";
     let myEle = document.getElementById("portal_key");
     if (myEle) {

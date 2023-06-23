@@ -1228,8 +1228,8 @@ return [
     "PromotionCode" => [
         "promotion_code_title" => "Promotion Code",
         "promotion_code" => "Promotion Code",
-        "promotion_code_valid" => "Promotion code valid",
-        "promotion_code_invalid" => "Promotion code invalid",
+        "promotion_code_valid" => "Promotion code is valid",
+        "promotion_code_invalid" => "Promotion code is invalid",
     ],
 ];
 
