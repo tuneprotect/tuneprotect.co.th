@@ -1324,7 +1324,7 @@ main {
         }
 
         span {
-            .span_error {
+            &.span_error {
                 color: $primary-color !important;
                 font-size: .8rem !important;
                 font-style: italic !important;
