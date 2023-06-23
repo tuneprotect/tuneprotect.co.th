@@ -7,6 +7,7 @@ import {
     showMultipleTitle, validatePolicy, formatInputFieldOnlyEnglish, validatePolicyPayment
 } from "../form/productHelper";
 import {
+    showPromotionCodeValid,
     showValidatePromotionCodeError,
 } from "../validate_form";
 import {
@@ -222,8 +223,6 @@ const zoneCode = {
 }
 
 $('#fdPromotionCode').addEventListener('change', (e) => {
-    $('.promotion-code cite.cite_error').innerHTML = "";
-    //validatePromotionCodeAPI();
     if(validatePromotionCodeAPI().status){
         showPromotionCodeValid($('#fdPromotionCode').getAttribute('data-error-promotion-code-valid'),'cite_error');
     } else {

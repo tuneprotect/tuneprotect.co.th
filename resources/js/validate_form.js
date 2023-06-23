@@ -115,6 +115,9 @@ export const showValidateBranchError = (message, selector) => {
 
 export const showPromotionCodeValid = (message, selector) => {
     $('.promotion-code cite.' + selector).innerHTML = message;
+    $$('.promotion-code').forEach(el => {
+        el.classList.remove('error');
+    });
     $('.promotion-code cite.' + selector).style.color = '#008b06';
 }
 
