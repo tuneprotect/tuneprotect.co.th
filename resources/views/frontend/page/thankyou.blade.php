@@ -43,6 +43,123 @@
                     });
                 </script>
             @break
+            @case("ONPACA")
+                <script>
+                    gtag("event",  "purchase",  {
+                        "transaction_id": '{{$doc_no}}',
+                        "currency": "THB",
+                        "value": '{{$payAmount}}',
+                        "items": [{
+                             "doc_no": '{{$doc_no}}',
+                             "price": '{{$payAmount}}',
+                         }]
+                    });
+                </script>
+            @break
+            @case("ONPAKD")
+                <script>
+                    gtag("event",  "purchase",  {
+                        "transaction_id": '{{$doc_no}}',
+                        "currency": "THB",
+                        "value": '{{$payAmount}}',
+                        "items": [{
+                             "doc_no": '{{$doc_no}}',
+                             "price": '{{$payAmount}}',
+                         }]
+                    });
+                </script>
+            @break
+            @case("ONPASN")
+                <script>
+                    gtag("event",  "purchase",  {
+                        "transaction_id": '{{$doc_no}}',
+                        "currency": "THB",
+                        "value": '{{$payAmount}}',
+                        "items": [{
+                             "doc_no": '{{$doc_no}}',
+                             "price": '{{$payAmount}}',
+                         }]
+                    });
+                </script>
+            @break
+            @case("TAISM")
+                <script>
+                    gtag("event",  "purchase",  {
+                        "transaction_id": '{{$doc_no}}',
+                        "currency": "THB",
+                        "value": '{{$payAmount}}',
+                        "items": [{
+                             "doc_no": '{{$doc_no}}',
+                             "price": '{{$payAmount}}',
+                         }]
+                    });
+                </script>
+            @break
+            @case("TAIPOCT22")
+                <script>
+                    gtag("event",  "purchase",  {
+                        "transaction_id": '{{$doc_no}}',
+                        "currency": "THB",
+                        "value": '{{$payAmount}}',
+                        "items": [{
+                             "doc_no": '{{$doc_no}}',
+                             "price": '{{$payAmount}}',
+                         }]
+                    });
+                </script>
+            @break
+            @case("ONTADM")
+                <script>
+                    gtag("event",  "purchase",  {
+                        "transaction_id": '{{$doc_no}}',
+                        "currency": "THB",
+                        "value": '{{$payAmount}}',
+                        "items": [{
+                             "doc_no": '{{$doc_no}}',
+                             "price": '{{$payAmount}}',
+                         }]
+                    });
+                </script>
+            @break
+            @case("ONTAOB")
+                <script>
+                    gtag("event",  "purchase",  {
+                        "transaction_id": '{{$doc_no}}',
+                        "currency": "THB",
+                        "value": '{{$payAmount}}',
+                        "items": [{
+                             "doc_no": '{{$doc_no}}',
+                             "price": '{{$payAmount}}',
+                         }]
+                    });
+                </script>
+            @break
+            @case("ONFIMP")
+                <script>
+                    gtag("event",  "purchase",  {
+                        "transaction_id": '{{$doc_no}}',
+                        "currency": "THB",
+                        "value": '{{$payAmount}}',
+                        "items": [{
+                             "doc_no": '{{$doc_no}}',
+                             "price": '{{$payAmount}}',
+                         }]
+                    });
+                </script>
+            @break
+            @case("ONMHS")
+                <script>
+                    gtag("event",  "purchase",  {
+                        "transaction_id": '{{$doc_no}}',
+                        "currency": "THB",
+                        "value": '{{$payAmount}}',
+                        "items": [{
+                             "doc_no": '{{$doc_no}}',
+                             "price": '{{$payAmount}}',
+                         }]
+                    });
+                </script>
+            @break
         @endswitch
     @endif                
 

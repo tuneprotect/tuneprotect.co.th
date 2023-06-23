@@ -56,7 +56,13 @@ const step1Constraints = {
             allowEmpty: false,
             message: "^" + $('#fdDestTo').getAttribute('data-error')
         }
-    }
+    },
+    ctrl_accept_step1: {
+        presence: {
+            allowEmpty: false,
+            message: "^" + $('#ctrl_accept_step1').getAttribute('data-error-accept-step1')
+        }
+    },
 
 };
 
@@ -415,6 +421,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         fdDestTo: "",
         ctrl_terms: "",
         fdSendType: "",
+        ctrl_accept_step1: "",
         ctrl_accept_insurance_term: "",
         ctrl_travel_type: "",
         profile: []
@@ -586,11 +593,11 @@ document.addEventListener("DOMContentLoaded", async () => {
             } else {
                 switch (parseInt(step)) {
                     case 1:
-                        const chkAccept = validateAcceptStep1();
-                        if(!chkAccept){
-                            showAcceptError($('#ctrl_accept_step1').getAttribute('data-error-accept-step1'));
-                            status = false;
-                        }
+                        // const chkAccept = validateAcceptStep1();
+                        // if(!chkAccept){
+                        //     showAcceptError($('#ctrl_accept_step1').getAttribute('data-error-accept-step1'));
+                        //     status = false;
+                        // }
                         status = true;
                         data = {
                             ...data,
@@ -598,6 +605,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                             fdDestTo: $('#ctrl_travel_type').value === 'annual' ? zoneCode[$('#ctrl_sub_package').value] : $('#fdDestTo').value,
                             fdFromDate: $('#fdFromDate').value,
                             fdToDate: $('#fdToDate').value,
+                            ctrl_accept_step1: $('#ctrl_accept_step1').checked ? true : undefined,
                         }
                         result = validate(data, step1Constraints);
                         removeError($('#step1'));
