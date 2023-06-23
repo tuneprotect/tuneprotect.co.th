@@ -406,6 +406,7 @@ const validatePromotionCodeAPI = async () => {
         // const js = JSON.parse(response);
         // $('#fdPromotionCodeStatus').value = js.status;
         // promotion_status = js.status;
+        console.log(PromotionCode);
         if (PromotionCode.promotionCode === '1234') {
             promotion_status = true;
         }
