@@ -43,7 +43,7 @@
                 <input id="ctrl_accept_step1" name="ctrl_accept_step1" type="checkbox"
                     data-error-accept-step1="@lang("product.error.insurance_term")"
                     value="1"/>
-                <label for="ctrl_accept_step1">@lang('product.error.insurance_term')</label>
+                <label for="ctrl_accept_step1">@lang('product.ONCSHC_MSG.oncshc_msg_accept_step1')</label>
                 <span id="step1_error"><cite class="step1_error"></cite></span>
             </div>
         </div>
