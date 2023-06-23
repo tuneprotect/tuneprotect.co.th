@@ -475,9 +475,9 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     $('#fdPromotionCode').addEventListener('change', (e) => {
         if(promotion_data.status) {
-            showPromotionCodeValid($('#fdPromotionCode').getAttribute('data-error-promotion-code-valid'),'cite_error');
+            showPromotionCodeValid($('#fdPromotionCode').getAttribute('data-error-promotion-code-valid'),'span_error');
         } else {
-            showValidatePromotionCodeError($('#fdPromotionCode').getAttribute('data-error-promotion-code-invalid'),'cite_error');
+            showValidatePromotionCodeError($('#fdPromotionCode').getAttribute('data-error-promotion-code-invalid'),'span_error');
         }
     });
 
