@@ -1325,9 +1325,9 @@ main {
 
         span {
             .span_error {
-                color: $primary-color;
-                font-size: .8rem;
-                font-style: italic
+                color: $primary-color !important;
+                font-size: .8rem !important;
+                font-style: italic !important;
             }
         }
 
