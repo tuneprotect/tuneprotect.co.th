@@ -223,7 +223,9 @@ const zoneCode = {
 }
 
 $('#fdPromotionCode').addEventListener('change', (e) => {
+    console.log(validatePromotionCodeAPI());
     if(validatePromotionCodeAPI().status) {
+        
         showPromotionCodeValid($('#fdPromotionCode').getAttribute('data-error-promotion-code-valid'),'cite_error');
     } else {
         showValidatePromotionCodeError($('#fdPromotionCode').getAttribute('data-error-promotion-code-invalid'),'cite_error');
@@ -407,11 +409,7 @@ const validatePromotionCodeAPI = async () => {
         // promotion_status = js.status;
         if (datas.promotionCode === '1234') {
             promotion_status = true;
-            console.log(datas.PromotionCode);
         }
-
-        console.log(promotion_status);
-        
     } 
     catch (err) 
     {
