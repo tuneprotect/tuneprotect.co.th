@@ -7,6 +7,9 @@ import {
     showMultipleTitle, validatePolicy, formatInputFieldOnlyEnglish, validatePolicyPayment
 } from "../form/productHelper";
 import {
+    showValidatePromotionCodeError,
+} from "../validate_form";
+import {
     $,
     $$,
     current_package,
@@ -218,16 +221,18 @@ const zoneCode = {
     "AE": 'ASN'
 }
 
+$('#fdPromotionCode').addEventListener('change', (e) => {
+    $('.promotion-code cite.cite_error').innerHTML = "";
+    //validatePromotionCodeAPI();
+    if(!validatePromotionCodeAPI()){
+        showValidatePromotionCodeError($('#fdPromotionCode').getAttribute('data-error-promotion-code-not-qualify'),'cite_error');
+    } 
+});
+
 const getSelectedPrice = (packageCode, package_data) => {
 
     const code = packageCode;
-    const sub_code = $('#sub_code').value ;
-
-    // const code = packageCode.substring(0, 9);
-    // const sub_code = packageCode.substring(9);
-    // console.log("code : "+ code);
-    // console.log("sub_code : "+ sub_code);
-    // console.log("package_data : "+ package_data);
+    const sub_code = $('#sub_code').value;
 
     return package_data[code].price[sub_code].price;
 }
@@ -256,15 +261,8 @@ const genPrice = (package_data,country_data, subpackage, fdFromDate, fdToDate) =
         $('#ctrl_sub_package').value = subpackage;
     }
 
-    // console.log(package_data);
-    console.log(subpackage);
-    console.log(fdFromDate);
-    console.log(fdToDate);
-
-
-
     const day = differenceInDays(endDate, startDate) + 1;
-    console.log("day : "  + day);
+    //console.log("day : "  + day);
 
     $('#days').value = day;
 
@@ -346,9 +344,6 @@ const genPrice = (package_data,country_data, subpackage, fdFromDate, fdToDate) =
 
         console.log("pack : "  + pack);
     });
-
-
-
 }
 
 const genItemList = (package_data, fdFromDate, fdToDate) => {
@@ -388,6 +383,37 @@ const genItemList = (package_data, fdFromDate, fdToDate) => {
     });
 }
 
+const validatePromotionCodeAPI = async () => {        
+    let promotion_status = false;
+    const PromotionCode = {
+        promotionCode : $('#fdPromotionCode').value,
+    }
+
+    try 
+    {
+        // let res = await fetch(`/appApi/ApiConnect/chkPromotionCode`, {
+        //     method: 'post',
+        //     headers: {
+        //         'Accept': 'application/json',
+        //         'Content-Type': 'application/json',
+        //         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').getAttribute('content')
+        //     },
+        //     body: JSON.stringify(PromotionCode),
+        // });
+        // const response = await res.json();
+        // const js = JSON.parse(response);
+        // $('#fdPromotionCodeStatus').value = js.status;
+        // promotion_status = js.status;
+        promotion_status = true;
+    } 
+    catch (err) 
+    {
+        return {status: false};
+    }
+
+    return {status: promotion_status};
+}
+
 document.addEventListener("DOMContentLoaded", async () => {
 
     const package_data = await getPackageData(current_package);
@@ -424,6 +450,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         ctrl_accept_step1: "",
         ctrl_accept_insurance_term: "",
         ctrl_travel_type: "",
+        fdPromotionCodeStatus: "",
         profile: []
     };
     let iti = {};

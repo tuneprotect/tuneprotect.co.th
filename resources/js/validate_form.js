@@ -113,6 +113,14 @@ export const showValidateBranchError = (message, selector) => {
     scrollToTargetAdjusted($('.controls-wrapper.error'));
 }
 
+export const showValidatePromotionCodeError = (message, selector) => {
+    $('.promotion-code cite.' + selector).innerHTML = message;
+    $$('.promotion-code').forEach(el => {
+        el.classList.add('error');
+    });
+    scrollToTargetAdjusted($('.controls-wrapper.error'));
+}
+
 export const showAcceptError = (message) => {
     $('cite.step1_error').innerHTML = message;
     scrollToTargetAdjusted($('.controls-wrapper.error'));

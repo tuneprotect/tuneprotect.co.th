@@ -1,7 +1,7 @@
 <strong>@lang('product.PromotionCode.promotion_code_title')</strong>
 <div class="two-col">
-    <div class="controls-wrapper">
-        <input type="hidden" id="hdfdPromotionCodeStatus" />
+    <div class="controls-wrapper promotion-code">
+        <!-- <input type="hidden" id="hdfdPromotionCodeStatus" /> -->
         <input id="fdPromotionCode" type="text" name="fdPromotionCode" placeholder="@lang('product.PromotionCode.promotion_code')" 
                 data-error-promotion-code-not-qualify="@lang('product.PromotionCode.promotion_code_error')"
         />
