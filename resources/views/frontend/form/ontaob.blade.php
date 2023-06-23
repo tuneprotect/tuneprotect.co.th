@@ -63,6 +63,10 @@
                 </div>
             </div>
 
+            @if($controller == 'product')
+                @include('frontend.component.form-input-promotion-code')
+            @endif
+
             <div>
                 <p class="small">@lang('product.itravel_warning')</p>
             </div>

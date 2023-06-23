@@ -1225,6 +1225,11 @@ return [
     "airasia_member_error" => "โปรดกรอกรหัสสมาชิกแอร์เอเชียให้ถูกต้อง",
     "branch_susco_title" => "โปรดเลือกสาขาที่ใช้บริการ",
     "select_branch" => "เลือกสาขา",
+    "PromotionCode" => [
+        "promotion_code_title" => "Promotion Code",
+        "promotion_code" => "Promotion Code",
+        "promotion_code_error" => "Promotion Code Not Found",
+    ],
 ];
 
 
