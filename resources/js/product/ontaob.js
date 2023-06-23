@@ -404,7 +404,7 @@ const validatePromotionCodeAPI = async () => {
         // const js = JSON.parse(response);
         // $('#fdPromotionCodeStatus').value = js.status;
         // promotion_status = js.status;
-        promotion_status = true;
+        promotion_status = false;
     } 
     catch (err) 
     {
