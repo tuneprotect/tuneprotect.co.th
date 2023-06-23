@@ -4,7 +4,11 @@ import {
     formatTelNumber,
     getCountryData,
     getPackageData,
-    showMultipleTitle, validatePolicy, formatInputFieldOnlyEnglish, validatePolicyPayment
+    showMultipleTitle, 
+    validatePolicy, 
+    formatInputFieldOnlyEnglish, 
+    validatePolicyPayment,
+    validatePromotionCode
 } from "../form/productHelper";
 import {
     showPromotionCodeValid,
@@ -222,16 +226,6 @@ const zoneCode = {
     "AE": 'ASN'
 }
 
-$('#fdPromotionCode').addEventListener('change', (e) => {
-    console.log(validatePromotionCodeAPI().status);
-    if(validatePromotionCodeAPI().status) {
-        
-        showPromotionCodeValid($('#fdPromotionCode').getAttribute('data-error-promotion-code-valid'),'cite_error');
-    } else {
-        showValidatePromotionCodeError($('#fdPromotionCode').getAttribute('data-error-promotion-code-invalid'),'cite_error');
-    }
-});
-
 const getSelectedPrice = (packageCode, package_data) => {
 
     const code = packageCode;
@@ -386,41 +380,10 @@ const genItemList = (package_data, fdFromDate, fdToDate) => {
     });
 }
 
-const validatePromotionCodeAPI = async () => {        
-    let promotion_status = false;
-    let datas = {
-        promotionCode : $('#fdPromotionCode').value,
-    }
-
-    try 
-    {
-        // let res = await fetch(`/appApi/ApiConnect/chkPromotionCode`, {
-        //     method: 'post',
-        //     headers: {
-        //         'Accept': 'application/json',
-        //         'Content-Type': 'application/json',
-        //         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').getAttribute('content')
-        //     },
-        //     body: JSON.stringify(datas),
-        // });
-        // const response = await res.json();
-        // const js = JSON.parse(response);
-        // $('#fdPromotionCodeStatus').value = js.status;
-        // promotion_status = js.status;
-        if (datas.promotionCode === '1234') {
-            promotion_status = true;
-        }
-    } 
-    catch (err) 
-    {
-        return {status: false};
-    }
-
-    return {status: promotion_status};
-}
-
 document.addEventListener("DOMContentLoaded", async () => {
 
+    //const promotion_data = await validatePromotionCode();
+    const promotion_data = {"status": true};
     const package_data = await getPackageData(current_package);
     const countryData = await getCountryData();
     const zipcode_data = await getZipcodeData();
@@ -510,6 +473,15 @@ document.addEventListener("DOMContentLoaded", async () => {
             $el.closest('.controls-wrapper').style.display = display_fdToDate;
         });
     })
+
+
+    $('#fdPromotionCode').addEventListener('change', (e) => {
+        if(promotion_data.status) {
+            showPromotionCodeValid($('#fdPromotionCode').getAttribute('data-error-promotion-code-valid'),'cite_error');
+        } else {
+            showValidatePromotionCodeError($('#fdPromotionCode').getAttribute('data-error-promotion-code-invalid'),'cite_error');
+        }
+    });
 
     //Set start selection
     let el = document.getElementById('ctrl_travel_type');
