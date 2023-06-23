@@ -224,10 +224,11 @@ const zoneCode = {
 $('#fdPromotionCode').addEventListener('change', (e) => {
     $('.promotion-code cite.cite_error').innerHTML = "";
     //validatePromotionCodeAPI();
-    if(!validatePromotionCodeAPI().status){
-        console.log('promotion code error');
-        showValidatePromotionCodeError($('#fdPromotionCode').getAttribute('data-error-promotion-code-not-qualify'),'cite_error');
-    } 
+    if(validatePromotionCodeAPI().status){
+        showPromotionCodeValid($('#fdPromotionCode').getAttribute('data-error-promotion-code-valid'),'cite_error');
+    } else {
+        showValidatePromotionCodeError($('#fdPromotionCode').getAttribute('data-error-promotion-code-invalid'),'cite_error');
+    }
 });
 
 const getSelectedPrice = (packageCode, package_data) => {
@@ -405,8 +406,10 @@ const validatePromotionCodeAPI = async () => {
         // const js = JSON.parse(response);
         // $('#fdPromotionCodeStatus').value = js.status;
         // promotion_status = js.status;
-        promotion_status = false;
-        console.log(promotion_status);
+        if (PromotionCode.promotionCode === '1234') {
+            promotion_status = true;
+        }
+        
     } 
     catch (err) 
     {
