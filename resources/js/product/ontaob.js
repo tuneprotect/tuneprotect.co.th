@@ -225,6 +225,7 @@ $('#fdPromotionCode').addEventListener('change', (e) => {
     $('.promotion-code cite.cite_error').innerHTML = "";
     //validatePromotionCodeAPI();
     if(!validatePromotionCodeAPI()){
+        console.log('promotion code error');
         showValidatePromotionCodeError($('#fdPromotionCode').getAttribute('data-error-promotion-code-not-qualify'),'cite_error');
     } 
 });
@@ -405,6 +406,7 @@ const validatePromotionCodeAPI = async () => {
         // $('#fdPromotionCodeStatus').value = js.status;
         // promotion_status = js.status;
         promotion_status = false;
+        console.log(promotion_status);
     } 
     catch (err) 
     {
