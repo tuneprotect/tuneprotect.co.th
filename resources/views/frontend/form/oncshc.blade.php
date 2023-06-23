@@ -22,7 +22,7 @@
             <input type="hidden" id="status_api" value="{{$status_api}}"/>
             <input type="hidden" id="nopayment_status" value="{{$nopayment_status}}"/>
             <input type="hidden" id="channel" value="{{$channel}}"/>
-{{--            <input type="hidden" id="brochure_ci" value="{{$brochure_ci}}"/>--}}
+        {{--<input type="hidden" id="brochure_ci" value="{{$brochure_ci}}"/>--}}
             <input type="hidden" id="partner" value="{{$partner}}"/>
         </div>
     @endif
