@@ -11,7 +11,6 @@
             <cite class="cite_error"></cite>
         </div>
         <div class="controls-wrapper"></div>
-        <div class="controls-wrapper"></div>
     </div>
 </div>
 

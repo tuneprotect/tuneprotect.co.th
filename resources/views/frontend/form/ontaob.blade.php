@@ -64,9 +64,7 @@
             </div>
 
             @if($controller == 'product')
-                <div class="two-col">
-                    @include('frontend.component.form-input-promotion-code')
-                </div>
+                @include('frontend.component.form-input-promotion-code')
             @endif
 
             <div>
