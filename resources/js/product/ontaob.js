@@ -223,7 +223,7 @@ const zoneCode = {
 }
 
 $('#fdPromotionCode').addEventListener('change', (e) => {
-    console.log(validatePromotionCodeAPI());
+    console.log(validatePromotionCodeAPI().status);
     if(validatePromotionCodeAPI().status) {
         
         showPromotionCodeValid($('#fdPromotionCode').getAttribute('data-error-promotion-code-valid'),'cite_error');
