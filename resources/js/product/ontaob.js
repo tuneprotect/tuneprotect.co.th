@@ -224,7 +224,7 @@ const zoneCode = {
 $('#fdPromotionCode').addEventListener('change', (e) => {
     $('.promotion-code cite.cite_error').innerHTML = "";
     //validatePromotionCodeAPI();
-    if(!validatePromotionCodeAPI()){
+    if(!validatePromotionCodeAPI().status){
         console.log('promotion code error');
         showValidatePromotionCodeError($('#fdPromotionCode').getAttribute('data-error-promotion-code-not-qualify'),'cite_error');
     } 
