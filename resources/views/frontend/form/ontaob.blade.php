@@ -71,9 +71,8 @@
                 <p class="small">@lang('product.itravel_warning')</p>
             </div>
             <div class="controls-wrapper full">
-                <input id="ctrl_accept_step1" name="ctrl_accept_step1" type="checkbox"
-                    data-error-accept-step1="@lang("product.error.insurance_term")"
-                    value="1"/>
+                <input id="ctrl_accept_step1" name="ctrl_accept_step1" type="checkbox" value="1"
+                    data-error-accept-step1="@lang("product.error.insurance_term")" />
                 <label for="ctrl_accept_step1">@lang('product.error.insurance_term')</label>
                 <span id="step1_error"><cite class="step1_error"></cite></span>
             </div>
