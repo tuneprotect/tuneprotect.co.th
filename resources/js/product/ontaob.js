@@ -386,7 +386,7 @@ const genItemList = (package_data, fdFromDate, fdToDate) => {
 
 const validatePromotionCodeAPI = async () => {        
     let promotion_status = false;
-    const PromotionCode = {
+    let datas = {
         promotionCode : $('#fdPromotionCode').value,
     }
 
@@ -399,15 +399,15 @@ const validatePromotionCodeAPI = async () => {
         //         'Content-Type': 'application/json',
         //         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').getAttribute('content')
         //     },
-        //     body: JSON.stringify(PromotionCode),
+        //     body: JSON.stringify(datas),
         // });
         // const response = await res.json();
         // const js = JSON.parse(response);
         // $('#fdPromotionCodeStatus').value = js.status;
         // promotion_status = js.status;
-        if (PromotionCode === '1234') {
+        if (datas.promotionCode === '1234') {
             promotion_status = true;
-            console.log(PromotionCode);
+            console.log(datas.PromotionCode);
         }
 
         console.log(promotion_status);
