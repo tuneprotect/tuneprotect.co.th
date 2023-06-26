@@ -63,7 +63,7 @@
                 </div>
             </div>
 
-            <!-- @if($controller == 'product')
+            <!--@if($controller == 'product')
                 @include('frontend.component.form-input-promotion-code')
             @endif -->
 
