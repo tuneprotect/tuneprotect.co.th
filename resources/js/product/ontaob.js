@@ -826,6 +826,25 @@ document.addEventListener("DOMContentLoaded", async () => {
                         $summary_section.innerHTML = sb;
                         status = true;
 
+                        if ($('#controller').value === 'product' && data.fdPromotionCodeStatus) 
+                        {
+                            //const promotion_data = await validatePromotionCode();
+                            const promotion_data = {"status": false};
+
+                            $('#fdPromotionCode').addEventListener('change', (e) => {
+                                if(!promotion_data.status) {
+                                    data.fdPromotionCodeStatus = "";
+
+                                    Swal.fire({
+                                        title: 'Error!',
+                                        text: 'Error : Promotion code is valid.',
+                                        icon: 'error',
+                                        confirmButtonText: 'OK'
+                                    })
+                                }
+                            });
+                        }
+
                         break;
                 }
             }
