@@ -470,20 +470,20 @@ document.addEventListener("DOMContentLoaded", async () => {
         });
     })
 
-    if ($('#controller').value === 'product') 
-    {
-        //const promotion_data = await validatePromotionCode();
-        const promotion_data_befor = {"status": true};
+    // if ($('#controller').value === 'product') 
+    // {
+    //     //const promotion_data = await validatePromotionCode();
+    //     const promotion_data_befor = {"status": true};
 
-        $('#fdPromotionCode').addEventListener('change', (e) => {
-            if(promotion_data_befor.status) {
-                data.fdPromotionCodeStatus = true;
-                showPromotionCodeValid($('#fdPromotionCode').getAttribute('data-error-promotion-code-valid'),'span_error');
-            } else {
-                showValidatePromotionCodeError($('#fdPromotionCode').getAttribute('data-error-promotion-code-invalid'),'span_error');
-            }
-        });
-    }
+    //     $('#fdPromotionCode').addEventListener('change', (e) => {
+    //         if(promotion_data_befor.status) {
+    //             data.fdPromotionCodeStatus = true;
+    //             showPromotionCodeValid($('#fdPromotionCode').getAttribute('data-error-promotion-code-valid'),'span_error');
+    //         } else {
+    //             showValidatePromotionCodeError($('#fdPromotionCode').getAttribute('data-error-promotion-code-invalid'),'span_error');
+    //         }
+    //     });
+    // }
 
     //Set start selection
     let el = document.getElementById('ctrl_travel_type');
@@ -825,22 +825,22 @@ document.addEventListener("DOMContentLoaded", async () => {
                         $summary_section.innerHTML = sb;
                         status = true;
 
-                        if ($('#controller').value === 'product' && data.fdPromotionCodeStatus) 
-                        {
-                            //const promotion_data = await validatePromotionCode();
-                            const promotion_data = {"status": false};
+                        // if ($('#controller').value === 'product' && data.fdPromotionCodeStatus) 
+                        // {
+                        //     //const promotion_data = await validatePromotionCode();
+                        //     const promotion_data = {"status": false};
 
-                            if(!promotion_data.status) {
-                                data.fdPromotionCodeStatus = "";
+                        //     if(!promotion_data.status) {
+                        //         data.fdPromotionCodeStatus = "";
 
-                                Swal.fire({
-                                    title: 'Warning!',
-                                    text: 'Promotion code is invalid.',
-                                    icon: 'warning',
-                                    confirmButtonText: 'OK'
-                                })
-                            }
-                        }
+                        //         Swal.fire({
+                        //             title: 'Warning!',
+                        //             text: 'Promotion code is invalid.',
+                        //             icon: 'warning',
+                        //             confirmButtonText: 'OK'
+                        //         })
+                        //     }
+                        // }
 
                         break;
                 }
