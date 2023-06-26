@@ -412,7 +412,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         });
 
         fbq('trackCustom', 'view_item', {
-            items: itemList
+            itemList
         });
     }
 
@@ -660,6 +660,11 @@ document.addEventListener("DOMContentLoaded", async () => {
                                       "item_id": fdPackage,
                                       "price": selectPrice,
                                     }]
+                                });
+
+                                fbq('trackCustom', 'add_to_cart', {
+                                    item_id: fdPackage,
+                                    price: selectPrice,
                                 });
                                 
                             } else {
