@@ -827,16 +827,11 @@ document.addEventListener("DOMContentLoaded", async () => {
 
                         if ($('#controller').value === 'product' && data.fdPromotionCodeStatus) 
                         {
-                            console.log('promotion code');
                             //const promotion_data = await validatePromotionCode();
                             const promotion_data = {"status": false};
 
-                            console.log(promotion_data);
-
                             if(!promotion_data.status) {
                                 data.fdPromotionCodeStatus = "";
-
-                                console.log('invalid');
 
                                 Swal.fire({
                                     title: 'Warning!',

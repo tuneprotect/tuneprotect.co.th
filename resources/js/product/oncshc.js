@@ -410,10 +410,6 @@ document.addEventListener("DOMContentLoaded", async () => {
             "currency": "THB",
             "items": itemList
         });
-
-        fbq('trackCustom', 'view_item', {
-            itemList
-        });
     }
 
     $$('#ctrl_weight,#ctrl_height').forEach($el => {
@@ -660,11 +656,6 @@ document.addEventListener("DOMContentLoaded", async () => {
                                       "item_id": fdPackage,
                                       "price": selectPrice,
                                     }]
-                                });
-
-                                fbq('trackCustom', 'add_to_cart', {
-                                    item_id: fdPackage,
-                                    price: selectPrice,
                                 });
                                 
                             } else {
