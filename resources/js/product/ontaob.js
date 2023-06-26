@@ -473,10 +473,10 @@ document.addEventListener("DOMContentLoaded", async () => {
     if ($('#controller').value === 'product') 
     {
         //const promotion_data = await validatePromotionCode();
-        const promotion_data = {"status": true};
+        const promotion_data_befor = {"status": true};
 
         $('#fdPromotionCode').addEventListener('change', (e) => {
-            if(promotion_data.status) {
+            if(promotion_data_befor.status) {
                 data.fdPromotionCodeStatus = true;
                 showPromotionCodeValid($('#fdPromotionCode').getAttribute('data-error-promotion-code-valid'),'span_error');
             } else {
@@ -828,7 +828,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
                         if ($('#controller').value === 'product' && data.fdPromotionCodeStatus) 
                         {
-                            console.log('promotion code')
+                            console.log('promotion code');
                             //const promotion_data = await validatePromotionCode();
                             const promotion_data = {"status": false};
 
@@ -836,9 +836,11 @@ document.addEventListener("DOMContentLoaded", async () => {
                                 if(!promotion_data.status) {
                                     data.fdPromotionCodeStatus = "";
 
+                                    console.log('invalid');
+
                                     Swal.fire({
                                         title: 'Error!',
-                                        text: 'Error : Promotion code is valid.',
+                                        text: 'Error : Promotion code is invalid.',
                                         icon: 'error',
                                         confirmButtonText: 'OK'
                                     })
