@@ -410,6 +410,10 @@ document.addEventListener("DOMContentLoaded", async () => {
             "currency": "THB",
             "items": itemList
         });
+
+        fbq('trackCustom', 'view_item', {
+            items: itemList
+        });
     }
 
     $$('#ctrl_weight,#ctrl_height').forEach($el => {

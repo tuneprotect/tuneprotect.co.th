@@ -840,7 +840,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
                                 Swal.fire({
                                     title: 'Warning!',
-                                    text: 'Warning : Promotion code is invalid.',
+                                    text: 'Promotion code is invalid.',
                                     icon: 'warning',
                                     confirmButtonText: 'OK'
                                 })
