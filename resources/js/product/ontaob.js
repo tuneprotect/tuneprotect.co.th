@@ -778,7 +778,6 @@ document.addEventListener("DOMContentLoaded", async () => {
                             return false;
                         }
 
-
                         const selectedPackage = $('#step3 .form-head').innerHTML;
 
                         fromDate = format(parseISO(data.fdFromDate), 'dd/MM/') + (locale === 'th' ? (parseInt(format(parseISO(data.fdFromDate), 'yyyy')) + 543) : format(parseISO(data.fdFromDate), 'yyyy'))
@@ -831,6 +830,8 @@ document.addEventListener("DOMContentLoaded", async () => {
                             console.log('promotion code');
                             //const promotion_data = await validatePromotionCode();
                             const promotion_data = {"status": false};
+
+                            console.log(promotion_data);
 
                             if(!promotion_data.status) {
                                 data.fdPromotionCodeStatus = "";
