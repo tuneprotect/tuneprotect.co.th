@@ -477,6 +477,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
         $('#fdPromotionCode').addEventListener('change', (e) => {
             if(promotion_data.status) {
+                data.fdPromotionCodeStatus = true;
                 showPromotionCodeValid($('#fdPromotionCode').getAttribute('data-error-promotion-code-valid'),'span_error');
             } else {
                 showValidatePromotionCodeError($('#fdPromotionCode').getAttribute('data-error-promotion-code-invalid'),'span_error');
@@ -610,7 +611,6 @@ document.addEventListener("DOMContentLoaded", async () => {
                             fdDestTo: $('#ctrl_travel_type').value === 'annual' ? zoneCode[$('#ctrl_sub_package').value] : $('#fdDestTo').value,
                             fdFromDate: $('#fdFromDate').value,
                             fdToDate: $('#fdToDate').value,
-                            fdPromotionCodeStatus: $('#controller').value === 'product' ? promotion_data.status : null,
                             ctrl_accept_step1: $('#ctrl_accept_step1').checked ? true : undefined,
                         }
                         result = validate(data, step1Constraints);
