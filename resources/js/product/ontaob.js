@@ -382,8 +382,6 @@ const genItemList = (package_data, fdFromDate, fdToDate) => {
 
 document.addEventListener("DOMContentLoaded", async () => {
 
-    //const promotion_data = await validatePromotionCode();
-    const promotion_data = {"status": true};
     const package_data = await getPackageData(current_package);
     const countryData = await getCountryData();
     const zipcode_data = await getZipcodeData();
@@ -472,14 +470,19 @@ document.addEventListener("DOMContentLoaded", async () => {
         });
     })
 
-
-    $('#fdPromotionCode').addEventListener('change', (e) => {
-        if(promotion_data.status) {
-            showPromotionCodeValid($('#fdPromotionCode').getAttribute('data-error-promotion-code-valid'),'span_error');
-        } else {
-            showValidatePromotionCodeError($('#fdPromotionCode').getAttribute('data-error-promotion-code-invalid'),'span_error');
-        }
-    });
+    if ($('#controller').value === 'product') 
+    {
+        //const promotion_data = await validatePromotionCode();
+        const promotion_data = {"status": true};
+        
+        $('#fdPromotionCode').addEventListener('change', (e) => {
+            if(promotion_data.status) {
+                showPromotionCodeValid($('#fdPromotionCode').getAttribute('data-error-promotion-code-valid'),'span_error');
+            } else {
+                showValidatePromotionCodeError($('#fdPromotionCode').getAttribute('data-error-promotion-code-invalid'),'span_error');
+            }
+        });
+    }
 
     //Set start selection
     let el = document.getElementById('ctrl_travel_type');
@@ -607,6 +610,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                             fdDestTo: $('#ctrl_travel_type').value === 'annual' ? zoneCode[$('#ctrl_sub_package').value] : $('#fdDestTo').value,
                             fdFromDate: $('#fdFromDate').value,
                             fdToDate: $('#fdToDate').value,
+                            fdPromotionCodeStatus: promotion_data.status,
                             ctrl_accept_step1: $('#ctrl_accept_step1').checked ? true : undefined,
                         }
                         result = validate(data, step1Constraints);
