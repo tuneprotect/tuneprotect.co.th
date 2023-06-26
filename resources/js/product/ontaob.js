@@ -385,6 +385,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     const package_data = await getPackageData(current_package);
     const countryData = await getCountryData();
     const zipcode_data = await getZipcodeData();
+    const promotion_data = any;
 
     let Keys = "";
     let myEle = document.getElementById("portal_key");
@@ -472,9 +473,9 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     if ($('#controller').value === 'product') 
     {
-        //const promotion_data = await validatePromotionCode();
-        const promotion_data = {"status": true};
-        
+        //promotion_data = await validatePromotionCode();
+        promotion_data = {"status": true};
+
         $('#fdPromotionCode').addEventListener('change', (e) => {
             if(promotion_data.status) {
                 showPromotionCodeValid($('#fdPromotionCode').getAttribute('data-error-promotion-code-valid'),'span_error');
