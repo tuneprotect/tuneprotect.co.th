@@ -12,7 +12,7 @@ use App\Enum\ProjectEnum;
 class RabbitController  extends ProductController
 {
     protected $controller = 'rabbit';
-    public function index($link = null, $selected = null)
+    public function index($link = null, $selected = null, $portal_key = NULL)
     {
         $return_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
         session(['return_link' => $return_link]);

@@ -53,8 +53,8 @@
                 <p class="small">@lang('product.ipass_warning')</p>
             </div>
             <div class="controls-wrapper full">
-                <input id="ctrl_accept_step1" name="ctrl_accept_insurance_term" type="checkbox"
-                    data-error-insurance_term="@lang("product.error.insurance_term")"
+                <input id="ctrl_accept_step1" name="ctrl_accept_step1" type="checkbox"
+                    data-error-accept-step1="@lang("product.error.insurance_term")"
                     value="1"/>
                 <label for="ctrl_accept_step1">@lang('product.msg_accept_step1')</label>
                 <span id="step1_error"><cite class="step1_error"></cite></span>

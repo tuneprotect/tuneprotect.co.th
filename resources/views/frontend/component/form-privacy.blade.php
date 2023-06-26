@@ -17,29 +17,34 @@
 </div>
 <h3>{{__('product.accept_insurance_header')}}</h3>
 <div class="privacy-box small">
-    <p class="small">{!! nl2br(__('product.accept_insurance_description')) !!}</p>
+    <p class="small">
+        {!! nl2br(__('product.accept_insurance_description')) !!}
+    </p>
 </div>
 
 <div class="controls-wrapper full">
-    <input id="ctrl_accept_insurance_term" name="ctrl_accept_insurance_term" type="checkbox"
-           data-error-insurance_term="@lang("product.error.insurance_term")"
-           value="1"/><label
-        for="ctrl_accept_insurance_term">@lang('product.accept_insurance')</label>
+    <input id="ctrl_accept_insurance_term" name="ctrl_accept_insurance_term" type="checkbox" value="1"
+        data-error-insurance_term="@lang("product.error.insurance_term")" />
+    <label for="ctrl_accept_insurance_term">@lang('product.accept_insurance')</label>
 </div>
-<p class="small">{!! nl2br(__('product.privacy_description')) !!}</p>
+<p class="small">
+    {!! nl2br(__('product.privacy_description')) !!}
+</p>
+
 <div class="privacy-box small">
-  {!! $privacy->locales[$locale]->content !!}
+    {!! $privacy->locales[$locale]->content !!}
 </div>
 <div class="controls-wrapper full">
     <input id="ctrl_terms" name="ctrl_terms" type="checkbox" value="1"
-           data-error-terms="@lang("product.error.terms")"
-    /><label
-        for="ctrl_terms">@lang('product.accept_terms')</label>
+        data-error-terms="@lang("product.error.terms")" />
+    <label for="ctrl_terms">@lang('product.accept_terms')</label>
 </div>
-<p class="small">{!! nl2br(__('product.marketing_consent')) !!}</p>
+
+<p class="small">
+    {!! nl2br(__('product.marketing_consent')) !!}
+</p>
 <div class="controls-wrapper full">
     <input id="ctrl_marketing" name="ctrl_marketing" type="checkbox" value="1"
-           data-error-terms="@lang("product.error.terms")"
-    /><label
-        for="ctrl_marketing">@lang('product.accept_marketing')</label>
+        data-error-terms="@lang("product.error.terms")" />
+    <label for="ctrl_marketing">@lang('product.accept_marketing')</label>
 </div>

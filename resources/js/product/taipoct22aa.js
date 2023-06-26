@@ -441,7 +441,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                         let member_status = $("#hdfmemberstatus").value;
                         const chkAccept = validateAcceptStep1();
                         if(!chkAccept){
-                            showAcceptError($('#ctrl_accept_step1').getAttribute('data-error-insurance_term'));
+                            showAcceptError($('#ctrl_accept_step1').getAttribute('data-error-accept-step1'));
                             status = false;
                             break;
                         }

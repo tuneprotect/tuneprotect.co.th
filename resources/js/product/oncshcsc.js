@@ -625,7 +625,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                             }
 
                             if(!chkAccept){
-                                showAcceptError($('#ctrl_accept_step1').getAttribute('data-error-insurance_term'));
+                                showAcceptError($('#ctrl_accept_step1').getAttribute('data-error-accept-step1'));
                                 status = false;
                                 break;
                             }

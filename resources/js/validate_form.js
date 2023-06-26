@@ -113,6 +113,22 @@ export const showValidateBranchError = (message, selector) => {
     scrollToTargetAdjusted($('.controls-wrapper.error'));
 }
 
+export const showPromotionCodeValid = (message, selector) => {
+    $('.promotion-code span.' + selector).innerHTML = message;
+    $$('.promotion-code').forEach(el => {
+        el.classList.remove('error');
+    });
+    $('.promotion-code span.' + selector).style.color = '#008b06';
+}
+
+export const showValidatePromotionCodeError = (message, selector) => {
+    $('.promotion-code span.' + selector).innerHTML = message;
+    $$('.promotion-code').forEach(el => {
+        el.classList.add('error');
+    });
+    scrollToTargetAdjusted($('.controls-wrapper.error'));
+}
+
 export const showAcceptError = (message) => {
     $('cite.step1_error').innerHTML = message;
     scrollToTargetAdjusted($('.controls-wrapper.error'));

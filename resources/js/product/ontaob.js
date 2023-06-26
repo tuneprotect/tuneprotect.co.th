@@ -4,8 +4,16 @@ import {
     formatTelNumber,
     getCountryData,
     getPackageData,
-    showMultipleTitle, validatePolicy, formatInputFieldOnlyEnglish, validatePolicyPayment
+    showMultipleTitle, 
+    validatePolicy, 
+    formatInputFieldOnlyEnglish, 
+    validatePolicyPayment,
+    validatePromotionCode
 } from "../form/productHelper";
+import {
+    showPromotionCodeValid,
+    showValidatePromotionCodeError,
+} from "../validate_form";
 import {
     $,
     $$,
@@ -56,7 +64,13 @@ const step1Constraints = {
             allowEmpty: false,
             message: "^" + $('#fdDestTo').getAttribute('data-error')
         }
-    }
+    },
+    ctrl_accept_step1: {
+        presence: {
+            allowEmpty: false,
+            message: "^" + $('#ctrl_accept_step1').getAttribute('data-error-accept-step1')
+        }
+    },
 
 };
 
@@ -215,13 +229,7 @@ const zoneCode = {
 const getSelectedPrice = (packageCode, package_data) => {
 
     const code = packageCode;
-    const sub_code = $('#sub_code').value ;
-
-    // const code = packageCode.substring(0, 9);
-    // const sub_code = packageCode.substring(9);
-    // console.log("code : "+ code);
-    // console.log("sub_code : "+ sub_code);
-    // console.log("package_data : "+ package_data);
+    const sub_code = $('#sub_code').value;
 
     return package_data[code].price[sub_code].price;
 }
@@ -250,15 +258,8 @@ const genPrice = (package_data,country_data, subpackage, fdFromDate, fdToDate) =
         $('#ctrl_sub_package').value = subpackage;
     }
 
-    // console.log(package_data);
-    console.log(subpackage);
-    console.log(fdFromDate);
-    console.log(fdToDate);
-
-
-
     const day = differenceInDays(endDate, startDate) + 1;
-    console.log("day : "  + day);
+    //console.log("day : "  + day);
 
     $('#days').value = day;
 
@@ -340,9 +341,6 @@ const genPrice = (package_data,country_data, subpackage, fdFromDate, fdToDate) =
 
         console.log("pack : "  + pack);
     });
-
-
-
 }
 
 const genItemList = (package_data, fdFromDate, fdToDate) => {
@@ -388,8 +386,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     const countryData = await getCountryData();
     const zipcode_data = await getZipcodeData();
 
-    // console.log(package_data);
-
     let Keys = "";
     let myEle = document.getElementById("portal_key");
     if (myEle) {
@@ -415,8 +411,10 @@ document.addEventListener("DOMContentLoaded", async () => {
         fdDestTo: "",
         ctrl_terms: "",
         fdSendType: "",
+        ctrl_accept_step1: "",
         ctrl_accept_insurance_term: "",
         ctrl_travel_type: "",
+        fdPromotionCodeStatus: "",
         profile: []
     };
     let iti = {};
@@ -471,6 +469,21 @@ document.addEventListener("DOMContentLoaded", async () => {
             $el.closest('.controls-wrapper').style.display = display_fdToDate;
         });
     })
+
+    // if ($('#controller').value === 'product') 
+    // {
+    //     //const promotion_data = await validatePromotionCode();
+    //     const promotion_data_befor = {"status": true};
+
+    //     $('#fdPromotionCode').addEventListener('change', (e) => {
+    //         if(promotion_data_befor.status) {
+    //             data.fdPromotionCodeStatus = true;
+    //             showPromotionCodeValid($('#fdPromotionCode').getAttribute('data-error-promotion-code-valid'),'span_error');
+    //         } else {
+    //             showValidatePromotionCodeError($('#fdPromotionCode').getAttribute('data-error-promotion-code-invalid'),'span_error');
+    //         }
+    //     });
+    // }
 
     //Set start selection
     let el = document.getElementById('ctrl_travel_type');
@@ -586,12 +599,11 @@ document.addEventListener("DOMContentLoaded", async () => {
             } else {
                 switch (parseInt(step)) {
                     case 1:
-                        const chkAccept = validateAcceptStep1();
-                        if(!chkAccept){
-                            showAcceptError($('#ctrl_accept_step1').getAttribute('data-error-insurance_term'));
-                            status = false;
-                            break;
-                        }
+                        // const chkAccept = validateAcceptStep1();
+                        // if(!chkAccept){
+                        //     showAcceptError($('#ctrl_accept_step1').getAttribute('data-error-accept-step1'));
+                        //     status = false;
+                        // }
                         status = true;
                         data = {
                             ...data,
@@ -599,6 +611,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                             fdDestTo: $('#ctrl_travel_type').value === 'annual' ? zoneCode[$('#ctrl_sub_package').value] : $('#fdDestTo').value,
                             fdFromDate: $('#fdFromDate').value,
                             fdToDate: $('#fdToDate').value,
+                            ctrl_accept_step1: $('#ctrl_accept_step1').checked ? true : undefined,
                         }
                         result = validate(data, step1Constraints);
                         removeError($('#step1'));
@@ -765,7 +778,6 @@ document.addEventListener("DOMContentLoaded", async () => {
                             return false;
                         }
 
-
                         const selectedPackage = $('#step3 .form-head').innerHTML;
 
                         fromDate = format(parseISO(data.fdFromDate), 'dd/MM/') + (locale === 'th' ? (parseInt(format(parseISO(data.fdFromDate), 'yyyy')) + 543) : format(parseISO(data.fdFromDate), 'yyyy'))
@@ -812,6 +824,23 @@ document.addEventListener("DOMContentLoaded", async () => {
 
                         $summary_section.innerHTML = sb;
                         status = true;
+
+                        // if ($('#controller').value === 'product' && data.fdPromotionCodeStatus) 
+                        // {
+                        //     //const promotion_data = await validatePromotionCode();
+                        //     const promotion_data = {"status": false};
+
+                        //     if(!promotion_data.status) {
+                        //         data.fdPromotionCodeStatus = "";
+
+                        //         Swal.fire({
+                        //             title: 'Warning!',
+                        //             text: 'Promotion code is invalid.',
+                        //             icon: 'warning',
+                        //             confirmButtonText: 'OK'
+                        //         })
+                        //     }
+                        // }
 
                         break;
                 }

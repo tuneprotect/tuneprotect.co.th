@@ -46,7 +46,13 @@ const step1Constraints = {
             allowEmpty: false,
             message: "^" + $('#fdDestFrom').getAttribute('data-error')
         }
-    }
+    },
+    ctrl_accept_step1: {
+        presence: {
+            allowEmpty: false,
+            message: "^" + $('#ctrl_accept_step1').getAttribute('data-error-accept-step1')
+        }
+    },
 };
 
 const step3Constraints = {
@@ -327,6 +333,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         fdToDate: "",
         ctrl_terms: "",
         fdSendType: "",
+        ctrl_accept_step1: "",
         ctrl_accept_insurance_term: "",
         profile: []
     };
@@ -437,19 +444,20 @@ document.addEventListener("DOMContentLoaded", async () => {
             } else {
                 switch (parseInt(step)) {
                     case 1:
-                        const chkAccept = validateAcceptStep1();
-                        if(!chkAccept){
-                            showAcceptError($('#ctrl_accept_step1').getAttribute('data-error-insurance_term'));
-                            status = false;
-                            break;
-                        }
+                        // const chkAccept = validateAcceptStep1();
+                        // if(!chkAccept){
+                        //     showAcceptError($('#ctrl_accept_step1').getAttribute('data-error-accept-step1'));
+                        //     status = false;
+                        //     break;
+                        // }
                         status = true;
                         data = {
                             ...data,
                             fdDestFrom: $('#fdDestFrom').value,
                             fdDestTo: $('#fdDestTo').value,
                             fdFromDate: $('#fdFromDate').value,
-                            fdToDate: $('#fdToDate').value
+                            fdToDate: $('#fdToDate').value,
+                            ctrl_accept_step1: $('#ctrl_accept_step1').checked ? true : undefined,
                         }
                         result = validate(data, step1Constraints);
                         genItemList(package_data, data.fdFromDate, data.fdToDate);
