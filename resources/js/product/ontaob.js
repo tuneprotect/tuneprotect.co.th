@@ -611,7 +611,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                             fdDestTo: $('#ctrl_travel_type').value === 'annual' ? zoneCode[$('#ctrl_sub_package').value] : $('#fdDestTo').value,
                             fdFromDate: $('#fdFromDate').value,
                             fdToDate: $('#fdToDate').value,
-                            fdPromotionCodeStatus: promotion_data.status,
+                            fdPromotionCodeStatus: $('#controller').value === 'product' ? promotion_data.status : null,
                             ctrl_accept_step1: $('#ctrl_accept_step1').checked ? true : undefined,
                         }
                         result = validate(data, step1Constraints);
