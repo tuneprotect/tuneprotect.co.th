@@ -832,20 +832,18 @@ document.addEventListener("DOMContentLoaded", async () => {
                             //const promotion_data = await validatePromotionCode();
                             const promotion_data = {"status": false};
 
-                            $('#fdPromotionCode').addEventListener('change', (e) => {
-                                if(!promotion_data.status) {
-                                    data.fdPromotionCodeStatus = "";
+                            if(!promotion_data.status) {
+                                data.fdPromotionCodeStatus = "";
 
-                                    console.log('invalid');
+                                console.log('invalid');
 
-                                    Swal.fire({
-                                        title: 'Error!',
-                                        text: 'Error : Promotion code is invalid.',
-                                        icon: 'error',
-                                        confirmButtonText: 'OK'
-                                    })
-                                }
-                            });
+                                Swal.fire({
+                                    title: 'Error!',
+                                    text: 'Error : Promotion code is invalid.',
+                                    icon: 'error',
+                                    confirmButtonText: 'OK'
+                                })
+                            }
                         }
 
                         break;
