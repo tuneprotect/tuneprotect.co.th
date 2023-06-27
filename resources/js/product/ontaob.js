@@ -473,7 +473,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     if ($('#controller').value === 'product') 
     {
         //const promotion_data = await validatePromotionCode();
-        const promotion_data_befor = {"status": true, "count": 10};
+        const promotion_data_befor = {"status": true, "count": 5};
 
         $('#fdPromotionCode').addEventListener('change', (e) => {
             if(promotion_data_befor.status && promotion_data_befor.count <= 5) {
