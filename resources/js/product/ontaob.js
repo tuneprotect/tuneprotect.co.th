@@ -7,12 +7,12 @@ import {
     showMultipleTitle, 
     validatePolicy, 
     formatInputFieldOnlyEnglish, 
-    validatePolicyPayment,
-    validatePromotionCode
+    validatePolicyPayment
 } from "../form/productHelper";
 import {
     showPromotionCodeValid,
-    showValidatePromotionCodeError,
+    showPromotionCodeCount,
+    showValidatePromotionCodeError
 } from "../validate_form";
 import {
     $,
@@ -473,14 +473,17 @@ document.addEventListener("DOMContentLoaded", async () => {
     if ($('#controller').value === 'product') 
     {
         //const promotion_data = await validatePromotionCode();
-        const promotion_data_befor = {"status": true};
+        const promotion_data_befor = {"status": true, "count": 10};
 
         $('#fdPromotionCode').addEventListener('change', (e) => {
-            if(promotion_data_befor.status) {
+            if(promotion_data_befor.status && promotion_data_befor.count <= 5) {
                 data.fdPromotionCodeStatus = true;
-                showPromotionCodeValid($('#fdPromotionCode').getAttribute('data-error-promotion-code-valid'),'span_error');
+                showPromotionCodeCount($('#fdPromotionCode').getAttribute('data-error-promotion-code-valid').replace("{count}", promotion_data_befor.count), 'span_error');
+            } else if(promotion_data_befor.status) {
+                data.fdPromotionCodeStatus = true;
+                showPromotionCodeValid($('#fdPromotionCode').getAttribute('data-error-promotion-code-valid'), 'span_error');
             } else {
-                showValidatePromotionCodeError($('#fdPromotionCode').getAttribute('data-error-promotion-code-invalid'),'span_error');
+                showValidatePromotionCodeError($('#fdPromotionCode').getAttribute('data-error-promotion-code-invalid'), 'span_error');
             }
         });
     }
