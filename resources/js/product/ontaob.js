@@ -478,7 +478,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         $('#fdPromotionCode').addEventListener('change', (e) => {
             if(promotion_data_befor.status && promotion_data_befor.count <= 5) {
                 data.fdPromotionCodeStatus = true;
-                showPromotionCodeCount($('#fdPromotionCode').getAttribute('data-error-promotion-code-valid').replace("{count}", promotion_data_befor.count), 'span_error');
+                showPromotionCodeCount($('#fdPromotionCode').getAttribute('data-error-promotion-code-count').replace("{count}", promotion_data_befor.count), 'span_error');
             } else if(promotion_data_befor.status) {
                 data.fdPromotionCodeStatus = true;
                 showPromotionCodeValid($('#fdPromotionCode').getAttribute('data-error-promotion-code-valid'), 'span_error');
