@@ -229,11 +229,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     let channel = $("#channel")?.value;
     channel = (channel ? channel : 'TPT Website');
 
-    // if ($("#controller")?.value == 'portal') {
-    //     let aBrochureci = document.getElementById('brochure_diabetes');
-    //     aBrochureci.href = $("#brochure_diabetes")?.value;
-    // }
-
     const package_data = await getPackageData(current_package, $("#channel")?.value);
 
     let defaultBmi = "";
@@ -469,11 +464,6 @@ document.addEventListener("DOMContentLoaded", async () => {
         $('.page-overlay').style.display = 'none';
     }, true);
 
-    // $("#btn_next_close").addEventListener('click', (e) => {
-    //     e.preventDefault();
-    //     $('.page-overlay').style.display = 'none';
-    // }, true);
-
     let expandDetailDiabetes = false;
 
     /* more detail Baowan */
@@ -515,21 +505,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             }
         });
     });
-    /*
-    $$("input[name=fdSendAnswer2]").forEach($el => {
-        $el.addEventListener("change", function (e) {
-            if (getRadioSelectedValue('fdSendAnswer2') === 'Y') {
-                document.getElementById("btn-q-n").click();
-                ans2=0;
-            }else{
-                ans2=1;
-                if(ans2===1 && ans3===1 && ans1==1){
-                    document.getElementById("btn-fdQuestion1").click();
-                }
-            }
-        });
-    });
-*/
+
     $$("input[name=fdSendAnswer3]").forEach($el => {
         $el.addEventListener("change", function (e) {
             if (getRadioSelectedValue('fdSendAnswer3') === 'Y') {
@@ -544,19 +520,6 @@ document.addEventListener("DOMContentLoaded", async () => {
             }
         });
     });
-    
-
-
-    // $('input[type=radio][name=fdSendAnswer2]').change(function() {
-    //     if (this.value == 'Y') {
-    //        alert(1)
-    //     }
-    // });
-    // $('input[type=radio][name=fdSendAnswer3]').change(function() {
-    //     if (this.value == 'Y') {
-    //         alert(1)
-    //     }
-    // });
 
     const $btnGoto = $$('.btn-goto');
     $btnGoto.forEach($btn => {
@@ -666,15 +629,6 @@ document.addEventListener("DOMContentLoaded", async () => {
                             }
                             break;
                         case 3:
-                            //=====================================================================
-                            //For sale view only.
-                            // var myEle = document.getElementById("portal_key");
-                            // if (myEle) {
-                            //     if (myEle.value == 'QGRL28KWKA5L6GDRD8QU6TKWBJ5Q3GSRQ4MW2MUX9JDZ6TT3UGFZZ') {
-                            //         $('button[data-step="5"]').style.display = 'none';
-                            //     }
-                            // }
-                            //=====================================================================
                             status = false;
                             if (e.target.id === 'btn-fdQuestion1') {
                                 status = true;
