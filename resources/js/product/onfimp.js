@@ -136,24 +136,6 @@ const constraints = {
             }
         };
     },
-    // fdRevenue: "",
-    // fdTaxno: function (value, attributes, attributeName, options, constraints) {
-    //     if (attributes.fdRevenue === 'N') return null;
-    //     return {
-    //         presence: {
-    //             allowEmpty: false,
-    //             message: "^" + $('#fdTaxno').getAttribute('data-error-tax_no-require')
-    //         },
-    //         length: {
-    //             is: 13,
-    //             message: "^" + $('#fdTaxno').getAttribute('data-error-tax_no-format')
-    //         },
-    //         format: {
-    //             pattern: /^[0-9]{13}$/,
-    //             message: "^" + $('#fdTaxno').getAttribute('data-error-tax_no-format')
-    //         },
-    //     };
-    // },
     ctrl_accept_insurance_term: {
         presence: {
             allowEmpty: false,
@@ -217,11 +199,6 @@ const constraints = {
 };
 
 const checkTaBirthDate = () => {
-    // $$('.date-input .controls-wrapper').forEach(el => {
-    //     el.classList.remove('error');
-    // });
-    //
-    // $('.date-input cite').innerHTML = "";
 
     const dd = $('#ctrl_day').value,
         mm = $('#ctrl_month').value;
@@ -261,13 +238,6 @@ const showDateError = (message) => {
     });
 }
 
-// const showDateError = (message) => {
-//     $('.date-input cite').innerHTML = message;
-//     $$('.date-input .controls-wrapper').forEach(el => {
-//         el.classList.add('error');
-//     });
-// }
-
 const getSelectedPricePackage = (packageCode, package_data) => {
     return package_data[packageCode].price;
 }
@@ -285,17 +255,14 @@ const genItemList = (package_data) => {
                     const dateRange = (package_data[k].price[subPackage].day).split('-');    
                 });
                 const price = parseInt(package_data[k].price[pack]).toLocaleString();
-                const packageName = package_data[k].apiPackage;
                 const planCode = Object.keys(package_data)[index];
 
                 const itme = {
                     item_id: "",
-                    item_name: "",
                     price: "",
                 };
 
-                itme.item_id = planCode;
-                itme.item_name = packageName;
+                itme.item_id = "myHomePlus_" + planCode;
                 itme.price = price;
 
                 itemList.push(itme);
@@ -655,9 +622,8 @@ document.addEventListener("DOMContentLoaded", async () => {
 
                             gtag("event",  "add_to_cart",  {
                                 "currency": "THB",
-                                "value": selectPrice,
                                 "items": [{
-                                  "item_id": fdPackage,
+                                  "item_id": "myHomePlus_" + fdPackage,
                                   "price": selectPrice,
                                 }]
                             });
@@ -858,7 +824,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                         gtag("event",  "begin_checkout",  {
                             "currency": "THB",
                             "items": [{
-                              "item_id": data.fdPackage,
+                              "item_id": "myHomePlus_" + data.fdPackage,
                               "price": data.fdPayAMT,
                             }]
                         });

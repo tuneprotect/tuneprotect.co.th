@@ -7,9 +7,7 @@
             @case("ONCSHC")
                 <script>
                     gtag("event",  "purchase",  {
-                        "transaction_id": '{{$doc_no}}',
                         "currency": "THB",
-                        "value": '{{$payAmount}}',
                         "items": [{
                              "item_id": 'ChillSure_{{$package}}',
                              "doc_no": '{{$doc_no}}',
@@ -21,9 +19,7 @@
             @case("CI")
                 <script>
                     gtag("event",  "purchase",  {
-                        "transaction_id": '{{$doc_no}}',
                         "currency": "THB",
-                        "value": '{{$payAmount}}',
                         "items": [{
                              "item_id": 'myFlexiCI_{{$package}}',
                              "doc_no": '{{$doc_no}}',
@@ -35,9 +31,7 @@
             @case("DIABETES")
                 <script>
                     gtag("event",  "purchase",  {
-                        "transaction_id": '{{$doc_no}}',
                         "currency": "THB",
-                        "value": '{{$payAmount}}',
                         "items": [{
                              "item_id": 'Diabetes_{{$package}}',
                              "doc_no": '{{$doc_no}}',
@@ -49,9 +43,7 @@
             @case("ONPACA")
                 <script>
                     gtag("event",  "purchase",  {
-                        "transaction_id": '{{$doc_no}}',
                         "currency": "THB",
-                        "value": '{{$payAmount}}',
                         "items": [{
                              "item_id": 'PAChoiceCare_{{$package}}',
                              "doc_no": '{{$doc_no}}',
@@ -63,9 +55,7 @@
             @case("ONPAKD")
                 <script>
                     gtag("event",  "purchase",  {
-                        "transaction_id": '{{$doc_no}}',
                         "currency": "THB",
-                        "value": '{{$payAmount}}',
                         "items": [{
                              "item_id": 'PAChoiceKids_{{$package}}',
                              "doc_no": '{{$doc_no}}',
@@ -77,9 +67,7 @@
             @case("ONPASN")
                 <script>
                     gtag("event",  "purchase",  {
-                        "transaction_id": '{{$doc_no}}',
                         "currency": "THB",
-                        "value": '{{$payAmount}}',
                         "items": [{
                              "item_id": 'PAChoiceSenior_{{$package}}',
                              "doc_no": '{{$doc_no}}',
@@ -91,10 +79,9 @@
             @case("TAISM")
                 <script>
                     gtag("event",  "purchase",  {
-                        "transaction_id": '{{$doc_no}}',
                         "currency": "THB",
-                        "value": '{{$payAmount}}',
                         "items": [{
+                             "item_id": 'iSmile_{{$package}}',
                              "doc_no": '{{$doc_no}}',
                              "price": '{{$payAmount}}',
                          }]
@@ -104,10 +91,9 @@
             @case("TAIPOCT22")
                 <script>
                     gtag("event",  "purchase",  {
-                        "transaction_id": '{{$doc_no}}',
                         "currency": "THB",
-                        "value": '{{$payAmount}}',
                         "items": [{
+                             "item_id": 'TuneiPass_{{$package}}',
                              "doc_no": '{{$doc_no}}',
                              "price": '{{$payAmount}}',
                          }]
@@ -117,10 +103,9 @@
             @case("ONTADM")
                 <script>
                     gtag("event",  "purchase",  {
-                        "transaction_id": '{{$doc_no}}',
                         "currency": "THB",
-                        "value": '{{$payAmount}}',
                         "items": [{
+                             "item_id": 'TADomestic_{{$package}}',
                              "doc_no": '{{$doc_no}}',
                              "price": '{{$payAmount}}',
                          }]
@@ -130,10 +115,9 @@
             @case("ONTAOB")
                 <script>
                     gtag("event",  "purchase",  {
-                        "transaction_id": '{{$doc_no}}',
                         "currency": "THB",
-                        "value": '{{$payAmount}}',
                         "items": [{
+                             "item_id": 'TAOutbound_{{$package}}',
                              "doc_no": '{{$doc_no}}',
                              "price": '{{$payAmount}}',
                          }]
@@ -143,10 +127,9 @@
             @case("ONFIMP")
                 <script>
                     gtag("event",  "purchase",  {
-                        "transaction_id": '{{$doc_no}}',
                         "currency": "THB",
-                        "value": '{{$payAmount}}',
                         "items": [{
+                             "item_id": 'myHomePlus_{{$package}}',
                              "doc_no": '{{$doc_no}}',
                              "price": '{{$payAmount}}',
                          }]
@@ -156,10 +139,9 @@
             @case("ONMHS")
                 <script>
                     gtag("event",  "purchase",  {
-                        "transaction_id": '{{$doc_no}}',
                         "currency": "THB",
-                        "value": '{{$payAmount}}',
                         "items": [{
+                             "item_id": 'myHomeSmart_{{$package}}',
                              "doc_no": '{{$doc_no}}',
                              "price": '{{$payAmount}}',
                          }]
