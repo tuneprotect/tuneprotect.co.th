@@ -238,8 +238,8 @@
                                         </picture>
                                     @elseif($selected==='ONCSHC')
                                         <picture>
-                                            <source media="(min-width:768px)" srcset="https://www.tuneprotect.co.th/storage/Banner/chillsure/Tune-Chillsure02.webp">
-                                            <img src="{{url(!empty($v->pic_mobile_en) ? "https://www.tuneprotect.co.th/storage/Banner/chillsure/Tune-Chillsure04.webp" : "https://www.tuneprotect.co.th/storage/Banner/chillsure/Tune-Chillsure04.webp" )}}" alt="{{$v->locales[$locale]->title}}">
+                                            <source media="(min-width:768px)" srcset="{{url('/storage/Banner/chillsure/Banner_ChillSure_PC_EN.webp')}}">
+                                            <img src="{{url(!empty($v->pic_mobile_en) ? "{{url('/storage/Banner/chillsure/Banner_ChillSure_MB_EN.webp')}}" : "{{url('/storage/Banner/chillsure/Banner_ChillSure_MB_TH.webp')}}" )}}" alt="{{$v->locales[$locale]->title}}">
                                         </picture>
                                     @elseif($selected==='ONCSHCAA')
                                         <picture>
@@ -318,8 +318,8 @@
                                     @else
                                         @if($selected==='ONTAOB')
                                             <picture>
-                                                <source media="(min-width:768px)" srcset="https://www.tuneprotect.co.th/storage/Banner/iTravel/Banner_iTravel_20230330_pc_en.webp">
-                                                <img src="{{url(!empty($v->pic_mobile_en) ? "https://www.tuneprotect.co.th/storage/Banner/iTravel/Banner_iTravel_20230330_mb_en.webp" : "https://www.tuneprotect.co.th/storage/Banner/iTravel/Banner_iTravel_20230330_mb_en.webp" )}}" alt="{{$v->locales[$locale]->title}}">
+                                                <source media="(min-width:768px)" srcset="{{url('/storage/Banner/iTravel/Banner_iTravel_PC_EN.webp')}}">
+                                                <img src="{{url(!empty($v->pic_mobile_en) ? "{{url('/storage/Banner/iTravel/Banner_iTravel_MB_EN.webp')}}" : "{{url('/storage/Banner/iTravel/Banner_iTravel_MB_TH.webp')}}" )}}" alt="{{$v->locales[$locale]->title}}">
                                             </picture>
                                         @endif
                                         @if($selected !== 'ONTAOB')
@@ -382,8 +382,8 @@
                                         </picture>
                                     @elseif($selected==='ONCSHC')
                                         <picture>
-                                            <source media="(min-width:768px)" srcset="https://www.tuneprotect.co.th/storage/Banner/chillsure/Tune-Chillsure01.webp">
-                                            <img src="{{url(!empty($v->pic_mobile_en) ? "https://www.tuneprotect.co.th/storage/Banner/chillsure/Tune-Chillsure03.webp" : "https://www.tuneprotect.co.th/storage/Banner/chillsure/Tune-Chillsure03.webp" )}}" alt="{{$v->locales[$locale]->title}}">
+                                            <source media="(min-width:768px)" srcset="{{url('/storage/Banner/chillsure/Banner_ChillSure_PC_TH.webp')}}">
+                                            <img src="{{url(!empty($v->pic_mobile_en) ? "{{url('/storage/Banner/chillsure/Banner_ChillSure_MB_EN.webp')}}" : "{{url('/storage/Banner/chillsure/Banner_ChillSure_MB_TH.webp')}}" )}}" alt="{{$v->locales[$locale]->title}}">
                                         </picture>
                                     @elseif($selected==='ONCSHCAA')
                                         <picture>
@@ -421,8 +421,8 @@
                                     @else
                                         @if($selected==='ONTAOB')
                                             <picture>
-                                                <source media="(min-width:768px)" srcset="https://www.tuneprotect.co.th/storage/Banner/iTravel/Banner_iTravel_20230330_pc_th.webp">
-                                                <img src="{{url(!empty($v->pic_mobile_en) ? "https://www.tuneprotect.co.th/storage/Banner/iTravel/Banner_iTravel_20230330_mb_th.webp" : "https://www.tuneprotect.co.th/storage/Banner/iTravel/Banner_iTravel_20230330_mb_th.webp" )}}" alt="{{$v->locales[$locale]->title}}">
+                                                <source media="(min-width:768px)" srcset="{{url('/storage/Banner/iTravel/Banner_iTravel_PC_EN.webp')}}">
+                                                <img src="{{url(!empty($v->pic_mobile_en) ? "{{url('/storage/Banner/iTravel/Banner_iTravel_MB_EN.webp')}}" : "{{url('/storage/Banner/iTravel/Banner_iTravel_MB_TH.webp')}}" )}}" alt="{{$v->locales[$locale]->title}}">
                                             </picture>
                                         @endif
                                         @if($selected !== 'ONTAOB')

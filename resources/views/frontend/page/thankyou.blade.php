@@ -11,7 +11,7 @@
                         "currency": "THB",
                         "value": '{{$payAmount}}',
                         "items": [{
-                             "item_id": "ChillSure_" + '{{$package}}',
+                             "item_id": 'ChillSure_{{$package}}',
                              "doc_no": '{{$doc_no}}',
                              "price": '{{$payAmount}}',
                          }]
