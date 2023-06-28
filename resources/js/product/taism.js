@@ -139,11 +139,6 @@ const profileConstraints = {
             message: "^" + $('#data_1_fdAddr_Num').getAttribute('data-error-address')
         },
         format: formatInputFieldByLanguage()
-        // format: {
-        //     pattern: /^[a-zA-Z0-9 !@#$&()\\`.+\-,/\"\n\r"]*$/,
-        //     flags: "i",
-        //     message: "^" + $('[data-error-eng-only]').getAttribute('data-error-eng-only')
-        // }
     },
     fdAddr_District: {
         presence: {
@@ -199,10 +194,6 @@ const genPrice = (package_data, fdFromDate, fdToDate) => {
     let startDate = parseISO(fdFromDate);
     let endDate = parseISO(fdToDate);
 
-    // console.log(package_data);
-    // console.log(fdFromDate);
-    // console.log(fdToDate);
-
     const day = differenceInDays(endDate, startDate) + 1;
     console.log("day : "  + day);
 
@@ -227,13 +218,6 @@ const genPrice = (package_data, fdFromDate, fdToDate) => {
             });
             $(`strong[data-price-${k}]`).innerHTML = parseInt(package_data[k].price[pack].price).toLocaleString();
             $('#sub_code').value = pack;
-
-            // console.log('k : ' + k );
-            // console.log('sub_code pack : ' + pack );
-
-            //fdPackage
-            //$('#sub_code').value
-            //Price = package_data[Package].price[price key id].price
         })
 
 }
@@ -251,17 +235,14 @@ const genItemList = (package_data, fdFromDate, fdToDate) => {
                     const dateRange = (package_data[k].price[subPackage].day).split('-');    
                 });
                 const price = parseInt(package_data[k].price[pack]).toLocaleString();
-                const packageName = package_data[k].apiPackage;
                 const planCode = Object.keys(package_data)[index];
 
                 const itme = {
                     item_id: "",
-                    item_name: "",
                     price: "",
                 };
 
-                itme.item_id = planCode;
-                itme.item_name = packageName;
+                itme.item_id = "iSmile_" + planCode;
                 itme.price = price;
 
                 itemList.push(itme);
@@ -304,26 +285,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                 confirmButtonText: 'OK'
             })
         }
-        // if($('#partner').value == 'LUMA')
-        // {
-        //     let element = document.getElementById("btnBrochure");
-        //     element.parentNode.removeChild(element);
-        // }
-        // if($('#partner').value == 'partnership')
-        // {
-        //     $('#btnBrochure').addEventListener('click', (e) => {
-        //         // alert( "Handler for .click() called." );
-        //
-        //     });
-        // }
     }
-
-    // if(Keys == 'BQQWAMUX9JDXNTFFD4WZZLQ3NDEXNTFFT6UCXGSF68UXNEKZ24UYN5TRZ2')
-    // {
-    //     package_data = await getPackageData('ontalnlite');
-    // }
-    //
-    // console.log(package_data);
 
     let step = 1;
     let data = {
@@ -444,12 +406,6 @@ document.addEventListener("DOMContentLoaded", async () => {
             } else {
                 switch (parseInt(step)) {
                     case 1:
-                        // const chkAccept = validateAcceptStep1();
-                        // if(!chkAccept){
-                        //     showAcceptError($('#ctrl_accept_step1').getAttribute('data-error-accept-step1'));
-                        //     status = false;
-                        //     break;
-                        // }
                         status = true;
                         data = {
                             ...data,
@@ -467,16 +423,6 @@ document.addEventListener("DOMContentLoaded", async () => {
                             showError($('#step1'), result);
                             status = false;
                         } else {
-                            // let fromDate = ($('#fdFromDate').value).split('/');
-                            // const duration = package_data[Object.keys(package_data)[0]].price[$("#ctrl_sub_package").value].duration;
-                            // let fdFromDate = `${fromDate[2]}-${fromDate[1]}-${fromDate[0]}`;
-                            // let fdToDate = '';
-                            // if (duration.indexOf('d') !== -1) {
-                            //     fdToDate = format(subDays(addDays(parseISO(fdFromDate), duration.replace('d', '')), 1), 'yyyy-MM-dd');
-                            // } else if (duration.indexOf('y') !== -1) {
-                            //     fdToDate = format(subDays(addYears(parseISO(fdFromDate), duration.replace('y', '')), 1), 'yyyy-MM-dd');
-                            // }
-
                             let fromDate = ($('#fdFromDate').value).split('/');
                             let toDate = ($('#fdToDate').value).split('/');
                             data = {
@@ -484,8 +430,6 @@ document.addEventListener("DOMContentLoaded", async () => {
                                 fdFromDate: `${fromDate[2]}-${fromDate[1]}-${fromDate[0]}`,
                                 fdToDate: `${toDate[2]}-${toDate[1]}-${toDate[0]}`,
                             }
-
-                            // genPrice(package_data, $('#ctrl_sub_package').value);
                             genPrice(package_data, data.fdFromDate, data.fdToDate);
 
                         }
@@ -513,14 +457,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                             $(`#data_${i}_fdNationalID`).value = "";
                         }
 
-                        // const fdPackage = $btn.getAttribute('data-package') + $btn.getAttribute('data-sub-package');
-                        // $dataSubPackage =fdPackage;
-                        // console.log($btn.getAttribute('data-plan'));
-
                         const fdPackage = $btn.getAttribute('data-package');
-                        // $dataSubPackage =fdPackage;
-
-                        // console.log(fdPackage);
 
                         $('#form-head').innerHTML = $btn.getAttribute('data-plan');
                         if (fdPackage) {
@@ -533,9 +470,8 @@ document.addEventListener("DOMContentLoaded", async () => {
 
                             gtag("event",  "add_to_cart",  {
                                 "currency": "THB",
-                                "value": selectPrice,
                                 "items": [{
-                                  "item_id": fdPackage,
+                                  "item_id": "iSmile_" + fdPackage,
                                   "price": selectPrice,
                                 }]
                             });
@@ -618,17 +554,15 @@ document.addEventListener("DOMContentLoaded", async () => {
                             ...data,
                             fdMarketing_Consent: $('#ctrl_marketing').checked ? true : undefined
                         }
-                        // fdPayAMT: getSelectedPrice(data.fdPackage, package_data),
 
                         gtag("event",  "begin_checkout",  {
                             "currency": "THB",
                             "items": [{
-                              "item_id": data.fdPackage,
+                              "item_id": "iSmile_" + data.fdPackage,
                               "price": data.fdPayAMT,
                             }]
                         });
 
-                        //console.log('fdPayAMT : ' + data.fdPayAMT);
                         result = validate(data, step3Constraints);
 
                         if (result) {

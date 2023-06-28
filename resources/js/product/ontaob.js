@@ -7,12 +7,12 @@ import {
     showMultipleTitle, 
     validatePolicy, 
     formatInputFieldOnlyEnglish, 
-    validatePolicyPayment,
-    validatePromotionCode
+    validatePolicyPayment
 } from "../form/productHelper";
 import {
     showPromotionCodeValid,
-    showValidatePromotionCodeError,
+    showPromotionCodeCount,
+    showValidatePromotionCodeError
 } from "../validate_form";
 import {
     $,
@@ -356,17 +356,14 @@ const genItemList = (package_data, fdFromDate, fdToDate) => {
                     const dateRange = (package_data[k].price[subPackage].day).split('-');    
                 });
                 const price = parseInt(package_data[k].price[pack]).toLocaleString();
-                const packageName = package_data[k].apiPackage;
                 const planCode = Object.keys(package_data)[index];
 
                 const itme = {
                     item_id: "",
-                    item_name: "",
                     price: "",
                 };
 
-                itme.item_id = planCode;
-                itme.item_name = packageName;
+                itme.item_id = "TAOutbound_" + planCode;
                 itme.price = price;
 
                 itemList.push(itme);
@@ -473,14 +470,17 @@ document.addEventListener("DOMContentLoaded", async () => {
     // if ($('#controller').value === 'product') 
     // {
     //     //const promotion_data = await validatePromotionCode();
-    //     const promotion_data_befor = {"status": true};
+    //     const promotion_data_befor = {"status": true, "count": 5};
 
     //     $('#fdPromotionCode').addEventListener('change', (e) => {
-    //         if(promotion_data_befor.status) {
+    //         if(promotion_data_befor.status && promotion_data_befor.count <= 5) {
     //             data.fdPromotionCodeStatus = true;
-    //             showPromotionCodeValid($('#fdPromotionCode').getAttribute('data-error-promotion-code-valid'),'span_error');
+    //             showPromotionCodeCount($('#fdPromotionCode').getAttribute('data-error-promotion-code-count').replace("{count}", promotion_data_befor.count), 'span_error');
+    //         } else if(promotion_data_befor.status) {
+    //             data.fdPromotionCodeStatus = true;
+    //             showPromotionCodeValid($('#fdPromotionCode').getAttribute('data-error-promotion-code-valid'), 'span_error');
     //         } else {
-    //             showValidatePromotionCodeError($('#fdPromotionCode').getAttribute('data-error-promotion-code-invalid'),'span_error');
+    //             showValidatePromotionCodeError($('#fdPromotionCode').getAttribute('data-error-promotion-code-invalid'), 'span_error');
     //         }
     //     });
     // }
@@ -599,11 +599,6 @@ document.addEventListener("DOMContentLoaded", async () => {
             } else {
                 switch (parseInt(step)) {
                     case 1:
-                        // const chkAccept = validateAcceptStep1();
-                        // if(!chkAccept){
-                        //     showAcceptError($('#ctrl_accept_step1').getAttribute('data-error-accept-step1'));
-                        //     status = false;
-                        // }
                         status = true;
                         data = {
                             ...data,
@@ -641,8 +636,6 @@ document.addEventListener("DOMContentLoaded", async () => {
 
                         break;
                     case 2:
-                        // const fdPackage = $btn.getAttribute('data-package') + $btn.getAttribute('data-sub-package');
-                        // $dataSubPackage = fdPackage;
 
                         const fdPackage = $btn.getAttribute('data-package');
                         $('#form-head').innerHTML = $btn.getAttribute('data-plan');
@@ -656,9 +649,8 @@ document.addEventListener("DOMContentLoaded", async () => {
 
                             gtag("event",  "add_to_cart",  {
                                 "currency": "THB",
-                                "value": selectPrice,
                                 "items": [{
-                                  "item_id": fdPackage,
+                                  "item_id": "TAOutbound_" + fdPackage,
                                   "price": selectPrice,
                                 }]
                             });
@@ -737,7 +729,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                             gtag("event",  "begin_checkout",  {
                                 "currency": "THB",
                                 "items": [{
-                                  "item_id": data.fdPackage,
+                                  "item_id": "TAOutbound_" + data.fdPackage,
                                   "price": data.fdPayAMT,
                                 }]
                             });
