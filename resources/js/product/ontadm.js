@@ -249,7 +249,7 @@ const genItemList = (package_data, fdFromDate, fdToDate) => {
                     price: "",
                 };
 
-                itme.item_id = "TADomestic" + planCode;
+                itme.item_id = "TADomestic_" + planCode;
                 itme.price = price;
 
                 itemList.push(itme);

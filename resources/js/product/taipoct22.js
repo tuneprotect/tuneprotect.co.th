@@ -247,7 +247,7 @@ const genItemList = (package_data, fdFromDate, fdToDate) => {
                     price: "",
                 };
 
-                itme.item_id = "TuneiPass" + planCode;
+                itme.item_id = "TuneiPass_" + planCode;
                 itme.price = price;
 
                 itemList.push(itme);
