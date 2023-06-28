@@ -239,7 +239,7 @@
                                     @elseif($selected==='ONCSHC')
                                         <picture>
                                             <source media="(min-width:768px)" srcset="{{url('/storage/Banner/chillsure/banner-chillsure-pc-en.webp')}}">
-                                            <img src="{{url(!empty($v->pic_mobile_en) ? "{{url('/storage/Banner/chillsure/banner-chillsure-mb-en.webp')}}" : "{{url('/storage/Banner/chillsure/banner-chillsure-mb-th.webp')}}" )}}" alt="{{$v->locales[$locale]->title}}">
+                                            <img src="{{url(!empty($v->pic_mobile_en) ? {{url('/storage/Banner/chillsure/banner-chillsure-mb-en.webp')}} : {{url('/storage/Banner/chillsure/banner-chillsure-mb-th.webp')}})}}" alt="{{$v->locales[$locale]->title}}">
                                         </picture>
                                     @elseif($selected==='ONCSHCAA')
                                         <picture>
@@ -319,7 +319,7 @@
                                         @if($selected==='ONTAOB')
                                             <picture>
                                                 <source media="(min-width:768px)" srcset="{{url('/storage/Banner/iTravel/banner-itravel-pc-en.webp')}}">
-                                                <img src="{{url(!empty($v->pic_mobile_en) ? "{{url('/storage/Banner/iTravel/banner-itravel-mb-en.webp')}}" : "{{url('/storage/Banner/iTravel/banner_itravel_mb_th.webp')}}" )}}" alt="{{$v->locales[$locale]->title}}">
+                                                <img src="{{url(!empty($v->pic_mobile_en) ? {{url('/storage/Banner/iTravel/banner-itravel-mb-en.webp')}} : {{url('/storage/Banner/iTravel/banner_itravel_mb_th.webp')}})}}" alt="{{$v->locales[$locale]->title}}">
                                             </picture>
                                         @endif
                                         @if($selected !== 'ONTAOB')
@@ -383,7 +383,7 @@
                                     @elseif($selected==='ONCSHC')
                                         <picture>
                                             <source media="(min-width:768px)" srcset="{{url('/storage/Banner/chillsure/banner-chillsure-pc-th.webp')}}">
-                                            <img src="{{url(!empty($v->pic_mobile_en) ? "{{url('/storage/Banner/chillsure/banner-chillsure-mb-en.webp')}}" : "{{url('/storage/Banner/chillsure/banner-chillsure-mb-th.webp')}}" )}}" alt="{{$v->locales[$locale]->title}}">
+                                            <img src="{{url(!empty($v->pic_mobile_en) ? {{url('/storage/Banner/chillsure/banner-chillsure-mb-en.webp')}} : {{url('/storage/Banner/chillsure/banner-chillsure-mb-th.webp')}})}}" alt="{{$v->locales[$locale]->title}}">
                                         </picture>
                                     @elseif($selected==='ONCSHCAA')
                                         <picture>
@@ -422,7 +422,7 @@
                                         @if($selected==='ONTAOB')
                                             <picture>
                                                 <source media="(min-width:768px)" srcset="{{url('/storage/Banner/iTravel/banner-itravel-pc-th.webp')}}">
-                                                <img src="{{url(!empty($v->pic_mobile_en) ? "{{url('/storage/Banner/iTravel/banner-itravel-mb-en.webp')}}" : "{{url('/storage/Banner/iTravel/banner_itravel_mb_th.webp')}}" )}}" alt="{{$v->locales[$locale]->title}}">
+                                                <img src="{{url(!empty($v->pic_mobile_en) ? {{url('/storage/Banner/iTravel/banner-itravel-mb-en.webp')}} : {{url('/storage/Banner/iTravel/banner_itravel_mb_th.webp')}})}}" alt="{{$v->locales[$locale]->title}}">
                                             </picture>
                                         @endif
                                         @if($selected !== 'ONTAOB')
