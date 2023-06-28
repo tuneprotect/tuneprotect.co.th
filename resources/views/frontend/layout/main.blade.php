@@ -238,8 +238,8 @@
                                         </picture>
                                     @elseif($selected==='ONCSHC')
                                         <picture>
-                                            <source media="(min-width:768px)" srcset="{{url('/storage/Banner/chillsure/Banner_ChillSure_PC_EN.webp')}}">
-                                            <img src="{{url(!empty($v->pic_mobile_en) ? "{{url('/storage/Banner/chillsure/Banner_ChillSure_MB_EN.webp')}}" : "{{url('/storage/Banner/chillsure/Banner_ChillSure_MB_TH.webp')}}" )}}" alt="{{$v->locales[$locale]->title}}">
+                                            <source media="(min-width:768px)" srcset="{{url('/storage/Banner/chillsure/banner-chillsure-pc-en.webp')}}">
+                                            <img src="{{url(!empty($v->pic_mobile_en) ? "{{url('/storage/Banner/chillsure/banner-chillsure-mb-en.webp')}}" : "{{url('/storage/Banner/chillsure/banner-chillsure-mb-th.webp')}}" )}}" alt="{{$v->locales[$locale]->title}}">
                                         </picture>
                                     @elseif($selected==='ONCSHCAA')
                                         <picture>
@@ -318,8 +318,8 @@
                                     @else
                                         @if($selected==='ONTAOB')
                                             <picture>
-                                                <source media="(min-width:768px)" srcset="{{url('/storage/Banner/iTravel/Banner_iTravel_PC_EN.webp')}}">
-                                                <img src="{{url(!empty($v->pic_mobile_en) ? "{{url('/storage/Banner/iTravel/Banner_iTravel_MB_EN.webp')}}" : "{{url('/storage/Banner/iTravel/Banner_iTravel_MB_TH.webp')}}" )}}" alt="{{$v->locales[$locale]->title}}">
+                                                <source media="(min-width:768px)" srcset="{{url('/storage/Banner/iTravel/banner-itravel-pc-en.webp')}}">
+                                                <img src="{{url(!empty($v->pic_mobile_en) ? "{{url('/storage/Banner/iTravel/banner-itravel-mb-en.webp')}}" : "{{url('/storage/Banner/iTravel/banner_itravel_mb_th.webp')}}" )}}" alt="{{$v->locales[$locale]->title}}">
                                             </picture>
                                         @endif
                                         @if($selected !== 'ONTAOB')
@@ -382,8 +382,8 @@
                                         </picture>
                                     @elseif($selected==='ONCSHC')
                                         <picture>
-                                            <source media="(min-width:768px)" srcset="{{url('/storage/Banner/chillsure/Banner_ChillSure_PC_TH.webp')}}">
-                                            <img src="{{url(!empty($v->pic_mobile_en) ? "{{url('/storage/Banner/chillsure/Banner_ChillSure_MB_EN.webp')}}" : "{{url('/storage/Banner/chillsure/Banner_ChillSure_MB_TH.webp')}}" )}}" alt="{{$v->locales[$locale]->title}}">
+                                            <source media="(min-width:768px)" srcset="{{url('/storage/Banner/chillsure/banner-chillsure-pc-th.webp')}}">
+                                            <img src="{{url(!empty($v->pic_mobile_en) ? "{{url('/storage/Banner/chillsure/banner-chillsure-mb-en.webp')}}" : "{{url('/storage/Banner/chillsure/banner-chillsure-mb-th.webp')}}" )}}" alt="{{$v->locales[$locale]->title}}">
                                         </picture>
                                     @elseif($selected==='ONCSHCAA')
                                         <picture>
@@ -421,8 +421,8 @@
                                     @else
                                         @if($selected==='ONTAOB')
                                             <picture>
-                                                <source media="(min-width:768px)" srcset="{{url('/storage/Banner/iTravel/Banner_iTravel_PC_EN.webp')}}">
-                                                <img src="{{url(!empty($v->pic_mobile_en) ? "{{url('/storage/Banner/iTravel/Banner_iTravel_MB_EN.webp')}}" : "{{url('/storage/Banner/iTravel/Banner_iTravel_MB_TH.webp')}}" )}}" alt="{{$v->locales[$locale]->title}}">
+                                                <source media="(min-width:768px)" srcset="{{url('/storage/Banner/iTravel/banner-itravel-pc-th.webp')}}">
+                                                <img src="{{url(!empty($v->pic_mobile_en) ? "{{url('/storage/Banner/iTravel/banner-itravel-mb-en.webp')}}" : "{{url('/storage/Banner/iTravel/banner_itravel_mb_th.webp')}}" )}}" alt="{{$v->locales[$locale]->title}}">
                                             </picture>
                                         @endif
                                         @if($selected !== 'ONTAOB')
