@@ -370,17 +370,14 @@ document.addEventListener("DOMContentLoaded", async () => {
                 .map(k => {
                     const pack = Object.keys(package_data[k].price).filter(ageRange => checkAge(data.fdHBD, ageRange))
                     const price = parseInt(package_data[k].price[pack]).toLocaleString();
-                    const packageName = package_data[k].apiPackage;
                     const planCode = Object.keys(package_data)[index];
 
                     const itme = {
                         item_id: "",
-                        item_name: "",
                         price: "",
                     };
 
-                    itme.item_id = planCode;
-                    itme.item_name = packageName;
+                    itme.item_id = "Diabetes_" + planCode;
                     itme.price = price;
 
                     itemList.push(itme);
@@ -561,9 +558,8 @@ document.addEventListener("DOMContentLoaded", async () => {
                                 
                                 gtag("event",  "add_to_cart",  {
                                     "currency": "THB",
-                                    "value": selectPrice,
                                     "items": [{
-                                      "item_id": fdPackage,
+                                      "item_id": "Diabetes_" + fdPackage,
                                       "price": selectPrice,
                                     }]
                                 });
@@ -649,7 +645,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                             gtag("event",  "begin_checkout",  {
                                 "currency": "THB",
                                 "items": [{
-                                  "item_id": data.fdPackage,
+                                  "item_id": "Diabetes_" + data.fdPackage,
                                   "price": data.fdPayAMT,
                                 }]
                             });

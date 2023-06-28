@@ -25,6 +25,7 @@
                         "currency": "THB",
                         "value": '{{$payAmount}}',
                         "items": [{
+                             "item_id": 'myFlexiCI_{{$package}}',
                              "doc_no": '{{$doc_no}}',
                              "price": '{{$payAmount}}',
                          }]
@@ -38,6 +39,7 @@
                         "currency": "THB",
                         "value": '{{$payAmount}}',
                         "items": [{
+                             "item_id": 'Diabetes_{{$package}}',
                              "doc_no": '{{$doc_no}}',
                              "price": '{{$payAmount}}',
                          }]
@@ -51,6 +53,7 @@
                         "currency": "THB",
                         "value": '{{$payAmount}}',
                         "items": [{
+                             "item_id": 'PAChoiceCare_{{$package}}',
                              "doc_no": '{{$doc_no}}',
                              "price": '{{$payAmount}}',
                          }]

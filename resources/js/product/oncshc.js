@@ -750,7 +750,6 @@ document.addEventListener("DOMContentLoaded", async () => {
                             });
 
                             gtag("event",  "begin_checkout",  {
-                                "value": data.fdPayAMT,
                                 "currency": "THB",
                                 "items": [{
                                   "item_id": "ChillSure_" + data.fdPackage,
