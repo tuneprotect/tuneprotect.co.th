@@ -67,6 +67,7 @@
                         "currency": "THB",
                         "value": '{{$payAmount}}',
                         "items": [{
+                             "item_id": 'PAChoiceKids_{{$package}}',
                              "doc_no": '{{$doc_no}}',
                              "price": '{{$payAmount}}',
                          }]
@@ -80,6 +81,7 @@
                         "currency": "THB",
                         "value": '{{$payAmount}}',
                         "items": [{
+                             "item_id": 'PAChoiceSenior_{{$package}}',
                              "doc_no": '{{$doc_no}}',
                              "price": '{{$payAmount}}',
                          }]
