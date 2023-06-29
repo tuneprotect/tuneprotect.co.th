@@ -89,7 +89,7 @@ use App\Helper\TemplateHelper; ?>
                     gtag('js', new Date());
 
                     gtag('config', 'AW-445121093');
-                    gtag('config', 'G-GGKQZLM02H');
+                    //gtag('config', 'G-GGKQZLM02H');
                 </script>
                 <!-- Facebook Pixel Code -->
 
