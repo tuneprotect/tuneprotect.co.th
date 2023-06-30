@@ -372,15 +372,17 @@ document.addEventListener("DOMContentLoaded", async () => {
                     const price = parseInt(package_data[k].price[pack]).toLocaleString();
                     const planCode = Object.keys(package_data)[index];
 
-                    const itme = {
+                    const item = {
                         item_id: "",
+                        item_name: "",
                         price: "",
                     };
 
-                    itme.item_id = "Diabetes_" + planCode;
-                    itme.price = price;
+                    item.item_id = "Diabetes_" + planCode;
+                    item.item_name = "Diabetes_" + planCode;
+                    item.price = price;
 
-                    itemList.push(itme);
+                    itemList.push(item);
                     index++;
                 });
         }
@@ -555,12 +557,13 @@ document.addEventListener("DOMContentLoaded", async () => {
                                 status = true;
 
                                 const selectPrice = getSelectedPrice(data.fdHBD, fdPackage, package_data);
-                                
+
                                 gtag("event",  "add_to_cart",  {
                                     "currency": "THB",
+                                    "value": selectPrice,
                                     "items": [{
                                       "item_id": "Diabetes_" + fdPackage,
-                                      "price": selectPrice,
+                                      "item_name": "Diabetes_" + fdPackage,
                                     }]
                                 });
 
@@ -644,9 +647,10 @@ document.addEventListener("DOMContentLoaded", async () => {
 
                             gtag("event",  "begin_checkout",  {
                                 "currency": "THB",
+                                "value": data.fdPayAMT,
                                 "items": [{
                                   "item_id": "Diabetes_" + data.fdPackage,
-                                  "price": data.fdPayAMT,
+                                  "item_name": "Diabetes_" + data.fdPackage,
                                 }]
                             });
 

@@ -8,21 +8,32 @@
                 <script>
                     gtag("event",  "purchase",  {
                         "currency": "THB",
+                        "transaction_id": '{{$refCode}}',
+                        "value": '{{$payAmount}}',
                         "items": [{
                              "item_id": 'ChillSure_{{$package}}',
-                             "doc_no": '{{$doc_no}}',
+                             "item_name": 'ChillSure_{{$package}}',
                              "price": '{{$payAmount}}',
                          }]
                     });
+
+                    // fbq("trackCustom", "purchase", {
+                    //     currency: "THB",
+                    //     item_id: 'ChillSure_{{$package}}',
+                    //     doc_no: '{{$doc_no}}',
+                    //     price: '{{$payAmount}}',
+                    // });
                 </script>
             @break
             @case("CI")
                 <script>
                     gtag("event",  "purchase",  {
                         "currency": "THB",
+                        "transaction_id": '{{$refCode}}',
+                        "value": '{{$payAmount}}',
                         "items": [{
                              "item_id": 'myFlexiCI_{{$package}}',
-                             "doc_no": '{{$doc_no}}',
+                             "item_name": 'myFlexiCI_{{$package}}',
                              "price": '{{$payAmount}}',
                          }]
                     });
@@ -32,9 +43,11 @@
                 <script>
                     gtag("event",  "purchase",  {
                         "currency": "THB",
+                        "transaction_id": '{{$refCode}}',
+                        "value": '{{$payAmount}}',
                         "items": [{
                              "item_id": 'Diabetes_{{$package}}',
-                             "doc_no": '{{$doc_no}}',
+                             "item_name": 'Diabetes_{{$package}}',
                              "price": '{{$payAmount}}',
                          }]
                     });
@@ -44,9 +57,11 @@
                 <script>
                     gtag("event",  "purchase",  {
                         "currency": "THB",
+                        "transaction_id": '{{$refCode}}',
+                        "value": '{{$payAmount}}',
                         "items": [{
                              "item_id": 'PAChoiceCare_{{$package}}',
-                             "doc_no": '{{$doc_no}}',
+                             "item_name": 'PAChoiceCare_{{$package}}',
                              "price": '{{$payAmount}}',
                          }]
                     });
@@ -56,9 +71,11 @@
                 <script>
                     gtag("event",  "purchase",  {
                         "currency": "THB",
+                        "transaction_id": '{{$refCode}}',
+                        "value": '{{$payAmount}}',
                         "items": [{
                              "item_id": 'PAChoiceKids_{{$package}}',
-                             "doc_no": '{{$doc_no}}',
+                             "item_name": 'PAChoiceKids_{{$package}}',
                              "price": '{{$payAmount}}',
                          }]
                     });
@@ -68,9 +85,11 @@
                 <script>
                     gtag("event",  "purchase",  {
                         "currency": "THB",
+                        "transaction_id": '{{$refCode}}',
+                        "value": '{{$payAmount}}',
                         "items": [{
                              "item_id": 'PAChoiceSenior_{{$package}}',
-                             "doc_no": '{{$doc_no}}',
+                             "item_name": 'PAChoiceSenior_{{$package}}',
                              "price": '{{$payAmount}}',
                          }]
                     });
@@ -80,9 +99,11 @@
                 <script>
                     gtag("event",  "purchase",  {
                         "currency": "THB",
+                        "transaction_id": '{{$refCode}}',
+                        "value": '{{$payAmount}}',
                         "items": [{
                              "item_id": 'iSmile_{{$package}}',
-                             "doc_no": '{{$doc_no}}',
+                             "item_name": 'iSmile_{{$package}}',
                              "price": '{{$payAmount}}',
                          }]
                     });
@@ -92,9 +113,11 @@
                 <script>
                     gtag("event",  "purchase",  {
                         "currency": "THB",
+                        "transaction_id": '{{$refCode}}',
+                        "value": '{{$payAmount}}',
                         "items": [{
                              "item_id": 'TuneiPass_{{$package}}',
-                             "doc_no": '{{$doc_no}}',
+                             "item_name": 'TuneiPass_{{$package}}',
                              "price": '{{$payAmount}}',
                          }]
                     });
@@ -104,9 +127,11 @@
                 <script>
                     gtag("event",  "purchase",  {
                         "currency": "THB",
+                        "transaction_id": '{{$refCode}}',
+                        "value": '{{$payAmount}}',
                         "items": [{
                              "item_id": 'TADomestic_{{$package}}',
-                             "doc_no": '{{$doc_no}}',
+                             "item_name": 'TADomestic_{{$package}}',
                              "price": '{{$payAmount}}',
                          }]
                     });
@@ -116,9 +141,11 @@
                 <script>
                     gtag("event",  "purchase",  {
                         "currency": "THB",
+                        "transaction_id": '{{$refCode}}',
+                        "value": '{{$payAmount}}',
                         "items": [{
                              "item_id": 'TAOutbound_{{$package}}',
-                             "doc_no": '{{$doc_no}}',
+                             "item_name": 'TAOutbound_{{$package}}',
                              "price": '{{$payAmount}}',
                          }]
                     });
@@ -128,9 +155,11 @@
                 <script>
                     gtag("event",  "purchase",  {
                         "currency": "THB",
+                        "transaction_id": '{{$refCode}}',
+                        "value": '{{$payAmount}}',
                         "items": [{
                              "item_id": 'myHomePlus_{{$package}}',
-                             "doc_no": '{{$doc_no}}',
+                             "item_name": 'myHomePlus_{{$package}}',
                              "price": '{{$payAmount}}',
                          }]
                     });
@@ -140,9 +169,11 @@
                 <script>
                     gtag("event",  "purchase",  {
                         "currency": "THB",
+                        "transaction_id": '{{$refCode}}',
+                        "value": '{{$payAmount}}',
                         "items": [{
                              "item_id": 'myHomeSmart_{{$package}}',
-                             "doc_no": '{{$doc_no}}',
+                             "item_name": 'myHomeSmart_{{$package}}',
                              "price": '{{$payAmount}}',
                          }]
                     });

@@ -1460,6 +1460,7 @@ class ProductController extends BaseController
         $this->bodyData['point'] = '';
         $this->bodyData['agentCode'] = $request->session()->get('agentCode');
         $this->bodyData['package'] = $request->session()->get('package');
+        $this->bodyData['refCode'] = $request->session()->get('refCode');
         $this->bodyData['controller'] = $this->controller;
 
         $thank_you_page = ProjectEnum::STATIC_PAGE_PAYMENT_THANK_YOU;
@@ -1539,6 +1540,7 @@ class ProductController extends BaseController
             $portalKey = $data['fdKeys'];
             $agent_code = $data['fdAgent'];
             $package = $data['fdPackage'];
+            $refCode = $data['RefCode'];
             
             if ($v->result) {
                 $request->session()->put('doc_no',  $v->result['message']);
@@ -1549,6 +1551,7 @@ class ProductController extends BaseController
                 $request->session()->put('portalKey', $portalKey);
                 $request->session()->put('agentCode', $agent_code);
                 $request->session()->put('package', $package);
+                $request->session()->put('refCode', $refCode);
                 $this->thankYouParam = $request->input('user_defined_4');
 
                 $func = 'thankyou';
@@ -1574,6 +1577,7 @@ class ProductController extends BaseController
                     $request->session()->put('portalKey', $portalKey);
                     $request->session()->put('agentCode', $agent_code);
                     $request->session()->put('package', $package);
+                    $request->session()->put('refCode', $refCode);
                     $this->thankYouParam = $request->input('user_defined_4');
                     $func = 'thankyou';
                 } else {

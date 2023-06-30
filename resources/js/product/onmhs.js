@@ -257,15 +257,17 @@ const genItemList = (package_data) => {
                 const price = parseInt(package_data[k].price[pack]).toLocaleString();
                 const planCode = Object.keys(package_data)[index];
 
-                const itme = {
+                const item = {
                     item_id: "",
+                    item_name: "",
                     price: "",
                 };
 
-                itme.item_id = "myHomeSmart_" + planCode;
-                itme.price = price;
+                item.item_id = "myHomeSmart_" + planCode;
+                item.item_name = "myHomeSmart_" + planCode;
+                item.price = price;
 
-                itemList.push(itme);
+                itemList.push(item);
                 index++;
             });
     }
@@ -1429,9 +1431,10 @@ document.addEventListener("DOMContentLoaded", async () => {
 
                             gtag("event",  "add_to_cart",  {
                                 "currency": "THB",
+                                "value": selectPrice,
                                 "items": [{
                                   "item_id": "myHomeSmart_" + fdPackage,
-                                  "price": selectPrice,
+                                  "item_name": "myHomeSmart_" + fdPackage,
                                 }]
                             });
 
@@ -1750,9 +1753,10 @@ document.addEventListener("DOMContentLoaded", async () => {
 
                         gtag("event",  "begin_checkout",  {
                             "currency": "THB",
+                            "value": data.fdPayAMT,
                             "items": [{
                               "item_id": "myHomeSmart_" + data.fdPackage,
-                              "price": data.fdPayAMT,
+                              "item_name": "myHomeSmart_" + data.fdPackage,
                             }]
                         });
                         

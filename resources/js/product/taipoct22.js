@@ -242,15 +242,17 @@ const genItemList = (package_data, fdFromDate, fdToDate) => {
                 const price = parseInt(package_data[k].price[pack]).toLocaleString();
                 const planCode = Object.keys(package_data)[index];
 
-                const itme = {
+                const item = {
                     item_id: "",
+                    item_name: "",
                     price: "",
                 };
 
-                itme.item_id = "TuneiPass_" + planCode;
-                itme.price = price;
+                item.item_id = "TuneiPass_" + planCode;
+                item.item_name = "TuneiPass_" + planCode;
+                item.price = price;
 
-                itemList.push(itme);
+                itemList.push(item);
                 index++;
             });
     }
@@ -512,9 +514,10 @@ document.addEventListener("DOMContentLoaded", async () => {
 
                             gtag("event",  "add_to_cart",  {
                                 "currency": "THB",
+                                "value": selectPrice,
                                 "items": [{
                                   "item_id": "TuneiPass_" + fdPackage,
-                                  "price": selectPrice,
+                                  "item_name": "TuneiPass_" + fdPackage,
                                 }]
                             });
 
@@ -599,9 +602,10 @@ document.addEventListener("DOMContentLoaded", async () => {
 
                         gtag("event",  "begin_checkout",  {
                             "currency": "THB",
+                            "value": data.fdPayAMT,
                             "items": [{
                               "item_id": "TuneiPass_" + data.fdPackage,
-                              "price": data.fdPayAMT,
+                              "item_name": "TuneiPass_" + data.fdPackage,
                             }]
                         });
 
