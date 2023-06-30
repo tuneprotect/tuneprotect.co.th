@@ -267,7 +267,7 @@ const genItemList = (package_data) => {
                 item.item_name = "myHomeSmart_" + planCode;
                 item.price = price;
 
-                itemList.push(itme);
+                itemList.push(item);
                 index++;
             });
     }

@@ -252,7 +252,7 @@ const genItemList = (package_data, fdFromDate, fdToDate) => {
                 item.item_name = "TuneiPass_" + planCode;
                 item.price = price;
 
-                itemList.push(itme);
+                itemList.push(item);
                 index++;
             });
     }

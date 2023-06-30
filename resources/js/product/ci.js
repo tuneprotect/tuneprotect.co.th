@@ -449,7 +449,7 @@ if ($('#title_wrapper')) {
                         item.item_name = "myFlexiCI_" + planCode;
                         item.price = price;
     
-                        itemList.push(itme);
+                        itemList.push(item);
                         index++;
                     });
             }

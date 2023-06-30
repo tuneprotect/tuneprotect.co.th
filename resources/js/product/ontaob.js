@@ -368,7 +368,7 @@ const genItemList = (package_data, fdFromDate, fdToDate) => {
                 item.item_name = "TAOutbound_" + planCode;
                 item.price = price;
 
-                itemList.push(itme);
+                itemList.push(item);
                 index++;
             });
     }

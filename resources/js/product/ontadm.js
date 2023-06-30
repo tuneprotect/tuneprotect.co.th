@@ -254,7 +254,7 @@ const genItemList = (package_data, fdFromDate, fdToDate) => {
                 item.item_name = "TADomestic_" + planCode;
                 item.price = price;
 
-                itemList.push(itme);
+                itemList.push(item);
                 index++;
             });
     }

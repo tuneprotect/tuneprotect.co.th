@@ -289,7 +289,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                     item.item_name = "PAChoiceCare_" + planCode;
                     item.price = price;
 
-                    itemList.push(itme);
+                    itemList.push(item);
                     index++;
                 });
         }

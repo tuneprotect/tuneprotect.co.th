@@ -247,7 +247,7 @@ const genItemList = (package_data, fdFromDate, fdToDate) => {
                 item.item_name = "iSmile_" + planCode;
                 item.price = price;
 
-                itemList.push(itme);
+                itemList.push(item);
                 index++;
             });
     }
