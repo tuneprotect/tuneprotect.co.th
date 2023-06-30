@@ -628,6 +628,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                                 "items": [{
                                   "item_id": "myHomePlus_" + fdPackage,
                                   "item_name": "myHomePlus_" + fdPackage,
+                                  "price": selectPrice,
                                 }]
                             });
 
@@ -830,6 +831,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                             "items": [{
                               "item_id": "myHomePlus_" + data.fdPackage,
                               "item_name": "myHomePlus_" + data.fdPackage,
+                              "price": data.fdPayAMT,
                             }]
                         });
 

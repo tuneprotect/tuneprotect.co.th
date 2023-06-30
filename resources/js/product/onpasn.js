@@ -345,6 +345,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                                     "items": [{
                                       "item_id": "PAChoiceSenior_" + fdPackage,
                                       "item_name": "PAChoiceSenior_" + fdPackage,
+                                      "price": selectPrice,
                                     }]
                                 });
 
@@ -423,6 +424,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                                 "items": [{
                                   "item_id": "PAChoiceSenior_" + data.fdPackage,
                                   "item_name": "PAChoiceSenior_" + data.fdPackage,
+                                  "price": data.fdPayAMT,
                                 }]
                             });
 

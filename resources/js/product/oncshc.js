@@ -623,6 +623,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                                     "items": [{
                                       "item_id": "ChillSure_" + fdPackage,
                                       "item_name": "ChillSure_" + fdPackage,
+                                      "price": selectPrice,
                                     }]
                                 });
 
@@ -723,6 +724,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                                 "items": [{
                                   "item_id": "ChillSure_" + data.fdPackage,
                                   "item_name": "ChillSure_" + data.fdPackage,
+                                  "price": data.fdPayAMT,
                                 }]
                             });
 

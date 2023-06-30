@@ -663,6 +663,7 @@ if ($('#title_wrapper')) {
                                         "items": [{
                                           "item_id": "myFlexiCI_" + fdPackage,
                                           "item_name": "myFlexiCI_" + fdPackage,
+                                          "price": selectPrice,
                                         }]
                                     });
 
@@ -762,6 +763,7 @@ if ($('#title_wrapper')) {
                                     "items": [{
                                       "item_id": "myFlexiCI_" + data.fdPackage,
                                       "item_name": "myFlexiCI_" + data.fdPackage,
+                                      "price": data.fdPayAMT,
                                     }]
                                 });
 

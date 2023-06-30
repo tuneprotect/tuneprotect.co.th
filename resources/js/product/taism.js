@@ -476,6 +476,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                                 "items": [{
                                   "item_id": "iSmile_" + fdPackage,
                                   "item_name": "iSmile_" + fdPackage,
+                                  "price": selectPrice,
                                 }]
                             });
 
@@ -564,6 +565,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                             "items": [{
                               "item_id": "iSmile_" + data.fdPackage,
                               "item_name": "iSmile_" + data.fdPackage,
+                              "price": data.fdPayAMT,
                             }]
                         });
 
