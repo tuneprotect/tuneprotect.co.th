@@ -564,6 +564,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                                     "items": [{
                                       "item_id": "Diabetes_" + fdPackage,
                                       "item_name": "Diabetes_" + fdPackage,
+                                      "price": selectPrice,
                                     }]
                                 });
 
@@ -651,6 +652,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                                 "items": [{
                                   "item_id": "Diabetes_" + data.fdPackage,
                                   "item_name": "Diabetes_" + data.fdPackage,
+                                  "price": data.fdPayAMT,
                                 }]
                             });
 

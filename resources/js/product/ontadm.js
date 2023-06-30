@@ -443,6 +443,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                                 "items": [{
                                   "item_id": "TADomestic_" + fdPackage,
                                   "item_name": "TADomestic_" + fdPackage,
+                                  "price": selectPrice,
                                 }]
                             });
 
@@ -551,6 +552,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                             "items": [{
                               "item_id": "TADomestic_" + data.fdPackage,
                               "item_name": "TADomestic_" + data.fdPackage,
+                              "price": data.fdPayAMT,
                             }]
                         });
 
