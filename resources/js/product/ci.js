@@ -438,14 +438,16 @@ if ($('#title_wrapper')) {
                         const pack = Object.keys(package_data[k].price).filter(ageRange => checkAge(data.fdHBD, ageRange))
                         const price = parseInt(package_data[k].price[pack]).toLocaleString();
                         const planCode = Object.keys(package_data)[index];
-    
-                        const itme = {
+
+                        const item = {
                             item_id: "",
+                            item_name: "",
                             price: "",
                         };
     
-                        itme.item_id = "myFlexiCI_" + planCode;
-                        itme.price = price;
+                        item.item_id = "myFlexiCI_" + planCode;
+                        item.item_name = "myFlexiCI_" + planCode;
+                        item.price = price;
     
                         itemList.push(itme);
                         index++;
@@ -657,9 +659,10 @@ if ($('#title_wrapper')) {
 
                                     gtag("event",  "add_to_cart",  {
                                         "currency": "THB",
+                                        "value": selectPrice,
                                         "items": [{
                                           "item_id": "myFlexiCI_" + fdPackage,
-                                          "price": selectPrice,
+                                          "item_name": "myFlexiCI_" + fdPackage,
                                         }]
                                     });
 
@@ -755,9 +758,10 @@ if ($('#title_wrapper')) {
 
                                 gtag("event",  "begin_checkout",  {
                                     "currency": "THB",
+                                    "value": data.fdPayAMT,
                                     "items": [{
                                       "item_id": "myFlexiCI_" + data.fdPackage,
-                                      "price": data.fdPayAMT,
+                                      "item_name": "myFlexiCI_" + data.fdPackage,
                                     }]
                                 });
 

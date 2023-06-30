@@ -279,13 +279,15 @@ document.addEventListener("DOMContentLoaded", async () => {
                     const price = parseInt(package_data[k].price[pack]).toLocaleString();
                     const planCode = Object.keys(package_data)[index];
 
-                    const itme = {
+                    const item = {
                         item_id: "",
+                        item_name: "",
                         price: "",
                     };
 
-                    itme.item_id = "PAChoiceSenior_" + planCode;
-                    itme.price = price;
+                    item.item_id = "PAChoiceSenior_" + planCode;
+                    item.item_name = "PAChoiceSenior_" + planCode;
+                    item.price = price;
 
                     itemList.push(itme);
                     index++;
@@ -339,9 +341,10 @@ document.addEventListener("DOMContentLoaded", async () => {
 
                                 gtag("event",  "add_to_cart",  {
                                     "currency": "THB",
+                                    "value": selectPrice,
                                     "items": [{
                                       "item_id": "PAChoiceSenior_" + fdPackage,
-                                      "price": selectPrice,
+                                      "item_name": "PAChoiceSenior_" + fdPackage,
                                     }]
                                 });
 
@@ -416,9 +419,10 @@ document.addEventListener("DOMContentLoaded", async () => {
 
                             gtag("event",  "begin_checkout",  {
                                 "currency": "THB",
+                                "value": data.fdPayAMT,
                                 "items": [{
                                   "item_id": "PAChoiceSenior_" + data.fdPackage,
-                                  "price": data.fdPayAMT,
+                                  "item_name": "PAChoiceSenior_" + data.fdPackage,
                                 }]
                             });
 
