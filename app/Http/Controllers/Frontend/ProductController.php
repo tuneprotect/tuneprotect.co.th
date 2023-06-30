@@ -1576,6 +1576,7 @@ class ProductController extends BaseController
                     $request->session()->put('portalKey', $portalKey);
                     $request->session()->put('agentCode', $agent_code);
                     $request->session()->put('package', $package);
+                    $request->session()->put('refCode', $refCode);
                     $this->thankYouParam = $request->input('user_defined_4');
                     $func = 'thankyou';
                 } else {
