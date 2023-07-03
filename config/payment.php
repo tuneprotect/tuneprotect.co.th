@@ -8,4 +8,5 @@ return [
     'b2b_mid' => env('B2B_PAYMENT_MID', '764764000012359'),
     'b2b_secret' => env('B2B_PAYMENT_SECRET', '34085B9AB99ADC7C6BBDB594F81EFCE05EBC75EF1421280070889CD68A2BD0C9'),
     'b2b_agent_group' => env('B2B_AGENT_GROUP', ''),
+    'promotion_code_condition' => env('PROMOTION_CODE_CONDITION', ''),
 ];
