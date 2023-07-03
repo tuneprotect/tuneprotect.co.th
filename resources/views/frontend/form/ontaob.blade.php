@@ -64,6 +64,7 @@
             </div>
 
             @if($controller == 'product')
+                <input type="hidden" id="promotion_code_condition" value="@config('payment.PROMOTION_CODE_CONDITION')"/>
                 @include('frontend.component.form-input-promotion-code')
             @endif
 
