@@ -475,7 +475,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         const promotion_data_befor = {"status": true, "count": 5};
 
         $('#fdPromotionCode').addEventListener('change', (e) => {
-            if(promotion_data_befor.status && promotion_data_befor.count <= parseInt($("#promotion_code_condition"))) {
+            if(promotion_data_befor.status && promotion_data_befor.count <= parseInt($("#promotion_code_condition").value)) {
                 data.fdPromotionCodeStatus = true;
                 showPromotionCodeCount($('#fdPromotionCode').getAttribute('data-error-promotion-code-count').replace("{count}", promotion_data_befor.count), 'span_error');
             } else if(promotion_data_befor.status) {
