@@ -785,6 +785,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                         const $destTo = $('#fdDestTo');
                         const $subPackage = $('#ctrl_sub_package');
                         const $summary_section = $('#summary_section');
+                        const promotion_data = {"status": true, "count": 2};
 
                         let sb = `<h3 class="text-primary">${$summary_section.getAttribute('data-insurance_data')}</h3><br/>
                         <div class="two-col">
@@ -818,8 +819,10 @@ document.addEventListener("DOMContentLoaded", async () => {
                             
                             if ($('#controller').value === 'product' && data.fdPromotionCodeStatus) 
                             {
+                                console.log(i);
+                                console.log(promotion_data.count);
                                 //const promotion_data = await validatePromotionCode();
-                                const promotion_data = {"status": true, "count": 2};
+                                
     
                                 // if(!promotion_data.status) {
                                 //     data.fdPromotionCodeStatus = "";
