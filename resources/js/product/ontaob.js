@@ -814,31 +814,34 @@ document.addEventListener("DOMContentLoaded", async () => {
                             <div><span>${$('label[for=data_1_fdTelephone]').innerText} : </span><strong>${v.fdTelephone}</strong></div>
                             <div><span>${$('label[for=data_1_fdEmail]').innerText} : </span><strong>${v.fdEmail}</strong></div>
                             <div class="controls-wrapper full no-lable"><span>${$('label[for=data_1_fdAddr_Num]').innerText} : </span><strong>${v.fdAddr_Num} ${v.fdAddr_District} ${province} ${v.fdAddr_PostCode}</strong></div>
-                            <div class="controls-wrapper full no-lable"><span>${$('#beneficiary_header').innerText} : </span><strong>${v.fdBenefit === 'other' ? v.fdBenefit_name + ' (' + v.fdRelation + ')' : v.fdBenefit} </strong></div>
-                        </div>`;
+                            <div class="controls-wrapper full no-lable"><span>${$('#beneficiary_header').innerText} : </span><strong>${v.fdBenefit === 'other' ? v.fdBenefit_name + ' (' + v.fdRelation + ')' : v.fdBenefit} </strong></div>`
+                            
+                            if ($('#controller').value === 'product' && data.fdPromotionCodeStatus) 
+                            {
+                                //const promotion_data = await validatePromotionCode();
+                                const promotion_data = {"status": true, "count": 2};
+    
+                                // if(!promotion_data.status) {
+                                //     data.fdPromotionCodeStatus = "";
+    
+                                //     Swal.fire({
+                                //         title: 'Warning!',
+                                //         text: 'Promotion code is invalid.',
+                                //         icon: 'warning',
+                                //         confirmButtonText: 'OK'
+                                //     })
+                                // }
+
+                                `<div class="controls-wrapper full no-lable"><span>${$('#lblfdPromotionCode').innerText} : </span><strong>ส่วนลดสตาร์บัค มูลค่า 100 บาท</strong> ${ promotion_data.count < i ? `<span id="promotion_code_alert" class="error" style="display: none;">(* The code has already been used.)</span>` : `""` }`
+                            }
+
+                        `</div>`
                         });
 
                         sb += `<input type="hidden" name="send_data" value='${JSON.stringify(data)}'>`;
 
                         $summary_section.innerHTML = sb;
                         status = true;
-
-                        if ($('#controller').value === 'product' && data.fdPromotionCodeStatus) 
-                        {
-                            //const promotion_data = await validatePromotionCode();
-                            const promotion_data = {"status": false};
-
-                            if(!promotion_data.status) {
-                                data.fdPromotionCodeStatus = "";
-
-                                Swal.fire({
-                                    title: 'Warning!',
-                                    text: 'Promotion code is invalid.',
-                                    icon: 'warning',
-                                    confirmButtonText: 'OK'
-                                })
-                            }
-                        }
 
                         break;
                 }

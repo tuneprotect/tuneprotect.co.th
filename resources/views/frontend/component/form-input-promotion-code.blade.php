@@ -6,7 +6,7 @@
             data-error-promotion-code-valid="@lang('product.PromotionCode.promotion_code_valid')"
             data-error-promotion-code-invalid="@lang('product.PromotionCode.promotion_code_invalid')"
         />
-        <label for="fdPromotionCode">@lang("product.PromotionCode.promotion_code")</label>
+        <label id="lblfdPromotionCode" for="fdPromotionCode">@lang("product.PromotionCode.promotion_code")</label>
         <span class="span_error"></span>
     </div>
     <div class="controls-wrapper"></div>
