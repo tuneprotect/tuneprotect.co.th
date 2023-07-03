@@ -832,10 +832,8 @@ document.addEventListener("DOMContentLoaded", async () => {
                                 //     })
                                 // }
 
-                                `<div class="controls-wrapper full no-lable"><span>${$('#lblfdPromotionCode').innerText} : </span><strong>ส่วนลดสตาร์บัค มูลค่า 100 บาท</strong> ${ promotion_data.count < i ? `<span id="promotion_code_alert" class="error" style="display: none;">(* The code has already been used.)</span>` : `""` }`
+                                `<div class="controls-wrapper full no-lable"><span>${$('#lblfdPromotionCode').innerText} : </span><strong>ส่วนลดสตาร์บัค มูลค่า 100 บาท</strong> ${ promotion_data.count < i ? `<span id="promotion_code_alert" class="error" style="display: none;">(* The code has already been used.)</span>` : `"" </div>` } `
                             }
-
-                        `</div>`
                         });
 
                         sb += `<input type="hidden" name="send_data" value='${JSON.stringify(data)}'>`;
