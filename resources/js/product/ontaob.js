@@ -822,9 +822,9 @@ document.addEventListener("DOMContentLoaded", async () => {
                                     ${ promotion_data.count < i+1 
                                     ? `<span id="promotion_code_alert" class="error" style="display: none;">(* The code has already been used.)</span>` : '' } </div>`
                                 : ''
-                            }`
+                            }
 
-                        `</div><br/>`
+                        </div><br/>`
                         });
 
                         sb += `<input type="hidden" name="send_data" value='${JSON.stringify(data)}'>`;
