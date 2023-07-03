@@ -820,7 +820,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                             ${$('#controller').value === 'product' && data.fdPromotionCodeStatus
                                 ? `<div class="controls-wrapper full no-lable"><span>${$('#lblfdPromotionCode').innerText} : </span><strong>ส่วนลดสตาร์บัค มูลค่า 100 บาท</strong>
                                     ${ promotion_data.count < i+1 
-                                    ? console.log(promotion_data.count < i+1) `<span id="promotion_code_alert" class="error" style="display: none;">(* The code has already been used.)</span>` : '' } </div>`
+                                    ? `<span id="promotion_code_alert" class="error" style="display: none;">(* The code has already been used.)</span>` : '' } </div>`
                                 : ''
                             }
 
