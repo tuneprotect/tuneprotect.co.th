@@ -5,7 +5,7 @@
 export const API_URL = "/appApi";
 export const CK_FINDER_URL = process.env.REACT_APP_CK_FINDER;
 export const APP_NAME = process.env.MIX_REACT_APP_NAME;
-export const APP_TIMEOUT_MINUTE = 1;
+export const APP_TIMEOUT_MINUTE = 10;
 export const APP_TIME_BEFORE_TIMEOUT_REDIRECT_SECOND = 10;
 export const APP_VERSION = "1.0.0";
 export const GOOGLE_AUTH_API = process.env.MIX_GOOGLE_AUTH_API;
