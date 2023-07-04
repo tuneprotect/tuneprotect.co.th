@@ -469,23 +469,23 @@ document.addEventListener("DOMContentLoaded", async () => {
         });
     })
 
-    if ($('#controller').value === 'product') 
-    {
-        //const promotion_data = await validatePromotionCode();
-        const promotion_data_befor = {"status": true, "count": 5};
+    // if ($('#controller').value === 'product') 
+    // {
+    //     //const promotion_data = await validatePromotionCode();
+    //     const promotion_data_befor = {"status": true, "count": 5};
 
-        $('#fdPromotionCode').addEventListener('change', (e) => {
-            if(promotion_data_befor.status && promotion_data_befor.count <= parseInt($("#promotion_code_condition").value)) {
-                data.fdPromotionCodeStatus = true;
-                showPromotionCodeCount($('#fdPromotionCode').getAttribute('data-error-promotion-code-count').replace("{count}", promotion_data_befor.count), 'span_error');
-            } else if(promotion_data_befor.status) {
-                data.fdPromotionCodeStatus = true;
-                showPromotionCodeValid($('#fdPromotionCode').getAttribute('data-error-promotion-code-valid'), 'span_error');
-            } else {
-                showValidatePromotionCodeError($('#fdPromotionCode').getAttribute('data-error-promotion-code-invalid'), 'span_error');
-            }
-        });
-    }
+    //     $('#fdPromotionCode').addEventListener('change', (e) => {
+    //         if(promotion_data_befor.status && promotion_data_befor.count <= parseInt($("#promotion_code_condition").value)) {
+    //             data.fdPromotionCodeStatus = true;
+    //             showPromotionCodeCount($('#fdPromotionCode').getAttribute('data-error-promotion-code-count').replace("{count}", promotion_data_befor.count), 'span_error');
+    //         } else if(promotion_data_befor.status) {
+    //             data.fdPromotionCodeStatus = true;
+    //             showPromotionCodeValid($('#fdPromotionCode').getAttribute('data-error-promotion-code-valid'), 'span_error');
+    //         } else {
+    //             showValidatePromotionCodeError($('#fdPromotionCode').getAttribute('data-error-promotion-code-invalid'), 'span_error');
+    //         }
+    //     });
+    // }
 
     //Set start selection
     let el = document.getElementById('ctrl_travel_type');

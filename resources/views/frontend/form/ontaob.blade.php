@@ -63,10 +63,10 @@
                 </div>
             </div>
 
-            @if($controller == 'product')
+            <!-- @if($controller == 'product')
                 <input type="hidden" id="promotion_code_condition" value="{{config('payment.promotion_code_condition')}}"/>
                 @include('frontend.component.form-input-promotion-code')
-            @endif
+            @endif -->
 
             <div>
                 <p class="small">@lang('product.itravel_warning')</p>
