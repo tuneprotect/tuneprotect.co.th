@@ -25,5 +25,7 @@ return [
     'gtm_body' => env('PROJECT_GTM_BODY',  ''),
     'gtm_staging' => env('PROJECT_GTM_STAGING',  ''),
 
-    'invoice_prefix' => env('INVOICE_PREFIX','W')
+    'invoice_prefix' => env('INVOICE_PREFIX','W'),
+
+    'promotion_code_condition' => env('PROMOTION_CODE_CONDITION', ''),
 ];
