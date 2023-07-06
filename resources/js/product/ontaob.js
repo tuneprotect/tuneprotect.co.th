@@ -714,7 +714,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                             }
 
                             if ($('#controller').value === 'product' && data.fdPromotionCodeStatus) {
-                                if (promotion_data.codeAvailable <= i) {
+                                if (promotion_data.codeAvailable >= i) {
                                     promotionCode.Code = $('#fdPromotionCode').value;
                                     promotionCode.CostAmount = getSelectedPrice(data.fdPackage, package_data, data.fdFromDate, data.fdToDate);    
                                     promotionCode.StatusId = 2;
