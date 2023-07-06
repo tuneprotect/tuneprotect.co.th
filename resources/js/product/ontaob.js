@@ -687,9 +687,17 @@ document.addEventListener("DOMContentLoaded", async () => {
 
                         break;
                     case 3:
-                        let profileData = []
+                        let profileData = [];
+                        let promotionCode = {
+                            Code: "",
+                            CostAmount: "",
+                            StatusId: "",
+                            TypeId: ""
+                        }
 
                         status = true;
+
+                        const promotion_data = {"codeAvailable": 3, "campaignId": 1, "status": true};
 
                         removeError($('#step3'));
 
@@ -703,6 +711,15 @@ document.addEventListener("DOMContentLoaded", async () => {
                             {
                                 status = false;
                                 return false;
+                            }
+
+                            if ($('#controller').value === 'product' && data.fdPromotionCodeStatus) {
+                                if (promotion_data.codeAvailable <= i) {
+                                    promotionCode.Code = $('#fdPromotionCode').value;
+                                    promotionCode.CostAmount = getSelectedPrice(data.fdPackage, package_data, data.fdFromDate, data.fdToDate);    
+                                    promotionCode.StatusId = 2;
+                                    promotionCode.TypeId = 1
+                                }
                             }
 
                             const currentProfile = {
@@ -724,6 +741,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                                 fdBenefit: $(`#data_${i}_fdBenefit`).value,
                                 fdBenefit_name: $(`#data_${i}_fdBenefit_name`).value,
                                 fdRelation: $(`#data_${i}_fdRelation`).value,
+                                promotionCode: promotionCode
                             };
 
                             profileData.push(currentProfile);
@@ -785,8 +803,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                         const $destTo = $('#fdDestTo');
                         const $subPackage = $('#ctrl_sub_package');
                         const $summary_section = $('#summary_section');
-                        const promotion_data = {"status": true, "count": 2};
-
+                        
                         let sb = `<h3 class="text-primary">${$summary_section.getAttribute('data-insurance_data')}</h3><br/>
                         <div class="two-col">
                             <div><span>${$summary_section.getAttribute('data-plan')} : </span><strong>${selectedPackage}</strong></div>
@@ -819,7 +836,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                             
                             ${$('#controller').value === 'product' && data.fdPromotionCodeStatus
                                 ? `<div class="controls-wrapper full no-lable"><span>${$('#lblfdPromotionCode').innerText} : </span><strong>ส่วนลดสตาร์บัค มูลค่า 100 บาท</strong>
-                                    ${ promotion_data.count < i+1 
+                                    ${ promotion_data.codeAvailable < i+1 
                                     ? `<span id="promotion_code_alert" class="error" style="display: none;">(* The code has already been used.)</span>` : '' } </div>`
                                 : ''
                             }
