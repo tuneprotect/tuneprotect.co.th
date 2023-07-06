@@ -98,6 +98,7 @@ class BaseInsuranceObject
 
     //Promotion Code 20230706
     public $Code;
+    public $CampaignId;
     public $CostAmount;
     public $StatusId;
     public $TypeId;

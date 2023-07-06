@@ -413,12 +413,11 @@ document.addEventListener("DOMContentLoaded", async () => {
         ctrl_accept_step1: "",
         ctrl_accept_insurance_term: "",
         ctrl_travel_type: "",
-        fdPromotionCodeStatus: "",
         profile: []
     };
     let iti = {};
     // let $dataSubPackage;
-
+    let promotionCodeStatus = "";
     let sb = "";
     let sb1 = `<option value="">${$('#fdDestTo').getAttribute('data-please-select')}</option>`;
     let sbSCHENGEN = '';
@@ -476,10 +475,10 @@ document.addEventListener("DOMContentLoaded", async () => {
 
         $('#fdPromotionCode').addEventListener('change', (e) => {
             if(promotion_data_befor.status && promotion_data_befor.count <= parseInt($("#promotion_code_condition").value)) {
-                data.fdPromotionCodeStatus = true;
+                promotionCodeStatus = true;
                 showPromotionCodeCount($('#fdPromotionCode').getAttribute('data-error-promotion-code-count').replace("{count}", promotion_data_befor.count), 'span_error');
             } else if(promotion_data_befor.status) {
-                data.fdPromotionCodeStatus = true;
+                promotionCodeStatus = true;
                 showPromotionCodeValid($('#fdPromotionCode').getAttribute('data-error-promotion-code-valid'), 'span_error');
             } else {
                 showValidatePromotionCodeError($('#fdPromotionCode').getAttribute('data-error-promotion-code-invalid'), 'span_error');
@@ -690,6 +689,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                         let profileData = [];
                         let promotionCode = {
                             Code: "",
+                            CampaignId: "",
                             CostAmount: "",
                             StatusId: "",
                             TypeId: ""
@@ -713,9 +713,10 @@ document.addEventListener("DOMContentLoaded", async () => {
                                 return false;
                             }
 
-                            if ($('#controller').value === 'product' && data.fdPromotionCodeStatus) {
+                            if ($('#controller').value === 'product' && promotionCodeStatus) {
                                 if (promotion_data.codeAvailable >= i) {
                                     promotionCode.Code = $('#fdPromotionCode').value;
+                                    promotionCode.CampaignId = promotion_data.campaignId;
                                     promotionCode.CostAmount = getSelectedPrice(data.fdPackage, package_data, data.fdFromDate, data.fdToDate);    
                                     promotionCode.StatusId = 2;
                                     promotionCode.TypeId = 1
@@ -834,7 +835,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                             <div class="controls-wrapper full no-lable"><span>${$('label[for=data_1_fdAddr_Num]').innerText} : </span><strong>${v.fdAddr_Num} ${v.fdAddr_District} ${province} ${v.fdAddr_PostCode}</strong></div>
                             <div class="controls-wrapper full no-lable"><span>${$('#beneficiary_header').innerText} : </span><strong>${v.fdBenefit === 'other' ? v.fdBenefit_name + ' (' + v.fdRelation + ')' : v.fdBenefit} </strong></div>
                             
-                            ${$('#controller').value === 'product' && data.fdPromotionCodeStatus
+                            ${$('#controller').value === 'product' && promotionCodeStatus
                                 ? `<div class="controls-wrapper full no-lable"><span>${$('#lblfdPromotionCode').innerText} : </span><strong>ส่วนลดสตาร์บัค มูลค่า 100 บาท</strong>
                                     ${ promotion_data.codeAvailable < i+1 
                                     ? `<span id="promotion_code_alert" class="error" style="display: none;">(* The code has already been used.)</span>` : '' } </div>`
