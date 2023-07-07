@@ -118,10 +118,10 @@ class ApiConnectController extends BaseApiController
 
         return $this->send();
     }
-    public function chkPromotionCode()
+    public function checkPromotionCode()
     {
         $client = new Client();
-        $response = $client->request('POST', config('tune-api.url') . 'checkPromotionCode', [
+        $response = $client->request('POST', config('tune-api.url') . '/Promotions/Available', [
             'auth' => [config('tune-api.user'), config('tune-api.password')],
             'headers' => [
                 'Content-Type' => 'application/json'
