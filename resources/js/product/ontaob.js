@@ -734,7 +734,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                                 fdBenefit: $(`#data_${i}_fdBenefit`).value,
                                 fdBenefit_name: $(`#data_${i}_fdBenefit_name`).value,
                                 fdRelation: $(`#data_${i}_fdRelation`).value,
-                                Code: "",
+                                PromotionCode: "",
                                 CampaignId: "",
                                 CostAmount: "",
                                 StatusId: "",
@@ -743,7 +743,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
                             if ($('#controller').value === 'product' && promotionCodeStatus) {
                                 if (promotion_data.codeAvailable >= i) {
-                                    currentProfile.Code = $('#fdPromotionCode').value;
+                                    currentProfile.PromotionCode = $('#fdPromotionCode').value;
                                     currentProfile.CampaignId = promotion_data.campaignId;
                                     currentProfile.CostAmount = getSelectedPrice(data.fdPackage, package_data, data.fdFromDate, data.fdToDate);    
                                     currentProfile.StatusId = 2;
