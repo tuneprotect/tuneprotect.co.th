@@ -471,10 +471,10 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     if ($('#controller').value === 'product') 
     {
-        const promotion_data_befor = await validatePromotionCode();
-        //const promotion_data_befor = {"status": true, "count": 5};
-
         $('#fdPromotionCode').addEventListener('change', (e) => {
+
+            const promotion_data_befor = validatePromotionCode($('#fdPromotionCode').value, 1200);
+
             if(promotion_data_befor.status && promotion_data_befor.codeAvailable <= parseInt($("#promotion_code_condition").value)) {
                 promotionCodeStatus = true;
                 showPromotionCodeCount($('#fdPromotionCode').getAttribute('data-error-promotion-code-count').replace("{count}", promotion_data_befor.codeAvailable), 'span_error');
