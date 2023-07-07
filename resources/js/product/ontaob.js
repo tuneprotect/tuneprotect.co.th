@@ -713,15 +713,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                                 return false;
                             }
 
-                            if ($('#controller').value === 'product' && promotionCodeStatus) {
-                                if (promotion_data.codeAvailable >= i) {
-                                    promotionCode.Code = $('#fdPromotionCode').value;
-                                    promotionCode.CampaignId = promotion_data.campaignId;
-                                    promotionCode.CostAmount = getSelectedPrice(data.fdPackage, package_data, data.fdFromDate, data.fdToDate);    
-                                    promotionCode.StatusId = 2;
-                                    promotionCode.TypeId = 1
-                                }
-                            }
+                            
 
                             const currentProfile = {
                                 fdSex: getRadioSelectedValue(`data_${i}_fdSex`),
@@ -742,8 +734,22 @@ document.addEventListener("DOMContentLoaded", async () => {
                                 fdBenefit: $(`#data_${i}_fdBenefit`).value,
                                 fdBenefit_name: $(`#data_${i}_fdBenefit_name`).value,
                                 fdRelation: $(`#data_${i}_fdRelation`).value,
-                                promotionCode: promotionCode
+                                Code: "",
+                                CampaignId: "",
+                                CostAmount: "",
+                                StatusId: "",
+                                TypeId: ""
                             };
+
+                            if ($('#controller').value === 'product' && promotionCodeStatus) {
+                                if (promotion_data.codeAvailable >= i) {
+                                    currentProfile.Code = $('#fdPromotionCode').value;
+                                    currentProfile.CampaignId = promotion_data.campaignId;
+                                    currentProfile.CostAmount = getSelectedPrice(data.fdPackage, package_data, data.fdFromDate, data.fdToDate);    
+                                    currentProfile.StatusId = 2;
+                                    currentProfile.TypeId = 1
+                                }
+                            }
 
                             profileData.push(currentProfile);
 
