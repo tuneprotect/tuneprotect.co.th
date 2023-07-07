@@ -215,8 +215,10 @@ export const getSuscoBranch = async ($this) => {
 
 export const validatePromotionCode = async (promotionCode, costAmount) => {
     let data = {code: promotionCode, costAmount: costAmount}
-    console.log(data);
-    return callPromotionCode(data);
+    console.log(callPromotionCode(data));
+
+    return null;
+    
 }
 
 export const validatePolicyStep5 = async ($this, datas) => {
