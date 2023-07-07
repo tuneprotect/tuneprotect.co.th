@@ -799,6 +799,11 @@ class ProductController extends BaseController
                     $log_id[] = $logResult->log_id;
                     $price += $obj->fdPayAMT;
                 }
+
+                if (isset($profile["promotionCode"])) {
+                    $obj = $this->combindObj($profile["promotionCode"]);
+                    $logResult = $this->logData($obj);
+                }
             }
             if (session('b2bpayment_status')) {
                 return $this->sendB2BTo2C2P($result, $price, $log_id);
