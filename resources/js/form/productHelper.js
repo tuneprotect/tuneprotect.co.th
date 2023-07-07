@@ -217,7 +217,7 @@ export const validatePromotionCode = async (promotionCode, costAmount) => {
     let data = {code: promotionCode, costAmount: costAmount}
     console.log(callPromotionCode(data));
 
-    return null;
+    return callPromotionCode(data);
     
 }
 
