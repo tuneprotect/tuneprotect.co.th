@@ -471,9 +471,9 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     if ($('#controller').value === 'product') 
     {
-        $('#fdPromotionCode').addEventListener('change', (e) => {
+        $('#fdPromotionCode').addEventListener('change', async (e) => {
 
-            const promotion_data_befor = validatePromotionCode($('#fdPromotionCode').value, 1200);
+            const promotion_data_befor = await validatePromotionCode($('#fdPromotionCode').value, 1200);
 
             console.log(promotion_data_befor);
 

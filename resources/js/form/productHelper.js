@@ -215,6 +215,7 @@ export const getSuscoBranch = async ($this) => {
 
 export const validatePromotionCode = async ($this, promotionCode, costAmount) => {
     let data = {code: promotionCode, costAmount: costAmount}
+    console.log(data);
     return callPromotionCode(data);
 }
 
