@@ -693,6 +693,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                         let profileData = [];
                         status = true;
 
+                        const selectPrice = getSelectedPrice(data.fdPackage, package_data, data.fdFromDate, data.fdToDate)
                         //const promotion_data = {"codeAvailable": 2, "campaignId": 1, "status": true};
                         const promotion_data = validatePromotionCode($('#fdPromotionCode').value, selectPrice);
 
@@ -773,7 +774,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
                         data = {
                             ...data,
-                            fdPayAMT: getSelectedPrice(data.fdPackage, package_data, data.fdFromDate, data.fdToDate),
+                            fdPayAMT: selectPrice,
                             fdSendType: getRadioSelectedValue('fdSendType'),
                             ctrl_terms: $('#ctrl_terms').checked ? true : undefined,
                             ctrl_accept_insurance_term: $('#ctrl_accept_insurance_term').checked ? true : undefined,
