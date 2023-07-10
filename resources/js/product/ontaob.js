@@ -473,10 +473,10 @@ document.addEventListener("DOMContentLoaded", async () => {
     {
         $('#fdPromotionCode').addEventListener('change', async (e) => {
 
-            //const promotion_data_befor = await validatePromotionCode($('#fdPromotionCode').value, 1200);
+            const promotion_data_befor = await validatePromotionCode($('#fdPromotionCode').value, 1200);
 
-            const promotion_data_befor = {"codeAvailable": 2, "campaignId": 1, "status": true};
-            //console.log(promotion_data_befor);
+            //const promotion_data_befor = {"codeAvailable": 2, "campaignId": 1, "status": true};
+            console.log(promotion_data_befor);
 
             if(promotion_data_befor.status && promotion_data_befor.codeAvailable <= parseInt($("#promotion_code_condition").value)) {
                 promotionCodeStatus = true;

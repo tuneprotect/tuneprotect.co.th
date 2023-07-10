@@ -118,7 +118,7 @@ class ApiConnectController extends BaseApiController
 
         return $this->send();
     }
-    public function checkPromotionCode(Request $request)
+    public function validatePromotionCode(Request $request)
     {
         $data = $request->all();
         $client = new Client();
