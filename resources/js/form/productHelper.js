@@ -133,6 +133,7 @@ const callSuscoBranch = async () => {
 }
 
 const callPromotionCode = async (data) => {
+    console.log(2 + ":" +data);
     const response = await fetch(`/appApi/ApiConnect/validatePromotionCode`, {
         method: 'post',
         headers: {
@@ -215,10 +216,8 @@ export const getSuscoBranch = async ($this) => {
 
 export const validatePromotionCode = async (promotionCode, costAmount) => {
     let data = {code: promotionCode, costAmount: costAmount}
-    console.log(callPromotionCode(data));
-
+    console.log(1 + ":" +data);
     return callPromotionCode(data);
-    
 }
 
 export const validatePolicyStep5 = async ($this, datas) => {
