@@ -849,7 +849,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                             ${$('#controller').value === 'product' && promotionCodeStatus
                                 ? `<div class="controls-wrapper full no-lable"><span>${$('#lblfdPromotionCode').innerText} : </span><strong>ส่วนลดสตาร์บัค มูลค่า 100 บาท</strong>
                                     ${ promotion_data.codeAvailable < i+1 
-                                    ? `<span id="promotion_code_alert" class="error">(* The code has already been used.)</span>` : '' } </div>`
+                                    ? `<span id="promotion_code_alert" style="color: #e71618;">(* The code has already been used.)</span>` : '' } </div>`
                                 : ''
                             }
 
