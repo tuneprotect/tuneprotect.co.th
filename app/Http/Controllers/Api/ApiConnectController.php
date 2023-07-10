@@ -119,36 +119,11 @@ class ApiConnectController extends BaseApiController
         return $this->send();
     }
 
-    // public function validatePromotionCode(Request $request){
-
-    //     $code = $request->get('code');
-    //     $costAmount = $request->get('costAmount');
-    //     header('Content-Type: application/json'); // Specify the type of data
-    //     $ch = curl_init(config('tune-api.url') . 'Promotions/Available'); // Initialise cURL
-    //     //$post = json_encode($post); // Encode the data array into a JSON string
-    //     //$_arr = json_decode($content, true);
-    //     $post = [
-    //         'code' => $code,
-    //         'costAmount' => $costAmount,
-    //     ];
-    //     $authorization = "Authorization: Bearer VFBUV0VCU0lURTpnU01vTENiTjZHUmdFSXo3"; // Prepare the authorisation token
-    //     curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json' , $authorization )); // Inject the token into the header
-    //     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-    //     curl_setopt($ch, CURLOPT_POST, 1); // Specify the request method as POST
-    //     curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($post)); // Set the posted fields
-    //     curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1); // This will follow any redirects
-    //     $result = curl_exec($ch); // Execute the cURL statement
-    //     curl_close($ch); // Close the cURL connection
-    //     //dd($result);
-    //     return json_encode($result); // Return the received data
-
-    // }
-
     public function validatePromotionCode(Request $request)
     {
         $data = $request->all();
         $client = new Client();
-        $response = $client->request('POST', config('tune-api.url') . 'Promotions/Available', [
+        $response = $client->request('POST', str_replace(config('tune-api.url'), "/WEBSITE", "") . 'Promotions/Available', [
             'auth' => [config('tune-api.user'), config('tune-api.password')],
             'headers' => [
                 'Content-Type' => 'application/json'
