@@ -1687,7 +1687,7 @@ class ProductController extends BaseController
     {
         $data = $request->all();
         $client = new Client();
-        $response = $client->request('POST', str_replace(config('tune-api.url'), "/WEBSITE", "") . 'Promotions/Available', [
+        $response = $client->request('POST', str_replace('/WEBSITE', '', config('tune-api.url')) . 'Promotions/Available', [
             'auth' => [config('tune-api.user'), config('tune-api.password')],
             'headers' => [
                 'Content-Type' => 'application/json'
