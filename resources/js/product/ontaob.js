@@ -593,7 +593,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     const $btnGoto = $$('.btn-goto');
     $btnGoto.forEach($btn => {
-        $btn.addEventListener("click", function (e) {
+        $btn.addEventListener("click", function async (e) {
 
             e.preventDefault();
 
@@ -744,7 +744,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                                 if (promotion_data.result.codeAvailable >= i) {
                                     currentProfile.PromotionCode = $('#fdPromotionCode').value;
                                     currentProfile.CampaignId = promotion_data.result.campaignId;
-                                    currentProfile.CostAmount = getSelectedPrice(data.fdPackage, package_data, data.fdFromDate, data.fdToDate);    
+                                    currentProfile.CostAmount = selectPrice;    
                                     currentProfile.StatusId = 2;
                                     currentProfile.TypeId = 1
                                 }
