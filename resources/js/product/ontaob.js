@@ -477,7 +477,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
             //const promotion_data_befor = {"codeAvailable": 2, "campaignId": 1, "status": true};
             console.log(promotion_data_befor);
-            console.log(promotion_data_befor.result.status);
+            console.log(promotion_data_befor.result.codeAvailable);
 
             if(promotion_data_befor.result.status && promotion_data_befor.result.codeAvailable <= parseInt($("#promotion_code_condition").value)) {
                 promotionCodeStatus = true;
@@ -697,6 +697,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                         const selectPrice = getSelectedPrice(data.fdPackage, package_data, data.fdFromDate, data.fdToDate)
                         //const promotion_data = {"codeAvailable": 2, "campaignId": 1, "status": true};
                         const promotion_data = validatePromotionCode($('#fdPromotionCode').value, selectPrice);
+                        console.log(promotion_data.result.codeAvailable);
 
                         removeError($('#step3'));
 
