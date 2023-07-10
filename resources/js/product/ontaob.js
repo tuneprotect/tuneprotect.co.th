@@ -475,7 +475,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
             //const promotion_data_befor = await validatePromotionCode($('#fdPromotionCode').value, 1200);
 
-            const promotion_data_befor = {"codeAvailable": 10, "campaignId": 1, "status": true};
+            const promotion_data_befor = {"codeAvailable": 2, "campaignId": 1, "status": true};
             //console.log(promotion_data_befor);
 
             if(promotion_data_befor.status && promotion_data_befor.codeAvailable <= parseInt($("#promotion_code_condition").value)) {
@@ -701,7 +701,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
                         status = true;
 
-                        const promotion_data = {"codeAvailable": 10, "campaignId": 1, "status": true};
+                        const promotion_data = {"codeAvailable": 2, "campaignId": 1, "status": true};
 
                         removeError($('#step3'));
 
@@ -849,7 +849,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                             ${$('#controller').value === 'product' && promotionCodeStatus
                                 ? `<div class="controls-wrapper full no-lable"><span>${$('#lblfdPromotionCode').innerText} : </span><strong>ส่วนลดสตาร์บัค มูลค่า 100 บาท</strong>
                                     ${ promotion_data.codeAvailable < i+1 
-                                    ? `<span id="promotion_code_alert" class="error" style="display: none;">(* The code has already been used.)</span>` : '' } </div>`
+                                    ? `<span id="promotion_code_alert" class="error">(* The code has already been used.)</span>` : '' } </div>`
                                 : ''
                             }
 
