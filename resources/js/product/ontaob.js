@@ -691,17 +691,10 @@ document.addEventListener("DOMContentLoaded", async () => {
                         break;
                     case 3:
                         let profileData = [];
-                        let promotionCode = {
-                            Code: "",
-                            CampaignId: "",
-                            CostAmount: "",
-                            StatusId: "",
-                            TypeId: ""
-                        }
-
                         status = true;
 
-                        const promotion_data = {"codeAvailable": 2, "campaignId": 1, "status": true};
+                        //const promotion_data = {"codeAvailable": 2, "campaignId": 1, "status": true};
+                        const promotion_data = validatePromotionCode($('#fdPromotionCode').value, selectPrice);
 
                         removeError($('#step3'));
 
@@ -716,8 +709,6 @@ document.addEventListener("DOMContentLoaded", async () => {
                                 status = false;
                                 return false;
                             }
-
-                            
 
                             const currentProfile = {
                                 fdSex: getRadioSelectedValue(`data_${i}_fdSex`),
