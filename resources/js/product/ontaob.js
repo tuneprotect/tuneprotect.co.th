@@ -477,6 +477,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
             //const promotion_data_befor = {"codeAvailable": 2, "campaignId": 1, "status": true};
             console.log(promotion_data_befor);
+            console.log(promotion_data_befor.result.status);
 
             if(promotion_data_befor.result.status && promotion_data_befor.result.codeAvailable <= parseInt($("#promotion_code_condition").value)) {
                 promotionCodeStatus = true;
