@@ -697,6 +697,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                         const selectPrice = getSelectedPrice(data.fdPackage, package_data, data.fdFromDate, data.fdToDate)
                         //const promotion_data = {"codeAvailable": 2, "campaignId": 1, "status": true};
                         const promotion_data = validatePromotionCode($('#fdPromotionCode').value, selectPrice);
+                        console.log(promotion_data);
                         console.log(promotion_data.result.codeAvailable);
 
                         removeError($('#step3'));
