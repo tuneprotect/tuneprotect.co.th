@@ -696,7 +696,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
                         const selectPrice = getSelectedPrice(data.fdPackage, package_data, data.fdFromDate, data.fdToDate)
                         //const promotion_data = {"codeAvailable": 2, "campaignId": 1, "status": true};
-                        const promotion_data = validatePromotionCode($('#fdPromotionCode').value, selectPrice).result;
+                        const promotion_data = validatePromotionCode($('#fdPromotionCode').value, selectPrice);
 
                         removeError($('#step3'));
 
@@ -739,7 +739,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                             };
 
                             if ($('#controller').value === 'product' && promotionCodeStatus) {
-                                if (promotion_data.codeAvailable >= i) {
+                                if (promotion_data.result.codeAvailable >= i) {
                                     currentProfile.PromotionCode = $('#fdPromotionCode').value;
                                     currentProfile.CampaignId = promotion_data.result.campaignId;
                                     currentProfile.CostAmount = getSelectedPrice(data.fdPackage, package_data, data.fdFromDate, data.fdToDate);    
