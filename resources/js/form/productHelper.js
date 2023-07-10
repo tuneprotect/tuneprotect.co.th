@@ -134,7 +134,8 @@ const callSuscoBranch = async () => {
 
 const callPromotionCode = async (data) => {
     console.log(data);
-    const response = await fetch(`/appApi/ApiConnect/validatePromotionCode`, {
+    //const response = await fetch(`/appApi/ApiConnect/validatePromotionCode`, {
+    const response = await fetch(`/${$('html').getAttribute('lang')}/Product/validatePromotionCode`, {
         method: 'post',
         headers: {
             'Accept': 'application/json',
