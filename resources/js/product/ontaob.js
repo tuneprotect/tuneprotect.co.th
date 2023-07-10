@@ -473,15 +473,15 @@ document.addEventListener("DOMContentLoaded", async () => {
     {
         $('#fdPromotionCode').addEventListener('change', async (e) => {
 
-            const promotion_data_befor = await validatePromotionCode($('#fdPromotionCode').value, 1200).result;
+            const promotion_data_befor = await validatePromotionCode($('#fdPromotionCode').value, 1200);
 
             //const promotion_data_befor = {"codeAvailable": 2, "campaignId": 1, "status": true};
             console.log(promotion_data_befor);
 
-            if(promotion_data_befor.status && promotion_data_befor.codeAvailable <= parseInt($("#promotion_code_condition").value)) {
+            if(promotion_data_befor.result.status && promotion_data_befor.result.codeAvailable <= parseInt($("#promotion_code_condition").value)) {
                 promotionCodeStatus = true;
-                showPromotionCodeCount($('#fdPromotionCode').getAttribute('data-error-promotion-code-count').replace("{count}", promotion_data_befor.codeAvailable), 'span_error');
-            } else if(promotion_data_befor.status) {
+                showPromotionCodeCount($('#fdPromotionCode').getAttribute('data-error-promotion-code-count').replace("{count}", promotion_data_befor.result.codeAvailable), 'span_error');
+            } else if(promotion_data_befor.result.status) {
                 promotionCodeStatus = true;
                 showPromotionCodeValid($('#fdPromotionCode').getAttribute('data-error-promotion-code-valid'), 'span_error');
             } else {
@@ -740,7 +740,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                             if ($('#controller').value === 'product' && promotionCodeStatus) {
                                 if (promotion_data.codeAvailable >= i) {
                                     currentProfile.PromotionCode = $('#fdPromotionCode').value;
-                                    currentProfile.CampaignId = promotion_data.campaignId;
+                                    currentProfile.CampaignId = promotion_data.result.campaignId;
                                     currentProfile.CostAmount = getSelectedPrice(data.fdPackage, package_data, data.fdFromDate, data.fdToDate);    
                                     currentProfile.StatusId = 2;
                                     currentProfile.TypeId = 1
