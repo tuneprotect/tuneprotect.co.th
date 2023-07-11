@@ -37,8 +37,8 @@ class ProductController extends BaseController
 
     protected $thankYouParam = '';
     protected $controller = 'product';
-    protected $payment = 'CC,FULL';
-    protected $ipp_interest_type = "";
+    protected $payment = 'CC,FULL,IPP';
+    protected $ipp_interest_type = "C";
     protected $use_effective = 'N';
     protected $product_agent_code = '';
     public function index($link = null, $selected = null, $portal_key = null)
