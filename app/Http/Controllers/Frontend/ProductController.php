@@ -1625,7 +1625,7 @@ class ProductController extends BaseController
         $arr_post['user_defined_1'] = 'aaa';
         $arr_post['user_defined_2'] = preg_replace('/\?.*/', '', session('return_link'));
         $arr_post['result_url_1'] = url("{$this->locale}/product/result");
-        $arr_post['payment_option'] = "CC,FULL";
+        $arr_post['payment_option'] = "ALL";
         $arr_post['ipp_interest_type'] = 'A';
         $arr_post['default_lang'] = $this->locale;
         //        $arr_post['ipp_period_filter'] = '10';
