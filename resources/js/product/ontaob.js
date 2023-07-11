@@ -8,7 +8,8 @@ import {
     validatePolicy, 
     formatInputFieldOnlyEnglish, 
     validatePolicyPayment,
-    validatePromotionCode
+    validatePromotionCode,
+    preValidatePromotionCode
 } from "../form/productHelper";
 import {
     showPromotionCodeValid,
@@ -473,7 +474,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     {
         $('#fdPromotionCode').addEventListener('change', async (e) => {
 
-            const promotion_data_befor = await validatePromotionCode($('#fdPromotionCode').value, 1200);
+            const promotion_data_befor = await preValidatePromotionCode($('#fdPromotionCode').value);
 
             //const promotion_data_befor = {"codeAvailable": 2, "campaignId": 1, "status": true};
             console.log(promotion_data_befor);
