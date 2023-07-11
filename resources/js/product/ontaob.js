@@ -843,9 +843,9 @@ document.addEventListener("DOMContentLoaded", async () => {
                             <div class="controls-wrapper full no-lable"><span>${$('#beneficiary_header').innerText} : </span><strong>${v.fdBenefit === 'other' ? v.fdBenefit_name + ' (' + v.fdRelation + ')' : v.fdBenefit} </strong></div>
                             
                             ${$('#controller').value === 'product' && promotionCodeStatus
-                                ? `<div class="controls-wrapper full no-lable"><span>${$('#lblfdPromotionCode').innerText} : </span><strong>ส่วนลดสตาร์บัค มูลค่า 100 บาท</strong>
+                                ? `<div class="controls-wrapper full no-lable"><span>${$('#lblfdPromotionCode').innerText} : </span><strong>${$('#fdPromotionCode').value} ${ promotion_data.result.status ? `<span id="promotion_code_alert" style="color: #008b06;">${locale === 'th' ? '(ส่วนลดสตาร์บัค 100 บาท)' : '(Starbucks card 100 bath)'}</span>` : `<span id="promotion_code_alert" style="color: #e71618;">${locale === 'th' ? '(* โค้ดของคุณไม่เข้าเงื่อนไขโปรโมชั้นตามที่กำหนด)' : '(* The code does not qualify for the promotion as specified)'}</span>` } </strong>
                                     ${ promotion_data.result.codeAvailable < i+1 
-                                    ? `<span id="promotion_code_alert" style="color: #e71618;">(* The code has already been used.)</span>` : '' } </div>`
+                                    ? `<span id="promotion_code_alert" style="color: #e71618;">${locale === 'th' ? '(* โค้ดนี้ได้ถูกใช้ครบแล้ว)' : '(* The code has already been used.)'}</span>` : '' } </div>`
                                 : ''
                             }
 
