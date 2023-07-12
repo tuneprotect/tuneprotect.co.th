@@ -95,11 +95,4 @@ class BaseInsuranceObject
     public $sch_sumins;
     public $sch_prem;
     public $risk_rate;
-
-    //Promotion Code 20230706
-    public $PromotionCode;
-    public $CampaignId;
-    public $CostAmount;
-    public $StatusId;
-    public $TypeId;
 }
