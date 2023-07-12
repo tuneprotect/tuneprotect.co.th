@@ -134,6 +134,7 @@ export const showValidatePromotionCodeError = (message, selector) => {
     $$('.promotion-code').forEach(el => {
         el.classList.add('error');
     });
+    $('.promotion-code span.' + selector).style.color = '#e71618';
     scrollToTargetAdjusted($('.controls-wrapper.error'));
 }
 
