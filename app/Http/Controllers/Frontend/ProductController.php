@@ -37,8 +37,8 @@ class ProductController extends BaseController
 
     protected $thankYouParam = '';
     protected $controller = 'product';
-    protected $payment = 'CC,FULL,IPP';
-    protected $ipp_interest_type = "C";
+    protected $payment = 'CC,FULL';
+    protected $ipp_interest_type = "";
     protected $use_effective = 'N';
     protected $product_agent_code = '';
     public function index($link = null, $selected = null, $portal_key = null)
@@ -452,7 +452,6 @@ class ProductController extends BaseController
             $obj = new VSAFEAObject();
         } elseif (substr($data['fdPackage'], 0, 2) === 'CI') {
             $obj = new CIObject();
-
             if ($data['fdPayAMT'] >= 3000) {
                 $this->payment = 'CC,FULL,IPP';
                 $this->ipp_interest_type = "C";
@@ -527,6 +526,11 @@ class ProductController extends BaseController
                     $obj->$k = isset($data[$k]) ? $data[$k] : $obj->$k;
                     break;
             }
+        }
+
+        if ($data['fdPayAMT'] >= 3000) {
+            $this->payment = 'CC,FULL,IPP';
+            $this->ipp_interest_type = "C";
         }
 
         if (
