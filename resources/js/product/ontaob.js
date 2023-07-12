@@ -478,7 +478,6 @@ document.addEventListener("DOMContentLoaded", async () => {
 
             //const promotion_data_befor = {"codeAvailable": 2, "campaignId": 1, "status": true};
             console.log(promotion_data_befor);
-            console.log(promotion_data_befor.result.codeAvailable);
 
             if(promotion_data_befor.result.status && promotion_data_befor.result.codeAvailable <= parseInt($("#promotion_code_condition").value)) {
                 promotionCodeStatus = true;
@@ -487,7 +486,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                 promotionCodeStatus = true;
                 showPromotionCodeValid($('#fdPromotionCode').getAttribute('data-error-promotion-code-valid'), 'span_error');
             } else {
-                showValidatePromotionCodeError($('#fdPromotionCode').getAttribute('data-error-promotion-code-invalid'), 'span_error');
+                showValidatePromotionCodeError(locale === 'th' ? promotion_data_befor.result.message_th : promotion_data_befor.result.message, 'span_error');
             }
         });
     }
