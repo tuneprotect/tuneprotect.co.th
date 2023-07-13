@@ -478,6 +478,8 @@ class ProductController extends BaseController
             $obj = new BaseInsuranceObject();
         }
 
+        $price = $obj->fdPayAMT;
+
         foreach ($obj as $k => $v) {
 
             switch ($k) {
@@ -526,9 +528,11 @@ class ProductController extends BaseController
                     $obj->$k = isset($data[$k]) ? $data[$k] : $obj->$k;
                     break;
             }
+
+            $price += $obj->fdPayAMT;
         }
 
-        if ($data['fdPayAMT'] >= 3000) {
+        if ($price >= 3000) {
             $this->payment = 'CC,FULL,IPP';
             $this->ipp_interest_type = "C";
         }
