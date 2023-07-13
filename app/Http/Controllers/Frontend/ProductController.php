@@ -498,7 +498,6 @@ class ProductController extends BaseController
 
                 case "fdPayAMT":
                     $obj->$k = number_format($data[$k], 2, '.', '');
-                    $price += $obj->fdPayAMT;
                     break;
                 case 'fdlanguage':
                     $obj->$k = $this->locale == 'th' ? 0 : 1;
@@ -529,6 +528,10 @@ class ProductController extends BaseController
                     $obj->$k = isset($data[$k]) ? $data[$k] : $obj->$k;
                     break;
             }
+        }
+
+        foreach ($data["profile"] as $k) {
+            $price += $obj->fdPayAMT; 
         }
 
         if ($price >= 3000) {
