@@ -798,13 +798,13 @@ class ProductController extends BaseController
                     $log_id[] = $logResult->log_id;
                     $price += $obj->fdPayAMT;
                 }
-                
-                if ($price >= 3000) {
-                    $this->payment = 'CC,FULL,IPP';
-                    $this->ipp_interest_type = "C";
-                }
-
             }
+
+            if ($price >= 3000) {
+                $this->payment = 'CC,FULL,IPP';
+                $this->ipp_interest_type = "C";
+            }
+
             if (session('b2bpayment_status')) {
                 return $this->sendB2BTo2C2P($result, $price, $log_id);
             }
