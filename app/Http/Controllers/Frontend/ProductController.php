@@ -478,8 +478,6 @@ class ProductController extends BaseController
             $obj = new BaseInsuranceObject();
         }
 
-        $price = 0;
-
         foreach ($obj as $k => $v) {
 
             switch ($k) {
@@ -530,8 +528,11 @@ class ProductController extends BaseController
             }
         }
 
+        $price = $obj->fdPayAMT;
         foreach ($data["profile"] as $k) {
-            $price += $obj->fdPayAMT; 
+            if ($k > 0) {
+                $price += $obj->fdPayAMT; 
+            }
         }
 
         if ($price >= 3000) {
