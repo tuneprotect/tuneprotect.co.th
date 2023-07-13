@@ -800,6 +800,12 @@ class ProductController extends BaseController
                     $price += $obj->fdPayAMT;
                 }
             }
+
+            if ($price >= 3000) {
+                $this->payment = 'CC,FULL,IPP';
+                $this->ipp_interest_type = "C";
+            }
+
             if (session('b2bpayment_status')) {
                 return $this->sendB2BTo2C2P($result, $price, $log_id);
             }
@@ -892,7 +898,10 @@ class ProductController extends BaseController
                 return $this->noPayment($result);
             }
 
-            
+            if ($result->data["fdPayAMT"] >= 3000) {
+                $this->payment = 'CC,FULL,IPP';
+                $this->ipp_interest_type = "C";
+            }
 
             return $this->sendTo2C2P($result);
         }
