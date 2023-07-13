@@ -528,18 +528,6 @@ class ProductController extends BaseController
             }
         }
 
-        $price = $obj->fdPayAMT;
-        foreach ($data["profile"] as $k) {
-            if ($k > 0) {
-                $price += $obj->fdPayAMT; 
-            }
-        }
-
-        if ($price >= 3000) {
-            $this->payment = 'CC,FULL,IPP';
-            $this->ipp_interest_type = "C";
-        }
-
         if (
             substr($data['fdPackage'], 0, 8) === 'ONCOVIDA'
             || substr($data['fdPackage'], 0, 8) === 'ONVACINA'
@@ -810,6 +798,12 @@ class ProductController extends BaseController
                     $log_id[] = $logResult->log_id;
                     $price += $obj->fdPayAMT;
                 }
+                
+                if ($price >= 3000) {
+                    $this->payment = 'CC,FULL,IPP';
+                    $this->ipp_interest_type = "C";
+                }
+
             }
             if (session('b2bpayment_status')) {
                 return $this->sendB2BTo2C2P($result, $price, $log_id);
