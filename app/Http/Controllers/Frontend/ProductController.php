@@ -890,6 +890,11 @@ class ProductController extends BaseController
             $obj = $this->combindObj($data);
             $result = $this->logData($obj);
 
+            if ($result->data["fdPayAMT"] >= 3000) {
+                $this->payment = 'CC,FULL,IPP';
+                $this->ipp_interest_type = "C";
+            }
+
             if (session('b2bpayment_status')) {
                 return $this->sendB2BTo2C2P($result);
             }
