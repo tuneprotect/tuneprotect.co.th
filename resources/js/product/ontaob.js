@@ -699,7 +699,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                         break;
                     case 3:
                         let profileData = [];
-                        const promotion_data = null;
+                        let promotion_data;
                         status = true;
 
                         const selectPrice = getSelectedPrice(data.fdPackage, package_data, data.fdFromDate, data.fdToDate);
