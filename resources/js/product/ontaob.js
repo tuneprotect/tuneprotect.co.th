@@ -699,12 +699,13 @@ document.addEventListener("DOMContentLoaded", async () => {
                         break;
                     case 3:
                         let profileData = [];
+                        const promotion_data = any;
                         status = true;
 
                         const selectPrice = getSelectedPrice(data.fdPackage, package_data, data.fdFromDate, data.fdToDate);
                         
                         if ($('#controller').value === 'product' && promotionCodeStatus) {
-                            const promotion_data = await validatePromotionCode($('#fdPromotionCode').value, selectPrice);
+                            promotion_data = await validatePromotionCode($('#fdPromotionCode').value, selectPrice);
                             console.log(promotion_data);
                             console.log(promotion_data.result.codeAvailable);
                         }
