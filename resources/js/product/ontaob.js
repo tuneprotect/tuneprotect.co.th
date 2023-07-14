@@ -701,7 +701,14 @@ document.addEventListener("DOMContentLoaded", async () => {
                         let profileData = [];
                         status = true;
 
-                        const selectPrice = getSelectedPrice(data.fdPackage, package_data, data.fdFromDate, data.fdToDate); 
+                        const selectPrice = getSelectedPrice(data.fdPackage, package_data, data.fdFromDate, data.fdToDate);
+                        
+                        if ($('#controller').value === 'product' && promotionCodeStatus) {
+                            const promotion_data = await validatePromotionCode($('#fdPromotionCode').value, selectPrice);
+                            console.log(promotion_data);
+                            console.log(promotion_data.result.codeAvailable);
+                        }
+                    
                         removeError($('#step3'));
 
                         for (let i = 1; i <= $('#ctrl_no_of_insured').value; i++) {
@@ -743,10 +750,6 @@ document.addEventListener("DOMContentLoaded", async () => {
                             };
 
                             if ($('#controller').value === 'product' && promotionCodeStatus) {
-                                const promotion_data = await validatePromotionCode($('#fdPromotionCode').value, selectPrice);
-                                console.log(promotion_data);
-                                console.log(promotion_data.result.codeAvailable);
-
                                 if (promotion_data.result.codeAvailable >= i) {
                                     currentProfile.PromotionCode = $('#fdPromotionCode').value;
                                     currentProfile.CampaignId = promotion_data.result.campaignId;
