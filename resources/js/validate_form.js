@@ -144,6 +144,6 @@ export const showAcceptError = (message) => {
 }
 
 export const showValidateNationalIDError = (selector) => {
-    $(selector).classList.add('error');
+    $(selector).prev(".controls-wrapper").classList.add('error');
     scrollToTargetAdjusted($('.controls-wrapper.error'));
 }
