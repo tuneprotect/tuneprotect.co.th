@@ -699,6 +699,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                         break;
                     case 3:
                         let profileData = [];
+                        let nationalID = [];
                         let promotion_data;
                         status = true;
 
@@ -715,6 +716,9 @@ document.addEventListener("DOMContentLoaded", async () => {
                         for (let i = 1; i <= $('#ctrl_no_of_insured').value; i++) {
                             let address = ($(`#data_${i}_ctrl_province`).value).split('*');
                             let dateResult = iTravelCheckBirthDate(i);
+
+                            nationalID.push($(`#data_${i}_fdNationalID`).value);
+                            console.log(nationalID);
 
                             let valCheck = false;
                             valCheck = validatePolicyPayment($(`#data_${i}_fdNationalID`).value,data.fdPackage,$('#fdFromDate')?.value);
