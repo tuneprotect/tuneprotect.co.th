@@ -567,12 +567,12 @@ document.addEventListener("DOMContentLoaded", async () => {
             for (let i = 1; i <=  $('#ctrl_no_of_insured').value; i++) {
                 if ([`data_${i}_fdName`, `data_${i}_fdSurname`, `data_${i}_fdNationalID`].includes(field.id)) {
                     
-                    if (!nationalID.includes($(`#data_${i}_fdNationalID`).value)) {
-                        nationalID.push($(`#data_${i}_fdNationalID`).value);
-                        console.log(nationalID);
-                    } else {
-                        showValidateNationalIDError(`#data_${i}_fdNationalID`);
-                    }
+                    // if (!nationalID.includes($(`#data_${i}_fdNationalID`).value)) {
+                    //     nationalID.push($(`#data_${i}_fdNationalID`).value);
+                    //     console.log(nationalID);
+                    // } else {
+                    //     showValidateNationalIDError(`#data_${i}_fdNationalID`);
+                    // }
                     validatePolicy(e.target, data.fdPackage,$('#fdFromDate')?.value);
                 }
             }
@@ -726,13 +726,13 @@ document.addEventListener("DOMContentLoaded", async () => {
                             let address = ($(`#data_${i}_ctrl_province`).value).split('*');
                             let dateResult = iTravelCheckBirthDate(i);
                             
-                            if (!nationalID.includes($(`#data_${i}_fdNationalID`).value)) {
-                                nationalID.push($(`#data_${i}_fdNationalID`).value);
-                            } else {
-                                showValidateNationalIDError(`#data_${i}_fdNationalID`);
-                                status = false;
-                                return false;
-                            }
+                            // if (!nationalID.includes($(`#data_${i}_fdNationalID`).value)) {
+                            //     nationalID.push($(`#data_${i}_fdNationalID`).value);
+                            // } else {
+                            //     showValidateNationalIDError(`#data_${i}_fdNationalID`);
+                            //     status = false;
+                            //     return false;
+                            // }
 
                             let valCheck = false;
                             valCheck = validatePolicyPayment($(`#data_${i}_fdNationalID`).value,data.fdPackage,$('#fdFromDate')?.value);
