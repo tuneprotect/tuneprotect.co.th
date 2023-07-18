@@ -14,7 +14,8 @@ import {
 import {
     showPromotionCodeValid,
     showPromotionCodeCount,
-    showValidatePromotionCodeError
+    showValidatePromotionCodeError,
+    showValidateNationalIDError
 } from "../validate_form";
 import {
     $,
@@ -556,6 +557,8 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     }
 
+    let nationalID = [];
+    
 
     const allField = $('#step3').querySelectorAll('input,select,textarea');
     allField.forEach(field => {
@@ -563,6 +566,13 @@ document.addEventListener("DOMContentLoaded", async () => {
             validateField(this, profileConstraints);
             for (let i = 1; i <=  $('#ctrl_no_of_insured').value; i++) {
                 if ([`data_${i}_fdName`, `data_${i}_fdSurname`, `data_${i}_fdNationalID`].includes(field.id)) {
+                    
+                    if (!nationalID.includes($(`#data_${i}_fdNationalID`).value)) {
+                        nationalID.push($(`#data_${i}_fdNationalID`).value);
+                        console.log(nationalID);
+                    } else {
+                        showValidateNationalIDError(`#data_${i}_fdNationalID`);
+                    }
                     validatePolicy(e.target, data.fdPackage,$('#fdFromDate')?.value);
                 }
             }
@@ -699,7 +709,6 @@ document.addEventListener("DOMContentLoaded", async () => {
                         break;
                     case 3:
                         let profileData = [];
-                        let nationalID = [];
                         let promotion_data;
                         status = true;
 
@@ -716,9 +725,14 @@ document.addEventListener("DOMContentLoaded", async () => {
                         for (let i = 1; i <= $('#ctrl_no_of_insured').value; i++) {
                             let address = ($(`#data_${i}_ctrl_province`).value).split('*');
                             let dateResult = iTravelCheckBirthDate(i);
-
-                            nationalID.push($(`#data_${i}_fdNationalID`).value);
-                            console.log(nationalID);
+                            
+                            if (!nationalID.includes($(`#data_${i}_fdNationalID`).value)) {
+                                nationalID.push($(`#data_${i}_fdNationalID`).value);
+                            } else {
+                                showValidateNationalIDError(`#data_${i}_fdNationalID`);
+                                status = false;
+                                return false;
+                            }
 
                             let valCheck = false;
                             valCheck = validatePolicyPayment($(`#data_${i}_fdNationalID`).value,data.fdPackage,$('#fdFromDate')?.value);
