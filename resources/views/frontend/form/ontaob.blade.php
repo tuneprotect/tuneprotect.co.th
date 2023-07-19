@@ -63,7 +63,7 @@
                 </div>
             </div>
 
-            @if($controller == 'product')
+            @if($controller == 'wait')
                 <input type="hidden" id="promotion_code_condition" value="{{config('project.promotion_code_condition')}}"/>
                 @include('frontend.component.form-input-promotion-code')
             @endif
