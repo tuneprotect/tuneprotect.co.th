@@ -4,7 +4,7 @@
             <h1>{{$product->locales[$locale]->title}}</h1>
             <div class="item-wrapper">
                 @foreach ($product->productPackage as $v)
-                @if($v->code === 'ONCSHC' || $v->code === 'CI'|| $v->code === 'DIABETES' || $v->code === 'ONPACA' || $v->code === 'ONPAKD' || $v->code === 'ONPASN' || $v->code === 'ONTASK' || $v->code === 'TAISM' || $v->code === 'TAIPOCT22' || $v->code === 'ONTADM' || $v->code === 'ONTAOB' || $v->code === 'ONFIMP' || $v->code === 'ONMHS')
+                @if($v->code === 'ONCSHC' || $v->code === 'CI'|| $v->code === 'DIABETES' || $v->code === 'ONPACA' || $v->code === 'ONPAKD' || $v->code === 'ONPASN' || $v->code === 'TAISM' || $v->code === 'TAIPOCT22' || $v->code === 'ONTADM' || $v->code === 'ONTAOB' || $v->code === 'ONFIMP' || $v->code === 'ONMHS')
                         <div class="item">
                             <div class="two-tone-icon">
                                 <span><img src="{{url($v->pic)}}" alt=""></span>

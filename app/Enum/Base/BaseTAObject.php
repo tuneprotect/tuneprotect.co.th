@@ -15,4 +15,11 @@ class BaseTAObject extends BaseInsuranceObject
     public $fdDay;
     public $health2go;
 
+    //Promotion Code 20230706
+    public $PromotionCode;
+    public $CampaignId;
+    public $CostAmount;
+    public $StatusId;
+    public $TypeId;
+
 }

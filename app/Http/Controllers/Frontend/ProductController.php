@@ -452,7 +452,6 @@ class ProductController extends BaseController
             $obj = new VSAFEAObject();
         } elseif (substr($data['fdPackage'], 0, 2) === 'CI') {
             $obj = new CIObject();
-
             if ($data['fdPayAMT'] >= 3000) {
                 $this->payment = 'CC,FULL,IPP';
                 $this->ipp_interest_type = "C";
@@ -890,6 +889,11 @@ class ProductController extends BaseController
 
             $obj = $this->combindObj($data);
             $result = $this->logData($obj);
+
+            if ($result->data["fdPayAMT"] >= 3000) {
+                $this->payment = 'CC,FULL,IPP';
+                $this->ipp_interest_type = "C";
+            }
 
             if (session('b2bpayment_status')) {
                 return $this->sendB2BTo2C2P($result);
@@ -1634,8 +1638,8 @@ class ProductController extends BaseController
         $arr_post['user_defined_1'] = 'aaa';
         $arr_post['user_defined_2'] = preg_replace('/\?.*/', '', session('return_link'));
         $arr_post['result_url_1'] = url("{$this->locale}/product/result");
-        $arr_post['payment_option'] = "CC,FULL";
-        $arr_post['ipp_interest_type'] = 'A';
+        $arr_post['payment_option'] = "CC,FULL,IPP";
+        $arr_post['ipp_interest_type'] = 'C';
         $arr_post['default_lang'] = $this->locale;
         //        $arr_post['ipp_period_filter'] = '10';
 
@@ -1680,6 +1684,56 @@ class ProductController extends BaseController
         $res = (object)json_decode($response->getBody()->getContents(), true);
 
         $this->apiResult = $res->status ? self::SUCCESS : self::ERROR;
+
+        if ($res->status) {
+            $this->apiStatus = self::SUCCESS;
+            $this->apiStatusText = self::SUCCESS;
+        } else {
+            $this->apiStatus = self::ERROR;
+            $this->apiStatusText = __('product.error.' . $res->message);
+        }
+
+        return $this->send();
+    }
+
+    public function validatePromotionCode(Request $request)
+    {
+        $data = $request->all();
+        $client = new Client();
+        $response = $client->request('POST', str_replace('/WEBSITE', '', config('tune-api.url')) . 'Promotions/CodeCostAmountAvailable', [
+            'auth' => [config('tune-api.user'), config('tune-api.password')],
+            'headers' => [
+                'Content-Type' => 'application/json'
+            ],
+            'body' => json_encode($data)
+        ]);
+        $res = (object)json_decode($response->getBody()->getContents(), true);
+        $this->apiResult = $res->data;
+
+        if ($res->status) {
+            $this->apiStatus = self::SUCCESS;
+            $this->apiStatusText = self::SUCCESS;
+        } else {
+            $this->apiStatus = self::ERROR;
+            $this->apiStatusText = __('product.error.' . $res->message);
+        }
+
+        return $this->send();
+    }
+
+    public function preValidatePromotionCode(Request $request)
+    {
+        $data = $request->all();
+        $client = new Client();
+        $response = $client->request('POST', str_replace('/WEBSITE', '', config('tune-api.url')) . 'Promotions/CodeAvailable', [
+            'auth' => [config('tune-api.user'), config('tune-api.password')],
+            'headers' => [
+                'Content-Type' => 'application/json'
+            ],
+            'body' => json_encode($data)
+        ]);
+        $res = (object)json_decode($response->getBody()->getContents(), true);
+        $this->apiResult = $res->data;
 
         if ($res->status) {
             $this->apiStatus = self::SUCCESS;

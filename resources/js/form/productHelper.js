@@ -132,14 +132,33 @@ const callSuscoBranch = async () => {
     return await response.json();
 }
 
-const callPromotionCode = async () => {
-    const response = await fetch(`/appApi/ApiConnect/validatePromotionCode`, {
+const callPromotionCode = async (data) => {
+    //console.log(data);
+    //const response = await fetch(`/appApi/ApiConnect/validatePromotionCode`, {
+    const response = await fetch(`/${$('html').getAttribute('lang')}/Product/validatePromotionCode`, {
         method: 'post',
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json',
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').getAttribute('content')
-        }
+        },
+        body: JSON.stringify({...data})
+    })
+
+    return await response.json();
+}
+
+const callPrePromotionCode = async (data) => {
+    //console.log(data);
+    //const response = await fetch(`/appApi/ApiConnect/validatePromotionCode`, {
+    const response = await fetch(`/${$('html').getAttribute('lang')}/Product/preValidatePromotionCode`, {
+        method: 'post',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').getAttribute('content')
+        },
+        body: JSON.stringify({...data})
     })
 
     return await response.json();
@@ -212,8 +231,12 @@ export const getSuscoBranch = async ($this) => {
     return callSuscoBranch();
 }
 
-export const validatePromotionCode = async ($this) => {
-    return callPromotionCode();
+export const validatePromotionCode = async (code, costAmount) => {
+    return callPromotionCode({code, costAmount});
+}
+
+export const preValidatePromotionCode = async (code) => {
+    return callPrePromotionCode({code});
 }
 
 export const validatePolicyStep5 = async ($this, datas) => {

@@ -7,12 +7,15 @@ import {
     showMultipleTitle, 
     validatePolicy, 
     formatInputFieldOnlyEnglish, 
-    validatePolicyPayment
+    validatePolicyPayment,
+    validatePromotionCode,
+    preValidatePromotionCode
 } from "../form/productHelper";
 import {
     showPromotionCodeValid,
     showPromotionCodeCount,
-    showValidatePromotionCodeError
+    showValidatePromotionCodeError,
+    showValidateNationalIDError
 } from "../validate_form";
 import {
     $,
@@ -413,12 +416,11 @@ document.addEventListener("DOMContentLoaded", async () => {
         ctrl_accept_step1: "",
         ctrl_accept_insurance_term: "",
         ctrl_travel_type: "",
-        fdPromotionCodeStatus: "",
         profile: []
     };
     let iti = {};
     // let $dataSubPackage;
-
+    let promotionCodeStatus = "";
     let sb = "";
     let sb1 = `<option value="">${$('#fdDestTo').getAttribute('data-please-select')}</option>`;
     let sbSCHENGEN = '';
@@ -469,23 +471,33 @@ document.addEventListener("DOMContentLoaded", async () => {
         });
     })
 
-    // if ($('#controller').value === 'product') 
-    // {
-    //     //const promotion_data = await validatePromotionCode();
-    //     const promotion_data_befor = {"status": true, "count": 5};
+    if ($('#controller').value === 'product') 
+    {
+        $('#fdPromotionCode').addEventListener('change', async (e) => {
 
-    //     $('#fdPromotionCode').addEventListener('change', (e) => {
-    //         if(promotion_data_befor.status && promotion_data_befor.count <= 5) {
-    //             data.fdPromotionCodeStatus = true;
-    //             showPromotionCodeCount($('#fdPromotionCode').getAttribute('data-error-promotion-code-count').replace("{count}", promotion_data_befor.count), 'span_error');
-    //         } else if(promotion_data_befor.status) {
-    //             data.fdPromotionCodeStatus = true;
-    //             showPromotionCodeValid($('#fdPromotionCode').getAttribute('data-error-promotion-code-valid'), 'span_error');
-    //         } else {
-    //             showValidatePromotionCodeError($('#fdPromotionCode').getAttribute('data-error-promotion-code-invalid'), 'span_error');
-    //         }
-    //     });
-    // }
+            if($('#fdPromotionCode').value) {
+                const promotion_data_befor = await preValidatePromotionCode($('#fdPromotionCode').value);
+
+                //const promotion_data_befor = {"codeAvailable": 2, "campaignId": 1, "status": true};
+                console.log(promotion_data_befor);
+
+                if(promotion_data_befor.result.status && promotion_data_befor.result.codeAvailable <= parseInt($("#promotion_code_condition").value)) {
+                    promotionCodeStatus = true;
+                    showPromotionCodeCount($('#fdPromotionCode').getAttribute('data-error-promotion-code-count').replace("{count}", promotion_data_befor.result.codeAvailable), 'span_error');
+                } else if(promotion_data_befor.result.status) {
+                    promotionCodeStatus = true;
+                    showPromotionCodeValid($('#fdPromotionCode').getAttribute('data-error-promotion-code-valid'), 'span_error');
+                } else {
+                    showValidatePromotionCodeError(locale === 'th' ? promotion_data_befor.result.message_th : promotion_data_befor.result.message, 'span_error');
+                }
+            }
+            else
+            {
+                showPromotionCodeValid('', 'span_error');
+                promotionCodeStatus = false;
+            }
+        });
+    }
 
     //Set start selection
     let el = document.getElementById('ctrl_travel_type');
@@ -545,6 +557,8 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     }
 
+    let nationalID = [];
+    
 
     const allField = $('#step3').querySelectorAll('input,select,textarea');
     allField.forEach(field => {
@@ -552,6 +566,13 @@ document.addEventListener("DOMContentLoaded", async () => {
             validateField(this, profileConstraints);
             for (let i = 1; i <=  $('#ctrl_no_of_insured').value; i++) {
                 if ([`data_${i}_fdName`, `data_${i}_fdSurname`, `data_${i}_fdNationalID`].includes(field.id)) {
+                    
+                    // if (!nationalID.includes($(`#data_${i}_fdNationalID`).value)) {
+                    //     nationalID.push($(`#data_${i}_fdNationalID`).value);
+                    //     console.log(nationalID);
+                    // } else {
+                    //     showValidateNationalIDError(`#data_${i}_fdNationalID`);
+                    // }
                     validatePolicy(e.target, data.fdPackage,$('#fdFromDate')?.value);
                 }
             }
@@ -589,7 +610,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     const $btnGoto = $$('.btn-goto');
     $btnGoto.forEach($btn => {
-        $btn.addEventListener("click", function (e) {
+        $btn.addEventListener("click", async (e) => {
 
             e.preventDefault();
 
@@ -687,15 +708,31 @@ document.addEventListener("DOMContentLoaded", async () => {
 
                         break;
                     case 3:
-                        let profileData = []
-
+                        let profileData = [];
+                        let promotion_data;
                         status = true;
 
+                        const selectPrice = getSelectedPrice(data.fdPackage, package_data, data.fdFromDate, data.fdToDate);
+                        
+                        if ($('#controller').value === 'product' && promotionCodeStatus) {
+                            promotion_data = await validatePromotionCode($('#fdPromotionCode').value, selectPrice);
+                            console.log(promotion_data);
+                            console.log(promotion_data.result.codeAvailable);
+                        }
+                    
                         removeError($('#step3'));
 
                         for (let i = 1; i <= $('#ctrl_no_of_insured').value; i++) {
                             let address = ($(`#data_${i}_ctrl_province`).value).split('*');
                             let dateResult = iTravelCheckBirthDate(i);
+                            
+                            // if (!nationalID.includes($(`#data_${i}_fdNationalID`).value)) {
+                            //     nationalID.push($(`#data_${i}_fdNationalID`).value);
+                            // } else {
+                            //     showValidateNationalIDError(`#data_${i}_fdNationalID`);
+                            //     status = false;
+                            //     return false;
+                            // }
 
                             let valCheck = false;
                             valCheck = validatePolicyPayment($(`#data_${i}_fdNationalID`).value,data.fdPackage,$('#fdFromDate')?.value);
@@ -724,7 +761,22 @@ document.addEventListener("DOMContentLoaded", async () => {
                                 fdBenefit: $(`#data_${i}_fdBenefit`).value,
                                 fdBenefit_name: $(`#data_${i}_fdBenefit_name`).value,
                                 fdRelation: $(`#data_${i}_fdRelation`).value,
+                                PromotionCode: "",
+                                CampaignId: "",
+                                CostAmount: "",
+                                StatusId: "",
+                                TypeId: ""
                             };
+
+                            if ($('#controller').value === 'product' && promotionCodeStatus) {
+                                if (promotion_data.result.codeAvailable >= i) {
+                                    currentProfile.PromotionCode = $('#fdPromotionCode').value;
+                                    currentProfile.CampaignId = promotion_data.result.campaignId;
+                                    currentProfile.CostAmount = selectPrice;    
+                                    currentProfile.StatusId = 2;
+                                    currentProfile.TypeId = 1
+                                }
+                            }
 
                             profileData.push(currentProfile);
 
@@ -753,7 +805,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
                         data = {
                             ...data,
-                            fdPayAMT: getSelectedPrice(data.fdPackage, package_data, data.fdFromDate, data.fdToDate),
+                            fdPayAMT: selectPrice,
                             fdSendType: getRadioSelectedValue('fdSendType'),
                             ctrl_terms: $('#ctrl_terms').checked ? true : undefined,
                             ctrl_accept_insurance_term: $('#ctrl_accept_insurance_term').checked ? true : undefined,
@@ -785,7 +837,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                         const $destTo = $('#fdDestTo');
                         const $subPackage = $('#ctrl_sub_package');
                         const $summary_section = $('#summary_section');
-
+                        
                         let sb = `<h3 class="text-primary">${$summary_section.getAttribute('data-insurance_data')}</h3><br/>
                         <div class="two-col">
                             <div><span>${$summary_section.getAttribute('data-plan')} : </span><strong>${selectedPackage}</strong></div>
@@ -795,8 +847,9 @@ document.addEventListener("DOMContentLoaded", async () => {
                             : `<div><span>${$('label[for=fdDestTo]').innerText} : </span><strong>${$destTo.options[$destTo.selectedIndex].text}</strong></div>`}
                             <div><span>${$('label[for=fdFromDate]').innerText} : </span><strong>${fromDate}</strong></div>
                             <div><span>${$('label[for=fdToDate]').innerText} : </span><strong>${toDate}</strong></div>
-                            <div><span>${$summary_section.getAttribute('data-price-perperson')} : </span><strong>${parseFloat(data.fdPayAMT).toLocaleString()} ${$summary_section.getAttribute('data-baht')}</strong></div>
+                            <div></div>
                             <div><span>${$summary_section.getAttribute('data-total-price')} : </span><strong>${parseFloat(data.fdPayAMT * data.profile.length).toLocaleString()} ${$summary_section.getAttribute('data-baht')}</strong></div>
+                            <div><span>${$summary_section.getAttribute('data-price-perperson')} : </span><strong>${parseFloat(data.fdPayAMT).toLocaleString()} ${$summary_section.getAttribute('data-baht')}</strong></div>
 
                         </div>
                         <br/>`;
@@ -815,30 +868,24 @@ document.addEventListener("DOMContentLoaded", async () => {
                             <div><span>${$('label[for=data_1_fdEmail]').innerText} : </span><strong>${v.fdEmail}</strong></div>
                             <div class="controls-wrapper full no-lable"><span>${$('label[for=data_1_fdAddr_Num]').innerText} : </span><strong>${v.fdAddr_Num} ${v.fdAddr_District} ${province} ${v.fdAddr_PostCode}</strong></div>
                             <div class="controls-wrapper full no-lable"><span>${$('#beneficiary_header').innerText} : </span><strong>${v.fdBenefit === 'other' ? v.fdBenefit_name + ' (' + v.fdRelation + ')' : v.fdBenefit} </strong></div>
-                        </div>`;
+                            
+                            ${$('#controller').value === 'product' && promotionCodeStatus
+                                ? `<div class="controls-wrapper full no-lable"><span>${$('#lblfdPromotionCode').innerText} : </span><strong>${$('#fdPromotionCode').value} ${ promotion_data.result.status ? `
+                                ${ promotion_data.result.codeAvailable < i+1 
+                                    ? `<span id="promotion_code_alert" style="color: #e71618;">${locale === 'th' ? '(* โค้ดนี้ได้ถูกใช้ครบแล้ว)' : '(* The code has already been used.)'}</span>` 
+                                    : `<span id="promotion_code_alert" style="color: #008b06;">${locale === 'th' ? '('+ promotion_data.result.message_th +')' : '('+ promotion_data.result.message +')'}`}</span>` 
+                                    : `<span id="promotion_code_alert" style="color: #e71618;">${locale === 'th' ? '(* '+ promotion_data.result.message_th +')' : '(* '+ promotion_data.result.message +')'}</span>` } </strong>
+                                </div>`
+                                : ''
+                            }
+
+                        </div><br/>`
                         });
 
                         sb += `<input type="hidden" name="send_data" value='${JSON.stringify(data)}'>`;
 
                         $summary_section.innerHTML = sb;
                         status = true;
-
-                        // if ($('#controller').value === 'product' && data.fdPromotionCodeStatus) 
-                        // {
-                        //     //const promotion_data = await validatePromotionCode();
-                        //     const promotion_data = {"status": false};
-
-                        //     if(!promotion_data.status) {
-                        //         data.fdPromotionCodeStatus = "";
-
-                        //         Swal.fire({
-                        //             title: 'Warning!',
-                        //             text: 'Promotion code is invalid.',
-                        //             icon: 'warning',
-                        //             confirmButtonText: 'OK'
-                        //         })
-                        //     }
-                        // }
 
                         break;
                 }
