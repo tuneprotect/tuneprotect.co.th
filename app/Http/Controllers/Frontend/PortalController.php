@@ -224,7 +224,9 @@ class PortalController extends ProductController
         $this->bodyData['agentCode'] = $request->session()->get('agentCode');
         $this->bodyData['payAmount'] = $request->session()->get('payAmount');
         $this->bodyData['portalKey'] = $request->session()->get('portalKey');
-        //$this->bodyData['page'] = '';
+        $this->bodyData['package'] = $request->session()->get('package');
+        $this->bodyData['refCode'] = $request->session()->get('refCode');
+        $this->bodyData['controller'] = $this->controller;
 
         if ($request->session()->get('partner') === 'rabbit') {
 

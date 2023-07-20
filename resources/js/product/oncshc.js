@@ -399,12 +399,15 @@ document.addEventListener("DOMContentLoaded", async () => {
                     index++;
                 });
         }
-        
-        gtag("event",  "view_item",  {
-            "currency": "THB",
-            "items": itemList
-        });
 
+        if ($('#controller').value === 'product') 
+        {
+            gtag("event",  "view_item",  {
+                "currency": "THB",
+                "items": itemList
+            });
+        }
+        
         // fbq("trackCustom", "view_item", {
         //     currency: "THB",
         //     items: itemList
@@ -617,16 +620,19 @@ document.addEventListener("DOMContentLoaded", async () => {
 
                                 //console.log(fdPackage, packageName);
 
-                                gtag("event",  "add_to_cart",  {
-                                    "currency": "THB",
-                                    "value": selectPrice,
-                                    "items": [{
-                                      "item_id": "ChillSure_" + fdPackage,
-                                      "item_name": "ChillSure_" + fdPackage,
-                                      "price": selectPrice,
-                                    }]
-                                });
-
+                                if ($('#controller').value === 'product') 
+                                {
+                                    gtag("event",  "add_to_cart",  {
+                                        "currency": "THB",
+                                        "value": selectPrice,
+                                        "items": [{
+                                          "item_id": "ChillSure_" + fdPackage,
+                                          "item_name": "ChillSure_" + fdPackage,
+                                          "price": selectPrice,
+                                        }]
+                                    });
+                                }
+                                
                                 // fbq("trackCustom", "add_to_cart", {
                                 //     currency: "THB",
                                 //     item_id: "ChillSure_" + fdPackage,
@@ -717,16 +723,19 @@ document.addEventListener("DOMContentLoaded", async () => {
                             $form.querySelectorAll('.controls-wrapper').forEach(($el) => {
                                 $el.classList.remove('error')
                             });
-
-                            gtag("event",  "begin_checkout",  {
-                                "currency": "THB",
-                                "value": data.fdPayAMT,
-                                "items": [{
-                                  "item_id": "ChillSure_" + data.fdPackage,
-                                  "item_name": "ChillSure_" + data.fdPackage,
-                                  "price": data.fdPayAMT,
-                                }]
-                            });
+                            
+                            if ($('#controller').value === 'product') 
+                            {
+                                gtag("event",  "begin_checkout",  {
+                                    "currency": "THB",
+                                    "value": data.fdPayAMT,
+                                    "items": [{
+                                      "item_id": "ChillSure_" + data.fdPackage,
+                                      "item_name": "ChillSure_" + data.fdPackage,
+                                      "price": data.fdPayAMT,
+                                    }]
+                                });
+                            }
 
                             // fbq("trackCustom", "begin_checkout", {
                             //     currency: "THB",
