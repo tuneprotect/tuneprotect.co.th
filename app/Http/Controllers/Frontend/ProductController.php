@@ -1545,12 +1545,16 @@ class ProductController extends BaseController
         //dd($oBuyLog);
         //echo var_dump($oBuyLog);exit();
         foreach ($oBuyLog as $v) {
+
             $data = $v->data;
             $payAmount = $data['fdPayAMT'];
             $portalKey = $data['fdKeys'];
-            $agent_code = $data['fdAgent'];
             $package = $data['fdPackage'];
             $refCode = $data['RefCode'];
+
+            $apiResult = $this->sendToApiPortalLogin($portalKey);
+
+            $agent_code = $apiResult['fdAgent'];
             
             if ($v->result) {
                 $request->session()->put('doc_no',  $v->result['message']);

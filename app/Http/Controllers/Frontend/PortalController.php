@@ -158,6 +158,7 @@ class PortalController extends ProductController
 
         session(['nopayment_status' => $nopayment_status]);
         session(['partner' => $partner]);
+        session(['agentCode' => $agentCode]);
         session(['b2bpayment_status' => $b2bpayment_status]);
 
         $this->bodyData['brochure_ci'] = __('product.ci_brochure_broker_th');
