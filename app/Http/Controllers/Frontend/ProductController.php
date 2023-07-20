@@ -719,9 +719,6 @@ class ProductController extends BaseController
             $data['fdAgent'] = $apiResult['agent_code'];
         }
 
-        $apiResult = $this->sendToApiPortalLogin($data['fdKeys']);
-        $data['fdKeys'] = $apiResult['agent_code'];
-
         if (isset($data['send_data'])) {
             $data = (array)json_decode($data['send_data']);
 

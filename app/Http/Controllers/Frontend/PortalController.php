@@ -85,6 +85,8 @@ class PortalController extends ProductController
         {
 			//dd(request()->click_id);
             session(['transaction_id' => request()->click_id]);
+            $this->bodyData['transaction_id'] = request()->click_id;
+
         }
 
         $this->bodyData['partner'] = $partner;
@@ -153,7 +155,6 @@ class PortalController extends ProductController
         $this->bodyData['massage_key'] = $massage_key;
         $this->bodyData['use_effective'] = $use_effective;
         $this->bodyData['nopayment_status'] = $nopayment_status;
-
         $this->bodyData['b2bpayment_status'] = $b2bpayment_status;
 
         session(['nopayment_status' => $nopayment_status]);
