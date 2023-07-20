@@ -224,6 +224,7 @@ class PortalController extends ProductController
         $this->bodyData['agentCode'] = $request->session()->get('agentCode');
         $this->bodyData['payAmount'] = $request->session()->get('payAmount');
         $this->bodyData['portalKey'] = $request->session()->get('portalKey');
+        
         $this->bodyData['package'] = $request->session()->get('package');
         $this->bodyData['refCode'] = $request->session()->get('refCode');
         $this->bodyData['controller'] = $this->controller;
@@ -245,6 +246,12 @@ class PortalController extends ProductController
             if (session('partner') === 'THAIAIRWAY') {
                 return (new TGController)->thankyou($request);
             }
+        }
+
+        if($request->session()->get('agentCode') == "00AA603T88") 
+        {
+			//dd(request()->click_id);
+            $this->bodyData['transaction_id'] = $request->session()->get('transaction_id');
         }
 
         $thank_you_page = ProjectEnum::STATIC_PAGE_PAYMENT_THANK_YOU;
