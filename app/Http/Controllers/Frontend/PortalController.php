@@ -85,7 +85,7 @@ class PortalController extends ProductController
         {
 			//dd(request()->click_id);
             session(['transaction_id' => request()->click_id]);
-            $this->bodyData['transaction_id'] = request()->click_id;
+            //$this->bodyData['transaction_id'] = request()->click_id;
 
         }
 

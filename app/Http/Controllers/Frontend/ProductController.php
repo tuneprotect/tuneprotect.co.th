@@ -1112,6 +1112,8 @@ class ProductController extends BaseController
         if (strtolower($this->controller) === "portal") {
             $this->bodyData['partner'] = session('partner');
             $this->bodyData['selected'] = session('selected');
+            $this->bodyData['transaction_id'] = session('transaction_id');
+
             return $this->genView('frontend.page.payment_portal');
         }
         return $this->genView('frontend.page.payment');
