@@ -256,11 +256,14 @@ const genItemList = (package_data, fdFromDate, fdToDate) => {
                 index++;
             });
     }
-    
-    gtag("event",  "view_item",  {
-        "currency": "THB",
-        "items": itemList
-    });
+
+    if ($('#controller').value === 'product') 
+    {
+        gtag("event",  "view_item",  {
+            "currency": "THB",
+            "items": itemList
+        });
+    }
 }
 
 function resolveAfter2Seconds() {
@@ -512,15 +515,18 @@ document.addEventListener("DOMContentLoaded", async () => {
 
                             const selectPrice = package_data[data.fdPackage].price[$('#sub_code').value].price;
 
-                            gtag("event",  "add_to_cart",  {
-                                "currency": "THB",
-                                "value": selectPrice,
-                                "items": [{
-                                  "item_id": "TuneiPass_" + fdPackage,
-                                  "item_name": "TuneiPass_" + fdPackage,
-                                }]
-                            });
-
+                            if ($('#controller').value === 'product') 
+                            {
+                                gtag("event",  "add_to_cart",  {
+                                    "currency": "THB",
+                                    "value": selectPrice,
+                                    "items": [{
+                                      "item_id": "TuneiPass_" + fdPackage,
+                                      "item_name": "TuneiPass_" + fdPackage,
+                                    }]
+                                });
+                            }
+                            
                             status = true;
                         } else {
                             Swal.fire({
@@ -600,14 +606,17 @@ document.addEventListener("DOMContentLoaded", async () => {
 
                         result = validate(data, step3Constraints);
 
-                        gtag("event",  "begin_checkout",  {
-                            "currency": "THB",
-                            "value": data.fdPayAMT,
-                            "items": [{
-                              "item_id": "TuneiPass_" + data.fdPackage,
-                              "item_name": "TuneiPass_" + data.fdPackage,
-                            }]
-                        });
+                        if ($('#controller').value === 'product') 
+                        {
+                            gtag("event",  "begin_checkout",  {
+                                "currency": "THB",
+                                "value": data.fdPayAMT,
+                                "items": [{
+                                  "item_id": "TuneiPass_" + data.fdPackage,
+                                  "item_name": "TuneiPass_" + data.fdPackage,
+                                }]
+                            });
+                        }
 
                         if (result) {
                             showError($('#step3'), result);

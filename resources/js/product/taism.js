@@ -252,10 +252,13 @@ const genItemList = (package_data, fdFromDate, fdToDate) => {
             });
     }
     
-    gtag("event",  "view_item",  {
-        "currency": "THB",
-        "items": itemList
-    });
+    if ($('#controller').value === 'product') 
+    {
+        gtag("event",  "view_item",  {
+            "currency": "THB",
+            "items": itemList
+        });
+    }
 }
 
 function resolveAfter2Seconds() {
@@ -470,15 +473,18 @@ document.addEventListener("DOMContentLoaded", async () => {
 
                             const selectPrice = package_data[data.fdPackage].price[$('#sub_code').value].price;
 
-                            gtag("event",  "add_to_cart",  {
-                                "currency": "THB",
-                                "value": selectPrice,
-                                "items": [{
-                                  "item_id": "iSmile_" + fdPackage,
-                                  "item_name": "iSmile_" + fdPackage,
-                                  "price": selectPrice,
-                                }]
-                            });
+                            if ($('#controller').value === 'product') 
+                            {
+                                gtag("event",  "add_to_cart",  {
+                                    "currency": "THB",
+                                    "value": selectPrice,
+                                    "items": [{
+                                      "item_id": "iSmile_" + fdPackage,
+                                      "item_name": "iSmile_" + fdPackage,
+                                      "price": selectPrice,
+                                    }]
+                                });
+                            }
 
                             status = true;
                         } else {
@@ -559,15 +565,18 @@ document.addEventListener("DOMContentLoaded", async () => {
                             fdMarketing_Consent: $('#ctrl_marketing').checked ? true : undefined
                         }
 
-                        gtag("event",  "begin_checkout",  {
-                            "currency": "THB",
-                            "value": data.fdPayAMT,
-                            "items": [{
-                              "item_id": "iSmile_" + data.fdPackage,
-                              "item_name": "iSmile_" + data.fdPackage,
-                              "price": data.fdPayAMT,
-                            }]
-                        });
+                        if ($('#controller').value === 'product') 
+                        {
+                            gtag("event",  "begin_checkout",  {
+                                "currency": "THB",
+                                "value": data.fdPayAMT,
+                                "items": [{
+                                  "item_id": "iSmile_" + data.fdPackage,
+                                  "item_name": "iSmile_" + data.fdPackage,
+                                  "price": data.fdPayAMT,
+                                }]
+                            });
+                        }
 
                         result = validate(data, step3Constraints);
 

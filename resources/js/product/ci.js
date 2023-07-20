@@ -453,11 +453,14 @@ if ($('#title_wrapper')) {
                         index++;
                     });
             }
-            
-            gtag("event",  "view_item",  {
-                "currency": "THB",
-                "items": itemList
-            });
+
+            if ($('#controller').value === 'product') 
+            {
+                gtag("event",  "view_item",  {
+                    "currency": "THB",
+                    "items": itemList
+                });
+            }
         }
 
         const basePrice = (package_data) => {
@@ -657,16 +660,19 @@ if ($('#title_wrapper')) {
 
                                     const selectPrice = getSelectedPrice(data.fdHBD, fdPackage, package_data);
 
-                                    gtag("event",  "add_to_cart",  {
-                                        "currency": "THB",
-                                        "value": selectPrice,
-                                        "items": [{
-                                          "item_id": "myFlexiCI_" + fdPackage,
-                                          "item_name": "myFlexiCI_" + fdPackage,
-                                          "price": selectPrice,
-                                        }]
-                                    });
-
+                                    if ($('#controller').value === 'product') 
+                                    {
+                                        gtag("event",  "add_to_cart",  {
+                                            "currency": "THB",
+                                            "value": selectPrice,
+                                            "items": [{
+                                              "item_id": "myFlexiCI_" + fdPackage,
+                                              "item_name": "myFlexiCI_" + fdPackage,
+                                              "price": selectPrice,
+                                            }]
+                                        });
+                                    }
+                                    
                                     showTitle('', data.fdAge)
                                     status = true;
                                     hideShowDiseaseBox(goToStep);
@@ -757,15 +763,18 @@ if ($('#title_wrapper')) {
                                     fdMarketing_Consent: $('#ctrl_marketing').checked ? true : undefined
                                 }
 
-                                gtag("event",  "begin_checkout",  {
-                                    "currency": "THB",
-                                    "value": data.fdPayAMT,
-                                    "items": [{
-                                      "item_id": "myFlexiCI_" + data.fdPackage,
-                                      "item_name": "myFlexiCI_" + data.fdPackage,
-                                      "price": data.fdPayAMT,
-                                    }]
-                                });
+                                if ($('#controller').value === 'product') 
+                                {
+                                    gtag("event",  "begin_checkout",  {
+                                        "currency": "THB",
+                                        "value": data.fdPayAMT,
+                                        "items": [{
+                                          "item_id": "myFlexiCI_" + data.fdPackage,
+                                          "item_name": "myFlexiCI_" + data.fdPackage,
+                                          "price": data.fdPayAMT,
+                                        }]
+                                    });
+                                }
 
                                 const result = validate(data, constraints);
 

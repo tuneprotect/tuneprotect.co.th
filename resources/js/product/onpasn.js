@@ -293,11 +293,14 @@ document.addEventListener("DOMContentLoaded", async () => {
                     index++;
                 });
         }
-        
-        gtag("event",  "view_item",  {
-            "currency": "THB",
-            "items": itemList
-        });
+
+        if ($('#controller').value === 'product') 
+        {
+            gtag("event",  "view_item",  {
+                "currency": "THB",
+                "items": itemList
+            });
+        }
     }
 
     const $btnGoto = $$('.btn-goto');
@@ -339,15 +342,18 @@ document.addEventListener("DOMContentLoaded", async () => {
 
                                 const selectPrice = getSelectedPrice(data.fdHBD, fdPackage, package_data);
 
-                                gtag("event",  "add_to_cart",  {
-                                    "currency": "THB",
-                                    "value": selectPrice,
-                                    "items": [{
-                                      "item_id": "PAChoiceSenior_" + fdPackage,
-                                      "item_name": "PAChoiceSenior_" + fdPackage,
-                                      "price": selectPrice,
-                                    }]
-                                });
+                                if ($('#controller').value === 'product') 
+                                {
+                                    gtag("event",  "add_to_cart",  {
+                                        "currency": "THB",
+                                        "value": selectPrice,
+                                        "items": [{
+                                          "item_id": "PAChoiceSenior_" + fdPackage,
+                                          "item_name": "PAChoiceSenior_" + fdPackage,
+                                          "price": selectPrice,
+                                        }]
+                                    });
+                                }
 
                                 status = true;
                             } else {
@@ -418,15 +424,18 @@ document.addEventListener("DOMContentLoaded", async () => {
                                 fdMarketing_Consent: $('#ctrl_marketing').checked ? true : undefined
                             }
 
-                            gtag("event",  "begin_checkout",  {
-                                "currency": "THB",
-                                "value": data.fdPayAMT,
-                                "items": [{
-                                  "item_id": "PAChoiceSenior_" + data.fdPackage,
-                                  "item_name": "PAChoiceSenior_" + data.fdPackage,
-                                  "price": data.fdPayAMT,
-                                }]
-                            });
+                            if ($('#controller').value === 'product') 
+                            {
+                                gtag("event",  "begin_checkout",  {
+                                    "currency": "THB",
+                                    "value": data.fdPayAMT,
+                                    "items": [{
+                                      "item_id": "PAChoiceSenior_" + data.fdPackage,
+                                      "item_name": "PAChoiceSenior_" + data.fdPackage,
+                                      "price": data.fdPayAMT,
+                                    }]
+                                });
+                            }
 
                             const result = validate(data, constraints);
                             const $cite = $form.getElementsByTagName('cite');
