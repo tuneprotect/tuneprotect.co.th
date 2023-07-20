@@ -714,6 +714,14 @@ class ProductController extends BaseController
 
         $data = $request->all();
 
+        if($this->controller === 'portal') {
+            $apiResult = $this->sendToApiPortalLogin($data['fdKeys']);
+            $data['fdAgent'] = $apiResult['agent_code'];
+        }
+
+        $apiResult = $this->sendToApiPortalLogin($data['fdKeys']);
+        $data['fdKeys'] = $apiResult['agent_code'];
+
         if (isset($data['send_data'])) {
             $data = (array)json_decode($data['send_data']);
 
@@ -1549,13 +1557,10 @@ class ProductController extends BaseController
             $data = $v->data;
             $payAmount = $data['fdPayAMT'];
             $portalKey = $data['fdKeys'];
+            $agent_code = $data['fdAgent'];
             $package = $data['fdPackage'];
             $refCode = $data['RefCode'];
 
-            $apiResult = $this->sendToApiPortalLogin($portalKey);
-
-            $agent_code = $apiResult['fdAgent'];
-            
             if ($v->result) {
                 $request->session()->put('doc_no',  $v->result['message']);
                 $request->session()->put('return_link', $request->input('user_defined_2'));

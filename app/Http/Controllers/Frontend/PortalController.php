@@ -252,7 +252,7 @@ class PortalController extends ProductController
         if($request->session()->get('agentCode') == "00AA603T88") 
         {
 			//dd(request()->click_id);
-            $this->bodyData['transaction_id'] = $request->session()->get('transaction_id');
+            $this->bodyData['transactionId'] = $request->session()->get('transaction_id');
         }
 
         $thank_you_page = ProjectEnum::STATIC_PAGE_PAYMENT_THANK_YOU;

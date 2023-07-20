@@ -17,14 +17,6 @@
                          }]
                     });
                 </script>
-
-                @if(session()->get('agentCode') == '00AA603T88')
-                    <script>
-                        console.log("https://invle.co/aff_lsr?offer_id=103074&adv_sub='{{$refCode}}'&adv_sub2='{{$package}}'&adv_ sub3={}&adv_sub4={}&adv_sub5={}&adv_sub6={}&adv_sub7={}&amount='{{$payAmount}}'&currency=THB&transaction_id='{{$session()->get('transaction_id')}}'");
-                        //window.location.href = "https://invle.co/aff_lsr?offer_id=103074&adv_sub='{{$refCode}}'&adv_sub2='{{$package}}'&adv_ sub3={}&adv_sub4={}&adv_sub5={}&adv_sub6={}&adv_sub7={}&amount='{{$payAmount}}'&currency=THB&transaction_id='{{$session()->get('transaction_id')}}'";
-                    </script>
-                @endif
-
             @break
             @case("CI")
                 <script>
