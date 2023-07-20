@@ -1112,7 +1112,7 @@ class ProductController extends BaseController
         if (strtolower($this->controller) === "portal") {
             $this->bodyData['partner'] = session('partner');
             $this->bodyData['selected'] = session('selected');
-            $this->bodyData['transaction_id'] = session('transaction_id');
+            $arr_post['user_defined_5'] = session('transaction_id');
 
             return $this->genView('frontend.page.payment_portal');
         }
@@ -1565,6 +1565,7 @@ class ProductController extends BaseController
                 $request->session()->put('return_link', $request->input('user_defined_2'));
                 $request->session()->put('partner', $request->input('user_defined_3'));
                 $request->session()->put('thankyou_param', $request->input('user_defined_4'));
+                $request->session()->put('transaction_id', $request->input('user_defined_5'));
                 $request->session()->put('payAmount', $payAmount);
                 $request->session()->put('portalKey', $portalKey);
                 $request->session()->put('agentCode', $agent_code);
