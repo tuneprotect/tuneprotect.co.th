@@ -81,6 +81,12 @@ class PortalController extends ProductController
             }
         }
 
+        if($agentCode == "00AA603T88") 
+        {
+			//dd(request()->click_id);
+            session(['transaction_id' => request()->click_id]);
+        }
+
         $this->bodyData['partner'] = $partner;
         $this->bodyData['agentCode'] = $agentCode;
         $this->bodyData['status_api'] = $status_api;
@@ -93,6 +99,7 @@ class PortalController extends ProductController
 
         session(['nopayment_status' => $nopayment_status]);
         session(['partner' => $partner]);
+        session(['agentCode' => $agentCode]);
         session(['b2bpayment_status' => $b2bpayment_status]);
         session(['controller' => $this->controller]);
 
