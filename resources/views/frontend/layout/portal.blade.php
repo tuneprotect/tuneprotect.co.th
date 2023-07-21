@@ -159,6 +159,11 @@
                             <source media="(min-width:768px)" srcset="https://www.tuneprotect.co.th/storage/Banner/chillsure/hugs/Chillsure-Hugs-Broker-PC-TH.webp">
                             <img src="{{url(!empty($v->pic_mobile_en) ? "https://www.tuneprotect.co.th/storage/Banner/chillsure/hugs/Chillsure-Hugs-Broker-MB-TH.webp" : "https://www.tuneprotect.co.th/storage/Banner/chillsure/hugs/Chillsure-Hugs-Broker-MB-TH.webp" )}}" alt="{{$v->locales[$locale]->title}}">
                         </picture>
+                    @elseif($agentCode==='00BD144L409')
+                        <picture>
+                            <source media="(min-width:768px)" srcset="https://www.tuneprotect.co.th/storage/Banner/chillsure/truelife/Chillsure-Banner-Promo-Truelife.webp">
+                            <img src="{{url(!empty($v->pic_mobile_en) ? "https://www.tuneprotect.co.th/storage/Banner/chillsure/truelife/Chillsure-Banner-Promo-Truelife.webp" : "https://www.tuneprotect.co.th/storage/Banner/chillsure/truelife/Chillsure-Banner-Promo-Truelife.webp" )}}" alt="{{$v->locales[$locale]->title}}">
+                        </picture>
                     @else
                         <picture>
                             <source media="(min-width:768px)" srcset="https://www.tuneprotect.co.th/storage/Banner/chillsure/Chillsure-Banner-Desktop-EN.webp">
@@ -352,6 +357,11 @@
                         <picture>
                             <source media="(min-width:768px)" srcset="https://www.tuneprotect.co.th/storage/Banner/chillsure/hugs/Chillsure-Hugs-Broker-PC-TH.webp">
                             <img src="{{url(!empty($v->pic_mobile_en) ? "https://www.tuneprotect.co.th/storage/Banner/chillsure/hugs/Chillsure-Hugs-Broker-MB-TH.webp" : "https://www.tuneprotect.co.th/storage/Banner/chillsure/hugs/Chillsure-Hugs-Broker-MB-TH.webp" )}}" alt="{{$v->locales[$locale]->title}}">
+                        </picture>
+                    @elseif($agentCode==='00BD144L409')
+                        <picture>
+                            <source media="(min-width:768px)" srcset="https://www.tuneprotect.co.th/storage/Banner/chillsure/truelife/Chillsure-Banner-Promo-Truelife.webp">
+                            <img src="{{url(!empty($v->pic_mobile_en) ? "https://www.tuneprotect.co.th/storage/Banner/chillsure/truelife/Chillsure-Banner-Promo-Truelife.webp" : "https://www.tuneprotect.co.th/storage/Banner/chillsure/truelife/Chillsure-Banner-Promo-Truelife.webp" )}}" alt="{{$v->locales[$locale]->title}}">
                         </picture>
                     @else
                         <picture>
