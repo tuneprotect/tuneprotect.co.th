@@ -718,13 +718,13 @@ class ProductController extends BaseController
 
         $data = $request->all();
 
-        if($this->controller === 'portal') {
-            $apiResult = $this->sendToApiPortalLogin($data['fdKeys']);
-            $data['fdAgent'] = $apiResult['agent_code'];
-        }
-
         if (isset($data['send_data'])) {
             $data = (array)json_decode($data['send_data']);
+
+            if($this->controller === 'portal') {
+                $apiResult = $this->sendToApiPortalLogin($data['fdKeys']);
+                $data['fdAgent'] = $apiResult['agent_code'];
+            }
 
             //Health
             if (Str::contains($data['fdPackage'], ProjectEnum::ONCSHC_URL)) {
@@ -825,6 +825,11 @@ class ProductController extends BaseController
 
         } else {
 
+            if($this->controller === 'portal' && isset($data['fdKeys'])) {
+                $apiResult = $this->sendToApiPortalLogin($data['fdKeys']);
+                $data['fdAgent'] = $apiResult['agent_code'];
+            }
+
             //Health
             if (Str::contains($data['fdPackage'], ProjectEnum::ONCSHC_URL)) {
                 $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::ONCSHC_URL;
@@ -909,11 +914,6 @@ class ProductController extends BaseController
             }
             if (session('nopayment_status')) {
                 return $this->noPayment($result);
-            }
-
-            if ($result->data["fdPayAMT"] >= 3000) {
-                $this->payment = 'CC,FULL,IPP';
-                $this->ipp_interest_type = "C";
             }
 
             return $this->sendTo2C2P($result);
@@ -1024,7 +1024,7 @@ class ProductController extends BaseController
                     'headers' => [
                         'Content-Type' => 'application/json'
                     ],
-                    'timeout' => 300,
+                    'timeout' => 120,
                     'body' => json_encode($data)
                 ]);
 
