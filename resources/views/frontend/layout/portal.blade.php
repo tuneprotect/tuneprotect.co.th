@@ -355,7 +355,7 @@
                         </picture>
                     @else
                         <picture>
-                            <source media="(min-width:768px)" srcset="https://www.tuneprotect.co.th/storage/Banner/chillsure/Chillsure-Banner-Desktop-EN.webp">
+                            <source media="(min-width:768px)" srcset="https://www.tuneprotect.co.th/storage/Banner/chillsure/Chillsure-Banner-Desktop-TH.webp">
                             <img src="{{url(!empty($v->pic_mobile_en) ? "https://www.tuneprotect.co.th/storage/Banner/chillsure/Chillsure-Banner-Mobile-EN.webp" : "https://www.tuneprotect.co.th/storage/Banner/chillsure/Chillsure-Banner-Mobile-TH.webp" )}}" alt="{{$v->locales[$locale]->title}}">
                         </picture>
 
