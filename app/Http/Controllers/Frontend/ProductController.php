@@ -718,13 +718,13 @@ class ProductController extends BaseController
 
         $data = $request->all();
 
-        if($this->controller === 'portal') {
-            $apiResult = $this->sendToApiPortalLogin($data['fdKeys']);
-            $data['fdAgent'] = $apiResult['agent_code'];
-        }
-
         if (isset($data['send_data'])) {
             $data = (array)json_decode($data['send_data']);
+
+            if($this->controller === 'portal') {
+                $apiResult = $this->sendToApiPortalLogin($data['fdKeys']);
+                $data['fdAgent'] = $apiResult['agent_code'];
+            }
 
             //Health
             if (Str::contains($data['fdPackage'], ProjectEnum::ONCSHC_URL)) {
@@ -824,6 +824,11 @@ class ProductController extends BaseController
             return $this->sendTo2C2P($result, $price, $log_id);
 
         } else {
+
+            if($this->controller === 'portal' && isset($data['fdKeys'])) {
+                $apiResult = $this->sendToApiPortalLogin($data['fdKeys']);
+                $data['fdAgent'] = $apiResult['agent_code'];
+            }
 
             //Health
             if (Str::contains($data['fdPackage'], ProjectEnum::ONCSHC_URL)) {
