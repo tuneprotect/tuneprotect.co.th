@@ -911,8 +911,6 @@ class ProductController extends BaseController
                 return $this->noPayment($result);
             }
 
-            
-
             return $this->sendTo2C2P($result);
         }
     }
