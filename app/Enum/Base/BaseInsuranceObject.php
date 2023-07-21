@@ -95,4 +95,6 @@ class BaseInsuranceObject
     public $sch_sumins;
     public $sch_prem;
     public $risk_rate;
+
+    public $transaction_id;
 }

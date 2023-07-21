@@ -271,11 +271,14 @@ const genItemList = (package_data) => {
                 index++;
             });
     }
-    
-    gtag("event",  "view_item",  {
-        "currency": "THB",
-        "items": itemList
-    });
+
+    if ($('#controller').value === 'product') 
+    {
+        gtag("event",  "view_item",  {
+            "currency": "THB",
+            "items": itemList
+        });
+    }
 }
 
 document.addEventListener("DOMContentLoaded", async () => {
@@ -622,16 +625,18 @@ document.addEventListener("DOMContentLoaded", async () => {
 
                             const selectPrice = getSelectedPricePackage(data.fdPackage, package_data);
 
-                            gtag("event",  "add_to_cart",  {
-                                "currency": "THB",
-                                "value": selectPrice,
-                                "items": [{
-                                  "item_id": "myHomePlus_" + fdPackage,
-                                  "item_name": "myHomePlus_" + fdPackage,
-                                  "price": selectPrice,
-                                }]
-                            });
-
+                            if ($('#controller').value === 'product') 
+                            {
+                                gtag("event",  "add_to_cart",  {
+                                    "currency": "THB",
+                                    "value": selectPrice,
+                                    "items": [{
+                                      "item_id": "myHomePlus_" + fdPackage,
+                                      "item_name": "myHomePlus_" + fdPackage,
+                                      "price": selectPrice,
+                                    }]
+                                });
+                            }
                             status = true;
                         } else {
                             Swal.fire({
@@ -825,15 +830,18 @@ document.addEventListener("DOMContentLoaded", async () => {
                             loc_fdAddr_Num: loc_fdAddr_Num
                         }
 
-                        gtag("event",  "begin_checkout",  {
-                            "currency": "THB",
-                            "value": data.fdPayAMT,
-                            "items": [{
-                              "item_id": "myHomePlus_" + data.fdPackage,
-                              "item_name": "myHomePlus_" + data.fdPackage,
-                              "price": data.fdPayAMT,
-                            }]
-                        });
+                        if ($('#controller').value === 'product') 
+                        {
+                            gtag("event",  "begin_checkout",  {
+                                "currency": "THB",
+                                "value": data.fdPayAMT,
+                                "items": [{
+                                  "item_id": "myHomePlus_" + data.fdPackage,
+                                  "item_name": "myHomePlus_" + data.fdPackage,
+                                  "price": data.fdPayAMT,
+                                }]
+                            });
+                        }
 
                         //=========================================================================================================
 

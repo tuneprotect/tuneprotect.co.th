@@ -271,11 +271,15 @@ const genItemList = (package_data) => {
                 index++;
             });
     }
+
+    if ($('#controller').value === 'product') 
+    {
+        gtag("event",  "view_item",  {
+            "currency": "THB",
+            "items": itemList
+        });
+    }
     
-    gtag("event",  "view_item",  {
-        "currency": "THB",
-        "items": itemList
-    });
 }
 
 document.addEventListener("DOMContentLoaded", async () => {
@@ -1429,15 +1433,18 @@ document.addEventListener("DOMContentLoaded", async () => {
 
                             const selectPrice = p_packget == "ONMHS1" ? data_result_amount_1y.Total : data_result_amount_3y.Total;
 
-                            gtag("event",  "add_to_cart",  {
-                                "currency": "THB",
-                                "value": selectPrice,
-                                "items": [{
-                                  "item_id": "myHomeSmart_" + fdPackage,
-                                  "item_name": "myHomeSmart_" + fdPackage,
-                                  "price": selectPrice,
-                                }]
-                            });
+                            if ($('#controller').value === 'product') 
+                            {
+                                gtag("event",  "add_to_cart",  {
+                                    "currency": "THB",
+                                    "value": selectPrice,
+                                    "items": [{
+                                      "item_id": "myHomeSmart_" + fdPackage,
+                                      "item_name": "myHomeSmart_" + fdPackage,
+                                      "price": selectPrice,
+                                    }]
+                                });
+                            }
 
                             status = true;
                         } else {
@@ -1752,15 +1759,18 @@ document.addEventListener("DOMContentLoaded", async () => {
                             fdMarketing_Consent: $('#ctrl_marketing').checked ? true : undefined
                         }
 
-                        gtag("event",  "begin_checkout",  {
-                            "currency": "THB",
-                            "value": data.fdPayAMT,
-                            "items": [{
-                              "item_id": "myHomeSmart_" + data.fdPackage,
-                              "item_name": "myHomeSmart_" + data.fdPackage,
-                              "price": data.fdPayAMT,
-                            }]
-                        });
+                        if ($('#controller').value === 'product') 
+                        {
+                            gtag("event",  "begin_checkout",  {
+                                "currency": "THB",
+                                "value": data.fdPayAMT,
+                                "items": [{
+                                  "item_id": "myHomeSmart_" + data.fdPackage,
+                                  "item_name": "myHomeSmart_" + data.fdPackage,
+                                  "price": data.fdPayAMT,
+                                }]
+                            });
+                        }
                         
                         //=========================================================================================================
                         //address insure

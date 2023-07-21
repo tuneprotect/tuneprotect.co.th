@@ -16,13 +16,6 @@
                              "price": '{{$payAmount}}',
                          }]
                     });
-
-                    // fbq("trackCustom", "purchase", {
-                    //     currency: "THB",
-                    //     item_id: 'ChillSure_{{$package}}',
-                    //     doc_no: '{{$doc_no}}',
-                    //     price: '{{$payAmount}}',
-                    // });
                 </script>
             @break
             @case("CI")

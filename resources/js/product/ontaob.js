@@ -375,11 +375,14 @@ const genItemList = (package_data, fdFromDate, fdToDate) => {
                 index++;
             });
     }
-    
-    gtag("event",  "view_item",  {
-        "currency": "THB",
-        "items": itemList
-    });
+
+    if ($('#controller').value === 'product') 
+    {
+        gtag("event",  "view_item",  {
+            "currency": "THB",
+            "items": itemList
+        });
+    }
 }
 
 document.addEventListener("DOMContentLoaded", async () => {
@@ -670,16 +673,19 @@ document.addEventListener("DOMContentLoaded", async () => {
 
                             const selectPrice = genPrice(package_data,countryData, $('#ctrl_sub_package').value, data.fdFromDate, data.fdToDate, $('#ctrl_travel_type').value);
 
-                            gtag("event",  "add_to_cart",  {
-                                "currency": "THB",
-                                "value": selectPrice,
-                                "items": [{
-                                  "item_id": "TAOutbound_" + fdPackage,
-                                  "item_name": "TAOutbound_" + fdPackage,
-                                  "price": selectPrice,
-                                }]
-                            });
-
+                            if ($('#controller').value === 'product') 
+                            {
+                                gtag("event",  "add_to_cart",  {
+                                    "currency": "THB",
+                                    "value": selectPrice,
+                                    "items": [{
+                                      "item_id": "TAOutbound_" + fdPackage,
+                                      "item_name": "TAOutbound_" + fdPackage,
+                                      "price": selectPrice,
+                                    }]
+                                });
+                            }
+                            
                             status = true;
                         } else {
                             Swal.fire({
@@ -782,15 +788,18 @@ document.addEventListener("DOMContentLoaded", async () => {
 
                             result = validate(currentProfile, profileConstraints);
 
-                            gtag("event",  "begin_checkout",  {
-                                "currency": "THB",
-                                "value": data.fdPayAMT,
-                                "items": [{
-                                  "item_id": "TAOutbound_" + data.fdPackage,
-                                  "item_name": "TAOutbound_" + data.fdPackage,
-                                  "price": data.fdPayAMT,
-                                }]
-                            });
+                            if ($('#controller').value === 'product') 
+                            {
+                                gtag("event",  "begin_checkout",  {
+                                    "currency": "THB",
+                                    "value": data.fdPayAMT,
+                                    "items": [{
+                                      "item_id": "TAOutbound_" + data.fdPackage,
+                                      "item_name": "TAOutbound_" + data.fdPackage,
+                                      "price": data.fdPayAMT,
+                                    }]
+                                });
+                            }
 
                             if (result) {
                                 Object.keys(result).map(k => {

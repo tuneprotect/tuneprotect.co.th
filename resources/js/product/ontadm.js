@@ -258,11 +258,14 @@ const genItemList = (package_data, fdFromDate, fdToDate) => {
                 index++;
             });
     }
-    
-    gtag("event",  "view_item",  {
-        "currency": "THB",
-        "items": itemList
-    });
+
+    if ($('#controller').value === 'product') 
+    {
+        gtag("event",  "view_item",  {
+            "currency": "THB",
+            "items": itemList
+        });
+    } 
 }
 
 document.addEventListener("DOMContentLoaded", async () => {
@@ -437,15 +440,18 @@ document.addEventListener("DOMContentLoaded", async () => {
 
                             const selectPrice = genPrice(package_data, data.fdFromDate, data.fdToDate);
 
-                            gtag("event",  "add_to_cart",  {
-                                "currency": "THB",
-                                "value": selectPrice,
-                                "items": [{
-                                  "item_id": "TADomestic_" + fdPackage,
-                                  "item_name": "TADomestic_" + fdPackage,
-                                  "price": selectPrice,
-                                }]
-                            });
+                            if ($('#controller').value === 'product') 
+                            {
+                                gtag("event",  "add_to_cart",  {
+                                    "currency": "THB",
+                                    "value": selectPrice,
+                                    "items": [{
+                                      "item_id": "TADomestic_" + fdPackage,
+                                      "item_name": "TADomestic_" + fdPackage,
+                                      "price": selectPrice,
+                                    }]
+                                });
+                            }
 
                             status = true;
                         } else {
@@ -546,16 +552,19 @@ document.addEventListener("DOMContentLoaded", async () => {
 
                         result = validate(data, step3Constraints);
 
-                        gtag("event",  "begin_checkout",  {
-                            "currency": "THB",
-                            "value": data.fdPayAMT,
-                            "items": [{
-                              "item_id": "TADomestic_" + data.fdPackage,
-                              "item_name": "TADomestic_" + data.fdPackage,
-                              "price": data.fdPayAMT,
-                            }]
-                        });
-
+                        if ($('#controller').value === 'product') 
+                        {
+                            gtag("event",  "begin_checkout",  {
+                                "currency": "THB",
+                                "value": data.fdPayAMT,
+                                "items": [{
+                                  "item_id": "TADomestic_" + data.fdPackage,
+                                  "item_name": "TADomestic_" + data.fdPackage,
+                                  "price": data.fdPayAMT,
+                                }]
+                            });
+                        }
+                        
                         if (result) {
                             showError($('#step3'), result);
                         }

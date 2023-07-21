@@ -81,6 +81,14 @@ class PortalController extends ProductController
             }
         }
 
+        if($agentCode == "00AA603T88") 
+        {
+			//dd(request()->click_id);
+            session(['transaction_id' => request()->click_id]);
+            //$this->bodyData['transaction_id'] = request()->click_id;
+
+        }
+
         $this->bodyData['partner'] = $partner;
         $this->bodyData['agentCode'] = $agentCode;
         $this->bodyData['status_api'] = $status_api;
@@ -93,6 +101,7 @@ class PortalController extends ProductController
 
         session(['nopayment_status' => $nopayment_status]);
         session(['partner' => $partner]);
+        session(['agentCode' => $agentCode]);
         session(['b2bpayment_status' => $b2bpayment_status]);
         session(['controller' => $this->controller]);
 
@@ -146,11 +155,11 @@ class PortalController extends ProductController
         $this->bodyData['massage_key'] = $massage_key;
         $this->bodyData['use_effective'] = $use_effective;
         $this->bodyData['nopayment_status'] = $nopayment_status;
-
         $this->bodyData['b2bpayment_status'] = $b2bpayment_status;
 
         session(['nopayment_status' => $nopayment_status]);
         session(['partner' => $partner]);
+        session(['agentCode' => $agentCode]);
         session(['b2bpayment_status' => $b2bpayment_status]);
 
         $this->bodyData['brochure_ci'] = __('product.ci_brochure_broker_th');
@@ -217,7 +226,10 @@ class PortalController extends ProductController
         $this->bodyData['agentCode'] = $request->session()->get('agentCode');
         $this->bodyData['payAmount'] = $request->session()->get('payAmount');
         $this->bodyData['portalKey'] = $request->session()->get('portalKey');
-        //$this->bodyData['page'] = '';
+        
+        $this->bodyData['package'] = $request->session()->get('package');
+        $this->bodyData['refCode'] = $request->session()->get('refCode');
+        $this->bodyData['controller'] = $this->controller;
 
         if ($request->session()->get('partner') === 'rabbit') {
 
@@ -236,6 +248,12 @@ class PortalController extends ProductController
             if (session('partner') === 'THAIAIRWAY') {
                 return (new TGController)->thankyou($request);
             }
+        }
+
+        if($request->session()->get('agentCode') == "00AA603T88") 
+        {
+			//dd(request()->click_id);
+            $this->bodyData['transactionId'] = $request->session()->get('transaction_id');
         }
 
         $thank_you_page = ProjectEnum::STATIC_PAGE_PAYMENT_THANK_YOU;

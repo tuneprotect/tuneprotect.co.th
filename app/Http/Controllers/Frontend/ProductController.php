@@ -675,6 +675,10 @@ class ProductController extends BaseController
             }
         }
 
+        if (strtolower($this->controller) === "portal") {
+            $obj->transaction_id = session('transaction_id');
+        }
+
         $obj->fdController = $this->controller;
         return $obj;
     }
@@ -713,6 +717,11 @@ class ProductController extends BaseController
         }
 
         $data = $request->all();
+
+        if($this->controller === 'portal') {
+            $apiResult = $this->sendToApiPortalLogin($data['fdKeys']);
+            $data['fdAgent'] = $apiResult['agent_code'];
+        }
 
         if (isset($data['send_data'])) {
             $data = (array)json_decode($data['send_data']);
@@ -1105,7 +1114,6 @@ class ProductController extends BaseController
         $arr_post['hash_value'] = hash_hmac('sha256', $params, config('payment.secret'), false);    //Compute hash value
 
         $this->bodyData['arr_post'] = $arr_post;
-
 
         if (strtolower($this->controller) === "portal") {
             $this->bodyData['partner'] = session('partner');
@@ -1548,13 +1556,15 @@ class ProductController extends BaseController
         //dd($oBuyLog);
         //echo var_dump($oBuyLog);exit();
         foreach ($oBuyLog as $v) {
+
             $data = $v->data;
             $payAmount = $data['fdPayAMT'];
             $portalKey = $data['fdKeys'];
             $agent_code = $data['fdAgent'];
             $package = $data['fdPackage'];
             $refCode = $data['RefCode'];
-            
+            $transaction_id = $data['transaction_id'];
+
             if ($v->result) {
                 $request->session()->put('doc_no',  $v->result['message']);
                 $request->session()->put('return_link', $request->input('user_defined_2'));
@@ -1565,6 +1575,7 @@ class ProductController extends BaseController
                 $request->session()->put('agentCode', $agent_code);
                 $request->session()->put('package', $package);
                 $request->session()->put('refCode', $refCode);
+                $request->session()->put('transaction_id', $transaction_id); 
                 $this->thankYouParam = $request->input('user_defined_4');
 
                 $func = 'thankyou';
@@ -1591,6 +1602,7 @@ class ProductController extends BaseController
                     $request->session()->put('agentCode', $agent_code);
                     $request->session()->put('package', $package);
                     $request->session()->put('refCode', $refCode);
+                    $request->session()->put('transaction_id', $transaction_id); 
                     $this->thankYouParam = $request->input('user_defined_4');
                     $func = 'thankyou';
                 } else {
