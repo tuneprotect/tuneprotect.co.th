@@ -21,9 +21,18 @@
     @if(isset($portalKey))
 
         @if(isset($agentCode) && $agentCode == '00AA603T88')
-			<script>
-				console.log("https://invle.co/aff_lsr?offer_id=103074&adv_sub={{$refCode}}&adv_sub2={{$package}}&adv_ sub3={}&adv_sub4={}&adv_sub5={}&adv_sub6={}&adv_sub7={}&amount={{$payAmount}}&currency=THB&transaction_id={{$transactionId}}");
-				//window.location.href = "https://invle.co/aff_lsr?offer_id=103074&adv_sub='{{$refCode}}'&adv_sub2='{{$package}}'&adv_ sub3={}&adv_sub4={}&adv_sub5={}&adv_sub6={}&adv_sub7={}&amount='{{$payAmount}}'&currency=THB&transaction_id='{{session()->get('transaction_id')}}'";
+            <script>
+				fetch("https://invle.co/aff_lsr?offer_id=103074&adv_sub='{{$refCode}}'&adv_sub2='{{$package}}'&adv_ sub3={}&adv_sub4={}&adv_sub5={}&adv_sub6={}&adv_sub7={}&amount='{{$payAmount}}'&currency=THB&transaction_id='{{session()->get('transaction_id')}}", {
+					headers: {
+						 'Content-Type': 'application/json',
+						 'Access-Control-Allow-Origin': '*',
+						 'Access-Control-Allow-Methods': 'GET, POST',
+						 'Access-Control-Allow-Headers': 'Content-Type',
+					},
+					mode: 'no-cors'
+                })
+                    .then(response => response.text())
+                    .then(text => console.log(text))
 			</script>
         @endif
 
