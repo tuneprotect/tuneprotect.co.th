@@ -30,9 +30,11 @@
                                             @endif
                                         @else
 
+                                        @if(isset($v->recommend) && $v->recommend === 'Y')
                                             <span data-recommend>
                                                     <img src="/images/ico_ci/recommended-{{$locale}}.png" alt="recommendth">
-                                                </span>
+                                            </span>
+                                        @endif
 
                                             <strong class="package-number">@lang('product.plan') {{$i}}</strong>
                                         @endif
@@ -69,7 +71,7 @@
                                     <strong>@lang('product.plan') {{$v->no}}</strong>
                                 @endif
                             @else
-                                @if(isset($v->recommend))
+                                @if(isset($v->recommend) && $v->recommend === 'Y')
 									<span data-recommend>
 											<img src="/images/ico_ci/recommended-{{$locale}}.png" alt="recommendth">
 									</span>
