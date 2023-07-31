@@ -22,11 +22,11 @@
 
         @if(isset($agentCode) && $agentCode == '00AA603T88')
             <script>
-				fetch("https://invle.co/aff_lsr?offer_id=103074&adv_sub='{{$refCode}}'&adv_sub2='{{$package}}'&adv_ sub3={}&adv_sub4={}&adv_sub5={}&adv_sub6={}&adv_sub7={}&amount='{{$payAmount}}'&currency=THB&transaction_id='{{session()->get('transaction_id')}}", {
+				fetch("https://invle.co/aff_lsr?offer_id=103074&adv_sub='{{$doc_no}}'&adv_sub2='{{$package}}'&adv_ sub3={}&adv_sub4={}&adv_sub5={}&adv_sub6={}&adv_sub7={}&amount='{{$payAmount}}'&currency=THB&transaction_id='{{session()->get('transaction_id')}}", {
 					headers: {
 						 'Content-Type': 'application/json',
 						 'Access-Control-Allow-Origin': '*',
-						 'Access-Control-Allow-Methods': 'GET, POST',
+						 'Access-Control-Allow-Methods': 'GET',
 						 'Access-Control-Allow-Headers': 'Content-Type',
 					},
 					mode: 'no-cors'
