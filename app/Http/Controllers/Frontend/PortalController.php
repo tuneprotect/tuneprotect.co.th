@@ -54,6 +54,9 @@ class PortalController extends ProductController
         $this->bodyData['redeem_code'] = $redeem_code;
         $this->bodyData['massage_error'] = $massage_error;
 
+        if (false !== $pos = strpos($portal_key, '?')) {
+            $portal_key = substr($portal_key, 0, $pos);
+        }
 
         $massage_key = $portal_key;
         $status_api = false;
