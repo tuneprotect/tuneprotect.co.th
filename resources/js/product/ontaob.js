@@ -436,7 +436,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                 || v.code === 'NIC' || v.code === 'PRK' || v.code === 'PAK'|| v.code === 'PSE'|| v.code === 'SYR'
                 || v.code === 'TJK' || v.code === 'TKM' || v.code === 'UZB') {
             }
-            else if(v.code === 'WW'){
+            else if(v.code === 'WRW'){
                 sbWorldwide = `<option value="${v.code}">${v[locale]}</option>`;
             }
             else if(v.code === 'SCG'){
