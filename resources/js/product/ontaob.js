@@ -426,6 +426,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     let promotionCodeStatus = "";
     let sb = "";
     let sb1 = `<option value="">${$('#fdDestTo').getAttribute('data-please-select')}</option>`;
+    let sbWorldwide = '';
     let sbSCHENGEN = '';
     countryData.sort((a, b) => (a[locale] > b[locale]) ? 1 : ((b[locale] > a[locale]) ? -1 : 0))
         .map(v => {
@@ -434,6 +435,9 @@ document.addEventListener("DOMContentLoaded", async () => {
                 || v.code === 'ISR' || v.code === 'KGZ' || v.code === 'LBN'|| v.code === 'LBY'|| v.code === 'NPL'
                 || v.code === 'NIC' || v.code === 'PRK' || v.code === 'PAK'|| v.code === 'PSE'|| v.code === 'SYR'
                 || v.code === 'TJK' || v.code === 'TKM' || v.code === 'UZB') {
+            }
+            else if(v.code === 'WW'){
+                sbWorldwide = `<option value="${v.code}">${v[locale]}</option>`;
             }
             else if(v.code === 'SCG'){
                 sbSCHENGEN = `<option value="${v.code}">${v[locale]}</option>`;
@@ -444,7 +448,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             }
         });
 
-    $('#fdDestTo').innerHTML = sb1 + sbSCHENGEN + sb;
+    $('#fdDestTo').innerHTML = sb1 + sbWorldwide + sbSCHENGEN + sb;
 
     $('#ctrl_travel_type').addEventListener('change', (e) => {
 
