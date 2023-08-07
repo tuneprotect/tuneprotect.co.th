@@ -430,8 +430,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     let sbSCHENGEN = '';
     countryData.sort((a, b) => (a[locale] > b[locale]) ? 1 : ((b[locale] > a[locale]) ? -1 : 0))
         .map(v => {
-            //if (v.code === 'THA' || v.code === 'WRW' || v.code === 'ASN'
-            if (v.code === 'THA' || v.code === 'ASN'
+            if (v.code === 'THA' || v.code === 'WRW' || v.code === 'ASN'
+            //if (v.code === 'THA' || v.code === 'ASN'
                 || v.code === 'AFG' || v.code === 'AZE' || v.code === 'CUB'|| v.code === 'IRN'|| v.code === 'IRQ'
                 || v.code === 'ISR' || v.code === 'KGZ' || v.code === 'LBN'|| v.code === 'LBY'|| v.code === 'NPL'
                 || v.code === 'NIC' || v.code === 'PRK' || v.code === 'PAK'|| v.code === 'PSE'|| v.code === 'SYR'
