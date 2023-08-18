@@ -50,7 +50,9 @@ class ProductController extends BaseController
             return redirect()->route('current', ['locale' => $this->locale, 'controller' => $controller, 'func' => $link, 'params' => $product_agent_code]);
         }
 
-        //dd($apiResult);
+        if (false !== $pos = strpos($selected, '?')) {
+            $selected = substr($selected, 0, $pos);
+        }
 
         $this->bodyData['controller'] = $this->controller;
         $this->bodyData['use_effective'] = $this->use_effective;
