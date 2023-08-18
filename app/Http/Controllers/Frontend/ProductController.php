@@ -115,6 +115,10 @@ class ProductController extends BaseController
 
     public function form($link = null, $selected = null, $portal_key = null)
     {
+
+        if (false !== $pos = strpos($selected, '?')) {
+            $selected = substr($selected, 0, $pos);
+        }
         
         if (empty($link)) {
             return redirect("/" . $this->locale);
