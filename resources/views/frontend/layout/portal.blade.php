@@ -117,7 +117,7 @@
                 <source media="(min-width:768px)" srcset="{{url(str_replace('Banner_Covid_D_EN', 'Banner_VSURE_D_EN', $v->pic_en))}}">
                 <img src="{{url(!empty($v->pic_mobile_en) ? url(str_replace('Banner_Covid_D_EN', 'Banner_VSURE_D_EN', $v->pic_mobile_en)) : url(str_replace('Banner_Covid_D_EN', 'Banner_VSURE_M_EN', $v->pic_en)) )}}" alt="{{$v->locales[$locale]->title}}">
             </picture>
-            @elseif($agentCode==='00BD073L130' && $selected==='TAISM')
+            @elseif($agentCode==='00BD039L82' && $selected==='TAISM')
             <picture>
                 <source media="(min-width:768px)" srcset="{{url(str_replace('Banner-ismile-MASII', 'Banner-ismile-MASII', $v->pic_en))}}">
                 <img src="{{url(!empty($v->pic_mobile_en) ? url(str_replace('Banner-ismile-MASII', 'Banner-ismile-MASII', $v->pic_mobile_en)) : url(str_replace('Banner-ismile-MASII', 'Banner-ismile-MASII', $v->pic_en)) )}}" alt="{{$v->locales[$locale]->title}}">
