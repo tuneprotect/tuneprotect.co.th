@@ -237,6 +237,11 @@
                         <source media="(min-width:768px)" srcset="https://www.tuneprotect.co.th/storage/Banner/Tune%20iPass/dtacbanner.jpg">
                         <img src="{{url(!empty($v->pic_mobile_en) ? "https://www.tuneprotect.co.th/storage/Banner/Tune%20iPass/dtacbanner.jpg" : "https://www.tuneprotect.co.th/storage/Banner/Tune%20iPass/dtacbanner.jpg" )}}" alt="{{$v->locales[$locale]->title}}">
                     </picture>
+                    @elseif($agentCode==='00BD039L82' && $selected==='TAIPOCT22') <!-- Masii -->
+                    <picture>
+                        <source media="(min-width:768px)" srcset="/storage/Banner/Masii/Banner-ipass-MASII.webp">
+                        <img src="{{url(!empty($v->pic_mobile_en) ? "/storage/Banner/Masii/Banner-ipass-MASII.webp" : "/storage/Banner/Masii/Banner-ipass-MASII.webp" )}}" alt="{{$v->locales[$locale]->title}}">
+                    </picture>
                     @elseif($selected==='TAIPOCT22')
                     <picture class="ccc">
                         <source media="(min-width:768px)" srcset="/storage/Banner/Tune_iPass_Desktop.jpg">
