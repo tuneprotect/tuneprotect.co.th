@@ -117,17 +117,12 @@
                 <source media="(min-width:768px)" srcset="{{url(str_replace('Banner_Covid_D_EN', 'Banner_VSURE_D_EN', $v->pic_en))}}">
                 <img src="{{url(!empty($v->pic_mobile_en) ? url(str_replace('Banner_Covid_D_EN', 'Banner_VSURE_D_EN', $v->pic_mobile_en)) : url(str_replace('Banner_Covid_D_EN', 'Banner_VSURE_M_EN', $v->pic_en)) )}}" alt="{{$v->locales[$locale]->title}}">
             </picture>
-            @elseif($agentCode==='00BD039L82' && $selected==='TAISM')
+            @elseif($agentCode==='00BD039L82' && $selected==='TAISM') <!-- Masii -->
             <picture>
-                <source media="(min-width:768px)" srcset="{{url(str_replace('Banner-ismile-MASII', 'Banner-ismile-MASII', $v->pic_en))}}">
-                <img src="{{url(!empty($v->pic_mobile_en) ? url(str_replace('Banner-ismile-MASII', 'Banner-ismile-MASII', $v->pic_mobile_en)) : url(str_replace('Banner-ismile-MASII', 'Banner-ismile-MASII', $v->pic_en)) )}}" alt="{{$v->locales[$locale]->title}}">
+                <source media="(min-width:768px)" srcset="/storage/Banner/Masii/Banner-ismile-MASII.webp">
+                <img src="{{url(!empty($v->pic_mobile_en) ? "/storage/Banner/Masii/Banner-ismile-MASII.webp" : "/storage/Banner/Masii/Banner-ismile-MASII.webp" )}}" alt="{{$v->locales[$locale]->title}}">
             </picture>
             @elseif($selected==='TAISM')
-            <picture>
-                <source media="(min-width:768px)" srcset="{{url(str_replace('Banner_TA_D_EN', 'Banner_TAI_D', $v->pic_en))}}">
-                <img src="{{url(!empty($v->pic_mobile_en) ? url(str_replace('Banner_TA_D_EN', 'Banner_TAI_M', $v->pic_mobile_en)) : url(str_replace('Banner_TA_D_EN', 'Banner_TAI_M', $v->pic_en)) )}}" alt="{{$v->locales[$locale]->title}}">
-            </picture>
-            @elseif($selected==='TAISMC')
             <picture>
                 <source media="(min-width:768px)" srcset="{{url(str_replace('Banner_TA_D_EN', 'Banner_TAI_D', $v->pic_en))}}">
                 <img src="{{url(!empty($v->pic_mobile_en) ? url(str_replace('Banner_TA_D_EN', 'Banner_TAI_M', $v->pic_mobile_en)) : url(str_replace('Banner_TA_D_EN', 'Banner_TAI_M', $v->pic_en)) )}}" alt="{{$v->locales[$locale]->title}}">
