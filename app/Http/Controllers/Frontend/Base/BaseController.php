@@ -75,6 +75,7 @@ abstract class BaseController extends Controller
             ->where('friendly_url','!=','pa-choice-insurance-broker')
             ->where('friendly_url','!=','travel-insurance-masii')
             ->where('friendly_url','!=','health-masii')
+            ->where('friendly_url','!=','pa-choice-insurance-masii')
             ->with('locales')
             ->whereRaw(ProjectEnum::isPublish())
             ->orderBy('s_order')
@@ -98,6 +99,7 @@ abstract class BaseController extends Controller
             ->where('friendly_url','!=','pa-choice-insurance-broker')
             ->where('friendly_url','!=','travel-insurance-masii')
             ->where('friendly_url','!=','health-masii')
+            ->where('friendly_url','!=','pa-choice-insurance-masii')
             ->with(['locales', 'productPackage' => function ($q) {
                 $q->with('locales');
             }])

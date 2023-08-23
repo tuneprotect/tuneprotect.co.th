@@ -28,6 +28,7 @@ class IndexController extends BaseController
             ->where('friendly_url','!=','pa-choice-insurance-broker')
             ->where('friendly_url','!=','travel-insurance-masii')
             ->where('friendly_url','!=','health-masii')
+            ->where('friendly_url','!=','pa-choice-insurance-masii')
             ->with(['locales','productPackage' => function ($q) {
                 $q->with('locales');
             },'productSlideshow' => function ($q) {
