@@ -167,8 +167,8 @@
                     <!-- Masii -->
                     @elseif($agentCode==='00BD039L82')
                     <picture>
-                        <source media="(min-width:768px)" srcset="/storage/Banner/Masii/Banner-Domestic-EN-MASII.webp">
-                        <img src="{{url(!empty($v->pic_mobile_en) ? "/storage/Banner/Masii/Banner-Domestic-EN-MASII.webp" : "/storage/Banner/Masii/Banner-Domestic-EN-MASII.webp" )}}" alt="{{$v->locales[$locale]->title}}">
+                        <source media="(min-width:768px)" srcset="/storage/Banner/Masii/Banner-Chillsure-EN-MASII.webp">
+                        <img src="{{url(!empty($v->pic_mobile_en) ? "/storage/Banner/Masii/Banner-Chillsure-EN-MASII.webp" : "/storage/Banner/Masii/Banner-Chillsure-EN-MASII.webp" )}}" alt="{{$v->locales[$locale]->title}}">
                     </picture>
                     @else
                         <picture>
@@ -391,8 +391,8 @@
                     <!-- Masii -->
                     @elseif($agentCode==='00BD039L82')
                     <picture>
-                        <source media="(min-width:768px)" srcset="/storage/Banner/Masii/Banner-Domestic-TH-MASII.webp">
-                        <img src="{{url(!empty($v->pic_mobile_en) ? "/storage/Banner/Masii/Banner-Domestic-TH-MASII.webp" : "/storage/Banner/Masii/Banner-Domestic-TH-MASII.webp" )}}" alt="{{$v->locales[$locale]->title}}">
+                        <source media="(min-width:768px)" srcset="/storage/Banner/Masii/Banner-Chillsure-TH-MASII.webp">
+                        <img src="{{url(!empty($v->pic_mobile_en) ? "/storage/Banner/Masii/Banner-Chillsure-TH-MASII.webp" : "/storage/Banner/Masii/Banner-Chillsure-TH-MASII.webp" )}}" alt="{{$v->locales[$locale]->title}}">
                     </picture>
                     @else
                         <picture>
