@@ -50,9 +50,17 @@ class ProductController extends BaseController
             return redirect()->route('current', ['locale' => $this->locale, 'controller' => $controller, 'func' => $link, 'params' => $product_agent_code]);
         }
 
-        if (false !== $pos = strpos($selected, '?')) {
-            $selected = substr($selected, 0, $pos);
-        }
+        if(!empty($selected)) {
+			if (false !== $pos = strpos($selected, '?')) {
+				$selected = substr($selected, 0, $pos);
+			}
+		} 
+		else 
+		{
+			if (false !== $pos = strpos($link, '?')) {
+				$link = substr($link, 0, $pos);
+			}
+		}
 
         $this->bodyData['controller'] = $this->controller;
         $this->bodyData['use_effective'] = $this->use_effective;
@@ -116,9 +124,17 @@ class ProductController extends BaseController
     public function form($link = null, $selected = null, $portal_key = null)
     {
 
-        if (false !== $pos = strpos($selected, '?')) {
-            $selected = substr($selected, 0, $pos);
-        }
+        if(!empty($selected)) {
+			if (false !== $pos = strpos($selected, '?')) {
+				$selected = substr($selected, 0, $pos);
+			}
+		} 
+		else 
+		{
+			if (false !== $pos = strpos($link, '?')) {
+				$link = substr($link, 0, $pos);
+			}
+		}
         
         if (empty($link)) {
             return redirect("/" . $this->locale);
@@ -723,7 +739,6 @@ class ProductController extends BaseController
         }
 
         $data = $request->all();
-
         if (isset($data['send_data'])) {
             $data = (array)json_decode($data['send_data']);
 

@@ -73,6 +73,9 @@ abstract class BaseController extends Controller
             ProjectEnum::WEB_CONTENT_SERVICE_MY_HEALTH
         ])
             ->where('friendly_url','!=','pa-choice-insurance-broker')
+            ->where('friendly_url','!=','travel-insurance-masii')
+            ->where('friendly_url','!=','health-masii')
+            ->where('friendly_url','!=','pa-choice-insurance-masii')
             ->with('locales')
             ->whereRaw(ProjectEnum::isPublish())
             ->orderBy('s_order')
@@ -94,6 +97,9 @@ abstract class BaseController extends Controller
 
         $this->bodyData['product'] = WebContent::where('type_id', ProjectEnum::WEB_CONTENT_PRODUCT)
             ->where('friendly_url','!=','pa-choice-insurance-broker')
+            ->where('friendly_url','!=','travel-insurance-masii')
+            ->where('friendly_url','!=','health-masii')
+            ->where('friendly_url','!=','pa-choice-insurance-masii')
             ->with(['locales', 'productPackage' => function ($q) {
                 $q->with('locales');
             }])
