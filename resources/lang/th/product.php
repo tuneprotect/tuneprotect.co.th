@@ -1231,7 +1231,9 @@ return [
         "promotion_code_count" => "Promotion code used {count} count",
         "promotion_code_valid" => "Promotion code is valid",
         "promotion_code_invalid" => "Promotion code is invalid",
+        "promotion_code_thankyou" => "<p class='condition-voucher'>ขอบคุณที่เลือกประกันการเดินทางต่างประเทศจาก Tune Protect Thailand<br />โปรดตรวจสอบและยืนยันการรับกรมธรรม์ในอีเมล์ที่ท่านระบุไว้ หากไม่ได้รับกรมธรรม์ โทร 1183<br />ทั้งนี้กรมธรรม์ที่เข้าเงื่อนไขรับของรางวัลหรือ E-Voucher บริษัทจะจัดส่งให้ท่านภายใน 45 วันทำการ</p>"
     ],
+
 ];
 
 
