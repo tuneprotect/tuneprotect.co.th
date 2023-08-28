@@ -180,7 +180,7 @@
         <div class="inner-wrapper">
             <div>{!! @str_replace('{point}',$point, @str_replace('{agentCode}',$agentCode, @str_replace('{payAmount}',$payAmount, @str_replace('{link}',$return_link, @str_replace('{doc_no}'," ".$doc_no,$content->locales[$locale]->content))))) !!}</div>
             @if(session()->get('thankyou_param') === 'ONTAOB')
-                @lang('product.PromotionCode.promotion_code_title')
+                @lang('product.PromotionCode.promotion_code_thankyou')
             @endif
         </div>
     </article>
