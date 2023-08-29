@@ -221,6 +221,21 @@
                 <source media="(min-width:768px)" srcset="{{url(str_replace('Banner_TA_D_EN', 'b2b/iTravel_PC_EN', $v->pic_en))}}">
                 <img src="{{url(!empty($v->pic_mobile_en) ? url(str_replace('Banner_TA_D_EN', 'b2b/iTravel_MB_EN', $v->pic_mobile_en)) : url(str_replace('Banner_TA_D_EN', 'b2b/iTravel_MB_EN', $v->pic_en)) )}}" alt="{{$v->locales[$locale]->title}}">
             </picture>
+            @elseif($agentCode==='00BD039L82' && $selected==='ONPACA') <!-- Masii -->
+            <picture>
+                <source media="(min-width:768px)" srcset="/storage/Banner/Masii/Banner-PA-Choice-Care-MASII.webp">
+                <img src="{{url(!empty($v->pic_mobile_en) ? "/storage/Banner/Masii/Banner-PA-Choice-Care-MASII.webp" : "/storage/Banner/Masii/Banner-PA-Choice-Care-MASII.webp" )}}" alt="{{$v->locales[$locale]->title}}">
+            </picture>
+            @elseif($agentCode==='00BD039L82' && $selected==='ONPAKD') <!-- Masii -->
+            <picture>
+                <source media="(min-width:768px)" srcset="/storage/Banner/Masii/Banner-PA-Choice-Kids-MASII.webp">
+                <img src="{{url(!empty($v->pic_mobile_en) ? "/storage/Banner/Masii/Banner-PA-Choice-Kids-MASII.webp" : "/storage/Banner/Masii/Banner-PA-Choice-Kids-MASII.webp" )}}" alt="{{$v->locales[$locale]->title}}">
+            </picture>
+            @elseif($agentCode==='00BD039L82' && $selected==='ONPASN') <!-- Masii -->
+            <picture>
+                <source media="(min-width:768px)" srcset="/storage/Banner/Masii/Banner-PA-Choice-Senior-MASII.webp">
+                <img src="{{url(!empty($v->pic_mobile_en) ? "/storage/Banner/Masii/Banner-PA-Choice-Senior-MASII.webp" : "/storage/Banner/Masii/Banner-PA-Choice-Senior-MASII.webp" )}}" alt="{{$v->locales[$locale]->title}}">
+            </picture>
             @elseif($selected==='ONPACA' || $selected==='ONPAKD' || $selected==='ONPASN')
             <picture>
                 <source media="(min-width:768px)" srcset="/storage/Banner/Banner-PAChoice-Ena.jpg">
@@ -436,6 +451,21 @@
             <picture>
                 <source media="(min-width:768px)" srcset="/storage/Banner/b2b/iSmile-Banner01.jpg">
                 <img src="{{url(!empty($v->pic_mobile_en) ? "/storage/Banner/b2b/iSmile-Banner01.jpg" : "/storage/Banner/b2b/iSmile-Banner02.jpg" )}}" alt="{{$v->locales[$locale]->title}}">
+            </picture>
+            @elseif($agentCode==='00BD039L82' && $selected==='ONPACA') <!-- Masii -->
+            <picture>
+                <source media="(min-width:768px)" srcset="/storage/Banner/Masii/Banner-PA-Choice-Care-MASII.webp">
+                <img src="{{url(!empty($v->pic_mobile_en) ? "/storage/Banner/Masii/Banner-PA-Choice-Care-MASII.webp" : "/storage/Banner/Masii/Banner-PA-Choice-Care-MASII.webp" )}}" alt="{{$v->locales[$locale]->title}}">
+            </picture>
+            @elseif($agentCode==='00BD039L82' && $selected==='ONPAKD') <!-- Masii -->
+            <picture>
+                <source media="(min-width:768px)" srcset="/storage/Banner/Masii/Banner-PA-Choice-Kids-MASII.webp">
+                <img src="{{url(!empty($v->pic_mobile_en) ? "/storage/Banner/Masii/Banner-PA-Choice-Kids-MASII.webp" : "/storage/Banner/Masii/Banner-PA-Choice-Kids-MASII.webp" )}}" alt="{{$v->locales[$locale]->title}}">
+            </picture>
+            @elseif($agentCode==='00BD039L82' && $selected==='ONPASN') <!-- Masii -->
+            <picture>
+                <source media="(min-width:768px)" srcset="/storage/Banner/Masii/Banner-PA-Choice-Senior-MASII.webp">
+                <img src="{{url(!empty($v->pic_mobile_en) ? "/storage/Banner/Masii/Banner-PA-Choice-Senior-MASII.webp" : "/storage/Banner/Masii/Banner-PA-Choice-Senior-MASII.webp" )}}" alt="{{$v->locales[$locale]->title}}">
             </picture>
             @elseif($selected==='ONPACA' || $selected==='ONPAKD' || $selected==='ONPASN')
             <picture>
