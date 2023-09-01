@@ -14,7 +14,11 @@ abstract class BaseArticleController extends BaseController
 
     public function index($link = null)
     {
+
         if (!empty($link)) {
+            if (false !== $pos = strpos($link, '?')) {
+                $link = substr($link, 0, $pos);
+            }
 
             $content = WebContent::where('type_id', $this->webContentType)
                 ->with('locales')
