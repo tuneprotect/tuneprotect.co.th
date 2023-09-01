@@ -69,6 +69,10 @@ class ProductController extends BaseController
             return redirect("/" . $this->locale);
         }
 
+        if (in_array($selected, ['ONCANCER'])) {
+            return redirect()->away('https://online.tuneprotect.co.th/product/cancer');
+        }
+
         if (in_array($selected, ['CVISAFE', 'ONCOVIDA'])) {
             $selected = "CVIS22JAN";
             return redirect()->route('current', ['locale' => $this->locale, 'controller' => $this->controller, 'func' => $link, 'params' => $selected]);
