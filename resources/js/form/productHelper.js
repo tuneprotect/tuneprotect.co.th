@@ -84,7 +84,6 @@ export const validateAgeInPackage = (package_data, cal_price) => {
         genPrice(birthday, package_data)
     }
 
-
     return {
         status: true, data: {
             fdHBD: birthday,
