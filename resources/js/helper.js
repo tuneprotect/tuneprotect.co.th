@@ -41,7 +41,7 @@ export const calculateAge = (date) => {
         result = {...result, day};
     }
 
-    // console.log(result);
+    console.log(result);
 
     return result;
 }
