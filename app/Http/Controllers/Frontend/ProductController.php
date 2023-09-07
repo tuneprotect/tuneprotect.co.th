@@ -480,7 +480,7 @@ class ProductController extends BaseController
             $obj = new CIObject();
             if ($data['fdPayAMT'] >= 3000) {
                 $this->payment = 'CC,FULL,IPP';
-                $this->ipp_interest_type = "M";
+                $this->ipp_interest_type = "C";
             }
             $data['fdPackage'] .= str_replace(['F', ','], "", $data['ctrl_disease']);
         } elseif (substr($data['fdPackage'], 0, 6) === 'ONFIMP') {
@@ -751,70 +751,89 @@ class ProductController extends BaseController
                 $data['fdAgent'] = $apiResult['agent_code'];
             }
 
+            $this->ipp_interest_type = "C";
+
             //Health
             if (Str::contains($data['fdPackage'], ProjectEnum::ONCSHC_URL)) {
                 $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::ONCSHC_URL;
+                $this->ipp_interest_type = "M";
             }
             if (Str::contains($data['fdPackage'], ProjectEnum::MYFLEXI_CI_URL)) {
                 $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::MYFLEXI_CI_URL;
+                $this->ipp_interest_type = "C";
             }
             if (Str::contains($data['fdPackage'], ProjectEnum::DIABETES_URL)) {
                 $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::DIABETES_URL;
+                $this->ipp_interest_type = "C";
             }
 
             //PA Choice
             if (Str::contains($data['fdPackage'], ProjectEnum::ONPACA_URL)) {
                 $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::ONPACA_URL;
+                $this->ipp_interest_type = "M";
             }
             if (Str::contains($data['fdPackage'], ProjectEnum::ONPAKD_URL)) {
                 $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::ONPAKD_URL;
+                $this->ipp_interest_type = "C";
             }
             if (Str::contains($data['fdPackage'], ProjectEnum::ONPASN_URL)) {
                 $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::ONPASN_URL;
+                $this->ipp_interest_type = "C";
             }
 
             //iTravel
             if (Str::contains($data['fdPackage'], ProjectEnum::ONTASK_URL)) {
                 $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::ONTASK_URL;
+                $this->ipp_interest_type = "C";
             }
             if (Str::contains($data['fdPackage'], ProjectEnum::TAISM_URL)) {
                 $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::TAISM_URL;
+                $this->ipp_interest_type = "C";
             }
             if (Str::contains($data['fdPackage'], ProjectEnum::TAIPOCT22_URL)) {
                 $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::TAIPOCT22_URL;
+                $this->ipp_interest_type = "C";
             }
             if (Str::contains($data['fdPackage'], ProjectEnum::ONTADM_URL)) {
                 $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::ONTADM_URL;
+                $this->ipp_interest_type = "C";
             }
             if (Str::contains($data['fdPackage'], ProjectEnum::ONTAOB_URL)) {
                 $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::ONTAOB_URL;
+                $this->ipp_interest_type = "C";
             }
 
             //myHome
             if (Str::contains($data['fdPackage'], ProjectEnum::MYHOME_SMART_URL)) {
                 $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::MYHOME_SMART_URL;
+                $this->ipp_interest_type = "C";
             }
             if (Str::contains($data['fdPackage'], ProjectEnum::MYHOME_PLUS_URL)) {
                 $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::MYHOME_PLUS_URL;
+                $this->ipp_interest_type = "C";
             }
 
             //Susco
             if (Str::contains($data['fdPackage'], ProjectEnum::ONCSHCSC_URL)) {
                 $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::ONCSHCSC_URL;
+                $this->ipp_interest_type = "C";
             }
 
             //Chillsure GV
             if (Str::contains($data['fdPackage'], ProjectEnum::ONCSHCGV_URL)) {
                 $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::ONCSHCGV_URL;
+                $this->ipp_interest_type = "C";
             }
             //CI GC
             if (Str::contains($data['fdPackage'], ProjectEnum::MYFLEXI_CIGC_URL)) {
                 $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::MYFLEXI_CIGC_URL;
+                $this->ipp_interest_type = "C";
             }
 
             //iTravel Tour
             if (Str::contains($data['fdPackage'], ProjectEnum::ONTATO_URL)) {
                 $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::ONTATO_URL;
+                $this->ipp_interest_type = "C";
             }
 
             $obj = $this->combindObj(array_merge($data, (array)$data["profile"][0]));
@@ -836,7 +855,7 @@ class ProductController extends BaseController
 
             if ($price >= 3000) {
                 $this->payment = 'CC,FULL,IPP';
-                $this->ipp_interest_type = "M";
+                //$this->ipp_interest_type = "C";
             }
 
             if (session('b2bpayment_status')) {
@@ -855,75 +874,95 @@ class ProductController extends BaseController
                 $data['fdAgent'] = $apiResult['agent_code'];
             }
 
+            $this->ipp_interest_type = "C";
+
             //Health
             if (Str::contains($data['fdPackage'], ProjectEnum::ONCSHC_URL)) {
                 $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::ONCSHC_URL;
+                $this->ipp_interest_type = "M";
             }
             if (Str::contains($data['fdPackage'], ProjectEnum::MYFLEXI_CI_URL)) {
                 $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::MYFLEXI_CI_URL;
+                $this->ipp_interest_type = "C";
             }
             if (Str::contains($data['fdPackage'], ProjectEnum::DIABETES_URL)) {
                 $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::DIABETES_URL;
+                $this->ipp_interest_type = "C";
             }
 
             //PA Choice
             if (Str::contains($data['fdPackage'], ProjectEnum::ONPACA_URL)) {
                 $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::ONPACA_URL;
+                $this->ipp_interest_type = "M";
             }
             if (Str::contains($data['fdPackage'], ProjectEnum::ONPAKD_URL)) {
                 $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::ONPAKD_URL;
+                $this->ipp_interest_type = "C";
             }
             if (Str::contains($data['fdPackage'], ProjectEnum::ONPASN_URL)) {
                 $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::ONPASN_URL;
+                $this->ipp_interest_type = "C";
             }
 
             //iTravel
             if (Str::contains($data['fdPackage'], ProjectEnum::ONTASK_URL)) {
                 $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::ONTASK_URL;
+                $this->ipp_interest_type = "C";
             }
             if (Str::contains($data['fdPackage'], ProjectEnum::TAISM_URL)) {
                 $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::TAISM_URL;
+                $this->ipp_interest_type = "C";
             }
             if (Str::contains($data['fdPackage'], ProjectEnum::TAIPOCT22_URL)) {
                 $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::TAIPOCT22_URL;
+                $this->ipp_interest_type = "C";
             }
             if (Str::contains($data['fdPackage'], ProjectEnum::ONTADM_URL)) {
                 $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::ONTADM_URL;
+                $this->ipp_interest_type = "C";
             }
             if (Str::contains($data['fdPackage'], ProjectEnum::ONTAOB_URL)) {
                 $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::ONTAOB_URL;
+                $this->ipp_interest_type = "C";
             }
 
             //myHome
             if (Str::contains($data['fdPackage'], ProjectEnum::MYHOME_SMART_URL)) {
                 $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::MYHOME_SMART_URL;
+                $this->ipp_interest_type = "C";
             }
             if (Str::contains($data['fdPackage'], ProjectEnum::MYHOME_PLUS_URL)) {
                 $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::MYHOME_PLUS_URL;
+                $this->ipp_interest_type = "C";
             }
 
             //ChillSure AirAsia
             if (Str::contains($data['fdPackage'], ProjectEnum::ONCSHCAA_URL)) {
                 $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::ONCSHCAA_URL;
+                $this->ipp_interest_type = "C";
             }
 
             //ChillSure Susco
             if (Str::contains($data['fdPackage'], ProjectEnum::ONCSHCSC_URL)) {
                 $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::ONCSHCSC_URL;
+                $this->ipp_interest_type = "C";
             }
 
             //ChillSure GV
             if (Str::contains($data['fdPackage'], ProjectEnum::ONCSHCGV_URL)) {
                 $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::ONCSHCGV_URL;
+                $this->ipp_interest_type = "C";
             }
             //CI GC
             if (Str::contains($data['fdPackage'], ProjectEnum::MYFLEXI_CIGC_URL)) {
                 $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::MYFLEXI_CIGC_URL;
+                $this->ipp_interest_type = "C";
             }
 
             //iTravel Tour
             if (Str::contains($data['fdPackage'], ProjectEnum::ONTATO_URL)) {
                 $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::ONTATO_URL;
+                $this->ipp_interest_type = "C";
             }
 
             $obj = $this->combindObj($data);
@@ -931,7 +970,7 @@ class ProductController extends BaseController
 
             if ($result->data["fdPayAMT"] >= 3000) {
                 $this->payment = 'CC,FULL,IPP';
-                $this->ipp_interest_type = "M";
+                //$this->ipp_interest_type = "C";
             }
 
             if (session('b2bpayment_status')) {
@@ -1676,7 +1715,7 @@ class ProductController extends BaseController
         $arr_post['user_defined_2'] = preg_replace('/\?.*/', '', session('return_link'));
         $arr_post['result_url_1'] = url("{$this->locale}/product/result");
         $arr_post['payment_option'] = "CC,FULL,IPP";
-        $arr_post['ipp_interest_type'] = 'M';
+        $arr_post['ipp_interest_type'] = 'C';
         $arr_post['default_lang'] = $this->locale;
         //        $arr_post['ipp_period_filter'] = '10';
 
