@@ -480,7 +480,7 @@ class ProductController extends BaseController
             $obj = new CIObject();
             if ($data['fdPayAMT'] >= 3000) {
                 $this->payment = 'CC,FULL,IPP';
-                $this->ipp_interest_type = "C";
+                $this->ipp_interest_type = "M";
             }
             $data['fdPackage'] .= str_replace(['F', ','], "", $data['ctrl_disease']);
         } elseif (substr($data['fdPackage'], 0, 6) === 'ONFIMP') {
@@ -836,7 +836,7 @@ class ProductController extends BaseController
 
             if ($price >= 3000) {
                 $this->payment = 'CC,FULL,IPP';
-                $this->ipp_interest_type = "C";
+                $this->ipp_interest_type = "M";
             }
 
             if (session('b2bpayment_status')) {
@@ -931,7 +931,7 @@ class ProductController extends BaseController
 
             if ($result->data["fdPayAMT"] >= 3000) {
                 $this->payment = 'CC,FULL,IPP';
-                $this->ipp_interest_type = "C";
+                $this->ipp_interest_type = "M";
             }
 
             if (session('b2bpayment_status')) {
@@ -1676,7 +1676,7 @@ class ProductController extends BaseController
         $arr_post['user_defined_2'] = preg_replace('/\?.*/', '', session('return_link'));
         $arr_post['result_url_1'] = url("{$this->locale}/product/result");
         $arr_post['payment_option'] = "CC,FULL,IPP";
-        $arr_post['ipp_interest_type'] = 'C';
+        $arr_post['ipp_interest_type'] = 'M';
         $arr_post['default_lang'] = $this->locale;
         //        $arr_post['ipp_period_filter'] = '10';
 
