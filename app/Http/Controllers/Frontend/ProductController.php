@@ -868,7 +868,9 @@ class ProductController extends BaseController
             //Health
             if (Str::contains($data['fdPackage'], ProjectEnum::ONCSHC_URL)) {
                 $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::ONCSHC_URL;
-                $this->ipp_interest_type = "M";
+                if($this->controller === 'product') {
+                    $this->ipp_interest_type = "M";
+                }
             }
             if (Str::contains($data['fdPackage'], ProjectEnum::MYFLEXI_CI_URL)) {
                 $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::MYFLEXI_CI_URL;
@@ -882,7 +884,9 @@ class ProductController extends BaseController
             //PA Choice
             if (Str::contains($data['fdPackage'], ProjectEnum::ONPACA_URL)) {
                 $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::ONPACA_URL;
-                $this->ipp_interest_type = "M";
+                if($this->controller === 'product') {
+                    $this->ipp_interest_type = "M";
+                }
             }
             if (Str::contains($data['fdPackage'], ProjectEnum::ONPAKD_URL)) {
                 $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::ONPAKD_URL;
