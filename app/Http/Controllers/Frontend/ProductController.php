@@ -964,13 +964,14 @@ class ProductController extends BaseController
     protected function noPayment($obj, $price = null, $log_id = null)
     {
         $result = $this->sendToApiIssueNoPayment(config('project.invoice_prefixxxx') . $obj->fdInvoice, '', '');
-        if ($result) {
+        if ($result[2]) {
             session()->put('doc_no', implode(', ', $result[0]));
             session()->put('point', $result[1]);
             session()->put('return_link', session('return_link'));
             session()->put('partner', session('partner'));
             $func = 'thankyou';
         } else {
+            session()->put('error', implode(', ', $result[0]));
             $func = 'error';
         }
         return redirect()->route('current', ['locale' => $this->locale, 'controller' => $this->controller, 'func' => $func, 'params' => $this->thankYouParam]);
