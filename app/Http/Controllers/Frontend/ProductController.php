@@ -971,7 +971,7 @@ class ProductController extends BaseController
             session()->put('partner', session('partner'));
             $func = 'thankyou';
         } else {
-            session()->put('error', implode(', ', $result[0]));
+            session()->put('error', implode(', ', $result[3]));
             $func = 'error';
         }
         return redirect()->route('current', ['locale' => $this->locale, 'controller' => $this->controller, 'func' => $func, 'params' => $this->thankYouParam]);
@@ -985,6 +985,7 @@ class ProductController extends BaseController
         $PolicyArr = [];
         $Point = 0;
         $Status = false;
+        $message = '';
         foreach ($result as $v) {
             $data = $v->data;
 
@@ -1035,6 +1036,7 @@ class ProductController extends BaseController
         $arrResult[] = $PolicyArr;
         $arrResult[] = $Point;
         $arrResult[] = $Status;
+        $arrResult[] = $PolicyData['ERROR_DESC'];
 
         return $arrResult;
     }
