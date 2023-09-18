@@ -123,6 +123,10 @@ class PortalController extends ProductController
         $return_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
         session(['return_link' => $return_link]);
 
+        if (in_array($selected, ['CI'])) {
+            return redirect()->away('/404');
+        }
+
         $this->bodyData['controller'] = $this->controller;
 
         $massage_key = $portal_key;

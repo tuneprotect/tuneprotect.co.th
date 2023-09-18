@@ -276,8 +276,8 @@
                                             </picture>
                                     @elseif($selected==='TAIPOCT22')
                                         <picture class="aa">
-                                            <source media="(min-width:768px)" srcset="https://www.tuneprotect.co.th/storage/Banner/Tune%20iPass/dtacbanner.jpg">
-                                            <img src="{{url(!empty($v->pic_mobile_en) ? "https://www.tuneprotect.co.th/storage/Banner/Tune%20iPass/dtacbanner.jpg" : "https://www.tuneprotect.co.th/storage/Banner/Tune%20iPass/dtacbanner.jpg" )}}" alt="{{$v->locales[$locale]->title}}">
+                                            <source media="(min-width:768px)" srcset="/storage/Banner/iPass/banner_tune_ipass_pc.webp">
+                                            <img src="{{url(!empty($v->pic_mobile_en) ? "/storage/Banner/iPass/banner_tune_ipass_pc.webp" : "/storage/Banner/iPass/banner_tune_ipass_mb.webp" )}}" alt="{{$v->locales[$locale]->title}}">
                                         </picture>    
                                     @elseif($selected==='TAIPOCT22AA')
                                         <picture class="aa">
@@ -287,8 +287,8 @@
                                     @elseif(isset($agentCode))
                                         @if($agentCode==='00DM004D00' && $selected==='TAIPOCT22')
                                             <picture class="aa">
-                                                <source media="(min-width:768px)" srcset="https://www.tuneprotect.co.th/storage/Banner/Tune%20iPass/dtacbanner.jpg">
-                                                <img src="{{url(!empty($v->pic_mobile_en) ? "https://www.tuneprotect.co.th/storage/Banner/Tune%20iPass/dtacbanner.jpg" : "https://www.tuneprotect.co.th/storage/Banner/Tune%20iPass/dtacbanner.jpg" )}}" alt="{{$v->locales[$locale]->title}}">
+                                                <source media="(min-width:768px)" srcset="/storage/Banner/iPass/banner_tune_ipass_pc.webp">
+                                                <img src="{{url(!empty($v->pic_mobile_en) ? "/storage/Banner/iPass/banner_tune_ipass_pc.webp" : "/storage/Banner/iPass/banner_tune_ipass_mb.webp" )}}" alt="{{$v->locales[$locale]->title}}">
                                             </picture>    
                                         @endif
                                     @elseif($selected==='TAISM')
