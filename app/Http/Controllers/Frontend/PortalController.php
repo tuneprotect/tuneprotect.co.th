@@ -388,7 +388,7 @@ class PortalController extends ProductController
             $error_page = ProjectEnum::STATIC_PAGE_PAYMENT_ERROR_TA_OUTBOUND_TOUR;
         }
 
-        return $this->genStatusPage($error_page);
+        return $this->genStatusPage_Portal($error_page);
     }
 
     public function cancel(Request $request)
@@ -461,7 +461,7 @@ class PortalController extends ProductController
             $pending_page = ProjectEnum::STATIC_PAGE_PAYMENT_PENDING_TA_OUTBOUND_TOUR;
         }
 
-        return $this->genStatusPage($pending_page);
+        return $this->genStatusPage_Portal($pending_page);
     }
 
     public function reject(Request $request)
@@ -523,7 +523,7 @@ class PortalController extends ProductController
             $reject_page = ProjectEnum::STATIC_PAGE_PAYMENT_REJECT_TA_OUTBOUND_TOUR;
         }
 
-        return $this->genStatusPage($reject_page);
+        return $this->genStatusPage_Portal($reject_page);
     }
 
     protected function sendToApiBigLifeValidateSurvey($memberId)
