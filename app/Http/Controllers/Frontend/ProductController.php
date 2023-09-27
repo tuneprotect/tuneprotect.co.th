@@ -971,7 +971,7 @@ class ProductController extends BaseController
             session()->put('partner', session('partner'));
             $func = 'thankyou';
         } else {
-            session()->put('error', implode(', ', $result[3]));
+            session()->put('error', $result[3]);
             $func = 'error';
         }
         return redirect()->route('current', ['locale' => $this->locale, 'controller' => $this->controller, 'func' => $func, 'params' => $this->thankYouParam]);
