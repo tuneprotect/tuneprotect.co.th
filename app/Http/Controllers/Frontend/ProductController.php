@@ -1101,6 +1101,7 @@ class ProductController extends BaseController
         $arrResult[] = $PolicyArr;
         $arrResult[] = $Point;
         $arrResult[] = $Status;
+        $arrResult[] = $PolicyData['ERROR_DESC'] ? $PolicyData['ERROR_DESC'] : $PolicyData['Error'];
 
         return $arrResult;
     }
