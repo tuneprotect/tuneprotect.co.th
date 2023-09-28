@@ -1016,7 +1016,7 @@ class ProductController extends BaseController
             $v->result = $apiResult;
             $v->save();
 
-            $PolicyArr[] = $apiResult['message'];
+            $PolicyArr[] = $apiResult['message'] === 'AMLO' ? 'Please contact administrator!' : $apiResult['message'];
             $PolicyData = $apiResult['data'];
             $Status = $apiResult["status"];
 
@@ -1086,7 +1086,7 @@ class ProductController extends BaseController
             $v->result = $apiResult;
             $v->save();
 
-            $PolicyArr[] = $apiResult['message'];
+            $PolicyArr[] = $apiResult['message'] === 'AMLO' ? 'Please contact administrator!' : $apiResult['message'];
             $PolicyData = $apiResult['data'];
             $Status = $apiResult["status"];
 
