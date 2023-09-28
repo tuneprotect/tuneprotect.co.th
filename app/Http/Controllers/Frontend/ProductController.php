@@ -1034,7 +1034,9 @@ class ProductController extends BaseController
         $arrResult[] = $PolicyArr;
         $arrResult[] = $Point;
         $arrResult[] = $Status;
-        $arrResult[] = $PolicyData['ERROR_DESC'] ? $PolicyData['ERROR_DESC'] : $PolicyData['Error'];
+        if(isset($PolicyData['ERROR_DESC'])) {
+            $arrResult[] = $PolicyData['ERROR_DESC'];
+        }
 
         return $arrResult;
     }
@@ -1101,7 +1103,9 @@ class ProductController extends BaseController
         $arrResult[] = $PolicyArr;
         $arrResult[] = $Point;
         $arrResult[] = $Status;
-        $arrResult[] = $PolicyData['ERROR_DESC'] ? $PolicyData['ERROR_DESC'] : $PolicyData['Error'];
+        if(isset($PolicyData['ERROR_DESC'])) {
+            $arrResult[] = $PolicyData['ERROR_DESC'];
+        }
 
         return $arrResult;
     }
