@@ -50,17 +50,15 @@ class ProductController extends BaseController
             return redirect()->route('current', ['locale' => $this->locale, 'controller' => $controller, 'func' => $link, 'params' => $product_agent_code]);
         }
 
-        if(!empty($selected)) {
-			if (false !== $pos = strpos($selected, '?')) {
-				$selected = substr($selected, 0, $pos);
-			}
-		} 
-		else 
-		{
-			if (false !== $pos = strpos($link, '?')) {
-				$link = substr($link, 0, $pos);
-			}
-		}
+        if (!empty($selected)) {
+            if (false !== $pos = strpos($selected, '?')) {
+                $selected = substr($selected, 0, $pos);
+            }
+        } else {
+            if (false !== $pos = strpos($link, '?')) {
+                $link = substr($link, 0, $pos);
+            }
+        }
 
         $this->bodyData['controller'] = $this->controller;
         $this->bodyData['use_effective'] = $this->use_effective;
@@ -86,7 +84,7 @@ class ProductController extends BaseController
             return redirect()->route('current', ['locale' => $this->locale, 'controller' => $this->controller, 'func' => $link, 'params' => $selected]);
         }
 
-        if (in_array($selected, ['TAIPCRN', 'TAIPOCT22', 'TAIPOCT22AA', 'ONTALN','ONCOVIDL', 'ONTA', 'TGCVLP', 'TAISM', 'TAISMC', 'ONTGISM', 'TAISMTG', 'ONTAISMB2B']) && $this->locale === 'th') {
+        if (in_array($selected, ['TAIPCRN', 'TAIPOCT22', 'TAIPOCT22AA', 'ONTALN', 'ONCOVIDL', 'ONTA', 'TGCVLP', 'TAISM', 'TAISMC', 'ONTGISM', 'TAISMTG', 'ONTAISMB2B']) && $this->locale === 'th') {
             return redirect()->route('current', ['locale' => 'en', 'controller' => $this->controller, 'func' => $link, 'params' => $selected]);
         }
 
@@ -106,13 +104,13 @@ class ProductController extends BaseController
         }
         if (in_array($selected, ['ONCSHSC'])) {
             $selected = "ONCSHCSC";
-            return $this->genView('frontend.page.redirect_chillsure');//return redirect()->route('current', ['locale' => $this->locale, 'controller' => $this->controller, 'func' => $link, 'params' => $selected]);
+            return $this->genView('frontend.page.redirect_chillsure'); //return redirect()->route('current', ['locale' => $this->locale, 'controller' => $this->controller, 'func' => $link, 'params' => $selected]);
         }
         if (in_array($selected, ['ONCSHGV'])) {
             $selected = "ONCSHCGV";
-            return $this->genView('frontend.page.redirect_chillsure');//return redirect()->route('current', ['locale' => $this->locale, 'controller' => $this->controller, 'func' => $link, 'params' => $selected]);
+            return $this->genView('frontend.page.redirect_chillsure'); //return redirect()->route('current', ['locale' => $this->locale, 'controller' => $this->controller, 'func' => $link, 'params' => $selected]);
         }
-        
+
         $this->getProductDetail($link, $selected);
 
         if ($selected) {
@@ -128,18 +126,16 @@ class ProductController extends BaseController
     public function form($link = null, $selected = null, $portal_key = null)
     {
 
-        if(!empty($selected)) {
-			if (false !== $pos = strpos($selected, '?')) {
-				$selected = substr($selected, 0, $pos);
-			}
-		} 
-		else 
-		{
-			if (false !== $pos = strpos($link, '?')) {
-				$link = substr($link, 0, $pos);
-			}
-		}
-        
+        if (!empty($selected)) {
+            if (false !== $pos = strpos($selected, '?')) {
+                $selected = substr($selected, 0, $pos);
+            }
+        } else {
+            if (false !== $pos = strpos($link, '?')) {
+                $link = substr($link, 0, $pos);
+            }
+        }
+
         if (empty($link)) {
             return redirect("/" . $this->locale);
         }
@@ -153,7 +149,7 @@ class ProductController extends BaseController
 
         $this->bodyData['controller'] = $this->controller;
 
-        if (in_array($selected, ['ONTALN','TAIPCRN', 'TAIPOCT22', 'TAIPOCT22AA', 'ONCOVIDL', 'ONTA', 'TGCVLP', 'TAISM', 'TAISMC', 'ONTAISMB2B', 'ONTGISM', 'TAISMTG']) && $this->locale === 'th') {
+        if (in_array($selected, ['ONTALN', 'TAIPCRN', 'TAIPOCT22', 'TAIPOCT22AA', 'ONCOVIDL', 'ONTA', 'TGCVLP', 'TAISM', 'TAISMC', 'ONTAISMB2B', 'ONTGISM', 'TAISMTG']) && $this->locale === 'th') {
             return redirect()->route('current', ['locale' => 'en', 'controller' => $this->controller, 'func' => $link, 'params' => $selected]);
         }
 
@@ -171,7 +167,7 @@ class ProductController extends BaseController
 
             return $this->genDetailPage($selected, false);
         } else {
-            return redirect("/" . $this->locale . "/". $this->controller. "/" . $link);
+            return redirect("/" . $this->locale . "/" . $this->controller . "/" . $link);
         }
     }
 
@@ -434,10 +430,10 @@ class ProductController extends BaseController
         } elseif (substr($data['fdPackage'], 0, 6) === 'ONTALN') {
             $obj = new ONTALNObject();
             $obj->fdFlgInbound = "I";
-        } elseif (substr($data['fdPackage'], 0, 9) === 'TAIPOCT22') {//TAIPCRN
+        } elseif (substr($data['fdPackage'], 0, 9) === 'TAIPOCT22') { //TAIPCRN
             $obj = new ONTALNObject();
             $obj->fdFlgInbound = "I";
-        } elseif (substr($data['fdPackage'], 0, 11) === 'TAIPOCT22AA') {//TAIPCRN
+        } elseif (substr($data['fdPackage'], 0, 11) === 'TAIPOCT22AA') { //TAIPCRN
             $obj = new ONTALNObject();
             $obj->fdFlgInbound = "I";
         } elseif (substr($data['fdPackage'], 0, 7) === 'TAIPCRN') {
@@ -499,7 +495,6 @@ class ProductController extends BaseController
             } elseif (substr($data['fdPackage'], 0, 8) === 'ONCSHCGV') {
                 $obj = new ONCSHCGVObject();
             }
-
         } else {
             $obj = new BaseInsuranceObject();
         }
@@ -673,10 +668,9 @@ class ProductController extends BaseController
             if (substr($data['fdPackage'], 0, 11) === 'TAIPOCT22AA') {
                 $package = (array)json_decode(Storage::disk('public')->get('json/taipoct22aa.json'));
                 $obj->fdApiPackage = $package[substr($data['fdPackage'], 0, 11)]->apiPackage;
-                
             }
             if (substr($data['fdPackage'], 0, 7) === 'TAIPCRN') {
-               
+
                 $package = (array)json_decode(Storage::disk('public')->get('json/taipcrn.json'));
                 $obj->fdApiPackage = $package[substr($data['fdPackage'], 0, 7)]->apiPackage;
             }
@@ -746,7 +740,7 @@ class ProductController extends BaseController
         if (isset($data['send_data'])) {
             $data = (array)json_decode($data['send_data']);
 
-            if($this->controller === 'portal') {
+            if ($this->controller === 'portal') {
                 $apiResult = $this->sendToApiPortalLogin($data['fdKeys']);
                 $data['fdAgent'] = $apiResult['agent_code'];
             }
@@ -756,7 +750,7 @@ class ProductController extends BaseController
             //Health
             if (Str::contains($data['fdPackage'], ProjectEnum::ONCSHC_URL)) {
                 $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::ONCSHC_URL;
-                if($this->controller === 'product') {
+                if ($this->controller === 'product') {
                     $this->ipp_interest_type = "M";
                 }
             }
@@ -770,7 +764,7 @@ class ProductController extends BaseController
             //PA Choice
             if (Str::contains($data['fdPackage'], ProjectEnum::ONPACA_URL)) {
                 $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::ONPACA_URL;
-                if($this->controller === 'product') {
+                if ($this->controller === 'product') {
                     $this->ipp_interest_type = "M";
                 }
             }
@@ -855,10 +849,9 @@ class ProductController extends BaseController
             }
 
             return $this->sendTo2C2P($result, $price, $log_id);
-
         } else {
 
-            if($this->controller === 'portal' && isset($data['fdKeys'])) {
+            if ($this->controller === 'portal' && isset($data['fdKeys'])) {
                 $apiResult = $this->sendToApiPortalLogin($data['fdKeys']);
                 $data['fdAgent'] = $apiResult['agent_code'];
             }
@@ -868,7 +861,7 @@ class ProductController extends BaseController
             //Health
             if (Str::contains($data['fdPackage'], ProjectEnum::ONCSHC_URL)) {
                 $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::ONCSHC_URL;
-                if($this->controller === 'product') {
+                if ($this->controller === 'product') {
                     $this->ipp_interest_type = "M";
                 }
             }
@@ -882,7 +875,7 @@ class ProductController extends BaseController
             //PA Choice
             if (Str::contains($data['fdPackage'], ProjectEnum::ONPACA_URL)) {
                 $this->thankYouParam = $data['thankyou_param'] = ProjectEnum::ONPACA_URL;
-                if($this->controller === 'product') {
+                if ($this->controller === 'product') {
                     $this->ipp_interest_type = "M";
                 }
             }
@@ -971,7 +964,12 @@ class ProductController extends BaseController
             session()->put('partner', session('partner'));
             $func = 'thankyou';
         } else {
-            session()->put('error', implode(', ', $result[3]));
+            session()->put('error', implode(', ', $result[0]));
+            if (strtolower($this->controller) === "portal") {
+                if (isset($result[3])) {
+                    session()->put('error', $result[3]);
+                }
+            }
             $func = 'error';
         }
         return redirect()->route('current', ['locale' => $this->locale, 'controller' => $this->controller, 'func' => $func, 'params' => $this->thankYouParam]);
@@ -1018,7 +1016,7 @@ class ProductController extends BaseController
             $v->result = $apiResult;
             $v->save();
 
-            $PolicyArr[] = $apiResult['message'];
+            $PolicyArr[] = $apiResult['message'] === 'AMLO' || $apiResult['message'] === 'BLACKLIST' ? 'Please contact administrator!' : $apiResult['message'];
             $PolicyData = $apiResult['data'];
             $Status = $apiResult["status"];
 
@@ -1036,7 +1034,9 @@ class ProductController extends BaseController
         $arrResult[] = $PolicyArr;
         $arrResult[] = $Point;
         $arrResult[] = $Status;
-        $arrResult[] = $PolicyData['ERROR_DESC'];
+        if(isset($PolicyData['ERROR_DESC'])) {
+            $arrResult[] = $PolicyData['ERROR_DESC'];
+        }
 
         return $arrResult;
     }
@@ -1079,7 +1079,6 @@ class ProductController extends BaseController
                 } else {
                     $v->issuepolicy_status =  'E';
                 }
-
             } catch (\Exception $ex) {
                 $apiResult = $ex->getMessage();
             }
@@ -1087,7 +1086,7 @@ class ProductController extends BaseController
             $v->result = $apiResult;
             $v->save();
 
-            $PolicyArr[] = $apiResult['message'];
+            $PolicyArr[] = $apiResult['message'] === 'AMLO' || $apiResult['message'] === 'BLACKLIST' ? 'Please contact administrator!' : $apiResult['message'];
             $PolicyData = $apiResult['data'];
             $Status = $apiResult["status"];
 
@@ -1104,6 +1103,9 @@ class ProductController extends BaseController
         $arrResult[] = $PolicyArr;
         $arrResult[] = $Point;
         $arrResult[] = $Status;
+        if(isset($PolicyData['ERROR_DESC'])) {
+            $arrResult[] = $PolicyData['ERROR_DESC'];
+        }
 
         return $arrResult;
     }
@@ -1175,12 +1177,13 @@ class ProductController extends BaseController
                 $this->thankYouParam = ProjectEnum::ONPACA_URL;
             } elseif (substr($package, 0, 6) === ProjectEnum::ONPAKD_URL) {
                 $this->thankYouParam = ProjectEnum::ONPAKD_URL;
-            }  elseif (substr($package, 0, 6) === ProjectEnum::ONPASN_URL) {
+            } elseif (substr($package, 0, 6) === ProjectEnum::ONPASN_URL) {
                 $this->thankYouParam = ProjectEnum::ONPASN_URL;
             }
             //$this->thankYouParam = 'ONPA';
             $link = 'IssuePolicyPAChoice';
-        } elseif (substr($package, 0, 8) === 'ONCOVIDA'
+        } elseif (
+            substr($package, 0, 8) === 'ONCOVIDA'
             || substr($package, 0, 8) === 'ONCOVIDL'
             || substr($package, 0, 8) === 'ONISAFEX'
         ) {
@@ -1213,7 +1216,7 @@ class ProductController extends BaseController
         } elseif (substr($package, 0, 11) === 'TAIPOCT22AA') {
             $this->thankYouParam = substr($package, 0, 11);
             $link = "IssuePolicyInbound";
-        } elseif(substr($package, 0, 7) === 'TAIPCRN') {
+        } elseif (substr($package, 0, 7) === 'TAIPCRN') {
             $this->thankYouParam = substr($package, 0, 7);
             $link = "IssuePolicyInbound";
         } elseif (substr($package, 0, 5) === 'TAISM') {
@@ -1225,7 +1228,7 @@ class ProductController extends BaseController
         } elseif (substr($package, 0, 10) === 'ONTAISMB2B') {
             $this->thankYouParam = substr($package, 0, 10);
             $link = "IssuePolicyiSmile";
-        } elseif(substr($package, 0, 6) === 'TAIPAS') {
+        } elseif (substr($package, 0, 6) === 'TAIPAS') {
             $this->thankYouParam = substr($package, 0, 6);
             $link = "IssuePolicyInbound";
         } elseif (substr($package, 0, 6) === ProjectEnum::ONTAOB_URL) {
@@ -1272,7 +1275,6 @@ class ProductController extends BaseController
                 $this->thankYouParam = substr($package, 0, 4);
                 $link = 'IssuePolicyCIGiftCard';
             }
-
         } elseif (substr($package, 0, 6) === 'ONFIMP') {
             $this->thankYouParam = substr($package, 0, 6);
             $link = 'IssuePolicyMyHomePlus';
@@ -1308,11 +1310,11 @@ class ProductController extends BaseController
             } elseif (substr($package, 0, 8) === ProjectEnum::ONCSHCSC_URL) {
                 $this->thankYouParam = ProjectEnum::ONCSHCSC_URL;
                 $link = 'IssuePolicyChillSureSusco';
-            }  elseif (substr($package, 0, 8) === ProjectEnum::ONCSHCGV_URL) {
+            } elseif (substr($package, 0, 8) === ProjectEnum::ONCSHCGV_URL) {
                 $this->thankYouParam = ProjectEnum::ONCSHCGV_URL;
                 $link = 'IssuePolicyChillSureGiftVoucher';
             }
-        } 
+        }
         return $link;
     }
 
@@ -1619,7 +1621,7 @@ class ProductController extends BaseController
                 $request->session()->put('agentCode', $agent_code);
                 $request->session()->put('package', $package);
                 $request->session()->put('refCode', $refCode);
-                $request->session()->put('transaction_id', $transaction_id); 
+                $request->session()->put('transaction_id', $transaction_id);
                 $this->thankYouParam = $request->input('user_defined_4');
 
                 $func = 'thankyou';
@@ -1646,11 +1648,16 @@ class ProductController extends BaseController
                     $request->session()->put('agentCode', $agent_code);
                     $request->session()->put('package', $package);
                     $request->session()->put('refCode', $refCode);
-                    $request->session()->put('transaction_id', $transaction_id); 
+                    $request->session()->put('transaction_id', $transaction_id);
                     $this->thankYouParam = $request->input('user_defined_4');
                     $func = 'thankyou';
                 } else {
                     $request->session()->put('error', implode(', ', $result[0]));
+                    if (strtolower($this->controller) === "portal") {
+                        if (isset($result[3])) {
+                            $request->session()->put('error', $result[3]);
+                        }
+                    }
                     $func = 'error';
                 }
                 break;
@@ -1675,7 +1682,7 @@ class ProductController extends BaseController
                 $request->session()->put('error', $request->input('channel_response_desc'));
                 $request->session()->put('package', $package);
         }
-       
+
         return redirect()->route('current', ['locale' => $this->locale, 'controller' => $this->controller, 'func' => $func, 'params' => $this->thankYouParam]);
     }
 
@@ -1711,7 +1718,6 @@ class ProductController extends BaseController
     public function testIssueApi()
     {
         $result = $this->sendToApiIssue("00000000119", "001", "5565654654");
-        dd($result);
     }
 
     public function testLogApi()
@@ -1722,8 +1728,6 @@ class ProductController extends BaseController
 
         $obj = $this->combindObj(array_merge($data, (array)$data["profile"][0]));
         $result = $this->logData($obj);
-
-        dd($result);
     }
 
     public function checkDup(Request $request)
@@ -1850,7 +1854,7 @@ class ProductController extends BaseController
         }
 
         $arr_post['version'] = '8.5';
-        $arr_post['merchant_id'] = config('payment.b2b_mid');//"764764000012359"; //uat = "764764000012359";
+        $arr_post['merchant_id'] = config('payment.b2b_mid'); //"764764000012359"; //uat = "764764000012359";
         $arr_post['payment_description'] = "Buy Insurance";
         $arr_post['order_id'] = config('project.invoice_prefix') . $obj->fdInvoice;
         $arr_post['currency'] = "764";
