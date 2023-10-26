@@ -526,9 +526,6 @@ header {
                     }
 
                     &.has_sub {
-                        overflow-y: auto;
-                        max-height: 100vh;
-
                         > a {
                             display: flex;
                             justify-content: space-between;
@@ -607,9 +604,9 @@ header {
                     &:hover {
                         div.sub {
                             border: 1px solid $primary-color;
-                            max-height: 1500px;
                             padding: 20px;
-
+                            overflow-y: auto;
+                            max-height: 100vh;
                         }
                     }
 
