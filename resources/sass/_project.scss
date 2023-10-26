@@ -526,12 +526,16 @@ header {
                     }
 
                     &.has_sub {
+                        overflow-y: auto;
+                        max-height: 100vh;
+
                         > a {
                             display: flex;
                             justify-content: space-between;
                         }
 
                         &.on {
+                            
                             > a {
                                 background: $primary-color;
                             }
