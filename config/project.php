@@ -28,4 +28,6 @@ return [
     'invoice_prefix' => env('INVOICE_PREFIX','W'),
 
     'promotion_code_condition' => env('PROMOTION_CODE_CONDITION', ''),
+
+    'e_cancer_link' => env('E_CANCER_LINK', ''),
 ];
