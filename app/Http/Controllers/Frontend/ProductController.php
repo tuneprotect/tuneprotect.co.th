@@ -68,7 +68,7 @@ class ProductController extends BaseController
         }
 
         if (in_array($selected, ['ONCANCER'])) {
-            return redirect()->away('https://online.tuneprotect.co.th/product/cancer');
+            return redirect()->away(config('project.e_cancer_link'));
         }
 
         if (in_array($selected, ['CVISAFE', 'ONCOVIDA'])) {

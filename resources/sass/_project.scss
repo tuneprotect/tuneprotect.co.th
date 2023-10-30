@@ -532,6 +532,7 @@ header {
                         }
 
                         &.on {
+                            
                             > a {
                                 background: $primary-color;
                             }
@@ -603,9 +604,9 @@ header {
                     &:hover {
                         div.sub {
                             border: 1px solid $primary-color;
-                            max-height: 1500px;
                             padding: 20px;
-
+                            overflow-y: auto;
+                            max-height: 90vh;
                         }
                     }
 
