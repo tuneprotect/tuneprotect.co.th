@@ -188,50 +188,12 @@ const profileConstraints = {
     }
 };
 
-// const getSelectedPrice = (packageCode, package_data) => {
-//     // const code = packageCode.substring(0, 7);
-//     // const sub_code = packageCode.substring(7);
-//     // console.log(packageCode);
-//     // console.log(package_data);
-//     // console.log('code : ' + code);
-//     // console.log('sub_code : ' + sub_code);
-//     // console.log('price : ' + package_data[code].price[sub_code].price);
-//     // return package_data[code].price[sub_code].price;
-//
-//     //fdPackage
-//     //$('#sub_code').value
-//     //Price = package_data[Package].price[price key id].price
-//
-//     return package_data[packageCode].price[$('#sub_code').value].price;
-// }
-
-// const genPrice = (package_data, sub_package) => {
-//
-//     Object.keys(package_data)
-//         .filter(k => _.startsWith(k, current_package))
-//         .map(k => {
-//             const pack = Object.keys(package_data[k].price).filter(k => k === sub_package)
-//
-//             $$('[data-sub-package]').forEach($el => {
-//                 $el.setAttribute('data-sub-package', pack)
-//             });
-//
-//             $(`strong[data-price-${k}]`).innerHTML = parseInt(package_data[k].price[pack].price).toLocaleString();
-//
-//         })
-// }
-
 const genPrice = (package_data, fdFromDate, fdToDate) => {
 
     let startDate = parseISO(fdFromDate);
     let endDate = parseISO(fdToDate);
 
-    // console.log(package_data);
-    // console.log(fdFromDate);
-    // console.log(fdToDate);
-
     const day = differenceInDays(endDate, startDate) + 1;
-    console.log("day : "  + day);
 
     $('#days').value = day;
 
@@ -254,13 +216,6 @@ const genPrice = (package_data, fdFromDate, fdToDate) => {
             });
             $(`strong[data-price-${k}]`).innerHTML = parseInt(package_data[k].price[pack].price).toLocaleString();
             $('#sub_code').value = pack;
-
-            // console.log('k : ' + k );
-            // console.log('sub_code pack : ' + pack );
-
-            //fdPackage
-            //$('#sub_code').value
-            //Price = package_data[Package].price[price key id].price
         })
 
 }
@@ -294,26 +249,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                 confirmButtonText: 'OK'
             })
         }
-        // if($('#partner').value == 'LUMA')
-        // {
-        //     let element = document.getElementById("btnBrochure");
-        //     element.parentNode.removeChild(element);
-        // }
-        // if($('#partner').value == 'partnership')
-        // {
-        //     $('#btnBrochure').addEventListener('click', (e) => {
-        //         // alert( "Handler for .click() called." );
-        //
-        //     });
-        // }
     }
-
-    // if(Keys == 'BQQWAMUX9JDXNTFFD4WZZLQ3NDEXNTFFT6UCXGSF68UXNEKZ24UYN5TRZ2')
-    // {
-    //     package_data = await getPackageData('ontalnlite');
-    // }
-    //
-    // console.log(package_data);
 
     let step = 1;
     let data = {
@@ -351,27 +287,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     Object.keys(nationality_data).map(v => {
             nationality_option += `<option value="${v}">${v}</option>`;
     });
-
-    // $('#ctrl_sub_package').addEventListener('change', (e) => {
-    //     let nationality_option = `<option value="">${$('#data_1_fdNationality').getAttribute('data-please-select')}</option>`;
-    //     // console.log($('#ctrl_sub_package').value);
-    //     if($('#ctrl_sub_package').value == '01' || $('#ctrl_sub_package').value == '05' ){
-    //         //30 and 60 Only
-    //         Object.keys(nationality_data).map(v => {
-    //             nationality_option += `<option value="${v}">${v}</option>`;
-    //         });
-    //     }
-    //     else {
-    //         Object.keys(nationality_data).map(v => {
-    //             if (v !== "Thailand") {
-    //                 nationality_option += `<option value="${v}">${v}</option>`;
-    //             }
-    //         });
-    //     }
-    //     for (let i = 1; i < 10; i++) {
-    //         $(`#data_${i}_fdNationality`).innerHTML = nationality_option;
-    //     }
-    // });
 
     $('#ctrl_no_of_insured').addEventListener('change', (e) => {
         for (let i = 1; i <= e.target.value; i++) {
@@ -514,15 +429,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                             $(`#data_${i}_fdNationalID`).value = "";
                         }
 
-                        // const fdPackage = $btn.getAttribute('data-package') + $btn.getAttribute('data-sub-package');
-                        // $dataSubPackage =fdPackage;
-                        // console.log($btn.getAttribute('data-plan'));
-
                         const fdPackage = $btn.getAttribute('data-package');
-                        // $dataSubPackage =fdPackage;
-
-                        // console.log(fdPackage);
-
                         $('#form-head').innerHTML = $btn.getAttribute('data-plan');
                         if (fdPackage) {
                             data = {
@@ -578,7 +485,6 @@ document.addEventListener("DOMContentLoaded", async () => {
                                 fdRelation: $(`#data_${i}_fdRelation`).value,
                             };
 
-                            // console.log(currentProfile);
                             profileData.push(currentProfile);
 
                             result = validate(currentProfile, profileConstraints);
@@ -594,9 +500,6 @@ document.addEventListener("DOMContentLoaded", async () => {
                             }
                         }
 
-                        // console.log('data.fdPackage : ' + data.fdPackage);
-                        // console.log('sub_code : ' + $('#sub_code').value);
-
                         data = {
                             ...data,
                             fdPayAMT: package_data[data.fdPackage].price[$('#sub_code').value].price,
@@ -610,9 +513,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                             ...data,
                             fdMarketing_Consent: $('#ctrl_marketing').checked ? true : undefined
                         }
-                        // fdPayAMT: getSelectedPrice(data.fdPackage, package_data),
 
-                        console.log('fdPayAMT : ' + data.fdPayAMT);
                         result = validate(data, step3Constraints);
 
                         if (result) {

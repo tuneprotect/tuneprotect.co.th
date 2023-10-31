@@ -744,7 +744,6 @@ document.addEventListener("DOMContentLoaded", async () => {
                             fdMarketing_Consent: $('#ctrl_marketing').checked ? true : undefined
                         }
 
-                        console.log(data);
                         //=========================================================================================================
                         //address insure
                         let address_insure = "";
@@ -779,7 +778,6 @@ document.addEventListener("DOMContentLoaded", async () => {
 
                         let label_district = $('label[for=fdAddr_District]').innerText;
                         label_district = label_district.replace("*", "");
-                        console.log(data.fdProvince);
                         if(data.fdProvince == "00")
                         {
                             label_district = label_district.replace("แขวง / ตำบล", "แขวง");
@@ -855,15 +853,12 @@ document.addEventListener("DOMContentLoaded", async () => {
                             loc_fdAddr_Num: loc_fdAddr_Num
                         }
 
-                        // console.log(data);
-
                         //=========================================================================================================
 
                         const result = validate(data, constraints);
                         if (result) {
                             Object.keys(result).map(k => {
                                 let $elm = $(`[name=${k}]`);
-                                // console.log(k);
                                 showFieldError($elm, result[k])
                             });
                         }

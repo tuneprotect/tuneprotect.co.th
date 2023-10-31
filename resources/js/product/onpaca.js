@@ -273,8 +273,6 @@ document.addEventListener("DOMContentLoaded", async () => {
         const itemList = [];
 
         if (data.fdHBD) {
-            console.log(data.fdHBD);
-            console.log(package_data);
 
             Object.keys(package_data)
                 .filter(k => _.startsWith(k, current_package))

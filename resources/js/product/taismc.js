@@ -195,7 +195,6 @@ const genPrice = (package_data, fdFromDate, fdToDate) => {
     let endDate = parseISO(fdToDate);
 
     const day = differenceInDays(endDate, startDate) + 1;
-    console.log("day : "  + day);
 
     $('#days').value = day;
 
@@ -440,14 +439,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                             $(`#data_${i}_fdNationalID`).value = "";
                         }
 
-                        // const fdPackage = $btn.getAttribute('data-package') + $btn.getAttribute('data-sub-package');
-                        // $dataSubPackage =fdPackage;
-                        // console.log($btn.getAttribute('data-plan'));
-
                         const fdPackage = $btn.getAttribute('data-package');
-                        // $dataSubPackage =fdPackage;
-
-                        // console.log(fdPackage);
 
                         $('#form-head').innerHTML = $btn.getAttribute('data-plan');
                         if (fdPackage) {
@@ -504,7 +496,6 @@ document.addEventListener("DOMContentLoaded", async () => {
                                 fdRelation: $(`#data_${i}_fdRelation`).value,
                             };
 
-                            // console.log(currentProfile);
                             profileData.push(currentProfile);
 
                             result = validate(currentProfile, profileConstraints);
@@ -520,9 +511,6 @@ document.addEventListener("DOMContentLoaded", async () => {
                             }
                         }
 
-                        // console.log('data.fdPackage : ' + data.fdPackage);
-                        // console.log('sub_code : ' + $('#sub_code').value);
-
                         data = {
                             ...data,
                             fdPayAMT: package_data[data.fdPackage].price[$('#sub_code').value].price,
@@ -536,9 +524,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                             ...data,
                             fdMarketing_Consent: $('#ctrl_marketing').checked ? true : undefined
                         }
-                        // fdPayAMT: getSelectedPrice(data.fdPackage, package_data),
 
-                        console.log('fdPayAMT : ' + data.fdPayAMT);
                         result = validate(data, step3Constraints);
 
                         if (result) {

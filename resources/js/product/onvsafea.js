@@ -288,7 +288,7 @@ const validateAgeInPackageVC = (package_data) => {
     genPriceVC(package_data)
 
     const age = calculateAge(birthday)
-    console.log(age);
+
     return {
         status: true, data: {
             fdHBD: birthday,
@@ -304,11 +304,6 @@ const checkAgeVSafe = (birthday, ageRange) => {
     const rangeDay = rangeAll[0].split('-');
     const rangeMonth = rangeAll[1].split('-');
     const rangeYear = rangeAll[2].split('-');
-
-    console.log(age);
-    console.log(rangeYear[1]);
-    console.log(rangeYear[0]);
-    console.log(rangeMonth);
 
     if (age.year >= rangeYear[0] && age.year <= rangeYear[1])
     {
@@ -557,7 +552,6 @@ document.addEventListener("DOMContentLoaded", async () => {
             } else {
                 switch (parseInt(step)) {
                     case 1:
-                        // console.log('STEP 1 ');
                         const validateResult = validateAgeInPackageVC(package_data);
                         status = validateResult.status;
                         if (validateResult.status) {
@@ -726,9 +720,6 @@ document.addEventListener("DOMContentLoaded", async () => {
                                     fdFromDate
                                 }
                             }
-
-                            console.log(data);
-
                             let sb = ''
 
                             Object.keys(data).map(k => {

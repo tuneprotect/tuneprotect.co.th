@@ -28,21 +28,17 @@ export const calculateAge = (date) => {
     }
 
     const month = differenceInMonths(now, age);
-    // console.log('month :' + month);
     if (month > 0) {
         result = {...result, month};
         age = addMonths(age, month);
     }
 
     const day = differenceInDays(now, age);
-    // console.log('day :' + day);
 
     if (day > 0) {
         result = {...result, day};
     }
-
-    console.log(result);
-
+    
     return result;
 }
 

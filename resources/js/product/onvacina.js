@@ -316,12 +316,6 @@ const genPriceVC = (package_data) => {
     const allPack = Object.keys(package_data)
         .filter(k => _.startsWith(k, current_package + packageSelect))
 
-
-    // console.log(package_data);
-    // console.log(current_package);
-    // console.log(packageSelect);
-    // console.log(allPack);
-
     //Add new document.body.clientWidth
 
     if(document.body.clientWidth > 767) {
@@ -345,7 +339,6 @@ const genPriceVC = (package_data) => {
     allPack.map(k => {
         const pack = Object.keys(package_data[k].price).filter(packaging => checkPackVC(packageSelect,packaging))
         $(`strong[data-price-${k}]`).innerHTML = parseInt(package_data[k].price[pack]).toLocaleString();
-        // console.log(package_data[k]);
     });
 }
 
@@ -367,35 +360,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     const package_data = await getPackageData(current_package);
     const nationality_data = await getNationalityData();
     const nationalityth_data = await getNationalityDataTH();
-
-    // let x = document.getElementById("language");
-    // // console.log(x);
-    // x.style.display = "none";
-
-    // let nationality_option = `<option value="">${$('#fdNationality').getAttribute('data-please-select')}</option>`;
-    // if(locale === 'th')
-    // {
-    //     Object.keys(nationalityth_data).map(v => {
-    //         if (v === "ไทย") {
-    //             nationality_option += `<option value="${v}" selected="selected">${v}</option>`;
-    //         }
-    //         else
-    //         {
-    //             nationality_option += `<option value="${v}">${v}</option>`;
-    //         }
-    //     });
-    // }
-    // else
-    // {
-    //     Object.keys(nationality_data).map(v => {
-    //             nationality_option += `<option value="${v}">${v}</option>`;
-    //     });
-    // }
-
-    // $(`#fdNationality`).innerHTML = nationality_option;
-
-    // document.getElementById("fdNationality").disabled = true;
-    // document.getElementById("ctrl_document_type").disabled = true;
 
     let nationality_option = `<option value="">${$('#fdNationality').getAttribute('data-please-select')}</option>`;
     if(locale === 'th')

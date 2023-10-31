@@ -421,8 +421,6 @@ document.addEventListener("DOMContentLoaded", async () => {
             console.log("err", err);
             
         }
-
-        //$form.classList.remove('ajax_loader');
     }
     const $btnGoto = $$('.btn-goto');
     $btnGoto.forEach($btn => {

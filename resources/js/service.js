@@ -262,15 +262,12 @@ document.addEventListener("DOMContentLoaded", async () => {
                 return false;
             }
 
-            // console.log(data);
             await sendBloodTestOTP(data);
 
         });
 
         const sendBloodTestOTP = async (data) => {
             $frmBloodtest.classList.add('ajax_loader');
-
-            console.log(data);
 
             try {
                 let res = await fetch($frmBloodtest.getAttribute('action'), {
