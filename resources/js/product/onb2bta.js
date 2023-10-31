@@ -217,9 +217,7 @@ const getSelectedPrice = (packageCode, package_data) => {
 const genPrice = (package_data,country_data, subpackage, fdFromDate, fdToDate) => {
     let startDate = parseISO(fdFromDate);
     let endDate = parseISO(fdToDate);
-    
-    console.log("fdFromDate",fdFromDate);
-    console.log("package_data",fdToDate);
+
 
     let country_zone = '';
     country_data.map(v => {
@@ -258,7 +256,6 @@ const genPrice = (package_data,country_data, subpackage, fdFromDate, fdToDate) =
     }
     day = pack_code === "annual" ? "0" : day
     $('#days').value = day;
-    console.log("day",day);
     if (document.body.clientWidth > 767) {
         $$('#table-detail td[data-package],#table-detail th[data-package],.choose-plan-mobile').forEach($el => {
             if (allPack.includes($el.getAttribute("data-package"))) {

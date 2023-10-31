@@ -250,47 +250,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     let package_data = await getPackageData(current_package);
     const nationality_data = await getNationalityData();
 
-    // let package_data_all = await getPackageData(current_package);
-    // let package_data = [];
-    // const allPack = Object.keys(package_data_all);
-    // allPack.map(k => {
-    //     // console.log(allPack);
-    //     // console.log(k);
-    //     // console.log(package_data[k]);
-    //     if(k === $('#agentCode').value)
-    //     {
-    //         package_data = package_data_all[k];
-    //     }
-    // });
-    // console.log(current_package);
-    // console.log(package_data);
-
-    // const allPack = Object.keys(package_data)
-    //     .filter(k => _.startsWith(k,"ONCOVIDMW_" +$('#agentCode').value))
-    //
-    // if(document.body.clientWidth > 767) {
-    //     $$('#table-detail td[data-package],#table-detail th[data-package]').forEach($el => {
-    //         if (allPack.includes($el.getAttribute("data-package"))) {
-    //             $el.style.display = "table-cell";
-    //         } else {
-    //             $el.style.display = "none";
-    //         }
-    //     });
-    // }else{
-    //     $$('#table-detail thead a[data-package]').forEach($el => {
-    //         if ($el.getAttribute("data-package").startsWith("ONCOVIDMW_" +$('#agentCode').value )) {
-    //             $el.style.display = "inline-flex";
-    //         } else {
-    //             $el.style.display = "none";
-    //         }
-    //     });
-    // }
-    //
-    // allPack.map(k => {
-    //     // $('#fdPremium').value = parseInt(package_data[k].plan.COV1).toLocaleString();
-    //     $(`strong[data-price-${k}]`).innerHTML = parseInt(package_data[k].price).toLocaleString();
-    //     // $(`th[data-cover-cov1]`).innerHTML = $('#cover_fire_'+packageSelect).value;
-    // });
     // LAO,MMR,KHM,VNM
     let sb1 = `<option value="">${$('#fdDestFrom').getAttribute('data-please-select')}</option>`;
     country_data.sort((a, b) => (a['en'] > b['en']) ? 1 : ((b['en'] > a['en']) ? -1 : 0))
@@ -307,19 +266,9 @@ document.addEventListener("DOMContentLoaded", async () => {
         $el.addEventListener("change", function (e) {
             let select = $('#fdNationality');
             fdNationalityText = select.options[select.selectedIndex].text;
-            //console.log(fdNationalityText);
         });
     });
-    /*
-    let fdDestFromText = "";
-    $$("select[id=fdDestFrom]").forEach($el => {
-        $el.addEventListener("change", function (e) {
-            let select = $('#fdDestFrom');
-            fdDestFromText = select.options[select.selectedIndex].text;
-            //console.log(fdNationalityText);
-        });
-    });
-*/
+    
     let Keys = "";
     var myEle = document.getElementById("portal_key");
     if(myEle){
@@ -554,8 +503,6 @@ document.addEventListener("DOMContentLoaded", async () => {
                             }
                         }
 
-                        console.log(data);
-
                         break;
 
                     case 2:
@@ -657,10 +604,6 @@ document.addEventListener("DOMContentLoaded", async () => {
                                     ...data,
                                     fdFromDate
                                 }
-
-
-                                console.log(data);
-
 
                             let sb = '';
                             Object.keys(data).map(k => {

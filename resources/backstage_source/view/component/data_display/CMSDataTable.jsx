@@ -77,7 +77,6 @@ export default function CMSDataTable({...props}) {
         })();
         if (props.onFilterChange !== undefined) {
             props.onFilterChange(filter);
-            // console.log({filter,onFilterChange:props.onFilterChange})
         }
 
     }, [filter]);

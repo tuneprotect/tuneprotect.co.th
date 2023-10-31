@@ -282,31 +282,6 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
     }
 
-    // if(Keys == 'QAVM2LRWBGCXXGSFBQFR6LKW24JXXUJRX8MBNGFRGUSXXTARPQJRX')
-    // {
-    //     package_data = await getPackageData('oncovida_old');
-    //     // console.log(package_data);
-    // }
-
-    let promocode = "";
-    // var myPromocode = document.getElementById("promocode");
-    // if(myPromocode){
-    //     promocode= myPromocode.value;
-    //     let status_api = document.getElementById("status_api");
-    //     if(!status_api.value)
-    //     {
-    //         let myMsg = document.getElementById("massage_key");
-    //         Swal.fire({
-    //             title: 'Error!',
-    //             text: myMsg.value,
-    //             icon: 'error',
-    //             confirmButtonText: 'OK'
-    //         })
-    //         status = false;
-    //     }
-    // }
-
-
     let step = 1;
     let data = {
         fdMember_ID : member_id,

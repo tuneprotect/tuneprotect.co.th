@@ -30,47 +30,7 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         };
 
-        // $$('button[name="action"]', $frmBloodCheck).forEach($el => $el.addEventListener("click", async function (e) {
-        //     e.preventDefault();
-        //     $$('cite', $frmBloodCheck).forEach($el => $el.remove());
-        //     $$('.controls-wrapper', $frmBloodCheck).forEach($el => $el.classList.remove('error'));
-        //     $$('input,select,textarea', $frmBloodCheck).forEach($el => $el.classList.remove('error'));
-        //
-        //     // let data = {
-        //     //     refCode: $('#ctrl_ref_code').value,
-        //     // }
-        //     //
-        //     // const result = validate(data, contactConstraints3);
-        //     //
-        //     // if (result) {
-        //     //     Object.keys(result).map(k => showFieldError($(`#ctrl_${k}`), result[k]));
-        //     //     return false;
-        //     // }
-        //
-        //     // await apiTaxDeduction(data);
-        //
-        //     if($('#ctrl_ref_code').value === '')
-        //     {
-        //         Swal.fire({
-        //             title: 'Warning!',
-        //             text: 'Warning '+ $('#ctrl_ref_code').getAttribute('data-error-required'),
-        //             icon: 'Warning',
-        //             confirmButtonText: 'OK'
-        //         })
-        //         return false;
-        //     }
-        //
-        //     let data = {
-        //         RefCode: $('#ctrl_ref_code').value,
-        //     }
-        //     await checkBloodTestCode(data);
-        //
-        //     return false;
-        // }));
-
         const checkBloodTestCode = async (data) => {
-
-            // console.log(data);
 
             $frmBloodCheck.classList.add('ajax_loader');
             try {
@@ -164,38 +124,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
             });
         });
-
-
-        // $$('button[name="action"]', $frmBloodCheck).forEach($el => $el.addEventListener("click", async function (e) {
-        //     e.preventDefault();
-        //     const $ddlHospital = $('#ctrl_hospital');
-        //     const hospital = $ddlHospital.options[$ddlHospital.selectedIndex].text;
-        //     let param = $('#ctrl_ref_code').value + '|' + hospital;
-        //
-        //     // const $submit_section = $('#submit_section');
-        //     // $submit_section.innerHTML = `<div class="btn-wrapper"><a id="my-link" class="btn btn-primary" href="/${$('html').getAttribute('lang')}/BloodTest/UsedBloodTest/${param}">กดใช้สิทธิ์</a></div>`;
-        //     // let link = document.getElementById('my-link');
-        //     // link.click();
-        //
-        //     // $.post($frmBloodCheck.getAttribute('action2') + param, function(response) {
-        //     //     // handle your response here
-        //     //     console.log(response);
-        //     // })
-        //
-        //     // alert($frmBloodCheck.getAttribute('action2'));
-        //     //
-        //     // let res = await fetch(url, {
-        //     //     method: 'post',
-        //     //     headers: {
-        //     //         'Accept': 'application/json',
-        //     //         'Content-Type': 'application/json',
-        //     //         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').getAttribute('content')
-        //     //     }
-        //     // });
-        //     //
-        //     // return true;
-        //
-        // }));
 
     }
 });

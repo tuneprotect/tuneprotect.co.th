@@ -81,9 +81,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 const response = await res.json();
                 if (response.status) {
                     toggltField(true);
-                    // console.log(response.message);
                     $('#ctrl_otp').value = response.message;
-                    // alert($('#ctrl_otp').value);
                 } else {
                     Swal.fire(
                         $form2.getAttribute('data-error'),
@@ -100,46 +98,6 @@ document.addEventListener("DOMContentLoaded", function () {
             }
             $form2.classList.remove('ajax_loader');
         }
-
-        // const sendSurvey = async (data) => {
-        //     $form2.classList.add('ajax_loader');
-        //     try {
-        //         let res = await fetch($form2.getAttribute('action'), {
-        //             method: 'post',
-        //             headers: {
-        //                 'Accept': 'application/json',
-        //                 'Content-Type': 'application/json',
-        //                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').getAttribute('content')
-        //             },
-        //             body: JSON.stringify(data)
-        //         });
-        //         const response = await res.json();
-        //         // alert(response.status);
-        //         // console.log(response.status);
-        //         if (response.status) {
-        //             //
-        //             // alert(1);
-        //             // // console.log(response.status);
-        //             // // $form2.classList.remove('ajax_loader');
-        //             // // return true;
-        //         } else {
-        //             // alert(2);
-        //             Swal.fire(
-        //                 $form2.getAttribute('data-error'),
-        //                 response.message,
-        //                 'error'
-        //             )
-        //         }
-        //     } catch (err) {
-        //         // alert(3);
-        //         Swal.fire({
-        //             title: $form2.getAttribute('data-error'),
-        //             text: $form2.getAttribute('data-error-description'),
-        //             icon: 'error',
-        //         })
-        //     }
-        //     $form2.classList.remove('ajax_loader');
-        // }
 
         function validationData() {
             $$('cite', $form2).forEach($el => $el.remove());

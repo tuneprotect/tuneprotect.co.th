@@ -132,8 +132,6 @@ const callSuscoBranch = async () => {
 }
 
 const callPromotionCode = async (data) => {
-    //console.log(data);
-    //const response = await fetch(`/appApi/ApiConnect/validatePromotionCode`, {
     const response = await fetch(`/${$('html').getAttribute('lang')}/Product/validatePromotionCode`, {
         method: 'post',
         headers: {
@@ -148,8 +146,6 @@ const callPromotionCode = async (data) => {
 }
 
 const callPrePromotionCode = async (data) => {
-    //console.log(data);
-    //const response = await fetch(`/appApi/ApiConnect/validatePromotionCode`, {
     const response = await fetch(`/${$('html').getAttribute('lang')}/Product/preValidatePromotionCode`, {
         method: 'post',
         headers: {
@@ -252,7 +248,7 @@ export const validatePolicyStep5 = async ($this, datas) => {
     let fdNationalID = datas.fdNationalID;
     let fdProductCode = datas.fdProductCode;
     let fdPackage = datas.fdPackage;
-    console.log('api '+ fdPackage);
+
     if (Object.keys(data).every((k) => !!data[k])) {        
         const result = await callValidateApi({...data, fdPackage})        
         if (result.status === 'error') {
@@ -383,8 +379,6 @@ export const genPrice = (birthday, package_data) => {
 export const checkAge = (birthday, ageRange) => {
     const range = ageRange.split('-');
     const age = calculateAge(birthday)
-
-    console.log(age);
 
     if (range[0].indexOf(',') !== -1) {
         const monthRange = range[0].split(',');

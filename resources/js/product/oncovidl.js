@@ -636,7 +636,6 @@ document.addEventListener("DOMContentLoaded", async () => {
                             ...data,
                             fdMarketing_Consent: $('#ctrl_marketing').checked ? true : undefined
                         }
-                        console.log(data);
 
                         const result = validate(data, constraints);
                         const $cite = $form.getElementsByTagName('cite');

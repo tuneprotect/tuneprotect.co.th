@@ -217,8 +217,6 @@ var configs = {
             var weekNumber = this.selectedDates[0]
                 ? this.config.getWeek(this.selectedDates[0])
                 : null;
-
-            console.log(weekNumber);
         }]
     },
     rangePlugin: {
