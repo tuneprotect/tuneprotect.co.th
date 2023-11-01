@@ -288,7 +288,6 @@ const validateAgeInPackageVC = (package_data) => {
     genPriceVC(package_data)
 
     const age = calculateAge(birthday)
-    console.log(age);
     return {
         status: true, data: {
             fdHBD: birthday,
@@ -304,12 +303,7 @@ const checkAgeVSafe = (birthday, ageRange) => {
     const rangeDay = rangeAll[0].split('-');
     const rangeMonth = rangeAll[1].split('-');
     const rangeYear = rangeAll[2].split('-');
-
-    console.log(age);
-    console.log(rangeYear[1]);
-    console.log(rangeYear[0]);
-    console.log(rangeMonth);
-
+    
     if (age.year >= rangeYear[0] && age.year <= rangeYear[1])
     {
         if(age.month >= rangeMonth)

@@ -201,8 +201,6 @@ if ($('#title_wrapper')) {
     };
 
     document.addEventListener("DOMContentLoaded", async () => {
-
-        console.log(1);
         //=====================================================================
         // AddOn Portal
         let Keys = "";
@@ -562,7 +560,6 @@ if ($('#title_wrapper')) {
                     } else {
                         switch (parseInt(step)) {
                             case 1:
-                                console.log(1);
                                 const validateResult = validateAgeInPackage(package_data, false);
                                 status = validateResult.status;
                                 if (validateResult.status) {
@@ -612,7 +609,6 @@ if ($('#title_wrapper')) {
 
                                 break;
                             case 2:
-                                console.log(2);
                                 const fdPackage = $btn.getAttribute('data-package');
 
                                 $("#table-detail").setAttribute('data-package_plan', $btn.getAttribute('data-plan'));
@@ -638,7 +634,6 @@ if ($('#title_wrapper')) {
 
                                 break;
                             case 3:
-                                console.log(3);
                                 //=====================================================================
                                 //For sale view only.
                                 var myEle = document.getElementById("portal_key");
@@ -667,8 +662,6 @@ if ($('#title_wrapper')) {
                                 console.log(status)
                                 break;
                             case 4:
-                                console.log(4);
-
                                 let valCheck = false;
                                 valCheck = validatePolicyPayment($('#fdNationalID').value,data.fdPackage,$('#fdFromDate')?.value);
                                 if(!valCheck)
@@ -716,8 +709,6 @@ if ($('#title_wrapper')) {
                                     ...data,
                                     fdMarketing_Consent: $('#ctrl_marketing').checked ? true : undefined
                                 }
-
-                                console.log({data});
                                 const result = validate(data, constraints);
 
                                 const $cite = $form.getElementsByTagName('cite');

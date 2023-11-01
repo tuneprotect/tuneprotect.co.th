@@ -451,7 +451,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             if (['fdName', 'fdSurname', 'fdNationalID'].includes(field.id)) {  
                 data.fdNationalID = $('#fdNationalID').value;              
                 validatePolicyStep5(e.target, getSelectedApiPackage(data.fdPackage, package_data));
-                //console.log("result",result)
+
             }
         });
     });
@@ -617,8 +617,6 @@ document.addEventListener("DOMContentLoaded", async () => {
                                 status = true;
 
                                 const selectPrice = getSelectedPrice(data.fdHBD, fdPackage, package_data);
-
-                                //console.log(fdPackage, packageName);
 
                                 if ($('#controller').value === 'product') 
                                 {

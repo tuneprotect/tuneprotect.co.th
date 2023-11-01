@@ -327,7 +327,6 @@ document.addEventListener("DOMContentLoaded", async () => {
         field.addEventListener("change", function (e) {
             validateField(this, constraints);
             if (['fdNationalID', 'loc_fdAddr_Home'].includes(field.id)) {
-                console.log(e.target, data.fdPackage, $('#fdFromDate')?.value);
                 validatePolicyLoc(e.target, data.fdPackage, $('#fdFromDate')?.value);
             }
 
@@ -386,8 +385,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     const sumTotal = async (packageSelect) => {
         //alert(packageSelect)
         try {
-
-            console.log("packageSelect", packageSelect);
             let js = MyHomeSmart;
             const result = JSON.parse(js);
             for (let i = 0; i < result.length; i++) {
@@ -464,7 +461,6 @@ document.addEventListener("DOMContentLoaded", async () => {
             let arr = document.getElementsByClassName("error");
             if (arr.length == 0) {
                 setData();
-                //console.log("package_code",package_code_1y);
             }
         });
     });
@@ -496,14 +492,11 @@ document.addEventListener("DOMContentLoaded", async () => {
         if (package_1year != "") {
             package_code_1y = package_code_1y.slice(0, -1) + package_1year;
         }
-        console.log("package_code1", package_code_1y);
-        //console.log("package_code1",package_code,package_1year);
         const results = result.filter(element => {
             return element.TAGNAME === package_code_1y && element.FIRE == package_amount;
         });
 
         data_result_1y = results[0];
-        console.log("results1", data_result_1y);
         const result_1y = amount1y.filter(element => {
             return element.myhome_id === results[0].id;
         });
@@ -522,15 +515,11 @@ document.addEventListener("DOMContentLoaded", async () => {
         const results = result.filter(element => {
             return element.TAGNAME === package_code_3y && element.FIRE == package_amount;
         });
-        //console.log("package_code",package_code);
         data_result_3y = results[0];
-        console.log("results3", data_result_3y);
         const result_3y = amount3y.filter(element => {
             return element.myhome_id === results[0].id;
         });
         data_result_amount_3y = result_3y[0];
-        console.log("data_result_amount_3y", data_result_amount_3y);
-        //data_result_3y = result_3y;
         net3 = numberWithCommas(result_3y[0].Net);
         document.getElementById("txtAmount3").value = numberWithCommas(result_3y[0].Total);
 
@@ -668,7 +657,6 @@ document.addEventListener("DOMContentLoaded", async () => {
                 return element.AmphurCode === e.target.value;
             });
             dataBlock = results;
-            console.log("response", results);
             const result = block_list.filter(element => {
                 return element.AmphurCode === e.target.value && element.Reasons != '';
             });
@@ -748,7 +736,6 @@ document.addEventListener("DOMContentLoaded", async () => {
             },
         });
         const response = await res.json();
-        //console.log("response",response);
 
         const js = JSON.parse(response);
         let result = js.data;
@@ -837,7 +824,6 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     const setData = () => {
         const result = MyHomeSmart;
-        //console.log('result',result);
         const results = result.filter(element => {
             return element.TAGNAME === package_code_1y && element.FIRE == package_amount;
         });
@@ -854,9 +840,6 @@ document.addEventListener("DOMContentLoaded", async () => {
                 return element.myhome_id === data_result_3y.id;
             });
             data_result_amount_3y = result_3y[0];
-
-            console.log('data_result_amount_1y', data_result_amount_1y);
-            console.log('data_result_amount_3y', data_result_amount_3y);
 
             apiMyHomeSmart1y(data_result_1y.id);
             apiMyHomeSmart3y(data_result_1y.id);
@@ -1003,7 +986,6 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 
     function parseNumber(value) {
-        //console.log("cnt",value)
         return value ? parseInt(value).format() : 0;
     }
 
@@ -1027,14 +1009,10 @@ document.addEventListener("DOMContentLoaded", async () => {
                 //drpOneYear = 
                 if (result[i].id == packageSelect) {
                     oneYear = result[i];
-                    //console.log("oneYear", oneYear);
                     document.getElementById("txtAmount1").value = numberWithCommas(result[i].Total);
                     p_price1 = result[i].Total;
                 }
             }
-            //console.log("1y",oneYear)
-
-
         } catch (err) {
             console.log("apiMyHomeSmart1y", err);
             Swal.fire(
@@ -1071,7 +1049,6 @@ document.addEventListener("DOMContentLoaded", async () => {
                     p_price3 = result[i].Total;
                 }
             }
-            //console.log("3y",treeYear)
         } catch (err) {
             console.log("apiMyHomeSmart3y", err);
             Swal.fire(
@@ -1800,7 +1777,6 @@ document.addEventListener("DOMContentLoaded", async () => {
 
                         let label_district = $('label[for=fdAddr_District]').innerText;
                         label_district = label_district.replace("*", "");
-                        console.log(data.fdProvince);
                         if (data.fdProvince == "00") {
                             label_district = label_district.replace("แขวง / ตำบล", "แขวง");
                         }
@@ -1866,15 +1842,12 @@ document.addEventListener("DOMContentLoaded", async () => {
                             loc_fdAddr_Num: loc_fdAddr_Num
                         }
 
-                        // console.log(data);
-
                         //=========================================================================================================
 
                         const result = validate(data, constraints);
                         if (result) {
                             Object.keys(result).map(k => {
                                 let $elm = $(`[name=${k}]`);
-                                // console.log(k);
                                 showFieldError($elm, result[k])
                             });
                         }

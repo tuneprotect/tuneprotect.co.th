@@ -64,7 +64,7 @@ export default function WebContentMainStep(props) {
         if (id && props.config.hasChildContent) {
             arrStep.push({id: "child", label: props.config.hasChildContent.tabName});
         }
-console.log(arrStep,props.config)
+
         setStep(arrStep);
 
     }, [id]);

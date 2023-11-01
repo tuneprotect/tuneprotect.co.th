@@ -445,12 +445,6 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
     });
 
-    // console.log(iti);
-    // let nationality_option = `<option value="">${$('#fdNationality').getAttribute('data-please-select')}</option>`;
-    // Object.keys(nationality_data).map(v => {
-    //         nationality_option += `<option value="${v}">${v}</option>`;
-    // });
-
     $('#fdNationality').innerHTML =  `<option value="Australia">Australia</option>`;
 
     $$("input[name=fdQuestion1]").forEach($el => {
@@ -771,7 +765,6 @@ document.addEventListener("DOMContentLoaded", async () => {
                             ...data,
                             fdMarketing_Consent: $('#ctrl_marketing').checked ? true : undefined
                         }
-                        // console.log(data);
 
                         const result = validate(data, constraints);
                         const $cite = $form.getElementsByTagName('cite');

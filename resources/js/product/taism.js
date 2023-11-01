@@ -195,7 +195,6 @@ const genPrice = (package_data, fdFromDate, fdToDate) => {
     let endDate = parseISO(fdToDate);
 
     const day = differenceInDays(endDate, startDate) + 1;
-    console.log("day : "  + day);
 
     $('#days').value = day;
 
@@ -535,7 +534,6 @@ document.addEventListener("DOMContentLoaded", async () => {
                                 fdRelation: $(`#data_${i}_fdRelation`).value,
                             };
 
-                            // console.log(currentProfile);
                             profileData.push(currentProfile);
 
                             result = validate(currentProfile, profileConstraints);

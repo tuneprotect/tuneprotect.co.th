@@ -445,11 +445,6 @@ alert(1)
         }
     });
 
-    // console.log(iti);
-    // let nationality_option = `<option value="">${$('#fdNationality').getAttribute('data-please-select')}</option>`;
-    // Object.keys(nationality_data).map(v => {
-    //         nationality_option += `<option value="${v}">${v}</option>`;
-    // });
     /* by dum-soken */
     $$("input[name=fdArrivalDate]").forEach($el => {
         $el.addEventListener("change", function (e) {            
@@ -462,7 +457,6 @@ alert(1)
     });
 
    
-
     /* end by dum-soken */
 
     $('#fdNationality').innerHTML =  `<option value="Australia">Australia</option>`;
@@ -786,8 +780,7 @@ alert(1)
                             ...data,
                             fdMarketing_Consent: $('#ctrl_marketing').checked ? true : undefined
                         }
-                        // console.log(data);
-
+    
                         const result = validate(data, constraints);
                         const $cite = $form.getElementsByTagName('cite');
                         for (let i = 0, len = $cite.length; i !== len; ++i) {

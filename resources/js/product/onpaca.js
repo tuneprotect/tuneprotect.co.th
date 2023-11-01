@@ -5,6 +5,7 @@ import {$, $$, current_package, fadeIn, fadeOut, getRadioSelectedValue, locale, 
 import Swal from 'sweetalert2'
 import {
     changeStep,
+    checkAge,
     formatTelNumber,
     getPackageData,
     getSelectedPrice,
@@ -272,6 +273,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         const itemList = [];
 
         if (data.fdHBD) {
+
             Object.keys(package_data)
                 .filter(k => _.startsWith(k, current_package))
                 .map(k => {

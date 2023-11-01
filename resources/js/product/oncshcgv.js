@@ -445,7 +445,6 @@ document.addEventListener("DOMContentLoaded", async () => {
             if (['fdName', 'fdSurname', 'fdNationalID'].includes(field.id)) {  
                 data.fdNationalID = $('#fdNationalID').value;              
                 validatePolicyStep5(e.target, getSelectedApiPackage(data.fdPackage, package_data));
-                //console.log("result",result)
             }
         });
     });

@@ -73,8 +73,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 const response = await res.json();
 
-                // console.log(response);
-
                 if (response.status == 'success' && data.action == 'accept') {
                     Swal.fire(
                         {
@@ -149,7 +147,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 email: $('#ctrl_email').value,
                 mobile: $('#ctrl_mobile').value,
             }
-            // console.log({data})
 
             $$('cite', $form).forEach($el => $el.remove());
             $$('.controls-wrapper', $form).forEach($el => $el.classList.remove('error'));

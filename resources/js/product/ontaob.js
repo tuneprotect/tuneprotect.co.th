@@ -243,7 +243,6 @@ const genPrice = (package_data,country_data, subpackage, fdFromDate, fdToDate) =
     let startDate = parseISO(fdFromDate);
     let endDate = parseISO(fdToDate);
 
-    console.log($('#ctrl_travel_type').value);
 
     if ($('#ctrl_travel_type').value === 'annual') {
         // endDate = new Date(startDate.getFullYear() + 1, startDate.getMonth(), startDate.getDate());
@@ -256,13 +255,11 @@ const genPrice = (package_data,country_data, subpackage, fdFromDate, fdToDate) =
                     country_zone = v.zone;
                 }
             });
-        console.log(country_zone);
         subpackage = country_zone;
         $('#ctrl_sub_package').value = subpackage;
     }
 
     const day = differenceInDays(endDate, startDate) + 1;
-    //console.log("day : "  + day);
 
     $('#days').value = day;
 
@@ -270,8 +267,6 @@ const genPrice = (package_data,country_data, subpackage, fdFromDate, fdToDate) =
         .filter(k => _.startsWith(k, current_package + subpackage))
 
     $('#all_pack').value = allPack;
-
-    // console.log("packs : "  + allPack);
 
     if (document.body.clientWidth > 767) {
         $$('#table-detail td[data-package],#table-detail th[data-package],.choose-plan-mobile').forEach($el => {
@@ -334,15 +329,11 @@ const genPrice = (package_data,country_data, subpackage, fdFromDate, fdToDate) =
             }
         })
 
-        // console.log(pack);
-
         $$('[data-sub-package]').forEach($el => {
             $el.setAttribute('data-sub-package', pack)
         });
         $(`strong[data-price-${k}]`).innerHTML = parseInt(package_data[k].price[pack].price).toLocaleString();
         $('#sub_code').value = pack;
-
-        console.log("pack : "  + pack);
     });
 }
 
@@ -486,9 +477,6 @@ document.addEventListener("DOMContentLoaded", async () => {
             if($('#fdPromotionCode').value) {
                 const promotion_data_befor = await preValidatePromotionCode($('#fdPromotionCode').value);
 
-                //const promotion_data_befor = {"codeAvailable": 2, "campaignId": 1, "status": true};
-                console.log(promotion_data_befor);
-
                 if(promotion_data_befor.result.status && promotion_data_befor.result.codeAvailable <= parseInt($("#promotion_code_condition").value)) {
                     promotionCodeStatus = true;
                     showPromotionCodeCount($('#fdPromotionCode').getAttribute('data-error-promotion-code-count').replace("{count}", promotion_data_befor.result.codeAvailable), 'span_error');
@@ -575,12 +563,6 @@ document.addEventListener("DOMContentLoaded", async () => {
             for (let i = 1; i <=  $('#ctrl_no_of_insured').value; i++) {
                 if ([`data_${i}_fdName`, `data_${i}_fdSurname`, `data_${i}_fdNationalID`].includes(field.id)) {
                     
-                    // if (!nationalID.includes($(`#data_${i}_fdNationalID`).value)) {
-                    //     nationalID.push($(`#data_${i}_fdNationalID`).value);
-                    //     console.log(nationalID);
-                    // } else {
-                    //     showValidateNationalIDError(`#data_${i}_fdNationalID`);
-                    // }
                     validatePolicy(e.target, data.fdPackage,$('#fdFromDate')?.value);
                 }
             }
@@ -727,8 +709,6 @@ document.addEventListener("DOMContentLoaded", async () => {
                         
                         if ($('#controller').value === 'product' && promotionCodeStatus) {
                             promotion_data = await validatePromotionCode($('#fdPromotionCode').value, selectPrice);
-                            console.log(promotion_data);
-                            console.log(promotion_data.result.codeAvailable);
                         }
                     
                         removeError($('#step3'));

@@ -193,7 +193,6 @@ const constraints = {
 
 document.addEventListener("DOMContentLoaded", async () => {
 
-    //console.log(1);
     //=====================================================================
     // AddOn Portal
     let Keys = "";
@@ -494,7 +493,6 @@ document.addEventListener("DOMContentLoaded", async () => {
                     status = true;
                     hideShowConditionBox(goToStep);
                 } else {
-                    // console.log('step' + step);
                     switch (parseInt(step)) {
                         case 1:
                             const validateResult = validateAgeInPackage(package_data, false);
