@@ -2223,7 +2223,8 @@ const static_content = {
         'my_health',
         'biglife_point',
         'biglife_point_thank_you',
-        'page_error'
+        'page_error',
+        'page_close_product'
     ],
     meta: [],
     email: []
