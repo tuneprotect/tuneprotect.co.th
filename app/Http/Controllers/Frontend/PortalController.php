@@ -35,6 +35,11 @@ class PortalController extends ProductController
             return $this->genStatusPage($error_page);
         }
 
+        $product_agent_code = $selected . '/' . $portal_key;
+		if (in_array($selected, ['ONTALN', 'TAIPCRN', 'TAIPOCT22', 'TAIPOCT22AA', 'ONCOVIDL', 'ONTA', 'TGCVLP', 'TAISM', 'TAISMC', 'ONTAISMB2B', 'ONTGISM', 'TAISMTG']) && $this->locale === 'th') {
+            return redirect()->route('current', ['locale' => 'en', 'controller' => $this->controller, 'func' => $link, 'params' => $selected, 'params' => $product_agent_code]);
+        }
+
         $massage_error = '';
         if (!empty($redeem_code)) {
             $apiResult = $this->sendToApiPromoCodeValidation($redeem_code);
