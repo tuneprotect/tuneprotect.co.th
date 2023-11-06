@@ -71,6 +71,11 @@ class ProductController extends BaseController
             return redirect()->away(config('project.e_cancer_link'));
         }
 
+        if (in_array($selected, ['ONTAOB', 'ONTATO', 'ONB2BTA'])) {
+            $error_page = ProjectEnum::STATIC_PAGE_CLOSE_PRODUCT;
+            return $this->genStatusPage($error_page);
+        }
+
         if (in_array($selected, ['CVISAFE', 'ONCOVIDA'])) {
             $selected = "CVIS22JAN";
             return redirect()->route('current', ['locale' => $this->locale, 'controller' => $this->controller, 'func' => $link, 'params' => $selected]);
