@@ -386,7 +386,8 @@
                 "my_health": "My Health",
                 "biglife_point": "BIG LIFE POINT",
                 "biglife_point_thank_you": "BIG LIFE POINT THANK",
-                "page_error":"PAGE ERROR"
+                "page_error":"PAGE ERROR",
+                "page_close_product":"PAGE CLOSE PRODUCT"
             },
             "review": "Review",
             "service": "Service Tune",

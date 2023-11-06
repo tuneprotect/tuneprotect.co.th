@@ -127,6 +127,9 @@ class ProjectEnum
     const STATIC_PAGE_PAYMENT_PENDING_MYFLEXI_CIGC = 'static.page.payment_pending_myflexi_cigc';
     const STATIC_PAGE_PAYMENT_REJECT_MYFLEXI_CIGC = 'static.page.payment_reject_myflexi_cigc';
 
+    //Close Product
+    const STATIC_PAGE_CLOSE_PRODUCT = 'static.page.page_close_product';
+
     const STATIC_PAGE_PAYMENT_ERROR = 'static.page.payment_error';
     const STATIC_PAGE_PAYMENT_CANCEL = 'static.page.payment_cancel';
     const STATIC_PAGE_PAYMENT_PENDING = 'static.page.payment_pending';
