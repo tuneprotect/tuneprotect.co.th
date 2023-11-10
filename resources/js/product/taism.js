@@ -397,7 +397,9 @@ document.addEventListener("DOMContentLoaded", async () => {
             validateField(this, profileConstraints);
             let nationalIDList = [];
             for (let i = 1; i <=  $('#ctrl_no_of_insured').value; i++) {
-                nationalIDList.push($(`#data_${i}_fdNationalID`).value);
+                if (![`data_${i}_fdNationalID`].includes(field.id)) {
+                    nationalIDList.push($(`#data_${i}_fdNationalID`).value);
+                }
             }
 
             for (let i = 1; i <=  $('#ctrl_no_of_insured').value; i++) {
