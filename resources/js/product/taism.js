@@ -408,7 +408,9 @@ document.addEventListener("DOMContentLoaded", async () => {
                 }
 
                 if ([`data_${i}_fdNationalID`].includes(field.id)) {
-                    validateNationalID(e.target, nationalIDList);
+                    if (validateNationalID(e.target, nationalIDList)) {
+                        //showError($(`#data_${i}_fdNationalID`), );
+                    }
                 }
             }
         });
@@ -556,6 +558,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                             profileData.push(currentProfile);
 
                             result = validate(currentProfile, profileConstraints);
+                            console.log(result);
 
                             if (result) {
                                 Object.keys(result).map(k => {
