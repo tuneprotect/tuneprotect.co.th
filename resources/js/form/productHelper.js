@@ -192,6 +192,7 @@ export const validatePolicyLoc = async ($this, fdPackage,fdFromDate) => {
 }
 
 export const validateNationalID = async ($this, nationalIDList) => {
+    let status = false;
     let field = $this.getAttribute('name');
     let nationalIDFillIn = null;
     if (field.startsWith('data_')) {
@@ -203,10 +204,11 @@ export const validateNationalID = async ($this, nationalIDList) => {
         console.log('profile ' + nationalID);
         if (nationalID === nationalIDFillIn) {   
             console.log('Duplicate ' + nationalID);
-            return true;
+            status = true;
         }
     });
-    return false;
+
+    return status;
 }
 
 export const validatePolicy = async ($this, fdPackage,fdFromDate) => {

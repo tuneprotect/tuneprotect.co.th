@@ -408,12 +408,10 @@ document.addEventListener("DOMContentLoaded", async () => {
                 }
 
                 if ([`data_${i}_fdNationalID`].includes(field.id)) {
-                    validateNationalID(e.target, nationalIDList).then(response => {
-                        console.log(response);
-                        if (response) {
-                            showFieldError($(`#data_${i}_fdNationalID`), [$(`#data_${i}_fdNationalID`).getAttribute('data-error-nationalid-invalid')]);
-                        }
-                    })
+                    console.log(validateNationalID(e.target, nationalIDList));
+                    if (true) {
+                        showFieldError($(`#data_${i}_fdNationalID`), [$(`#data_${i}_fdNationalID`).getAttribute('data-error-nationalid-invalid')]);
+                    }
                 }
             }
         });
