@@ -409,7 +409,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
                 if ([`data_${i}_fdNationalID`].includes(field.id)) {
                     const validateFlag = validateNationalID(e.target, nationalIDList);
-                    console.log(validateFlag.status);
+                    console.log(validateFlag);
                     if (validateFlag.status) {
                         showFieldError($(`#data_${i}_fdNationalID`), [$(`#data_${i}_fdNationalID`).getAttribute('data-error-nationalid-invalid')]);
                     }
