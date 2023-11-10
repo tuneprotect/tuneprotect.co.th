@@ -408,9 +408,10 @@ document.addEventListener("DOMContentLoaded", async () => {
                 }
 
                 if ([`data_${i}_fdNationalID`].includes(field.id)) {
-                    console.log(new Promise(validateNationalID(e.target, nationalIDList)));
-                    if (new Promise(validateNationalID(e.target, nationalIDList))) {
-                        showFieldError($(`#data_${i}_fdNationalID`), ["Please fill in passport no."]);
+                    let isDuplicate = validateNationalID(e.target, nationalIDList);
+                    console.log(isDuplicate);
+                    if (isDuplicate) {
+                        showFieldError($(`#data_${i}_fdNationalID`), [$(`#data_${i}_fdNationalID`).getAttribute('data-error-nationalid-invalid')]);
                     }
                 }
             }
