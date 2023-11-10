@@ -397,14 +397,12 @@ document.addEventListener("DOMContentLoaded", async () => {
             validateField(this, profileConstraints);
             let nationalIDList = [];
             for (let i = 1; i <=  $('#ctrl_no_of_insured').value; i++) {
-                if (![`data_${i}_fdNationalID`].includes(field.id)) {
-                    nationalIDList.push($(`#data_${i}_fdNationalID`).value);
-                }
+                nationalIDList.push($(`#data_${i}_fdNationalID`).value);
             }
 
             for (let i = 1; i <=  $('#ctrl_no_of_insured').value; i++) {
                 if ([`data_${i}_fdName`, `data_${i}_fdSurname`, `data_${i}_fdNationalID`].includes(field.id)) {
-                    validateNationalID(e.target, nationalIDList);
+                    validatePolicy(e.target, data.fdPackage,$('#fdFromDate')?.value);
                 }
 
                 if ([`data_${i}_fdNationalID`].includes(field.id)) {
