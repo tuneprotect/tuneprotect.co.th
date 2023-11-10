@@ -408,11 +408,11 @@ document.addEventListener("DOMContentLoaded", async () => {
                 }
 
                 if ([`data_${i}_fdNationalID`].includes(field.id)) {
-                    let isDuplicate = validateNationalID(e.target, nationalIDList);
-                    console.log(isDuplicate);
-                    if (isDuplicate) {
-                        showFieldError($(`#data_${i}_fdNationalID`), [$(`#data_${i}_fdNationalID`).getAttribute('data-error-nationalid-invalid')]);
-                    }
+                    validateNationalID(e.target, nationalIDList).then(response => {
+                        if (response) {
+                            showFieldError($(`#data_${i}_fdNationalID`), [$(`#data_${i}_fdNationalID`).getAttribute('data-error-nationalid-invalid')]);
+                        }
+                    })
                 }
             }
         });
