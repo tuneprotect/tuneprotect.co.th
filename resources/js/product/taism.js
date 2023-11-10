@@ -109,7 +109,7 @@ const profileConstraints = {
         format: {
             pattern: /^[A-Z0-9]*$/,
             flags: "i",
-            message: "^" + $('[data-error-eng-only]').getAttribute('data-error-eng-only')
+            message: "^" + $('#data_1_fdNationalID').getAttribute('data-error-nationalid-format')
         }
     },
     fdNationality: {
