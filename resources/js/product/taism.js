@@ -409,7 +409,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
                 if ([`data_${i}_fdNationalID`].includes(field.id)) {
                     if (validateNationalID(e.target, nationalIDList)) {
-                        //showError($(`#data_${i}_fdNationalID`), );
+                        showError($(`#data_${i}_fdNationalID`), {fdNationalID: ['Please fill in passport no.']});
                     }
                 }
             }
@@ -558,7 +558,6 @@ document.addEventListener("DOMContentLoaded", async () => {
                             profileData.push(currentProfile);
 
                             result = validate(currentProfile, profileConstraints);
-                            console.log(result);
 
                             if (result) {
                                 Object.keys(result).map(k => {
