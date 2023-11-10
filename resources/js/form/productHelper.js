@@ -191,16 +191,17 @@ export const validatePolicyLoc = async ($this, fdPackage,fdFromDate) => {
     }
 }
 
-export const validateNationalID = async ($this, profiles) => {
+export const validateNationalID = async ($this, nationalIDList) => {
     let field = $this.getAttribute('name');
     if (field.startsWith('data_')) {
         const index = field.split("_")[1];
         console.log('this ' +$(`#data_${index}_fdNationalID`).value);
     }
     
-    profiles.forEach(profile => {
-        if (profile.fdNationalID === $(`#data_${index}_fdNationalID`).value) {   
-            console.log('Duplicate ' + profile.fdNationalID);
+    nationalIDList.forEach(nationalID => {
+        console.log('profile ' + nationalID);
+        if (nationalID === $(`#data_${index}_fdNationalID`).value) {   
+            console.log('Duplicate ' + nationalID);
         }
     });
 }
