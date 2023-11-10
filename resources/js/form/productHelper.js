@@ -203,7 +203,7 @@ export const validateNationalID = async ($this, nationalIDList) => {
         console.log('profile ' + nationalID);
         if (nationalID === nationalIDFillIn.value) {   
             console.log('Duplicate ' + nationalID);
-            showFieldError(nationalIDFillIn, nationalIDFillIn.getAttribute('data-error-nationalid-invalid'));
+            showFieldError(nationalIDFillIn, [nationalIDFillIn.getAttribute('data-error-nationalid-invalid')]);
             return true;
         }
     });
