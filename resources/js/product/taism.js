@@ -5,7 +5,11 @@ import {
     getCountryData,
     getNationalityData,
     getPackageData,
-    showMultipleTitle, validatePolicy,validatePolicyPayment,formatInputFieldByLanguage
+    showMultipleTitle, 
+    validatePolicy,
+    validatePolicyPayment,
+    formatInputFieldByLanguage,
+    validateNationalID
 } from "../form/productHelper";
 import {$, $$, current_package, getRadioSelectedValue, getZipcodeData, locale, scrollToTargetAdjusted} from "../helper";
 
