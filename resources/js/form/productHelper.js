@@ -196,18 +196,19 @@ export const validateNationalID = async ($this, nationalIDList) => {
     let nationalIDFillIn = null;
     if (field.startsWith('data_')) {
         const index = field.split("_")[1];
-        nationalIDFillIn = $(`#data_${index}_fdNationalID`).value;
+        nationalIDFillIn = $(`#data_${index}_fdNationalID`);
     }
     
     nationalIDList.forEach(nationalID => {
         console.log('profile ' + nationalID);
-        if (nationalID === nationalIDFillIn) {   
+        if (nationalID === nationalIDFillIn.value) {   
             console.log('Duplicate ' + nationalID);
-            return {status: true};
+            showDateError(nationalIDFillIn.getAttribute('data-error-not-qualify'));
+            return true;
         }
     });
 
-    return {status: false};
+    return false;
 }
 
 export const validatePolicy = async ($this, fdPackage,fdFromDate) => {
