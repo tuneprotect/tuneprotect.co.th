@@ -192,8 +192,23 @@ export const validatePolicyLoc = async ($this, fdPackage,fdFromDate) => {
 }
 
 export const validateNationalID = async ($this, $insuredData) => {
-    console.log('this '+$this);
-    console.log('insured '+$insuredData);
+    let fieldId = null;
+    let field = $this.getAttribute('name');
+    if (field.startsWith('data_')) {
+        const index = field.split("_")[1];
+        fieldId = `data_${index}_${k}`;
+    }
+    console.log('this '+$(`#${fieldId}`).value);
+
+    allField.forEach(field => {
+        field.addEventListener("change", function (e) {
+            validateField(this, profileConstraints);
+            for (let i = 1; i <=  $('#ctrl_no_of_insured').value; i++) {
+                
+                console.log('insured '+$(`data_${i}_fdNationalID`).value);
+            }
+        });
+    });  
 }
 
 export const validatePolicy = async ($this, fdPackage,fdFromDate) => {
