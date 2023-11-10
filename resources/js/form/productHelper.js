@@ -198,15 +198,8 @@ export const validateNationalID = async ($this, $insuredData) => {
         const index = field.split("_")[1];
         fieldId = `data_${index}_${k}`;
     }
-    console.log('this '+$(`#${fieldId}`).value);
-
-    $insuredData.forEach(field => {
-        field.addEventListener("change", function (e) {
-            for (let i = 1; i <=  $('#ctrl_no_of_insured').value; i++) {
-                console.log('insured '+$(`data_${i}_fdNationalID`).value);
-            }
-        });
-    });  
+    console.log('this ' +$(`#${fieldId}`).value);
+    console.log('insured ' +$insuredData);
 }
 
 export const validatePolicy = async ($this, fdPackage,fdFromDate) => {

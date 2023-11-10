@@ -398,7 +398,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             for (let i = 1; i <=  $('#ctrl_no_of_insured').value; i++) {
                 if ([`data_${i}_fdName`, `data_${i}_fdSurname`, `data_${i}_fdNationalID`].includes(field.id)) {
                     validatePolicy(e.target, data.fdPackage,$('#fdFromDate')?.value);
-                    validateNationalID(e.target, allField);
+                    validateNationalID(e.target, field);
                 }
             }
 
