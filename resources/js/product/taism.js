@@ -408,6 +408,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                 }
 
                 if ([`data_${i}_fdNationalID`].includes(field.id)) {
+                    console.log(validateNationalID(e.target, nationalIDList));
                     if (validateNationalID(e.target, nationalIDList)) {
                         showFieldError($(`#data_${i}_fdNationalID`), ["Please fill in passport no."]);
                     }
