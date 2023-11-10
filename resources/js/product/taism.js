@@ -107,7 +107,7 @@ const profileConstraints = {
             message: "^" + $('#data_1_fdNationalID').getAttribute('data-error-passport')
         },
         format: {
-            pattern: /^[a-zA-Z0-9]$/,
+            pattern: /^[A-Z0-9]*$/,
             flags: "i",
             message: "^" + $('[data-error-eng-only]').getAttribute('data-error-eng-only')
         }
