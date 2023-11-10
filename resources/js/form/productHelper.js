@@ -1,6 +1,6 @@
 import { $, $$, calculateAge, current_package, fadeIn, fadeOut, locale, scrollToTargetAdjusted } from "../helper";
 import { isValid, parseISO } from "date-fns";
-import { showDateError } from "../validate_form";
+import { showDateError, showFieldError } from "../validate_form";
 import Swal from "sweetalert2";
 
 export const getPackageData = async (currentPackage,channel) => {
@@ -203,7 +203,7 @@ export const validateNationalID = async ($this, nationalIDList) => {
         console.log('profile ' + nationalID);
         if (nationalID === nationalIDFillIn.value) {   
             console.log('Duplicate ' + nationalID);
-            showDateError(nationalIDFillIn.getAttribute('data-error-nationalid-invalid'));
+            showFieldError(nationalIDFillIn.getAttribute('data-error-nationalid-invalid'));
             return true;
         }
     });
