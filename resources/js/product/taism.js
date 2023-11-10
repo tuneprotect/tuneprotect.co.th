@@ -396,16 +396,16 @@ document.addEventListener("DOMContentLoaded", async () => {
         field.addEventListener("change", function (e) {
             validateField(this, profileConstraints);
             let nationalIDList = [];
-
-            for (let j = 1; j <=  $('#ctrl_no_of_insured').value; j++) {
-                nationalIDList.push($(`#data_${j}_fdNationalID`).value);
+            for (let i = 1; i <=  $('#ctrl_no_of_insured').value; i++) {
+                nationalIDList.push($(`#data_${i}_fdNationalID`).value);
             }
 
             for (let i = 1; i <=  $('#ctrl_no_of_insured').value; i++) {
-                let nationalIDList = [];
-                nationalIDList.push($(`#data_${i}_fdNationalID`).value);
                 if ([`data_${i}_fdName`, `data_${i}_fdSurname`, `data_${i}_fdNationalID`].includes(field.id)) {
-                    validatePolicy(e.target, data.fdPackage,$('#fdFromDate')?.value);
+                    validateNationalID(e.target, nationalIDList);
+                }
+
+                if ([`data_${i}_fdNationalID`].includes(field.id)) {
                     validateNationalID(e.target, nationalIDList);
                 }
             }
