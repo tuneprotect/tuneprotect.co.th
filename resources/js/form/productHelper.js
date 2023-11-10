@@ -192,13 +192,8 @@ export const validatePolicyLoc = async ($this, fdPackage,fdFromDate) => {
 }
 
 export const validateNationalID = async ($this, $insuredData) => {
-    let fieldId = null;
     let field = $this.getAttribute('name');
-    if (field.startsWith('data_')) {
-        const index = field.split("_")[1];
-        fieldId = `data_${index}_${k}`;
-    }
-    console.log('this ' +$(`#${fieldId}`).value);
+    console.log('this ' +$(`#${field}`).value);
     console.log('insured ' +$insuredData);
 }
 
