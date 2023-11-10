@@ -200,11 +200,9 @@ export const validateNationalID = async ($this, $insuredData) => {
     }
     console.log('this '+$(`#${fieldId}`).value);
 
-    allField.forEach(field => {
+    $insuredData.forEach(field => {
         field.addEventListener("change", function (e) {
-            validateField(this, profileConstraints);
             for (let i = 1; i <=  $('#ctrl_no_of_insured').value; i++) {
-                
                 console.log('insured '+$(`data_${i}_fdNationalID`).value);
             }
         });
