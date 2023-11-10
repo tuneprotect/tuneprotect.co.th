@@ -192,8 +192,8 @@ export const validatePolicyLoc = async ($this, fdPackage,fdFromDate) => {
 }
 
 export const validateNationalID = async ($this, insuredData) => {
-    let field = $this.getAttribute('name');
-    console.log('this ' + $(`#${field}`).value);
+    //let field = $this.getAttribute('name');
+    console.log('this ' + $this);
     console.log('insured ' + insuredData);
 }
 
