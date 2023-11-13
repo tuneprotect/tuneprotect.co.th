@@ -351,12 +351,11 @@ document.addEventListener("DOMContentLoaded", async () => {
         });
 
         $(`input[name=data_${i}_fdAddr_PostCode]`).addEventListener("change", function (e) {
-            $(`#data_${i}_ctrl_province`).innerHTM = null;
+            $(`#data_${i}_ctrl_province`).innerHTML = '';
             const value = e.target.value;
             if (value.length === 5) {
                 const location_data = zipcode_data[value];
                 if (location_data !== undefined) {
-                    console.log(location_data);
                     let items = ['<option value="">' + $(`#data_1_ctrl_province`).getAttribute('data-please-select') + '</option>'];
 
                     location_data.map(v => {
