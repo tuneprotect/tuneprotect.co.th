@@ -93,13 +93,15 @@ const profileConstraints = {
         presence: {
             allowEmpty: false,
             message: "^" + $('#data_1_fdName').getAttribute('data-error-name')
-        }
+        },
+        format: formatInputFieldOnlyCharecter()
     },
     fdSurname: {
         presence: {
             allowEmpty: false,
             message: "^" + $('#data_1_fdSurname').getAttribute('data-error-last_name')
-        }
+        },
+        format: formatInputFieldOnlyCharecter()
     },
     fdHBD: {
         presence: {
