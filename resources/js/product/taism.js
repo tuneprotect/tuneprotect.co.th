@@ -355,8 +355,8 @@ document.addEventListener("DOMContentLoaded", async () => {
             const value = e.target.value;
             if (value.length === 5) {
                 const location_data = zipcode_data[value];
-                console.log(location_data);
                 if (location_data !== undefined) {
+                    console.log(location_data);
                     let items = ['<option value="">' + $(`#data_1_ctrl_province`).getAttribute('data-please-select') + '</option>'];
 
                     location_data.map(v => {
