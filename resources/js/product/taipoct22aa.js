@@ -5,7 +5,11 @@ import {
     getCountryData,
     getNationalityData,
     getPackageData,
-    showMultipleTitle, validatePolicy,validatePolicyPayment,formatInputFieldByLanguage
+    showMultipleTitle, 
+    validatePolicy,
+    validatePolicyPayment,
+    formatInputFieldByLanguage,
+    validateNationalID
 } from "../form/productHelper";
 import {$, $$, current_package, getRadioSelectedValue, getZipcodeData, locale, scrollToTargetAdjusted} from "../helper";
 
@@ -99,6 +103,11 @@ const profileConstraints = {
         presence: {
             allowEmpty: false,
             message: "^" + $('#data_1_fdNationalID').getAttribute('data-error-passport')
+        },
+        format: {
+            pattern: /^[A-Z0-9]*$/,
+            flags: "i",
+            message: "^" + $('#data_1_fdNationalID').getAttribute('data-error-nationalid-format')
         }
     },
     fdNationality: {
@@ -370,33 +379,25 @@ document.addEventListener("DOMContentLoaded", async () => {
     allField.forEach(field => {
         field.addEventListener("change", function (e) {
             validateField(this, profileConstraints);
+
+            let nationalIDList = [];
+            for (let i = 1; i <=  $('#ctrl_no_of_insured').value; i++) {
+                if (![`data_${i}_fdNationalID`].includes(field.id)) {
+                    nationalIDList.push($(`#data_${i}_fdNationalID`).value);
+                }
+            }
+
             for (let i = 1; i <=  $('#ctrl_no_of_insured').value; i++) {
                 if ([`data_${i}_fdName`, `data_${i}_fdSurname`, `data_${i}_fdNationalID`].includes(field.id)) {
                     validatePolicy(e.target, data.fdPackage,$('#fdFromDate')?.value);
                 }
-            }
 
+                if ([`data_${i}_fdNationalID`].includes(field.id)) {
+                    validateNationalID(e.target, nationalIDList);
+                }
+            }
         });
     });
-
-    // const chkAirAsiaMemberID = async () => {
-    //     var myHeaders = new Headers();
-    //     myHeaders.append("Authorization", "Bearer VFBUV0VCU0lURTpnU01vTENiTjZHUmdFSXo3");
-    //     myHeaders.append("Content-Type", "application/json");
-    //     myHeaders.append("X-CSRF-TOKEN", $('meta[name="csrf-token"]').getAttribute('content'));
-
-    //     var raw = JSON.stringify({
-    //       "memberId": $('#fdMemberID').value
-    //     });
-
-    //     let res = await fetch(`http://10.8.9.2:8002/api/WEBSITE/AirAsiaValidateMember`, {
-    //         method: 'POST',
-    //         headers: myHeaders,
-    //         body: raw,
-    //     });
-    //     chkMemberAA = await res.json();
-    //     $('#hdfmemberstatus').value = chkMemberAA.status;
-    // }
 
     const chkAirAsiaMemberID = async () => {        
         
