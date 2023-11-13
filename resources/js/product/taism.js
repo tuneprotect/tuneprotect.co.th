@@ -10,6 +10,7 @@ import {
     validatePolicyPayment,
     formatInputFieldByLanguage,
     formatInputFieldOnlyNumberic,
+    formatInputFieldOnlyCharecter,
     validateNationalID
 } from "../form/productHelper";
 import {$, $$, current_package, getRadioSelectedValue, getZipcodeData, locale, scrollToTargetAdjusted} from "../helper";
@@ -93,14 +94,14 @@ const profileConstraints = {
             allowEmpty: false,
             message: "^" + $('#data_1_fdName').getAttribute('data-error-name')
         },
-        format: formatInputFieldByLanguage()
+        format: formatInputFieldOnlyCharecter()
     },
     fdSurname: {
         presence: {
             allowEmpty: false,
             message: "^" + $('#data_1_fdSurname').getAttribute('data-error-last_name')
         },
-        format: formatInputFieldByLanguage()
+        format: formatInputFieldOnlyCharecter()
     },
     fdHBD: {
         presence: {
