@@ -91,13 +91,15 @@ const profileConstraints = {
         presence: {
             allowEmpty: false,
             message: "^" + $('#data_1_fdName').getAttribute('data-error-name')
-        }
+        },
+        format: formatInputFieldByLanguage()
     },
     fdSurname: {
         presence: {
             allowEmpty: false,
             message: "^" + $('#data_1_fdSurname').getAttribute('data-error-last_name')
-        }
+        },
+        format: formatInputFieldByLanguage()
     },
     fdHBD: {
         presence: {
@@ -154,11 +156,7 @@ const profileConstraints = {
             allowEmpty: false,
             message: "^" + $('#data_1_fdAddr_District').getAttribute('data-error-district')
         },
-        format: {
-            pattern: /^[a-zA-Z0-9 !@#$&()\\`.+\-,/\"]*$/,
-            flags: "i",
-            message: "^" + $('[data-error-eng-only]').getAttribute('data-error-eng-only')
-        }
+        format: formatInputFieldByLanguage()
     },
     ctrl_province: {
         presence: {
@@ -180,11 +178,7 @@ const profileConstraints = {
                 allowEmpty: false,
                 message: "^" + $('#data_1_fdBenefit_name').getAttribute('data-error-beneficiary')
             },
-            format: {
-                pattern: /^[a-zA-Z0-9 !@#$&()\\-`.+,/\"]*$/,
-                flags: "i",
-                message: "^" + $('[data-error-eng-only]').getAttribute('data-error-eng-only')
-            }
+            format: formatInputFieldByLanguage()
         };
     },
     fdRelation: function (value, attributes, attributeName, options, constraints) {
