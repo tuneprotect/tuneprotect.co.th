@@ -851,5 +851,17 @@ export const formatInputFieldOnlyEnglish = () => {
     };
 }
 
+export const formatInputFieldOnlyNumberic = () => {
+    let message = "^กรุณากรอกภาษาตัวเลขเท่านั้น";
+    if (locale === 'en') {
+        message= "^Only Numberic is allowed";
+    }
+    return {
+        pattern: /^[0-9]*$/,
+        flags: "i",
+        message: message
+    };
+}
+
 
 
