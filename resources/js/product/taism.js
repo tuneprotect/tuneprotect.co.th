@@ -537,6 +537,9 @@ document.addEventListener("DOMContentLoaded", async () => {
                             if (nationalIDArray.length) {
                                 console.log(nationalIDArray);
                                 console.log(nationalIDArray.includes($(`#data_${i}_fdNationalID`).value));
+                                if (nationalIDArray.includes($(`#data_${i}_fdNationalID`).value)) {
+                                    showFieldError($(`#data_${i}_fdNationalID`), [$(`#data_${i}_fdNationalID`).getAttribute('data-error-nationalid-invalid')]);
+                                }
                             }
 
                             const currentProfile = {
