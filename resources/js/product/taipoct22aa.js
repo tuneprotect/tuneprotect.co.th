@@ -555,6 +555,13 @@ document.addEventListener("DOMContentLoaded", async () => {
                                 return false;
                             }
 
+                            var nationalIDArray = profileData.map(e => e.fdNationalID);
+                            if (nationalIDArray.length) {
+                                if (nationalIDArray.includes($(`#data_${i}_fdNationalID`).value)) {
+                                    showFieldError($(`#data_${i}_fdNationalID`), [$(`#data_${i}_fdNationalID`).getAttribute('data-error-nationalid-invalid')]);
+                                }
+                            }
+
                             const currentProfile = {
                                 fdSex: getRadioSelectedValue(`data_${i}_fdSex`),
                                 fdTitle: getRadioSelectedValue(`data_${i}_fdTitle`),
