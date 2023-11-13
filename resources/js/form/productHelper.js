@@ -867,13 +867,13 @@ export const formatInputFieldOnlyCharecter = () => {
 
     if (locale === 'en') {
         return {
-            pattern: /^[a-zA-Z \-]*$/,
+            pattern: /^[a-zA-Z \-\']*$/,
             flags: "i",
             message: "^Only English is allowed"
         };
     } else {
         return {
-            pattern: /^[ก-๙0-9 \-]*$/,
+            pattern: /^[ก-๙0-9 \-\']*$/,
             flags: "i",
             message: "^กรุณากรอกภาษาไทยเท่านั้น"
         };
