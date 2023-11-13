@@ -107,7 +107,8 @@ const profileConstraints = {
         presence: {
             allowEmpty: false,
             message: "^" + $('#data_1_ctrl_day').getAttribute('data-error-format')
-        }
+        },
+        format: formatInputFieldOnlyNumberic()
     },
     fdNationalID: {
         presence: {
