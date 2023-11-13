@@ -827,13 +827,13 @@ export const formatInputFieldByLanguage = () => {
         return {
             pattern: /^[a-zA-Z0-9 \-_!@#$&()\\-`.+,/\"\n\r]*$/,
             flags: "i",
-            message: "^Only English Allowed"
+            message: "^Only English is allowed"
         };
     } else {
         return {
             pattern: /^[ก-๙0-9 \-_!@#$&()\\-`.+,/\"\n\r]*$/,
             flags: "i",
-            message: "^กรุณาใส่ภาษาไทยเท่านั้น"
+            message: "^กรุณากรอกภาษาไทยเท่านั้น"
         };
     }
 
@@ -842,7 +842,7 @@ export const formatInputFieldByLanguage = () => {
 export const formatInputFieldOnlyEnglish = () => {
     let message = "^กรุณากรอกภาษาอังกฤษเท่านั้น";
     if (locale === 'en') {
-        message= "^Only English Allowed";
+        message= "^Only English is allowed";
     }
     return {
         pattern: /^[a-zA-Z0-9 \-_!@#$&()\\-`.+,/\"\n\r]*$/,
