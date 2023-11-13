@@ -362,6 +362,11 @@ document.addEventListener("DOMContentLoaded", async () => {
                     });
                     $(`#data_${i}_ctrl_province`).innerHTML = items.join('');
                 }
+                else
+                {
+                    let items = ['<option value="">' + $(`#data_1_ctrl_province`).getAttribute('data-please-select') + '</option>'];
+                    $(`#data_${i}_ctrl_province`).innerHTM = items.join('');
+                }
             }
         });
 
