@@ -533,8 +533,11 @@ document.addEventListener("DOMContentLoaded", async () => {
                             }
 
                             var nationalIDArray = profileData.map(e => e.fdNationalID);
-                            console.log(nationalIDArray);
-                            console.log(nationalIDArray.includes(currentProfile.fdNationalID));
+
+                            if (nationalIDArray.length) {
+                                console.log(nationalIDArray);
+                                console.log(nationalIDArray.includes($(`#data_${i}_fdNationalID`).value));
+                            }
 
                             const currentProfile = {
                                 fdSex: getRadioSelectedValue(`data_${i}_fdSex`),
@@ -560,7 +563,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
                             profileData.push(currentProfile);
                             result = validate(currentProfile, profileConstraints);
-
+                            
                             if (result) {
                                 Object.keys(result).map(k => {
                                     let $elm = $(`[name=data_${i}_${k}]`);
