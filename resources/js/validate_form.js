@@ -4,7 +4,7 @@ import {$, $$, scrollToTargetAdjusted} from "./helper";
 export const showFieldError = ($this, errors) => {
 
     const $parent = $this.closest('.controls-wrapper');
-    const $node = $this.closest('.date-wrapper');
+    const $node = $this.closest('.date-input');
     errors.map((v, i) => {
         if (i === 0) {
             $parent.classList.add('error');
