@@ -431,7 +431,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                     validatePolicy(e.target, data.fdPackage,$('#fdFromDate')?.value);
                 }
                 if ([`data_${i}_ctrl_day`, `data_${i}_ctrl_month`, `data_${i}_ctrl_year`].includes(field.id)) {
-                    removeError($('.date-input'));
+                    removeError($(`#form_profile_${i} .controls-wrapper .date-input cite`));
                     let dateResult = checkTaBirthDateIPass(i);
                     const currentProfile = {
                         fdHBD: dateResult?.data?.fdHBD || "",

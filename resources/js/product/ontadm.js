@@ -95,13 +95,15 @@ const profileConstraints = {
         presence: {
             allowEmpty: false,
             message: "^" + $('#data_1_fdName').getAttribute('data-error-name')
-        }
+        },
+        format: formatInputFieldOnlyCharecter()
     },
     fdSurname: {
         presence: {
             allowEmpty: false,
             message: "^" + $('#data_1_fdSurname').getAttribute('data-error-last_name')
-        }
+        },
+        format: formatInputFieldOnlyCharecter()
     },
     fdHBD: {
         presence: {
@@ -383,6 +385,23 @@ document.addEventListener("DOMContentLoaded", async () => {
             for (let i = 1; i <=  $('#ctrl_no_of_insured').value; i++) {
                 if ([`data_${i}_fdName`, `data_${i}_fdSurname`, `data_${i}_fdNationalID`].includes(field.id)) {
                     validatePolicy(e.target, $dataSubPackage,$('#fdFromDate')?.value);
+                }
+                if ([`data_${i}_ctrl_day`, `data_${i}_ctrl_month`, `data_${i}_ctrl_year`].includes(field.id)) {
+                    removeError($(`#form_profile_${i} .controls-wrapper .date-input cite`));
+                    let dateResult = checkTaBirthDateIPass(i);
+                    const currentProfile = {
+                        fdHBD: dateResult?.data?.fdHBD || "",
+                    };
+                    result = validate(currentProfile, profileConstraints);
+                    if (result) {
+                        Object.keys(result).map(k => {
+                            let $elm = $(`[name=data_${i}_${k}]`);
+
+                            if ($elm) {
+                                showFieldError($elm, result[k])
+                            }
+                        });
+                    }
                 }
             }
         });
