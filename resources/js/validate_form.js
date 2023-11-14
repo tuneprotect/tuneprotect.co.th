@@ -6,9 +6,9 @@ export const showFieldError = ($this, errors) => {
     let $field = $this.getAttribute('name');
     if ($field) {
         if ($field.startsWith('data_')) {
-            let $fieldName = $field.split("_")[2];
+            let $fieldName = $field.split("_")[3];
             console.log($fieldName);
-            if ($fieldName === 'ctrl_day' || $fieldName === 'ctrl_year')
+            if ($fieldName === 'day' || $fieldName === 'year')
                 $parent = $this.closest('.date-wrapper');
             else 
                 $parent = $this.closest('.controls-wrapper');
