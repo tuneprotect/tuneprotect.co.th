@@ -110,10 +110,18 @@ const profileConstraints = {
         }
     },
     ctrl_day: {
-        format: formatInputFieldOnlyNumberic()
+        format: {
+            pattern: /^[0-9]*$/,
+            flags: "i",
+            message: "^" + $('#data_1_ctrl_day').getAttribute('data-error-format')
+        }
     },
     ctrl_year: {
-        format: formatInputFieldOnlyNumberic()
+        format: {
+            pattern: /^[0-9]*$/,
+            flags: "i",
+            message: "^" + $('#data_1_ctrl_day').getAttribute('data-error-format')
+        }
     },
     fdNationalID: {
         presence: {
@@ -140,8 +148,7 @@ const profileConstraints = {
         email: {
             allowEmpty: false,
             message: "^" + $('#data_1_fdEmail').getAttribute('data-error-email-format')
-        },
-        format: formatInputFieldByLanguage()
+        }
     },
     fdTelephone: {
         presence: {
@@ -151,8 +158,7 @@ const profileConstraints = {
         format: {
             pattern: /^[0-9]{9,15}$/,
             message: "^" + $('#data_1_fdTelephone').getAttribute('data-error-tel-format')
-        },
-        format: formatInputFieldByLanguage()
+        }
     },
     fdAddr_Num: {
         presence: {
