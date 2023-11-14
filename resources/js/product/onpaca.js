@@ -269,25 +269,6 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
     });
 
-
-    if ([`data_${i}_ctrl_day`, `data_${i}_ctrl_month`, `data_${i}_ctrl_year`].includes(field.id)) {
-        removeError($(`#form_profile_${i} .controls-wrapper .date-input`));
-        let dateResult = checkTaBirthDateIPass(i);
-        const currentProfile = {
-            fdHBD: dateResult?.data?.fdHBD || "",
-        };
-        result = validate(currentProfile, profileConstraints);
-        if (result) {
-            Object.keys(result).map(k => {
-                let $elm = $(`[name=data_${i}_${k}]`);
-
-                if ($elm) {
-                    showFieldError($elm, result[k])
-                }
-            });
-        }
-    }
-
     const $form1 = $('#step1');
     const allField1 = $form1.querySelectorAll('input');
     allField1.forEach(field => {
@@ -309,6 +290,22 @@ document.addEventListener("DOMContentLoaded", async () => {
                 validatePolicy(e.target, data.fdPackage);
             }
         });
+    });
+
+    $(`input[name=fdAddr_PostCode]`).addEventListener("change", function (e) {
+        $(`#ctrl_province`).innerHTML = '';
+        const value = e.target.value;
+        if (value.length === 5) {
+            const location_data = zipcode_data[value];
+            if (location_data !== undefined) {
+                let items = ['<option value="">' + $(`#ctrl_province`).getAttribute('data-please-select') + '</option>'];
+
+                location_data.map(v => {
+                    items.push(`<option value="${v.district.code}">${v.district.locales[locale]}, ${v.province.locales[locale]}</option>`);
+                });
+                $(`#ctrl_province`).innerHTML = items.join('');
+            }
+        }
     });
 
     const genItemList = () => {

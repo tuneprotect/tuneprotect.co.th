@@ -526,6 +526,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         });
 
         $(`input[name=data_${i}_fdAddr_PostCode]`).addEventListener("change", function (e) {
+            $(`#data_${i}_ctrl_province`).innerHTML = '';
             const value = e.target.value;
             if (value.length === 5) {
                 const location_data = zipcode_data[value];
