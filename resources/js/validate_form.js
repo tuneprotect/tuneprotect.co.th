@@ -2,7 +2,7 @@ import validate from "validate.js";
 import {$, $$, scrollToTargetAdjusted} from "./helper";
 
 export const showFieldError = ($this, errors) => {
-    const param = field.startsWith('data_')
+    const param = $this.startsWith('data_')
     const fieldName = param.split("_")[2];
     const $parent = null;
     if (fieldName === 'ctrl_day' || fieldName === 'ctrl_year')
