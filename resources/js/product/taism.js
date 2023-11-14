@@ -109,12 +109,6 @@ const profileConstraints = {
             message: "^" + $('#data_1_ctrl_day').getAttribute('data-error-format')
         }
     },
-    ctrl_day: {
-        format: formatInputFieldOnlyNumberic()
-    },
-    ctrl_year: {
-        format: formatInputFieldOnlyNumberic()
-    },
     fdNationalID: {
         presence: {
             allowEmpty: false,
