@@ -3,11 +3,10 @@ import {$, $$, scrollToTargetAdjusted} from "./helper";
 
 export const showFieldError = ($this, errors) => {    
     const $parent = null;
-    let field = $this.getAttribute('name');
-    if (field) {
-        if (field.startsWith('data_')) {
-            const $param = field.startsWith('data_')
-            const $fieldName = $param.split("_")[2];
+    let $field = $this.getAttribute('name');
+    if ($field) {
+        if ($field.startsWith('data_')) {
+            const $fieldName = $field.split("_")[2];
 
             if ($fieldName === 'ctrl_day' || $fieldName === 'ctrl_year')
                 $parent = $this.closest('.date-wrapper');
