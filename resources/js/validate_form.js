@@ -7,7 +7,7 @@ export const showFieldError = ($this, errors) => {
     if ($field) {
         if ($field.startsWith('data_')) {
             let $fieldName = $field.split("_")[2];
-
+            console.log($fieldName);
             if ($fieldName === 'ctrl_day' || $fieldName === 'ctrl_year')
                 $parent = $this.closest('.date-wrapper');
             else 
