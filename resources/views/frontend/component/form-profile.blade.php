@@ -89,7 +89,7 @@
             <div class="date-input">
                 <div class="date-wrapper">
                     <div class="controls-wrapper">
-                        <input id="{{$prefix}}ctrl_day" type="tel" placeholder="@lang('product.day')"
+                        <input id="{{$prefix}}ctrl_day" name="{{$prefix}}ctrl_day" type="tel" placeholder="@lang('product.day')"
                                data-birthdate="@lang('product.birthdate')"
                                data-years-old="@lang('product.years_old')"
                                data-error-format="@lang('product.error.birthdate.format')"
@@ -116,7 +116,7 @@
                         <label for="{{$prefix}}ctrl_month">@lang('product.month')</label>
                     </div>
                     <div class="controls-wrapper">
-                        <input id="{{$prefix}}ctrl_year" type="tel" placeholder="@lang('product.year')"/>
+                        <input id="{{$prefix}}ctrl_year" name="{{$prefix}}ctrl_year" type="tel" placeholder="@lang('product.year')"/>
                         <label for="{{$prefix}}ctrl_year">@lang('product.year')</label>
                     </div>
                 </div>
