@@ -68,6 +68,7 @@
                placeholder="{{$id_card_field_title}}"
                data-type="{{$id_card_field}}"
                data-error-idcard="@lang("product.error.id_card")"
+               data-error-idcard-invalid="@lang("product.error.id_cards.invalid")"
                data-error-passport="@lang("product.error.passport.require")"
                data-error-nationalid-format="@lang("product.error.passport.format")"
                data-error-nationalid-invalid="@lang("product.error.passport.invalid")"

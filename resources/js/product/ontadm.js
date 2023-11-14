@@ -535,7 +535,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                                 if (nationalIDArray.includes($(`#data_${i}_fdNationalID`).value)) {
                                     let msgNationalID = $(`#data_${i}_fdNationalID`).getAttribute('data-error-nationalid-invalid')
                                     if ($(`#data_${i}_ctrl_document_type`).value === 'บัตรประจำตัวประชาชน') 
-                                        msgNationalID = $(`#data_${i}_fdNationalID`).getAttribute('data-error-idcard')
+                                        msgNationalID = $(`#data_${i}_fdNationalID`).getAttribute('data-error-idcard-invalid')
                                     
                                     showFieldError($(`#data_${i}_fdNationalID`), [msgNationalID]);
                                 }
