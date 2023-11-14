@@ -398,14 +398,12 @@ document.addEventListener("DOMContentLoaded", async () => {
                     validatePolicy(e.target, data.fdPackage,$('#fdFromDate')?.value);
                 }
                 if ([`data_${i}_ctrl_day`, `data_${i}_ctrl_month`, `data_${i}_ctrl_year`].includes(field.id)) {
+                    removeError($('.date-input'));
                     let dateResult = checkTaBirthDateIPass(i);
-
                     const currentProfile = {
                         fdHBD: dateResult?.data?.fdHBD || "",
                     };
-
                     result = validate(currentProfile, profileConstraints);
-
                     if (result) {
                         Object.keys(result).map(k => {
                             let $elm = $(`[name=data_${i}_${k}]`);
