@@ -4,12 +4,13 @@ import {$, $$, scrollToTargetAdjusted} from "./helper";
 export const showFieldError = ($this, errors) => {
 
     const $parent = $this.closest('.controls-wrapper');
+    const $node = $this.closest('.date-wrapper');
     errors.map((v, i) => {
         if (i === 0) {
             $parent.classList.add('error');
             if(!!$parent.querySelector('cite')){
                 $parent.querySelector('cite').remove();
-                $parent.previousElementSibling.querySelector('cite').remove();
+                $node.querySelector('cite').remove();
             }
             const $cite = document.createElement('cite');
             $cite.innerHTML = v;
