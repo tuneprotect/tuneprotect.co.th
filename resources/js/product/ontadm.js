@@ -533,7 +533,11 @@ document.addEventListener("DOMContentLoaded", async () => {
                             var nationalIDArray = profileData.map(e => e.fdNationalID);
                             if (nationalIDArray.length) {
                                 if (nationalIDArray.includes($(`#data_${i}_fdNationalID`).value)) {
-                                    showFieldError($(`#data_${i}_fdNationalID`), [$(`#data_${i}_fdNationalID`).getAttribute('data-error-nationalid-invalid')]);
+                                    let msgNationalID = $(`#data_${i}_fdNationalID`).getAttribute('data-error-nationalid-invalid')
+                                    if ($(`#data_${i}_ctrl_document_type`).value === 'บัตรประจำตัวประชาชน') 
+                                        msgNationalID = $(`#data_${i}_fdNationalID`).getAttribute('data-error-idcard')
+                                    
+                                    showFieldError($(`#data_${i}_fdNationalID`), [msgNationalID]);
                                 }
                             }
 
