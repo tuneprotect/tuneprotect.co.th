@@ -110,26 +110,10 @@ const profileConstraints = {
         }
     },
     ctrl_day: {
-        presence: {
-            allowEmpty: false,
-            message: "^" + $('#data_1_ctrl_day').getAttribute('data-error-format')
-        },
-        format: {
-            pattern: /^[0-9]*$/,
-            flags: "i",
-            message: "^" + $('#data_1_ctrl_day').getAttribute('data-error-format')
-        }
+        format: formatInputFieldOnlyNumberic()
     },
     ctrl_year: {
-        presence: {
-            allowEmpty: false,
-            message: "^" + $('#data_1_ctrl_day').getAttribute('data-error-format')
-        },
-        format: {
-            pattern: /^[0-9]*$/,
-            flags: "i",
-            message: "^" + $('#data_1_ctrl_day').getAttribute('data-error-format')
-        }
+        format: formatInputFieldOnlyNumberic()
     },
     fdNationalID: {
         presence: {
