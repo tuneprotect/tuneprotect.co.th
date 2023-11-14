@@ -119,7 +119,7 @@
                         <input id="{{$prefix}}ctrl_year" name="{{$prefix}}ctrl_year" type="tel" placeholder="@lang('product.year')"/>
                         <label for="{{$prefix}}ctrl_year">@lang('product.year')</label>
                     </div>
-                </daiv>
+                </div>
                 <cite></cite>
             </div>
         </div>

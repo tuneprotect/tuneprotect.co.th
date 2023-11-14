@@ -2,10 +2,11 @@ import validate from "validate.js";
 import {$, $$, scrollToTargetAdjusted} from "./helper";
 
 export const showFieldError = ($this, errors) => {
-    const param = $this.startsWith('data_')
-    const fieldName = param.split("_")[2];
+    let field = $this.getAttribute('name');
+    const $param = field.startsWith('data_')
+    const $fieldName = $param.split("_")[2];
     const $parent = null;
-    if (fieldName === 'ctrl_day' || fieldName === 'ctrl_year')
+    if ($fieldName === 'ctrl_day' || $fieldName === 'ctrl_year')
         $parent = $this.closest('.date-wrapper');
     else 
         $parent = $this.closest('.controls-wrapper');
