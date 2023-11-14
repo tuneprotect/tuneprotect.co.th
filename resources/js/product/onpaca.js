@@ -289,7 +289,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
 
     const $form1 = $('#step1');
-    const allField1 = $form.querySelectorAll('input');
+    const allField1 = $form1.querySelectorAll('input');
     allField1.forEach(field => {
         field.addEventListener("change", function (e) {
             validateField(this, constraints);
@@ -300,9 +300,9 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
 
 
-    const $form = $('#step3');
-    const allField = $form.querySelectorAll('input,select,textarea');
-    allField.forEach(field => {
+    const $form3 = $('#step3');
+    const allField3 = $form3.querySelectorAll('input,select,textarea');
+    allField3.forEach(field => {
         field.addEventListener("change", function (e) {
             validateField(this, constraints);
             if (['fdName', 'fdSurname', 'fdNationalID'].includes(field.id)) {
