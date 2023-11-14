@@ -1,13 +1,15 @@
 import validate from "validate.js";
 import {$, $$, scrollToTargetAdjusted} from "./helper";
 
-export const showFieldError = ($this, errors) => {    
-    let $parent = $this.closest('.controls-wrapper');
+export const showFieldError = ($this, errors) => {
+
+    const $parent = $this.closest('.controls-wrapper');
     errors.map((v, i) => {
         if (i === 0) {
             $parent.classList.add('error');
             if(!!$parent.querySelector('cite')){
                 $parent.querySelector('cite').remove();
+                $parent.previousElementSibling.querySelector('cite').remove();
             }
             const $cite = document.createElement('cite');
             $cite.innerHTML = v;
