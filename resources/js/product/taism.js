@@ -107,7 +107,12 @@ const profileConstraints = {
         presence: {
             allowEmpty: false,
             message: "^" + $('#data_1_ctrl_day').getAttribute('data-error-format')
-        },
+        }
+    },
+    ctrl_day: {
+        format: formatInputFieldOnlyNumberic()
+    },
+    ctrl_year: {
         format: formatInputFieldOnlyNumberic()
     },
     fdNationalID: {
@@ -136,6 +141,7 @@ const profileConstraints = {
             allowEmpty: false,
             message: "^" + $('#data_1_fdEmail').getAttribute('data-error-email-format')
         },
+        format: formatInputFieldByLanguage()
     },
     fdTelephone: {
         presence: {
@@ -145,7 +151,8 @@ const profileConstraints = {
         format: {
             pattern: /^[0-9]{9,15}$/,
             message: "^" + $('#data_1_fdTelephone').getAttribute('data-error-tel-format')
-        }
+        },
+        format: formatInputFieldByLanguage()
     },
     fdAddr_Num: {
         presence: {
