@@ -395,7 +395,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                 }
                 if ([`data_${i}_ctrl_day`, `data_${i}_ctrl_month`, `data_${i}_ctrl_year`].includes(field.id)) {
                     removeError($(`#form_profile_${i} .controls-wrapper .date-input`));
-                    let dateResult = checkTaBirthDateIPass(i);
+                    let dateResult = checkTaBirthDate(i);
                     const currentProfile = {
                         fdHBD: dateResult?.data?.fdHBD || "",
                     };

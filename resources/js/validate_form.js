@@ -142,8 +142,3 @@ export const showAcceptError = (message) => {
     $('cite.step1_error').innerHTML = message;
     scrollToTargetAdjusted($('.controls-wrapper.error'));
 }
-
-// export const showValidateNationalIDError = (selector) => {
-//     $(selector).prev().classList.add('error');
-//     scrollToTargetAdjusted($('.controls-wrapper.error'));
-// }
