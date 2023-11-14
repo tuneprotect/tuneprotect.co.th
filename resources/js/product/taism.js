@@ -409,7 +409,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                             let $elm = $(`[name=data_${i}_${k}]`);
 
                             if ($elm) {
-                                //showFieldError($elm, result[k])
+                                showFieldError($elm, result[k])
                             }
                         });
                     }

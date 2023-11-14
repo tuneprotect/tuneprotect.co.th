@@ -56,16 +56,13 @@ export const removeErrorMessage = ($this) => {
 
 
 export const removeError = ($form) => {
-    $form.forEach(el => {
-        el.classList.add('error');
-        const $cite = el.getElementsByTagName('cite');
-        for (let i = 0, len = $cite.length; i !== len; ++i) {
-            $cite[0].parentNode.removeChild($cite[0]);
-        }
+    const $cite = $form.getElementsByTagName('cite');
+    for (let i = 0, len = $cite.length; i !== len; ++i) {
+        $cite[0].parentNode.removeChild($cite[0]);
+    }
 
-        el.querySelectorAll('.controls-wrapper').forEach(($es) => {
-            $es.classList.remove('error')
-        });
+    $form.querySelectorAll('.controls-wrapper').forEach(($el) => {
+        $el.classList.remove('error')
     });
 }
 
