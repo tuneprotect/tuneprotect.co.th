@@ -11,7 +11,6 @@ import {
     formatInputFieldByLanguage,
     formatInputFieldOnlyNumberic,
     formatInputFieldOnlyCharecter,
-    validateNationalID
 } from "../form/productHelper";
 import {$, $$, current_package, getRadioSelectedValue, getZipcodeData, locale, scrollToTargetAdjusted} from "../helper";
 
@@ -431,6 +430,23 @@ document.addEventListener("DOMContentLoaded", async () => {
                 if ([`data_${i}_fdName`, `data_${i}_fdSurname`, `data_${i}_fdNationalID`].includes(field.id)) {
                     validatePolicy(e.target, data.fdPackage,$('#fdFromDate')?.value);
                 }
+                if ([`data_${i}_ctrl_day`, `data_${i}_ctrl_month`, `data_${i}_ctrl_year`].includes(field.id)) {
+                    removeError($('.date-input'));
+                    let dateResult = checkTaBirthDateIPass(i);
+                    const currentProfile = {
+                        fdHBD: dateResult?.data?.fdHBD || "",
+                    };
+                    result = validate(currentProfile, profileConstraints);
+                    if (result) {
+                        Object.keys(result).map(k => {
+                            let $elm = $(`[name=data_${i}_${k}]`);
+
+                            if ($elm) {
+                                showFieldError($elm, result[k])
+                            }
+                        });
+                    }
+                }
             }
         });
     });
@@ -450,12 +466,6 @@ document.addEventListener("DOMContentLoaded", async () => {
             } else {
                 switch (parseInt(step)) {
                     case 1:
-                        // const chkAccept = validateAcceptStep1();
-                        // if(!chkAccept){
-                        //     showAcceptError($('#ctrl_accept_step1').getAttribute('data-error-accept-step1'));
-                        //     status = false;
-                        //     break;
-                        // }
                         status = true;
                         data = {
                             ...data,
@@ -471,15 +481,6 @@ document.addEventListener("DOMContentLoaded", async () => {
                             showError($('#step1'), result);
                             status = false;
                         } else {
-                            // let fromDate = ($('#fdFromDate').value).split('/');
-                            // const duration = package_data[Object.keys(package_data)[0]].price[$("#ctrl_sub_package").value].duration;
-                            // let fdFromDate = `${fromDate[2]}-${fromDate[1]}-${fromDate[0]}`;
-                            // let fdToDate = '';
-                            // if (duration.indexOf('d') !== -1) {
-                            //     fdToDate = format(subDays(addDays(parseISO(fdFromDate), duration.replace('d', '')), 1), 'yyyy-MM-dd');
-                            // } else if (duration.indexOf('y') !== -1) {
-                            //     fdToDate = format(subDays(addYears(parseISO(fdFromDate), duration.replace('y', '')), 1), 'yyyy-MM-dd');
-                            // }
 
                             let fromDate = ($('#fdFromDate').value).split('/');
                             let toDate = ($('#fdToDate').value).split('/');
