@@ -34,6 +34,18 @@ validate.validators.idcard = function (value, options, key, attributes) {
     }
 };
 
+validate.validators.presence = function (value, options, key, attributes) {
+    if (value) {
+        for (var i = 0, sum = 0; i < 12; i++) {
+            sum += parseFloat(value.charAt(i)) * (13 - i);
+        }
+        const result = ((11 - sum % 11) % 10 === parseFloat(value.charAt(12)));
+        if (!result) {
+            return "^" + $('#data_1_fdNationalID').getAttribute('data-error-idcard')
+        }
+    }
+};
+
 const step1Constraints = {
     fdFromDate: {
         presence: {
@@ -117,38 +129,55 @@ const profileConstraints = {
         format: formatInputFieldOnlyNumberic()
     },
     fdNationalID: function (value, attributes, attributeName, options, constraints) {
-        console.log(attributes);
-        if (attributes.ctrl_document_type === 'บัตรประจำตัวประชาชน') {
-            return {
-                presence: {
-                    allowEmpty: false,
-                    message: "^" + $('#data_1_fdNationalID').getAttribute('data-error-idcard')
-                },
-                length: {
-                    is: 13,
-                    message: "^" + $('#data_1_fdNationalID').getAttribute('data-error-idcard')
-                },
-                format: {
-                    pattern: /^[0-9]{13}$/,
-                    message: "^" + $('#data_1_fdNationalID').getAttribute('data-error-idcard')
-                },
-                idcard: {
-                    message: "^" + $('#data_1_fdNationalID').getAttribute('data-error-idcard')
-                }
-            }
-        } else {
-            return {
-                presence: {
-                    allowEmpty: false,
-                    message: "^" + $('#data_1_fdNationalID').getAttribute('data-error-passport')
-                },
-                format: {
-                    pattern: /^[A-Z0-9]*$/,
-                    flags: "i",
-                    message: "^" + $('#data_1_fdNationalID').getAttribute('data-error-nationalid-format')
-                }
+        console.log(attributeName);
+        return {
+            presence: {
+                allowEmpty: false,
+                message: "^" + $('#data_1_fdNationalID').getAttribute('data-error-idcard')
+            },
+            length: {
+                is: 13,
+                message: "^" + $('#data_1_fdNationalID').getAttribute('data-error-idcard')
+            },
+            format: {
+                pattern: /^[0-9]{13}$/,
+                message: "^" + $('#data_1_fdNationalID').getAttribute('data-error-idcard')
+            },
+            idcard: {
+                message: "^" + $('#data_1_fdNationalID').getAttribute('data-error-idcard')
             }
         }
+        // if (attributes.ctrl_document_type === 'บัตรประจำตัวประชาชน') {
+        //     return {
+        //         presence: {
+        //             allowEmpty: false,
+        //             message: "^" + $('#data_1_fdNationalID').getAttribute('data-error-idcard')
+        //         },
+        //         length: {
+        //             is: 13,
+        //             message: "^" + $('#data_1_fdNationalID').getAttribute('data-error-idcard')
+        //         },
+        //         format: {
+        //             pattern: /^[0-9]{13}$/,
+        //             message: "^" + $('#data_1_fdNationalID').getAttribute('data-error-idcard')
+        //         },
+        //         idcard: {
+        //             message: "^" + $('#data_1_fdNationalID').getAttribute('data-error-idcard')
+        //         }
+        //     }
+        // } else {
+        //     return {
+        //         presence: {
+        //             allowEmpty: false,
+        //             message: "^" + $('#data_1_fdNationalID').getAttribute('data-error-passport')
+        //         },
+        //         format: {
+        //             pattern: /^[A-Z0-9]*$/,
+        //             flags: "i",
+        //             message: "^" + $('#data_1_fdNationalID').getAttribute('data-error-nationalid-format')
+        //         }
+        //     }
+        // }
     },
     fdEmail: {
         presence: {
