@@ -23,7 +23,7 @@ require('../main');
 require('../product');
 
 validate.validators.idcard = function (value, options, key, attributes) {
-    if (value.length) {
+    if (value) {
         for (var i = 0, sum = 0; i < 12; i++) {
             sum += parseFloat(value.charAt(i)) * (13 - i);
         }
