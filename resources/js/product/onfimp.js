@@ -168,6 +168,24 @@ const constraints = {
         },
         format: formatInputFieldByLanguage()
     },
+    fdAddr_Moo: {
+        format: formatInputFieldOnlyNumberic()
+    },
+    fdAddr_Village: {
+        format: formatInputFieldOnlyNumberic()
+    },
+    fdAddr_Building: {
+        format: formatInputFieldByLanguage()
+    },
+    fdAddr_Floor: {
+        format: formatInputFieldOnlyNumberic()
+    },
+    fdAddr_Alley: {
+        format: formatInputFieldByLanguage()
+    },
+    fdAddr_Street: {
+        format: formatInputFieldByLanguage()
+    },
     fdAddr_District: {
         presence: {
             allowEmpty: false,
@@ -193,6 +211,24 @@ const constraints = {
             allowEmpty: false,
             message: "^" + $('#loc_fdAddr_Home').getAttribute('data-error-address_home')
         },
+        format: formatInputFieldByLanguage()
+    },
+    loc_fdAddr_Moo: {
+        format: formatInputFieldOnlyNumberic()
+    },
+    loc_fdAddr_Village: {
+        format: formatInputFieldOnlyNumberic()
+    },
+    loc_fdAddr_Building: {
+        format: formatInputFieldByLanguage()
+    },
+    loc_fdAddr_Floor: {
+        format: formatInputFieldOnlyNumberic()
+    },
+    loc_fdAddr_Alley: {
+        format: formatInputFieldByLanguage()
+    },
+    loc_fdAddr_Street: {
         format: formatInputFieldByLanguage()
     },
     loc_fdAddr_District: {
@@ -352,8 +388,8 @@ document.addEventListener("DOMContentLoaded", async () => {
                 validatePolicy(e.target, data.fdPackage);
             }
 
-            if ([`data_${i}_ctrl_day`, `data_${i}_ctrl_month`, `data_${i}_ctrl_year`].includes(field.id)) {
-                removeError($(`#form_profile_${i} .controls-wrapper .date-input`));
+            if ([`ctrl_day`, `ctrl_month`, `ctrl_year`].includes(field.id)) {
+                removeError($(`#insurance-form .controls-wrapper .date-input`));
                 let dateResult = checkTaBirthDateIPass(i);
                 const currentProfile = {
                     fdHBD: dateResult?.data?.fdHBD || "",
