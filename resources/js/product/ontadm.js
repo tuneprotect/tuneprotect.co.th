@@ -428,7 +428,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                         else 
                         {
                             var reg = /^[A-Z0-9]*$/;
-                            if (!reg.test($(`#data_${i}_fdNationalID`).value)) {
+                            if (reg.test($(`#data_${i}_fdNationalID`).value)) {
                                 msgNationalID = $(`#data_${i}_fdNationalID`).getAttribute('data-error-nationalid-format');
                             }
                         }
