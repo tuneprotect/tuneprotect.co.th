@@ -389,21 +389,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             }
 
             if ([`ctrl_day`, `ctrl_month`, `ctrl_year`].includes(field.id)) {
-                removeError($(`.insurance-form .controls-wrapper .date-input`));
-                let dateResult = checkTaBirthDate();
-                const currentProfile = {
-                    fdHBD: dateResult?.data?.fdHBD || "",
-                };
-                result = validate(currentProfile, constraints);
-                if (result) {
-                    Object.keys(result).map(k => {
-                        let $elm = $(`[name=data_${i}_${k}]`);
-
-                        if ($elm) {
-                            showFieldError($elm, result[k])
-                        }
-                    });
-                }
+                checkTaBirthDate();
             }
 
         });
