@@ -418,6 +418,17 @@ document.addEventListener("DOMContentLoaded", async () => {
                                 return false;
                             }
 
+                            var nationalIDArray = profileData.map(e => e.fdNationalID);
+                            if (nationalIDArray.length) {
+                                if (nationalIDArray.includes($(`#fdNationalID`).value)) {
+                                    let msgNationalID = $(`#fdNationalID`).getAttribute('data-error-nationalid-invalid')
+                                    if ($(`#ctrl_document_type`).value === 'บัตรประจำตัวประชาชน') 
+                                        msgNationalID = $(`#fdNationalID`).getAttribute('data-error-idcard-invalid')
+                                    
+                                    showFieldError($(`#fdNationalID`), [msgNationalID]);
+                                }
+                            }
+
                             let address = ($('#ctrl_province').value).split('*');
                             data = {
                                 ...data,
