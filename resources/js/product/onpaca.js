@@ -80,8 +80,6 @@ const constraints = {
                     message: "^" + $('#fdNationalID').getAttribute('data-error-idcard')
                 }
             }
-
-
         } else {
             return {
                 presence: {
@@ -160,7 +158,8 @@ const constraints = {
             presence: {
                 allowEmpty: false,
                 message: "^" + $('#fdRelation').getAttribute('data-error-relation')
-            }
+            },
+            format: formatInputFieldByLanguage()
         };
     },
     fdRevenue: "",
