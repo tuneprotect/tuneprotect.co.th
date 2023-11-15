@@ -96,6 +96,11 @@ if ($('#title_wrapper')) {
                     presence: {
                         allowEmpty: false,
                         message: "^" + $('#fdNationalID').getAttribute('data-error-passport')
+                    },
+                    format: {
+                        pattern: /^[A-Z0-9]*$/,
+                        flags: "i",
+                        message: "^" + $('#fdNationalID').getAttribute('data-error-nationalid-format')
                     }
                 }
             }

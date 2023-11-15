@@ -25,7 +25,11 @@ import {
     getSelectedPrice,
     showTitle,
     validateAgeInPackage,
-    validatePolicy, validatePolicyPayment, validatePolicyStep5
+    validatePolicy, 
+    validatePolicyPayment, 
+    validatePolicyStep5,
+    formatInputFieldOnlyNumberic,
+    formatInputFieldOnlyCharecter,
 } from "../form/productHelper";
 
 import Swal from "sweetalert2";
@@ -58,14 +62,14 @@ const constraints = {
             allowEmpty: false,
             message: "^" + $('#fdName').getAttribute('data-error-name')
         },
-        format: formatInputFieldByLanguage()
+        format: formatInputFieldOnlyCharecter()
     },
     fdSurname: {
         presence: {
             allowEmpty: false,
             message: "^" + $('#fdSurname').getAttribute('data-error-last_name')
         },
-        format: formatInputFieldByLanguage()
+        format: formatInputFieldOnlyCharecter()
     },
     fdSex: {
         presence: {
@@ -98,6 +102,11 @@ const constraints = {
                 presence: {
                     allowEmpty: false,
                     message: "^" + $('#fdNationalID').getAttribute('data-error-passport')
+                },
+                format: {
+                    pattern: /^[A-Z0-9]*$/,
+                    flags: "i",
+                    message: "^" + $('#fdNationalID').getAttribute('data-error-nationalid-format')
                 }
             }
         }
@@ -147,7 +156,8 @@ const constraints = {
         presence: {
             allowEmpty: false,
             message: "^" + $('#fdAddr_PostCode').getAttribute('data-error-postal_code')
-        }
+        },
+        format: formatInputFieldOnlyNumberic()
     },
     fdQuestion1: {
         presence: {
@@ -433,6 +443,10 @@ document.addEventListener("DOMContentLoaded", async () => {
                 validatePolicyStep5(e.target, data.fdPackage);
             }
         });
+    });
+
+    $(`input[name=fdAddr_PostCode]`).addEventListener("change", function (e) {
+        $(`#ctrl_province`).innerHTML = '';
     });
 
     const hideShowConditionBox = (goToStep) => {
