@@ -284,15 +284,13 @@ document.addEventListener("DOMContentLoaded", async () => {
     const allField3 = $form3.querySelectorAll('input,select,textarea');
     allField3.forEach(field => {
         field.addEventListener("change", function (e) {
+            $(`#ctrl_province`).innerHTML = '';
+            
             validateField(this, constraints);
             if (['fdName', 'fdSurname', 'fdNationalID'].includes(field.id)) {
                 validatePolicy(e.target, data.fdPackage);
             }
         });
-    });
-
-    $(`input[name=fdAddr_PostCode]`).addEventListener("change", function (e) {
-        $(`#ctrl_province`).innerHTML = '';
     });
 
     const genItemList = () => {
