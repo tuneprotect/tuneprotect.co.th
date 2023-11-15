@@ -72,14 +72,14 @@ const constraints = {
             allowEmpty: false,
             message: "^" + $('#fdName').getAttribute('data-error-name')
         },
-        format: formatInputFieldByLanguage()
+        format: formatInputFieldOnlyCharecter()
     },
     fdSurname: {
         presence: {
             allowEmpty: false,
             message: "^" + $('#fdSurname').getAttribute('data-error-last_name')
         },
-        format: formatInputFieldByLanguage()
+        format: formatInputFieldOnlyCharecter()
     },
     fdSex: {
         presence: {
