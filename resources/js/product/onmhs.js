@@ -2,8 +2,13 @@ import {
     changeStep,
     formatTelNumber,
     getPackageData,
-    showTitleOnly, validatePolicy,
-    validatePolicyLoc, validatePolicyPayment
+    showTitleOnly, 
+    validatePolicy,
+    validatePolicyLoc, 
+    validatePolicyPayment,
+    formatInputFieldByLanguage,
+    formatInputFieldOnlyNumberic,
+    formatInputFieldOnlyCharecter,
 } from "../form/productHelper";
 import {
     $,
@@ -61,13 +66,15 @@ const constraints = {
         presence: {
             allowEmpty: false,
             message: "^" + $('#fdName').getAttribute('data-error-name')
-        }
+        },
+        format: formatInputFieldOnlyCharecter()
     },
     fdSurname: {
         presence: {
             allowEmpty: false,
             message: "^" + $('#fdSurname').getAttribute('data-error-last_name')
-        }
+        },
+        format: formatInputFieldOnlyCharecter()
     },
     fdNationalID: function (value, attributes, attributeName, options, constraints) {
         if (attributes.ctrl_document_type === 'บัตรประจำตัวประชาชน') {
@@ -93,6 +100,11 @@ const constraints = {
                 presence: {
                     allowEmpty: false,
                     message: "^" + $('#fdNationalID').getAttribute('data-error-passport')
+                },
+                format: {
+                    pattern: /^[A-Z0-9]*$/,
+                    flags: "i",
+                    message: "^" + $('#fdNationalID').getAttribute('data-error-nationalid-format')
                 }
             }
         }
@@ -124,7 +136,8 @@ const constraints = {
             presence: {
                 allowEmpty: false,
                 message: "^" + $('#fdBenefit_name').getAttribute('data-error-beneficiary')
-            }
+            },
+            format: formatInputFieldByLanguage()
         };
     },
     fdRelation: function (value, attributes, attributeName, options, constraints) {
@@ -152,13 +165,33 @@ const constraints = {
         presence: {
             allowEmpty: false,
             message: "^" + $('#fdAddr_Home').getAttribute('data-error-address_home')
-        }
+        },
+        format: formatInputFieldByLanguage()
+    },
+    fdAddr_Moo: {
+        format: formatInputFieldOnlyNumberic()
+    },
+    fdAddr_Village: {
+        format: formatInputFieldByLanguage()
+    },
+    fdAddr_Building: {
+        format: formatInputFieldByLanguage()
+    },
+    fdAddr_Floor: {
+        format: formatInputFieldOnlyNumberic()
+    },
+    fdAddr_Alley: {
+        format: formatInputFieldByLanguage()
+    },
+    fdAddr_Street: {
+        format: formatInputFieldByLanguage()
     },
     fdAddr_District: {
         presence: {
             allowEmpty: false,
             message: "^" + $('#fdAddr_District').getAttribute('data-error-district')
-        }
+        },
+        format: formatInputFieldByLanguage()
     },
     ctrl_province: {
         presence: {
@@ -170,19 +203,40 @@ const constraints = {
         presence: {
             allowEmpty: false,
             message: "^" + $('#fdAddr_PostCode').getAttribute('data-error-postal_code')
-        }
+        },
+        format: formatInputFieldOnlyNumberic()
     },
     loc_fdAddr_Home: {
         presence: {
             allowEmpty: false,
             message: "^" + $('#loc_fdAddr_Home').getAttribute('data-error-address_home')
-        }
+        },
+        format: formatInputFieldByLanguage()
+    },
+    loc_fdAddr_Moo: {
+        format: formatInputFieldOnlyNumberic()
+    },
+    loc_fdAddr_Village: {
+        format: formatInputFieldOnlyNumberic()
+    },
+    loc_fdAddr_Building: {
+        format: formatInputFieldByLanguage()
+    },
+    loc_fdAddr_Floor: {
+        format: formatInputFieldOnlyNumberic()
+    },
+    loc_fdAddr_Alley: {
+        format: formatInputFieldByLanguage()
+    },
+    loc_fdAddr_Street: {
+        format: formatInputFieldByLanguage()
     },
     loc_fdAddr_District: {
         presence: {
             allowEmpty: false,
             message: "^" + $('#loc_fdAddr_District').getAttribute('data-error-district')
-        }
+        },
+        format: formatInputFieldByLanguage()
     },
     loc_ctrl_province: {
         presence: {
@@ -194,7 +248,8 @@ const constraints = {
         presence: {
             allowEmpty: false,
             message: "^" + $('#loc_fdAddr_PostCode').getAttribute('data-error-postal_code')
-        }
+        },
+        format: formatInputFieldOnlyNumberic()
     }
 };
 
@@ -332,6 +387,11 @@ document.addEventListener("DOMContentLoaded", async () => {
 
             if (['fdName', 'fdSurname', 'fdNationalID'].includes(field.id)) {
                 validatePolicy(e.target, data.fdPackage);
+            }
+
+            if ([`ctrl_day`, `ctrl_month`, `ctrl_year`].includes(field.id)) {
+                removeError($(`.insurance-form .controls-wrapper .date-input`));
+                checkTaBirthDate();
             }
 
         });
