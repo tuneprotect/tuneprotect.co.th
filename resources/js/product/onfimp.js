@@ -2,8 +2,13 @@ import {
     changeStep,
     formatTelNumber,
     getPackageData,
-    showTitleOnly, validatePolicy,
-    validatePolicyLoc, validatePolicyPayment
+    showTitleOnly, 
+    validatePolicy,
+    validatePolicyLoc, 
+    validatePolicyPayment,
+    formatInputFieldByLanguage,
+    formatInputFieldOnlyNumberic,
+    formatInputFieldOnlyCharecter,
 } from "../form/productHelper";
 import {
     $,
@@ -61,13 +66,15 @@ const constraints = {
         presence: {
             allowEmpty: false,
             message: "^" + $('#fdName').getAttribute('data-error-name')
-        }
+        },
+        format: formatInputFieldOnlyCharecter()
     },
     fdSurname: {
         presence: {
             allowEmpty: false,
             message: "^" + $('#fdSurname').getAttribute('data-error-last_name')
-        }
+        },
+        format: formatInputFieldOnlyCharecter()
     },
     fdNationalID: function (value, attributes, attributeName, options, constraints) {
         if (attributes.ctrl_document_type === 'บัตรประจำตัวประชาชน') {
@@ -93,6 +100,11 @@ const constraints = {
                 presence: {
                     allowEmpty: false,
                     message: "^" + $('#fdNationalID').getAttribute('data-error-passport')
+                },
+                format: {
+                    pattern: /^[A-Z0-9]*$/,
+                    flags: "i",
+                    message: "^" + $('#data_1_fdNationalID').getAttribute('data-error-nationalid-format')
                 }
             }
         }
@@ -124,7 +136,8 @@ const constraints = {
             presence: {
                 allowEmpty: false,
                 message: "^" + $('#fdBenefit_name').getAttribute('data-error-beneficiary')
-            }
+            },
+            format: formatInputFieldByLanguage()
         };
     },
     fdRelation: function (value, attributes, attributeName, options, constraints) {
@@ -152,13 +165,15 @@ const constraints = {
         presence: {
             allowEmpty: false,
             message: "^" + $('#fdAddr_Home').getAttribute('data-error-address_home')
-        }
+        },
+        format: formatInputFieldOnlyEnglish()
     },
     fdAddr_District: {
         presence: {
             allowEmpty: false,
             message: "^" + $('#fdAddr_District').getAttribute('data-error-district')
-        }
+        },
+        format: formatInputFieldOnlyEnglish()
     },
     ctrl_province: {
         presence: {
@@ -170,19 +185,22 @@ const constraints = {
         presence: {
             allowEmpty: false,
             message: "^" + $('#fdAddr_PostCode').getAttribute('data-error-postal_code')
-        }
+        },
+        format: formatInputFieldOnlyNumberic()
     },
     loc_fdAddr_Home: {
         presence: {
             allowEmpty: false,
             message: "^" + $('#loc_fdAddr_Home').getAttribute('data-error-address_home')
-        }
+        },
+        format: formatInputFieldOnlyEnglish()
     },
     loc_fdAddr_District: {
         presence: {
             allowEmpty: false,
             message: "^" + $('#loc_fdAddr_District').getAttribute('data-error-district')
-        }
+        },
+        format: formatInputFieldOnlyEnglish()
     },
     loc_ctrl_province: {
         presence: {
@@ -194,7 +212,8 @@ const constraints = {
         presence: {
             allowEmpty: false,
             message: "^" + $('#loc_fdAddr_PostCode').getAttribute('data-error-postal_code')
-        }
+        },
+        format: formatInputFieldOnlyNumberic()
     }
 };
 
@@ -331,6 +350,24 @@ document.addEventListener("DOMContentLoaded", async () => {
 
             if (['fdName', 'fdSurname', 'fdNationalID'].includes(field.id)) {
                 validatePolicy(e.target, data.fdPackage);
+            }
+
+            if ([`data_${i}_ctrl_day`, `data_${i}_ctrl_month`, `data_${i}_ctrl_year`].includes(field.id)) {
+                removeError($(`#form_profile_${i} .controls-wrapper .date-input`));
+                let dateResult = checkTaBirthDateIPass(i);
+                const currentProfile = {
+                    fdHBD: dateResult?.data?.fdHBD || "",
+                };
+                result = validate(currentProfile, profileConstraints);
+                if (result) {
+                    Object.keys(result).map(k => {
+                        let $elm = $(`[name=data_${i}_${k}]`);
+
+                        if ($elm) {
+                            showFieldError($elm, result[k])
+                        }
+                    });
+                }
             }
 
         });

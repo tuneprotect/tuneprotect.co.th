@@ -22,15 +22,13 @@ import intlTelInput from "intl-tel-input";
 require('../main');
 require('../product');
 
-const validateCardId = (value) => {
-    if (value) {
-        for (var i = 0, sum = 0; i < 12; i++) {
-            sum += parseFloat(value.charAt(i)) * (13 - i);
-        }
-        const result = ((11 - sum % 11) % 10 === parseFloat(value.charAt(12)));
-        if (!result) {
-            return "^" + $('#data_1_fdNationalID').getAttribute('data-error-idcard')
-        }
+validate.validators.idcard = function (value, options, key, attributes) {
+    for (var i = 0, sum = 0; i < 12; i++) {
+        sum += parseFloat(value.charAt(i)) * (13 - i);
+    }
+    const result = ((11 - sum % 11) % 10 === parseFloat(value.charAt(12)));
+    if (!result) {
+        return "^" + $('#data_1_fdNationalID').getAttribute('data-error-idcard')
     }
 };
 
@@ -117,54 +115,38 @@ const profileConstraints = {
         format: formatInputFieldOnlyNumberic()
     },
     fdNationalID: function (value, attributes, attributeName, options, constraints) {
-        return {
-            presence: {
-                allowEmpty: false,
-                message: "^" + $('#data_1_fdNationalID').getAttribute('data-error-idcard')
-            },
-            length: {
-                is: 13,
-                message: "^" + $('#data_1_fdNationalID').getAttribute('data-error-idcard')
-            },
-            format: {
-                pattern: /^[0-9]{13}$/,
-                message: "^" + $('#data_1_fdNationalID').getAttribute('data-error-idcard')
-            },
-            // idcard: {
-            //     message: "^" + $('#data_1_fdNationalID').getAttribute('data-error-idcard')
-            // }
+        if (attributes.ctrl_document_type === 'บัตรประจำตัวประชาชน') {
+
+            return {
+                presence: {
+                    allowEmpty: false,
+                    message: "^" + $('#data_1_fdNationalID').getAttribute('data-error-idcard')
+                },
+                length: {
+                    is: 13,
+                    message: "^" + $('#data_1_fdNationalID').getAttribute('data-error-idcard')
+                },
+                format: {
+                    pattern: /^[0-9]{13}$/,
+                    message: "^" + $('#data_1_fdNationalID').getAttribute('data-error-idcard')
+                },
+                idcard: {
+                    message: "^" + $('#data_1_fdNationalID').getAttribute('data-error-idcard')
+                }
+            }
+        } else {
+            return {
+                presence: {
+                    allowEmpty: false,
+                    message: "^" + $('#data_1_fdNationalID').getAttribute('data-error-passport')
+                },
+                format: {
+                    pattern: /^[A-Z0-9]*$/,
+                    flags: "i",
+                    message: "^" + $('#data_1_fdNationalID').getAttribute('data-error-nationalid-format')
+                }
+            }
         }
-        // if (attributes.ctrl_document_type === 'บัตรประจำตัวประชาชน') {
-        //     return {
-        //         presence: {
-        //             allowEmpty: false,
-        //             message: "^" + $('#data_1_fdNationalID').getAttribute('data-error-idcard')
-        //         },
-        //         length: {
-        //             is: 13,
-        //             message: "^" + $('#data_1_fdNationalID').getAttribute('data-error-idcard')
-        //         },
-        //         format: {
-        //             pattern: /^[0-9]{13}$/,
-        //             message: "^" + $('#data_1_fdNationalID').getAttribute('data-error-idcard')
-        //         },
-        //         idcard: {
-        //             message: "^" + $('#data_1_fdNationalID').getAttribute('data-error-idcard')
-        //         }
-        //     }
-        // } else {
-        //     return {
-        //         presence: {
-        //             allowEmpty: false,
-        //             message: "^" + $('#data_1_fdNationalID').getAttribute('data-error-passport')
-        //         },
-        //         format: {
-        //             pattern: /^[A-Z0-9]*$/,
-        //             flags: "i",
-        //             message: "^" + $('#data_1_fdNationalID').getAttribute('data-error-nationalid-format')
-        //         }
-        //     }
-        // }
     },
     fdEmail: {
         presence: {
@@ -411,32 +393,6 @@ document.addEventListener("DOMContentLoaded", async () => {
             for (let i = 1; i <=  $('#ctrl_no_of_insured').value; i++) {
                 if ([`data_${i}_fdName`, `data_${i}_fdSurname`, `data_${i}_fdNationalID`].includes(field.id)) {
                     validatePolicy(e.target, $dataSubPackage,$('#fdFromDate')?.value);
-
-                    if (!$(`#data_${i}_fdNationalID`).value) {
-                        let msgNationalID = $(`#data_${i}_fdNationalID`).getAttribute('data-error-nationalid-invalid')
-                        if ($(`#data_${i}_ctrl_document_type`).value === 'บัตรประจำตัวประชาชน') {
-                            msgNationalID = $(`#data_${i}_fdNationalID`).getAttribute('data-error-idcard-invalid')
-                        }
-                        showFieldError($(`#data_${i}_fdNationalID`), [msgNationalID]);
-                    } 
-                    else 
-                    {
-                        if ($(`#data_${i}_ctrl_document_type`).value === 'บัตรประจำตัวประชาชน') {
-                            msgNationalID = validateCardId($(`#data_${i}_fdNationalID`).value);
-                            
-                        } 
-                        else 
-                        {
-                            var reg = /^[A-Z0-9]*$/;
-                            if (reg.test($(`#data_${i}_fdNationalID`).value)) {
-                                msgNationalID = $(`#data_${i}_fdNationalID`).getAttribute('data-error-nationalid-format');
-                            }
-                        }
-
-                        showFieldError($(`#data_${i}_fdNationalID`), [msgNationalID]);
-                    }
-                    
-                    
                 }
                 if ([`data_${i}_ctrl_day`, `data_${i}_ctrl_month`, `data_${i}_ctrl_year`].includes(field.id)) {
                     removeError($(`#form_profile_${i} .controls-wrapper .date-input`));
