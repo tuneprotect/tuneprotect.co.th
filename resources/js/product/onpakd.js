@@ -246,7 +246,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     };
     const validateAcceptStep1 = () => {
        
-        //$('cite.step1_error').innerHTML = "";
         let chkAccept = $('#ctrl_accept_step1').checked ? true : false;
          return chkAccept;
     }
@@ -268,6 +267,16 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
     });
 
+    const $form1 = $('#step1');
+    const allField1 = $form1.querySelectorAll('input');
+    allField1.forEach(field => {
+        field.addEventListener("change", function (e) {
+            validateField(this, constraints);
+            if (['ctrl_day', 'ctrl_month', 'ctrl_year'].includes(field.id)) {
+                validateAgeInPackage(package_data);
+            }
+        });
+    });    
 
     const $form = $('#step3');
     const allField = $form.querySelectorAll('input,select,textarea');
@@ -278,6 +287,10 @@ document.addEventListener("DOMContentLoaded", async () => {
                 validatePolicy(e.target, data.fdPackage);
             }
         });
+    });
+
+    $(`input[name=fdAddr_PostCode]`).addEventListener("change", function (e) {
+        $(`#ctrl_province`).innerHTML = '';
     });
 
     const genItemList = () => {
