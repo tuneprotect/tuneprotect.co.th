@@ -721,17 +721,6 @@ document.addEventListener("DOMContentLoaded", async () => {
                         status = true;
                         removeError($('#step3'));
 
-                        var nationalIDArray = profileData.map(e => e.fdNationalID);
-                        if (nationalIDArray.length) {
-                            if (nationalIDArray.includes($(`#fdNationalID`).value)) {
-                                let msgNationalID = $(`#fdNationalID`).getAttribute('data-error-nationalid-invalid')
-                                if ($(`#ctrl_document_type`).value === 'บัตรประจำตัวประชาชน') 
-                                    msgNationalID = $(`#fdNationalID`).getAttribute('data-error-idcard-invalid')
-                                
-                                showFieldError($(`#fdNationalID`), [msgNationalID]);
-                            }
-                        }
-
                         let address = ($('#ctrl_province').value).split('*');
                         let address2 = ($('#loc_ctrl_province').value).split('*');
                         let dateResult = checkTaBirthDate();
