@@ -23,12 +23,14 @@ require('../main');
 require('../product');
 
 validate.validators.idcard = function (value, options, key, attributes) {
-    for (var i = 0, sum = 0; i < 12; i++) {
-        sum += parseFloat(value.charAt(i)) * (13 - i);
-    }
-    const result = ((11 - sum % 11) % 10 === parseFloat(value.charAt(12)));
-    if (!result) {
-        return "^" + $('#data_1_fdNationalID').getAttribute('data-error-idcard')
+    if (value.length) {
+        for (var i = 0, sum = 0; i < 12; i++) {
+            sum += parseFloat(value.charAt(i)) * (13 - i);
+        }
+        const result = ((11 - sum % 11) % 10 === parseFloat(value.charAt(12)));
+        if (!result) {
+            return "^" + $('#data_1_fdNationalID').getAttribute('data-error-idcard')
+        }
     }
 };
 
