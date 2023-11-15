@@ -166,14 +166,14 @@ const constraints = {
             allowEmpty: false,
             message: "^" + $('#fdAddr_Home').getAttribute('data-error-address_home')
         },
-        format: formatInputFieldOnlyEnglish()
+        format: formatInputFieldByLanguage()
     },
     fdAddr_District: {
         presence: {
             allowEmpty: false,
             message: "^" + $('#fdAddr_District').getAttribute('data-error-district')
         },
-        format: formatInputFieldOnlyEnglish()
+        format: formatInputFieldByLanguage()
     },
     ctrl_province: {
         presence: {
@@ -193,14 +193,14 @@ const constraints = {
             allowEmpty: false,
             message: "^" + $('#loc_fdAddr_Home').getAttribute('data-error-address_home')
         },
-        format: formatInputFieldOnlyEnglish()
+        format: formatInputFieldByLanguage()
     },
     loc_fdAddr_District: {
         presence: {
             allowEmpty: false,
             message: "^" + $('#loc_fdAddr_District').getAttribute('data-error-district')
         },
-        format: formatInputFieldOnlyEnglish()
+        format: formatInputFieldByLanguage()
     },
     loc_ctrl_province: {
         presence: {
