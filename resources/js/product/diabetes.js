@@ -434,8 +434,19 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
     });
 
-    const $form = $('#step4');
-    const allField = $form.querySelectorAll('input,select,textarea');
+    const $form1 = $('#step1');
+    const allField1 = $form1.querySelectorAll('input');
+    allField1.forEach(field => {
+        field.addEventListener("change", function (e) {
+            validateField(this, constraints);
+            if (['ctrl_day', 'ctrl_month', 'ctrl_year'].includes(field.id)) {
+                validateAgeInPackage(package_data, false);
+            }
+        });
+    }); 
+
+    const $form4 = $('#step4');
+    const allField = $form4.querySelectorAll('input,select,textarea');
     allField.forEach(field => {
         field.addEventListener("change", function (e) {
             validateField(this, constraints);
@@ -678,12 +689,12 @@ document.addEventListener("DOMContentLoaded", async () => {
                             }
 
                             const result = validate(data, constraints);
-                            const $cite = $form.getElementsByTagName('cite');
+                            const $cite = $form4.getElementsByTagName('cite');
                             for (let i = 0, len = $cite.length; i !== len; ++i) {
                                 $cite[0].parentNode.removeChild($cite[0]);
                             }
 
-                            $form.querySelectorAll('.controls-wrapper').forEach(($el) => {
+                            $form4.querySelectorAll('.controls-wrapper').forEach(($el) => {
                                 $el.classList.remove('error')
                             });
 
