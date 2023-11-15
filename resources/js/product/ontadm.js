@@ -419,7 +419,8 @@ document.addEventListener("DOMContentLoaded", async () => {
                     
                         showFieldError($(`#data_${i}_fdNationalID`), [msgNationalID]);
                     }
-                    if ($(`#data_${i}_ctrl_document_type`).value === 'เลขที่หนังสือเดินทาง' && !$(`#data_${i}_fdNationalID`).value.match("/^[A-Z0-9]*$/")) {
+                    var reg = /^[A-Z0-9]*$/;
+                    if ($(`#data_${i}_ctrl_document_type`).value === 'เลขที่หนังสือเดินทาง' && !reg.test($(`#data_${i}_fdNationalID`).value)) {
                         showFieldError($(`#data_${i}_fdNationalID`), [$(`#data_${i}_fdNationalID`).getAttribute('data-error-nationalid-format')]);
                     }
                     
