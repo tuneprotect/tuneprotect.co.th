@@ -549,10 +549,6 @@ if ($('#title_wrapper')) {
             });
         });
 
-        $(`input[name=fdAddr_PostCode]`).addEventListener("change", function (e) {
-            $(`#ctrl_province`).innerHTML = '';
-        });
-
         $$(".checkbox_disease").forEach($el => {
             $el.addEventListener("change", function (e) {
                 data = {

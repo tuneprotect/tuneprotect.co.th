@@ -464,10 +464,6 @@ document.addEventListener("DOMContentLoaded", async () => {
         });
     });
 
-    $(`input[name=fdAddr_PostCode]`).addEventListener("change", function (e) {
-        $(`#ctrl_province`).innerHTML = '';
-    });
-
     const hideShowConditionBox = (goToStep) => {
         if (goToStep === 1) {
             $('#h-cont').style.display = "none";
