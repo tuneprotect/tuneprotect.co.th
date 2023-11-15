@@ -22,7 +22,7 @@ import intlTelInput from "intl-tel-input";
 require('../main');
 require('../product');
 
-validate.validators.idcard = function (value, options, key, attributes) {
+const validateCardId = (value) => {
     if (value) {
         for (var i = 0, sum = 0; i < 12; i++) {
             sum += parseFloat(value.charAt(i)) * (13 - i);
@@ -130,9 +130,9 @@ const profileConstraints = {
                 pattern: /^[0-9]{13}$/,
                 message: "^" + $('#data_1_fdNationalID').getAttribute('data-error-idcard')
             },
-            idcard: {
-                message: "^" + $('#data_1_fdNationalID').getAttribute('data-error-idcard')
-            }
+            // idcard: {
+            //     message: "^" + $('#data_1_fdNationalID').getAttribute('data-error-idcard')
+            // }
         }
         // if (attributes.ctrl_document_type === 'บัตรประจำตัวประชาชน') {
         //     return {
@@ -414,15 +414,28 @@ document.addEventListener("DOMContentLoaded", async () => {
 
                     if (!$(`#data_${i}_fdNationalID`).value) {
                         let msgNationalID = $(`#data_${i}_fdNationalID`).getAttribute('data-error-nationalid-invalid')
-                        if ($(`#data_${i}_ctrl_document_type`).value === 'บัตรประจำตัวประชาชน') 
+                        if ($(`#data_${i}_ctrl_document_type`).value === 'บัตรประจำตัวประชาชน') {
                             msgNationalID = $(`#data_${i}_fdNationalID`).getAttribute('data-error-idcard-invalid')
-                    
+                        }
+                        showFieldError($(`#data_${i}_fdNationalID`), [msgNationalID]);
+                    } 
+                    else 
+                    {
+                        if ($(`#data_${i}_ctrl_document_type`).value === 'บัตรประจำตัวประชาชน') {
+                            msgNationalID = validateCardId($(`#data_${i}_fdNationalID`).value);
+                            
+                        } 
+                        else 
+                        {
+                            var reg = /^[A-Z0-9]*$/;
+                            if (!reg.test($(`#data_${i}_fdNationalID`).value)) {
+                                msgNationalID = $(`#data_${i}_fdNationalID`).getAttribute('data-error-nationalid-format');
+                            }
+                        }
+
                         showFieldError($(`#data_${i}_fdNationalID`), [msgNationalID]);
                     }
-                    var reg = /^[A-Z0-9]*$/;
-                    if ($(`#data_${i}_ctrl_document_type`).value === 'เลขที่หนังสือเดินทาง' && !reg.test($(`#data_${i}_fdNationalID`).value)) {
-                        showFieldError($(`#data_${i}_fdNationalID`), [$(`#data_${i}_fdNationalID`).getAttribute('data-error-nationalid-format')]);
-                    }
+                    
                     
                 }
                 if ([`data_${i}_ctrl_day`, `data_${i}_ctrl_month`, `data_${i}_ctrl_year`].includes(field.id)) {
