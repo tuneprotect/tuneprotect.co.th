@@ -104,7 +104,7 @@ const constraints = {
                 format: {
                     pattern: /^[A-Z0-9]*$/,
                     flags: "i",
-                    message: "^" + $('#data_1_fdNationalID').getAttribute('data-error-nationalid-format')
+                    message: "^" + $('#fdNationalID').getAttribute('data-error-nationalid-format')
                 }
             }
         }
