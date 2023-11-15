@@ -393,6 +393,12 @@ document.addEventListener("DOMContentLoaded", async () => {
             for (let i = 1; i <=  $('#ctrl_no_of_insured').value; i++) {
                 if ([`data_${i}_fdName`, `data_${i}_fdSurname`, `data_${i}_fdNationalID`].includes(field.id)) {
                     validatePolicy(e.target, $dataSubPackage,$('#fdFromDate')?.value);
+
+                    let msgNationalID = $(`#data_${i}_fdNationalID`).getAttribute('data-error-nationalid-invalid')
+                    if ($(`#data_${i}_ctrl_document_type`).value === 'บัตรประจำตัวประชาชน') 
+                        msgNationalID = $(`#data_${i}_fdNationalID`).getAttribute('data-error-idcard-invalid')
+                    
+                    showFieldError($(`#data_${i}_fdNationalID`), [msgNationalID]);
                 }
                 if ([`data_${i}_ctrl_day`, `data_${i}_ctrl_month`, `data_${i}_ctrl_year`].includes(field.id)) {
                     removeError($(`#form_profile_${i} .controls-wrapper .date-input`));
