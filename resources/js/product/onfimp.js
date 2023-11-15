@@ -792,6 +792,8 @@ document.addEventListener("DOMContentLoaded", async () => {
                             fdMarketing_Consent: $('#ctrl_marketing').checked ? true : undefined
                         }
 
+
+
                         //=========================================================================================================
                         //address insure
                         let address_insure = "";
@@ -840,8 +842,10 @@ document.addEventListener("DOMContentLoaded", async () => {
                         fdAddr_Num = address_insure;
 
                         const $ddlProvince = $('#ctrl_province');
-                        const province = $ddlProvince.options[$ddlProvince.selectedIndex].text;
-                        address_insure = " " + address_insure + ", " + province.replace(",", "") + " " + data.fdAddr_PostCode;
+                        if ($ddlProvince) {
+                            const province = $ddlProvince.options[$ddlProvince.selectedIndex].text;
+                            address_insure = " " + address_insure + ", " + province.replace(",", "") + " " + data.fdAddr_PostCode;
+                        }
                         // fdAddr_Num = address_insure;
                         //=========================================================================================================
                         //location insure
@@ -890,9 +894,11 @@ document.addEventListener("DOMContentLoaded", async () => {
                         // loc_fdAddr_Num = loc_address_insure;
 
                         const $loc_ddlProvince = $('#loc_ctrl_province');
-                        const loc_province = $loc_ddlProvince.options[$loc_ddlProvince.selectedIndex].text;
-                        loc_address_insure = " " + loc_address_insure + ", " + loc_province.replace(",", "")  + " " + data.loc_fdAddr_PostCode;
-
+                        if ($ddlProvince) { 
+                            const loc_province = $loc_ddlProvince.options[$loc_ddlProvince.selectedIndex].text;
+                            loc_address_insure = " " + loc_address_insure + ", " + loc_province.replace(",", "")  + " " + data.loc_fdAddr_PostCode;
+                        }
+                        
                         loc_fdAddr_Num = loc_address_insure;
                         //=========================================================================================================
 
@@ -917,13 +923,13 @@ document.addEventListener("DOMContentLoaded", async () => {
 
                         //=========================================================================================================
 
-                        // const result = validate(data, constraints);
-                        // if (result) {
-                        //     Object.keys(result).map(k => {
-                        //         let $elm = $(`[name=${k}]`);
-                        //         showFieldError($elm, result[k])
-                        //     });
-                        // }
+                        const result = validate(data, constraints);
+                        if (result) {
+                            Object.keys(result).map(k => {
+                                let $elm = $(`[name=${k}]`);
+                                showFieldError($elm, result[k])
+                            });
+                        }
                         if (result) {
                             showError($('#step3'), result);
                         }
