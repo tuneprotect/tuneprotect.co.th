@@ -842,7 +842,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                         fdAddr_Num = address_insure;
 
                         const $ddlProvince = $('#ctrl_province');
-                        if ($ddlProvince) {
+                        if ($ddlProvince.options.length) {
                             const province = $ddlProvince.options[$ddlProvince.selectedIndex].text;
                             address_insure = " " + address_insure + ", " + province.replace(",", "") + " " + data.fdAddr_PostCode;
                         }
@@ -894,7 +894,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                         // loc_fdAddr_Num = loc_address_insure;
 
                         const $loc_ddlProvince = $('#loc_ctrl_province');
-                        if ($ddlProvince) { 
+                        if ($ddlProvince.options.length) { 
                             const loc_province = $loc_ddlProvince.options[$loc_ddlProvince.selectedIndex].text;
                             loc_address_insure = " " + loc_address_insure + ", " + loc_province.replace(",", "")  + " " + data.loc_fdAddr_PostCode;
                         }
