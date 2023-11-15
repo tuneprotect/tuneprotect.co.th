@@ -117,37 +117,54 @@ const profileConstraints = {
         format: formatInputFieldOnlyNumberic()
     },
     fdNationalID: function (value, attributes, attributeName, options, constraints) {
-        if (attributes.ctrl_document_type === 'บัตรประจำตัวประชาชน') {
-            return {
-                presence: {
-                    allowEmpty: false,
-                    message: "^" + $('#data_1_fdNationalID').getAttribute('data-error-idcard')
-                },
-                length: {
-                    is: 13,
-                    message: "^" + $('#data_1_fdNationalID').getAttribute('data-error-idcard')
-                },
-                format: {
-                    pattern: /^[0-9]{13}$/,
-                    message: "^" + $('#data_1_fdNationalID').getAttribute('data-error-idcard')
-                },
-                idcard: {
-                    message: "^" + $('#data_1_fdNationalID').getAttribute('data-error-idcard')
-                }
-            }
-        } else {
-            return {
-                presence: {
-                    allowEmpty: false,
-                    message: "^" + $('#data_1_fdNationalID').getAttribute('data-error-passport')
-                },
-                format: {
-                    pattern: /^[A-Z0-9]*$/,
-                    flags: "i",
-                    message: "^" + $('#data_1_fdNationalID').getAttribute('data-error-nationalid-format')
-                }
+        return {
+            presence: {
+                allowEmpty: false,
+                message: "^" + $('#data_1_fdNationalID').getAttribute('data-error-idcard')
+            },
+            length: {
+                is: 13,
+                message: "^" + $('#data_1_fdNationalID').getAttribute('data-error-idcard')
+            },
+            format: {
+                pattern: /^[0-9]{13}$/,
+                message: "^" + $('#data_1_fdNationalID').getAttribute('data-error-idcard')
+            },
+            idcard: {
+                message: "^" + $('#data_1_fdNationalID').getAttribute('data-error-idcard')
             }
         }
+        // if (attributes.ctrl_document_type === 'บัตรประจำตัวประชาชน') {
+        //     return {
+        //         presence: {
+        //             allowEmpty: false,
+        //             message: "^" + $('#data_1_fdNationalID').getAttribute('data-error-idcard')
+        //         },
+        //         length: {
+        //             is: 13,
+        //             message: "^" + $('#data_1_fdNationalID').getAttribute('data-error-idcard')
+        //         },
+        //         format: {
+        //             pattern: /^[0-9]{13}$/,
+        //             message: "^" + $('#data_1_fdNationalID').getAttribute('data-error-idcard')
+        //         },
+        //         idcard: {
+        //             message: "^" + $('#data_1_fdNationalID').getAttribute('data-error-idcard')
+        //         }
+        //     }
+        // } else {
+        //     return {
+        //         presence: {
+        //             allowEmpty: false,
+        //             message: "^" + $('#data_1_fdNationalID').getAttribute('data-error-passport')
+        //         },
+        //         format: {
+        //             pattern: /^[A-Z0-9]*$/,
+        //             flags: "i",
+        //             message: "^" + $('#data_1_fdNationalID').getAttribute('data-error-nationalid-format')
+        //         }
+        //     }
+        // }
     },
     fdEmail: {
         presence: {
@@ -401,6 +418,9 @@ document.addEventListener("DOMContentLoaded", async () => {
                             msgNationalID = $(`#data_${i}_fdNationalID`).getAttribute('data-error-idcard-invalid')
                     
                         showFieldError($(`#data_${i}_fdNationalID`), [msgNationalID]);
+                    }
+                    if ($(`#data_${i}_ctrl_document_type`).value === 'เลขที่หนังสือเดินทาง' && !$(`#data_${i}_fdNationalID`).value.match("/^[A-Z0-9]*$/")) {
+                        showFieldError($(`#data_${i}_fdNationalID`), [$(`#data_${i}_fdNationalID`).getAttribute('data-error-nationalid-format')]);
                     }
                     
                 }
