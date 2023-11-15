@@ -9,7 +9,12 @@ import {
     getPackageData,
     getSelectedPrice,
     showTitle,
-    validateAgeInPackage, validatePolicy, validatePolicyPayment
+    validateAgeInPackage, 
+    validatePolicy, 
+    validatePolicyPayment,
+    formatInputFieldByLanguage,
+    formatInputFieldOnlyNumberic,
+    formatInputFieldOnlyCharecter,
 } from "../form/productHelper";
 import {format, parseISO} from "date-fns";
 import intlTelInput from "intl-tel-input";
@@ -37,13 +42,15 @@ const constraints = {
         presence: {
             allowEmpty: false,
             message: "^" + $('#fdName').getAttribute('data-error-name')
-        }
+        },
+        format: formatInputFieldOnlyCharecter()
     },
     fdSurname: {
         presence: {
             allowEmpty: false,
             message: "^" + $('#fdSurname').getAttribute('data-error-last_name')
-        }
+        },
+        format: formatInputFieldOnlyCharecter()
     },
     fdSex: {
         presence: {
@@ -79,6 +86,11 @@ const constraints = {
                 presence: {
                     allowEmpty: false,
                     message: "^" + $('#fdNationalID').getAttribute('data-error-passport')
+                },
+                format: {
+                    pattern: /^[A-Z0-9]*$/,
+                    flags: "i",
+                    message: "^" + $('#fdNationalID').getAttribute('data-error-nationalid-format')
                 }
             }
         }
@@ -107,13 +119,15 @@ const constraints = {
         presence: {
             allowEmpty: false,
             message: "^" + $('#fdAddr_Num').getAttribute('data-error-address')
-        }
+        },
+        format: formatInputFieldByLanguage()
     },
     fdAddr_District: {
         presence: {
             allowEmpty: false,
             message: "^" + $('#fdAddr_District').getAttribute('data-error-district')
-        }
+        },
+        format: formatInputFieldByLanguage()
     },
     ctrl_province: {
         presence: {
@@ -125,10 +139,9 @@ const constraints = {
         presence: {
             allowEmpty: false,
             message: "^" + $('#fdAddr_PostCode').getAttribute('data-error-postal_code')
-        }
+        },
+        format: formatInputFieldOnlyNumberic()
     },
-
-
     fdBenefit: "",
     fdBenefit_name: function (value, attributes, attributeName, options, constraints) {
         if (attributes.fdBenefit !== 'other') return null;
@@ -136,7 +149,8 @@ const constraints = {
             presence: {
                 allowEmpty: false,
                 message: "^" + $('#fdBenefit_name').getAttribute('data-error-beneficiary')
-            }
+            },
+            format: formatInputFieldByLanguage()
         };
     },
     fdRelation: function (value, attributes, attributeName, options, constraints) {
@@ -232,7 +246,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     };
     const validateAcceptStep1 = () => {
        
-        $('cite.step1_error').innerHTML = "";
+        //$('cite.step1_error').innerHTML = "";
         let chkAccept = $('#ctrl_accept_step1').checked ? true : false;
          return chkAccept;
     }

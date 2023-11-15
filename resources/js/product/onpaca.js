@@ -294,18 +294,6 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     $(`input[name=fdAddr_PostCode]`).addEventListener("change", function (e) {
         $(`#ctrl_province`).innerHTML = '';
-        const value = e.target.value;
-        if (value.length === 5) {
-            const location_data = zipcode_data[value];
-            if (location_data !== undefined) {
-                let items = ['<option value="">' + $(`#ctrl_province`).getAttribute('data-please-select') + '</option>'];
-
-                location_data.map(v => {
-                    items.push(`<option value="${v.district.code}">${v.district.locales[locale]}, ${v.province.locales[locale]}</option>`);
-                });
-                $(`#ctrl_province`).innerHTML = items.join('');
-            }
-        }
     });
 
     const genItemList = () => {
