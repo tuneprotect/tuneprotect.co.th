@@ -278,8 +278,8 @@ document.addEventListener("DOMContentLoaded", async () => {
         });
     });    
 
-    const $form = $('#step3');
-    const allField = $form.querySelectorAll('input,select,textarea');
+    const $form3 = $('#step3');
+    const allField = $form3.querySelectorAll('input,select,textarea');
     allField.forEach(field => {
         field.addEventListener("change", function (e) {
             validateField(this, constraints);
@@ -465,12 +465,12 @@ document.addEventListener("DOMContentLoaded", async () => {
                             }
 
                             const result = validate(data, constraints);
-                            const $cite = $form.getElementsByTagName('cite');
+                            const $cite = $form3.getElementsByTagName('cite');
                             for (let i = 0, len = $cite.length; i !== len; ++i) {
                                 $cite[0].parentNode.removeChild($cite[0]);
                             }
 
-                            $form.querySelectorAll('.controls-wrapper').forEach(($el) => {
+                            $form3.querySelectorAll('.controls-wrapper').forEach(($el) => {
                                 $el.classList.remove('error')
                             });
 

@@ -469,12 +469,12 @@ document.addEventListener("DOMContentLoaded", async () => {
                             }
 
                             const result = validate(data, constraints);
-                            const $cite = $form.getElementsByTagName('cite');
+                            const $cite = $form3.getElementsByTagName('cite');
                             for (let i = 0, len = $cite.length; i !== len; ++i) {
                                 $cite[0].parentNode.removeChild($cite[0]);
                             }
 
-                            $form.querySelectorAll('.controls-wrapper').forEach(($el) => {
+                            $form3.querySelectorAll('.controls-wrapper').forEach(($el) => {
                                 $el.classList.remove('error')
                             });
 
