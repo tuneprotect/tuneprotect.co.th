@@ -248,7 +248,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     };
     const validateAcceptStep1 = () => {
        
-        $('cite.step1_error').innerHTML = "";
         let chkAccept = $('#ctrl_accept_step1').checked ? true : false;
          return chkAccept;
     }
