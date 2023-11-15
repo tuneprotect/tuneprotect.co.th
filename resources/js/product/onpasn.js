@@ -291,10 +291,6 @@ document.addEventListener("DOMContentLoaded", async () => {
         });
     });
 
-    $(`input[name=fdAddr_PostCode]`).addEventListener("change", function (e) {
-        $(`#ctrl_province`).innerHTML = '';
-    });
-
     const genItemList = () => {
 
         let index = 0;

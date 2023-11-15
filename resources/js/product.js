@@ -175,6 +175,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         $postalCode.value = '';
         const zipcode_data = await getZipcodeData();
         $postalCode.addEventListener("change", function (e) {
+            $(`#ctrl_province`).innerHTML = '';
             const value = $postalCode.value;
             if (value.length === 5) {
                 const location_data = zipcode_data[value];
