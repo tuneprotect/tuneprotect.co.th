@@ -117,7 +117,7 @@ const profileConstraints = {
         format: formatInputFieldOnlyNumberic()
     },
     fdNationalID: function (value, attributes, attributeName, options, constraints) {
-        console.log(attributes.ctrl_document_type);
+        console.log(attributes);
         if (attributes.ctrl_document_type === 'บัตรประจำตัวประชาชน') {
             return {
                 presence: {
