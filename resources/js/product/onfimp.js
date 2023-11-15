@@ -389,21 +389,21 @@ document.addEventListener("DOMContentLoaded", async () => {
             }
 
             if ([`ctrl_day`, `ctrl_month`, `ctrl_year`].includes(field.id)) {
-                removeError($(`#insurance-form .controls-wrapper .date-input`));
+                removeError($(`.insurance-form .controls-wrapper .date-input`));
                 let dateResult = checkTaBirthDate();
                 const currentProfile = {
                     fdHBD: dateResult?.data?.fdHBD || "",
                 };
                 result = validate(currentProfile, constraints);
-                // if (result) {
-                //     Object.keys(result).map(k => {
-                //         let $elm = $(`[name=data_${i}_${k}]`);
+                if (result) {
+                    Object.keys(result).map(k => {
+                        let $elm = $(`[name=data_${i}_${k}]`);
 
-                //         if ($elm) {
-                //             showFieldError($elm, result[k])
-                //         }
-                //     });
-                // }
+                        if ($elm) {
+                            showFieldError($elm, result[k])
+                        }
+                    });
+                }
             }
 
         });
@@ -894,7 +894,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                         // loc_fdAddr_Num = loc_address_insure;
 
                         const $loc_ddlProvince = $('#loc_ctrl_province');
-                        if ($ddlProvince.options.length) { 
+                        if ($loc_ddlProvince.options.length) { 
                             const loc_province = $loc_ddlProvince.options[$loc_ddlProvince.selectedIndex].text;
                             loc_address_insure = " " + loc_address_insure + ", " + loc_province.replace(",", "")  + " " + data.loc_fdAddr_PostCode;
                         }
