@@ -395,15 +395,15 @@ document.addEventListener("DOMContentLoaded", async () => {
                     fdHBD: dateResult?.data?.fdHBD || "",
                 };
                 result = validate(currentProfile, constraints);
-                if (result) {
-                    Object.keys(result).map(k => {
-                        let $elm = $(`[name=data_${i}_${k}]`);
+                // if (result) {
+                //     Object.keys(result).map(k => {
+                //         let $elm = $(`[name=data_${i}_${k}]`);
 
-                        if ($elm) {
-                            showFieldError($elm, result[k])
-                        }
-                    });
-                }
+                //         if ($elm) {
+                //             showFieldError($elm, result[k])
+                //         }
+                //     });
+                // }
             }
 
         });
@@ -917,13 +917,13 @@ document.addEventListener("DOMContentLoaded", async () => {
 
                         //=========================================================================================================
 
-                        const result = validate(data, constraints);
-                        if (result) {
-                            Object.keys(result).map(k => {
-                                let $elm = $(`[name=${k}]`);
-                                showFieldError($elm, result[k])
-                            });
-                        }
+                        // const result = validate(data, constraints);
+                        // if (result) {
+                        //     Object.keys(result).map(k => {
+                        //         let $elm = $(`[name=${k}]`);
+                        //         showFieldError($elm, result[k])
+                        //     });
+                        // }
                         if (result) {
                             showError($('#step3'), result);
                         }
