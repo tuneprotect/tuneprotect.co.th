@@ -394,7 +394,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                 const currentProfile = {
                     fdHBD: dateResult?.data?.fdHBD || "",
                 };
-                result = validate(currentProfile, profileConstraints);
+                result = validate(currentProfile, constraints);
                 if (result) {
                     Object.keys(result).map(k => {
                         let $elm = $(`[name=data_${i}_${k}]`);
