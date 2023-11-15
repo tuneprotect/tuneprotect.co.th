@@ -390,7 +390,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
             if ([`ctrl_day`, `ctrl_month`, `ctrl_year`].includes(field.id)) {
                 removeError($(`#insurance-form .controls-wrapper .date-input`));
-                let dateResult = checkTaBirthDateIPass(i);
+                let dateResult = checkTaBirthDate();
                 const currentProfile = {
                     fdHBD: dateResult?.data?.fdHBD || "",
                 };
