@@ -28,6 +28,8 @@ import {
     validatePolicyPayment,
     validatePolicyStep5,
     getSelectedApiPackage,
+    formatInputFieldOnlyNumberic,
+    formatInputFieldOnlyCharecter,
 } from "../form/productHelper";
 
 import Swal from "sweetalert2";
@@ -70,14 +72,14 @@ const constraints = {
             allowEmpty: false,
             message: "^" + $('#fdName').getAttribute('data-error-name')
         },
-        format: formatInputFieldByLanguage()
+        format: formatInputFieldOnlyCharecter()
     },
     fdSurname: {
         presence: {
             allowEmpty: false,
             message: "^" + $('#fdSurname').getAttribute('data-error-last_name')
         },
-        format: formatInputFieldByLanguage()
+        format: formatInputFieldOnlyCharecter()
     },
     fdSex: {
         presence: {
@@ -110,6 +112,11 @@ const constraints = {
                 presence: {
                     allowEmpty: false,
                     message: "^" + $('#fdNationalID').getAttribute('data-error-passport')
+                },
+                format: {
+                    pattern: /^[A-Z0-9]*$/,
+                    flags: "i",
+                    message: "^" + $('#fdNationalID').getAttribute('data-error-nationalid-format')
                 }
             }
         }
@@ -159,7 +166,8 @@ const constraints = {
         presence: {
             allowEmpty: false,
             message: "^" + $('#fdAddr_PostCode').getAttribute('data-error-postal_code')
-        }
+        },
+        format: formatInputFieldOnlyNumberic()
     },
     fdQuestion1: {
         presence: {
@@ -456,7 +464,6 @@ document.addEventListener("DOMContentLoaded", async () => {
         });
     });
 
-    
     const hideShowConditionBox = (goToStep) => {
         if (goToStep === 1) {
             $('#h-cont').style.display = "none";
@@ -674,6 +681,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                                 status = false;
                                 return false;
                             }
+
                             let address = ($('#ctrl_province').value).split('*');
                             let today = new Date();
                             let dd = String(today.getDate()).padStart(2, '0');

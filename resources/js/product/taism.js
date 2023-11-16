@@ -5,7 +5,12 @@ import {
     getCountryData,
     getNationalityData,
     getPackageData,
-    showMultipleTitle, validatePolicy,validatePolicyPayment,formatInputFieldByLanguage
+    showMultipleTitle, 
+    validatePolicy,
+    validatePolicyPayment,
+    formatInputFieldByLanguage,
+    formatInputFieldOnlyNumberic,
+    formatInputFieldOnlyCharecter,
 } from "../form/productHelper";
 import {$, $$, current_package, getRadioSelectedValue, getZipcodeData, locale, scrollToTargetAdjusted} from "../helper";
 
@@ -87,24 +92,32 @@ const profileConstraints = {
         presence: {
             allowEmpty: false,
             message: "^" + $('#data_1_fdName').getAttribute('data-error-name')
-        }
+        },
+        format: formatInputFieldOnlyCharecter()
     },
     fdSurname: {
         presence: {
             allowEmpty: false,
             message: "^" + $('#data_1_fdSurname').getAttribute('data-error-last_name')
-        }
+        },
+        format: formatInputFieldOnlyCharecter()
     },
     fdHBD: {
         presence: {
             allowEmpty: false,
             message: "^" + $('#data_1_ctrl_day').getAttribute('data-error-format')
-        }
+        },
+        format: formatInputFieldOnlyNumberic()
     },
     fdNationalID: {
         presence: {
             allowEmpty: false,
             message: "^" + $('#data_1_fdNationalID').getAttribute('data-error-passport')
+        },
+        format: {
+            pattern: /^[A-Z0-9]*$/,
+            flags: "i",
+            message: "^" + $('#data_1_fdNationalID').getAttribute('data-error-nationalid-format')
         }
     },
     fdNationality: {
@@ -121,7 +134,7 @@ const profileConstraints = {
         email: {
             allowEmpty: false,
             message: "^" + $('#data_1_fdEmail').getAttribute('data-error-email-format')
-        },
+        }
     },
     fdTelephone: {
         presence: {
@@ -145,11 +158,7 @@ const profileConstraints = {
             allowEmpty: false,
             message: "^" + $('#data_1_fdAddr_District').getAttribute('data-error-district')
         },
-        format: {
-            pattern: /^[a-zA-Z0-9 !@#$&()\\`.+\-,/\"]*$/,
-            flags: "i",
-            message: "^" + $('[data-error-eng-only]').getAttribute('data-error-eng-only')
-        }
+        format: formatInputFieldByLanguage()
     },
     ctrl_province: {
         presence: {
@@ -161,7 +170,8 @@ const profileConstraints = {
         presence: {
             allowEmpty: false,
             message: "^" + $('#data_1_fdAddr_PostCode').getAttribute('data-error-postal_code')
-        }
+        },
+        format: formatInputFieldOnlyNumberic()
     },
     fdBenefit: "",
     fdBenefit_name: function (value, attributes, attributeName, options, constraints) {
@@ -171,11 +181,7 @@ const profileConstraints = {
                 allowEmpty: false,
                 message: "^" + $('#data_1_fdBenefit_name').getAttribute('data-error-beneficiary')
             },
-            format: {
-                pattern: /^[a-zA-Z0-9 !@#$&()\\-`.+,/\"]*$/,
-                flags: "i",
-                message: "^" + $('[data-error-eng-only]').getAttribute('data-error-eng-only')
-            }
+            format: formatInputFieldByLanguage()
         };
     },
     fdRelation: function (value, attributes, attributeName, options, constraints) {
@@ -346,6 +352,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         });
 
         $(`input[name=data_${i}_fdAddr_PostCode]`).addEventListener("change", function (e) {
+            $(`#data_${i}_ctrl_province`).innerHTML = '';
             const value = e.target.value;
             if (value.length === 5) {
                 const location_data = zipcode_data[value];
@@ -390,11 +397,26 @@ document.addEventListener("DOMContentLoaded", async () => {
                 if ([`data_${i}_fdName`, `data_${i}_fdSurname`, `data_${i}_fdNationalID`].includes(field.id)) {
                     validatePolicy(e.target, data.fdPackage,$('#fdFromDate')?.value);
                 }
-            }
+                if ([`data_${i}_ctrl_day`, `data_${i}_ctrl_month`, `data_${i}_ctrl_year`].includes(field.id)) {
+                    removeError($(`#form_profile_${i} .controls-wrapper .date-input`));
+                    let dateResult = checkTaBirthDateIPass(i);
+                    const currentProfile = {
+                        fdHBD: dateResult?.data?.fdHBD || "",
+                    };
+                    result = validate(currentProfile, profileConstraints);
+                    if (result) {
+                        Object.keys(result).map(k => {
+                            let $elm = $(`[name=data_${i}_${k}]`);
 
+                            if ($elm) {
+                                showFieldError($elm, result[k])
+                            }
+                        });
+                    }
+                }
+            }
         });
     });
-
 
     const $btnGoto = $$('.btn-goto');
     $btnGoto.forEach($btn => {
@@ -512,6 +534,13 @@ document.addEventListener("DOMContentLoaded", async () => {
                                 return false;
                             }
 
+                            var nationalIDArray = profileData.map(e => e.fdNationalID);
+                            if (nationalIDArray.length) {
+                                if (nationalIDArray.includes($(`#data_${i}_fdNationalID`).value)) {
+                                    showFieldError($(`#data_${i}_fdNationalID`), [$(`#data_${i}_fdNationalID`).getAttribute('data-error-nationalid-invalid')]);
+                                }
+                            }
+
                             const currentProfile = {
                                 fdSex: getRadioSelectedValue(`data_${i}_fdSex`),
                                 fdTitle: getRadioSelectedValue(`data_${i}_fdTitle`),
@@ -535,9 +564,8 @@ document.addEventListener("DOMContentLoaded", async () => {
                             };
 
                             profileData.push(currentProfile);
-
                             result = validate(currentProfile, profileConstraints);
-
+                            
                             if (result) {
                                 Object.keys(result).map(k => {
                                     let $elm = $(`[name=data_${i}_${k}]`);

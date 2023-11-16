@@ -2,8 +2,13 @@ import {
     changeStep,
     formatTelNumber,
     getPackageData,
-    showTitleOnly, validatePolicy,
-    validatePolicyLoc, validatePolicyPayment
+    showTitleOnly, 
+    validatePolicy,
+    validatePolicyLoc, 
+    validatePolicyPayment,
+    formatInputFieldByLanguage,
+    formatInputFieldOnlyNumberic,
+    formatInputFieldOnlyCharecter,
 } from "../form/productHelper";
 import {
     $,
@@ -11,8 +16,10 @@ import {
     current_package,
     fadeIn,
     fadeOut,
-    getRadioSelectedValue, getZipcodeData,
-    locale, scrollToTargetAdjusted
+    getRadioSelectedValue, 
+    getZipcodeData,
+    locale, 
+    scrollToTargetAdjusted
 } from "../helper";
 
 import { removeError, showError, showFieldError, validateField } from "../validate_form";
@@ -61,13 +68,15 @@ const constraints = {
         presence: {
             allowEmpty: false,
             message: "^" + $('#fdName').getAttribute('data-error-name')
-        }
+        },
+        format: formatInputFieldOnlyCharecter()
     },
     fdSurname: {
         presence: {
             allowEmpty: false,
             message: "^" + $('#fdSurname').getAttribute('data-error-last_name')
-        }
+        },
+        format: formatInputFieldOnlyCharecter()
     },
     fdNationalID: function (value, attributes, attributeName, options, constraints) {
         if (attributes.ctrl_document_type === 'บัตรประจำตัวประชาชน') {
@@ -93,6 +102,11 @@ const constraints = {
                 presence: {
                     allowEmpty: false,
                     message: "^" + $('#fdNationalID').getAttribute('data-error-passport')
+                },
+                format: {
+                    pattern: /^[A-Z0-9]*$/,
+                    flags: "i",
+                    message: "^" + $('#fdNationalID').getAttribute('data-error-nationalid-format')
                 }
             }
         }
@@ -124,7 +138,8 @@ const constraints = {
             presence: {
                 allowEmpty: false,
                 message: "^" + $('#fdBenefit_name').getAttribute('data-error-beneficiary')
-            }
+            },
+            format: formatInputFieldByLanguage()
         };
     },
     fdRelation: function (value, attributes, attributeName, options, constraints) {
@@ -136,24 +151,6 @@ const constraints = {
             }
         };
     },
-    // fdRevenue: "",
-    // fdTaxno: function (value, attributes, attributeName, options, constraints) {
-    //     if (attributes.fdRevenue === 'N') return null;
-    //     return {
-    //         presence: {
-    //             allowEmpty: false,
-    //             message: "^" + $('#fdTaxno').getAttribute('data-error-tax_no-require')
-    //         },
-    //         length: {
-    //             is: 13,
-    //             message: "^" + $('#fdTaxno').getAttribute('data-error-tax_no-format')
-    //         },
-    //         format: {
-    //             pattern: /^[0-9]{13}$/,
-    //             message: "^" + $('#fdTaxno').getAttribute('data-error-tax_no-format')
-    //         },
-    //     };
-    // },
     ctrl_accept_insurance_term: {
         presence: {
             allowEmpty: false,
@@ -170,13 +167,33 @@ const constraints = {
         presence: {
             allowEmpty: false,
             message: "^" + $('#fdAddr_Home').getAttribute('data-error-address_home')
-        }
+        },
+        format: formatInputFieldByLanguage()
+    },
+    fdAddr_Moo: {
+        format: formatInputFieldOnlyNumberic()
+    },
+    fdAddr_Village: {
+        format: formatInputFieldByLanguage()
+    },
+    fdAddr_Building: {
+        format: formatInputFieldByLanguage()
+    },
+    fdAddr_Floor: {
+        format: formatInputFieldOnlyNumberic()
+    },
+    fdAddr_Alley: {
+        format: formatInputFieldByLanguage()
+    },
+    fdAddr_Street: {
+        format: formatInputFieldByLanguage()
     },
     fdAddr_District: {
         presence: {
             allowEmpty: false,
             message: "^" + $('#fdAddr_District').getAttribute('data-error-district')
-        }
+        },
+        format: formatInputFieldByLanguage()
     },
     ctrl_province: {
         presence: {
@@ -188,19 +205,40 @@ const constraints = {
         presence: {
             allowEmpty: false,
             message: "^" + $('#fdAddr_PostCode').getAttribute('data-error-postal_code')
-        }
+        },
+        format: formatInputFieldOnlyNumberic()
     },
     loc_fdAddr_Home: {
         presence: {
             allowEmpty: false,
             message: "^" + $('#loc_fdAddr_Home').getAttribute('data-error-address_home')
-        }
+        },
+        format: formatInputFieldByLanguage()
+    },
+    loc_fdAddr_Moo: {
+        format: formatInputFieldOnlyNumberic()
+    },
+    loc_fdAddr_Village: {
+        format: formatInputFieldOnlyNumberic()
+    },
+    loc_fdAddr_Building: {
+        format: formatInputFieldByLanguage()
+    },
+    loc_fdAddr_Floor: {
+        format: formatInputFieldOnlyNumberic()
+    },
+    loc_fdAddr_Alley: {
+        format: formatInputFieldByLanguage()
+    },
+    loc_fdAddr_Street: {
+        format: formatInputFieldByLanguage()
     },
     loc_fdAddr_District: {
         presence: {
             allowEmpty: false,
             message: "^" + $('#loc_fdAddr_District').getAttribute('data-error-district')
-        }
+        },
+        format: formatInputFieldByLanguage()
     },
     loc_ctrl_province: {
         presence: {
@@ -212,67 +250,12 @@ const constraints = {
         presence: {
             allowEmpty: false,
             message: "^" + $('#loc_fdAddr_PostCode').getAttribute('data-error-postal_code')
-        }
-    },
-    // ,
-    // fdAddress2_Home: {
-    //     presence: {
-    //         allowEmpty: false,
-    //         message: "^" + $('#fdAddress2_Home').getAttribute('data-error-home')
-    //     }
-    // }
-    // ,fdAddress2_Village: {
-    //     presence: {
-    //         allowEmpty: false,
-    //         message: "^" + $('#fdAddress2_Village').getAttribute('data-error-village')
-    //     }
-    // },
-    // fdAddress2_Alley: {
-    //     presence: {
-    //         allowEmpty: false,
-    //         message: "^" + $('#fdAddress2_Alley').getAttribute('data-error-alley')
-    //     }
-    // },
-    // fdAddress2_Road: {
-    //     presence: {
-    //         allowEmpty: false,
-    //         message: "^" + $('#fdAddress2_Road').getAttribute('data-error-road')
-    //     }
-    // },
-    // fdAddress2_District: {
-    //     presence: {
-    //         allowEmpty: false,
-    //         message: "^" + $('#fdAddress2_District').getAttribute('data-error-district')
-    //     }
-    // },
-    // fdAddress2_PostCode: {
-    //     presence: {
-    //         allowEmpty: false,
-    //         message: "^" + $('#fdAddress2_PostCode').getAttribute('data-error-postal_code')
-    //     }
-    // },
-    // fdAddress2_ctrl_province: {
-    //     presence: {
-    //         allowEmpty: false,
-    //         message: "^" + $('#fdAddress2_ctrl_province').getAttribute('data-error-province')
-    //     }
-    // }
-    // ,
-    // fdHBD: {
-    //     presence: {
-    //         allowEmpty: false,
-    //         message: "^" + $('#ctrl_day').getAttribute('data-error-format')
-    //     }
-    // }
+        },
+        format: formatInputFieldOnlyNumberic()
+    }
 };
 
 const checkTaBirthDate = () => {
-    // $$('.date-input .controls-wrapper').forEach(el => {
-    //     el.classList.remove('error');
-    // });
-    //
-    // $('.date-input cite').innerHTML = "";
-
     const dd = $('#ctrl_day').value,
         mm = $('#ctrl_month').value;
     let yy = $('#ctrl_year').value;
@@ -311,22 +294,12 @@ const showDateError = (message) => {
     });
 }
 
-// const showDateError = (message) => {
-//     $('.date-input cite').innerHTML = message;
-//     $$('.date-input .controls-wrapper').forEach(el => {
-//         el.classList.add('error');
-//     });
-// }
-
 const getSelectedPricePackage = (packageCode, package_data) => {
     return package_data[packageCode].price;
 }
 
-
 document.addEventListener("DOMContentLoaded", async () => {
     const package_data = await getPackageData(current_package);
-
-
 
     let Redeem_Code = "";
     if (document.getElementById("redeem_code")) {
@@ -374,6 +347,11 @@ document.addEventListener("DOMContentLoaded", async () => {
 
             if (['fdName', 'fdSurname', 'fdNationalID'].includes(field.id)) {
                 validatePolicy(e.target, data.fdPackage);
+            }
+
+            if ([`ctrl_day`, `ctrl_month`, `ctrl_year`].includes(field.id)) {
+                removeError($(`.insurance-form .controls-wrapper .date-input`));
+                checkTaBirthDate();
             }
 
         });
@@ -540,19 +518,9 @@ document.addEventListener("DOMContentLoaded", async () => {
             for (let i = 0; i < result.length; i++) {
                 if (result[i].TAGNAME.trim() == packageSelect + dep1 && result[i].FIRE == amount) {
                     apiMyHomeSmart1y(result[i].id);
-                    console.log("result", result[i]);
-                    //console.log("result",result[i].Liability);
-                    //let total = parseInt(result[i].RentTotalPerMonth*12);
-                    //alert(total);
-                    //document.getElementById("txtDeposit1").value=total; 
                 }
                 if (result[i].TAGNAME.trim() == packageSelect + dep3 && result[i].FIRE == amount) {
-                    apiMyHomeSmart3y(result[i].id);
-                    //console.log("resul3t",result[i]);
-                    //console.log("result",result[i].Liability);
-                    //let total = parseInt(result[i].RentTotalPerMonth*12);
-                    //alert(total);
-                    //document.getElementById("txtDeposit1").value=total; 
+                    apiMyHomeSmart3y(result[i].id); 
                 }
             }
         } catch (err) {
@@ -568,17 +536,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
         $form.classList.remove('ajax_loader');
     }
-    //sessionStorage.setItem("itemCode",code);
 
-    /* dum-soken 20220914
-    const changeTextAmount = (packageSelect) => {
-        let select = $('#ctrl_insurer_capital');
-        let cover_amount = select.options[select.selectedIndex].value;
-        $("#fdAccording").value = parseInt(cover_amount*0.8);;
-        $("#fdContent").value = parseInt(cover_amount*0.2);;
-        
-    }
-    */
     const apiMyHomeSmart = async (packageSelect) => {
         try {
             let select = $('#ctrl_insurer_capital');
@@ -600,27 +558,10 @@ document.addEventListener("DOMContentLoaded", async () => {
             MyHomeSmart = JSON.stringify(result);
             var chk = "";
             for (let i = 0; i < result.length; i++) {
-                /*
-                if(chk!=result[i].RENT_PERIL_PREM){
-                    drpCompensation.push(result[i].RENT_PERIL_PREM);
-                    drpCompensationText.push(result[i].RENT_PERIL_SUMINS);
-                    chk=result[i].RENT_PERIL_PREM;
-                }
-                */
+
                 drpCompensation.push(result[i].RENT_PERIL_PREM);
                 drpCompensationText.push(result[i].RENT_PERIL_SUMINS);
-                //RENT_PERIL_PREM //value
-                //RENT_PERIL_SUMINS //text 
 
-                /*
-                if(result[i].TAGNAME.trim() == "FNPGCTDALR1"){
-                    oneYear.push(result[i]);
-                }
-                if(result[i].TAGNAME == "FNPGCTDALR3"){
-                    //console.log("result3",result[i]);
-                    treeYear.push(result[i]);                    
-                }
-                */
                 //default 
                 if (result[i].TAGNAME.trim() == "FNPGCTDALR1" && result[i].FIRE == cover_amount) {
                     //console.log("data",result[i])
@@ -817,9 +758,6 @@ document.addEventListener("DOMContentLoaded", async () => {
             $("#fdContent").value = parseInt(cover_amount * 0.2);
         }
 
-
-
-
         document.getElementById("ONMHS2").style.display = "table-cell";
         document.getElementById("head-ONMHS2").style.display = "table-cell";
         document.getElementById("foot-ONMHS2").style.display = "table-cell";
@@ -827,16 +765,6 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     }
     changeTextAmount("500000");
-
-    /*
-    const myHomeSmartAPI = async () => {
-        const request = await fetch('https://gbfs.citibikenyc.com/gbfs/en/station_information.json');
-        const response = await request.json(); 
-        console.log("data",response);
-    }
-    myHomeSmartAPI();
-    */
-
 
     const changeTextPremium = (packageSelect) => {
         let building = $('#ctrl_fire_building');
@@ -924,7 +852,6 @@ document.addEventListener("DOMContentLoaded", async () => {
             }
         }
     });
-
 
     const $address_dup = $('#fdAddressDup');
     if ($address_dup) {
@@ -1242,8 +1169,10 @@ document.addEventListener("DOMContentLoaded", async () => {
                         fdAddr_Num = address_insure;
 
                         const $ddlProvince = $('#ctrl_province');
-                        const province = $ddlProvince.options[$ddlProvince.selectedIndex].text;
-                        address_insure = " " + address_insure + ", " + province.replace(",", "") + " " + data.fdAddr_PostCode;
+                        if ($ddlProvince.options.length) {
+                            const province = $ddlProvince.options[$ddlProvince.selectedIndex].text;
+                            address_insure = " " + address_insure + ", " + province.replace(",", "") + " " + data.fdAddr_PostCode;
+                        }
                         // fdAddr_Num = address_insure;
                         //=========================================================================================================
                         //location insure
@@ -1284,9 +1213,11 @@ document.addEventListener("DOMContentLoaded", async () => {
                         // loc_fdAddr_Num = loc_address_insure;
 
                         const $loc_ddlProvince = $('#loc_ctrl_province');
-                        const loc_province = $loc_ddlProvince.options[$loc_ddlProvince.selectedIndex].text;
-                        loc_address_insure = " " + loc_address_insure + ", " + loc_province.replace(",", "") + " " + data.loc_fdAddr_PostCode;
-
+                        if ($loc_ddlProvince.options.length) { 
+                            const loc_province = $loc_ddlProvince.options[$loc_ddlProvince.selectedIndex].text;
+                            oc_address_insure = " " + loc_address_insure + ", " + loc_province.replace(",", "") + " " + data.loc_fdAddr_PostCode;
+                        }
+                        
                         loc_fdAddr_Num = loc_address_insure;
                         //=========================================================================================================
 

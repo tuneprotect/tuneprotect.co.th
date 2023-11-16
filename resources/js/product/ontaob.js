@@ -9,13 +9,15 @@ import {
     formatInputFieldOnlyEnglish, 
     validatePolicyPayment,
     validatePromotionCode,
-    preValidatePromotionCode
+    preValidatePromotionCode,
+    formatInputFieldByLanguage,
+    formatInputFieldOnlyNumberic,
+    formatInputFieldOnlyCharecter,
 } from "../form/productHelper";
 import {
     showPromotionCodeValid,
     showPromotionCodeCount,
     showValidatePromotionCodeError,
-    showValidateNationalIDError
 } from "../validate_form";
 import {
     $,
@@ -109,21 +111,22 @@ const profileConstraints = {
         presence: {
             allowEmpty: false,
             message: "^" + $('#data_1_fdName').getAttribute('data-error-name')
-        }
-        ,format: formatInputFieldOnlyEnglish()
+        },
+        format: formatInputFieldOnlyCharecter()
     },
     fdSurname: {
         presence: {
             allowEmpty: false,
             message: "^" + $('#data_1_fdSurname').getAttribute('data-error-last_name')
-        }
-        ,format: formatInputFieldOnlyEnglish()
+        },
+        format: formatInputFieldOnlyCharecter()
     },
     fdHBD: {
         presence: {
             allowEmpty: false,
             message: "^" + $('#data_1_ctrl_day').getAttribute('data-error-format')
-        }
+        },
+        format: formatInputFieldOnlyNumberic()
     },
     fdNationalID: function (value, attributes, attributeName, options, constraints) {
         if (attributes.ctrl_document_type === 'บัตรประจำตัวประชาชน') {
@@ -150,8 +153,12 @@ const profileConstraints = {
                 presence: {
                     allowEmpty: false,
                     message: "^" + $('#data_1_fdNationalID').getAttribute('data-error-passport')
+                },
+                format: {
+                    pattern: /^[A-Z0-9]*$/,
+                    flags: "i",
+                    message: "^" + $('#data_1_fdNationalID').getAttribute('data-error-nationalid-format')
                 }
-                ,format: formatInputFieldOnlyEnglish()
             }
         }
     },
@@ -179,15 +186,15 @@ const profileConstraints = {
         presence: {
             allowEmpty: false,
             message: "^" + $('#data_1_fdAddr_Num').getAttribute('data-error-address')
-        }
-        ,format: formatInputFieldOnlyEnglish()
+        },
+        format: formatInputFieldOnlyEnglish()
     },
     fdAddr_District: {
         presence: {
             allowEmpty: false,
             message: "^" + $('#data_1_fdAddr_District').getAttribute('data-error-district')
-        }
-        ,format: formatInputFieldOnlyEnglish()
+        },
+        format: formatInputFieldOnlyEnglish()
     },
     ctrl_province: {
         presence: {
@@ -199,7 +206,8 @@ const profileConstraints = {
         presence: {
             allowEmpty: false,
             message: "^" + $('#data_1_fdAddr_PostCode').getAttribute('data-error-postal_code')
-        }
+        },
+        format: formatInputFieldOnlyNumberic()
     },
     fdBenefit: "",
     fdBenefit_name: function (value, attributes, attributeName, options, constraints) {
@@ -208,8 +216,8 @@ const profileConstraints = {
             presence: {
                 allowEmpty: false,
                 message: "^" + $('#data_1_fdBenefit_name').getAttribute('data-error-beneficiary')
-            }
-            ,format: formatInputFieldOnlyEnglish()
+            },
+            format: formatInputFieldByLanguage()
         };
     },
     fdRelation: function (value, attributes, attributeName, options, constraints) {
@@ -518,6 +526,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         });
 
         $(`input[name=data_${i}_fdAddr_PostCode]`).addEventListener("change", function (e) {
+            $(`#data_${i}_ctrl_province`).innerHTML = '';
             const value = e.target.value;
             if (value.length === 5) {
                 const location_data = zipcode_data[value];
@@ -562,11 +571,26 @@ document.addEventListener("DOMContentLoaded", async () => {
             validateField(this, profileConstraints);
             for (let i = 1; i <=  $('#ctrl_no_of_insured').value; i++) {
                 if ([`data_${i}_fdName`, `data_${i}_fdSurname`, `data_${i}_fdNationalID`].includes(field.id)) {
-                    
                     validatePolicy(e.target, data.fdPackage,$('#fdFromDate')?.value);
                 }
-            }
+                if ([`data_${i}_ctrl_day`, `data_${i}_ctrl_month`, `data_${i}_ctrl_year`].includes(field.id)) {
+                    removeError($(`#form_profile_${i} .controls-wrapper .date-input`));
+                    let dateResult = checkTaBirthDateIPass(i);
+                    const currentProfile = {
+                        fdHBD: dateResult?.data?.fdHBD || "",
+                    };
+                    result = validate(currentProfile, profileConstraints);
+                    if (result) {
+                        Object.keys(result).map(k => {
+                            let $elm = $(`[name=data_${i}_${k}]`);
 
+                            if ($elm) {
+                                showFieldError($elm, result[k])
+                            }
+                        });
+                    }
+                }
+            }
         });
     });
 
@@ -717,20 +741,19 @@ document.addEventListener("DOMContentLoaded", async () => {
                             let address = ($(`#data_${i}_ctrl_province`).value).split('*');
                             let dateResult = iTravelCheckBirthDate(i);
                             
-                            // if (!nationalID.includes($(`#data_${i}_fdNationalID`).value)) {
-                            //     nationalID.push($(`#data_${i}_fdNationalID`).value);
-                            // } else {
-                            //     showValidateNationalIDError(`#data_${i}_fdNationalID`);
-                            //     status = false;
-                            //     return false;
-                            // }
-
                             let valCheck = false;
                             valCheck = validatePolicyPayment($(`#data_${i}_fdNationalID`).value,data.fdPackage,$('#fdFromDate')?.value);
                             if(!valCheck)
                             {
                                 status = false;
                                 return false;
+                            }
+
+                            var nationalIDArray = profileData.map(e => e.fdNationalID);
+                            if (nationalIDArray.length) {
+                                if (nationalIDArray.includes($(`#data_${i}_fdNationalID`).value)) {
+                                    showFieldError($(`#data_${i}_fdNationalID`), [$(`#data_${i}_fdNationalID`).getAttribute('data-error-nationalid-invalid')]);
+                                }
                             }
 
                             const currentProfile = {

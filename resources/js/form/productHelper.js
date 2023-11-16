@@ -1,6 +1,6 @@
 import { $, $$, calculateAge, current_package, fadeIn, fadeOut, locale, scrollToTargetAdjusted } from "../helper";
 import { isValid, parseISO } from "date-fns";
-import { showDateError } from "../validate_form";
+import { showDateError, showFieldError } from "../validate_form";
 import Swal from "sweetalert2";
 
 export const getPackageData = async (currentPackage,channel) => {
@@ -189,6 +189,26 @@ export const validatePolicyLoc = async ($this, fdPackage,fdFromDate) => {
             return true;
         }
     }
+}
+
+export const validateNationalID = async ($this, nationalIDList) => {    
+    let field = $this.getAttribute('name');
+    let nationalIDFillIn = null;
+    if (field.startsWith('data_')) {
+        const index = field.split("_")[1];
+        nationalIDFillIn = $(`#data_${index}_fdNationalID`);
+    }
+    
+    nationalIDList.forEach(nationalID => {
+        console.log('profile ' + nationalID);
+        if (nationalID === nationalIDFillIn.value) {   
+            console.log('Duplicate ' + nationalID);
+            showFieldError(nationalIDFillIn, [nationalIDFillIn.getAttribute('data-error-nationalid-invalid')]);
+            return true;
+        }
+    });
+
+    return false;
 }
 
 export const validatePolicy = async ($this, fdPackage,fdFromDate) => {
@@ -807,13 +827,13 @@ export const formatInputFieldByLanguage = () => {
         return {
             pattern: /^[a-zA-Z0-9 \-_!@#$&()\\-`.+,/\"\n\r]*$/,
             flags: "i",
-            message: "^Only English Allowed"
+            message: "^Only English is allowed"
         };
     } else {
         return {
             pattern: /^[ก-๙0-9 \-_!@#$&()\\-`.+,/\"\n\r]*$/,
             flags: "i",
-            message: "^กรุณาใส่ภาษาไทยเท่านั้น"
+            message: "^กรุณากรอกภาษาไทยเท่านั้น"
         };
     }
 
@@ -822,13 +842,43 @@ export const formatInputFieldByLanguage = () => {
 export const formatInputFieldOnlyEnglish = () => {
     let message = "^กรุณากรอกภาษาอังกฤษเท่านั้น";
     if (locale === 'en') {
-        message= "^Only English Allowed";
+        message= "^Only English is allowed";
     }
     return {
         pattern: /^[a-zA-Z0-9 \-_!@#$&()\\-`.+,/\"\n\r]*$/,
         flags: "i",
         message: message
     };
+}
+
+export const formatInputFieldOnlyNumberic = () => {
+    let message = "^กรุณากรอกภาษาตัวเลขเท่านั้น";
+    if (locale === 'en') {
+        message= "^Only Numberic is allowed";
+    }
+    return {
+        pattern: /^[0-9]*$/,
+        flags: "i",
+        message: message
+    };
+}
+
+export const formatInputFieldOnlyCharecter = () => {
+
+    if (locale === 'en') {
+        return {
+            pattern: /^[a-zA-Z \-\']*$/,
+            flags: "i",
+            message: "^Only English is allowed"
+        };
+    } else {
+        return {
+            pattern: /^[ก-๙0-9 \-\']*$/,
+            flags: "i",
+            message: "^กรุณากรอกภาษาไทยเท่านั้น"
+        };
+    }
+
 }
 
 

@@ -4,7 +4,11 @@ import {
     formatTelNumber,
     getCountryData,
     getPackageData,
-    showMultipleTitle, validatePolicy, formatInputFieldOnlyEnglish, validatePolicyPayment
+    showMultipleTitle, 
+    validatePolicy, 
+    formatInputFieldOnlyEnglish, 
+    validatePolicyPayment,
+    validateNationalID
 } from "../form/productHelper";
 import {
     $,
@@ -133,8 +137,12 @@ const profileConstraints = {
                 presence: {
                     allowEmpty: false,
                     message: "^" + $('#data_1_fdNationalID').getAttribute('data-error-passport')
+                },
+                format: {
+                    pattern: /^[A-Z0-9]*$/,
+                    flags: "i",
+                    message: "^" + $('#data_1_fdNationalID').getAttribute('data-error-nationalid-format')
                 }
-                ,format: formatInputFieldOnlyEnglish()
             }
         }
     },
@@ -475,7 +483,6 @@ document.addEventListener("DOMContentLoaded", async () => {
                     validatePolicy(e.target, data.fdPackage,$('#fdFromDate')?.value);
                 }
             }
-
         });
     });
 
@@ -611,6 +618,13 @@ document.addEventListener("DOMContentLoaded", async () => {
                             {
                                 status = false;
                                 return false;
+                            }
+
+                            var nationalIDArray = profileData.map(e => e.fdNationalID);
+                            if (nationalIDArray.length) {
+                                if (nationalIDArray.includes($(`#data_${i}_fdNationalID`).value)) {
+                                    showFieldError($(`#data_${i}_fdNationalID`), [$(`#data_${i}_fdNationalID`).getAttribute('data-error-nationalid-invalid')]);
+                                }
                             }
 
                             const currentProfile = {

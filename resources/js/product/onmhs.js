@@ -2,8 +2,13 @@ import {
     changeStep,
     formatTelNumber,
     getPackageData,
-    showTitleOnly, validatePolicy,
-    validatePolicyLoc, validatePolicyPayment
+    showTitleOnly, 
+    validatePolicy,
+    validatePolicyLoc, 
+    validatePolicyPayment,
+    formatInputFieldByLanguage,
+    formatInputFieldOnlyNumberic,
+    formatInputFieldOnlyCharecter,
 } from "../form/productHelper";
 import {
     $,
@@ -61,13 +66,15 @@ const constraints = {
         presence: {
             allowEmpty: false,
             message: "^" + $('#fdName').getAttribute('data-error-name')
-        }
+        },
+        format: formatInputFieldOnlyCharecter()
     },
     fdSurname: {
         presence: {
             allowEmpty: false,
             message: "^" + $('#fdSurname').getAttribute('data-error-last_name')
-        }
+        },
+        format: formatInputFieldOnlyCharecter()
     },
     fdNationalID: function (value, attributes, attributeName, options, constraints) {
         if (attributes.ctrl_document_type === 'บัตรประจำตัวประชาชน') {
@@ -93,6 +100,11 @@ const constraints = {
                 presence: {
                     allowEmpty: false,
                     message: "^" + $('#fdNationalID').getAttribute('data-error-passport')
+                },
+                format: {
+                    pattern: /^[A-Z0-9]*$/,
+                    flags: "i",
+                    message: "^" + $('#fdNationalID').getAttribute('data-error-nationalid-format')
                 }
             }
         }
@@ -124,7 +136,8 @@ const constraints = {
             presence: {
                 allowEmpty: false,
                 message: "^" + $('#fdBenefit_name').getAttribute('data-error-beneficiary')
-            }
+            },
+            format: formatInputFieldByLanguage()
         };
     },
     fdRelation: function (value, attributes, attributeName, options, constraints) {
@@ -152,13 +165,33 @@ const constraints = {
         presence: {
             allowEmpty: false,
             message: "^" + $('#fdAddr_Home').getAttribute('data-error-address_home')
-        }
+        },
+        format: formatInputFieldByLanguage()
+    },
+    fdAddr_Moo: {
+        format: formatInputFieldOnlyNumberic()
+    },
+    fdAddr_Village: {
+        format: formatInputFieldByLanguage()
+    },
+    fdAddr_Building: {
+        format: formatInputFieldByLanguage()
+    },
+    fdAddr_Floor: {
+        format: formatInputFieldOnlyNumberic()
+    },
+    fdAddr_Alley: {
+        format: formatInputFieldByLanguage()
+    },
+    fdAddr_Street: {
+        format: formatInputFieldByLanguage()
     },
     fdAddr_District: {
         presence: {
             allowEmpty: false,
             message: "^" + $('#fdAddr_District').getAttribute('data-error-district')
-        }
+        },
+        format: formatInputFieldByLanguage()
     },
     ctrl_province: {
         presence: {
@@ -170,19 +203,40 @@ const constraints = {
         presence: {
             allowEmpty: false,
             message: "^" + $('#fdAddr_PostCode').getAttribute('data-error-postal_code')
-        }
+        },
+        format: formatInputFieldOnlyNumberic()
     },
     loc_fdAddr_Home: {
         presence: {
             allowEmpty: false,
             message: "^" + $('#loc_fdAddr_Home').getAttribute('data-error-address_home')
-        }
+        },
+        format: formatInputFieldByLanguage()
+    },
+    loc_fdAddr_Moo: {
+        format: formatInputFieldOnlyNumberic()
+    },
+    loc_fdAddr_Village: {
+        format: formatInputFieldByLanguage()
+    },
+    loc_fdAddr_Building: {
+        format: formatInputFieldByLanguage()
+    },
+    loc_fdAddr_Floor: {
+        format: formatInputFieldOnlyNumberic()
+    },
+    loc_fdAddr_Alley: {
+        format: formatInputFieldByLanguage()
+    },
+    loc_fdAddr_Street: {
+        format: formatInputFieldByLanguage()
     },
     loc_fdAddr_District: {
         presence: {
             allowEmpty: false,
             message: "^" + $('#loc_fdAddr_District').getAttribute('data-error-district')
-        }
+        },
+        format: formatInputFieldByLanguage()
     },
     loc_ctrl_province: {
         presence: {
@@ -194,7 +248,8 @@ const constraints = {
         presence: {
             allowEmpty: false,
             message: "^" + $('#loc_fdAddr_PostCode').getAttribute('data-error-postal_code')
-        }
+        },
+        format: formatInputFieldOnlyNumberic()
     }
 };
 
@@ -332,6 +387,11 @@ document.addEventListener("DOMContentLoaded", async () => {
 
             if (['fdName', 'fdSurname', 'fdNationalID'].includes(field.id)) {
                 validatePolicy(e.target, data.fdPackage);
+            }
+
+            if ([`ctrl_day`, `ctrl_month`, `ctrl_year`].includes(field.id)) {
+                removeError($(`.insurance-form .controls-wrapper .date-input`));
+                checkTaBirthDate();
             }
 
         });
@@ -1204,8 +1264,6 @@ document.addEventListener("DOMContentLoaded", async () => {
         });
     }
 
-
-
     const step1Constraints = {
         fdFromDate: {
             presence: {
@@ -1254,6 +1312,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         fdTerms: "",
 
         fdAddr_Home: "",
+        fdAddr_Moo: "",
         fdAddr_Village: "",
         fdAddr_Building: "",
         fdAddr_Floor: "",
@@ -1477,6 +1536,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                             fdAddr_Moo: $('#fdAddr_Moo').value,
                             fdAddr_Village: $('#fdAddr_Village').value,
                             fdAddr_Building: $('#fdAddr_Building').value,
+                            fdAddr_Floor: $('#fdAddr_Floor').value,
                             fdAddr_Alley: $('#fdAddr_Alley').value,
                             fdAddr_Street: $('#fdAddr_Street').value,
                             fdAddr_District: $('#fdAddr_District').value,
@@ -1489,6 +1549,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                             loc_fdAddr_Moo: $('#loc_fdAddr_Moo').value,
                             loc_fdAddr_Village: $('#loc_fdAddr_Village').value,
                             loc_fdAddr_Building: $('#loc_fdAddr_Building').value,
+                            loc_fdAddr_Floor: $('#loc_fdAddr_Floor').value,
                             loc_fdAddr_Alley: $('#loc_fdAddr_Alley').value,
                             loc_fdAddr_Street: $('#loc_fdAddr_Street').value,
                             loc_fdAddr_District: $('#loc_fdAddr_District').value,
@@ -1788,8 +1849,10 @@ document.addEventListener("DOMContentLoaded", async () => {
                         fdAddr_Num = address_insure;
 
                         const $ddlProvince = $('#ctrl_province');
-                        const province = $ddlProvince.options[$ddlProvince.selectedIndex].text;
-                        address_insure = " " + address_insure + ", " + province.replace(",", "") + " " + data.fdAddr_PostCode;
+                        if ($ddlProvince.options.length) { 
+                            const province = $ddlProvince.options[$ddlProvince.selectedIndex].text;
+                            address_insure = " " + address_insure + ", " + province.replace(",", "") + " " + data.fdAddr_PostCode;
+                        }
                         // fdAddr_Num = address_insure;
                         //=========================================================================================================
                         //location insure
@@ -1808,7 +1871,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                             loc_address_insure = " " + loc_address_insure + ", " + $('label[for=loc_fdAddr_Building]').innerText + data.loc_fdAddr_Building;
                         }
                         if (data.loc_fdAddr_Floor != "") {
-                            address_insure = " " + address_insure + ", " + $('label[for=loc_fdAddr_Floor]').innerText + data.loc_fdAddr_Floor;
+                            loc_address_insure = " " + loc_address_insure + ", " + $('label[for=loc_fdAddr_Floor]').innerText + data.loc_fdAddr_Floor;
                         }
                         if (data.loc_fdAddr_Alley != "") {
                             loc_address_insure = " " + loc_address_insure + ", " + $('label[for=loc_fdAddr_Alley]').innerText + data.loc_fdAddr_Alley;
@@ -1830,9 +1893,11 @@ document.addEventListener("DOMContentLoaded", async () => {
                         // loc_fdAddr_Num = loc_address_insure;
 
                         const $loc_ddlProvince = $('#loc_ctrl_province');
-                        const loc_province = $loc_ddlProvince.options[$loc_ddlProvince.selectedIndex].text;
-                        loc_address_insure = " " + loc_address_insure + ", " + loc_province.replace(",", "") + " " + data.loc_fdAddr_PostCode;
-
+                        if ($loc_ddlProvince.options.length) {
+                            const loc_province = $loc_ddlProvince.options[$loc_ddlProvince.selectedIndex].text;
+                            loc_address_insure = " " + loc_address_insure + ", " + loc_province.replace(",", "") + " " + data.loc_fdAddr_PostCode;
+                        }
+                        
                         loc_fdAddr_Num = loc_address_insure;
                         //=========================================================================================================
 
@@ -1851,9 +1916,9 @@ document.addEventListener("DOMContentLoaded", async () => {
                                 showFieldError($elm, result[k])
                             });
                         }
-                        if (result) {
-                            showError($('#step3'), result);
-                        }
+                        // if (result) {
+                        //     showError($('#step3'), result);
+                        // }
 
                         if ($('.controls-wrapper.error')) {
                             scrollToTargetAdjusted($('.controls-wrapper.error'));

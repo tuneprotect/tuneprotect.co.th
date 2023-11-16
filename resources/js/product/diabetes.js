@@ -25,7 +25,11 @@ import {
     getSelectedPrice,
     showTitle,
     validateAgeInPackage,
-    validatePolicy, validatePolicyPayment, validatePolicyStep5
+    validatePolicy, 
+    validatePolicyPayment, 
+    validatePolicyStep5,
+    formatInputFieldOnlyNumberic,
+    formatInputFieldOnlyCharecter,
 } from "../form/productHelper";
 
 import Swal from "sweetalert2";
@@ -58,14 +62,14 @@ const constraints = {
             allowEmpty: false,
             message: "^" + $('#fdName').getAttribute('data-error-name')
         },
-        format: formatInputFieldByLanguage()
+        format: formatInputFieldOnlyCharecter()
     },
     fdSurname: {
         presence: {
             allowEmpty: false,
             message: "^" + $('#fdSurname').getAttribute('data-error-last_name')
         },
-        format: formatInputFieldByLanguage()
+        format: formatInputFieldOnlyCharecter()
     },
     fdSex: {
         presence: {
@@ -98,6 +102,11 @@ const constraints = {
                 presence: {
                     allowEmpty: false,
                     message: "^" + $('#fdNationalID').getAttribute('data-error-passport')
+                },
+                format: {
+                    pattern: /^[A-Z0-9]*$/,
+                    flags: "i",
+                    message: "^" + $('#fdNationalID').getAttribute('data-error-nationalid-format')
                 }
             }
         }
@@ -147,7 +156,8 @@ const constraints = {
         presence: {
             allowEmpty: false,
             message: "^" + $('#fdAddr_PostCode').getAttribute('data-error-postal_code')
-        }
+        },
+        format: formatInputFieldOnlyNumberic()
     },
     fdQuestion1: {
         presence: {
@@ -424,8 +434,19 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
     });
 
-    const $form = $('#step4');
-    const allField = $form.querySelectorAll('input,select,textarea');
+    const $form1 = $('#step1');
+    const allField1 = $form1.querySelectorAll('input');
+    allField1.forEach(field => {
+        field.addEventListener("change", function (e) {
+            validateField(this, constraints);
+            if (['ctrl_day', 'ctrl_month', 'ctrl_year'].includes(field.id)) {
+                validateAgeInPackage(package_data, false);
+            }
+        });
+    }); 
+
+    const $form4 = $('#step4');
+    const allField = $form4.querySelectorAll('input,select,textarea');
     allField.forEach(field => {
         field.addEventListener("change", function (e) {
             validateField(this, constraints);
@@ -664,12 +685,12 @@ document.addEventListener("DOMContentLoaded", async () => {
                             }
 
                             const result = validate(data, constraints);
-                            const $cite = $form.getElementsByTagName('cite');
+                            const $cite = $form4.getElementsByTagName('cite');
                             for (let i = 0, len = $cite.length; i !== len; ++i) {
                                 $cite[0].parentNode.removeChild($cite[0]);
                             }
 
-                            $form.querySelectorAll('.controls-wrapper').forEach(($el) => {
+                            $form4.querySelectorAll('.controls-wrapper').forEach(($el) => {
                                 $el.classList.remove('error')
                             });
 

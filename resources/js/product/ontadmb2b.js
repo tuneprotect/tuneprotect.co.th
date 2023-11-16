@@ -4,7 +4,10 @@ import {
     formatTelNumber,
     getPackageData,
     getProvinceData,
-    showMultipleTitle, validatePolicy, validatePolicyPayment
+    showMultipleTitle, 
+    validatePolicy, 
+    validatePolicyPayment,
+    validateNationalID
 } from "../form/productHelper";
 import {$, $$, current_package, getRadioSelectedValue, getZipcodeData, locale, scrollToTargetAdjusted} from "../helper";
 
@@ -125,6 +128,11 @@ const profileConstraints = {
                 presence: {
                     allowEmpty: false,
                     message: "^" + $('#data_1_fdNationalID').getAttribute('data-error-passport')
+                },
+                format: {
+                    pattern: /^[A-Z0-9]*$/,
+                    flags: "i",
+                    message: "^" + $('#data_1_fdNationalID').getAttribute('data-error-nationalid-format')
                 }
             }
         }
@@ -326,15 +334,11 @@ document.addEventListener("DOMContentLoaded", async () => {
     allField.forEach(field => {
         field.addEventListener("change", function (e) {
             validateField(this, profileConstraints);
-
             for (let i = 1; i <=  $('#ctrl_no_of_insured').value; i++) {
                 if ([`data_${i}_fdName`, `data_${i}_fdSurname`, `data_${i}_fdNationalID`].includes(field.id)) {
                     validatePolicy(e.target, $dataSubPackage,$('#fdFromDate')?.value);
                 }
             }
-
-
-
         });
     });
 
@@ -433,6 +437,13 @@ document.addEventListener("DOMContentLoaded", async () => {
                             {
                                 status = false;
                                 return false;
+                            }
+
+                            var nationalIDArray = profileData.map(e => e.fdNationalID);
+                            if (nationalIDArray.length) {
+                                if (nationalIDArray.includes($(`#data_${i}_fdNationalID`).value)) {
+                                    showFieldError($(`#data_${i}_fdNationalID`), [$(`#data_${i}_fdNationalID`).getAttribute('data-error-nationalid-invalid')]);
+                                }
                             }
 
                             const currentProfile = {

@@ -1,11 +1,16 @@
 import {
     changeStep,
-    checkAge, formatInputFieldByLanguage,
+    checkAge, 
+    formatInputFieldByLanguage,
     formatTelNumber,
     getPackageData,
     showTitle,
     validateAgeInPackage,
-    validatePolicy, validatePolicyPayment, validatePolicyStep5
+    validatePolicy, 
+    validatePolicyPayment, 
+    validatePolicyStep5,
+    formatInputFieldOnlyNumberic,
+    formatInputFieldOnlyCharecter,
 } from "../form/productHelper";
 import {
     $,
@@ -51,14 +56,14 @@ if ($('#title_wrapper')) {
                 allowEmpty: false,
                 message: "^" + $('#fdName').getAttribute('data-error-name')
             },
-            format: formatInputFieldByLanguage()
+            format: formatInputFieldOnlyCharecter()
         },
         fdSurname: {
             presence: {
                 allowEmpty: false,
                 message: "^" + $('#fdSurname').getAttribute('data-error-last_name')
             },
-            format: formatInputFieldByLanguage()
+            format: formatInputFieldOnlyCharecter()
         },
         fdSex: {
             presence: {
@@ -91,6 +96,11 @@ if ($('#title_wrapper')) {
                     presence: {
                         allowEmpty: false,
                         message: "^" + $('#fdNationalID').getAttribute('data-error-passport')
+                    },
+                    format: {
+                        pattern: /^[A-Z0-9]*$/,
+                        flags: "i",
+                        message: "^" + $('#fdNationalID').getAttribute('data-error-nationalid-format')
                     }
                 }
             }
@@ -140,7 +150,8 @@ if ($('#title_wrapper')) {
             presence: {
                 allowEmpty: false,
                 message: "^" + $('#fdAddr_PostCode').getAttribute('data-error-postal_code')
-            }
+            },
+            format: formatInputFieldOnlyNumberic()
         },
         fdQuestion1: {
             presence: {
@@ -526,7 +537,6 @@ if ($('#title_wrapper')) {
             }
         });
 
-
         const $form = $('#step4');
         const allField = $form.querySelectorAll('input,select,textarea');
         allField.forEach(field => {
@@ -538,7 +548,6 @@ if ($('#title_wrapper')) {
                 }
             });
         });
-
 
         $$(".checkbox_disease").forEach($el => {
             $el.addEventListener("change", function (e) {
