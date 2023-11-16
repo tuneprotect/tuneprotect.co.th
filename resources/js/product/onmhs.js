@@ -1915,9 +1915,9 @@ document.addEventListener("DOMContentLoaded", async () => {
                                 showFieldError($elm, result[k])
                             });
                         }
-                        if (result) {
-                            showError($('#step3'), result);
-                        }
+                        // if (result) {
+                        //     showError($('#step3'), result);
+                        // }
 
                         if ($('.controls-wrapper.error')) {
                             scrollToTargetAdjusted($('.controls-wrapper.error'));
