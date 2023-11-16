@@ -11,8 +11,14 @@ export const $$ = (selector, base = null) => {
 export const current_package = $('main').getAttribute('data-package');
 export const locale = $('html').getAttribute('lang');
 
+// Date.prototype.addDays = function(days) {
+//     var date = new Date(this.valueOf());
+//     date.setDate(date.getDate() + days);
+//     return date;
+// }
+
 export const calculateAge = (date) => {
-    const now = new Date().getDate() + 1;
+    const now = new Date().setDate(new Date().getDate()+1)
     let result = {
         year: 0,
         month: 0,
