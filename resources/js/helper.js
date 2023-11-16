@@ -11,12 +11,6 @@ export const $$ = (selector, base = null) => {
 export const current_package = $('main').getAttribute('data-package');
 export const locale = $('html').getAttribute('lang');
 
-// Date.prototype.addDays = function(days) {
-//     var date = new Date(this.valueOf());
-//     date.setDate(date.getDate() + days);
-//     return date;
-// }
-
 export const calculateAge = (date) => {
     const now = new Date().setDate(new Date().getDate()+1)
     let result = {
@@ -26,12 +20,7 @@ export const calculateAge = (date) => {
     };
     let age = parseISO(date);
 
-    console.log('age: '+ age);
-    console.log('now: '+ now);
-
     const year = differenceInYears(now, age);
-    console.log('year: '+ year);
-
     if (year > 0) {
         result = {...result, year};
         age = addYears(age, year);

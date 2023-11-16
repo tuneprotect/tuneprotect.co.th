@@ -1,5 +1,5 @@
 import { $, $$, calculateAge, current_package, fadeIn, fadeOut, locale, scrollToTargetAdjusted } from "../helper";
-import { isValid, parseISO } from "date-fns";
+import { isValid, parse, parseISO } from "date-fns";
 import { showDateError, showFieldError } from "../validate_form";
 import Swal from "sweetalert2";
 
@@ -403,7 +403,6 @@ export const checkAge = (birthday, ageRange) => {
 
     if (range[0].indexOf(',') !== -1) {
         const monthRange = range[0].split(',');
-        console.log('monthRange: '+ monthRange);
         if(monthRange.length == 2)
         {
             if(age.year >= monthRange[0] && age.year <= range[1])
@@ -422,14 +421,6 @@ export const checkAge = (birthday, ageRange) => {
                 return true;
             }
             return false;
-
-            // if (
-            //     (age.year > monthRange[0] || (age.year == monthRange[0] && age.month > monthRange[1]))
-            //     && age.year < range[1]
-            // ) {
-
-            //     return true;
-            // }
         }
         else
         {
@@ -443,20 +434,33 @@ export const checkAge = (birthday, ageRange) => {
                         if (age.day >= rangeAll[0]) {
                             return true;
                         }
-                    } else {
+                    } 
+                    else 
+                    {
                         return true;
                     }
-                } else
+                } 
+                else 
+                {
                     return true;
-            } else {
+                }   
+            } 
+            else 
+            {
                 return false;
             }
         }
-
-
-
-    } else if (age.year >= range[0] && age.year <= range[1]) {
-        return true;
+    // } else if (age.year >= range[0] && age.year <= range[1]) {
+    //     return true;
+    // }
+    } 
+    else 
+    {
+        var min = new Date().setDate(new Date().getDate() - parseInt(range[0])); 
+        var max = new Date().setDate(new Date().getDate() - parseInt(range[1]));
+        console.log('min: '+ min +' - max: '+ max);
+        if (age > min && age < max)
+            return true;
     }
     return false;
 }
