@@ -750,6 +750,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                             fdAddr_Moo: $('#fdAddr_Moo').value,
                             fdAddr_Village: $('#fdAddr_Village').value,
                             fdAddr_Building: $('#fdAddr_Building').value,
+                            fdAddr_Floor: $('#fdAddr_Floor').value,
                             fdAddr_Alley: $('#fdAddr_Alley').value,
                             fdAddr_Street: $('#fdAddr_Street').value,
                             fdAddr_District: $('#fdAddr_District').value,
@@ -763,6 +764,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                             loc_fdAddr_Village: $('#loc_fdAddr_Village').value,
                             loc_fdAddr_Building: $('#loc_fdAddr_Building').value,
                             loc_fdAddr_Alley: $('#loc_fdAddr_Alley').value,
+                            loc_fdAddr_Floor: $('#loc_fdAddr_Floor').value,
                             loc_fdAddr_Street: $('#loc_fdAddr_Street').value,
                             loc_fdAddr_District: $('#loc_fdAddr_District').value,
                             loc_fdAddr_PostCode: $('#loc_fdAddr_PostCode').value,
@@ -918,9 +920,9 @@ document.addEventListener("DOMContentLoaded", async () => {
                                 showFieldError($elm, result[k])
                             });
                         }
-                        if (result) {
-                            showError($('#step3'), result);
-                        }
+                        // if (result) {
+                        //     showError($('#step3'), result);
+                        // }
 
                         if ($('.controls-wrapper.error')) {
                             scrollToTargetAdjusted($('.controls-wrapper.error'));
