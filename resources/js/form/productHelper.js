@@ -400,6 +400,9 @@ export const checkAge = (birthday, ageRange) => {
     const range = ageRange.split('-');
     const age = calculateAge(birthday)
 
+    console.log('age: '+ age);
+    console.log(range);
+
     if (range[0].indexOf(',') !== -1) {
         const monthRange = range[0].split(',');
         if(monthRange.length == 2)
