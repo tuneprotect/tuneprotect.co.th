@@ -569,6 +569,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         fdTerms: "",
 
         fdAddr_Home: "",
+        loc_fdAddr_Moo: "",
         fdAddr_Village: "",
         fdAddr_Building: "",
         fdAddr_Floor: "",
@@ -855,7 +856,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                         }
                         if(data.loc_fdAddr_Floor  != "")
                         {
-                            address_insure = " " + address_insure + ", " + $('label[for=loc_fdAddr_Floor]').innerText + data.loc_fdAddr_Floor;
+                            loc_address_insure = " " + loc_address_insure + ", " + $('label[for=loc_fdAddr_Floor]').innerText + data.loc_fdAddr_Floor;
                         }
                         if(data.loc_fdAddr_Alley  != "")
                         {

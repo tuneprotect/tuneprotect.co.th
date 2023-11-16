@@ -1264,8 +1264,6 @@ document.addEventListener("DOMContentLoaded", async () => {
         });
     }
 
-
-
     const step1Constraints = {
         fdFromDate: {
             presence: {
