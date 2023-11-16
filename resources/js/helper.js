@@ -12,7 +12,7 @@ export const current_package = $('main').getAttribute('data-package');
 export const locale = $('html').getAttribute('lang');
 
 export const calculateAge = (date) => {
-    const now = new Date();
+    const now = new Date().addDays(1);
     let result = {
         year: 0,
         month: 0,
