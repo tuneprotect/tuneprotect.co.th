@@ -456,9 +456,10 @@ export const checkAge = (birthday, ageRange) => {
     } 
     else 
     {
-        var min = new Date().setDate(new Date().getDate() - parseInt(range[0])); 
-        var max = new Date().setDate(new Date().getDate() - parseInt(range[1]));
-        console.log('min: '+ min +' - max: '+ max);
+        var min = new Date().setYear(new Date().getYear() - parseInt(range[0])); 
+        var max = new Date().setYear(new Date().getYear() - parseInt(range[1]));
+        var dob = new Date().setYear(new Date().getYear() - age.year).setMonth(new Date().getMonth() - age.month).setDate(new Date().getDay() - age.day);
+        console.log('dob: '+ dob + ' min: '+ min +' - max: '+ max);
         if (age > min && age < max)
             return true;
     }
