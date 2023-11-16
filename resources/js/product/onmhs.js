@@ -1314,6 +1314,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         fdTerms: "",
 
         fdAddr_Home: "",
+        fdAddr_Moo: "",
         fdAddr_Village: "",
         fdAddr_Building: "",
         fdAddr_Floor: "",
