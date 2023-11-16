@@ -20,6 +20,8 @@ export const calculateAge = (date) => {
     };
     let age = parseISO(date);
 
+    console.log('age: '+ age);
+
     const year = differenceInYears(now, age);
 
     if (year > 0) {
