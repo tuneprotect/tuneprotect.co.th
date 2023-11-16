@@ -1873,7 +1873,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                             loc_address_insure = " " + loc_address_insure + ", " + $('label[for=loc_fdAddr_Building]').innerText + data.loc_fdAddr_Building;
                         }
                         if (data.loc_fdAddr_Floor != "") {
-                            address_insure = " " + loc_address_insure + ", " + $('label[for=loc_fdAddr_Floor]').innerText + data.loc_fdAddr_Floor;
+                            loc_address_insure = " " + loc_address_insure + ", " + $('label[for=loc_fdAddr_Floor]').innerText + data.loc_fdAddr_Floor;
                         }
                         if (data.loc_fdAddr_Alley != "") {
                             loc_address_insure = " " + loc_address_insure + ", " + $('label[for=loc_fdAddr_Alley]').innerText + data.loc_fdAddr_Alley;
