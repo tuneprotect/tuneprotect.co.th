@@ -476,7 +476,7 @@ export const checkAge = (birthday, ageRange) => {
     var yyyyHBD = hbd.getFullYear();
 
     var today = new Date();
-    today.setDate(date.getDate() + 1);
+    today.setDate(today.getDate() + 1);
     var dd = String(today.getDate()).padStart(2, '0');
     var mm = String(today.getMonth() + 1).padStart(2, '0');
     var yyyy = today.getFullYear();
