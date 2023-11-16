@@ -217,7 +217,7 @@ const constraints = {
         format: formatInputFieldOnlyNumberic()
     },
     loc_fdAddr_Village: {
-        format: formatInputFieldOnlyNumberic()
+        format: formatInputFieldByLanguage()
     },
     loc_fdAddr_Building: {
         format: formatInputFieldByLanguage()
