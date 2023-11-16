@@ -155,10 +155,10 @@ class ProductController extends BaseController
         }
 
         //Close product for approve 06/11/2023
-        if (in_array($selected, ['ONTAOB', 'ONTATO', 'ONB2BTA'])) {
-            $error_page = ProjectEnum::STATIC_PAGE_CLOSE_PRODUCT;
-            return $this->genStatusPage($error_page);
-        }
+        //if (in_array($selected, ['ONTAOB', 'ONTATO', 'ONB2BTA'])) {
+        //    $error_page = ProjectEnum::STATIC_PAGE_CLOSE_PRODUCT;
+        //    return $this->genStatusPage($error_page);
+        //}
 
         $this->bodyData['controller'] = $this->controller;
 
