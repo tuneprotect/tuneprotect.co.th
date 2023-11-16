@@ -881,5 +881,17 @@ export const formatInputFieldOnlyCharecter = () => {
 
 }
 
+export const formatInputFieldOnlyCharecterOnlyEnglish = () => {
+    let message = "^กรุณากรอกภาษาอังกฤษเท่านั้น";
+    if (locale === 'en') {
+        message= "^Only English is allowed";
+    }
+    return {
+        pattern: /^[a-zA-Z \-\']*$/,
+        flags: "i",
+        message: message
+    };
+}
+
 
 

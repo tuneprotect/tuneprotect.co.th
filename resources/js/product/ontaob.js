@@ -13,6 +13,7 @@ import {
     formatInputFieldByLanguage,
     formatInputFieldOnlyNumberic,
     formatInputFieldOnlyCharecter,
+    formatInputFieldOnlyCharecterOnlyEnglish,
 } from "../form/productHelper";
 import {
     showPromotionCodeValid,
@@ -112,14 +113,14 @@ const profileConstraints = {
             allowEmpty: false,
             message: "^" + $('#data_1_fdName').getAttribute('data-error-name')
         },
-        format: formatInputFieldOnlyCharecter()
+        format: formatInputFieldOnlyCharecterOnlyEnglish()
     },
     fdSurname: {
         presence: {
             allowEmpty: false,
             message: "^" + $('#data_1_fdSurname').getAttribute('data-error-last_name')
         },
-        format: formatInputFieldOnlyCharecter()
+        format: formatInputFieldOnlyCharecterOnlyEnglish()
     },
     fdHBD: {
         presence: {
@@ -217,7 +218,7 @@ const profileConstraints = {
                 allowEmpty: false,
                 message: "^" + $('#data_1_fdBenefit_name').getAttribute('data-error-beneficiary')
             },
-            format: formatInputFieldByLanguage()
+            format: formatInputFieldOnlyCharecterOnlyEnglish()
         };
     },
     fdRelation: function (value, attributes, attributeName, options, constraints) {
@@ -575,7 +576,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                 }
                 if ([`data_${i}_ctrl_day`, `data_${i}_ctrl_month`, `data_${i}_ctrl_year`].includes(field.id)) {
                     removeError($(`#form_profile_${i} .controls-wrapper .date-input`));
-                    let dateResult = checkTaBirthDateIPass(i);
+                    let dateResult = iTravelCheckBirthDate(i);
                     const currentProfile = {
                         fdHBD: dateResult?.data?.fdHBD || "",
                     };
