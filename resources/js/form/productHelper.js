@@ -456,11 +456,14 @@ export const checkAge = (birthday, ageRange) => {
     } 
     else 
     {
-        var min = new Date().setYear(new Date().getYear() - parseInt(range[0])); 
-        var max = new Date().setYear(new Date().getYear() - parseInt(range[1]));
-        var dob = new Date().setYear(new Date().getYear() - age.year).setMonth(new Date().getMonth() - age.month).setDate(new Date().getDay() - age.day);
-        console.log('dob: '+ dob + ' min: '+ min +' - max: '+ max);
-        if (age > min && age < max)
+        var today = new Date();
+        var dd = String(today.getDate()).padStart(2, '0');
+        var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+        var yyyy = today.getFullYear();
+
+        var ageCurrent = (yyyy - age.year - 1);
+        ageCurrent = ((mm > age.month) || ((mm == age.month) && (dd >= age.day))) ? ageCurrent + 1 : ageCurrent + 0;
+        if (ageCurrent > min && ageCurrent < max)
             return true;
     }
     return false;
