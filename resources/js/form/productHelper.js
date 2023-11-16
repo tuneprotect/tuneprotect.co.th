@@ -484,7 +484,7 @@ export const checkAge = (birthday, ageRange) => {
     var ageCurrent = (yyyy - yyyyHBD - 1);
     ageCurrent = ((mm > mmHBD) || ((mm == mmHBD) && (dd >= ddHBD))) ? ageCurrent + 1 : ageCurrent + 0;
 
-    if (ageCurrent > range[0] && ageCurrent < range[1])
+    if (ageCurrent >= range[0] && ageCurrent <= range[1])
         return true;
 
     return false;
