@@ -399,7 +399,7 @@ export const genPrice = (birthday, package_data) => {
 export const checkAge = (birthday, ageRange) => {
     const range = ageRange.split('-');
     const age = calculateAge(birthday);
-    //console.log('age: '+ age.year + ' year, '+ age.month +' month, '+ age.day+ ' day');
+    console.log('age: '+ age.year + ' year, '+ age.month +' month, '+ age.day+ ' day');
 
     if (range[0].indexOf(',') !== -1) {
         const monthRange = range[0].split(',');
@@ -461,7 +461,7 @@ export const checkAge = (birthday, ageRange) => {
         var mmHBD = String(hbd.getMonth() + 1).padStart(2, '0');
         var yyyyHBD = hbd.getFullYear();
 
-        //console.log('HBD: '+ yyyyHBD + ' yyyyHBD, '+ mmHBD +' mmHBD, '+ ddHBD+ ' ddHBD');
+        console.log('HBD: '+ yyyyHBD + ' yyyyHBD, '+ mmHBD +' mmHBD, '+ ddHBD+ ' ddHBD');
 
         var today = new Date();
         today.setDate(today.getDate() + 1);
