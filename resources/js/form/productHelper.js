@@ -461,15 +461,13 @@ export const checkAge = (birthday, ageRange) => {
         var mmHBD = hbd.getMonth() + 1;
         var yyyyHBD = hbd.getFullYear();
 
-        console.log('HBD: '+ yyyyHBD + ' yyyyHBD, '+ mmHBD +' mmHBD, '+ ddHBD+ ' ddHBD');
-
         var today = new Date();
         today.setDate(today.getDate() + 1);
         var dd = today.getDate();
         var mm = today.getMonth() + 1;
         var yyyy = today.getFullYear();
 
-        var ageCurrent = (yyyy - yyyyHBD);
+        var ageCurrent = (yyyy - yyyyHBD - 1);
         ageCurrent = ((mm > mmHBD) || (mm == mmHBD && dd >= ddHBD)) ? ageCurrent + 1 : ageCurrent + 0;
 
         if (ageCurrent >= range[0] && ageCurrent <= range[1]) {
