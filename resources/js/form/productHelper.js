@@ -470,10 +470,10 @@ export const checkAge = (birthday, ageRange) => {
         var yyyy = today.getFullYear();
 
         var ageCurrent = (yyyy - yyyyHBD - 1);
-        ageCurrent = ((mm > mmHBD) || ((mm == mmHBD) && (dd >= ddHBD))) ? ageCurrent + 1 : ageCurrent + 0;
+        ageCurrent = ((mm > mmHBD) || (mm == mmHBD && dd >= ddHBD)) ? ageCurrent + 1 : ageCurrent + 0;
 
         if (ageCurrent >= range[0] && ageCurrent <= range[1]) {
-            if ((mm < mmHBD) || ((mm == mmHBD) && (dd <= ddHBD))) {
+            if ((mm < mmHBD) || (mm == mmHBD && dd <= ddHBD)) {
                 return true;
             }
         }
