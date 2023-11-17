@@ -467,13 +467,13 @@ export const checkAge = (birthday, ageRange) => {
         var mm = today.getMonth() + 1;
         var yyyy = today.getFullYear();
 
-        var ageCurrent = (yyyy - yyyyHBD - 1);
-        ageCurrent = ((mm > mmHBD) || (mm == mmHBD && dd >= ddHBD)) ? ageCurrent + 1 : ageCurrent + 0;
+        var ageCurrent = (yyyy - yyyyHBD);
+        ageCurrent = ((mm < mmHBD) || (mm == mmHBD && dd < ddHBD)) ? ageCurrent + 1 : ageCurrent + 0;
 
         if (ageCurrent >= range[0] && ageCurrent <= range[1]) {
-            if ((ageCurrent == range[1]) && (age.month > 0 || age.day > 0)) {
-                return false;
-            }
+            // if ((ageCurrent == range[1]) && (age.month > 0 || age.day > 0)) {
+            //     return false;
+            // }
             return true;
         }
     }
