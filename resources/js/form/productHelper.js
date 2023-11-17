@@ -456,24 +456,24 @@ export const checkAge = (birthday, ageRange) => {
     } 
     else 
     {
-        var hbd = new Date(birthday);
-        var ddHBD = hbd.getDate();
-        var mmHBD = hbd.getMonth() + 1;
-        var yyyyHBD = hbd.getFullYear();
+        // var hbd = new Date(birthday);
+        // var ddHBD = hbd.getDate();
+        // var mmHBD = hbd.getMonth() + 1;
+        // var yyyyHBD = hbd.getFullYear();
 
-        var today = new Date();
-        today.setDate(today.getDate() + 1);
-        var dd = today.getDate();
-        var mm = today.getMonth() + 1;
-        var yyyy = today.getFullYear();
+        // var today = new Date();
+        // today.setDate(today.getDate() + 1);
+        // var dd = today.getDate();
+        // var mm = today.getMonth() + 1;
+        // var yyyy = today.getFullYear();
 
-        var ageCurrent = (yyyy - yyyyHBD);
-        ageCurrent = ((mm < mmHBD) || (mm == mmHBD && dd < ddHBD)) ? ageCurrent + 1 : ageCurrent + 0;
+        // var ageCurrent = (yyyy - yyyyHBD);
+        // ageCurrent = ((mm < mmHBD) || (mm == mmHBD && dd <= ddHBD)) ? ageCurrent + 1 : ageCurrent + 0;
 
-        if (ageCurrent >= range[0] && ageCurrent <= range[1]) {
-            // if ((ageCurrent == range[1]) && (age.month > 0 || age.day > 0)) {
-            //     return false;
-            // }
+        if (age.year >= range[0] && age.year <= range[1]) {
+             if ((age.year == range[1]) && (age.month > 0 || age.day > 0)) {
+                 return false;
+             }
             return true;
         }
     }
