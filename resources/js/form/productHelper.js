@@ -80,6 +80,8 @@ export const validateAgeInPackage = (package_data, cal_price) => {
     }
 
     const age = calculateAge(birthday)
+    console.log('age: '+ age.year + ' year, '+ age.month +' month, '+ age.day+ ' day');
+    
     if (cal_price !== false) {
         genPrice(birthday, package_data)
     }
@@ -399,8 +401,7 @@ export const genPrice = (birthday, package_data) => {
 export const checkAge = (birthday, ageRange) => {
     const range = ageRange.split('-');
     const age = calculateAge(birthday);
-    console.log('age: '+ age.year + ' year, '+ age.month +' month, '+ age.day+ ' day');
-    console.log(range);
+
     if (range[0].indexOf(',') !== -1) {
         const monthRange = range[0].split(',');
         if(monthRange.length == 2)
@@ -456,18 +457,6 @@ export const checkAge = (birthday, ageRange) => {
     } 
     else 
     {
-        // var hbd = new Date(birthday);
-        // var ddHBD = hbd.getDate();
-        // var mmHBD = hbd.getMonth() + 1;
-        // var yyyyHBD = hbd.getFullYear();
-
-        // var today = new Date();
-        // today.setDate(today.getDate() + 1);
-        // var dd = today.getDate();
-        // var mm = today.getMonth() + 1;
-        // var yyyy = today.getFullYear();
-
-        // var ageCurrent = (yyyy - yyyyHBD);
         age.year = ((age.month > 0) || (age.month == 0 && age.day > 0)) ? age.year + 1 : age.year + 0;
 
         if (age.year >= range[0] && age.year <= range[1]) {
