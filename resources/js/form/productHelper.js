@@ -399,99 +399,86 @@ export const genPrice = (birthday, package_data) => {
 export const checkAge = (birthday, ageRange) => {
     const range = ageRange.split('-');
     const age = calculateAge(birthday);
-    console.log('age: '+ age.year + ' year, '+ age.month +' month, '+ age.day+ ' day');
+    //console.log('age: '+ age.year + ' year, '+ age.month +' month, '+ age.day+ ' day');
 
-    // if (range[0].indexOf(',') !== -1) {
-    //     const monthRange = range[0].split(',');
-    //     if(monthRange.length == 2)
-    //     {
-    //         if(age.year >= monthRange[0] && age.year <= range[1])
-    //         {
-    //             if(age.year == monthRange[0])
-    //             {
-    //                 if(age.month >= monthRange[1])
-    //                 {
-    //                     return true;
-    //                 }
-    //                 else
-    //                 {
-    //                     return false;
-    //                 }
-    //             }
-    //             return true;
-    //         }
-    //         return false;
-    //     }
-    //     else
-    //     {
-    //         //day and year range
-    //         const rangeAll = ageRange.split(',');
-    //         const yearRange = rangeAll[2].split('-');
+    if (range[0].indexOf(',') !== -1) {
+        const monthRange = range[0].split(',');
+        if(monthRange.length == 2)
+        {
+            if(age.year >= monthRange[0] && age.year <= range[1])
+            {
+                if(age.year == monthRange[0])
+                {
+                    if(age.month >= monthRange[1])
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+                return true;
+            }
+            return false;
+        }
+        else
+        {
+            //day and year range
+            const rangeAll = ageRange.split(',');
+            const yearRange = rangeAll[2].split('-');
  
-    //         if (age.year <= yearRange[1]) {
-    //             if (age.year == yearRange[0]) {
-    //                 if (age.month <= rangeAll[1]) {
-    //                     if (age.day >= rangeAll[0]) {
-    //                         return true;
-    //                     }
-    //                 } 
-    //                 else 
-    //                 {
-    //                     return true;
-    //                 }
-    //             } 
-    //             else 
-    //             {
-    //                 return true;
-    //             }   
-    //         } 
-    //         else 
-    //         {
-    //             return false;
-    //         }
-    //     }
-    // // } else if (age.year >= range[0] && age.year <= range[1]) {
-    // //     return true;
-    // // }
-    // } 
-    // else 
-    // {
-    //     var today = new Date();
-    //     var dd = String(today.getDate()).padStart(2, '0');
-    //     var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
-    //     var yyyy = today.getFullYear();
-
-    //     var ageCurrent = (yyyy - age.year - 1);
-    //     ageCurrent = ((mm > age.month) || ((mm == age.month) && (dd >= age.day))) ? ageCurrent + 1 : ageCurrent + 0;
-
-    //     if (ageCurrent > range[0] && ageCurrent < range[1])
-    //         return true;
+            if (age.year <= yearRange[1]) {
+                if (age.year == yearRange[0]) {
+                    if (age.month <= rangeAll[1]) {
+                        if (age.day >= rangeAll[0]) {
+                            return true;
+                        }
+                    } 
+                    else 
+                    {
+                        return true;
+                    }
+                } 
+                else 
+                {
+                    return true;
+                }   
+            } 
+            else 
+            {
+                return false;
+            }
+        }
+    // } else if (age.year >= range[0] && age.year <= range[1]) {
+    //     return true;
     // }
+    } 
+    else 
+    {
+        var hbd = new Date(birthday);
+        var ddHBD = String(hbd.getDate()).padStart(2, '0');
+        var mmHBD = String(hbd.getMonth() + 1).padStart(2, '0');
+        var yyyyHBD = hbd.getFullYear();
 
-    //console.log(birthday);
+        //console.log('HBD: '+ yyyyHBD + ' yyyyHBD, '+ mmHBD +' mmHBD, '+ ddHBD+ ' ddHBD');
 
-    var hbd = new Date(birthday);
-    var ddHBD = String(hbd.getDate()).padStart(2, '0');
-    var mmHBD = String(hbd.getMonth() + 1).padStart(2, '0');
-    var yyyyHBD = hbd.getFullYear();
+        var today = new Date();
+        today.setDate(today.getDate() + 1);
+        var dd = String(today.getDate()).padStart(2, '0');
+        var mm = String(today.getMonth() + 1).padStart(2, '0');
+        var yyyy = today.getFullYear();
 
-    console.log('HBD: '+ yyyyHBD + ' yyyyHBD, '+ mmHBD +' mmHBD, '+ ddHBD+ ' ddHBD');
+        var ageCurrent = (yyyy - yyyyHBD - 1);
+        ageCurrent = ((mm > mmHBD) || ((mm == mmHBD) && (dd >= ddHBD))) ? ageCurrent + 1 : ageCurrent + 0;
 
-    var today = new Date();
-    today.setDate(today.getDate() + 1);
-    var dd = String(today.getDate()).padStart(2, '0');
-    var mm = String(today.getMonth() + 1).padStart(2, '0');
-    var yyyy = today.getFullYear();
-
-    var ageCurrent = (yyyy - yyyyHBD - 1);
-    ageCurrent = ((mm > mmHBD) || ((mm == mmHBD) && (dd >= ddHBD))) ? ageCurrent + 1 : ageCurrent + 0;
-
-    if (ageCurrent >= range[0] && ageCurrent <= range[1]) {
-        if ((mm < mmHBD) || ((mm == mmHBD) && (dd <= ddHBD))) {
-            return true;
+        if (ageCurrent >= range[0] && ageCurrent <= range[1]) {
+            if ((mm < mmHBD) || ((mm == mmHBD) && (dd <= ddHBD))) {
+                return true;
+            }
         }
     }
-    
+
     return false;
 }
 
