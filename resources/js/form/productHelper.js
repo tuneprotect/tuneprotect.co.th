@@ -475,6 +475,8 @@ export const checkAge = (birthday, ageRange) => {
     var mmHBD = String(hbd.getMonth() + 1).padStart(2, '0');
     var yyyyHBD = hbd.getFullYear();
 
+    console.log('HBD: '+ yyyyHBD + ' yyyyHBD, '+ mmHBD +' mmHBD, '+ ddHBD+ ' ddHBD');
+
     var today = new Date();
     today.setDate(today.getDate() + 1);
     var dd = String(today.getDate()).padStart(2, '0');
@@ -484,9 +486,12 @@ export const checkAge = (birthday, ageRange) => {
     var ageCurrent = (yyyy - yyyyHBD - 1);
     ageCurrent = ((mm > mmHBD) || ((mm == mmHBD) && (dd >= ddHBD))) ? ageCurrent + 1 : ageCurrent + 0;
 
-    if (ageCurrent >= range[0] && ageCurrent <= range[1])
-        return true;
-
+    if (ageCurrent >= range[0] && ageCurrent <= range[1]) {
+        if ((mm > mmHBD) || ((mm == mmHBD) && (dd >= ddHBD))) {
+            return true;
+        }
+    }
+    
     return false;
 }
 
