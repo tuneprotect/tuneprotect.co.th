@@ -469,13 +469,14 @@ export const checkAge = (birthday, ageRange) => {
         var mm = String(today.getMonth() + 1).padStart(2, '0');
         var yyyy = today.getFullYear();
 
-        var ageCurrent = (yyyy - yyyyHBD - 1);
+        var ageCurrent = (yyyy - yyyyHBD);
         ageCurrent = ((mm > mmHBD) || (mm == mmHBD && dd >= ddHBD)) ? ageCurrent + 1 : ageCurrent + 0;
 
         if (ageCurrent >= range[0] && ageCurrent <= range[1]) {
-            if ((mm < mmHBD) || (mm == mmHBD && dd <= ddHBD)) {
-                return true;
-            }
+            return true;
+            //if ((mm < mmHBD) || (mm == mmHBD && dd <= ddHBD)) {
+            //    return true;
+            //}
         }
     }
 
