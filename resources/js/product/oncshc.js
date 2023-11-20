@@ -237,6 +237,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     let channel = $("#channel")?.value;
     channel = (channel ? channel : 'TPT Website');
 
+    const maxAge = 55;
     const package_data = await getPackageData(current_package, $("#channel")?.value);
 
     let defaultBmi = "";
@@ -552,7 +553,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                 } else {
                     switch (parseInt(step)) {
                         case 1:
-                            const validateResult = validateAgeInPackage(package_data, false);
+                            const validateResult = validateAgeInPackage(package_data, false, maxAge);
                             const chkAccept = validateAcceptStep1();
                             const validateBMIResult = validateBMI();
 

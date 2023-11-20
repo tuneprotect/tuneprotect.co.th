@@ -32,9 +32,7 @@ export const getCountryData = async () => {
     let res = await fetch(`/storage/json/country.json`);
     return await res.json();
 }
-export const validateAgeInPackage = (package_data, cal_price) => {
-
-    console.log(package_data[0]);
+export const validateAgeInPackage = (package_data, cal_price, maxAge) => {
 
     $$('.date-input .controls-wrapper').forEach(el => {
         el.classList.remove('error');
@@ -77,12 +75,15 @@ export const validateAgeInPackage = (package_data, cal_price) => {
         .filter(k => _.startsWith(k, current_package))
         .some(k => Object.keys(package_data[k].price).some(ageRange => checkAge(birthday, ageRange)))
     
-    if (!age_in_range) {
+    const age = calculateAge(birthday)
+    const over_in_reage = validateMaxAge(age, maxAge);
+
+    if (!(age_in_range || over_in_reage)) {
         showDateError($('#ctrl_day').getAttribute('data-error-not-qualify'));
         return {status: false};
     }
 
-    const age = calculateAge(birthday)
+
     
     if (cal_price !== false) {
         genPrice(birthday, package_data)
@@ -94,6 +95,12 @@ export const validateAgeInPackage = (package_data, cal_price) => {
             fdAge: age.year
         }
     };
+}
+
+export const validateMaxAge = async (age, maxAge) => {
+    if (age == maxAge) {
+        return (age.mount > 0 || age.mount == 0 && age.day > 0) ? true : false
+    }
 }
 
 
