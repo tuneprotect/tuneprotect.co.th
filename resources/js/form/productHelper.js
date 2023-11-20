@@ -76,17 +76,12 @@ export const validateAgeInPackage = (package_data, cal_price, maxAge) => {
         .some(k => Object.keys(package_data[k].price).some(ageRange => checkAge(birthday, ageRange)))
     
     const age = calculateAge(birthday)
-    const over_in_reage = validateMaxAge(age, maxAge);
-
-    console.log(over_in_reage);
 
     if (!(age_in_range || over_in_reage)) {
         showDateError($('#ctrl_day').getAttribute('data-error-not-qualify'));
         return {status: false};
     }
 
-
-    
     if (cal_price !== false) {
         genPrice(birthday, package_data)
     }
@@ -98,13 +93,6 @@ export const validateAgeInPackage = (package_data, cal_price, maxAge) => {
         }
     };
 }
-
-const validateMaxAge = async (age, maxAge) => {
-    if (age == maxAge) {
-        return age.mount > 0 || (age.mount == 0 && age.day > 0) ? true : false
-    }
-}
-
 
 const callValidateApi = async (data) => {
     const response = await fetch(`/${$('html').getAttribute('lang')}/Product/checkDup`, {

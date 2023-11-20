@@ -15,6 +15,7 @@ import {
     locale,
     scrollToTargetAdjusted,
     getZipcodeData,
+    calculateAge,
 } from "../helper";
 import {
     changeStep,
@@ -237,7 +238,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     let channel = $("#channel")?.value;
     channel = (channel ? channel : 'TPT Website');
 
-    const maxAge = 55;
     const package_data = await getPackageData(current_package, $("#channel")?.value);
 
     let defaultBmi = "";
@@ -423,6 +423,18 @@ document.addEventListener("DOMContentLoaded", async () => {
         // });
     }
 
+    // $('#ctrl_dob').addEventListener($el.tagName.toLowerCase() === 'input' ? "keyup" : "change", event => {
+    //     console.log($el.value);
+    //     //const age = calculateAge()
+    // });
+
+    $$("input[id=ctrl_dob]").forEach($el => {
+        $el.addEventListener("change", function (e) {
+            console.log($el.value);
+        });
+    });
+
+
     $$('#ctrl_weight,#ctrl_height').forEach($el => {
         $el.addEventListener($el.tagName.toLowerCase() === 'input' ? "keyup" : "change", event => {
             genBMI();
@@ -553,7 +565,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                 } else {
                     switch (parseInt(step)) {
                         case 1:
-                            const validateResult = validateAgeInPackage(package_data, false, maxAge);
+                            const validateResult = validateAgeInPackage(package_data, false);
                             const chkAccept = validateAcceptStep1();
                             const validateBMIResult = validateBMI();
 
