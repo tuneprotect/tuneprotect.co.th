@@ -457,7 +457,7 @@ export const checkAge = (birthday, ageRange) => {
     } 
     else 
     {
-        age.year = ((age.month > 0) || (age.month == 0 && age.day > 0)) ? age.year + 1 : age.year + 0;
+        //age.year = ((age.month > 0) || (age.month == 0 && age.day > 0)) ? age.year + 1 : age.year + 0;
 
         if (age.year >= range[0] && age.year <= range[1]) {
             return true;
