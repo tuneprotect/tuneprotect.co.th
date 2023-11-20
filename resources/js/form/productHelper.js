@@ -482,6 +482,8 @@ export const checkAge = (birthday, ageRange) => {
                 break;
         }
 
+        console.log(ageCal);
+
         if (ageCal >= range[0] && ageCal <= range[1]) {
              return true;
         }

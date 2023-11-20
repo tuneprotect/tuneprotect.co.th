@@ -443,6 +443,7 @@ if ($('#title_wrapper')) {
             const itemList = [];
     
             if (data.fdHBD) {
+                console.log(package_data);
                 Object.keys(package_data)
                     .filter(k => _.startsWith(k, current_package))
                     .map(k => {
