@@ -3,6 +3,7 @@ import {
     showBMIValidateError,
     showAcceptError,
     showFieldError,
+    showDateError,
     validateField,
     validateAcceptStep1,
 } from "../validate_form";
@@ -434,7 +435,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             let dd = '';
             let mm = '';
             let yy = '';
-            
+
             if(dob!='' || dob!=undefined){
                 const _dob = dob.split("/");
                 dd = _dob[0];
@@ -449,9 +450,11 @@ document.addEventListener("DOMContentLoaded", async () => {
             const birthday = `${yy}-${mm}-${dd}`;
             const age = calculateAge(birthday);
 
-            if ((age.year == 55) && ((age.month > 0) || (age.month == 0 && age.day > 0))) {
+            if (age.year < 20) {
                 showDateError($('#ctrl_dob').getAttribute('data-error-not-qualify'));
-            }
+            } else if ((age.year == 55) && ((age.month > 0) || (age.month == 0 && age.day > 0))) {
+                showDateError($('#ctrl_dob').getAttribute('data-error-not-qualify'));
+            }   
         });
     });
 
