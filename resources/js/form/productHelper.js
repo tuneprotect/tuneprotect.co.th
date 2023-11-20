@@ -460,7 +460,7 @@ export const checkAge = (birthday, ageRange, maxDate) => {
     {
         console.log(maxDate);
         if (age.year >= range[0] && age.year <= range[1]) {
-            if ((maxDate === range[1]) && ((age.month > 0) || (age.month == 0 && age.day > 0))) {
+            if ((maxDate == range[1]) && ((age.month > 0) || (age.month == 0 && age.day > 0))) {
                 return false;
             }
             return true;
