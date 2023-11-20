@@ -468,12 +468,14 @@ export const checkAge = (birthday, ageRange) => {
 
         const hbd = new Date(birthday);
 
-        console.log('dateStart: ' + dateStart);
-        console.log('dateEnd: ' + dateEnd);
-        console.log('hbd: ' + hbd);
+        if (dateStart == dateEnd) {
+            if (age.year >= range[0] && age.year <= range[1]) {
+                return true;
+            }   
+        }
 
-        if (!((dateStart < hbd) && (hbd <= dateEnd))) {
-            return false;
+        if ((dateStart < hbd) && (hbd <= dateEnd)) {
+            return true;
         }
 
         // if (age.year >= range[0] && age.year <= range[1]) {
@@ -485,7 +487,7 @@ export const checkAge = (birthday, ageRange) => {
         // }
     }
 
-    return true;
+    return false;
 }
 
 export const getSelectedPrice = (birthday, packageCode, package_data) => {
