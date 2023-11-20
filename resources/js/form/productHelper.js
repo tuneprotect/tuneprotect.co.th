@@ -397,7 +397,7 @@ export const genPrice = (birthday, package_data) => {
         })
 }
 
-export const checkAge = (birthday, ageRange) => {
+export const checkAge = (birthday, ageRange, maxDate) => {
     const range = ageRange.split('-');
     const age = calculateAge(birthday);
 
@@ -458,35 +458,44 @@ export const checkAge = (birthday, ageRange) => {
     } 
     else 
     {
+        if (age.year >= range[0] && age.year <= range[1]) {
+            if ((maxDate === range[1]) && (age.month > 0) || (age.month == 0 && age.day > 0)) {
+                return false;
+            }
+            return true;
+        }
+
+
+
         //var effective = moment().add(1, 'd');
         //var birthDate = moment(data);
-        const effective = new Date()
-        const begin = new Date()
-        const final = new Date()
-        const birthDate = new Date(birthday);
+        // const effective = new Date()
+        // const begin = new Date()
+        // const final = new Date()
+        // const birthDate = new Date(birthday);
  
-        var ageCal = (effective.getFullYear() - birthDate.getFullYear()) - 1;
+        // var ageCal = (effective.getFullYear() - birthDate.getFullYear()) - 1;
  
-        begin.setFullYear(begin.getFullYear() - range[0]);
-        final.setFullYear(final.getFullYear() - range[1]);
+        // begin.setFullYear(begin.getFullYear() - range[0]);
+        // final.setFullYear(final.getFullYear() - range[1]);
 
-        switch (birthDate.getFullYear()) {
-            case final.getFullYear():
-                ageCal = birthDate === final ? age + 1 : age + 0;
-                break;
-            case begin.getFullYear():
-                ageCal = birthDate === begin ? age + 1 : age + 0;
-                break;
-            default:
-                ageCal = ((effective.getMonth()+1 > birthDate.getMonth()+1) || ((effective.getMonth()+1 == birthDate.getMonth()+1) && (effective.getDate() <= birthDate.getDate()))) ? ageCal + 1 : ageCal + 0;
-                break;
-        }
+        // switch (birthDate.getFullYear()) {
+        //     case final.getFullYear():
+        //         ageCal = birthDate === final ? age + 1 : age + 0;
+        //         break;
+        //     case begin.getFullYear():
+        //         ageCal = birthDate === begin ? age + 1 : age + 0;
+        //         break;
+        //     default:
+        //         ageCal = ((effective.getMonth()+1 > birthDate.getMonth()+1) || ((effective.getMonth()+1 == birthDate.getMonth()+1) && (effective.getDate() <= birthDate.getDate()))) ? ageCal + 1 : ageCal + 0;
+        //         break;
+        // }
 
-        console.log(ageCal);
+        // console.log(ageCal);
 
-        if (ageCal >= range[0] && ageCal <= range[1]) {
-             return true;
-        }
+        // if (ageCal >= range[0] && ageCal <= range[1]) {
+        //      return true;
+        // }
 
         //age.year = ((age.month > 0) || (age.month == 0 && age.day > 0)) ? age.year + 1 : age.year + 0;
 

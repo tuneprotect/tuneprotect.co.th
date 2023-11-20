@@ -243,6 +243,7 @@ if ($('#title_wrapper')) {
         }
 
 
+        const maxAge = 60;
         const package_data = await getPackageData(current_package,$("#channel")?.value);
 
         const genMinMax = (age) => {
@@ -417,7 +418,7 @@ if ($('#title_wrapper')) {
                 pricelist = Object.keys(package_data)
                     .filter(k => _.startsWith(k, current_package))
                     .map(k => {
-                        const pack = Object.keys(package_data[k].price).filter(ageRange => checkAge(data.fdHBD, ageRange))
+                        const pack = Object.keys(package_data[k].price).filter(ageRange => checkAge(data.fdHBD, ageRange, maxAge))
                         const price = package_data[k].price[pack][data.ctrl_disease.join("")];
                         const installment = Math.ceil(parseInt(price) / 12);
                         $(`strong[data-price-${k}]`).innerHTML = parseInt(price).toLocaleString();
@@ -447,7 +448,7 @@ if ($('#title_wrapper')) {
                 Object.keys(package_data)
                     .filter(k => _.startsWith(k, current_package))
                     .map(k => {
-                        const pack = Object.keys(package_data[k].price).filter(ageRange => checkAge(data.fdHBD, ageRange))
+                        const pack = Object.keys(package_data[k].price).filter(ageRange => checkAge(data.fdHBD, ageRange, maxAge))
                         const price = parseInt(package_data[k].price[pack]).toLocaleString();
                         const planCode = Object.keys(package_data)[index];
 
@@ -515,7 +516,7 @@ if ($('#title_wrapper')) {
 
         const getSelectedPrice = () => {
             const pack = Object.keys(package_data[data.fdPackage].price)
-                .filter(ageRange => checkAge(data.fdHBD, ageRange))
+                .filter(ageRange => checkAge(data.fdHBD, ageRange, maxAge))
             return package_data[data.fdPackage].price[pack][data.ctrl_disease.join("")];
         }
 
