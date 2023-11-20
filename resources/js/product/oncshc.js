@@ -6,6 +6,7 @@ import {
     showDateError,
     validateField,
     validateAcceptStep1,
+    removeErrorMessage,
 } from "../validate_form";
 import validate from "validate.js";
 import {
@@ -431,6 +432,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     $$("input[id=ctrl_dob]").forEach($el => {
         $el.addEventListener("change", function (e) {
             //console.log($el.value);
+            removeErrorMessage($el);
+
             const dob = $el.value;
             let dd = '';
             let mm = '';
@@ -450,11 +453,13 @@ document.addEventListener("DOMContentLoaded", async () => {
             const birthday = `${yy}-${mm}-${dd}`;
             const age = calculateAge(birthday);
 
+            console.log('age: '+ age.year + ' year, '+ age.month +' month, '+ age.day+ ' day');
+
             if (age.year < 20) {
-                showDateError($('#ctrl_dob').getAttribute('data-error-not-qualify'));
+                showDateError($el.getAttribute('data-error-not-qualify'));
             } else if ((age.year == 55) && ((age.month > 0) || (age.month == 0 && age.day > 0))) {
-                showDateError($('#ctrl_dob').getAttribute('data-error-not-qualify'));
-            }   
+                showDateError($el.getAttribute('data-error-not-qualify'));
+            }
         });
     });
 
