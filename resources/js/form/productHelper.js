@@ -476,7 +476,7 @@ export const checkAge = (birthday, ageRange) => {
         console.log('dateEnd: ' + dateEnd);
         console.log('hbd: ' + hbd);
 
-        if ((dateStart < hbd) && (hbd <= dateEnd)) {
+        if ((dateStart < hbd) && ((hbd <= dateEnd) || (hbd.getMonth()+1 <= dateEnd.getMonth()+1) && hbd.getDate() <= dateEnd.getDate())) {
             console.log('status: ' + true);
             return true;
         }
