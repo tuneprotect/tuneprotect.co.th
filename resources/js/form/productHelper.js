@@ -466,7 +466,7 @@ export const checkAge = (birthday, ageRange) => {
     
             const hbd = new Date(birthday);
 
-            if ((hbd.getFullYear() == date.getFullYear()) && (date > hbd)) {
+            if ((hbd.getFullYear() == date.getFullYear()) && (date >= hbd)) {
                 return false;
             }
             return true;
