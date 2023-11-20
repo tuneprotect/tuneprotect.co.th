@@ -237,7 +237,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     let channel = $("#channel")?.value;
     channel = (channel ? channel : 'TPT Website');
 
-    const maxAge = 55;
     const package_data = await getPackageData(current_package, $("#channel")?.value);
 
     let defaultBmi = "";
@@ -369,7 +368,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             pricelist = Object.keys(package_data)
                 .filter(k => _.startsWith(k, current_package))
                 .map(k => {
-                    const pack = Object.keys(package_data[k].price).filter(ageRange => checkAge(data.fdHBD, ageRange, maxAge))
+                    const pack = Object.keys(package_data[k].price).filter(ageRange => checkAge(data.fdHBD, ageRange))
                     const price = parseInt(package_data[k].price[pack]).toLocaleString();
 
                     $(`strong[data-price-${k}]`).innerHTML = price;
@@ -390,7 +389,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             Object.keys(package_data)
                 .filter(k => _.startsWith(k, current_package))
                 .map(k => {
-                    const pack = Object.keys(package_data[k].price).filter(ageRange => checkAge(data.fdHBD, ageRange, maxAge))
+                    const pack = Object.keys(package_data[k].price).filter(ageRange => checkAge(data.fdHBD, ageRange))
                     const price = parseInt(package_data[k].price[pack]).toLocaleString();
                     const planCode = Object.keys(package_data)[index];
 
