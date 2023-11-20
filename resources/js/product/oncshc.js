@@ -239,6 +239,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     let channel = $("#channel")?.value;
     channel = (channel ? channel : 'TPT Website');
 
+    let status = false;
     const package_data = await getPackageData(current_package, $("#channel")?.value);
 
     let defaultBmi = "";
@@ -432,7 +433,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     $$("input[id=ctrl_dob]").forEach($el => {
         $el.addEventListener("change", function (e) {
             //console.log($el.value);
-            removeErrorMessage($el);
+            removeErrorMessage('.date-wrapper');
 
             const dob = $el.value;
             let dd = '';
@@ -457,9 +458,12 @@ document.addEventListener("DOMContentLoaded", async () => {
 
             if (age.year < 20) {
                 showDateError($el.getAttribute('data-error-not-qualify'));
+                status = false;
             } else if ((age.year == 55) && ((age.month > 0) || (age.month == 0 && age.day > 0))) {
                 showDateError($el.getAttribute('data-error-not-qualify'));
+                status = false;
             }
+
         });
     });
 
@@ -585,8 +589,6 @@ document.addEventListener("DOMContentLoaded", async () => {
         $btn.addEventListener("click", function (e) {
                 e.preventDefault();
                 const goToStep = parseInt($btn.getAttribute('data-step'));
-
-                let status = false;
 
                 if (step > goToStep) {
                     status = true;
