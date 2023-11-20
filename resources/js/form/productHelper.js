@@ -459,7 +459,15 @@ export const checkAge = (birthday, ageRange) => {
     {
         //age.year = ((age.month > 0) || (age.month == 0 && age.day > 0)) ? age.year + 1 : age.year + 0;
 
+        const date = new Date();
+        date.setFullYear(date.getFullYear() - range[1]);
+
+        const hbd = new Date(birthday);
+
         if (age.year >= range[0] && age.year <= range[1]) {
+            if ((hbd.getFullYear() == date.getFullYear()) && (date < hbd)) {
+                return false;
+            }
             return true;
         }
     }
