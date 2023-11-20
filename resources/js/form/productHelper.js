@@ -460,10 +460,10 @@ export const checkAge = (birthday, ageRange) => {
         //age.year = ((age.month > 0) || (age.month == 0 && age.day > 0)) ? age.year + 1 : age.year + 0;
 
         const dateStart = new Date()
-        dateStart.setFullYear(dateStart.getFullYear() - range[0]);
+        dateStart.setFullYear(dateStart.getFullYear() - range[1]);
 
         const dateEnd = new Date()
-        dateEnd.setFullYear(dateEnd.getFullYear() - range[1]);
+        dateEnd.setFullYear(dateEnd.getFullYear() - range[0]);
 
         const hbd = new Date(birthday);
 
@@ -471,7 +471,7 @@ export const checkAge = (birthday, ageRange) => {
         console.log('dateEnd: ' + dateEnd);
         console.log('hbd: ' + hbd);
 
-        if ((dateStart > hbd) && (hbd < dateEnd)) {
+        if ((dateStart < hbd) && (hbd < dateEnd)) {
             return true;
         }
 
