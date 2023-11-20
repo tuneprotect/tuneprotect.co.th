@@ -78,6 +78,8 @@ export const validateAgeInPackage = (package_data, cal_price, maxAge) => {
     const age = calculateAge(birthday)
     const over_in_reage = validateMaxAge(age, maxAge);
 
+    console.log(over_in_reage);
+
     if (!(age_in_range || over_in_reage)) {
         showDateError($('#ctrl_day').getAttribute('data-error-not-qualify'));
         return {status: false};
@@ -97,9 +99,9 @@ export const validateAgeInPackage = (package_data, cal_price, maxAge) => {
     };
 }
 
-export const validateMaxAge = async (age, maxAge) => {
+const validateMaxAge = async (age, maxAge) => {
     if (age == maxAge) {
-        return (age.mount > 0 || age.mount == 0 && age.day > 0) ? true : false
+        return age.mount > 0 || (age.mount == 0 && age.day > 0) ? true : false
     }
 }
 
