@@ -80,7 +80,6 @@ export const validateAgeInPackage = (package_data, cal_price) => {
     }
 
     const age = calculateAge(birthday)
-    console.log('age: '+ age.year + ' year, '+ age.month +' month, '+ age.day+ ' day');
     
     if (cal_price !== false) {
         genPrice(birthday, package_data)
@@ -402,6 +401,8 @@ export const checkAge = (birthday, ageRange) => {
     const range = ageRange.split('-');
     const age = calculateAge(birthday);
 
+    console.log('age: '+ age.year + ' year, '+ age.month +' month, '+ age.day+ ' day');
+
     if (range[0].indexOf(',') !== -1) {
         const monthRange = range[0].split(',');
         if(monthRange.length == 2)
@@ -471,8 +472,8 @@ export const checkAge = (birthday, ageRange) => {
         console.log('dateEnd: ' + dateEnd);
         console.log('hbd: ' + hbd);
 
-        if ((dateStart < hbd) && (hbd < dateEnd)) {
-            return true;
+        if (!((dateStart < hbd) && (hbd <= dateEnd))) {
+            return false;
         }
 
         // if (age.year >= range[0] && age.year <= range[1]) {
@@ -484,7 +485,7 @@ export const checkAge = (birthday, ageRange) => {
         // }
     }
 
-    return false;
+    return true;
 }
 
 export const getSelectedPrice = (birthday, packageCode, package_data) => {
