@@ -461,23 +461,24 @@ export const checkAge = (birthday, ageRange) => {
         //var effective = moment().add(1, 'd');
         //var birthDate = moment(data);
         const effective = new Date()
+        const birthDate = new Date(birthday);
  
-        var ageCal = (effective.getFullYear() - birthday.getFullYear()) - 1;
+        var ageCal = (effective.getFullYear() - birthDate.getFullYear()) - 1;
  
         //var begin = moment().add(-18, 'y').add(1, 'd')
         //var final = moment().add(-60, 'y').add(1, 'd')
         var begin = effective.setFullYear(effective.getFullYear() - range[0]);
         var final = effective.setFullYear(effective.getFullYear() - range[1]);
 
-        switch (birthday.getFullYear()) {
+        switch (birthDate.getFullYear()) {
             case end.getFullYear():
-                ageCal = birthday === final ? age + 1 : age + 0;
+                ageCal = birthDate === final ? age + 1 : age + 0;
                 break;
             case begin.getFullYear():
-                ageCal = birthday === begin ? age + 1 : age + 0;
+                ageCal = birthDate === begin ? age + 1 : age + 0;
                 break;
             default:
-                ageCal = ((effective.getMonth()+1 > birthday.getMonth()+1) || ((effective.getMonth()+1 == birthday.getMonth()+1) && (effective.getDate() <= birthday.getDate()))) ? age + 1 : age + 0;
+                ageCal = ((effective.getMonth()+1 > birthDate.getMonth()+1) || ((effective.getMonth()+1 == birthDate.getMonth()+1) && (effective.getDate() <= birthDate.getDate()))) ? age + 1 : age + 0;
                 break;
         }
 
