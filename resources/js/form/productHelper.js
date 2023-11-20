@@ -468,11 +468,9 @@ export const checkAge = (birthday, ageRange) => {
 
         const hbd = new Date(birthday);
 
-        if (dateStart == dateEnd) {
-            if (age.year >= range[0] && age.year <= range[1]) {
-                return true;
-            }   
-        }
+        if ((range[0] == range[1]) && (age.year >= range[0] && age.year <= range[1])) {
+            return true;
+        }   
 
         if ((dateStart < hbd) && (hbd <= dateEnd)) {
             return true;
