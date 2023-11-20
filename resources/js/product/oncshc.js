@@ -431,6 +431,10 @@ document.addEventListener("DOMContentLoaded", async () => {
         $el.addEventListener("change", function (e) {
             //console.log($el.value);
             const dob = $el.value;
+            let dd = '';
+            let mm = '';
+            let yy = '';
+            
             if(dob!='' || dob!=undefined){
                 const _dob = dob.split("/");
                 dd = _dob[0];
