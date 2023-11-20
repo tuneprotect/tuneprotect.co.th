@@ -14,7 +14,6 @@ import {
     getRadioSelectedValue,
     locale,
     scrollToTargetAdjusted,
-    getZipcodeData,
     calculateAge,
 } from "../helper";
 import {
@@ -430,7 +429,25 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     $$("input[id=ctrl_dob]").forEach($el => {
         $el.addEventListener("change", function (e) {
-            console.log($el.value);
+            //console.log($el.value);
+            const dob = $el.value;
+            if(dob!='' || dob!=undefined){
+                const _dob = dob.split("/");
+                dd = _dob[0];
+                mm = _dob[1];
+                yy = _dob[2];
+            }
+
+            if (parseInt(yy.substring(0, 2)) > 21) {
+                yy = (parseInt(yy) - 543).toString();
+            }
+
+            const birthday = `${yy}-${mm}-${dd}`;
+            const age = calculateAge(birthday);
+
+            if ((age.year == 55) && ((age.month > 0) || (age.month == 0 && age.day > 0))) {
+                showDateError($('#ctrl_dob').getAttribute('data-error-not-qualify'));
+            }
         });
     });
 
