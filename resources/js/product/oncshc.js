@@ -26,7 +26,7 @@ import {
     getPackageData,
     getSelectedPrice,
     showTitle,
-    validateAgeInPackage,
+    validateAgeInPackageForChillSure,
     validatePolicyPayment,
     validatePolicyStep5,
     getSelectedApiPackage,
@@ -239,7 +239,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     let channel = $("#channel")?.value;
     channel = (channel ? channel : 'TPT Website');
 
-    let status = false;
+    let minAge = 20;
+    let maxAge = 55;
     const package_data = await getPackageData(current_package, $("#channel")?.value);
 
     let defaultBmi = "";
@@ -430,48 +431,48 @@ document.addEventListener("DOMContentLoaded", async () => {
     //     //const age = calculateAge()
     // });
 
-    $$("input[id=ctrl_dob]").forEach($el => {
-        $el.addEventListener("change", function (e) {
-            const $cite = $('#step1').getElementsByTagName('cite');
-            for (let i = 0, len = $cite.length; i !== len; ++i) {
-                $cite[0].parentNode.removeChild($cite[0]);
-            }
+    // $$("input[id=ctrl_dob]").forEach($el => {
+    //     $el.addEventListener("change", function (e) {
+    //         const $cite = $('#step1').getElementsByTagName('cite');
+    //         for (let i = 0, len = $cite.length; i !== len; ++i) {
+    //             $cite[0].parentNode.removeChild($cite[0]);
+    //         }
 
-            $('#step1').querySelectorAll('.controls-wrapper').forEach(($el) => {
-                $el.classList.remove('error')
-            });
+    //         $('#step1').querySelectorAll('.controls-wrapper').forEach(($el) => {
+    //             $el.classList.remove('error')
+    //         });
 
-            const dob = $el.value;
-            let dd = '';
-            let mm = '';
-            let yy = '';
+    //         const dob = $el.value;
+    //         let dd = '';
+    //         let mm = '';
+    //         let yy = '';
 
-            if(dob!='' || dob!=undefined){
-                const _dob = dob.split("/");
-                dd = _dob[0];
-                mm = _dob[1];
-                yy = _dob[2];
-            }
+    //         if(dob!='' || dob!=undefined){
+    //             const _dob = dob.split("/");
+    //             dd = _dob[0];
+    //             mm = _dob[1];
+    //             yy = _dob[2];
+    //         }
 
-            if (parseInt(yy.substring(0, 2)) > 21) {
-                yy = (parseInt(yy) - 543).toString();
-            }
+    //         if (parseInt(yy.substring(0, 2)) > 21) {
+    //             yy = (parseInt(yy) - 543).toString();
+    //         }
 
-            const birthday = `${yy}-${mm}-${dd}`;
-            const age = calculateAge(birthday);
+    //         const birthday = `${yy}-${mm}-${dd}`;
+    //         const age = calculateAge(birthday);
 
-            console.log('age: '+ age.year + ' year, '+ age.month +' month, '+ age.day+ ' day');
+    //         console.log('age: '+ age.year + ' year, '+ age.month +' month, '+ age.day+ ' day');
 
-            if (age.year < 20) {
-                showDateError($el.getAttribute('data-error-not-qualify'));
-                status = false;
-            } else if ((age.year == 55) && ((age.month > 0) || (age.month == 0 && age.day > 0))) {
-                showDateError($el.getAttribute('data-error-not-qualify'));
-                status = false;
-            }
+    //         if (age.year < 20) {
+    //             showDateError($el.getAttribute('data-error-not-qualify'));
+    //             status = false;
+    //         } else if ((age.year == 55) && ((age.month > 0) || (age.month == 0 && age.day > 0))) {
+    //             showDateError($el.getAttribute('data-error-not-qualify'));
+    //             status = false;
+    //         }
 
-        });
-    });
+    //     });
+    // });
 
 
     $$('#ctrl_weight,#ctrl_height').forEach($el => {
@@ -595,6 +596,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         $btn.addEventListener("click", function (e) {
                 e.preventDefault();
                 const goToStep = parseInt($btn.getAttribute('data-step'));
+                let status = false;
 
                 if (step > goToStep) {
                     status = true;
@@ -602,7 +604,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                 } else {
                     switch (parseInt(step)) {
                         case 1:
-                            const validateResult = validateAgeInPackage(package_data, false);
+                            const validateResult = validateAgeInPackageForChillSure(package_data, false, minAge, maxAge);
                             const chkAccept = validateAcceptStep1();
                             const validateBMIResult = validateBMI();
 
