@@ -26,7 +26,7 @@ import {
     getPackageData,
     getSelectedPrice,
     showTitle,
-    validateAgeInPackageForChillSure,
+    validateMinMaxAgeInPackage,
     validatePolicyPayment,
     validatePolicyStep5,
     getSelectedApiPackage,
@@ -604,7 +604,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                 } else {
                     switch (parseInt(step)) {
                         case 1:
-                            const validateResult = validateAgeInPackageForChillSure(package_data, false, minAge, maxAge);
+                            const validateResult = validateMinMaxAgeInPackage(package_data, false, minAge, maxAge);
                             const chkAccept = validateAcceptStep1();
                             const validateBMIResult = validateBMI();
 

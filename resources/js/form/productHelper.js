@@ -94,7 +94,7 @@ export const validateAgeInPackage = (package_data, cal_price) => {
     };
 }
 
-export const validateAgeInPackageForChillSure = (package_data, cal_price, minAge, maxAge) => {
+export const validateMinMaxAgeInPackage = (package_data, cal_price, minAge, maxAge) => {
 
     $$('.date-input .controls-wrapper').forEach(el => {
         el.classList.remove('error');
