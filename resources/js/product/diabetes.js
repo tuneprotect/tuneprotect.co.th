@@ -1,18 +1,14 @@
 import {
-    removeError,
     showBMIError,
     showBMIValidateError,
-    showDateError,
-    showError,
     showFieldError,
     validateField
 } from "../validate_form";
 import validate from "validate.js";
 import {
     $,
-    $$, calculateAge,
+    $$,
     current_package,
-    getCheckedCheckboxesFor,
     getRadioSelectedValue,
     locale,
     scrollToTargetAdjusted
@@ -24,8 +20,7 @@ import {
     getPackageData,
     getSelectedPrice,
     showTitle,
-    validateAgeInPackage,
-    validatePolicy, 
+    validateMinMaxAgeInPackage,
     validatePolicyPayment, 
     validatePolicyStep5,
     formatInputFieldOnlyNumberic,
@@ -225,10 +220,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     let channel = $("#channel")?.value;
     channel = (channel ? channel : 'TPT Website');
 
-    // if ($("#controller")?.value == 'portal') {
-    //     let aBrochureci = document.getElementById('brochure_diabetes');
-    //     aBrochureci.href = $("#brochure_diabetes")?.value;
-    // }
+    let minAge = 1;
+    let maxAge = 65;
 
     const package_data = await getPackageData(current_package, $("#channel")?.value);
 
@@ -440,7 +433,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         field.addEventListener("change", function (e) {
             validateField(this, constraints);
             if (['ctrl_day', 'ctrl_month', 'ctrl_year'].includes(field.id)) {
-                validateAgeInPackage(package_data, false);
+                validateMinMaxAgeInPackage(package_data, false, minAge, maxAge);
             }
         });
     }); 
@@ -516,7 +509,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                 } else {
                     switch (parseInt(step)) {
                         case 1:
-                            const validateResult = validateAgeInPackage(package_data, false);
+                            const validateResult = validateMinMaxAgeInPackage(package_data, false, minAge, maxAge);
                             const validateBMIResult = validateBMI();
 
                             if (validateResult.status && validateBMIResult.status) {

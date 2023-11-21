@@ -3,10 +3,8 @@ import {
     showBMIValidateError,
     showAcceptError,
     showFieldError,
-    showDateError,
     validateField,
     validateAcceptStep1,
-    removeErrorMessage,
 } from "../validate_form";
 import validate from "validate.js";
 import {
@@ -16,7 +14,6 @@ import {
     getRadioSelectedValue,
     locale,
     scrollToTargetAdjusted,
-    calculateAge,
 } from "../helper";
 import {
     changeStep,
@@ -425,55 +422,6 @@ document.addEventListener("DOMContentLoaded", async () => {
         //     items: itemList
         // });
     }
-
-    // $('#ctrl_dob').addEventListener($el.tagName.toLowerCase() === 'input' ? "keyup" : "change", event => {
-    //     console.log($el.value);
-    //     //const age = calculateAge()
-    // });
-
-    // $$("input[id=ctrl_dob]").forEach($el => {
-    //     $el.addEventListener("change", function (e) {
-    //         const $cite = $('#step1').getElementsByTagName('cite');
-    //         for (let i = 0, len = $cite.length; i !== len; ++i) {
-    //             $cite[0].parentNode.removeChild($cite[0]);
-    //         }
-
-    //         $('#step1').querySelectorAll('.controls-wrapper').forEach(($el) => {
-    //             $el.classList.remove('error')
-    //         });
-
-    //         const dob = $el.value;
-    //         let dd = '';
-    //         let mm = '';
-    //         let yy = '';
-
-    //         if(dob!='' || dob!=undefined){
-    //             const _dob = dob.split("/");
-    //             dd = _dob[0];
-    //             mm = _dob[1];
-    //             yy = _dob[2];
-    //         }
-
-    //         if (parseInt(yy.substring(0, 2)) > 21) {
-    //             yy = (parseInt(yy) - 543).toString();
-    //         }
-
-    //         const birthday = `${yy}-${mm}-${dd}`;
-    //         const age = calculateAge(birthday);
-
-    //         console.log('age: '+ age.year + ' year, '+ age.month +' month, '+ age.day+ ' day');
-
-    //         if (age.year < 20) {
-    //             showDateError($el.getAttribute('data-error-not-qualify'));
-    //             status = false;
-    //         } else if ((age.year == 55) && ((age.month > 0) || (age.month == 0 && age.day > 0))) {
-    //             showDateError($el.getAttribute('data-error-not-qualify'));
-    //             status = false;
-    //         }
-
-    //     });
-    // });
-
 
     $$('#ctrl_weight,#ctrl_height').forEach($el => {
         $el.addEventListener($el.tagName.toLowerCase() === 'input' ? "keyup" : "change", event => {

@@ -13,7 +13,7 @@ import {
 } from "../form/productHelper";
 import {
     $,
-    $$, calculateAge,
+    $$,
     current_package,
     getCheckedCheckboxesFor,
     getRadioSelectedValue,
