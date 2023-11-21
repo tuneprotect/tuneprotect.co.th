@@ -432,8 +432,14 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     $$("input[id=ctrl_dob]").forEach($el => {
         $el.addEventListener("change", function (e) {
-            //console.log($el.value);
-            removeErrorMessage('.date-wrapper');
+            const $cite = $('#step1').getElementsByTagName('cite');
+            for (let i = 0, len = $cite.length; i !== len; ++i) {
+                $cite[0].parentNode.removeChild($cite[0]);
+            }
+
+            $('#step1').querySelectorAll('.controls-wrapper').forEach(($el) => {
+                $el.classList.remove('error')
+            });
 
             const dob = $el.value;
             let dd = '';
