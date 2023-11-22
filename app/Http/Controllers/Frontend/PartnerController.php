@@ -22,7 +22,6 @@ class PartnerController extends BaseController
 
         $arrCategoryType = [
             'hospital' => ProjectEnum::WEB_CONTENT_HOSPITAL_CATEGORY,
-            'glass_shop' => ProjectEnum::WEB_CONTENT_GLASS_SHOP_CATEGORY,
             'garage' => ProjectEnum::WEB_CONTENT_GARAGE_CATEGORY,
             'service_center' => ProjectEnum::WEB_CONTENT_SERVICE_CENTER_CATEGORY,
         ];
