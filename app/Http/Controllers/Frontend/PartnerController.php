@@ -44,10 +44,12 @@ class PartnerController extends BaseController
         $this->bodyData['content'] = $this->setStaticPageHeader('static.page.' . $type);
         $this->bodyData['province'] = json_decode(Storage::disk('public')->get('json/province.json'));
 
-        $this->bodyData['category'] = WebContent::where('type_id', $arrCategoryType[$type])
+        if ($type != 'glass_shop') {
+            $this->bodyData['category'] = WebContent::where('type_id', $arrCategoryType[$type])
             ->with('locales')
             ->whereRaw(ProjectEnum::isPublish())
             ->get();
+        }
 
         $this->bodyData['partner_language'] = $this->bodyData['partner'][0]->partner_language;
 
