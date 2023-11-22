@@ -15,12 +15,14 @@ class PartnerController extends BaseController
     {
         $arrType = [
             'hospital' => ProjectEnum::WEB_CONTENT_HOSPITAL,
+            'glass_shop' => ProjectEnum::WEB_CONTENT_GLASS_SHOP,
             'garage' => ProjectEnum::WEB_CONTENT_GARAGE,
             'service_center' => ProjectEnum::WEB_CONTENT_SERVICE_CENTER,
         ];
 
         $arrCategoryType = [
             'hospital' => ProjectEnum::WEB_CONTENT_HOSPITAL_CATEGORY,
+            'glass_shop' => ProjectEnum::WEB_CONTENT_GLASS_SHOP_CATEGORY,
             'garage' => ProjectEnum::WEB_CONTENT_GARAGE_CATEGORY,
             'service_center' => ProjectEnum::WEB_CONTENT_SERVICE_CENTER_CATEGORY,
         ];

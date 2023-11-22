@@ -1261,6 +1261,76 @@ let APP_ROUTE = {
             }
         }),
     },
+    [`${WEB_CONTENT.GLASS_SHOP}.detail`]: {
+        id: `${WEB_CONTENT.GLASS_SHOP}.detail`,
+        name: <Translate id={`side_nav.${WEB_CONTENT.GLASS_SHOP}`}/>,
+        url: "/partner/glass_shop/detail/:id?",
+        icon: 'pets',
+        show_on_main_menu: false,
+        layout: "MainLayout",
+        parent: "",
+        group: "",
+        component: () => PartnerMainStep({
+            isWebContent: true,
+            type_id: WEB_CONTENT.GLASS_SHOP,
+            config: {
+                hasPublishPeriod: true,
+                title: {
+                    fieldProp: {
+                        label: <Translate id="global.title"/>,
+                        required: true,
+                    },
+                    validate: Yup.string()
+                        .required(<Translate id="error_message.required"/>)
+                },
+                address: {
+                    fieldProp: {
+                        label: <Translate id="global.address"/>,
+                        multiline: true,
+                        required: true,
+                    },
+                    validate: Yup.string()
+                        .required(<Translate id="error_message.required"/>)
+                },
+                province: {
+                    label: <Translate id="global.province"/>,
+                    required: true,
+                    validate: Yup.string()
+                        .required(<Translate id="error_message.required"/>)
+                },
+                tel: {
+                    fieldProp: {
+                        label: <Translate id="global.tel"/>,
+                        required: true,
+                    }
+                },
+                website: {
+                    fieldProp: {
+                        label: <Translate id="global.website"/>,
+                        required: true,
+                    }
+                },
+                location: {
+                    fieldProp: {
+                        label: <Translate id="global.location"/>,
+                        required: true,
+                    }
+                },
+                cat_id: {
+                    type_id: WEB_CONTENT.GLASS_SHOP_CATEGORY,
+                    label: <Translate id={`side_nav.partner.glass_shop_category`}/>,
+                    validate: Yup.string()
+                        .required(<Translate id="error_message.required"/>)
+                },
+                partner_language: {
+                    fieldProp: {
+                        label: <Translate id="language.language"/>,
+                        required: true,
+                    }
+                },
+            }
+        }),
+    },
     [WEB_CONTENT.GARAGE_CATEGORY]: {
         id: WEB_CONTENT.GARAGE_CATEGORY,
         name: <Translate id={`side_nav.partner.garage_category`}/>,

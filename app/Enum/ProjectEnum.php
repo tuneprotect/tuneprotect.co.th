@@ -15,6 +15,7 @@ class ProjectEnum
     const STATIC_PAGE_CONTACT_US = 'static.page.contact_us';
     const STATIC_PAGE_CLAIM = 'static.page.claim';
     const STATIC_PAGE_HOSPITAL = 'static.page.hospital';
+    const STATIC_PAGE_GLASS_SHOP = 'static.page.glass_shop';
     const STATIC_PAGE_GARAGE = 'static.page.garage';
     const STATIC_META_NEWS = 'static.page.news';
     const STATIC_META_PROMOTION = 'static.page.promotion';
@@ -159,6 +160,8 @@ class ProjectEnum
     const WEB_CONTENT_REVIEW = "static.review";
     const WEB_CONTENT_HOSPITAL_CATEGORY = "partner.hospital_category";
     const WEB_CONTENT_HOSPITAL = "partner.hospital";
+    const WEB_CONTENT_GLASS_SHOP_CATEGORY = "partner.glass_shop_category";
+    const WEB_CONTENT_GLASS_SHOP = "partner.glass_shop";
     const WEB_CONTENT_GARAGE_CATEGORY = "partner.garage_category";
     const WEB_CONTENT_GARAGE = "partner.garage";
     const WEB_CONTENT_SERVICE_CENTER_CATEGORY = "partner.service_center_category";

@@ -28,6 +28,8 @@ return [
     'garage' => 'Garage',
     'hospital' => 'โรงพยาบาล',
     'hospital_list' => 'รายชื่อโรงพยาบาล',
+    'glass_shop' => 'ร้านกระจก',
+    'glass_shop_list' => 'รายชื่อร้านกระจก',
     'language' => 'Language',
     'list' => 'รายชื่อ',
     'location' => 'แผนที่',
