@@ -64,7 +64,8 @@ document.addEventListener("DOMContentLoaded", function () {
         province: "",
         cat_id: "",
         title: "",
-        partner_language: ""
+        partner_language: "",
+        tel: "",
     };
 
     const data = JSON.parse($('#div_result').innerHTML);
@@ -91,6 +92,10 @@ document.addEventListener("DOMContentLoaded", function () {
                 }
 
                 if (filterParam.title !== "" && rowData?.locales[locale].title.toLowerCase().indexOf(filterParam.title.toLowerCase()) === -1) {
+                    return false;
+                }
+
+                if (filterParam.tel !== "" && rowData?.locales[locale].tel.toLowerCase().indexOf(filterParam.tel.toLowerCase()) === -1) {
                     return false;
                 }
 
@@ -138,7 +143,7 @@ document.addEventListener("DOMContentLoaded", function () {
         })
     });
 
-    $$('#ctrl_name').forEach($el => {
+    $$('#ctrl_name,ctrl_phone').forEach($el => {
         $el.addEventListener('keyup', (e) => {
             filterParam = {...filterParam, [e.target.name]: e.target.value}
             showResult();

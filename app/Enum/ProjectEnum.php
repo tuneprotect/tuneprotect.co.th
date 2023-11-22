@@ -160,7 +160,6 @@ class ProjectEnum
     const WEB_CONTENT_REVIEW = "static.review";
     const WEB_CONTENT_HOSPITAL_CATEGORY = "partner.hospital_category";
     const WEB_CONTENT_HOSPITAL = "partner.hospital";
-    const WEB_CONTENT_GLASS_SHOP_CATEGORY = "partner.glass_shop_category";
     const WEB_CONTENT_GLASS_SHOP = "partner.glass_shop";
     const WEB_CONTENT_GARAGE_CATEGORY = "partner.garage_category";
     const WEB_CONTENT_GARAGE = "partner.garage";

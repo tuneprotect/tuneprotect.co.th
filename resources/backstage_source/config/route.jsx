@@ -1261,46 +1261,6 @@ let APP_ROUTE = {
             }
         }),
     },
-    [WEB_CONTENT.GLASS_SHOP_CATEGORY]: {
-        id: WEB_CONTENT.GLASS_SHOP_CATEGORY,
-        name: <Translate id={`side_nav.partner.glass_shop_category`}/>,
-        url: "/partner/glass_shop_category",
-        icon: 'view_carousel',
-        show_on_main_menu: true,
-        component: () => WebContentPage({
-            type_id: WEB_CONTENT.GLASS_SHOP_CATEGORY,
-            config: {
-                isSortable: true,
-            }
-        }),
-        layout: "MainLayout",
-        parent: "partner",
-        group: "main_nav"
-    },
-    [`${WEB_CONTENT.GLASS_SHOP_CATEGORY}.detail`]: {
-        id: `${WEB_CONTENT.GLASS_SHOP_CATEGORY}.detail`,
-        name: <Translate id={`side_nav.partner.glass_shop_category`}/>,
-        url: "/partner/glass_shop_category/detail/:id?",
-        icon: 'pets',
-        show_on_main_menu: false,
-        layout: "MainLayout",
-        parent: "",
-        group: "",
-        component: () => WebContentMainStep({
-            isWebContent: true,
-            type_id: WEB_CONTENT.GLASS_SHOP_CATEGORY,
-            config: {
-                title: {
-                    fieldProp: {
-                        label: <Translate id="global.title"/>,
-                        required: true,
-                    },
-                    validate: Yup.string()
-                        .required(<Translate id="error_message.required"/>)
-                },
-            }
-        }),
-    },
     [WEB_CONTENT.GLASS_SHOP]: {
         id: WEB_CONTENT.GLASS_SHOP,
         name: <Translate id={`side_nav.${WEB_CONTENT.GLASS_SHOP}`}/>,
@@ -1351,29 +1311,17 @@ let APP_ROUTE = {
                     validate: Yup.string()
                         .required(<Translate id="error_message.required"/>)
                 },
+                region: {
+                    label: <Translate id="global.region"/>,
+                    required: true,
+                    validate: Yup.string()
+                        .required(<Translate id="error_message.required"/>)
+                },
                 tel: {
                     fieldProp: {
                         label: <Translate id="global.tel"/>,
                         required: true,
                     }
-                },
-                website: {
-                    fieldProp: {
-                        label: <Translate id="global.website"/>,
-                        required: true,
-                    }
-                },
-                location: {
-                    fieldProp: {
-                        label: <Translate id="global.location"/>,
-                        required: true,
-                    }
-                },
-                cat_id: {
-                    type_id: WEB_CONTENT.HOSPITAL_CATEGORY,
-                    label: <Translate id={`side_nav.partner.hospital_category`}/>,
-                    validate: Yup.string()
-                        .required(<Translate id="error_message.required"/>)
                 },
                 partner_language: {
                     fieldProp: {

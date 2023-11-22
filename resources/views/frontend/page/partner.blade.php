@@ -40,6 +40,12 @@
                             <label for="ctrl_language">@lang('global.language')</label>
                         </div>
                     @endif
+                    @if($type == 'glass_shop')
+                    <div class="controls-wrapper">
+                        <input id="ctrl_tel" name="tel" type="text" placeholder="@lang('global.search_from_tel')"/>
+                        <label for="ctrl_tel">@lang('global.search_from_tel')</label>
+                    </div>
+                    @endif
                 </div>
             </form>
 
