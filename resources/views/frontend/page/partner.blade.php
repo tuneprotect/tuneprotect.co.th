@@ -31,7 +31,7 @@
                         <input id="ctrl_name" name="title" type="text" placeholder="@lang('global.search_from_name')"/>
                         <label for="ctrl_name">@lang('global.search_from_name')</label>
                     </div>
-                    @if(!empty($partner_language))
+                    @if(!empty($partner_language) || $type != 'glass_shop')
                         <div class="controls-wrapper">
                             <select id="ctrl_language" name="partner_language">
                                 <option value="">@lang('global.default_select_option')</option>
