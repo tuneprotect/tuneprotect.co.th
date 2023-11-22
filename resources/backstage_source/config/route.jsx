@@ -2207,6 +2207,7 @@ const static_content = {
         'download',
         'garage',
         'hospital',
+        'glass_shop',
         'news',
         'promotion',
         'pay_insurance_premiums',
