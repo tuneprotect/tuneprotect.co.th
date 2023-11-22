@@ -143,7 +143,7 @@ document.addEventListener("DOMContentLoaded", function () {
         })
     });
 
-    $$('#ctrl_name,ctrl_phone').forEach($el => {
+    $$('#ctrl_name,#ctrl_tel').forEach($el => {
         $el.addEventListener('keyup', (e) => {
             filterParam = {...filterParam, [e.target.name]: e.target.value}
             showResult();

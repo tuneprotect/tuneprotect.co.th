@@ -16,7 +16,7 @@
                         </select>
                         <label for="ctrl_province">@lang('global.province')</label>
                     </div>
-                    @if($type != 'glass_shop')
+                    @if($type !== 'glass_shop')
                         <div class="controls-wrapper">
                             <select id="ctrl_category" name="cat_id">
                                 <option value="">@lang('global.default_select_option')</option>
@@ -31,18 +31,20 @@
                         <input id="ctrl_name" name="title" type="text" placeholder="@lang('global.search_from_name')"/>
                         <label for="ctrl_name">@lang('global.search_from_name')</label>
                     </div>
-                    @if(!empty($partner_language) || $type != 'glass_shop')
-                        <div class="controls-wrapper">
-                            <select id="ctrl_language" name="partner_language">
-                                <option value="">@lang('global.default_select_option')</option>
-                                @foreach($partner_language as $k => $v)
-                                    <option value="{{$k}}">{{ $k }}</option>
-                                @endforeach
-                            </select>
-                            <label for="ctrl_language">@lang('global.language')</label>
-                        </div>
+                    @if(!empty($partner_language))
+                        @if($type !== 'glass_shop')
+                            <div class="controls-wrapper">
+                                <select id="ctrl_language" name="partner_language">
+                                    <option value="">@lang('global.default_select_option')</option>
+                                    @foreach($partner_language as $k => $v)
+                                        <option value="{{$k}}">{{ $k }}</option>
+                                    @endforeach
+                                </select>
+                                <label for="ctrl_language">@lang('global.language')</label>
+                            </div>
+                        @endif
                     @endif
-                    @if($type == 'glass_shop')
+                    @if($type === 'glass_shop')
                         <div class="controls-wrapper">
                             <input id="ctrl_tel" name="tel" type="text" placeholder="@lang('global.search_from_tel')"/>
                             <label for="ctrl_tel">@lang('global.search_from_tel')</label>
