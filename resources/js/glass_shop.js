@@ -69,6 +69,7 @@ document.addEventListener("DOMContentLoaded", function () {
     };
 
     const data = JSON.parse($('#div_result').innerHTML);
+    console.log(data);
     $('#div_result').remove();
     const handleFilterData = () => {
 
