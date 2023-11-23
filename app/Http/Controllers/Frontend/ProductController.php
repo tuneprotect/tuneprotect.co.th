@@ -1610,6 +1610,7 @@ class ProductController extends BaseController
     public function result(Request $request)
     {
         $result = null;
+        $payAmount = 0;
         $oBuyLog = BuyLog::where('fdInvoice', str_replace(config('project.invoice_prefix'), "", $request->input('order_id')))->get();
         //$agent_code="";
         //dd($oBuyLog);
@@ -1617,7 +1618,7 @@ class ProductController extends BaseController
         foreach ($oBuyLog as $v) {
 
             $data = $v->data;
-            $payAmount = $data['fdPayAMT'];
+            $payAmount += $data['fdPayAMT'];
             $portalKey = $data['fdKeys'];
             $agent_code = $data['fdAgent'];
             $package = $data['fdPackage'];
@@ -1664,6 +1665,7 @@ class ProductController extends BaseController
                     $request->session()->put('transaction_id', $transaction_id);
                     $this->thankYouParam = $request->input('user_defined_4');
                     $func = 'thankyou';
+                    dd($payAmount);
                 } else {
                     $request->session()->put('error', implode(', ', $result[0]));
                     if (strtolower($this->controller) === "portal") {

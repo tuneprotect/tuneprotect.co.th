@@ -69,7 +69,6 @@ document.addEventListener("DOMContentLoaded", function () {
     };
 
     const data = JSON.parse($('#div_result').innerHTML);
-    console.log(data);
     $('#div_result').remove();
     const handleFilterData = () => {
 
@@ -146,6 +145,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     $$('#ctrl_name,#ctrl_tel').forEach($el => {
         $el.addEventListener('keyup', (e) => {
+            console.log(e.target.name + ": " + e.target.value);
             filterParam = {...filterParam, [e.target.name]: e.target.value}
             showResult();
         })
