@@ -1665,7 +1665,6 @@ class ProductController extends BaseController
                     $request->session()->put('transaction_id', $transaction_id);
                     $this->thankYouParam = $request->input('user_defined_4');
                     $func = 'thankyou';
-                    dd($payAmount);
                 } else {
                     $request->session()->put('error', implode(', ', $result[0]));
                     if (strtolower($this->controller) === "portal") {
