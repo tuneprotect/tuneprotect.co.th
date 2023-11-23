@@ -95,7 +95,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     return false;
                 }
 
-                if (filterParam.tel !== "" && rowData.tel.toLowerCase().trim().indexOf(filterParam.tel.toLowerCase().trim()) === -1) {
+                if (filterParam.tel !== "" && rowData.tel.trim().toLowerCase().indexOf(filterParam.tel.toLowerCase()) === -1) {
                     return false;
                 }
 
