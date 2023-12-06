@@ -1,5 +1,5 @@
 import Swal from "sweetalert2";
-import { $, $$ } from "./helper";
+import { $, $$, locale } from "./helper";
 import validate from "validate.js";
 
 require('./bootstrap');
