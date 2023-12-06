@@ -71,14 +71,19 @@ document.addEventListener("DOMContentLoaded", function () {
                 if (response.status) {
                     innerHTML = `<h2 class="text-primary">จำนวนกรมธรรม์ที่ค้นพบ ${response.message} กรมธรรม์</h2><br>`;
                     respData.map(v => {
+                        let postDate = format(parseISO(v.POST_DATE), 'dd/MM/') + (locale === 'th' ? (parseInt(format(parseISO(v.POST_DATE), 'yyyy')) + 543) : format(parseISO(v.POST_DATE), 'yyyy'))
+                        let tdate = format(parseISO(v.TDATE), 'dd/MM/') + (locale === 'th' ? (parseInt(format(parseISO(v.TDATE), 'yyyy')) + 543) : format(parseISO(v.TDATE), 'yyyy'))
+                        let xdate = format(parseISO(v.XDATE), 'dd/MM/') + (locale === 'th' ? (parseInt(format(parseISO(v.XDATE), 'yyyy')) + 543) : format(parseISO(v.XDATE), 'yyyy'))
+                        let dob = format(parseISO(v.DOB), 'dd/MM/') + (locale === 'th' ? (parseInt(format(parseISO(v.DOB), 'yyyy')) + 543) : format(parseISO(v.DOB), 'yyyy'))
+
                         innerHTML = innerHTML + `<u><h3 class="text-primary">${NumOfPol}. ข้อมูลการประกันภัย</h3></u><br>
                             <div class="two-col">
                                 <div><span>เลขกรมธรรม์ : </span><strong>${v.DOC_NBR}</strong></div>
-                                <div><span>วันที่ออกกรมธรรม์ : </span><strong>${v.POST_DATE}</strong></div>
+                                <div><span>วันที่ออกกรมธรรม์ : </span><strong>${postDate}</strong></div>
                                 <div><span>แผนประกันภัย : </span><strong>${v.PLANNAME}</span></strong></div>
                                 <div><span>ราคา : </span><strong>${v.GROSS_PREM} บาท</strong></div>
-                                <div><span>วันที่เริ่มคุ้มครอง : </span><strong>${v.TDATE}</strong></div>
-                                <div><span>วันที่สิ้นสุดความคุ้มครอง : </span><strong>${v.XDATE}</strong></div>
+                                <div><span>วันที่เริ่มคุ้มครอง : </span><strong>${tdate}</strong></div>
+                                <div><span>วันที่สิ้นสุดความคุ้มครอง : </span><strong>${xdate}</strong></div>
                                 <div><span>เลขอ้างอิง (Ref Code.) : </span><strong>${v.REFER_CODE}</strong></div>
                                 <div><span>เลขอินวอยซ์ : </span><strong>${v.REFER_NO}</strong></div>
                                 <div><span>สถานะ : </span><strong>${v.ACTIVE}</strong></div>
@@ -91,7 +96,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                 <div><span>ชื่อ : </span><strong>${v.INSURED}</strong></div>
                                 <div><span>เพศ : </span><strong>${v.GENDER === 'F' ? 'หญิง' : 'ชาย'}</strong></div>
                                 <div><span>บัตรประจำตัวประชาชน : </span><strong>${v.ID_NBR}</strong></div>
-                                <div><span>วันเกิด : </span><strong>${v.DOB}</strong></div>
+                                <div><span>วันเกิด : </span><strong>${dob}</strong></div>
                                 <div><span>เบอร์โทรศัพท์มือถือ : </span><strong>${v.MOBILE_NO}</strong></div>
                                 <div><span>อีเมล : </span><strong>${v.EMAIL}</strong></div>
                                 <div class="controls-wrapper full no-lable"><span>ที่อยู่ : </span><strong>${v.ADDRESS} ${v.POSTCODE}</strong></div>
