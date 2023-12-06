@@ -5,8 +5,7 @@ import {
     formatTelNumber,
     getPackageData,
     showTitle,
-    validateAgeInPackage,
-    validatePolicy, 
+    validateMinMaxAgeInPackage,
     validatePolicyPayment, 
     validatePolicyStep5,
     formatInputFieldOnlyNumberic,
@@ -14,7 +13,7 @@ import {
 } from "../form/productHelper";
 import {
     $,
-    $$, calculateAge,
+    $$,
     current_package,
     getCheckedCheckboxesFor,
     getRadioSelectedValue,
@@ -242,6 +241,8 @@ if ($('#title_wrapper')) {
             aBrochureci.href = $("#brochure_ci")?.value;
         }
 
+        let minAge = 18;
+        let maxAge = 60;
 
         const package_data = await getPackageData(current_package,$("#channel")?.value);
 
@@ -356,7 +357,7 @@ if ($('#title_wrapper')) {
         let budget_slider = new rSlider(slideOption);
 
         const genRangeSlidByHbd = () => {
-            const validateResult = validateAgeInPackage(package_data, false);
+            const validateResult = validateMinMaxAgeInPackage(package_data, false, minAge, maxAge);
 
             if (validateResult.status) {
 
@@ -443,6 +444,7 @@ if ($('#title_wrapper')) {
             const itemList = [];
     
             if (data.fdHBD) {
+                console.log(package_data);
                 Object.keys(package_data)
                     .filter(k => _.startsWith(k, current_package))
                     .map(k => {
@@ -607,7 +609,7 @@ if ($('#title_wrapper')) {
                     } else {
                         switch (parseInt(step)) {
                             case 1:
-                                const validateResult = validateAgeInPackage(package_data, false);
+                                const validateResult = validateMinMaxAgeInPackage(package_data, false, minAge, maxAge);
                                 status = validateResult.status;
                                 if (validateResult.status) {
                                     data = {

@@ -95,7 +95,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     return false;
                 }
 
-                if (filterParam.tel !== "" && rowData.tel.replaceAll('-', '').toLowerCase().indexOf(filterParam.tel.toLowerCase()) === -1) {
+                if (filterParam.tel !== "" && rowData.tel.toLowerCase().indexOf(filterParam.tel.toLowerCase()) === -1) {
                     return false;
                 }
 
@@ -145,6 +145,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     $$('#ctrl_name,#ctrl_tel').forEach($el => {
         $el.addEventListener('keyup', (e) => {
+            console.log(e.target.name + ": " + e.target.value);
             filterParam = {...filterParam, [e.target.name]: e.target.value}
             showResult();
         })

@@ -158,6 +158,7 @@ export const WEB_CONTENT = {
 
     HOSPITAL: "partner.hospital",
     HOSPITAL_CATEGORY: "partner.hospital_category",
+    GLASS_SHOP: "partner.glass_shop",
     GARAGE: "partner.garage",
     GARAGE_CATEGORY: "partner.garage_category",
     SERVICE_CENTER: "partner.service_center",

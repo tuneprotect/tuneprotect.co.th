@@ -14,7 +14,6 @@ import {
     getRadioSelectedValue,
     locale,
     scrollToTargetAdjusted,
-    getZipcodeData,
 } from "../helper";
 import {
     changeStep,
@@ -24,7 +23,7 @@ import {
     getPackageData,
     getSelectedPrice,
     showTitle,
-    validateAgeInPackage,
+    validateMinMaxAgeInPackage,
     validatePolicyPayment,
     validatePolicyStep5,
     getSelectedApiPackage,
@@ -237,6 +236,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     let channel = $("#channel")?.value;
     channel = (channel ? channel : 'TPT Website');
 
+    let minAge = 20;
+    let maxAge = 55;
     const package_data = await getPackageData(current_package, $("#channel")?.value);
 
     let defaultBmi = "";
@@ -543,7 +544,6 @@ document.addEventListener("DOMContentLoaded", async () => {
         $btn.addEventListener("click", function (e) {
                 e.preventDefault();
                 const goToStep = parseInt($btn.getAttribute('data-step'));
-
                 let status = false;
 
                 if (step > goToStep) {
@@ -552,7 +552,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                 } else {
                     switch (parseInt(step)) {
                         case 1:
-                            const validateResult = validateAgeInPackage(package_data, false);
+                            const validateResult = validateMinMaxAgeInPackage(package_data, false, minAge, maxAge);
                             const chkAccept = validateAcceptStep1();
                             const validateBMIResult = validateBMI();
 

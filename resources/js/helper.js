@@ -12,7 +12,7 @@ export const current_package = $('main').getAttribute('data-package');
 export const locale = $('html').getAttribute('lang');
 
 export const calculateAge = (date) => {
-    const now = new Date();
+    const now = new Date().setDate(new Date().getDate()+1)
     let result = {
         year: 0,
         month: 0,
@@ -21,7 +21,6 @@ export const calculateAge = (date) => {
     let age = parseISO(date);
 
     const year = differenceInYears(now, age);
-
     if (year > 0) {
         result = {...result, year};
         age = addYears(age, year);

@@ -263,6 +263,7 @@
             "garage_category": "Garage Category",
             "hospital": "Hospital",
             "hospital_category": "Hospital Category",
+            "glass_shop": "Glass Shop",
             "main": "Partner",
             "service_center": "Service Center",
             "service_center_category": "Service Center Category"
@@ -297,6 +298,7 @@
                 "error": "Error",
                 "garage": "Garage",
                 "hospital": "Hospital",
+                "glass_shop": "Glass Shop",
                 "main": "Page",
                 "news": "News",
                 "promotion": "Promotion",

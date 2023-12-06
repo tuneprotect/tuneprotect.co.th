@@ -1,5 +1,5 @@
 import { $, $$, calculateAge, current_package, fadeIn, fadeOut, locale, scrollToTargetAdjusted } from "../helper";
-import { isValid, parseISO } from "date-fns";
+import { isValid, parse, parseISO } from "date-fns";
 import { showDateError, showFieldError } from "../validate_form";
 import Swal from "sweetalert2";
 
@@ -33,6 +33,7 @@ export const getCountryData = async () => {
     return await res.json();
 }
 export const validateAgeInPackage = (package_data, cal_price) => {
+
     $$('.date-input .controls-wrapper').forEach(el => {
         el.classList.remove('error');
     });
@@ -80,6 +81,79 @@ export const validateAgeInPackage = (package_data, cal_price) => {
     }
 
     const age = calculateAge(birthday)
+    
+    if (cal_price !== false) {
+        genPrice(birthday, package_data)
+    }
+
+    return {
+        status: true, data: {
+            fdHBD: birthday,
+            fdAge: age.year
+        }
+    };
+}
+
+export const validateMinMaxAgeInPackage = (package_data, cal_price, minAge, maxAge) => {
+
+    $$('.date-input .controls-wrapper').forEach(el => {
+        el.classList.remove('error');
+    });
+    $('.date-input cite').innerHTML = "";
+
+    let dd = $('#ctrl_day').value,
+        mm = $('#ctrl_month').value;
+    let yy = $('#ctrl_year').value;
+
+    $$('#ctrl_dob').forEach(el => {
+        const dob = $('#ctrl_dob').value;
+       if(dob!='' || dob!=undefined){
+            const _dob = dob.split("/");
+            dd = _dob[0];
+            mm = _dob[1];
+            yy = _dob[2];
+        }
+        if (dd === '' || mm === '' || yy === '') {
+            showDateError($('#ctrl_dob').getAttribute('data-error-format'));
+            return {status: false};
+        }
+    });
+
+    if (dd === '' || mm === '' || yy === '') {
+        showDateError($('#ctrl_day').getAttribute('data-error-format'));
+        return {status: false};
+    }
+
+    if (parseInt(yy.substring(0, 2)) > 21) {
+        yy = (parseInt(yy) - 543).toString();
+    }
+
+    const birthday = `${yy}-${mm}-${dd}`;
+    if (!isValid(parseISO(birthday))) {
+        showDateError($('#ctrl_day').getAttribute('data-error-format'));
+        return {status: false};
+    }
+    const age_in_range = Object.keys(package_data)
+        .filter(k => _.startsWith(k, current_package))
+        .some(k => Object.keys(package_data[k].price).some(ageRange => checkAge(birthday, ageRange)))
+    
+    if (!age_in_range) {
+        showDateError($('#ctrl_day').getAttribute('data-error-not-qualify'));
+        return {status: false};
+    }
+
+    const age = calculateAge(birthday)
+
+    if (age.year < minAge) {
+        showDateError($('#ctrl_day').getAttribute('data-error-not-qualify'));
+        return {status: false};
+    }
+
+    if ((age.year == maxAge) && ((age.month > 0) || (age.month == 0 && age.day > 0))) {
+        showDateError($('#ctrl_day').getAttribute('data-error-not-qualify'));
+        return {status: false};
+    }
+    
     if (cal_price !== false) {
         genPrice(birthday, package_data)
     }
@@ -398,7 +472,9 @@ export const genPrice = (birthday, package_data) => {
 
 export const checkAge = (birthday, ageRange) => {
     const range = ageRange.split('-');
-    const age = calculateAge(birthday)
+    const age = calculateAge(birthday);
+
+    console.log('age: '+ age.year + ' year, '+ age.month +' month, '+ age.day+ ' day');
 
     if (range[0].indexOf(',') !== -1) {
         const monthRange = range[0].split(',');
@@ -420,48 +496,52 @@ export const checkAge = (birthday, ageRange) => {
                 return true;
             }
             return false;
-
-            // if (
-            //     (age.year > monthRange[0] || (age.year == monthRange[0] && age.month > monthRange[1]))
-            //     && age.year < range[1]
-            // ) {
-
-            //     return true;
-            // }
         }
         else
         {
             //day and year range
             const rangeAll = ageRange.split(',');
             const yearRange = rangeAll[2].split('-');
-
-
+ 
             if (age.year <= yearRange[1]) {
                 if (age.year == yearRange[0]) {
                     if (age.month <= rangeAll[1]) {
                         if (age.day >= rangeAll[0]) {
                             return true;
                         }
-                    } else {
+                    } 
+                    else 
+                    {
                         return true;
                     }
-                } else
+                } 
+                else 
+                {
                     return true;
-            } else {
+                }   
+            } 
+            else 
+            {
                 return false;
             }
         }
-
-
-
-    } else if (age.year >= range[0] && age.year <= range[1]) {
-        return true;
+    // } else if (age.year >= range[0] && age.year <= range[1]) {
+    //     return true;
+    // }
+    } 
+    else 
+    {
+        if (age.year >= range[0] && age.year <= range[1]) {
+            return true;
+        }
     }
+
     return false;
 }
 
 export const getSelectedPrice = (birthday, packageCode, package_data) => {
     const pack = Object.keys(package_data[packageCode].price).filter(ageRange => checkAge(birthday, ageRange))
+    console.log(package_data[packageCode]);
     return package_data[packageCode].price[pack];
 }
 
