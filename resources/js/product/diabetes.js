@@ -20,7 +20,7 @@ import {
     getPackageData,
     getSelectedPrice,
     showTitle,
-    validateMinMaxAgeInPackage,
+    validateDiabetesMinMaxAgeInPackage,
     validatePolicyPayment, 
     validatePolicyStep5,
     formatInputFieldOnlyNumberic,
@@ -221,7 +221,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     channel = (channel ? channel : 'TPT Website');
 
     let minAge = 1;
-    let maxAge = 65;
+    let maxAge = 64;
 
     const package_data = await getPackageData(current_package, $("#channel")?.value);
 
@@ -433,7 +433,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         field.addEventListener("change", function (e) {
             validateField(this, constraints);
             if (['ctrl_day', 'ctrl_month', 'ctrl_year'].includes(field.id)) {
-                validateMinMaxAgeInPackage(package_data, false, minAge, maxAge);
+                validateDiabetesMinMaxAgeInPackage(package_data, false, minAge, maxAge);
             }
         });
     }); 
