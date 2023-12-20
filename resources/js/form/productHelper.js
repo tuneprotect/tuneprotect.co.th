@@ -149,7 +149,7 @@ export const validateMinMaxAgeInPackage = (package_data, cal_price, minAge, maxA
         return {status: false};
     }
 
-    if ((age.year == maxAge) && ((age.month > 0) || (age.month == 0 && age.day > 0))) {
+    if ((age.year >= maxAge) && ((age.month > 0) || (age.month == 0 && age.day > 0))) {
         showDateError($('#ctrl_day').getAttribute('data-error-not-qualify'));
         return {status: false};
     }

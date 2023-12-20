@@ -221,7 +221,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     channel = (channel ? channel : 'TPT Website');
 
     let minAge = 1;
-    let maxAge = 64;
+    let maxAge = 65;
 
     const package_data = await getPackageData(current_package, $("#channel")?.value);
 
