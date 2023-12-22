@@ -428,7 +428,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
 
     const $form1 = $('#step1');
-    const allField1 = $form1.querySelectorAll('input');
+    const allField1 = $form1.querySelectorAll('input, select');
     allField1.forEach(field => {
         field.addEventListener("change", function (e) {
             validateField(this, constraints);
