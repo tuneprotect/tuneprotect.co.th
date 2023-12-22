@@ -509,7 +509,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                 } else {
                     switch (parseInt(step)) {
                         case 1:
-                            const validateResult = validateMinMaxAgeInPackage(package_data, false, minAge, maxAge);
+                            const validateResult = validateDiabetesMinMaxAgeInPackage(package_data, false, minAge, maxAge);
                             const validateBMIResult = validateBMI();
 
                             if (validateResult.status && validateBMIResult.status) {
