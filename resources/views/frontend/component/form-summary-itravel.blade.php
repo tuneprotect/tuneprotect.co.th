@@ -54,7 +54,7 @@
                     <div class="popup-wrapper">
                         <a data-gtm="index-organization-close" class="close"><i class="icofont-close"></i>
                         </a>
-                        <div style="height: 750px; width: 100%; overflow: auto">
+                        <div style="height: 85%; width: 100%; overflow: auto">
                             <table id="table-scroll">
                             </table>
                         </div>
