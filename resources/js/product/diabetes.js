@@ -20,7 +20,7 @@ import {
     getPackageData,
     getSelectedPrice,
     showTitle,
-    validateMinMaxAgeInPackage,
+    validateDiabetesMinMaxAgeInPackage,
     validatePolicyPayment, 
     validatePolicyStep5,
     formatInputFieldOnlyNumberic,
@@ -221,7 +221,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     channel = (channel ? channel : 'TPT Website');
 
     let minAge = 1;
-    let maxAge = 65;
+    let maxAge = 64;
 
     const package_data = await getPackageData(current_package, $("#channel")?.value);
 
@@ -428,12 +428,12 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
 
     const $form1 = $('#step1');
-    const allField1 = $form1.querySelectorAll('input');
+    const allField1 = $form1.querySelectorAll('input, select');
     allField1.forEach(field => {
         field.addEventListener("change", function (e) {
             validateField(this, constraints);
             if (['ctrl_day', 'ctrl_month', 'ctrl_year'].includes(field.id)) {
-                validateMinMaxAgeInPackage(package_data, false, minAge, maxAge);
+                validateDiabetesMinMaxAgeInPackage(package_data, false, minAge, maxAge);
             }
         });
     }); 
@@ -509,7 +509,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                 } else {
                     switch (parseInt(step)) {
                         case 1:
-                            const validateResult = validateMinMaxAgeInPackage(package_data, false, minAge, maxAge);
+                            const validateResult = validateDiabetesMinMaxAgeInPackage(package_data, false, minAge, maxAge);
                             const validateBMIResult = validateBMI();
 
                             if (validateResult.status && validateBMIResult.status) {
