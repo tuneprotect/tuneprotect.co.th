@@ -356,8 +356,16 @@ const genItemList = (package_data, fdFromDate, fdToDate) => {
             .filter(k => _.startsWith(k, current_package))
             .map(k => {
                 const pack = Object.keys(package_data[k].price).filter(subPackage => {
-                    const dateRange = (package_data[k].price[subPackage].day).split('-');    
-                });
+                    const dateRange = (package_data[k].price[subPackage].day).split('-');
+                    if(dateRange.length === 1)
+                    {
+                        return day >= dateRange[0] && day <= dateRange[0];
+                    }
+                    else
+                    {
+                        return day >= dateRange[0] && day <= dateRange[1];
+                    }
+                })
                 const price = parseInt(package_data[k].price[pack]).toLocaleString();
                 const planCode = Object.keys(package_data)[index];
 
@@ -367,11 +375,9 @@ const genItemList = (package_data, fdFromDate, fdToDate) => {
                     price: "",
                 };
 
-                item.item_id = planCode;
-                item.item_name = "iTravel Plan " + planCode;
+                item.item_id = "iTravel_" + planCode;
+                item.item_name = "iTravel International travel insurance";
                 item.price = price;
-
-                console.log(price);
 
                 itemList.push(item);
                 index++;
@@ -380,17 +386,11 @@ const genItemList = (package_data, fdFromDate, fdToDate) => {
 
     if ($('#controller').value === 'product') 
     {
-        // gtag("event",  "view_item",  {
-        //     "currency": "THB",
-        //     "items": itemList
-        // });
-
         dataLayer.push({ ecommerce: null });  // Clear the previous ecommerce object.
         dataLayer.push({
-            event: "view_item_list",
+            event: "view_item",
             ecommerce: {
-                item_list_id: "ONTAOB",
-                item_list_name: "iTravel",
+                currency: "THB",
                 items: itemList
             }
         });
