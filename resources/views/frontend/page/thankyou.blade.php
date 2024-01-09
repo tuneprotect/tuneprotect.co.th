@@ -138,7 +138,7 @@
                         ecommerce: {
                             transaction_id: "{{$refCode}}",
                             value: "{{$payAmount}}",
-                            currency: "THB"
+                            currency: "THB",
                             items: [{
                                 item_id: "iTravel_{{$package}}",
                                 item_name: "iTravel Plan Code {{$package}}",
