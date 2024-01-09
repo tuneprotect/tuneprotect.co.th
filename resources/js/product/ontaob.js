@@ -701,7 +701,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                                 fdPackage
                             }
 
-                            const selectPrice = genPrice(package_data,countryData, $('#ctrl_sub_package').value, data.fdFromDate, data.fdToDate, $('#ctrl_travel_type').value);
+                            const selectPrice = getSelectedPrice(data.fdPackage, package_data, data.fdFromDate, data.fdToDate);
 
                             if ($('#controller').value === 'product') 
                             {
