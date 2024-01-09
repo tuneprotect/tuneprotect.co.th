@@ -93,6 +93,17 @@ use App\Helper\TemplateHelper; ?>
                 </script>
                 <!-- Facebook Pixel Code -->
 
+                <!-- Google tag (gtag.js) For UAT --> 
+                <script async src="https://www.googletagmanager.com/gtag/js?id=G-QHJGFFXSVN"></script>
+                <script>   
+                    window.dataLayer = window.dataLayer || [];   
+                    function gtag(){
+                        dataLayer.push(arguments);
+                    }   
+                    gtag('js', new Date());   
+                    gtag('config', 'G-QHJGFFXSVN'); 
+                </script>
+
                 <script>
                     !function(f,b,e,v,n,t,s){
                         if(f.fbq)return;

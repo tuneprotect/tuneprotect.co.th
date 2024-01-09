@@ -367,8 +367,8 @@ const genItemList = (package_data, fdFromDate, fdToDate) => {
                     price: "",
                 };
 
-                item.item_id = "TAOutbound_" + planCode;
-                item.item_name = "TAOutbound_" + planCode;
+                item.item_id = planCode;
+                item.item_name = "iTravel Plan " + planCode;
                 item.price = price;
 
                 itemList.push(item);
@@ -378,9 +378,19 @@ const genItemList = (package_data, fdFromDate, fdToDate) => {
 
     if ($('#controller').value === 'product') 
     {
-        gtag("event",  "view_item",  {
-            "currency": "THB",
-            "items": itemList
+        // gtag("event",  "view_item",  {
+        //     "currency": "THB",
+        //     "items": itemList
+        // });
+
+        dataLayer.push({ ecommerce: null });  // Clear the previous ecommerce object.
+        dataLayer.push({
+            event: "view_item_list",
+            ecommerce: {
+                item_list_id: "ONTAOB",
+                item_list_name: "iTravel",
+                items: itemList
+            }
         });
     }
 }
