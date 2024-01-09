@@ -460,7 +460,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                             ctrl_accept_step1: $('#ctrl_accept_step1').checked ? true : undefined,
                         }
                         result = validate(data, step1Constraints);
-                        genItemList(package_data, data.fdFromDate, data.fdToDate);
+                        //genItemList(package_data, data.fdFromDate, data.fdToDate);
 
                         removeError($('#step1'));
                         if (result) {
