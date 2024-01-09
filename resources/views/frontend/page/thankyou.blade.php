@@ -132,15 +132,19 @@
             @break
             @case("ONTAOB")
                 <script>
-                    gtag("event",  "purchase",  {
-                        "currency": "THB",
-                        "transaction_id": '{{$refCode}}',
-                        "value": '{{$payAmount}}',
-                        "items": [{
-                             "item_id": 'TAOutbound_{{$package}}',
-                             "item_name": 'TAOutbound_{{$package}}',
-                             "price": '{{$payAmount}}',
-                         }]
+                    dataLayer.push({ ecommerce: null });  // Clear the previous ecommerce object.
+                    dataLayer.push({
+                        event: "purchase",
+                        ecommerce: {
+                            transaction_id: "{{$refCode}}",
+                            value: "{{$payAmount}}",
+                            currency: "THB"
+                            items: [{
+                                item_id: "iTravel_{{$package}}",
+                                item_name: "iTravel Plan Code {{$package}}",
+                                price: "{{$payAmount}}"
+                            }]
+                        }
                     });
                 </script>
             @break

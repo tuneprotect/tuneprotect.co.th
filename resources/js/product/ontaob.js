@@ -705,29 +705,17 @@ document.addEventListener("DOMContentLoaded", async () => {
 
                             if ($('#controller').value === 'product') 
                             {
-                                // gtag("event",  "add_to_cart",  {
-                                //     "currency": "THB",
-                                //     "value": selectPrice,
-                                //     "items": [{
-                                //       "item_id": "TAOutbound_" + fdPackage,
-                                //       "item_name": "TAOutbound_" + fdPackage,
-                                //       "price": selectPrice,
-                                //     }]
-                                // });
-
                                 dataLayer.push({ ecommerce: null });  // Clear the previous ecommerce object.
                                 dataLayer.push({
                                     event: "add_to_cart",
                                     ecommerce: {
                                         currency: "THB",
                                         value: selectPrice,
-                                        items: [
-                                            {
+                                        items: [{
                                             item_id: "iTravel_" + fdPackage,
                                             item_name: "iTravel Plan Code " + fdPackage,
                                             price: selectPrice
-                                            }
-                                        ]
+                                        }]
                                     }
                                 });
                             }
@@ -833,14 +821,18 @@ document.addEventListener("DOMContentLoaded", async () => {
 
                             if ($('#controller').value === 'product') 
                             {
-                                gtag("event",  "begin_checkout",  {
-                                    "currency": "THB",
-                                    "value": data.fdPayAMT,
-                                    "items": [{
-                                      "item_id": "TAOutbound_" + data.fdPackage,
-                                      "item_name": "TAOutbound_" + data.fdPackage,
-                                      "price": data.fdPayAMT,
-                                    }]
+                                dataLayer.push({ ecommerce: null });  // Clear the previous ecommerce object.
+                                dataLayer.push({
+                                    event: "begin_checkout",
+                                    ecommerce: {
+                                        currency: "THB",
+                                        value: data.fdPayAMT,
+                                        items: [{
+                                            item_id: "iTravel_" + data.fdPackage,
+                                            item_name: "iTravel Plan Code " + data.fdPackage,
+                                            price: data.fdPayAMT
+                                        }]
+                                    }
                                 });
                             }
 
