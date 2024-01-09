@@ -826,11 +826,11 @@ document.addEventListener("DOMContentLoaded", async () => {
                                     event: "begin_checkout",
                                     ecommerce: {
                                         currency: "THB",
-                                        value: data.fdPayAMT,
+                                        value: selectPrice,
                                         items: [{
                                             item_id: "iTravel_" + data.fdPackage,
                                             item_name: "iTravel Plan Code " + data.fdPackage,
-                                            price: data.fdPayAMT
+                                            price: selectPrice
                                         }]
                                     }
                                 });
