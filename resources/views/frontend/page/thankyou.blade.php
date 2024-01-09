@@ -90,43 +90,55 @@
             @break
             @case("TAISM")
                 <script>
-                    gtag("event",  "purchase",  {
-                        "currency": "THB",
-                        "transaction_id": '{{$refCode}}',
-                        "value": '{{$payAmount}}',
-                        "items": [{
-                             "item_id": 'iSmile_{{$package}}',
-                             "item_name": 'iSmile_{{$package}}',
-                             "price": '{{$payAmount}}',
-                         }]
+                    dataLayer.push({ ecommerce: null });  // Clear the previous ecommerce object.
+                    dataLayer.push({
+                        event: "purchase",
+                        ecommerce: {
+                            transaction_id: "{{$refCode}}",
+                            value: "{{$payAmount}}",
+                            currency: "THB",
+                            items: [{
+                                item_id: "iSmile_{{$package}}",
+                                item_name: "iSmile Plan Code {{$package}}",
+                                price: "{{$payAmount}}"
+                            }]
+                        }
                     });
                 </script>
             @break
             @case("TAIPOCT22")
                 <script>
-                    gtag("event",  "purchase",  {
-                        "currency": "THB",
-                        "transaction_id": '{{$refCode}}',
-                        "value": '{{$payAmount}}',
-                        "items": [{
-                             "item_id": 'TuneiPass_{{$package}}',
-                             "item_name": 'TuneiPass_{{$package}}',
-                             "price": '{{$payAmount}}',
-                         }]
+                    dataLayer.push({ ecommerce: null });  // Clear the previous ecommerce object.
+                    dataLayer.push({
+                        event: "purchase",
+                        ecommerce: {
+                            transaction_id: "{{$refCode}}",
+                            value: "{{$payAmount}}",
+                            currency: "THB",
+                            items: [{
+                                item_id: "TuneiPass_{{$package}}",
+                                item_name: "TuneiPass Plan Code {{$package}}",
+                                price: "{{$payAmount}}"
+                            }]
+                        }
                     });
                 </script>
             @break
             @case("ONTADM")
                 <script>
-                    gtag("event",  "purchase",  {
-                        "currency": "THB",
-                        "transaction_id": '{{$refCode}}',
-                        "value": '{{$payAmount}}',
-                        "items": [{
-                             "item_id": 'TADomestic_{{$package}}',
-                             "item_name": 'TADomestic_{{$package}}',
-                             "price": '{{$payAmount}}',
-                         }]
+                    dataLayer.push({ ecommerce: null });  // Clear the previous ecommerce object.
+                    dataLayer.push({
+                        event: "purchase",
+                        ecommerce: {
+                            transaction_id: "{{$refCode}}",
+                            value: "{{$payAmount}}",
+                            currency: "THB",
+                            items: [{
+                                item_id: "Domestic_{{$package}}",
+                                item_name: "Domestic Plan Code {{$package}}",
+                                price: "{{$payAmount}}"
+                            }]
+                        }
                     });
                 </script>
             @break
