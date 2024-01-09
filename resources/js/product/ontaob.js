@@ -705,14 +705,30 @@ document.addEventListener("DOMContentLoaded", async () => {
 
                             if ($('#controller').value === 'product') 
                             {
-                                gtag("event",  "add_to_cart",  {
-                                    "currency": "THB",
-                                    "value": selectPrice,
-                                    "items": [{
-                                      "item_id": "TAOutbound_" + fdPackage,
-                                      "item_name": "TAOutbound_" + fdPackage,
-                                      "price": selectPrice,
-                                    }]
+                                // gtag("event",  "add_to_cart",  {
+                                //     "currency": "THB",
+                                //     "value": selectPrice,
+                                //     "items": [{
+                                //       "item_id": "TAOutbound_" + fdPackage,
+                                //       "item_name": "TAOutbound_" + fdPackage,
+                                //       "price": selectPrice,
+                                //     }]
+                                // });
+
+                                dataLayer.push({ ecommerce: null });  // Clear the previous ecommerce object.
+                                dataLayer.push({
+                                    event: "add_to_cart",
+                                    ecommerce: {
+                                        currency: "THB",
+                                        value: selectPrice,
+                                        items: [
+                                            {
+                                            item_id: "iTravel_" + fdPackage,
+                                            item_name: "iTravel Plan Code " + fdPackage,
+                                            price: selectPrice
+                                            }
+                                        ]
+                                    }
                                 });
                             }
                             
