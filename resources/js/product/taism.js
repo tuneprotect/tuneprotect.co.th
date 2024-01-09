@@ -252,8 +252,8 @@ const genItemList = (package_data, fdFromDate, fdToDate) => {
                     {
                         return day >= dateRange[0] && day <= dateRange[1];
                     }
-                })
-                const price = parseInt(package_data[k].price[pack]).toLocaleString();
+                });
+                const price = parseInt(package_data[k].price[pack].price).toLocaleString();
                 const planCode = Object.keys(package_data)[index];
 
                 const item = {
