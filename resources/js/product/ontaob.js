@@ -371,6 +371,8 @@ const genItemList = (package_data, fdFromDate, fdToDate) => {
                 item.item_name = "iTravel Plan " + planCode;
                 item.price = price;
 
+                console.log(price);
+
                 itemList.push(item);
                 index++;
             });
