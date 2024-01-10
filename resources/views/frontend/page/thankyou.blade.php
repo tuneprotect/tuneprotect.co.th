@@ -11,12 +11,12 @@
                         event: "purchase",
                         ecommerce: {
                             transaction_id: "{{$refCode}}",
-                            value: $payAmount,
+                            value: {!! $payAmount !!},
                             currency: "THB",
                             items: [{
                                 item_id: "ChillSure_{{$package}}",
                                 item_name: "ChillSure Plan Code {{$package}}",
-                                price: $payAmount
+                                price: {!! $payAmount !!}
                             }]
                         }
                     });
@@ -29,12 +29,12 @@
                         event: "purchase",
                         ecommerce: {
                             transaction_id: "{{$refCode}}",
-                            value: {$payAmount},
+                            value: {!! $payAmount !!},
                             currency: "THB",
                             items: [{
                                 item_id: "myFlexiCI_{{$package}}",
                                 item_name: "myFlexi CI Plan Code {{$package}}",
-                                price: {$payAmount}
+                                price: {{!! $payAmount !!}}
                             }]
                         }
                     });
@@ -47,12 +47,12 @@
                         event: "purchase",
                         ecommerce: {
                             transaction_id: "{{$refCode}}",
-                            value: {$payAmount},
+                            value: {!! $payAmount !!},
                             currency: "THB",
                             items: [{
                                 item_id: "Diabetes_{{$package}}",
                                 item_name: "Diabetes CI Plan Code {{$package}}",
-                                price: {$payAmount}
+                                price: {!! $payAmount !!}
                             }]
                         }
                     });
@@ -63,11 +63,11 @@
                     gtag("event",  "purchase",  {
                         "currency": "THB",
                         "transaction_id": '{{$refCode}}',
-                        "value": {$payAmount},
+                        "value": {!! $payAmount !!},
                         "items": [{
                              "item_id": 'PAChoiceCare_{{$package}}',
                              "item_name": 'PAChoiceCare_{{$package}}',
-                             "price": {$payAmount},
+                             "price": {!! $payAmount !!},
                          }]
                     });
                 </script>
@@ -77,11 +77,11 @@
                     gtag("event",  "purchase",  {
                         "currency": "THB",
                         "transaction_id": '{{$refCode}}',
-                        "value": {$payAmount},
+                        "value": {!! $payAmount !!},
                         "items": [{
                              "item_id": 'PAChoiceKids_{{$package}}',
                              "item_name": 'PAChoiceKids_{{$package}}',
-                             "price": {$payAmount},
+                             "price": {!! $payAmount !!},
                          }]
                     });
                 </script>
@@ -91,11 +91,11 @@
                     gtag("event",  "purchase",  {
                         "currency": "THB",
                         "transaction_id": '{{$refCode}}',
-                        "value": {$payAmount},
+                        "value": {!! $payAmount !!},
                         "items": [{
                              "item_id": 'PAChoiceSenior_{{$package}}',
                              "item_name": 'PAChoiceSenior_{{$package}}',
-                             "price": {$payAmount},
+                             "price": {!! $payAmount !!},
                          }]
                     });
                 </script>
@@ -107,12 +107,12 @@
                         event: "purchase",
                         ecommerce: {
                             transaction_id: "{{$refCode}}",
-                            value: {$payAmount},
+                            value: {!! $payAmount !!},
                             currency: "THB",
                             items: [{
                                 item_id: "iSmile_{{$package}}",
                                 item_name: "iSmile Plan Code {{$package}}",
-                                price: {$payAmount}
+                                price: {!! $payAmount !!}
                             }]
                         }
                     });
@@ -125,12 +125,12 @@
                         event: "purchase",
                         ecommerce: {
                             transaction_id: "{{$refCode}}",
-                            value: {$payAmount},
+                            value: {!! $payAmount !!},
                             currency: "THB",
                             items: [{
                                 item_id: "TuneiPass_{{$package}}",
                                 item_name: "TuneiPass Plan Code {{$package}}",
-                                price: {$payAmount}
+                                price: {!! $payAmount !!}
                             }]
                         }
                     });
@@ -143,12 +143,12 @@
                         event: "purchase",
                         ecommerce: {
                             transaction_id: "{{$refCode}}",
-                            value: {$payAmount},
+                            value: {!! $payAmount !!},
                             currency: "THB",
                             items: [{
                                 item_id: "Domestic_{{$package}}",
                                 item_name: "Domestic Plan Code {{$package}}",
-                                price: {$payAmount}
+                                price: {!! $payAmount !!}
                             }]
                         }
                     });
@@ -161,12 +161,12 @@
                         event: "purchase",
                         ecommerce: {
                             transaction_id: "{{$refCode}}",
-                            value: {$payAmount},
+                            value: {!! $payAmount !!},
                             currency: "THB",
                             items: [{
                                 item_id: "iTravel_{{$package}}",
                                 item_name: "iTravel Plan Code {{$package}}",
-                                price: {$payAmount}
+                                price: {!! $payAmount !!}
                             }]
                         }
                     });
@@ -177,11 +177,11 @@
                     gtag("event",  "purchase",  {
                         "currency": "THB",
                         "transaction_id": '{{$refCode}}',
-                        "value": {$payAmount},
+                        "value": {!! $payAmount !!},
                         "items": [{
                              "item_id": 'myHomePlus_{{$package}}',
                              "item_name": 'myHomePlus_{{$package}}',
-                             "price": {$payAmount},
+                             "price": {!! $payAmount !!},
                          }]
                     });
                 </script>
@@ -191,11 +191,11 @@
                     gtag("event",  "purchase",  {
                         "currency": "THB",
                         "transaction_id": '{{$refCode}}',
-                        "value": {$payAmount},
+                        "value": {!! $payAmount !!},
                         "items": [{
                              "item_id": 'myHomeSmart_{{$package}}',
                              "item_name": 'myHomeSmart_{{$package}}',
-                             "price": {$payAmount},
+                             "price": {!! $payAmount !!},
                          }]
                     });
                 </script>
