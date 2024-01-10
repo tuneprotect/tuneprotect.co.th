@@ -661,8 +661,8 @@ document.addEventListener("DOMContentLoaded", async () => {
                                     currency: "THB",
                                     value: data.fdPayAMT,
                                     items: [{
-                                        item_id: "iTravel_" + data.fdPackage,
-                                        item_name: "iTravel Plan Code " + data.fdPackage,
+                                        item_id: "TuneiPass_" + data.fdPackage,
+                                        item_name: "TuneiPass Plan Code " + data.fdPackage,
                                         price: data.fdPayAMT
                                     }]
                                 }
