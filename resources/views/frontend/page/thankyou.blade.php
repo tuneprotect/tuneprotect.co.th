@@ -6,43 +6,55 @@
         @switch(session()->get('thankyou_param'))
             @case("ONCSHC")
                 <script>
-                    gtag("event",  "purchase",  {
-                        "currency": "THB",
-                        "transaction_id": '{{$refCode}}',
-                        "value": '{{$payAmount}}',
-                        "items": [{
-                             "item_id": 'ChillSure_{{$package}}',
-                             "item_name": 'ChillSure_{{$package}}',
-                             "price": '{{$payAmount}}',
-                         }]
+                    dataLayer.push({ ecommerce: null });  // Clear the previous ecommerce object.
+                    dataLayer.push({
+                        event: "purchase",
+                        ecommerce: {
+                            transaction_id: "{{$refCode}}",
+                            value: "{{$payAmount}}",
+                            currency: "THB",
+                            items: [{
+                                item_id: "ChillSure_{{$package}}",
+                                item_name: "ChillSure Plan Code {{$package}}",
+                                price: "{{$payAmount}}"
+                            }]
+                        }
                     });
                 </script>
             @break
             @case("CI")
                 <script>
-                    gtag("event",  "purchase",  {
-                        "currency": "THB",
-                        "transaction_id": '{{$refCode}}',
-                        "value": '{{$payAmount}}',
-                        "items": [{
-                             "item_id": 'myFlexiCI_{{$package}}',
-                             "item_name": 'myFlexiCI_{{$package}}',
-                             "price": '{{$payAmount}}',
-                         }]
+                    dataLayer.push({ ecommerce: null });  // Clear the previous ecommerce object.
+                    dataLayer.push({
+                        event: "purchase",
+                        ecommerce: {
+                            transaction_id: "{{$refCode}}",
+                            value: "{{$payAmount}}",
+                            currency: "THB",
+                            items: [{
+                                item_id: "myFlexiCI_{{$package}}",
+                                item_name: "myFlexi CI Plan Code {{$package}}",
+                                price: "{{$payAmount}}"
+                            }]
+                        }
                     });
                 </script>
             @break
             @case("DIABETES")
                 <script>
-                    gtag("event",  "purchase",  {
-                        "currency": "THB",
-                        "transaction_id": '{{$refCode}}',
-                        "value": '{{$payAmount}}',
-                        "items": [{
-                             "item_id": 'Diabetes_{{$package}}',
-                             "item_name": 'Diabetes_{{$package}}',
-                             "price": '{{$payAmount}}',
-                         }]
+                    dataLayer.push({ ecommerce: null });  // Clear the previous ecommerce object.
+                    dataLayer.push({
+                        event: "purchase",
+                        ecommerce: {
+                            transaction_id: "{{$refCode}}",
+                            value: "{{$payAmount}}",
+                            currency: "THB",
+                            items: [{
+                                item_id: "Diabetes_{{$package}}",
+                                item_name: "Diabetes CI Plan Code {{$package}}",
+                                price: "{{$payAmount}}"
+                            }]
+                        }
                     });
                 </script>
             @break

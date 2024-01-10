@@ -401,7 +401,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                     };
 
                     item.item_id = "ChillSure_" + planCode;
-                    item.item_name = "ChillSure_" + planCode;
+                    item.item_name = "ChillSure Plan Code " + planCode;
                     item.price = price;
 
                     itemList.push(item);
@@ -411,16 +411,15 @@ document.addEventListener("DOMContentLoaded", async () => {
 
         if ($('#controller').value === 'product') 
         {
-            gtag("event",  "view_item",  {
-                "currency": "THB",
-                "items": itemList
+            dataLayer.push({ ecommerce: null });  // Clear the previous ecommerce object.
+            dataLayer.push({
+                event: "view_item",
+                ecommerce: {
+                    currency: "THB",
+                    items: itemList
+                }
             });
         }
-        
-        // fbq("trackCustom", "view_item", {
-        //     currency: "THB",
-        //     items: itemList
-        // });
     }
 
     $$('#ctrl_weight,#ctrl_height').forEach($el => {
@@ -627,23 +626,20 @@ document.addEventListener("DOMContentLoaded", async () => {
 
                                 if ($('#controller').value === 'product') 
                                 {
-                                    gtag("event",  "add_to_cart",  {
-                                        "currency": "THB",
-                                        "value": selectPrice,
-                                        "items": [{
-                                          "item_id": "ChillSure_" + fdPackage,
-                                          "item_name": "ChillSure_" + fdPackage,
-                                          "price": selectPrice,
-                                        }]
+                                    dataLayer.push({ ecommerce: null });  // Clear the previous ecommerce object.
+                                    dataLayer.push({
+                                        event: "add_to_cart",
+                                        ecommerce: {
+                                            currency: "THB",
+                                            value: selectPrice,
+                                            items: [{
+                                                item_id: "ChillSure_" + fdPackage,
+                                                item_name: "ChillSure Plan Code " + fdPackage,
+                                                price: selectPrice
+                                            }]
+                                        }
                                     });
                                 }
-                                
-                                // fbq("trackCustom", "add_to_cart", {
-                                //     currency: "THB",
-                                //     item_id: "ChillSure_" + fdPackage,
-                                //     price: selectPrice,
-                                // });
-                                
                             } else {
                                 Swal.fire({
                                     title: 'Error!',
@@ -732,22 +728,20 @@ document.addEventListener("DOMContentLoaded", async () => {
                             
                             if ($('#controller').value === 'product') 
                             {
-                                gtag("event",  "begin_checkout",  {
-                                    "currency": "THB",
-                                    "value": data.fdPayAMT,
-                                    "items": [{
-                                      "item_id": "ChillSure_" + data.fdPackage,
-                                      "item_name": "ChillSure_" + data.fdPackage,
-                                      "price": data.fdPayAMT,
-                                    }]
+                                dataLayer.push({ ecommerce: null });  // Clear the previous ecommerce object.
+                                dataLayer.push({
+                                    event: "begin_checkout",
+                                    ecommerce: {
+                                        currency: "THB",
+                                        value: data.fdPayAMT,
+                                        items: [{
+                                            item_id: "ChillSure_" + data.fdPackage,
+                                            item_name: "ChillSure Plan Code " + data.fdPackage,
+                                            price: data.fdPayAMT
+                                        }]
+                                    }
                                 });
                             }
-
-                            // fbq("trackCustom", "begin_checkout", {
-                            //     currency: "THB",
-                            //     item_id: "ChillSure_" + data.fdPackage,
-                            //     price: data.fdPayAMT,
-                            // });
 
                             if (result) {
                                 Object.keys(result).map(k => {
