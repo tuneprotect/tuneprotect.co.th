@@ -12,7 +12,7 @@
                             <select id="ctrl_district" name="district">
                                 <option value="">@lang('global.default_select_option')</option>
                                 @foreach($district as $v)
-                                    <option value="{{$v->code}}">{{ $v->{$locale} }}</option>
+                                    <option value="{{$v->code}}">{{ $v->locales[$locale]->title }}</option>
                                 @endforeach
                             </select>
                             <label for="ctrl_district">@lang('global.district')</label>

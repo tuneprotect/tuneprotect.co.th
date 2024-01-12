@@ -182,7 +182,7 @@ export default function PartnerDetailForm({type_id, config, fromDB, onSubmit, is
                 >
                     <MenuItem value=""> <em>{t('global.none')}</em> </MenuItem>
                     {districtData.map(v => <MenuItem key={v.code}
-                                                     value={v.code}>{v[i18n.language]}</MenuItem>)}
+                                                     value={v.code}>{v.locales[i18n.language].title}</MenuItem>)}
                 </Select>
                 <FormHelperText>{touched?.district && errors?.district || ''}</FormHelperText>
             </FormControl>}
