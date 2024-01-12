@@ -168,25 +168,6 @@ export default function PartnerDetailForm({type_id, config, fromDB, onSubmit, is
                 {...config.tel.fieldProp}
             />}
 
-            {config.district !== undefined &&
-            <FormControl required style={{display: "block"}} className={"MuiFormControl-marginNormal"}
-                         error={touched?.district && errors?.district !== undefined}>
-                <InputLabel id="district">{config.district.label}</InputLabel>
-                <Select
-                    labelId="district"
-                    id="district"
-                    name="district"
-                    value={values?.district}
-                    onChange={handleChange}
-                    style={{width: "100%"}}
-                >
-                    <MenuItem value=""> <em>{t('global.none')}</em> </MenuItem>
-                    {districtData.map(v => <MenuItem key={v.code}
-                                                     value={v.code}>{v.locales[i18n.language].title}</MenuItem>)}
-                </Select>
-                <FormHelperText>{touched?.district && errors?.district || ''}</FormHelperText>
-            </FormControl>}
-
             {config.province !== undefined &&
             <FormControl required style={{display: "block"}} className={"MuiFormControl-marginNormal"}
                          error={touched?.province && errors?.province !== undefined}>
@@ -204,6 +185,26 @@ export default function PartnerDetailForm({type_id, config, fromDB, onSubmit, is
                                                      value={v.code}>{v[i18n.language]}</MenuItem>)}
                 </Select>
                 <FormHelperText>{touched?.province && errors?.province || ''}</FormHelperText>
+            </FormControl>}
+
+            {config.district !== undefined &&
+            <FormControl required style={{display: "block"}} className={"MuiFormControl-marginNormal"}
+                         error={touched?.district && errors?.district !== undefined}>
+                <InputLabel id="district">{config.district.label}</InputLabel>
+                <Select
+                    labelId="district"
+                    id="district"
+                    name="district"
+                    value={values?.district}
+                    onChange={handleChange}
+                    style={{width: "100%"}}
+                >
+                    <MenuItem value=""> <em>{t('global.none')}</em> </MenuItem>
+                    {districtData.filter(e => e.ProvinceCode == values?.province)
+                                 .map(v => <MenuItem key={v.code}
+                                                     value={v.code}>{v.locales[i18n.language].title}</MenuItem>)}
+                </Select>
+                <FormHelperText>{touched?.district && errors?.district || ''}</FormHelperText>
             </FormControl>}
 
             {/*{config.partner_language !== undefined && <FormControl*/}
