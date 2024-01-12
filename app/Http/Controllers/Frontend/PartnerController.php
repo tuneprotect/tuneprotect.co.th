@@ -31,7 +31,7 @@ class PartnerController extends BaseController
         }
 
         $this->bodyData['partner'] = Partner::where('type_id', $arrType[$type])
-            ->select(['id', 'cat_id', 'website', 'tel', 'partner_language', 'province', 'location'])
+            ->select(['id', 'cat_id', 'website', 'tel', 'partner_language', 'district', 'province', 'location'])
             ->with(['locales', 'category' => function ($q) {
 //                $q->select(['id'])
 //                    ->with(['locales' => function ($q1) {
@@ -43,6 +43,7 @@ class PartnerController extends BaseController
         $this->bodyData['type'] = $type;
         $this->bodyData['content'] = $this->setStaticPageHeader('static.page.' . $type);
         $this->bodyData['province'] = json_decode(Storage::disk('public')->get('json/province.json'));
+        $this->bodyData['district'] = json_decode(Storage::disk('public')->get('json/district.json'));
 
         if ($type != 'glass_shop') {
             $this->bodyData['category'] = WebContent::where('type_id', $arrCategoryType[$type])

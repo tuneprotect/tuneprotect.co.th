@@ -61,6 +61,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     let filterParam = {
+        district: "",
         province: "",
         cat_id: "",
         title: "",
@@ -80,6 +81,10 @@ document.addEventListener("DOMContentLoaded", function () {
         return stableSort(
             data.filter(rowData => {
                 if (filterParam.province !== "" && filterParam.province !== rowData.province) {
+                    return false;
+                }
+
+                if (filterParam.district !== "" && filterParam.district !== rowData.district) {
                     return false;
                 }
 
@@ -136,7 +141,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 
-    $$('#ctrl_province,#ctrl_category,#ctrl_language').forEach($el => {
+    $$('#ctrl_district,#ctrl_province,#ctrl_category,#ctrl_language').forEach($el => {
         $el.addEventListener('change', (e) => {
             filterParam = {...filterParam, [e.target.name]: e.target.value}
             showResult();

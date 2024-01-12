@@ -1311,12 +1311,12 @@ let APP_ROUTE = {
                     validate: Yup.string()
                         .required(<Translate id="error_message.required"/>)
                 },
-                // region: {
-                //     label: <Translate id="global.region"/>,
-                //     required: true,
-                //     validate: Yup.string()
-                //         .required(<Translate id="error_message.required"/>)
-                // },
+                district: {
+                    label: <Translate id="global.district"/>,
+                    required: true,
+                    validate: Yup.string()
+                        .required(<Translate id="error_message.required"/>)
+                },
                 tel: {
                     fieldProp: {
                         label: <Translate id="global.tel"/>,
