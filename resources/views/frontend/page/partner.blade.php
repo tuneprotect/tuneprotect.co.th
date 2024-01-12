@@ -9,7 +9,7 @@
                 <div class="two-col">
                     @if($type === 'glass_shop')
                         <div class="controls-wrapper">
-                            <select id="ctrl_province" name="district">
+                            <select id="ctrl_district" name="district">
                                 <option value="">@lang('global.default_select_option')</option>
                                 @foreach($district as $v)
                                     <option value="{{$v->code}}">{{ $v->{$locale} }}</option>

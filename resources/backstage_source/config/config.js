@@ -192,4 +192,5 @@ export const WEB_CONTENT = {
     LEADFORM_CATEGORY: "leadform.category",
 
     PROVINCE: "configuration.province",
+    DISTRICT: "configuration.district",
 }
