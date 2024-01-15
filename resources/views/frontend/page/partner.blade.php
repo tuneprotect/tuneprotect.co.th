@@ -18,12 +18,7 @@
                     </div>
                     @if($type === 'glass_shop')
                         <div class="controls-wrapper">
-                            <select id="ctrl_district" name="district">
-                                <option value="">@lang('global.default_select_option')</option>
-                                <!-- @foreach($district as $v)
-                                    <option value="{{$v->code}}">{{ $v->locales[$locale]->title }}</option>
-                                @endforeach -->
-                            </select>
+                            <select id="ctrl_district" name="district"></select>
                             <label for="ctrl_district">@lang('global.district')</label>
                         </div>
                     @endif
