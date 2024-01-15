@@ -72,6 +72,8 @@ document.addEventListener("DOMContentLoaded", function () {
     const data = JSON.parse($('#div_result').innerHTML);
     const dataDistrict = JSON.parse($('#div_district').innerHTML);
 
+    console.log(dataDistrict);
+
     $('#div_result').remove();
     const handleFilterData = () => {
 
