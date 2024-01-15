@@ -7,17 +7,6 @@
             <h1>{{$content->locales[$locale]->title}}</h1>
             <form>
                 <div class="two-col">
-                    @if($type === 'glass_shop')
-                        <div class="controls-wrapper">
-                            <select id="ctrl_district" name="district">
-                                <option value="">@lang('global.default_select_option')</option>
-                                @foreach($district as $v)
-                                    <option value="{{$v->code}}">{{ $v->locales[$locale]->title }}</option>
-                                @endforeach
-                            </select>
-                            <label for="ctrl_district">@lang('global.district')</label>
-                        </div>
-                    @endif
                     <div class="controls-wrapper">
                         <select id="ctrl_province" name="province">
                             <option value="">@lang('global.default_select_option')</option>
@@ -27,6 +16,17 @@
                         </select>
                         <label for="ctrl_province">@lang('global.province')</label>
                     </div>
+                    @if($type === 'glass_shop')
+                        <div class="controls-wrapper">
+                            <select id="ctrl_district" name="district">
+                                <option value="">@lang('global.default_select_option')</option>
+                                <!-- @foreach($district as $v)
+                                    <option value="{{$v->code}}">{{ $v->locales[$locale]->title }}</option>
+                                @endforeach -->
+                            </select>
+                            <label for="ctrl_district">@lang('global.district')</label>
+                        </div>
+                    @endif
                     @if($type !== 'glass_shop')
                         <div class="controls-wrapper">
                             <select id="ctrl_category" name="cat_id">
@@ -86,6 +86,10 @@
 
             <div id="div_result" style="display: none">
                 {{ json_encode( $partner->toArray())}}
+            </div>
+
+            <div id="div_district" style="display: none">
+                {{ json_encode( $district->toArray())}}
             </div>
         </section>
     </main>
