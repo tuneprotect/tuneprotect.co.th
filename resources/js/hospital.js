@@ -138,7 +138,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     const filterDistrictByProvince = (value) => {
-        console.log(value);
+        console.log(dataDistrict);
         let items = ['<option value="">' + $(`#ctrl_district`).getAttribute('data-please-select') + '</option>'];
         dataDistrict.filter(e => e.ProvinceCode == value)
                     .map(v => {
