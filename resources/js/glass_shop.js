@@ -143,16 +143,12 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     const filterDistrictByProvince = (value) => {
-
+        console.log(value);
         let items = ['<option value="">' + $(`#ctrl_district`).getAttribute('data-please-select') + '</option>'];
-
         dataDistrict.filter(e => e.ProvinceCode == value)
                     .map(v => {
                         items.push(`<option value="${v.district.code}">${v.district.locales[locale]}</option>`);
                     });
-
-        console.log(dataDistrict);
-
         $(`#ctrl_district`).innerHTML = items.join('');
     }
 

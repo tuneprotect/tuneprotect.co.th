@@ -84,7 +84,7 @@
             </div>
 
             <div id="div_district" style="display: none">
-                {{ json_encode( $district->toArray())}}
+                {{ $district }}
             </div>
         </section>
     </main>
