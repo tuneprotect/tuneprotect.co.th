@@ -155,20 +155,20 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 
-    // $$('#ctrl_district,#ctrl_category,#ctrl_language').forEach($el => {
-    //     $el.addEventListener('change', (e) => {
-    //         filterParam = {...filterParam, [e.target.name]: e.target.value}
-    //         showResult();
-    //     })
-    // });
+    $$('#ctrl_district,#ctrl_category,#ctrl_language').forEach($el => {
+        $el.addEventListener('change', (e) => {
+            filterParam = {...filterParam, [e.target.name]: e.target.value}
+            showResult();
+        })
+    });
 
-    // $$('#ctrl_province').forEach($el => {
-    //     $el.addEventListener('change', (e) => {
-    //         filterParam = {...filterParam, [e.target.name]: e.target.value}
-    //         filterDistrictByProvince(e.target.value);
-    //         showResult();
-    //     })
-    // });
+    $$('#ctrl_province').forEach($el => {
+        $el.addEventListener('change', (e) => {
+            filterParam = {...filterParam, [e.target.name]: e.target.value}
+            filterDistrictByProvince(e.target.value);
+            showResult();
+        })
+    });
 
     $$('#ctrl_name,#ctrl_tel').forEach($el => {
         $el.addEventListener('keyup', (e) => {

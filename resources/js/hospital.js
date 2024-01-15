@@ -141,7 +141,6 @@ document.addEventListener("DOMContentLoaded", function () {
             filterParam = {...filterParam, [e.target.name]: e.target.value}
             showResult();
         })
-        console.log(1);
     });
 
     $$('#ctrl_name,#ctrl_tel').forEach($el => {

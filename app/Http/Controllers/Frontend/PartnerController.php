@@ -56,6 +56,7 @@ class PartnerController extends BaseController
 
         $this->template->setBody('id', 'partner_page');
         $this->template->setFootJS(mix("/js/frontend/hospital.js"));
+        $this->template->setFootJS(mix("/js/frontend/glass_shop.js"));
         return $this->genView('frontend.page.partner');
     }
 
