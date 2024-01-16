@@ -69,7 +69,7 @@ document.addEventListener("DOMContentLoaded", function () {
     };
 
     const data = JSON.parse($('#div_result').innerHTML);
-    const dataDistrict = JSON.parse($('#div_district').innerHTML);
+    const dataDistrict = $('#div_district').innerHTML;
 
     $('#div_result').remove();
     const handleFilterData = () => {
