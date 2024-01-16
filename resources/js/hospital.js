@@ -69,7 +69,7 @@ document.addEventListener("DOMContentLoaded", function () {
     };
 
     const data = JSON.parse($('#div_result').innerHTML);
-    const dataDistrict = JSON.parse($('#div_district').innerHTML);
+    // const dataDistrict = JSON.parse($('#div_district').innerHTML);
 
     $('#div_result').remove();
     const handleFilterData = () => {
@@ -137,15 +137,15 @@ document.addEventListener("DOMContentLoaded", function () {
         genResult(filteredData);
     }
 
-    const filterDistrictByProvince = (value) => {
-        console.log(data);
-        console.log(dataDistrict);
-        let items = ['<option value="">' + $(`#ctrl_district`).getAttribute('data-please-select') + '</option>'];
-        // dataDistrict.map(v => {
-        //                 items.push(`<option value="${v.district.code}">${v.district.locales[locale]}</option>`);
-        //             });
-        $(`#ctrl_district`).innerHTML = items.join('');
-    }
+    // const filterDistrictByProvince = (value) => {
+    //     console.log(data);
+    //     console.log(dataDistrict);
+    //     let items = ['<option value="">' + $(`#ctrl_district`).getAttribute('data-please-select') + '</option>'];
+    //     dataDistrict.map(v => {
+    //                     items.push(`<option value="${v.district.code}">${v.district.locales[locale]}</option>`);
+    //                 });
+    //     $(`#ctrl_district`).innerHTML = items.join('');
+    // }
 
 
     $$('#ctrl_district,#ctrl_category,#ctrl_language').forEach($el => {
@@ -158,7 +158,7 @@ document.addEventListener("DOMContentLoaded", function () {
     $$('#ctrl_province').forEach($el => {
         $el.addEventListener('change', (e) => {
             filterParam = {...filterParam, [e.target.name]: e.target.value}
-            filterDistrictByProvince(e.target.value);
+            //filterDistrictByProvince(e.target.value);
             showResult();
         })
     });
