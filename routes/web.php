@@ -24,11 +24,11 @@ $connection = 'staging';
 $cache = 'database';
 
 
-if (isset($_SERVER['SERVER_NAME']) && strpos($_SERVER['SERVER_NAME'], config("project.staging_prefix")) === false) {
-    $connection = 'live';
-    $cache = 'file';
+// if (isset($_SERVER['SERVER_NAME']) && strpos($_SERVER['SERVER_NAME'], config("project.staging_prefix")) === false) {
+//     $connection = 'live';
+//     $cache = 'file';
 
-}
+// }
 
 
 Config::set('database.default', $connection);
