@@ -14,7 +14,7 @@ return [
     'password_history' => env('PASSWORD_HISTORY', 5),
 
     'tinypng_api' => env('PROJECT_TINYPNG_API', ''),
-    'staging_prefix' => env('PROJECT_STAGING_PREFIX', 'staging.'),
+    'staging_prefix' => env('PROJECT_STAGING_PREFIX', 'webtest.'),
 
     'api_token' => env('MIX_REACT_APP_API_TOKEN', 'oUpmq2xAayR5GKtvJrPlSgFCseEu1T7/Qk8IN6ichznwdXLZ0VBH9MYOj+3bfW4D'),
     'google_auth_api' => env('MIX_GOOGLE_AUTH_API', null),

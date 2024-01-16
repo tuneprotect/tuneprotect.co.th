@@ -14,6 +14,4 @@ class IndexController extends BaseController
     {
         return Redirect::to(config('project.online_link'));
     }
-
-
 }
