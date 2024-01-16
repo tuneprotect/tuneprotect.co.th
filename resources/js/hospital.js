@@ -69,7 +69,7 @@ document.addEventListener("DOMContentLoaded", function () {
     };
 
     const data = JSON.parse($('#div_result').innerHTML);
-    const dataDistrict = $('#div_district').innerHTML;
+    const dataDistrict = JSON.parse($('#div_district').innerHTML);
 
     $('#div_result').remove();
     const handleFilterData = () => {
@@ -141,7 +141,7 @@ document.addEventListener("DOMContentLoaded", function () {
         console.log(data);
         console.log(dataDistrict);
         let items = ['<option value="">' + $(`#ctrl_district`).getAttribute('data-please-select') + '</option>'];
-        dataDistrict[0].filter(function (el) { return el.ProvinceCode ==  value })
+        dataDistrict.filter(function (el) { return el.ProvinceCode ==  value })
                     .map(v => {
                         items.push(`<option value="${v.district.code}">${v.district.locales[locale]}</option>`);
                     });
