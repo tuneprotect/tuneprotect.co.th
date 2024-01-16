@@ -23,6 +23,11 @@ export const getProvinceData = async () => {
     return await res.json();
 }
 
+export const getdistrictData = async () => {
+    let res = await fetch(`/storage/json/district.json`);
+    return await res.json();
+}
+
 export const getProvinceDataWithOutPrefix = async () => {
     let res = await fetch(`/storage/json/provincenotprefix.json`);
     return await res.json();

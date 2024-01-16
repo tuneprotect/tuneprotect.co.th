@@ -352,13 +352,27 @@ const genItemList = (package_data, fdFromDate, fdToDate) => {
     const itemList = [];
 
     if (fdFromDate && fdToDate) {
+
+        let startDate = parseISO(fdFromDate);
+        let endDate = parseISO(fdToDate);
+
+        const day = differenceInDays(endDate, startDate) + 1;
+        
         Object.keys(package_data)
             .filter(k => _.startsWith(k, current_package))
             .map(k => {
                 const pack = Object.keys(package_data[k].price).filter(subPackage => {
-                    const dateRange = (package_data[k].price[subPackage].day).split('-');    
-                });
-                const price = parseInt(package_data[k].price[pack]).toLocaleString();
+                    const dateRange = (package_data[k].price[subPackage].day).split('-');
+                    if(dateRange.length === 1)
+                    {
+                        return day >= dateRange[0] && day <= dateRange[0];
+                    }
+                    else
+                    {
+                        return day >= dateRange[0] && day <= dateRange[1];
+                    }
+                })
+                const price = parseInt(package_data[k].price[pack].price).toLocaleString();
                 const planCode = Object.keys(package_data)[index];
 
                 const item = {
@@ -367,8 +381,8 @@ const genItemList = (package_data, fdFromDate, fdToDate) => {
                     price: "",
                 };
 
-                item.item_id = "TAOutbound_" + planCode;
-                item.item_name = "TAOutbound_" + planCode;
+                item.item_id = "iTravel_" + planCode;
+                item.item_name = "iTravel Plan Code " + planCode;
                 item.price = price;
 
                 itemList.push(item);
@@ -378,9 +392,13 @@ const genItemList = (package_data, fdFromDate, fdToDate) => {
 
     if ($('#controller').value === 'product') 
     {
-        gtag("event",  "view_item",  {
-            "currency": "THB",
-            "items": itemList
+        dataLayer.push({ ecommerce: null });  // Clear the previous ecommerce object.
+        dataLayer.push({
+            event: "view_item",
+            ecommerce: {
+                currency: "THB",
+                items: itemList
+            }
         });
     }
 }
@@ -683,18 +701,22 @@ document.addEventListener("DOMContentLoaded", async () => {
                                 fdPackage
                             }
 
-                            const selectPrice = genPrice(package_data,countryData, $('#ctrl_sub_package').value, data.fdFromDate, data.fdToDate, $('#ctrl_travel_type').value);
+                            const selectPrice = getSelectedPrice(data.fdPackage, package_data, data.fdFromDate, data.fdToDate);
 
                             if ($('#controller').value === 'product') 
                             {
-                                gtag("event",  "add_to_cart",  {
-                                    "currency": "THB",
-                                    "value": selectPrice,
-                                    "items": [{
-                                      "item_id": "TAOutbound_" + fdPackage,
-                                      "item_name": "TAOutbound_" + fdPackage,
-                                      "price": selectPrice,
-                                    }]
+                                dataLayer.push({ ecommerce: null });  // Clear the previous ecommerce object.
+                                dataLayer.push({
+                                    event: "add_to_cart",
+                                    ecommerce: {
+                                        currency: "THB",
+                                        value: selectPrice,
+                                        items: [{
+                                            item_id: "iTravel_" + fdPackage,
+                                            item_name: "iTravel Plan Code " + fdPackage,
+                                            price: selectPrice
+                                        }]
+                                    }
                                 });
                             }
                             
@@ -799,14 +821,18 @@ document.addEventListener("DOMContentLoaded", async () => {
 
                             if ($('#controller').value === 'product') 
                             {
-                                gtag("event",  "begin_checkout",  {
-                                    "currency": "THB",
-                                    "value": data.fdPayAMT,
-                                    "items": [{
-                                      "item_id": "TAOutbound_" + data.fdPackage,
-                                      "item_name": "TAOutbound_" + data.fdPackage,
-                                      "price": data.fdPayAMT,
-                                    }]
+                                dataLayer.push({ ecommerce: null });  // Clear the previous ecommerce object.
+                                dataLayer.push({
+                                    event: "begin_checkout",
+                                    ecommerce: {
+                                        currency: "THB",
+                                        value: selectPrice,
+                                        items: [{
+                                            item_id: "iTravel_" + data.fdPackage,
+                                            item_name: "iTravel Plan Code " + data.fdPackage,
+                                            price: selectPrice
+                                        }]
+                                    }
                                 });
                             }
 

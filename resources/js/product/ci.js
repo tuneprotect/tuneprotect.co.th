@@ -459,7 +459,7 @@ if ($('#title_wrapper')) {
                         };
     
                         item.item_id = "myFlexiCI_" + planCode;
-                        item.item_name = "myFlexiCI_" + planCode;
+                        item.item_name = "myFlexi CI" + planCode;
                         item.price = price;
     
                         itemList.push(item);
@@ -469,9 +469,13 @@ if ($('#title_wrapper')) {
 
             if ($('#controller').value === 'product') 
             {
-                gtag("event",  "view_item",  {
-                    "currency": "THB",
-                    "items": itemList
+                dataLayer.push({ ecommerce: null });  // Clear the previous ecommerce object.
+                dataLayer.push({
+                    event: "view_item",
+                    ecommerce: {
+                        currency: "THB",
+                        items: itemList
+                    }
                 });
             }
         }
@@ -673,14 +677,18 @@ if ($('#title_wrapper')) {
 
                                     if ($('#controller').value === 'product') 
                                     {
-                                        gtag("event",  "add_to_cart",  {
-                                            "currency": "THB",
-                                            "value": selectPrice,
-                                            "items": [{
-                                              "item_id": "myFlexiCI_" + fdPackage,
-                                              "item_name": "myFlexiCI_" + fdPackage,
-                                              "price": selectPrice,
-                                            }]
+                                        dataLayer.push({ ecommerce: null });  // Clear the previous ecommerce object.
+                                        dataLayer.push({
+                                            event: "add_to_cart",
+                                            ecommerce: {
+                                                currency: "THB",
+                                                value: selectPrice,
+                                                items: [{
+                                                    item_id: "myFlexiCI_" + fdPackage,
+                                                    item_name: "myFlexi CI Plan Code " + fdPackage,
+                                                    price: selectPrice
+                                                }]
+                                            }
                                         });
                                     }
                                     
@@ -776,14 +784,18 @@ if ($('#title_wrapper')) {
 
                                 if ($('#controller').value === 'product') 
                                 {
-                                    gtag("event",  "begin_checkout",  {
-                                        "currency": "THB",
-                                        "value": data.fdPayAMT,
-                                        "items": [{
-                                          "item_id": "myFlexiCI_" + data.fdPackage,
-                                          "item_name": "myFlexiCI_" + data.fdPackage,
-                                          "price": data.fdPayAMT,
-                                        }]
+                                    dataLayer.push({ ecommerce: null });  // Clear the previous ecommerce object.
+                                    dataLayer.push({
+                                        event: "begin_checkout",
+                                        ecommerce: {
+                                            currency: "THB",
+                                            value: data.fdPayAMT,
+                                            items: [{
+                                                item_id: "myFlexiCI_" + data.fdPackage,
+                                                item_name: "myFlexi CI Plan Code " + data.fdPackage,
+                                                price: data.fdPayAMT
+                                            }]
+                                        }
                                     });
                                 }
 
@@ -849,9 +861,9 @@ if ($('#title_wrapper')) {
                         ${data.fdRevenue === 'Y' ? '<div><span>' + $('label[for=fdTaxno]').innerText + ' : </span><strong>' + data.fdTaxno + '</strong></div>' : ''}
                         <div><span>${$('#receve_channel_title').innerText} : </span><strong>${data.fdSendType === 'P' ? $('label[for=ctrl_channel_post]').innerText : $('label[for=ctrl_channel_email]').innerText}</strong></div>
                     </div>
-<br>
-<div><span>${$('[data-pay-installment-policy]').getAttribute('data-pay-installment-policy')}</span></div>
-` + sb;
+                    <br>
+                    <div><span>${$('[data-pay-installment-policy]').getAttribute('data-pay-installment-policy')}</span></div>
+                    ` + sb;
                                     status = true;
                                     hideShowDiseaseBox(goToStep);
                                 }
@@ -865,11 +877,6 @@ if ($('#title_wrapper')) {
                 }
             );
         })
-
-        // $('#step_1').addEventListener("click", function (e) {
-        //     e.defaultPrevented;
-        //     $('#h-cont').style.display = 'block';
-        // });
     });
 
 

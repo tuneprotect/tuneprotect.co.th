@@ -51,6 +51,7 @@ return [
     'nav_claim' => 'Insurance Claims',
     'position' => "ตำแหน่ง",
     'province' => 'ภูมิภาค',
+    'district' => 'เขต',
     'region' => 'จังหวัด',
     'related' => 'บทความที่เกี่ยวข้อง',
     'review_description' => 'ทุกเสียงของลูกค้ามีความ สำคัญกับเรา ที่ทำให้ TuneProtect Thailand มุ่งมั่นพัฒนาผลิตภัณฑ์และการบริการให้ดียิ่งขึ้น',

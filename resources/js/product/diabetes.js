@@ -391,9 +391,13 @@ document.addEventListener("DOMContentLoaded", async () => {
 
         if ($('#controller').value === 'product') 
         {
-            gtag("event",  "view_item",  {
-                "currency": "THB",
-                "items": itemList
+            dataLayer.push({ ecommerce: null });  // Clear the previous ecommerce object.
+            dataLayer.push({
+                event: "view_item",
+                ecommerce: {
+                    currency: "THB",
+                    items: itemList
+                }
             });
         }
     }
@@ -575,14 +579,18 @@ document.addEventListener("DOMContentLoaded", async () => {
 
                                 if ($('#controller').value === 'product') 
                                 {
-                                    gtag("event",  "add_to_cart",  {
-                                        "currency": "THB",
-                                        "value": selectPrice,
-                                        "items": [{
-                                          "item_id": "Diabetes_" + fdPackage,
-                                          "item_name": "Diabetes_" + fdPackage,
-                                          "price": selectPrice,
-                                        }]
+                                    dataLayer.push({ ecommerce: null });  // Clear the previous ecommerce object.
+                                    dataLayer.push({
+                                        event: "add_to_cart",
+                                        ecommerce: {
+                                            currency: "THB",
+                                            value: selectPrice,
+                                            items: [{
+                                                item_id: "Diabetes_" + fdPackage,
+                                                item_name: "Diabetes Plan Code " + fdPackage,
+                                                price: selectPrice
+                                            }]
+                                        }
                                     });
                                 }
 
@@ -666,14 +674,18 @@ document.addEventListener("DOMContentLoaded", async () => {
 
                             if ($('#controller').value === 'product') 
                             {
-                                gtag("event",  "begin_checkout",  {
-                                    "currency": "THB",
-                                    "value": data.fdPayAMT,
-                                    "items": [{
-                                      "item_id": "Diabetes_" + data.fdPackage,
-                                      "item_name": "Diabetes_" + data.fdPackage,
-                                      "price": data.fdPayAMT,
-                                    }]
+                                dataLayer.push({ ecommerce: null });  // Clear the previous ecommerce object.
+                                dataLayer.push({
+                                    event: "begin_checkout",
+                                    ecommerce: {
+                                        currency: "THB",
+                                        value: data.fdPayAMT,
+                                        items: [{
+                                            item_id: "Diabetes_" + data.fdPackage,
+                                            item_name: "Diabetes Plan Code " + data.fdPackage,
+                                            price: data.fdPayAMT
+                                        }]
+                                    }
                                 });
                             }
 

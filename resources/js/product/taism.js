@@ -233,13 +233,27 @@ const genItemList = (package_data, fdFromDate, fdToDate) => {
     const itemList = [];
 
     if (fdFromDate && fdToDate) {
+
+        let startDate = parseISO(fdFromDate);
+        let endDate = parseISO(fdToDate);
+
+        const day = differenceInDays(endDate, startDate) + 1;
+        
         Object.keys(package_data)
             .filter(k => _.startsWith(k, current_package))
             .map(k => {
                 const pack = Object.keys(package_data[k].price).filter(subPackage => {
-                    const dateRange = (package_data[k].price[subPackage].day).split('-');    
+                    const dateRange = (package_data[k].price[subPackage].day).split('-');
+                    if(dateRange.length === 1)
+                    {
+                        return day >= dateRange[0] && day <= dateRange[0];
+                    }
+                    else
+                    {
+                        return day >= dateRange[0] && day <= dateRange[1];
+                    }
                 });
-                const price = parseInt(package_data[k].price[pack]).toLocaleString();
+                const price = parseInt(package_data[k].price[pack].price).toLocaleString();
                 const planCode = Object.keys(package_data)[index];
 
                 const item = {
@@ -249,19 +263,23 @@ const genItemList = (package_data, fdFromDate, fdToDate) => {
                 };
 
                 item.item_id = "iSmile_" + planCode;
-                item.item_name = "iSmile_" + planCode;
+                item.item_name = "iSmile Plan Code " + planCode;
                 item.price = price;
 
                 itemList.push(item);
                 index++;
             });
     }
-    
+
     if ($('#controller').value === 'product') 
     {
-        gtag("event",  "view_item",  {
-            "currency": "THB",
-            "items": itemList
+        dataLayer.push({ ecommerce: null });  // Clear the previous ecommerce object.
+        dataLayer.push({
+            event: "view_item",
+            ecommerce: {
+                currency: "THB",
+                items: itemList
+            }
         });
     }
 }
@@ -442,7 +460,6 @@ document.addEventListener("DOMContentLoaded", async () => {
                             ctrl_accept_step1: $('#ctrl_accept_step1').checked ? true : undefined,
                         }
                         result = validate(data, step1Constraints);
-                        genItemList(package_data, data.fdFromDate, data.fdToDate);
 
                         removeError($('#step1'));
                         if (result) {
@@ -460,6 +477,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
                         }
 
+                        genItemList(package_data, data.fdFromDate, data.fdToDate);
 
                         //Case web portal
                         let myEle = document.getElementById("portal_key");
@@ -496,14 +514,18 @@ document.addEventListener("DOMContentLoaded", async () => {
 
                             if ($('#controller').value === 'product') 
                             {
-                                gtag("event",  "add_to_cart",  {
-                                    "currency": "THB",
-                                    "value": selectPrice,
-                                    "items": [{
-                                      "item_id": "iSmile_" + fdPackage,
-                                      "item_name": "iSmile_" + fdPackage,
-                                      "price": selectPrice,
-                                    }]
+                                dataLayer.push({ ecommerce: null });  // Clear the previous ecommerce object.
+                                dataLayer.push({
+                                    event: "add_to_cart",
+                                    ecommerce: {
+                                        currency: "THB",
+                                        value: selectPrice,
+                                        items: [{
+                                            item_id: "iSmile_" + fdPackage,
+                                            item_name: "iSmile Plan Code " + fdPackage,
+                                            price: selectPrice
+                                        }]
+                                    }
                                 });
                             }
 
@@ -593,14 +615,18 @@ document.addEventListener("DOMContentLoaded", async () => {
 
                         if ($('#controller').value === 'product') 
                         {
-                            gtag("event",  "begin_checkout",  {
-                                "currency": "THB",
-                                "value": data.fdPayAMT,
-                                "items": [{
-                                  "item_id": "iSmile_" + data.fdPackage,
-                                  "item_name": "iSmile_" + data.fdPackage,
-                                  "price": data.fdPayAMT,
-                                }]
+                            dataLayer.push({ ecommerce: null });  // Clear the previous ecommerce object.
+                            dataLayer.push({
+                                event: "begin_checkout",
+                                ecommerce: {
+                                    currency: "THB",
+                                    value: data.fdPayAMT,
+                                    items: [{
+                                        item_id: "iSmile_" + data.fdPackage,
+                                        item_name: "iSmile Plan Code " + data.fdPackage,
+                                        price: data.fdPayAMT
+                                    }]
+                                }
                             });
                         }
 

@@ -11,11 +11,12 @@ import {API_STATUS_RESULT, API_URL_LIST} from "../../../config/config";
 import FormControl from "@material-ui/core/FormControl";
 import FormHelperText from "@material-ui/core/FormHelperText";
 import provinceData from "../../../../../storage/app/public/json/province.json";
+import districtData from "../../../../../storage/app/public/json/district.json";
 import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 
-const WEB_CONTENT_FIELD = ['cat_id', 'type_id', 'id', 'website', 'tel', 'province', 'partner_language', 'location'];
+const WEB_CONTENT_FIELD = ['cat_id', 'type_id', 'id', 'website', 'tel', 'district', 'province', 'partner_language', 'location'];
 const WEB_CONTENT_LOCALE_FIELD = ['title', 'address'];
 
 export default function PartnerDetailForm({type_id, config, fromDB, onSubmit, isSave, setSave}) {
@@ -184,6 +185,26 @@ export default function PartnerDetailForm({type_id, config, fromDB, onSubmit, is
                                                      value={v.code}>{v[i18n.language]}</MenuItem>)}
                 </Select>
                 <FormHelperText>{touched?.province && errors?.province || ''}</FormHelperText>
+            </FormControl>}
+
+            {config.district !== undefined &&
+            <FormControl required style={{display: "block"}} className={"MuiFormControl-marginNormal"}
+                         error={touched?.district && errors?.district !== undefined}>
+                <InputLabel id="district">{config.district.label}</InputLabel>
+                <Select
+                    labelId="district"
+                    id="district"
+                    name="district"
+                    value={values?.district}
+                    onChange={handleChange}
+                    style={{width: "100%"}}
+                >
+                    <MenuItem value=""> <em>{t('global.none')}</em> </MenuItem>
+                    {districtData.filter(e => e.ProvinceCode == values?.province)
+                                 .map(v => <MenuItem key={v.code}
+                                                     value={v.code}>{v.locales[i18n.language].title}</MenuItem>)}
+                </Select>
+                <FormHelperText>{touched?.district && errors?.district || ''}</FormHelperText>
             </FormControl>}
 
             {/*{config.partner_language !== undefined && <FormControl*/}

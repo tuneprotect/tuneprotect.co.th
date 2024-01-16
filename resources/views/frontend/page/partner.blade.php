@@ -16,6 +16,12 @@
                         </select>
                         <label for="ctrl_province">@lang('global.province')</label>
                     </div>
+                    <!-- @if($type === 'glass_shop')
+                        <div class="controls-wrapper">
+                            <select id="ctrl_district" name="district"></select>
+                            <label for="ctrl_district">@lang('global.district')</label>
+                        </div>
+                    @endif -->
                     @if($type !== 'glass_shop')
                         <div class="controls-wrapper">
                             <select id="ctrl_category" name="cat_id">
@@ -75,6 +81,10 @@
 
             <div id="div_result" style="display: none">
                 {{ json_encode( $partner->toArray())}}
+            </div>
+
+            <div id="div_district" style="display: none">
+                {{ $district }}
             </div>
         </section>
     </main>

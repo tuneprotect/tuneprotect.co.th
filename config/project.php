@@ -30,4 +30,5 @@ return [
     'promotion_code_condition' => env('PROMOTION_CODE_CONDITION', ''),
 
     'e_cancer_link' => env('E_CANCER_LINK', ''),
+    'online_link' => env('ONLINE_LINK', ''),
 ];
