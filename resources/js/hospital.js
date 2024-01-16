@@ -141,7 +141,7 @@ document.addEventListener("DOMContentLoaded", function () {
         console.log(data);
         console.log(dataDistrict);
         let items = ['<option value="">' + $(`#ctrl_district`).getAttribute('data-please-select') + '</option>'];
-        dataDistrict.filter(e => e.provinceCode == value)
+        dataDistrict.filter(function (el) { return el.ProvinceCode ==  value })
                     .map(v => {
                         items.push(`<option value="${v.district.code}">${v.district.locales[locale]}</option>`);
                     });
