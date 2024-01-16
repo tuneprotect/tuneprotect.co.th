@@ -37,7 +37,6 @@ abstract class BaseController extends Controller
         $this->bodyData['fb_id'] = Setting::get($fb_key);
         $this->template->setHeadOther(config('project.gtm'));
         $this->template->setBodyOpen(config('project.gtm_body'));
-        $this->template->setGtagKey(config('project.gtag_key'));
 
         if (!empty($this->bodyData['fb_id'])) {
             $this->template->setMeta([
