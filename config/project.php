@@ -31,6 +31,4 @@ return [
 
     'e_cancer_link' => env('E_CANCER_LINK', ''),
     'online_link' => env('ONLINE_LINK', ''),
-
-    'gtag_key' => env('GTAG_KEY', ''),
 ];

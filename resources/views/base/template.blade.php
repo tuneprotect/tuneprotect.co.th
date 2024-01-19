@@ -92,14 +92,14 @@ use App\Helper\TemplateHelper; ?>
                 </script>
 
                 <!-- Google tag (gtag.js) --> 
-                <script async src={`https://www.googletagmanager.com/gtag/js?id=${$template[TemplateHelper::GTAG_KEY]}`}></script>
+                <script async src="https://www.googletagmanager.com/gtag/js?id=G-QHJGFFXSVN"></script>
                 <script>   
                     window.dataLayer = window.dataLayer || [];   
                     function gtag(){
                         dataLayer.push(arguments);
                     }   
                     gtag('js', new Date());   
-                    gtag('config', '${$template[TemplateHelper::GTAG_KEY]}'); 
+                    gtag('config', 'G-QHJGFFXSVN'); 
                 </script>
 
                 <!-- Facebook Pixel Code -->
@@ -158,14 +158,14 @@ use App\Helper\TemplateHelper; ?>
                             </script>
 
                             <!-- Google tag (gtag.js) --> 
-                            <script async src={`https://www.googletagmanager.com/gtag/js?id=${$template[TemplateHelper::GTAG_KEY]}`}></script>
+                            <script async src="https://www.googletagmanager.com/gtag/js?id=G-QHJGFFXSVN"></script>
                             <script>   
                                 window.dataLayer = window.dataLayer || [];   
                                 function gtag(){
                                     dataLayer.push(arguments);
                                 }   
                                 gtag('js', new Date());   
-                                gtag('config', '${$template[TemplateHelper::GTAG_KEY]}'); 
+                                gtag('config', 'G-QHJGFFXSVN'); 
                             </script>
 
                             <!-- Event snippet for Payment Completed conversion page -->

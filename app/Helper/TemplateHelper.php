@@ -21,8 +21,6 @@ class TemplateHelper
 
     const DOCTYPE_HTML5 = '<!DOCTYPE html>';
 
-    const GTAG_KEY = 'gtag_key';
-
 
     protected $templateOption;
 
@@ -30,7 +28,6 @@ class TemplateHelper
     {
         $this->setDoctype(self::DOCTYPE_HTML5);
         $this->setTitle(config('app.name'));
-        $this->setGtagKey(config('project.gtag_key'));
     }
 
     public function setDoctype($doctype)
@@ -71,11 +68,6 @@ class TemplateHelper
     public function setHeadOther($text)
     {
         $this->templateOption[self::HEAD_OTHER][] = $text;
-    }
-
-    public function setGtagKey($text)
-    {
-        $this->templateOption[self::GTAG_KEY] = $text;
     }
 
     public function setFootOther($text)
