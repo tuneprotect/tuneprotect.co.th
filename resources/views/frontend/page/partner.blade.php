@@ -16,12 +16,12 @@
                         </select>
                         <label for="ctrl_province">@lang('global.province')</label>
                     </div>
-                    <!-- @if($type === 'glass_shop')
+                    @if($type === 'glass_shop')
                         <div class="controls-wrapper">
                             <select id="ctrl_district" name="district"></select>
                             <label for="ctrl_district">@lang('global.district')</label>
                         </div>
-                    @endif -->
+                    @endif
                     @if($type !== 'glass_shop')
                         <div class="controls-wrapper">
                             <select id="ctrl_category" name="cat_id">
