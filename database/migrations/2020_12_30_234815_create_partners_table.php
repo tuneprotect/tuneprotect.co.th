@@ -28,6 +28,7 @@ class CreatePartnersTable extends Migration
                     $table->integer('s_order')->nullable();
                     $table->string('tel')->nullable();
                     $table->string('province')->nullable();
+                    $table->string('district')->nullable();
                     $table->string('partner_language')->nullable();
                     $table->timestamps();
                     $table->engine = "InnoDB";
