@@ -87,10 +87,12 @@ document.addEventListener("DOMContentLoaded", async () => {
             data.filter(rowData => {
                 if (filterParam.province !== "" && filterParam.province !== rowData.province) {
                     return false;
-                }
+                } 
 
-                if (filterParam.district !== "" || filterParam.district !== rowData.district) {
-                    return false;
+                if (filterParam.district !== "") {
+                    if (filterParam.district !== rowData.district) {
+                        return false;
+                    }
                 }
 
                 if (filterParam.cat_id !== "" && filterParam.cat_id !== rowData.cat_id) {
