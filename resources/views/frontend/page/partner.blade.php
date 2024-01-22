@@ -18,7 +18,9 @@
                     </div>
                     @if($type === 'glass_shop')
                         <div class="controls-wrapper">
-                            <select id="ctrl_district" name="district"></select>
+                            <select id="ctrl_district" name="district" 
+                                    data-please-select="@lang("global.default_select_option")">
+                            </select>
                             <label for="ctrl_district">@lang('global.district')</label>
                         </div>
                     @endif
