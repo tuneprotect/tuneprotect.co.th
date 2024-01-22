@@ -89,7 +89,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                     return false;
                 }
 
-                if (filterParam.province !== "" && filterParam.district !== "" && filterParam.district !== rowData.district) {
+                if (filterParam.district !== "" || filterParam.district !== rowData.district) {
                     return false;
                 }
 
