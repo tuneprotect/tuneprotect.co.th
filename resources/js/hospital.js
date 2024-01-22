@@ -86,11 +86,10 @@ document.addEventListener("DOMContentLoaded", async () => {
         return stableSort(
             data.filter(rowData => {
                 if (filterParam.province !== "" && filterParam.province !== rowData.province) {
+                    return false;
+                }
 
-                    if (filterParam.district !== "" && filterParam.district !== rowData.district) {
-                        return false;
-                    }
-
+                if (filterParam.province !== "" && filterParam.district !== "" && filterParam.district !== rowData.district) {
                     return false;
                 }
 
