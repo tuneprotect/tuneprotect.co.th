@@ -83,9 +83,6 @@
                 {{ json_encode( $partner->toArray())}}
             </div>
 
-            <div id="div_district" style="display: none">
-                {{ $district }}
-            </div>
         </section>
     </main>
 
