@@ -73,7 +73,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     };
 
     const data = JSON.parse($('#div_result').innerHTML);
-    //const dataDistrict = JSON.parse($('#div_district').innerHTML);
     const dataDistrict = await getdistrictData();
 
     $('#div_result').remove();
@@ -87,6 +86,10 @@ document.addEventListener("DOMContentLoaded", async () => {
         return stableSort(
             data.filter(rowData => {
                 if (filterParam.province !== "" && filterParam.province !== rowData.province) {
+                    return false;
+                }
+
+                if (filterParam.district !== "" && filterParam.district !== rowData.district) {
                     return false;
                 }
 
