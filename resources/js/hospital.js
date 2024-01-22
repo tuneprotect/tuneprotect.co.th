@@ -66,6 +66,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     let filterParam = {
         province: "",
+        district: "",
         cat_id: "",
         title: "",
         partner_language: "",
@@ -89,11 +90,9 @@ document.addEventListener("DOMContentLoaded", async () => {
                     return false;
                 } 
 
-                if (filterParam.district !== "") {
-                    if (filterParam.district !== rowData.district) {
-                        return false;
-                    }
-                }
+                if (filterParam.district !== "" && filterParam.district !== rowData.district) {
+                    return false;
+                } 
 
                 if (filterParam.cat_id !== "" && filterParam.cat_id !== rowData.cat_id) {
                     return false;
