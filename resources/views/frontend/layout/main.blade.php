@@ -582,7 +582,7 @@
                         </li>
                         <li>
                             <a data-gtm="footer-nav-partner-glass-shop"
-                               href="{{route('current',['locale' => $locale,'controller' => 'partner','func' => 'glass_shop' ])}}">@lang('global.glass_shop')</a>
+                               href="{{route('current',['locale' => $locale,'controller' => 'partner','func' => 'auto_glass' ])}}">@lang('global.auto_glass')</a>
                         </li>
                     </ul>
 

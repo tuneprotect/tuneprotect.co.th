@@ -36,6 +36,7 @@ class PartnerRequest extends BaseFormRequest
             's_order' => 'nullable|string',
             'tel' => 'nullable|string',
             'province' => 'nullable|string',
+            'district' => 'nullable|string',
             'location' => 'nullable|string',
             'partner_language' => 'nullable|array',
             'locales' => 'array',

@@ -16,13 +16,15 @@
                         </select>
                         <label for="ctrl_province">@lang('global.province')</label>
                     </div>
-                    <!-- @if($type === 'glass_shop')
+                    @if($type === 'auto_glass')
                         <div class="controls-wrapper">
-                            <select id="ctrl_district" name="district"></select>
+                            <select id="ctrl_district" name="district" 
+                                    data-please-select="@lang("global.default_select_option")">
+                            </select>
                             <label for="ctrl_district">@lang('global.district')</label>
                         </div>
-                    @endif -->
-                    @if($type !== 'glass_shop')
+                    @endif
+                    @if($type !== 'auto_glass')
                         <div class="controls-wrapper">
                             <select id="ctrl_category" name="cat_id">
                                 <option value="">@lang('global.default_select_option')</option>
@@ -38,7 +40,7 @@
                         <label for="ctrl_name">@lang('global.search_from_name')</label>
                     </div>
                     @if(!empty($partner_language))
-                        @if($type !== 'glass_shop')
+                        @if($type !== 'auto_glass')
                             <div class="controls-wrapper">
                                 <select id="ctrl_language" name="partner_language">
                                     <option value="">@lang('global.default_select_option')</option>
@@ -50,7 +52,7 @@
                             </div>
                         @endif
                     @endif
-                    @if($type === 'glass_shop')
+                    @if($type === 'auto_glass')
                         <div class="controls-wrapper">
                             <input id="ctrl_tel" name="tel" type="text" placeholder="@lang('global.search_from_tel')"/>
                             <label for="ctrl_tel">@lang('global.search_from_tel')</label>
@@ -83,9 +85,6 @@
                 {{ json_encode( $partner->toArray())}}
             </div>
 
-            <div id="div_district" style="display: none">
-                {{ $district }}
-            </div>
         </section>
     </main>
 

@@ -89,11 +89,9 @@ use App\Helper\TemplateHelper; ?>
                     gtag('js', new Date());
 
                     gtag('config', 'AW-445121093');
-                    //gtag('config', 'G-GGKQZLM02H');
                 </script>
-                <!-- Facebook Pixel Code -->
 
-                <!-- Google tag (gtag.js) For UAT --> 
+                <!-- Google tag (gtag.js) --> 
                 <script async src="https://www.googletagmanager.com/gtag/js?id=G-QHJGFFXSVN"></script>
                 <script>   
                     window.dataLayer = window.dataLayer || [];   
@@ -104,6 +102,7 @@ use App\Helper\TemplateHelper; ?>
                     gtag('config', 'G-QHJGFFXSVN'); 
                 </script>
 
+                <!-- Facebook Pixel Code -->
                 <script>
                     !function(f,b,e,v,n,t,s){
                         if(f.fbq)return;
@@ -155,11 +154,19 @@ use App\Helper\TemplateHelper; ?>
                                     dataLayer.push(arguments);
                                 }
                                 gtag('js', new Date());
-
                                 gtag('config', 'AW-445121093');
-                                //gtag('config', 'G-GGKQZLM02H');
                             </script>
-                            <!-- Facebook Pixel Code -->
+
+                            <!-- Google tag (gtag.js) --> 
+                            <script async src="https://www.googletagmanager.com/gtag/js?id=G-QHJGFFXSVN"></script>
+                            <script>   
+                                window.dataLayer = window.dataLayer || [];   
+                                function gtag(){
+                                    dataLayer.push(arguments);
+                                }   
+                                gtag('js', new Date());   
+                                gtag('config', 'G-QHJGFFXSVN'); 
+                            </script>
 
                             <!-- Event snippet for Payment Completed conversion page -->
                             <script>

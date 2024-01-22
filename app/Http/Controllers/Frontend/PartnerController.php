@@ -15,7 +15,7 @@ class PartnerController extends BaseController
     {
         $arrType = [
             'hospital' => ProjectEnum::WEB_CONTENT_HOSPITAL,
-            'glass_shop' => ProjectEnum::WEB_CONTENT_GLASS_SHOP,
+            'auto_glass' => ProjectEnum::WEB_CONTENT_AUTO_GLASS,
             'garage' => ProjectEnum::WEB_CONTENT_GARAGE,
             'service_center' => ProjectEnum::WEB_CONTENT_SERVICE_CENTER,
         ];
@@ -43,9 +43,9 @@ class PartnerController extends BaseController
         $this->bodyData['type'] = $type;
         $this->bodyData['content'] = $this->setStaticPageHeader('static.page.' . $type);
         $this->bodyData['province'] = json_decode(Storage::disk('public')->get('json/province.json'));
-        $this->bodyData['district'] = Storage::disk('public')->get('json/district.json');
+        //$this->bodyData['district'] = json_decode(Storage::disk('public')->get('json/district.json'));
 
-        if ($type != 'glass_shop') {
+        if ($type != 'auto_glass') {
             $this->bodyData['category'] = WebContent::where('type_id', $arrCategoryType[$type])
             ->with('locales')
             ->whereRaw(ProjectEnum::isPublish())
