@@ -1,7 +1,11 @@
 require('./main');
-import {$, $$} from "./helper"
+import {$, $$} from "./helper";
 
-document.addEventListener("DOMContentLoaded", function () {
+import {
+    getdistrictData,
+} from "./form/productHelper";
+
+document.addEventListener("DOMContentLoaded", async () => {
 
     const $btnMore = $('#btn-more');
 
@@ -69,7 +73,8 @@ document.addEventListener("DOMContentLoaded", function () {
     };
 
     const data = JSON.parse($('#div_result').innerHTML);
-    const dataDistrict = JSON.parse($('#div_district').innerHTML);
+    //const dataDistrict = JSON.parse($('#div_district').innerHTML);
+    const dataDistrict = await getdistrictData();
 
     $('#div_result').remove();
     const handleFilterData = () => {

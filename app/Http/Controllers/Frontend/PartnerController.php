@@ -43,7 +43,7 @@ class PartnerController extends BaseController
         $this->bodyData['type'] = $type;
         $this->bodyData['content'] = $this->setStaticPageHeader('static.page.' . $type);
         $this->bodyData['province'] = json_decode(Storage::disk('public')->get('json/province.json'));
-        $this->bodyData['district'] = json_decode(Storage::disk('public')->get('json/district.json'));
+        //$this->bodyData['district'] = json_decode(Storage::disk('public')->get('json/district.json'));
 
         if ($type != 'glass_shop') {
             $this->bodyData['category'] = WebContent::where('type_id', $arrCategoryType[$type])
