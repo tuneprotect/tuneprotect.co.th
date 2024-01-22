@@ -1261,23 +1261,23 @@ let APP_ROUTE = {
             }
         }),
     },
-    [WEB_CONTENT.GLASS_SHOP]: {
-        id: WEB_CONTENT.GLASS_SHOP,
-        name: <Translate id={`side_nav.${WEB_CONTENT.GLASS_SHOP}`}/>,
-        url: "/partner/glass_shop",
+    [WEB_CONTENT.AUTO_GLASS]: {
+        id: WEB_CONTENT.AUTO_GLASS,
+        name: <Translate id={`side_nav.${WEB_CONTENT.AUTO_GLASS}`}/>,
+        url: "/partner/auto_glass",
         icon: 'view_carousel',
         show_on_main_menu: true,
         component: () => PartnerPage({
-            type_id: WEB_CONTENT.GLASS_SHOP
+            type_id: WEB_CONTENT.AUTO_GLASS
         }),
         layout: "MainLayout",
         parent: "partner",
         group: "main_nav"
     },
-    [`${WEB_CONTENT.GLASS_SHOP}.detail`]: {
-        id: `${WEB_CONTENT.GLASS_SHOP}.detail`,
-        name: <Translate id={`side_nav.${WEB_CONTENT.GLASS_SHOP}`}/>,
-        url: "/partner/glass_shop/detail/:id?",
+    [`${WEB_CONTENT.AUTO_GLASS}.detail`]: {
+        id: `${WEB_CONTENT.AUTO_GLASS}.detail`,
+        name: <Translate id={`side_nav.${WEB_CONTENT.AUTO_GLASS}`}/>,
+        url: "/partner/auto_glass/detail/:id?",
         icon: 'pets',
         show_on_main_menu: false,
         layout: "MainLayout",
@@ -1285,7 +1285,7 @@ let APP_ROUTE = {
         group: "",
         component: () => PartnerMainStep({
             isWebContent: true,
-            type_id: WEB_CONTENT.GLASS_SHOP,
+            type_id: WEB_CONTENT.AUTO_GLASS,
             config: {
                 hasPublishPeriod: true,
                 title: {
@@ -2208,7 +2208,7 @@ const static_content = {
         'download',
         'garage',
         'hospital',
-        'glass_shop',
+        'auto_glass',
         'news',
         'promotion',
         'pay_insurance_premiums',
