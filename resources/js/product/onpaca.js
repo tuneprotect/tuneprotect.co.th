@@ -454,7 +454,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                                 ctrl_document_type: $('#ctrl_document_type').value,
                                 ctrl_province: $('#ctrl_province').value,
 
-                                fdIsAnotherCompany: $('#fdIsAnotherCompany').value,
+                                fdIsAnotherCompany: getRadioSelectedValue('fdIsAnotherCompany'),
                                 fdAnotherPolicyAll: $('#fdAnotherPolicyAll').value,
                                 fdAnotherPolicyPriceAll: $('#fdAnotherPolicyPriceAll').value,
                                 fdAnotherCompanyName1: $('#fdAnotherCompanyName1').value,
