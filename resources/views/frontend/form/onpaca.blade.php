@@ -13,6 +13,7 @@
             @include('frontend.component.form-profile',['id_card_field' => 'both' ,'id_card_field_title' => __("product.id_card_no") ,'prefix' => '' ])
             @include('frontend.component.form-address',['prefix' => ''])
             @include('frontend.component.form-beneficiary',['prefix' => ''])
+            @include('frontend.component.form-qustion-pa.blade')
             @include('frontend.component.form-tax-deduct')
             @include('frontend.component.form-privacy')
         </div>

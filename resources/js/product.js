@@ -228,4 +228,18 @@ document.addEventListener("DOMContentLoaded", async () => {
             });
         });
     }
+
+    const $isAnotherCompany = $('#fdIsAnotherCompany');
+    if ($isAnotherCompany) {
+        $isAnotherCompany.addEventListener("click", function (e) {
+            let display = 'none';
+
+            if ($isAnotherCompany.value === 'Y') {
+                $$(".another_company_name").forEach($el => {
+                    $el.style.display = display;
+                });
+            }
+            
+        });
+    }
 });
