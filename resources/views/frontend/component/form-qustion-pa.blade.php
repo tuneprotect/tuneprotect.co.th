@@ -1,5 +1,5 @@
 <h3>@lang('product.another_company')</h3>
-<div class="">
+<div class="question-wrapper">
     <ul class="check-wrapper">
         <li>
             <input id="ctrl_is_another_company_no" name="fdIsAnotherCompany" type="radio" checked value="N"/>
@@ -12,19 +12,13 @@
     </ul>
     <div class="date-input another_company_name" style="display: none">
         <div class="date-wrapper">
-            <div class="controls-wrapper">
-                <p>@lang('product.another_policy')</p>
-            </div>
-            <div class="controls-wrapper">
-                <input id="fdAnotherCompanyName1" name="fdAnotherCompanyName1" 
-                        type="text" placeholder="@lang('product.another_company_name')"
-                        data-error-tax_no-require="@lang("product.error.tax_no.require")"
-                        data-error-tax_no-format="@lang("product.error.tax_no.format")"
-                />
-            </div>
-            <div class="controls-wrapper">
-                <p>@lang('product.policy_unit')</p>
-            </div>
+            <p>@lang('product.another_policy')</p>
+            <input id="fdAnotherCompanyName1" name="fdAnotherCompanyName1" 
+                    type="text" placeholder="@lang('product.another_company_name')"
+                    data-error-tax_no-require="@lang("product.error.tax_no.require")"
+                    data-error-tax_no-format="@lang("product.error.tax_no.format")"
+            />
+            <p>@lang('product.policy_unit')</p>
             <!-- <label for="fdTaxno">@lang('product.tax_no')</label> -->
         </div>
         <div class="question-wrapper">

@@ -1409,16 +1409,14 @@ main {
         }
 
         .question-wrapper {
-            display: flex;
-            flex-wrap: nowrap;
-            align-items: center;
+            .date-input {
+                .date-wrapper {
+                    align-items: center;
 
-            input {
-                width: -webkit-fill-available !important;
-            }
-
-            p {
-                margin: 10px 10px !important;
+                    div {
+                        flex: unset !important;
+                    }
+                }
             }
         }
 
