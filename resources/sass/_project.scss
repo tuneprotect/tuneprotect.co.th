@@ -1413,8 +1413,12 @@ main {
             flex-wrap: nowrap;
             align-items: center;
 
-            main form p {
-                margin: 10px 10px;
+            input {
+                width: unset !important;
+            }
+
+            p {
+                margin: 10px 10px !important;
             }
         }
 

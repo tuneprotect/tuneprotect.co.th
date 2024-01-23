@@ -19,7 +19,7 @@
                     data-error-tax_no-require="@lang("product.error.tax_no.require")"
                     data-error-tax_no-format="@lang("product.error.tax_no.format")"
             />
-            <label for="fdTaxno">@lang('product.tax_no')</label>
+            <!-- <label for="fdTaxno">@lang('product.tax_no')</label> -->
             <p>@lang('product.policy_unit')</p>
         </div>
     </div>
@@ -32,7 +32,7 @@
                     data-error-tax_no-require="@lang("product.error.tax_no.require")"
                     data-error-tax_no-format="@lang("product.error.tax_no.format")"
             />
-            <label for="fdTaxno">@lang('product.tax_no')</label>
+            <!-- <label for="fdTaxno">@lang('product.tax_no')</label> -->
             <p>@lang('product.price_unit')</p>
         </div>
     </div>
