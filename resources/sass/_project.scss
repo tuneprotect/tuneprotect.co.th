@@ -1414,7 +1414,7 @@ main {
             align-items: center;
 
             input {
-                width: unset !important;
+                width: -webkit-fill-available !important;
             }
 
             p {
