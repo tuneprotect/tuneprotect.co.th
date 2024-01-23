@@ -17,8 +17,8 @@ class PAObject extends BaseInsuranceObject
     public $fdAnotherPolicyAll;
     public $fdAnotherPolicyPriceAll;
     public $fdAnotherCompanyName1;
-    public $fdAnotherCompanyName3;
     public $fdAnotherCompanyName2;
+    public $fdAnotherCompanyName3;
     public $fdAnotherPolicyPrice1;
     public $fdAnotherPolicyPrice2;
     public $fdAnotherPolicyPrice3;

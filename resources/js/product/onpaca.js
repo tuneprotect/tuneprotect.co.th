@@ -242,7 +242,17 @@ document.addEventListener("DOMContentLoaded", async () => {
         ctrl_province: "",
         ctrl_terms: "",
         ctrl_accept_insurance_term: "",
-        ctrl_document_type: ""
+        ctrl_document_type: "",
+
+        fdIsAnotherCompany: "",
+        fdAnotherPolicyAll: "",
+        fdAnotherPolicyPriceAll: "",
+        fdAnotherCompanyName1: "",
+        fdAnotherCompanyName2: "",
+        fdAnotherCompanyName3: "",
+        fdAnotherPolicyPrice1: "",
+        fdAnotherPolicyPrice2: "",
+        fdAnotherPolicyPrice3: ""
     };
     const validateAcceptStep1 = () => {
        
@@ -443,6 +453,17 @@ document.addEventListener("DOMContentLoaded", async () => {
                                 ctrl_accept_insurance_term: $('#ctrl_accept_insurance_term').checked ? true : undefined,
                                 ctrl_document_type: $('#ctrl_document_type').value,
                                 ctrl_province: $('#ctrl_province').value,
+
+                                fdIsAnotherCompany: $('#fdIsAnotherCompany').value,
+                                fdAnotherPolicyAll: $('#fdAnotherPolicyAll').value,
+                                fdAnotherPolicyPriceAll: $('#fdAnotherPolicyPriceAll').value,
+                                fdAnotherCompanyName1: $('#fdAnotherCompanyName1').value,
+                                fdAnotherCompanyName2: $('#fdAnotherCompanyName2').value,
+                                fdAnotherCompanyName3: $('#fdAnotherCompanyName3').value,
+                                fdAnotherPolicyPrice1: $('#fdAnotherPolicyPrice1').value,
+                                fdAnotherPolicyPrice2: $('#fdAnotherPolicyPrice2').value,
+                                fdAnotherPolicyPrice3: $('#fdAnotherPolicyPrice3').value,
+
                                 fdPayAMT: getSelectedPrice(data.fdHBD, data.fdPackage, package_data)
                             }
                             data = {
