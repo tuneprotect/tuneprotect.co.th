@@ -1,18 +1,16 @@
 <h3>@lang('product.another_company')</h3>
 <div class="question-wrapper">
     <div class="controls-wrapper">
-        <div class="controls-wrapper">
-            <ul class="check-wrapper">
-                <li>
-                    <input id="ctrl_is_another_company_no" name="fdIsAnotherCompany" type="radio" checked value="N"/>
-                    <label for="ctrl_is_another_company_no">@lang('product.no')</label>
-                </li>
-                <li>
-                    <input id="ctrl_is_another_company_yes" name="fdIsAnotherCompany" type="radio" value="Y"/>
-                    <label for="ctrl_is_another_company_yes">@lang('product.yes')</label>
-                </li>
-            </ul>
-        </div>
+        <ul class="check-wrapper">
+            <li>
+                <input id="ctrl_is_another_company_no" name="fdIsAnotherCompany" type="radio" checked value="N"/>
+                <label for="ctrl_is_another_company_no">@lang('product.no')</label>
+            </li>
+            <li>
+                <input id="ctrl_is_another_company_yes" name="fdIsAnotherCompany" type="radio" value="Y"/>
+                <label for="ctrl_is_another_company_yes">@lang('product.yes')</label>
+            </li>
+        </ul>
         <div class="date-input another_company_name" style="display: none">
             <div class="date-wrapper">
                 <div><p>@lang('product.another_policy')</p></div>
