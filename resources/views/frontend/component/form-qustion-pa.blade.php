@@ -10,7 +10,7 @@
             <label for="ctrl_is_another_company_yes">@lang('product.yes')</label>
         </li>
     </ul>
-    <div class="two-col another_company_name" style="display: none">
+    <div class="date-input another_company_name" style="display: none">
         <div class="date-wrapper">
             <div class="controls-wrapper">
                 <p>@lang('product.another_policy')</p>
