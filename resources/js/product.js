@@ -235,10 +235,11 @@ document.addEventListener("DOMContentLoaded", async () => {
 
             if ($el.value === 'Y') {
                 display = 'block'
-                $$(".another_company_name").forEach($el => {
-                    $el.style.display = display;
-                });
             }
+
+            $$(".another_company_name").forEach($el => {
+                $el.style.display = display;
+            });
         });
     });
 });
