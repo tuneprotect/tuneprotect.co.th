@@ -229,17 +229,16 @@ document.addEventListener("DOMContentLoaded", async () => {
         });
     }
 
-    const $isAnotherCompany = $('#fdIsAnotherCompany');
-    if ($isAnotherCompany) {
-        $isAnotherCompany.addEventListener("click", function (e) {
+    $$("input[name=fdIsAnotherCompany]").forEach($el => {
+        $el.addEventListener("change", function (e) {
             let display = 'none';
 
-            if ($isAnotherCompany.value === 'Y') {
+            if ($el.value === 'Y') {
+                display = 'block'
                 $$(".another_company_name").forEach($el => {
                     $el.style.display = display;
                 });
             }
-            
         });
-    }
+    });
 });
