@@ -1408,6 +1408,16 @@ main {
             }
         }
 
+        .question-wrapper {
+            display: flex;
+            flex-wrap: nowrap;
+            align-items: center;
+
+            main form p {
+                margin: 10px 10px;
+            }
+        }
+
 
         input, textarea, select {
             background: #ffffff;
