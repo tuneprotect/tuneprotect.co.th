@@ -35,8 +35,8 @@
             <div><p>@lang('product.detail_another_policy')</p></div>
         </div>
         <div class="date-wrapper">
-            <div><p>@lang('product.company')</p>
-                <input id="fdAnotherCompanyName1" name="fdAnotherCompanyName1" 
+            <div><p>@lang('product.company')</p></div>
+            <div><input id="fdAnotherCompanyName1" name="fdAnotherCompanyName1" 
                     type="text" placeholder="@lang('product.another_company_name')"
                     data-error-tax_no-require="@lang("product.error.tax_no.require")"
                     data-error-tax_no-format="@lang("product.error.tax_no.format")"
@@ -46,12 +46,12 @@
                     type="text" placeholder="@lang('product.another_company_name')"
                     data-error-tax_no-require="@lang("product.error.tax_no.require")"
                     data-error-tax_no-format="@lang("product.error.tax_no.format")"
-            />
-                <p>@lang('product.price_unit')</p></div>
+            /></div>
+            <div><p>@lang('product.price_unit')</p></div>
         </div>
         <div class="date-wrapper">
-            <div><p>@lang('product.company')</p>
-                <input id="fdAnotherCompanyName1" name="fdAnotherCompanyName1" 
+            <div><p>@lang('product.company')</p></div>
+            <div><input id="fdAnotherCompanyName1" name="fdAnotherCompanyName1" 
                     type="text" placeholder="@lang('product.another_company_name')"
                     data-error-tax_no-require="@lang("product.error.tax_no.require")"
                     data-error-tax_no-format="@lang("product.error.tax_no.format")"
@@ -61,12 +61,12 @@
                     type="text" placeholder="@lang('product.another_company_name')"
                     data-error-tax_no-require="@lang("product.error.tax_no.require")"
                     data-error-tax_no-format="@lang("product.error.tax_no.format")"
-            />
-                <p>@lang('product.price_unit')</p></div>
+            /></div>
+            <div><p>@lang('product.price_unit')</p></div>
         </div>
         <div class="date-wrapper">
-            <div><p>@lang('product.company')</p>
-            <input id="fdAnotherCompanyName3" name="fdAnotherCompanyName3" 
+            <div><p>@lang('product.company')</p></div>
+            <div><input id="fdAnotherCompanyName3" name="fdAnotherCompanyName3" 
                     type="text" placeholder="@lang('product.another_company_name')"
                     data-error-tax_no-require="@lang("product.error.tax_no.require")"
                     data-error-tax_no-format="@lang("product.error.tax_no.format")"
@@ -76,8 +76,8 @@
                     type="text" placeholder="@lang('product.another_company_name')"
                     data-error-tax_no-require="@lang("product.error.tax_no.require")"
                     data-error-tax_no-format="@lang("product.error.tax_no.format")"
-            />
-            <p>@lang('product.price_unit')</p></div>
+            /></div>
+            <div><p>@lang('product.price_unit')</p></div>
         </div>
     </div>
 </div>
