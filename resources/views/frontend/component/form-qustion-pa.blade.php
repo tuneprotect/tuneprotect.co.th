@@ -14,7 +14,7 @@
         <div class="date-input another_company_name" style="display: none">
             <div class="date-wrapper">
                 <div><p>@lang('product.another_policy')</p></div>
-                <div><input id="fdAnotherCompanyName1" name="fdAnotherCompanyName1" 
+                <div><input id="fdAnotherPolicyAll" name="fdAnotherPolicyAll" 
                         type="text" placeholder="@lang('product.another_company_name')"
                         data-error-tax_no-require="@lang("product.error.tax_no.require")"
                         data-error-tax_no-format="@lang("product.error.tax_no.format")"
@@ -24,7 +24,7 @@
             </div>
             <div class="date-wrapper">
                 <div><p>@lang('product.another_policy_price')</p></div>
-                <div><input id="fdAnotherCompanyName1" name="fdAnotherCompanyName1" 
+                <div><input id="fdAnotherPolicyPriceAll" name="fdAnotherPolicyPriceAll" 
                         type="text" placeholder="@lang('product.another_company_name')"
                         data-error-tax_no-require="@lang("product.error.tax_no.require")"
                         data-error-tax_no-format="@lang("product.error.tax_no.format")"
@@ -43,7 +43,7 @@
                         data-error-tax_no-format="@lang("product.error.tax_no.format")"
                 /></div>
                 <div><p>@lang('product.policy_price')</p></div>
-                <div><input id="fdAnotherCompanyName1" name="fdAnotherCompanyName1" 
+                <div><input id="fdAnotherPolicyPrice1" name="fdAnotherPolicyPrice1" 
                         type="text" placeholder="@lang('product.another_company_name')"
                         data-error-tax_no-require="@lang("product.error.tax_no.require")"
                         data-error-tax_no-format="@lang("product.error.tax_no.format")"
@@ -52,13 +52,13 @@
             </div>
             <div class="date-wrapper">
                 <div><p>@lang('product.company')</p></div>
-                <div><input id="fdAnotherCompanyName1" name="fdAnotherCompanyName1" 
+                <div><input id="fdAnotherCompanyName2" name="fdAnotherCompanyName2" 
                         type="text" placeholder="@lang('product.another_company_name')"
                         data-error-tax_no-require="@lang("product.error.tax_no.require")"
                         data-error-tax_no-format="@lang("product.error.tax_no.format")"
                     /></div>
                 <div><p>@lang('product.policy_price')</p></div>
-                <div><input id="fdAnotherCompanyName2" name="fdAnotherCompanyName2" 
+                <div><input id="fdAnotherPolicyPrice2" name="fdAnotherPolicyPrice2" 
                         type="text" placeholder="@lang('product.another_company_name')"
                         data-error-tax_no-require="@lang("product.error.tax_no.require")"
                         data-error-tax_no-format="@lang("product.error.tax_no.format")"
@@ -73,7 +73,7 @@
                         data-error-tax_no-format="@lang("product.error.tax_no.format")"
                 /></div>
                 <div><p>@lang('product.policy_price')</p></div>
-                <div><input id="fdAnotherCompanyName1" name="fdAnotherCompanyName1" 
+                <div><input id="fdAnotherPolicyPrice3" name="fdAnotherPolicyPrice3" 
                         type="text" placeholder="@lang('product.another_company_name')"
                         data-error-tax_no-require="@lang("product.error.tax_no.require")"
                         data-error-tax_no-format="@lang("product.error.tax_no.format")"

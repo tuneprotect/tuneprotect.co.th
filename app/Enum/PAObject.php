@@ -12,4 +12,14 @@ class PAObject extends BaseInsuranceObject
     public $fdTaxno;
     public $fdOccupCode;
     public $fdProductCode;
+
+    public $fdIsAnotherCompany;
+    public $fdAnotherPolicyAll;
+    public $fdAnotherPolicyPriceAll;
+    public $fdAnotherCompanyName1;
+    public $fdAnotherCompanyName3;
+    public $fdAnotherCompanyName2;
+    public $fdAnotherPolicyPrice1;
+    public $fdAnotherPolicyPrice2;
+    public $fdAnotherPolicyPrice3;
 }
