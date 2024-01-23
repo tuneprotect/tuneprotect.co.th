@@ -36,7 +36,41 @@
     <div class="question-wrapper">
         <p>@lang('product.company')</p>
         <input id="fdAnotherCompanyName1" name="fdAnotherCompanyName1" 
+                type="text" size="50"
+                placeholder="@lang('product.another_company_name')"
+                data-error-tax_no-require="@lang("product.error.tax_no.require")"
+                data-error-tax_no-format="@lang("product.error.tax_no.format")"
+        />
+        <p>@lang('product.policy_price')</p>
+        <input id="fdAnotherCompanyName1" name="fdAnotherCompanyName1" 
                 type="text" size="10"
+                placeholder="@lang('product.another_company_name')"
+                data-error-tax_no-require="@lang("product.error.tax_no.require")"
+                data-error-tax_no-format="@lang("product.error.tax_no.format")"
+        />
+        <p>@lang('product.price_unit')</p>
+    </div>
+    <div class="question-wrapper">
+        <p>@lang('product.company')</p>
+        <input id="fdAnotherCompanyName1" name="fdAnotherCompanyName1" 
+                type="text" size="50"
+                placeholder="@lang('product.another_company_name')"
+                data-error-tax_no-require="@lang("product.error.tax_no.require")"
+                data-error-tax_no-format="@lang("product.error.tax_no.format")"
+        />
+        <p>@lang('product.policy_price')</p>
+        <input id="fdAnotherCompanyName2" name="fdAnotherCompanyName2" 
+                type="text" size="10"
+                placeholder="@lang('product.another_company_name')"
+                data-error-tax_no-require="@lang("product.error.tax_no.require")"
+                data-error-tax_no-format="@lang("product.error.tax_no.format")"
+        />
+        <p>@lang('product.price_unit')</p>
+    </div>
+    <div class="question-wrapper">
+        <p>@lang('product.company')</p>
+        <input id="fdAnotherCompanyName3" name="fdAnotherCompanyName3" 
+                type="text" size="50"
                 placeholder="@lang('product.another_company_name')"
                 data-error-tax_no-require="@lang("product.error.tax_no.require")"
                 data-error-tax_no-format="@lang("product.error.tax_no.format")"
