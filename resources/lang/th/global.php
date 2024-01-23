@@ -23,7 +23,6 @@ return [
     'email' => 'Email Address',
     'available_time' => 'Available Time',
     'consent' => 'Consent',
-    'another_company' => 'Have you ever had personal accident insurance or life insurance from another company?',
     'faq_header' => 'คำถามที่พบบ่อย',
     'garage_list' => 'Garage List',
     'garage' => 'Garage',
