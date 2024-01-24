@@ -188,7 +188,7 @@ const constraints = {
                 message: "^" + $('#fdAnotherNoOfPolicy').getAttribute('data-error-another_no_of_policy-require')
             },
             format: {
-                pattern: /^[0-9]*$/,
+                pattern: /^[0-9].*$/,
                 message: "^" + $('#fdAnotherNoOfPolicy').getAttribute('data-error-another_no_of_policy-format')
             },
         };
@@ -211,7 +211,7 @@ const constraints = {
         if (attributes.fdAnotherCompName1 === "") return null;
         return {
             format: {
-                pattern: /^[0-9]*$/,
+                pattern: /^[0-9].*$/,
                 message: "^" + $('#fdAnotherPolicyPrice1').getAttribute('data-error-another_policy_price-format')
             },
         };
@@ -221,7 +221,7 @@ const constraints = {
         if (attributes.fdAnotherCompName2 === "") return null;
         return {
             format: {
-                pattern: /^[0-9]*$/,
+                pattern: /^[0-9].*$/,
                 message: "^" + $('#fdAnotherPolicyPrice2').getAttribute('data-error-another_policy_price-format')
             },
         };
@@ -231,7 +231,7 @@ const constraints = {
         if (attributes.fdAnotherCompName3 === "") return null;
         return {
             format: {
-                pattern: /^[0-9]*$/,
+                pattern: /^[0-9].*$/,
                 message: "^" + $('#fdAnotherPolicyPrice3').getAttribute('data-error-another_policy_price-format')
             },
         };
@@ -520,14 +520,14 @@ document.addEventListener("DOMContentLoaded", async () => {
                             if(data.fdIsAnotherCompany === 'Y') {
                                 data = {
                                     ...data,
-                                    fdAnotherNoOfPolicy: $('#fdAnotherNoOfPolicy').value,
-                                    fdAnotherPolicyTotalPrice: $('#fdAnotherPolicyTotalPrice').value,
+                                    fdAnotherNoOfPolicy: parseInt($('#fdAnotherNoOfPolicy').value),
+                                    fdAnotherPolicyTotalPrice: parseFloat($('#fdAnotherPolicyTotalPrice').value ? $('#fdAnotherPolicyTotalPrice').value : '0'),
                                     fdAnotherCompName1: $('#fdAnotherCompName1').value,
                                     fdAnotherCompName2: $('#fdAnotherCompName2').value,
                                     fdAnotherCompName3: $('#fdAnotherCompName3').value,
-                                    fdAnotherPolicyPrice1: $('#fdAnotherPolicyPrice1').value,
-                                    fdAnotherPolicyPrice2: $('#fdAnotherPolicyPrice2').value,
-                                    fdAnotherPolicyPrice3: $('#fdAnotherPolicyPrice3').value,
+                                    fdAnotherPolicyPrice1: parseFloat($('#fdAnotherPolicyPrice1').value ? $('#fdAnotherPolicyPrice1').value : '0'),
+                                    fdAnotherPolicyPrice2: parseFloat($('#fdAnotherPolicyPrice2').value ? $('#fdAnotherPolicyPrice2').value : '0'),
+                                    fdAnotherPolicyPrice3: parseFloat($('#fdAnotherPolicyPrice3').value ? $('#fdAnotherPolicyPrice3').value : '0'),
                                 }
                             }
 
