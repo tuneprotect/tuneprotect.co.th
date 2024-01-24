@@ -510,14 +510,13 @@ document.addEventListener("DOMContentLoaded", async () => {
                             }
                             data = {
                                 ...data,
-                                fdMarketing_Consent: $('#ctrl_marketing').checked ? true : undefined
+                                fdMarketing_Consent: $('#ctrl_marketing').checked ? true : undefined,
+                                fdIsAnotherCompany: getRadioSelectedValue('fdIsAnotherCompany'),
                             }
 
-                            let IsAnotherCompanyFlag = getRadioSelectedValue('fdIsAnotherCompany');
-                            if(IsAnotherCompanyFlag === 'Y') {
+                            if(data.fdIsAnotherCompany === 'Y') {
                                 data = {
                                     ...data,
-                                    fdIsAnotherCompany: IsAnotherCompanyFlag,
                                     fdAnotherNoOfPolicy: $('#fdAnotherNoOfPolicy').value,
                                     fdAnotherPolicyTotalPrice: $('#fdAnotherPolicyTotalPrice').value,
                                     fdAnotherCompName1: $('#fdAnotherCompName1').value,
