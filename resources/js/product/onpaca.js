@@ -207,7 +207,7 @@ const constraints = {
         };
     },
     fdAnotherPolicyPrice1: function (value, attributes, attributeName, options, constraints) {
-        if (attributes.fdIsAnotherCompany === 'N' || attributes.fdAnotherCompName1 === "") return null;
+        if (attributes.fdIsAnotherCompany === 'N' || attributes.fdAnotherCompName1 !== "") return null;
         return {
             format: {
                 pattern: /^[0-9]*$/,
@@ -216,7 +216,7 @@ const constraints = {
         };
     },
     fdAnotherPolicyPrice2: function (value, attributes, attributeName, options, constraints) {
-        if (attributes.fdIsAnotherCompany === 'N' || attributes.fdAnotherCompName2 === "") return null;
+        if (attributes.fdIsAnotherCompany === 'N' || attributes.fdAnotherCompName2 !== "") return null;
         return {
             format: {
                 pattern: /^[0-9]*$/,
@@ -225,7 +225,7 @@ const constraints = {
         };
     },
     fdAnotherPolicyPrice3: function (value, attributes, attributeName, options, constraints) {
-        if (attributes.fdIsAnotherCompany === 'N' || attributes.fdAnotherCompName3 === "") return null;
+        if (attributes.fdIsAnotherCompany === 'N' || attributes.fdAnotherCompName3 !== "") return null;
         return {
             format: {
                 pattern: /^[0-9]*$/,
