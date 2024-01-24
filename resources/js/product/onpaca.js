@@ -207,7 +207,7 @@ const constraints = {
         };
     },
     fdAnotherPolicyPrice1: function (value, attributes, attributeName, options, constraints) {
-        if (attributes.fdAnotherCompName1 === "") return null;
+        if (attributes.fdIsAnotherCompany === 'N' && attributes.fdAnotherCompName1 === "") return null;
         return {
             format: {
                 pattern: /^[0-9]$/,
@@ -216,7 +216,7 @@ const constraints = {
         };
     },
     fdAnotherPolicyPrice2: function (value, attributes, attributeName, options, constraints) {
-        if (attributes.fdAnotherCompName2 === "") return null;
+        if (attributes.fdIsAnotherCompany === 'N' && attributes.fdAnotherCompName2 === "") return null;
         return {
             format: {
                 pattern: /^[0-9]$/,
@@ -225,7 +225,7 @@ const constraints = {
         };
     },
     fdAnotherPolicyPrice3: function (value, attributes, attributeName, options, constraints) {
-        if (attributes.fdAnotherCompName3 === "") return null;
+        if (attributes.fdIsAnotherCompany === 'N' && attributes.fdAnotherCompName3 === "") return null;
         return {
             format: {
                 pattern: /^[0-9]$/,
@@ -506,22 +506,27 @@ document.addEventListener("DOMContentLoaded", async () => {
                                 ctrl_accept_insurance_term: $('#ctrl_accept_insurance_term').checked ? true : undefined,
                                 ctrl_document_type: $('#ctrl_document_type').value,
                                 ctrl_province: $('#ctrl_province').value,
-
-                                fdIsAnotherCompany: getRadioSelectedValue('fdIsAnotherCompany'),
-                                fdAnotherNoOfPolicy: $('#fdAnotherNoOfPolicy').value,
-                                fdAnotherPolicyTotalPrice: $('#fdAnotherPolicyTotalPrice').value,
-                                fdAnotherCompName1: $('#fdAnotherCompName1').value,
-                                fdAnotherCompName2: $('#fdAnotherCompName2').value,
-                                fdAnotherCompName3: $('#fdAnotherCompName3').value,
-                                fdAnotherPolicyPrice1: $('#fdAnotherPolicyPrice1').value,
-                                fdAnotherPolicyPrice2: $('#fdAnotherPolicyPrice2').value,
-                                fdAnotherPolicyPrice3: $('#fdAnotherPolicyPrice3').value,
-
                                 fdPayAMT: getSelectedPrice(data.fdHBD, data.fdPackage, package_data)
                             }
                             data = {
                                 ...data,
                                 fdMarketing_Consent: $('#ctrl_marketing').checked ? true : undefined
+                            }
+
+                            let IsAnotherCompany = getRadioSelectedValue('fdIsAnotherCompany');
+                            if(IsAnotherCompany === 'Y') {
+                                data = {
+                                    ...data,
+                                    fdIsAnotherCompany: IsAnotherCompany,
+                                    fdAnotherNoOfPolicy: $('#fdAnotherNoOfPolicy').value,
+                                    fdAnotherPolicyTotalPrice: $('#fdAnotherPolicyTotalPrice').value,
+                                    fdAnotherCompName1: $('#fdAnotherCompName1').value,
+                                    fdAnotherCompName2: $('#fdAnotherCompName2').value,
+                                    fdAnotherCompName3: $('#fdAnotherCompName3').value,
+                                    fdAnotherPolicyPrice1: $('#fdAnotherPolicyPrice1').value,
+                                    fdAnotherPolicyPrice2: $('#fdAnotherPolicyPrice2').value,
+                                    fdAnotherPolicyPrice3: $('#fdAnotherPolicyPrice3').value,
+                                }
                             }
 
                             if ($('#controller').value === 'product') 
