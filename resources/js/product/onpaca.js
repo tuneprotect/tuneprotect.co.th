@@ -188,7 +188,7 @@ const constraints = {
                 message: "^" + $('#fdAnotherNoOfPolicy').getAttribute('data-error-another_no_of_policy-require')
             },
             format: {
-                pattern: /^[0-9].*$/,
+                pattern: /^[0-9]*$/,
                 message: "^" + $('#fdAnotherNoOfPolicy').getAttribute('data-error-another_no_of_policy-format')
             },
         };
@@ -201,7 +201,7 @@ const constraints = {
                 message: "^" + $('#fdAnotherPolicyTotalPrice').getAttribute('data-error-another_policy_total_price-require')
             },
             format: {
-                pattern: /^[0-9]*$/,
+                pattern: /^\d*(\.\d+)?$/,
                 message: "^" + $('#fdAnotherPolicyTotalPrice').getAttribute('data-error-another_policy_total_price-format')
             },
         };
@@ -211,7 +211,7 @@ const constraints = {
         if (attributes.fdAnotherCompName1 === "") return null;
         return {
             format: {
-                pattern: /^[0-9].*$/,
+                pattern: /^\d*(\.\d+)?$/,
                 message: "^" + $('#fdAnotherPolicyPrice1').getAttribute('data-error-another_policy_price-format')
             },
         };
@@ -221,7 +221,7 @@ const constraints = {
         if (attributes.fdAnotherCompName2 === "") return null;
         return {
             format: {
-                pattern: /^[0-9].*$/,
+                pattern: /^\d*(\.\d+)?$/,
                 message: "^" + $('#fdAnotherPolicyPrice2').getAttribute('data-error-another_policy_price-format')
             },
         };
@@ -231,7 +231,7 @@ const constraints = {
         if (attributes.fdAnotherCompName3 === "") return null;
         return {
             format: {
-                pattern: /^[0-9].*$/,
+                pattern: /^\d*(\.\d+)?$/,
                 message: "^" + $('#fdAnotherPolicyPrice3').getAttribute('data-error-another_policy_price-format')
             },
         };
