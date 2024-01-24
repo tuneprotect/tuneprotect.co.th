@@ -514,7 +514,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                             }
 
                             let IsAnotherCompanyFlag = getRadioSelectedValue('fdIsAnotherCompany');
-                            if(IsAnotherCompany === 'Y') {
+                            if(IsAnotherCompanyFlag === 'Y') {
                                 data = {
                                     ...data,
                                     fdIsAnotherCompany: IsAnotherCompanyFlag,
