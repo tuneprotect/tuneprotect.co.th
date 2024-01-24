@@ -180,6 +180,59 @@ const constraints = {
             },
         };
     },
+    fdAnotherNoOfPolicy: function (value, attributes, attributeName, options, constraints) {
+        if (attributes.fdIsAnotherCompany === 'N') return null;
+        return {
+            presence: {
+                allowEmpty: false,
+                message: "^" + $('#fdAnotherNoOfPolicy').getAttribute('data-error-another_no_of_policy-require')
+            },
+            format: {
+                pattern: /^[0-9]$/,
+                message: "^" + $('#fdAnotherNoOfPolicy').getAttribute('data-error-another_no_of_policy-format')
+            },
+        };
+    },
+    fdAnotherPolicyTotalPrice: function (value, attributes, attributeName, options, constraints) {
+        if (attributes.fdIsAnotherCompany === 'N') return null;
+        return {
+            presence: {
+                allowEmpty: false,
+                message: "^" + $('#fdAnotherPolicyTotalPrice').getAttribute('data-error-another_policy_total_price-require')
+            },
+            format: {
+                pattern: /^[0-9]$/,
+                message: "^" + $('#fdAnotherPolicyTotalPrice').getAttribute('data-error-another_policy_total_price-format')
+            },
+        };
+    },
+    fdAnotherPolicyPrice1: function (value, attributes, attributeName, options, constraints) {
+        if (attributes.fdIsAnotherCompany === 'N') return null;
+        return {
+            format: {
+                pattern: /^[0-9]$/,
+                message: "^" + $('#fdAnotherPolicyPrice1').getAttribute('data-error-another_policy_price-format')
+            },
+        };
+    },
+    fdAnotherPolicyPrice2: function (value, attributes, attributeName, options, constraints) {
+        if (attributes.fdIsAnotherCompany === 'N') return null;
+        return {
+            format: {
+                pattern: /^[0-9]$/,
+                message: "^" + $('#fdAnotherPolicyPrice2').getAttribute('data-error-another_policy_price-format')
+            },
+        };
+    },
+    fdAnotherPolicyPrice3: function (value, attributes, attributeName, options, constraints) {
+        if (attributes.fdIsAnotherCompany === 'N') return null;
+        return {
+            format: {
+                pattern: /^[0-9]$/,
+                message: "^" + $('#fdAnotherPolicyPrice3').getAttribute('data-error-another_policy_price-format')
+            },
+        };
+    },
     ctrl_accept_insurance_term: {
         presence: {
             allowEmpty: false,
@@ -245,11 +298,11 @@ document.addEventListener("DOMContentLoaded", async () => {
         ctrl_document_type: "",
 
         fdIsAnotherCompany: "",
-        fdAnotherPolicyAll: "",
-        fdAnotherPolicyPriceAll: "",
-        fdAnotherCompanyName1: "",
-        fdAnotherCompanyName2: "",
-        fdAnotherCompanyName3: "",
+        fdAnotherNoOfPolicy: "",
+        fdAnotherPolicyTotalPrice: "",
+        fdAnotherCompName1: "",
+        fdAnotherCompName2: "",
+        fdAnotherCompName3: "",
         fdAnotherPolicyPrice1: "",
         fdAnotherPolicyPrice2: "",
         fdAnotherPolicyPrice3: ""
@@ -455,11 +508,11 @@ document.addEventListener("DOMContentLoaded", async () => {
                                 ctrl_province: $('#ctrl_province').value,
 
                                 fdIsAnotherCompany: getRadioSelectedValue('fdIsAnotherCompany'),
-                                fdAnotherPolicyAll: $('#fdAnotherPolicyAll').value,
-                                fdAnotherPolicyPriceAll: $('#fdAnotherPolicyPriceAll').value,
-                                fdAnotherCompanyName1: $('#fdAnotherCompanyName1').value,
-                                fdAnotherCompanyName2: $('#fdAnotherCompanyName2').value,
-                                fdAnotherCompanyName3: $('#fdAnotherCompanyName3').value,
+                                fdAnotherNoOfPolicy: $('#fdAnotherNoOfPolicy').value,
+                                fdAnotherPolicyTotalPrice: $('#fdAnotherPolicyTotalPrice').value,
+                                fdAnotherCompName1: $('#fdAnotherCompName1').value,
+                                fdAnotherCompName2: $('#fdAnotherCompName2').value,
+                                fdAnotherCompName3: $('#fdAnotherCompName3').value,
                                 fdAnotherPolicyPrice1: $('#fdAnotherPolicyPrice1').value,
                                 fdAnotherPolicyPrice2: $('#fdAnotherPolicyPrice2').value,
                                 fdAnotherPolicyPrice3: $('#fdAnotherPolicyPrice3').value,
