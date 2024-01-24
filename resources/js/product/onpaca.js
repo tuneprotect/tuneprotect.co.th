@@ -207,8 +207,7 @@ const constraints = {
         };
     },
     fdAnotherPolicyPrice1: function (value, attributes, attributeName, options, constraints) {
-        if (attributes.fdIsAnotherCompany === 'N') return null;
-        if (attributes.fdAnotherCompName1 === "") return null;
+        if (attributes.fdIsAnotherCompany === 'N' || attributes.fdAnotherCompName1 === "") return null;
         return {
             format: {
                 pattern: /^[0-9]$/,
@@ -217,8 +216,7 @@ const constraints = {
         };
     },
     fdAnotherPolicyPrice2: function (value, attributes, attributeName, options, constraints) {
-        if (attributes.fdIsAnotherCompany === 'N') return null;
-        if (attributes.fdAnotherCompName2 === "") return null;
+        if (attributes.fdIsAnotherCompany === 'N' || attributes.fdAnotherCompName2 === "") return null;
         return {
             format: {
                 pattern: /^[0-9]$/,
@@ -227,8 +225,7 @@ const constraints = {
         };
     },
     fdAnotherPolicyPrice3: function (value, attributes, attributeName, options, constraints) {
-        if (attributes.fdIsAnotherCompany === 'N') return null;
-        if (attributes.fdAnotherCompName3 === "") return null;
+        if (attributes.fdIsAnotherCompany === 'N' || attributes.fdAnotherCompName3 === "") return null;
         return {
             format: {
                 pattern: /^[0-9]$/,
@@ -516,11 +513,11 @@ document.addEventListener("DOMContentLoaded", async () => {
                                 fdMarketing_Consent: $('#ctrl_marketing').checked ? true : undefined
                             }
 
-                            let IsAnotherCompany = getRadioSelectedValue('fdIsAnotherCompany');
+                            let IsAnotherCompanyFlag = getRadioSelectedValue('fdIsAnotherCompany');
                             if(IsAnotherCompany === 'Y') {
                                 data = {
                                     ...data,
-                                    fdIsAnotherCompany: IsAnotherCompany,
+                                    fdIsAnotherCompany: IsAnotherCompanyFlag,
                                     fdAnotherNoOfPolicy: $('#fdAnotherNoOfPolicy').value,
                                     fdAnotherPolicyTotalPrice: $('#fdAnotherPolicyTotalPrice').value,
                                     fdAnotherCompName1: $('#fdAnotherCompName1').value,
