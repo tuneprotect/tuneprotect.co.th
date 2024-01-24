@@ -301,14 +301,14 @@ document.addEventListener("DOMContentLoaded", async () => {
         ctrl_document_type: "",
 
         fdIsAnotherCompany: "",
-        fdAnotherNoOfPolicy: "",
-        fdAnotherPolicyTotalPrice: "",
+        fdAnotherNoOfPolicy: 0,
+        fdAnotherPolicyTotalPrice: 0,
         fdAnotherCompName1: "",
         fdAnotherCompName2: "",
         fdAnotherCompName3: "",
-        fdAnotherPolicyPrice1: "",
-        fdAnotherPolicyPrice2: "",
-        fdAnotherPolicyPrice3: ""
+        fdAnotherPolicyPrice1: 0,
+        fdAnotherPolicyPrice2: 0,
+        fdAnotherPolicyPrice3: 0
     };
     const validateAcceptStep1 = () => {
        
