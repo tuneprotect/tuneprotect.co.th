@@ -206,6 +206,24 @@ const constraints = {
             },
         };
     },
+    fdAnotherCompName1: function (value, attributes, attributeName, options, constraints) {
+        if (attributes.fdIsAnotherCompany === 'N') return null;
+        return {
+            format: formatInputFieldByLanguage()
+        };
+    },
+    fdAnotherCompName2: function (value, attributes, attributeName, options, constraints) {
+        if (attributes.fdIsAnotherCompany === 'N') return null;
+        return {
+            format: formatInputFieldByLanguage()
+        };
+    },
+    fdAnotherCompName3: function (value, attributes, attributeName, options, constraints) {
+        if (attributes.fdIsAnotherCompany === 'N') return null;
+        return {
+            format: formatInputFieldByLanguage()
+        };
+    },
     fdAnotherPolicyPrice1: function (value, attributes, attributeName, options, constraints) {
         if (attributes.fdIsAnotherCompany === 'N') return null;
         if (attributes.fdAnotherCompName1 === "") return null;
