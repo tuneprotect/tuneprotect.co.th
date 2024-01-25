@@ -282,8 +282,6 @@ const constraints = {
 
 document.addEventListener("DOMContentLoaded", async () => {
 
-    const package_data = await getPackageData(current_package);
-
     let Keys = "";
     let myEle = document.getElementById("portal_key");
     if(myEle){
@@ -299,6 +297,8 @@ document.addEventListener("DOMContentLoaded", async () => {
             })
         }
     }
+
+    const package_data = await getPackageData(current_package);
 
     let step = 1;
     let data = {
@@ -393,7 +393,6 @@ document.addEventListener("DOMContentLoaded", async () => {
         const itemList = [];
 
         if (data.fdHBD) {
-
             Object.keys(package_data)
                 .filter(k => _.startsWith(k, current_package))
                 .map(k => {
