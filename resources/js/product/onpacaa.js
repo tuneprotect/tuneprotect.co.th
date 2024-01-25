@@ -373,6 +373,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                             status = validateResult.status;
                             if (validateResult.status) {
                                 data = {...data, ...validateResult.data}
+                                genItemList();
                             }
                             break;
                         case 2:
@@ -469,7 +470,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                                     fdAnotherPolicyPrice3: $('#fdAnotherPolicyPrice3').value,
                                 }
                             }
-                            
+
                             const result = validate(data, constraints);
                             const $cite = $form.getElementsByTagName('cite');
                             for (let i = 0, len = $cite.length; i !== len; ++i) {

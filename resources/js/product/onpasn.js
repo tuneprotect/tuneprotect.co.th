@@ -448,9 +448,10 @@ document.addEventListener("DOMContentLoaded", async () => {
                                 break;
                             }
                             status = validateResult.status;
-                            genItemList();
+
                             if (validateResult.status) {
                                 data = {...data, ...validateResult.data}
+                                genItemList();
                             }
                             break;
                         case 2:
