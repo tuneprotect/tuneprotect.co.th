@@ -209,18 +209,30 @@ const constraints = {
     fdAnotherCompName1: function (value, attributes, attributeName, options, constraints) {
         if (attributes.fdIsAnotherCompany === 'N') return null;
         return {
+            presence: {
+                allowEmpty: true,
+                message: "^" + $('#fdAnotherPolicyTotalPrice').getAttribute('data-error-another_company-format')
+            },
             format: formatInputFieldByLanguage()
         };
     },
     fdAnotherCompName2: function (value, attributes, attributeName, options, constraints) {
         if (attributes.fdIsAnotherCompany === 'N') return null;
         return {
+            presence: {
+                allowEmpty: true,
+                message: "^" + $('#fdAnotherPolicyTotalPrice').getAttribute('data-error-another_company-format')
+            },
             format: formatInputFieldByLanguage()
         };
     },
     fdAnotherCompName3: function (value, attributes, attributeName, options, constraints) {
         if (attributes.fdIsAnotherCompany === 'N') return null;
         return {
+            presence: {
+                allowEmpty: true,
+                message: "^" + $('#fdAnotherPolicyTotalPrice').getAttribute('data-error-another_company-format')
+            },
             format: formatInputFieldByLanguage()
         };
     },

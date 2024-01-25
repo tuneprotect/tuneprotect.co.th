@@ -37,7 +37,8 @@
         </div>
         <div class="date-wrapper">
             <div><p class="small">@lang('product.company')</p></div>
-            <div><input id="fdAnotherCompName1" name="fdAnotherCompName1" type="text" /></div>
+            <div><input id="fdAnotherCompName1" name="fdAnotherCompName1" 
+                    type="text" data-error-another_company-format="@lang("product.error.another_company.format")" /></div>
             <div><p class="small">@lang('product.policy_price')</p></div>
             <div class="controls-wrapper">
                 <input id="fdAnotherPolicyPrice1" name="fdAnotherPolicyPrice1" 
@@ -48,7 +49,8 @@
         </div>
         <div class="date-wrapper">
             <div><p class="small">@lang('product.company')</p></div>
-            <div><input id="fdAnotherCompName2" name="fdAnotherCompName2" type="text" /></div>
+            <div><input id="fdAnotherCompName2" name="fdAnotherCompName2" 
+                    type="text" data-error-another_company-format="@lang("product.error.another_company.format")" /></div>
             <div><p class="small">@lang('product.policy_price')</p></div>
             <div class="controls-wrapper">
                 <input id="fdAnotherPolicyPrice2" name="fdAnotherPolicyPrice2" 
@@ -59,7 +61,8 @@
         </div>
         <div class="date-wrapper">
             <div><p class="small">@lang('product.company')</p></div>
-            <div><input id="fdAnotherCompName3" name="fdAnotherCompName3" type="text" /></div>
+            <div><input id="fdAnotherCompName3" name="fdAnotherCompName3" 
+                    type="text" data-error-another_company-format="@lang("product.error.another_company.format")" /></div>
             <div><p class="small">@lang('product.policy_price')</p></div>
             <div class="controls-wrapper">
                 <input id="fdAnotherPolicyPrice3" name="fdAnotherPolicyPrice3" 
