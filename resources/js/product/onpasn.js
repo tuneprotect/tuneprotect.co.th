@@ -182,6 +182,92 @@ const constraints = {
             },
         };
     },
+    fdAnotherNoOfPolicy: function (value, attributes, attributeName, options, constraints) {
+        if (attributes.fdIsAnotherCompany === 'N') return null;
+        return {
+            presence: {
+                allowEmpty: false,
+                message: "^" + $('#fdAnotherNoOfPolicy').getAttribute('data-error-another_no_of_policy-require')
+            },
+            format: {
+                pattern: /^[0-9]*$/,
+                message: "^" + $('#fdAnotherNoOfPolicy').getAttribute('data-error-another_no_of_policy-format')
+            },
+        };
+    },
+    fdAnotherPolicyTotalPrice: function (value, attributes, attributeName, options, constraints) {
+        if (attributes.fdIsAnotherCompany === 'N') return null;
+        return {
+            presence: {
+                allowEmpty: false,
+                message: "^" + $('#fdAnotherPolicyTotalPrice').getAttribute('data-error-another_policy_total_price-require')
+            },
+            format: {
+                pattern: /^\d*(\.\d+)?$/,
+                message: "^" + $('#fdAnotherPolicyTotalPrice').getAttribute('data-error-another_policy_total_price-format')
+            },
+        };
+    },
+    fdAnotherCompName1: function (value, attributes, attributeName, options, constraints) {
+        if (attributes.fdIsAnotherCompany === 'N') return null;
+        return {
+            presence: {
+                allowEmpty: true,
+                message: "^" + $('#fdAnotherPolicyTotalPrice').getAttribute('data-error-another_company-format')
+            },
+            format: formatInputFieldByLanguage()
+        };
+    },
+    fdAnotherCompName2: function (value, attributes, attributeName, options, constraints) {
+        if (attributes.fdIsAnotherCompany === 'N') return null;
+        return {
+            presence: {
+                allowEmpty: true,
+                message: "^" + $('#fdAnotherPolicyTotalPrice').getAttribute('data-error-another_company-format')
+            },
+            format: formatInputFieldByLanguage()
+        };
+    },
+    fdAnotherCompName3: function (value, attributes, attributeName, options, constraints) {
+        if (attributes.fdIsAnotherCompany === 'N') return null;
+        return {
+            presence: {
+                allowEmpty: true,
+                message: "^" + $('#fdAnotherPolicyTotalPrice').getAttribute('data-error-another_company-format')
+            },
+            format: formatInputFieldByLanguage()
+        };
+    },
+    fdAnotherPolicyPrice1: function (value, attributes, attributeName, options, constraints) {
+        if (attributes.fdIsAnotherCompany === 'N') return null;
+        if (attributes.fdAnotherCompName1 === "") return null;
+        return {
+            format: {
+                pattern: /^\d*(\.\d+)?$/,
+                message: "^" + $('#fdAnotherPolicyPrice1').getAttribute('data-error-another_policy_price-format')
+            },
+        };
+    },
+    fdAnotherPolicyPrice2: function (value, attributes, attributeName, options, constraints) {
+        if (attributes.fdIsAnotherCompany === 'N') return null;
+        if (attributes.fdAnotherCompName2 === "") return null;
+        return {
+            format: {
+                pattern: /^\d*(\.\d+)?$/,
+                message: "^" + $('#fdAnotherPolicyPrice2').getAttribute('data-error-another_policy_price-format')
+            },
+        };
+    },
+    fdAnotherPolicyPrice3: function (value, attributes, attributeName, options, constraints) {
+        if (attributes.fdIsAnotherCompany === 'N') return null;
+        if (attributes.fdAnotherCompName3 === "") return null;
+        return {
+            format: {
+                pattern: /^\d*(\.\d+)?$/,
+                message: "^" + $('#fdAnotherPolicyPrice3').getAttribute('data-error-another_policy_price-format')
+            },
+        };
+    },
     ctrl_accept_insurance_term: {
         presence: {
             allowEmpty: false,
@@ -244,7 +330,17 @@ document.addEventListener("DOMContentLoaded", async () => {
         ctrl_province: "",
         ctrl_terms: "",
         ctrl_accept_insurance_term: "",
-        ctrl_document_type: ""
+        ctrl_document_type: "",
+
+        fdIsAnotherCompany: "",
+        fdAnotherNoOfPolicy: "",
+        fdAnotherPolicyTotalPrice: "",
+        fdAnotherCompName1: "",
+        fdAnotherCompName2: "",
+        fdAnotherCompName3: "",
+        fdAnotherPolicyPrice1: "",
+        fdAnotherPolicyPrice2: "",
+        fdAnotherPolicyPrice3: ""
     };
     const validateAcceptStep1 = () => {
        
@@ -311,7 +407,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                     };
 
                     item.item_id = "PAChoiceSenior_" + planCode;
-                    item.item_name = "PAChoiceSenior_" + planCode;
+                    item.item_name = "PA Choice Senior " + planCode;
                     item.price = price;
 
                     itemList.push(item);
@@ -321,9 +417,13 @@ document.addEventListener("DOMContentLoaded", async () => {
 
         if ($('#controller').value === 'product') 
         {
-            gtag("event",  "view_item",  {
-                "currency": "THB",
-                "items": itemList
+            dataLayer.push({ ecommerce: null });  // Clear the previous ecommerce object.
+            dataLayer.push({
+                event: "view_item",
+                ecommerce: {
+                    currency: "THB",
+                    items: itemList
+                }
             });
         }
     }
@@ -369,14 +469,18 @@ document.addEventListener("DOMContentLoaded", async () => {
 
                                 if ($('#controller').value === 'product') 
                                 {
-                                    gtag("event",  "add_to_cart",  {
-                                        "currency": "THB",
-                                        "value": selectPrice,
-                                        "items": [{
-                                          "item_id": "PAChoiceSenior_" + fdPackage,
-                                          "item_name": "PAChoiceSenior_" + fdPackage,
-                                          "price": selectPrice,
-                                        }]
+                                    dataLayer.push({ ecommerce: null });  // Clear the previous ecommerce object.
+                                    dataLayer.push({
+                                        event: "add_to_cart",
+                                        ecommerce: {
+                                            currency: "THB",
+                                            value: selectPrice,
+                                            items: [{
+                                                item_id: "PAChoiceSenior_" + fdPackage,
+                                                item_name: "PA Choice Senior Plan Code " + fdPackage,
+                                                price: selectPrice
+                                            }]
+                                        }
                                     });
                                 }
 
@@ -446,19 +550,38 @@ document.addEventListener("DOMContentLoaded", async () => {
                             }
                             data = {
                                 ...data,
-                                fdMarketing_Consent: $('#ctrl_marketing').checked ? true : undefined
+                                fdMarketing_Consent: $('#ctrl_marketing').checked ? true : undefined,
+                                fdIsAnotherCompany: getRadioSelectedValue('fdIsAnotherCompany'),
+                            }
+
+                            if(data.fdIsAnotherCompany === 'Y') {
+                                data = {
+                                    ...data,
+                                    fdAnotherNoOfPolicy: $('#fdAnotherNoOfPolicy').value,
+                                    fdAnotherPolicyTotalPrice: $('#fdAnotherPolicyTotalPrice').value,
+                                    fdAnotherCompName1: $('#fdAnotherCompName1').value,
+                                    fdAnotherCompName2: $('#fdAnotherCompName2').value,
+                                    fdAnotherCompName3: $('#fdAnotherCompName3').value,
+                                    fdAnotherPolicyPrice1: $('#fdAnotherPolicyPrice1').value,
+                                    fdAnotherPolicyPrice2: $('#fdAnotherPolicyPrice2').value,
+                                    fdAnotherPolicyPrice3: $('#fdAnotherPolicyPrice3').value,
+                                }
                             }
 
                             if ($('#controller').value === 'product') 
                             {
-                                gtag("event",  "begin_checkout",  {
-                                    "currency": "THB",
-                                    "value": data.fdPayAMT,
-                                    "items": [{
-                                      "item_id": "PAChoiceSenior_" + data.fdPackage,
-                                      "item_name": "PAChoiceSenior_" + data.fdPackage,
-                                      "price": data.fdPayAMT,
-                                    }]
+                                dataLayer.push({ ecommerce: null });  // Clear the previous ecommerce object.
+                                dataLayer.push({
+                                    event: "begin_checkout",
+                                    ecommerce: {
+                                        currency: "THB",
+                                        value: data.fdPayAMT,
+                                        items: [{
+                                            item_id: "PAChoiceSenior_" + data.fdPackage,
+                                            item_name: "PA Choice Senior Plan Code " + data.fdPackage,
+                                            price: data.fdPayAMT
+                                        }]
+                                    }
                                 });
                             }
 
