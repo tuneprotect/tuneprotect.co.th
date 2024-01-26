@@ -252,6 +252,12 @@ const genItemList = (package_data, fdFromDate, fdToDate) => {
     const itemList = [];
 
     if (fdFromDate && fdToDate) {
+
+        let startDate = parseISO(fdFromDate);
+        let endDate = parseISO(fdToDate);
+
+        const day = differenceInDays(endDate, startDate) + 1;
+        
         Object.keys(package_data)
             .filter(k => _.startsWith(k, current_package))
             .map(k => {
