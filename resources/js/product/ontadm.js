@@ -256,7 +256,15 @@ const genItemList = (package_data, fdFromDate, fdToDate) => {
             .filter(k => _.startsWith(k, current_package))
             .map(k => {
                 const pack = Object.keys(package_data[k].price).filter(subPackage => {
-                    const dateRange = (package_data[k].price[subPackage].day).split('-');    
+                    const dateRange = (package_data[k].price[subPackage].day).split('-');
+                    if(dateRange.length === 1)
+                    {
+                        return day >= dateRange[0] && day <= dateRange[0];
+                    }
+                    else
+                    {
+                        return day >= dateRange[0] && day <= dateRange[1];
+                    }   
                 });
                 const price = parseInt(package_data[k].price[pack]).toLocaleString();
                 const planCode = Object.keys(package_data)[index];
