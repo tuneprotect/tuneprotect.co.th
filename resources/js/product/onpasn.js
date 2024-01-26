@@ -377,8 +377,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
 
     const $form3 = $('#step3');
-    const allField = $form3.querySelectorAll('input,select,textarea');
-    allField.forEach(field => {
+    const allField3 = $form3.querySelectorAll('input,select,textarea');
+    allField3.forEach(field => {
         field.addEventListener("change", function (e) {
             validateField(this, constraints);
             if (['fdName', 'fdSurname', 'fdNationalID'].includes(field.id)) {
@@ -407,7 +407,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                     };
 
                     item.item_id = "PAChoiceSenior_" + planCode;
-                    item.item_name = "PA Choice Senior " + planCode;
+                    item.item_name = "PA Choice Senior Plan Code " + planCode;
                     item.price = price;
 
                     itemList.push(item);

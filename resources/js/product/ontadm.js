@@ -268,7 +268,7 @@ const genItemList = (package_data, fdFromDate, fdToDate) => {
                 };
 
                 item.item_id = "TADomestic_" + planCode;
-                item.item_name = "TADomestic_" + planCode;
+                item.item_name = "TA Domestic Plan Code " + planCode;
                 item.price = price;
 
                 itemList.push(item);
@@ -278,9 +278,13 @@ const genItemList = (package_data, fdFromDate, fdToDate) => {
 
     if ($('#controller').value === 'product') 
     {
-        gtag("event",  "view_item",  {
-            "currency": "THB",
-            "items": itemList
+        dataLayer.push({ ecommerce: null });  // Clear the previous ecommerce object.
+        dataLayer.push({
+            event: "view_item",
+            ecommerce: {
+                currency: "THB",
+                items: itemList
+            }
         });
     } 
 }
@@ -473,14 +477,18 @@ document.addEventListener("DOMContentLoaded", async () => {
 
                             if ($('#controller').value === 'product') 
                             {
-                                gtag("event",  "add_to_cart",  {
-                                    "currency": "THB",
-                                    "value": selectPrice,
-                                    "items": [{
-                                      "item_id": "TADomestic_" + fdPackage,
-                                      "item_name": "TADomestic_" + fdPackage,
-                                      "price": selectPrice,
-                                    }]
+                                dataLayer.push({ ecommerce: null });  // Clear the previous ecommerce object.
+                                dataLayer.push({
+                                    event: "add_to_cart",
+                                    ecommerce: {
+                                        currency: "THB",
+                                        value: selectPrice,
+                                        items: [{
+                                            item_id: "TADomestic_" + fdPackage,
+                                            item_name: "TA Domestic Plan Code " + fdPackage,
+                                            price: selectPrice
+                                        }]
+                                    }
                                 });
                             }
 
@@ -596,14 +604,18 @@ document.addEventListener("DOMContentLoaded", async () => {
 
                         if ($('#controller').value === 'product') 
                         {
-                            gtag("event",  "begin_checkout",  {
-                                "currency": "THB",
-                                "value": data.fdPayAMT,
-                                "items": [{
-                                  "item_id": "TADomestic_" + data.fdPackage,
-                                  "item_name": "TADomestic_" + data.fdPackage,
-                                  "price": data.fdPayAMT,
-                                }]
+                            dataLayer.push({ ecommerce: null });  // Clear the previous ecommerce object.
+                            dataLayer.push({
+                                event: "begin_checkout",
+                                ecommerce: {
+                                    currency: "THB",
+                                    value: data.fdPayAMT,
+                                    items: [{
+                                        item_id: "TADomestic_" + data.fdPackage,
+                                        item_name: "TA Domestic Plan Code " + data.fdPackage,
+                                        price: data.fdPayAMT
+                                    }]
+                                }
                             });
                         }
                         
