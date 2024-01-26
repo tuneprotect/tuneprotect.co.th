@@ -487,7 +487,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                                 fdPackage
                             }
 
-                            const selectPrice = genPrice(package_data, data.fdFromDate, data.fdToDate);
+                            const selectPrice = getSelectedPrice(data.fdPackage, package_data, data.fdFromDate, data.fdToDate);
 
                             if ($('#controller').value === 'product') 
                             {
