@@ -60,43 +60,55 @@
             @break
             @case("ONPACA")
                 <script>
-                    gtag("event",  "purchase",  {
-                        "currency": "THB",
-                        "transaction_id": '{{$refCode}}',
-                        "value": {!! $payAmount !!},
-                        "items": [{
-                             "item_id": 'PAChoiceCare_{{$package}}',
-                             "item_name": 'PAChoiceCare_{{$package}}',
-                             "price": {!! $payAmount !!},
-                         }]
+                    dataLayer.push({ ecommerce: null });  // Clear the previous ecommerce object.
+                    dataLayer.push({
+                        event: "purchase",
+                        ecommerce: {
+                            transaction_id: "{{$refCode}}",
+                            value: {!! $payAmount !!},
+                            currency: "THB",
+                            items: [{
+                                item_id: "PAChoiceCare_{{$package}}",
+                                item_name: "PA Choice Care Plan Code {{$package}}",
+                                price: {!! $payAmount !!}
+                            }]
+                        }
                     });
                 </script>
             @break
             @case("ONPAKD")
                 <script>
-                    gtag("event",  "purchase",  {
-                        "currency": "THB",
-                        "transaction_id": '{{$refCode}}',
-                        "value": {!! $payAmount !!},
-                        "items": [{
-                             "item_id": 'PAChoiceKids_{{$package}}',
-                             "item_name": 'PAChoiceKids_{{$package}}',
-                             "price": {!! $payAmount !!},
-                         }]
+                    dataLayer.push({ ecommerce: null });  // Clear the previous ecommerce object.
+                    dataLayer.push({
+                        event: "purchase",
+                        ecommerce: {
+                            transaction_id: "{{$refCode}}",
+                            value: {!! $payAmount !!},
+                            currency: "THB",
+                            items: [{
+                                item_id: "PAChoiceKids_{{$package}}",
+                                item_name: "PA Choice Kids Plan Code {{$package}}",
+                                price: {!! $payAmount !!}
+                            }]
+                        }
                     });
                 </script>
             @break
             @case("ONPASN")
                 <script>
-                    gtag("event",  "purchase",  {
-                        "currency": "THB",
-                        "transaction_id": '{{$refCode}}',
-                        "value": {!! $payAmount !!},
-                        "items": [{
-                             "item_id": 'PAChoiceSenior_{{$package}}',
-                             "item_name": 'PAChoiceSenior_{{$package}}',
-                             "price": {!! $payAmount !!},
-                         }]
+                    dataLayer.push({ ecommerce: null });  // Clear the previous ecommerce object.
+                    dataLayer.push({
+                        event: "purchase",
+                        ecommerce: {
+                            transaction_id: "{{$refCode}}",
+                            value: {!! $payAmount !!},
+                            currency: "THB",
+                            items: [{
+                                item_id: "PAChoiceSenior_{{$package}}",
+                                item_name: "PA Choice Senior Plan Code {{$package}}",
+                                price: {!! $payAmount !!}
+                            }]
+                        }
                     });
                 </script>
             @break
@@ -174,29 +186,37 @@
             @break
             @case("ONFIMP")
                 <script>
-                    gtag("event",  "purchase",  {
-                        "currency": "THB",
-                        "transaction_id": '{{$refCode}}',
-                        "value": {!! $payAmount !!},
-                        "items": [{
-                             "item_id": 'myHomePlus_{{$package}}',
-                             "item_name": 'myHomePlus_{{$package}}',
-                             "price": {!! $payAmount !!},
-                         }]
+                    dataLayer.push({ ecommerce: null });  // Clear the previous ecommerce object.
+                    dataLayer.push({
+                        event: "purchase",
+                        ecommerce: {
+                            transaction_id: "{{$refCode}}",
+                            value: {!! $payAmount !!},
+                            currency: "THB",
+                            items: [{
+                                item_id: "myHomePlus_{{$package}}",
+                                item_name: "myHome Plus Plan Code {{$package}}",
+                                price: {!! $payAmount !!}
+                            }]
+                        }
                     });
                 </script>
             @break
             @case("ONMHS")
                 <script>
-                    gtag("event",  "purchase",  {
-                        "currency": "THB",
-                        "transaction_id": '{{$refCode}}',
-                        "value": {!! $payAmount !!},
-                        "items": [{
-                             "item_id": 'myHomeSmart_{{$package}}',
-                             "item_name": 'myHomeSmart_{{$package}}',
-                             "price": {!! $payAmount !!},
-                         }]
+                    dataLayer.push({ ecommerce: null });  // Clear the previous ecommerce object.
+                    dataLayer.push({
+                        event: "purchase",
+                        ecommerce: {
+                            transaction_id: "{{$refCode}}",
+                            value: {!! $payAmount !!},
+                            currency: "THB",
+                            items: [{
+                                item_id: "myHomeSmart_{{$package}}",
+                                item_name: "myHome Smart Plan Code {{$package}}",
+                                price: {!! $payAmount !!}
+                            }]
+                        }
                     });
                 </script>
             @break
