@@ -34,7 +34,7 @@
                             items: [{
                                 item_id: "myFlexiCI_{{$package}}",
                                 item_name: "myFlexi CI Plan Code {{$package}}",
-                                price: {{!! $payAmount !!}}
+                                price: {!! $payAmount !!}
                             }]
                         }
                     });
@@ -51,7 +51,7 @@
                             currency: "THB",
                             items: [{
                                 item_id: "Diabetes_{{$package}}",
-                                item_name: "Diabetes CI Plan Code {{$package}}",
+                                item_name: "Diabetes Plan Code {{$package}}",
                                 price: {!! $payAmount !!}
                             }]
                         }
