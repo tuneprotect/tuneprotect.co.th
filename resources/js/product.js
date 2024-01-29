@@ -228,4 +228,18 @@ document.addEventListener("DOMContentLoaded", async () => {
             });
         });
     }
+
+    $$("input[name=fdIsAnotherCompany]").forEach($el => {
+        $el.addEventListener("change", function (e) {
+            let display = 'none';
+
+            if ($el.value === 'Y') {
+                display = 'block'
+            }
+
+            $$(".another_company_name").forEach($el => {
+                $el.style.display = display;
+            });
+        });
+    });
 });

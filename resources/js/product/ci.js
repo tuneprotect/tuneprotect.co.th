@@ -449,7 +449,7 @@ if ($('#title_wrapper')) {
                     .filter(k => _.startsWith(k, current_package))
                     .map(k => {
                         const pack = Object.keys(package_data[k].price).filter(ageRange => checkAge(data.fdHBD, ageRange))
-                        const price = parseInt(package_data[k].price[pack]).toLocaleString();
+                        const price = parseInt(package_data[k].price[pack][data.ctrl_disease.join("")]).toLocaleString();
                         const planCode = Object.keys(package_data)[index];
 
                         const item = {

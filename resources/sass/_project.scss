@@ -1408,6 +1408,18 @@ main {
             }
         }
 
+        .question-wrapper {
+            .date-input {
+                .date-wrapper {
+                    align-items: center;
+
+                    div {
+                        flex: unset !important;
+                    }
+                }
+            }
+        }
+
 
         input, textarea, select {
             background: #ffffff;

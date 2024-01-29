@@ -306,10 +306,8 @@ const genItemList = (package_data) => {
         Object.keys(package_data)
             .filter(k => _.startsWith(k, current_package))
             .map(k => {
-                const pack = Object.keys(package_data[k].price).filter(subPackage => {
-                    const dateRange = (package_data[k].price[subPackage].day).split('-');    
-                });
-                const price = parseInt(package_data[k].price[pack]).toLocaleString();
+
+                const price = parseInt(package_data[k].price).toLocaleString();
                 const planCode = Object.keys(package_data)[index];
 
                 const item = {
@@ -319,7 +317,7 @@ const genItemList = (package_data) => {
                 };
 
                 item.item_id = "myHomePlus_" + planCode;
-                item.item_name = "myHomePlus_" + planCode;
+                item.item_name = "myHome Plus Plan Code " + planCode;
                 item.price = price;
 
                 itemList.push(item);
@@ -329,9 +327,13 @@ const genItemList = (package_data) => {
 
     if ($('#controller').value === 'product') 
     {
-        gtag("event",  "view_item",  {
-            "currency": "THB",
-            "items": itemList
+        dataLayer.push({ ecommerce: null });  // Clear the previous ecommerce object.
+        dataLayer.push({
+            event: "view_item",
+            ecommerce: {
+                currency: "THB",
+                items: itemList
+            }
         });
     }
 }
@@ -466,7 +468,6 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     changeTextPremium("ONFIMP1");
 
-
     const zipcode_data = await getZipcodeData();
     $(`input[name=loc_fdAddr_PostCode]`).addEventListener("change", function (e) {
         const value = e.target.value;
@@ -482,7 +483,6 @@ document.addEventListener("DOMContentLoaded", async () => {
             }
         }
     });
-
 
     const $address_dup = $('#fdAddressDup');
     if ($address_dup) {
@@ -519,8 +519,6 @@ document.addEventListener("DOMContentLoaded", async () => {
             }
         });
     }
-
-
 
     const step1Constraints = {
         fdFromDate: {
@@ -688,14 +686,18 @@ document.addEventListener("DOMContentLoaded", async () => {
 
                             if ($('#controller').value === 'product') 
                             {
-                                gtag("event",  "add_to_cart",  {
-                                    "currency": "THB",
-                                    "value": selectPrice,
-                                    "items": [{
-                                      "item_id": "myHomePlus_" + fdPackage,
-                                      "item_name": "myHomePlus_" + fdPackage,
-                                      "price": selectPrice,
-                                    }]
+                                dataLayer.push({ ecommerce: null });  // Clear the previous ecommerce object.
+                                dataLayer.push({
+                                    event: "add_to_cart",
+                                    ecommerce: {
+                                        currency: "THB",
+                                        value: selectPrice,
+                                        items: [{
+                                            item_id: "myHomePlus_" + fdPackage,
+                                            item_name: "myHome Plus Plan Code " + fdPackage,
+                                            price: selectPrice
+                                        }]
+                                    }
                                 });
                             }
                             status = true;
@@ -900,14 +902,18 @@ document.addEventListener("DOMContentLoaded", async () => {
 
                         if ($('#controller').value === 'product') 
                         {
-                            gtag("event",  "begin_checkout",  {
-                                "currency": "THB",
-                                "value": data.fdPayAMT,
-                                "items": [{
-                                  "item_id": "myHomePlus_" + data.fdPackage,
-                                  "item_name": "myHomePlus_" + data.fdPackage,
-                                  "price": data.fdPayAMT,
-                                }]
+                            dataLayer.push({ ecommerce: null });  // Clear the previous ecommerce object.
+                            dataLayer.push({
+                                event: "begin_checkout",
+                                ecommerce: {
+                                    currency: "THB",
+                                    value: data.fdPayAMT,
+                                    items: [{
+                                        item_id: "myHomePlus_" + data.fdPackage,
+                                        item_name: "myHome Plus Plan Code " + data.fdPackage,
+                                        price: data.fdPayAMT
+                                    }]
+                                }
                             });
                         }
 
