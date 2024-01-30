@@ -900,23 +900,6 @@ document.addEventListener("DOMContentLoaded", async () => {
                             loc_fdAddr_Num: loc_fdAddr_Num
                         }
 
-                        if ($('#controller').value === 'product') 
-                        {
-                            dataLayer.push({ ecommerce: null });  // Clear the previous ecommerce object.
-                            dataLayer.push({
-                                event: "begin_checkout",
-                                ecommerce: {
-                                    currency: "THB",
-                                    value: data.fdPayAMT,
-                                    items: [{
-                                        item_id: "myHomePlus_" + data.fdPackage,
-                                        item_name: "myHome Plus Plan Code " + data.fdPackage,
-                                        price: data.fdPayAMT
-                                    }]
-                                }
-                            });
-                        }
-
                         //=========================================================================================================
 
                         const result = validate(data, constraints);
@@ -925,6 +908,24 @@ document.addEventListener("DOMContentLoaded", async () => {
                                 let $elm = $(`[name=${k}]`);
                                 showFieldError($elm, result[k])
                             });
+                        } else {
+
+                            if ($('#controller').value === 'product') 
+                            {
+                                dataLayer.push({ ecommerce: null });  // Clear the previous ecommerce object.
+                                dataLayer.push({
+                                    event: "begin_checkout",
+                                    ecommerce: {
+                                        currency: "THB",
+                                        value: data.fdPayAMT,
+                                        items: [{
+                                            item_id: "myHomePlus_" + data.fdPackage,
+                                            item_name: "myHome Plus Plan Code " + data.fdPackage,
+                                            price: data.fdPayAMT
+                                        }]
+                                    }
+                                });
+                            }
                         }
                         // if (result) {
                         //     showError($('#step3'), result);

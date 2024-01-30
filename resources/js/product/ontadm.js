@@ -615,33 +615,34 @@ document.addEventListener("DOMContentLoaded", async () => {
                         }
 
                         result = validate(data, step3Constraints);
-
-                        if ($('#controller').value === 'product') 
-                        {
-                            dataLayer.push({ ecommerce: null });  // Clear the previous ecommerce object.
-                            dataLayer.push({
-                                event: "begin_checkout",
-                                ecommerce: {
-                                    currency: "THB",
-                                    value: data.fdPayAMT,
-                                    items: [{
-                                        item_id: "TADomestic_" + data.fdPackage,
-                                        item_name: "TA Domestic Plan Code " + data.fdPackage,
-                                        price: data.fdPayAMT
-                                    }]
-                                }
-                            });
-                        }
-                        
+            
                         if (result) {
                             showError($('#step3'), result);
+                        } else {
+                            
+                            if ($('#controller').value === 'product') 
+                            {
+                                dataLayer.push({ ecommerce: null });  // Clear the previous ecommerce object.
+                                dataLayer.push({
+                                    event: "begin_checkout",
+                                    ecommerce: {
+                                        currency: "THB",
+                                        value: data.fdPayAMT,
+                                        items: [{
+                                            item_id: "TADomestic_" + data.fdPackage,
+                                            item_name: "TA Domestic Plan Code " + data.fdPackage,
+                                            price: data.fdPayAMT
+                                        }]
+                                    }
+                                });
+                            }
+
                         }
 
                         if ($('.controls-wrapper.error')) {
                             scrollToTargetAdjusted($('.controls-wrapper.error'));
                             return false;
                         }
-
 
                         const selectedPackage = $('#step3 .form-head').innerHTML;
 
