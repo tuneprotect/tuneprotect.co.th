@@ -1764,7 +1764,7 @@ class ProductController extends BaseController
             $this->apiStatusText = self::SUCCESS;
         } else {
             $this->apiStatus = self::ERROR;
-            $this->apiStatusText = __('product.error.' . $res->message);
+            $this->apiStatusText = __($res->message);
         }
 
         return $this->send();
