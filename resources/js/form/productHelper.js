@@ -249,7 +249,7 @@ export const validateDiabetesMinMaxAgeInPackage = (package_data, cal_price, minA
 }
 
 
-const callValidateApi = async (data, fdPackage) => {
+const callValidateApi = async (data) => {
     const response = await fetch(`/${$('html').getAttribute('lang')}/Product/checkDup`, {
         method: 'post',
         headers: {
@@ -257,7 +257,7 @@ const callValidateApi = async (data, fdPackage) => {
             'Content-Type': 'application/json',
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').getAttribute('content')
         },
-        body: JSON.stringify({...data, fdPackage: fdPackage})
+        body: JSON.stringify({...data})
     })
 
     return await response.json();
@@ -421,9 +421,9 @@ export const validatePolicyStep5 = async ($this, datas) => {
         }
         data = {...data, [k]: $(`#${fieldId}`).value}
     });
-    let fdNationalID = datas.fdNationalID;
-    let fdProductCode = datas.fdProductCode;
-    let fdPackage = datas.fdPackage;
+    const fdNationalID = datas.fdNationalID;
+    const fdProductCode = datas.fdProductCode;
+    const fdPackage = datas.fdPackage;
 
     if (Object.keys(data).every((k) => !!data[k])) {        
         const result = await callValidateApi({...data, fdPackage})        
