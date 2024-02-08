@@ -250,6 +250,7 @@ export const validateDiabetesMinMaxAgeInPackage = (package_data, cal_price, minA
 
 
 const callValidateApi = async (data) => {
+    console.log(data);
     const response = await fetch(`/${$('html').getAttribute('lang')}/Product/checkDup`, {
         method: 'post',
         headers: {
@@ -424,6 +425,8 @@ export const validatePolicyStep5 = async ($this, datas) => {
     const fdNationalID = datas.fdNationalID;
     const fdProductCode = datas.fdProductCode;
     const fdPackage = datas.fdPackage;
+
+    console.log(datas);
 
     if (Object.keys(data).every((k) => !!data[k])) {        
         const result = await callValidateApi({...data, fdPackage})        
