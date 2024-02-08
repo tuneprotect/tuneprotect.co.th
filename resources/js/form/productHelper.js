@@ -249,7 +249,7 @@ export const validateDiabetesMinMaxAgeInPackage = (package_data, cal_price, minA
 }
 
 
-const callValidateApi = async (data) => {
+const callValidateApi = async (data, fdPackage) => {
     const response = await fetch(`/${$('html').getAttribute('lang')}/Product/checkDup`, {
         method: 'post',
         headers: {
@@ -257,7 +257,7 @@ const callValidateApi = async (data) => {
             'Content-Type': 'application/json',
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').getAttribute('content')
         },
-        body: JSON.stringify({...data, CheckType: null})
+        body: JSON.stringify({...data, fdPackage: fdPackage})
     })
 
     return await response.json();
