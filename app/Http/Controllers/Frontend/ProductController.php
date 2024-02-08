@@ -1047,7 +1047,7 @@ class ProductController extends BaseController
         $arrResult[] = $PolicyArr;
         $arrResult[] = $Point;
         $arrResult[] = $Status;
-        if(isset($PolicyData['ERROR_DESC'])) {
+        if (isset($PolicyData['ERROR_DESC'])) {
             $arrResult[] = $PolicyData['ERROR_DESC'];
         }
 
@@ -1116,7 +1116,7 @@ class ProductController extends BaseController
         $arrResult[] = $PolicyArr;
         $arrResult[] = $Point;
         $arrResult[] = $Status;
-        if(isset($PolicyData['ERROR_DESC'])) {
+        if (isset($PolicyData['ERROR_DESC'])) {
             $arrResult[] = $PolicyData['ERROR_DESC'];
         }
 
@@ -1764,7 +1764,8 @@ class ProductController extends BaseController
             $this->apiStatusText = self::SUCCESS;
         } else {
             $this->apiStatus = self::ERROR;
-            $this->apiStatusText = $res->warning;
+            if ($res->message === 'กรุณาติดต่อบริษัท ทูนประกันภัย (B01)') $this->apiStatusText = __('product.error.' . 'BLACKLIST');
+            else $this->apiStatusText = __('product.error.' . $res->message);
         }
 
         return $this->send();
