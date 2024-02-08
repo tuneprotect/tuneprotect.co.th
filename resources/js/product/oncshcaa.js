@@ -452,7 +452,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             validateField(this, constraints);
             if (['fdName', 'fdSurname', 'fdNationalID'].includes(field.id)) {  
                 data.fdNationalID = $('#fdNationalID').value;              
-                validatePolicyStep5(e.target, getSelectedApiPackage(data.fdPackage, package_data), fdProductCode);
+                validatePolicyStep5(e.target, getSelectedApiPackage(data.fdPackage, package_data), data.fdProductCode);
             }
         });
     });
