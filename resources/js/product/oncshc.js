@@ -607,7 +607,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                             break;
                         case 2:
 
-                            const fdPackage = $btn.getAttribute('data-package');
+                            const fdPackage = $btn.getAttribute('data-packagename');
                             const fdDataPlan = $btn.getAttribute('data-plan');
                             const health2go = $btn.getAttribute('data-health');
                             //const packageName = $btn.getAttribute('data-packageName');
