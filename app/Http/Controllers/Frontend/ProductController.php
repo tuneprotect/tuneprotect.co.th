@@ -1765,7 +1765,7 @@ class ProductController extends BaseController
         } else {
             $this->apiStatus = self::ERROR;
             if ($res->message === 'กรุณาติดต่อบริษัท ทูนประกันภัย (B01)') $this->apiStatusText = __('product.error.' . 'BLACKLIST');
-            else $this->apiStatusText = __('product.error.' . $res->message);
+            else $this->apiStatusText = $res->message;
         }
 
         return $this->send();
