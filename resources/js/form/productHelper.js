@@ -411,7 +411,7 @@ export const preValidatePromotionCode = async (code) => {
     return callPrePromotionCode({code});
 }
 
-export const validatePolicyStep5 = async ($this, fdPackage) => {
+export const validatePolicyStep5 = async ($this, fdPackage, fdProductCode) => {
     let field = $this.getAttribute('name');
     let data = {fdName: null, fdSurname: null, fdNationalID: null}
     Object.keys(data).map((k) => {
@@ -422,8 +422,7 @@ export const validatePolicyStep5 = async ($this, fdPackage) => {
         }
         data = {...data, [k]: $(`#${fieldId}`).value}
     });
-
-    console.log(fdPackage);
+    const fdNationalID = data.fdNationalID;
 
     if (Object.keys(data).every((k) => !!data[k])) {        
         const result = await callValidateApi({...data, fdPackage: fdPackage})        
