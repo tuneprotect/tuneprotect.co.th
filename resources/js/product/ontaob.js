@@ -819,23 +819,6 @@ document.addEventListener("DOMContentLoaded", async () => {
 
                             result = validate(currentProfile, profileConstraints);
 
-                            if ($('#controller').value === 'product') 
-                            {
-                                dataLayer.push({ ecommerce: null });  // Clear the previous ecommerce object.
-                                dataLayer.push({
-                                    event: "begin_checkout",
-                                    ecommerce: {
-                                        currency: "THB",
-                                        value: selectPrice,
-                                        items: [{
-                                            item_id: "iTravel_" + data.fdPackage,
-                                            item_name: "iTravel Plan Code " + data.fdPackage,
-                                            price: selectPrice
-                                        }]
-                                    }
-                                });
-                            }
-
                             if (result) {
                                 Object.keys(result).map(k => {
                                     let $elm = $(`[name=data_${i}_${k}]`);
@@ -865,6 +848,23 @@ document.addEventListener("DOMContentLoaded", async () => {
 
                         if (result) {
                             showError($('#step3'), result);
+                        } else {
+                            if ($('#controller').value === 'product') 
+                            {
+                                dataLayer.push({ ecommerce: null });  // Clear the previous ecommerce object.
+                                dataLayer.push({
+                                    event: "begin_checkout",
+                                    ecommerce: {
+                                        currency: "THB",
+                                        value: selectPrice,
+                                        items: [{
+                                            item_id: "iTravel_" + data.fdPackage,
+                                            item_name: "iTravel Plan Code " + data.fdPackage,
+                                            price: selectPrice
+                                        }]
+                                    }
+                                });
+                            }
                         }
 
                         if ($('.controls-wrapper.error')) {

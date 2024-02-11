@@ -1047,7 +1047,7 @@ class ProductController extends BaseController
         $arrResult[] = $PolicyArr;
         $arrResult[] = $Point;
         $arrResult[] = $Status;
-        if(isset($PolicyData['ERROR_DESC'])) {
+        if (isset($PolicyData['ERROR_DESC'])) {
             $arrResult[] = $PolicyData['ERROR_DESC'];
         }
 
@@ -1116,7 +1116,7 @@ class ProductController extends BaseController
         $arrResult[] = $PolicyArr;
         $arrResult[] = $Point;
         $arrResult[] = $Status;
-        if(isset($PolicyData['ERROR_DESC'])) {
+        if (isset($PolicyData['ERROR_DESC'])) {
             $arrResult[] = $PolicyData['ERROR_DESC'];
         }
 
@@ -1764,7 +1764,10 @@ class ProductController extends BaseController
             $this->apiStatusText = self::SUCCESS;
         } else {
             $this->apiStatus = self::ERROR;
-            $this->apiStatusText = __('product.error.' . $res->message);
+            if ($res->message === 'กรุณาติดต่อบริษัท ทูนประกันภัย (B01)') $this->apiStatusText = __('product.error.' . 'BLACKLIST');
+            else if (str_contains($res->message, 'fdNationalID already exist')) $this->apiStatusText = __('product.error.id_already');
+            else if (str_contains($res->message, 'DUP')) $this->apiStatusText = __('product.error.id_already');
+            else $this->apiStatusText = $res->message;
         }
 
         return $this->send();

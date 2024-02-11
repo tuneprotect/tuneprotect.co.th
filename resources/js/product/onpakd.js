@@ -568,23 +568,6 @@ document.addEventListener("DOMContentLoaded", async () => {
                                 }
                             }
 
-                            if ($('#controller').value === 'product') 
-                            {
-                                dataLayer.push({ ecommerce: null });  // Clear the previous ecommerce object.
-                                dataLayer.push({
-                                    event: "begin_checkout",
-                                    ecommerce: {
-                                        currency: "THB",
-                                        value: data.fdPayAMT,
-                                        items: [{
-                                            item_id: "PAChoiceKids_" + data.fdPackage,
-                                            item_name: "PA Choice Kids Plan Code " + data.fdPackage,
-                                            price: data.fdPayAMT
-                                        }]
-                                    }
-                                });
-                            }
-
                             const result = validate(data, constraints);
                             const $cite = $form3.getElementsByTagName('cite');
                             for (let i = 0, len = $cite.length; i !== len; ++i) {
@@ -605,6 +588,24 @@ document.addEventListener("DOMContentLoaded", async () => {
 
                                 status = false;
                             } else {
+
+                                if ($('#controller').value === 'product') 
+                                {
+                                    dataLayer.push({ ecommerce: null });  // Clear the previous ecommerce object.
+                                    dataLayer.push({
+                                        event: "begin_checkout",
+                                        ecommerce: {
+                                            currency: "THB",
+                                            value: data.fdPayAMT,
+                                            items: [{
+                                                item_id: "PAChoiceKids_" + data.fdPackage,
+                                                item_name: "PA Choice Kids Plan Code " + data.fdPackage,
+                                                price: data.fdPayAMT
+                                            }]
+                                        }
+                                    });
+                                }
+
                                 let sb = ''
 
                                 Object.keys(data).map(k => {

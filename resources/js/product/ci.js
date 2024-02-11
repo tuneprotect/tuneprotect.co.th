@@ -782,23 +782,6 @@ if ($('#title_wrapper')) {
                                     fdMarketing_Consent: $('#ctrl_marketing').checked ? true : undefined
                                 }
 
-                                if ($('#controller').value === 'product') 
-                                {
-                                    dataLayer.push({ ecommerce: null });  // Clear the previous ecommerce object.
-                                    dataLayer.push({
-                                        event: "begin_checkout",
-                                        ecommerce: {
-                                            currency: "THB",
-                                            value: data.fdPayAMT,
-                                            items: [{
-                                                item_id: "myFlexiCI_" + data.fdPackage,
-                                                item_name: "myFlexi CI Plan Code " + data.fdPackage,
-                                                price: data.fdPayAMT
-                                            }]
-                                        }
-                                    });
-                                }
-
                                 const result = validate(data, constraints);
 
                                 const $cite = $form.getElementsByTagName('cite');
@@ -820,6 +803,24 @@ if ($('#title_wrapper')) {
 
                                     status = false;
                                 } else {
+
+                                    if ($('#controller').value === 'product') 
+                                    {
+                                        dataLayer.push({ ecommerce: null });  // Clear the previous ecommerce object.
+                                        dataLayer.push({
+                                            event: "begin_checkout",
+                                            ecommerce: {
+                                                currency: "THB",
+                                                value: data.fdPayAMT,
+                                                items: [{
+                                                    item_id: "myFlexiCI_" + data.fdPackage,
+                                                    item_name: "myFlexi CI Plan Code " + data.fdPackage,
+                                                    price: data.fdPayAMT
+                                                }]
+                                            }
+                                        });
+                                    }
+
                                     let sb = ''
 
                                     Object.keys(data).map(k => {

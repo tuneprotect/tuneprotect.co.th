@@ -672,23 +672,6 @@ document.addEventListener("DOMContentLoaded", async () => {
                                 fdMarketing_Consent: $('#ctrl_marketing').checked ? true : undefined
                             }
 
-                            if ($('#controller').value === 'product') 
-                            {
-                                dataLayer.push({ ecommerce: null });  // Clear the previous ecommerce object.
-                                dataLayer.push({
-                                    event: "begin_checkout",
-                                    ecommerce: {
-                                        currency: "THB",
-                                        value: data.fdPayAMT,
-                                        items: [{
-                                            item_id: "Diabetes_" + data.fdPackage,
-                                            item_name: "Diabetes Plan Code " + data.fdPackage,
-                                            price: data.fdPayAMT
-                                        }]
-                                    }
-                                });
-                            }
-
                             const result = validate(data, constraints);
                             const $cite = $form4.getElementsByTagName('cite');
                             for (let i = 0, len = $cite.length; i !== len; ++i) {
@@ -709,6 +692,24 @@ document.addEventListener("DOMContentLoaded", async () => {
 
                                 status = false;
                             } else {
+
+                                if ($('#controller').value === 'product') 
+                                {
+                                    dataLayer.push({ ecommerce: null });  // Clear the previous ecommerce object.
+                                    dataLayer.push({
+                                        event: "begin_checkout",
+                                        ecommerce: {
+                                            currency: "THB",
+                                            value: data.fdPayAMT,
+                                            items: [{
+                                                item_id: "Diabetes_" + data.fdPackage,
+                                                item_name: "Diabetes Plan Code " + data.fdPackage,
+                                                price: data.fdPayAMT
+                                            }]
+                                        }
+                                    });
+                                }
+
                                 let sb = ''
 
                                 Object.keys(data).map(k => {

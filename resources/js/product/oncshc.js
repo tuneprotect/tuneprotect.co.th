@@ -458,7 +458,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             validateField(this, constraints);
             if (['fdName', 'fdSurname', 'fdNationalID'].includes(field.id)) {  
                 data.fdNationalID = $('#fdNationalID').value;              
-                validatePolicyStep5(e.target, getSelectedApiPackage(data.fdPackage, package_data));
+                validatePolicyStep5(e.target, getSelectedApiPackage(data.fdPackage, package_data), data.fdProductCode);
 
             }
         });
@@ -726,23 +726,6 @@ document.addEventListener("DOMContentLoaded", async () => {
                                 $el.classList.remove('error')
                             });
                             
-                            if ($('#controller').value === 'product') 
-                            {
-                                dataLayer.push({ ecommerce: null });  // Clear the previous ecommerce object.
-                                dataLayer.push({
-                                    event: "begin_checkout",
-                                    ecommerce: {
-                                        currency: "THB",
-                                        value: data.fdPayAMT,
-                                        items: [{
-                                            item_id: "ChillSure_" + data.fdPackage,
-                                            item_name: "ChillSure Plan Code " + data.fdPackage,
-                                            price: data.fdPayAMT
-                                        }]
-                                    }
-                                });
-                            }
-
                             if (result) {
                                 Object.keys(result).map(k => {
                                     let $elm = $(`[name=${k}]`);
@@ -753,6 +736,24 @@ document.addEventListener("DOMContentLoaded", async () => {
 
                                 status = false;
                             } else {
+
+                                if ($('#controller').value === 'product') 
+                                {
+                                    dataLayer.push({ ecommerce: null });  // Clear the previous ecommerce object.
+                                    dataLayer.push({
+                                        event: "begin_checkout",
+                                        ecommerce: {
+                                            currency: "THB",
+                                            value: data.fdPayAMT,
+                                            items: [{
+                                                item_id: "ChillSure_" + data.fdPackage,
+                                                item_name: "ChillSure Plan Code " + data.fdPackage,
+                                                price: data.fdPayAMT
+                                            }]
+                                        }
+                                    });
+                                }
+
                                 let sb = ''
 
                                 Object.keys(data).map(k => {

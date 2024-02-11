@@ -250,6 +250,7 @@ export const validateDiabetesMinMaxAgeInPackage = (package_data, cal_price, minA
 
 
 const callValidateApi = async (data) => {
+    console.log(data);
     const response = await fetch(`/${$('html').getAttribute('lang')}/Product/checkDup`, {
         method: 'post',
         headers: {
@@ -257,7 +258,7 @@ const callValidateApi = async (data) => {
             'Content-Type': 'application/json',
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').getAttribute('content')
         },
-        body: JSON.stringify({...data, CheckType: null})
+        body: JSON.stringify({...data})
     })
 
     return await response.json();
@@ -410,7 +411,7 @@ export const preValidatePromotionCode = async (code) => {
     return callPrePromotionCode({code});
 }
 
-export const validatePolicyStep5 = async ($this, datas) => {
+export const validatePolicyStep5 = async ($this, fdPackage, fdProductCode) => {
     let field = $this.getAttribute('name');
     let data = {fdName: null, fdSurname: null, fdNationalID: null}
     Object.keys(data).map((k) => {
@@ -421,12 +422,10 @@ export const validatePolicyStep5 = async ($this, datas) => {
         }
         data = {...data, [k]: $(`#${fieldId}`).value}
     });
-    let fdNationalID = datas.fdNationalID;
-    let fdProductCode = datas.fdProductCode;
-    let fdPackage = datas.fdPackage;
+    const fdNationalID = data.fdNationalID;
 
     if (Object.keys(data).every((k) => !!data[k])) {        
-        const result = await callValidateApi({...data, fdPackage})        
+        const result = await callValidateApi({...data, fdPackage: fdPackage})        
         if (result.status === 'error') {
             $('button[data-step="5"]').style.display = 'none';
             $this.closest('.controls-wrapper').classList.add("error");

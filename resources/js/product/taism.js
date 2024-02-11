@@ -613,27 +613,27 @@ document.addEventListener("DOMContentLoaded", async () => {
                             fdMarketing_Consent: $('#ctrl_marketing').checked ? true : undefined
                         }
 
-                        if ($('#controller').value === 'product') 
-                        {
-                            dataLayer.push({ ecommerce: null });  // Clear the previous ecommerce object.
-                            dataLayer.push({
-                                event: "begin_checkout",
-                                ecommerce: {
-                                    currency: "THB",
-                                    value: data.fdPayAMT,
-                                    items: [{
-                                        item_id: "iSmile_" + data.fdPackage,
-                                        item_name: "iSmile Plan Code " + data.fdPackage,
-                                        price: data.fdPayAMT
-                                    }]
-                                }
-                            });
-                        }
-
                         result = validate(data, step3Constraints);
 
                         if (result) {
                             showError($('#step3'), result);
+                        } else {
+                            if ($('#controller').value === 'product') 
+                            {
+                                dataLayer.push({ ecommerce: null });  // Clear the previous ecommerce object.
+                                dataLayer.push({
+                                    event: "begin_checkout",
+                                    ecommerce: {
+                                        currency: "THB",
+                                        value: data.fdPayAMT,
+                                        items: [{
+                                            item_id: "iSmile_" + data.fdPackage,
+                                            item_name: "iSmile Plan Code " + data.fdPackage,
+                                            price: data.fdPayAMT
+                                        }]
+                                    }
+                                });
+                            }
                         }
 
                         if ($('.controls-wrapper.error')) {

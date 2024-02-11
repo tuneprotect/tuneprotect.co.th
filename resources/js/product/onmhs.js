@@ -1803,23 +1803,6 @@ document.addEventListener("DOMContentLoaded", async () => {
                             fdMarketing_Consent: $('#ctrl_marketing').checked ? true : undefined
                         }
 
-                        if ($('#controller').value === 'product') 
-                        {
-                            dataLayer.push({ ecommerce: null });  // Clear the previous ecommerce object.
-                            dataLayer.push({
-                                event: "begin_checkout",
-                                ecommerce: {
-                                    currency: "THB",
-                                    value: data.fdPayAMT,
-                                    items: [{
-                                        item_id: "myHomeSmart_" + data.fdPackage,
-                                        item_name: "myHome Smart Plan Code " + data.fdPackage,
-                                        price: data.fdPayAMT
-                                    }]
-                                }
-                            });
-                        }
-                        
                         //=========================================================================================================
                         //address insure
                         let address_insure = "";
@@ -1925,6 +1908,24 @@ document.addEventListener("DOMContentLoaded", async () => {
                                 let $elm = $(`[name=${k}]`);
                                 showFieldError($elm, result[k])
                             });
+                        } else {
+
+                            if ($('#controller').value === 'product') 
+                            {
+                                dataLayer.push({ ecommerce: null });  // Clear the previous ecommerce object.
+                                dataLayer.push({
+                                    event: "begin_checkout",
+                                    ecommerce: {
+                                        currency: "THB",
+                                        value: data.fdPayAMT,
+                                        items: [{
+                                            item_id: "myHomeSmart_" + data.fdPackage,
+                                            item_name: "myHome Smart Plan Code " + data.fdPackage,
+                                            price: data.fdPayAMT
+                                        }]
+                                    }
+                                });
+                            }
                         }
                         // if (result) {
                         //     showError($('#step3'), result);
