@@ -343,8 +343,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     const provinceExclude = ['24', '30', '43']
     let provinceFilter = provinceData.filter(e => !provinceExclude.includes(e.code));
 
-    console.log(provinceFilter);
-
     provinceFilter.forEach(v => {
         provinceOption += `<option value="${v.code}">${v[locale]}</option>`;
     })
@@ -352,6 +350,22 @@ document.addEventListener("DOMContentLoaded", async () => {
     $$('#fdDestFrom,#fdDestTo').forEach($el => {
         $el.innerHTML = provinceOption;
     })
+
+    $('#fdDestFrom').addEventListener('change', (e) => {
+
+        let provinceFilter = provinceData.filter(e => e.code != e.target.value);
+
+        console.log(provinceFilter);
+
+        let provinceFromOption = `<option value="">${$('#fdDestFrom').getAttribute('data-please-select')}</option>`;
+        provinceFilter.forEach(v => {
+            provinceFromOption += `<option value="${v.code}">${v[locale]}</option>`;
+        })
+
+        $$('#fdDestTo').forEach($el => {
+            $el.innerHTML = provinceFromOption;
+        })
+    });
 
     $('#ctrl_no_of_insured').addEventListener('change', (e) => {
 
