@@ -343,6 +343,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     const provinceExclude = [24, 30, 43]
     let provinceFilter = provinceData.filter(e => !provinceExclude.includes(e.code));
 
+    console.log(provinceFilter);
+
     provinceFilter.forEach(v => {
         provinceOption += `<option value="${v.code}">${v[locale]}</option>`;
     })
