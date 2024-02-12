@@ -340,7 +340,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     let $dataSubPackage;
     let provinceOption = `<option value="">${$('#fdDestFrom').getAttribute('data-please-select')}</option>`;
 
-    const provinceExclude = [24, 30, 43]
+    const provinceExclude = ['24', '30', '43']
     let provinceFilter = provinceData.filter(e => !provinceExclude.includes(e.code));
 
     console.log(provinceFilter);
