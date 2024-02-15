@@ -353,9 +353,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     $('#fdDestFrom').addEventListener('change', (e) => {
 
-        let provinceFilter = provinceData.filter(e => e.code != $('#fdDestFrom').value);
-
-        console.log($('#fdDestFrom').value);
+        let provinceFilter = provinceFilter.filter(e => e.code != $('#fdDestFrom').value);
 
         let provinceFromOption = `<option value="">${$('#fdDestFrom').getAttribute('data-please-select')}</option>`;
         provinceFilter.forEach(v => {
