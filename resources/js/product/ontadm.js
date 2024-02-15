@@ -353,16 +353,19 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     $('#fdDestTo').addEventListener('change', (e) => {
 
-        let provinceDestFromFilter = provinceFilter.filter(e => e.code != $('#fdDestTo').value);
+        if ($('#fdDestFrom').value == "") {
+            let provinceDestFromFilter = provinceFilter.filter(e => e.code != $('#fdDestTo').value);
 
-        let provinceFromOption = `<option value="">${$('#fdDestTo').getAttribute('data-please-select')}</option>`;
-        provinceDestFromFilter.forEach(v => {
-            provinceFromOption += `<option value="${v.code}">${v[locale]}</option>`;
-        })
+            let provinceFromOption = `<option value="">${$('#fdDestTo').getAttribute('data-please-select')}</option>`;
+            provinceDestFromFilter.forEach(v => {
+                provinceFromOption += `<option value="${v.code}">${v[locale]}</option>`;
+            })
 
-        $$('#fdDestFrom').forEach($el => {
-            $el.innerHTML = provinceFromOption;
-        })
+            $$('#fdDestFrom').forEach($el => {
+                $el.innerHTML = provinceFromOption;
+            })
+        }
+        
     });
 
     $('#fdDestFrom').addEventListener('change', (e) => {
