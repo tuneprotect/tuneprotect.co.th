@@ -1765,9 +1765,9 @@ class ProductController extends BaseController
         } else {
             $this->apiStatus = self::ERROR;
             if ($res->message === 'กรุณาติดต่อบริษัท ทูนประกันภัย (B01)') $this->apiStatusText = __('product.error.' . 'BLACKLIST');
+            else if (str_contains($res->message, 'กรุณาติดต่อบริษัท ทูนประกันภัย (A01)')) $this->apiStatusText = __('product.error.AMLO');
             else if (str_contains($res->message, 'fdNationalID already exist')) $this->apiStatusText = __('product.error.id_already');
             else if (str_contains($res->message, 'DUP')) $this->apiStatusText = __('product.error.id_already');
-            else if (str_contains($res->message, 'AMLO')) $this->apiStatusText = __('product.error.AMLO');
             else $this->apiStatusText = $res->message;
         }
 
