@@ -343,7 +343,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     const provinceExclude = ['24', '30', '43']
     let provinceFilter = provinceData.filter(e => !provinceExclude.includes(e.code));
 
-    provinceFilter.forEach(v => {
+    provinceFilter.sort().forEach(v => {
         provinceOption += `<option value="${v.code}">${v[locale]}</option>`;
     })
 
@@ -373,7 +373,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
         
         let provinceFromOption = `<option value="">${$('#fdDestFrom').getAttribute('data-please-select')}</option>`;
-        provinceDestToFilter.forEach(v => {
+        provinceDestToFilter.sort().forEach(v => {
             provinceFromOption += `<option value="${v.code}">${v[locale]}</option>`;
         })
 
