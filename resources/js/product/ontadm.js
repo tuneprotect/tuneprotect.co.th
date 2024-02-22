@@ -347,8 +347,13 @@ document.addEventListener("DOMContentLoaded", async () => {
         provinceOption += `<option value="${v.code}">${v[locale]}</option>`;
     })
 
-    $$('#fdDestFrom, #fdDestTo').forEach($el => {
+    $$('#fdDestFrom').forEach($el => {
         $el.innerHTML = provinceOption;
+    })
+
+    $$('#fdDestTo').forEach($el => {
+        $el.innerHTML = provinceOption;
+        $el.setAttribute("disabled", true);
     })
 
     $('#fdDestFrom').addEventListener('change', (e) => {
@@ -362,6 +367,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
         $$('#fdDestTo').forEach($el => {
             $el.innerHTML = provinceFromOption;
+            $el.setAttribute("disabled", false);
         })
     });
 
