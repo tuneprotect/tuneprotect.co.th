@@ -358,16 +358,16 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     $('#fdDestFrom').addEventListener('change', (e) => {
 
+        
         let provinceDestToFilter = provinceFilter.filter(e => e.code != $('#fdDestFrom').value);
-
         let provinceFromOption = `<option value="">${$('#fdDestFrom').getAttribute('data-please-select')}</option>`;
         provinceDestToFilter.forEach(v => {
             provinceFromOption += `<option value="${v.code}">${v[locale]}</option>`;
         })
 
+        $('#fdDestTo').removeAttribute("disabled");
         $$('#fdDestTo').forEach($el => {
             $el.innerHTML = provinceFromOption;
-            $el.setAttribute("disabled", false);
         })
     });
 
