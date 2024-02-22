@@ -362,13 +362,13 @@ document.addEventListener("DOMContentLoaded", async () => {
         
         switch($('#fdDestFrom').value) {
             case "00": //Bangkok
-                provinceDestToFilter = provinceDestToFilter.filter(e => !provinceExclude.includes('23','27'));
+                provinceDestToFilter = provinceDestToFilter.filter(e => !['23','27'].includes(e.code));
               break;
             case "23": //Nonthaburi
-                provinceDestToFilter = provinceDestToFilter.filter(e => !provinceExclude.includes('00'));
+                provinceDestToFilter = provinceDestToFilter.filter(e => !['00'].includes(e.code));
               break;
             case "27": //Pathumthani
-                provinceDestToFilter = provinceDestToFilter.filter(e => !provinceExclude.includes('00'));
+                provinceDestToFilter = provinceDestToFilter.filter(e => !['00'].includes(e.code));
               break;
         }
         
