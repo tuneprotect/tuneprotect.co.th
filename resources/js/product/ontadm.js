@@ -347,7 +347,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         provinceOption += `<option value="${v.code}">${v[locale]}</option>`;
     })
 
-    $$('#fdDestFrom').forEach($el => {
+    $$('#fdDestFrom, #fdDestTo').forEach($el => {
         $el.innerHTML = provinceOption;
     })
 
