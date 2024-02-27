@@ -1025,7 +1025,7 @@ class ProductController extends BaseController
                 $v->issuepolicy_status =  'E';
             }
 
-
+            $v->issuepolicy_api =  $this->getApiIssueLink($data['fdPackage']);
             $v->result = $apiResult;
             $v->save();
 
@@ -1764,10 +1764,10 @@ class ProductController extends BaseController
             $this->apiStatusText = self::SUCCESS;
         } else {
             $this->apiStatus = self::ERROR;
-            if ($res->message === 'กรุณาติดต่อบริษัท ทูนประกันภัย (B01)') $this->apiStatusText = __('product.error.' . 'BLACKLIST');
-            else if (str_contains($res->message, 'กรุณาติดต่อบริษัท ทูนประกันภัย (A01)')) $this->apiStatusText = __('product.error.AMLO');
-            else if (str_contains($res->message, 'fdNationalID already exist')) $this->apiStatusText = __('product.error.id_already');
-            else if (str_contains($res->message, 'DUP')) $this->apiStatusText = __('product.error.id_already');
+            if (str_contains($res->message, 'กรุณาติดต่อบริษัท ทูนประกันภัย (B01)')) $this->apiStatusText = __('product.error.' . 'BLACKLIST');
+            else if (str_contains($res->message, 'กรุณาติดต่อบริษัท ทูนประกันภัย (A01)')) $this->apiStatusText = __('product.error.' . 'AMLO');
+            else if (str_contains($res->message, 'fdNationalID already exist')) $this->apiStatusText = __('product.error.' . 'id_already');
+            else if (str_contains($res->message, 'DUP')) $this->apiStatusText = __('product.error.' . 'id_already');
             else $this->apiStatusText = $res->message;
         }
 

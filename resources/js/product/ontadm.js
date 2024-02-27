@@ -338,42 +338,60 @@ document.addEventListener("DOMContentLoaded", async () => {
     };
     let iti = {};
     let $dataSubPackage;
-    //let provinceOption = `<option value="">${$('#fdDestFrom').getAttribute('data-please-select')}</option>`;
-
-    // const provinceExclude = ['24', '30', '43']
-    // let provinceFilter = provinceData.filter(e => !provinceExclude.includes(e.code));
-
-    // provinceFilter.forEach(v => {
-    //     provinceOption += `<option value="${v.code}">${v[locale]}</option>`;
-    // })
-
-    // $$('#fdDestFrom').forEach($el => {
-    //     $el.innerHTML = provinceOption;
-    // })
-
-    // $('#fdDestFrom').addEventListener('change', (e) => {
-
-    //     //let provinceDestToFilter = provinceFilter.filter(e => e.code != $('#fdDestFrom').value);
-
-    //     let provinceFromOption = `<option value="">${$('#fdDestFrom').getAttribute('data-please-select')}</option>`;
-    //     provinceDestToFilter.forEach(v => {
-    //         provinceFromOption += `<option value="${v.code}">${v[locale]}</option>`;
-    //     })
-
-    //     $$('#fdDestTo').forEach($el => {
-    //         $el.innerHTML = provinceFromOption;
-    //     })
-    // });
-
     let provinceOption = `<option value="">${$('#fdDestFrom').getAttribute('data-please-select')}</option>`;
 
-    provinceData.forEach(v => {
+    const provinceExclude = ['24', '30', '43']
+    let provinceFilter = provinceData.filter(e => !provinceExclude.includes(e.code));
+
+    provinceFilter.forEach(v => {
         provinceOption += `<option value="${v.code}">${v[locale]}</option>`;
     })
 
-    $$('#fdDestFrom,#fdDestTo').forEach($el => {
+    $$('#fdDestFrom').forEach($el => {
         $el.innerHTML = provinceOption;
     })
+
+    $$('#fdDestTo').forEach($el => {
+        $el.innerHTML = provinceOption;
+        $el.setAttribute("disabled", true);
+    })
+
+    $('#fdDestFrom').addEventListener('change', (e) => {
+
+        let provinceDestToFilter = provinceFilter.filter(e => e.code != $('#fdDestFrom').value && !provinceExclude.includes(e.code));
+        
+        switch($('#fdDestFrom').value) {
+            case "00": //Bangkok
+                provinceDestToFilter = provinceDestToFilter.filter(e => !['23','27'].includes(e.code));
+              break;
+            case "23": //Nonthaburi
+                provinceDestToFilter = provinceDestToFilter.filter(e => !['00'].includes(e.code));
+              break;
+            case "27": //Pathumthani
+                provinceDestToFilter = provinceDestToFilter.filter(e => !['00'].includes(e.code));
+              break;
+        }
+        
+        let provinceFromOption = `<option value="">${$('#fdDestFrom').getAttribute('data-please-select')}</option>`;
+        provinceDestToFilter.forEach(v => {
+            provinceFromOption += `<option value="${v.code}">${v[locale]}</option>`;
+        })
+
+        $('#fdDestTo').removeAttribute("disabled");
+        $$('#fdDestTo').forEach($el => {
+            $el.innerHTML = provinceFromOption;
+        })
+    });
+
+    // let provinceOption = `<option value="">${$('#fdDestFrom').getAttribute('data-please-select')}</option>`;
+
+    // provinceData.forEach(v => {
+    //     provinceOption += `<option value="${v.code}">${v[locale]}</option>`;
+    // })
+
+    // $$('#fdDestFrom,#fdDestTo').forEach($el => {
+    //     $el.innerHTML = provinceOption;
+    // })
 
     $('#ctrl_no_of_insured').addEventListener('change', (e) => {
 
