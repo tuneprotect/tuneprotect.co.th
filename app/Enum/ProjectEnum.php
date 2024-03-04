@@ -139,6 +139,7 @@ class ProjectEnum
     const STATIC_PAGE_PRIVACY_POLICY = 'static.page.privacy';
     const STATIC_PAGE_TERMS = 'static.page.terms';
     const STATIC_PAGE_MY_HEALTH = 'static.page.my_health';
+    const STATIC_PAGE_OCCUPATION = 'static.page.occupation';
 
     const STATIC_META_ARTICLE = 'static.page.article';
     const STATIC_META_MY_HEALTH = 'static.page.my_health';

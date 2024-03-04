@@ -2290,6 +2290,7 @@ const static_content = {
         'payment_thank_you_itravel',
         'payment_thank_you_pa_choice',
         'privacy',
+        'occupation',
         'service_center',
         'terms',
         'my_health',
