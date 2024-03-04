@@ -14,8 +14,7 @@ class OccupationController extends BaseController
 
         $this->template->setBody('id', 'static_page');
         $this->template->setFootJS(mix("/js/frontend/main.js"));
-        $this->bodyData['content'] = $this->setStaticPageHeader(ProjectEnum::STATIC_PAGE_OCCUPATION);
 
-        return $this->genView('frontend.page.static');
+        return $this->genView('frontend.page.occupation');
     }
 }
