@@ -3048,27 +3048,27 @@ main {
             cursor: pointer;
             @media all and (min-width: $md) {
                 height: 350px;
-                &:first-child {
-                    grid-column-start: 1;
-                    grid-column-end: 4;
-                    height: 600px;
-                    width: 500px;
-                    margin: 0 auto;
+                // &:first-child {
+                //     grid-column-start: 1;
+                //     grid-column-end: 4;
+                //     height: 600px;
+                //     width: 500px;
+                //     margin: 0 auto;
 
-                    .clip {
-                        clip-path: circle(180px at 50% 37%);
+                //     .clip {
+                //         clip-path: circle(180px at 50% 37%);
 
-                        &:before {
-                            left: 57%;
-                            top: 48%;
-                        }
-                    }
+                //         &:before {
+                //             left: 57%;
+                //             top: 48%;
+                //         }
+                //     }
 
-                    strong {
-                        bottom: 65px;
-                        font-size: 1.2rem;
-                    }
-                }
+                //     strong {
+                //         bottom: 65px;
+                //         font-size: 1.2rem;
+                //     }
+                // }
             }
 
             &.on, &:hover {
