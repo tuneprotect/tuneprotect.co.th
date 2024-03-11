@@ -628,6 +628,8 @@ document.addEventListener("DOMContentLoaded", async () => {
                         status = true;
                         removeError($('#step3'));
 
+                        const selectPrice = package_data[data.fdPackage].price[$('#sub_code').value].price;
+
                         if ($('#controller').value === 'product' && promotionCodeStatus) {
                             promotion_data = await validatePromotionCode($('#fdPromotionCode').value, selectPrice);
                         }

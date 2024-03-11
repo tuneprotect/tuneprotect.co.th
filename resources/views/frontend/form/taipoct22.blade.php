@@ -84,7 +84,6 @@
                     class="btn btn-primary btn-goto">@lang('product.next')</button>
         </div>
 
-
         <input type="hidden" id="controller" value="{{$controller}}"/>
         @if($controller == 'portal')
             <div class="btn-wrapper">
