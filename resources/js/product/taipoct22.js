@@ -13,6 +13,7 @@ import {
     formatInputFieldOnlyCharecter,
     validatePromotionCode,
     preValidatePromotionCode,
+    campaignVerifyProduct,
 } from "../form/productHelper";
 import {
     $, 
@@ -465,16 +466,21 @@ document.addEventListener("DOMContentLoaded", async () => {
         $('#fdPromotionCode').addEventListener('change', async (e) => {
 
             if($('#fdPromotionCode').value) {
-                const promotion_data_befor = await preValidatePromotionCode($('#fdPromotionCode').value);
 
-                if(promotion_data_befor.result.status && promotion_data_befor.result.codeAvailable <= parseInt($("#promotion_code_condition").value)) {
-                    promotionCodeStatus = true;
-                    showPromotionCodeCount($('#fdPromotionCode').getAttribute('data-error-promotion-code-count').replace("{count}", promotion_data_befor.result.codeAvailable), 'span_error');
-                } else if(promotion_data_befor.result.status) {
-                    promotionCodeStatus = true;
-                    showPromotionCodeValid($('#fdPromotionCode').getAttribute('data-error-promotion-code-valid'), 'span_error');
+                const campaign_verify_product = await campaignVerifyProduct($('#fdPromotionCode').value, productCode);
+                if (campaign_verify_product.result.status) {
+                    const promotion_data_befor = await preValidatePromotionCode($('#fdPromotionCode').value);
+                    if(promotion_data_befor.result.status && promotion_data_befor.result.codeAvailable <= parseInt($("#promotion_code_condition").value)) {
+                        promotionCodeStatus = true;
+                        showPromotionCodeCount($('#fdPromotionCode').getAttribute('data-error-promotion-code-count').replace("{count}", promotion_data_befor.result.codeAvailable), 'span_error');
+                    } else if(promotion_data_befor.result.status) {
+                        promotionCodeStatus = true;
+                        showPromotionCodeValid($('#fdPromotionCode').getAttribute('data-error-promotion-code-valid'), 'span_error');
+                    } else {
+                        showValidatePromotionCodeError(locale === 'th' ? promotion_data_befor.result.message_th : promotion_data_befor.result.message, 'span_error');
+                    }
                 } else {
-                    showValidatePromotionCodeError(locale === 'th' ? promotion_data_befor.result.message_th : promotion_data_befor.result.message, 'span_error');
+                    showValidatePromotionCodeError(locale === 'th' ? campaign_verify_product.result.message_th : campaign_verify_product.result.message, 'span_error');
                 }
             }
             else
