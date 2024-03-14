@@ -1824,6 +1824,31 @@ class ProductController extends BaseController
         return $this->send();
     }
 
+    public function campaignVerifyProduct(Request $request)
+    {
+        $data = $request->all();
+        $client = new Client();
+        $response = $client->request('POST', str_replace('/WEBSITE', '', config('tune-api.url')) . 'Promotions/CampaignVerifyProduct', [
+            'auth' => [config('tune-api.user'), config('tune-api.password')],
+            'headers' => [
+                'Content-Type' => 'application/json'
+            ],
+            'body' => json_encode($data)
+        ]);
+        $res = (object)json_decode($response->getBody()->getContents(), true);
+        $this->apiResult = $res->data;
+
+        if ($res->status) {
+            $this->apiStatus = self::SUCCESS;
+            $this->apiStatusText = self::SUCCESS;
+        } else {
+            $this->apiStatus = self::ERROR;
+            $this->apiStatusText = __('product.error.' . $res->message);
+        }
+
+        return $this->send();
+    }
+
     public function CheckRegisterForChillSure(Request $request)
     {
         $data = $request->all();
