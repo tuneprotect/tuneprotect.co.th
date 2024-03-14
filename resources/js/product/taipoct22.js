@@ -228,6 +228,7 @@ const profileConstraints = {
     }
 };
 
+const productCode = 'TAIPOCT22';
 
 const genPrice = (package_data, fdFromDate, fdToDate) => {
 
