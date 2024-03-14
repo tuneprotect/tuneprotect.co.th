@@ -317,7 +317,7 @@ const callPrePromotionCode = async (data) => {
 }
 
 const callCampaignVerifyProduct = async (data) => {
-    const response = await fetch(`/${$('html').getAttribute('lang')}/Product/campaignVerifyProduct`, {
+    const response = await fetch(`/${$('html').getAttribute('lang')}/Product/CampaignVerifyProduct`, {
         method: 'post',
         headers: {
             'Accept': 'application/json',

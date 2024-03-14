@@ -507,6 +507,9 @@ document.addEventListener("DOMContentLoaded", async () => {
             if($('#fdPromotionCode').value) {
 
                 const campaign_verify_product = await campaignVerifyProduct($('#fdPromotionCode').value, productCode);
+
+                console.log(campaign_verify_product);
+
                 if (campaign_verify_product.result.status) {
                     const promotion_data_befor = await preValidatePromotionCode($('#fdPromotionCode').value);
                     if(promotion_data_befor.result.status && promotion_data_befor.result.codeAvailable <= parseInt($("#promotion_code_condition").value)) {
