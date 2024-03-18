@@ -417,12 +417,12 @@ export const getSuscoBranch = async ($this) => {
     return callSuscoBranch();
 }
 
-export const validatePromotionCode = async (code, costAmount) => {
-    return callPromotionCode({code, costAmount});
+export const validatePromotionCode = async (code, costAmount, productCode) => {
+    return callPromotionCode({code, costAmount, productCode});
 }
 
-export const preValidatePromotionCode = async (code) => {
-    return callPrePromotionCode({code});
+export const preValidatePromotionCode = async (code, productCode) => {
+    return callPrePromotionCode({code, productCode});
 }
 
 export const campaignVerifyProduct = async (code, productCode) => {
