@@ -353,6 +353,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     };
     let iti = {};
     let desination = '';
+    let promotionCodeStatus = "";
     // let $dataSubPackage;
     let provinceOption = `<option value="">${$('#fdDestFrom').getAttribute('data-please-select')}</option>`;
 
