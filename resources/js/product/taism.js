@@ -592,6 +592,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                         break;
                     case 3:
                         let profileData = []
+                        let promotion_data;
                         status = true;
 
                         const selectPrice = package_data[data.fdPackage].price[$('#sub_code').value].price;
