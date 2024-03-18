@@ -195,6 +195,8 @@ const profileConstraints = {
     }
 };
 
+const productCode = 'TAISM';
+
 const genPrice = (package_data, fdFromDate, fdToDate) => {
 
     let startDate = parseISO(fdFromDate);
@@ -348,6 +350,31 @@ document.addEventListener("DOMContentLoaded", async () => {
     $('#fdDestFrom').innerHTML = provinceOption;
     $('#fdDestTo').innerHTML = `<option value="THA">${desination}</option>`;
 
+    if ($('#controller').value === 'product') 
+    {
+        $('#fdPromotionCode').addEventListener('change', async (e) => {
+
+            if($('#fdPromotionCode').value) 
+            {
+                const promotion_data_befor = await preValidatePromotionCode($('#fdPromotionCode').value, productCode);
+                if(promotion_data_befor.result.status && promotion_data_befor.result.codeAvailable <= parseInt($("#promotion_code_condition").value)) {
+                    promotionCodeStatus = true;
+                    showPromotionCodeCount($('#fdPromotionCode').getAttribute('data-error-promotion-code-count').replace("{count}", promotion_data_befor.result.codeAvailable), 'span_error');
+                } else if(promotion_data_befor.result.status) {
+                    promotionCodeStatus = true;
+                    showPromotionCodeValid($('#fdPromotionCode').getAttribute('data-error-promotion-code-valid'), 'span_error');
+                } else {
+                    showValidatePromotionCodeError(locale === 'th' ? promotion_data_befor.result.message_th : promotion_data_befor.result.message, 'span_error');
+                }
+            }
+            else
+            {
+                showPromotionCodeValid('', 'span_error');
+                promotionCodeStatus = false;
+            }
+        });
+    }
+
     let nationality_option = `<option value="">${$('#data_1_fdNationality').getAttribute('data-please-select')}</option>`;
     Object.keys(nationality_data).map(v => {
             nationality_option += `<option value="${v}">${v}</option>`;
@@ -438,7 +465,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     const $btnGoto = $$('.btn-goto');
     $btnGoto.forEach($btn => {
-        $btn.addEventListener("click", function (e) {
+        $btn.addEventListener("click", async (e) => {
 
             e.preventDefault();
 
@@ -543,6 +570,12 @@ document.addEventListener("DOMContentLoaded", async () => {
                     case 3:
                         let profileData = []
                         status = true;
+
+                        const selectPrice = package_data[data.fdPackage].price[$('#sub_code').value].price;
+                        if ($('#controller').value === 'product' && promotionCodeStatus) {
+                            promotion_data = await validatePromotionCode($('#fdPromotionCode').value, selectPrice, productCode);
+                        }
+
                         removeError($('#step3'));
                         for (let i = 1; i <= $('#ctrl_no_of_insured').value; i++) {
                             let address = ($(`#data_${i}_ctrl_province`).value).split('*');
@@ -584,6 +617,16 @@ document.addEventListener("DOMContentLoaded", async () => {
                                 fdBenefit_name: $(`#data_${i}_fdBenefit_name`).value,
                                 fdRelation: $(`#data_${i}_fdRelation`).value,
                             };
+
+                            if ($('#controller').value === 'product' && promotionCodeStatus) {
+                                if (promotion_data.result.codeAvailable >= i) {
+                                    currentProfile.PromotionCode = $('#fdPromotionCode').value;
+                                    currentProfile.CampaignId = promotion_data.result.campaignId;
+                                    currentProfile.CostAmount = selectPrice;    
+                                    currentProfile.StatusId = 2;
+                                    currentProfile.TypeId = 1
+                                }
+                            }
 
                             profileData.push(currentProfile);
                             result = validate(currentProfile, profileConstraints);
@@ -683,6 +726,17 @@ document.addEventListener("DOMContentLoaded", async () => {
                             <div><span>${$('label[for=data_1_fdEmail]').innerText} : </span><strong>${v.fdEmail}</strong></div>
                             <div class="controls-wrapper full no-lable"><span>${$('label[for=data_1_fdAddr_Num]').innerText} : </span><strong>${v.fdAddr_Num} ${v.fdAddr_District} ${province} ${v.fdAddr_PostCode}</strong></div>
                             <div class="controls-wrapper full no-lable"><span>${$('#beneficiary_header').innerText} : </span><strong>${v.fdBenefit === 'other' ? v.fdBenefit_name + ' (' + v.fdRelation + ')' : v.fdBenefit} </strong></div>
+                        
+                            ${$('#controller').value === 'product' && promotionCodeStatus
+                                ? `<div class="controls-wrapper full no-lable"><span>${$('#lblfdPromotionCode').innerText} : </span><strong>${$('#fdPromotionCode').value} ${ promotion_data.result.status ? `
+                                ${ promotion_data.result.codeAvailable < i+1 
+                                    ? `<span id="promotion_code_alert" style="color: #e71618;">${locale === 'th' ? '(* โค้ดนี้ได้ถูกใช้ครบแล้ว)' : '(* The code has already been used.)'}</span>` 
+                                    : `<span id="promotion_code_alert" style="color: #008b06;">${locale === 'th' ? '('+ promotion_data.result.message_th +')' : '('+ promotion_data.result.message +')'}`}</span>` 
+                                    : `<span id="promotion_code_alert" style="color: #e71618;">${locale === 'th' ? '(* '+ promotion_data.result.message_th +')' : '(* '+ promotion_data.result.message +')'}</span>` } </strong>
+                                </div>`
+                                : ''
+                            }
+                        
                         </div><br/>`;
                         });
 
