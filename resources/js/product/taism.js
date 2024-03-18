@@ -11,10 +11,32 @@ import {
     formatInputFieldByLanguage,
     formatInputFieldOnlyNumberic,
     formatInputFieldOnlyCharecter,
+    validatePromotionCode,
+    preValidatePromotionCode,
 } from "../form/productHelper";
-import {$, $$, current_package, getRadioSelectedValue, getZipcodeData, locale, scrollToTargetAdjusted} from "../helper";
 
-import {removeError, showError, showFieldError, validateField,validateAcceptStep1,showAcceptError} from "../validate_form";
+import {
+    $, 
+    $$, 
+    current_package, 
+    getRadioSelectedValue, 
+    getZipcodeData, 
+    locale, 
+    scrollToTargetAdjusted
+} from "../helper";
+
+import {
+    removeError, 
+    showError, 
+    showFieldError, 
+    validateField,
+    validateAcceptStep1,
+    showAcceptError,
+    showPromotionCodeValid,
+    showPromotionCodeCount,
+    showValidatePromotionCodeError,
+} from "../validate_form";
+
 import Swal from "sweetalert2";
 import validate from "validate.js";
 import {addDays, addYears, differenceInDays, format, parseISO, subDays} from "date-fns";
