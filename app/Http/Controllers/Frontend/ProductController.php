@@ -534,6 +534,9 @@ class ProductController extends BaseController
                 case 'fdlanguage':
                     $obj->$k = $this->locale == 'th' ? 0 : 1;
                     break;
+                case 'pagelanguage':
+                    $obj->$k = $this->locale;
+                    break;
                 case "fdFromDate":
                     if (empty($data[$k])) {
                         $obj->$k = date('d/m/Y');

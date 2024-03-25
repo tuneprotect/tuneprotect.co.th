@@ -13,7 +13,9 @@ class BiglifeController  extends BaseController
     protected $controller = 'biglife';
     public function index()
     {
-            return $this->genView('frontend.page.thankyou');
+            
+        return $this->genStatusPage(ProjectEnum::STATIC_PAGE_BIGLIFE_POINT_THANK_YOU);
+        //return $this->genView('frontend.page.thankyou');
 
         //     $this->bodyData['headertext'] = __('product.biglife.headertext');
         //     $this->bodyData['labeltext'] = __('product.biglife.labeltext');

@@ -34,6 +34,7 @@ class BaseInsuranceObject
     public $fdAgent = "00DM004D00";
     public $fdPackage;
     public $fdlanguage;
+    public $pagelanguage;
     public $fdBenefit;
     public $fdRelation;
     public $fdOccup;
