@@ -10,10 +10,7 @@ import {
     validatePolicyPayment,
     validatePromotionCode,
     preValidatePromotionCode,
-    campaignVerifyProduct,
-    formatInputFieldByLanguage,
     formatInputFieldOnlyNumberic,
-    formatInputFieldOnlyCharecter,
     formatInputFieldOnlyCharecterOnlyEnglish,
 } from "../form/productHelper";
 import {

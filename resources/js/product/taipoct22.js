@@ -13,7 +13,6 @@ import {
     formatInputFieldOnlyCharecter,
     validatePromotionCode,
     preValidatePromotionCode,
-    campaignVerifyProduct,
 } from "../form/productHelper";
 import {
     $, 
@@ -29,8 +28,6 @@ import {
     showError, 
     showFieldError, 
     validateField,
-    validateAcceptStep1,
-    showAcceptError,
     showPromotionCodeValid,
     showPromotionCodeCount,
     showValidatePromotionCodeError,
