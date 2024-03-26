@@ -155,7 +155,7 @@ export default function WebContentPage({type_id, cat_id, config}) {
                 render: rowData => rowData.locales[i18n.language].title,
                 customFilterAndSearch: (value, rowData) => {
                     return Object.values(languageSupport)
-                        .some(v => (rowData.locales[v.code].title || '').toLowerCase().indexOf(value) !== -1);
+                        .some(v => (rowData.locales[v.code].title ?? '').toLowerCase().indexOf(value) !== -1);
                 }
             }
         ];
@@ -168,7 +168,7 @@ export default function WebContentPage({type_id, cat_id, config}) {
                     lookup: category,
                         render: (rowData) => category[rowData.cat_id],
                     customFilterAndSearch: (value, rowData) => {
-                        return rowData.cat_id.toString() === value.toString()
+                        return (rowData.cat_id ?? '').toString() === (value ?? '').toString()
                     }
 
                 }
