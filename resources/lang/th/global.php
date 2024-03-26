@@ -13,6 +13,7 @@ return [
     "more" => "เพิ่มเติม",
     'call_center' => 'Call Center',
     'call_center_number' => '1183',
+    'title' => "ชื่อ",
     'category' => "ประเภท",
     'choose_package' => 'เลือกแผนนี้',
     'choose_product' => 'ซื้อเลย',
