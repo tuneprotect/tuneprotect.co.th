@@ -316,6 +316,20 @@ const callPrePromotionCode = async (data) => {
     return await response.json();
 }
 
+const callCampaignVerifyProduct = async (data) => {
+    const response = await fetch(`/${$('html').getAttribute('lang')}/Product/CampaignVerifyProduct`, {
+        method: 'post',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').getAttribute('content')
+        },
+        body: JSON.stringify({...data})
+    })
+
+    return await response.json();
+}
+
 export const validatePolicyLoc = async ($this, fdPackage,fdFromDate) => {
     let field = $this.getAttribute('name');
     let data = {fdNationalID: null, loc_fdAddr_Home:null}
@@ -403,12 +417,16 @@ export const getSuscoBranch = async ($this) => {
     return callSuscoBranch();
 }
 
-export const validatePromotionCode = async (code, costAmount) => {
-    return callPromotionCode({code, costAmount});
+export const validatePromotionCode = async (code, costAmount, productCode) => {
+    return callPromotionCode({code, costAmount, productCode});
 }
 
-export const preValidatePromotionCode = async (code) => {
-    return callPrePromotionCode({code});
+export const preValidatePromotionCode = async (code, productCode) => {
+    return callPrePromotionCode({code, productCode});
+}
+
+export const campaignVerifyProduct = async (code, productCode) => {
+    return callCampaignVerifyProduct({code, productCode});
 }
 
 export const validatePolicyStep5 = async ($this, fdPackage, fdProductCode) => {

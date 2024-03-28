@@ -534,6 +534,9 @@ class ProductController extends BaseController
                 case 'fdlanguage':
                     $obj->$k = $this->locale == 'th' ? 0 : 1;
                     break;
+                case 'pagelanguage':
+                    $obj->$k = $this->locale;
+                    break;
                 case "fdFromDate":
                     if (empty($data[$k])) {
                         $obj->$k = date('d/m/Y');
@@ -1804,6 +1807,31 @@ class ProductController extends BaseController
         $data = $request->all();
         $client = new Client();
         $response = $client->request('POST', str_replace('/WEBSITE', '', config('tune-api.url')) . 'Promotions/CodeAvailable', [
+            'auth' => [config('tune-api.user'), config('tune-api.password')],
+            'headers' => [
+                'Content-Type' => 'application/json'
+            ],
+            'body' => json_encode($data)
+        ]);
+        $res = (object)json_decode($response->getBody()->getContents(), true);
+        $this->apiResult = $res->data;
+
+        if ($res->status) {
+            $this->apiStatus = self::SUCCESS;
+            $this->apiStatusText = self::SUCCESS;
+        } else {
+            $this->apiStatus = self::ERROR;
+            $this->apiStatusText = __('product.error.' . $res->message);
+        }
+
+        return $this->send();
+    }
+
+    public function campaignVerifyProduct(Request $request)
+    {
+        $data = $request->all();
+        $client = new Client();
+        $response = $client->request('POST', str_replace('/WEBSITE', '', config('tune-api.url')) . 'Promotions/CampaignVerifyProduct', [
             'auth' => [config('tune-api.user'), config('tune-api.password')],
             'headers' => [
                 'Content-Type' => 'application/json'

@@ -61,6 +61,12 @@
                     <label for="ctrl_no_of_insured">@lang("product.no_of_insured")</label>
                 </div>
             </div>
+
+            @if($controller == 'product')
+                <input type="hidden" id="promotion_code_condition" value="{{config('project.promotion_code_condition')}}"/>
+                @include('frontend.component.form-input-promotion-code')
+            @endif
+
             <div>
                 <p class="small">@lang('product.ipass_warning')</p>
             </div>
@@ -77,7 +83,6 @@
             <button id="nextstep1" data-gtm="product-{{strtolower($selected)}}-proceed-step-1" data-step="2"
                     class="btn btn-primary btn-goto">@lang('product.next')</button>
         </div>
-
 
         <input type="hidden" id="controller" value="{{$controller}}"/>
         @if($controller == 'portal')

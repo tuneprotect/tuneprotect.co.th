@@ -44,6 +44,12 @@
                     <label for="ctrl_no_of_insured">@lang("product.no_of_insured")</label>
                 </div>
             </div>
+
+            @if($controller == 'product')
+                <input type="hidden" id="promotion_code_condition" value="{{config('project.promotion_code_condition')}}"/>
+                @include('frontend.component.form-input-promotion-code')
+            @endif
+
             <div>
                 <p class="small">@lang('product.ismile_warning')</p>
             </div>
