@@ -28,6 +28,41 @@ use App\Helper\TemplateHelper; ?>
         <meta name="facebook-domain-verification" content="pa4vdurvww8ktkzh7xbm2tyrc7iwzv" />
         <meta name='facebook-domain-verification' content='4ojuebt1n4u0c2808tn6hhc3vi6e75' />
 
+        <!-- Script for organization information by heroleads -->
+        <script type="application/ld+json">
+            {
+                "@context": "https://schema.org/",
+                "@type": "Organization",
+                "url": "https://online.tuneprotect.co.th/",
+                "logo": {
+                    "@type": "ImageObject",
+                    "url": "https://online.tuneprotect.co.th/static/media/tune-logo.ca893fb8039417bb8f7f.png"
+                },
+                "name": "ทูน ประกันภัย Tune Protect",
+                "email": "customercare@tuneprotect.com",
+                "description": "เริ่มก่อตั้งกิจการ จากการร่วมมือกันระหว่าง TPG Tune Protect Group Berhad ซึ่งเป็นบริษัท ประกันภัยที่ทําธุรกิจ ทั้งประกันภัยตรงและประกันภัยต่อใน 17 ประเทศทั่วเอเชียแปซิฟิก ตะวันออกกลางและแอฟริกาเหนือ และ บริษัท โอสถสภาประกันภัย จํากัด (มหาชน) ซึ่งเป็นบริษัทใน เครือบริษัท โอสถสภา จํากัด และได้เปลี่ยนชื่อเป็น “บริษัท ทูนประกันภัย จํากัด (มหาชน)” ปัจจุบันเพื่อตอบย้ำภาพลักษณ์และนโยบาย One Tune Protect บริษัท ทูนประกันภัย จึงเปลี่ยนแปลงชื่อเพื่อ การสื่อสารเป็น Tune Protect Thailand",
+                "address": "บริษัท ทูนประกันภัย จำกัด (มหาชน) เลขที่ 3199 อาคารมาลีนนท์ ทาวเวอร์ ชั้น 14 ถนนพระราม 4 แขวงคลองตัน เขตคลองเตย กรุงเทพมหานคร 10110",
+                "telephone": "02-078-5656"
+            }
+        </script>
+
+        <!-- Script for sitelink search box by heroleads -->
+        <script type="application/ld+json">
+            {
+                "@context": "https://schema.org",
+                "@type": "WebSite",
+                "url": "https://online.tuneprotect.co.th/",
+                "potentialAction": {
+                    "@type": "SearchAction",
+                    "target": {
+                        "@type": "EntryPoint",
+                        "urlTemplate": "https://online.tuneprotect.co.th/search?q={search_term_string}"
+                    },
+                    "query-input": "required name=search_term_string"
+                }
+            }
+        </script>
+
         @if(isset($template[TemplateHelper::META] ))
             @foreach ($template[TemplateHelper::META] as $v)
             <meta <?php echo TemplateHelper::genAttribute($v) ?> />
