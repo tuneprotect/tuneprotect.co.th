@@ -8,7 +8,7 @@
                         <div class="item">
                             <div class="two-tone-icon">
                                 <span><img src="{{url($v->pic)}}" alt=""></span>
-                                <strong>{{$v->locales[$locale]->title}}</strong>
+                                <h2>{{$v->locales[$locale]->title}}</h2>
                             </div>
                             <div class="description ">
                                 @if(strpos($v->locales[$locale]->content, 'data-gtm') === false)
