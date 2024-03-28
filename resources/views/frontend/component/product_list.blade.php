@@ -41,9 +41,14 @@
         </div>
     </div>
 </section>
-<div class="wrapper">
-    <section class="wrapper-inner">
-        {!! $product->locales[$locale]->content !!}
+@if(isset($product->locales[$locale]->content))
+    <section class="content_section">
+        <div class="wrapper">
+            <section class="wrapper-inner">
+                {!! $product->locales[$locale]->content !!}
+            </section>
+        </div>
     </section>
-</div>
+@endif
+
 @include('frontend.component.faq')

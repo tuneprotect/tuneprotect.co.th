@@ -1664,6 +1664,54 @@ main {
     }
 }
 
+.content_section {
+    padding-bottom: 0;
+
+    .header {
+        text-align: center;
+        position: relative;
+        width: 20%;
+        margin: 0 auto;
+        @media all and (max-width: $sm) {
+            width: 100%;
+        }
+
+        h1 {
+            display: inline-block;
+            font-size: 4rem;
+            position: relative;
+
+            @media all and (max-width: $sm) {
+                width: auto;
+            }
+        }
+    }
+
+    .wrapper {
+        .wrapper-inner {
+            box-shadow: 1px 1px 3px 3px #eee;
+            border-radius: 10px;
+            padding: 0;
+            margin-bottom: 30px;
+        }
+
+        .title {
+            position: relative;
+            border-radius: 10px;
+            padding: 10px 20px;
+
+            h3 {
+                color: $primary-color;
+                width: 80%;
+            }
+        }
+
+        p {
+            font-size: 27px;
+        }
+    }
+}
+
 .faq_section {
     padding-bottom: 0;
 
