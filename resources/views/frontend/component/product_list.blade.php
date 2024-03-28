@@ -41,4 +41,9 @@
         </div>
     </div>
 </section>
+<div class="wrapper">
+    <section class="wrapper-inner">
+        {{$product->locales[$locale]->content}}
+    </section>
+</div>
 @include('frontend.component.faq')
