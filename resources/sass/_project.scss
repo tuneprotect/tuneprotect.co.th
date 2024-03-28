@@ -1712,17 +1712,7 @@ main {
         }
 
         ul {
-            padding: 0 20px;
-
-            li {
-                border: 1px solid #eee;
-                background: #FFFFFF;
-                margin-bottom: 10px;
-                padding: 10px 20px;
-                border-radius: 10px;
-                cursor: pointer;
-                position: relative;
-            }
+            list-style: disc;
         }
     }
 }
