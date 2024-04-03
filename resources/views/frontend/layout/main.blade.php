@@ -315,6 +315,14 @@
                                                 src="{{url(!empty($v->pic_mobile_en) ? url(str_replace('Banner_TA_D_EN', 'b2b/iTravel_MB_EN', $v->pic_mobile_en)) : url(str_replace('Banner_TA_D_EN', 'b2b/iTravel_MB_EN', $v->pic_en)) )}}"
                                                 alt="{{$v->locales[$locale]->title}}">
                                         </picture>
+                                    @elseif($selected==='ONPACA' || $selected==='ONPAKD' || $selected==='ONPASN')
+                                        <picture>
+                                            <source media="(min-width:768px)"
+                                                    srcset="/storage/Banner/PA/PAChoice-PC-EN.webp">
+                                            <img
+                                                src="{{url(!empty($v->pic_mobile_en) ? "/storage/Banner/PA/PAChoice-PC-EN.webp" : "/storage/Banner/PA/PAChoice-MB-EN.webp" )}}"
+                                                alt="{{$v->locales[$locale]->title}}">
+                                        </picture>
                                     @else
                                         @if($selected==='ONTAOB')
                                             <picture>
@@ -416,6 +424,14 @@
                                                     srcset="{{url(str_replace('Banner_TA_D', 'b2b/iTravel_PC_TH', $v->pic_en))}}">
                                             <img
                                                 src="{{url(!empty($v->pic_mobile_en) ? url(str_replace('Banner_TA_D', 'b2b/iTravel_MB_TH', $v->pic_mobile_en)) : url(str_replace('Banner_TA_D', 'b2b/iTravel_MB_TH', $v->pic_en)) )}}"
+                                                alt="{{$v->locales[$locale]->title}}">
+                                        </picture>
+                                    @elseif($selected==='ONPACA' || $selected==='ONPAKD' || $selected==='ONPASN')
+                                        <picture>
+                                            <source media="(min-width:768px)"
+                                                    srcset="/storage/Banner/PA/PAChoice-PC-TH.webp">
+                                            <img
+                                                src="{{url(!empty($v->pic_mobile_en) ? "/storage/Banner/PA/PAChoice-PC-TH.webp" : "/storage/Banner/PA/PAChoice-MB-TH.webp" )}}"
                                                 alt="{{$v->locales[$locale]->title}}">
                                         </picture>
                                     @else
