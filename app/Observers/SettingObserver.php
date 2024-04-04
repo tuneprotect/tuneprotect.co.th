@@ -27,9 +27,9 @@ class SettingObserver
     public function updated(Setting $setting)
     {
         if ($setting->publish === 1 && $setting->getConnection()->getName() === 'staging') {
-            //DB::connection('live')->unprepared('SET IDENTITY_INSERT ' . Setting::TableName() . ' ON');
+            DB::connection('live')->unprepared('SET IDENTITY_INSERT ' . Setting::TableName() . ' ON');
             Setting::on('live')->updateOrCreate(['id' => $setting->id], $setting->toArray());
-            //DB::connection('live')->unprepared('SET IDENTITY_INSERT ' . Setting::TableName() . ' OFF');
+            DB::connection('live')->unprepared('SET IDENTITY_INSERT ' . Setting::TableName() . ' OFF');
         }
     }
 
