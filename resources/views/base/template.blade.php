@@ -134,7 +134,7 @@ use App\Helper\TemplateHelper; ?>
                         dataLayer.push(arguments);
                     }   
                     gtag('js', new Date());   
-                    gtag('config', 'G-QHJGFFXSVN'); 
+                    gtag('config', 'G-GGKQZLM02H');
                 </script>
 
                 <!-- Facebook Pixel Code -->
@@ -199,8 +199,8 @@ use App\Helper\TemplateHelper; ?>
                                 function gtag(){
                                     dataLayer.push(arguments);
                                 }   
-                                gtag('js', new Date());   
-                                gtag('config', 'G-QHJGFFXSVN'); 
+                                gtag('js', new Date());
+                                gtag('config', 'G-GGKQZLM02H');
                             </script>
 
                             <!-- Event snippet for Payment Completed conversion page -->
