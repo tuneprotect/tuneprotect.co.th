@@ -404,11 +404,15 @@ document.addEventListener("DOMContentLoaded", async () => {
                     const item = {
                         item_id: "",
                         item_name: "",
+                        item_brand: "",
+                        item_category: "",
                         price: "",
                     };
 
                     item.item_id = "PAChoiceSenior_" + planCode;
                     item.item_name = "PA Choice Senior Plan Code " + planCode;
+                    item.item_brand = "PA Choice Senior";
+                    item.item_category = "PA Choice";
                     item.price = price;
 
                     itemList.push(item);
@@ -480,6 +484,8 @@ document.addEventListener("DOMContentLoaded", async () => {
                                             items: [{
                                                 item_id: "PAChoiceSenior_" + fdPackage,
                                                 item_name: "PA Choice Senior Plan Code " + fdPackage,
+                                                item_brand: "PA Choice Senior",
+                                                item_category: "PA Choice",
                                                 price: selectPrice
                                             }]
                                         }
@@ -602,6 +608,8 @@ document.addEventListener("DOMContentLoaded", async () => {
                                             items: [{
                                                 item_id: "PAChoiceSenior_" + data.fdPackage,
                                                 item_name: "PA Choice Senior Plan Code " + data.fdPackage,
+                                                item_brand: "PA Choice Senior",
+                                                item_category: "PA Choice",
                                                 price: data.fdPayAMT
                                             }]
                                         }

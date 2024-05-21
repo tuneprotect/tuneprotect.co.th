@@ -313,11 +313,15 @@ const genItemList = (package_data) => {
                 const item = {
                     item_id: "",
                     item_name: "",
+                    item_brand: "",
+                    item_category: "",
                     price: "",
                 };
 
                 item.item_id = "myHomePlus_" + planCode;
                 item.item_name = "myHome Plus Plan Code " + planCode;
+                item.item_brand = "myHome Plus";
+                item.item_category = "Fire Insurance";
                 item.price = price;
 
                 itemList.push(item);
@@ -695,6 +699,8 @@ document.addEventListener("DOMContentLoaded", async () => {
                                         items: [{
                                             item_id: "myHomePlus_" + fdPackage,
                                             item_name: "myHome Plus Plan Code " + fdPackage,
+                                            item_brand: "myHome Plus",
+                                            item_category: "Fire Insurance",
                                             price: selectPrice
                                         }]
                                     }
@@ -921,6 +927,8 @@ document.addEventListener("DOMContentLoaded", async () => {
                                         items: [{
                                             item_id: "myHomePlus_" + data.fdPackage,
                                             item_name: "myHome Plus Plan Code " + data.fdPackage,
+                                            item_brand: "myHome Plus",
+                                            item_category: "Fire Insurance",
                                             price: data.fdPayAMT
                                         }]
                                     }

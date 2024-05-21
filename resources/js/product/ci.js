@@ -455,11 +455,15 @@ if ($('#title_wrapper')) {
                         const item = {
                             item_id: "",
                             item_name: "",
+                            item_brand: "",
+                            item_category: "",
                             price: "",
                         };
     
                         item.item_id = "myFlexiCI_" + planCode;
                         item.item_name = "myFlexi CI" + planCode;
+                        item.item_brand = "myFlexi CI";
+                        item.item_category = "Health Insurance";
                         item.price = price;
     
                         itemList.push(item);
@@ -686,6 +690,8 @@ if ($('#title_wrapper')) {
                                                 items: [{
                                                     item_id: "myFlexiCI_" + fdPackage,
                                                     item_name: "myFlexi CI Plan Code " + fdPackage,
+                                                    item_brand: "myFlexi CI",
+                                                    item_category: "Health Insurance",
                                                     price: selectPrice
                                                 }]
                                             }
@@ -815,6 +821,8 @@ if ($('#title_wrapper')) {
                                                 items: [{
                                                     item_id: "myFlexiCI_" + data.fdPackage,
                                                     item_name: "myFlexi CI Plan Code " + data.fdPackage,
+                                                    item_brand: "myFlexi CI",
+                                                    item_category: "Health Insurance",
                                                     price: data.fdPayAMT
                                                 }]
                                             }

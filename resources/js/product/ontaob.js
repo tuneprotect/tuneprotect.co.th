@@ -378,11 +378,15 @@ const genItemList = (package_data, fdFromDate, fdToDate) => {
                 const item = {
                     item_id: "",
                     item_name: "",
+                    item_brand: "",
+                    item_category: "",
                     price: "",
                 };
 
                 item.item_id = "iTravel_" + planCode;
                 item.item_name = "iTravel Plan Code " + planCode;
+                item.item_brand = "iTravel";
+                item.item_category = "Travel Insurance";
                 item.price = price;
 
                 itemList.push(item);
@@ -714,6 +718,8 @@ document.addEventListener("DOMContentLoaded", async () => {
                                         items: [{
                                             item_id: "iTravel_" + fdPackage,
                                             item_name: "iTravel Plan Code " + fdPackage,
+                                            item_brand: "iTravel",
+                                            item_category: "Travel Insurance",
                                             price: selectPrice
                                         }]
                                     }
@@ -860,6 +866,8 @@ document.addEventListener("DOMContentLoaded", async () => {
                                         items: [{
                                             item_id: "iTravel_" + data.fdPackage,
                                             item_name: "iTravel Plan Code " + data.fdPackage,
+                                            item_brand: "iTravel",
+                                            item_category: "Travel Insurance",
                                             price: selectPrice
                                         }]
                                     }

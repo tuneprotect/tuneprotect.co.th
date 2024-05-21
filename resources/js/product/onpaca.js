@@ -402,11 +402,15 @@ document.addEventListener("DOMContentLoaded", async () => {
                     const item = {
                         item_id: "",
                         item_name: "",
+                        item_brand: "",
+                        item_category: "",
                         price: "",
                     };
 
                     item.item_id = "PAChoiceCare_" + planCode;
                     item.item_name = "PA Choice Care Plan Code " + planCode;
+                    item.item_brand = "PA Choice Care";
+                    item.item_category = "PA Choice";
                     item.price = price;
 
                     itemList.push(item);
@@ -478,6 +482,8 @@ document.addEventListener("DOMContentLoaded", async () => {
                                             items: [{
                                                 item_id: "PAChoiceCare_" + fdPackage,
                                                 item_name: "PA Choice Care Plan Code " + fdPackage,
+                                                item_brand: "PA Choice Care",
+                                                item_category: "PA Choice",
                                                 price: selectPrice
                                             }]
                                         }
@@ -600,6 +606,8 @@ document.addEventListener("DOMContentLoaded", async () => {
                                             items: [{
                                                 item_id: "PAChoiceCare_" + data.fdPackage,
                                                 item_name: "PA Choice Care Plan Code " + data.fdPackage,
+                                                item_brand: "PA Choice Care",
+                                                item_category: "PA Choice",
                                                 price: data.fdPayAMT
                                             }]
                                         }

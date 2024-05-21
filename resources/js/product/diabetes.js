@@ -377,11 +377,15 @@ document.addEventListener("DOMContentLoaded", async () => {
                     const item = {
                         item_id: "",
                         item_name: "",
+                        item_brand: "",
+                        item_category: "",
                         price: "",
                     };
 
                     item.item_id = "Diabetes_" + planCode;
                     item.item_name = "Diabetes_" + planCode;
+                    item.item_brand = "Diabetes";
+                    item.item_category = "Health Insurance";
                     item.price = price;
 
                     itemList.push(item);
@@ -588,6 +592,8 @@ document.addEventListener("DOMContentLoaded", async () => {
                                             items: [{
                                                 item_id: "Diabetes_" + fdPackage,
                                                 item_name: "Diabetes Plan Code " + fdPackage,
+                                                item_brand: "Diabetes",
+                                                item_category: "Health Insurance",
                                                 price: selectPrice
                                             }]
                                         }
@@ -704,6 +710,8 @@ document.addEventListener("DOMContentLoaded", async () => {
                                             items: [{
                                                 item_id: "Diabetes_" + data.fdPackage,
                                                 item_name: "Diabetes Plan Code " + data.fdPackage,
+                                                item_brand: "Diabetes",
+                                                item_category: "Health Insurance",
                                                 price: data.fdPayAMT
                                             }]
                                         }

@@ -291,11 +291,15 @@ const genItemList = (package_data, fdFromDate, fdToDate) => {
                 const item = {
                     item_id: "",
                     item_name: "",
+                    item_brand: "",
+                    item_category: "",
                     price: "",
                 };
 
                 item.item_id = "TuneiPass_" + planCode;
                 item.item_name = "TuneiPass Plan Code " + planCode;
+                item.item_brand = "Tune iPass";
+                item.item_category = "Travel Insurance";
                 item.price = price;
 
                 itemList.push(item);
@@ -604,6 +608,8 @@ document.addEventListener("DOMContentLoaded", async () => {
                                         items: [{
                                             item_id: "TuneiPass_" + fdPackage,
                                             item_name: "TuneiPass Plan Code " + fdPackage,
+                                            item_brand: "Tune iPass",
+                                            item_category: "Travel Insurance",
                                             price: selectPrice
                                         }]
                                     }
@@ -734,6 +740,8 @@ document.addEventListener("DOMContentLoaded", async () => {
                                         items: [{
                                             item_id: "TuneiPass_" + data.fdPackage,
                                             item_name: "TuneiPass Plan Code " + data.fdPackage,
+                                            item_brand: "Tune iPass",
+                                            item_category: "Travel Insurance",
                                             price: data.fdPayAMT
                                         }]
                                     }
