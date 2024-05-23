@@ -213,8 +213,8 @@
                                         </picture>
                                     @elseif($selected==='CIGC')
                                         <picture>
-                                            <source media="(min-width:768px)" srcset="https://www.tuneprotect.co.th/storage/Banner/MyFlexiCI/MyFlexiCIGC/Banner_Website_CIGC_EN.webp">
-                                            <img src="{{url(!empty($v->pic_mobile_en) ? "https://www.tuneprotect.co.th/storage/Banner/MyFlexiCI/MyFlexiCIGC/Banner_Website_CIGC_EN.webp" : "https://www.tuneprotect.co.th/storage/Banner/MyFlexiCI/MyFlexiCIGC/Banner_Website_CIGC_EN.webp" )}}" alt="{{$v->locales[$locale]->title}}">
+                                            <source media="(min-width:768px)" srcset="/storage/Banner/MyFlexiCI/MyFlexiCIGC/Banner_Website_CIGC_EN.webp">
+                                            <img src="{{url(!empty($v->pic_mobile_en) ? "/storage/Banner/MyFlexiCI/MyFlexiCIGC/Banner_Website_CIGC_EN.webp" : "/storage/Banner/MyFlexiCI/MyFlexiCIGC/Banner_Website_CIGC_EN.webp" )}}" alt="{{$v->locales[$locale]->title}}">
                                         </picture>
                                     @elseif($selected==='ONFIMP')
                                         <picture>
@@ -243,18 +243,18 @@
                                         </picture>
                                     @elseif($selected==='ONCSHCAA')
                                         <picture>
-                                            <source media="(min-width:768px)" srcset="https://www.tuneprotect.co.th/storage/Banner/chillsure/banner-chillsure-airasia-desktop-en.webp">
-                                            <img src="{{url(!empty($v->pic_mobile_en) ? "https://www.tuneprotect.co.th/storage/Banner/chillsure/banner-chillsure-airasia-mobile-en.webp" : "https://www.tuneprotect.co.th/storage/Banner/chillsure/banner-chillsure-airasia-mobile-en.webp" )}}" alt="{{$v->locales[$locale]->title}}">
+                                            <source media="(min-width:768px)" srcset="/storage/Banner/chillsure/banner-chillsure-airasia-desktop-en.webp">
+                                            <img src="{{url(!empty($v->pic_mobile_en) ? "/storage/Banner/chillsure/banner-chillsure-airasia-mobile-en.webp" : "/storage/Banner/chillsure/banner-chillsure-airasia-mobile-en.webp" )}}" alt="{{$v->locales[$locale]->title}}">
                                         </picture>
                                     @elseif($selected==='ONCSHCSC')
                                         <picture>
-                                            <source media="(min-width:768px)" srcset="https://www.tuneprotect.co.th/storage/Banner/chillsure/susco/Tune-Chillsure-EN-NonDirect.webp">
-                                            <img src="{{url(!empty($v->pic_mobile_en) ? "https://www.tuneprotect.co.th/storage/Banner/chillsure/susco/Tune-Chillsure-EN-NonDirect.webp" : "https://www.tuneprotect.co.th/storage/Banner/chillsure/susco/Tune-Chillsure-EN-NonDirect.webp" )}}" alt="{{$v->locales[$locale]->title}}">
+                                            <source media="(min-width:768px)" srcset="/storage/Banner/chillsure/susco/Tune-Chillsure-EN-NonDirect.webp">
+                                            <img src="{{url(!empty($v->pic_mobile_en) ? "/storage/Banner/chillsure/susco/Tune-Chillsure-EN-NonDirect.webp" : "/storage/Banner/chillsure/susco/Tune-Chillsure-EN-NonDirect.webp" )}}" alt="{{$v->locales[$locale]->title}}">
                                         </picture>
                                     @elseif($selected==='ONCSHCGV')
                                         <picture>
-                                            <source media="(min-width:768px)" srcset="https://www.tuneprotect.co.th/storage/Banner/chillsure/GiftVoucher/Banner_Website_ChillSure_GiftVoucher_EN.webp">
-                                            <img src="{{url(!empty($v->pic_mobile_en) ? "https://www.tuneprotect.co.th/storage/Banner/chillsure/GiftVoucher/Banner_Website_ChillSure_GiftVoucher_EN.webp" : "https://www.tuneprotect.co.th/storage/Banner/chillsure/GiftVoucher/Banner_Website_ChillSure_GiftVoucher_EN.webp" )}}" alt="{{$v->locales[$locale]->title}}">
+                                            <source media="(min-width:768px)" srcset="/storage/Banner/chillsure/GiftVoucher/Banner_Website_ChillSure_GiftVoucher_EN.webp">
+                                            <img src="{{url(!empty($v->pic_mobile_en) ? "/storage/Banner/chillsure/GiftVoucher/Banner_Website_ChillSure_GiftVoucher_EN.webp" : "/storage/Banner/chillsure/GiftVoucher/Banner_Website_ChillSure_GiftVoucher_EN.webp" )}}" alt="{{$v->locales[$locale]->title}}">
                                         </picture>
                                     @elseif($selected==='PUMPPA')
                                         <picture>
@@ -281,8 +281,8 @@
                                         </picture>    
                                     @elseif($selected==='TAIPOCT22AA')
                                         <picture class="aa">
-                                            <source media="(min-width:768px)" srcset="https://www.tuneprotect.co.th/storage/Banner/Tune%20iPass/dtacbanner.jpg">
-                                            <img src="{{url(!empty($v->pic_mobile_en) ? "https://www.tuneprotect.co.th/storage/Banner/Tune%20iPass/dtacbanner.jpg" : "https://www.tuneprotect.co.th/storage/Banner/Tune%20iPass/dtacbanner.jpg" )}}" alt="{{$v->locales[$locale]->title}}">
+                                            <source media="(min-width:768px)" srcset="/storage/Banner/Tune%20iPass/dtacbanner.jpg">
+                                            <img src="{{url(!empty($v->pic_mobile_en) ? "/storage/Banner/Tune%20iPass/dtacbanner.jpg" : "/storage/Banner/Tune%20iPass/dtacbanner.jpg" )}}" alt="{{$v->locales[$locale]->title}}">
                                         </picture>      
                                     @elseif(isset($agentCode))
                                         @if($agentCode==='00DM004D00' && $selected==='TAIPOCT22')
@@ -365,8 +365,8 @@
                                         </picture>
                                     @elseif($selected==='CIGC')
                                         <picture>
-                                            <source media="(min-width:768px)" srcset="https://www.tuneprotect.co.th/storage/Banner/MyFlexiCI/MyFlexiCIGC/Banner_Website_CIGC_TH.webp">
-                                            <img src="{{url(!empty($v->pic_mobile_en) ? "https://www.tuneprotect.co.th/storage/Banner/MyFlexiCI/MyFlexiCIGC/Banner_Website_CIGC_TH.webp" : "https://www.tuneprotect.co.th/storage/Banner/MyFlexiCI/MyFlexiCIGC/Banner_Website_CIGC_TH.webp" )}}" alt="{{$v->locales[$locale]->title}}">
+                                            <source media="(min-width:768px)" srcset="/storage/Banner/MyFlexiCI/MyFlexiCIGC/Banner_Website_CIGC_TH.webp">
+                                            <img src="{{url(!empty($v->pic_mobile_en) ? "/storage/Banner/MyFlexiCI/MyFlexiCIGC/Banner_Website_CIGC_TH.webp" : "/storage/Banner/MyFlexiCI/MyFlexiCIGC/Banner_Website_CIGC_TH.webp" )}}" alt="{{$v->locales[$locale]->title}}">
                                         </picture>
                                     @elseif($selected==='ONFIMP')
                                         <picture>
@@ -395,18 +395,18 @@
                                         </picture>
                                     @elseif($selected==='ONCSHCAA')
                                         <picture>
-                                            <source media="(min-width:768px)" srcset="https://www.tuneprotect.co.th/storage/Banner/chillsure/banner-chillsure-airasia-desktop-th.webp">
-                                            <img src="{{url(!empty($v->pic_mobile_en) ? "https://www.tuneprotect.co.th/storage/Banner/chillsure/banner-chillsure-airasia-mobile-th.webp" : "https://www.tuneprotect.co.th/storage/Banner/chillsure/banner-chillsure-airasia-mobile-th.webp" )}}" alt="{{$v->locales[$locale]->title}}">
+                                            <source media="(min-width:768px)" srcset="/storage/Banner/chillsure/banner-chillsure-airasia-desktop-th.webp">
+                                            <img src="{{url(!empty($v->pic_mobile_en) ? "/storage/Banner/chillsure/banner-chillsure-airasia-mobile-th.webp" : "/storage/Banner/chillsure/banner-chillsure-airasia-mobile-th.webp" )}}" alt="{{$v->locales[$locale]->title}}">
                                         </picture> 
                                     @elseif($selected==='ONCSHCSC')
                                         <picture>
-                                            <source media="(min-width:768px)" srcset="https://www.tuneprotect.co.th/storage/Banner/chillsure/susco/Tune-Chillsure-TH-NonDirect.webp">
-                                            <img src="{{url(!empty($v->pic_mobile_en) ? "https://www.tuneprotect.co.th/storage/Banner/chillsure/susco/Tune-Chillsure-TH-NonDirect.webp" : "https://www.tuneprotect.co.th/storage/Banner/chillsure/susco/Tune-Chillsure-TH-NonDirect.webp" )}}" alt="{{$v->locales[$locale]->title}}">
+                                            <source media="(min-width:768px)" srcset="/storage/Banner/chillsure/susco/Tune-Chillsure-TH-NonDirect.webp">
+                                            <img src="{{url(!empty($v->pic_mobile_en) ? "/storage/Banner/chillsure/susco/Tune-Chillsure-TH-NonDirect.webp" : "/storage/Banner/chillsure/susco/Tune-Chillsure-TH-NonDirect.webp" )}}" alt="{{$v->locales[$locale]->title}}">
                                         </picture>
                                     @elseif($selected==='ONCSHCGV')
                                         <picture>
-                                            <source media="(min-width:768px)" srcset="https://www.tuneprotect.co.th/storage/Banner/chillsure/GiftVoucher/Banner_Website_ChillSure_GiftVoucher_TH.webp">
-                                            <img src="{{url(!empty($v->pic_mobile_en) ? "https://www.tuneprotect.co.th/storage/Banner/chillsure/GiftVoucher/Banner_Website_ChillSure_GiftVoucher_TH.webp" : "https://www.tuneprotect.co.th/storage/Banner/chillsure/GiftVoucher/Banner_Website_ChillSure_GiftVoucher_TH.webp" )}}" alt="{{$v->locales[$locale]->title}}">
+                                            <source media="(min-width:768px)" srcset="/storage/Banner/chillsure/GiftVoucher/Banner_Website_ChillSure_GiftVoucher_TH.webp">
+                                            <img src="{{url(!empty($v->pic_mobile_en) ? "/storage/Banner/chillsure/GiftVoucher/Banner_Website_ChillSure_GiftVoucher_TH.webp" : "/storage/Banner/chillsure/GiftVoucher/Banner_Website_ChillSure_GiftVoucher_TH.webp" )}}" alt="{{$v->locales[$locale]->title}}">
                                         </picture>
                                     @elseif($selected==='PUMPPA')
                                         <picture>
