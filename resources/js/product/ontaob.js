@@ -347,7 +347,6 @@ const genPrice = (package_data,country_data, subpackage, fdFromDate, fdToDate) =
 }
 
 const genItemList = (package_data, fdFromDate, fdToDate) => {
-
     let index = 0;
     const itemList = [];
 
@@ -359,7 +358,7 @@ const genItemList = (package_data, fdFromDate, fdToDate) => {
         const day = differenceInDays(endDate, startDate) + 1;
         
         Object.keys(package_data)
-            .filter(k => _.startsWith(k, current_package))
+            .filter(k => _.startsWith(k, current_package) && k.includes($('#ctrl_sub_package').value))
             .map(k => {
                 const pack = Object.keys(package_data[k].price).filter(subPackage => {
                     const dateRange = (package_data[k].price[subPackage].day).split('-');
