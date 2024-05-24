@@ -367,59 +367,57 @@ const genItemList = (package_data, fdFromDate, fdToDate) => {
                     const dateRange = (package_data[k].price[subPackage].day).split('-');
                     if(dateRange.length === 1)
                     {
-                        const price = parseInt(package_data[k].price[pack].price).toLocaleString();
-                        const planCode = Object.keys(package_data)[index];
-
-                        const item = {
-                            item_id: "",
-                            item_name: "",
-                            item_brand: "",
-                            item_category: "",
-                            price: "",
-                        };
-
-                        item.item_id = "iTravel_" + planCode;
-                        item.item_name = "iTravel Plan Code " + planCode;
-                        item.item_brand = "iTravel";
-                        item.item_category = "Travel Insurance";
-                        item.price = price;
-
-                        itemList.push(item);
-                        index++;
-                        
                         return day >= dateRange[0] && day <= dateRange[0];
                     }
                     else
                     {
-                        const price = parseInt(package_data[k].price[pack].price).toLocaleString();
-                        const planCode = Object.keys(package_data)[index];
-
-                        const item = {
-                            item_id: "",
-                            item_name: "",
-                            item_brand: "",
-                            item_category: "",
-                            price: "",
-                        };
-
-                        item.item_id = "iTravel_" + planCode;
-                        item.item_name = "iTravel Plan Code " + planCode;
-                        item.item_brand = "iTravel";
-                        item.item_category = "Travel Insurance";
-                        item.price = price;
-
-                        itemList.push(item);
-                        index++;
-
                         return day >= dateRange[0] && day <= dateRange[1];
                     }
-
-                    
-                    
                 })
-                
 
-                
+                const dateRange = (package_data[k].price[subPackage].day).split('-');
+                if (day >= dateRange[0] && day <= dateRange[0]) {
+                    const price = parseInt(package_data[k].price[pack].price).toLocaleString();
+                    const planCode = Object.keys(package_data)[index];
+
+                    const item = {
+                        item_id: "",
+                        item_name: "",
+                        item_brand: "",
+                        item_category: "",
+                        price: "",
+                    };
+
+                    item.item_id = "iTravel_" + planCode;
+                    item.item_name = "iTravel Plan Code " + planCode;
+                    item.item_brand = "iTravel";
+                    item.item_category = "Travel Insurance";
+                    item.price = price;
+
+                    itemList.push(item);
+                } 
+                else 
+                {
+                    const price = parseInt(package_data[k].price[pack].price).toLocaleString();
+                    const planCode = Object.keys(package_data)[index];
+
+                    const item = {
+                        item_id: "",
+                        item_name: "",
+                        item_brand: "",
+                        item_category: "",
+                        price: "",
+                    };
+
+                    item.item_id = "iTravel_" + planCode;
+                    item.item_name = "iTravel Plan Code " + planCode;
+                    item.item_brand = "iTravel";
+                    item.item_category = "Travel Insurance";
+                    item.price = price;
+
+                    itemList.push(item);
+                }
+                index++;
             });
     }
 
