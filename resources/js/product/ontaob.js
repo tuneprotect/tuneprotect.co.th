@@ -357,8 +357,10 @@ const genItemList = (package_data, fdFromDate, fdToDate) => {
 
         const day = differenceInDays(endDate, startDate) + 1;
         
+        if ($('#ctrl_travel_type').value === 'annual'){ current_package + $('#ctrl_sub_package').value }else{ current_package }
+
         Object.keys(package_data)
-            .filter(k => _.startsWith(k, current_package + ($('#ctrl_travel_type').value === 'annual' ? $('#ctrl_sub_package').value : null)))
+            .filter(k => _.startsWith(k, current_package))
             .map(k => {
                 const pack = Object.keys(package_data[k].price).filter(subPackage => {
                     const dateRange = (package_data[k].price[subPackage].day).split('-');
