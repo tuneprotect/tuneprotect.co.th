@@ -357,7 +357,7 @@ const genItemList = (package_data, country_data, subpackage, fdFromDate, fdToDat
 
         const day = differenceInDays(endDate, startDate) + 1;
         
-        let zone = '';
+        let country_zone = '';
         country_data.map(v => {
                 if (v.code === $('#fdDestTo').value) {
                     country_zone = v.zone;
