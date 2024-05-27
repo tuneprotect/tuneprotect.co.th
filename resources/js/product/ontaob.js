@@ -357,8 +357,16 @@ const genItemList = (package_data, fdFromDate, fdToDate) => {
 
         const day = differenceInDays(endDate, startDate) + 1;
         
+        let country_zone = '';
+        country_data.map(v => {
+                if (v.code === $('#fdDestTo').value) {
+                    country_zone = v.zone;
+                }
+            });
+        subpackage = country_zone;
+
         let current_packages = "";
-        if ($('#ctrl_travel_type').value === 'annual'){ current_packages = current_package + $('#ctrl_sub_package').value } else { current_packages = current_package + "WW" }
+        if ($('#ctrl_travel_type').value === 'annual'){ current_packages = current_package + $('#ctrl_sub_package').value } else { current_packages = current_package + subpackage }
 
         Object.keys(package_data)
             .filter(k => _.startsWith(k, current_packages))
