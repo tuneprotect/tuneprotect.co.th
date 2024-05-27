@@ -346,7 +346,7 @@ const genPrice = (package_data,country_data, subpackage, fdFromDate, fdToDate) =
     });
 }
 
-const genItemList = (package_data, country_data, fdFromDate, fdToDate) => {
+const genItemList = (package_data, country_data, subpackage, fdFromDate, fdToDate) => {
     let index = 0;
     const itemList = [];
 
@@ -357,7 +357,7 @@ const genItemList = (package_data, country_data, fdFromDate, fdToDate) => {
 
         const day = differenceInDays(endDate, startDate) + 1;
         
-        let country_zone = '';
+        let zone = '';
         country_data.map(v => {
                 if (v.code === $('#fdDestTo').value) {
                     country_zone = v.zone;
@@ -702,7 +702,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                         }
 
                         genPrice(package_data,countryData, $('#ctrl_sub_package').value, data.fdFromDate, data.fdToDate, $('#ctrl_travel_type').value);
-                        genItemList(package_data, countryData, data.fdFromDate, data.fdToDate);
+                        genItemList(package_data, countryData, $('#ctrl_sub_package').value, data.fdFromDate, data.fdToDate);
 
                         break;
                     case 2:
