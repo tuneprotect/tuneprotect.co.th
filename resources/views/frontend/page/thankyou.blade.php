@@ -143,6 +143,22 @@
                         }
                     });
                 </script>
+
+                @if(isset($promotionCode))
+                    <script>
+                        dataLayer.push({
+                        event: "select_promotion",
+                        ecommerce: {
+                            promotion_id: "iTravel_{{$promotionCode}}",
+                            promotion_name: "iTravel Promotion Code {{$promotionCode}}",
+                            items: [{
+                                item_id: "iTravel_{{$package}}",
+                                item_name: "iTravel Plan Code {{$package}}",
+                            }]
+                        }
+                    });
+                    </script>
+                @endif
             @break
             @case("TAIPOCT22")
                 <script>
@@ -219,6 +235,22 @@
                         }
                     });
                 </script>
+
+                @if(isset($promotionCode))
+                    <script>
+                        dataLayer.push({
+                        event: "select_promotion",
+                        ecommerce: {
+                            promotion_id: "iTravel_{{$promotionCode}}",
+                            promotion_name: "iTravel Promotion Code {{$promotionCode}}",
+                            items: [{
+                                item_id: "iTravel_{{$package}}",
+                                item_name: "iTravel Plan Code {{$package}}",
+                            }]
+                        }
+                    });
+                    </script>
+                @endif
             @break
             @case("ONFIMP")
                 <script>
