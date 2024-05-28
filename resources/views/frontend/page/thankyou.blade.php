@@ -162,6 +162,18 @@
                             }]
                         }
                     });
+
+                    dataLayer.push({
+                        event: "select_promotion",
+                        ecommerce: {
+                            promotion_id: "iTravel_{{$refCode}}",
+                            promotion_name: "iTravel Promotion Code {{$refCode}}",
+                            items: [{
+                                item_id: "iTravel_{{$package}}",
+                                item_name: "iTravel Plan Code {{$package}}",
+                            }]
+                        }
+                    });
                 </script>
             @break
             @case("ONTADM")
