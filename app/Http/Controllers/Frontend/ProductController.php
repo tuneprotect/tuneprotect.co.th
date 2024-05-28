@@ -1544,6 +1544,7 @@ class ProductController extends BaseController
         $this->bodyData['agentCode'] = $request->session()->get('agentCode');
         $this->bodyData['package'] = $request->session()->get('package');
         $this->bodyData['refCode'] = $request->session()->get('refCode');
+        $this->bodyData['promotionCode'] = $request->session()->get('promotionCode');
         $this->bodyData['controller'] = $this->controller;
 
         $thank_you_page = ProjectEnum::STATIC_PAGE_PAYMENT_THANK_YOU;
