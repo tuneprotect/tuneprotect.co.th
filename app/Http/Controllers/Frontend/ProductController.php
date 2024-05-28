@@ -1628,6 +1628,7 @@ class ProductController extends BaseController
             $package = $data['fdPackage'];
             $refCode = $data['RefCode'];
             $transaction_id = $data['transaction_id'];
+            $PromotionCode = $data['PromotionCode'];
 
             if ($v->result) {
                 $request->session()->put('doc_no',  $v->result['message']);
@@ -1640,6 +1641,7 @@ class ProductController extends BaseController
                 $request->session()->put('package', $package);
                 $request->session()->put('refCode', $refCode);
                 $request->session()->put('transaction_id', $transaction_id);
+                $request->session()->put('promotionCode', $PromotionCode);
                 $this->thankYouParam = $request->input('user_defined_4');
 
                 $func = 'thankyou';
@@ -1667,6 +1669,7 @@ class ProductController extends BaseController
                     $request->session()->put('package', $package);
                     $request->session()->put('refCode', $refCode);
                     $request->session()->put('transaction_id', $transaction_id);
+                    $request->session()->put('promotionCode', $PromotionCode);
                     $this->thankYouParam = $request->input('user_defined_4');
                     $func = 'thankyou';
                 } else {
