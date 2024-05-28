@@ -144,7 +144,7 @@
                     });
                 </script>
 
-                @if(isset($promotionCode))
+                @if(!empty($promotionCode))
                     <script>
                         dataLayer.push({
                         event: "select_promotion",
@@ -180,7 +180,7 @@
                     });
                 </script>
         
-                @if(isset($promotionCode))
+                @if(!empty($promotionCode))
                     <script>
                         dataLayer.push({
                         event: "select_promotion",
@@ -236,7 +236,7 @@
                     });
                 </script>
 
-                @if(isset($promotionCode))
+                @if(!empty($promotionCode))
                     <script>
                         dataLayer.push({
                         event: "select_promotion",
