@@ -98,4 +98,11 @@ class BaseInsuranceObject
     public $risk_rate;
 
     public $transaction_id;
+
+    //Promotion Code 20230706
+    public $PromotionCode;
+    public $CampaignId;
+    public $CostAmount;
+    public $StatusId;
+    public $TypeId;
 }
