@@ -242,7 +242,7 @@
                             promotion_id: "{{$promotionCode}}",
                             promotion_name: "{{$promotionCode}}",
                             items: [{
-                                item_id: "iTravel_{{$package}}",
+                                item_id: "iTravel_{{$promotionCode}}",
                             }]
                         }
                     });
