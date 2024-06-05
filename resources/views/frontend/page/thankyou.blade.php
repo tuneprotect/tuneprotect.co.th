@@ -149,11 +149,10 @@
                         dataLayer.push({
                         event: "select_promotion",
                         ecommerce: {
-                            promotion_id: "iTravel_{{$promotionCode}}",
-                            promotion_name: "iTravel Promotion Code {{$promotionCode}}",
+                            promotion_id: "{{$promotionCode}}",
+                            promotion_name: "{{$promotionCode}}",
                             items: [{
-                                item_id: "iTravel_{{$package}}",
-                                item_name: "iTravel Plan Code {{$package}}",
+                                item_id: "iSmile_{{$promotionCode}}",
                             }]
                         }
                     });
@@ -185,11 +184,10 @@
                         dataLayer.push({
                         event: "select_promotion",
                         ecommerce: {
-                            promotion_id: "iTravel_{{$promotionCode}}",
-                            promotion_name: "iTravel Promotion Code {{$promotionCode}}",
+                            promotion_id: "{{$promotionCode}}",
+                            promotion_name: "{{$promotionCode}}",
                             items: [{
-                                item_id: "iTravel_{{$package}}",
-                                item_name: "iTravel Plan Code {{$package}}",
+                                item_id: "TuneiPass_{{$promotionCode}}",
                             }]
                         }
                     });
@@ -241,11 +239,10 @@
                         dataLayer.push({
                         event: "select_promotion",
                         ecommerce: {
-                            promotion_id: "iTravel_{{$promotionCode}}",
-                            promotion_name: "iTravel Promotion Code {{$promotionCode}}",
+                            promotion_id: "{{$promotionCode}}",
+                            promotion_name: "{{$promotionCode}}",
                             items: [{
                                 item_id: "iTravel_{{$package}}",
-                                item_name: "iTravel Plan Code {{$package}}",
                             }]
                         }
                     });
