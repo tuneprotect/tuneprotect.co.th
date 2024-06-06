@@ -373,7 +373,6 @@ document.addEventListener("DOMContentLoaded", async () => {
                             status = validateResult.status;
                             if (validateResult.status) {
                                 data = {...data, ...validateResult.data}
-                                genItemList();
                             }
                             break;
                         case 2:
