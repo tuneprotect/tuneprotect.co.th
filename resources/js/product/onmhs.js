@@ -363,6 +363,8 @@ const genItemList = (package_data) => {
 document.addEventListener("DOMContentLoaded", async () => {
     const package_data = await getPackageData(current_package);
 
+    changeTextAmount();
+
     let Redeem_Code = "";
     if (document.getElementById("redeem_code")) {
         Redeem_Code = document.getElementById("redeem_code").value;
@@ -1290,12 +1292,6 @@ document.addEventListener("DOMContentLoaded", async () => {
             presence: {
                 allowEmpty: false,
                 message: "^" + $('#fdFromDate').getAttribute('data-error')
-            }
-        },
-        ctrl_insurer_capital: {
-            presence: {
-                allowEmpty: false,
-                message: "^" + $('#ctrl_insurer_capital').getAttribute('data-error')
             }
         }
     };
