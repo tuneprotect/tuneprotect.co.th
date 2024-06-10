@@ -315,9 +315,7 @@ const genItemList = (package_data) => {
         item.item_name = "myHome Smart Plan Code " + $el.getAttribute("data-package");
         item.item_brand = "myHome Smart";
         item.item_category = "Fire Insurance";
-        item.price = '' + $el.getElementsByTagName("input")[0].value;
-
-        console.log($el.getElementsByTagName("input")[0].value);
+        item.price = $el.getElementsByTagName("input")[0].value;
 
         itemList.push(item);
     });
@@ -1429,8 +1427,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                             fdFromDate: $('#fdFromDate')?.value
                         }
                         let result1 = validate(data, step1Constraints);
-                        genItemList(package_data);
-
+                        
                         if (result1) {
                             showError($('#step1'), result1);
                             status = false;
@@ -1475,6 +1472,8 @@ document.addEventListener("DOMContentLoaded", async () => {
                                 status = false;
                             }
                         }
+
+                        genItemList(package_data);
 
                         break;
                     case 2:
