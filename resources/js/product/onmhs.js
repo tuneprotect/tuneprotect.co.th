@@ -317,6 +317,8 @@ const genItemList = (package_data) => {
         item.item_category = "Fire Insurance";
         item.price = '' + $el.getElementsByTagName("input")[0].value;
 
+        console.log($el.getElementsByTagName("input")[0].value);
+
         itemList.push(item);
     });
 
