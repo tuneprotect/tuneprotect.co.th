@@ -302,35 +302,60 @@ const genItemList = (package_data) => {
     let index = 0;
     const itemList = [];
 
-    if (package_data) {
-        Object.keys(package_data)
-            .filter(k => _.startsWith(k, current_package))
-            .map(k => {
+    // if (package_data) {
+    //     Object.keys(package_data)
+    //         .filter(k => _.startsWith(k, current_package))
+    //         .map(k => {
 
-                if (planCode.includes($el.getAttribute("data-package"))) {
+    //             if (planCode.includes($el.getAttribute("data-package"))) {
 
-                    const price = parseInt(package_data[k].price).toLocaleString();
-                    const planCode = Object.keys(package_data)[index];
+    //                 const price = parseInt(package_data[k].price).toLocaleString();
+    //                 const planCode = Object.keys(package_data)[index];
 
-                    const item = {
-                        item_id: "",
-                        item_name: "",
-                        item_brand: "",
-                        item_category: "",
-                        price: "",
-                    };
+    //                 const item = {
+    //                     item_id: "",
+    //                     item_name: "",
+    //                     item_brand: "",
+    //                     item_category: "",
+    //                     price: "",
+    //                 };
 
-                    item.item_id = "myHomePlus_" + planCode;
-                    item.item_name = "myHome Plus Plan Code " + planCode;
-                    item.item_brand = "myHome Plus";
-                    item.item_category = "Fire Insurance";
-                    item.price = price;
+    //                 item.item_id = "myHomePlus_" + planCode;
+    //                 item.item_name = "myHome Plus Plan Code " + planCode;
+    //                 item.item_brand = "myHome Plus";
+    //                 item.item_category = "Fire Insurance";
+    //                 item.price = price;
 
-                    itemList.push(item);
-                    index++;
-                }
-            });
-    }
+    //                 itemList.push(item);
+    //                 index++;
+    //             }
+    //         });
+    // }
+
+    const allPack = Object.keys(package_data)
+            .filter(k => _.startsWith(k,packageSelect))
+
+    $$('#table-detail td[data-package],#table-detail td[data-package]').forEach($el => {
+        if (allPack.includes($el.getAttribute("data-package"))) {
+            
+            const item = {
+                item_id: "",
+                item_name: "",
+                item_brand: "",
+                item_category: "",
+                price: "",
+            };
+
+            item.item_id = "myHomePlus_" + $el.getAttribute("data-package");
+            item.item_name = "myHome Plus Plan Code " + $el.getAttribute("data-package");
+            item.item_brand = "myHome Plus";
+            item.item_category = "Fire Insurance";
+            item.price = $el.getAttribute("data-price-" + $el.getAttribute("data-package"));
+
+            itemList.push(item);
+            index++;
+        }
+    });
 
     if ($('#controller').value === 'product') 
     {
