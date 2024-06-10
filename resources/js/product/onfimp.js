@@ -297,7 +297,47 @@ const getSelectedPricePackage = (packageCode, package_data) => {
     return package_data[packageCode].price;
 }
 
+const genItemList = (package_data, packageSelect) => {
 
+    let index = 0;
+    const itemList = [];
+
+    const allPack = Object.keys(package_data)
+            .filter(k => _.startsWith(k,packageSelect))
+
+    $$('#table-detail td[data-package],#table-detail th[data-package]').forEach($el => {
+        if (allPack.includes($el.getAttribute("data-package"))) {
+            
+            const item = {
+                item_id: "",
+                item_name: "",
+                item_brand: "",
+                item_category: "",
+                price: "",
+            };
+
+            item.item_id = "myHomePlus_" + $el.getAttribute("data-package");
+            item.item_name = "myHome Plus Plan Code " + $el.getAttribute("data-package");
+            item.item_brand = "myHome Plus";
+            item.item_category = "Fire Insurance";
+            item.price = $el.getAttribute("data-price-" + $el.getAttribute("data-package"));
+
+            itemList.push(item);
+        }
+    });
+
+    if ($('#controller').value === 'product') 
+    {
+        dataLayer.push({ ecommerce: null });  // Clear the previous ecommerce object.
+        dataLayer.push({
+            event: "view_item",
+            ecommerce: {
+                currency: "THB",
+                items: itemList
+            }
+        });
+    }
+}
 
 document.addEventListener("DOMContentLoaded", async () => {
     const package_data = await getPackageData(current_package);
@@ -391,48 +431,6 @@ document.addEventListener("DOMContentLoaded", async () => {
             changeTextPremium(e.target.value);
         });
     });
-
-    const genItemList = (package_data) => {
-
-        let index = 0;
-        const itemList = [];
-
-        const allPack = Object.keys(package_data)
-                .filter(k => _.startsWith(k,packageSelect))
-    
-        $$('#table-detail td[data-package],#table-detail th[data-package]').forEach($el => {
-            if (allPack.includes($el.getAttribute("data-package"))) {
-                
-                const item = {
-                    item_id: "",
-                    item_name: "",
-                    item_brand: "",
-                    item_category: "",
-                    price: "",
-                };
-    
-                item.item_id = "myHomePlus_" + $el.getAttribute("data-package");
-                item.item_name = "myHome Plus Plan Code " + $el.getAttribute("data-package");
-                item.item_brand = "myHome Plus";
-                item.item_category = "Fire Insurance";
-                item.price = $el.getAttribute("data-price-" + $el.getAttribute("data-package"));
-    
-                itemList.push(item);
-            }
-        });
-    
-        if ($('#controller').value === 'product') 
-        {
-            dataLayer.push({ ecommerce: null });  // Clear the previous ecommerce object.
-            dataLayer.push({
-                event: "view_item",
-                ecommerce: {
-                    currency: "THB",
-                    items: itemList
-                }
-            });
-        }
-    }
 
     const changeTextPremium = (packageSelect) => {
         let select = $('#ctrl_fire_building');
@@ -622,7 +620,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                         }
                         let result1 = validate(data, step1Constraints);
 
-                        genItemList(package_data);
+                        genItemList(package_data, $('#ctrl_fire_building').value);
                         // removeError($('#step1'));
                         if (result1) {
                             showError($('#step1'), result1);
