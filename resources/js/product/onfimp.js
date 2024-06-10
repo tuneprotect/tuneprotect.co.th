@@ -329,30 +329,6 @@ const genItemList = (package_data, packageSelect) => {
             });
     }
 
-    // const allPack = Object.keys(package_data)
-    //         .filter(k => _.startsWith(k,packageSelect))
-
-    // $$('#table-detail td[data-package],#table-detail th[data-package]').forEach($el => {
-    //     if (allPack.includes($el.getAttribute("data-package"))) {
-            
-    //         const item = {
-    //             item_id: "",
-    //             item_name: "",
-    //             item_brand: "",
-    //             item_category: "",
-    //             price: "",
-    //         };
-
-    //         item.item_id = "myHomePlus_" + $el.getAttribute("data-package");
-    //         item.item_name = "myHome Plus Plan Code " + $el.getAttribute("data-package");
-    //         item.item_brand = "myHome Plus";
-    //         item.item_category = "Fire Insurance";
-    //         item.price = $el.getAttribute("data-price-" + $el.getAttribute("data-package"));
-
-    //         itemList.push(item);
-    //     }
-    // });
-
     if ($('#controller').value === 'product') 
     {
         dataLayer.push({ ecommerce: null });  // Clear the previous ecommerce object.
