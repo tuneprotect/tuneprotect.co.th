@@ -315,7 +315,7 @@ const genItemList = (package_data) => {
         item.item_name = "myHome Smart Plan Code " + $el.getAttribute("data-package");
         item.item_brand = "myHome Smart";
         item.item_category = "Fire Insurance";
-        item.price = "";
+        item.price = $el.getElementsByTagName('input')[0].value;
 
         itemList.push(item);
     });
