@@ -302,50 +302,32 @@ const genItemList = (package_data) => {
     let index = 0;
     const itemList = [];
 
-    $$('#table-detail tfoot tr td[data-package]').forEach($el => {
-        const item = {
-            item_id: "",
-            item_name: "",
-            item_brand: "",
-            item_category: "",
-            price: "",
-        };
-
-        item.item_id = "myHomeSmart_" + $el.getAttribute("data-package");
-        item.item_name = "myHome Smart Plan Code " + $el.getAttribute("data-package");
-        item.item_brand = "myHome Smart";
-        item.item_category = "Fire Insurance";
-        item.price = $el.getElementsByTagName("input")[0].value;
-
-        itemList.push(item);
-    });
-
-    // if (package_data) {
-    //     Object.keys(package_data)
-    //         .filter(k => _.startsWith(k, current_package))
-    //         .map(k => {
+    if (package_data) {
+        Object.keys(package_data)
+            .filter(k => _.startsWith(k, current_package))
+            .map(k => {
                 
-    //             const price = parseInt(package_data[k].price).toLocaleString();
-    //             const planCode = Object.keys(package_data)[index];
+                const price = parseInt(package_data[k].price).toLocaleString();
+                const planCode = Object.keys(package_data)[index];
 
-    //             const item = {
-    //                 item_id: "",
-    //                 item_name: "",
-    //                 item_brand: "",
-    //                 item_category: "",
-    //                 price: "",
-    //             };
+                const item = {
+                    item_id: "",
+                    item_name: "",
+                    item_brand: "",
+                    item_category: "",
+                    price: "",
+                };
 
-    //             item.item_id = "myHomeSmart_" + planCode;
-    //             item.item_name = "myHome Smart Plan Code " + planCode;
-    //             item.item_brand = "myHome Smart";
-    //             item.item_category = "Fire Insurance";
-    //             item.price = price;
+                item.item_id = "myHomeSmart_" + planCode;
+                item.item_name = "myHome Smart Plan Code " + planCode;
+                item.item_brand = "myHome Smart";
+                item.item_category = "Fire Insurance";
+                item.price = price;
 
-    //             itemList.push(item);
-    //             index++;
-    //         });
-    // }
+                itemList.push(item);
+                index++;
+            });
+    }
 
     if ($('#controller').value === 'product') 
     {
@@ -358,10 +340,13 @@ const genItemList = (package_data) => {
             }
         });
     }
+    
 }
 
 document.addEventListener("DOMContentLoaded", async () => {
     const package_data = await getPackageData(current_package);
+
+
 
     let Redeem_Code = "";
     if (document.getElementById("redeem_code")) {
