@@ -363,8 +363,6 @@ const genItemList = (package_data) => {
 document.addEventListener("DOMContentLoaded", async () => {
     const package_data = await getPackageData(current_package);
 
-    changeTextAmount();
-
     let Redeem_Code = "";
     if (document.getElementById("redeem_code")) {
         Redeem_Code = document.getElementById("redeem_code").value;
@@ -1429,7 +1427,8 @@ document.addEventListener("DOMContentLoaded", async () => {
                             fdFromDate: $('#fdFromDate')?.value
                         }
                         let result1 = validate(data, step1Constraints);
-                        
+                        genItemList(package_data);
+
                         if (result1) {
                             showError($('#step1'), result1);
                             status = false;
@@ -1474,8 +1473,6 @@ document.addEventListener("DOMContentLoaded", async () => {
                                 status = false;
                             }
                         }
-
-                        genItemList(package_data);
 
                         break;
                     case 2:
