@@ -400,7 +400,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         const allPack = Object.keys(package_data)
                 .filter(k => _.startsWith(k,packageSelect))
     
-        $$('#table-detail td[data-package],#table-detail td[data-package]').forEach($el => {
+        $$('#table-detail td[data-package],#table-detail th[data-package]').forEach($el => {
             if (allPack.includes($el.getAttribute("data-package"))) {
                 
                 const item = {
@@ -418,7 +418,6 @@ document.addEventListener("DOMContentLoaded", async () => {
                 item.price = $el.getAttribute("data-price-" + $el.getAttribute("data-package"));
     
                 itemList.push(item);
-                index++;
             }
         });
     
