@@ -307,25 +307,28 @@ const genItemList = (package_data) => {
             .filter(k => _.startsWith(k, current_package))
             .map(k => {
 
-                const price = parseInt(package_data[k].price).toLocaleString();
-                const planCode = Object.keys(package_data)[index];
+                if (planCode.includes($el.getAttribute("data-package"))) {
 
-                const item = {
-                    item_id: "",
-                    item_name: "",
-                    item_brand: "",
-                    item_category: "",
-                    price: "",
-                };
+                    const price = parseInt(package_data[k].price).toLocaleString();
+                    const planCode = Object.keys(package_data)[index];
 
-                item.item_id = "myHomePlus_" + planCode;
-                item.item_name = "myHome Plus Plan Code " + planCode;
-                item.item_brand = "myHome Plus";
-                item.item_category = "Fire Insurance";
-                item.price = price;
+                    const item = {
+                        item_id: "",
+                        item_name: "",
+                        item_brand: "",
+                        item_category: "",
+                        price: "",
+                    };
 
-                itemList.push(item);
-                index++;
+                    item.item_id = "myHomePlus_" + planCode;
+                    item.item_name = "myHome Plus Plan Code " + planCode;
+                    item.item_brand = "myHome Plus";
+                    item.item_category = "Fire Insurance";
+                    item.price = price;
+
+                    itemList.push(item);
+                    index++;
+                }
             });
     }
 
