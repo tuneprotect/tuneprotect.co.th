@@ -64,7 +64,9 @@
 
             <div class="col" data-pay-installment="" data-pay-installment-policy="">
                 <div class="controls-wrapper">
-                    <select id="ctrl_insurer_capital" name="ctrl_insurer_capital">
+                    <select id="ctrl_insurer_capital" name="ctrl_insurer_capital"
+                        data-error-name="@lang('product.error.select')">
+                        <option selected="selected" value="">@lang('product.please_select')</option>
                         @foreach(__('product.onmhs_insurance_home_list_building') as $k => $v)
                             <option value="{{$k}}">{{$v}}</option>
                         @endforeach

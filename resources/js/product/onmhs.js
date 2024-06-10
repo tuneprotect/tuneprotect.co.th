@@ -1291,6 +1291,12 @@ document.addEventListener("DOMContentLoaded", async () => {
                 allowEmpty: false,
                 message: "^" + $('#fdFromDate').getAttribute('data-error')
             }
+        },
+        ctrl_insurer_capital: {
+            presence: {
+                allowEmpty: false,
+                message: "^" + $('#ctrl_insurer_capital').getAttribute('data-error')
+            }
         }
     };
 
