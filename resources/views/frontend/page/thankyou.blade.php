@@ -152,7 +152,7 @@
                             promotion_id: "{{$promotionCode}}",
                             promotion_name: "{{$promotionCode}}",
                             items: [{
-                                item_id: "iSmile_{{$promotionCode}}",
+                                item_id: "iSmile_Promotions",
                             }]
                         }
                     });
@@ -187,7 +187,7 @@
                             promotion_id: "{{$promotionCode}}",
                             promotion_name: "{{$promotionCode}}",
                             items: [{
-                                item_id: "TuneiPass_{{$promotionCode}}",
+                                item_id: "TuneiPass_Promotions",
                             }]
                         }
                     });
@@ -242,7 +242,7 @@
                             promotion_id: "{{$promotionCode}}",
                             promotion_name: "{{$promotionCode}}",
                             items: [{
-                                item_id: "iTravel_{{$promotionCode}}",
+                                item_id: "iTravel_Promotions",
                             }]
                         }
                     });
