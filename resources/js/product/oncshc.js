@@ -397,11 +397,15 @@ document.addEventListener("DOMContentLoaded", async () => {
                     const item = {
                         item_id: "",
                         item_name: "",
+                        item_brand: "",
+                        item_category: "",
                         price: "",
                     };
 
                     item.item_id = "ChillSure_" + planCode;
                     item.item_name = "ChillSure Plan Code " + planCode;
+                    item.item_brand = "Chill Sure";
+                    item.item_category = "Health Insurance";
                     item.price = price;
 
                     itemList.push(item);
@@ -635,6 +639,8 @@ document.addEventListener("DOMContentLoaded", async () => {
                                             items: [{
                                                 item_id: "ChillSure_" + fdPackage,
                                                 item_name: "ChillSure Plan Code " + fdPackage,
+                                                item_brand: "Chill Sure",
+                                                item_category: "Health Insurance",
                                                 price: selectPrice
                                             }]
                                         }
@@ -748,6 +754,8 @@ document.addEventListener("DOMContentLoaded", async () => {
                                             items: [{
                                                 item_id: "ChillSure_" + data.fdPackage,
                                                 item_name: "ChillSure Plan Code " + data.fdPackage,
+                                                item_brand: "Chill Sure",
+                                                item_category: "Health Insurance",
                                                 price: data.fdPayAMT
                                             }]
                                         }

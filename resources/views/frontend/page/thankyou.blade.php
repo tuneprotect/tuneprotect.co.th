@@ -16,6 +16,8 @@
                             items: [{
                                 item_id: "ChillSure_{{$package}}",
                                 item_name: "ChillSure Plan Code {{$package}}",
+                                item_brand: "Chill Sure",
+                                item_category: "Health Insurance",
                                 price: {!! $payAmount !!}
                             }]
                         }
@@ -34,6 +36,8 @@
                             items: [{
                                 item_id: "myFlexiCI_{{$package}}",
                                 item_name: "myFlexi CI Plan Code {{$package}}",
+                                item_brand: "myFlexi CI",
+                                item_category: "Health Insurance",
                                 price: {!! $payAmount !!}
                             }]
                         }
@@ -52,6 +56,8 @@
                             items: [{
                                 item_id: "Diabetes_{{$package}}",
                                 item_name: "Diabetes Plan Code {{$package}}",
+                                item_brand: "Diabetes",
+                                item_category: "Health Insurance",
                                 price: {!! $payAmount !!}
                             }]
                         }
@@ -70,6 +76,8 @@
                             items: [{
                                 item_id: "PAChoiceCare_{{$package}}",
                                 item_name: "PA Choice Care Plan Code {{$package}}",
+                                item_brand: "PA Choice Care",
+                                item_category: "PA Choice",
                                 price: {!! $payAmount !!}
                             }]
                         }
@@ -88,6 +96,8 @@
                             items: [{
                                 item_id: "PAChoiceKids_{{$package}}",
                                 item_name: "PA Choice Kids Plan Code {{$package}}",
+                                item_brand: "PA Choice Kids",
+                                item_category: "PA Choice",
                                 price: {!! $payAmount !!}
                             }]
                         }
@@ -106,6 +116,8 @@
                             items: [{
                                 item_id: "PAChoiceSenior_{{$package}}",
                                 item_name: "PA Choice Senior Plan Code {{$package}}",
+                                item_brand: "PA Choice Senior",
+                                item_category: "PA Choice",
                                 price: {!! $payAmount !!}
                             }]
                         }
@@ -124,11 +136,28 @@
                             items: [{
                                 item_id: "iSmile_{{$package}}",
                                 item_name: "iSmile Plan Code {{$package}}",
+                                item_brand: "iSmile",
+                                item_category: "Travel Insurance",
                                 price: {!! $payAmount !!}
                             }]
                         }
                     });
                 </script>
+
+                @if(!empty($promotionCode))
+                    <script>
+                        dataLayer.push({
+                        event: "select_promotion",
+                        ecommerce: {
+                            promotion_id: "{{$promotionCode}}",
+                            promotion_name: "{{$promotionCode}}",
+                            items: [{
+                                item_id: "iSmile_Promotions",
+                            }]
+                        }
+                    });
+                    </script>
+                @endif
             @break
             @case("TAIPOCT22")
                 <script>
@@ -142,11 +171,28 @@
                             items: [{
                                 item_id: "TuneiPass_{{$package}}",
                                 item_name: "TuneiPass Plan Code {{$package}}",
+                                item_brand: "Tune iPass",
+                                item_category: "Travel Insurance",
                                 price: {!! $payAmount !!}
                             }]
                         }
                     });
                 </script>
+        
+                @if(!empty($promotionCode))
+                    <script>
+                        dataLayer.push({
+                        event: "select_promotion",
+                        ecommerce: {
+                            promotion_id: "{{$promotionCode}}",
+                            promotion_name: "{{$promotionCode}}",
+                            items: [{
+                                item_id: "TuneiPass_Promotions",
+                            }]
+                        }
+                    });
+                    </script>
+                @endif 
             @break
             @case("ONTADM")
                 <script>
@@ -160,6 +206,8 @@
                             items: [{
                                 item_id: "Domestic_{{$package}}",
                                 item_name: "Domestic Plan Code {{$package}}",
+                                item_brand: "TA Domestic",
+                                item_category: "Travel Insurance",
                                 price: {!! $payAmount !!}
                             }]
                         }
@@ -178,11 +226,28 @@
                             items: [{
                                 item_id: "iTravel_{{$package}}",
                                 item_name: "iTravel Plan Code {{$package}}",
+                                item_brand: "iTravel",
+                                item_category: "Travel Insurance",
                                 price: {!! $payAmount !!}
                             }]
                         }
                     });
                 </script>
+
+                @if(!empty($promotionCode))
+                    <script>
+                        dataLayer.push({
+                        event: "select_promotion",
+                        ecommerce: {
+                            promotion_id: "{{$promotionCode}}",
+                            promotion_name: "{{$promotionCode}}",
+                            items: [{
+                                item_id: "iTravel_Promotions",
+                            }]
+                        }
+                    });
+                    </script>
+                @endif
             @break
             @case("ONFIMP")
                 <script>
@@ -196,6 +261,8 @@
                             items: [{
                                 item_id: "myHomePlus_{{$package}}",
                                 item_name: "myHome Plus Plan Code {{$package}}",
+                                item_brand: "myHome Plus",
+                                item_category: "Fire Insurance",
                                 price: {!! $payAmount !!}
                             }]
                         }
@@ -214,6 +281,8 @@
                             items: [{
                                 item_id: "myHomeSmart_{{$package}}",
                                 item_name: "myHome Smart Plan Code {{$package}}",
+                                item_brand: "myHome Smart",
+                                item_category: "Fire Insurance",
                                 price: {!! $payAmount !!}
                             }]
                         }

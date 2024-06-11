@@ -346,8 +346,7 @@ const genPrice = (package_data,country_data, subpackage, fdFromDate, fdToDate) =
     });
 }
 
-const genItemList = (package_data, fdFromDate, fdToDate) => {
-
+const genItemList = (package_data, country_data, subpackage, fdFromDate, fdToDate) => {
     let index = 0;
     const itemList = [];
 
@@ -358,8 +357,19 @@ const genItemList = (package_data, fdFromDate, fdToDate) => {
 
         const day = differenceInDays(endDate, startDate) + 1;
         
+        let country_zone = '';
+        country_data.map(v => {
+                if (v.code === $('#fdDestTo').value) {
+                    country_zone = v.zone;
+                }
+            });
+        subpackage = country_zone;
+
+        let current_packages = "";
+        if ($('#ctrl_travel_type').value === 'annual'){ current_packages = current_package + $('#ctrl_sub_package').value } else { current_packages = current_package + subpackage }
+
         Object.keys(package_data)
-            .filter(k => _.startsWith(k, current_package))
+            .filter(k => _.startsWith(k, current_packages))
             .map(k => {
                 const pack = Object.keys(package_data[k].price).filter(subPackage => {
                     const dateRange = (package_data[k].price[subPackage].day).split('-');
@@ -378,11 +388,15 @@ const genItemList = (package_data, fdFromDate, fdToDate) => {
                 const item = {
                     item_id: "",
                     item_name: "",
+                    item_brand: "",
+                    item_category: "",
                     price: "",
                 };
 
                 item.item_id = "iTravel_" + planCode;
                 item.item_name = "iTravel Plan Code " + planCode;
+                item.item_brand = "iTravel";
+                item.item_category = "Travel Insurance";
                 item.price = price;
 
                 itemList.push(item);
@@ -688,7 +702,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                         }
 
                         genPrice(package_data,countryData, $('#ctrl_sub_package').value, data.fdFromDate, data.fdToDate, $('#ctrl_travel_type').value);
-                        genItemList(package_data, data.fdFromDate, data.fdToDate);
+                        genItemList(package_data, countryData, $('#ctrl_sub_package').value, data.fdFromDate, data.fdToDate);
 
                         break;
                     case 2:
@@ -714,6 +728,8 @@ document.addEventListener("DOMContentLoaded", async () => {
                                         items: [{
                                             item_id: "iTravel_" + fdPackage,
                                             item_name: "iTravel Plan Code " + fdPackage,
+                                            item_brand: "iTravel",
+                                            item_category: "Travel Insurance",
                                             price: selectPrice
                                         }]
                                     }
@@ -860,6 +876,8 @@ document.addEventListener("DOMContentLoaded", async () => {
                                         items: [{
                                             item_id: "iTravel_" + data.fdPackage,
                                             item_name: "iTravel Plan Code " + data.fdPackage,
+                                            item_brand: "iTravel",
+                                            item_category: "Travel Insurance",
                                             price: selectPrice
                                         }]
                                     }

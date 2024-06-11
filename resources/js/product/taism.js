@@ -283,11 +283,15 @@ const genItemList = (package_data, fdFromDate, fdToDate) => {
                 const item = {
                     item_id: "",
                     item_name: "",
+                    item_brand: "",
+                    item_category: "",
                     price: "",
                 };
 
                 item.item_id = "iSmile_" + planCode;
                 item.item_name = "iSmile Plan Code " + planCode;
+                item.item_brand = "iSmile";
+                item.item_category = "Travel Insurance";
                 item.price = price;
 
                 itemList.push(item);
@@ -573,6 +577,8 @@ document.addEventListener("DOMContentLoaded", async () => {
                                         items: [{
                                             item_id: "iSmile_" + fdPackage,
                                             item_name: "iSmile Plan Code " + fdPackage,
+                                            item_brand: "iSmile",
+                                            item_category: "Travel Insurance",
                                             price: selectPrice
                                         }]
                                     }
@@ -696,6 +702,8 @@ document.addEventListener("DOMContentLoaded", async () => {
                                         items: [{
                                             item_id: "iSmile_" + data.fdPackage,
                                             item_name: "iSmile Plan Code " + data.fdPackage,
+                                            item_brand: "iSmile",
+                                            item_category: "Travel Insurance",
                                             price: data.fdPayAMT
                                         }]
                                     }

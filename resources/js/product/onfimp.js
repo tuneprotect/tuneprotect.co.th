@@ -297,27 +297,31 @@ const getSelectedPricePackage = (packageCode, package_data) => {
     return package_data[packageCode].price;
 }
 
-const genItemList = (package_data) => {
+const genItemList = (package_data, packageSelect) => {
 
     let index = 0;
     const itemList = [];
 
     if (package_data) {
         Object.keys(package_data)
-            .filter(k => _.startsWith(k, current_package))
+            .filter(k => _.startsWith(k, packageSelect))
             .map(k => {
-
+                
                 const price = parseInt(package_data[k].price).toLocaleString();
                 const planCode = Object.keys(package_data)[index];
 
                 const item = {
                     item_id: "",
                     item_name: "",
+                    item_brand: "",
+                    item_category: "",
                     price: "",
                 };
 
                 item.item_id = "myHomePlus_" + planCode;
                 item.item_name = "myHome Plus Plan Code " + planCode;
+                item.item_brand = "myHome Plus";
+                item.item_category = "Fire Insurance";
                 item.price = price;
 
                 itemList.push(item);
@@ -619,7 +623,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                         }
                         let result1 = validate(data, step1Constraints);
 
-                        genItemList(package_data);
+                        genItemList(package_data, $('#ctrl_fire_building').value);
                         // removeError($('#step1'));
                         if (result1) {
                             showError($('#step1'), result1);
@@ -695,6 +699,8 @@ document.addEventListener("DOMContentLoaded", async () => {
                                         items: [{
                                             item_id: "myHomePlus_" + fdPackage,
                                             item_name: "myHome Plus Plan Code " + fdPackage,
+                                            item_brand: "myHome Plus",
+                                            item_category: "Fire Insurance",
                                             price: selectPrice
                                         }]
                                     }
@@ -921,6 +927,8 @@ document.addEventListener("DOMContentLoaded", async () => {
                                         items: [{
                                             item_id: "myHomePlus_" + data.fdPackage,
                                             item_name: "myHome Plus Plan Code " + data.fdPackage,
+                                            item_brand: "myHome Plus",
+                                            item_category: "Fire Insurance",
                                             price: data.fdPayAMT
                                         }]
                                     }
