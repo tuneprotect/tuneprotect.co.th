@@ -7,6 +7,7 @@ use App\Enum\ProjectEnum;
 use App\Http\Controllers\Frontend\Base\BaseController;
 use App\Models\WebContent;
 use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\Redirect;
 
 class AboutusController extends BaseController
 {
@@ -38,7 +39,8 @@ class AboutusController extends BaseController
                 return $this->genStaticPage($content, 'frontend.page.static');
             }
         }
-        return abort(404);
+        //return abort(404);
+        return Redirect::to("/aboutus/organization", 301);
 
     }
 }
