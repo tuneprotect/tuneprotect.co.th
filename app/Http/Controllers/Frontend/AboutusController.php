@@ -40,7 +40,7 @@ class AboutusController extends BaseController
             }
         }
         //return abort(404);
-        return Redirect::to("/aboutus/organization", 301);
+        return Redirect::to("/". $this->locale ."/aboutus/organization", 301);
 
     }
 }
