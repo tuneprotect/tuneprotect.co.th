@@ -12,6 +12,7 @@ class IndexController extends BaseController
 {
     public function index()
     {
-        return Redirect::to(config('project.online_link'));
+        //return Redirect::to(config('project.online_link'));
+        return Redirect::to(config('project.online_link'), 301);
     }
 }
