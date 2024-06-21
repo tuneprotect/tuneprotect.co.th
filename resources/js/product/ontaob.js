@@ -766,20 +766,19 @@ document.addEventListener("DOMContentLoaded", async () => {
                     case 3:
                         let profileData = [];
                         let promotion_data;
+                        let promotionPrice;
                         status = true;
 
                         const selectPrice = getSelectedPrice(data.fdPackage, package_data, data.fdFromDate, data.fdToDate);
                         
-                        if ($('#controller').value === 'product' && promotionCodeStatus) {
-                            promotion_data = await validatePromotionCode($('#fdPromotionCode').value, selectPrice, productCode);
-                        }
-                    
                         removeError($('#step3'));
 
                         for (let i = 1; i <= $('#ctrl_no_of_insured').value; i++) {
                             let address = ($(`#data_${i}_ctrl_province`).value).split('*');
                             let dateResult = iTravelCheckBirthDate(i);
                             
+                            promotionPrice = promotionPrice +  selectPrice;
+
                             let valCheck = false;
                             valCheck = validatePolicyPayment($(`#data_${i}_fdNationalID`).value,data.fdPackage,$('#fdFromDate')?.value);
                             if(!valCheck)
@@ -844,6 +843,10 @@ document.addEventListener("DOMContentLoaded", async () => {
                                     }
                                 });
                             }
+                        }
+
+                        if ($('#controller').value === 'product' && promotionCodeStatus) {
+                            promotion_data = await validatePromotionCode($('#fdPromotionCode').value, promotionPrice, productCode);
                         }
 
                         data = {
@@ -933,7 +936,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                             
                             ${$('#controller').value === 'product' && promotionCodeStatus
                                 ? `<div class="controls-wrapper full no-lable"><span>${$('#lblfdPromotionCode').innerText} : </span><strong>${$('#fdPromotionCode').value} ${ promotion_data.result.status ? `
-                                ${ promotion_data.result.codeAvailable < i+1 
+                                ${ promotion_data.result.codeAvailable = 1 
                                     ? `<span id="promotion_code_alert" style="color: #e71618;">${locale === 'th' ? '(* โค้ดนี้ได้ถูกใช้ครบแล้ว)' : '(* The code has already been used.)'}</span>` 
                                     : `<span id="promotion_code_alert" style="color: #008b06;">${locale === 'th' ? '('+ promotion_data.result.message_th +')' : '('+ promotion_data.result.message +')'}`}</span>` 
                                     : `<span id="promotion_code_alert" style="color: #e71618;">${locale === 'th' ? '(* '+ promotion_data.result.message_th +')' : '(* '+ promotion_data.result.message +')'}</span>` } </strong>
