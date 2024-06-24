@@ -766,19 +766,22 @@ document.addEventListener("DOMContentLoaded", async () => {
                     case 3:
                         let profileData = [];
                         let promotion_data;
-                        let promotionPrice;
+                        let priceTotal;
                         status = true;
 
                         const selectPrice = getSelectedPrice(data.fdPackage, package_data, data.fdFromDate, data.fdToDate);
-                        
+                        priceTotal = selectPrice = $('#ctrl_no_of_insured').value;
+
+                        if ($('#controller').value === 'product' && promotionCodeStatus) {
+                            promotion_data = await validatePromotionCode($('#fdPromotionCode').value, priceTotal, productCode);
+                        }
+
                         removeError($('#step3'));
 
                         for (let i = 1; i <= $('#ctrl_no_of_insured').value; i++) {
                             let address = ($(`#data_${i}_ctrl_province`).value).split('*');
                             let dateResult = iTravelCheckBirthDate(i);
                             
-                            promotionPrice = promotionPrice +  selectPrice;
-
                             let valCheck = false;
                             valCheck = validatePolicyPayment($(`#data_${i}_fdNationalID`).value,data.fdPackage,$('#fdFromDate')?.value);
                             if(!valCheck)
@@ -821,7 +824,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                             };
 
                             if ($('#controller').value === 'product' && promotionCodeStatus) {
-                                if (promotion_data.result.codeAvailable >= i) {
+                                if (promotion_data.result.codeAvailable >= i && i == 1) {
                                     currentProfile.PromotionCode = $('#fdPromotionCode').value;
                                     currentProfile.CampaignId = promotion_data.result.campaignId;
                                     currentProfile.CostAmount = selectPrice;    
@@ -843,10 +846,6 @@ document.addEventListener("DOMContentLoaded", async () => {
                                     }
                                 });
                             }
-                        }
-
-                        if ($('#controller').value === 'product' && promotionCodeStatus) {
-                            promotion_data = await validatePromotionCode($('#fdPromotionCode').value, promotionPrice, productCode);
                         }
 
                         data = {
@@ -934,9 +933,9 @@ document.addEventListener("DOMContentLoaded", async () => {
                             <div class="controls-wrapper full no-lable"><span>${$('label[for=data_1_fdAddr_Num]').innerText} : </span><strong>${v.fdAddr_Num} ${v.fdAddr_District} ${province} ${v.fdAddr_PostCode}</strong></div>
                             <div class="controls-wrapper full no-lable"><span>${$('#beneficiary_header').innerText} : </span><strong>${v.fdBenefit === 'other' ? v.fdBenefit_name + ' (' + v.fdRelation + ')' : v.fdBenefit} </strong></div>
                             
-                            ${$('#controller').value === 'product' && promotionCodeStatus
+                            ${$('#controller').value === 'product' && promotionCodeStatus && i == 1
                                 ? `<div class="controls-wrapper full no-lable"><span>${$('#lblfdPromotionCode').innerText} : </span><strong>${$('#fdPromotionCode').value} ${ promotion_data.result.status ? `
-                                ${ promotion_data.result.codeAvailable = 1 
+                                ${ promotion_data.result.codeAvailable < i+1 
                                     ? `<span id="promotion_code_alert" style="color: #e71618;">${locale === 'th' ? '(* โค้ดนี้ได้ถูกใช้ครบแล้ว)' : '(* The code has already been used.)'}</span>` 
                                     : `<span id="promotion_code_alert" style="color: #008b06;">${locale === 'th' ? '('+ promotion_data.result.message_th +')' : '('+ promotion_data.result.message +')'}`}</span>` 
                                     : `<span id="promotion_code_alert" style="color: #e71618;">${locale === 'th' ? '(* '+ promotion_data.result.message_th +')' : '(* '+ promotion_data.result.message +')'}</span>` } </strong>
