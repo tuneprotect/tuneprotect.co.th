@@ -81,8 +81,8 @@ document.addEventListener("DOMContentLoaded", function () {
                             <div class="two-col">
                                 <div><span>เลขกรมธรรม์ : </span><strong>${v.DOC_NBR}</strong></div>
                                 <div><span>วันที่ออกกรมธรรม์ : </span><strong>${postDate}</strong></div>
-                                <div><span>แผนประกันภัย : </span><strong>${v.PLANNAME}</span></strong></div>
-                                <div><span>ราคา : </span><strong>${v.GROSS_PREM} บาท</strong></div>
+                                <div><span>แผนประกันภัย : </span><strong>${v.PLANNAME} (${v.ITEM_PLAN})</span></strong></div>
+                                <div><span>ราคา : </span><strong>${v.TOTAL_DUE} บาท</strong></div>
                                 <div><span>วันที่เริ่มคุ้มครอง : </span><strong>${tdate}</strong></div>
                                 <div><span>วันที่สิ้นสุดความคุ้มครอง : </span><strong>${xdate}</strong></div>
                                 <div><span>เลขอ้างอิง (Ref Code.) : </span><strong>${v.REFER_CODE}</strong></div>
