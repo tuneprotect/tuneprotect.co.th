@@ -56,6 +56,8 @@ class BaseInsuranceObject
     public $fdMarketing_Consent;
     public $fdUniqKey;
 
+    public $ctrl_travel_type;
+    
     public $user_id;
     public $coverdays;
     public $c_class;

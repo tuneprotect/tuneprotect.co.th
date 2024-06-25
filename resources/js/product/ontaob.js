@@ -766,14 +766,16 @@ document.addEventListener("DOMContentLoaded", async () => {
                     case 3:
                         let profileData = [];
                         let promotion_data;
+                        let priceTotal;
                         status = true;
 
                         const selectPrice = getSelectedPrice(data.fdPackage, package_data, data.fdFromDate, data.fdToDate);
-                        
+                        //priceTotal = selectPrice * $('#ctrl_no_of_insured').value;
+
                         if ($('#controller').value === 'product' && promotionCodeStatus) {
                             promotion_data = await validatePromotionCode($('#fdPromotionCode').value, selectPrice, productCode);
                         }
-                    
+
                         removeError($('#step3'));
 
                         for (let i = 1; i <= $('#ctrl_no_of_insured').value; i++) {
@@ -825,7 +827,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                                 if (promotion_data.result.codeAvailable >= i) {
                                     currentProfile.PromotionCode = $('#fdPromotionCode').value;
                                     currentProfile.CampaignId = promotion_data.result.campaignId;
-                                    currentProfile.CostAmount = selectPrice;    
+                                    currentProfile.CostAmount = priceTotal;    
                                     currentProfile.StatusId = 2;
                                     currentProfile.TypeId = 1
                                 }
@@ -872,13 +874,13 @@ document.addEventListener("DOMContentLoaded", async () => {
                                     event: "begin_checkout",
                                     ecommerce: {
                                         currency: "THB",
-                                        value: selectPrice,
+                                        value: priceTotal,
                                         items: [{
                                             item_id: "iTravel_" + data.fdPackage,
                                             item_name: "iTravel Plan Code " + data.fdPackage,
                                             item_brand: "iTravel",
                                             item_category: "Travel Insurance",
-                                            price: selectPrice
+                                            price: priceTotal
                                         }]
                                     }
                                 });
