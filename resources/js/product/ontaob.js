@@ -770,10 +770,10 @@ document.addEventListener("DOMContentLoaded", async () => {
                         status = true;
 
                         const selectPrice = getSelectedPrice(data.fdPackage, package_data, data.fdFromDate, data.fdToDate);
-                        priceTotal = selectPrice * $('#ctrl_no_of_insured').value;
+                        //priceTotal = selectPrice * $('#ctrl_no_of_insured').value;
 
                         if ($('#controller').value === 'product' && promotionCodeStatus) {
-                            promotion_data = await validatePromotionCode($('#fdPromotionCode').value, priceTotal, productCode);
+                            promotion_data = await validatePromotionCode($('#fdPromotionCode').value, selectPrice, productCode);
                         }
 
                         removeError($('#step3'));
@@ -824,7 +824,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                             };
 
                             if ($('#controller').value === 'product' && promotionCodeStatus) {
-                                if (promotion_data.result.codeAvailable >= i && i == 1) {
+                                if (promotion_data.result.codeAvailable >= i) {
                                     currentProfile.PromotionCode = $('#fdPromotionCode').value;
                                     currentProfile.CampaignId = promotion_data.result.campaignId;
                                     currentProfile.CostAmount = priceTotal;    
@@ -933,7 +933,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                             <div class="controls-wrapper full no-lable"><span>${$('label[for=data_1_fdAddr_Num]').innerText} : </span><strong>${v.fdAddr_Num} ${v.fdAddr_District} ${province} ${v.fdAddr_PostCode}</strong></div>
                             <div class="controls-wrapper full no-lable"><span>${$('#beneficiary_header').innerText} : </span><strong>${v.fdBenefit === 'other' ? v.fdBenefit_name + ' (' + v.fdRelation + ')' : v.fdBenefit} </strong></div>
                             
-                            ${$('#controller').value === 'product' && promotionCodeStatus && i == 0
+                            ${$('#controller').value === 'product' && promotionCodeStatus
                                 ? `<div class="controls-wrapper full no-lable"><span>${$('#lblfdPromotionCode').innerText} : </span><strong>${$('#fdPromotionCode').value} ${ promotion_data.result.status ? `
                                 ${ promotion_data.result.codeAvailable < i+1 
                                     ? `<span id="promotion_code_alert" style="color: #e71618;">${locale === 'th' ? '(* โค้ดนี้ได้ถูกใช้ครบแล้ว)' : '(* The code has already been used.)'}</span>` 
