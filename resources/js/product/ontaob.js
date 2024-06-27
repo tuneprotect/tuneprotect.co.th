@@ -827,7 +827,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                                 if (promotion_data.result.codeAvailable >= i) {
                                     currentProfile.PromotionCode = $('#fdPromotionCode').value;
                                     currentProfile.CampaignId = promotion_data.result.campaignId;
-                                    currentProfile.CostAmount = priceTotal;    
+                                    currentProfile.CostAmount = selectPrice;    
                                     currentProfile.StatusId = 2;
                                     currentProfile.TypeId = 1
                                 }
