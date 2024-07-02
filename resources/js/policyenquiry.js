@@ -1,7 +1,7 @@
 import Swal from "sweetalert2";
 import { $, $$, locale } from "./helper";
 import validate from "validate.js";
-import {format, parseISO} from "date-fns";
+import { format, parseISO } from "date-fns";
 
 require('./bootstrap');
 require('./main');
@@ -100,7 +100,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                 <div><span>วันเกิด : </span><strong>${dob}</strong></div>
                                 <div><span>เบอร์โทรศัพท์มือถือ : </span><strong>${v.MOBILE_NO}</strong></div>
                                 <div><span>อีเมล : </span><strong>${v.EMAIL}</strong></div>
-                                <div class="controls-wrapper full no-lable"><span>ที่อยู่ : </span><strong>${v.ADDRESS} ${v.POSTCODE}</strong></div>
+                                <div class="controls-wrapper full no-lable"><span>ที่อยู่ : </span><strong>${v.ADDRESS} ${v.AMPHOE} ${v.PROVINCE} ${v.POSTCODE}</strong></div>
                                 <div class="controls-wrapper full no-lable"><span>ผู้รับผลประโยชน์ : </span><strong>${v.BENEFIT}</strong></div>
                             </div>
                             <br>`;
