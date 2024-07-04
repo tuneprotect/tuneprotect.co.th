@@ -767,13 +767,15 @@ document.addEventListener("DOMContentLoaded", async () => {
                         let profileData = [];
                         let promotion_data;
                         let priceTotal;
+                        let promoCode;
                         status = true;
 
                         const selectPrice = getSelectedPrice(data.fdPackage, package_data, data.fdFromDate, data.fdToDate);
                         priceTotal = selectPrice * $('#ctrl_no_of_insured').value;
 
                         if ($('#controller').value === 'product' && promotionCodeStatus) {
-                            promotion_data = await validatePromotionCode($('#fdPromotionCode').value, priceTotal, productCode);
+                            promoCode = $('#ctrl_travel_type').value === 'annual' ? 'annual' + $('#fdPromotionCode').value : $('#fdPromotionCode').value;
+                            promotion_data = await validatePromotionCode(promoCode, priceTotal, productCode);
                         }
 
                         removeError($('#step3'));
