@@ -3915,7 +3915,7 @@ main[data-package="ONFIMP"],[data-package="ONFIMPS"], [data-package="ONCOVIDMW"]
 .promotion-code {
     .grid {
         --card-line-height: 1.2em;
-        --card-padding: 5%;
+        --card-padding: 1em;
         --card-radius: 0.5em;
         --color-green: #558309;
         --color-gray: #e2ebf6;
@@ -3948,8 +3948,8 @@ main[data-package="ONFIMP"],[data-package="ONFIMPS"], [data-package="ONCOVIDMW"]
         font-size: inherit;
         margin: 0;
         position: absolute;
-        right: calc(var(--card-padding) + var(--radio-border-width));
-        top: calc(var(--card-padding) + var(--radio-border-width));
+        right: calc(5% + var(--radio-border-width));
+        top: calc(5% + var(--radio-border-width));
       }
       
     @supports(-webkit-appearance: none) or (-moz-appearance: none) { 

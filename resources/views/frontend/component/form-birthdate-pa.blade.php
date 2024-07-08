@@ -8,7 +8,7 @@
             <input type="hidden" id="promotion_code_condition" value="{{config('project.promotion_code_condition')}}"/>
             @include('frontend.component.form-input-pa-promotion')
         @endif
-        
+
         <div class="controls-wrapper full">
             <input id="ctrl_accept_step1" name="ctrl_accept_step1" type="checkbox"
                 data-error-accept-step1="@lang("product.error.insurance_term")"
