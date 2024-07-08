@@ -3,6 +3,12 @@
     <div class="form-inner">
         <h3>@lang('product.please_specify_birthdate')</h3>
         @include('frontend.component.form-date-input')
+        
+        @if($controller == 'product')
+            <input type="hidden" id="promotion_code_condition" value="{{config('project.promotion_code_condition')}}"/>
+            @include('frontend.component.form-input-pa-promotion')
+        @endif
+        
         <div class="controls-wrapper full">
             <input id="ctrl_accept_step1" name="ctrl_accept_step1" type="checkbox"
                 data-error-accept-step1="@lang("product.error.insurance_term")"
