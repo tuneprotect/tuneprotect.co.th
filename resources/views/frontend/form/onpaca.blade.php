@@ -1,6 +1,12 @@
 @include('frontend.component.form-stepper')
 <section id="step1" class="wrapper">
     @include('frontend.component.form-birthdate-pa')
+
+    @if($controller == 'product')
+        <input type="hidden" id="promotion_code_condition" value="{{config('project.promotion_code_condition')}}"/>
+        @include('frontend.component.form-input-pa-promotion')
+    @endif
+
     <br/>
     {!! $package->locales[$locale]->remark !!}    
 </section>
