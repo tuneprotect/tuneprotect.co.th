@@ -771,7 +771,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                         status = true;
 
                         const selectPrice = getSelectedPrice(data.fdPackage, package_data, data.fdFromDate, data.fdToDate);
-                        priceTotal = selectPrice * $('#ctrl_no_of_insured').value;
+                        priceTotal = $('#ctrl_travel_type').value === 'annual' ? selectPrice : selectPrice * $('#ctrl_no_of_insured').value;
 
                         if ($('#controller').value === 'product' && promotionCodeStatus) {
                             promoCode = $('#ctrl_travel_type').value === 'annual' ? 'annual' + $('#fdPromotionCode').value : $('#fdPromotionCode').value;
