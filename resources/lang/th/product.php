@@ -1260,6 +1260,7 @@ return [
     "select_branch" => "เลือกสาขา",
     "PromotionCode" => [
         "promotion_code_title" => "Promotion Code",
+        "promotion_code_title_pa" => "Choose Promotion",
         "promotion_code" => "Promotion Code",
         "promotion_code_count" => "Promotion code used {count} count",
         "promotion_code_valid" => "Promotion code is valid",
