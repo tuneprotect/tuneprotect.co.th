@@ -1,18 +1,17 @@
 <strong>@lang('product.PromotionCode.promotion_code_title')</strong>
-<div class="promotion-code">
-    <div class="grid">
-        <div class="controls-wrapper full">
-            <input id="promotion" name="promotion" type="radio" checked/>
-            <img src="/storage/promotion/Starbucks_Giftcard.png" />
-            <span class="span_error"></span>
-        </div>
-        <div class="controls-wrapper full">
-            <input id="promotion" name="promotion" type="radio"/>
-            <img src="/storage/promotion/Starbucks_Giftcard.png" />
-            <span class="span_error"></span>
-        </div>
+<div class="two-col">
+    <div class="controls-wrapper">
+        <ul class="check-wrapper">
+            <li>
+                <input id="ctrl_promotion_starbucks" name="fdSendType" type="radio" checked="" value="starbucks_code">
+                <img src="/storage/promotion/Starbucks_Giftcard.png" />
+            </li>
+            <li>
+                <input id="ctrl_promotion_central" name="fdSendType" type="radio" value="central_code">
+                <img src="/storage/promotion/Central_Giftcard.png" />
+            </li>
+        </ul>
     </div>
-    <span class="span_error"></span>
 </div>
 
 	
