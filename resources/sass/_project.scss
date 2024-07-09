@@ -3913,7 +3913,7 @@ main[data-package="ONFIMP"],[data-package="ONFIMPS"], [data-package="ONCOVIDMW"]
 }
 
 .promotion-code {
-    .grid {
+    .grid-promotion {
         --card-line-height: 1.2em;
         --card-padding: 1em;
         --card-radius: 0.5em;
@@ -3932,9 +3932,9 @@ main[data-package="ONFIMP"],[data-package="ONFIMPS"], [data-package="ONCOVIDMW"]
         @media (min-width: 42em) {
           grid-template-columns: repeat(3, 1fr);
         }
-      }
+    }
       
-      .card {
+    .card-promotion {
         background-color: #fff;
         border-radius: var(--card-radius);
         position: relative;
@@ -3942,54 +3942,54 @@ main[data-package="ONFIMP"],[data-package="ONFIMPS"], [data-package="ONCOVIDMW"]
         &:hover {
           box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.15);
         }
-      }
+    }
       
-      .radio {
+    .radio-promotion {
         font-size: inherit;
         margin: 0;
         position: absolute;
         right: calc(5% + var(--radio-border-width));
         top: calc(5% + var(--radio-border-width));
-      }
+    }
       
     @supports(-webkit-appearance: none) or (-moz-appearance: none) { 
-    .radio {
-        -webkit-appearance: none;
-        -moz-appearance: none;
-        background: #fff;
-        border: var(--radio-border-width) solid var(--color-gray);
-        border-radius: 50%;
-        cursor: pointer;
-        height: var(--radio-size);
-        outline: none;
-        transition: 
-        background 0.2s ease-out,
-        border-color 0.2s ease-out;
-        width: var(--radio-size); 
-    
-        &::after {
-            border: var(--radio-border-width) solid #fff;
-            border-top: 0;
-            border-left: 0;
-            content: '';
-            display: block;
-            height: 0.75rem;
-            left: 25%;
-            position: absolute;
-            top: 24%;
-            transform: 
-                rotate(45deg)
-                translate(-50%, -50%);
-            width: 8px;
+        .radio-promotion {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            background: #fff;
+            border: var(--radio-border-width) solid var(--color-gray);
+            border-radius: 50%;
+            cursor: pointer;
+            height: var(--radio-size);
+            outline: none;
+            transition: 
+            background 0.2s ease-out,
+            border-color 0.2s ease-out;
+            width: var(--radio-size); 
+        
+            &::after {
+                border: var(--radio-border-width) solid #fff;
+                border-top: 0;
+                border-left: 0;
+                content: '';
+                display: block;
+                height: 0.75rem;
+                left: 25%;
+                position: absolute;
+                top: 24%;
+                transform: 
+                    rotate(45deg)
+                    translate(-50%, -50%);
+                width: 8px;
+            }
+        
+            &:checked {
+                background: var(--color-green);
+                border-color: var(--color-green);
+            }
         }
     
-        &:checked {
-            background: var(--color-green);
-            border-color: var(--color-green);
-        }
-    }
-    
-        .card:hover .radio {
+        .card-promotion:hover .radio {
             border-color: var(--color-dark-gray);
             
             &:checked {
@@ -3998,7 +3998,7 @@ main[data-package="ONFIMP"],[data-package="ONFIMPS"], [data-package="ONCOVIDMW"]
         }
     }
       
-    .plan-details {
+    .plan-details-promotion {
         border: var(--radio-border-width) solid var(--color-gray);
         border-radius: var(--card-radius);
         cursor: pointer;
@@ -4008,37 +4008,37 @@ main[data-package="ONFIMP"],[data-package="ONFIMPS"], [data-package="ONCOVIDMW"]
         transition: border-color 0.2s ease-out;
     }
       
-    .plan-details img {
+    .plan-details-promotion img {
         width: 220px;
     }
       
-    .card:hover .plan-details {
+    .card-promotion:hover .plan-details-promotion {
         border-color: var(--color-dark-gray);
     }
       
-    .radio:checked ~ .plan-details {
+    .radio-promotion:checked ~ .plan-details-promotion {
         border-color: var(--color-green);
     }
       
-    .radio:focus ~ .plan-details {
+    .radio-promotion:focus ~ .plan-details-promotion {
         box-shadow: 0 0 0 2px var(--color-dark-gray);
     }
       
-    .radio:disabled ~ .plan-details {
+    .radio-promotion:disabled ~ .plan-details-promotion {
         color: var(--color-dark-gray);
         cursor: default;
     }
       
-    .radio:disabled ~ .plan-details .plan-type {
+    .radio-promotion:disabled ~ .plan-details-promotion .plan-type-promotion {
         color: var(--color-dark-gray);
     }
       
-    .card:hover .radio:disabled ~ .plan-details {
+    .card-promotion:hover .radio-promotion:disabled ~ .plan-details-promotion {
         border-color: var(--color-gray);
         box-shadow: none;
     }
       
-    .card:hover .radio:disabled {
+    .card-promotion:hover .radio-promotion:disabled {
         border-color: var(--color-gray);
     }
       
