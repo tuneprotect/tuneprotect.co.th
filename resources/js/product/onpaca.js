@@ -366,7 +366,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     if ($('#controller').value === 'product') 
     {
-        $('#fdPromotionCode').addEventListener('change', async (e) => {
+        $('input[type=radio]').addEventListener('change', async (e) => {
 
             if($('#fdPromotionCode').value) 
             {
