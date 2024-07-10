@@ -375,10 +375,8 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     if ($('#controller').value === 'product') 
     {
-        $('input[name="fdPromotionCode"]').change( async (e) => {
-
-            if($("input[name=fdPromotionCode]:checked").value) 
-            {
+        document.addEventListener('input', async (e) => {
+            if(e.target.getAttribute('name')=="fdPromotionCode") {
                 const promotion_data_befor = await preValidatePromotionCode($("input[name=fdPromotionCode]:checked").value, productCode);
                 if(promotion_data_befor.result.status && promotion_data_befor.result.codeAvailable <= parseInt($("#promotion_code_condition").value)) {
                     promotionCodeStatus = true;
@@ -389,12 +387,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                 } else {
                     showValidatePromotionCodeError(locale === 'th' ? promotion_data_befor.result.message_th : promotion_data_befor.result.message, 'span_error');
                 }
-            }
-            else
-            {
-                showPromotionCodeValid('', 'span_error');
-                promotionCodeStatus = false;
-            }
+            } 
         });
     }
 
