@@ -368,9 +368,9 @@ document.addEventListener("DOMContentLoaded", async () => {
     {
         $('input[type=radio]').addEventListener('change', async (e) => {
 
-            if($('#fdPromotionCode').value) 
+            if($("input[name=fdPromotionCode]:checked").value) 
             {
-                const promotion_data_befor = await preValidatePromotionCode($('#fdPromotionCode').value, productCode);
+                const promotion_data_befor = await preValidatePromotionCode($("input[name=fdPromotionCode]:checked").value, productCode);
                 if(promotion_data_befor.result.status && promotion_data_befor.result.codeAvailable <= parseInt($("#promotion_code_condition").value)) {
                     promotionCodeStatus = true;
                     showPromotionCodeCount($('#divPromotionCode').getAttribute('data-error-promotion-code-count').replace("{count}", promotion_data_befor.result.codeAvailable), 'span_error');
