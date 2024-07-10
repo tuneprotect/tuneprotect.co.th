@@ -306,6 +306,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
 
     const productCode = 'ONPA';
+    let promotionCodeStatus = "";
     const package_data = await getPackageData(current_package);
 
     let step = 1;
