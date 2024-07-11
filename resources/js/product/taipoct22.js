@@ -643,7 +643,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
                         let current_date = (new Date().toLocaleDateString()).split('/');
                         let effectiveDate = parseISO(data.fdFromDate);
-                        let currentDate = parseISO(`${current_date[2]}-${current_date[1]}-${current_date[0]}`);
+                        let currentDate = parseISO(`${current_date[2]}-${current_date[0]}-${current_date[1]}`);
 
                         promotion_extra = differenceInDays(effectiveDate, currentDate);
                         console.log(promotion_extra);
