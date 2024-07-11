@@ -641,7 +641,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                             
                         }
 
-                        let current_date = (new Date().toLocaleDateString()).split('/');
+                        let current_date = (new Date().toLocaleDateString('en-US', {year: 'numeric', month: '2-digit', day: '2-digit'})).split('/');
                         let effectiveDate = parseISO(data.fdFromDate);
                         let currentDate = parseISO(`${current_date[2]}-${current_date[0]}-${current_date[1]}`);
 
