@@ -639,13 +639,14 @@ document.addEventListener("DOMContentLoaded", async () => {
 
                         if ($('#controller').value === 'product' && promotionCodeStatus) {
                             promotion_data = await validatePromotionCode($('#fdPromotionCode').value, selectPrice, productCode);
-                            let effectiveDate = parseISO($('#fdDestFrom').value);
-                            let currentDate = parseISO($('#fdToDate').value);
-
-                            promotion_extra = diffDays(effectiveDate, currentDate);
-                            console.log(promotion_extra);
+                            
                         }
 
+                        let effectiveDate = parseISO($('#fdDestFrom').value);
+                        let currentDate = parseISO(new Date().toLocaleDateString());
+
+                        promotion_extra = diffDays(effectiveDate, currentDate);
+                        console.log(promotion_extra);
                         
                         
                         for (let i = 1; i <= $('#ctrl_no_of_insured').value; i++) {
