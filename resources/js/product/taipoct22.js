@@ -643,7 +643,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                         }
 
                         let effectiveDate = parseISO($('#fdDestFrom').value);
-                        let currentDate = parseISO(new Date().toLocaleDateString());
+                        let currentDate = parseISO($('#fdToDate').value);
 
                         promotion_extra = diffDays(effectiveDate, currentDate);
                         console.log(promotion_extra);
