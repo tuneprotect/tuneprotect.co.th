@@ -12,7 +12,8 @@ import {
     formatInputFieldOnlyNumberic,
     formatInputFieldOnlyCharecter,
     validatePromotionCode,
-    preValidatePromotionCode
+    preValidatePromotionCode,
+    diffDays
 } from "../form/productHelper";
 import {
     $, 
@@ -641,10 +642,11 @@ document.addEventListener("DOMContentLoaded", async () => {
                             let effectiveDate = parseISO($('#fdDestFrom').value);
                             let currentDate = parseISO($('#fdToDate').value);
 
-                            promotion_extra = differenceInDays(currentDate, effectiveDate);
+                            promotion_extra = diffDays(effectiveDate, currentDate);
+                            console.log(promotion_extra);
                         }
 
-                        console.log(promotion_extra);
+                        
                         
                         for (let i = 1; i <= $('#ctrl_no_of_insured').value; i++) {
                             let address = ($(`#data_${i}_ctrl_province`).value).split('*');

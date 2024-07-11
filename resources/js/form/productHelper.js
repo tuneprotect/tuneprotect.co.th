@@ -1072,5 +1072,20 @@ export const formatInputFieldOnlyCharecterOnlyEnglish = () => {
     };
 }
 
+export const diffDays = (dateString1, dateString2) => {
+    const date1 = convertToDate(dateString1);
+    const date2 = convertToDate(dateString2);
+   
+    const timeDiff = Math.abs(date2 - date1);
+    const diffDays = Math.ceil(timeDiff / (1000 * 60 * 60 * 24));
+   
+    return diffDays;
+}
+
+export const convertToDate = (dateString) => {
+    const [day, month, year] = dateString.split('/');
+    return new Date(year, month - 1, day);
+}
+ 
 
 
