@@ -808,7 +808,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                                 ? `<div class="controls-wrapper full no-lable"><span>${$('#lblfdPromotionCode').innerText} : </span><strong>${$('#fdPromotionCode').value} ${ promotion_data.result.status ? `
                                 ${ promotion_data.result.codeAvailable < i+1 
                                     ? `<span id="promotion_code_alert" style="color: #e71618;">${locale === 'th' ? '(* โค้ดนี้ได้ถูกใช้ครบแล้ว)' : '(* The code has already been used.)'}</span>` 
-                                    : `<span id="promotion_code_alert" style="color: #008b06;">${locale === 'th' ? '('+ promotion_data.result.message_th +')' + promotion_extra >= 30 ? '+ (รับเพิ่ม 200 บาท)' : '' +')' : '('+ promotion_data.result.message +')' + promotion_extra >= 30 ? '+ (Get extra 200 THB)' : ''}`}</span>` 
+                                    : `<span id="promotion_code_alert" style="color: #008b06;">${locale === 'th' ? '('+ promotion_data.result.message_th +')' : '('+ promotion_data.result.message +')'}`}</span>` 
                                     : `<span id="promotion_code_alert" style="color: #e71618;">${locale === 'th' ? '(* '+ promotion_data.result.message_th +')' : '(* '+ promotion_data.result.message +')'}</span>` } </strong>
                                 </div>`
                                 : ''
