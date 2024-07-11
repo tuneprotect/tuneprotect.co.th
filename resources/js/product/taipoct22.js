@@ -12,9 +12,7 @@ import {
     formatInputFieldOnlyNumberic,
     formatInputFieldOnlyCharecter,
     validatePromotionCode,
-    preValidatePromotionCode,
-    parseDate,
-    datediff
+    preValidatePromotionCode
 } from "../form/productHelper";
 import {
     $, 
@@ -640,7 +638,10 @@ document.addEventListener("DOMContentLoaded", async () => {
 
                         if ($('#controller').value === 'product' && promotionCodeStatus) {
                             promotion_data = await validatePromotionCode($('#fdPromotionCode').value, selectPrice, productCode);
-                            promotion_extra = datediff(parseDate(data.fdFromDate), parseDate(new Date().toLocaleDateString()));
+                            let effectiveDate = parseISO(fdFromDate);
+                            let currentDate = parseISO(new Date().toLocaleDateString());
+
+                            promotion_extra = differenceInDays(effectiveDate, currentDate);
                         }
 
                         console.log(promotion_extra);
