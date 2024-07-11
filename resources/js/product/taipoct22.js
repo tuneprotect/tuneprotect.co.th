@@ -13,6 +13,8 @@ import {
     formatInputFieldOnlyCharecter,
     validatePromotionCode,
     preValidatePromotionCode,
+    parseDate,
+    datediff
 } from "../form/productHelper";
 import {
     $, 
@@ -630,6 +632,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                     case 3:
                         let profileData = []
                         let promotion_data;
+                        let promotion_extra;
                         status = true;
                         removeError($('#step3'));
 
@@ -637,7 +640,10 @@ document.addEventListener("DOMContentLoaded", async () => {
 
                         if ($('#controller').value === 'product' && promotionCodeStatus) {
                             promotion_data = await validatePromotionCode($('#fdPromotionCode').value, selectPrice, productCode);
+                            promotion_extra = datediff(parseDate(data.fdFromDate), parseDate(new Date().toLocaleDateString()));
                         }
+
+                        console.log(promotion_extra);
                         
                         for (let i = 1; i <= $('#ctrl_no_of_insured').value; i++) {
                             let address = ($(`#data_${i}_ctrl_province`).value).split('*');
