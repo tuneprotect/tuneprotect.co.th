@@ -641,8 +641,8 @@ document.addEventListener("DOMContentLoaded", async () => {
                             
                         }
 
-                        let startDate = parseISO($('#fdFromDate').value);
-                        let endDate = parseISO($('#fdToDate').value);
+                        let startDate = parseISO(data.fdFromDate);
+                        let endDate = parseISO(data.fdToDate);
 
                         promotion_extra = differenceInDays(endDate, startDate);
                         console.log(promotion_extra);
