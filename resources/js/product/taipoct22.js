@@ -639,14 +639,13 @@ document.addEventListener("DOMContentLoaded", async () => {
                         if ($('#controller').value === 'product' && promotionCodeStatus) {
                             promotion_data = await validatePromotionCode($('#fdPromotionCode').value, selectPrice, productCode);
                             
+                            let current_date = (new Date().toLocaleDateString('en-US', {year: 'numeric', month: '2-digit', day: '2-digit'})).split('/');
+                            let effectiveDate = parseISO(data.fdFromDate);
+                            let currentDate = parseISO(`${current_date[2]}-${current_date[0]}-${current_date[1]}`);
+
+                            promotion_extra = differenceInDays(effectiveDate, currentDate);
                         }
 
-                        let current_date = (new Date().toLocaleDateString('en-US', {year: 'numeric', month: '2-digit', day: '2-digit'})).split('/');
-                        let effectiveDate = parseISO(data.fdFromDate);
-                        let currentDate = parseISO(`${current_date[2]}-${current_date[0]}-${current_date[1]}`);
-
-                        promotion_extra = differenceInDays(effectiveDate, currentDate);
-                        
                         for (let i = 1; i <= $('#ctrl_no_of_insured').value; i++) {
                             let address = ($(`#data_${i}_ctrl_province`).value).split('*');
                             let dateResult = checkTaBirthDateIPass(i);
