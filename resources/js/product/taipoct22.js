@@ -638,10 +638,10 @@ document.addEventListener("DOMContentLoaded", async () => {
 
                         if ($('#controller').value === 'product' && promotionCodeStatus) {
                             promotion_data = await validatePromotionCode($('#fdPromotionCode').value, selectPrice, productCode);
-                            let effectiveDate = parseISO(fdFromDate);
-                            let currentDate = parseISO(new Date().toLocaleDateString());
+                            let effectiveDate = parseISO($('#fdDestFrom').value);
+                            let currentDate = parseISO($('#fdToDate').value);
 
-                            promotion_extra = differenceInDays(effectiveDate, currentDate);
+                            promotion_extra = differenceInDays(currentDate, effectiveDate);
                         }
 
                         console.log(promotion_extra);
