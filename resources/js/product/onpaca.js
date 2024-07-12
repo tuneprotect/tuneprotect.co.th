@@ -460,7 +460,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     const $btnGoto = $$('.btn-goto');
     $btnGoto.forEach($btn => {
-        $btn.addEventListener("click", function (e) {
+        $btn.addEventListener("click", async (e) => {
                 e.preventDefault();
                 const goToStep = parseInt($btn.getAttribute('data-step'));
                 let status = false;
@@ -547,6 +547,15 @@ document.addEventListener("DOMContentLoaded", async () => {
                             break;
                         case 3:
                             let valCheck = false;
+                            let promotion_data;
+                            let selectPrice;
+
+                            selectPrice = getSelectedPrice(data.fdHBD, data.fdPackage, package_data);
+
+                            if ($('#controller').value === 'product' && promotionCodeStatus) {
+                                promotion_data = await validatePromotionCode($('#fdPromotionCode').value, selectPrice, productCode);
+                            }
+
                             valCheck = validatePolicyPayment($('#fdNationalID').value,data.fdPackage,$('#fdFromDate')?.value);
                             if(!valCheck)
                             {
@@ -579,7 +588,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                                 ctrl_accept_insurance_term: $('#ctrl_accept_insurance_term').checked ? true : undefined,
                                 ctrl_document_type: $('#ctrl_document_type').value,
                                 ctrl_province: $('#ctrl_province').value,
-                                fdPayAMT: getSelectedPrice(data.fdHBD, data.fdPackage, package_data)
+                                fdPayAMT: selectPrice
                             }
                             data = {
                                 ...data,
@@ -598,6 +607,18 @@ document.addEventListener("DOMContentLoaded", async () => {
                                     fdAnotherPolicyPrice1: $('#fdAnotherPolicyPrice1').value,
                                     fdAnotherPolicyPrice2: $('#fdAnotherPolicyPrice2').value,
                                     fdAnotherPolicyPrice3: $('#fdAnotherPolicyPrice3').value,
+                                }
+                            }
+
+                            if ($('#controller').value === 'product' && promotionCodeStatus) {
+                                if (promotion_data.result.codeAvailable >= i) {
+                                    data = {
+                                        PromotionCode: $('#fdPromotionCode').value,
+                                        CampaignId: promotion_data.result.campaignId,
+                                        CostAmount: selectPrice,
+                                        StatusId: 2,
+                                        TypeId: 1
+                                    }
                                 }
                             }
 
