@@ -1,5 +1,5 @@
 <strong>@lang('product.PromotionCode.promotion_code_title_pa')</strong>
-<div class="controls-wrapper promotion-code">
+<div class="promotion-code">
 	<div id="divPromotionCode" class="check-wrapper" 
             data-error-promotion-code-count="@lang('product.PromotionCode.promotion_code_count')"
             data-error-promotion-code-valid="@lang('product.PromotionCode.promotion_code_valid')"
