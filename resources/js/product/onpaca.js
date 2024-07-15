@@ -613,6 +613,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                             if ($('#controller').value === 'product' && promotionCodeStatus) {
                                 if (promotion_data.result.codeAvailable >= i) {
                                     data = {
+                                        ...data,
                                         PromotionCode: $("input[name=fdPromotionCode]:checked").value,
                                         CampaignId: promotion_data.result.campaignId,
                                         CostAmount: selectPrice,
