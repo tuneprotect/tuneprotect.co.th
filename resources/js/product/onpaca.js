@@ -699,7 +699,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                         <div><span>${$('#receve_channel_title').innerText} : </span><strong>${data.fdSendType === 'P' ? $('label[for=ctrl_channel_post]').innerText : $('label[for=ctrl_channel_email]').innerText}</strong></div>
                     
                         ${$('#controller').value === 'product' && promotionCodeStatus
-                            ? `<div class="controls-wrapper full no-lable"><span>${$('#lblfdPromotionCode').innerText} : </span><strong>${$("input[name=fdPromotionCode]:checked").value} ${ promotion_data.result.status ? `
+                            ? `<div class="controls-wrapper full no-lable"><span>${locale === 'th' ? 'โปรโมชั่นโค้ด' : 'Promotion Code'} : </span><strong>${$("input[name=fdPromotionCode]:checked").value} ${ promotion_data.result.status ? `
                             ${ promotion_data.result.codeAvailable < 1 
                                 ? `<span id="promotion_code_alert" style="color: #e71618;">${locale === 'th' ? '(* โค้ดนี้ได้ถูกใช้ครบแล้ว)' : '(* The code has already been used.)'}</span>` 
                                 : `<span id="promotion_code_alert" style="color: #008b06;">${locale === 'th' ? '('+ promotion_data.result.message_th +')' : '('+ promotion_data.result.message +')'}`}</span>` 
