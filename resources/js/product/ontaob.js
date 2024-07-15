@@ -4,9 +4,9 @@ import {
     formatTelNumber,
     getCountryData,
     getPackageData,
-    showMultipleTitle, 
-    validatePolicy, 
-    formatInputFieldOnlyEnglish, 
+    showMultipleTitle,
+    validatePolicy,
+    formatInputFieldOnlyEnglish,
     validatePolicyPayment,
     validatePromotionCode,
     preValidatePromotionCode,
@@ -247,7 +247,7 @@ const getSelectedPrice = (packageCode, package_data) => {
 }
 
 
-const genPrice = (package_data,country_data, subpackage, fdFromDate, fdToDate) => {
+const genPrice = (package_data, country_data, subpackage, fdFromDate, fdToDate) => {
 
     let startDate = parseISO(fdFromDate);
     let endDate = parseISO(fdToDate);
@@ -256,14 +256,13 @@ const genPrice = (package_data,country_data, subpackage, fdFromDate, fdToDate) =
     if ($('#ctrl_travel_type').value === 'annual') {
         // endDate = new Date(startDate.getFullYear() + 1, startDate.getMonth(), startDate.getDate());
     }
-    else
-    {
+    else {
         let country_zone = '';
         country_data.map(v => {
-                if (v.code === $('#fdDestTo').value) {
-                    country_zone = v.zone;
-                }
-            });
+            if (v.code === $('#fdDestTo').value) {
+                country_zone = v.zone;
+            }
+        });
         subpackage = country_zone;
         $('#ctrl_sub_package').value = subpackage;
     }
@@ -304,8 +303,7 @@ const genPrice = (package_data,country_data, subpackage, fdFromDate, fdToDate) =
     }
 
     $$('#table-detail td[data-h2go]').forEach($el => {
-        if(day>=5)
-        {
+        if (day >= 5) {
             if ($el.getAttribute("data-h2go").startsWith('73')) {
                 $el.innerHTML = "<strong><i class='icofont-check-circled'  style='color:green'></i></strong>";
             }
@@ -313,8 +311,7 @@ const genPrice = (package_data,country_data, subpackage, fdFromDate, fdToDate) =
                 $el.innerHTML = "<strong><i class='icofont-check-circled'  style='color:green'></i></strong>";
             }
         }
-        else
-        {
+        else {
             if ($el.getAttribute("data-h2go").startsWith('73')) {
                 $el.innerHTML = "<strong><i class='icofont-close-circled' style='color:red'></i></strong>";
             }
@@ -328,12 +325,10 @@ const genPrice = (package_data,country_data, subpackage, fdFromDate, fdToDate) =
     allPack.map(k => {
         const pack = Object.keys(package_data[k].price).filter(subPackage => {
             const dateRange = (package_data[k].price[subPackage].day).split('-');
-            if(dateRange.length === 1)
-            {
+            if (dateRange.length === 1) {
                 return day >= dateRange[0] && day <= dateRange[0];
             }
-            else
-            {
+            else {
                 return day >= dateRange[0] && day <= dateRange[1];
             }
         })
@@ -356,29 +351,27 @@ const genItemList = (package_data, country_data, subpackage, fdFromDate, fdToDat
         let endDate = parseISO(fdToDate);
 
         const day = differenceInDays(endDate, startDate) + 1;
-        
+
         let country_zone = '';
         country_data.map(v => {
-                if (v.code === $('#fdDestTo').value) {
-                    country_zone = v.zone;
-                }
-            });
+            if (v.code === $('#fdDestTo').value) {
+                country_zone = v.zone;
+            }
+        });
         subpackage = country_zone;
 
         let current_packages = "";
-        if ($('#ctrl_travel_type').value === 'annual'){ current_packages = current_package + $('#ctrl_sub_package').value } else { current_packages = current_package + subpackage }
+        if ($('#ctrl_travel_type').value === 'annual') { current_packages = current_package + $('#ctrl_sub_package').value } else { current_packages = current_package + subpackage }
 
         Object.keys(package_data)
             .filter(k => _.startsWith(k, current_packages))
             .map(k => {
                 const pack = Object.keys(package_data[k].price).filter(subPackage => {
                     const dateRange = (package_data[k].price[subPackage].day).split('-');
-                    if(dateRange.length === 1)
-                    {
+                    if (dateRange.length === 1) {
                         return day >= dateRange[0] && day <= dateRange[0];
                     }
-                    else
-                    {
+                    else {
                         return day >= dateRange[0] && day <= dateRange[1];
                     }
                 })
@@ -404,8 +397,7 @@ const genItemList = (package_data, country_data, subpackage, fdFromDate, fdToDat
             });
     }
 
-    if ($('#controller').value === 'product') 
-    {
+    if ($('#controller').value === 'product') {
         dataLayer.push({ ecommerce: null });  // Clear the previous ecommerce object.
         dataLayer.push({
             event: "view_item",
@@ -440,7 +432,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     let step = 1;
     let data = {
-        fdAgent : "00DM004D00",//"00DM004D00",
+        fdAgent: "00DM004D00",//"00DM004D00",
         fdKeys: Keys,
         fdPayAMT: "",
         fdFromDate: "",
@@ -464,19 +456,18 @@ document.addEventListener("DOMContentLoaded", async () => {
         .map(v => {
             //if (v.code === 'THA' || v.code === 'WRW' || v.code === 'ASN'
             if (v.code === 'THA' || v.code === 'ASN'
-                || v.code === 'AFG' || v.code === 'AZE' || v.code === 'CUB'|| v.code === 'IRN'|| v.code === 'IRQ'
-                || v.code === 'ISR' || v.code === 'KGZ' || v.code === 'LBN'|| v.code === 'LBY'|| v.code === 'NPL'
-                || v.code === 'NIC' || v.code === 'PRK' || v.code === 'PAK'|| v.code === 'PSE'|| v.code === 'SYR'
+                || v.code === 'AFG' || v.code === 'AZE' || v.code === 'CUB' || v.code === 'IRN' || v.code === 'IRQ'
+                || v.code === 'ISR' || v.code === 'KGZ' || v.code === 'LBN' || v.code === 'LBY' || v.code === 'NPL'
+                || v.code === 'NIC' || v.code === 'PRK' || v.code === 'PAK' || v.code === 'PSE' || v.code === 'SYR'
                 || v.code === 'TJK' || v.code === 'TKM' || v.code === 'UZB') {
             }
-            else if(v.code === 'WRW'){
+            else if (v.code === 'WRW') {
                 sbWorldwide = `<option value="${v.code}">${v[locale]}</option>`;
             }
-            else if(v.code === 'SCG'){
+            else if (v.code === 'SCG') {
                 sbSCHENGEN = `<option value="${v.code}">${v[locale]}</option>`;
             }
-            else
-            {
+            else {
                 sb += `<option value="${v.code}">${v[locale]}</option>`;
             }
         });
@@ -490,15 +481,14 @@ document.addEventListener("DOMContentLoaded", async () => {
         let display_fdToDate = 'block'
 
         if (e.target.value === 'annual') {
-            display_sub_package ='block';
-            display_fdDestTo  = "none";
-            display_fdToDate  = "none";
+            display_sub_package = 'block';
+            display_fdDestTo = "none";
+            display_fdToDate = "none";
         }
-        else
-        {
+        else {
             display_sub_package = "none";
-            display_fdDestTo  = 'block';
-            display_fdToDate  = 'block';
+            display_fdDestTo = 'block';
+            display_fdToDate = 'block';
         }
         $$("#ctrl_sub_package,#fdDestTo").forEach(($el) => {
             $el.closest('.controls-wrapper').style.display = display_sub_package;
@@ -511,25 +501,22 @@ document.addEventListener("DOMContentLoaded", async () => {
         });
     })
 
-    if ($('#controller').value === 'product') 
-    {
+    if ($('#controller').value === 'product') {
         $('#fdPromotionCode').addEventListener('change', async (e) => {
 
-            if($('#fdPromotionCode').value) 
-            {
+            if ($('#fdPromotionCode').value) {
                 const promotion_data_befor = await preValidatePromotionCode($('#fdPromotionCode').value, productCode);
-                if(promotion_data_befor.result.status && promotion_data_befor.result.codeAvailable <= parseInt($("#promotion_code_condition").value)) {
+                if (promotion_data_befor.result.status && promotion_data_befor.result.codeAvailable <= parseInt($("#promotion_code_condition").value)) {
                     promotionCodeStatus = true;
                     showPromotionCodeCount($('#fdPromotionCode').getAttribute('data-error-promotion-code-count').replace("{count}", promotion_data_befor.result.codeAvailable), 'span_error');
-                } else if(promotion_data_befor.result.status) {
+                } else if (promotion_data_befor.result.status) {
                     promotionCodeStatus = true;
                     showPromotionCodeValid($('#fdPromotionCode').getAttribute('data-error-promotion-code-valid'), 'span_error');
                 } else {
                     showValidatePromotionCodeError(locale === 'th' ? promotion_data_befor.result.message_th : promotion_data_befor.result.message, 'span_error');
                 }
             }
-            else
-            {
+            else {
                 showPromotionCodeValid('', 'span_error');
                 promotionCodeStatus = false;
             }
@@ -596,15 +583,15 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
 
     let nationalID = [];
-    
+
 
     const allField = $('#step3').querySelectorAll('input,select,textarea');
     allField.forEach(field => {
         field.addEventListener("change", function (e) {
             validateField(this, profileConstraints);
-            for (let i = 1; i <=  $('#ctrl_no_of_insured').value; i++) {
+            for (let i = 1; i <= $('#ctrl_no_of_insured').value; i++) {
                 if ([`data_${i}_fdName`, `data_${i}_fdSurname`, `data_${i}_fdNationalID`].includes(field.id)) {
-                    validatePolicy(e.target, data.fdPackage,$('#fdFromDate')?.value);
+                    validatePolicy(e.target, data.fdPackage, $('#fdFromDate')?.value);
                 }
                 if ([`data_${i}_ctrl_day`, `data_${i}_ctrl_month`, `data_${i}_ctrl_year`].includes(field.id)) {
                     removeError($(`#form_profile_${i} .controls-wrapper .date-input`));
@@ -701,7 +688,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                             fdToDate: `${toDate[2]}-${toDate[1]}-${toDate[0]}`,
                         }
 
-                        genPrice(package_data,countryData, $('#ctrl_sub_package').value, data.fdFromDate, data.fdToDate, $('#ctrl_travel_type').value);
+                        genPrice(package_data, countryData, $('#ctrl_sub_package').value, data.fdFromDate, data.fdToDate, $('#ctrl_travel_type').value);
                         genItemList(package_data, countryData, $('#ctrl_sub_package').value, data.fdFromDate, data.fdToDate);
 
                         break;
@@ -717,8 +704,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
                             const selectPrice = getSelectedPrice(data.fdPackage, package_data, data.fdFromDate, data.fdToDate);
 
-                            if ($('#controller').value === 'product') 
-                            {
+                            if ($('#controller').value === 'product') {
                                 dataLayer.push({ ecommerce: null });  // Clear the previous ecommerce object.
                                 dataLayer.push({
                                     event: "add_to_cart",
@@ -735,7 +721,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                                     }
                                 });
                             }
-                            
+
                             status = true;
                         } else {
                             Swal.fire({
@@ -783,11 +769,10 @@ document.addEventListener("DOMContentLoaded", async () => {
                         for (let i = 1; i <= $('#ctrl_no_of_insured').value; i++) {
                             let address = ($(`#data_${i}_ctrl_province`).value).split('*');
                             let dateResult = iTravelCheckBirthDate(i);
-                            
+
                             let valCheck = false;
-                            valCheck = validatePolicyPayment($(`#data_${i}_fdNationalID`).value,data.fdPackage,$('#fdFromDate')?.value);
-                            if(!valCheck)
-                            {
+                            valCheck = validatePolicyPayment($(`#data_${i}_fdNationalID`).value, data.fdPackage, $('#fdFromDate')?.value);
+                            if (!valCheck) {
                                 status = false;
                                 return false;
                             }
@@ -825,13 +810,25 @@ document.addEventListener("DOMContentLoaded", async () => {
                                 TypeId: ""
                             };
 
-                            if ($('#controller').value === 'product' && promotionCodeStatus && i == 1) {
-                                if (promotion_data.result.codeAvailable >= i) {
-                                    currentProfile.PromotionCode = $('#ctrl_travel_type').value === 'annual' ? 'annual' + $('#fdPromotionCode').value : $('#fdPromotionCode').value;
-                                    currentProfile.CampaignId = promotion_data.result.campaignId;
-                                    currentProfile.CostAmount = priceTotal;    
-                                    currentProfile.StatusId = 2;
-                                    currentProfile.TypeId = 1
+                            if ($('#controller').value === 'product' && promotionCodeStatus && $('#ctrl_travel_type').value === 'annual') {
+                                if ($('#controller').value === 'product' && promotionCodeStatus) {
+                                    if (promotion_data.result.codeAvailable >= i) {
+                                        currentProfile.PromotionCode = $('#ctrl_travel_type').value + $('#fdPromotionCode').value;
+                                        currentProfile.CampaignId = promotion_data.result.campaignId;
+                                        currentProfile.CostAmount = selectPrice;
+                                        currentProfile.StatusId = 2;
+                                        currentProfile.TypeId = 1
+                                    }
+                                }
+                            } else {
+                                if ($('#controller').value === 'product' && promotionCodeStatus && i == 1) {
+                                    if (promotion_data.result.codeAvailable >= i) {
+                                        currentProfile.PromotionCode = $('#fdPromotionCode').value;
+                                        currentProfile.CampaignId = promotion_data.result.campaignId;
+                                        currentProfile.CostAmount = priceTotal;
+                                        currentProfile.StatusId = 2;
+                                        currentProfile.TypeId = 1
+                                    }
                                 }
                             }
 
@@ -869,8 +866,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                         if (result) {
                             showError($('#step3'), result);
                         } else {
-                            if ($('#controller').value === 'product') 
-                            {
+                            if ($('#controller').value === 'product') {
                                 dataLayer.push({ ecommerce: null });  // Clear the previous ecommerce object.
                                 dataLayer.push({
                                     event: "begin_checkout",
@@ -903,14 +899,14 @@ document.addEventListener("DOMContentLoaded", async () => {
                         const $destTo = $('#fdDestTo');
                         const $subPackage = $('#ctrl_sub_package');
                         const $summary_section = $('#summary_section');
-                        
+
                         let sb = `<h3 class="text-primary">${$summary_section.getAttribute('data-insurance_data')}</h3><br/>
                         <div class="two-col">
                             <div><span>${$summary_section.getAttribute('data-plan')} : </span><strong>${selectedPackage}</strong></div>
                             <div><span>${$('#receve_channel_title').innerText} : </span><strong>${data.fdSendType === 'P' ? $('label[for=ctrl_channel_post]').innerText : $('label[for=ctrl_channel_email]').innerText}</strong></div>
                             ${$('#ctrl_travel_type').value === 'annual'
-                            ? `<div><span>${$('label[for=ctrl_sub_package]').innerText} : </span><strong>${$subPackage.options[$subPackage.selectedIndex].text}</strong></div>`
-                            : `<div><span>${$('label[for=fdDestTo]').innerText} : </span><strong>${$destTo.options[$destTo.selectedIndex].text}</strong></div>`}
+                                ? `<div><span>${$('label[for=ctrl_sub_package]').innerText} : </span><strong>${$subPackage.options[$subPackage.selectedIndex].text}</strong></div>`
+                                : `<div><span>${$('label[for=fdDestTo]').innerText} : </span><strong>${$destTo.options[$destTo.selectedIndex].text}</strong></div>`}
                             <div><span>${$('label[for=fdFromDate]').innerText} : </span><strong>${fromDate}</strong></div>
                             <div><span>${$('label[for=fdToDate]').innerText} : </span><strong>${toDate}</strong></div>
                             <div></div>
@@ -936,14 +932,14 @@ document.addEventListener("DOMContentLoaded", async () => {
                             <div class="controls-wrapper full no-lable"><span>${$('#beneficiary_header').innerText} : </span><strong>${v.fdBenefit === 'other' ? v.fdBenefit_name + ' (' + v.fdRelation + ')' : v.fdBenefit} </strong></div>
                             
                             ${$('#controller').value === 'product' && promotionCodeStatus && i == 0
-                                ? `<div class="controls-wrapper full no-lable"><span>${$('#lblfdPromotionCode').innerText} : </span><strong>${$('#fdPromotionCode').value} ${ promotion_data.result.status ? `
-                                ${ promotion_data.result.codeAvailable < i+1 
-                                    ? `<span id="promotion_code_alert" style="color: #e71618;">${locale === 'th' ? '(* โค้ดนี้ได้ถูกใช้ครบแล้ว)' : '(* The code has already been used.)'}</span>` 
-                                    : `<span id="promotion_code_alert" style="color: #008b06;">${locale === 'th' ? '('+ promotion_data.result.message_th +')' : '('+ promotion_data.result.message +')'}`}</span>` 
-                                    : `<span id="promotion_code_alert" style="color: #e71618;">${locale === 'th' ? '(* '+ promotion_data.result.message_th +')' : '(* '+ promotion_data.result.message +')'}</span>` } </strong>
+                                    ? `<div class="controls-wrapper full no-lable"><span>${$('#lblfdPromotionCode').innerText} : </span><strong>${$('#fdPromotionCode').value} ${promotion_data.result.status ? `
+                                ${promotion_data.result.codeAvailable < i + 1
+                                            ? `<span id="promotion_code_alert" style="color: #e71618;">${locale === 'th' ? '(* โค้ดนี้ได้ถูกใช้ครบแล้ว)' : '(* The code has already been used.)'}</span>`
+                                            : `<span id="promotion_code_alert" style="color: #008b06;">${locale === 'th' ? '(' + promotion_data.result.message_th + ')' : '(' + promotion_data.result.message + ')'}`}</span>`
+                                        : `<span id="promotion_code_alert" style="color: #e71618;">${locale === 'th' ? '(* ' + promotion_data.result.message_th + ')' : '(* ' + promotion_data.result.message + ')'}</span>`} </strong>
                                 </div>`
-                                : ''
-                            }
+                                    : ''
+                                }
 
                         </div><br/>`
                         });
