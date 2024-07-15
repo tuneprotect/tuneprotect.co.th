@@ -12,7 +12,7 @@ import {
     formatInputFieldOnlyNumberic,
     formatInputFieldOnlyCharecter,
     validatePromotionCode,
-    preValidatePromotionCode,
+    preValidatePromotionCode
 } from "../form/productHelper";
 import {
     $, 
@@ -630,6 +630,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                     case 3:
                         let profileData = []
                         let promotion_data;
+                        let promotion_extra;
                         status = true;
                         removeError($('#step3'));
 
@@ -637,8 +638,14 @@ document.addEventListener("DOMContentLoaded", async () => {
 
                         if ($('#controller').value === 'product' && promotionCodeStatus) {
                             promotion_data = await validatePromotionCode($('#fdPromotionCode').value, selectPrice, productCode);
+                            
+                            let current_date = (new Date().toLocaleDateString('en-US', {year: 'numeric', month: '2-digit', day: '2-digit'})).split('/');
+                            let effectiveDate = parseISO(data.fdFromDate);
+                            let currentDate = parseISO(`${current_date[2]}-${current_date[0]}-${current_date[1]}`);
+
+                            promotion_extra = differenceInDays(effectiveDate, currentDate);
                         }
-                        
+
                         for (let i = 1; i <= $('#ctrl_no_of_insured').value; i++) {
                             let address = ($(`#data_${i}_ctrl_province`).value).split('*');
                             let dateResult = checkTaBirthDateIPass(i);
@@ -801,7 +808,8 @@ document.addEventListener("DOMContentLoaded", async () => {
                                 ? `<div class="controls-wrapper full no-lable"><span>${$('#lblfdPromotionCode').innerText} : </span><strong>${$('#fdPromotionCode').value} ${ promotion_data.result.status ? `
                                 ${ promotion_data.result.codeAvailable < i+1 
                                     ? `<span id="promotion_code_alert" style="color: #e71618;">${locale === 'th' ? '(* โค้ดนี้ได้ถูกใช้ครบแล้ว)' : '(* The code has already been used.)'}</span>` 
-                                    : `<span id="promotion_code_alert" style="color: #008b06;">${locale === 'th' ? '('+ promotion_data.result.message_th +')' : '('+ promotion_data.result.message +')'}`}</span>` 
+                                    : `<span id="promotion_code_alert" style="color: #008b06;">${locale === 'th' ? '('+ promotion_data.result.message_th +')' : '('+ promotion_data.result.message +')' }`} 
+                                        ${locale === 'th' ? promotion_extra >= 30 ? ' + (รับเพิ่ม 200 บาท)' : '' : promotion_extra >= 30 ? ' + (Get extra 200 THB)' : '' } </span>` 
                                     : `<span id="promotion_code_alert" style="color: #e71618;">${locale === 'th' ? '(* '+ promotion_data.result.message_th +')' : '(* '+ promotion_data.result.message +')'}</span>` } </strong>
                                 </div>`
                                 : ''
