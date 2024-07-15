@@ -553,7 +553,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                             selectPrice = getSelectedPrice(data.fdHBD, data.fdPackage, package_data);
 
                             if ($('#controller').value === 'product' && promotionCodeStatus) {
-                                promotion_data = await validatePromotionCode($('#fdPromotionCode').value, selectPrice, productCode);
+                                promotion_data = await validatePromotionCode($("input[name=fdPromotionCode]:checked").value, selectPrice, productCode);
                             }
 
                             valCheck = validatePolicyPayment($('#fdNationalID').value,data.fdPackage,$('#fdFromDate')?.value);
@@ -613,7 +613,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                             if ($('#controller').value === 'product' && promotionCodeStatus) {
                                 if (promotion_data.result.codeAvailable >= i) {
                                     data = {
-                                        PromotionCode: $('#fdPromotionCode').value,
+                                        PromotionCode: $("input[name=fdPromotionCode]:checked").value,
                                         CampaignId: promotion_data.result.campaignId,
                                         CostAmount: selectPrice,
                                         StatusId: 2,
@@ -699,7 +699,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                         <div><span>${$('#receve_channel_title').innerText} : </span><strong>${data.fdSendType === 'P' ? $('label[for=ctrl_channel_post]').innerText : $('label[for=ctrl_channel_email]').innerText}</strong></div>
                     
                         ${$('#controller').value === 'product' && promotionCodeStatus && i == 0
-                            ? `<div class="controls-wrapper full no-lable"><span>${$('#lblfdPromotionCode').innerText} : </span><strong>${$('#fdPromotionCode').value} ${ promotion_data.result.status ? `
+                            ? `<div class="controls-wrapper full no-lable"><span>${$('#lblfdPromotionCode').innerText} : </span><strong>${$("input[name=fdPromotionCode]:checked").value} ${ promotion_data.result.status ? `
                             ${ promotion_data.result.codeAvailable < i+1 
                                 ? `<span id="promotion_code_alert" style="color: #e71618;">${locale === 'th' ? '(* โค้ดนี้ได้ถูกใช้ครบแล้ว)' : '(* The code has already been used.)'}</span>` 
                                 : `<span id="promotion_code_alert" style="color: #008b06;">${locale === 'th' ? '('+ promotion_data.result.message_th +')' : '('+ promotion_data.result.message +')'}`}</span>` 
