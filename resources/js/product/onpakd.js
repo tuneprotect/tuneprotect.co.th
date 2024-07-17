@@ -1,5 +1,10 @@
 import {showFieldError, 
-    showAcceptError, validateField} from "../validate_form";
+    showAcceptError, 
+    validateField,
+    showPromotionCodeValid,
+    showPromotionCodeCount,
+    showValidatePromotionCodeError,
+} from "../validate_form";
 import validate from "validate.js";
 import {$, $$, current_package, fadeIn, fadeOut, getRadioSelectedValue, locale, scrollToTargetAdjusted} from "../helper"
 import Swal from 'sweetalert2'
@@ -16,6 +21,8 @@ import {
     formatInputFieldByLanguage,
     formatInputFieldOnlyNumberic,
     formatInputFieldOnlyCharecter,
+    validatePromotionCode,
+    preValidatePromotionCode,
 } from "../form/productHelper";
 import {format, parseISO} from "date-fns";
 import intlTelInput from "intl-tel-input";
