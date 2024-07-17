@@ -6,15 +6,13 @@
             data-error-promotion-code-invalid="@lang('product.PromotionCode.promotion_code_invalid')">
 		<div class="controls-wrapper">
 			<input id="ctrl_promotion_starbucks" name="fdPromotionCode" type="radio" value="pastb2024">
-			<label for="ctrl_promotion_starbucks">
-				<img src="/storage/promotion/Starbucks_Giftcard.png" width="30%" />
-			</label>
+			<label for="ctrl_promotion_starbucks"></label>
+			<img src="/storage/promotion/Starbucks_Giftcard.png" width="30%" />
 		</div>
 		<div class="controls-wrapper">
 			<input id="ctrl_promotion_central" name="fdPromotionCode" type="radio" value="pact2024">
-			<label for="ctrl_promotion_central">
-				<img src="/storage/promotion/Central_Giftcard.png" width="30%" />
-			</label>
+			<label for="ctrl_promotion_central"></label>
+			<img src="/storage/promotion/Central_Giftcard.png" width="30%" />
 		</div>
         <span class="span_error"></span>
 	</div>

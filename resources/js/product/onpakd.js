@@ -283,6 +283,8 @@ const constraints = {
 
 document.addEventListener("DOMContentLoaded", async () => {
 
+    const productCode = 'ONPAKD';
+    let promotionCodeStatus = "";
     const package_data = await getPackageData(current_package);
 
     let Keys = "";
@@ -364,6 +366,24 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
     });
 
+    if ($('#controller').value === 'product') 
+    {
+        document.addEventListener('input', async (e) => {
+            if(e.target.getAttribute('name')=="fdPromotionCode") {
+                const promotion_data_befor = await preValidatePromotionCode($("input[name=fdPromotionCode]:checked").value, productCode);
+                if(promotion_data_befor.result.status && promotion_data_befor.result.codeAvailable <= parseInt($("#promotion_code_condition").value)) {
+                    promotionCodeStatus = true;
+                    showPromotionCodeCount($('#divPromotionCode').getAttribute('data-error-promotion-code-count').replace("{count}", promotion_data_befor.result.codeAvailable), 'span_error');
+                } else if(promotion_data_befor.result.status) {
+                    promotionCodeStatus = true;
+                    showPromotionCodeValid($('#divPromotionCode').getAttribute('data-error-promotion-code-valid'), 'span_error');
+                } else {
+                    showValidatePromotionCodeError(locale === 'th' ? promotion_data_befor.result.message_th : promotion_data_befor.result.message, 'span_error');
+                }
+            } 
+        });
+    }
+
     const $form1 = $('#step1');
     const allField1 = $form1.querySelectorAll('input');
     allField1.forEach(field => {
@@ -433,7 +453,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     const $btnGoto = $$('.btn-goto');
     $btnGoto.forEach($btn => {
-        $btn.addEventListener("click", function (e) {
+        $btn.addEventListener("click", async (e) => {
                 e.preventDefault();
                 const goToStep = parseInt($btn.getAttribute('data-step'));
                 let status = false;
@@ -470,6 +490,10 @@ document.addEventListener("DOMContentLoaded", async () => {
                                 showTitle('', data.fdAge)
 
                                 const selectPrice = getSelectedPrice(data.fdHBD, fdPackage, package_data);
+
+                                if ($('#controller').value === 'product' && promotionCodeStatus) {
+                                    promotion_data = await validatePromotionCode($("input[name=fdPromotionCode]:checked").value, selectPrice, productCode);
+                                }
 
                                 if ($('#controller').value === 'product') 
                                 {
@@ -574,6 +598,19 @@ document.addEventListener("DOMContentLoaded", async () => {
                                 }
                             }
 
+                            if ($('#controller').value === 'product' && promotionCodeStatus) {
+                                if (promotion_data.result.codeAvailable >= 1) {
+                                    data = {
+                                        ...data,
+                                        PromotionCode: $("input[name=fdPromotionCode]:checked").value,
+                                        CampaignId: promotion_data.result.campaignId,
+                                        CostAmount: selectPrice,
+                                        StatusId: 2,
+                                        TypeId: 1
+                                    }
+                                }
+                            }
+
                             const result = validate(data, constraints);
                             const $cite = $form3.getElementsByTagName('cite');
                             for (let i = 0, len = $cite.length; i !== len; ++i) {
@@ -649,6 +686,17 @@ document.addEventListener("DOMContentLoaded", async () => {
                             <div><span>${$('#tax_deduction_title').innerText} : </span><strong>${data.fdRevenue === 'Y' ? $('#fdTaxno').getAttribute('data-yes') : $('#fdTaxno').getAttribute('data-no')}</strong></div>
                         ${data.fdRevenue === 'Y' ? '<div><span>' + $('label[for=fdTaxno]').innerText + ' : </span><strong>' + data.fdTaxno + '</strong></div>' : ''}
                         <div><span>${$('#receve_channel_title').innerText} : </span><strong>${data.fdSendType === 'P' ? $('label[for=ctrl_channel_post]').innerText : $('label[for=ctrl_channel_email]').innerText}</strong></div>
+                        
+                        ${$('#controller').value === 'product' && promotionCodeStatus
+                            ? `<div class="controls-wrapper full no-lable"><span>${locale === 'th' ? 'โปรโมชั่นโค้ด' : 'Promotion Code'} : </span><strong>${$("input[name=fdPromotionCode]:checked").value} ${ promotion_data.result.status ? `
+                            ${ promotion_data.result.codeAvailable < 1 
+                                ? `<span id="promotion_code_alert" style="color: #e71618;">${locale === 'th' ? '(* โค้ดนี้ได้ถูกใช้ครบแล้ว)' : '(* The code has already been used.)'}</span>` 
+                                : `<span id="promotion_code_alert" style="color: #008b06;">${locale === 'th' ? '('+ promotion_data.result.message_th +')' : '('+ promotion_data.result.message +')'}`}</span>` 
+                                : `<span id="promotion_code_alert" style="color: #e71618;">${locale === 'th' ? '(* '+ promotion_data.result.message_th +')' : '(* '+ promotion_data.result.message +')'}</span>` } </strong>
+                            </div>`
+                            : ''
+                        }
+                    
                     </div>` + sb;
                                 status = true;
                             }
