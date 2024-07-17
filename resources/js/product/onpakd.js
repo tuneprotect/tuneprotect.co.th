@@ -498,10 +498,6 @@ document.addEventListener("DOMContentLoaded", async () => {
 
                                 const selectPrice = getSelectedPrice(data.fdHBD, fdPackage, package_data);
 
-                                if ($('#controller').value === 'product' && promotionCodeStatus) {
-                                    promotion_data = await validatePromotionCode($("input[name=fdPromotionCode]:checked").value, selectPrice, productCode);
-                                }
-
                                 if ($('#controller').value === 'product') 
                                 {
                                     dataLayer.push({ ecommerce: null });  // Clear the previous ecommerce object.
@@ -551,6 +547,15 @@ document.addEventListener("DOMContentLoaded", async () => {
                             break;
                         case 3:
                             let valCheck = false;
+                            let promotion_data;
+                            let selectPrice;
+
+                            selectPrice = getSelectedPrice(data.fdHBD, data.fdPackage, package_data);
+
+                            if ($('#controller').value === 'product' && promotionCodeStatus) {
+                                promotion_data = await validatePromotionCode($("input[name=fdPromotionCode]:checked").value, selectPrice, productCode);
+                            }
+                            
                             valCheck = validatePolicyPayment($('#fdNationalID').value,data.fdPackage,$('#fdFromDate')?.value);
                             if(!valCheck)
                             {
