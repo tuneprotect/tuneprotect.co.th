@@ -83,10 +83,11 @@
                 <img alt="twitter sharing button" src="https://platform-cdn.sharethis.com/img/twitter.svg">
                 <span class="st-label">Tweet</span>
             </div>
-            <div class="st-btn" data-network="email" style="display: inline-block;">
-                <img alt="email sharing button" src="https://platform-cdn.sharethis.com/img/email.svg">
-                <span class="st-label">Email</span>
-            </div>
+            <a href="mailto:privacy.th@tuneprotect.co.th?subject=I wanted you to see this site&amp;body=Check out this site www.tuneprotect.co.th."
+               title="Share by Email" class="st-btn" data-network="twitter" style="display: inline-block;">
+               <img alt="email sharing button" src="https://platform-cdn.sharethis.com/img/email.svg">
+               <span class="st-label">Email</span>
+            </a>
             <div class="st-btn st-last" data-network="sharethis" style="display: inline-block;">
                 <img alt="sharethis sharing button" src="https://platform-cdn.sharethis.com/img/sharethis.svg">
                 <span class="st-label">Share</span>
