@@ -22,19 +22,19 @@
 
             <div class="social-share-btns-container">  
                 <div class="social-share-btns">
-                    <a class="share-btn.share-btn-twitter" href="https://twitter.com/intent/tweet?text=https://codepen.io/marko-zub/#" rel="nofollow" target="_blank">
+                    <a class="share-btn share-btn-twitter" href="https://twitter.com/intent/tweet?text=https://codepen.io/marko-zub/#" rel="nofollow" target="_blank">
                         <i class="ion-social-twitter">Tweet</i>
                     </a>
-                    <a class="share-btn.share-btn-facebook" href="https://www.facebook.com/sharer/sharer.php?u=https://codepen.io/marko-zub/#" rel="nofollow" target="_blank">
+                    <a class="share-btn share-btn-facebook" href="https://www.facebook.com/sharer/sharer.php?u=https://codepen.io/marko-zub/#" rel="nofollow" target="_blank">
                         <i class="ion-social-facebook">Share</i>
                     </a>
-                    <a class="share-btn.share-btn-linkedin" href="https://www.linkedin.com/cws/share?url=https://codepen.io/marko-zub/#" rel="nofollow" target="_blank">
+                    <a class="share-btn share-btn-linkedin" href="https://www.linkedin.com/cws/share?url=https://codepen.io/marko-zub/#" rel="nofollow" target="_blank">
                         <i class="ion-social-linkedin">Share</i>
                     </a>
-                    <a class="share-btn.share-btn-reddit" href="http://www.reddit.com/submit?url=https://codepen.io/marko-zub/&title=Marko+Zub+codepen" rel="nofollow" target="_blank">
+                    <a class="share-btn share-btn-reddit" href="http://www.reddit.com/submit?url=https://codepen.io/marko-zub/&title=Marko+Zub+codepen" rel="nofollow" target="_blank">
                         <i class="ion-social-reddit">Share</i>
                     </a>
-                    <a class="share-btn.share-btn-mail" href="mailto:?subject=Look Fun Codepen Account&amp;body=https://codepen.io/marko-zub/#" rel="nofollow" target="_blank" title="via email">
+                    <a class="share-btn share-btn-mail" href="mailto:?subject=Look Fun Codepen Account&amp;body=https://codepen.io/marko-zub/#" rel="nofollow" target="_blank" title="via email">
                         <i class="ion-paper-airplane">Share</i>
                     </a>
                 </div>
