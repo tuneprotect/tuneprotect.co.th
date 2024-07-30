@@ -3803,7 +3803,7 @@ main[data-package="ONFIMP"],[data-package="ONFIMPS"], [data-package="ONCOVIDMW"]
         display: flex;
     }
 
-    li {;
+    li {
         flex: 1;
         padding: 20px 10px;
 
@@ -3911,4 +3911,89 @@ main[data-package="ONFIMP"],[data-package="ONFIMPS"], [data-package="ONCOVIDMW"]
         }
     }
 }
+
+.social-share-btns-container {
+    overflow: hidden;
+    position: absolute;
+    left: 0;
+    font-size: 0;
+    top: 50%;
+    margin: -30px 0;
+    text-align: center;
+    width: 100%;
+    z-index: 111;
+  }
+  
+  
+  .social-share-btns {
+    display: inline-block;
+    overflow: hidden;
+  
+    .share-btn {
+      float: left;
+      margin: 0 5px;
+      padding: 8px 16px;
+      border-radius: 3px;
+      color: #fff;
+      font-size: 14px;
+      line-height: 18px;
+      vertical-align: middle;
+      //@include transition(background 0.2s ease-in-out);
+  
+      i {
+        margin-right: 5px;
+        display: inline-block;
+        font-size: 18px;
+        vertical-align: middle;
+      }
+    }
+  }
+  
+  .share-btn {
+    background-color: #95a5a6;
+  
+    &:hover {
+      background-color: darken(#95a5a6, 10%);
+    }
+  }
+  
+  .share-btn-twitter {
+    background-color: #00aced;
+  
+    &:hover {
+      background-color: darken(#00aced, 10%);
+    }
+  }
+  
+  .share-btn-facebook {
+    background-color: #3b5998;
+  
+    &:hover {
+      background-color: darken(#3b5998, 10%);
+    }
+  }
+  
+  .share-btn-linkedin {
+    background-color: #007bb6;
+  
+    &:hover {
+      background-color: darken(#007bb6, 10%);
+    }
+  }
+  
+  .share-btn-reddit {
+    background-color: #ED001C;
+  
+    &:hover {
+      background-color: darken(#ED001C, 10%);
+    }
+  }
+  
+  .share-btn-mail {
+    background-color: #f1c40f;
+  
+    &:hover {
+      background-color: darken(#f1c40f, 5%);
+    }
+  }
 
