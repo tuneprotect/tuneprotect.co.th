@@ -3958,10 +3958,10 @@ main[data-package="ONFIMP"],[data-package="ONFIMPS"], [data-package="ONCOVIDMW"]
   }
   
   .share-btn-twitter {
-    background-color: #00aced;
+    background-color: #000000;
   
     &:hover {
-      background-color: darken(#00aced, 10%);
+      background-color: darken(#000000, 10%);
     }
   }
   
@@ -3973,27 +3973,27 @@ main[data-package="ONFIMP"],[data-package="ONFIMPS"], [data-package="ONCOVIDMW"]
     }
   }
   
-  .share-btn-linkedin {
-    background-color: #007bb6;
+  .share-btn-line {
+    background-color: #00c300;
   
     &:hover {
-      background-color: darken(#007bb6, 10%);
-    }
-  }
-  
-  .share-btn-reddit {
-    background-color: #ED001C;
-  
-    &:hover {
-      background-color: darken(#ED001C, 10%);
+      background-color: darken(#00c300, 10%);
     }
   }
   
   .share-btn-mail {
-    background-color: #f1c40f;
+    background-color: #7d7d7d;
   
     &:hover {
-      background-color: darken(#f1c40f, 5%);
+      background-color: darken(#7d7d7d, 5%);
+    }
+  }
+
+  .share-btn-share {
+    background-color: #95D03A;
+  
+    &:hover {
+      background-color: darken(#95D03A, 10%);
     }
   }
 

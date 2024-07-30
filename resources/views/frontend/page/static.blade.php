@@ -1,7 +1,6 @@
 @extends('frontend.layout.main')
 
 @section('page')
-<script src="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css"></script>
     <main>
         <article class="wrapper">
             @if(isset($articleImage))
@@ -15,30 +14,30 @@
                 <div>{!! $content->locales[$locale]->content !!}</div>
             <br/>
             @if(!isset($no_share))
-                <!-- <script type='text/javascript'
+                <script type='text/javascript'
                         src='https://platform-api.sharethis.com/js/sharethis.js#property=5fe33658948afa0012592b2d&product=inline-share-buttons'
                         async='async'></script>
-                <div class="sharethis-inline-share-buttons"></div> -->
+                <div class="sharethis-inline-share-buttons"></div>
 
-            <div class="social-share-btns-container">  
+            <!-- <div class="social-share-btns-container">  
                 <div class="social-share-btns">
-                    <a class="share-btn share-btn-twitter" href="https://twitter.com/intent/tweet?text=https://codepen.io/marko-zub/#" rel="nofollow" target="_blank">
-                        <i class="ion-social-twitter">Tweet</i>
+                <a class="share-btn share-btn-facebook" href="https://www.facebook.com/sharer/sharer.php?u=https://www.tuneprotect.co.th/" rel="nofollow" target="_blank">
+                        <i class="icofont-facebook"></i>Facebook
                     </a>
-                    <a class="share-btn share-btn-facebook" href="https://www.facebook.com/sharer/sharer.php?u=https://codepen.io/marko-zub/#" rel="nofollow" target="_blank">
-                        <i class="ion-social-facebook">Share</i>
+                    <a class="share-btn share-btn-line" href="https://www.line.com/cws/share?url=https://www.tuneprotect.co.th/" rel="nofollow" target="_blank">
+                        <i class="icofont icofont-line"></i>Line
                     </a>
-                    <a class="share-btn share-btn-linkedin" href="https://www.linkedin.com/cws/share?url=https://codepen.io/marko-zub/#" rel="nofollow" target="_blank">
-                        <i class="ion-social-linkedin">Share</i>
+                    <a class="share-btn share-btn-twitter" href="https://twitter.com/intent/tweet?text=https://www.tuneprotect.co.th/" rel="nofollow" target="_blank">
+                        <i class="icofont icofont-twitter"></i>Tweet
                     </a>
-                    <a class="share-btn share-btn-reddit" href="http://www.reddit.com/submit?url=https://codepen.io/marko-zub/&title=Marko+Zub+codepen" rel="nofollow" target="_blank">
-                        <i class="ion-social-reddit">Share</i>
+                    <a class="share-btn share-btn-mail" href="mailto:privacy.th@tuneprotect.co.th?subject=Send to Us&amp;body=" rel="nofollow" target="_blank" title="via email">
+                        <i class="icofont-email"> </i>Email
                     </a>
-                    <a class="share-btn share-btn-mail" href="mailto:?subject=Look Fun Codepen Account&amp;body=https://codepen.io/marko-zub/#" rel="nofollow" target="_blank" title="via email">
-                        <i class="ion-paper-airplane">Share</i>
+                    <a class="share-btn share-btn-share" href="#" rel="nofollow" target="_blank">
+                        <i class="icofont-share"></i>Share
                     </a>
                 </div>
-            </div>
+            </div> -->
             <br/>
             @endif
         </article>
